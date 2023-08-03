@@ -587,6 +587,96 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Producers can use this method to retrieve information about the DNS record set
+        # added to the private zone inside the shared tenant host project associated
+        # with a consumer network.
+        # @param [String] parent
+        #   Required. Parent resource identifying the connection which owns this
+        #   collection of DNS zones in the format services/`service`.
+        # @param [String] consumer_network
+        #   Required. The consumer network containing the record set. Must be in the form
+        #   of projects/`project`/global/networks/`network`
+        # @param [String] domain
+        #   Required. The domain name of the zone containing the recordset.
+        # @param [String] type
+        #   Required. RecordSet Type eg. type='A'. See the list of [Supported DNS Types](
+        #   https://dns.corp.google.com/docs/overview).
+        # @param [String] zone
+        #   Required. The name of the zone containing the record set.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicenetworkingV1::DnsRecordSet] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicenetworkingV1::DnsRecordSet]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_service_dns_record_set(parent, consumer_network: nil, domain: nil, type: nil, zone: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dnsRecordSets:get', options)
+          command.response_representation = Google::Apis::ServicenetworkingV1::DnsRecordSet::Representation
+          command.response_class = Google::Apis::ServicenetworkingV1::DnsRecordSet
+          command.params['parent'] = parent unless parent.nil?
+          command.query['consumerNetwork'] = consumer_network unless consumer_network.nil?
+          command.query['domain'] = domain unless domain.nil?
+          command.query['type'] = type unless type.nil?
+          command.query['zone'] = zone unless zone.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Producers can use this method to retrieve a list of available DNS RecordSets
+        # available inside the private zone on the tenant host project accessible from
+        # their network.
+        # @param [String] parent
+        #   Required. The service that is managing peering connectivity for a service
+        #   producer's organization. For Google services that support this functionality,
+        #   this value is `services/servicenetworking.googleapis.com`.
+        # @param [String] consumer_network
+        #   Required. The network that the consumer is using to connect with services.
+        #   Must be in the form of projects/`project`/global/networks/`network` `project`
+        #   is the project number, as in '12345' `network` is the network name.
+        # @param [String] zone
+        #   Required. The name of the private DNS zone in the shared producer host project
+        #   from which the record set will be removed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicenetworkingV1::ListDnsRecordSetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicenetworkingV1::ListDnsRecordSetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_service_dns_record_sets(parent, consumer_network: nil, zone: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dnsRecordSets:list', options)
+          command.response_representation = Google::Apis::ServicenetworkingV1::ListDnsRecordSetsResponse::Representation
+          command.response_class = Google::Apis::ServicenetworkingV1::ListDnsRecordSetsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['consumerNetwork'] = consumer_network unless consumer_network.nil?
+          command.query['zone'] = zone unless zone.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Service producers can use this method to remove DNS record sets from private
         # DNS zones in the shared producer host project.
         # @param [String] parent
@@ -654,6 +744,42 @@ module Google
           command.response_representation = Google::Apis::ServicenetworkingV1::Operation::Representation
           command.response_class = Google::Apis::ServicenetworkingV1::Operation
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Service producers can use this method to retrieve a DNS zone in the shared
+        # producer host project and the matching peering zones in consumer project
+        # @param [String] name
+        #   Required. The network that the consumer is using to connect with services.
+        #   Must be in the form of services/`service`/projects/`project`/global/networks/`
+        #   network`/zones/`zoneName` Where `service` is the peering service that is
+        #   managing connectivity for the service producer's organization. For Google
+        #   services that support this `project` is the project number, as in '12345' `
+        #   network` is the network name. `zoneName` is the DNS zone name
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicenetworkingV1::GetDnsZoneResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicenetworkingV1::GetDnsZoneResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_service_dns_zone(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/dnsZone:get', options)
+          command.response_representation = Google::Apis::ServicenetworkingV1::GetDnsZoneResponse::Representation
+          command.response_class = Google::Apis::ServicenetworkingV1::GetDnsZoneResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

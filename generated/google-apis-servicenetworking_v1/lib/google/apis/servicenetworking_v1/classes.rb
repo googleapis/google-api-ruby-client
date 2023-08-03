@@ -2054,6 +2054,32 @@ module Google
         end
       end
       
+      # Represents managed DNS zones created in the shared Producer host and consumer
+      # projects.
+      class GetDnsZoneResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a DNS zone resource.
+        # Corresponds to the JSON property `consumerPeeringZone`
+        # @return [Google::Apis::ServicenetworkingV1::DnsZone]
+        attr_accessor :consumer_peering_zone
+      
+        # Represents a DNS zone resource.
+        # Corresponds to the JSON property `producerPrivateZone`
+        # @return [Google::Apis::ServicenetworkingV1::DnsZone]
+        attr_accessor :producer_private_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_peering_zone = args[:consumer_peering_zone] if args.key?(:consumer_peering_zone)
+          @producer_private_zone = args[:producer_private_zone] if args.key?(:producer_private_zone)
+        end
+      end
+      
       # Settings for Go client libraries.
       class GoSettings
         include Google::Apis::Core::Hashable
@@ -2569,6 +2595,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connections = args[:connections] if args.key?(:connections)
+        end
+      end
+      
+      # Represents all DNS RecordSets associated with the producer network
+      class ListDnsRecordSetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # DNS record Set Resource
+        # Corresponds to the JSON property `dnsRecordSets`
+        # @return [Array<Google::Apis::ServicenetworkingV1::DnsRecordSet>]
+        attr_accessor :dns_record_sets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_record_sets = args[:dns_record_sets] if args.key?(:dns_record_sets)
         end
       end
       
