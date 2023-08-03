@@ -210,6 +210,11 @@ module Google
         # @return [Google::Apis::NotebooksV1::DiagnosticConfig]
         attr_accessor :diagnostic_config
       
+        # Optional. Maxmium amount of time in minutes before the operation times out.
+        # Corresponds to the JSON property `timeoutMinutes`
+        # @return [Fixnum]
+        attr_accessor :timeout_minutes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -217,6 +222,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @diagnostic_config = args[:diagnostic_config] if args.key?(:diagnostic_config)
+          @timeout_minutes = args[:timeout_minutes] if args.key?(:timeout_minutes)
         end
       end
       
@@ -229,6 +235,11 @@ module Google
         # @return [Google::Apis::NotebooksV1::DiagnosticConfig]
         attr_accessor :diagnostic_config
       
+        # Optional. Maxmium amount of time in minutes before the operation times out.
+        # Corresponds to the JSON property `timeoutMinutes`
+        # @return [Fixnum]
+        attr_accessor :timeout_minutes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -236,6 +247,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @diagnostic_config = args[:diagnostic_config] if args.key?(:diagnostic_config)
+          @timeout_minutes = args[:timeout_minutes] if args.key?(:timeout_minutes)
         end
       end
       
