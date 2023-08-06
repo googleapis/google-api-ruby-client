@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Avg
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchGetDocumentsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +203,12 @@ module Google
       end
       
       class Filter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1Progress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Sum
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Target
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -482,7 +500,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alias, as: 'alias'
+          property :avg, as: 'avg', class: Google::Apis::FirestoreV1beta1::Avg, decorator: Google::Apis::FirestoreV1beta1::Avg::Representation
+      
           property :count, as: 'count', class: Google::Apis::FirestoreV1beta1::Count, decorator: Google::Apis::FirestoreV1beta1::Count::Representation
+      
+          property :sum, as: 'sum', class: Google::Apis::FirestoreV1beta1::Sum, decorator: Google::Apis::FirestoreV1beta1::Sum::Representation
       
         end
       end
@@ -499,6 +521,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :values, as: 'values', class: Google::Apis::FirestoreV1beta1::Value, decorator: Google::Apis::FirestoreV1beta1::Value::Representation
+      
+        end
+      end
+      
+      class Avg
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field', class: Google::Apis::FirestoreV1beta1::FieldReference, decorator: Google::Apis::FirestoreV1beta1::FieldReference::Representation
       
         end
       end
@@ -755,6 +785,14 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1Progress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completed_work, :numeric_string => true, as: 'completedWork'
+          property :estimated_work, :numeric_string => true, as: 'estimatedWork'
+        end
+      end
+      
       class GoogleFirestoreAdminV1RestoreDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -762,6 +800,8 @@ module Google
           property :database, as: 'database'
           property :end_time, as: 'endTime'
           property :operation_state, as: 'operationState'
+          property :progress_percentage, as: 'progressPercentage', class: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1Progress, decorator: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1Progress::Representation
+      
           property :start_time, as: 'startTime'
         end
       end
@@ -1117,6 +1157,14 @@ module Google
           property :start_at, as: 'startAt', class: Google::Apis::FirestoreV1beta1::Cursor, decorator: Google::Apis::FirestoreV1beta1::Cursor::Representation
       
           property :where, as: 'where', class: Google::Apis::FirestoreV1beta1::Filter, decorator: Google::Apis::FirestoreV1beta1::Filter::Representation
+      
+        end
+      end
+      
+      class Sum
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field', class: Google::Apis::FirestoreV1beta1::FieldReference, decorator: Google::Apis::FirestoreV1beta1::FieldReference::Representation
       
         end
       end
