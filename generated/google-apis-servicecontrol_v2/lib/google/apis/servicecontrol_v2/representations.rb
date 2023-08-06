@@ -148,6 +148,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceDelegationHistory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SpanContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -274,6 +286,8 @@ module Google
           collection :service_account_delegation_info, as: 'serviceAccountDelegationInfo', class: Google::Apis::ServicecontrolV2::ServiceAccountDelegationInfo, decorator: Google::Apis::ServicecontrolV2::ServiceAccountDelegationInfo::Representation
       
           property :service_account_key_name, as: 'serviceAccountKeyName'
+          property :service_delegation_history, as: 'serviceDelegationHistory', class: Google::Apis::ServicecontrolV2::ServiceDelegationHistory, decorator: Google::Apis::ServicecontrolV2::ServiceDelegationHistory::Representation
+      
           hash :third_party_principal, as: 'thirdPartyPrincipal'
         end
       end
@@ -451,6 +465,24 @@ module Google
           property :principal_subject, as: 'principalSubject'
           property :third_party_principal, as: 'thirdPartyPrincipal', class: Google::Apis::ServicecontrolV2::ThirdPartyPrincipal, decorator: Google::Apis::ServicecontrolV2::ThirdPartyPrincipal::Representation
       
+        end
+      end
+      
+      class ServiceDelegationHistory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :original_principal, as: 'originalPrincipal'
+          collection :service_metadata, as: 'serviceMetadata', class: Google::Apis::ServicecontrolV2::ServiceMetadata, decorator: Google::Apis::ServicecontrolV2::ServiceMetadata::Representation
+      
+        end
+      end
+      
+      class ServiceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :job_metadata, as: 'jobMetadata'
+          property :principal_subject, as: 'principalSubject'
+          property :service_domain, as: 'serviceDomain'
         end
       end
       

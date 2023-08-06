@@ -1,5 +1,9 @@
 # Release history for google-apis-servicecontrol_v2
 
+### v0.30.0 (2023-08-06)
+
+* Regenerated from discovery document revision 20230728
+
 ### v0.29.0 (2023-03-26)
 
 * Regenerated from discovery document revision 20230317

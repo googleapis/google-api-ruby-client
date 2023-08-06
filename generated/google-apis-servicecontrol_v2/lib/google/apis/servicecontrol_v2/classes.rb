@@ -399,6 +399,14 @@ module Google
         # @return [String]
         attr_accessor :service_account_key_name
       
+        # The history of delegation across multiple services as the result of the
+        # original user's action. Such as "service A uses its own account to do
+        # something for user B". This differs from ServiceAccountDelegationInfo, which
+        # only tracks the history of direct token exchanges (impersonation).
+        # Corresponds to the JSON property `serviceDelegationHistory`
+        # @return [Google::Apis::ServicecontrolV2::ServiceDelegationHistory]
+        attr_accessor :service_delegation_history
+      
         # The third party identification (if any) of the authenticated user making the
         # request. When the JSON object represented here has a proto equivalent, the
         # proto name will be indicated in the `@type` property.
@@ -417,6 +425,7 @@ module Google
           @principal_subject = args[:principal_subject] if args.key?(:principal_subject)
           @service_account_delegation_info = args[:service_account_delegation_info] if args.key?(:service_account_delegation_info)
           @service_account_key_name = args[:service_account_key_name] if args.key?(:service_account_key_name)
+          @service_delegation_history = args[:service_delegation_history] if args.key?(:service_delegation_history)
           @third_party_principal = args[:third_party_principal] if args.key?(:third_party_principal)
         end
       end
@@ -1168,6 +1177,76 @@ module Google
           @first_party_principal = args[:first_party_principal] if args.key?(:first_party_principal)
           @principal_subject = args[:principal_subject] if args.key?(:principal_subject)
           @third_party_principal = args[:third_party_principal] if args.key?(:third_party_principal)
+        end
+      end
+      
+      # The history of delegation across multiple services as the result of the
+      # original user's action. Such as "service A uses its own account to do
+      # something for user B". This differs from ServiceAccountDelegationInfo, which
+      # only tracks the history of direct token exchanges (impersonation).
+      class ServiceDelegationHistory
+        include Google::Apis::Core::Hashable
+      
+        # The original end user who initiated the request to GCP.
+        # Corresponds to the JSON property `originalPrincipal`
+        # @return [String]
+        attr_accessor :original_principal
+      
+        # Data identifying the service specific jobs or units of work that were involved
+        # in a chain of service calls.
+        # Corresponds to the JSON property `serviceMetadata`
+        # @return [Array<Google::Apis::ServicecontrolV2::ServiceMetadata>]
+        attr_accessor :service_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @original_principal = args[:original_principal] if args.key?(:original_principal)
+          @service_metadata = args[:service_metadata] if args.key?(:service_metadata)
+        end
+      end
+      
+      # Metadata describing the service and additional service specific information
+      # used to identify the job or unit of work at hand.
+      class ServiceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Additional metadata provided by service teams to describe service specific job
+        # information that was triggered by the original principal.
+        # Corresponds to the JSON property `jobMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :job_metadata
+      
+        # A string representing the principal_subject associated with the identity. For
+        # most identities, the format will be `principal://iam.googleapis.com/`identity
+        # pool name`/subject/`subject)` except for some GKE identities (GKE_WORKLOAD,
+        # FREEFORM, GKE_HUB_WORKLOAD) that are still in the legacy format `
+        # serviceAccount:`identity pool name`[`subject`]` If the identity is a Google
+        # account (e.g. workspace user account or service account), this will be the
+        # email of the prefixed by `serviceAccount:`. For example: `serviceAccount:my-
+        # service-account@project-1.iam.gserviceaccount.com`. If the identity is an
+        # individual user, the identity will be formatted as: `user:user_ABC@email.com`.
+        # Corresponds to the JSON property `principalSubject`
+        # @return [String]
+        attr_accessor :principal_subject
+      
+        # The service's fully qualified domain name, e.g. "dataproc.googleapis.com".
+        # Corresponds to the JSON property `serviceDomain`
+        # @return [String]
+        attr_accessor :service_domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job_metadata = args[:job_metadata] if args.key?(:job_metadata)
+          @principal_subject = args[:principal_subject] if args.key?(:principal_subject)
+          @service_domain = args[:service_domain] if args.key?(:service_domain)
         end
       end
       
