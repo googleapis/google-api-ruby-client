@@ -2832,9 +2832,11 @@ module Google
         #   read.
         # @param [String] product_id
         #   Required. The parent subscription (ID) for which the offers should be read.
+        #   May be specified as '-' to read all offers under an app.
         # @param [String] base_plan_id
         #   Required. The parent base plan (ID) for which the offers should be read. May
-        #   be specified as '-' to read all offers under a subscription.
+        #   be specified as '-' to read all offers under a subscription or an app. Must be
+        #   specified as '-' if product_id is specified as '-'.
         # @param [Fixnum] page_size
         #   The maximum number of subscriptions to return. The service may return fewer
         #   than this value. If unspecified, at most 50 subscriptions will be returned.
