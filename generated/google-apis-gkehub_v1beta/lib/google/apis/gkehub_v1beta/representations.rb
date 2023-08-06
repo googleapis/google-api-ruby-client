@@ -454,6 +454,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListScopeNamespacesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListScopeRbacRoleBindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListScopesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1319,7 +1331,6 @@ module Google
           property :encrypted_client_secret, :base64 => true, as: 'encryptedClientSecret'
           property :kubectl_redirect_uri, as: 'kubectlRedirectUri'
           property :tenant, as: 'tenant'
-          property :user_claim, as: 'userClaim'
         end
       end
       
@@ -1433,6 +1444,24 @@ module Google
       end
       
       class ListRbacRoleBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rbacrolebindings, as: 'rbacrolebindings', class: Google::Apis::GkehubV1beta::RbacRoleBinding, decorator: Google::Apis::GkehubV1beta::RbacRoleBinding::Representation
+      
+        end
+      end
+      
+      class ListScopeNamespacesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :scope_namespaces, as: 'scopeNamespaces', class: Google::Apis::GkehubV1beta::Namespace, decorator: Google::Apis::GkehubV1beta::Namespace::Representation
+      
+        end
+      end
+      
+      class ListScopeRbacRoleBindingsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
@@ -1559,6 +1588,7 @@ module Google
           property :delete_time, as: 'deleteTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          hash :namespace_labels, as: 'namespaceLabels'
           property :scope, as: 'scope'
           property :state, as: 'state', class: Google::Apis::GkehubV1beta::NamespaceLifecycleState, decorator: Google::Apis::GkehubV1beta::NamespaceLifecycleState::Representation
       
@@ -1789,6 +1819,7 @@ module Google
           property :delete_time, as: 'deleteTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          hash :namespace_labels, as: 'namespaceLabels'
           property :state, as: 'state', class: Google::Apis::GkehubV1beta::ScopeLifecycleState, decorator: Google::Apis::GkehubV1beta::ScopeLifecycleState::Representation
       
           property :uid, as: 'uid'
