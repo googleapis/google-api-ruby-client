@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MultiNodeParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +245,12 @@ module Google
       end
       
       class QueueingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResetQueuedResourceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -546,6 +558,14 @@ module Google
         end
       end
       
+      class MultiNodeParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_count, as: 'nodeCount'
+          property :node_id_prefix, as: 'nodeIdPrefix'
+        end
+      end
+      
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -607,6 +627,8 @@ module Google
       class NodeSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :multi_node_params, as: 'multiNodeParams', class: Google::Apis::TpuV2alpha1::MultiNodeParams, decorator: Google::Apis::TpuV2alpha1::MultiNodeParams::Representation
+      
           property :node, as: 'node', class: Google::Apis::TpuV2alpha1::Node, decorator: Google::Apis::TpuV2alpha1::Node::Representation
       
           property :node_id, as: 'nodeId'
@@ -698,6 +720,12 @@ module Google
       
           property :valid_until_duration, as: 'validUntilDuration'
           property :valid_until_time, as: 'validUntilTime'
+        end
+      end
+      
+      class ResetQueuedResourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -661,6 +661,37 @@ module Google
         end
       end
       
+      # Parameters to specify for multi-node QueuedResource requests. This field must
+      # be populated in case of multi-node requests instead of node_id. It's an error
+      # to specify both node_id and multi_node_params.
+      class MultiNodeParams
+        include Google::Apis::Core::Hashable
+      
+        # Required. Number of nodes with this spec. The system will attempt to provison "
+        # node_count" nodes as part of the request. This needs to be > 1.
+        # Corresponds to the JSON property `nodeCount`
+        # @return [Fixnum]
+        attr_accessor :node_count
+      
+        # Prefix of node_ids in case of multi-node request Should follow the `^[A-Za-z0-
+        # 9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node
+        # ids of nodes created will be "np-0", "np-1", "np-2". If this field is not
+        # provided we use queued_resource_id as the node_id_prefix.
+        # Corresponds to the JSON property `nodeIdPrefix`
+        # @return [String]
+        attr_accessor :node_id_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_count = args[:node_count] if args.key?(:node_count)
+          @node_id_prefix = args[:node_id_prefix] if args.key?(:node_id_prefix)
+        end
+      end
+      
       # Network related configurations.
       class NetworkConfig
         include Google::Apis::Core::Hashable
@@ -912,6 +943,13 @@ module Google
       class NodeSpec
         include Google::Apis::Core::Hashable
       
+        # Parameters to specify for multi-node QueuedResource requests. This field must
+        # be populated in case of multi-node requests instead of node_id. It's an error
+        # to specify both node_id and multi_node_params.
+        # Corresponds to the JSON property `multiNodeParams`
+        # @return [Google::Apis::TpuV2alpha1::MultiNodeParams]
+        attr_accessor :multi_node_params
+      
         # A TPU instance.
         # Corresponds to the JSON property `node`
         # @return [Google::Apis::TpuV2alpha1::Node]
@@ -936,6 +974,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @multi_node_params = args[:multi_node_params] if args.key?(:multi_node_params)
           @node = args[:node] if args.key?(:node)
           @node_id = args[:node_id] if args.key?(:node_id)
           @parent = args[:parent] if args.key?(:parent)
@@ -1255,6 +1294,19 @@ module Google
           @valid_interval = args[:valid_interval] if args.key?(:valid_interval)
           @valid_until_duration = args[:valid_until_duration] if args.key?(:valid_until_duration)
           @valid_until_time = args[:valid_until_time] if args.key?(:valid_until_time)
+        end
+      end
+      
+      # Request for ResetQueuedResource.
+      class ResetQueuedResourceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
