@@ -820,7 +820,7 @@ module Google
         #   LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/ORGANIZATION_ID/
         #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "billingAccounts/
         #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
-        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -851,10 +851,10 @@ module Google
         # Lists links.
         # @param [String] parent
         #   Required. The parent resource whose links are to be listed:"projects/
-        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/" "organizations/
-        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "billingAccounts/
-        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "folders/
-        #   FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "organizations/
+        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "billingAccounts/
+        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "folders/FOLDER_ID/
+        #   locations/LOCATION_ID/buckets/BUCKET_ID"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request.
         # @param [String] page_token
@@ -965,7 +965,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a view on a log bucket..
+        # Gets a view on a log bucket.
         # @param [String] name
         #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-
@@ -1367,8 +1367,9 @@ module Google
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
-        #   will be a unique service account used only for exports from the new sink. For
-        #   more information, see writer_identity in LogSink.
+        #   will be a service agent (https://cloud.google.com/iam/docs/service-account-
+        #   types#service-agents) used by the sinks with the same parent. For more
+        #   information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1532,9 +1533,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a unique service account. It is an
-        #   error if the old value is true and the new value is set to false or defaulted
-        #   to false.
+        #   true, then writer_identity is changed to a service agent (https://cloud.google.
+        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   is an error if the old value is true and the new value is set to false or
+        #   defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -1598,9 +1600,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a unique service account. It is an
-        #   error if the old value is true and the new value is set to false or defaulted
-        #   to false.
+        #   true, then writer_identity is changed to a service agent (https://cloud.google.
+        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   is an error if the old value is true and the new value is set to false or
+        #   defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -2786,7 +2789,7 @@ module Google
         #   LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/ORGANIZATION_ID/
         #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "billingAccounts/
         #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
-        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2817,10 +2820,10 @@ module Google
         # Lists links.
         # @param [String] parent
         #   Required. The parent resource whose links are to be listed:"projects/
-        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/" "organizations/
-        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "billingAccounts/
-        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "folders/
-        #   FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "organizations/
+        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "billingAccounts/
+        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "folders/FOLDER_ID/
+        #   locations/LOCATION_ID/buckets/BUCKET_ID"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request.
         # @param [String] page_token
@@ -2931,7 +2934,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a view on a log bucket..
+        # Gets a view on a log bucket.
         # @param [String] name
         #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-
@@ -3333,8 +3336,9 @@ module Google
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
-        #   will be a unique service account used only for exports from the new sink. For
-        #   more information, see writer_identity in LogSink.
+        #   will be a service agent (https://cloud.google.com/iam/docs/service-account-
+        #   types#service-agents) used by the sinks with the same parent. For more
+        #   information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3498,9 +3502,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a unique service account. It is an
-        #   error if the old value is true and the new value is set to false or defaulted
-        #   to false.
+        #   true, then writer_identity is changed to a service agent (https://cloud.google.
+        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   is an error if the old value is true and the new value is set to false or
+        #   defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -3564,9 +3569,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a unique service account. It is an
-        #   error if the old value is true and the new value is set to false or defaulted
-        #   to false.
+        #   true, then writer_identity is changed to a service agent (https://cloud.google.
+        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   is an error if the old value is true and the new value is set to false or
+        #   defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -4103,7 +4109,7 @@ module Google
         #   LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/ORGANIZATION_ID/
         #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "billingAccounts/
         #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
-        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4134,10 +4140,10 @@ module Google
         # Lists links.
         # @param [String] parent
         #   Required. The parent resource whose links are to be listed:"projects/
-        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/" "organizations/
-        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "billingAccounts/
-        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "folders/
-        #   FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "organizations/
+        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "billingAccounts/
+        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "folders/FOLDER_ID/
+        #   locations/LOCATION_ID/buckets/BUCKET_ID"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request.
         # @param [String] page_token
@@ -4248,7 +4254,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a view on a log bucket..
+        # Gets a view on a log bucket.
         # @param [String] name
         #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-
@@ -5483,7 +5489,7 @@ module Google
         #   LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/ORGANIZATION_ID/
         #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "billingAccounts/
         #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
-        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5514,10 +5520,10 @@ module Google
         # Lists links.
         # @param [String] parent
         #   Required. The parent resource whose links are to be listed:"projects/
-        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/" "organizations/
-        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "billingAccounts/
-        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "folders/
-        #   FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "organizations/
+        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "billingAccounts/
+        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "folders/FOLDER_ID/
+        #   locations/LOCATION_ID/buckets/BUCKET_ID"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request.
         # @param [String] page_token
@@ -5628,7 +5634,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a view on a log bucket..
+        # Gets a view on a log bucket.
         # @param [String] name
         #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-
@@ -6030,8 +6036,9 @@ module Google
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
-        #   will be a unique service account used only for exports from the new sink. For
-        #   more information, see writer_identity in LogSink.
+        #   will be a service agent (https://cloud.google.com/iam/docs/service-account-
+        #   types#service-agents) used by the sinks with the same parent. For more
+        #   information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6195,9 +6202,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a unique service account. It is an
-        #   error if the old value is true and the new value is set to false or defaulted
-        #   to false.
+        #   true, then writer_identity is changed to a service agent (https://cloud.google.
+        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   is an error if the old value is true and the new value is set to false or
+        #   defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -6261,9 +6269,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a unique service account. It is an
-        #   error if the old value is true and the new value is set to false or defaulted
-        #   to false.
+        #   true, then writer_identity is changed to a service agent (https://cloud.google.
+        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   is an error if the old value is true and the new value is set to false or
+        #   defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -7077,7 +7086,7 @@ module Google
         #   LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/ORGANIZATION_ID/
         #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "billingAccounts/
         #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
-        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7108,10 +7117,10 @@ module Google
         # Lists links.
         # @param [String] parent
         #   Required. The parent resource whose links are to be listed:"projects/
-        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/" "organizations/
-        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "billingAccounts/
-        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "folders/
-        #   FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "organizations/
+        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "billingAccounts/
+        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "folders/FOLDER_ID/
+        #   locations/LOCATION_ID/buckets/BUCKET_ID"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request.
         # @param [String] page_token
@@ -7222,7 +7231,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a view on a log bucket..
+        # Gets a view on a log bucket.
         # @param [String] name
         #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-
@@ -7798,8 +7807,9 @@ module Google
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
-        #   will be a unique service account used only for exports from the new sink. For
-        #   more information, see writer_identity in LogSink.
+        #   will be a service agent (https://cloud.google.com/iam/docs/service-account-
+        #   types#service-agents) used by the sinks with the same parent. For more
+        #   information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7963,9 +7973,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a unique service account. It is an
-        #   error if the old value is true and the new value is set to false or defaulted
-        #   to false.
+        #   true, then writer_identity is changed to a service agent (https://cloud.google.
+        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   is an error if the old value is true and the new value is set to false or
+        #   defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -8029,9 +8040,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a unique service account. It is an
-        #   error if the old value is true and the new value is set to false or defaulted
-        #   to false.
+        #   true, then writer_identity is changed to a service agent (https://cloud.google.
+        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   is an error if the old value is true and the new value is set to false or
+        #   defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -8098,8 +8110,9 @@ module Google
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
-        #   will be a unique service account used only for exports from the new sink. For
-        #   more information, see writer_identity in LogSink.
+        #   will be a service agent (https://cloud.google.com/iam/docs/service-account-
+        #   types#service-agents) used by the sinks with the same parent. For more
+        #   information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8263,9 +8276,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a unique service account. It is an
-        #   error if the old value is true and the new value is set to false or defaulted
-        #   to false.
+        #   true, then writer_identity is changed to a service agent (https://cloud.google.
+        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   is an error if the old value is true and the new value is set to false or
+        #   defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
