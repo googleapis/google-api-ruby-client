@@ -1643,6 +1643,11 @@ module Google
         # @return [String]
         attr_accessor :format
       
+        # Properties that determine how the title and content are styled
+        # Corresponds to the JSON property `style`
+        # @return [Google::Apis::MonitoringV1::TextStyle]
+        attr_accessor :style
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1651,6 +1656,57 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @format = args[:format] if args.key?(:format)
+          @style = args[:style] if args.key?(:style)
+        end
+      end
+      
+      # Properties that determine how the title and content are styled
+      class TextStyle
+        include Google::Apis::Core::Hashable
+      
+        # The background color as a hex string. "#RRGGBB" or "#RGB"
+        # Corresponds to the JSON property `backgroundColor`
+        # @return [String]
+        attr_accessor :background_color
+      
+        # Font sizes for both the title and content. The title will still be larger
+        # relative to the content.
+        # Corresponds to the JSON property `fontSize`
+        # @return [String]
+        attr_accessor :font_size
+      
+        # The horizontal alignment of both the title and content
+        # Corresponds to the JSON property `horizontalAlignment`
+        # @return [String]
+        attr_accessor :horizontal_alignment
+      
+        # The amount of padding around the widget
+        # Corresponds to the JSON property `padding`
+        # @return [String]
+        attr_accessor :padding
+      
+        # The text color as a hex string. "#RRGGBB" or "#RGB"
+        # Corresponds to the JSON property `textColor`
+        # @return [String]
+        attr_accessor :text_color
+      
+        # The vertical alignment of both the title and content
+        # Corresponds to the JSON property `verticalAlignment`
+        # @return [String]
+        attr_accessor :vertical_alignment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @background_color = args[:background_color] if args.key?(:background_color)
+          @font_size = args[:font_size] if args.key?(:font_size)
+          @horizontal_alignment = args[:horizontal_alignment] if args.key?(:horizontal_alignment)
+          @padding = args[:padding] if args.key?(:padding)
+          @text_color = args[:text_color] if args.key?(:text_color)
+          @vertical_alignment = args[:vertical_alignment] if args.key?(:vertical_alignment)
         end
       end
       
