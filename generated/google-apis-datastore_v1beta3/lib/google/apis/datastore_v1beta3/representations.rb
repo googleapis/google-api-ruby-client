@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Avg
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BeginTransactionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -394,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Sum
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TransactionOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -410,7 +422,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alias, as: 'alias'
+          property :avg, as: 'avg', class: Google::Apis::DatastoreV1beta3::Avg, decorator: Google::Apis::DatastoreV1beta3::Avg::Representation
+      
           property :count, as: 'count', class: Google::Apis::DatastoreV1beta3::Count, decorator: Google::Apis::DatastoreV1beta3::Count::Representation
+      
+          property :sum, as: 'sum', class: Google::Apis::DatastoreV1beta3::Sum, decorator: Google::Apis::DatastoreV1beta3::Sum::Representation
       
         end
       end
@@ -463,6 +479,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :values, as: 'values', class: Google::Apis::DatastoreV1beta3::Value, decorator: Google::Apis::DatastoreV1beta3::Value::Representation
+      
+        end
+      end
+      
+      class Avg
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :property, as: 'property', class: Google::Apis::DatastoreV1beta3::PropertyReference, decorator: Google::Apis::DatastoreV1beta3::PropertyReference::Representation
       
         end
       end
@@ -1008,6 +1032,14 @@ module Google
           property :batch, as: 'batch', class: Google::Apis::DatastoreV1beta3::QueryResultBatch, decorator: Google::Apis::DatastoreV1beta3::QueryResultBatch::Representation
       
           property :query, as: 'query', class: Google::Apis::DatastoreV1beta3::Query, decorator: Google::Apis::DatastoreV1beta3::Query::Representation
+      
+        end
+      end
+      
+      class Sum
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :property, as: 'property', class: Google::Apis::DatastoreV1beta3::PropertyReference, decorator: Google::Apis::DatastoreV1beta3::PropertyReference::Representation
       
         end
       end
