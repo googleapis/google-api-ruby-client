@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LinkedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDataExchangesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RefreshSubscriptionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestrictedExportConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -148,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubscribeDataExchangeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubscribeListingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +173,12 @@ module Google
       end
       
       class SubscribeListingResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Subscription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -278,6 +302,13 @@ module Google
         end
       end
       
+      class LinkedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :linked_dataset, as: 'linkedDataset'
+        end
+      end
+      
       class ListDataExchangesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -361,6 +392,14 @@ module Google
         end
       end
       
+      class RefreshSubscriptionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subscription, as: 'subscription', class: Google::Apis::AnalyticshubV1beta1::Subscription, decorator: Google::Apis::AnalyticshubV1beta1::Subscription::Representation
+      
+        end
+      end
+      
       class RestrictedExportConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -379,6 +418,14 @@ module Google
         end
       end
       
+      class SubscribeDataExchangeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subscription, as: 'subscription', class: Google::Apis::AnalyticshubV1beta1::Subscription, decorator: Google::Apis::AnalyticshubV1beta1::Subscription::Representation
+      
+        end
+      end
+      
       class SubscribeListingRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -390,6 +437,23 @@ module Google
       class SubscribeListingResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Subscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_time, as: 'creationTime'
+          property :data_exchange, as: 'dataExchange'
+          property :last_modify_time, as: 'lastModifyTime'
+          hash :linked_dataset_map, as: 'linkedDatasetMap', class: Google::Apis::AnalyticshubV1beta1::LinkedResource, decorator: Google::Apis::AnalyticshubV1beta1::LinkedResource::Representation
+      
+          property :listing, as: 'listing'
+          property :name, as: 'name'
+          property :organization_display_name, as: 'organizationDisplayName'
+          property :organization_id, as: 'organizationId'
+          property :state, as: 'state'
+          property :subscriber_contact, as: 'subscriberContact'
         end
       end
       
