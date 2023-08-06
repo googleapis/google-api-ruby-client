@@ -415,20 +415,22 @@ module Google
         # creates a "contact card" that features: - A header with the contact's name,
         # job title, and avatar picture. - A section with the contact information,
         # including formatted text. - Buttons that users can click to share the contact,
-        # or see more or less information. ![Example contact card](https://developers.
-        # google.com/chat/images/card_api_reference.png) ``` ` "cardsV2": [ ` "cardId": "
-        # unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "Software
-        # Engineer", "imageUrl": "https://developers.google.com/chat/images/quickstart-
-        # app-avatar.png", "imageType": "CIRCLE", "imageAltText": "Avatar for Sasha", `,
-        # "sections": [ ` "header": "Contact Info", "collapsible": true, "
-        # uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "startIcon": `
-        # "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "decoratedText":
-        # ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `, `, ` "
-        # decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (555)
-        # 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": `
-        # "openLink": ` "url": "https://example.com/share", ` ` `, ` "text": "Edit", "
-        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
-        # viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
+        # or see more or less information. For more examples, see [Design dynamic,
+        # interactive, and consistent UIs with cards](https://developers.google.com/chat/
+        # ui). ![Example contact card](https://developers.google.com/chat/images/
+        # card_api_reference.png) ``` ` "cardsV2": [ ` "cardId": "unique-card-id", "card"
+        # : ` "header": ` "title": "Sasha", "subtitle": "Software Engineer", "imageUrl":
+        # "https://developers.google.com/chat/images/quickstart-app-avatar.png", "
+        # imageType": "CIRCLE", "imageAltText": "Avatar for Sasha", `, "sections": [ ` "
+        # header": "Contact Info", "collapsible": true, "uncollapsibleWidgetsCount": 1, "
+        # widgets": [ ` "decoratedText": ` "startIcon": ` "knownIcon": "EMAIL", `, "text"
+        # : "sasha@example.com", ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "
+        # PERSON", `, "text": "Online", `, `, ` "decoratedText": ` "startIcon": ` "
+        # knownIcon": "PHONE", `, "text": "+1 (555) 555-1234", ` `, ` "buttonList": ` "
+        # buttons": [ ` "text": "Share", "onClick": ` "openLink": ` "url": "https://
+        # example.com/share", ` ` `, ` "text": "Edit", "onClick": ` "action": ` "
+        # function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT", `
+        # ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
         # Corresponds to the JSON property `card`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :card
@@ -846,7 +848,10 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # A user in Google Chat.
+        # A user in Google Chat. When returned as an output from a request, if your Chat
+        # app [authenticates as a user](https://developers.google.com/chat/api/guides/
+        # auth/users), the output for a `User` resource only populates the user's `name`
+        # and `type`.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :user
@@ -885,20 +890,22 @@ module Google
         # creates a "contact card" that features: - A header with the contact's name,
         # job title, and avatar picture. - A section with the contact information,
         # including formatted text. - Buttons that users can click to share the contact,
-        # or see more or less information. ![Example contact card](https://developers.
-        # google.com/chat/images/card_api_reference.png) ``` ` "cardsV2": [ ` "cardId": "
-        # unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "Software
-        # Engineer", "imageUrl": "https://developers.google.com/chat/images/quickstart-
-        # app-avatar.png", "imageType": "CIRCLE", "imageAltText": "Avatar for Sasha", `,
-        # "sections": [ ` "header": "Contact Info", "collapsible": true, "
-        # uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "startIcon": `
-        # "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "decoratedText":
-        # ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `, `, ` "
-        # decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (555)
-        # 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": `
-        # "openLink": ` "url": "https://example.com/share", ` ` `, ` "text": "Edit", "
-        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
-        # viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
+        # or see more or less information. For more examples, see [Design dynamic,
+        # interactive, and consistent UIs with cards](https://developers.google.com/chat/
+        # ui). ![Example contact card](https://developers.google.com/chat/images/
+        # card_api_reference.png) ``` ` "cardsV2": [ ` "cardId": "unique-card-id", "card"
+        # : ` "header": ` "title": "Sasha", "subtitle": "Software Engineer", "imageUrl":
+        # "https://developers.google.com/chat/images/quickstart-app-avatar.png", "
+        # imageType": "CIRCLE", "imageAltText": "Avatar for Sasha", `, "sections": [ ` "
+        # header": "Contact Info", "collapsible": true, "uncollapsibleWidgetsCount": 1, "
+        # widgets": [ ` "decoratedText": ` "startIcon": ` "knownIcon": "EMAIL", `, "text"
+        # : "sasha@example.com", ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "
+        # PERSON", `, "text": "Online", `, `, ` "decoratedText": ` "startIcon": ` "
+        # knownIcon": "PHONE", `, "text": "+1 (555) 555-1234", ` `, ` "buttonList": ` "
+        # buttons": [ ` "text": "Share", "onClick": ` "openLink": ` "url": "https://
+        # example.com/share", ` ` `, ` "text": "Edit", "onClick": ` "action": ` "
+        # function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT", `
+        # ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
         # Corresponds to the JSON property `body`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :body
@@ -1231,9 +1238,10 @@ module Google
         end
       end
       
-      # A text, icon, or text and icon button that users can click. To make an image a
-      # clickable button, specify an `Image` (not an `ImageComponent`) and set an `
-      # onClick` action.
+      # A text, icon, or text and icon button that users can click. For an example in
+      # Google Chat apps, see [Button list](https://developers.google.com/chat/ui/
+      # widgets/button-list). To make an image a clickable button, specify an `Image` (
+      # not an `ImageComponent`) and set an `onClick` action.
       class GoogleAppsCardV1Button
         include Google::Apis::Core::Hashable
       
@@ -1301,10 +1309,11 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # An icon displayed in a widget on a card. Supports [built-in](https://
-        # developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and [
-        # custom](https://developers.google.com/chat/api/guides/message-formats/cards#
-        # customicons) icons.
+        # An icon displayed in a widget on a card. For an example in Google Chat apps,
+        # see [Icon](https://developers.google.com/chat/ui/widgets/icon). Supports [
+        # built-in](https://developers.google.com/chat/api/guides/message-formats/cards#
+        # builtinicons) and [custom](https://developers.google.com/chat/api/guides/
+        # message-formats/cards#customicons) icons.
         # Corresponds to the JSON property `icon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :icon
@@ -1335,7 +1344,8 @@ module Google
         end
       end
       
-      # A list of buttons layed out horizontally.
+      # A list of buttons layed out horizontally. For an example in Google Chat apps,
+      # see [Button list](https://developers.google.com/chat/ui/widgets/button-list).
       class GoogleAppsCardV1ButtonList
         include Google::Apis::Core::Hashable
       
@@ -1363,20 +1373,22 @@ module Google
       # creates a "contact card" that features: - A header with the contact's name,
       # job title, and avatar picture. - A section with the contact information,
       # including formatted text. - Buttons that users can click to share the contact,
-      # or see more or less information. ![Example contact card](https://developers.
-      # google.com/chat/images/card_api_reference.png) ``` ` "cardsV2": [ ` "cardId": "
-      # unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "Software
-      # Engineer", "imageUrl": "https://developers.google.com/chat/images/quickstart-
-      # app-avatar.png", "imageType": "CIRCLE", "imageAltText": "Avatar for Sasha", `,
-      # "sections": [ ` "header": "Contact Info", "collapsible": true, "
-      # uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "startIcon": `
-      # "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "decoratedText":
-      # ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `, `, ` "
-      # decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (555)
-      # 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": `
-      # "openLink": ` "url": "https://example.com/share", ` ` `, ` "text": "Edit", "
-      # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
-      # viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
+      # or see more or less information. For more examples, see [Design dynamic,
+      # interactive, and consistent UIs with cards](https://developers.google.com/chat/
+      # ui). ![Example contact card](https://developers.google.com/chat/images/
+      # card_api_reference.png) ``` ` "cardsV2": [ ` "cardId": "unique-card-id", "card"
+      # : ` "header": ` "title": "Sasha", "subtitle": "Software Engineer", "imageUrl":
+      # "https://developers.google.com/chat/images/quickstart-app-avatar.png", "
+      # imageType": "CIRCLE", "imageAltText": "Avatar for Sasha", `, "sections": [ ` "
+      # header": "Contact Info", "collapsible": true, "uncollapsibleWidgetsCount": 1, "
+      # widgets": [ ` "decoratedText": ` "startIcon": ` "knownIcon": "EMAIL", `, "text"
+      # : "sasha@example.com", ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "
+      # PERSON", `, "text": "Online", `, `, ` "decoratedText": ` "startIcon": ` "
+      # knownIcon": "PHONE", `, "text": "+1 (555) 555-1234", ` `, ` "buttonList": ` "
+      # buttons": [ ` "text": "Share", "onClick": ` "openLink": ` "url": "https://
+      # example.com/share", ` ` `, ` "text": "Edit", "onClick": ` "action": ` "
+      # function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT", `
+      # ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
       class GoogleAppsCardV1Card
         include Google::Apis::Core::Hashable
       
@@ -1398,17 +1410,20 @@ module Google
         # @return [String]
         attr_accessor :display_style
       
-        # A persistent (sticky) footer that that appears at the bottom of the card.
-        # Setting `fixedFooter` without specifying a `primaryButton` or a `
-        # secondaryButton` causes an error. Supported by Google Workspace Add-ons and
-        # Chat apps. For Chat apps, you can use fixed footers in [dialogs](https://
-        # developers.google.com/chat/how-tos/dialogs), but not [card messages](https://
-        # developers.google.com/chat/api/guides/message-formats/cards).
+        # A persistent (sticky) footer that that appears at the bottom of the card. For
+        # an example in Google Chat apps, see [Card footer](https://developers.google.
+        # com/chat/ui/widgets/card-fixed-footer). Setting `fixedFooter` without
+        # specifying a `primaryButton` or a `secondaryButton` causes an error. Supported
+        # by Google Workspace Add-ons and Chat apps. For Chat apps, you can use fixed
+        # footers in [dialogs](https://developers.google.com/chat/how-tos/dialogs), but
+        # not [card messages](https://developers.google.com/chat/api/guides/message-
+        # formats/cards).
         # Corresponds to the JSON property `fixedFooter`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardFixedFooter]
         attr_accessor :fixed_footer
       
-        # Represents a card header.
+        # Represents a card header. For an example in Google Chat apps, see [Card header]
+        # (https://developers.google.com/chat/ui/widgets/card-header).
         # Corresponds to the JSON property `header`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardHeader]
         attr_accessor :header
@@ -1419,7 +1434,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Represents a card header.
+        # Represents a card header. For an example in Google Chat apps, see [Card header]
+        # (https://developers.google.com/chat/ui/widgets/card-header).
         # Corresponds to the JSON property `peekCardHeader`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardHeader]
         attr_accessor :peek_card_header
@@ -1430,7 +1446,9 @@ module Google
         attr_accessor :section_divider_style
       
         # Contains a collection of widgets. Each section has its own, optional header.
-        # Sections are visually separated by a line divider.
+        # Sections are visually separated by a line divider. For an example in Google
+        # Chat apps, see [Card section](https://developers.google.com/chat/ui/widgets/
+        # card-section).
         # Corresponds to the JSON property `sections`
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1Section>]
         attr_accessor :sections
@@ -1480,25 +1498,29 @@ module Google
         end
       end
       
-      # A persistent (sticky) footer that that appears at the bottom of the card.
-      # Setting `fixedFooter` without specifying a `primaryButton` or a `
-      # secondaryButton` causes an error. Supported by Google Workspace Add-ons and
-      # Chat apps. For Chat apps, you can use fixed footers in [dialogs](https://
-      # developers.google.com/chat/how-tos/dialogs), but not [card messages](https://
-      # developers.google.com/chat/api/guides/message-formats/cards).
+      # A persistent (sticky) footer that that appears at the bottom of the card. For
+      # an example in Google Chat apps, see [Card footer](https://developers.google.
+      # com/chat/ui/widgets/card-fixed-footer). Setting `fixedFooter` without
+      # specifying a `primaryButton` or a `secondaryButton` causes an error. Supported
+      # by Google Workspace Add-ons and Chat apps. For Chat apps, you can use fixed
+      # footers in [dialogs](https://developers.google.com/chat/how-tos/dialogs), but
+      # not [card messages](https://developers.google.com/chat/api/guides/message-
+      # formats/cards).
       class GoogleAppsCardV1CardFixedFooter
         include Google::Apis::Core::Hashable
       
-        # A text, icon, or text and icon button that users can click. To make an image a
-        # clickable button, specify an `Image` (not an `ImageComponent`) and set an `
-        # onClick` action.
+        # A text, icon, or text and icon button that users can click. For an example in
+        # Google Chat apps, see [Button list](https://developers.google.com/chat/ui/
+        # widgets/button-list). To make an image a clickable button, specify an `Image` (
+        # not an `ImageComponent`) and set an `onClick` action.
         # Corresponds to the JSON property `primaryButton`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
         attr_accessor :primary_button
       
-        # A text, icon, or text and icon button that users can click. To make an image a
-        # clickable button, specify an `Image` (not an `ImageComponent`) and set an `
-        # onClick` action.
+        # A text, icon, or text and icon button that users can click. For an example in
+        # Google Chat apps, see [Button list](https://developers.google.com/chat/ui/
+        # widgets/button-list). To make an image a clickable button, specify an `Image` (
+        # not an `ImageComponent`) and set an `onClick` action.
         # Corresponds to the JSON property `secondaryButton`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
         attr_accessor :secondary_button
@@ -1514,7 +1536,8 @@ module Google
         end
       end
       
-      # Represents a card header.
+      # Represents a card header. For an example in Google Chat apps, see [Card header]
+      # (https://developers.google.com/chat/ui/widgets/card-header).
       class GoogleAppsCardV1CardHeader
         include Google::Apis::Core::Hashable
       
@@ -1600,19 +1623,20 @@ module Google
       
       # The `Columns` widget displays up to 2 columns in a card message or dialog. You
       # can add widgets to each column; the widgets appear in the order that they are
-      # specified. The height of each column is determined by the taller column. For
-      # example, if the first column is taller than the second column, both columns
-      # have the height of the first column. Because each column can contain a
-      # different number of widgets, you can't define rows or align widgets between
-      # the columns. Columns are displayed side-by-side. You can customize the width
-      # of each column using the `HorizontalSizeStyle` field. If the user's screen
-      # width is too narrow, the second column wraps below the first: * On web, the
-      # second column wraps if the screen width is less than or equal to 480 pixels. *
-      # On iOS devices, the second column wraps if the screen width is less than or
-      # equal to 300 pt. * On Android devices, the second column wraps if the screen
-      # width is less than or equal to 320 dp. To include more than 2 columns, or to
-      # use rows, use the `Grid` widget. Supported by Chat apps, but not Google
-      # Workspace Add-ons.
+      # specified. For an example in Google Chat apps, see [Columns](https://
+      # developers.google.com/chat/ui/widgets/columns). The height of each column is
+      # determined by the taller column. For example, if the first column is taller
+      # than the second column, both columns have the height of the first column.
+      # Because each column can contain a different number of widgets, you can't
+      # define rows or align widgets between the columns. Columns are displayed side-
+      # by-side. You can customize the width of each column using the `
+      # HorizontalSizeStyle` field. If the user's screen width is too narrow, the
+      # second column wraps below the first: * On web, the second column wraps if the
+      # screen width is less than or equal to 480 pixels. * On iOS devices, the second
+      # column wraps if the screen width is less than or equal to 300 pt. * On Android
+      # devices, the second column wraps if the screen width is less than or equal to
+      # 320 dp. To include more than 2 columns, or to use rows, use the `Grid` widget.
+      # Supported by Chat apps, but not Google Workspace Add-ons.
       class GoogleAppsCardV1Columns
         include Google::Apis::Core::Hashable
       
@@ -1631,10 +1655,11 @@ module Google
         end
       end
       
-      # Lets users input a date, a time, or both a date and a time. Users can input
-      # text or use the picker to select dates and times. If users input an invalid
-      # date or time, the picker shows an error that prompts users to input the
-      # information correctly.
+      # Lets users input a date, a time, or both a date and a time. For an example in
+      # Google Chat apps, see [Date time picker](https://developers.google.com/chat/ui/
+      # widgets/date-time-picker). Users can input text or use the picker to select
+      # dates and times. If users input an invalid date or time, the picker shows an
+      # error that prompts users to input the information correctly.
       class GoogleAppsCardV1DateTimePicker
         include Google::Apis::Core::Hashable
       
@@ -1647,7 +1672,7 @@ module Google
       
         # The name by which the `DateTimePicker` is identified in a form input event.
         # For details about working with form inputs, see [Receive form data](https://
-        # developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        # developers.google.com/chat/ui/read-form-data).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1700,7 +1725,8 @@ module Google
       
       # A widget that displays text with optional decorations such as a label above or
       # below the text, an icon in front of the text, a selection widget, or a button
-      # after the text.
+      # after the text. For an example in Google Chat apps, see [Decorated text](https:
+      # //developers.google.com/chat/ui/widgets/decorated-text).
       class GoogleAppsCardV1DecoratedText
         include Google::Apis::Core::Hashable
       
@@ -1709,25 +1735,28 @@ module Google
         # @return [String]
         attr_accessor :bottom_label
       
-        # A text, icon, or text and icon button that users can click. To make an image a
-        # clickable button, specify an `Image` (not an `ImageComponent`) and set an `
-        # onClick` action.
+        # A text, icon, or text and icon button that users can click. For an example in
+        # Google Chat apps, see [Button list](https://developers.google.com/chat/ui/
+        # widgets/button-list). To make an image a clickable button, specify an `Image` (
+        # not an `ImageComponent`) and set an `onClick` action.
         # Corresponds to the JSON property `button`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
         attr_accessor :button
       
-        # An icon displayed in a widget on a card. Supports [built-in](https://
-        # developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and [
-        # custom](https://developers.google.com/chat/api/guides/message-formats/cards#
-        # customicons) icons.
+        # An icon displayed in a widget on a card. For an example in Google Chat apps,
+        # see [Icon](https://developers.google.com/chat/ui/widgets/icon). Supports [
+        # built-in](https://developers.google.com/chat/api/guides/message-formats/cards#
+        # builtinicons) and [custom](https://developers.google.com/chat/api/guides/
+        # message-formats/cards#customicons) icons.
         # Corresponds to the JSON property `endIcon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :end_icon
       
-        # An icon displayed in a widget on a card. Supports [built-in](https://
-        # developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and [
-        # custom](https://developers.google.com/chat/api/guides/message-formats/cards#
-        # customicons) icons.
+        # An icon displayed in a widget on a card. For an example in Google Chat apps,
+        # see [Icon](https://developers.google.com/chat/ui/widgets/icon). Supports [
+        # built-in](https://developers.google.com/chat/api/guides/message-formats/cards#
+        # builtinicons) and [custom](https://developers.google.com/chat/api/guides/
+        # message-formats/cards#customicons) icons.
         # Corresponds to the JSON property `icon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :icon
@@ -1738,10 +1767,11 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
         attr_accessor :on_click
       
-        # An icon displayed in a widget on a card. Supports [built-in](https://
-        # developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and [
-        # custom](https://developers.google.com/chat/api/guides/message-formats/cards#
-        # customicons) icons.
+        # An icon displayed in a widget on a card. For an example in Google Chat apps,
+        # see [Icon](https://developers.google.com/chat/ui/widgets/icon). Supports [
+        # built-in](https://developers.google.com/chat/api/guides/message-formats/cards#
+        # builtinicons) and [custom](https://developers.google.com/chat/api/guides/
+        # message-formats/cards#customicons) icons.
         # Corresponds to the JSON property `startIcon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :start_icon
@@ -1754,9 +1784,9 @@ module Google
       
         # Required. The primary text. Supports simple formatting. For more information
         # about formatting text, see [Formatting text in Google Chat apps](https://
-        # developers.google.com/chat/api/guides/message-formats/cards#
-        # card_text_formatting) and [Formatting text in Google Workspace Add-ons](https:/
-        # /developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+        # developers.google.com/chat/api/guides/message-formats/cards#card-formatting)
+        # and [Formatting text in Google Workspace Add-ons](https://developers.google.
+        # com/apps-script/add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -1793,8 +1823,10 @@ module Google
         end
       end
       
-      # Displays a divider between widgets as a horizontal line. For example, the
-      # following JSON creates a divider: ``` "divider": `` ```
+      # Displays a divider between widgets as a horizontal line. For an example in
+      # Google Chat apps, see [Divider](https://developers.google.com/chat/ui/widgets/
+      # divider). For example, the following JSON creates a divider: ``` "divider": ``
+      # ```
       class GoogleAppsCardV1Divider
         include Google::Apis::Core::Hashable
       
@@ -1808,16 +1840,18 @@ module Google
       end
       
       # Displays a grid with a collection of items. Items can only include text or
-      # images. A grid supports any number of columns and items. The number of rows is
-      # determined by items divided by columns. A grid with 10 items and 2 columns has
-      # 5 rows. A grid with 11 items and 2 columns has 6 rows. For responsive columns,
-      # or to include more than text or images, use `Columns`. For example, the
-      # following JSON creates a 2 column grid with a single item: ``` "grid": ` "
-      # title": "A fine collection of items", "columnCount": 2, "borderStyle": ` "type"
-      # : "STROKE", "cornerRadius": 4 `, "items": [ ` "image": ` "imageUri": "https://
-      # www.example.com/image.png", "cropStyle": ` "type": "SQUARE" `, "borderStyle": `
-      # "type": "STROKE" ` `, "title": "An item", "textAlignment": "CENTER" ` ], "
-      # onClick": ` "openLink": ` "url": "https://www.example.com" ` ` ` ```
+      # images. For responsive columns, or to include more than text or images, use `
+      # Columns`. For an example in Google Chat apps, see [Grid](https://developers.
+      # google.com/chat/ui/widgets/grid). A grid supports any number of columns and
+      # items. The number of rows is determined by items divided by columns. A grid
+      # with 10 items and 2 columns has 5 rows. A grid with 11 items and 2 columns has
+      # 6 rows. For example, the following JSON creates a 2 column grid with a single
+      # item: ``` "grid": ` "title": "A fine collection of items", "columnCount": 2, "
+      # borderStyle": ` "type": "STROKE", "cornerRadius": 4 `, "items": [ ` "image": `
+      # "imageUri": "https://www.example.com/image.png", "cropStyle": ` "type": "
+      # SQUARE" `, "borderStyle": ` "type": "STROKE" ` `, "title": "An item", "
+      # textAlignment": "CENTER" ` ], "onClick": ` "openLink": ` "url": "https://www.
+      # example.com" ` ` ` ```
       class GoogleAppsCardV1Grid
         include Google::Apis::Core::Hashable
       
@@ -1909,10 +1943,11 @@ module Google
         end
       end
       
-      # An icon displayed in a widget on a card. Supports [built-in](https://
-      # developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and [
-      # custom](https://developers.google.com/chat/api/guides/message-formats/cards#
-      # customicons) icons.
+      # An icon displayed in a widget on a card. For an example in Google Chat apps,
+      # see [Icon](https://developers.google.com/chat/ui/widgets/icon). Supports [
+      # built-in](https://developers.google.com/chat/api/guides/message-formats/cards#
+      # builtinicons) and [custom](https://developers.google.com/chat/api/guides/
+      # message-formats/cards#customicons) icons.
       class GoogleAppsCardV1Icon
         include Google::Apis::Core::Hashable
       
@@ -1962,7 +1997,8 @@ module Google
         end
       end
       
-      # An image that is specified by a URL and can have an `onClick` action.
+      # An image that is specified by a URL and can have an `onClick` action. For an
+      # example, see [Image](https://developers.google.com/chat/ui/widgets/image).
       class GoogleAppsCardV1Image
         include Google::Apis::Core::Hashable
       
@@ -2085,20 +2121,22 @@ module Google
         # creates a "contact card" that features: - A header with the contact's name,
         # job title, and avatar picture. - A section with the contact information,
         # including formatted text. - Buttons that users can click to share the contact,
-        # or see more or less information. ![Example contact card](https://developers.
-        # google.com/chat/images/card_api_reference.png) ``` ` "cardsV2": [ ` "cardId": "
-        # unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "Software
-        # Engineer", "imageUrl": "https://developers.google.com/chat/images/quickstart-
-        # app-avatar.png", "imageType": "CIRCLE", "imageAltText": "Avatar for Sasha", `,
-        # "sections": [ ` "header": "Contact Info", "collapsible": true, "
-        # uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "startIcon": `
-        # "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "decoratedText":
-        # ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `, `, ` "
-        # decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (555)
-        # 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": `
-        # "openLink": ` "url": "https://example.com/share", ` ` `, ` "text": "Edit", "
-        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
-        # viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
+        # or see more or less information. For more examples, see [Design dynamic,
+        # interactive, and consistent UIs with cards](https://developers.google.com/chat/
+        # ui). ![Example contact card](https://developers.google.com/chat/images/
+        # card_api_reference.png) ``` ` "cardsV2": [ ` "cardId": "unique-card-id", "card"
+        # : ` "header": ` "title": "Sasha", "subtitle": "Software Engineer", "imageUrl":
+        # "https://developers.google.com/chat/images/quickstart-app-avatar.png", "
+        # imageType": "CIRCLE", "imageAltText": "Avatar for Sasha", `, "sections": [ ` "
+        # header": "Contact Info", "collapsible": true, "uncollapsibleWidgetsCount": 1, "
+        # widgets": [ ` "decoratedText": ` "startIcon": ` "knownIcon": "EMAIL", `, "text"
+        # : "sasha@example.com", ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "
+        # PERSON", `, "text": "Online", `, `, ` "decoratedText": ` "startIcon": ` "
+        # knownIcon": "PHONE", `, "text": "+1 (555) 555-1234", ` `, ` "buttonList": ` "
+        # buttons": [ ` "text": "Share", "onClick": ` "openLink": ` "url": "https://
+        # example.com/share", ` ` `, ` "text": "Edit", "onClick": ` "action": ` "
+        # function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT", `
+        # ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
         # Corresponds to the JSON property `card`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :card
@@ -2212,8 +2250,8 @@ module Google
         # Text that appears at the top of a section. Supports simple HTML formatted text.
         # For more information about formatting text, see [Formatting text in Google
         # Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#
-        # card_text_formatting) and [Formatting text in Google Workspace Add-ons](https:/
-        # /developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+        # card-formatting) and [Formatting text in Google Workspace Add-ons](https://
+        # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `header`
         # @return [String]
         attr_accessor :header
@@ -2248,11 +2286,12 @@ module Google
       
       # A widget that creates one or more UI items that users can select. For example,
       # a dropdown menu or checkboxes. You can use this widget to collect data that
-      # can be predicted or enumerated. Chat apps can process the value of items that
-      # users select or input. For details about working with form inputs, see [
-      # Receive form data](https://developers.google.com/chat/how-tos/dialogs#
-      # receive_form_data_from_dialogs). To collect undefined or abstract data from
-      # users, use the TextInput widget.
+      # can be predicted or enumerated. For an example in Google Chat apps, see [
+      # Selection input](https://developers.google.com/chat/ui/widgets/selection-input)
+      # . Chat apps can process the value of items that users select or input. For
+      # details about working with form inputs, see [Receive form data](https://
+      # developers.google.com/chat/ui/read-form-data). To collect undefined or
+      # abstract data from users, use the TextInput widget.
       class GoogleAppsCardV1SelectionInput
         include Google::Apis::Core::Hashable
       
@@ -2295,7 +2334,7 @@ module Google
       
         # The name that identifies the selection input in a form input event. For
         # details about working with form inputs, see [Receive form data](https://
-        # developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        # developers.google.com/chat/ui/read-form-data).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2377,8 +2416,7 @@ module Google
       
         # The value associated with this item. The client should use this as a form
         # input value. For details about working with form inputs, see [Receive form
-        # data](https://developers.google.com/chat/how-tos/dialogs#
-        # receive_form_data_from_dialogs).
+        # data](https://developers.google.com/chat/ui/read-form-data).
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -2458,7 +2496,7 @@ module Google
       
         # The name by which the switch widget is identified in a form input event. For
         # details about working with form inputs, see [Receive form data](https://
-        # developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        # developers.google.com/chat/ui/read-form-data).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2478,7 +2516,7 @@ module Google
       
         # The value entered by a user, returned as part of a form input event. For
         # details about working with form inputs, see [Receive form data](https://
-        # developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        # developers.google.com/chat/ui/read-form-data).
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -2498,12 +2536,13 @@ module Google
       end
       
       # A field in which users can enter text. Supports suggestions and on-change
-      # actions. Chat apps receive and can process the value of entered text during
-      # form input events. For details about working with form inputs, see [Receive
-      # form data](https://developers.google.com/chat/how-tos/dialogs#
-      # receive_form_data_from_dialogs). When you need to collect undefined or
-      # abstract data from users, use a text input. To collect defined or enumerated
-      # data from users, use the SelectionInput widget.
+      # actions. For an example in Google Chat apps, see [Text input](https://
+      # developers.google.com/chat/ui/widgets/text-input). Chat apps receive and can
+      # process the value of entered text during form input events. For details about
+      # working with form inputs, see [Receive form data](https://developers.google.
+      # com/chat/ui/read-form-data). When you need to collect undefined or abstract
+      # data from users, use a text input. To collect defined or enumerated data from
+      # users, use the SelectionInput widget.
       class GoogleAppsCardV1TextInput
         include Google::Apis::Core::Hashable
       
@@ -2546,7 +2585,7 @@ module Google
       
         # The name by which the text input is identified in a form input event. For
         # details about working with form inputs, see [Receive form data](https://
-        # developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        # developers.google.com/chat/ui/read-form-data).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2566,7 +2605,7 @@ module Google
       
         # The value entered by a user, returned as part of a form input event. For
         # details about working with form inputs, see [Receive form data](https://
-        # developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        # developers.google.com/chat/ui/read-form-data).
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -2588,11 +2627,13 @@ module Google
         end
       end
       
-      # A paragraph of text that supports formatting. For more information about
-      # formatting text, see [Formatting text in Google Chat apps](https://developers.
-      # google.com/chat/api/guides/message-formats/cards#card_text_formatting) and [
-      # Formatting text in Google Workspace Add-ons](https://developers.google.com/
-      # apps-script/add-ons/concepts/widgets#text_formatting).
+      # A paragraph of text that supports formatting. For an example in Google Chat
+      # apps, see [Text paragraph](https://developers.google.com/chat/ui/widgets/text-
+      # paragraph). For more information about formatting text, see [Formatting text
+      # in Google Chat apps](https://developers.google.com/chat/api/guides/message-
+      # formats/cards##card-formatting) and [Formatting text in Google Workspace Add-
+      # ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#
+      # text_formatting).
       class GoogleAppsCardV1TextParagraph
         include Google::Apis::Core::Hashable
       
@@ -2616,62 +2657,70 @@ module Google
       class GoogleAppsCardV1Widget
         include Google::Apis::Core::Hashable
       
-        # A list of buttons layed out horizontally.
+        # A list of buttons layed out horizontally. For an example in Google Chat apps,
+        # see [Button list](https://developers.google.com/chat/ui/widgets/button-list).
         # Corresponds to the JSON property `buttonList`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
         attr_accessor :button_list
       
         # The `Columns` widget displays up to 2 columns in a card message or dialog. You
         # can add widgets to each column; the widgets appear in the order that they are
-        # specified. The height of each column is determined by the taller column. For
-        # example, if the first column is taller than the second column, both columns
-        # have the height of the first column. Because each column can contain a
-        # different number of widgets, you can't define rows or align widgets between
-        # the columns. Columns are displayed side-by-side. You can customize the width
-        # of each column using the `HorizontalSizeStyle` field. If the user's screen
-        # width is too narrow, the second column wraps below the first: * On web, the
-        # second column wraps if the screen width is less than or equal to 480 pixels. *
-        # On iOS devices, the second column wraps if the screen width is less than or
-        # equal to 300 pt. * On Android devices, the second column wraps if the screen
-        # width is less than or equal to 320 dp. To include more than 2 columns, or to
-        # use rows, use the `Grid` widget. Supported by Chat apps, but not Google
-        # Workspace Add-ons.
+        # specified. For an example in Google Chat apps, see [Columns](https://
+        # developers.google.com/chat/ui/widgets/columns). The height of each column is
+        # determined by the taller column. For example, if the first column is taller
+        # than the second column, both columns have the height of the first column.
+        # Because each column can contain a different number of widgets, you can't
+        # define rows or align widgets between the columns. Columns are displayed side-
+        # by-side. You can customize the width of each column using the `
+        # HorizontalSizeStyle` field. If the user's screen width is too narrow, the
+        # second column wraps below the first: * On web, the second column wraps if the
+        # screen width is less than or equal to 480 pixels. * On iOS devices, the second
+        # column wraps if the screen width is less than or equal to 300 pt. * On Android
+        # devices, the second column wraps if the screen width is less than or equal to
+        # 320 dp. To include more than 2 columns, or to use rows, use the `Grid` widget.
+        # Supported by Chat apps, but not Google Workspace Add-ons.
         # Corresponds to the JSON property `columns`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Columns]
         attr_accessor :columns
       
-        # Lets users input a date, a time, or both a date and a time. Users can input
-        # text or use the picker to select dates and times. If users input an invalid
-        # date or time, the picker shows an error that prompts users to input the
-        # information correctly.
+        # Lets users input a date, a time, or both a date and a time. For an example in
+        # Google Chat apps, see [Date time picker](https://developers.google.com/chat/ui/
+        # widgets/date-time-picker). Users can input text or use the picker to select
+        # dates and times. If users input an invalid date or time, the picker shows an
+        # error that prompts users to input the information correctly.
         # Corresponds to the JSON property `dateTimePicker`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker]
         attr_accessor :date_time_picker
       
         # A widget that displays text with optional decorations such as a label above or
         # below the text, an icon in front of the text, a selection widget, or a button
-        # after the text.
+        # after the text. For an example in Google Chat apps, see [Decorated text](https:
+        # //developers.google.com/chat/ui/widgets/decorated-text).
         # Corresponds to the JSON property `decoratedText`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1DecoratedText]
         attr_accessor :decorated_text
       
-        # Displays a divider between widgets as a horizontal line. For example, the
-        # following JSON creates a divider: ``` "divider": `` ```
+        # Displays a divider between widgets as a horizontal line. For an example in
+        # Google Chat apps, see [Divider](https://developers.google.com/chat/ui/widgets/
+        # divider). For example, the following JSON creates a divider: ``` "divider": ``
+        # ```
         # Corresponds to the JSON property `divider`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Divider]
         attr_accessor :divider
       
         # Displays a grid with a collection of items. Items can only include text or
-        # images. A grid supports any number of columns and items. The number of rows is
-        # determined by items divided by columns. A grid with 10 items and 2 columns has
-        # 5 rows. A grid with 11 items and 2 columns has 6 rows. For responsive columns,
-        # or to include more than text or images, use `Columns`. For example, the
-        # following JSON creates a 2 column grid with a single item: ``` "grid": ` "
-        # title": "A fine collection of items", "columnCount": 2, "borderStyle": ` "type"
-        # : "STROKE", "cornerRadius": 4 `, "items": [ ` "image": ` "imageUri": "https://
-        # www.example.com/image.png", "cropStyle": ` "type": "SQUARE" `, "borderStyle": `
-        # "type": "STROKE" ` `, "title": "An item", "textAlignment": "CENTER" ` ], "
-        # onClick": ` "openLink": ` "url": "https://www.example.com" ` ` ` ```
+        # images. For responsive columns, or to include more than text or images, use `
+        # Columns`. For an example in Google Chat apps, see [Grid](https://developers.
+        # google.com/chat/ui/widgets/grid). A grid supports any number of columns and
+        # items. The number of rows is determined by items divided by columns. A grid
+        # with 10 items and 2 columns has 5 rows. A grid with 11 items and 2 columns has
+        # 6 rows. For example, the following JSON creates a 2 column grid with a single
+        # item: ``` "grid": ` "title": "A fine collection of items", "columnCount": 2, "
+        # borderStyle": ` "type": "STROKE", "cornerRadius": 4 `, "items": [ ` "image": `
+        # "imageUri": "https://www.example.com/image.png", "cropStyle": ` "type": "
+        # SQUARE" `, "borderStyle": ` "type": "STROKE" ` `, "title": "An item", "
+        # textAlignment": "CENTER" ` ], "onClick": ` "openLink": ` "url": "https://www.
+        # example.com" ` ` ` ```
         # Corresponds to the JSON property `grid`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Grid]
         attr_accessor :grid
@@ -2681,38 +2730,43 @@ module Google
         # @return [String]
         attr_accessor :horizontal_alignment
       
-        # An image that is specified by a URL and can have an `onClick` action.
+        # An image that is specified by a URL and can have an `onClick` action. For an
+        # example, see [Image](https://developers.google.com/chat/ui/widgets/image).
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Image]
         attr_accessor :image
       
         # A widget that creates one or more UI items that users can select. For example,
         # a dropdown menu or checkboxes. You can use this widget to collect data that
-        # can be predicted or enumerated. Chat apps can process the value of items that
-        # users select or input. For details about working with form inputs, see [
-        # Receive form data](https://developers.google.com/chat/how-tos/dialogs#
-        # receive_form_data_from_dialogs). To collect undefined or abstract data from
-        # users, use the TextInput widget.
+        # can be predicted or enumerated. For an example in Google Chat apps, see [
+        # Selection input](https://developers.google.com/chat/ui/widgets/selection-input)
+        # . Chat apps can process the value of items that users select or input. For
+        # details about working with form inputs, see [Receive form data](https://
+        # developers.google.com/chat/ui/read-form-data). To collect undefined or
+        # abstract data from users, use the TextInput widget.
         # Corresponds to the JSON property `selectionInput`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput]
         attr_accessor :selection_input
       
         # A field in which users can enter text. Supports suggestions and on-change
-        # actions. Chat apps receive and can process the value of entered text during
-        # form input events. For details about working with form inputs, see [Receive
-        # form data](https://developers.google.com/chat/how-tos/dialogs#
-        # receive_form_data_from_dialogs). When you need to collect undefined or
-        # abstract data from users, use a text input. To collect defined or enumerated
-        # data from users, use the SelectionInput widget.
+        # actions. For an example in Google Chat apps, see [Text input](https://
+        # developers.google.com/chat/ui/widgets/text-input). Chat apps receive and can
+        # process the value of entered text during form input events. For details about
+        # working with form inputs, see [Receive form data](https://developers.google.
+        # com/chat/ui/read-form-data). When you need to collect undefined or abstract
+        # data from users, use a text input. To collect defined or enumerated data from
+        # users, use the SelectionInput widget.
         # Corresponds to the JSON property `textInput`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextInput]
         attr_accessor :text_input
       
-        # A paragraph of text that supports formatting. For more information about
-        # formatting text, see [Formatting text in Google Chat apps](https://developers.
-        # google.com/chat/api/guides/message-formats/cards#card_text_formatting) and [
-        # Formatting text in Google Workspace Add-ons](https://developers.google.com/
-        # apps-script/add-ons/concepts/widgets#text_formatting).
+        # A paragraph of text that supports formatting. For an example in Google Chat
+        # apps, see [Text paragraph](https://developers.google.com/chat/ui/widgets/text-
+        # paragraph). For more information about formatting text, see [Formatting text
+        # in Google Chat apps](https://developers.google.com/chat/api/guides/message-
+        # formats/cards##card-formatting) and [Formatting text in Google Workspace Add-
+        # ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#
+        # text_formatting).
         # Corresponds to the JSON property `textParagraph`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
         attr_accessor :text_paragraph
@@ -2741,58 +2795,66 @@ module Google
       class GoogleAppsCardV1Widgets
         include Google::Apis::Core::Hashable
       
-        # A list of buttons layed out horizontally.
+        # A list of buttons layed out horizontally. For an example in Google Chat apps,
+        # see [Button list](https://developers.google.com/chat/ui/widgets/button-list).
         # Corresponds to the JSON property `buttonList`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
         attr_accessor :button_list
       
-        # Lets users input a date, a time, or both a date and a time. Users can input
-        # text or use the picker to select dates and times. If users input an invalid
-        # date or time, the picker shows an error that prompts users to input the
-        # information correctly.
+        # Lets users input a date, a time, or both a date and a time. For an example in
+        # Google Chat apps, see [Date time picker](https://developers.google.com/chat/ui/
+        # widgets/date-time-picker). Users can input text or use the picker to select
+        # dates and times. If users input an invalid date or time, the picker shows an
+        # error that prompts users to input the information correctly.
         # Corresponds to the JSON property `dateTimePicker`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker]
         attr_accessor :date_time_picker
       
         # A widget that displays text with optional decorations such as a label above or
         # below the text, an icon in front of the text, a selection widget, or a button
-        # after the text.
+        # after the text. For an example in Google Chat apps, see [Decorated text](https:
+        # //developers.google.com/chat/ui/widgets/decorated-text).
         # Corresponds to the JSON property `decoratedText`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1DecoratedText]
         attr_accessor :decorated_text
       
-        # An image that is specified by a URL and can have an `onClick` action.
+        # An image that is specified by a URL and can have an `onClick` action. For an
+        # example, see [Image](https://developers.google.com/chat/ui/widgets/image).
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Image]
         attr_accessor :image
       
         # A widget that creates one or more UI items that users can select. For example,
         # a dropdown menu or checkboxes. You can use this widget to collect data that
-        # can be predicted or enumerated. Chat apps can process the value of items that
-        # users select or input. For details about working with form inputs, see [
-        # Receive form data](https://developers.google.com/chat/how-tos/dialogs#
-        # receive_form_data_from_dialogs). To collect undefined or abstract data from
-        # users, use the TextInput widget.
+        # can be predicted or enumerated. For an example in Google Chat apps, see [
+        # Selection input](https://developers.google.com/chat/ui/widgets/selection-input)
+        # . Chat apps can process the value of items that users select or input. For
+        # details about working with form inputs, see [Receive form data](https://
+        # developers.google.com/chat/ui/read-form-data). To collect undefined or
+        # abstract data from users, use the TextInput widget.
         # Corresponds to the JSON property `selectionInput`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput]
         attr_accessor :selection_input
       
         # A field in which users can enter text. Supports suggestions and on-change
-        # actions. Chat apps receive and can process the value of entered text during
-        # form input events. For details about working with form inputs, see [Receive
-        # form data](https://developers.google.com/chat/how-tos/dialogs#
-        # receive_form_data_from_dialogs). When you need to collect undefined or
-        # abstract data from users, use a text input. To collect defined or enumerated
-        # data from users, use the SelectionInput widget.
+        # actions. For an example in Google Chat apps, see [Text input](https://
+        # developers.google.com/chat/ui/widgets/text-input). Chat apps receive and can
+        # process the value of entered text during form input events. For details about
+        # working with form inputs, see [Receive form data](https://developers.google.
+        # com/chat/ui/read-form-data). When you need to collect undefined or abstract
+        # data from users, use a text input. To collect defined or enumerated data from
+        # users, use the SelectionInput widget.
         # Corresponds to the JSON property `textInput`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextInput]
         attr_accessor :text_input
       
-        # A paragraph of text that supports formatting. For more information about
-        # formatting text, see [Formatting text in Google Chat apps](https://developers.
-        # google.com/chat/api/guides/message-formats/cards#card_text_formatting) and [
-        # Formatting text in Google Workspace Add-ons](https://developers.google.com/
-        # apps-script/add-ons/concepts/widgets#text_formatting).
+        # A paragraph of text that supports formatting. For an example in Google Chat
+        # apps, see [Text paragraph](https://developers.google.com/chat/ui/widgets/text-
+        # paragraph). For more information about formatting text, see [Formatting text
+        # in Google Chat apps](https://developers.google.com/chat/api/guides/message-
+        # formats/cards##card-formatting) and [Formatting text in Google Workspace Add-
+        # ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#
+        # text_formatting).
         # Corresponds to the JSON property `textParagraph`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
         attr_accessor :text_paragraph
@@ -3179,7 +3241,10 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # A user in Google Chat.
+        # A user in Google Chat. When returned as an output from a request, if your Chat
+        # app [authenticates as a user](https://developers.google.com/chat/api/guides/
+        # auth/users), the output for a `User` resource only populates the user's `name`
+        # and `type`.
         # Corresponds to the JSON property `member`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :member
@@ -3338,7 +3403,10 @@ module Google
         # @return [Google::Apis::ChatV1::QuotedMessageMetadata]
         attr_accessor :quoted_message_metadata
       
-        # A user in Google Chat.
+        # A user in Google Chat. When returned as an output from a request, if your Chat
+        # app [authenticates as a user](https://developers.google.com/chat/api/guides/
+        # auth/users), the output for a `User` resource only populates the user's `name`
+        # and `type`.
         # Corresponds to the JSON property `sender`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :sender
@@ -3494,7 +3562,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A user in Google Chat.
+        # A user in Google Chat. When returned as an output from a request, if your Chat
+        # app [authenticates as a user](https://developers.google.com/chat/api/guides/
+        # auth/users), the output for a `User` resource only populates the user's `name`
+        # and `type`.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :user
@@ -3547,18 +3618,22 @@ module Google
       class SetUpSpaceRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. The initial set of in-domain users invited to join the space. The
-        # calling user is automatically added to the space, and shouldn't be specified
-        # as a membership. The set currently allows up to 20 memberships (in addition to
-        # the caller). The `Membership.member` field must contain a user with `name`
-        # populated and `User.Type.HUMAN`. All other fields are ignored. Optional when
-        # setting `Space.spaceType` to `SPACE`. Required when setting `Space.spaceType`
-        # to `GROUP_CHAT`, along with at least two memberships. Required when setting `
-        # Space.spaceType` to `DIRECT_MESSAGE` with a human user, along with exactly one
-        # membership. Must be empty when creating a 1:1 conversation between a human and
-        # the calling Chat app (when setting `Space.spaceType` to `DIRECT_MESSAGE` and `
-        # Space.singleUserBotDm` to `true`). Not supported: Inviting guest users, or
-        # adding other Chat apps.
+        # Optional. The Google Chat users to invite to join the space. Omit the calling
+        # user, as they are added automatically. The set currently allows up to 20
+        # memberships (in addition to the caller). The `Membership.member` field must
+        # contain a `user` with `name` populated (format: `users/`user``) and `type` set
+        # to `User.Type.HUMAN`. You can only add human users when setting up a space (
+        # adding Chat apps is only supported for direct message setup with the calling
+        # app). You can also add members using the user's email as an alias for `user`.
+        # For example, the `user.name` can be `users/example@gmail.com`." To invite
+        # Gmail users or users from external Google Workspace domains, user's email must
+        # be used for ``user``. Optional when setting `Space.spaceType` to `SPACE`.
+        # Required when setting `Space.spaceType` to `GROUP_CHAT`, along with at least
+        # two memberships. Required when setting `Space.spaceType` to `DIRECT_MESSAGE`
+        # with a human user, along with exactly one membership. Must be empty when
+        # creating a 1:1 conversation between a human and the calling Chat app (when
+        # setting `Space.spaceType` to `DIRECT_MESSAGE` and `Space.singleUserBotDm` to `
+        # true`).
         # Corresponds to the JSON property `memberships`
         # @return [Array<Google::Apis::ChatV1::Membership>]
         attr_accessor :memberships
@@ -3613,7 +3688,10 @@ module Google
       class SlashCommandMetadata
         include Google::Apis::Core::Hashable
       
-        # A user in Google Chat.
+        # A user in Google Chat. When returned as an output from a request, if your Chat
+        # app [authenticates as a user](https://developers.google.com/chat/api/guides/
+        # auth/users), the output for a `User` resource only populates the user's `name`
+        # and `type`.
         # Corresponds to the JSON property `bot`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :bot
@@ -3676,7 +3754,10 @@ module Google
         attr_accessor :display_name
       
         # Immutable. Whether this space permits any Google Chat user as a member. Input
-        # when creating a space. For existing spaces, this field is output only.
+        # when creating a space in a Google Workspace organization. For Google Chat
+        # users that use a Google Account, omit this field when creating a space (By
+        # default, the space permits any Google Chat user). For existing spaces, this
+        # field is output only.
         # Corresponds to the JSON property `externalUserAllowed`
         # @return [Boolean]
         attr_accessor :external_user_allowed
@@ -4028,7 +4109,10 @@ module Google
         end
       end
       
-      # A user in Google Chat.
+      # A user in Google Chat. When returned as an output from a request, if your Chat
+      # app [authenticates as a user](https://developers.google.com/chat/api/guides/
+      # auth/users), the output for a `User` resource only populates the user's `name`
+      # and `type`.
       class User
         include Google::Apis::Core::Hashable
       
@@ -4088,7 +4172,10 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # A user in Google Chat.
+        # A user in Google Chat. When returned as an output from a request, if your Chat
+        # app [authenticates as a user](https://developers.google.com/chat/api/guides/
+        # auth/users), the output for a `User` resource only populates the user's `name`
+        # and `type`.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :user
