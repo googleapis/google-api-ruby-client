@@ -158,7 +158,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :command
       
-        # Container names which must start before this container.
+        # Names of the containers that must start before this container.
         # Corresponds to the JSON property `dependsOn`
         # @return [Array<String>]
         attr_accessor :depends_on
@@ -265,10 +265,9 @@ module Google
         end
       end
       
-      # Ephemeral storage which can be backed by real disks (HD, SSD), network storage
-      # or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is
-      # ephemeral in the sense that when the sandbox is taken down, the data is
-      # destroyed with it (it does not persist across sandbox runs).
+      # In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when
+      # the sandbox is taken down, the data is destroyed with it (it does not persist
+      # across sandbox runs).
       class GoogleCloudRunV2EmptyDirVolumeSource
         include Google::Apis::Core::Hashable
       
@@ -282,11 +281,10 @@ module Google
         # Limit on the storage usable by this EmptyDir volume. The size limit is also
         # applicable for memory medium. The maximum usage on memory medium EmptyDir
         # would be the minimum value between the SizeLimit specified here and the sum of
-        # memory limits of all containers in a pod. This field's values are of the '
-        # Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-
-        # definitions/quantity/. The default is nil which means that the limit is
-        # undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#
-        # emptydir
+        # memory limits of all containers. The default is nil which means that the limit
+        # is undefined. More info: https://cloud.google.com/run/docs/configuring/in-
+        # memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/
+        # docs/concepts/storage/volumes/#emptydir
         # Corresponds to the JSON property `sizeLimit`
         # @return [String]
         attr_accessor :size_limit
@@ -2421,10 +2419,9 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2CloudSqlInstance]
         attr_accessor :cloud_sql_instance
       
-        # Ephemeral storage which can be backed by real disks (HD, SSD), network storage
-        # or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is
-        # ephemeral in the sense that when the sandbox is taken down, the data is
-        # destroyed with it (it does not persist across sandbox runs).
+        # In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when
+        # the sandbox is taken down, the data is destroyed with it (it does not persist
+        # across sandbox runs).
         # Corresponds to the JSON property `emptyDir`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2EmptyDirVolumeSource]
         attr_accessor :empty_dir
