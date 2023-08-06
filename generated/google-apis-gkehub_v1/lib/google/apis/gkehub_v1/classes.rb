@@ -398,7 +398,7 @@ module Google
         # Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is
         # enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.
         # metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the
-        # namespace `config-management-monitoring` should be binded to the GSA. This
+        # namespace `config-management-monitoring` should be bound to the GSA. This
         # field is required when automatic Feature management is enabled.
         # Corresponds to the JSON property `metricsGcpServiceAccountEmail`
         # @return [String]
@@ -2115,11 +2115,6 @@ module Google
         # @return [String]
         attr_accessor :tenant
       
-        # Optional. Claim in the AzureAD ID Token that holds the user details.
-        # Corresponds to the JSON property `userClaim`
-        # @return [String]
-        attr_accessor :user_claim
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2131,7 +2126,6 @@ module Google
           @encrypted_client_secret = args[:encrypted_client_secret] if args.key?(:encrypted_client_secret)
           @kubectl_redirect_uri = args[:kubectl_redirect_uri] if args.key?(:kubectl_redirect_uri)
           @tenant = args[:tenant] if args.key?(:tenant)
-          @user_claim = args[:user_claim] if args.key?(:user_claim)
         end
       end
       
@@ -2586,6 +2580,59 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # List of fleet namespaces.
+      class ListScopeNamespacesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of resources from the `ListNamespaces` method.
+        # The value of an empty string means that there are no more resources to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of fleet namespaces
+        # Corresponds to the JSON property `scopeNamespaces`
+        # @return [Array<Google::Apis::GkehubV1::Namespace>]
+        attr_accessor :scope_namespaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @scope_namespaces = args[:scope_namespaces] if args.key?(:scope_namespaces)
+        end
+      end
+      
+      # List of Scope RBACRoleBindings.
+      class ListScopeRbacRoleBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of resources from the `
+        # ListScopeRBACRoleBindings` method. The value of an empty string means that
+        # there are no more resources to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Scope RBACRoleBindings.
+        # Corresponds to the JSON property `rbacrolebindings`
+        # @return [Array<Google::Apis::GkehubV1::RbacRoleBinding>]
+        attr_accessor :rbacrolebindings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rbacrolebindings = args[:rbacrolebindings] if args.key?(:rbacrolebindings)
         end
       end
       
@@ -3155,6 +3202,99 @@ module Google
         end
       end
       
+      # Namespace represents a namespace across the Fleet
+      class Namespace
+        include Google::Apis::Core::Hashable
+      
+        # Output only. When the namespace was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. When the namespace was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Optional. Labels for this Namespace.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The resource name for the namespace `projects/`project`/locations/`location`/
+        # namespaces/`namespace``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Namespace-level cluster namespace labels. These labels are applied
+        # to the related namespace of the member clusters bound to the parent Scope.
+        # Scope-level labels (`namespace_labels` in the Fleet Scope resource) take
+        # precedence over Namespace-level labels if they share a key. Keys and values
+        # must be Kubernetes-conformant.
+        # Corresponds to the JSON property `namespaceLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :namespace_labels
+      
+        # Required. Scope associated with the namespace
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # NamespaceLifecycleState describes the state of a Namespace resource.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1::NamespaceLifecycleState]
+        attr_accessor :state
+      
+        # Output only. Google-generated UUID for this resource. This is unique across
+        # all namespace resources. If a namespace resource is deleted and another
+        # resource with the same name is created, it gets a different uid.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. When the namespace was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @namespace_labels = args[:namespace_labels] if args.key?(:namespace_labels)
+          @scope = args[:scope] if args.key?(:scope)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # NamespaceLifecycleState describes the state of a Namespace resource.
+      class NamespaceLifecycleState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current state of the Namespace resource.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+        end
+      end
+      
       # OnPremCluster contains information specific to GKE On-Prem clusters.
       class OnPremCluster
         include Google::Apis::Core::Hashable
@@ -3433,6 +3573,106 @@ module Google
         end
       end
       
+      # RBACRoleBinding represents a rbacrolebinding across the Fleet
+      class RbacRoleBinding
+        include Google::Apis::Core::Hashable
+      
+        # Output only. When the rbacrolebinding was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. When the rbacrolebinding was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # group is the group, as seen by the kubernetes cluster.
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        # Optional. Labels for this RBACRolebinding.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The resource name for the rbacrolebinding `projects/`project`/locations/`
+        # location`/namespaces/`namespace`/rbacrolebindings/`rbacrolebinding`` or `
+        # projects/`project`/locations/`location`/memberships/`membership`/
+        # rbacrolebindings/`rbacrolebinding``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Role is the type for Kubernetes roles
+        # Corresponds to the JSON property `role`
+        # @return [Google::Apis::GkehubV1::Role]
+        attr_accessor :role
+      
+        # RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding
+        # resource.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1::RbacRoleBindingLifecycleState]
+        attr_accessor :state
+      
+        # Output only. Google-generated UUID for this resource. This is unique across
+        # all rbacrolebinding resources. If a rbacrolebinding resource is deleted and
+        # another resource with the same name is created, it gets a different uid.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. When the rbacrolebinding was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # user is the name of the user as seen by the kubernetes cluster, example "alice"
+        # or "alice@domain.tld"
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @group = args[:group] if args.key?(:group)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @role = args[:role] if args.key?(:role)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding
+      # resource.
+      class RbacRoleBindingLifecycleState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current state of the rbacrolebinding resource.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+        end
+      end
+      
       # ResourceManifest represents a single Kubernetes resource to be applied to the
       # cluster.
       class ResourceManifest
@@ -3500,6 +3740,25 @@ module Google
         end
       end
       
+      # Role is the type for Kubernetes roles
+      class Role
+        include Google::Apis::Core::Hashable
+      
+        # predefined_role is the Kubernetes default role to use
+        # Corresponds to the JSON property `predefinedRole`
+        # @return [String]
+        attr_accessor :predefined_role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @predefined_role = args[:predefined_role] if args.key?(:predefined_role)
+        end
+      end
+      
       # Scope represents a Scope in a Fleet.
       class Scope
         include Google::Apis::Core::Hashable
@@ -3531,6 +3790,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Scope-level cluster namespace labels. For the member clusters bound
+        # to the Scope, these labels are applied to each namespace under the Scope.
+        # Scope-level labels take precedence over Namespace-level labels (`
+        # namespace_labels` in the Fleet Namespace resource) if they share a key. Keys
+        # and values must be Kubernetes-conformant.
+        # Corresponds to the JSON property `namespaceLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :namespace_labels
+      
         # ScopeLifecycleState describes the state of a Scope resource.
         # Corresponds to the JSON property `state`
         # @return [Google::Apis::GkehubV1::ScopeLifecycleState]
@@ -3559,6 +3827,7 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @namespace_labels = args[:namespace_labels] if args.key?(:namespace_labels)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
