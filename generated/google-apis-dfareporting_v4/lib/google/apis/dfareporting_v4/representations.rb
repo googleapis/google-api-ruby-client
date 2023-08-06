@@ -982,18 +982,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OrderDocument
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderDocumentsListResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class OrdersListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3664,42 +3652,6 @@ module Google
           property :contact_title, as: 'contactTitle'
           property :contact_type, as: 'contactType'
           property :signature_user_profile_id, :numeric_string => true, as: 'signatureUserProfileId'
-        end
-      end
-      
-      class OrderDocument
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, :numeric_string => true, as: 'accountId'
-          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
-          property :amended_order_document_id, :numeric_string => true, as: 'amendedOrderDocumentId'
-          collection :approved_by_user_profile_ids, as: 'approvedByUserProfileIds'
-          property :cancelled, as: 'cancelled'
-          property :created_info, as: 'createdInfo', class: Google::Apis::DfareportingV4::LastModifiedInfo, decorator: Google::Apis::DfareportingV4::LastModifiedInfo::Representation
-      
-          property :effective_date, as: 'effectiveDate', type: Date
-      
-          property :id, :numeric_string => true, as: 'id'
-          property :kind, as: 'kind'
-          collection :last_sent_recipients, as: 'lastSentRecipients'
-          property :last_sent_time, as: 'lastSentTime', type: DateTime
-      
-          property :order_id, :numeric_string => true, as: 'orderId'
-          property :project_id, :numeric_string => true, as: 'projectId'
-          property :signed, as: 'signed'
-          property :subaccount_id, :numeric_string => true, as: 'subaccountId'
-          property :title, as: 'title'
-          property :type, as: 'type'
-        end
-      end
-      
-      class OrderDocumentsListResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-          collection :order_documents, as: 'orderDocuments', class: Google::Apis::DfareportingV4::OrderDocument, decorator: Google::Apis::DfareportingV4::OrderDocument::Representation
-      
         end
       end
       
