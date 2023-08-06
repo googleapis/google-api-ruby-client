@@ -1906,7 +1906,7 @@ module Google
       class GoogleCloudBeyondcorpPartnerservicesV1alphaListBrowserDlpRulesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of ProxyConfig objects.
+        # The list of BrowserDlpRule objects.
         # Corresponds to the JSON property `browserDlpRules`
         # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule>]
         attr_accessor :browser_dlp_rules
