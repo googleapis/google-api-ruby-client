@@ -763,9 +763,9 @@ module Google
         # Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `
         # Content-Type` to a media type when the task is created. For example,`Content-
         # Type` can be set to `"application/octet-stream"` or `"application/json"`. The
-        # default value is set to "application/json"`. * User-Agent: This will be set to
-        # `"Google-Cloud-Tasks"`. Headers which can have multiple values (according to
-        # RFC2616) can be specified using comma-separated values. The size of the
+        # default value is set to `"application/json"`. * User-Agent: This will be set
+        # to `"Google-Cloud-Tasks"`. Headers which can have multiple values (according
+        # to RFC2616) can be specified using comma-separated values. The size of the
         # headers must be less than 80KB. Queue-level headers to override headers of all
         # the tasks in the queue.
         # Corresponds to the JSON property `headerOverrides`
