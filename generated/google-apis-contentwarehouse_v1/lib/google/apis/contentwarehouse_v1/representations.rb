@@ -5710,6 +5710,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContentwarehouseV1ExportToCdwPipeline
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContentwarehouseV1FetchAclRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5740,6 +5746,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContentwarehouseV1GcsIngestPipeline
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContentwarehouseV1GetDocumentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5759,6 +5777,12 @@ module Google
       end
       
       class GoogleCloudContentwarehouseV1HistogramQueryResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContentwarehouseV1IngestPipelineConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5855,6 +5879,12 @@ module Google
       end
       
       class GoogleCloudContentwarehouseV1MergeFieldsOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5999,6 +6029,12 @@ module Google
       end
       
       class GoogleCloudContentwarehouseV1RunPipelineMetadataProcessWithDocAiPipelineMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContentwarehouseV1RunPipelineRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -26841,6 +26877,16 @@ module Google
         end
       end
       
+      class GoogleCloudContentwarehouseV1ExportToCdwPipeline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :doc_ai_dataset, as: 'docAiDataset'
+          collection :documents, as: 'documents'
+          property :export_folder_path, as: 'exportFolderPath'
+          property :training_split_ratio, as: 'trainingSplitRatio'
+        end
+      end
+      
       class GoogleCloudContentwarehouseV1FetchAclRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -26880,6 +26926,33 @@ module Google
         end
       end
       
+      class GoogleCloudContentwarehouseV1GcsIngestPipeline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_path, as: 'inputPath'
+          property :pipeline_config, as: 'pipelineConfig', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1IngestPipelineConfig, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1IngestPipelineConfig::Representation
+      
+          property :processor_type, as: 'processorType'
+          property :schema_name, as: 'schemaName'
+          property :skip_ingested_documents, as: 'skipIngestedDocuments'
+        end
+      end
+      
+      class GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :extract_processor_infos, as: 'extractProcessorInfos', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo::Representation
+      
+          property :input_path, as: 'inputPath'
+          property :pipeline_config, as: 'pipelineConfig', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1IngestPipelineConfig, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1IngestPipelineConfig::Representation
+      
+          property :processor_results_folder_path, as: 'processorResultsFolderPath'
+          property :skip_ingested_documents, as: 'skipIngestedDocuments'
+          property :split_classify_processor_info, as: 'splitClassifyProcessorInfo', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo::Representation
+      
+        end
+      end
+      
       class GoogleCloudContentwarehouseV1GetDocumentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -26912,6 +26985,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :histogram, as: 'histogram'
           property :histogram_query, as: 'histogramQuery'
+        end
+      end
+      
+      class GoogleCloudContentwarehouseV1IngestPipelineConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_acl_policy, as: 'documentAclPolicy', class: Google::Apis::ContentwarehouseV1::GoogleIamV1Policy, decorator: Google::Apis::ContentwarehouseV1::GoogleIamV1Policy::Representation
+      
+          property :enable_document_text_extraction, as: 'enableDocumentTextExtraction'
+          property :folder, as: 'folder'
         end
       end
       
@@ -27047,6 +27130,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :replace_message_fields, as: 'replaceMessageFields'
           property :replace_repeated_fields, as: 'replaceRepeatedFields'
+        end
+      end
+      
+      class GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :documents, as: 'documents'
+          property :export_folder_path, as: 'exportFolderPath'
+          property :processor_info, as: 'processorInfo', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo::Representation
+      
+          property :processor_results_folder_path, as: 'processorResultsFolderPath'
         end
       end
       
@@ -27310,6 +27404,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :documents, as: 'documents'
           property :processor_info, as: 'processorInfo', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContentwarehouseV1RunPipelineRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_cdw_pipeline, as: 'exportCdwPipeline', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ExportToCdwPipeline, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ExportToCdwPipeline::Representation
+      
+          property :gcs_ingest_pipeline, as: 'gcsIngestPipeline', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1GcsIngestPipeline, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1GcsIngestPipeline::Representation
+      
+          property :gcs_ingest_with_doc_ai_processors_pipeline, as: 'gcsIngestWithDocAiProcessorsPipeline', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline::Representation
+      
+          property :process_with_doc_ai_pipeline, as: 'processWithDocAiPipeline', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline::Representation
+      
+          property :request_metadata, as: 'requestMetadata', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1RequestMetadata, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1RequestMetadata::Representation
       
         end
       end
@@ -29620,6 +29730,8 @@ module Google
       
           property :golden7_soapbox_summary, as: 'golden7SoapboxSummary', class: Google::Apis::ContentwarehouseV1::DrishtiFeatureSetData, decorator: Google::Apis::ContentwarehouseV1::DrishtiFeatureSetData::Representation
       
+          property :golden7_soapbox_tracks_blob_info, as: 'golden7SoapboxTracksBlobInfo', class: Google::Apis::ContentwarehouseV1::ImageRepositoryAmarnaSignalsBlobInfo, decorator: Google::Apis::ContentwarehouseV1::ImageRepositoryAmarnaSignalsBlobInfo::Representation
+      
           property :inline_playback, as: 'inlinePlayback', class: Google::Apis::ContentwarehouseV1::VideoCrawlVideoInlinePlaybackMetadata, decorator: Google::Apis::ContentwarehouseV1::VideoCrawlVideoInlinePlaybackMetadata::Representation
       
           property :language_identification, as: 'languageIdentification', class: Google::Apis::ContentwarehouseV1::VideoTimedtextS4AliResults, decorator: Google::Apis::ContentwarehouseV1::VideoTimedtextS4AliResults::Representation
@@ -29631,6 +29743,8 @@ module Google
           property :loudness_data, as: 'loudnessData', class: Google::Apis::ContentwarehouseV1::VideoStorageLoudnessData, decorator: Google::Apis::ContentwarehouseV1::VideoStorageLoudnessData::Representation
       
           property :media_info, as: 'mediaInfo', class: Google::Apis::ContentwarehouseV1::VideoMediaInfo, decorator: Google::Apis::ContentwarehouseV1::VideoMediaInfo::Representation
+      
+          property :multi_thumbnails_frame_perdocs, as: 'multiThumbnailsFramePerdocs', class: Google::Apis::ContentwarehouseV1::ImageRepositoryFramePerdocs, decorator: Google::Apis::ContentwarehouseV1::ImageRepositoryFramePerdocs::Representation
       
           property :representative_frame_data, as: 'representativeFrameData', class: Google::Apis::ContentwarehouseV1::ImageData, decorator: Google::Apis::ContentwarehouseV1::ImageData::Representation
       
@@ -44392,6 +44506,7 @@ module Google
       
           property :contain_user_quotes, as: 'containUserQuotes'
           property :contain_vulgar_candidates, as: 'containVulgarCandidates'
+          property :disable_ng3_scoring, as: 'disableNg3Scoring'
           property :disable_query_features, as: 'disableQueryFeatures'
           property :snippet_brain_selected_candidate_index, as: 'snippetBrainSelectedCandidateIndex'
           property :snippetsbrain_model_info, as: 'snippetsbrainModelInfo', class: Google::Apis::ContentwarehouseV1::SnippetExtraInfoSnippetsBrainModelInfo, decorator: Google::Apis::ContentwarehouseV1::SnippetExtraInfoSnippetsBrainModelInfo::Representation
