@@ -119,11 +119,6 @@ module Google
         # @param [String] filter
         #   Optional filter to list devices. Filters can be done on: Device custom name (
         #   substring match): 'customName=wing'
-        # @param [Fixnum] page_size
-        #   Optional requested page size. Server may return fewer devices than requested.
-        #   If unspecified, server will pick an appropriate default.
-        # @param [String] page_token
-        #   Optional token of the page to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -141,14 +136,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_enterprise_devices(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_enterprise_devices(parent, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/devices', options)
           command.response_representation = Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1ListDevicesResponse::Representation
           command.response_class = Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1ListDevicesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -190,11 +183,6 @@ module Google
         #   The parent enterprise to list structures under. E.g. "enterprises/XYZ".
         # @param [String] filter
         #   Optional filter to list structures.
-        # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer structures than requested. If
-        #   unspecified, server will pick an appropriate default.
-        # @param [String] page_token
-        #   The token of the page to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -212,14 +200,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_enterprise_structures(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_enterprise_structures(parent, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/structures', options)
           command.response_representation = Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1ListStructuresResponse::Representation
           command.response_class = Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1ListStructuresResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -260,11 +246,6 @@ module Google
         # @param [String] parent
         #   The parent resource name of the rooms requested. For example: "enterprises/XYZ/
         #   structures/ABC".
-        # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer rooms than requested. If
-        #   unspecified, server will pick an appropriate default.
-        # @param [String] page_token
-        #   The token of the page to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -282,13 +263,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_enterprise_structure_rooms(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_enterprise_structure_rooms(parent, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/rooms', options)
           command.response_representation = Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1ListRoomsResponse::Representation
           command.response_class = Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1ListRoomsResponse
           command.params['parent'] = parent unless parent.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

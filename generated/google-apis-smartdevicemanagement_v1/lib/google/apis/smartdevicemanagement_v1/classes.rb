@@ -118,11 +118,6 @@ module Google
         # @return [Array<Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1Device>]
         attr_accessor :devices
       
-        # The pagination token to retrieve the next page of results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
         def initialize(**args)
            update!(**args)
         end
@@ -130,19 +125,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @devices = args[:devices] if args.key?(:devices)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
       # Response message for SmartDeviceManagementService.ListRooms
       class GoogleHomeEnterpriseSdmV1ListRoomsResponse
         include Google::Apis::Core::Hashable
-      
-        # The pagination token to retrieve the next page of results. If this field is
-        # omitted, there are no subsequent pages.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
       
         # The list of rooms.
         # Corresponds to the JSON property `rooms`
@@ -155,7 +143,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @rooms = args[:rooms] if args.key?(:rooms)
         end
       end
@@ -163,12 +150,6 @@ module Google
       # Response message for SmartDeviceManagementService.ListStructures
       class GoogleHomeEnterpriseSdmV1ListStructuresResponse
         include Google::Apis::Core::Hashable
-      
-        # The pagination token to retrieve the next page of results. If this field is
-        # omitted, there are no subsequent pages.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
       
         # The list of structures.
         # Corresponds to the JSON property `structures`
@@ -181,7 +162,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @structures = args[:structures] if args.key?(:structures)
         end
       end
