@@ -28,6 +28,18 @@ module Google
       # Version of the Drive Labels API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V2beta'
+
+      # See, edit, create, and delete all Google Drive labels in your organization, and see your organization's label-related admin policies
+      AUTH_DRIVE_ADMIN_LABELS = 'https://www.googleapis.com/auth/drive.admin.labels'
+
+      # See all Google Drive labels and label-related admin policies in your organization
+      AUTH_DRIVE_ADMIN_LABELS_READONLY = 'https://www.googleapis.com/auth/drive.admin.labels.readonly'
+
+      # See, edit, create, and delete your Google Drive labels
+      AUTH_DRIVE_LABELS = 'https://www.googleapis.com/auth/drive.labels'
+
+      # See your Google Drive labels
+      AUTH_DRIVE_LABELS_READONLY = 'https://www.googleapis.com/auth/drive.labels.readonly'
     end
   end
 end
