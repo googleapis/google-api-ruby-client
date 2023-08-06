@@ -5862,8 +5862,7 @@ module Google
         attr_accessor :bid_strategy
       
         # Immutable. The billable outcome of the insertion order. Outcome based buying
-        # will be deprecated on **August 1, 2023**. Read more on our [Announced
-        # Deprecations page](/display-video/api/deprecations#features.obb).
+        # is deprecated. `BILLABLE_OUTCOME_PAY_PER_IMPRESSION` is the only valid value.
         # Corresponds to the JSON property `billableOutcome`
         # @return [String]
         attr_accessor :billable_outcome
@@ -8693,13 +8692,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
