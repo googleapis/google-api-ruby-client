@@ -1705,6 +1705,7 @@ module Google
       class RestartMigrationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :skip_validation, as: 'skipValidation'
         end
       end
       
