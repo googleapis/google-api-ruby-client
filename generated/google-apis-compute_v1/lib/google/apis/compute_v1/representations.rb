@@ -2620,6 +2620,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NatIpInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NatIpInfoNatIpInfoMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NatIpInfoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Network
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7037,6 +7055,7 @@ module Google
       class BulkInsertInstanceResourcePerInstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :hostname, as: 'hostname'
           property :name, as: 'name'
         end
       end
@@ -10942,6 +10961,32 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :port, as: 'port'
+        end
+      end
+      
+      class NatIpInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nat_ip_info_mappings, as: 'natIpInfoMappings', class: Google::Apis::ComputeV1::NatIpInfoNatIpInfoMapping, decorator: Google::Apis::ComputeV1::NatIpInfoNatIpInfoMapping::Representation
+      
+          property :nat_name, as: 'natName'
+        end
+      end
+      
+      class NatIpInfoNatIpInfoMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+          property :nat_ip, as: 'natIp'
+          property :usage, as: 'usage'
+        end
+      end
+      
+      class NatIpInfoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :result, as: 'result', class: Google::Apis::ComputeV1::NatIpInfo, decorator: Google::Apis::ComputeV1::NatIpInfo::Representation
+      
         end
       end
       
