@@ -186,6 +186,69 @@ module Google
         end
       end
       
+      # An attack exposure contains the results of an attack path simulation run.
+      class AttackExposure
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the attack path simulation result that contains the
+        # details regarding this attack exposure score. Example: organizations/123/
+        # attackExposureResults/456
+        # Corresponds to the JSON property `attackExposureResult`
+        # @return [String]
+        attr_accessor :attack_exposure_result
+      
+        # The number of high value resources that are exposed as a result of this
+        # finding.
+        # Corresponds to the JSON property `exposedHighValueResourcesCount`
+        # @return [Fixnum]
+        attr_accessor :exposed_high_value_resources_count
+      
+        # The number of high value resources that are exposed as a result of this
+        # finding.
+        # Corresponds to the JSON property `exposedLowValueResourcesCount`
+        # @return [Fixnum]
+        attr_accessor :exposed_low_value_resources_count
+      
+        # The number of medium value resources that are exposed as a result of this
+        # finding.
+        # Corresponds to the JSON property `exposedMediumValueResourcesCount`
+        # @return [Fixnum]
+        attr_accessor :exposed_medium_value_resources_count
+      
+        # The most recent time the attack exposure was updated on this finding.
+        # Corresponds to the JSON property `latestCalculationTime`
+        # @return [String]
+        attr_accessor :latest_calculation_time
+      
+        # A number between 0 (inclusive) and infinity that represents how important this
+        # finding is to remediate. The higher the score, the more important it is to
+        # remediate.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # What state this AttackExposure is in. This captures whether or not an attack
+        # exposure has been calculated or not.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attack_exposure_result = args[:attack_exposure_result] if args.key?(:attack_exposure_result)
+          @exposed_high_value_resources_count = args[:exposed_high_value_resources_count] if args.key?(:exposed_high_value_resources_count)
+          @exposed_low_value_resources_count = args[:exposed_low_value_resources_count] if args.key?(:exposed_low_value_resources_count)
+          @exposed_medium_value_resources_count = args[:exposed_medium_value_resources_count] if args.key?(:exposed_medium_value_resources_count)
+          @latest_calculation_time = args[:latest_calculation_time] if args.key?(:latest_calculation_time)
+          @score = args[:score] if args.key?(:score)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # The [data profile](https://cloud.google.com/dlp/docs/data-profiles) associated
       # with the finding.
       class CloudDlpDataProfile
@@ -976,6 +1039,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::Access]
         attr_accessor :access
       
+        # An attack exposure contains the results of an attack path simulation run.
+        # Corresponds to the JSON property `attackExposure`
+        # @return [Google::Apis::SecuritycenterV1beta2::AttackExposure]
+        attr_accessor :attack_exposure
+      
         # The canonical name of the finding. It's either "organizations/`organization_id`
         # /sources/`source_id`/findings/`finding_id`", "folders/`folder_id`/sources/`
         # source_id`/findings/`finding_id`" or "projects/`project_number`/sources/`
@@ -1229,6 +1297,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access = args[:access] if args.key?(:access)
+          @attack_exposure = args[:attack_exposure] if args.key?(:attack_exposure)
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @category = args[:category] if args.key?(:category)
           @cloud_dlp_data_profile = args[:cloud_dlp_data_profile] if args.key?(:cloud_dlp_data_profile)
@@ -1872,6 +1941,84 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_types = args[:resource_types] if args.key?(:resource_types)
+        end
+      end
+      
+      # A resource value config is a mapping configuration of user's tag values to
+      # resource values. Used by the attack path simulation.
+      class GoogleCloudSecuritycenterV1ResourceValueConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp this resource value config was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Description of the resource value config.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Name for the resource value config
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # List of resource labels to search for, evaluated with AND. E.g. "
+        # resource_labels_selector": `"key": "value", "env": "prod"` will match
+        # resources with labels "key": "value" AND "env": "prod" https://cloud.google.
+        # com/resource-manager/docs/creating-managing-labels
+        # Corresponds to the JSON property `resourceLabelsSelector`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_labels_selector
+      
+        # Apply resource_value only to resources that match resource_type. resource_type
+        # will be checked with "AND" of other resources. E.g. "storage.googleapis.com/
+        # Bucket" with resource_value "HIGH" will apply "HIGH" value only to "storage.
+        # googleapis.com/Bucket" resources.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # Required. Resource value level this expression represents
+        # Corresponds to the JSON property `resourceValue`
+        # @return [String]
+        attr_accessor :resource_value
+      
+        # Project or folder to scope this config to. For example, "project/456" would
+        # apply this config only to resources in "project/456" scope will be checked
+        # with "AND" of other resources.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Required. Tag values combined with AND to check against. Values in the form "
+        # tagValues/123" E.g. [ "tagValues/123", "tagValues/456", "tagValues/789" ]
+        # https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
+        # Corresponds to the JSON property `tagValues`
+        # @return [Array<String>]
+        attr_accessor :tag_values
+      
+        # Output only. Timestamp this resource value config was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @resource_labels_selector = args[:resource_labels_selector] if args.key?(:resource_labels_selector)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @resource_value = args[:resource_value] if args.key?(:resource_value)
+          @scope = args[:scope] if args.key?(:scope)
+          @tag_values = args[:tag_values] if args.key?(:tag_values)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
