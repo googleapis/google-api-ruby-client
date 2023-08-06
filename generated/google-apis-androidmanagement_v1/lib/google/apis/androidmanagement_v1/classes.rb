@@ -1089,6 +1089,29 @@ module Google
         # @return [Array<String>]
         attr_accessor :reset_password_flags
       
+        # Parameters associated with the START_LOST_MODE command to put the device into
+        # lost mode. At least one of the parameters, not including the organization name,
+        # must be provided in order for the device to be put into lost mode.
+        # Corresponds to the JSON property `startLostModeParams`
+        # @return [Google::Apis::AndroidmanagementV1::StartLostModeParams]
+        attr_accessor :start_lost_mode_params
+      
+        # Status of the START_LOST_MODE command to put the device into lost mode.
+        # Corresponds to the JSON property `startLostModeStatus`
+        # @return [Google::Apis::AndroidmanagementV1::StartLostModeStatus]
+        attr_accessor :start_lost_mode_status
+      
+        # Parameters associated with the STOP_LOST_MODE command to take the device out
+        # of lost mode.
+        # Corresponds to the JSON property `stopLostModeParams`
+        # @return [Google::Apis::AndroidmanagementV1::StopLostModeParams]
+        attr_accessor :stop_lost_mode_params
+      
+        # Status of the STOP_LOST_MODE command to take the device out of lost mode.
+        # Corresponds to the JSON property `stopLostModeStatus`
+        # @return [Google::Apis::AndroidmanagementV1::StopLostModeStatus]
+        attr_accessor :stop_lost_mode_status
+      
         # The type of the command.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -1114,6 +1137,10 @@ module Google
           @error_code = args[:error_code] if args.key?(:error_code)
           @new_password = args[:new_password] if args.key?(:new_password)
           @reset_password_flags = args[:reset_password_flags] if args.key?(:reset_password_flags)
+          @start_lost_mode_params = args[:start_lost_mode_params] if args.key?(:start_lost_mode_params)
+          @start_lost_mode_status = args[:start_lost_mode_status] if args.key?(:start_lost_mode_status)
+          @stop_lost_mode_params = args[:stop_lost_mode_params] if args.key?(:stop_lost_mode_params)
+          @stop_lost_mode_status = args[:stop_lost_mode_status] if args.key?(:stop_lost_mode_status)
           @type = args[:type] if args.key?(:type)
           @user_name = args[:user_name] if args.key?(:user_name)
         end
@@ -2915,6 +2942,31 @@ module Google
         end
       end
       
+      # The device location containing the latitude and longitude.
+      class Location
+        include Google::Apis::Core::Hashable
+      
+        # The latitude position of the location
+        # Corresponds to the JSON property `latitude`
+        # @return [Float]
+        attr_accessor :latitude
+      
+        # The longitude position of the location
+        # Corresponds to the JSON property `longitude`
+        # @return [Float]
+        attr_accessor :longitude
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latitude = args[:latitude] if args.key?(:latitude)
+          @longitude = args[:longitude] if args.key?(:longitude)
+        end
+      end
+      
       # The usageLog buffer on the device has reached 90% of its capacity, therefore
       # older events may be dropped. Intentionally empty.
       class LogBufferSizeCriticalEvent
@@ -2944,6 +2996,46 @@ module Google
       
       # usageLog policy has been disabled. Intentionally empty.
       class LoggingStoppedEvent
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A lost mode event containing the device location and battery level as a
+      # percentage.
+      class LostModeLocationEvent
+        include Google::Apis::Core::Hashable
+      
+        # The battery level as a number between 0 and 100 inclusive
+        # Corresponds to the JSON property `batteryLevel`
+        # @return [Fixnum]
+        attr_accessor :battery_level
+      
+        # The device location containing the latitude and longitude.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::AndroidmanagementV1::Location]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @battery_level = args[:battery_level] if args.key?(:battery_level)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # An event indicating an outgoing phone call has been made when a device is in
+      # lost mode. Intentionally empty.
+      class LostModeOutgoingPhoneCallEvent
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -4596,12 +4688,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :api_level
       
-        # The email address of the authenticated user (only present for Google Account
-        # provisioning method).
-        # Corresponds to the JSON property `authenticatedUserEmail`
-        # @return [String]
-        attr_accessor :authenticated_user_email
-      
         # Brand of the device. For example, Google.
         # Corresponds to the JSON property `brand`
         # @return [String]
@@ -4639,7 +4725,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_level = args[:api_level] if args.key?(:api_level)
-          @authenticated_user_email = args[:authenticated_user_email] if args.key?(:authenticated_user_email)
           @brand = args[:brand] if args.key?(:brand)
           @enterprise = args[:enterprise] if args.key?(:enterprise)
           @management_mode = args[:management_mode] if args.key?(:management_mode)
@@ -4964,6 +5049,74 @@ module Google
         end
       end
       
+      # Parameters associated with the START_LOST_MODE command to put the device into
+      # lost mode. At least one of the parameters, not including the organization name,
+      # must be provided in order for the device to be put into lost mode.
+      class StartLostModeParams
+        include Google::Apis::Core::Hashable
+      
+        # The email address displayed to the user when the device is in lost mode.
+        # Corresponds to the JSON property `lostEmailAddress`
+        # @return [String]
+        attr_accessor :lost_email_address
+      
+        # Provides a user-facing message with locale info. The maximum message length is
+        # 4096 characters.
+        # Corresponds to the JSON property `lostMessage`
+        # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
+        attr_accessor :lost_message
+      
+        # Provides a user-facing message with locale info. The maximum message length is
+        # 4096 characters.
+        # Corresponds to the JSON property `lostOrganization`
+        # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
+        attr_accessor :lost_organization
+      
+        # Provides a user-facing message with locale info. The maximum message length is
+        # 4096 characters.
+        # Corresponds to the JSON property `lostPhoneNumber`
+        # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
+        attr_accessor :lost_phone_number
+      
+        # Provides a user-facing message with locale info. The maximum message length is
+        # 4096 characters.
+        # Corresponds to the JSON property `lostStreetAddress`
+        # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
+        attr_accessor :lost_street_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lost_email_address = args[:lost_email_address] if args.key?(:lost_email_address)
+          @lost_message = args[:lost_message] if args.key?(:lost_message)
+          @lost_organization = args[:lost_organization] if args.key?(:lost_organization)
+          @lost_phone_number = args[:lost_phone_number] if args.key?(:lost_phone_number)
+          @lost_street_address = args[:lost_street_address] if args.key?(:lost_street_address)
+        end
+      end
+      
+      # Status of the START_LOST_MODE command to put the device into lost mode.
+      class StartLostModeStatus
+        include Google::Apis::Core::Hashable
+      
+        # The status. See StartLostModeStatus.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # The Status type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by gRPC
       # (https://github.com/grpc). Each Status message contains three pieces of data:
@@ -5092,6 +5245,58 @@ module Google
           @power_management_events_enabled = args[:power_management_events_enabled] if args.key?(:power_management_events_enabled)
           @software_info_enabled = args[:software_info_enabled] if args.key?(:software_info_enabled)
           @system_properties_enabled = args[:system_properties_enabled] if args.key?(:system_properties_enabled)
+        end
+      end
+      
+      # Parameters associated with the STOP_LOST_MODE command to take the device out
+      # of lost mode.
+      class StopLostModeParams
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Status of the STOP_LOST_MODE command to take the device out of lost mode.
+      class StopLostModeStatus
+        include Google::Apis::Core::Hashable
+      
+        # The status. See StopLostModeStatus.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # A lost mode event indicating the user has attempted to stop lost mode.
+      class StopLostModeUserAttemptEvent
+        include Google::Apis::Core::Hashable
+      
+        # The status of the attempt to stop lost mode.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -5401,6 +5606,18 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::LoggingStoppedEvent]
         attr_accessor :logging_stopped_event
       
+        # A lost mode event containing the device location and battery level as a
+        # percentage.
+        # Corresponds to the JSON property `lostModeLocationEvent`
+        # @return [Google::Apis::AndroidmanagementV1::LostModeLocationEvent]
+        attr_accessor :lost_mode_location_event
+      
+        # An event indicating an outgoing phone call has been made when a device is in
+        # lost mode. Intentionally empty.
+        # Corresponds to the JSON property `lostModeOutgoingPhoneCallEvent`
+        # @return [Google::Apis::AndroidmanagementV1::LostModeOutgoingPhoneCallEvent]
+        attr_accessor :lost_mode_outgoing_phone_call_event
+      
         # Removable media was mounted.
         # Corresponds to the JSON property `mediaMountEvent`
         # @return [Google::Apis::AndroidmanagementV1::MediaMountEvent]
@@ -5425,6 +5642,11 @@ module Google
         # Corresponds to the JSON property `remoteLockEvent`
         # @return [Google::Apis::AndroidmanagementV1::RemoteLockEvent]
         attr_accessor :remote_lock_event
+      
+        # A lost mode event indicating the user has attempted to stop lost mode.
+        # Corresponds to the JSON property `stopLostModeUserAttemptEvent`
+        # @return [Google::Apis::AndroidmanagementV1::StopLostModeUserAttemptEvent]
+        attr_accessor :stop_lost_mode_user_attempt_event
       
         # The work profile or company-owned device failed to wipe when requested. This
         # could be user initiated or admin initiated e.g. delete was received.
@@ -5463,11 +5685,14 @@ module Google
           @log_buffer_size_critical_event = args[:log_buffer_size_critical_event] if args.key?(:log_buffer_size_critical_event)
           @logging_started_event = args[:logging_started_event] if args.key?(:logging_started_event)
           @logging_stopped_event = args[:logging_stopped_event] if args.key?(:logging_stopped_event)
+          @lost_mode_location_event = args[:lost_mode_location_event] if args.key?(:lost_mode_location_event)
+          @lost_mode_outgoing_phone_call_event = args[:lost_mode_outgoing_phone_call_event] if args.key?(:lost_mode_outgoing_phone_call_event)
           @media_mount_event = args[:media_mount_event] if args.key?(:media_mount_event)
           @media_unmount_event = args[:media_unmount_event] if args.key?(:media_unmount_event)
           @os_shutdown_event = args[:os_shutdown_event] if args.key?(:os_shutdown_event)
           @os_startup_event = args[:os_startup_event] if args.key?(:os_startup_event)
           @remote_lock_event = args[:remote_lock_event] if args.key?(:remote_lock_event)
+          @stop_lost_mode_user_attempt_event = args[:stop_lost_mode_user_attempt_event] if args.key?(:stop_lost_mode_user_attempt_event)
           @wipe_failure_event = args[:wipe_failure_event] if args.key?(:wipe_failure_event)
         end
       end
