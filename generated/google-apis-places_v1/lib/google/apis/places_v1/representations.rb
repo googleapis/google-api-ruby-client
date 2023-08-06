@@ -94,7 +94,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleMapsPlacesV1PlaceReview
+      class GoogleMapsPlacesV1Review
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -221,7 +221,7 @@ module Google
           property :price_level, as: 'priceLevel'
           property :rating, as: 'rating'
           property :reservable, as: 'reservable'
-          collection :reviews, as: 'reviews', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceReview, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceReview::Representation
+          collection :reviews, as: 'reviews', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1Review, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1Review::Representation
       
           collection :secondary_opening_hours, as: 'secondaryOpeningHours', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours::Representation
       
@@ -313,12 +313,11 @@ module Google
         end
       end
       
-      class GoogleMapsPlacesV1PlaceReview
+      class GoogleMapsPlacesV1Review
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :author_attribution, as: 'authorAttribution', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AuthorAttribution, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AuthorAttribution::Representation
       
-          property :original_language_code, as: 'originalLanguageCode'
           property :original_text, as: 'originalText', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
           property :publish_time, as: 'publishTime'
@@ -326,7 +325,6 @@ module Google
           property :relative_publish_time_description, as: 'relativePublishTimeDescription'
           property :text, as: 'text', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
-          property :translated, as: 'translated'
         end
       end
       
