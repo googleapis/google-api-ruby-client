@@ -368,6 +368,11 @@ module Google
         # @return [String]
         attr_accessor :customer_id
       
+        # Device enrollment id for ChromeOS devices.
+        # Corresponds to the JSON property `deviceEnrollmentId`
+        # @return [String]
+        attr_accessor :device_enrollment_id
+      
         # Device permanent id is returned in this field (for the machine response only).
         # Corresponds to the JSON property `devicePermanentId`
         # @return [String]
@@ -429,6 +434,7 @@ module Google
         def update!(**args)
           @attested_device_id = args[:attested_device_id] if args.key?(:attested_device_id)
           @customer_id = args[:customer_id] if args.key?(:customer_id)
+          @device_enrollment_id = args[:device_enrollment_id] if args.key?(:device_enrollment_id)
           @device_permanent_id = args[:device_permanent_id] if args.key?(:device_permanent_id)
           @device_signal = args[:device_signal] if args.key?(:device_signal)
           @device_signals = args[:device_signals] if args.key?(:device_signals)
