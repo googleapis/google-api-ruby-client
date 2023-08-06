@@ -437,8 +437,8 @@ module Google
       class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assured_workloads_monitoring, as: 'assuredWorkloadsMonitoring'
           property :data_logs_viewer, as: 'dataLogsViewer'
-          property :remediate_folder_violations, as: 'remediateFolderViolations'
           property :service_access_approver, as: 'serviceAccessApprover'
         end
       end
