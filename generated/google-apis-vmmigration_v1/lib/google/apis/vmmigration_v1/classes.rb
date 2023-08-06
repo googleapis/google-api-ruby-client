@@ -704,7 +704,7 @@ module Google
         # @return [Google::Apis::VmmigrationV1::AppliedLicense]
         attr_accessor :applied_license
       
-        # Output only. The VM Boot Option, as set in the source vm.
+        # Output only. The VM Boot Option, as set in the source VM.
         # Corresponds to the JSON property `bootOption`
         # @return [String]
         attr_accessor :boot_option
@@ -755,13 +755,13 @@ module Google
         # @return [Array<Google::Apis::VmmigrationV1::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # A map of network tags to associate with the VM.
+        # A list of network tags to associate with the VM.
         # Corresponds to the JSON property `networkTags`
         # @return [Array<String>]
         attr_accessor :network_tags
       
         # Defines whether the instance has Secure Boot enabled. This can be set to true
-        # only if the vm boot option is EFI.
+        # only if the VM boot option is EFI.
         # Corresponds to the JSON property `secureBoot`
         # @return [Boolean]
         attr_accessor :secure_boot
@@ -830,7 +830,7 @@ module Google
         # @return [Google::Apis::VmmigrationV1::AppliedLicense]
         attr_accessor :applied_license
       
-        # The VM Boot Option, as set in the source vm.
+        # The VM Boot Option, as set in the source VM.
         # Corresponds to the JSON property `bootOption`
         # @return [String]
         attr_accessor :boot_option
@@ -881,7 +881,7 @@ module Google
         # @return [Array<Google::Apis::VmmigrationV1::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # A map of network tags to associate with the VM.
+        # A list of network tags to associate with the VM.
         # Corresponds to the JSON property `networkTags`
         # @return [Array<String>]
         attr_accessor :network_tags
@@ -892,7 +892,7 @@ module Google
         attr_accessor :project
       
         # Defines whether the instance has Secure Boot enabled. This can be set to true
-        # only if the vm boot option is EFI.
+        # only if the VM boot option is EFI.
         # Corresponds to the JSON property `secureBoot`
         # @return [Boolean]
         attr_accessor :secure_boot
@@ -2358,7 +2358,7 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
-        # The ordinal number of the source VM disk.
+        # Required. The ordinal number of the source VM disk.
         # Corresponds to the JSON property `sourceDiskNumber`
         # @return [Fixnum]
         attr_accessor :source_disk_number
