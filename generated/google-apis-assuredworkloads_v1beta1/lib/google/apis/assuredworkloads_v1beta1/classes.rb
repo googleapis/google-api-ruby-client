@@ -834,17 +834,17 @@ module Google
       class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions
         include Google::Apis::Core::Hashable
       
+        # Optional. Allow partner to view violation alerts.
+        # Corresponds to the JSON property `assuredWorkloadsMonitoring`
+        # @return [Boolean]
+        attr_accessor :assured_workloads_monitoring
+        alias_method :assured_workloads_monitoring?, :assured_workloads_monitoring
+      
         # Allow the partner to view inspectability logs and monitoring violations.
         # Corresponds to the JSON property `dataLogsViewer`
         # @return [Boolean]
         attr_accessor :data_logs_viewer
         alias_method :data_logs_viewer?, :data_logs_viewer
-      
-        # Allow partner to monitor folder and remediate violations
-        # Corresponds to the JSON property `remediateFolderViolations`
-        # @return [Boolean]
-        attr_accessor :remediate_folder_violations
-        alias_method :remediate_folder_violations?, :remediate_folder_violations
       
         # Optional. Allow partner to view access approval logs.
         # Corresponds to the JSON property `serviceAccessApprover`
@@ -858,8 +858,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assured_workloads_monitoring = args[:assured_workloads_monitoring] if args.key?(:assured_workloads_monitoring)
           @data_logs_viewer = args[:data_logs_viewer] if args.key?(:data_logs_viewer)
-          @remediate_folder_violations = args[:remediate_folder_violations] if args.key?(:remediate_folder_violations)
           @service_access_approver = args[:service_access_approver] if args.key?(:service_access_approver)
         end
       end

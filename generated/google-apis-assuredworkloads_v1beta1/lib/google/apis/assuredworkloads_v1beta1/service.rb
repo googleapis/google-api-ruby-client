@@ -354,13 +354,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Analyzes a hypothetical move of a source project or project-based workload to
-        # a target (destination) folder-based workload.
+        # Analyzes a hypothetical move of a source project to a target (destination)
+        # folder-based workload.
         # @param [String] source
         #   The source type is a project-based workload. Specify the workloads's relative
         #   resource name, formatted as: "organizations/`ORGANIZATION_ID`/locations/`
         #   LOCATION_ID`/workloads/`WORKLOAD_ID`" For example: "organizations/123/
-        #   locations/us-east1/workloads/assured-workload-1"
+        #   locations/us-east1/workloads/assured-workload-1" This option is now deprecated
         # @param [String] target
         #   Required. The resource ID of the folder-based destination workload. This
         #   workload is where the source project will hypothetically be moved to. Specify
@@ -522,8 +522,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Analyzes a hypothetical move of a source project or project-based workload to
-        # a target (destination) folder-based workload.
+        # Analyzes a hypothetical move of a source project to a target (destination)
+        # folder-based workload.
         # @param [String] project
         #   The source type is a project. Specify the project's relative resource name,
         #   formatted as either a project number or a project ID: "projects/`
@@ -540,7 +540,7 @@ module Google
         #   The source type is a project-based workload. Specify the workloads's relative
         #   resource name, formatted as: "organizations/`ORGANIZATION_ID`/locations/`
         #   LOCATION_ID`/workloads/`WORKLOAD_ID`" For example: "organizations/123/
-        #   locations/us-east1/workloads/assured-workload-1"
+        #   locations/us-east1/workloads/assured-workload-1" This option is now deprecated
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
