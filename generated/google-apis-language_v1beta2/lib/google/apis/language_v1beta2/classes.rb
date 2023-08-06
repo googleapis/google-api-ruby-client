@@ -593,7 +593,7 @@ module Google
         # @return [Google::Apis::LanguageV1beta2::Sentiment]
         attr_accessor :sentiment
       
-        # Represents an output piece of text.
+        # Represents a text span in the input document.
         # Corresponds to the JSON property `text`
         # @return [Google::Apis::LanguageV1beta2::TextSpan]
         attr_accessor :text
@@ -812,7 +812,7 @@ module Google
         # @return [Google::Apis::LanguageV1beta2::Sentiment]
         attr_accessor :sentiment
       
-        # Represents an output piece of text.
+        # Represents a text span in the input document.
         # Corresponds to the JSON property `text`
         # @return [Google::Apis::LanguageV1beta2::TextSpan]
         attr_accessor :text
@@ -894,7 +894,7 @@ module Google
         end
       end
       
-      # Represents an output piece of text.
+      # Represents a text span in the input document.
       class TextSpan
         include Google::Apis::Core::Hashable
       
@@ -904,7 +904,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :begin_offset
       
-        # The content of the output text.
+        # The content of the text span, which is a substring of the document.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -939,7 +939,7 @@ module Google
         # @return [Google::Apis::LanguageV1beta2::PartOfSpeech]
         attr_accessor :part_of_speech
       
-        # Represents an output piece of text.
+        # Represents a text span in the input document.
         # Corresponds to the JSON property `text`
         # @return [Google::Apis::LanguageV1beta2::TextSpan]
         attr_accessor :text
