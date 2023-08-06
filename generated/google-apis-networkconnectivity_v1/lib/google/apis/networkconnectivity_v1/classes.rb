@@ -600,6 +600,69 @@ module Google
         end
       end
       
+      # A group is a set of spokes to which you can apply policies. Each group of
+      # spokes has its own route table. For each group, you can also set different
+      # rules for whether spokes can be automatically attached to the hub.
+      class Group
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the group was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The description of the group.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Labels in key:value format. For more information about labels, see [
+        # Requirements for labels](https://cloud.google.com/resource-manager/docs/
+        # creating-managing-labels#requirements).
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. The name of the group. Group names must be unique. They use the
+        # following form: `projects/`project_number`/locations/global/hubs/`hub`/groups/`
+        # group_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The current lifecycle state of this group.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The Google-generated UUID for the group. This value is unique
+        # across all group resources. If a group is deleted and another with the same
+        # name is created, the new route table is assigned a different unique_id.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The time the group was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # A Network Connectivity Center hub is a global management resource to which you
       # attach spokes. A single hub can contain spokes from multiple regions. However,
       # if any of a hub's spokes use the site-to-site data transfer feature, the
@@ -940,6 +1003,39 @@ module Google
           @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
           @uris = args[:uris] if args.key?(:uris)
           @vpc_network = args[:vpc_network] if args.key?(:vpc_network)
+        end
+      end
+      
+      # Response for HubService.ListGroups method.
+      class ListGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested groups.
+        # Corresponds to the JSON property `groups`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::Group>]
+        attr_accessor :groups
+      
+        # The token for the next page of the response. To see more results, use this
+        # value as the page_token for your next request. If this value is empty, there
+        # are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Hubs that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @groups = args[:groups] if args.key?(:groups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2301,6 +2397,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # The name of the group that this spoke is associated with.
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
         # Immutable. The name of the hub that this spoke is attached to.
         # Corresponds to the JSON property `hub`
         # @return [String]
@@ -2385,6 +2486,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @group = args[:group] if args.key?(:group)
           @hub = args[:hub] if args.key?(:hub)
           @labels = args[:labels] if args.key?(:labels)
           @linked_interconnect_attachments = args[:linked_interconnect_attachments] if args.key?(:linked_interconnect_attachments)
