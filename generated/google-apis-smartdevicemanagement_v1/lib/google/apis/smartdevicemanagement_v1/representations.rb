@@ -107,14 +107,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :devices, as: 'devices', class: Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1Device, decorator: Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1Device::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
       class GoogleHomeEnterpriseSdmV1ListRoomsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
           collection :rooms, as: 'rooms', class: Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1Room, decorator: Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1Room::Representation
       
         end
@@ -123,7 +121,6 @@ module Google
       class GoogleHomeEnterpriseSdmV1ListStructuresResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
           collection :structures, as: 'structures', class: Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1Structure, decorator: Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1Structure::Representation
       
         end
