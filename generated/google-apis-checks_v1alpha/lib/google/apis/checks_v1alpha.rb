@@ -29,9 +29,6 @@ module Google
       # Version of the Checks API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1alpha'
-
-      # Test scope for access to the Zoo service
-      AUTH_XAPI_ZOO = 'https://www.googleapis.com/auth/xapi.zoo'
     end
   end
 end
