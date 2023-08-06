@@ -891,6 +891,31 @@ module Google
         end
       end
       
+      # Verification information for target sites in advanced site search.
+      class GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Site verification state indicating the ownership and validity.
+        # Corresponds to the JSON property `siteVerificationState`
+        # @return [String]
+        attr_accessor :site_verification_state
+      
+        # Latest site verification time.
+        # Corresponds to the JSON property `verifyTime`
+        # @return [String]
+        attr_accessor :verify_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @site_verification_state = args[:site_verification_state] if args.key?(:site_verification_state)
+          @verify_time = args[:verify_time] if args.key?(:verify_time)
+        end
+      end
+      
       # A target site for the SiteSearchEngine.
       class GoogleCloudDiscoveryengineV1alphaTargetSite
         include Google::Apis::Core::Hashable
@@ -925,6 +950,11 @@ module Google
         # @return [String]
         attr_accessor :provided_uri_pattern
       
+        # Verification information for target sites in advanced site search.
+        # Corresponds to the JSON property `siteVerificationInfo`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo]
+        attr_accessor :site_verification_info
+      
         # The type of the target site, e.g. whether the site is to be included or
         # excluded.
         # Corresponds to the JSON property `type`
@@ -946,6 +976,7 @@ module Google
           @generated_uri_pattern = args[:generated_uri_pattern] if args.key?(:generated_uri_pattern)
           @name = args[:name] if args.key?(:name)
           @provided_uri_pattern = args[:provided_uri_pattern] if args.key?(:provided_uri_pattern)
+          @site_verification_info = args[:site_verification_info] if args.key?(:site_verification_info)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
