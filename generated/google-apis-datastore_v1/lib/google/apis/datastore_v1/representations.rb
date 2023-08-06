@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Avg
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BeginTransactionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -448,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Sum
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TransactionOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -464,7 +476,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alias, as: 'alias'
+          property :avg, as: 'avg', class: Google::Apis::DatastoreV1::Avg, decorator: Google::Apis::DatastoreV1::Avg::Representation
+      
           property :count, as: 'count', class: Google::Apis::DatastoreV1::Count, decorator: Google::Apis::DatastoreV1::Count::Representation
+      
+          property :sum, as: 'sum', class: Google::Apis::DatastoreV1::Sum, decorator: Google::Apis::DatastoreV1::Sum::Representation
       
         end
       end
@@ -518,6 +534,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :values, as: 'values', class: Google::Apis::DatastoreV1::Value, decorator: Google::Apis::DatastoreV1::Value::Representation
+      
+        end
+      end
+      
+      class Avg
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :property, as: 'property', class: Google::Apis::DatastoreV1::PropertyReference, decorator: Google::Apis::DatastoreV1::PropertyReference::Representation
       
         end
       end
@@ -1164,6 +1188,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class Sum
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :property, as: 'property', class: Google::Apis::DatastoreV1::PropertyReference, decorator: Google::Apis::DatastoreV1::PropertyReference::Representation
+      
         end
       end
       
