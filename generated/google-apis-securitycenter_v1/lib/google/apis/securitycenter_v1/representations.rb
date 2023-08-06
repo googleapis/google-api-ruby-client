@@ -46,6 +46,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AttackExposure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AttackPath
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AttackPathEdge
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AttackPathNode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AttackStepNode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +83,18 @@ module Google
       end
       
       class AuditLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchCreateResourceValueConfigsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchCreateResourceValueConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -107,6 +149,12 @@ module Google
       end
       
       class Container
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateResourceValueConfigRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV1ResourceValueConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -424,6 +478,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAttackPathsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListBigQueryExportsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -478,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListResourceValueConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSecurityHealthAnalyticsCustomModulesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -485,6 +551,12 @@ module Google
       end
       
       class ListSourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListValuedResourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -532,6 +604,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PathNodeAssociatedFinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Pod
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -569,6 +647,12 @@ module Google
       end
       
       class Resource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceValueConfigMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -622,6 +706,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Simulation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Source
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -665,6 +755,12 @@ module Google
       end
       
       class ValidateEventThreatDetectionCustomModuleResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValuedResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -740,6 +836,63 @@ module Google
         end
       end
       
+      class AttackExposure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attack_exposure_result, as: 'attackExposureResult'
+          property :exposed_high_value_resources_count, as: 'exposedHighValueResourcesCount'
+          property :exposed_low_value_resources_count, as: 'exposedLowValueResourcesCount'
+          property :exposed_medium_value_resources_count, as: 'exposedMediumValueResourcesCount'
+          property :latest_calculation_time, as: 'latestCalculationTime'
+          property :score, as: 'score'
+          property :state, as: 'state'
+        end
+      end
+      
+      class AttackPath
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :edges, as: 'edges', class: Google::Apis::SecuritycenterV1::AttackPathEdge, decorator: Google::Apis::SecuritycenterV1::AttackPathEdge::Representation
+      
+          property :name, as: 'name'
+          collection :path_nodes, as: 'pathNodes', class: Google::Apis::SecuritycenterV1::AttackPathNode, decorator: Google::Apis::SecuritycenterV1::AttackPathNode::Representation
+      
+        end
+      end
+      
+      class AttackPathEdge
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination'
+          property :source, as: 'source'
+        end
+      end
+      
+      class AttackPathNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associated_findings, as: 'associatedFindings', class: Google::Apis::SecuritycenterV1::PathNodeAssociatedFinding, decorator: Google::Apis::SecuritycenterV1::PathNodeAssociatedFinding::Representation
+      
+          collection :attack_steps, as: 'attackSteps', class: Google::Apis::SecuritycenterV1::AttackStepNode, decorator: Google::Apis::SecuritycenterV1::AttackStepNode::Representation
+      
+          property :display_name, as: 'displayName'
+          property :resource, as: 'resource'
+          property :resource_type, as: 'resourceType'
+          property :uuid, as: 'uuid'
+        end
+      end
+      
+      class AttackStepNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
+          property :type, as: 'type'
+          property :uuid, as: 'uuid'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -754,6 +907,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
           property :log_type, as: 'logType'
+        end
+      end
+      
+      class BatchCreateResourceValueConfigsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::SecuritycenterV1::CreateResourceValueConfigRequest, decorator: Google::Apis::SecuritycenterV1::CreateResourceValueConfigRequest::Representation
+      
+        end
+      end
+      
+      class BatchCreateResourceValueConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_value_configs, as: 'resourceValueConfigs', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceValueConfig, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceValueConfig::Representation
+      
         end
       end
       
@@ -837,6 +1006,15 @@ module Google
       
           property :name, as: 'name'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class CreateResourceValueConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
+          property :resource_value_config, as: 'resourceValueConfig', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceValueConfig, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceValueConfig::Representation
+      
         end
       end
       
@@ -979,6 +1157,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access, as: 'access', class: Google::Apis::SecuritycenterV1::Access, decorator: Google::Apis::SecuritycenterV1::Access::Representation
+      
+          property :attack_exposure, as: 'attackExposure', class: Google::Apis::SecuritycenterV1::AttackExposure, decorator: Google::Apis::SecuritycenterV1::AttackExposure::Representation
       
           property :canonical_name, as: 'canonicalName'
           property :category, as: 'category'
@@ -1197,6 +1377,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :resource_types, as: 'resourceTypes'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceValueConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :name, as: 'name'
+          hash :resource_labels_selector, as: 'resourceLabelsSelector'
+          property :resource_type, as: 'resourceType'
+          property :resource_value, as: 'resourceValue'
+          property :scope, as: 'scope'
+          collection :tag_values, as: 'tagValues'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1440,6 +1635,15 @@ module Google
         end
       end
       
+      class ListAttackPathsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attack_paths, as: 'attackPaths', class: Google::Apis::SecuritycenterV1::AttackPath, decorator: Google::Apis::SecuritycenterV1::AttackPath::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListBigQueryExportsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1525,6 +1729,15 @@ module Google
         end
       end
       
+      class ListResourceValueConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resource_value_configs, as: 'resourceValueConfigs', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceValueConfig, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceValueConfig::Representation
+      
+        end
+      end
+      
       class ListSecurityHealthAnalyticsCustomModulesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1539,6 +1752,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :sources, as: 'sources', class: Google::Apis::SecuritycenterV1::Source, decorator: Google::Apis::SecuritycenterV1::Source::Representation
+      
+        end
+      end
+      
+      class ListValuedResourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
+          collection :valued_resources, as: 'valuedResources', class: Google::Apis::SecuritycenterV1::ValuedResource, decorator: Google::Apis::SecuritycenterV1::ValuedResource::Representation
       
         end
       end
@@ -1609,6 +1832,15 @@ module Google
           property :asset_discovery_config, as: 'assetDiscoveryConfig', class: Google::Apis::SecuritycenterV1::AssetDiscoveryConfig, decorator: Google::Apis::SecuritycenterV1::AssetDiscoveryConfig::Representation
       
           property :enable_asset_discovery, as: 'enableAssetDiscovery'
+          property :name, as: 'name'
+        end
+      end
+      
+      class PathNodeAssociatedFinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_finding, as: 'canonicalFinding'
+          property :finding_category, as: 'findingCategory'
           property :name, as: 'name'
         end
       end
@@ -1698,6 +1930,13 @@ module Google
         end
       end
       
+      class ResourceValueConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class Role
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1770,6 +2009,16 @@ module Google
         end
       end
       
+      class Simulation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          collection :resource_value_configs_metadata, as: 'resourceValueConfigsMetadata', class: Google::Apis::SecuritycenterV1::ResourceValueConfigMetadata, decorator: Google::Apis::SecuritycenterV1::ResourceValueConfigMetadata::Representation
+      
+        end
+      end
+      
       class Source
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1831,6 +2080,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :errors, as: 'errors', class: Google::Apis::SecuritycenterV1::CustomModuleValidationErrors, decorator: Google::Apis::SecuritycenterV1::CustomModuleValidationErrors::Representation
+      
+        end
+      end
+      
+      class ValuedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :exposed_score, as: 'exposedScore'
+          property :name, as: 'name'
+          property :resource, as: 'resource'
+          property :resource_type, as: 'resourceType'
+          property :resource_value, as: 'resourceValue'
+          collection :resource_value_configs_used, as: 'resourceValueConfigsUsed', class: Google::Apis::SecuritycenterV1::ResourceValueConfigMetadata, decorator: Google::Apis::SecuritycenterV1::ResourceValueConfigMetadata::Representation
       
         end
       end
