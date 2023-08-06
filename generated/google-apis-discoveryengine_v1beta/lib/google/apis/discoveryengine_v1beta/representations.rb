@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaTargetSite
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -639,6 +645,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :site_verification_state, as: 'siteVerificationState'
+          property :verify_time, as: 'verifyTime'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaTargetSite
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -646,6 +660,8 @@ module Google
           property :generated_uri_pattern, as: 'generatedUriPattern'
           property :name, as: 'name'
           property :provided_uri_pattern, as: 'providedUriPattern'
+          property :site_verification_info, as: 'siteVerificationInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo::Representation
+      
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
         end
