@@ -38,6 +38,32 @@ module Google
         end
       end
       
+      # Describes the progress of the operation. Unit of work is generic and must be
+      # interpreted based on where Progress is used.
+      class GoogleFirestoreAdminV1Progress
+        include Google::Apis::Core::Hashable
+      
+        # The amount of work completed.
+        # Corresponds to the JSON property `completedWork`
+        # @return [Fixnum]
+        attr_accessor :completed_work
+      
+        # The amount of work estimated.
+        # Corresponds to the JSON property `estimatedWork`
+        # @return [Fixnum]
+        attr_accessor :estimated_work
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completed_work = args[:completed_work] if args.key?(:completed_work)
+          @estimated_work = args[:estimated_work] if args.key?(:estimated_work)
+        end
+      end
+      
       # Metadata for the long-running operation from the RestoreDatabase request.
       class GoogleFirestoreAdminV1RestoreDatabaseMetadata
         include Google::Apis::Core::Hashable
@@ -62,6 +88,12 @@ module Google
         # @return [String]
         attr_accessor :operation_state
       
+        # Describes the progress of the operation. Unit of work is generic and must be
+        # interpreted based on where Progress is used.
+        # Corresponds to the JSON property `progressPercentage`
+        # @return [Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1Progress]
+        attr_accessor :progress_percentage
+      
         # The time the restore was started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -77,6 +109,7 @@ module Google
           @database = args[:database] if args.key?(:database)
           @end_time = args[:end_time] if args.key?(:end_time)
           @operation_state = args[:operation_state] if args.key?(:operation_state)
+          @progress_percentage = args[:progress_percentage] if args.key?(:progress_percentage)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end

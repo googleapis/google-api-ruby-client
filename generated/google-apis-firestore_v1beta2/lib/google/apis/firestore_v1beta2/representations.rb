@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1Progress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1RestoreDatabaseMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -148,6 +154,14 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1Progress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completed_work, :numeric_string => true, as: 'completedWork'
+          property :estimated_work, :numeric_string => true, as: 'estimatedWork'
+        end
+      end
+      
       class GoogleFirestoreAdminV1RestoreDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -155,6 +169,8 @@ module Google
           property :database, as: 'database'
           property :end_time, as: 'endTime'
           property :operation_state, as: 'operationState'
+          property :progress_percentage, as: 'progressPercentage', class: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1Progress, decorator: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1Progress::Representation
+      
           property :start_time, as: 'startTime'
         end
       end
