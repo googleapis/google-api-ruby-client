@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AttackExposure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +275,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV1ResourceSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceValueConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -634,6 +646,19 @@ module Google
         end
       end
       
+      class AttackExposure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attack_exposure_result, as: 'attackExposureResult'
+          property :exposed_high_value_resources_count, as: 'exposedHighValueResourcesCount'
+          property :exposed_low_value_resources_count, as: 'exposedLowValueResourcesCount'
+          property :exposed_medium_value_resources_count, as: 'exposedMediumValueResourcesCount'
+          property :latest_calculation_time, as: 'latestCalculationTime'
+          property :score, as: 'score'
+          property :state, as: 'state'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -837,6 +862,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access, as: 'access', class: Google::Apis::SecuritycenterV1beta1::Access, decorator: Google::Apis::SecuritycenterV1beta1::Access::Representation
+      
+          property :attack_exposure, as: 'attackExposure', class: Google::Apis::SecuritycenterV1beta1::AttackExposure, decorator: Google::Apis::SecuritycenterV1beta1::AttackExposure::Representation
       
           property :canonical_name, as: 'canonicalName'
           property :category, as: 'category'
@@ -1055,6 +1082,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :resource_types, as: 'resourceTypes'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceValueConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :name, as: 'name'
+          hash :resource_labels_selector, as: 'resourceLabelsSelector'
+          property :resource_type, as: 'resourceType'
+          property :resource_value, as: 'resourceValue'
+          property :scope, as: 'scope'
+          collection :tag_values, as: 'tagValues'
+          property :update_time, as: 'updateTime'
         end
       end
       
