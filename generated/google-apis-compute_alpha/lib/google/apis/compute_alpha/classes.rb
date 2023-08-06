@@ -25538,6 +25538,12 @@ module Google
         # @return [String]
         attr_accessor :instance
       
+        # [Output Only] The overrides to instance properties resulting from
+        # InstanceFlexibilityPolicy.
+        # Corresponds to the JSON property `instanceFlexibilityOverride`
+        # @return [Google::Apis::ComputeAlpha::ManagedInstanceInstanceFlexibilityOverride]
+        attr_accessor :instance_flexibility_override
+      
         # [Output Only] Health state of the instance per health-check.
         # Corresponds to the JSON property `instanceHealth`
         # @return [Array<Google::Apis::ComputeAlpha::ManagedInstanceInstanceHealth>]
@@ -25604,6 +25610,7 @@ module Google
           @current_action = args[:current_action] if args.key?(:current_action)
           @id = args[:id] if args.key?(:id)
           @instance = args[:instance] if args.key?(:instance)
+          @instance_flexibility_override = args[:instance_flexibility_override] if args.key?(:instance_flexibility_override)
           @instance_health = args[:instance_health] if args.key?(:instance_health)
           @instance_status = args[:instance_status] if args.key?(:instance_status)
           @instance_template = args[:instance_template] if args.key?(:instance_template)
@@ -25634,6 +25641,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @revision = args[:revision] if args.key?(:revision)
+        end
+      end
+      
+      # 
+      class ManagedInstanceInstanceFlexibilityOverride
+        include Google::Apis::Core::Hashable
+      
+        # The machine type to be used for this instance.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # The provisioning model to be used for this instance.
+        # Corresponds to the JSON property `provisioningModel`
+        # @return [String]
+        attr_accessor :provisioning_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
         end
       end
       
@@ -31148,7 +31180,7 @@ module Google
       # Handling API responses. Operations can be global, regional or zonal. - For
       # global operations, use the `globalOperations` resource. - For regional
       # operations, use the `regionOperations` resource. - For zonal operations, use
-      # the `zonalOperations` resource. For more information, read Global, Regional,
+      # the `zoneOperations` resource. For more information, read Global, Regional,
       # and Zonal Resources.
       class Operation
         include Google::Apis::Core::Hashable
