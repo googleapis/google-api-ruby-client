@@ -3178,6 +3178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedInstanceInstanceFlexibilityOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedInstanceInstanceHealth
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -13340,6 +13346,8 @@ module Google
           property :current_action, as: 'currentAction'
           property :id, :numeric_string => true, as: 'id'
           property :instance, as: 'instance'
+          property :instance_flexibility_override, as: 'instanceFlexibilityOverride', class: Google::Apis::ComputeAlpha::ManagedInstanceInstanceFlexibilityOverride, decorator: Google::Apis::ComputeAlpha::ManagedInstanceInstanceFlexibilityOverride::Representation
+      
           collection :instance_health, as: 'instanceHealth', class: Google::Apis::ComputeAlpha::ManagedInstanceInstanceHealth, decorator: Google::Apis::ComputeAlpha::ManagedInstanceInstanceHealth::Representation
       
           property :instance_status, as: 'instanceStatus'
@@ -13362,6 +13370,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :revision, as: 'revision'
+        end
+      end
+      
+      class ManagedInstanceInstanceFlexibilityOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :machine_type, as: 'machineType'
+          property :provisioning_model, as: 'provisioningModel'
         end
       end
       
