@@ -1652,8 +1652,8 @@ module Google
         attr_accessor :channel
       
         # Deny Maintenance Period that is applied to resource to indicate when
-        # maintenance is forbidden. User can specify zero or more non-overlapping deny
-        # periods. Maximum number of deny_maintenance_periods expected is one.
+        # maintenance is forbidden. The protocol supports zero-to-many such periods, but
+        # the current SLM Rollout implementation only supports zero-to-one.
         # Corresponds to the JSON property `denyMaintenancePeriods`
         # @return [Array<Google::Apis::MemcacheV1beta2::DenyMaintenancePeriod>]
         attr_accessor :deny_maintenance_periods
