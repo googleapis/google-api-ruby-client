@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SignSshPublicKeyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SignSshPublicKeyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SshPublicKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,6 +136,20 @@ module Google
       
           property :web_authn, as: 'webAuthn', class: Google::Apis::OsloginV1alpha::WebAuthn, decorator: Google::Apis::OsloginV1alpha::WebAuthn::Representation
       
+        end
+      end
+      
+      class SignSshPublicKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ssh_public_key, as: 'sshPublicKey'
+        end
+      end
+      
+      class SignSshPublicKeyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :signed_ssh_public_key, as: 'signedSshPublicKey'
         end
       end
       
