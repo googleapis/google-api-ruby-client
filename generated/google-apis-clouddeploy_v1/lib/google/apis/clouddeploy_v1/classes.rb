@@ -391,6 +391,16 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :percentages
       
+        # Postdeploy contains the postdeploy job configuration information.
+        # Corresponds to the JSON property `postdeploy`
+        # @return [Google::Apis::ClouddeployV1::Postdeploy]
+        attr_accessor :postdeploy
+      
+        # Predeploy contains the predeploy job configuration information.
+        # Corresponds to the JSON property `predeploy`
+        # @return [Google::Apis::ClouddeployV1::Predeploy]
+        attr_accessor :predeploy
+      
         # Whether to run verify tests after each percentage deployment.
         # Corresponds to the JSON property `verify`
         # @return [Boolean]
@@ -404,6 +414,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @percentages = args[:percentages] if args.key?(:percentages)
+          @postdeploy = args[:postdeploy] if args.key?(:postdeploy)
+          @predeploy = args[:predeploy] if args.key?(:predeploy)
           @verify = args[:verify] if args.key?(:verify)
         end
       end
@@ -999,6 +1011,16 @@ module Google
         attr_accessor :deploy_job
       
         # Job represents an operation for a `Rollout`.
+        # Corresponds to the JSON property `postdeployJob`
+        # @return [Google::Apis::ClouddeployV1::Job]
+        attr_accessor :postdeploy_job
+      
+        # Job represents an operation for a `Rollout`.
+        # Corresponds to the JSON property `predeployJob`
+        # @return [Google::Apis::ClouddeployV1::Job]
+        attr_accessor :predeploy_job
+      
+        # Job represents an operation for a `Rollout`.
         # Corresponds to the JSON property `verifyJob`
         # @return [Google::Apis::ClouddeployV1::Job]
         attr_accessor :verify_job
@@ -1010,6 +1032,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deploy_job = args[:deploy_job] if args.key?(:deploy_job)
+          @postdeploy_job = args[:postdeploy_job] if args.key?(:postdeploy_job)
+          @predeploy_job = args[:predeploy_job] if args.key?(:predeploy_job)
           @verify_job = args[:verify_job] if args.key?(:verify_job)
         end
       end
@@ -1288,6 +1312,16 @@ module Google
         # @return [String]
         attr_accessor :job_run
       
+        # A postdeploy Job.
+        # Corresponds to the JSON property `postdeployJob`
+        # @return [Google::Apis::ClouddeployV1::PostdeployJob]
+        attr_accessor :postdeploy_job
+      
+        # A predeploy Job.
+        # Corresponds to the JSON property `predeployJob`
+        # @return [Google::Apis::ClouddeployV1::PredeployJob]
+        attr_accessor :predeploy_job
+      
         # Output only. Additional information on why the Job was skipped, if available.
         # Corresponds to the JSON property `skipMessage`
         # @return [String]
@@ -1314,6 +1348,8 @@ module Google
           @deploy_job = args[:deploy_job] if args.key?(:deploy_job)
           @id = args[:id] if args.key?(:id)
           @job_run = args[:job_run] if args.key?(:job_run)
+          @postdeploy_job = args[:postdeploy_job] if args.key?(:postdeploy_job)
+          @predeploy_job = args[:predeploy_job] if args.key?(:predeploy_job)
           @skip_message = args[:skip_message] if args.key?(:skip_message)
           @state = args[:state] if args.key?(:state)
           @verify_job = args[:verify_job] if args.key?(:verify_job)
@@ -1376,6 +1412,16 @@ module Google
         # @return [String]
         attr_accessor :phase_id
       
+        # PostdeployJobRun contains information specific to a postdeploy `JobRun`.
+        # Corresponds to the JSON property `postdeployJobRun`
+        # @return [Google::Apis::ClouddeployV1::PostdeployJobRun]
+        attr_accessor :postdeploy_job_run
+      
+        # PredeployJobRun contains information specific to a predeploy `JobRun`.
+        # Corresponds to the JSON property `predeployJobRun`
+        # @return [Google::Apis::ClouddeployV1::PredeployJobRun]
+        attr_accessor :predeploy_job_run
+      
         # Output only. Time at which the `JobRun` was started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -1411,6 +1457,8 @@ module Google
           @job_id = args[:job_id] if args.key?(:job_id)
           @name = args[:name] if args.key?(:name)
           @phase_id = args[:phase_id] if args.key?(:phase_id)
+          @postdeploy_job_run = args[:postdeploy_job_run] if args.key?(:postdeploy_job_run)
+          @predeploy_job_run = args[:predeploy_job_run] if args.key?(:predeploy_job_run)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
@@ -2011,6 +2059,16 @@ module Google
         # @return [String]
         attr_accessor :phase_id
       
+        # Postdeploy contains the postdeploy job configuration information.
+        # Corresponds to the JSON property `postdeploy`
+        # @return [Google::Apis::ClouddeployV1::Postdeploy]
+        attr_accessor :postdeploy
+      
+        # Predeploy contains the predeploy job configuration information.
+        # Corresponds to the JSON property `predeploy`
+        # @return [Google::Apis::ClouddeployV1::Predeploy]
+        attr_accessor :predeploy
+      
         # Skaffold profiles to use when rendering the manifest for this phase. These are
         # in addition to the profiles list specified in the `DeliveryPipeline` stage.
         # Corresponds to the JSON property `profiles`
@@ -2031,6 +2089,8 @@ module Google
         def update!(**args)
           @percentage = args[:percentage] if args.key?(:percentage)
           @phase_id = args[:phase_id] if args.key?(:phase_id)
+          @postdeploy = args[:postdeploy] if args.key?(:postdeploy)
+          @predeploy = args[:predeploy] if args.key?(:predeploy)
           @profiles = args[:profiles] if args.key?(:profiles)
           @verify = args[:verify] if args.key?(:verify)
         end
@@ -2190,6 +2250,152 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Postdeploy contains the postdeploy job configuration information.
+      class Postdeploy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A sequence of skaffold custom actions to invoke during execution of
+        # the postdeploy job.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<String>]
+        attr_accessor :actions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+        end
+      end
+      
+      # A postdeploy Job.
+      class PostdeployJob
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The custom actions that the postdeploy Job executes.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<String>]
+        attr_accessor :actions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+        end
+      end
+      
+      # PostdeployJobRun contains information specific to a postdeploy `JobRun`.
+      class PostdeployJobRun
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the Cloud Build `Build` object that is used
+        # to execute the custom actions associated with the postdeploy Job. Format is
+        # projects/`project`/locations/`location`/builds/`build`.
+        # Corresponds to the JSON property `build`
+        # @return [String]
+        attr_accessor :build
+      
+        # Output only. The reason the postdeploy failed. This will always be unspecified
+        # while the postdeploy is in progress or if it succeeded.
+        # Corresponds to the JSON property `failureCause`
+        # @return [String]
+        attr_accessor :failure_cause
+      
+        # Output only. Additional information about the postdeploy failure, if available.
+        # Corresponds to the JSON property `failureMessage`
+        # @return [String]
+        attr_accessor :failure_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build = args[:build] if args.key?(:build)
+          @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
+          @failure_message = args[:failure_message] if args.key?(:failure_message)
+        end
+      end
+      
+      # Predeploy contains the predeploy job configuration information.
+      class Predeploy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A sequence of skaffold custom actions to invoke during execution of
+        # the predeploy job.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<String>]
+        attr_accessor :actions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+        end
+      end
+      
+      # A predeploy Job.
+      class PredeployJob
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The custom actions that the predeploy Job executes.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<String>]
+        attr_accessor :actions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+        end
+      end
+      
+      # PredeployJobRun contains information specific to a predeploy `JobRun`.
+      class PredeployJobRun
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the Cloud Build `Build` object that is used
+        # to execute the custom actions associated with the predeploy Job. Format is
+        # projects/`project`/locations/`location`/builds/`build`.
+        # Corresponds to the JSON property `build`
+        # @return [String]
+        attr_accessor :build
+      
+        # Output only. The reason the predeploy failed. This will always be unspecified
+        # while the predeploy is in progress or if it succeeded.
+        # Corresponds to the JSON property `failureCause`
+        # @return [String]
+        attr_accessor :failure_cause
+      
+        # Output only. Additional information about the predeploy failure, if available.
+        # Corresponds to the JSON property `failureMessage`
+        # @return [String]
+        attr_accessor :failure_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build = args[:build] if args.key?(:build)
+          @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
+          @failure_message = args[:failure_message] if args.key?(:failure_message)
         end
       end
       
@@ -3022,6 +3228,16 @@ module Google
       class Standard
         include Google::Apis::Core::Hashable
       
+        # Postdeploy contains the postdeploy job configuration information.
+        # Corresponds to the JSON property `postdeploy`
+        # @return [Google::Apis::ClouddeployV1::Postdeploy]
+        attr_accessor :postdeploy
+      
+        # Predeploy contains the predeploy job configuration information.
+        # Corresponds to the JSON property `predeploy`
+        # @return [Google::Apis::ClouddeployV1::Predeploy]
+        attr_accessor :predeploy
+      
         # Whether to verify a deployment.
         # Corresponds to the JSON property `verify`
         # @return [Boolean]
@@ -3034,6 +3250,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @postdeploy = args[:postdeploy] if args.key?(:postdeploy)
+          @predeploy = args[:predeploy] if args.key?(:predeploy)
           @verify = args[:verify] if args.key?(:verify)
         end
       end

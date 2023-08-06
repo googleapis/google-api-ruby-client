@@ -418,6 +418,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Postdeploy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostdeployJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostdeployJobRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Predeploy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PredeployJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PredeployJobRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrivatePool
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -726,6 +762,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :percentages, as: 'percentages'
+          property :postdeploy, as: 'postdeploy', class: Google::Apis::ClouddeployV1::Postdeploy, decorator: Google::Apis::ClouddeployV1::Postdeploy::Representation
+      
+          property :predeploy, as: 'predeploy', class: Google::Apis::ClouddeployV1::Predeploy, decorator: Google::Apis::ClouddeployV1::Predeploy::Representation
+      
           property :verify, as: 'verify'
         end
       end
@@ -913,6 +953,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deploy_job, as: 'deployJob', class: Google::Apis::ClouddeployV1::Job, decorator: Google::Apis::ClouddeployV1::Job::Representation
       
+          property :postdeploy_job, as: 'postdeployJob', class: Google::Apis::ClouddeployV1::Job, decorator: Google::Apis::ClouddeployV1::Job::Representation
+      
+          property :predeploy_job, as: 'predeployJob', class: Google::Apis::ClouddeployV1::Job, decorator: Google::Apis::ClouddeployV1::Job::Representation
+      
           property :verify_job, as: 'verifyJob', class: Google::Apis::ClouddeployV1::Job, decorator: Google::Apis::ClouddeployV1::Job::Representation
       
         end
@@ -992,6 +1036,10 @@ module Google
       
           property :id, as: 'id'
           property :job_run, as: 'jobRun'
+          property :postdeploy_job, as: 'postdeployJob', class: Google::Apis::ClouddeployV1::PostdeployJob, decorator: Google::Apis::ClouddeployV1::PostdeployJob::Representation
+      
+          property :predeploy_job, as: 'predeployJob', class: Google::Apis::ClouddeployV1::PredeployJob, decorator: Google::Apis::ClouddeployV1::PredeployJob::Representation
+      
           property :skip_message, as: 'skipMessage'
           property :state, as: 'state'
           property :verify_job, as: 'verifyJob', class: Google::Apis::ClouddeployV1::VerifyJob, decorator: Google::Apis::ClouddeployV1::VerifyJob::Representation
@@ -1014,6 +1062,10 @@ module Google
           property :job_id, as: 'jobId'
           property :name, as: 'name'
           property :phase_id, as: 'phaseId'
+          property :postdeploy_job_run, as: 'postdeployJobRun', class: Google::Apis::ClouddeployV1::PostdeployJobRun, decorator: Google::Apis::ClouddeployV1::PostdeployJobRun::Representation
+      
+          property :predeploy_job_run, as: 'predeployJobRun', class: Google::Apis::ClouddeployV1::PredeployJobRun, decorator: Google::Apis::ClouddeployV1::PredeployJobRun::Representation
+      
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :uid, as: 'uid'
@@ -1191,6 +1243,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :percentage, as: 'percentage'
           property :phase_id, as: 'phaseId'
+          property :postdeploy, as: 'postdeploy', class: Google::Apis::ClouddeployV1::Postdeploy, decorator: Google::Apis::ClouddeployV1::Postdeploy::Representation
+      
+          property :predeploy, as: 'predeploy', class: Google::Apis::ClouddeployV1::Predeploy, decorator: Google::Apis::ClouddeployV1::Predeploy::Representation
+      
           collection :profiles, as: 'profiles'
           property :verify, as: 'verify'
         end
@@ -1225,6 +1281,52 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class Postdeploy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions'
+        end
+      end
+      
+      class PostdeployJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions'
+        end
+      end
+      
+      class PostdeployJobRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build, as: 'build'
+          property :failure_cause, as: 'failureCause'
+          property :failure_message, as: 'failureMessage'
+        end
+      end
+      
+      class Predeploy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions'
+        end
+      end
+      
+      class PredeployJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions'
+        end
+      end
+      
+      class PredeployJobRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build, as: 'build'
+          property :failure_cause, as: 'failureCause'
+          property :failure_message, as: 'failureMessage'
         end
       end
       
@@ -1438,6 +1540,10 @@ module Google
       class Standard
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :postdeploy, as: 'postdeploy', class: Google::Apis::ClouddeployV1::Postdeploy, decorator: Google::Apis::ClouddeployV1::Postdeploy::Representation
+      
+          property :predeploy, as: 'predeploy', class: Google::Apis::ClouddeployV1::Predeploy, decorator: Google::Apis::ClouddeployV1::Predeploy::Representation
+      
           property :verify, as: 'verify'
         end
       end
