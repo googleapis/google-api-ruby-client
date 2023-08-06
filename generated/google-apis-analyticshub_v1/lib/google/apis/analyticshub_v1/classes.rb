@@ -248,6 +248,12 @@ module Google
         # @return [String]
         attr_accessor :primary_contact
       
+        # Sharing environment is a behavior model for sharing data within a data
+        # exchange. This option is configurable for a data exchange.
+        # Corresponds to the JSON property `sharingEnvironmentConfig`
+        # @return [Google::Apis::AnalyticshubV1::SharingEnvironmentConfig]
+        attr_accessor :sharing_environment_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -261,6 +267,7 @@ module Google
           @listing_count = args[:listing_count] if args.key?(:listing_count)
           @name = args[:name] if args.key?(:name)
           @primary_contact = args[:primary_contact] if args.key?(:primary_contact)
+          @sharing_environment_config = args[:sharing_environment_config] if args.key?(:sharing_environment_config)
         end
       end
       
@@ -286,6 +293,32 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @primary_contact = args[:primary_contact] if args.key?(:primary_contact)
+        end
+      end
+      
+      # Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+      class DcrExchangeConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Default Analytics Hub data exchange, used for secured data sharing.
+      class DefaultExchangeConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -480,6 +513,26 @@ module Google
         end
       end
       
+      # Reference to a linked resource tracked by this Subscription.
+      class LinkedResource
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the linked dataset, e.g. projects/subscriberproject/
+        # datasets/linked_dataset
+        # Corresponds to the JSON property `linkedDataset`
+        # @return [String]
+        attr_accessor :linked_dataset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @linked_dataset = args[:linked_dataset] if args.key?(:linked_dataset)
+        end
+      end
+      
       # Message for response to the list of data exchanges.
       class ListDataExchangesResponse
         include Google::Apis::Core::Hashable
@@ -552,6 +605,56 @@ module Google
         def update!(**args)
           @data_exchanges = args[:data_exchanges] if args.key?(:data_exchanges)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Message for response to the listing of shared resource subscriptions.
+      class ListSharedResourceSubscriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of subscriptions.
+        # Corresponds to the JSON property `sharedResourceSubscriptions`
+        # @return [Array<Google::Apis::AnalyticshubV1::Subscription>]
+        attr_accessor :shared_resource_subscriptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @shared_resource_subscriptions = args[:shared_resource_subscriptions] if args.key?(:shared_resource_subscriptions)
+        end
+      end
+      
+      # Message for response to the listing of subscriptions.
+      class ListSubscriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of subscriptions.
+        # Corresponds to the JSON property `subscriptions`
+        # @return [Array<Google::Apis::AnalyticshubV1::Subscription>]
+        attr_accessor :subscriptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
         end
       end
       
@@ -665,6 +768,68 @@ module Google
           @request_access = args[:request_access] if args.key?(:request_access)
           @restricted_export_config = args[:restricted_export_config] if args.key?(:restricted_export_config)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class Operation
+        include Google::Apis::Core::Hashable
+      
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::AnalyticshubV1::Status]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -847,6 +1012,41 @@ module Google
         end
       end
       
+      # Message for refreshing a subscription.
+      class RefreshSubscriptionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message for response when you refresh a subscription.
+      class RefreshSubscriptionResponse
+        include Google::Apis::Core::Hashable
+      
+        # A subscription represents a subscribers' access to a particular set of
+        # published data. It contains references to associated listings, data exchanges,
+        # and linked datasets. TODO(b/267528977) Consider port the new resource to
+        # v1beta1 and dataexchange APIs.
+        # Corresponds to the JSON property `subscription`
+        # @return [Google::Apis::AnalyticshubV1::Subscription]
+        attr_accessor :subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
       # Restricted export config, used to configure restricted export on linked
       # dataset.
       class RestrictedExportConfig
@@ -881,6 +1081,32 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @restrict_direct_table_access = args[:restrict_direct_table_access] if args.key?(:restrict_direct_table_access)
           @restrict_query_result = args[:restrict_query_result] if args.key?(:restrict_query_result)
+        end
+      end
+      
+      # Message for revoking a subscription.
+      class RevokeSubscriptionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message for response when you revoke a subscription.
+      class RevokeSubscriptionResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -937,6 +1163,125 @@ module Google
         end
       end
       
+      # Sharing environment is a behavior model for sharing data within a data
+      # exchange. This option is configurable for a data exchange.
+      class SharingEnvironmentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+        # Corresponds to the JSON property `dcrExchangeConfig`
+        # @return [Google::Apis::AnalyticshubV1::DcrExchangeConfig]
+        attr_accessor :dcr_exchange_config
+      
+        # Default Analytics Hub data exchange, used for secured data sharing.
+        # Corresponds to the JSON property `defaultExchangeConfig`
+        # @return [Google::Apis::AnalyticshubV1::DefaultExchangeConfig]
+        attr_accessor :default_exchange_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dcr_exchange_config = args[:dcr_exchange_config] if args.key?(:dcr_exchange_config)
+          @default_exchange_config = args[:default_exchange_config] if args.key?(:default_exchange_config)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Message for subscribing to a Data Exchange.
+      class SubscribeDataExchangeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The parent resource path of the Subscription. e.g. `projects/
+        # subscriberproject/locations/US`
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # Email of the subscriber.
+        # Corresponds to the JSON property `subscriberContact`
+        # @return [String]
+        attr_accessor :subscriber_contact
+      
+        # Required. Name of the subscription to create. e.g. `subscription1`
+        # Corresponds to the JSON property `subscription`
+        # @return [String]
+        attr_accessor :subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+          @subscriber_contact = args[:subscriber_contact] if args.key?(:subscriber_contact)
+          @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
+      # Message for response when you subscribe to a Data Exchange.
+      class SubscribeDataExchangeResponse
+        include Google::Apis::Core::Hashable
+      
+        # A subscription represents a subscribers' access to a particular set of
+        # published data. It contains references to associated listings, data exchanges,
+        # and linked datasets. TODO(b/267528977) Consider port the new resource to
+        # v1beta1 and dataexchange APIs.
+        # Corresponds to the JSON property `subscription`
+        # @return [Google::Apis::AnalyticshubV1::Subscription]
+        attr_accessor :subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
       # Message for subscribing to a listing.
       class SubscribeListingRequest
         include Google::Apis::Core::Hashable
@@ -960,12 +1305,103 @@ module Google
       class SubscribeListingResponse
         include Google::Apis::Core::Hashable
       
+        # A subscription represents a subscribers' access to a particular set of
+        # published data. It contains references to associated listings, data exchanges,
+        # and linked datasets. TODO(b/267528977) Consider port the new resource to
+        # v1beta1 and dataexchange APIs.
+        # Corresponds to the JSON property `subscription`
+        # @return [Google::Apis::AnalyticshubV1::Subscription]
+        attr_accessor :subscription
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
+      # A subscription represents a subscribers' access to a particular set of
+      # published data. It contains references to associated listings, data exchanges,
+      # and linked datasets. TODO(b/267528977) Consider port the new resource to
+      # v1beta1 and dataexchange APIs.
+      class Subscription
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the subscription was created.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # Output only. Resource name of the source Data Exchange. e.g. projects/123/
+        # locations/US/dataExchanges/456
+        # Corresponds to the JSON property `dataExchange`
+        # @return [String]
+        attr_accessor :data_exchange
+      
+        # Output only. Timestamp when the subscription was last modified.
+        # Corresponds to the JSON property `lastModifyTime`
+        # @return [String]
+        attr_accessor :last_modify_time
+      
+        # Output only. Map of listing resource names to associated linked resource, e.g.
+        # projects/123/locations/US/dataExchanges/456/listings/789 -> projects/123/
+        # datasets/my_dataset For listing-level subscriptions, this is a map of size 1.
+        # Only contains values if state == STATE_ACTIVE.
+        # Corresponds to the JSON property `linkedDatasetMap`
+        # @return [Hash<String,Google::Apis::AnalyticshubV1::LinkedResource>]
+        attr_accessor :linked_dataset_map
+      
+        # Output only. Resource name of the source Listing. e.g. projects/123/locations/
+        # US/dataExchanges/456/listings/789
+        # Corresponds to the JSON property `listing`
+        # @return [String]
+        attr_accessor :listing
+      
+        # Output only. The resource name of the subscription. e.g. `projects/myproject/
+        # locations/US/subscriptions/123`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Display name of the project of this subscription.
+        # Corresponds to the JSON property `organizationDisplayName`
+        # @return [String]
+        attr_accessor :organization_display_name
+      
+        # Output only. Organization of the project this subscription belongs to.
+        # Corresponds to the JSON property `organizationId`
+        # @return [String]
+        attr_accessor :organization_id
+      
+        # Output only. Current state of the subscription.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Email of the subscriber.
+        # Corresponds to the JSON property `subscriberContact`
+        # @return [String]
+        attr_accessor :subscriber_contact
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @data_exchange = args[:data_exchange] if args.key?(:data_exchange)
+          @last_modify_time = args[:last_modify_time] if args.key?(:last_modify_time)
+          @linked_dataset_map = args[:linked_dataset_map] if args.key?(:linked_dataset_map)
+          @listing = args[:listing] if args.key?(:listing)
+          @name = args[:name] if args.key?(:name)
+          @organization_display_name = args[:organization_display_name] if args.key?(:organization_display_name)
+          @organization_id = args[:organization_id] if args.key?(:organization_id)
+          @state = args[:state] if args.key?(:state)
+          @subscriber_contact = args[:subscriber_contact] if args.key?(:subscriber_contact)
         end
       end
       

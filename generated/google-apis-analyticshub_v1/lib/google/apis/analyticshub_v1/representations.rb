@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DcrExchangeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DefaultExchangeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DestinationDataset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LinkedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDataExchangesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,7 +130,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSharedResourceSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Listing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,13 +172,61 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RefreshSubscriptionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RefreshSubscriptionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestrictedExportConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RevokeSubscriptionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RevokeSubscriptionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SharingEnvironmentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubscribeDataExchangeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubscribeDataExchangeResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,6 +239,12 @@ module Google
       end
       
       class SubscribeListingResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Subscription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -216,6 +306,8 @@ module Google
           property :listing_count, as: 'listingCount'
           property :name, as: 'name'
           property :primary_contact, as: 'primaryContact'
+          property :sharing_environment_config, as: 'sharingEnvironmentConfig', class: Google::Apis::AnalyticshubV1::SharingEnvironmentConfig, decorator: Google::Apis::AnalyticshubV1::SharingEnvironmentConfig::Representation
+      
         end
       end
       
@@ -224,6 +316,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :primary_contact, as: 'primaryContact'
+        end
+      end
+      
+      class DcrExchangeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DefaultExchangeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -278,6 +382,13 @@ module Google
         end
       end
       
+      class LinkedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :linked_dataset, as: 'linkedDataset'
+        end
+      end
+      
       class ListDataExchangesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -305,6 +416,24 @@ module Google
         end
       end
       
+      class ListSharedResourceSubscriptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :shared_resource_subscriptions, as: 'sharedResourceSubscriptions', class: Google::Apis::AnalyticshubV1::Subscription, decorator: Google::Apis::AnalyticshubV1::Subscription::Representation
+      
+        end
+      end
+      
+      class ListSubscriptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :subscriptions, as: 'subscriptions', class: Google::Apis::AnalyticshubV1::Subscription, decorator: Google::Apis::AnalyticshubV1::Subscription::Representation
+      
+        end
+      end
+      
       class Listing
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -325,6 +454,18 @@ module Google
           property :restricted_export_config, as: 'restrictedExportConfig', class: Google::Apis::AnalyticshubV1::RestrictedExportConfig, decorator: Google::Apis::AnalyticshubV1::RestrictedExportConfig::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::AnalyticshubV1::Status, decorator: Google::Apis::AnalyticshubV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
         end
       end
       
@@ -361,6 +502,20 @@ module Google
         end
       end
       
+      class RefreshSubscriptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RefreshSubscriptionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subscription, as: 'subscription', class: Google::Apis::AnalyticshubV1::Subscription, decorator: Google::Apis::AnalyticshubV1::Subscription::Representation
+      
+        end
+      end
+      
       class RestrictedExportConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -370,12 +525,60 @@ module Google
         end
       end
       
+      class RevokeSubscriptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RevokeSubscriptionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::AnalyticshubV1::Policy, decorator: Google::Apis::AnalyticshubV1::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class SharingEnvironmentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dcr_exchange_config, as: 'dcrExchangeConfig', class: Google::Apis::AnalyticshubV1::DcrExchangeConfig, decorator: Google::Apis::AnalyticshubV1::DcrExchangeConfig::Representation
+      
+          property :default_exchange_config, as: 'defaultExchangeConfig', class: Google::Apis::AnalyticshubV1::DefaultExchangeConfig, decorator: Google::Apis::AnalyticshubV1::DefaultExchangeConfig::Representation
+      
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
+      class SubscribeDataExchangeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination'
+          property :subscriber_contact, as: 'subscriberContact'
+          property :subscription, as: 'subscription'
+        end
+      end
+      
+      class SubscribeDataExchangeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subscription, as: 'subscription', class: Google::Apis::AnalyticshubV1::Subscription, decorator: Google::Apis::AnalyticshubV1::Subscription::Representation
+      
         end
       end
       
@@ -390,6 +593,25 @@ module Google
       class SubscribeListingResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :subscription, as: 'subscription', class: Google::Apis::AnalyticshubV1::Subscription, decorator: Google::Apis::AnalyticshubV1::Subscription::Representation
+      
+        end
+      end
+      
+      class Subscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_time, as: 'creationTime'
+          property :data_exchange, as: 'dataExchange'
+          property :last_modify_time, as: 'lastModifyTime'
+          hash :linked_dataset_map, as: 'linkedDatasetMap', class: Google::Apis::AnalyticshubV1::LinkedResource, decorator: Google::Apis::AnalyticshubV1::LinkedResource::Representation
+      
+          property :listing, as: 'listing'
+          property :name, as: 'name'
+          property :organization_display_name, as: 'organizationDisplayName'
+          property :organization_id, as: 'organizationId'
+          property :state, as: 'state'
+          property :subscriber_contact, as: 'subscriberContact'
         end
       end
       
