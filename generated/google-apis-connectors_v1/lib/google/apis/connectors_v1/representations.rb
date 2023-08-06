@@ -746,6 +746,7 @@ module Google
       class ConnectorInfraConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :internalclient_ratelimit_threshold, :numeric_string => true, as: 'internalclientRatelimitThreshold'
           property :ratelimit_threshold, :numeric_string => true, as: 'ratelimitThreshold'
         end
       end
@@ -786,6 +787,7 @@ module Google
       class ConnectorVersionInfraConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :internalclient_ratelimit_threshold, :numeric_string => true, as: 'internalclientRatelimitThreshold'
           property :ratelimit_threshold, :numeric_string => true, as: 'ratelimitThreshold'
         end
       end
