@@ -610,6 +610,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListScopeNamespacesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListScopeRbacRoleBindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListScopesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1945,6 +1957,24 @@ module Google
         end
       end
       
+      class ListScopeNamespacesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :scope_namespaces, as: 'scopeNamespaces', class: Google::Apis::GkehubV1alpha::Namespace, decorator: Google::Apis::GkehubV1alpha::Namespace::Representation
+      
+        end
+      end
+      
+      class ListScopeRbacRoleBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rbacrolebindings, as: 'rbacrolebindings', class: Google::Apis::GkehubV1alpha::RbacRoleBinding, decorator: Google::Apis::GkehubV1alpha::RbacRoleBinding::Representation
+      
+        end
+      end
+      
       class ListScopesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2136,6 +2166,7 @@ module Google
           property :delete_time, as: 'deleteTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          hash :namespace_labels, as: 'namespaceLabels'
           property :scope, as: 'scope'
           property :state, as: 'state', class: Google::Apis::GkehubV1alpha::NamespaceLifecycleState, decorator: Google::Apis::GkehubV1alpha::NamespaceLifecycleState::Representation
       
@@ -2393,6 +2424,7 @@ module Google
           property :delete_time, as: 'deleteTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          hash :namespace_labels, as: 'namespaceLabels'
           property :state, as: 'state', class: Google::Apis::GkehubV1alpha::ScopeLifecycleState, decorator: Google::Apis::GkehubV1alpha::ScopeLifecycleState::Representation
       
           property :uid, as: 'uid'
