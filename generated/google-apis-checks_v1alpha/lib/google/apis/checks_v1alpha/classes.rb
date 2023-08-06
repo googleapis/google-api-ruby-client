@@ -162,14 +162,14 @@ module Google
         end
       end
       
-      # Request message for `FindPrivacyPolicy`.
-      class FindPrivacyPolicyRequest
+      # Operation response for `FindPrivacyPolicy`.
+      class FindPrivacyPolicyResponse
         include Google::Apis::Core::Hashable
       
-        # Required. URI for the website from where to find the privacy policy.
-        # Corresponds to the JSON property `websiteUri`
+        # Resource name of the PrivacyPolicy that was found.
+        # Corresponds to the JSON property `privacyPolicy`
         # @return [String]
-        attr_accessor :website_uri
+        attr_accessor :privacy_policy
       
         def initialize(**args)
            update!(**args)
@@ -177,7 +177,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @website_uri = args[:website_uri] if args.key?(:website_uri)
+          @privacy_policy = args[:privacy_policy] if args.key?(:privacy_policy)
         end
       end
       
@@ -252,32 +252,6 @@ module Google
         end
       end
       
-      # Response message for `ListPrivacyPolicies`.
-      class ListPrivacyPoliciesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The pagination token to retrieve the next page of results. If the value is an
-        # empty string, it means there are no further results for the request.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The privacy policies.
-        # Corresponds to the JSON property `privacyPolicies`
-        # @return [Array<Google::Apis::ChecksV1alpha::PrivacyPolicy>]
-        attr_accessor :privacy_policies
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @privacy_policies = args[:privacy_policies] if args.key?(:privacy_policies)
-        end
-      end
-      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -315,13 +289,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -476,50 +450,6 @@ module Google
           @section_type = args[:section_type] if args.key?(:section_type)
           @start_offset = args[:start_offset] if args.key?(:start_offset)
           @text_content = args[:text_content] if args.key?(:text_content)
-        end
-      end
-      
-      # Privacy policy.
-      class PrivacyPolicy
-        include Google::Apis::Core::Hashable
-      
-        # HTML content for the privacy policy page.
-        # Corresponds to the JSON property `htmlContent`
-        # @return [String]
-        attr_accessor :html_content
-      
-        # Resource name. Example: projects/123/privacyPolicies/456
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # URI of the privacy policy corresponding to this resource.
-        # Corresponds to the JSON property `privacyPolicyUri`
-        # @return [String]
-        attr_accessor :privacy_policy_uri
-      
-        # Confidence that the privacy policy URI is indeed from a privacy policy.
-        # Corresponds to the JSON property `score`
-        # @return [Float]
-        attr_accessor :score
-      
-        # URI of the original website used to find this privacy policy. Only populated
-        # for resources created by the FindPrivacyPolicy API.
-        # Corresponds to the JSON property `websiteUri`
-        # @return [String]
-        attr_accessor :website_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @html_content = args[:html_content] if args.key?(:html_content)
-          @name = args[:name] if args.key?(:name)
-          @privacy_policy_uri = args[:privacy_policy_uri] if args.key?(:privacy_policy_uri)
-          @score = args[:score] if args.key?(:score)
-          @website_uri = args[:website_uri] if args.key?(:website_uri)
         end
       end
       

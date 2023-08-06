@@ -52,7 +52,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FindPrivacyPolicyRequest
+      class FindPrivacyPolicyResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -65,12 +65,6 @@ module Google
       end
       
       class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListPrivacyPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -95,12 +89,6 @@ module Google
       end
       
       class PolicySectionAnnotation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PrivacyPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -162,10 +150,10 @@ module Google
         end
       end
       
-      class FindPrivacyPolicyRequest
+      class FindPrivacyPolicyResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :website_uri, as: 'websiteUri'
+          property :privacy_policy, as: 'privacyPolicy'
         end
       end
       
@@ -185,15 +173,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ChecksV1alpha::Operation, decorator: Google::Apis::ChecksV1alpha::Operation::Representation
-      
-        end
-      end
-      
-      class ListPrivacyPoliciesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :privacy_policies, as: 'privacyPolicies', class: Google::Apis::ChecksV1alpha::PrivacyPolicy, decorator: Google::Apis::ChecksV1alpha::PrivacyPolicy::Representation
       
         end
       end
@@ -240,17 +219,6 @@ module Google
           property :section_type, as: 'sectionType'
           property :start_offset, :numeric_string => true, as: 'startOffset'
           property :text_content, as: 'textContent'
-        end
-      end
-      
-      class PrivacyPolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :html_content, as: 'htmlContent'
-          property :name, as: 'name'
-          property :privacy_policy_uri, as: 'privacyPolicyUri'
-          property :score, as: 'score'
-          property :website_uri, as: 'websiteUri'
         end
       end
       
