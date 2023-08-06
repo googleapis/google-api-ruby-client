@@ -628,20 +628,22 @@ module Google
       class ContainerOverride
         include Google::Apis::Core::Hashable
       
-        # Arguments to the entrypoint. Will replace existing args for override if
-        # present. Must be empty if `clear_args` is set to true.
+        # Arguments to the entrypoint. The specified arguments replace and override any
+        # existing entrypoint arguments. Must be empty if `clear_args` is set to true.
         # Corresponds to the JSON property `args`
         # @return [Array<String>]
         attr_accessor :args
       
-        # Optional. True if the intention is to clear out existing args list.
+        # Optional. Set to True to clear all existing arguments.
         # Corresponds to the JSON property `clearArgs`
         # @return [Boolean]
         attr_accessor :clear_args
         alias_method :clear_args?, :clear_args
       
-        # List of environment variables to set in the container. Will be merged with
-        # existing env for override.
+        # List of environment variables to set in the container. All specified
+        # environment variables are merged with existing environment variables. When the
+        # specified environment variables exist, these values override any existing
+        # values.
         # Corresponds to the JSON property `env`
         # @return [Array<Google::Apis::RunV1::EnvVar>]
         attr_accessor :env
@@ -828,10 +830,9 @@ module Google
         end
       end
       
-      # Ephemeral storage which can be backed by real disks (HD, SSD), network storage
-      # or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is
-      # ephemeral in the sense that when the sandbox is taken down, the data is
-      # destroyed with it (it does not persist across sandbox runs).
+      # In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when
+      # the sandbox is taken down, the data is destroyed with it (it does not persist
+      # across sandbox runs).
       class EmptyDirVolumeSource
         include Google::Apis::Core::Hashable
       
@@ -845,11 +846,10 @@ module Google
         # Limit on the storage usable by this EmptyDir volume. The size limit is also
         # applicable for memory medium. The maximum usage on memory medium EmptyDir
         # would be the minimum value between the SizeLimit specified here and the sum of
-        # memory limits of all containers in a pod. This field's values are of the '
-        # Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-
-        # definitions/quantity/. The default is nil which means that the limit is
-        # undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#
-        # emptydir
+        # memory limits of all containers. The default is nil which means that the limit
+        # is undefined. More info: https://cloud.google.com/run/docs/configuring/in-
+        # memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/
+        # docs/concepts/storage/volumes/#emptydir
         # Corresponds to the JSON property `sizeLimit`
         # @return [String]
         attr_accessor :size_limit
@@ -3805,10 +3805,9 @@ module Google
         # @return [Google::Apis::RunV1::ConfigMapVolumeSource]
         attr_accessor :config_map
       
-        # Ephemeral storage which can be backed by real disks (HD, SSD), network storage
-        # or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is
-        # ephemeral in the sense that when the sandbox is taken down, the data is
-        # destroyed with it (it does not persist across sandbox runs).
+        # In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when
+        # the sandbox is taken down, the data is destroyed with it (it does not persist
+        # across sandbox runs).
         # Corresponds to the JSON property `emptyDir`
         # @return [Google::Apis::RunV1::EmptyDirVolumeSource]
         attr_accessor :empty_dir
