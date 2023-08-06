@@ -480,6 +480,26 @@ module Google
         end
       end
       
+      # Reference to a linked resource tracked by this Subscription.
+      class LinkedResource
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the linked dataset, e.g. projects/subscriberproject/
+        # datasets/linked_dataset
+        # Corresponds to the JSON property `linkedDataset`
+        # @return [String]
+        attr_accessor :linked_dataset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @linked_dataset = args[:linked_dataset] if args.key?(:linked_dataset)
+        end
+      end
+      
       # Message for response to the list of data exchanges.
       class ListDataExchangesResponse
         include Google::Apis::Core::Hashable
@@ -847,6 +867,28 @@ module Google
         end
       end
       
+      # Message for response when you refresh a subscription.
+      class RefreshSubscriptionResponse
+        include Google::Apis::Core::Hashable
+      
+        # A subscription represents a subscribers' access to a particular set of
+        # published data. It contains references to associated listings, data exchanges,
+        # and linked datasets. TODO(b/267528977) Consider port the new resource to
+        # v1beta1 and dataexchange APIs.
+        # Corresponds to the JSON property `subscription`
+        # @return [Google::Apis::AnalyticshubV1beta1::Subscription]
+        attr_accessor :subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
       # Restricted export config, used to configure restricted export on linked
       # dataset.
       class RestrictedExportConfig
@@ -937,6 +979,28 @@ module Google
         end
       end
       
+      # Message for response when you subscribe to a Data Exchange.
+      class SubscribeDataExchangeResponse
+        include Google::Apis::Core::Hashable
+      
+        # A subscription represents a subscribers' access to a particular set of
+        # published data. It contains references to associated listings, data exchanges,
+        # and linked datasets. TODO(b/267528977) Consider port the new resource to
+        # v1beta1 and dataexchange APIs.
+        # Corresponds to the JSON property `subscription`
+        # @return [Google::Apis::AnalyticshubV1beta1::Subscription]
+        attr_accessor :subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
       # Message for subscribing to a listing.
       class SubscribeListingRequest
         include Google::Apis::Core::Hashable
@@ -966,6 +1030,88 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A subscription represents a subscribers' access to a particular set of
+      # published data. It contains references to associated listings, data exchanges,
+      # and linked datasets. TODO(b/267528977) Consider port the new resource to
+      # v1beta1 and dataexchange APIs.
+      class Subscription
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the subscription was created.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # Output only. Resource name of the source Data Exchange. e.g. projects/123/
+        # locations/US/dataExchanges/456
+        # Corresponds to the JSON property `dataExchange`
+        # @return [String]
+        attr_accessor :data_exchange
+      
+        # Output only. Timestamp when the subscription was last modified.
+        # Corresponds to the JSON property `lastModifyTime`
+        # @return [String]
+        attr_accessor :last_modify_time
+      
+        # Output only. Map of listing resource names to associated linked resource, e.g.
+        # projects/123/locations/US/dataExchanges/456/listings/789 -> projects/123/
+        # datasets/my_dataset For listing-level subscriptions, this is a map of size 1.
+        # Only contains values if state == STATE_ACTIVE.
+        # Corresponds to the JSON property `linkedDatasetMap`
+        # @return [Hash<String,Google::Apis::AnalyticshubV1beta1::LinkedResource>]
+        attr_accessor :linked_dataset_map
+      
+        # Output only. Resource name of the source Listing. e.g. projects/123/locations/
+        # US/dataExchanges/456/listings/789
+        # Corresponds to the JSON property `listing`
+        # @return [String]
+        attr_accessor :listing
+      
+        # Output only. The resource name of the subscription. e.g. `projects/myproject/
+        # locations/US/subscriptions/123`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Display name of the project of this subscription.
+        # Corresponds to the JSON property `organizationDisplayName`
+        # @return [String]
+        attr_accessor :organization_display_name
+      
+        # Output only. Organization of the project this subscription belongs to.
+        # Corresponds to the JSON property `organizationId`
+        # @return [String]
+        attr_accessor :organization_id
+      
+        # Output only. Current state of the subscription.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Email of the subscriber.
+        # Corresponds to the JSON property `subscriberContact`
+        # @return [String]
+        attr_accessor :subscriber_contact
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @data_exchange = args[:data_exchange] if args.key?(:data_exchange)
+          @last_modify_time = args[:last_modify_time] if args.key?(:last_modify_time)
+          @linked_dataset_map = args[:linked_dataset_map] if args.key?(:linked_dataset_map)
+          @listing = args[:listing] if args.key?(:listing)
+          @name = args[:name] if args.key?(:name)
+          @organization_display_name = args[:organization_display_name] if args.key?(:organization_display_name)
+          @organization_id = args[:organization_id] if args.key?(:organization_id)
+          @state = args[:state] if args.key?(:state)
+          @subscriber_contact = args[:subscriber_contact] if args.key?(:subscriber_contact)
         end
       end
       
