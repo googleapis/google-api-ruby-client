@@ -130,6 +130,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attested_device_id, as: 'attestedDeviceId'
           property :customer_id, as: 'customerId'
+          property :device_enrollment_id, as: 'deviceEnrollmentId'
           property :device_permanent_id, as: 'devicePermanentId'
           property :device_signal, as: 'deviceSignal'
           property :device_signals, as: 'deviceSignals', class: Google::Apis::VerifiedaccessV2::DeviceSignals, decorator: Google::Apis::VerifiedaccessV2::DeviceSignals::Representation
