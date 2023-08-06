@@ -38,11 +38,35 @@ module Google
         # @return [String]
         attr_accessor :alias
       
+        # Average of the values of the requested field. * Only numeric values will be
+        # aggregated. All non-numeric values including `NULL` are skipped. * If the
+        # aggregated values contain `NaN`, returns `NaN`. * If the aggregated value set
+        # is empty, returns `NULL`. * Always returns the result as a double.
+        # Corresponds to the JSON property `avg`
+        # @return [Google::Apis::FirestoreV1beta1::Avg]
+        attr_accessor :avg
+      
         # Count of documents that match the query. The `COUNT(*)` aggregation function
         # operates on the entire document so it does not require a field reference.
         # Corresponds to the JSON property `count`
         # @return [Google::Apis::FirestoreV1beta1::Count]
         attr_accessor :count
+      
+        # Sum of the values of the requested field. * Only numeric values will be
+        # aggregated. All non-numeric values including `NULL` are skipped. * If the
+        # aggregated values contain `NaN`, returns `NaN`. * If the aggregated value set
+        # is empty, returns 0. * Returns a 64-bit integer if the sum result is an
+        # integer value and does not overflow. Otherwise, the result is returned as a
+        # double. Note that even if all the aggregated values are integers, the result
+        # is returned as a double if it cannot fit within a 64-bit signed integer. When
+        # this occurs, the returned value will lose precision. * When underflow occurs,
+        # floating-point aggregation is non-deterministic. This means that running the
+        # same query repeatedly without any changes to the underlying values could
+        # produce slightly different results each time. In those cases, values should be
+        # stored as integers over floating-point numbers.
+        # Corresponds to the JSON property `sum`
+        # @return [Google::Apis::FirestoreV1beta1::Sum]
+        attr_accessor :sum
       
         def initialize(**args)
            update!(**args)
@@ -51,7 +75,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alias = args[:alias] if args.key?(:alias)
+          @avg = args[:avg] if args.key?(:avg)
           @count = args[:count] if args.key?(:count)
+          @sum = args[:sum] if args.key?(:sum)
         end
       end
       
@@ -94,6 +120,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Average of the values of the requested field. * Only numeric values will be
+      # aggregated. All non-numeric values including `NULL` are skipped. * If the
+      # aggregated values contain `NaN`, returns `NaN`. * If the aggregated value set
+      # is empty, returns `NULL`. * Always returns the result as a double.
+      class Avg
+        include Google::Apis::Core::Hashable
+      
+        # A reference to a field in a document, ex: `stats.operations`.
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::FirestoreV1beta1::FieldReference]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
         end
       end
       
@@ -781,7 +829,9 @@ module Google
         # The total count of documents that match target_id. If different from the count
         # of documents in the client that match, the client must manually determine
         # which documents no longer match the target. The client can use the `
-        # unchanged_names` bloom filter to assist with this determination.
+        # unchanged_names` bloom filter to assist with this determination by testing ALL
+        # the document names against the filter; if the document name is NOT in the
+        # filter, it means the document no longer matches the target.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
@@ -952,6 +1002,32 @@ module Google
         end
       end
       
+      # Describes the progress of the operation. Unit of work is generic and must be
+      # interpreted based on where Progress is used.
+      class GoogleFirestoreAdminV1Progress
+        include Google::Apis::Core::Hashable
+      
+        # The amount of work completed.
+        # Corresponds to the JSON property `completedWork`
+        # @return [Fixnum]
+        attr_accessor :completed_work
+      
+        # The amount of work estimated.
+        # Corresponds to the JSON property `estimatedWork`
+        # @return [Fixnum]
+        attr_accessor :estimated_work
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completed_work = args[:completed_work] if args.key?(:completed_work)
+          @estimated_work = args[:estimated_work] if args.key?(:estimated_work)
+        end
+      end
+      
       # Metadata for the long-running operation from the RestoreDatabase request.
       class GoogleFirestoreAdminV1RestoreDatabaseMetadata
         include Google::Apis::Core::Hashable
@@ -976,6 +1052,12 @@ module Google
         # @return [String]
         attr_accessor :operation_state
       
+        # Describes the progress of the operation. Unit of work is generic and must be
+        # interpreted based on where Progress is used.
+        # Corresponds to the JSON property `progressPercentage`
+        # @return [Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1Progress]
+        attr_accessor :progress_percentage
+      
         # The time the restore was started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -991,6 +1073,7 @@ module Google
           @database = args[:database] if args.key?(:database)
           @end_time = args[:end_time] if args.key?(:end_time)
           @operation_state = args[:operation_state] if args.key?(:operation_state)
+          @progress_percentage = args[:progress_percentage] if args.key?(:progress_percentage)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -2241,6 +2324,36 @@ module Google
           @select = args[:select] if args.key?(:select)
           @start_at = args[:start_at] if args.key?(:start_at)
           @where = args[:where] if args.key?(:where)
+        end
+      end
+      
+      # Sum of the values of the requested field. * Only numeric values will be
+      # aggregated. All non-numeric values including `NULL` are skipped. * If the
+      # aggregated values contain `NaN`, returns `NaN`. * If the aggregated value set
+      # is empty, returns 0. * Returns a 64-bit integer if the sum result is an
+      # integer value and does not overflow. Otherwise, the result is returned as a
+      # double. Note that even if all the aggregated values are integers, the result
+      # is returned as a double if it cannot fit within a 64-bit signed integer. When
+      # this occurs, the returned value will lose precision. * When underflow occurs,
+      # floating-point aggregation is non-deterministic. This means that running the
+      # same query repeatedly without any changes to the underlying values could
+      # produce slightly different results each time. In those cases, values should be
+      # stored as integers over floating-point numbers.
+      class Sum
+        include Google::Apis::Core::Hashable
+      
+        # A reference to a field in a document, ex: `stats.operations`.
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::FirestoreV1beta1::FieldReference]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
         end
       end
       
