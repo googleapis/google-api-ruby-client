@@ -412,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LogBufferSizeCriticalEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -425,6 +431,18 @@ module Google
       end
       
       class LoggingStoppedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LostModeLocationEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LostModeOutgoingPhoneCallEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -646,6 +664,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartLostModeParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StartLostModeStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -653,6 +683,24 @@ module Google
       end
       
       class StatusReportingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopLostModeParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopLostModeStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopLostModeUserAttemptEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -995,6 +1043,14 @@ module Google
           property :error_code, as: 'errorCode'
           property :new_password, as: 'newPassword'
           collection :reset_password_flags, as: 'resetPasswordFlags'
+          property :start_lost_mode_params, as: 'startLostModeParams', class: Google::Apis::AndroidmanagementV1::StartLostModeParams, decorator: Google::Apis::AndroidmanagementV1::StartLostModeParams::Representation
+      
+          property :start_lost_mode_status, as: 'startLostModeStatus', class: Google::Apis::AndroidmanagementV1::StartLostModeStatus, decorator: Google::Apis::AndroidmanagementV1::StartLostModeStatus::Representation
+      
+          property :stop_lost_mode_params, as: 'stopLostModeParams', class: Google::Apis::AndroidmanagementV1::StopLostModeParams, decorator: Google::Apis::AndroidmanagementV1::StopLostModeParams::Representation
+      
+          property :stop_lost_mode_status, as: 'stopLostModeStatus', class: Google::Apis::AndroidmanagementV1::StopLostModeStatus, decorator: Google::Apis::AndroidmanagementV1::StopLostModeStatus::Representation
+      
           property :type, as: 'type'
           property :user_name, as: 'userName'
         end
@@ -1449,6 +1505,14 @@ module Google
         end
       end
       
+      class Location
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
+        end
+      end
+      
       class LogBufferSizeCriticalEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1462,6 +1526,21 @@ module Google
       end
       
       class LoggingStoppedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class LostModeLocationEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :battery_level, as: 'batteryLevel'
+          property :location, as: 'location', class: Google::Apis::AndroidmanagementV1::Location, decorator: Google::Apis::AndroidmanagementV1::Location::Representation
+      
+        end
+      end
+      
+      class LostModeOutgoingPhoneCallEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1843,7 +1922,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_level, as: 'apiLevel'
-          property :authenticated_user_email, as: 'authenticatedUserEmail'
           property :brand, as: 'brand'
           property :enterprise, as: 'enterprise'
           property :management_mode, as: 'managementMode'
@@ -1939,6 +2017,28 @@ module Google
         end
       end
       
+      class StartLostModeParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lost_email_address, as: 'lostEmailAddress'
+          property :lost_message, as: 'lostMessage', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
+          property :lost_organization, as: 'lostOrganization', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
+          property :lost_phone_number, as: 'lostPhoneNumber', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
+          property :lost_street_address, as: 'lostStreetAddress', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
+        end
+      end
+      
+      class StartLostModeStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status, as: 'status'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1963,6 +2063,26 @@ module Google
           property :power_management_events_enabled, as: 'powerManagementEventsEnabled'
           property :software_info_enabled, as: 'softwareInfoEnabled'
           property :system_properties_enabled, as: 'systemPropertiesEnabled'
+        end
+      end
+      
+      class StopLostModeParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class StopLostModeStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status, as: 'status'
+        end
+      end
+      
+      class StopLostModeUserAttemptEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status, as: 'status'
         end
       end
       
@@ -2059,6 +2179,10 @@ module Google
       
           property :logging_stopped_event, as: 'loggingStoppedEvent', class: Google::Apis::AndroidmanagementV1::LoggingStoppedEvent, decorator: Google::Apis::AndroidmanagementV1::LoggingStoppedEvent::Representation
       
+          property :lost_mode_location_event, as: 'lostModeLocationEvent', class: Google::Apis::AndroidmanagementV1::LostModeLocationEvent, decorator: Google::Apis::AndroidmanagementV1::LostModeLocationEvent::Representation
+      
+          property :lost_mode_outgoing_phone_call_event, as: 'lostModeOutgoingPhoneCallEvent', class: Google::Apis::AndroidmanagementV1::LostModeOutgoingPhoneCallEvent, decorator: Google::Apis::AndroidmanagementV1::LostModeOutgoingPhoneCallEvent::Representation
+      
           property :media_mount_event, as: 'mediaMountEvent', class: Google::Apis::AndroidmanagementV1::MediaMountEvent, decorator: Google::Apis::AndroidmanagementV1::MediaMountEvent::Representation
       
           property :media_unmount_event, as: 'mediaUnmountEvent', class: Google::Apis::AndroidmanagementV1::MediaUnmountEvent, decorator: Google::Apis::AndroidmanagementV1::MediaUnmountEvent::Representation
@@ -2068,6 +2192,8 @@ module Google
           property :os_startup_event, as: 'osStartupEvent', class: Google::Apis::AndroidmanagementV1::OsStartupEvent, decorator: Google::Apis::AndroidmanagementV1::OsStartupEvent::Representation
       
           property :remote_lock_event, as: 'remoteLockEvent', class: Google::Apis::AndroidmanagementV1::RemoteLockEvent, decorator: Google::Apis::AndroidmanagementV1::RemoteLockEvent::Representation
+      
+          property :stop_lost_mode_user_attempt_event, as: 'stopLostModeUserAttemptEvent', class: Google::Apis::AndroidmanagementV1::StopLostModeUserAttemptEvent, decorator: Google::Apis::AndroidmanagementV1::StopLostModeUserAttemptEvent::Representation
       
           property :wipe_failure_event, as: 'wipeFailureEvent', class: Google::Apis::AndroidmanagementV1::WipeFailureEvent, decorator: Google::Apis::AndroidmanagementV1::WipeFailureEvent::Representation
       
