@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TextStyle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Threshold
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -771,6 +777,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
           property :format, as: 'format'
+          property :style, as: 'style', class: Google::Apis::MonitoringV1::TextStyle, decorator: Google::Apis::MonitoringV1::TextStyle::Representation
+      
+        end
+      end
+      
+      class TextStyle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :background_color, as: 'backgroundColor'
+          property :font_size, as: 'fontSize'
+          property :horizontal_alignment, as: 'horizontalAlignment'
+          property :padding, as: 'padding'
+          property :text_color, as: 'textColor'
+          property :vertical_alignment, as: 'verticalAlignment'
         end
       end
       
