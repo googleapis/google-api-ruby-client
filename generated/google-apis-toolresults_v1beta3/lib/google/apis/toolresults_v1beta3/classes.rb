@@ -334,6 +334,19 @@ module Google
         end
       end
       
+      # There was an issue with the assets in this test.
+      class AssetIssue
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A suggestion to use deep links for a Robo run.
       class AvailableDeepLinks
         include Google::Apis::Core::Hashable
@@ -834,7 +847,7 @@ module Google
         end
       end
       
-      # Failed to install the APK.
+      # Failed to install the App.
       class FailedToInstall
         include Google::Apis::Core::Hashable
       
