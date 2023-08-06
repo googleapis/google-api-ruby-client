@@ -3481,7 +3481,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
-        # Private Service Connect connectivity (https://cloud.google.com/vpc/docs/
+        # [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/
         # private-service-connect#service-attachments)
         # Corresponds to the JSON property `privateServiceConnectConnectivity`
         # @return [Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity]
@@ -3662,7 +3662,7 @@ module Google
         end
       end
       
-      # Private Service Connect connectivity (https://cloud.google.com/vpc/docs/
+      # [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/
       # private-service-connect#service-attachments)
       class PrivateServiceConnectConnectivity
         include Google::Apis::Core::Hashable
@@ -3701,12 +3701,20 @@ module Google
       class RestartMigrationJobRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Restart the migration job without running prior configuration
+        # verification. Defaults to `false`.
+        # Corresponds to the JSON property `skipValidation`
+        # @return [Boolean]
+        attr_accessor :skip_validation
+        alias_method :skip_validation?, :skip_validation
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @skip_validation = args[:skip_validation] if args.key?(:skip_validation)
         end
       end
       
