@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssetIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AvailableDeepLinks
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -764,6 +770,12 @@ module Google
       
           property :initial_display_time, as: 'initialDisplayTime', class: Google::Apis::ToolresultsV1beta3::Duration, decorator: Google::Apis::ToolresultsV1beta3::Duration::Representation
       
+        end
+      end
+      
+      class AssetIssue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
