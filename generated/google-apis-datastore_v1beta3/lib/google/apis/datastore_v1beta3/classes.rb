@@ -38,11 +38,35 @@ module Google
         # @return [String]
         attr_accessor :alias
       
+        # Average of the values of the requested property. * Only numeric values will be
+        # aggregated. All non-numeric values including `NULL` are skipped. * If the
+        # aggregated values contain `NaN`, returns `NaN`. * If the aggregated value set
+        # is empty, returns `NULL`. * Always returns the result as a double.
+        # Corresponds to the JSON property `avg`
+        # @return [Google::Apis::DatastoreV1beta3::Avg]
+        attr_accessor :avg
+      
         # Count of entities that match the query. The `COUNT(*)` aggregation function
         # operates on the entire entity so it does not require a field reference.
         # Corresponds to the JSON property `count`
         # @return [Google::Apis::DatastoreV1beta3::Count]
         attr_accessor :count
+      
+        # Sum of the values of the requested property. * Only numeric values will be
+        # aggregated. All non-numeric values including `NULL` are skipped. * If the
+        # aggregated values contain `NaN`, returns `NaN`. * If the aggregated value set
+        # is empty, returns 0. * Returns a 64-bit integer if the sum result is an
+        # integer value and does not overflow. Otherwise, the result is returned as a
+        # double. Note that even if all the aggregated values are integers, the result
+        # is returned as a double if it cannot fit within a 64-bit signed integer. When
+        # this occurs, the returned value will lose precision. * When underflow occurs,
+        # floating-point aggregation is non-deterministic. This means that running the
+        # same query repeatedly without any changes to the underlying values could
+        # produce slightly different results each time. In those cases, values should be
+        # stored as integers over floating-point numbers.
+        # Corresponds to the JSON property `sum`
+        # @return [Google::Apis::DatastoreV1beta3::Sum]
+        attr_accessor :sum
       
         def initialize(**args)
            update!(**args)
@@ -51,7 +75,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alias = args[:alias] if args.key?(:alias)
+          @avg = args[:avg] if args.key?(:avg)
           @count = args[:count] if args.key?(:count)
+          @sum = args[:sum] if args.key?(:sum)
         end
       end
       
@@ -197,6 +223,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Average of the values of the requested property. * Only numeric values will be
+      # aggregated. All non-numeric values including `NULL` are skipped. * If the
+      # aggregated values contain `NaN`, returns `NaN`. * If the aggregated value set
+      # is empty, returns `NULL`. * Always returns the result as a double.
+      class Avg
+        include Google::Apis::Core::Hashable
+      
+        # A reference to a property relative to the kind expressions.
+        # Corresponds to the JSON property `property`
+        # @return [Google::Apis::DatastoreV1beta3::PropertyReference]
+        attr_accessor :property
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @property = args[:property] if args.key?(:property)
         end
       end
       
@@ -2046,6 +2094,36 @@ module Google
         def update!(**args)
           @batch = args[:batch] if args.key?(:batch)
           @query = args[:query] if args.key?(:query)
+        end
+      end
+      
+      # Sum of the values of the requested property. * Only numeric values will be
+      # aggregated. All non-numeric values including `NULL` are skipped. * If the
+      # aggregated values contain `NaN`, returns `NaN`. * If the aggregated value set
+      # is empty, returns 0. * Returns a 64-bit integer if the sum result is an
+      # integer value and does not overflow. Otherwise, the result is returned as a
+      # double. Note that even if all the aggregated values are integers, the result
+      # is returned as a double if it cannot fit within a 64-bit signed integer. When
+      # this occurs, the returned value will lose precision. * When underflow occurs,
+      # floating-point aggregation is non-deterministic. This means that running the
+      # same query repeatedly without any changes to the underlying values could
+      # produce slightly different results each time. In those cases, values should be
+      # stored as integers over floating-point numbers.
+      class Sum
+        include Google::Apis::Core::Hashable
+      
+        # A reference to a property relative to the kind expressions.
+        # Corresponds to the JSON property `property`
+        # @return [Google::Apis::DatastoreV1beta3::PropertyReference]
+        attr_accessor :property
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @property = args[:property] if args.key?(:property)
         end
       end
       
