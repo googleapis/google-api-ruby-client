@@ -306,7 +306,7 @@ module Google
       
         # Output only. List of reviews about this place.
         # Corresponds to the JSON property `reviews`
-        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceReview>]
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Review>]
         attr_accessor :reviews
       
         # Output only. Contains an array of entries for information about regular
@@ -736,8 +736,8 @@ module Google
         end
       end
       
-      # Information about a review of the place.
-      class GoogleMapsPlacesV1PlaceReview
+      # Information about a review of a place.
+      class GoogleMapsPlacesV1Review
         include Google::Apis::Core::Hashable
       
         # Information about the author of the UGC data. Used in Photo, and Review.
@@ -745,27 +745,17 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1AuthorAttribution]
         attr_accessor :author_attribution
       
-        # Output only. A BCP-47 language code indicating the original language of the
-        # review. If the review has been translated, then original_language != language.
-        # This field contains the main language tag only, and not the secondary tag
-        # indicating country or region. For example, all the English reviews are tagged
-        # as 'en', and not 'en-AU' or 'en-UK' and so on.This field is empty if there is
-        # only a rating with no review text.
-        # Corresponds to the JSON property `originalLanguageCode`
-        # @return [String]
-        attr_accessor :original_language_code
-      
         # Localized variant of a text in a particular language.
         # Corresponds to the JSON property `originalText`
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
         attr_accessor :original_text
       
-        # Output only. Timestamp for the review, expressed in seconds since epoch.
+        # Output only. Timestamp for the review.
         # Corresponds to the JSON property `publishTime`
         # @return [String]
         attr_accessor :publish_time
       
-        # Output only. A whole number between 1.0 and 5.0, a.k.a. the number of stars.
+        # Output only. A number between 1.0 and 5.0, a.k.a. the number of stars.
         # Corresponds to the JSON property `rating`
         # @return [Float]
         attr_accessor :rating
@@ -782,16 +772,6 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
         attr_accessor :text
       
-        # Output only. A boolean value indicating if the review was translated from the
-        # original language it was written in. If a review has been translated,
-        # corresponding to a value of true, Google recommends that you indicate this to
-        # your users. For example, you can add the following string, “Translated by
-        # Google”, to the review.
-        # Corresponds to the JSON property `translated`
-        # @return [Boolean]
-        attr_accessor :translated
-        alias_method :translated?, :translated
-      
         def initialize(**args)
            update!(**args)
         end
@@ -799,13 +779,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @author_attribution = args[:author_attribution] if args.key?(:author_attribution)
-          @original_language_code = args[:original_language_code] if args.key?(:original_language_code)
           @original_text = args[:original_text] if args.key?(:original_text)
           @publish_time = args[:publish_time] if args.key?(:publish_time)
           @rating = args[:rating] if args.key?(:rating)
           @relative_publish_time_description = args[:relative_publish_time_description] if args.key?(:relative_publish_time_description)
           @text = args[:text] if args.key?(:text)
-          @translated = args[:translated] if args.key?(:translated)
         end
       end
       
