@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Group
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Hub
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +137,12 @@ module Google
       end
       
       class LinkedVpnTunnels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -482,6 +494,19 @@ module Google
         end
       end
       
+      class Group
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class Hub
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -552,6 +577,16 @@ module Google
           property :site_to_site_data_transfer, as: 'siteToSiteDataTransfer'
           collection :uris, as: 'uris'
           property :vpc_network, as: 'vpcNetwork'
+        end
+      end
+      
+      class ListGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :groups, as: 'groups', class: Google::Apis::NetworkconnectivityV1::Group, decorator: Google::Apis::NetworkconnectivityV1::Group::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -885,6 +920,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :group, as: 'group'
           property :hub, as: 'hub'
           hash :labels, as: 'labels'
           property :linked_interconnect_attachments, as: 'linkedInterconnectAttachments', class: Google::Apis::NetworkconnectivityV1::LinkedInterconnectAttachments, decorator: Google::Apis::NetworkconnectivityV1::LinkedInterconnectAttachments::Representation
