@@ -4908,6 +4908,12 @@ module Google
       class BulkInsertInstanceResourcePerInstanceProperties
         include Google::Apis::Core::Hashable
       
+        # Specifies the hostname of the instance. More details in: https://cloud.google.
+        # com/compute/docs/instances/custom-hostname-vm#naming_convention
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
         # This field is only temporary. It will be removed. Do not use it.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -4919,6 +4925,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @hostname = args[:hostname] if args.key?(:hostname)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -21062,6 +21069,81 @@ module Google
         end
       end
       
+      # Contains NAT IP information of a NAT config (i.e. usage status, mode).
+      class NatIpInfo
+        include Google::Apis::Core::Hashable
+      
+        # A list of all NAT IPs assigned to this NAT config.
+        # Corresponds to the JSON property `natIpInfoMappings`
+        # @return [Array<Google::Apis::ComputeV1::NatIpInfoNatIpInfoMapping>]
+        attr_accessor :nat_ip_info_mappings
+      
+        # Name of the NAT config which the NAT IP belongs to.
+        # Corresponds to the JSON property `natName`
+        # @return [String]
+        attr_accessor :nat_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nat_ip_info_mappings = args[:nat_ip_info_mappings] if args.key?(:nat_ip_info_mappings)
+          @nat_name = args[:nat_name] if args.key?(:nat_name)
+        end
+      end
+      
+      # Contains information of a NAT IP.
+      class NatIpInfoNatIpInfoMapping
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether NAT IP is auto or manual.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # NAT IP address. For example: 203.0.113.11.
+        # Corresponds to the JSON property `natIp`
+        # @return [String]
+        attr_accessor :nat_ip
+      
+        # Specifies whether NAT IP is currently serving at least one endpoint or not.
+        # Corresponds to the JSON property `usage`
+        # @return [String]
+        attr_accessor :usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+          @nat_ip = args[:nat_ip] if args.key?(:nat_ip)
+          @usage = args[:usage] if args.key?(:usage)
+        end
+      end
+      
+      # 
+      class NatIpInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A list of NAT IP information.
+        # Corresponds to the JSON property `result`
+        # @return [Array<Google::Apis::ComputeV1::NatIpInfo>]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @result = args[:result] if args.key?(:result)
+        end
+      end
+      
       # Represents a VPC Network resource. Networks connect resources to each other
       # and to the internet. For more information, read Virtual Private Cloud (VPC)
       # Network.
@@ -25482,7 +25564,7 @@ module Google
       # responses. Operations can be global, regional or zonal. - For global
       # operations, use the `globalOperations` resource. - For regional operations,
       # use the `regionOperations` resource. - For zonal operations, use the `
-      # zonalOperations` resource. For more information, read Global, Regional, and
+      # zoneOperations` resource. For more information, read Global, Regional, and
       # Zonal Resources.
       class Operation
         include Google::Apis::Core::Hashable
