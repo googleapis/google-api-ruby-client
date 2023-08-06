@@ -313,7 +313,7 @@ module Google
         attr_accessor :account_permission_groups
       
         # Identifies what kind of resource this is. Value: the fixed string "
-        # dfareporting#accountPermissionGroupsListResponse".
+        # dfareporting#accountPermissionGroupGroupsListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2713,7 +2713,7 @@ module Google
         end
       end
       
-      # Organizes placements according to the contents of their associated webpages.
+      # 
       class ContentCategory
         include Google::Apis::Core::Hashable
       
@@ -2869,7 +2869,7 @@ module Google
         # @return [String]
         attr_accessor :ordinal
       
-        # The quantity of the conversion.
+        # The quantity of the conversion. This is a required field.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
@@ -2893,7 +2893,7 @@ module Google
         # @return [Array<Google::Apis::DfareportingV4::UserIdentifier>]
         attr_accessor :user_identifiers
       
-        # The value of the conversion.
+        # The value of the conversion. This is a required field.
         # Corresponds to the JSON property `value`
         # @return [Float]
         attr_accessor :value
@@ -3237,8 +3237,8 @@ module Google
         # @return [Array<Google::Apis::DfareportingV4::Size>]
         attr_accessor :additional_sizes
       
-        # Advertiser ID of this creative. This is a required field. Applicable to all
-        # creative types.
+        # Required. Advertiser ID of this creative. This is a required field. Applicable
+        # to all creative types.
         # Corresponds to the JSON property `advertiserId`
         # @return [Fixnum]
         attr_accessor :advertiser_id
@@ -3490,8 +3490,8 @@ module Google
         # @return [Float]
         attr_accessor :media_duration
       
-        # Name of the creative. This is a required field and must be less than 256
-        # characters long. Applicable to all creative types.
+        # Required. Name of the creative. This must be less than 256 characters long.
+        # Applicable to all creative types.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3640,10 +3640,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_file_size
       
-        # Type of this creative. This is a required field. Applicable to all creative
-        # types. *Note:* FLASH_INPAGE, HTML5_BANNER, and IMAGE are only used for
-        # existing creatives. New creatives should use DISPLAY as a replacement for
-        # these types.
+        # Required. Type of this creative. Applicable to all creative types. *Note:*
+        # FLASH_INPAGE, HTML5_BANNER, and IMAGE are only used for existing creatives.
+        # New creatives should use DISPLAY as a replacement for these types.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -6791,8 +6790,7 @@ module Google
         attr_accessor :exposure_to_conversion_enabled
         alias_method :exposure_to_conversion_enabled?, :exposure_to_conversion_enabled
       
-        # Day that will be counted as the first day of the week in reports. This is a
-        # required field.
+        # 
         # Corresponds to the JSON property `firstDayOfWeek`
         # @return [String]
         attr_accessor :first_day_of_week
@@ -7169,7 +7167,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :placement_strategy_id
       
-        # Pricing Information
+        # Pricing of this inventory item.
         # Corresponds to the JSON property `pricing`
         # @return [Google::Apis::DfareportingV4::Pricing]
         attr_accessor :pricing
@@ -7762,7 +7760,7 @@ module Google
       class MeasurementPartnerAdvertiserLink
         include Google::Apis::Core::Hashable
       
-        # .
+        # Status of the partner link.
         # Corresponds to the JSON property `linkStatus`
         # @return [String]
         attr_accessor :link_status
@@ -7772,7 +7770,7 @@ module Google
         # @return [String]
         attr_accessor :measurement_partner
       
-        # .
+        # partner Advertiser Id.
         # Corresponds to the JSON property `partnerAdvertiserId`
         # @return [String]
         attr_accessor :partner_advertiser_id
@@ -7866,7 +7864,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The metric name, e.g. dfa:impressions
+        # The metric name, e.g. impressions
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -8680,158 +8678,6 @@ module Google
           @contact_title = args[:contact_title] if args.key?(:contact_title)
           @contact_type = args[:contact_type] if args.key?(:contact_type)
           @signature_user_profile_id = args[:signature_user_profile_id] if args.key?(:signature_user_profile_id)
-        end
-      end
-      
-      # Contains properties of a Planning order document.
-      class OrderDocument
-        include Google::Apis::Core::Hashable
-      
-        # Account ID of this order document.
-        # Corresponds to the JSON property `accountId`
-        # @return [Fixnum]
-        attr_accessor :account_id
-      
-        # Advertiser ID of this order document.
-        # Corresponds to the JSON property `advertiserId`
-        # @return [Fixnum]
-        attr_accessor :advertiser_id
-      
-        # The amended order document ID of this order document. An order document can be
-        # created by optionally amending another order document so that the change
-        # history can be preserved.
-        # Corresponds to the JSON property `amendedOrderDocumentId`
-        # @return [Fixnum]
-        attr_accessor :amended_order_document_id
-      
-        # IDs of users who have approved this order document.
-        # Corresponds to the JSON property `approvedByUserProfileIds`
-        # @return [Array<Fixnum>]
-        attr_accessor :approved_by_user_profile_ids
-      
-        # Whether this order document is cancelled.
-        # Corresponds to the JSON property `cancelled`
-        # @return [Boolean]
-        attr_accessor :cancelled
-        alias_method :cancelled?, :cancelled
-      
-        # Modification timestamp.
-        # Corresponds to the JSON property `createdInfo`
-        # @return [Google::Apis::DfareportingV4::LastModifiedInfo]
-        attr_accessor :created_info
-      
-        # 
-        # Corresponds to the JSON property `effectiveDate`
-        # @return [Date]
-        attr_accessor :effective_date
-      
-        # ID of this order document.
-        # Corresponds to the JSON property `id`
-        # @return [Fixnum]
-        attr_accessor :id
-      
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # dfareporting#orderDocument".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # List of email addresses that received the last sent document.
-        # Corresponds to the JSON property `lastSentRecipients`
-        # @return [Array<String>]
-        attr_accessor :last_sent_recipients
-      
-        # 
-        # Corresponds to the JSON property `lastSentTime`
-        # @return [DateTime]
-        attr_accessor :last_sent_time
-      
-        # ID of the order from which this order document is created.
-        # Corresponds to the JSON property `orderId`
-        # @return [Fixnum]
-        attr_accessor :order_id
-      
-        # Project ID of this order document.
-        # Corresponds to the JSON property `projectId`
-        # @return [Fixnum]
-        attr_accessor :project_id
-      
-        # Whether this order document has been signed.
-        # Corresponds to the JSON property `signed`
-        # @return [Boolean]
-        attr_accessor :signed
-        alias_method :signed?, :signed
-      
-        # Subaccount ID of this order document.
-        # Corresponds to the JSON property `subaccountId`
-        # @return [Fixnum]
-        attr_accessor :subaccount_id
-      
-        # Title of this order document.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # Type of this order document
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @account_id = args[:account_id] if args.key?(:account_id)
-          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
-          @amended_order_document_id = args[:amended_order_document_id] if args.key?(:amended_order_document_id)
-          @approved_by_user_profile_ids = args[:approved_by_user_profile_ids] if args.key?(:approved_by_user_profile_ids)
-          @cancelled = args[:cancelled] if args.key?(:cancelled)
-          @created_info = args[:created_info] if args.key?(:created_info)
-          @effective_date = args[:effective_date] if args.key?(:effective_date)
-          @id = args[:id] if args.key?(:id)
-          @kind = args[:kind] if args.key?(:kind)
-          @last_sent_recipients = args[:last_sent_recipients] if args.key?(:last_sent_recipients)
-          @last_sent_time = args[:last_sent_time] if args.key?(:last_sent_time)
-          @order_id = args[:order_id] if args.key?(:order_id)
-          @project_id = args[:project_id] if args.key?(:project_id)
-          @signed = args[:signed] if args.key?(:signed)
-          @subaccount_id = args[:subaccount_id] if args.key?(:subaccount_id)
-          @title = args[:title] if args.key?(:title)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Order document List Response
-      class OrderDocumentsListResponse
-        include Google::Apis::Core::Hashable
-      
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # dfareporting#orderDocumentsListResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Pagination token to be used for the next list operation.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # Order document collection
-        # Corresponds to the JSON property `orderDocuments`
-        # @return [Array<Google::Apis::DfareportingV4::OrderDocument>]
-        attr_accessor :order_documents
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @order_documents = args[:order_documents] if args.key?(:order_documents)
         end
       end
       
@@ -9981,7 +9827,7 @@ module Google
         end
       end
       
-      # Pricing Information
+      # 
       class Pricing
         include Google::Apis::Core::Hashable
       
@@ -10116,7 +9962,7 @@ module Google
         # @return [String]
         attr_accessor :pricing_comment
       
-        # Rate or cost of this pricing period in nanos (i.e., multipled by 1000000000).
+        # Rate or cost of this pricing period in nanos (i.e., multiplied by 1000000000).
         # Acceptable values are 0 to 1000000000000000000, inclusive.
         # Corresponds to the JSON property `rateOrCostNanos`
         # @return [Fixnum]
@@ -12444,7 +12290,7 @@ module Google
       # Contains properties of a targetable remarketing list. Remarketing enables you
       # to create lists of users who have performed specific actions on a site, then
       # target ads to members of those lists. This resource is a read-only view of a
-      # remarketing list to be used to faciliate targeting ads to specific lists.
+      # remarketing list to be used to facilitate targeting ads to specific lists.
       # Remarketing lists that are owned by your advertisers and those that are shared
       # to your advertisers or account are accessible via this resource. To manage
       # remarketing lists that are owned by your advertisers, use the RemarketingLists
