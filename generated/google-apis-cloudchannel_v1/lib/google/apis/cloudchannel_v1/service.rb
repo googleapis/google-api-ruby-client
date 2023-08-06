@@ -149,9 +149,10 @@ module Google
         # * The customer doesn't belong to the reseller and has no auth token. * The
         # customer provided incorrect reseller information when generating auth token. *
         # The reseller account making the request is different from the reseller account
-        # in the query. * INVALID_ARGUMENT: Required request parameters are missing or
-        # invalid. Return value: List of TransferableOffer for the given customer and
-        # SKU.
+        # in the query. * The reseller is not authorized to transact on this Product.
+        # See https://support.google.com/channelservices/answer/9759265 *
+        # INVALID_ARGUMENT: Required request parameters are missing or invalid. Return
+        # value: List of TransferableOffer for the given customer and SKU.
         # @param [String] parent
         #   Required. The resource name of the reseller's account.
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListTransferableOffersRequest] google_cloud_channel_v1_list_transferable_offers_request_object
@@ -739,9 +740,11 @@ module Google
         # Creates a new Customer resource under the reseller or distributor account.
         # Possible error codes: * PERMISSION_DENIED: The reseller account making the
         # request is different from the reseller account in the API request. *
-        # INVALID_ARGUMENT: * Required request parameters are missing or invalid. *
-        # Domain field value doesn't match the primary email domain. Return value: The
-        # newly created Customer resource.
+        # PERMISSION_DENIED: You are not authorized to create a customer. See https://
+        # support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: *
+        # Required request parameters are missing or invalid. * Domain field value doesn'
+        # t match the primary email domain. Return value: The newly created Customer
+        # resource.
         # @param [String] parent
         #   Required. The resource name of reseller account in which to create the
         #   customer. Parent uses the format: accounts/`account_id`
@@ -850,10 +853,12 @@ module Google
         # already exists and overwrite_if_exists is true, it will update that Customer's
         # data. Possible error codes: * PERMISSION_DENIED: The reseller account making
         # the request is different from the reseller account in the API request. *
-        # NOT_FOUND: Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT:
-        # Required parameters are missing, or the auth_token is expired or invalid. *
-        # ALREADY_EXISTS: A customer already exists and has conflicting critical fields.
-        # Requires an overwrite. Return value: The Customer.
+        # PERMISSION_DENIED: You are not authorized to import the customer. See https://
+        # support.google.com/channelservices/answer/9759265 * NOT_FOUND: Cloud Identity
+        # doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are
+        # missing, or the auth_token is expired or invalid. * ALREADY_EXISTS: A customer
+        # already exists and has conflicting critical fields. Requires an overwrite.
+        # Return value: The Customer.
         # @param [String] parent
         #   Required. The resource name of the reseller's account. Parent takes the format:
         #   accounts/`account_id` or accounts/`account_id`/channelPartnerLinks/`
@@ -983,9 +988,11 @@ module Google
         # Creates a new Customer resource under the reseller or distributor account.
         # Possible error codes: * PERMISSION_DENIED: The reseller account making the
         # request is different from the reseller account in the API request. *
-        # INVALID_ARGUMENT: * Required request parameters are missing or invalid. *
-        # Domain field value doesn't match the primary email domain. Return value: The
-        # newly created Customer resource.
+        # PERMISSION_DENIED: You are not authorized to create a customer. See https://
+        # support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: *
+        # Required request parameters are missing or invalid. * Domain field value doesn'
+        # t match the primary email domain. Return value: The newly created Customer
+        # resource.
         # @param [String] parent
         #   Required. The resource name of reseller account in which to create the
         #   customer. Parent uses the format: accounts/`account_id`
@@ -1094,10 +1101,12 @@ module Google
         # already exists and overwrite_if_exists is true, it will update that Customer's
         # data. Possible error codes: * PERMISSION_DENIED: The reseller account making
         # the request is different from the reseller account in the API request. *
-        # NOT_FOUND: Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT:
-        # Required parameters are missing, or the auth_token is expired or invalid. *
-        # ALREADY_EXISTS: A customer already exists and has conflicting critical fields.
-        # Requires an overwrite. Return value: The Customer.
+        # PERMISSION_DENIED: You are not authorized to import the customer. See https://
+        # support.google.com/channelservices/answer/9759265 * NOT_FOUND: Cloud Identity
+        # doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are
+        # missing, or the auth_token is expired or invalid. * ALREADY_EXISTS: A customer
+        # already exists and has conflicting critical fields. Requires an overwrite.
+        # Return value: The Customer.
         # @param [String] parent
         #   Required. The resource name of the reseller's account. Parent takes the format:
         #   accounts/`account_id` or accounts/`account_id`/channelPartnerLinks/`
@@ -1184,8 +1193,10 @@ module Google
         
         # Lists the following: * Offers that you can purchase for a customer. * Offers
         # that you can change for an entitlement. Possible error codes: *
-        # PERMISSION_DENIED: The customer doesn't belong to the reseller *
-        # INVALID_ARGUMENT: Required request parameters are missing or invalid.
+        # PERMISSION_DENIED: * The customer doesn't belong to the reseller * The
+        # reseller is not authorized to transact on this Product. See https://support.
+        # google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: Required request
+        # parameters are missing or invalid.
         # @param [String] customer
         #   Required. The resource name of the customer to list Offers for. Format:
         #   accounts/`account_id`/customers/`customer_id`.
@@ -1356,14 +1367,16 @@ module Google
         # information, or the information provided here. Possible error codes: *
         # PERMISSION_DENIED: The customer doesn't belong to the reseller. *
         # INVALID_ARGUMENT: Required request parameters are missing or invalid. *
-        # NOT_FOUND: The customer was not found. * ALREADY_EXISTS: The customer's
-        # primary email already exists. Retry after changing the customer's primary
-        # contact email. * INTERNAL: Any non-user error related to a technical issue in
-        # the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error
-        # related to a technical issue in the backend. Contact Cloud Channel support.
-        # Return value: The ID of a long-running operation. To get the results of the
-        # operation, call the GetOperation method of CloudChannelOperationsService. The
-        # Operation metadata contains an instance of OperationMetadata.
+        # PERMISSION_DENIED: You are not authorized to provision cloud identity id. See
+        # https://support.google.com/channelservices/answer/9759265 * NOT_FOUND: The
+        # customer was not found. * ALREADY_EXISTS: The customer's primary email already
+        # exists. Retry after changing the customer's primary contact email. * INTERNAL:
+        # Any non-user error related to a technical issue in the backend. Contact Cloud
+        # Channel support. * UNKNOWN: Any non-user error related to a technical issue in
+        # the backend. Contact Cloud Channel support. Return value: The ID of a long-
+        # running operation. To get the results of the operation, call the GetOperation
+        # method of CloudChannelOperationsService. The Operation metadata contains an
+        # instance of OperationMetadata.
         # @param [String] customer
         #   Required. Resource name of the customer. Format: accounts/`account_id`/
         #   customers/`customer_id`
@@ -1438,22 +1451,23 @@ module Google
         end
         
         # Transfers customer entitlements to new reseller. Possible error codes: *
-        # PERMISSION_DENIED: The customer doesn't belong to the reseller. *
-        # INVALID_ARGUMENT: Required request parameters are missing or invalid. *
-        # NOT_FOUND: The customer or offer resource was not found. * ALREADY_EXISTS: The
-        # SKU was already transferred for the customer. * CONDITION_NOT_MET or
-        # FAILED_PRECONDITION: * The SKU requires domain verification to transfer, but
-        # the domain is not verified. * An Add-On SKU (example, Vault or Drive) is
-        # missing the pre-requisite SKU (example, G Suite Basic). * (Developer accounts
-        # only) Reseller and resold domain must meet the following naming requirements: *
-        # Domain names must start with goog-test. * Domain names must include the
-        # reseller domain. * Specify all transferring entitlements. * INTERNAL: Any non-
-        # user error related to a technical issue in the backend. Contact Cloud Channel
-        # support. * UNKNOWN: Any non-user error related to a technical issue in the
-        # backend. Contact Cloud Channel support. Return value: The ID of a long-running
-        # operation. To get the results of the operation, call the GetOperation method
-        # of CloudChannelOperationsService. The Operation metadata will contain an
-        # instance of OperationMetadata.
+        # PERMISSION_DENIED: * The customer doesn't belong to the reseller. * The
+        # reseller is not authorized to transact on this Product. See https://support.
+        # google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: Required request
+        # parameters are missing or invalid. * NOT_FOUND: The customer or offer resource
+        # was not found. * ALREADY_EXISTS: The SKU was already transferred for the
+        # customer. * CONDITION_NOT_MET or FAILED_PRECONDITION: * The SKU requires
+        # domain verification to transfer, but the domain is not verified. * An Add-On
+        # SKU (example, Vault or Drive) is missing the pre-requisite SKU (example, G
+        # Suite Basic). * (Developer accounts only) Reseller and resold domain must meet
+        # the following naming requirements: * Domain names must start with goog-test. *
+        # Domain names must include the reseller domain. * Specify all transferring
+        # entitlements. * INTERNAL: Any non-user error related to a technical issue in
+        # the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error
+        # related to a technical issue in the backend. Contact Cloud Channel support.
+        # Return value: The ID of a long-running operation. To get the results of the
+        # operation, call the GetOperation method of CloudChannelOperationsService. The
+        # Operation metadata will contain an instance of OperationMetadata.
         # @param [String] parent
         #   Required. The resource name of the reseller's customer account that will
         #   receive transferred entitlements. Parent uses the format: accounts/`account_id`
@@ -2013,26 +2027,28 @@ module Google
         end
         
         # Creates an entitlement for a customer. Possible error codes: *
-        # PERMISSION_DENIED: The customer doesn't belong to the reseller. *
-        # INVALID_ARGUMENT: * Required request parameters are missing or invalid. *
-        # There is already a customer entitlement for a SKU from the same product family.
-        # * INVALID_VALUE: Make sure the OfferId is valid. If it is, contact Google
-        # Channel support for further troubleshooting. * NOT_FOUND: The customer or
-        # offer resource was not found. * ALREADY_EXISTS: * The SKU was already
-        # purchased for the customer. * The customer's primary email already exists.
-        # Retry after changing the customer's primary contact email. * CONDITION_NOT_MET
-        # or FAILED_PRECONDITION: * The domain required for purchasing a SKU has not
-        # been verified. * A pre-requisite SKU required to purchase an Add-On SKU is
-        # missing. For example, Google Workspace Business Starter is required to
-        # purchase Vault or Drive. * (Developer accounts only) Reseller and resold
-        # domain must meet the following naming requirements: * Domain names must start
-        # with goog-test. * Domain names must include the reseller domain. * INTERNAL:
-        # Any non-user error related to a technical issue in the backend. Contact Cloud
-        # Channel support. * UNKNOWN: Any non-user error related to a technical issue in
-        # the backend. Contact Cloud Channel support. Return value: The ID of a long-
-        # running operation. To get the results of the operation, call the GetOperation
-        # method of CloudChannelOperationsService. The Operation metadata will contain
-        # an instance of OperationMetadata.
+        # PERMISSION_DENIED: * The customer doesn't belong to the reseller. * The
+        # reseller is not authorized to transact on this Product. See https://support.
+        # google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: * Required
+        # request parameters are missing or invalid. * There is already a customer
+        # entitlement for a SKU from the same product family. * INVALID_VALUE: Make sure
+        # the OfferId is valid. If it is, contact Google Channel support for further
+        # troubleshooting. * NOT_FOUND: The customer or offer resource was not found. *
+        # ALREADY_EXISTS: * The SKU was already purchased for the customer. * The
+        # customer's primary email already exists. Retry after changing the customer's
+        # primary contact email. * CONDITION_NOT_MET or FAILED_PRECONDITION: * The
+        # domain required for purchasing a SKU has not been verified. * A pre-requisite
+        # SKU required to purchase an Add-On SKU is missing. For example, Google
+        # Workspace Business Starter is required to purchase Vault or Drive. * (
+        # Developer accounts only) Reseller and resold domain must meet the following
+        # naming requirements: * Domain names must start with goog-test. * Domain names
+        # must include the reseller domain. * INTERNAL: Any non-user error related to a
+        # technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any
+        # non-user error related to a technical issue in the backend. Contact Cloud
+        # Channel support. Return value: The ID of a long-running operation. To get the
+        # results of the operation, call the GetOperation method of
+        # CloudChannelOperationsService. The Operation metadata will contain an instance
+        # of OperationMetadata.
         # @param [String] parent
         #   Required. The resource name of the reseller's customer account in which to
         #   create the entitlement. Parent uses the format: accounts/`account_id`/
