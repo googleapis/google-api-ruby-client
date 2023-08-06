@@ -4423,6 +4423,13 @@ module Google
       class Settings
         include Google::Apis::Core::Hashable
       
+        # Disable Cloud Logging for the Migration Center API. Users are billed for the
+        # logs.
+        # Corresponds to the JSON property `disableCloudLogging`
+        # @return [Boolean]
+        attr_accessor :disable_cloud_logging
+        alias_method :disable_cloud_logging?, :disable_cloud_logging
+      
         # Output only. The name of the resource.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -4439,6 +4446,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disable_cloud_logging = args[:disable_cloud_logging] if args.key?(:disable_cloud_logging)
           @name = args[:name] if args.key?(:name)
           @preference_set = args[:preference_set] if args.key?(:preference_set)
         end
