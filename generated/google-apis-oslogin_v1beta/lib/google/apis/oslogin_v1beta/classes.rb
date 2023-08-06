@@ -221,6 +221,44 @@ module Google
         end
       end
       
+      # 
+      class SignSshPublicKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The SSH public key to sign.
+        # Corresponds to the JSON property `sshPublicKey`
+        # @return [String]
+        attr_accessor :ssh_public_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ssh_public_key = args[:ssh_public_key] if args.key?(:ssh_public_key)
+        end
+      end
+      
+      # 
+      class SignSshPublicKeyResponse
+        include Google::Apis::Core::Hashable
+      
+        # The signed SSH public key to use in the SSH handshake.
+        # Corresponds to the JSON property `signedSshPublicKey`
+        # @return [String]
+        attr_accessor :signed_ssh_public_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signed_ssh_public_key = args[:signed_ssh_public_key] if args.key?(:signed_ssh_public_key)
+        end
+      end
+      
       # The SSH public key information associated with a Google account.
       class SshPublicKey
         include Google::Apis::Core::Hashable
