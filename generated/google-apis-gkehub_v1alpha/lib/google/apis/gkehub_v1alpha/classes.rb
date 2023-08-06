@@ -3350,6 +3350,59 @@ module Google
         end
       end
       
+      # List of fleet namespaces.
+      class ListScopeNamespacesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of resources from the `ListNamespaces` method.
+        # The value of an empty string means that there are no more resources to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of fleet namespaces
+        # Corresponds to the JSON property `scopeNamespaces`
+        # @return [Array<Google::Apis::GkehubV1alpha::Namespace>]
+        attr_accessor :scope_namespaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @scope_namespaces = args[:scope_namespaces] if args.key?(:scope_namespaces)
+        end
+      end
+      
+      # List of Scope RBACRoleBindings.
+      class ListScopeRbacRoleBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of resources from the `
+        # ListScopeRBACRoleBindings` method. The value of an empty string means that
+        # there are no more resources to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Scope RBACRoleBindings.
+        # Corresponds to the JSON property `rbacrolebindings`
+        # @return [Array<Google::Apis::GkehubV1alpha::RbacRoleBinding>]
+        attr_accessor :rbacrolebindings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rbacrolebindings = args[:rbacrolebindings] if args.key?(:rbacrolebindings)
+        end
+      end
+      
       # List of Scopes.
       class ListScopesResponse
         include Google::Apis::Core::Hashable
@@ -4039,6 +4092,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Namespace-level cluster namespace labels. These labels are applied
+        # to the related namespace of the member clusters bound to the parent Scope.
+        # Scope-level labels (`namespace_labels` in the Fleet Scope resource) take
+        # precedence over Namespace-level labels if they share a key. Keys and values
+        # must be Kubernetes-conformant.
+        # Corresponds to the JSON property `namespaceLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :namespace_labels
+      
         # Required. Scope associated with the namespace
         # Corresponds to the JSON property `scope`
         # @return [String]
@@ -4071,6 +4133,7 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @namespace_labels = args[:namespace_labels] if args.key?(:namespace_labels)
           @scope = args[:scope] if args.key?(:scope)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
@@ -5014,6 +5077,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Scope-level cluster namespace labels. For the member clusters bound
+        # to the Scope, these labels are applied to each namespace under the Scope.
+        # Scope-level labels take precedence over Namespace-level labels (`
+        # namespace_labels` in the Fleet Namespace resource) if they share a key. Keys
+        # and values must be Kubernetes-conformant.
+        # Corresponds to the JSON property `namespaceLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :namespace_labels
+      
         # ScopeLifecycleState describes the state of a Scope resource.
         # Corresponds to the JSON property `state`
         # @return [Google::Apis::GkehubV1alpha::ScopeLifecycleState]
@@ -5042,6 +5114,7 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @namespace_labels = args[:namespace_labels] if args.key?(:namespace_labels)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
