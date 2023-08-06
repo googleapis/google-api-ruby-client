@@ -261,6 +261,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists all subscriptions on a given Data Exchange or Listing.
+        # @param [String] resource
+        #   Required. Resource name of the requested target. This resource may be either a
+        #   Listing or a DataExchange. e.g. projects/123/locations/US/dataExchanges/456 OR
+        #   e.g. projects/123/locations/US/dataExchanges/456/listings/789
+        # @param [Boolean] include_deleted_subscriptions
+        #   If selected, includes deleted subscriptions in the response (up to 63 days
+        #   after deletion).
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response page.
+        # @param [String] page_token
+        #   Page token, returned by a previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticshubV1::ListSharedResourceSubscriptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticshubV1::ListSharedResourceSubscriptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_data_exchange_subscriptions(resource, include_deleted_subscriptions: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+resource}:listSubscriptions', options)
+          command.response_representation = Google::Apis::AnalyticshubV1::ListSharedResourceSubscriptionsResponse::Representation
+          command.response_class = Google::Apis::AnalyticshubV1::ListSharedResourceSubscriptionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['includeDeletedSubscriptions'] = include_deleted_subscriptions unless include_deleted_subscriptions.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates an existing data exchange.
         # @param [String] name
         #   Output only. The resource name of the data exchange. e.g. `projects/myproject/
@@ -330,6 +372,41 @@ module Google
           command.response_representation = Google::Apis::AnalyticshubV1::Policy::Representation
           command.response_class = Google::Apis::AnalyticshubV1::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a Subscription to a Data Exchange. This is a long-running operation as
+        # it will create one or more linked datasets.
+        # @param [String] name
+        #   Required. Resource name of the Data Exchange. e.g. `projects/publisherproject/
+        #   locations/US/dataExchanges/123`
+        # @param [Google::Apis::AnalyticshubV1::SubscribeDataExchangeRequest] subscribe_data_exchange_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticshubV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticshubV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def subscribe_data_exchange(name, subscribe_data_exchange_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:subscribe', options)
+          command.request_representation = Google::Apis::AnalyticshubV1::SubscribeDataExchangeRequest::Representation
+          command.request_object = subscribe_data_exchange_request_object
+          command.response_representation = Google::Apis::AnalyticshubV1::Operation::Representation
+          command.response_class = Google::Apis::AnalyticshubV1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -544,6 +621,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists all subscriptions on a given Data Exchange or Listing.
+        # @param [String] resource
+        #   Required. Resource name of the requested target. This resource may be either a
+        #   Listing or a DataExchange. e.g. projects/123/locations/US/dataExchanges/456 OR
+        #   e.g. projects/123/locations/US/dataExchanges/456/listings/789
+        # @param [Boolean] include_deleted_subscriptions
+        #   If selected, includes deleted subscriptions in the response (up to 63 days
+        #   after deletion).
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response page.
+        # @param [String] page_token
+        #   Page token, returned by a previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticshubV1::ListSharedResourceSubscriptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticshubV1::ListSharedResourceSubscriptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_data_exchange_listing_subscriptions(resource, include_deleted_subscriptions: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+resource}:listSubscriptions', options)
+          command.response_representation = Google::Apis::AnalyticshubV1::ListSharedResourceSubscriptionsResponse::Representation
+          command.response_class = Google::Apis::AnalyticshubV1::ListSharedResourceSubscriptionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['includeDeletedSubscriptions'] = include_deleted_subscriptions unless include_deleted_subscriptions.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates an existing listing.
         # @param [String] name
         #   Output only. The resource name of the listing. e.g. `projects/myproject/
@@ -685,6 +804,178 @@ module Google
           command.response_representation = Google::Apis::AnalyticshubV1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::AnalyticshubV1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a subscription.
+        # @param [String] name
+        #   Required. Resource name of the subscription to delete. e.g. projects/123/
+        #   locations/US/subscriptions/456
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticshubV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticshubV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticshubV1::Operation::Representation
+          command.response_class = Google::Apis::AnalyticshubV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the details of a Subscription.
+        # @param [String] name
+        #   Required. Resource name of the subscription. e.g. projects/123/locations/US/
+        #   subscriptions/456
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticshubV1::Subscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticshubV1::Subscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticshubV1::Subscription::Representation
+          command.response_class = Google::Apis::AnalyticshubV1::Subscription
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all subscriptions in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource path of the subscription. e.g. projects/
+        #   myproject/locations/US
+        # @param [String] filter
+        #   The filter expression may be used to filter by Data Exchange or Listing.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response page.
+        # @param [String] page_token
+        #   Page token, returned by a previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticshubV1::ListSubscriptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticshubV1::ListSubscriptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_subscriptions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/subscriptions', options)
+          command.response_representation = Google::Apis::AnalyticshubV1::ListSubscriptionsResponse::Representation
+          command.response_class = Google::Apis::AnalyticshubV1::ListSubscriptionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Refreshes a Subscription to a Data Exchange. A Data Exchange can become stale
+        # when a publisher adds or removes data. This is a long-running operation as it
+        # may create many linked datasets.
+        # @param [String] name
+        #   Required. Resource name of the Subscription to refresh. e.g. `projects/
+        #   subscriberproject/locations/US/subscriptions/123`
+        # @param [Google::Apis::AnalyticshubV1::RefreshSubscriptionRequest] refresh_subscription_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticshubV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticshubV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def refresh_subscription(name, refresh_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:refresh', options)
+          command.request_representation = Google::Apis::AnalyticshubV1::RefreshSubscriptionRequest::Representation
+          command.request_object = refresh_subscription_request_object
+          command.response_representation = Google::Apis::AnalyticshubV1::Operation::Representation
+          command.response_class = Google::Apis::AnalyticshubV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Revokes a given subscription.
+        # @param [String] name
+        #   Required. Resource name of the subscription to revoke. e.g. projects/123/
+        #   locations/US/subscriptions/456
+        # @param [Google::Apis::AnalyticshubV1::RevokeSubscriptionRequest] revoke_subscription_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticshubV1::RevokeSubscriptionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticshubV1::RevokeSubscriptionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def revoke_subscription(name, revoke_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:revoke', options)
+          command.request_representation = Google::Apis::AnalyticshubV1::RevokeSubscriptionRequest::Representation
+          command.request_object = revoke_subscription_request_object
+          command.response_representation = Google::Apis::AnalyticshubV1::RevokeSubscriptionResponse::Representation
+          command.response_class = Google::Apis::AnalyticshubV1::RevokeSubscriptionResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
