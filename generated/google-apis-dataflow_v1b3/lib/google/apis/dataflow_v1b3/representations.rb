@@ -142,6 +142,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataSamplingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSamplingReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatastoreIoDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -617,6 +629,12 @@ module Google
       end
       
       class SdkInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SdkBug
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1277,6 +1295,26 @@ module Google
         end
       end
       
+      class DataSamplingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :behaviors, as: 'behaviors'
+        end
+      end
+      
+      class DataSamplingReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_written_delta, :numeric_string => true, as: 'bytesWrittenDelta'
+          property :elements_sampled_bytes, :numeric_string => true, as: 'elementsSampledBytes'
+          property :elements_sampled_count, :numeric_string => true, as: 'elementsSampledCount'
+          property :exceptions_sampled_count, :numeric_string => true, as: 'exceptionsSampledCount'
+          property :pcollections_sampled_count, :numeric_string => true, as: 'pcollectionsSampledCount'
+          property :persistence_errors_count, :numeric_string => true, as: 'persistenceErrorsCount'
+          property :translation_errors_count, :numeric_string => true, as: 'translationErrorsCount'
+        end
+      end
+      
       class DatastoreIoDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1288,6 +1326,8 @@ module Google
       class DebugOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_sampling, as: 'dataSampling', class: Google::Apis::DataflowV1b3::DataSamplingConfig, decorator: Google::Apis::DataflowV1b3::DataSamplingConfig::Representation
+      
           property :enable_hot_key_logging, as: 'enableHotKeyLogging'
         end
       end
@@ -1377,6 +1417,7 @@ module Google
           collection :service_options, as: 'serviceOptions'
           property :shuffle_mode, as: 'shuffleMode'
           property :temp_storage_prefix, as: 'tempStoragePrefix'
+          property :use_streaming_engine_resource_based_billing, as: 'useStreamingEngineResourceBasedBilling'
           hash :user_agent, as: 'userAgent'
           hash :version, as: 'version'
           collection :worker_pools, as: 'workerPools', class: Google::Apis::DataflowV1b3::WorkerPool, decorator: Google::Apis::DataflowV1b3::WorkerPool::Representation
@@ -2168,6 +2209,15 @@ module Google
         end
       end
       
+      class SdkBug
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :severity, as: 'severity'
+          property :type, as: 'type'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class SdkHarnessContainerImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2181,6 +2231,8 @@ module Google
       class SdkVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bugs, as: 'bugs', class: Google::Apis::DataflowV1b3::SdkBug, decorator: Google::Apis::DataflowV1b3::SdkBug::Representation
+      
           property :sdk_support_status, as: 'sdkSupportStatus'
           property :version, as: 'version'
           property :version_display_name, as: 'versionDisplayName'
@@ -2849,6 +2901,8 @@ module Google
       class WorkerMessage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_sampling_report, as: 'dataSamplingReport', class: Google::Apis::DataflowV1b3::DataSamplingReport, decorator: Google::Apis::DataflowV1b3::DataSamplingReport::Representation
+      
           hash :labels, as: 'labels'
           property :time, as: 'time'
           property :worker_health_report, as: 'workerHealthReport', class: Google::Apis::DataflowV1b3::WorkerHealthReport, decorator: Google::Apis::DataflowV1b3::WorkerHealthReport::Representation

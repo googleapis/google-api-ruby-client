@@ -856,6 +856,88 @@ module Google
         end
       end
       
+      # Configuration options for sampling elements.
+      class DataSamplingConfig
+        include Google::Apis::Core::Hashable
+      
+        # List of given sampling behaviors to enable. For example, specifying behaviors =
+        # [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be
+        # used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS]
+        # for specifying periodic sampling and exception sampling. If DISABLED is in the
+        # list, then sampling will be disabled and ignore the other given behaviors.
+        # Ordering does not matter.
+        # Corresponds to the JSON property `behaviors`
+        # @return [Array<String>]
+        attr_accessor :behaviors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @behaviors = args[:behaviors] if args.key?(:behaviors)
+        end
+      end
+      
+      # Contains per-worker telemetry about the data sampling feature.
+      class DataSamplingReport
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Delta of bytes written to file from previous report.
+        # Corresponds to the JSON property `bytesWrittenDelta`
+        # @return [Fixnum]
+        attr_accessor :bytes_written_delta
+      
+        # Optional. Delta of bytes sampled from previous report.
+        # Corresponds to the JSON property `elementsSampledBytes`
+        # @return [Fixnum]
+        attr_accessor :elements_sampled_bytes
+      
+        # Optional. Delta of number of elements sampled from previous report.
+        # Corresponds to the JSON property `elementsSampledCount`
+        # @return [Fixnum]
+        attr_accessor :elements_sampled_count
+      
+        # Optional. Delta of number of samples taken from user code exceptions from
+        # previous report.
+        # Corresponds to the JSON property `exceptionsSampledCount`
+        # @return [Fixnum]
+        attr_accessor :exceptions_sampled_count
+      
+        # Optional. Delta of number of PCollections sampled from previous report.
+        # Corresponds to the JSON property `pcollectionsSampledCount`
+        # @return [Fixnum]
+        attr_accessor :pcollections_sampled_count
+      
+        # Optional. Delta of errors counts from persisting the samples from previous
+        # report.
+        # Corresponds to the JSON property `persistenceErrorsCount`
+        # @return [Fixnum]
+        attr_accessor :persistence_errors_count
+      
+        # Optional. Delta of errors counts from retrieving, or translating the samples
+        # from previous report.
+        # Corresponds to the JSON property `translationErrorsCount`
+        # @return [Fixnum]
+        attr_accessor :translation_errors_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bytes_written_delta = args[:bytes_written_delta] if args.key?(:bytes_written_delta)
+          @elements_sampled_bytes = args[:elements_sampled_bytes] if args.key?(:elements_sampled_bytes)
+          @elements_sampled_count = args[:elements_sampled_count] if args.key?(:elements_sampled_count)
+          @exceptions_sampled_count = args[:exceptions_sampled_count] if args.key?(:exceptions_sampled_count)
+          @pcollections_sampled_count = args[:pcollections_sampled_count] if args.key?(:pcollections_sampled_count)
+          @persistence_errors_count = args[:persistence_errors_count] if args.key?(:persistence_errors_count)
+          @translation_errors_count = args[:translation_errors_count] if args.key?(:translation_errors_count)
+        end
+      end
+      
       # Metadata for a Datastore connector used by the job.
       class DatastoreIoDetails
         include Google::Apis::Core::Hashable
@@ -885,6 +967,11 @@ module Google
       class DebugOptions
         include Google::Apis::Core::Hashable
       
+        # Configuration options for sampling elements.
+        # Corresponds to the JSON property `dataSampling`
+        # @return [Google::Apis::DataflowV1b3::DataSamplingConfig]
+        attr_accessor :data_sampling
+      
         # When true, enables the logging of the literal hot key to the user's Cloud
         # Logging.
         # Corresponds to the JSON property `enableHotKeyLogging`
@@ -898,6 +985,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_sampling = args[:data_sampling] if args.key?(:data_sampling)
           @enable_hot_key_logging = args[:enable_hot_key_logging] if args.key?(:enable_hot_key_logging)
         end
       end
@@ -1249,6 +1337,13 @@ module Google
         # @return [String]
         attr_accessor :temp_storage_prefix
       
+        # Output only. Whether the job uses the new streaming engine billing model based
+        # on resource usage.
+        # Corresponds to the JSON property `useStreamingEngineResourceBasedBilling`
+        # @return [Boolean]
+        attr_accessor :use_streaming_engine_resource_based_billing
+        alias_method :use_streaming_engine_resource_based_billing?, :use_streaming_engine_resource_based_billing
+      
         # A description of the process that generated the request.
         # Corresponds to the JSON property `userAgent`
         # @return [Hash<String,Object>]
@@ -1301,6 +1396,7 @@ module Google
           @service_options = args[:service_options] if args.key?(:service_options)
           @shuffle_mode = args[:shuffle_mode] if args.key?(:shuffle_mode)
           @temp_storage_prefix = args[:temp_storage_prefix] if args.key?(:temp_storage_prefix)
+          @use_streaming_engine_resource_based_billing = args[:use_streaming_engine_resource_based_billing] if args.key?(:use_streaming_engine_resource_based_billing)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @version = args[:version] if args.key?(:version)
           @worker_pools = args[:worker_pools] if args.key?(:worker_pools)
@@ -4229,6 +4325,37 @@ module Google
         end
       end
       
+      # A bug found in the Dataflow SDK.
+      class SdkBug
+        include Google::Apis::Core::Hashable
+      
+        # Output only. How severe the SDK bug is.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Output only. Describes the impact of this SDK bug.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. Link to more information on the bug.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @severity = args[:severity] if args.key?(:severity)
+          @type = args[:type] if args.key?(:type)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Defines an SDK harness container for executing Dataflow pipelines.
       class SdkHarnessContainerImage
         include Google::Apis::Core::Hashable
@@ -4278,6 +4405,11 @@ module Google
       class SdkVersion
         include Google::Apis::Core::Hashable
       
+        # Output only. Known bugs found in this SDK version.
+        # Corresponds to the JSON property `bugs`
+        # @return [Array<Google::Apis::DataflowV1b3::SdkBug>]
+        attr_accessor :bugs
+      
         # The support status for this SDK version.
         # Corresponds to the JSON property `sdkSupportStatus`
         # @return [String]
@@ -4299,6 +4431,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bugs = args[:bugs] if args.key?(:bugs)
           @sdk_support_status = args[:sdk_support_status] if args.key?(:sdk_support_status)
           @version = args[:version] if args.key?(:version)
           @version_display_name = args[:version_display_name] if args.key?(:version_display_name)
@@ -6660,6 +6793,11 @@ module Google
       class WorkerMessage
         include Google::Apis::Core::Hashable
       
+        # Contains per-worker telemetry about the data sampling feature.
+        # Corresponds to the JSON property `dataSamplingReport`
+        # @return [Google::Apis::DataflowV1b3::DataSamplingReport]
+        attr_accessor :data_sampling_report
+      
         # Labels are used to group WorkerMessages. For example, a worker_message about a
         # particular container might have the labels: ` "JOB_ID": "2015-04-22", "
         # WORKER_ID": "wordcount-vm-2015…" "CONTAINER_TYPE": "worker", "CONTAINER_ID": "
@@ -6724,6 +6862,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_sampling_report = args[:data_sampling_report] if args.key?(:data_sampling_report)
           @labels = args[:labels] if args.key?(:labels)
           @time = args[:time] if args.key?(:time)
           @worker_health_report = args[:worker_health_report] if args.key?(:worker_health_report)
