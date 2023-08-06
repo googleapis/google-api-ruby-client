@@ -1773,6 +1773,12 @@ module Google
         attr_accessor :daily_export_enabled
         alias_method :daily_export_enabled?, :daily_export_enabled
       
+        # If set true, enables enterprise export to the linked Google Cloud project.
+        # Corresponds to the JSON property `enterpriseExportEnabled`
+        # @return [Boolean]
+        attr_accessor :enterprise_export_enabled
+        alias_method :enterprise_export_enabled?, :enterprise_export_enabled
+      
         # The list of event names that will be excluded from exports.
         # Corresponds to the JSON property `excludedEvents`
         # @return [Array<String>]
@@ -1791,12 +1797,6 @@ module Google
         # @return [Boolean]
         attr_accessor :include_advertising_id
         alias_method :include_advertising_id?, :include_advertising_id
-      
-        # If set true, enables intraday export to the linked Google Cloud project.
-        # Corresponds to the JSON property `intradayExportEnabled`
-        # @return [Boolean]
-        attr_accessor :intraday_export_enabled
-        alias_method :intraday_export_enabled?, :intraday_export_enabled
       
         # Output only. Resource name of this BigQuery link. Format: 'properties/`
         # property_id`/bigQueryLinks/`bigquery_link_id`' Format: 'properties/1234/
@@ -1828,10 +1828,10 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @daily_export_enabled = args[:daily_export_enabled] if args.key?(:daily_export_enabled)
+          @enterprise_export_enabled = args[:enterprise_export_enabled] if args.key?(:enterprise_export_enabled)
           @excluded_events = args[:excluded_events] if args.key?(:excluded_events)
           @export_streams = args[:export_streams] if args.key?(:export_streams)
           @include_advertising_id = args[:include_advertising_id] if args.key?(:include_advertising_id)
-          @intraday_export_enabled = args[:intraday_export_enabled] if args.key?(:intraday_export_enabled)
           @name = args[:name] if args.key?(:name)
           @project = args[:project] if args.key?(:project)
           @streaming_export_enabled = args[:streaming_export_enabled] if args.key?(:streaming_export_enabled)

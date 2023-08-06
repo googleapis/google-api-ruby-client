@@ -1495,10 +1495,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :daily_export_enabled, as: 'dailyExportEnabled'
+          property :enterprise_export_enabled, as: 'enterpriseExportEnabled'
           collection :excluded_events, as: 'excludedEvents'
           collection :export_streams, as: 'exportStreams'
           property :include_advertising_id, as: 'includeAdvertisingId'
-          property :intraday_export_enabled, as: 'intradayExportEnabled'
           property :name, as: 'name'
           property :project, as: 'project'
           property :streaming_export_enabled, as: 'streamingExportEnabled'
