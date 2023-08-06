@@ -1278,8 +1278,8 @@ module Google
         attr_accessor :members
       
         # Whether to negate the Condition. If true, the Condition becomes a NAND over
-        # its non-empty fields, each field must be false for the Condition overall to be
-        # satisfied. Defaults to false.
+        # its non-empty fields. Any non-empty field criteria evaluating to false will
+        # result in the Condition to be satisfied. Defaults to false.
         # Corresponds to the JSON property `negate`
         # @return [Boolean]
         attr_accessor :negate
