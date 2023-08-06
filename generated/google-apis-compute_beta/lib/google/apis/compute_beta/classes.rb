@@ -23063,6 +23063,81 @@ module Google
         end
       end
       
+      # Contains NAT IP information of a NAT config (i.e. usage status, mode).
+      class NatIpInfo
+        include Google::Apis::Core::Hashable
+      
+        # A list of all NAT IPs assigned to this NAT config.
+        # Corresponds to the JSON property `natIpInfoMappings`
+        # @return [Array<Google::Apis::ComputeBeta::NatIpInfoNatIpInfoMapping>]
+        attr_accessor :nat_ip_info_mappings
+      
+        # Name of the NAT config which the NAT IP belongs to.
+        # Corresponds to the JSON property `natName`
+        # @return [String]
+        attr_accessor :nat_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nat_ip_info_mappings = args[:nat_ip_info_mappings] if args.key?(:nat_ip_info_mappings)
+          @nat_name = args[:nat_name] if args.key?(:nat_name)
+        end
+      end
+      
+      # Contains information of a NAT IP.
+      class NatIpInfoNatIpInfoMapping
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether NAT IP is auto or manual.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # NAT IP address. For example: 203.0.113.11.
+        # Corresponds to the JSON property `natIp`
+        # @return [String]
+        attr_accessor :nat_ip
+      
+        # Specifies whether NAT IP is currently serving at least one endpoint or not.
+        # Corresponds to the JSON property `usage`
+        # @return [String]
+        attr_accessor :usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+          @nat_ip = args[:nat_ip] if args.key?(:nat_ip)
+          @usage = args[:usage] if args.key?(:usage)
+        end
+      end
+      
+      # 
+      class NatIpInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A list of NAT IP information.
+        # Corresponds to the JSON property `result`
+        # @return [Array<Google::Apis::ComputeBeta::NatIpInfo>]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @result = args[:result] if args.key?(:result)
+        end
+      end
+      
       # Represents a VPC Network resource. Networks connect resources to each other
       # and to the internet. For more information, read Virtual Private Cloud (VPC)
       # Network.
@@ -27654,7 +27729,7 @@ module Google
       # Handling API responses. Operations can be global, regional or zonal. - For
       # global operations, use the `globalOperations` resource. - For regional
       # operations, use the `regionOperations` resource. - For zonal operations, use
-      # the `zonalOperations` resource. For more information, read Global, Regional,
+      # the `zoneOperations` resource. For more information, read Global, Regional,
       # and Zonal Resources.
       class Operation
         include Google::Apis::Core::Hashable
@@ -39686,6 +39761,71 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class SnapshotSettings
+        include Google::Apis::Core::Hashable
+      
+        # Policy of which storage location is going to be resolved, and additional data
+        # that particularizes how the policy is going to be carried out.
+        # Corresponds to the JSON property `storageLocation`
+        # @return [Google::Apis::ComputeBeta::SnapshotSettingsStorageLocationSettings]
+        attr_accessor :storage_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @storage_location = args[:storage_location] if args.key?(:storage_location)
+        end
+      end
+      
+      # 
+      class SnapshotSettingsStorageLocationSettings
+        include Google::Apis::Core::Hashable
+      
+        # When the policy is SPECIFIC_LOCATIONS, snapshots will be stored in the
+        # locations listed in this field. Keys are GCS bucket locations.
+        # Corresponds to the JSON property `locations`
+        # @return [Hash<String,Google::Apis::ComputeBeta::SnapshotSettingsStorageLocationSettingsStorageLocationPreference>]
+        attr_accessor :locations
+      
+        # The chosen location policy.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # A structure for specifying storage locations.
+      class SnapshotSettingsStorageLocationSettingsStorageLocationPreference
+        include Google::Apis::Core::Hashable
+      
+        # Name of the location. It should be one of the GCS buckets.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

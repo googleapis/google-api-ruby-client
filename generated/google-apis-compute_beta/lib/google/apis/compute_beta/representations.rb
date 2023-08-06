@@ -2860,6 +2860,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NatIpInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NatIpInfoNatIpInfoMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NatIpInfoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Network
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5148,6 +5166,24 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotSettingsStorageLocationSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotSettingsStorageLocationSettingsStorageLocationPreference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -11841,6 +11877,32 @@ module Google
         end
       end
       
+      class NatIpInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nat_ip_info_mappings, as: 'natIpInfoMappings', class: Google::Apis::ComputeBeta::NatIpInfoNatIpInfoMapping, decorator: Google::Apis::ComputeBeta::NatIpInfoNatIpInfoMapping::Representation
+      
+          property :nat_name, as: 'natName'
+        end
+      end
+      
+      class NatIpInfoNatIpInfoMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+          property :nat_ip, as: 'natIp'
+          property :usage, as: 'usage'
+        end
+      end
+      
+      class NatIpInfoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :result, as: 'result', class: Google::Apis::ComputeBeta::NatIpInfo, decorator: Google::Apis::ComputeBeta::NatIpInfo::Representation
+      
+        end
+      end
+      
       class Network
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -16059,6 +16121,30 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SnapshotSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :storage_location, as: 'storageLocation', class: Google::Apis::ComputeBeta::SnapshotSettingsStorageLocationSettings, decorator: Google::Apis::ComputeBeta::SnapshotSettingsStorageLocationSettings::Representation
+      
+        end
+      end
+      
+      class SnapshotSettingsStorageLocationSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :locations, as: 'locations', class: Google::Apis::ComputeBeta::SnapshotSettingsStorageLocationSettingsStorageLocationPreference, decorator: Google::Apis::ComputeBeta::SnapshotSettingsStorageLocationSettingsStorageLocationPreference::Representation
+      
+          property :policy, as: 'policy'
+        end
+      end
+      
+      class SnapshotSettingsStorageLocationSettingsStorageLocationPreference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
