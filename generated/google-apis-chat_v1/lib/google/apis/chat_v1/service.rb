@@ -139,11 +139,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a named space. Spaces grouped by topics or that have guest access aren'
-        # t supported. For an example, see [Create a space](https://developers.google.
-        # com/chat/api/guides/v1/spaces/create). Requires [user authentication](https://
-        # developers.google.com/chat/api/guides/auth/users) and the `chat.spaces.create`
-        # or `chat.spaces` scope.
+        # Creates a named space. Spaces grouped by topics aren't supported. For an
+        # example, see [Create a space](https://developers.google.com/chat/api/guides/v1/
+        # spaces/create). Requires [user authentication](https://developers.google.com/
+        # chat/api/guides/auth/users) and the `chat.spaces.create` or `chat.spaces`
+        # scope.
         # @param [Google::Apis::ChatV1::Space] space_object
         # @param [String] request_id
         #   Optional. A unique identifier for this request. A random UUID is recommended.
@@ -232,7 +232,10 @@ module Google
         #   or the `id` for the [user](https://developers.google.com/admin-sdk/directory/
         #   reference/rest/v1/users) in the Directory API. For example, if the People API `
         #   Person.resourceName` is `people/123456789`, you can find a direct message with
-        #   that person by using `users/123456789` as the `name`.
+        #   that person by using `users/123456789` as the `name`. When [authenticated as a
+        #   user](https://developers.google.com/chat/api/guides/auth/users), you can use
+        #   the email as an alias for ``user``. For example, `users/example@gmail.com`
+        #   where `example@gmail.com` is the email of the Google Chat user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -421,18 +424,18 @@ module Google
         # in the request. For an example, see [Set up a space](https://developers.google.
         # com/chat/api/guides/v1/spaces/set-up). To specify the human members to add,
         # add memberships with the appropriate `member.name` in the `SetUpSpaceRequest`.
-        # To add a human user, use `users/`user``, where ``user`` is either the ``
-        # person_id`` for the [person](https://developers.google.com/people/api/rest/v1/
-        # people) from the People API, or the `id` for the [user](https://developers.
-        # google.com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK
-        # Directory API. For example, if the People API `Person` `resourceName` is `
-        # people/123456789`, you can add the user to the space by including a membership
-        # with `users/123456789` as the `member.name`. For a space or group chat, if the
-        # caller blocks or is blocked by some members, then those members aren't added
-        # to the created space. To create a direct message (DM) between the calling user
-        # and another human user, specify exactly one membership to represent the human
-        # user. If one user blocks the other, the request fails and the DM isn't created.
-        # To create a DM between the calling user and the calling app, set `Space.
+        # To add a human user, use `users/`user``, where ``user`` can be the email
+        # address for the user. For users in the same Workspace organization ``user``
+        # can also be the ``person_id`` for the person from the People API, or the `id`
+        # for the user in the Directory API. For example, if the People API Person `
+        # resourceName` for `user@example.com` is `people/123456789`, you can add the
+        # user to the space by setting the `membership.member.name` to `users/user@
+        # example.com` or `users/123456789`. For a space or group chat, if the caller
+        # blocks or is blocked by some members, then those members aren't added to the
+        # created space. To create a direct message (DM) between the calling user and
+        # another human user, specify exactly one membership to represent the human user.
+        # If one user blocks the other, the request fails and the DM isn't created. To
+        # create a DM between the calling user and the calling app, set `Space.
         # singleUserBotDm` to `true` and don't specify any memberships. You can only use
         # this method to set up a DM with the calling app. To add the calling app as a
         # member of a space or an existing DM between two human users, see [create a
@@ -483,13 +486,13 @@ module Google
         # the member to add, set the `membership.member.name` in the `
         # CreateMembershipRequest`: - To add the calling app to a space or a direct
         # message between two human users, use `users/app`. Unable to add other apps to
-        # the space. - To add a human user, use `users/`user``, where ``user`` is either
-        # the ``person_id`` for the [person](https://developers.google.com/people/api/
-        # rest/v1/people) from the People API, or the `id` for the [user](https://
-        # developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the
-        # Directory API. For example, if the People API `Person` `resourceName` is `
-        # people/123456789`, you can add the user to the space by setting the `
-        # membership.member.name` to `users/123456789`.
+        # the space. - To add a human user, use `users/`user``, where ``user`` can be
+        # the email address for the user. For users in the same Workspace organization ``
+        # user`` can also be the ``person_id`` for the person from the People API, or
+        # the `id` for the user in the Directory API. For example, if the People API
+        # Person `resourceName` for `user@example.com` is `people/123456789`, you can
+        # add the user to the space by setting the `membership.member.name` to `users/
+        # user@example.com` or `users/123456789`.
         # @param [String] parent
         #   Required. The resource name of the space for which to create the membership.
         #   Format: spaces/`space`
@@ -531,10 +534,12 @@ module Google
         #   Required. Resource name of the membership to delete. Chat apps can delete
         #   human users' or their own memberships. Chat apps can't delete other apps'
         #   memberships. When deleting a human membership, requires the `chat.memberships`
-        #   scope and `spaces/`space`/members/`member`` format. When deleting an app
-        #   membership, requires the `chat.memberships.app` scope and `spaces/`space`/
-        #   members/app` format. Format: `spaces/`space`/members/`member`` or `spaces/`
-        #   space`/members/app`
+        #   scope and `spaces/`space`/members/`member`` format. You can use the email as
+        #   an alias for ``member``. For example, `spaces/`space`/members/example@gmail.
+        #   com` where `example@gmail.com` is the email of the Google Chat user. When
+        #   deleting an app membership, requires the `chat.memberships.app` scope and `
+        #   spaces/`space`/members/app` format. Format: `spaces/`space`/members/`member``
+        #   or `spaces/`space`/members/app`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -573,7 +578,11 @@ module Google
         # @param [String] name
         #   Required. Resource name of the membership to retrieve. To get the app's own
         #   membership, you can optionally use `spaces/`space`/members/app`. Format: `
-        #   spaces/`space`/members/`member`` or `spaces/`space`/members/app`
+        #   spaces/`space`/members/`member`` or `spaces/`space`/members/app` When [
+        #   authenticated as a user](https://developers.google.com/chat/api/guides/auth/
+        #   users), you can use the user's email as an alias for ``member``. For example, `
+        #   spaces/`space`/members/example@gmail.com` where `example@gmail.com` is the
+        #   email of the Google Chat user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -761,6 +770,8 @@ module Google
         # service-accounts) and [user authentication](https://developers.google.com/chat/
         # api/guides/auth/users). [User authentication](https://developers.google.com/
         # chat/api/guides/auth/users) requires the `chat.messages` authorization scope.
+        # Requests authenticated with service accounts can only delete messages created
+        # by the calling Chat app.
         # @param [String] name
         #   Required. Resource name of the message that you want to delete, in the form `
         #   spaces/*/messages/*` Example: `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.
@@ -928,7 +939,8 @@ module Google
         # developers.google.com/chat/api/guides/auth/service-accounts) and [user
         # authentication](https://developers.google.com/chat/api/guides/auth/users). [
         # User authentication](https://developers.google.com/chat/api/guides/auth/users)
-        # requires the `chat.messages` authorization scope.
+        # requires the `chat.messages` authorization scope. Requests authenticated with
+        # service accounts can only update messages created by the calling Chat app.
         # @param [String] name
         #   Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAAAAAAAA/
         #   messages/BBBBBBBBBBB.BBBBBBBBBBB`
@@ -984,7 +996,8 @@ module Google
         # developers.google.com/chat/api/guides/auth/service-accounts) and [user
         # authentication](https://developers.google.com/chat/api/guides/auth/users). [
         # User authentication](https://developers.google.com/chat/api/guides/auth/users)
-        # requires the `chat.messages` authorization scope.
+        # requires the `chat.messages` authorization scope. Requests authenticated with
+        # service accounts can only update messages created by the calling Chat app.
         # @param [String] name
         #   Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAAAAAAAA/
         #   messages/BBBBBBBBBBB.BBBBBBBBBBB`
