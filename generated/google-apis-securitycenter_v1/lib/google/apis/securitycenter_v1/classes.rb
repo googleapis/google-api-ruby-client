@@ -295,6 +295,222 @@ module Google
         end
       end
       
+      # An attack exposure contains the results of an attack path simulation run.
+      class AttackExposure
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the attack path simulation result that contains the
+        # details regarding this attack exposure score. Example: organizations/123/
+        # attackExposureResults/456
+        # Corresponds to the JSON property `attackExposureResult`
+        # @return [String]
+        attr_accessor :attack_exposure_result
+      
+        # The number of high value resources that are exposed as a result of this
+        # finding.
+        # Corresponds to the JSON property `exposedHighValueResourcesCount`
+        # @return [Fixnum]
+        attr_accessor :exposed_high_value_resources_count
+      
+        # The number of high value resources that are exposed as a result of this
+        # finding.
+        # Corresponds to the JSON property `exposedLowValueResourcesCount`
+        # @return [Fixnum]
+        attr_accessor :exposed_low_value_resources_count
+      
+        # The number of medium value resources that are exposed as a result of this
+        # finding.
+        # Corresponds to the JSON property `exposedMediumValueResourcesCount`
+        # @return [Fixnum]
+        attr_accessor :exposed_medium_value_resources_count
+      
+        # The most recent time the attack exposure was updated on this finding.
+        # Corresponds to the JSON property `latestCalculationTime`
+        # @return [String]
+        attr_accessor :latest_calculation_time
+      
+        # A number between 0 (inclusive) and infinity that represents how important this
+        # finding is to remediate. The higher the score, the more important it is to
+        # remediate.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # What state this AttackExposure is in. This captures whether or not an attack
+        # exposure has been calculated or not.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attack_exposure_result = args[:attack_exposure_result] if args.key?(:attack_exposure_result)
+          @exposed_high_value_resources_count = args[:exposed_high_value_resources_count] if args.key?(:exposed_high_value_resources_count)
+          @exposed_low_value_resources_count = args[:exposed_low_value_resources_count] if args.key?(:exposed_low_value_resources_count)
+          @exposed_medium_value_resources_count = args[:exposed_medium_value_resources_count] if args.key?(:exposed_medium_value_resources_count)
+          @latest_calculation_time = args[:latest_calculation_time] if args.key?(:latest_calculation_time)
+          @score = args[:score] if args.key?(:score)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # A path that an attacker could take to reach an exposed resource.
+      class AttackPath
+        include Google::Apis::Core::Hashable
+      
+        # A list of the edges between nodes in this attack path.
+        # Corresponds to the JSON property `edges`
+        # @return [Array<Google::Apis::SecuritycenterV1::AttackPathEdge>]
+        attr_accessor :edges
+      
+        # The attack path name, for example, `organizations/12/simulation/34/
+        # valuedResources/56/attackPaths/78`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A list of nodes that exist in this attack path.
+        # Corresponds to the JSON property `pathNodes`
+        # @return [Array<Google::Apis::SecuritycenterV1::AttackPathNode>]
+        attr_accessor :path_nodes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @edges = args[:edges] if args.key?(:edges)
+          @name = args[:name] if args.key?(:name)
+          @path_nodes = args[:path_nodes] if args.key?(:path_nodes)
+        end
+      end
+      
+      # Represents a connection between a source node and a destination node in this
+      # attack path.
+      class AttackPathEdge
+        include Google::Apis::Core::Hashable
+      
+        # The attack node uuid of the destination node.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # The attack node uuid of the source node.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # Represents one point that an attacker passes through in this attack path.
+      class AttackPathNode
+        include Google::Apis::Core::Hashable
+      
+        # The findings associated with this node in the attack path.
+        # Corresponds to the JSON property `associatedFindings`
+        # @return [Array<Google::Apis::SecuritycenterV1::PathNodeAssociatedFinding>]
+        attr_accessor :associated_findings
+      
+        # A list of attack step nodes that exist in this attack path node.
+        # Corresponds to the JSON property `attackSteps`
+        # @return [Array<Google::Apis::SecuritycenterV1::AttackStepNode>]
+        attr_accessor :attack_steps
+      
+        # Human-readable name of this resource.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The name of the resource at this point in the attack path. The format of the
+        # name follows the Cloud Asset Inventory [resource name format]("https://cloud.
+        # google.com/asset-inventory/docs/resource-name-format")
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # The [supported resource type](http://cloud/asset-inventory/docs/supported-
+        # asset-types")
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # Unique id of the attack path node.
+        # Corresponds to the JSON property `uuid`
+        # @return [String]
+        attr_accessor :uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associated_findings = args[:associated_findings] if args.key?(:associated_findings)
+          @attack_steps = args[:attack_steps] if args.key?(:attack_steps)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @resource = args[:resource] if args.key?(:resource)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @uuid = args[:uuid] if args.key?(:uuid)
+        end
+      end
+      
+      # Detailed steps the attack can take between path nodes.
+      class AttackStepNode
+        include Google::Apis::Core::Hashable
+      
+        # Attack step description
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # User friendly name of the attack step
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Attack step labels for metadata
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Attack step type. Can be either AND, OR or DEFENSE
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Unique ID for one Node
+        # Corresponds to the JSON property `uuid`
+        # @return [String]
+        attr_accessor :uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @type = args[:type] if args.key?(:type)
+          @uuid = args[:uuid] if args.key?(:uuid)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -363,6 +579,44 @@ module Google
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
           @log_type = args[:log_type] if args.key?(:log_type)
+        end
+      end
+      
+      # Request message to create multiple resource value configs
+      class BatchCreateResourceValueConfigsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource value configs to be created.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::SecuritycenterV1::CreateResourceValueConfigRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for BatchCreateResourceValueConfigs
+      class BatchCreateResourceValueConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resource value configs created
+        # Corresponds to the JSON property `resourceValueConfigs`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceValueConfig>]
+        attr_accessor :resource_value_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_value_configs = args[:resource_value_configs] if args.key?(:resource_value_configs)
         end
       end
       
@@ -703,6 +957,32 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Request message to create single resource value config
+      class CreateResourceValueConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Resource name of the new ResourceValueConfig's parent.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # A resource value config is a mapping configuration of user's tag values to
+        # resource values. Used by the attack path simulation.
+        # Corresponds to the JSON property `resourceValueConfig`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceValueConfig]
+        attr_accessor :resource_value_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @resource_value_config = args[:resource_value_config] if args.key?(:resource_value_config)
         end
       end
       
@@ -1261,6 +1541,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::Access]
         attr_accessor :access
       
+        # An attack exposure contains the results of an attack path simulation run.
+        # Corresponds to the JSON property `attackExposure`
+        # @return [Google::Apis::SecuritycenterV1::AttackExposure]
+        attr_accessor :attack_exposure
+      
         # The canonical name of the finding. It's either "organizations/`organization_id`
         # /sources/`source_id`/findings/`finding_id`", "folders/`folder_id`/sources/`
         # source_id`/findings/`finding_id`" or "projects/`project_number`/sources/`
@@ -1514,6 +1799,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access = args[:access] if args.key?(:access)
+          @attack_exposure = args[:attack_exposure] if args.key?(:attack_exposure)
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @category = args[:category] if args.key?(:category)
           @cloud_dlp_data_profile = args[:cloud_dlp_data_profile] if args.key?(:cloud_dlp_data_profile)
@@ -2204,6 +2490,84 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_types = args[:resource_types] if args.key?(:resource_types)
+        end
+      end
+      
+      # A resource value config is a mapping configuration of user's tag values to
+      # resource values. Used by the attack path simulation.
+      class GoogleCloudSecuritycenterV1ResourceValueConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp this resource value config was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Description of the resource value config.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Name for the resource value config
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # List of resource labels to search for, evaluated with AND. E.g. "
+        # resource_labels_selector": `"key": "value", "env": "prod"` will match
+        # resources with labels "key": "value" AND "env": "prod" https://cloud.google.
+        # com/resource-manager/docs/creating-managing-labels
+        # Corresponds to the JSON property `resourceLabelsSelector`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_labels_selector
+      
+        # Apply resource_value only to resources that match resource_type. resource_type
+        # will be checked with "AND" of other resources. E.g. "storage.googleapis.com/
+        # Bucket" with resource_value "HIGH" will apply "HIGH" value only to "storage.
+        # googleapis.com/Bucket" resources.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # Required. Resource value level this expression represents
+        # Corresponds to the JSON property `resourceValue`
+        # @return [String]
+        attr_accessor :resource_value
+      
+        # Project or folder to scope this config to. For example, "project/456" would
+        # apply this config only to resources in "project/456" scope will be checked
+        # with "AND" of other resources.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Required. Tag values combined with AND to check against. Values in the form "
+        # tagValues/123" E.g. [ "tagValues/123", "tagValues/456", "tagValues/789" ]
+        # https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
+        # Corresponds to the JSON property `tagValues`
+        # @return [Array<String>]
+        attr_accessor :tag_values
+      
+        # Output only. Timestamp this resource value config was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @resource_labels_selector = args[:resource_labels_selector] if args.key?(:resource_labels_selector)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @resource_value = args[:resource_value] if args.key?(:resource_value)
+          @scope = args[:scope] if args.key?(:scope)
+          @tag_values = args[:tag_values] if args.key?(:tag_values)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -3282,6 +3646,33 @@ module Google
         end
       end
       
+      # Response message for listing the attack paths for a given simulation or valued
+      # resource.
+      class ListAttackPathsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The attack paths that the attack path simulation identified.
+        # Corresponds to the JSON property `attackPaths`
+        # @return [Array<Google::Apis::SecuritycenterV1::AttackPath>]
+        attr_accessor :attack_paths
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attack_paths = args[:attack_paths] if args.key?(:attack_paths)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for listing BigQuery exports.
       class ListBigQueryExportsResponse
         include Google::Apis::Core::Hashable
@@ -3361,7 +3752,7 @@ module Google
         end
       end
       
-      # Response for listing EventThreatDetectionCustomModules.
+      # Response for listing Event Threat Detection custom modules.
       class ListEventThreatDetectionCustomModulesResponse
         include Google::Apis::Core::Hashable
       
@@ -3538,6 +3929,32 @@ module Google
         end
       end
       
+      # Response message to list resource value configs
+      class ListResourceValueConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is empty, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The resource value configs from the specified parent.
+        # Corresponds to the JSON property `resourceValueConfigs`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceValueConfig>]
+        attr_accessor :resource_value_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resource_value_configs = args[:resource_value_configs] if args.key?(:resource_value_configs)
+        end
+      end
+      
       # Response message for listing Security Health Analytics custom modules.
       class ListSecurityHealthAnalyticsCustomModulesResponse
         include Google::Apis::Core::Hashable
@@ -3586,6 +4003,38 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # Response message for listing the valued resources for a given simulation.
+      class ListValuedResourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The estimated total number of results matching the query.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        # The valued resources that the attack path simulation identified.
+        # Corresponds to the JSON property `valuedResources`
+        # @return [Array<Google::Apis::SecuritycenterV1::ValuedResource>]
+        attr_accessor :valued_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
+          @valued_resources = args[:valued_resources] if args.key?(:valued_resources)
         end
       end
       
@@ -3856,6 +4305,38 @@ module Google
         def update!(**args)
           @asset_discovery_config = args[:asset_discovery_config] if args.key?(:asset_discovery_config)
           @enable_asset_discovery = args[:enable_asset_discovery] if args.key?(:enable_asset_discovery)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A finding that is associated with this node in the attack path.
+      class PathNodeAssociatedFinding
+        include Google::Apis::Core::Hashable
+      
+        # Canonical name of the associated findings. Example: organizations/123/sources/
+        # 456/findings/789
+        # Corresponds to the JSON property `canonicalFinding`
+        # @return [String]
+        attr_accessor :canonical_finding
+      
+        # The additional taxonomy group within findings from a given source.
+        # Corresponds to the JSON property `findingCategory`
+        # @return [String]
+        attr_accessor :finding_category
+      
+        # Full resource name of the finding.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canonical_finding = args[:canonical_finding] if args.key?(:canonical_finding)
+          @finding_category = args[:finding_category] if args.key?(:finding_category)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -4211,6 +4692,25 @@ module Google
         end
       end
       
+      # Metadata about a ResourceValueConfig. For example, id and name.
+      class ResourceValueConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Resource value config name
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Kubernetes Role or ClusterRole.
       class Role
         include Google::Apis::Core::Hashable
@@ -4506,6 +5006,38 @@ module Google
         end
       end
       
+      # Attack path simulation
+      class Simulation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time simulation was created
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Full resource name of the Simulation: organizations/123/simulations/456
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Resource value configurations' metadata used in this simulation. Maximum of
+        # 100.
+        # Corresponds to the JSON property `resourceValueConfigsMetadata`
+        # @return [Array<Google::Apis::SecuritycenterV1::ResourceValueConfigMetadata>]
+        attr_accessor :resource_value_configs_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @resource_value_configs_metadata = args[:resource_value_configs_metadata] if args.key?(:resource_value_configs_metadata)
+        end
+      end
+      
       # Security Command Center finding source. A finding source is an entity or a
       # mechanism that can produce a finding. A source is like a container of findings
       # that come from the same scanner, logger, monitor, and other tools.
@@ -4696,7 +5228,7 @@ module Google
         end
       end
       
-      # Request to validate an EventThreatDetectionCustomModule.
+      # Request to validate an Event Threat Detection custom module.
       class ValidateEventThreatDetectionCustomModuleRequest
         include Google::Apis::Core::Hashable
       
@@ -4722,7 +5254,7 @@ module Google
         end
       end
       
-      # Response to validating an Event Threat Detection Custom Module.
+      # Response to validating an Event Threat Detection custom module.
       class ValidateEventThreatDetectionCustomModuleResponse
         include Google::Apis::Core::Hashable
       
@@ -4739,6 +5271,66 @@ module Google
         # Update properties of this object
         def update!(**args)
           @errors = args[:errors] if args.key?(:errors)
+        end
+      end
+      
+      # A resource that is determined to have value to a user's system
+      class ValuedResource
+        include Google::Apis::Core::Hashable
+      
+        # Human-readable name of the valued resource.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Exposed score for this valued resource. A value of 0 means no exposure was
+        # detected exposure.
+        # Corresponds to the JSON property `exposedScore`
+        # @return [Float]
+        attr_accessor :exposed_score
+      
+        # Valued resource name, for example, e.g.: `organizations/123/simulations/456/
+        # valuedResources/789`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The [full resource name](https://cloud.google.com/apis/design/resource_names#
+        # full_resource_name) of the valued resource.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # The [resource type](https://cloud.google.com/asset-inventory/docs/supported-
+        # asset-types) of the valued resource.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # How valuable this resource is.
+        # Corresponds to the JSON property `resourceValue`
+        # @return [String]
+        attr_accessor :resource_value
+      
+        # List of resource value configurations' metadata used to determine the value of
+        # this resource. Maximum of 100.
+        # Corresponds to the JSON property `resourceValueConfigsUsed`
+        # @return [Array<Google::Apis::SecuritycenterV1::ResourceValueConfigMetadata>]
+        attr_accessor :resource_value_configs_used
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @exposed_score = args[:exposed_score] if args.key?(:exposed_score)
+          @name = args[:name] if args.key?(:name)
+          @resource = args[:resource] if args.key?(:resource)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @resource_value = args[:resource_value] if args.key?(:resource_value)
+          @resource_value_configs_used = args[:resource_value_configs_used] if args.key?(:resource_value_configs_used)
         end
       end
       
