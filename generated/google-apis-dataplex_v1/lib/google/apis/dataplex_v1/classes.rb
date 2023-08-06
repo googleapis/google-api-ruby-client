@@ -1923,7 +1923,7 @@ module Google
       class GoogleCloudDataplexV1DataQualityRuleRegexExpectation
         include Google::Apis::Core::Hashable
       
-        # A regular expression the column value is expected to match.
+        # Optional. A regular expression the column value is expected to match.
         # Corresponds to the JSON property `regex`
         # @return [String]
         attr_accessor :regex
@@ -2006,7 +2006,7 @@ module Google
       class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
         include Google::Apis::Core::Hashable
       
-        # The SQL expression.
+        # Optional. The SQL expression.
         # Corresponds to the JSON property `sqlExpression`
         # @return [String]
         attr_accessor :sql_expression
@@ -2025,7 +2025,7 @@ module Google
       class GoogleCloudDataplexV1DataQualityRuleSetExpectation
         include Google::Apis::Core::Hashable
       
-        # Expected values for the column value.
+        # Optional. Expected values for the column value.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
@@ -2045,34 +2045,34 @@ module Google
       class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation
         include Google::Apis::Core::Hashable
       
-        # The maximum column statistic value allowed for a row to pass this validation.
-        # At least one of min_value and max_value need to be provided.
+        # Optional. The maximum column statistic value allowed for a row to pass this
+        # validation.At least one of min_value and max_value need to be provided.
         # Corresponds to the JSON property `maxValue`
         # @return [String]
         attr_accessor :max_value
       
-        # The minimum column statistic value allowed for a row to pass this validation.
-        # At least one of min_value and max_value need to be provided.
+        # Optional. The minimum column statistic value allowed for a row to pass this
+        # validation.At least one of min_value and max_value need to be provided.
         # Corresponds to the JSON property `minValue`
         # @return [String]
         attr_accessor :min_value
       
-        # The aggregate metric to evaluate.
+        # Optional. The aggregate metric to evaluate.
         # Corresponds to the JSON property `statistic`
         # @return [String]
         attr_accessor :statistic
       
-        # Whether column statistic needs to be strictly lesser than ('<') the maximum,
-        # or if equality is allowed.Only relevant if a max_value has been defined.
-        # Default = false.
+        # Optional. Whether column statistic needs to be strictly lesser than ('<') the
+        # maximum, or if equality is allowed.Only relevant if a max_value has been
+        # defined. Default = false.
         # Corresponds to the JSON property `strictMaxEnabled`
         # @return [Boolean]
         attr_accessor :strict_max_enabled
         alias_method :strict_max_enabled?, :strict_max_enabled
       
-        # Whether column statistic needs to be strictly greater than ('>') the minimum,
-        # or if equality is allowed.Only relevant if a min_value has been defined.
-        # Default = false.
+        # Optional. Whether column statistic needs to be strictly greater than ('>') the
+        # minimum, or if equality is allowed.Only relevant if a min_value has been
+        # defined. Default = false.
         # Corresponds to the JSON property `strictMinEnabled`
         # @return [Boolean]
         attr_accessor :strict_min_enabled
@@ -2098,7 +2098,7 @@ module Google
       class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
         include Google::Apis::Core::Hashable
       
-        # The SQL expression.
+        # Optional. The SQL expression.
         # Corresponds to the JSON property `sqlExpression`
         # @return [String]
         attr_accessor :sql_expression
@@ -2230,8 +2230,8 @@ module Google
         # @return [String]
         attr_accessor :row_filter
       
-        # The list of rules to evaluate against a data source. At least one rule is
-        # required.
+        # Required. The list of rules to evaluate against a data source. At least one
+        # rule is required.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule>]
         attr_accessor :rules
