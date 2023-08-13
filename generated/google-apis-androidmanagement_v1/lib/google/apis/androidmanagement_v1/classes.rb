@@ -1951,6 +1951,21 @@ module Google
         end
       end
       
+      # Represents that the device has completed enrollment. User should be in the
+      # launcher at this point, device at this point will be compliant and all setup
+      # steps have been completed. Intentionally empty.
+      class EnrollmentCompleteEvent
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # An enrollment token.
       class EnrollmentToken
         include Google::Apis::Core::Hashable
@@ -4688,7 +4703,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :api_level
       
-        # Brand of the device. For example, Google.
+        # The brand of the device. For example, Google.
         # Corresponds to the JSON property `brand`
         # @return [String]
         attr_accessor :brand
@@ -5516,6 +5531,13 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::DnsEvent]
         attr_accessor :dns_event
       
+        # Represents that the device has completed enrollment. User should be in the
+        # launcher at this point, device at this point will be compliant and all setup
+        # steps have been completed. Intentionally empty.
+        # Corresponds to the JSON property `enrollmentCompleteEvent`
+        # @return [Google::Apis::AndroidmanagementV1::EnrollmentCompleteEvent]
+        attr_accessor :enrollment_complete_event
+      
         # Unique id of the event.
         # Corresponds to the JSON property `eventId`
         # @return [Fixnum]
@@ -5670,6 +5692,7 @@ module Google
           @connect_event = args[:connect_event] if args.key?(:connect_event)
           @crypto_self_test_completed_event = args[:crypto_self_test_completed_event] if args.key?(:crypto_self_test_completed_event)
           @dns_event = args[:dns_event] if args.key?(:dns_event)
+          @enrollment_complete_event = args[:enrollment_complete_event] if args.key?(:enrollment_complete_event)
           @event_id = args[:event_id] if args.key?(:event_id)
           @event_time = args[:event_time] if args.key?(:event_time)
           @event_type = args[:event_type] if args.key?(:event_type)
