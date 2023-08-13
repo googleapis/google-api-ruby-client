@@ -1157,7 +1157,7 @@ module Google
         end
         
         # Use this method to start, resume or recover a stream with a non default CDC
-        # strategy.
+        # strategy. NOTE: This feature is currently experimental.
         # @param [String] name
         #   Required. Name of the stream resource to start, in the format: projects/`
         #   project_id`/locations/`location`/streams/`stream_name`
