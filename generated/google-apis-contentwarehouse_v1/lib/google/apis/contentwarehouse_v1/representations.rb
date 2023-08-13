@@ -13978,6 +13978,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageGraphBfgRwjPolicyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageGraphBfgSpiiCertification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -21172,6 +21178,7 @@ module Google
           property :is_play_generic_music, as: 'isPlayGenericMusic'
           property :is_podcast_generic_intent, as: 'isPodcastGenericIntent'
           property :is_podcast_intent, as: 'isPodcastIntent'
+          property :is_sage_disabled_intent, as: 'isSageDisabledIntent'
           property :is_sage_intent, as: 'isSageIntent'
           property :is_tvm_intent, as: 'isTvmIntent'
           property :is_valid_smarthome_intent, as: 'isValidSmarthomeIntent'
@@ -22204,7 +22211,6 @@ module Google
           property :image_indexing_info, as: 'imageIndexingInfo', class: Google::Apis::ContentwarehouseV1::ImageSearchImageIndexingInfo, decorator: Google::Apis::ContentwarehouseV1::ImageSearchImageIndexingInfo::Representation
       
           property :indexing_ts, :numeric_string => true, as: 'indexingTs'
-          property :is_sibling_deletion, as: 'isSiblingDeletion'
           property :no_longer_canonical_timestamp, :numeric_string => true, as: 'noLongerCanonicalTimestamp'
           property :normalized_click_score, as: 'normalizedClickScore'
           property :raw_navboost, as: 'rawNavboost'
@@ -39803,6 +39809,7 @@ module Google
           property :value_double, as: 'valueDouble'
           property :value_float, as: 'valueFloat'
           property :value_int32, as: 'valueInt32'
+          property :value_string, as: 'valueString'
           property :value_uint32, as: 'valueUint32'
           property :version_id, as: 'versionId'
         end
@@ -41675,7 +41682,6 @@ module Google
           property :common_ngram_prob, as: 'commonNgramProb'
           property :entity_idf, as: 'entityIdf'
           property :name_capitalization_prob, as: 'nameCapitalizationProb'
-          property :person_prob, as: 'personProb'
         end
       end
       
@@ -45500,6 +45506,8 @@ module Google
       
           collection :policy_data_scope_keys, as: 'policyDataScopeKeys'
           property :policy_source_type, as: 'policySourceType'
+          property :rwj_policy_metadata, as: 'rwjPolicyMetadata', class: Google::Apis::ContentwarehouseV1::StorageGraphBfgRwjPolicyMetadata, decorator: Google::Apis::ContentwarehouseV1::StorageGraphBfgRwjPolicyMetadata::Representation
+      
           property :ump_policy_metadata, as: 'umpPolicyMetadata', class: Google::Apis::ContentwarehouseV1::StorageGraphBfgUmpPolicyMetadata, decorator: Google::Apis::ContentwarehouseV1::StorageGraphBfgUmpPolicyMetadata::Representation
       
         end
@@ -45510,6 +45518,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :attribution_url, as: 'attributionUrl'
           property :last_verified_date, :numeric_string => true, as: 'lastVerifiedDate'
+        end
+      end
+      
+      class StorageGraphBfgRwjPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :eligible_surfaces, as: 'eligibleSurfaces'
         end
       end
       
