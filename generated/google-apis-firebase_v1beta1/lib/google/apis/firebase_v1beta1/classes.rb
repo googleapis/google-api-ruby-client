@@ -1028,6 +1028,20 @@ module Google
         end
       end
       
+      # Describes the progress of an LRO. It is included in the `metadata` field of
+      # the `Operation`.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Metadata about a long-running Product operation.
       class ProductMetadata
         include Google::Apis::Core::Hashable
