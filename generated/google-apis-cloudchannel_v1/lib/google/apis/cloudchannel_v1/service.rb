@@ -738,13 +738,12 @@ module Google
         end
         
         # Creates a new Customer resource under the reseller or distributor account.
-        # Possible error codes: * PERMISSION_DENIED: The reseller account making the
-        # request is different from the reseller account in the API request. *
-        # PERMISSION_DENIED: You are not authorized to create a customer. See https://
-        # support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: *
-        # Required request parameters are missing or invalid. * Domain field value doesn'
-        # t match the primary email domain. Return value: The newly created Customer
-        # resource.
+        # Possible error codes: * PERMISSION_DENIED: * The reseller account making the
+        # request is different from the reseller account in the API request. * You are
+        # not authorized to create a customer. See https://support.google.com/
+        # channelservices/answer/9759265 * INVALID_ARGUMENT: * Required request
+        # parameters are missing or invalid. * Domain field value doesn't match the
+        # primary email domain. Return value: The newly created Customer resource.
         # @param [String] parent
         #   Required. The resource name of reseller account in which to create the
         #   customer. Parent uses the format: accounts/`account_id`
@@ -851,14 +850,14 @@ module Google
         # Imports a Customer from the Cloud Identity associated with the provided Cloud
         # Identity ID or domain before a TransferEntitlements call. If a linked Customer
         # already exists and overwrite_if_exists is true, it will update that Customer's
-        # data. Possible error codes: * PERMISSION_DENIED: The reseller account making
-        # the request is different from the reseller account in the API request. *
-        # PERMISSION_DENIED: You are not authorized to import the customer. See https://
-        # support.google.com/channelservices/answer/9759265 * NOT_FOUND: Cloud Identity
-        # doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are
-        # missing, or the auth_token is expired or invalid. * ALREADY_EXISTS: A customer
-        # already exists and has conflicting critical fields. Requires an overwrite.
-        # Return value: The Customer.
+        # data. Possible error codes: * PERMISSION_DENIED: * The reseller account making
+        # the request is different from the reseller account in the API request. * You
+        # are not authorized to import the customer. See https://support.google.com/
+        # channelservices/answer/9759265 * NOT_FOUND: Cloud Identity doesn't exist or
+        # was deleted. * INVALID_ARGUMENT: Required parameters are missing, or the
+        # auth_token is expired or invalid. * ALREADY_EXISTS: A customer already exists
+        # and has conflicting critical fields. Requires an overwrite. Return value: The
+        # Customer.
         # @param [String] parent
         #   Required. The resource name of the reseller's account. Parent takes the format:
         #   accounts/`account_id` or accounts/`account_id`/channelPartnerLinks/`
@@ -986,13 +985,12 @@ module Google
         end
         
         # Creates a new Customer resource under the reseller or distributor account.
-        # Possible error codes: * PERMISSION_DENIED: The reseller account making the
-        # request is different from the reseller account in the API request. *
-        # PERMISSION_DENIED: You are not authorized to create a customer. See https://
-        # support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: *
-        # Required request parameters are missing or invalid. * Domain field value doesn'
-        # t match the primary email domain. Return value: The newly created Customer
-        # resource.
+        # Possible error codes: * PERMISSION_DENIED: * The reseller account making the
+        # request is different from the reseller account in the API request. * You are
+        # not authorized to create a customer. See https://support.google.com/
+        # channelservices/answer/9759265 * INVALID_ARGUMENT: * Required request
+        # parameters are missing or invalid. * Domain field value doesn't match the
+        # primary email domain. Return value: The newly created Customer resource.
         # @param [String] parent
         #   Required. The resource name of reseller account in which to create the
         #   customer. Parent uses the format: accounts/`account_id`
@@ -1099,14 +1097,14 @@ module Google
         # Imports a Customer from the Cloud Identity associated with the provided Cloud
         # Identity ID or domain before a TransferEntitlements call. If a linked Customer
         # already exists and overwrite_if_exists is true, it will update that Customer's
-        # data. Possible error codes: * PERMISSION_DENIED: The reseller account making
-        # the request is different from the reseller account in the API request. *
-        # PERMISSION_DENIED: You are not authorized to import the customer. See https://
-        # support.google.com/channelservices/answer/9759265 * NOT_FOUND: Cloud Identity
-        # doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are
-        # missing, or the auth_token is expired or invalid. * ALREADY_EXISTS: A customer
-        # already exists and has conflicting critical fields. Requires an overwrite.
-        # Return value: The Customer.
+        # data. Possible error codes: * PERMISSION_DENIED: * The reseller account making
+        # the request is different from the reseller account in the API request. * You
+        # are not authorized to import the customer. See https://support.google.com/
+        # channelservices/answer/9759265 * NOT_FOUND: Cloud Identity doesn't exist or
+        # was deleted. * INVALID_ARGUMENT: Required parameters are missing, or the
+        # auth_token is expired or invalid. * ALREADY_EXISTS: A customer already exists
+        # and has conflicting critical fields. Requires an overwrite. Return value: The
+        # Customer.
         # @param [String] parent
         #   Required. The resource name of the reseller's account. Parent takes the format:
         #   accounts/`account_id` or accounts/`account_id`/channelPartnerLinks/`
@@ -1365,18 +1363,18 @@ module Google
         
         # Creates a Cloud Identity for the given customer using the customer's
         # information, or the information provided here. Possible error codes: *
-        # PERMISSION_DENIED: The customer doesn't belong to the reseller. *
-        # INVALID_ARGUMENT: Required request parameters are missing or invalid. *
-        # PERMISSION_DENIED: You are not authorized to provision cloud identity id. See
-        # https://support.google.com/channelservices/answer/9759265 * NOT_FOUND: The
-        # customer was not found. * ALREADY_EXISTS: The customer's primary email already
-        # exists. Retry after changing the customer's primary contact email. * INTERNAL:
-        # Any non-user error related to a technical issue in the backend. Contact Cloud
-        # Channel support. * UNKNOWN: Any non-user error related to a technical issue in
-        # the backend. Contact Cloud Channel support. Return value: The ID of a long-
-        # running operation. To get the results of the operation, call the GetOperation
-        # method of CloudChannelOperationsService. The Operation metadata contains an
-        # instance of OperationMetadata.
+        # PERMISSION_DENIED: * The customer doesn't belong to the reseller. * You are
+        # not authorized to provision cloud identity id. See https://support.google.com/
+        # channelservices/answer/9759265 * INVALID_ARGUMENT: Required request parameters
+        # are missing or invalid. * NOT_FOUND: The customer was not found. *
+        # ALREADY_EXISTS: The customer's primary email already exists. Retry after
+        # changing the customer's primary contact email. * INTERNAL: Any non-user error
+        # related to a technical issue in the backend. Contact Cloud Channel support. *
+        # UNKNOWN: Any non-user error related to a technical issue in the backend.
+        # Contact Cloud Channel support. Return value: The ID of a long-running
+        # operation. To get the results of the operation, call the GetOperation method
+        # of CloudChannelOperationsService. The Operation metadata contains an instance
+        # of OperationMetadata.
         # @param [String] customer
         #   Required. Resource name of the customer. Format: accounts/`account_id`/
         #   customers/`customer_id`
