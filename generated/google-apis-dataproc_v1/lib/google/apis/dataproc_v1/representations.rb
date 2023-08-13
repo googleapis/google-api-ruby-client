@@ -1315,6 +1315,7 @@ module Google
           property :managed_group_config, as: 'managedGroupConfig', class: Google::Apis::DataprocV1::ManagedGroupConfig, decorator: Google::Apis::DataprocV1::ManagedGroupConfig::Representation
       
           property :min_cpu_platform, as: 'minCpuPlatform'
+          property :min_num_instances, as: 'minNumInstances'
           property :num_instances, as: 'numInstances'
           property :preemptibility, as: 'preemptibility'
         end
