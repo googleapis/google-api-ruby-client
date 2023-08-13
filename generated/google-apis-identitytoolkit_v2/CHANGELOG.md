@@ -1,5 +1,9 @@
 # Release history for google-apis-identitytoolkit_v2
 
+### v0.15.0 (2023-08-13)
+
+* Regenerated from discovery document revision 20230804
+
 ### v0.14.0 (2023-07-16)
 
 * Regenerated from discovery document revision 20230707
