@@ -358,12 +358,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaTenant
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1196,20 +1190,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
           hash :value, as: 'value'
-        end
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaTenant
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :display_name, as: 'displayName'
-          property :google_group_email, as: 'googleGroupEmail'
-          property :google_group_id, as: 'googleGroupId'
-          property :name, as: 'name'
-          property :partner_metadata, as: 'partnerMetadata', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata::Representation
-      
-          property :update_time, as: 'updateTime'
         end
       end
       
