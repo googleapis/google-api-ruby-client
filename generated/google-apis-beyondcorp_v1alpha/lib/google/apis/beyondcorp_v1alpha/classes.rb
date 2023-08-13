@@ -2202,63 +2202,6 @@ module Google
         end
       end
       
-      # Information about a BeyoncCorp Enterprise Tenant.
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaTenant
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Timestamp when the resource was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Optional. An arbitrary caller-provided name for the Tenant. Cannot exceed 64
-        # characters.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Optional. Google group email to which the Tenant is enabled.
-        # Corresponds to the JSON property `googleGroupEmail`
-        # @return [String]
-        attr_accessor :google_group_email
-      
-        # Optional. Google group ID to which the Tenant is enabled.
-        # Corresponds to the JSON property `googleGroupId`
-        # @return [String]
-        attr_accessor :google_group_id
-      
-        # Output only. Unique resource name of the Tenant. The name is ignored when
-        # creating Tenant.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Metadata associated with PartnerTenant and is provided by the Partner.
-        # Corresponds to the JSON property `partnerMetadata`
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata]
-        attr_accessor :partner_metadata
-      
-        # Output only. Timestamp when the resource was last modified.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @google_group_email = args[:google_group_email] if args.key?(:google_group_email)
-          @google_group_id = args[:google_group_id] if args.key?(:google_group_id)
-          @name = args[:name] if args.key?(:name)
-          @partner_metadata = args[:partner_metadata] if args.key?(:partner_metadata)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
       # Message contains the transport layer information to verify the proxy server.
       class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo
         include Google::Apis::Core::Hashable
@@ -3027,22 +2970,22 @@ module Google
       # evaluates to `true`. A condition can add constraints based on attributes of
       # the request, the resource, or both. To learn which resources support
       # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
       # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
       # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
       # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
       # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
       # ], "condition": ` "title": "expirable access", "description": "Does not grant
       # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-      # bindings: - members: - user:mike@example.com - group:admins@example.com -
-      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-      # access description: Does not grant access after Sep 2020 expression: request.
-      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-      # a description of IAM and its features, see the [IAM documentation](https://
-      # cloud.google.com/iam/docs/).
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+      # title: expirable access description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class GoogleIamV1Policy
         include Google::Apis::Core::Hashable
       
@@ -3126,22 +3069,22 @@ module Google
         # evaluates to `true`. A condition can add constraints based on attributes of
         # the request, the resource, or both. To learn which resources support
         # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
         # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
         # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
         # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-        # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-        # a description of IAM and its features, see the [IAM documentation](https://
-        # cloud.google.com/iam/docs/).
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy]
         attr_accessor :policy
@@ -3279,13 +3222,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
