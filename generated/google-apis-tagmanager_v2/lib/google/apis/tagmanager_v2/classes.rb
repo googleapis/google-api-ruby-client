@@ -1937,6 +1937,14 @@ module Google
       class Parameter
         include Google::Apis::Core::Hashable
       
+        # Whether or not a reference type parameter is strongly or weakly referenced. @
+        # mutable tagmanager.accounts.containers.workspaces.transformations.create @
+        # mutable tagmanager.accounts.containers.workspaces.transformations.update
+        # Corresponds to the JSON property `isWeakReference`
+        # @return [Boolean]
+        attr_accessor :is_weak_reference
+        alias_method :is_weak_reference?, :is_weak_reference
+      
         # The named key that uniquely identifies a parameter. Required for top-level
         # parameters, as well as map values. Ignored for list values. @mutable
         # tagmanager.accounts.containers.workspaces.variables.create @mutable tagmanager.
@@ -2003,6 +2011,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @is_weak_reference = args[:is_weak_reference] if args.key?(:is_weak_reference)
           @key = args[:key] if args.key?(:key)
           @list = args[:list] if args.key?(:list)
           @map = args[:map] if args.key?(:map)
