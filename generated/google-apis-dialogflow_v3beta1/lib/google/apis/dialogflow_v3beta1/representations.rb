@@ -862,6 +862,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1FlowImportStrategy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1FlowValidationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4114,6 +4120,13 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1FlowImportStrategy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :global_import_strategy, as: 'globalImportStrategy'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1FlowValidationResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4264,6 +4277,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :flow_content, :base64 => true, as: 'flowContent'
+          property :flow_import_strategy, as: 'flowImportStrategy', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FlowImportStrategy, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FlowImportStrategy::Representation
+      
           property :flow_uri, as: 'flowUri'
           property :import_option, as: 'importOption'
         end
