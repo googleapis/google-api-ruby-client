@@ -90,7 +90,11 @@ module Google
         #   project ID](https://support.google.com/cloud/answer/6158840). Example: `
         #   projects/my-project-123`.
         # @param [String] group_id
-        #   Required. The group for which events shall be returned.
+        #   Required. The group for which events shall be returned. The `group_id` is a
+        #   unique identifier for a particular error group. The identifier is derived from
+        #   key parts of the error-log content and is treated as Service Data. For
+        #   information about how Service Data is handled, see [Google Cloud Privacy
+        #   Notice](https://cloud.google.com/terms/cloud-privacy-notice).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return per response.
         # @param [String] page_token
@@ -197,7 +201,11 @@ module Google
         #   Optional. Time where the timed counts shall be aligned if rounded alignment is
         #   chosen. Default is 00:00 UTC.
         # @param [Array<String>, String] group_id
-        #   Optional. List all ErrorGroupStats with these IDs.
+        #   Optional. List all ErrorGroupStats with these IDs. The `group_id` is a unique
+        #   identifier for a particular error group. The identifier is derived from key
+        #   parts of the error-log content and is treated as Service Data. For information
+        #   about how Service Data is handled, see [Google Cloud Privacy Notice] (https://
+        #   cloud.google.com/terms/cloud-privacy-notice).
         # @param [String] order
         #   Optional. The sort order in which the results are returned. Default is `
         #   COUNT_DESC`.
@@ -262,8 +270,13 @@ module Google
         # Get the specified group.
         # @param [String] group_name
         #   Required. The group resource name. Written as `projects/`projectID`/groups/`
-        #   group_name``. Call groupStats.list to return a list of groups belonging to
-        #   this project. Example: `projects/my-project-123/groups/my-group`
+        #   group_id``. Call groupStats.list to return a list of groups belonging to this
+        #   project. Example: `projects/my-project-123/groups/my-group` In the group
+        #   resource name, the `group_id` is a unique identifier for a particular error
+        #   group. The identifier is derived from key parts of the error-log content and
+        #   is treated as Service Data. For information about how Service Data is handled,
+        #   see [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-
+        #   notice).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -293,8 +306,13 @@ module Google
         
         # Replace the data for the specified group. Fails if the group does not exist.
         # @param [String] name
-        #   The group resource name. Example: projects/my-project-123/groups/
-        #   CNSgkpnppqKCUw
+        #   The group resource name. Written as `projects/`projectID`/groups/`group_id``.
+        #   Example: `projects/my-project-123/groups/my-group` In the group resource name,
+        #   the `group_id` is a unique identifier for a particular error group. The
+        #   identifier is derived from key parts of the error-log content and is treated
+        #   as Service Data. For information about how Service Data is handled, see [
+        #   Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-
+        #   notice).
         # @param [Google::Apis::ClouderrorreportingV1beta1::ErrorGroup] error_group_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
