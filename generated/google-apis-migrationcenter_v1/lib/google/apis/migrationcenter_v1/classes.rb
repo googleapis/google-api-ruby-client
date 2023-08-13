@@ -1325,7 +1325,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :frames_reported
       
-        # Total number of rows in the import job.
+        # Output only. Total number of rows in the import job.
         # Corresponds to the JSON property `totalRowsCount`
         # @return [Fixnum]
         attr_accessor :total_rows_count
@@ -1510,6 +1510,42 @@ module Google
         # Update properties of this object
         def update!(**args)
           @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
+      # An insight about an asset (experimental insight)
+      class GenericInsight
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Additional information about the insight, each entry can be a
+        # logical entry and must make sense if it is displayed with line breaks between
+        # each entry. Text can contain md style links
+        # Corresponds to the JSON property `additionalInformation`
+        # @return [Array<String>]
+        attr_accessor :additional_information
+      
+        # Output only. In case message_code is not yet known by the client
+        # default_message will be the message to be used instead.
+        # Corresponds to the JSON property `defaultMessage`
+        # @return [String]
+        attr_accessor :default_message
+      
+        # Output only. Represents a globally unique message id for this insight, can be
+        # used for localization purposes, in case message_code is not yet known by the
+        # client use default_message instead.
+        # Corresponds to the JSON property `messageId`
+        # @return [Fixnum]
+        attr_accessor :message_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_information = args[:additional_information] if args.key?(:additional_information)
+          @default_message = args[:default_message] if args.key?(:default_message)
+          @message_id = args[:message_id] if args.key?(:message_id)
         end
       end
       
@@ -2026,6 +2062,11 @@ module Google
       class Insight
         include Google::Apis::Core::Hashable
       
+        # An insight about an asset (experimental insight)
+        # Corresponds to the JSON property `genericInsight`
+        # @return [Google::Apis::MigrationcenterV1::GenericInsight]
+        attr_accessor :generic_insight
+      
         # An insight about potential migrations for an asset.
         # Corresponds to the JSON property `migrationInsight`
         # @return [Google::Apis::MigrationcenterV1::MigrationInsight]
@@ -2037,6 +2078,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @generic_insight = args[:generic_insight] if args.key?(:generic_insight)
           @migration_insight = args[:migration_insight] if args.key?(:migration_insight)
         end
       end
@@ -3131,13 +3173,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response

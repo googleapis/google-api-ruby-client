@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenericInsight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GenericPlatformDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1370,6 +1376,15 @@ module Google
         end
       end
       
+      class GenericInsight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_information, as: 'additionalInformation'
+          property :default_message, as: 'defaultMessage'
+          property :message_id, :numeric_string => true, as: 'messageId'
+        end
+      end
+      
       class GenericPlatformDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1523,6 +1538,8 @@ module Google
       class Insight
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :generic_insight, as: 'genericInsight', class: Google::Apis::MigrationcenterV1::GenericInsight, decorator: Google::Apis::MigrationcenterV1::GenericInsight::Representation
+      
           property :migration_insight, as: 'migrationInsight', class: Google::Apis::MigrationcenterV1::MigrationInsight, decorator: Google::Apis::MigrationcenterV1::MigrationInsight::Representation
       
         end
