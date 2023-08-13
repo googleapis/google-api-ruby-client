@@ -40,8 +40,9 @@ module Google
       
         # Average of the values of the requested field. * Only numeric values will be
         # aggregated. All non-numeric values including `NULL` are skipped. * If the
-        # aggregated values contain `NaN`, returns `NaN`. * If the aggregated value set
-        # is empty, returns `NULL`. * Always returns the result as a double.
+        # aggregated values contain `NaN`, returns `NaN`. Infinity math follows IEEE-754
+        # standards. * If the aggregated value set is empty, returns `NULL`. * Always
+        # returns the result as a double.
         # Corresponds to the JSON property `avg`
         # @return [Google::Apis::FirestoreV1beta1::Avg]
         attr_accessor :avg
@@ -54,16 +55,17 @@ module Google
       
         # Sum of the values of the requested field. * Only numeric values will be
         # aggregated. All non-numeric values including `NULL` are skipped. * If the
-        # aggregated values contain `NaN`, returns `NaN`. * If the aggregated value set
-        # is empty, returns 0. * Returns a 64-bit integer if the sum result is an
-        # integer value and does not overflow. Otherwise, the result is returned as a
-        # double. Note that even if all the aggregated values are integers, the result
-        # is returned as a double if it cannot fit within a 64-bit signed integer. When
-        # this occurs, the returned value will lose precision. * When underflow occurs,
-        # floating-point aggregation is non-deterministic. This means that running the
-        # same query repeatedly without any changes to the underlying values could
-        # produce slightly different results each time. In those cases, values should be
-        # stored as integers over floating-point numbers.
+        # aggregated values contain `NaN`, returns `NaN`. Infinity math follows IEEE-754
+        # standards. * If the aggregated value set is empty, returns 0. * Returns a 64-
+        # bit integer if all aggregated numbers are integers and the sum result does not
+        # overflow. Otherwise, the result is returned as a double. Note that even if all
+        # the aggregated values are integers, the result is returned as a double if it
+        # cannot fit within a 64-bit signed integer. When this occurs, the returned
+        # value will lose precision. * When underflow occurs, floating-point aggregation
+        # is non-deterministic. This means that running the same query repeatedly
+        # without any changes to the underlying values could produce slightly different
+        # results each time. In those cases, values should be stored as integers over
+        # floating-point numbers.
         # Corresponds to the JSON property `sum`
         # @return [Google::Apis::FirestoreV1beta1::Sum]
         attr_accessor :sum
@@ -125,8 +127,9 @@ module Google
       
       # Average of the values of the requested field. * Only numeric values will be
       # aggregated. All non-numeric values including `NULL` are skipped. * If the
-      # aggregated values contain `NaN`, returns `NaN`. * If the aggregated value set
-      # is empty, returns `NULL`. * Always returns the result as a double.
+      # aggregated values contain `NaN`, returns `NaN`. Infinity math follows IEEE-754
+      # standards. * If the aggregated value set is empty, returns `NULL`. * Always
+      # returns the result as a double.
       class Avg
         include Google::Apis::Core::Hashable
       
@@ -1505,13 +1508,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -2329,16 +2332,17 @@ module Google
       
       # Sum of the values of the requested field. * Only numeric values will be
       # aggregated. All non-numeric values including `NULL` are skipped. * If the
-      # aggregated values contain `NaN`, returns `NaN`. * If the aggregated value set
-      # is empty, returns 0. * Returns a 64-bit integer if the sum result is an
-      # integer value and does not overflow. Otherwise, the result is returned as a
-      # double. Note that even if all the aggregated values are integers, the result
-      # is returned as a double if it cannot fit within a 64-bit signed integer. When
-      # this occurs, the returned value will lose precision. * When underflow occurs,
-      # floating-point aggregation is non-deterministic. This means that running the
-      # same query repeatedly without any changes to the underlying values could
-      # produce slightly different results each time. In those cases, values should be
-      # stored as integers over floating-point numbers.
+      # aggregated values contain `NaN`, returns `NaN`. Infinity math follows IEEE-754
+      # standards. * If the aggregated value set is empty, returns 0. * Returns a 64-
+      # bit integer if all aggregated numbers are integers and the sum result does not
+      # overflow. Otherwise, the result is returned as a double. Note that even if all
+      # the aggregated values are integers, the result is returned as a double if it
+      # cannot fit within a 64-bit signed integer. When this occurs, the returned
+      # value will lose precision. * When underflow occurs, floating-point aggregation
+      # is non-deterministic. This means that running the same query repeatedly
+      # without any changes to the underlying values could produce slightly different
+      # results each time. In those cases, values should be stored as integers over
+      # floating-point numbers.
       class Sum
         include Google::Apis::Core::Hashable
       
