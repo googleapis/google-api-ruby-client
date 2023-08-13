@@ -48,7 +48,7 @@ Once the gem is installed, you can load the client code and instantiate a client
 require "google/apis/places_v1"
 
 # Create a client object
-client = Google::Apis::PlacesV1::PlacesAPINewService.new
+client = Google::Apis::PlacesV1::MapsPlacesService.new
 
 # Authenticate calls
 client.authorization = # ... use the googleauth gem to create credentials
@@ -65,7 +65,7 @@ More detailed descriptions of the Google simple REST clients are available in tw
 
 (Note: the above documents are written for the simple REST clients in general, and their examples may not reflect the Places service in particular.)
 
-For reference information on specific calls in the Places API (New), see the {Google::Apis::PlacesV1::PlacesAPINewService class reference docs}.
+For reference information on specific calls in the Places API (New), see the {Google::Apis::PlacesV1::MapsPlacesService class reference docs}.
 
 ## Which client should I use?
 

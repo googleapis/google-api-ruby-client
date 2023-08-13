@@ -21,7 +21,7 @@ RSpec.describe "Google::Apis::PlacesV1" do
       require "google/apis/places_v1"
     end.not_to raise_error
     expect do
-      Google::Apis::PlacesV1::PlacesAPINewService.new
+      Google::Apis::PlacesV1::MapsPlacesService.new
     end.not_to raise_error
   end
 end
