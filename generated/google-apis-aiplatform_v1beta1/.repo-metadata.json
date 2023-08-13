@@ -1,0 +1,7 @@
+{
+    "api_id": "aiplatform:v1beta1",
+    "name_pretty": "Vertex AI API",
+    "distribution_name": "google-apis-aiplatform_v1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
