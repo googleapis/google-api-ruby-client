@@ -2313,6 +2313,13 @@ module Google
       class GoogleAnalyticsAdminV1alphaConversionEvent
         include Google::Apis::Core::Hashable
       
+        # Optional. The method by which conversions will be counted across multiple
+        # events within a session. If this value is not provided, it will be set to `
+        # ONCE_PER_EVENT`.
+        # Corresponds to the JSON property `countingMethod`
+        # @return [String]
+        attr_accessor :counting_method
+      
         # Output only. Time when this conversion event was created in the property.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2354,6 +2361,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @counting_method = args[:counting_method] if args.key?(:counting_method)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom = args[:custom] if args.key?(:custom)
           @deletable = args[:deletable] if args.key?(:deletable)

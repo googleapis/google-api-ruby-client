@@ -1657,6 +1657,7 @@ module Google
       class GoogleAnalyticsAdminV1alphaConversionEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :counting_method, as: 'countingMethod'
           property :create_time, as: 'createTime'
           property :custom, as: 'custom'
           property :deletable, as: 'deletable'
