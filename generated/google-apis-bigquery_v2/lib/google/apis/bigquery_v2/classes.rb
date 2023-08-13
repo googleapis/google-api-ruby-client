@@ -623,6 +623,49 @@ module Google
       end
       
       # 
+      class BigLakeConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # [Required] Required and immutable. Credential reference for accessing external
+        # storage system. Normalized as project_id.location_id.connection_id.
+        # Corresponds to the JSON property `connectionId`
+        # @return [String]
+        attr_accessor :connection_id
+      
+        # [Required] Required and immutable. Open source file format that the table data
+        # is stored in. Currently only PARQUET is supported.
+        # Corresponds to the JSON property `fileFormat`
+        # @return [String]
+        attr_accessor :file_format
+      
+        # [Required] Required and immutable. Fully qualified location prefix of the
+        # external folder where data is stored. Normalized to standard format: "gs:////".
+        # Starts with "gs://" rather than "/bigstore/". Ends with "/". Does not contain
+        # "*". See also BigLakeStorageMetadata on how it is used.
+        # Corresponds to the JSON property `storageUri`
+        # @return [String]
+        attr_accessor :storage_uri
+      
+        # [Required] Required and immutable. Open source file format that the table data
+        # is stored in. Currently only PARQUET is supported.
+        # Corresponds to the JSON property `tableFormat`
+        # @return [String]
+        attr_accessor :table_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_id = args[:connection_id] if args.key?(:connection_id)
+          @file_format = args[:file_format] if args.key?(:file_format)
+          @storage_uri = args[:storage_uri] if args.key?(:storage_uri)
+          @table_format = args[:table_format] if args.key?(:table_format)
+        end
+      end
+      
+      # 
       class BigQueryModelTraining
         include Google::Apis::Core::Hashable
       
@@ -3364,7 +3407,7 @@ module Google
       
         # [Output-only] Specifies the base table involved in the reason that no search
         # index was used.
-        # Corresponds to the JSON property `base_table`
+        # Corresponds to the JSON property `baseTable`
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :base_table
       
@@ -3375,7 +3418,7 @@ module Google
         attr_accessor :code
       
         # [Output-only] Specifies the name of the unused search index, if available.
-        # Corresponds to the JSON property `index_name`
+        # Corresponds to the JSON property `indexName`
         # @return [String]
         attr_accessor :index_name
       
@@ -5096,12 +5139,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # [Output-only] Number of logical bytes copied to the destination table.
-        # Corresponds to the JSON property `copied_logical_bytes`
+        # Corresponds to the JSON property `copiedLogicalBytes`
         # @return [Fixnum]
         attr_accessor :copied_logical_bytes
       
         # [Output-only] Number of rows copied to the destination table.
-        # Corresponds to the JSON property `copied_rows`
+        # Corresponds to the JSON property `copiedRows`
         # @return [Fixnum]
         attr_accessor :copied_rows
       
@@ -5277,7 +5320,7 @@ module Google
       
         # [Optional] Allow non incremental materialized view definition. The default
         # value is "false".
-        # Corresponds to the JSON property `allow_non_incremental_definition`
+        # Corresponds to the JSON property `allowNonIncrementalDefinition`
         # @return [Boolean]
         attr_accessor :allow_non_incremental_definition
         alias_method :allow_non_incremental_definition?, :allow_non_incremental_definition
@@ -5686,22 +5729,22 @@ module Google
       # evaluates to `true`. A condition can add constraints based on attributes of
       # the request, the resource, or both. To learn which resources support
       # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
       # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
       # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
       # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
       # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
       # ], "condition": ` "title": "expirable access", "description": "Does not grant
       # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-      # bindings: - members: - user:mike@example.com - group:admins@example.com -
-      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-      # access description: Does not grant access after Sep 2020 expression: request.
-      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-      # a description of IAM and its features, see the [IAM documentation](https://
-      # cloud.google.com/iam/docs/).
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+      # title: expirable access description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -6592,6 +6635,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_batching_rows
       
+        # Output only. The model version for LLM.
+        # Corresponds to the JSON property `remoteModelVersion`
+        # @return [String]
+        attr_accessor :remote_model_version
+      
         # Output only. The remote service type for remote model.
         # Corresponds to the JSON property `remoteServiceType`
         # @return [String]
@@ -6606,6 +6654,7 @@ module Google
           @connection = args[:connection] if args.key?(:connection)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @max_batching_rows = args[:max_batching_rows] if args.key?(:max_batching_rows)
+          @remote_model_version = args[:remote_model_version] if args.key?(:remote_model_version)
           @remote_service_type = args[:remote_service_type] if args.key?(:remote_service_type)
         end
       end
@@ -6624,6 +6673,12 @@ module Google
         # Corresponds to the JSON property `creationTime`
         # @return [Fixnum]
         attr_accessor :creation_time
+      
+        # Optional. Data governance specific option, if the value is DATA_MASKING, the
+        # function will be validated as masking functions.
+        # Corresponds to the JSON property `dataGovernanceType`
+        # @return [String]
+        attr_accessor :data_governance_type
       
         # Required. The body of the routine. For functions, this is the expression in
         # the AS clause. If language=SQL, it is the substring inside (but excluding) the
@@ -6725,6 +6780,7 @@ module Google
         def update!(**args)
           @arguments = args[:arguments] if args.key?(:arguments)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @data_governance_type = args[:data_governance_type] if args.key?(:data_governance_type)
           @definition_body = args[:definition_body] if args.key?(:definition_body)
           @description = args[:description] if args.key?(:description)
           @determinism_level = args[:determinism_level] if args.key?(:determinism_level)
@@ -6992,9 +7048,9 @@ module Google
         # When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why
         # index was not used in all or part of the search query. If index_usage_mode is
         # FULLLY_USED, this field is not populated.
-        # Corresponds to the JSON property `indexUnusedReason`
+        # Corresponds to the JSON property `indexUnusedReasons`
         # @return [Array<Google::Apis::BigqueryV2::IndexUnusedReason>]
-        attr_accessor :index_unused_reason
+        attr_accessor :index_unused_reasons
       
         # Specifies index usage mode for the query.
         # Corresponds to the JSON property `indexUsageMode`
@@ -7007,7 +7063,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @index_unused_reason = args[:index_unused_reason] if args.key?(:index_unused_reason)
+          @index_unused_reasons = args[:index_unused_reasons] if args.key?(:index_unused_reasons)
           @index_usage_mode = args[:index_usage_mode] if args.key?(:index_usage_mode)
         end
       end
@@ -7046,22 +7102,22 @@ module Google
         # evaluates to `true`. A condition can add constraints based on attributes of
         # the request, the resource, or both. To learn which resources support
         # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
         # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
         # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
         # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-        # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-        # a description of IAM and its features, see the [IAM documentation](https://
-        # cloud.google.com/iam/docs/).
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::BigqueryV2::Policy]
         attr_accessor :policy
@@ -7236,17 +7292,17 @@ module Google
         attr_accessor :endpoints
       
         # [Output-only] Logging info is used to generate a link to Cloud Logging.
-        # Corresponds to the JSON property `logging_info`
+        # Corresponds to the JSON property `loggingInfo`
         # @return [Google::Apis::BigqueryV2::SparkLoggingInfo]
         attr_accessor :logging_info
       
         # [Output-only] Spark job id if a Spark job is created successfully.
-        # Corresponds to the JSON property `spark_job_id`
+        # Corresponds to the JSON property `sparkJobId`
         # @return [String]
         attr_accessor :spark_job_id
       
         # [Output-only] Location where the Spark job is executed.
-        # Corresponds to the JSON property `spark_job_location`
+        # Corresponds to the JSON property `sparkJobLocation`
         # @return [String]
         attr_accessor :spark_job_location
       
@@ -7282,6 +7338,16 @@ module Google
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :array_element_type
       
+        # The data type of a variable such as a function argument. Examples include: *
+        # INT64: ``"typeKind": "INT64"`` * ARRAY: ` "typeKind": "ARRAY", "
+        # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
+        # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind": "STRING"` `, `
+        # "name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typeKind": "
+        # DATE"` ` ` ] ` `
+        # Corresponds to the JSON property `rangeElementType`
+        # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
+        attr_accessor :range_element_type
+      
         # The fields of this struct, in order, if type_kind = "STRUCT".
         # Corresponds to the JSON property `structType`
         # @return [Google::Apis::BigqueryV2::StandardSqlStructType]
@@ -7300,6 +7366,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @array_element_type = args[:array_element_type] if args.key?(:array_element_type)
+          @range_element_type = args[:range_element_type] if args.key?(:range_element_type)
           @struct_type = args[:struct_type] if args.key?(:struct_type)
           @type_kind = args[:type_kind] if args.key?(:type_kind)
         end
@@ -7429,6 +7496,11 @@ module Google
       # 
       class Table
         include Google::Apis::Core::Hashable
+      
+        # [Optional] Specifies the configuration of a BigLake managed table.
+        # Corresponds to the JSON property `biglakeConfiguration`
+        # @return [Google::Apis::BigqueryV2::BigLakeConfiguration]
+        attr_accessor :biglake_configuration
       
         # [Output-only] Clone definition.
         # Corresponds to the JSON property `cloneDefinition`
@@ -7692,6 +7764,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @biglake_configuration = args[:biglake_configuration] if args.key?(:biglake_configuration)
           @clone_definition = args[:clone_definition] if args.key?(:clone_definition)
           @clustering = args[:clustering] if args.key?(:clustering)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
@@ -8605,6 +8678,11 @@ module Google
         attr_accessor :calculate_p_values
         alias_method :calculate_p_values?, :calculate_p_values
       
+        # Categorical feature encoding method.
+        # Corresponds to the JSON property `categoryEncodingMethod`
+        # @return [String]
+        attr_accessor :category_encoding_method
+      
         # If true, clean spikes and dips in the input time series.
         # Corresponds to the JSON property `cleanSpikesAndDips`
         # @return [Boolean]
@@ -8719,6 +8797,11 @@ module Google
         # @return [String]
         attr_accessor :holiday_region
       
+        # A list of geographical regions that are used for time series modeling.
+        # Corresponds to the JSON property `holidayRegions`
+        # @return [Array<String>]
+        attr_accessor :holiday_regions
+      
         # The number of periods ahead that need to be forecasted.
         # Corresponds to the JSON property `horizon`
         # @return [Fixnum]
@@ -8819,8 +8902,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_parallel_trials
       
-        # Get truncated length by last n points in time series. Use separately from
-        # time_series_length_fraction and min_time_series_length.
+        # The maximum number of time points in a time series that can be used in
+        # modeling the trend component of the time series. Don't use this option with
+        # the `timeSeriesLengthFraction` or `minTimeSeriesLength` options.
         # Corresponds to the JSON property `maxTimeSeriesLength`
         # @return [Fixnum]
         attr_accessor :max_time_series_length
@@ -8841,8 +8925,14 @@ module Google
         # @return [Float]
         attr_accessor :min_split_loss
       
-        # Set fast trend ARIMA_PLUS model minimum training length. Use in pair with
-        # time_series_length_fraction.
+        # The minimum number of time points in a time series that are used in modeling
+        # the trend component of the time series. If you use this option you must also
+        # set the `timeSeriesLengthFraction` option. This training option ensures that
+        # enough time points are available when you use `timeSeriesLengthFraction` in
+        # trend modeling. This is particularly important when forecasting multiple time
+        # series in a single query using `timeSeriesIdColumn`. If the total number of
+        # time points is less than the `minTimeSeriesLength` value, then the query uses
+        # all available time points.
         # Corresponds to the JSON property `minTimeSeriesLength`
         # @return [Fixnum]
         attr_accessor :min_time_series_length
@@ -8961,7 +9051,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :time_series_id_columns
       
-        # Get truncated length by fraction in time series.
+        # The fraction of the interpolated length of the time series that's used to
+        # model the time series trend component. All of the time points of the time
+        # series are used to model the non-trend component. This training option
+        # accelerates modeling training without sacrificing much forecasting accuracy.
+        # You can use this option with `minTimeSeriesLength` but not with `
+        # maxTimeSeriesLength`.
         # Corresponds to the JSON property `timeSeriesLengthFraction`
         # @return [Float]
         attr_accessor :time_series_length_fraction
@@ -8976,7 +9071,11 @@ module Google
         # @return [String]
         attr_accessor :tree_method
       
-        # The smoothing window size for the trend component of the time series.
+        # Smoothing window size for the trend component. When a positive value is
+        # specified, a center moving average smoothing is applied on the history trend.
+        # When the smoothing window is out of the boundary at the beginning or the end
+        # of the trend, the first element or the last element is padded to fill the
+        # smoothing window before the average is applied.
         # Corresponds to the JSON property `trendSmoothingWindowSize`
         # @return [Fixnum]
         attr_accessor :trend_smoothing_window_size
@@ -9025,6 +9124,7 @@ module Google
           @booster_type = args[:booster_type] if args.key?(:booster_type)
           @budget_hours = args[:budget_hours] if args.key?(:budget_hours)
           @calculate_p_values = args[:calculate_p_values] if args.key?(:calculate_p_values)
+          @category_encoding_method = args[:category_encoding_method] if args.key?(:category_encoding_method)
           @clean_spikes_and_dips = args[:clean_spikes_and_dips] if args.key?(:clean_spikes_and_dips)
           @color_space = args[:color_space] if args.key?(:color_space)
           @colsample_bylevel = args[:colsample_bylevel] if args.key?(:colsample_bylevel)
@@ -9044,6 +9144,7 @@ module Google
           @fit_intercept = args[:fit_intercept] if args.key?(:fit_intercept)
           @hidden_units = args[:hidden_units] if args.key?(:hidden_units)
           @holiday_region = args[:holiday_region] if args.key?(:holiday_region)
+          @holiday_regions = args[:holiday_regions] if args.key?(:holiday_regions)
           @horizon = args[:horizon] if args.key?(:horizon)
           @hparam_tuning_objectives = args[:hparam_tuning_objectives] if args.key?(:hparam_tuning_objectives)
           @include_drift = args[:include_drift] if args.key?(:include_drift)

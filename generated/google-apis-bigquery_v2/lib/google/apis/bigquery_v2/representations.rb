@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigLakeConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryModelTraining
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1225,6 +1231,16 @@ module Google
         end
       end
       
+      class BigLakeConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_id, as: 'connectionId'
+          property :file_format, as: 'fileFormat'
+          property :storage_uri, as: 'storageUri'
+          property :table_format, as: 'tableFormat'
+        end
+      end
+      
       class BigQueryModelTraining
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1902,10 +1918,10 @@ module Google
       class IndexUnusedReason
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :base_table, as: 'base_table', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
+          property :base_table, as: 'baseTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
           property :code, as: 'code'
-          property :index_name, as: 'index_name'
+          property :index_name, as: 'indexName'
           property :message, as: 'message'
         end
       end
@@ -2305,8 +2321,8 @@ module Google
       class JobStatistics5
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :copied_logical_bytes, :numeric_string => true, as: 'copied_logical_bytes'
-          property :copied_rows, :numeric_string => true, as: 'copied_rows'
+          property :copied_logical_bytes, :numeric_string => true, as: 'copiedLogicalBytes'
+          property :copied_rows, :numeric_string => true, as: 'copiedRows'
         end
       end
       
@@ -2365,7 +2381,7 @@ module Google
       class MaterializedViewDefinition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :allow_non_incremental_definition, as: 'allow_non_incremental_definition'
+          property :allow_non_incremental_definition, as: 'allowNonIncrementalDefinition'
           property :enable_refresh, as: 'enableRefresh'
           property :last_refresh_time, :numeric_string => true, as: 'lastRefreshTime'
           property :max_staleness, :base64 => true, as: 'maxStaleness'
@@ -2680,6 +2696,7 @@ module Google
           property :connection, as: 'connection'
           property :endpoint, as: 'endpoint'
           property :max_batching_rows, :numeric_string => true, as: 'maxBatchingRows'
+          property :remote_model_version, as: 'remoteModelVersion'
           property :remote_service_type, as: 'remoteServiceType'
         end
       end
@@ -2690,6 +2707,7 @@ module Google
           collection :arguments, as: 'arguments', class: Google::Apis::BigqueryV2::Argument, decorator: Google::Apis::BigqueryV2::Argument::Representation
       
           property :creation_time, :numeric_string => true, as: 'creationTime'
+          property :data_governance_type, as: 'dataGovernanceType'
           property :definition_body, as: 'definitionBody'
           property :description, as: 'description'
           property :determinism_level, as: 'determinismLevel'
@@ -2783,7 +2801,7 @@ module Google
       class SearchStatistics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :index_unused_reason, as: 'indexUnusedReason', class: Google::Apis::BigqueryV2::IndexUnusedReason, decorator: Google::Apis::BigqueryV2::IndexUnusedReason::Representation
+          collection :index_unused_reasons, as: 'indexUnusedReasons', class: Google::Apis::BigqueryV2::IndexUnusedReason, decorator: Google::Apis::BigqueryV2::IndexUnusedReason::Representation
       
           property :index_usage_mode, as: 'indexUsageMode'
         end
@@ -2843,10 +2861,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :endpoints, as: 'endpoints'
-          property :logging_info, as: 'logging_info', class: Google::Apis::BigqueryV2::SparkLoggingInfo, decorator: Google::Apis::BigqueryV2::SparkLoggingInfo::Representation
+          property :logging_info, as: 'loggingInfo', class: Google::Apis::BigqueryV2::SparkLoggingInfo, decorator: Google::Apis::BigqueryV2::SparkLoggingInfo::Representation
       
-          property :spark_job_id, as: 'spark_job_id'
-          property :spark_job_location, as: 'spark_job_location'
+          property :spark_job_id, as: 'sparkJobId'
+          property :spark_job_location, as: 'sparkJobLocation'
         end
       end
       
@@ -2854,6 +2872,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :array_element_type, as: 'arrayElementType', class: Google::Apis::BigqueryV2::StandardSqlDataType, decorator: Google::Apis::BigqueryV2::StandardSqlDataType::Representation
+      
+          property :range_element_type, as: 'rangeElementType', class: Google::Apis::BigqueryV2::StandardSqlDataType, decorator: Google::Apis::BigqueryV2::StandardSqlDataType::Representation
       
           property :struct_type, as: 'structType', class: Google::Apis::BigqueryV2::StandardSqlStructType, decorator: Google::Apis::BigqueryV2::StandardSqlStructType::Representation
       
@@ -2905,6 +2925,8 @@ module Google
       class Table
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :biglake_configuration, as: 'biglakeConfiguration', class: Google::Apis::BigqueryV2::BigLakeConfiguration, decorator: Google::Apis::BigqueryV2::BigLakeConfiguration::Representation
+      
           property :clone_definition, as: 'cloneDefinition', class: Google::Apis::BigqueryV2::CloneDefinition, decorator: Google::Apis::BigqueryV2::CloneDefinition::Representation
       
           property :clustering, as: 'clustering', class: Google::Apis::BigqueryV2::Clustering, decorator: Google::Apis::BigqueryV2::Clustering::Representation
@@ -3207,6 +3229,7 @@ module Google
           property :booster_type, as: 'boosterType'
           property :budget_hours, as: 'budgetHours'
           property :calculate_p_values, as: 'calculatePValues'
+          property :category_encoding_method, as: 'categoryEncodingMethod'
           property :clean_spikes_and_dips, as: 'cleanSpikesAndDips'
           property :color_space, as: 'colorSpace'
           property :colsample_bylevel, as: 'colsampleBylevel'
@@ -3226,6 +3249,7 @@ module Google
           property :fit_intercept, as: 'fitIntercept'
           collection :hidden_units, as: 'hiddenUnits'
           property :holiday_region, as: 'holidayRegion'
+          collection :holiday_regions, as: 'holidayRegions'
           property :horizon, :numeric_string => true, as: 'horizon'
           collection :hparam_tuning_objectives, as: 'hparamTuningObjectives'
           property :include_drift, as: 'includeDrift'
