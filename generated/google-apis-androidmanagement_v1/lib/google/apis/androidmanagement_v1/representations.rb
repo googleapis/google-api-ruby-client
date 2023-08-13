@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnrollmentCompleteEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnrollmentToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1249,6 +1255,12 @@ module Google
         end
       end
       
+      class EnrollmentCompleteEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class EnrollmentToken
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2151,6 +2163,8 @@ module Google
           property :crypto_self_test_completed_event, as: 'cryptoSelfTestCompletedEvent', class: Google::Apis::AndroidmanagementV1::CryptoSelfTestCompletedEvent, decorator: Google::Apis::AndroidmanagementV1::CryptoSelfTestCompletedEvent::Representation
       
           property :dns_event, as: 'dnsEvent', class: Google::Apis::AndroidmanagementV1::DnsEvent, decorator: Google::Apis::AndroidmanagementV1::DnsEvent::Representation
+      
+          property :enrollment_complete_event, as: 'enrollmentCompleteEvent', class: Google::Apis::AndroidmanagementV1::EnrollmentCompleteEvent, decorator: Google::Apis::AndroidmanagementV1::EnrollmentCompleteEvent::Representation
       
           property :event_id, :numeric_string => true, as: 'eventId'
           property :event_time, as: 'eventTime'
