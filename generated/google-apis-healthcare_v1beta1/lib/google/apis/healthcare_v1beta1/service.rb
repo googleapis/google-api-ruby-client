@@ -5434,10 +5434,24 @@ module Google
         # 50,000 might not be fully searchable as the server might trim its generated
         # search index in those cases. Note: FHIR resources are indexed asynchronously,
         # so there might be a slight delay between the time a resource is created or
-        # changes and when the change is reflected in search results. For samples and
-        # detailed information, see [Searching for FHIR resources](https://cloud.google.
-        # com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search features](
-        # https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
+        # changed, and the time when the change reflects in search results. The only
+        # exception is resource identifier data, which is indexed synchronously as a
+        # special index. As a result, searching using resource identifier is not subject
+        # to indexing delay. To use the special synchronous index, the search term for
+        # identifier should be in the pattern `identifier=[system]|[value]` or `
+        # identifier=[value]`, and any of the following search result parameters can be
+        # used: * `_count` * `_include` * `_revinclude` * `_summary` * `_elements` If
+        # your query contains any other search parameters, the standard asynchronous
+        # index will be used instead. Note that searching against the special index is
+        # optimized for resolving a small number of matches. The search isn't optimized
+        # if your identifier search criteria matches a large number (i.e. more than 2,
+        # 000) of resources. For a search query that will match a large number of
+        # resources, you can avoiding using the special synchronous index by including
+        # an additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if
+        # you want to keep the default sorting order. For samples and detailed
+        # information, see [Searching for FHIR resources](https://cloud.google.com/
+        # healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search features](https:
+        # //cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
         # @param [String] parent
         #   Name of the FHIR store to retrieve resources from.
         # @param [Google::Apis::HealthcareV1beta1::SearchResourcesRequest] search_resources_request_object
@@ -5512,10 +5526,24 @@ module Google
         # 50,000 might not be fully searchable as the server might trim its generated
         # search index in those cases. Note: FHIR resources are indexed asynchronously,
         # so there might be a slight delay between the time a resource is created or
-        # changes and when the change is reflected in search results. For samples and
-        # detailed information, see [Searching for FHIR resources](https://cloud.google.
-        # com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search features](
-        # https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
+        # changed, and the time when the change reflects in search results. The only
+        # exception is resource identifier data, which is indexed synchronously as a
+        # special index. As a result, searching using resource identifier is not subject
+        # to indexing delay. To use the special synchronous index, the search term for
+        # identifier should be in the pattern `identifier=[system]|[value]` or `
+        # identifier=[value]`, and any of the following search result parameters can be
+        # used: * `_count` * `_include` * `_revinclude` * `_summary` * `_elements` If
+        # your query contains any other search parameters, the standard asynchronous
+        # index will be used instead. Note that searching against the special index is
+        # optimized for resolving a small number of matches. The search isn't optimized
+        # if your identifier search criteria matches a large number (i.e. more than 2,
+        # 000) of resources. For a search query that will match a large number of
+        # resources, you can avoiding using the special synchronous index by including
+        # an additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if
+        # you want to keep the default sorting order. For samples and detailed
+        # information, see [Searching for FHIR resources](https://cloud.google.com/
+        # healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search features](https:
+        # //cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
         # @param [String] parent
         #   Name of the FHIR store to retrieve resources from.
         # @param [String] resource_type
