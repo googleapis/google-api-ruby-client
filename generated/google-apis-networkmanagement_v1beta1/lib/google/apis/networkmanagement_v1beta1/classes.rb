@@ -1469,13 +1469,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -1562,22 +1562,22 @@ module Google
       # evaluates to `true`. A condition can add constraints based on attributes of
       # the request, the resource, or both. To learn which resources support
       # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
       # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
       # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
       # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
       # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
       # ], "condition": ` "title": "expirable access", "description": "Does not grant
       # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-      # bindings: - members: - user:mike@example.com - group:admins@example.com -
-      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-      # access description: Does not grant access after Sep 2020 expression: request.
-      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-      # a description of IAM and its features, see the [IAM documentation](https://
-      # cloud.google.com/iam/docs/).
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+      # title: expirable access description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -1792,7 +1792,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :dest_port_ranges
       
-        # Name of a Compute Engine route.
+        # Name of a route.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -1802,7 +1802,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :instance_tags
       
-        # URI of a Compute Engine network.
+        # URI of a NCC Hub. NCC_HUB routes only.
+        # Corresponds to the JSON property `nccHubUri`
+        # @return [String]
+        attr_accessor :ncc_hub_uri
+      
+        # URI of a NCC Spoke. NCC_HUB routes only.
+        # Corresponds to the JSON property `nccSpokeUri`
+        # @return [String]
+        attr_accessor :ncc_spoke_uri
+      
+        # URI of a Compute Engine network. NETWORK routes only.
         # Corresponds to the JSON property `networkUri`
         # @return [String]
         attr_accessor :network_uri
@@ -1827,6 +1837,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :protocols
       
+        # Indicates where route is applicable.
+        # Corresponds to the JSON property `routeScope`
+        # @return [String]
+        attr_accessor :route_scope
+      
         # Type of route.
         # Corresponds to the JSON property `routeType`
         # @return [String]
@@ -1842,9 +1857,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :src_port_ranges
       
-        # URI of a Compute Engine route. Dynamic route from cloud router does not have a
-        # URI. Advertised route from Google Cloud VPC to on-premises network also does
-        # not have a URI.
+        # URI of a route. Dynamic, peering static and peering dynamic routes do not have
+        # an URI. Advertised route from Google Cloud VPC to on-premises network also
+        # does not have an URI.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1859,11 +1874,14 @@ module Google
           @dest_port_ranges = args[:dest_port_ranges] if args.key?(:dest_port_ranges)
           @display_name = args[:display_name] if args.key?(:display_name)
           @instance_tags = args[:instance_tags] if args.key?(:instance_tags)
+          @ncc_hub_uri = args[:ncc_hub_uri] if args.key?(:ncc_hub_uri)
+          @ncc_spoke_uri = args[:ncc_spoke_uri] if args.key?(:ncc_spoke_uri)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
           @next_hop = args[:next_hop] if args.key?(:next_hop)
           @next_hop_type = args[:next_hop_type] if args.key?(:next_hop_type)
           @priority = args[:priority] if args.key?(:priority)
           @protocols = args[:protocols] if args.key?(:protocols)
+          @route_scope = args[:route_scope] if args.key?(:route_scope)
           @route_type = args[:route_type] if args.key?(:route_type)
           @src_ip_range = args[:src_ip_range] if args.key?(:src_ip_range)
           @src_port_ranges = args[:src_port_ranges] if args.key?(:src_port_ranges)
@@ -1886,22 +1904,22 @@ module Google
         # evaluates to `true`. A condition can add constraints based on attributes of
         # the request, the resource, or both. To learn which resources support
         # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
         # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
         # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
         # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-        # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-        # a description of IAM and its features, see the [IAM documentation](https://
-        # cloud.google.com/iam/docs/).
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::NetworkmanagementV1beta1::Policy]
         attr_accessor :policy
