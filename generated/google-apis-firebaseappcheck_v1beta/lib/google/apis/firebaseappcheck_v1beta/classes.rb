@@ -1173,6 +1173,14 @@ module Google
         # @return [String]
         attr_accessor :enforcement_mode
       
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update and delete requests to ensure the client has an up-
+        # to-date value before proceeding. This etag is strongly validated as defined by
+        # RFC 7232.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Required. The relative resource name of the service configuration object, in
         # the format: ``` projects/`project_number`/services/`service_id` ``` Note that
         # the `service_id` element must be a supported service ID. Currently, the
@@ -1197,6 +1205,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enforcement_mode = args[:enforcement_mode] if args.key?(:enforcement_mode)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
