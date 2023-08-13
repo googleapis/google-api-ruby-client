@@ -652,12 +652,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UpdateConsumerPolicyLroMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class UpdateConsumerPolicyMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1743,12 +1737,6 @@ module Google
       end
       
       class UpdateAdminQuotaPolicyMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class UpdateConsumerPolicyLroMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
