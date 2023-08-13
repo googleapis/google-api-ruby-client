@@ -875,6 +875,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a conversion event with the specified attributes.
+        # @param [String] name
+        #   Output only. Resource name of this conversion event. Format: properties/`
+        #   property`/conversionEvents/`conversion_event`
+        # @param [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaConversionEvent] google_analytics_admin_v1beta_conversion_event_object
+        # @param [String] update_mask
+        #   Required. The list of fields to be updated. Field names must be in snake case (
+        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
+        #   entire entity, use one path with the string "*" to match all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaConversionEvent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaConversionEvent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_property_conversion_event(name, google_analytics_admin_v1beta_conversion_event_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaConversionEvent::Representation
+          command.request_object = google_analytics_admin_v1beta_conversion_event_object
+          command.response_representation = Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaConversionEvent::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaConversionEvent
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Archives a CustomDimension on a property.
         # @param [String] name
         #   Required. The name of the CustomDimension to archive. Example format:
