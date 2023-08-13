@@ -185,7 +185,7 @@ module Google
         attr_accessor :action_type
       
         # Org policy condition/expression. For example: `resource.instanceName.matches("[
-        # production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true`
+        # production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true`
         # The max length of the condition is 1000 characters.
         # Corresponds to the JSON property `condition`
         # @return [String]
@@ -347,11 +347,11 @@ module Google
         attr_accessor :dry_run_spec
       
         # Immutable. The resource name of the policy. Must be one of the following forms,
-        # where constraint_name is the name of the constraint which this policy
+        # where `constraint_name` is the name of the constraint which this policy
         # configures: * `projects/`project_number`/policies/`constraint_name`` * `
         # folders/`folder_id`/policies/`constraint_name`` * `organizations/`
-        # organization_id`/policies/`constraint_name`` For example, "projects/123/
-        # policies/compute.disableSerialPortAccess". Note: `projects/`project_id`/
+        # organization_id`/policies/`constraint_name`` For example, `projects/123/
+        # policies/compute.disableSerialPortAccess`. Note: `projects/`project_id`/
         # policies/`constraint_name`` is also an acceptable name for API requests, but
         # responses will return the name using the equivalent project number.
         # Corresponds to the JSON property `name`
@@ -491,10 +491,11 @@ module Google
         # prefix is used to denote resource subtree values. The `is:` prefix is used to
         # denote specific values, and is required only if the value contains a ":".
         # Values prefixed with "is:" are treated the same as values with no prefix.
-        # Ancestry subtrees must be in one of the following formats: - "projects/", e.g.
-        # "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/",
-        # e.g. "organizations/1234" The `supports_under` field of the associated `
-        # Constraint` defines whether ancestry prefixes can be used.
+        # Ancestry subtrees must be in one of the following formats: - `projects/` (for
+        # example, `projects/tokyo-rain-123`) - `folders/` (for example, `folders/1234`)
+        # - `organizations/` (for example, `organizations/1234`) The `supports_under`
+        # field of the associated `Constraint` defines whether ancestry prefixes can be
+        # used.
         # Corresponds to the JSON property `values`
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues]
         attr_accessor :values
@@ -520,10 +521,11 @@ module Google
       # prefix is used to denote resource subtree values. The `is:` prefix is used to
       # denote specific values, and is required only if the value contains a ":".
       # Values prefixed with "is:" are treated the same as values with no prefix.
-      # Ancestry subtrees must be in one of the following formats: - "projects/", e.g.
-      # "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/",
-      # e.g. "organizations/1234" The `supports_under` field of the associated `
-      # Constraint` defines whether ancestry prefixes can be used.
+      # Ancestry subtrees must be in one of the following formats: - `projects/` (for
+      # example, `projects/tokyo-rain-123`) - `folders/` (for example, `folders/1234`)
+      # - `organizations/` (for example, `organizations/1234`) The `supports_under`
+      # field of the associated `Constraint` defines whether ancestry prefixes can be
+      # used.
       class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues
         include Google::Apis::Core::Hashable
       

@@ -163,7 +163,7 @@ module Google
         # is returned. The `etag` value can be used with `UpdatePolicy()` to update a
         # policy during read-modify-write.
         # @param [String] name
-        #   Required. Resource name of the policy. See `Policy` for naming requirements.
+        #   Required. Resource name of the policy. See Policy for naming requirements.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -197,7 +197,7 @@ module Google
         # policy across multiple resources. Subtrees of Resource Manager resource
         # hierarchy with 'under:' prefix will not be expanded.
         # @param [String] name
-        #   Required. The effective policy to compute. See `Policy` for naming rules.
+        #   Required. The effective policy to compute. See Policy for naming requirements.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -273,11 +273,11 @@ module Google
         # perform a full overwrite of all fields.
         # @param [String] name
         #   Immutable. The resource name of the policy. Must be one of the following forms,
-        #   where constraint_name is the name of the constraint which this policy
+        #   where `constraint_name` is the name of the constraint which this policy
         #   configures: * `projects/`project_number`/policies/`constraint_name`` * `
         #   folders/`folder_id`/policies/`constraint_name`` * `organizations/`
-        #   organization_id`/policies/`constraint_name`` For example, "projects/123/
-        #   policies/compute.disableSerialPortAccess". Note: `projects/`project_id`/
+        #   organization_id`/policies/`constraint_name`` For example, `projects/123/
+        #   policies/compute.disableSerialPortAccess`. Note: `projects/`project_id`/
         #   policies/`constraint_name`` is also an acceptable name for API requests, but
         #   responses will return the name using the equivalent project number.
         # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy] google_cloud_orgpolicy_v2_policy_object
@@ -609,7 +609,7 @@ module Google
         # is returned. The `etag` value can be used with `UpdatePolicy()` to update a
         # policy during read-modify-write.
         # @param [String] name
-        #   Required. Resource name of the policy. See `Policy` for naming requirements.
+        #   Required. Resource name of the policy. See Policy for naming requirements.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -643,7 +643,7 @@ module Google
         # policy across multiple resources. Subtrees of Resource Manager resource
         # hierarchy with 'under:' prefix will not be expanded.
         # @param [String] name
-        #   Required. The effective policy to compute. See `Policy` for naming rules.
+        #   Required. The effective policy to compute. See Policy for naming requirements.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -719,11 +719,11 @@ module Google
         # perform a full overwrite of all fields.
         # @param [String] name
         #   Immutable. The resource name of the policy. Must be one of the following forms,
-        #   where constraint_name is the name of the constraint which this policy
+        #   where `constraint_name` is the name of the constraint which this policy
         #   configures: * `projects/`project_number`/policies/`constraint_name`` * `
         #   folders/`folder_id`/policies/`constraint_name`` * `organizations/`
-        #   organization_id`/policies/`constraint_name`` For example, "projects/123/
-        #   policies/compute.disableSerialPortAccess". Note: `projects/`project_id`/
+        #   organization_id`/policies/`constraint_name`` For example, `projects/123/
+        #   policies/compute.disableSerialPortAccess`. Note: `projects/`project_id`/
         #   policies/`constraint_name`` is also an acceptable name for API requests, but
         #   responses will return the name using the equivalent project number.
         # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy] google_cloud_orgpolicy_v2_policy_object
@@ -874,7 +874,7 @@ module Google
         # is returned. The `etag` value can be used with `UpdatePolicy()` to update a
         # policy during read-modify-write.
         # @param [String] name
-        #   Required. Resource name of the policy. See `Policy` for naming requirements.
+        #   Required. Resource name of the policy. See Policy for naming requirements.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -908,7 +908,7 @@ module Google
         # policy across multiple resources. Subtrees of Resource Manager resource
         # hierarchy with 'under:' prefix will not be expanded.
         # @param [String] name
-        #   Required. The effective policy to compute. See `Policy` for naming rules.
+        #   Required. The effective policy to compute. See Policy for naming requirements.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -984,11 +984,11 @@ module Google
         # perform a full overwrite of all fields.
         # @param [String] name
         #   Immutable. The resource name of the policy. Must be one of the following forms,
-        #   where constraint_name is the name of the constraint which this policy
+        #   where `constraint_name` is the name of the constraint which this policy
         #   configures: * `projects/`project_number`/policies/`constraint_name`` * `
         #   folders/`folder_id`/policies/`constraint_name`` * `organizations/`
-        #   organization_id`/policies/`constraint_name`` For example, "projects/123/
-        #   policies/compute.disableSerialPortAccess". Note: `projects/`project_id`/
+        #   organization_id`/policies/`constraint_name`` For example, `projects/123/
+        #   policies/compute.disableSerialPortAccess`. Note: `projects/`project_id`/
         #   policies/`constraint_name`` is also an acceptable name for API requests, but
         #   responses will return the name using the equivalent project number.
         # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy] google_cloud_orgpolicy_v2_policy_object
