@@ -781,12 +781,12 @@ module Google
         # Deletes a link. This will also delete the corresponding BigQuery linked
         # dataset.
         # @param [String] name
-        #   Required. The full resource name of the link to delete."projects/PROJECT_ID/
-        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/
-        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
-        #   billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
-        #   links/LINK_ID" "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
-        #   links/LINK_ID"
+        #   Required. The full resource name of the link to delete. "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
+        #   BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/
+        #   buckets/[BUCKET_ID]/links/[LINK_ID]"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -816,11 +816,12 @@ module Google
         
         # Gets a link.
         # @param [String] name
-        #   Required. The resource name of the link:"projects/PROJECT_ID/locations/
-        #   LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/ORGANIZATION_ID/
-        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "billingAccounts/
-        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
-        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+        #   Required. The resource name of the link: "projects/[PROJECT_ID]/locations/[
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
+        #   BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/
+        #   buckets/[BUCKET_ID]/links/[LINK_ID]"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -850,11 +851,11 @@ module Google
         
         # Lists links.
         # @param [String] parent
-        #   Required. The parent resource whose links are to be listed:"projects/
-        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "organizations/
-        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "billingAccounts/
-        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "folders/FOLDER_ID/
-        #   locations/LOCATION_ID/buckets/BUCKET_ID"
+        #   Required. The parent resource whose links are to be listed: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request.
         # @param [String] page_token
@@ -1534,7 +1535,7 @@ module Google
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
         #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
         #   is an error if the old value is true and the new value is set to false or
         #   defaulted to false.
         # @param [String] update_mask
@@ -1601,7 +1602,7 @@ module Google
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
         #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
         #   is an error if the old value is true and the new value is set to false or
         #   defaulted to false.
         # @param [String] update_mask
@@ -2750,12 +2751,12 @@ module Google
         # Deletes a link. This will also delete the corresponding BigQuery linked
         # dataset.
         # @param [String] name
-        #   Required. The full resource name of the link to delete."projects/PROJECT_ID/
-        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/
-        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
-        #   billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
-        #   links/LINK_ID" "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
-        #   links/LINK_ID"
+        #   Required. The full resource name of the link to delete. "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
+        #   BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/
+        #   buckets/[BUCKET_ID]/links/[LINK_ID]"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2785,11 +2786,12 @@ module Google
         
         # Gets a link.
         # @param [String] name
-        #   Required. The resource name of the link:"projects/PROJECT_ID/locations/
-        #   LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/ORGANIZATION_ID/
-        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "billingAccounts/
-        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
-        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+        #   Required. The resource name of the link: "projects/[PROJECT_ID]/locations/[
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
+        #   BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/
+        #   buckets/[BUCKET_ID]/links/[LINK_ID]"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2819,11 +2821,11 @@ module Google
         
         # Lists links.
         # @param [String] parent
-        #   Required. The parent resource whose links are to be listed:"projects/
-        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "organizations/
-        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "billingAccounts/
-        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "folders/FOLDER_ID/
-        #   locations/LOCATION_ID/buckets/BUCKET_ID"
+        #   Required. The parent resource whose links are to be listed: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request.
         # @param [String] page_token
@@ -3503,7 +3505,7 @@ module Google
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
         #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
         #   is an error if the old value is true and the new value is set to false or
         #   defaulted to false.
         # @param [String] update_mask
@@ -3570,7 +3572,7 @@ module Google
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
         #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
         #   is an error if the old value is true and the new value is set to false or
         #   defaulted to false.
         # @param [String] update_mask
@@ -4070,12 +4072,12 @@ module Google
         # Deletes a link. This will also delete the corresponding BigQuery linked
         # dataset.
         # @param [String] name
-        #   Required. The full resource name of the link to delete."projects/PROJECT_ID/
-        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/
-        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
-        #   billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
-        #   links/LINK_ID" "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
-        #   links/LINK_ID"
+        #   Required. The full resource name of the link to delete. "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
+        #   BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/
+        #   buckets/[BUCKET_ID]/links/[LINK_ID]"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4105,11 +4107,12 @@ module Google
         
         # Gets a link.
         # @param [String] name
-        #   Required. The resource name of the link:"projects/PROJECT_ID/locations/
-        #   LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/ORGANIZATION_ID/
-        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "billingAccounts/
-        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
-        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+        #   Required. The resource name of the link: "projects/[PROJECT_ID]/locations/[
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
+        #   BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/
+        #   buckets/[BUCKET_ID]/links/[LINK_ID]"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4139,11 +4142,11 @@ module Google
         
         # Lists links.
         # @param [String] parent
-        #   Required. The parent resource whose links are to be listed:"projects/
-        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "organizations/
-        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "billingAccounts/
-        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "folders/FOLDER_ID/
-        #   locations/LOCATION_ID/buckets/BUCKET_ID"
+        #   Required. The parent resource whose links are to be listed: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request.
         # @param [String] page_token
@@ -5450,12 +5453,12 @@ module Google
         # Deletes a link. This will also delete the corresponding BigQuery linked
         # dataset.
         # @param [String] name
-        #   Required. The full resource name of the link to delete."projects/PROJECT_ID/
-        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/
-        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
-        #   billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
-        #   links/LINK_ID" "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
-        #   links/LINK_ID"
+        #   Required. The full resource name of the link to delete. "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
+        #   BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/
+        #   buckets/[BUCKET_ID]/links/[LINK_ID]"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5485,11 +5488,12 @@ module Google
         
         # Gets a link.
         # @param [String] name
-        #   Required. The resource name of the link:"projects/PROJECT_ID/locations/
-        #   LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/ORGANIZATION_ID/
-        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "billingAccounts/
-        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
-        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+        #   Required. The resource name of the link: "projects/[PROJECT_ID]/locations/[
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
+        #   BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/
+        #   buckets/[BUCKET_ID]/links/[LINK_ID]"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5519,11 +5523,11 @@ module Google
         
         # Lists links.
         # @param [String] parent
-        #   Required. The parent resource whose links are to be listed:"projects/
-        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "organizations/
-        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "billingAccounts/
-        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "folders/FOLDER_ID/
-        #   locations/LOCATION_ID/buckets/BUCKET_ID"
+        #   Required. The parent resource whose links are to be listed: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request.
         # @param [String] page_token
@@ -6203,7 +6207,7 @@ module Google
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
         #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
         #   is an error if the old value is true and the new value is set to false or
         #   defaulted to false.
         # @param [String] update_mask
@@ -6270,7 +6274,7 @@ module Google
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
         #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
         #   is an error if the old value is true and the new value is set to false or
         #   defaulted to false.
         # @param [String] update_mask
@@ -7047,12 +7051,12 @@ module Google
         # Deletes a link. This will also delete the corresponding BigQuery linked
         # dataset.
         # @param [String] name
-        #   Required. The full resource name of the link to delete."projects/PROJECT_ID/
-        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/
-        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
-        #   billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
-        #   links/LINK_ID" "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
-        #   links/LINK_ID"
+        #   Required. The full resource name of the link to delete. "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
+        #   BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/
+        #   buckets/[BUCKET_ID]/links/[LINK_ID]"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7082,11 +7086,12 @@ module Google
         
         # Gets a link.
         # @param [String] name
-        #   Required. The resource name of the link:"projects/PROJECT_ID/locations/
-        #   LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/ORGANIZATION_ID/
-        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "billingAccounts/
-        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
-        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+        #   Required. The resource name of the link: "projects/[PROJECT_ID]/locations/[
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
+        #   BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/
+        #   buckets/[BUCKET_ID]/links/[LINK_ID]"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7116,11 +7121,11 @@ module Google
         
         # Lists links.
         # @param [String] parent
-        #   Required. The parent resource whose links are to be listed:"projects/
-        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "organizations/
-        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "billingAccounts/
-        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID" "folders/FOLDER_ID/
-        #   locations/LOCATION_ID/buckets/BUCKET_ID"
+        #   Required. The parent resource whose links are to be listed: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request.
         # @param [String] page_token
@@ -7974,7 +7979,7 @@ module Google
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
         #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
         #   is an error if the old value is true and the new value is set to false or
         #   defaulted to false.
         # @param [String] update_mask
@@ -8041,7 +8046,7 @@ module Google
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
         #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
         #   is an error if the old value is true and the new value is set to false or
         #   defaulted to false.
         # @param [String] update_mask
@@ -8277,7 +8282,7 @@ module Google
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
         #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
         #   is an error if the old value is true and the new value is set to false or
         #   defaulted to false.
         # @param [String] update_mask
