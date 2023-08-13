@@ -2914,6 +2914,46 @@ module Google
         end
       end
       
+      # Schedule to insert cuepoints into a broadcast by ads automator.
+      class CuepointSchedule
+        include Google::Apis::Core::Hashable
+      
+        # This field is semantically required. If it is set false or not set, other
+        # fields in this message will be ignored.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # If set, automatic cuepoint insertion is paused until this timestamp ("No Ad
+        # Zone").
+        # Corresponds to the JSON property `pauseAdsUntil`
+        # @return [String]
+        attr_accessor :pause_ads_until
+      
+        # Interval frequency that api uses to insert cuepoints automatically.
+        # Corresponds to the JSON property `repeatInterval`
+        # @return [String]
+        attr_accessor :repeat_interval
+      
+        # The strategy to use when scheduling cuepoints.
+        # Corresponds to the JSON property `scheduleStrategy`
+        # @return [String]
+        attr_accessor :schedule_strategy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @pause_ads_until = args[:pause_ads_until] if args.key?(:pause_ads_until)
+          @repeat_interval = args[:repeat_interval] if args.key?(:repeat_interval)
+          @schedule_strategy = args[:schedule_strategy] if args.key?(:schedule_strategy)
+        end
+      end
+      
       # 
       class Entity
         include Google::Apis::Core::Hashable
@@ -3573,6 +3613,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Monetization settings of a broadcast.
+        # Corresponds to the JSON property `monetizationDetails`
+        # @return [Google::Apis::YoutubeV3::LiveBroadcastMonetizationDetails]
+        attr_accessor :monetization_details
+      
         # Basic broadcast information.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::LiveBroadcastSnippet]
@@ -3599,6 +3644,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @monetization_details = args[:monetization_details] if args.key?(:monetization_details)
           @snippet = args[:snippet] if args.key?(:snippet)
           @statistics = args[:statistics] if args.key?(:statistics)
           @status = args[:status] if args.key?(:status)
@@ -3831,6 +3877,25 @@ module Google
           @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
           @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
           @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
+        end
+      end
+      
+      # Monetization settings of a broadcast.
+      class LiveBroadcastMonetizationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Schedule to insert cuepoints into a broadcast by ads automator.
+        # Corresponds to the JSON property `cuepointSchedule`
+        # @return [Google::Apis::YoutubeV3::CuepointSchedule]
+        attr_accessor :cuepoint_schedule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cuepoint_schedule = args[:cuepoint_schedule] if args.key?(:cuepoint_schedule)
         end
       end
       
@@ -6229,11 +6294,6 @@ module Google
       class PlaylistStatus
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `podcastStatus`
-        # @return [String]
-        attr_accessor :podcast_status
-      
         # The playlist's privacy status.
         # Corresponds to the JSON property `privacyStatus`
         # @return [String]
@@ -6245,7 +6305,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @podcast_status = args[:podcast_status] if args.key?(:podcast_status)
           @privacy_status = args[:privacy_status] if args.key?(:privacy_status)
         end
       end

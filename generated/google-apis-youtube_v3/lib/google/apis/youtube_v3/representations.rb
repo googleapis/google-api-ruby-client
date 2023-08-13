@@ -358,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CuepointSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Entity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -461,6 +467,12 @@ module Google
       end
       
       class ListLiveBroadcastsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiveBroadcastMonetizationDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1889,6 +1901,16 @@ module Google
         end
       end
       
+      class CuepointSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :pause_ads_until, as: 'pauseAdsUntil'
+          property :repeat_interval, as: 'repeatInterval'
+          property :schedule_strategy, as: 'scheduleStrategy'
+        end
+      end
+      
       class Entity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2065,6 +2087,8 @@ module Google
           property :etag, as: 'etag'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          property :monetization_details, as: 'monetizationDetails', class: Google::Apis::YoutubeV3::LiveBroadcastMonetizationDetails, decorator: Google::Apis::YoutubeV3::LiveBroadcastMonetizationDetails::Representation
+      
           property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::LiveBroadcastSnippet, decorator: Google::Apis::YoutubeV3::LiveBroadcastSnippet::Representation
       
           property :statistics, as: 'statistics', class: Google::Apis::YoutubeV3::LiveBroadcastStatistics, decorator: Google::Apis::YoutubeV3::LiveBroadcastStatistics::Representation
@@ -2114,6 +2138,14 @@ module Google
           property :token_pagination, as: 'tokenPagination', class: Google::Apis::YoutubeV3::TokenPagination, decorator: Google::Apis::YoutubeV3::TokenPagination::Representation
       
           property :visitor_id, as: 'visitorId'
+        end
+      end
+      
+      class LiveBroadcastMonetizationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cuepoint_schedule, as: 'cuepointSchedule', class: Google::Apis::YoutubeV3::CuepointSchedule, decorator: Google::Apis::YoutubeV3::CuepointSchedule::Representation
+      
         end
       end
       
@@ -2772,7 +2804,6 @@ module Google
       class PlaylistStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :podcast_status, as: 'podcastStatus'
           property :privacy_status, as: 'privacyStatus'
         end
       end
