@@ -742,6 +742,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolicyBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrivateClusterConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1269,6 +1275,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :evaluation_mode, as: 'evaluationMode'
+          collection :policy_bindings, as: 'policyBindings', class: Google::Apis::ContainerV1beta1::PolicyBinding, decorator: Google::Apis::ContainerV1beta1::PolicyBinding::Representation
+      
         end
       end
       
@@ -2498,6 +2506,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+        end
+      end
+      
+      class PolicyBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       

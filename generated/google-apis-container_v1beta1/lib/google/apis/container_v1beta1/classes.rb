@@ -655,6 +655,11 @@ module Google
         # @return [String]
         attr_accessor :evaluation_mode
       
+        # Optional. Binauthz policies that apply to this cluster.
+        # Corresponds to the JSON property `policyBindings`
+        # @return [Array<Google::Apis::ContainerV1beta1::PolicyBinding>]
+        attr_accessor :policy_bindings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -663,6 +668,7 @@ module Google
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
           @evaluation_mode = args[:evaluation_mode] if args.key?(:evaluation_mode)
+          @policy_bindings = args[:policy_bindings] if args.key?(:policy_bindings)
         end
       end
       
@@ -5308,6 +5314,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Binauthz policy that applies to this cluster.
+      class PolicyBinding
+        include Google::Apis::Core::Hashable
+      
+        # The relative resource name of the binauthz platform policy to audit. GKE
+        # platform policies have the following format: `projects/`project_number`/
+        # platforms/gke/policies/`policy_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
