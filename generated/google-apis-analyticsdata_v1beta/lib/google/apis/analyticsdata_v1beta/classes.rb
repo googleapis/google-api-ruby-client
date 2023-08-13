@@ -282,8 +282,8 @@ module Google
       class Cohort
         include Google::Apis::Core::Hashable
       
-        # A contiguous set of days: startDate, startDate + 1, ..., endDate. Requests are
-        # allowed up to 4 date ranges.
+        # A contiguous set of days: `startDate`, `startDate + 1`, ..., `endDate`.
+        # Requests are allowed up to 4 date ranges.
         # Corresponds to the JSON property `dateRange`
         # @return [Google::Apis::AnalyticsdataV1beta::DateRange]
         attr_accessor :date_range
@@ -458,8 +458,8 @@ module Google
         end
       end
       
-      # A contiguous set of days: startDate, startDate + 1, ..., endDate. Requests are
-      # allowed up to 4 date ranges.
+      # A contiguous set of days: `startDate`, `startDate + 1`, ..., `endDate`.
+      # Requests are allowed up to 4 date ranges.
       class DateRange
         include Google::Apis::Core::Hashable
       
@@ -1094,8 +1094,8 @@ module Google
         end
       end
       
-      # A contiguous set of minutes: startMinutesAgo, startMinutesAgo + 1, ...,
-      # endMinutesAgo. Requests are allowed up to 2 minute ranges.
+      # A contiguous set of minutes: `startMinutesAgo`, `startMinutesAgo + 1`, ..., `
+      # endMinutesAgo`. Requests are allowed up to 2 minute ranges.
       class MinuteRange
         include Google::Apis::Core::Hashable
       
