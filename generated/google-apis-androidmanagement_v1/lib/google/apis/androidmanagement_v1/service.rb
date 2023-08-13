@@ -1093,8 +1093,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the device provisioning info by the identifier provided via the sign-in
-        # url.
+        # Get the device provisioning information by the identifier provided in the sign-
+        # in url.
         # @param [String] name
         #   Required. The identifier that Android Device Policy passes to the 3P sign-in
         #   page in the form of provisioningInfo/`provisioning_info`.
