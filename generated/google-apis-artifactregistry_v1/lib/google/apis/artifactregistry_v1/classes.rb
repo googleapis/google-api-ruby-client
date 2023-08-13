@@ -74,6 +74,26 @@ module Google
         end
       end
       
+      # Configuration for an Apt remote repository.
+      class AptRepository
+        include Google::Apis::Core::Hashable
+      
+        # Publicly available Apt repositories constructed from a common repository base
+        # and a custom repository path.
+        # Corresponds to the JSON property `publicRepository`
+        # @return [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository]
+        attr_accessor :public_repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_repository = args[:public_repository] if args.key?(:public_repository)
+        end
+      end
+      
       # The metadata of an LRO from deleting multiple versions.
       class BatchDeleteVersionsMetadata
         include Google::Apis::Core::Hashable
@@ -634,6 +654,58 @@ module Google
           @owner = args[:owner] if args.key?(:owner)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Publicly available Apt repositories constructed from a common repository base
+      # and a custom repository path.
+      class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository
+        include Google::Apis::Core::Hashable
+      
+        # A common public repository base for Apt.
+        # Corresponds to the JSON property `repositoryBase`
+        # @return [String]
+        attr_accessor :repository_base
+      
+        # A custom field to define a path to a specific repository from the base.
+        # Corresponds to the JSON property `repositoryPath`
+        # @return [String]
+        attr_accessor :repository_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @repository_base = args[:repository_base] if args.key?(:repository_base)
+          @repository_path = args[:repository_path] if args.key?(:repository_path)
+        end
+      end
+      
+      # Publicly available Yum repositories constructed from a common repository base
+      # and a custom repository path.
+      class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository
+        include Google::Apis::Core::Hashable
+      
+        # A common public repository base for Yum.
+        # Corresponds to the JSON property `repositoryBase`
+        # @return [String]
+        attr_accessor :repository_base
+      
+        # A custom field to define a path to a specific repository from the base.
+        # Corresponds to the JSON property `repositoryPath`
+        # @return [String]
+        attr_accessor :repository_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @repository_base = args[:repository_base] if args.key?(:repository_base)
+          @repository_path = args[:repository_path] if args.key?(:repository_path)
         end
       end
       
@@ -1826,6 +1898,11 @@ module Google
       class RemoteRepositoryConfig
         include Google::Apis::Core::Hashable
       
+        # Configuration for an Apt remote repository.
+        # Corresponds to the JSON property `aptRepository`
+        # @return [Google::Apis::ArtifactregistryV1::AptRepository]
+        attr_accessor :apt_repository
+      
         # The description of the remote source.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -1851,17 +1928,24 @@ module Google
         # @return [Google::Apis::ArtifactregistryV1::PythonRepository]
         attr_accessor :python_repository
       
+        # Configuration for a Yum remote repository.
+        # Corresponds to the JSON property `yumRepository`
+        # @return [Google::Apis::ArtifactregistryV1::YumRepository]
+        attr_accessor :yum_repository
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @apt_repository = args[:apt_repository] if args.key?(:apt_repository)
           @description = args[:description] if args.key?(:description)
           @docker_repository = args[:docker_repository] if args.key?(:docker_repository)
           @maven_repository = args[:maven_repository] if args.key?(:maven_repository)
           @npm_repository = args[:npm_repository] if args.key?(:npm_repository)
           @python_repository = args[:python_repository] if args.key?(:python_repository)
+          @yum_repository = args[:yum_repository] if args.key?(:yum_repository)
         end
       end
       
@@ -2651,6 +2735,26 @@ module Google
           @name = args[:name] if args.key?(:name)
           @package_name = args[:package_name] if args.key?(:package_name)
           @package_type = args[:package_type] if args.key?(:package_type)
+        end
+      end
+      
+      # Configuration for a Yum remote repository.
+      class YumRepository
+        include Google::Apis::Core::Hashable
+      
+        # Publicly available Yum repositories constructed from a common repository base
+        # and a custom repository path.
+        # Corresponds to the JSON property `publicRepository`
+        # @return [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository]
+        attr_accessor :public_repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_repository = args[:public_repository] if args.key?(:public_repository)
         end
       end
     end

@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AptRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchDeleteVersionsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +113,18 @@ module Google
       end
       
       class GoogleDevtoolsArtifactregistryV1File
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -538,6 +556,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class YumRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AptArtifact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -547,6 +571,14 @@ module Google
           property :name, as: 'name'
           property :package_name, as: 'packageName'
           property :package_type, as: 'packageType'
+        end
+      end
+      
+      class AptRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :public_repository, as: 'publicRepository', class: Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository, decorator: Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository::Representation
+      
         end
       end
       
@@ -682,6 +714,22 @@ module Google
           property :owner, as: 'owner'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :repository_base, as: 'repositoryBase'
+          property :repository_path, as: 'repositoryPath'
+        end
+      end
+      
+      class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :repository_base, as: 'repositoryBase'
+          property :repository_path, as: 'repositoryPath'
         end
       end
       
@@ -1043,6 +1091,8 @@ module Google
       class RemoteRepositoryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :apt_repository, as: 'aptRepository', class: Google::Apis::ArtifactregistryV1::AptRepository, decorator: Google::Apis::ArtifactregistryV1::AptRepository::Representation
+      
           property :description, as: 'description'
           property :docker_repository, as: 'dockerRepository', class: Google::Apis::ArtifactregistryV1::DockerRepository, decorator: Google::Apis::ArtifactregistryV1::DockerRepository::Representation
       
@@ -1051,6 +1101,8 @@ module Google
           property :npm_repository, as: 'npmRepository', class: Google::Apis::ArtifactregistryV1::NpmRepository, decorator: Google::Apis::ArtifactregistryV1::NpmRepository::Representation
       
           property :python_repository, as: 'pythonRepository', class: Google::Apis::ArtifactregistryV1::PythonRepository, decorator: Google::Apis::ArtifactregistryV1::PythonRepository::Representation
+      
+          property :yum_repository, as: 'yumRepository', class: Google::Apis::ArtifactregistryV1::YumRepository, decorator: Google::Apis::ArtifactregistryV1::YumRepository::Representation
       
         end
       end
@@ -1302,6 +1354,14 @@ module Google
           property :name, as: 'name'
           property :package_name, as: 'packageName'
           property :package_type, as: 'packageType'
+        end
+      end
+      
+      class YumRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :public_repository, as: 'publicRepository', class: Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository, decorator: Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository::Representation
+      
         end
       end
     end
