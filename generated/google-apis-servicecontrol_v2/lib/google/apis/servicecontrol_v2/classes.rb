@@ -717,8 +717,7 @@ module Google
         end
       end
       
-      # Response message for the Report method. If the request contains any invalid
-      # data, the server returns an RPC error.
+      # Response message for the Report method.
       class ReportResponse
         include Google::Apis::Core::Hashable
       
@@ -1021,15 +1020,15 @@ module Google
       
         # Optional. The identifier of the container of this resource. For Google Cloud
         # APIs, the resource container must be one of the following formats: - `projects/
-        # ` - `folders/` - `organizations/` For the policy enforcement on the container
-        # level (VPCSC and Location Policy check), this field takes precedence on the
-        # container extracted from name when presents.
+        # ` - `folders/` - `organizations/` Required for the policy enforcement on the
+        # container level (e.g. VPCSC, Location Policy check, Org Policy check).
         # Corresponds to the JSON property `container`
         # @return [String]
         attr_accessor :container
       
-        # Optional. The location of the resource. The value must be a valid zone, region
-        # or multiregion. For example: "europe-west4" or "northamerica-northeast1-a"
+        # Optional. The location of the resource, it must be a valid zone, region or
+        # multiregion, for example: "europe-west4", "northamerica-northeast1-a".
+        # Required for location policy check.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
