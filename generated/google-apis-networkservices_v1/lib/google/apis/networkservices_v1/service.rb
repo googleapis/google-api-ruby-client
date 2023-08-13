@@ -2153,8 +2153,7 @@ module Google
         #   */locations/global`.
         # @param [Google::Apis::NetworkservicesV1::TcpRoute] tcp_route_object
         # @param [String] tcp_route_id
-        #   Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an
-        #   example).
+        #   Required. Short name of the TcpRoute resource to be created.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2333,8 +2332,7 @@ module Google
         #   */locations/global`.
         # @param [Google::Apis::NetworkservicesV1::TlsRoute] tls_route_object
         # @param [String] tls_route_id
-        #   Required. Short name of the TlsRoute resource to be created. E.g. TODO(Add an
-        #   example).
+        #   Required. Short name of the TlsRoute resource to be created.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
