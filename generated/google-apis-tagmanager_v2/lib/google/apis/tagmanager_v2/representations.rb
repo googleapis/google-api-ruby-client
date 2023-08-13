@@ -957,6 +957,7 @@ module Google
       class Parameter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_weak_reference, as: 'isWeakReference'
           property :key, as: 'key'
           collection :list, as: 'list', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
       

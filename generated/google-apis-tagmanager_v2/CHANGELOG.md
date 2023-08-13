@@ -1,5 +1,9 @@
 # Release history for google-apis-tagmanager_v2
 
+### v0.24.0 (2023-08-13)
+
+* Regenerated from discovery document revision 20230807
+
 ### v0.23.0 (2023-06-18)
 
 * Regenerated from discovery document revision 20230614
