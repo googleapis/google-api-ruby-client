@@ -11889,7 +11889,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
-          hash :metadatas, as: 'metadatas'
+          hash :metadata, as: 'metadata'
         end
       end
       
@@ -16648,6 +16648,7 @@ module Google
           property :locality, as: 'locality'
           property :max_distance, as: 'maxDistance'
           property :scope, as: 'scope'
+          property :slice_count, as: 'sliceCount'
           property :style, as: 'style'
           property :tpu_topology, as: 'tpuTopology'
           property :vm_count, as: 'vmCount'
