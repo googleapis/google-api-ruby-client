@@ -344,7 +344,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # References to fields excluded from scanning. This allows you to skip
-        # inspection of entire columns which you know have no findings.
+        # inspection of entire columns which you know have no findings. When inspecting
+        # a table, we recommend that you inspect all columns. Otherwise, findings might
+        # be impacted because hints from excluded columns will not be used.
         # Corresponds to the JSON property `excludedFields`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :excluded_fields
@@ -358,7 +360,9 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :identifying_fields
       
-        # Limit scanning only to these fields.
+        # Limit scanning only to these fields. When inspecting a table, we recommend
+        # that you inspect all columns. Otherwise, findings might be impacted because
+        # hints from excluded columns will not be used.
         # Corresponds to the JSON property `includedFields`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :included_fields
