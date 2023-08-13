@@ -84,6 +84,41 @@ module Google
         end
       end
       
+      # An attestation authenticator that will be used to verify attestations.
+      # Typically this is just a set of public keys. Conceptually, an authenticator
+      # can be treated as always returning either "authenticated" or "not
+      # authenticated" when presented with a signed attestation (almost always assumed
+      # to be a [DSSE](https://github.com/secure-systems-lab/dsse) attestation). The
+      # details of how an authenticator makes this decision are specific to the type
+      # of 'authenticator' that this message wraps.
+      class AttestationAuthenticator
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A user-provided name for this AttestationAuthenticator. This field
+        # has no effect on the policy evaluation behavior except to improve readability
+        # of messages in evaluation results.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A bundle of PKIX public keys, used to authenticate attestation signatures.
+        # Generally, a signature is considered to be authenticated by a PkixPublicKeySet
+        # if any of the public keys verify it (i.e. it is an "OR" of the keys).
+        # Corresponds to the JSON property `pkixPublicKeySet`
+        # @return [Google::Apis::BinaryauthorizationV1::PkixPublicKeySet]
+        attr_accessor :pkix_public_key_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @pkix_public_key_set = args[:pkix_public_key_set] if args.key?(:pkix_public_key_set)
+        end
+      end
+      
       # Occurrence that represents a single "attestation". The authenticity of an
       # attestation can be verified using the attached signature. If the verifier
       # trusts the public key of the signer, then verifying the signature is
@@ -128,6 +163,26 @@ module Google
           @jwts = args[:jwts] if args.key?(:jwts)
           @serialized_payload = args[:serialized_payload] if args.key?(:serialized_payload)
           @signatures = args[:signatures] if args.key?(:signatures)
+        end
+      end
+      
+      # Specifies the locations for fetching the provenance attestations.
+      class AttestationSource
+        include Google::Apis::Core::Hashable
+      
+        # The ids of the GCP projects storing the SLSA attestations as container
+        # analysis Occurrences.
+        # Corresponds to the JSON property `containerAnalysisAttestationProjects`
+        # @return [Array<String>]
+        attr_accessor :container_analysis_attestation_projects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_analysis_attestation_projects = args[:container_analysis_attestation_projects] if args.key?(:container_analysis_attestation_projects)
         end
       end
       
@@ -305,6 +360,124 @@ module Google
         end
       end
       
+      # A single check to perform against a Pod. Checks are grouped into CheckSets,
+      # which are defined by the top-level policy.
+      class Check
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A special-case check that always denies. Note that this still only
+        # applies when the scope of the CheckSet applies and the image isn't exempted by
+        # an image allowlist. This check is primarily useful for testing, or to set the
+        # default behavior for all unmatched scopes to "deny".
+        # Corresponds to the JSON property `alwaysDeny`
+        # @return [Boolean]
+        attr_accessor :always_deny
+        alias_method :always_deny?, :always_deny
+      
+        # Optional. A user-provided name for this Check. This field has no effect on the
+        # policy evaluation behavior except to improve readability of messages in
+        # evaluation results.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Images that are exempted from normal checks based on name pattern only.
+        # Corresponds to the JSON property `imageAllowlist`
+        # @return [Google::Apis::BinaryauthorizationV1::ImageAllowlist]
+        attr_accessor :image_allowlist
+      
+        # An image freshness check, which rejects images that were uploaded before the
+        # set number of days ago to the supported repositories.
+        # Corresponds to the JSON property `imageFreshnessCheck`
+        # @return [Google::Apis::BinaryauthorizationV1::ImageFreshnessCheck]
+        attr_accessor :image_freshness_check
+      
+        # Require a signed [DSSE](https://github.com/secure-systems-lab/dsse)
+        # attestation with type SimpleSigning.
+        # Corresponds to the JSON property `simpleSigningAttestationCheck`
+        # @return [Google::Apis::BinaryauthorizationV1::SimpleSigningAttestationCheck]
+        attr_accessor :simple_signing_attestation_check
+      
+        # A SLSA provenance attestation check, which ensures that images are built by a
+        # trusted builder using source code from its trusted repositories only.
+        # Corresponds to the JSON property `slsaCheck`
+        # @return [Google::Apis::BinaryauthorizationV1::SlsaCheck]
+        attr_accessor :slsa_check
+      
+        # A trusted directory check, which rejects images that do not come from the set
+        # of user-configured trusted directories.
+        # Corresponds to the JSON property `trustedDirectoryCheck`
+        # @return [Google::Apis::BinaryauthorizationV1::TrustedDirectoryCheck]
+        attr_accessor :trusted_directory_check
+      
+        # An image vulnerability check, which rejects images that violate the configured
+        # vulnerability rules.
+        # Corresponds to the JSON property `vulnerabilityCheck`
+        # @return [Google::Apis::BinaryauthorizationV1::VulnerabilityCheck]
+        attr_accessor :vulnerability_check
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @always_deny = args[:always_deny] if args.key?(:always_deny)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @image_allowlist = args[:image_allowlist] if args.key?(:image_allowlist)
+          @image_freshness_check = args[:image_freshness_check] if args.key?(:image_freshness_check)
+          @simple_signing_attestation_check = args[:simple_signing_attestation_check] if args.key?(:simple_signing_attestation_check)
+          @slsa_check = args[:slsa_check] if args.key?(:slsa_check)
+          @trusted_directory_check = args[:trusted_directory_check] if args.key?(:trusted_directory_check)
+          @vulnerability_check = args[:vulnerability_check] if args.key?(:vulnerability_check)
+        end
+      end
+      
+      # A conjunction of policy checks, scoped to a particular namespace or Kubernetes
+      # service account. In order for evaluation of a CheckSet to return "allowed" for
+      # a given image in a given Pod, one of the following conditions must be
+      # satisfied: * The image is explicitly exempted by an entry in `image_allowlist`,
+      # OR * ALL of the `checks` evaluate to "allowed".
+      class CheckSet
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The checks to apply. The ultimate result of evaluating the check set
+        # will be "allow" if and only if every check in 'checks' evaluates to "allow".
+        # If `checks` is empty, the default behavior is "always allow".
+        # Corresponds to the JSON property `checks`
+        # @return [Array<Google::Apis::BinaryauthorizationV1::Check>]
+        attr_accessor :checks
+      
+        # Optional. A user-provided name for this CheckSet. This field has no effect on
+        # the policy evaluation behavior except to improve readability of messages in
+        # evaluation results.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Images that are exempted from normal checks based on name pattern only.
+        # Corresponds to the JSON property `imageAllowlist`
+        # @return [Google::Apis::BinaryauthorizationV1::ImageAllowlist]
+        attr_accessor :image_allowlist
+      
+        # A scope specifier for CheckSets.
+        # Corresponds to the JSON property `scope`
+        # @return [Google::Apis::BinaryauthorizationV1::Scope]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @checks = args[:checks] if args.key?(:checks)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @image_allowlist = args[:image_allowlist] if args.key?(:image_allowlist)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -375,6 +548,46 @@ module Google
         end
       end
       
+      # A Binary Authorization policy for a GKE cluster. This is one type of policy
+      # that can occur as a `PlatformPolicy`.
+      class GkePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The CheckSets to apply, scoped by namespace or namespace and service
+        # account. Exactly one CheckSet will be evaluated for a given Pod (unless the
+        # list is empty, in which case the behavior is "always allow"). If multiple
+        # CheckSets have scopes that match the namespace and service account of the Pod
+        # being evaluated, only the CheckSet with the MOST SPECIFIC scope will match.
+        # CheckSets must be listed in order of decreasing specificity, i.e. if a scope
+        # matches a given service account (which must include the namespace), it must
+        # come before a CheckSet with a scope matching just that namespace. This
+        # property is enforced by server-side validation. The purpose of this
+        # restriction is to ensure that if more than one CheckSet matches a given Pod,
+        # the CheckSet that will be evaluated will always be the first in the list to
+        # match (because if any other matches, it must be less specific). If `check_sets`
+        # is empty, the default behavior is to allow all images. If `check_sets` is non-
+        # empty, the last `check_sets` entry must always be a CheckSet with no scope set,
+        # i.e. a catchall to handle any situation not caught by the preceding CheckSets.
+        # Corresponds to the JSON property `checkSets`
+        # @return [Array<Google::Apis::BinaryauthorizationV1::CheckSet>]
+        attr_accessor :check_sets
+      
+        # Images that are exempted from normal checks based on name pattern only.
+        # Corresponds to the JSON property `imageAllowlist`
+        # @return [Google::Apis::BinaryauthorizationV1::ImageAllowlist]
+        attr_accessor :image_allowlist
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @check_sets = args[:check_sets] if args.key?(:check_sets)
+          @image_allowlist = args[:image_allowlist] if args.key?(:image_allowlist)
+        end
+      end
+      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members`, or principals, to a single `role`.
@@ -386,22 +599,22 @@ module Google
       # evaluates to `true`. A condition can add constraints based on attributes of
       # the request, the resource, or both. To learn which resources support
       # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
       # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
       # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
       # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
       # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
       # ], "condition": ` "title": "expirable access", "description": "Does not grant
       # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-      # bindings: - members: - user:mike@example.com - group:admins@example.com -
-      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-      # access description: Does not grant access after Sep 2020 expression: request.
-      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-      # a description of IAM and its features, see the [IAM documentation](https://
-      # cloud.google.com/iam/docs/).
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+      # title: expirable access description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class IamPolicy
         include Google::Apis::Core::Hashable
       
@@ -464,6 +677,47 @@ module Google
         end
       end
       
+      # Images that are exempted from normal checks based on name pattern only.
+      class ImageAllowlist
+        include Google::Apis::Core::Hashable
+      
+        # Required. A disjunction of image patterns to allow. If any of these patterns
+        # match, then the image is considered exempted by this allowlist.
+        # Corresponds to the JSON property `allowPattern`
+        # @return [Array<String>]
+        attr_accessor :allow_pattern
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_pattern = args[:allow_pattern] if args.key?(:allow_pattern)
+        end
+      end
+      
+      # An image freshness check, which rejects images that were uploaded before the
+      # set number of days ago to the supported repositories.
+      class ImageFreshnessCheck
+        include Google::Apis::Core::Hashable
+      
+        # Required. The max number of days that is allowed since the image was uploaded.
+        # Must be greater than zero.
+        # Corresponds to the JSON property `maxUploadAgeDays`
+        # @return [Fixnum]
+        attr_accessor :max_upload_age_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_upload_age_days = args[:max_upload_age_days] if args.key?(:max_upload_age_days)
+        end
+      end
+      
       # 
       class Jwt
         include Google::Apis::Core::Hashable
@@ -512,6 +766,33 @@ module Google
         end
       end
       
+      # Response message for PlatformPolicyManagementService.ListPlatformPolicies.
+      class ListPlatformPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Pass this value in the
+        # ListPlatformPoliciesRequest.page_token field in the subsequent call to the `
+        # ListPlatformPolicies` method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of platform policies.
+        # Corresponds to the JSON property `platformPolicies`
+        # @return [Array<Google::Apis::BinaryauthorizationV1::PlatformPolicy>]
+        attr_accessor :platform_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @platform_policies = args[:platform_policies] if args.key?(:platform_policies)
+        end
+      end
+      
       # A public key in the PkixPublicKey format (see https://tools.ietf.org/html/
       # rfc5280#section-4.1.2.7 for details). Public keys of this type are typically
       # textually encoded using the PEM format.
@@ -540,6 +821,66 @@ module Google
         def update!(**args)
           @public_key_pem = args[:public_key_pem] if args.key?(:public_key_pem)
           @signature_algorithm = args[:signature_algorithm] if args.key?(:signature_algorithm)
+        end
+      end
+      
+      # A bundle of PKIX public keys, used to authenticate attestation signatures.
+      # Generally, a signature is considered to be authenticated by a PkixPublicKeySet
+      # if any of the public keys verify it (i.e. it is an "OR" of the keys).
+      class PkixPublicKeySet
+        include Google::Apis::Core::Hashable
+      
+        # Required. `pkix_public_keys` must have at least one entry.
+        # Corresponds to the JSON property `pkixPublicKeys`
+        # @return [Array<Google::Apis::BinaryauthorizationV1::PkixPublicKey>]
+        attr_accessor :pkix_public_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pkix_public_keys = args[:pkix_public_keys] if args.key?(:pkix_public_keys)
+        end
+      end
+      
+      # A Binary Authorization platform policy for deployments on various platforms.
+      class PlatformPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A description comment about the policy.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A Binary Authorization policy for a GKE cluster. This is one type of policy
+        # that can occur as a `PlatformPolicy`.
+        # Corresponds to the JSON property `gkePolicy`
+        # @return [Google::Apis::BinaryauthorizationV1::GkePolicy]
+        attr_accessor :gke_policy
+      
+        # Output only. The relative resource name of the BinAuthz platform policy, in
+        # the form of `projects/*/platforms/*/policies/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Time when the policy was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @gke_policy = args[:gke_policy] if args.key?(:gke_policy)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -642,6 +983,34 @@ module Google
         end
       end
       
+      # A scope specifier for CheckSets.
+      class Scope
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Matches all Kubernetes service accounts in the provided namespace,
+        # unless a more specific `kubernetes_service_account` scope already matched.
+        # Corresponds to the JSON property `kubernetesNamespace`
+        # @return [String]
+        attr_accessor :kubernetes_namespace
+      
+        # Optional. Matches a single Kubernetes service account, e.g. 'my-namespace:my-
+        # service-account'. `kubernetes_service_account` scope is always more specific
+        # than `kubernetes_namespace` scope for the same namespace.
+        # Corresponds to the JSON property `kubernetesServiceAccount`
+        # @return [String]
+        attr_accessor :kubernetes_service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kubernetes_namespace = args[:kubernetes_namespace] if args.key?(:kubernetes_namespace)
+          @kubernetes_service_account = args[:kubernetes_service_account] if args.key?(:kubernetes_service_account)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -657,22 +1026,22 @@ module Google
         # evaluates to `true`. A condition can add constraints based on attributes of
         # the request, the resource, or both. To learn which resources support
         # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
         # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
         # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
         # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-        # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-        # a description of IAM and its features, see the [IAM documentation](https://
-        # cloud.google.com/iam/docs/).
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::BinaryauthorizationV1::IamPolicy]
         attr_accessor :policy
@@ -742,6 +1111,64 @@ module Google
         end
       end
       
+      # Require a signed [DSSE](https://github.com/secure-systems-lab/dsse)
+      # attestation with type SimpleSigning.
+      class SimpleSigningAttestationCheck
+        include Google::Apis::Core::Hashable
+      
+        # Required. The authenticators required by this check to verify an attestation.
+        # Typically this is one or more PKIX public keys for signature verification.
+        # Only one authenticator needs to consider an attestation verified in order for
+        # an attestation to be considered fully authenticated. In otherwords, this list
+        # of authenticators is an "OR" of the authenticator results. At least one
+        # authenticator is required.
+        # Corresponds to the JSON property `attestationAuthenticators`
+        # @return [Array<Google::Apis::BinaryauthorizationV1::AttestationAuthenticator>]
+        attr_accessor :attestation_authenticators
+      
+        # Optional. The projects where attestations are stored as Container Analysis
+        # Occurrences. Only one attestation needs to successfully verify an image for
+        # this check to pass, so a single verified attestation found in any of `
+        # container_analysis_attestation_projects` is sufficient for the check to pass.
+        # When fetching Occurrences from Container Analysis, only 'AttestationOccurrence'
+        # kinds are considered. In the future, additional Occurrence kinds may be added
+        # to the query.
+        # Corresponds to the JSON property `containerAnalysisAttestationProjects`
+        # @return [Array<String>]
+        attr_accessor :container_analysis_attestation_projects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attestation_authenticators = args[:attestation_authenticators] if args.key?(:attestation_authenticators)
+          @container_analysis_attestation_projects = args[:container_analysis_attestation_projects] if args.key?(:container_analysis_attestation_projects)
+        end
+      end
+      
+      # A SLSA provenance attestation check, which ensures that images are built by a
+      # trusted builder using source code from its trusted repositories only.
+      class SlsaCheck
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a list of verification rules for the SLSA attestations. An image is
+        # considered compliant with the SlsaCheck if any of the rules are satisfied.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::BinaryauthorizationV1::VerificationRule>]
+        attr_accessor :rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rules = args[:rules] if args.key?(:rules)
+        end
+      end
+      
       # Request message for `TestIamPermissions` method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
@@ -779,6 +1206,40 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # A trusted directory check, which rejects images that do not come from the set
+      # of user-configured trusted directories.
+      class TrustedDirectoryCheck
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of trusted directory patterns. A pattern is in the form "
+        # registry/path/to/directory". The registry domain part is defined as two or
+        # more dot-separated words, e.g., us.pkg.dev, or gcr.io. Additionally, * can be
+        # used in three ways as wildcards: 1. leading * to match varying prefixes in
+        # registry subdomain (useful for location prefixes); 2. trailing * after
+        # registry/ to match varying endings; 3. trailing ** after registry/ to match "/"
+        # as well. For example: -- gcr.io/my-project/my-repo is valid to match a single
+        # directory -- *-docker.pkg.dev/my-project/my-repo or *.gcr.io/my-project are
+        # valid to match varying prefixes -- gcr.io/my-project/* will match all direct
+        # directories in my-project -- gcr.io/my-project/** would match all directories
+        # in my-project -- gcr.i* is not allowed since the registry is not completely
+        # specified -- sub*domain.gcr.io/nginx is not valid because only leading * or
+        # trailing * are allowed. -- *pkg.dev/my-project/my-repo is not valid because
+        # leading * can only match subdomain -- **-docker.pkg.dev is not valid because
+        # one leading * is allowed, and that it cannot match "/"
+        # Corresponds to the JSON property `trustedDirPatterns`
+        # @return [Array<String>]
+        attr_accessor :trusted_dir_patterns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @trusted_dir_patterns = args[:trusted_dir_patterns] if args.key?(:trusted_dir_patterns)
         end
       end
       
@@ -890,6 +1351,130 @@ module Google
         def update!(**args)
           @denial_reason = args[:denial_reason] if args.key?(:denial_reason)
           @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # Specifies verification rules for evaluating the SLSA attestations including:
+      # which builders to trust, where to fetch the SLSA attestations generated by
+      # those builders, and other builder-specific evaluation rules such as which
+      # source repositories are trusted. An image is considered verified by the rule
+      # if any of the fetched SLSA attestations is verified.
+      class VerificationRule
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the locations for fetching the provenance attestations.
+        # Corresponds to the JSON property `attestationSource`
+        # @return [Google::Apis::BinaryauthorizationV1::AttestationSource]
+        attr_accessor :attestation_source
+      
+        # If true, require the image to be built from a top-level configuration.
+        # trusted_source_repo patterns specifies the repositories containing this
+        # configuration.
+        # Corresponds to the JSON property `configBasedBuildRequired`
+        # @return [Boolean]
+        attr_accessor :config_based_build_required
+        alias_method :config_based_build_required?, :config_based_build_required
+      
+        # Each verification rule is used for evaluation against provenances generated by
+        # a specific builder (group). For some of the builders, such as the Google Cloud
+        # Build, users don't need to explicitly specify their roots of trust in the
+        # policy since the evaluation service can automatically fetch them based on the
+        # builder (group).
+        # Corresponds to the JSON property `trustedBuilder`
+        # @return [String]
+        attr_accessor :trusted_builder
+      
+        # List of trusted source code repository URL patterns. These patterns match the
+        # full repository URL without its scheme (e.g. "https://"). The patterns must
+        # not include schemes. For example, the pattern "source.cloud.google.com/my-
+        # project/my-repo-name" matches the following URLs: - "source.cloud.google.com/
+        # my-project/my-repo-name" - "git+ssh://source.cloud.google.com/my-project/my-
+        # repo-name" - "https://source.cloud.google.com/my-project/my-repo-name" A
+        # pattern matches a URL either exactly or with * wildcards. * can be used in
+        # only two ways: 1. trailing * after hosturi/ to match varying endings; 2.
+        # trailing ** after hosturi/ to match "/" as well. * and ** can only be used as
+        # wildcards and can only occur at the end of the pattern after a /. (So it's not
+        # possible to match a URL that contains literal *.) For example: - "github.com/
+        # my-project/my-repo" is valid to match a single repo - "github.com/my-project/*"
+        # will match all direct repos in my-project - "github.com/**" matches all repos
+        # in GitHub
+        # Corresponds to the JSON property `trustedSourceRepoPatterns`
+        # @return [Array<String>]
+        attr_accessor :trusted_source_repo_patterns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attestation_source = args[:attestation_source] if args.key?(:attestation_source)
+          @config_based_build_required = args[:config_based_build_required] if args.key?(:config_based_build_required)
+          @trusted_builder = args[:trusted_builder] if args.key?(:trusted_builder)
+          @trusted_source_repo_patterns = args[:trusted_source_repo_patterns] if args.key?(:trusted_source_repo_patterns)
+        end
+      end
+      
+      # An image vulnerability check, which rejects images that violate the configured
+      # vulnerability rules.
+      class VulnerabilityCheck
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of specific CVEs to ignore even if the vulnerability level
+        # violates maximumUnfixableSeverity or maximumFixableSeverity. CVEs are listed
+        # in the format of Container Analysis note id. For example: - CVE-2021-20305 -
+        # CVE-2020-10543 The CVEs are applicable regardless of note provider project, e.
+        # g., an entry of `CVE-2021-20305` will allow vulnerabilities with a note name
+        # of either `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-
+        # PROJECT/notes/CVE-2021-20305`.
+        # Corresponds to the JSON property `allowedCves`
+        # @return [Array<String>]
+        attr_accessor :allowed_cves
+      
+        # Optional. A list of specific CVEs to always raise warnings about even if the
+        # vulnerability level meets maximumUnfixableSeverity or maximumFixableSeverity.
+        # CVEs are listed in the format of Container Analysis note id. For example: -
+        # CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note
+        # provider project, e.g., an entry of `CVE-2021-20305` will block
+        # vulnerabilities with a note name of either `projects/goog-vulnz/notes/CVE-2021-
+        # 20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`.
+        # Corresponds to the JSON property `blockedCves`
+        # @return [Array<String>]
+        attr_accessor :blocked_cves
+      
+        # Optional. The projects where vulnerabilities are stored as Container Analysis
+        # Occurrences. Each project is expressed in the resource format of `projects/[
+        # PROJECT_ID]`, e.g., projects/my-gcp-project. An attempt will be made for each
+        # project to fetch vulnerabilities, and all valid vulnerabilities will be used
+        # to check against the vulnerability policy. If no valid scan is found in all
+        # projects configured here, an error will be returned for the check.
+        # Corresponds to the JSON property `containerAnalysisVulnerabilityProjects`
+        # @return [Array<String>]
+        attr_accessor :container_analysis_vulnerability_projects
+      
+        # Required. The threshold for severity for which a fix is currently available.
+        # This field is required and must be set.
+        # Corresponds to the JSON property `maximumFixableSeverity`
+        # @return [String]
+        attr_accessor :maximum_fixable_severity
+      
+        # Required. The threshold for severity for which a fix isn't currently available.
+        # This field is required and must be set.
+        # Corresponds to the JSON property `maximumUnfixableSeverity`
+        # @return [String]
+        attr_accessor :maximum_unfixable_severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_cves = args[:allowed_cves] if args.key?(:allowed_cves)
+          @blocked_cves = args[:blocked_cves] if args.key?(:blocked_cves)
+          @container_analysis_vulnerability_projects = args[:container_analysis_vulnerability_projects] if args.key?(:container_analysis_vulnerability_projects)
+          @maximum_fixable_severity = args[:maximum_fixable_severity] if args.key?(:maximum_fixable_severity)
+          @maximum_unfixable_severity = args[:maximum_unfixable_severity] if args.key?(:maximum_unfixable_severity)
         end
       end
     end
