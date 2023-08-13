@@ -2361,7 +2361,8 @@ module Google
         # https://cloud.google.com/dialogflow/cx/docs/concept/training).
         # @param [String] parent
         #   Required. The flow to create an TransitionRouteGroup for. Format: `projects//
-        #   locations//agents//flows/`.
+        #   locations//agents//flows/` or `projects//locations//agents/` for agent-level
+        #   groups.
         # @param [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup] google_cloud_dialogflow_cx_v3_transition_route_group_object
         # @param [String] language_code
         #   The language of the following fields in `TransitionRouteGroup`: * `
@@ -2405,7 +2406,8 @@ module Google
         # cloud.google.com/dialogflow/cx/docs/concept/training).
         # @param [String] name
         #   Required. The name of the TransitionRouteGroup to delete. Format: `projects//
-        #   locations//agents//flows//transitionRouteGroups/`.
+        #   locations//agents//flows//transitionRouteGroups/` or `projects//locations//
+        #   agents//transitionRouteGroups/`.
         # @param [Boolean] force
         #   This field has no effect for transition route group that no page is using. If
         #   the transition route group is referenced by any page: * If `force` is set to
@@ -2443,7 +2445,8 @@ module Google
         # Retrieves the specified TransitionRouteGroup.
         # @param [String] name
         #   Required. The name of the TransitionRouteGroup. Format: `projects//locations//
-        #   agents//flows//transitionRouteGroups/`.
+        #   agents//flows//transitionRouteGroups/` or `projects//locations//agents//
+        #   transitionRouteGroups/`.
         # @param [String] language_code
         #   The language to retrieve the transition route group for. The following fields
         #   are language dependent: * `TransitionRouteGroup.transition_routes.
@@ -2483,7 +2486,7 @@ module Google
         # Returns the list of all transition route groups in the specified flow.
         # @param [String] parent
         #   Required. The flow to list all transition route groups for. Format: `projects//
-        #   locations//agents//flows/`.
+        #   locations//agents//flows/` or `projects//locations//agents/.
         # @param [String] language_code
         #   The language to list transition route groups for. The following fields are
         #   language dependent: * `TransitionRouteGroup.transition_routes.
@@ -2533,7 +2536,7 @@ module Google
         # @param [String] name
         #   The unique identifier of the transition route group. TransitionRouteGroups.
         #   CreateTransitionRouteGroup populates the name automatically. Format: `projects/
-        #   /locations//agents//flows//transitionRouteGroups/`.
+        #   /locations//agents//flows//transitionRouteGroups/` .
         # @param [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup] google_cloud_dialogflow_cx_v3_transition_route_group_object
         # @param [String] language_code
         #   The language of the following fields in `TransitionRouteGroup`: * `
@@ -3790,6 +3793,228 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an TransitionRouteGroup in the specified flow. Note: You should always
+        # train a flow prior to sending it queries. See the [training documentation](
+        # https://cloud.google.com/dialogflow/cx/docs/concept/training).
+        # @param [String] parent
+        #   Required. The flow to create an TransitionRouteGroup for. Format: `projects//
+        #   locations//agents//flows/` or `projects//locations//agents/` for agent-level
+        #   groups.
+        # @param [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup] google_cloud_dialogflow_cx_v3_transition_route_group_object
+        # @param [String] language_code
+        #   The language of the following fields in `TransitionRouteGroup`: * `
+        #   TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` * `
+        #   TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases`
+        #   If not specified, the agent's default language is used. [Many languages](https:
+        #   //cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note:
+        #   languages must be enabled in the agent before they can be used.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_agent_transition_route_group(parent, google_cloud_dialogflow_cx_v3_transition_route_group_object = nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}/transitionRouteGroups', options)
+          command.request_representation = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3_transition_route_group_object
+          command.response_representation = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup::Representation
+          command.response_class = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup
+          command.params['parent'] = parent unless parent.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified TransitionRouteGroup. Note: You should always train a
+        # flow prior to sending it queries. See the [training documentation](https://
+        # cloud.google.com/dialogflow/cx/docs/concept/training).
+        # @param [String] name
+        #   Required. The name of the TransitionRouteGroup to delete. Format: `projects//
+        #   locations//agents//flows//transitionRouteGroups/` or `projects//locations//
+        #   agents//transitionRouteGroups/`.
+        # @param [Boolean] force
+        #   This field has no effect for transition route group that no page is using. If
+        #   the transition route group is referenced by any page: * If `force` is set to
+        #   false, an error will be returned with message indicating pages that reference
+        #   the transition route group. * If `force` is set to true, Dialogflow will
+        #   remove the transition route group, as well as any reference to it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_agent_transition_route_group(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV3::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV3::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the specified TransitionRouteGroup.
+        # @param [String] name
+        #   Required. The name of the TransitionRouteGroup. Format: `projects//locations//
+        #   agents//flows//transitionRouteGroups/` or `projects//locations//agents//
+        #   transitionRouteGroups/`.
+        # @param [String] language_code
+        #   The language to retrieve the transition route group for. The following fields
+        #   are language dependent: * `TransitionRouteGroup.transition_routes.
+        #   trigger_fulfillment.messages` * `TransitionRouteGroup.transition_routes.
+        #   trigger_fulfillment.conditional_cases` If not specified, the agent's default
+        #   language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/
+        #   reference/language) are supported. Note: languages must be enabled in the
+        #   agent before they can be used.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_agent_transition_route_group(name, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup::Representation
+          command.response_class = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup
+          command.params['name'] = name unless name.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all transition route groups in the specified flow.
+        # @param [String] parent
+        #   Required. The flow to list all transition route groups for. Format: `projects//
+        #   locations//agents//flows/` or `projects//locations//agents/.
+        # @param [String] language_code
+        #   The language to list transition route groups for. The following fields are
+        #   language dependent: * `TransitionRouteGroup.transition_routes.
+        #   trigger_fulfillment.messages` * `TransitionRouteGroup.transition_routes.
+        #   trigger_fulfillment.conditional_cases` If not specified, the agent's default
+        #   language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/
+        #   reference/language) are supported. Note: languages must be enabled in the
+        #   agent before they can be used.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return in a single page. By default 100 and at
+        #   most 1000.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_agent_transition_route_groups(parent, language_code: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/transitionRouteGroups', options)
+          command.response_representation = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified TransitionRouteGroup. Note: You should always train a
+        # flow prior to sending it queries. See the [training documentation](https://
+        # cloud.google.com/dialogflow/cx/docs/concept/training).
+        # @param [String] name
+        #   The unique identifier of the transition route group. TransitionRouteGroups.
+        #   CreateTransitionRouteGroup populates the name automatically. Format: `projects/
+        #   /locations//agents//flows//transitionRouteGroups/` .
+        # @param [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup] google_cloud_dialogflow_cx_v3_transition_route_group_object
+        # @param [String] language_code
+        #   The language of the following fields in `TransitionRouteGroup`: * `
+        #   TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` * `
+        #   TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases`
+        #   If not specified, the agent's default language is used. [Many languages](https:
+        #   //cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note:
+        #   languages must be enabled in the agent before they can be used.
+        # @param [String] update_mask
+        #   The mask to control which fields get updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_agent_transition_route_group(name, google_cloud_dialogflow_cx_v3_transition_route_group_object = nil, language_code: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3_transition_route_group_object
+          command.response_representation = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup::Representation
+          command.response_class = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup
+          command.params['name'] = name unless name.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

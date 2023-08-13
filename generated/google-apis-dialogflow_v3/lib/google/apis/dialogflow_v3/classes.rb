@@ -86,7 +86,8 @@ module Google
       # transform user requests into actionable data. You can include agents in your
       # app, product, or service to determine user intent and respond to the user in a
       # natural way. After you create an agent, you can add Intents, Entity Types,
-      # Flows, Fulfillments, Webhooks, and so on to manage the conversation flows..
+      # Flows, Fulfillments, Webhooks, TransitionRouteGroups and so on to manage the
+      # conversation flows.
       class GoogleCloudDialogflowCxV3Agent
         include Google::Apis::Core::Hashable
       
@@ -2062,7 +2063,8 @@ module Google
         # matching the user's first utterances in the flow. * They are inherited by
         # every page's transition route groups. Transition route groups defined in the
         # page have higher priority than those defined in the flow. Format:`projects//
-        # locations//agents//flows//transitionRouteGroups/`.
+        # locations//agents//flows//transitionRouteGroups/` or `projects//locations//
+        # agents//transitionRouteGroups/` for agent-level groups.
         # Corresponds to the JSON property `transitionRouteGroups`
         # @return [Array<String>]
         attr_accessor :transition_route_groups
@@ -2093,6 +2095,28 @@ module Google
           @nlu_settings = args[:nlu_settings] if args.key?(:nlu_settings)
           @transition_route_groups = args[:transition_route_groups] if args.key?(:transition_route_groups)
           @transition_routes = args[:transition_routes] if args.key?(:transition_routes)
+        end
+      end
+      
+      # The flow import strategy used for resource conflict resolution associated with
+      # an ImportFlowRequest.
+      class GoogleCloudDialogflowCxV3FlowImportStrategy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Import strategy for resource conflict resolution, applied globally
+        # throughout the flow. It will be applied for all display name conflicts in the
+        # imported content. If not specified, 'CREATE_NEW' is assumed.
+        # Corresponds to the JSON property `globalImportStrategy`
+        # @return [String]
+        attr_accessor :global_import_strategy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @global_import_strategy = args[:global_import_strategy] if args.key?(:global_import_strategy)
         end
       end
       
@@ -2611,6 +2635,12 @@ module Google
         # @return [String]
         attr_accessor :flow_content
       
+        # The flow import strategy used for resource conflict resolution associated with
+        # an ImportFlowRequest.
+        # Corresponds to the JSON property `flowImportStrategy`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FlowImportStrategy]
+        attr_accessor :flow_import_strategy
+      
         # The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
         # import flow from. The format of this URI must be `gs:///`. Dialogflow performs
         # a read operation for the Cloud Storage object on the caller's behalf, so your
@@ -2633,6 +2663,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @flow_content = args[:flow_content] if args.key?(:flow_content)
+          @flow_import_strategy = args[:flow_import_strategy] if args.key?(:flow_import_strategy)
           @flow_uri = args[:flow_uri] if args.key?(:flow_uri)
           @import_option = args[:import_option] if args.key?(:import_option)
         end
@@ -3888,7 +3919,8 @@ module Google
         # page's transition route -> page's transition route group -> flow's transition
         # routes. * If multiple transition route groups within a page contain the same
         # intent, then the first group in the ordered list takes precedence. Format:`
-        # projects//locations//agents//flows//transitionRouteGroups/`.
+        # projects//locations//agents//flows//transitionRouteGroups/` or `projects//
+        # locations//agents//transitionRouteGroups/` for agent-level groups.
         # Corresponds to the JSON property `transitionRouteGroups`
         # @return [Array<String>]
         attr_accessor :transition_route_groups
@@ -5917,7 +5949,7 @@ module Google
         end
       end
       
-      # An TransitionRouteGroup represents a group of `TransitionRoutes` to be used by
+      # A TransitionRouteGroup represents a group of `TransitionRoutes` to be used by
       # a Page.
       class GoogleCloudDialogflowCxV3TransitionRouteGroup
         include Google::Apis::Core::Hashable
@@ -5930,7 +5962,7 @@ module Google
       
         # The unique identifier of the transition route group. TransitionRouteGroups.
         # CreateTransitionRouteGroup populates the name automatically. Format: `projects/
-        # /locations//agents//flows//transitionRouteGroups/`.
+        # /locations//agents//flows//transitionRouteGroups/` .
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5990,7 +6022,7 @@ module Google
         # @return [Float]
         attr_accessor :coverage_score
       
-        # An TransitionRouteGroup represents a group of `TransitionRoutes` to be used by
+        # A TransitionRouteGroup represents a group of `TransitionRoutes` to be used by
         # a Page.
         # Corresponds to the JSON property `routeGroup`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup]
@@ -8374,7 +8406,8 @@ module Google
         # page's transition route -> page's transition route group -> flow's transition
         # routes. * If multiple transition route groups within a page contain the same
         # intent, then the first group in the ordered list takes precedence. Format:`
-        # projects//locations//agents//flows//transitionRouteGroups/`.
+        # projects//locations//agents//flows//transitionRouteGroups/` or `projects//
+        # locations//agents//transitionRouteGroups/` for agent-level groups.
         # Corresponds to the JSON property `transitionRouteGroups`
         # @return [Array<String>]
         attr_accessor :transition_route_groups
@@ -16630,13 +16663,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
