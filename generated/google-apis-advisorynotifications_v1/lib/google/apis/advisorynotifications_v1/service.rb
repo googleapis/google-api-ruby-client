@@ -90,7 +90,7 @@ module Google
         # Lists notifications under a given parent.
         # @param [String] parent
         #   Required. The parent, which owns this collection of notifications. Must be of
-        #   the form "organizations/`organization`/locations/`location`".
+        #   the form "organizations/`organization`/locations/`location`"
         # @param [String] language_code
         #   ISO code for requested localization language. If unset, will be interpereted
         #   as "en". If the requested language is valid, but not supported for this
