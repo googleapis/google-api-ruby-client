@@ -453,6 +453,183 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a platform policy, and returns a copy of it. Returns NOT_FOUND if the
+        # project or platform doesn't exist, INVALID_ARGUMENT if the request is
+        # malformed, ALREADY_EXISTS if the policy already exists, and INVALID_ARGUMENT
+        # if the policy contains a platform-specific policy that does not match the
+        # platform value specified in the URL.
+        # @param [String] parent
+        #   Required. The parent of this platform policy.
+        # @param [Google::Apis::BinaryauthorizationV1::PlatformPolicy] platform_policy_object
+        # @param [String] policy_id
+        #   Required. The platform policy ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BinaryauthorizationV1::PlatformPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BinaryauthorizationV1::PlatformPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_platform_policy(parent, platform_policy_object = nil, policy_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/policies', options)
+          command.request_representation = Google::Apis::BinaryauthorizationV1::PlatformPolicy::Representation
+          command.request_object = platform_policy_object
+          command.response_representation = Google::Apis::BinaryauthorizationV1::PlatformPolicy::Representation
+          command.response_class = Google::Apis::BinaryauthorizationV1::PlatformPolicy
+          command.params['parent'] = parent unless parent.nil?
+          command.query['policyId'] = policy_id unless policy_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a platform policy. Returns NOT_FOUND if the policy doesn't exist.
+        # @param [String] name
+        #   Required. The name of the platform policy to delete, in the format `projects/*/
+        #   platforms/*/policies/*`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BinaryauthorizationV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BinaryauthorizationV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_platform_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::BinaryauthorizationV1::Empty::Representation
+          command.response_class = Google::Apis::BinaryauthorizationV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a platform policy. Returns NOT_FOUND if the policy doesn't exist.
+        # @param [String] name
+        #   Required. The name of the platform policy to retrieve in the format `projects/*
+        #   /platforms/*/policies/*`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BinaryauthorizationV1::PlatformPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BinaryauthorizationV1::PlatformPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_platform_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::BinaryauthorizationV1::PlatformPolicy::Representation
+          command.response_class = Google::Apis::BinaryauthorizationV1::PlatformPolicy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists platform policies owned by a project in the specified platform. Returns
+        # INVALID_ARGUMENT if the project or the platform doesn't exist.
+        # @param [String] parent
+        #   Required. The resource name of the platform associated with the platform
+        #   policies using the format `projects/*/platforms/*`.
+        # @param [Fixnum] page_size
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server picks an appropriate default.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListPlatformPoliciesResponse.next_page_token returned
+        #   from the previous call to the `ListPlatformPolicies` method.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BinaryauthorizationV1::ListPlatformPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BinaryauthorizationV1::ListPlatformPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_platform_policies(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/policies', options)
+          command.response_representation = Google::Apis::BinaryauthorizationV1::ListPlatformPoliciesResponse::Representation
+          command.response_class = Google::Apis::BinaryauthorizationV1::ListPlatformPoliciesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Replaces a platform policy. Returns NOT_FOUND if the policy doesn't exist.
+        # @param [String] name
+        #   Output only. The relative resource name of the BinAuthz platform policy, in
+        #   the form of `projects/*/platforms/*/policies/*`.
+        # @param [Google::Apis::BinaryauthorizationV1::PlatformPolicy] platform_policy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BinaryauthorizationV1::PlatformPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BinaryauthorizationV1::PlatformPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def replace_project_platform_policy_platform_policy(name, platform_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::BinaryauthorizationV1::PlatformPolicy::Representation
+          command.request_object = platform_policy_object
+          command.response_representation = Google::Apis::BinaryauthorizationV1::PlatformPolicy::Representation
+          command.response_class = Google::Apis::BinaryauthorizationV1::PlatformPolicy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
