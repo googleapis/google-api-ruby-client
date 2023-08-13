@@ -703,6 +703,8 @@ module Google
       class Scorecard
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :blank_view, as: 'blankView', class: Google::Apis::MonitoringV1::Empty, decorator: Google::Apis::MonitoringV1::Empty::Representation
+      
           property :gauge_view, as: 'gaugeView', class: Google::Apis::MonitoringV1::GaugeView, decorator: Google::Apis::MonitoringV1::GaugeView::Representation
       
           property :spark_chart_view, as: 'sparkChartView', class: Google::Apis::MonitoringV1::SparkChartView, decorator: Google::Apis::MonitoringV1::SparkChartView::Representation
@@ -851,6 +853,7 @@ module Google
       class TimeSeriesQuery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_full_duration, as: 'outputFullDuration'
           property :prometheus_query, as: 'prometheusQuery'
           property :time_series_filter, as: 'timeSeriesFilter', class: Google::Apis::MonitoringV1::TimeSeriesFilter, decorator: Google::Apis::MonitoringV1::TimeSeriesFilter::Representation
       

@@ -950,12 +950,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as Delete, the response is google.
-        # protobuf.Empty. If the original method is standard Get/Create/Update, the
-        # response should be the resource. For other methods, the response should have
-        # the type XxxResponse, where Xxx is the original method name. For example, if
-        # the original method name is TakeSnapshot(), the inferred response type is
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as Delete, the response is google.protobuf.
+        # Empty. If the original method is standard Get/Create/Update, the response
+        # should be the resource. For other methods, the response should have the type
+        # XxxResponse, where Xxx is the original method name. For example, if the
+        # original method name is TakeSnapshot(), the inferred response type is
         # TakeSnapshotResponse.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
@@ -1367,6 +1367,14 @@ module Google
       class Scorecard
         include Google::Apis::Core::Hashable
       
+        # A generic empty message that you can re-use to avoid defining duplicated empty
+        # messages in your APIs. A typical example is to use it as the request or the
+        # response type of an API method. For instance: service Foo ` rpc Bar(google.
+        # protobuf.Empty) returns (google.protobuf.Empty); `
+        # Corresponds to the JSON property `blankView`
+        # @return [Google::Apis::MonitoringV1::Empty]
+        attr_accessor :blank_view
+      
         # A gauge chart shows where the current value sits within a pre-defined range.
         # The upper and lower bounds should define the possible range of values for the
         # scorecard's query (inclusive).
@@ -1412,6 +1420,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @blank_view = args[:blank_view] if args.key?(:blank_view)
           @gauge_view = args[:gauge_view] if args.key?(:gauge_view)
           @spark_chart_view = args[:spark_chart_view] if args.key?(:spark_chart_view)
           @thresholds = args[:thresholds] if args.key?(:thresholds)
@@ -1977,6 +1986,15 @@ module Google
       class TimeSeriesQuery
         include Google::Apis::Core::Hashable
       
+        # Optional. If set, Cloud Monitoring will treat the full query duration as the
+        # alignment period so that there will be only 1 output value.*Note: This could
+        # override the configured alignment period except for the cases where a series
+        # of data points are expected, like - XyChart - Scorecard's spark chart
+        # Corresponds to the JSON property `outputFullDuration`
+        # @return [Boolean]
+        attr_accessor :output_full_duration
+        alias_method :output_full_duration?, :output_full_duration
+      
         # A query used to fetch time series with PromQL.
         # Corresponds to the JSON property `prometheusQuery`
         # @return [String]
@@ -2015,6 +2033,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @output_full_duration = args[:output_full_duration] if args.key?(:output_full_duration)
           @prometheus_query = args[:prometheus_query] if args.key?(:prometheus_query)
           @time_series_filter = args[:time_series_filter] if args.key?(:time_series_filter)
           @time_series_filter_ratio = args[:time_series_filter_ratio] if args.key?(:time_series_filter_ratio)
