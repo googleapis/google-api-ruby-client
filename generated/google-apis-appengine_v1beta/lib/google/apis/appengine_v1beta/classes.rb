@@ -1608,6 +1608,31 @@ module Google
         end
       end
       
+      # Response message for Applications.ListRuntimes.
+      class ListRuntimesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Continuation token for fetching the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The runtimes available to the requested application.
+        # Corresponds to the JSON property `runtimes`
+        # @return [Array<Google::Apis::AppengineV1beta::Runtime>]
+        attr_accessor :runtimes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @runtimes = args[:runtimes] if args.key?(:runtimes)
+        end
+      end
+      
       # Response message for Services.ListServices.
       class ListServicesResponse
         include Google::Apis::Core::Hashable
@@ -2011,12 +2036,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as Delete, the response is google.
-        # protobuf.Empty. If the original method is standard Get/Create/Update, the
-        # response should be the resource. For other methods, the response should have
-        # the type XxxResponse, where Xxx is the original method name. For example, if
-        # the original method name is TakeSnapshot(), the inferred response type is
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as Delete, the response is google.protobuf.
+        # Empty. If the original method is standard Get/Create/Update, the response
+        # should be the resource. For other methods, the response should have the type
+        # XxxResponse, where Xxx is the original method name. For example, if the
+        # original method name is TakeSnapshot(), the inferred response type is
         # TakeSnapshotResponse.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
@@ -2595,6 +2620,43 @@ module Google
           @kms_key_reference = args[:kms_key_reference] if args.key?(:kms_key_reference)
           @memory_gb = args[:memory_gb] if args.key?(:memory_gb)
           @volumes = args[:volumes] if args.key?(:volumes)
+        end
+      end
+      
+      # Runtime versions for App Engine.
+      class Runtime
+        include Google::Apis::Core::Hashable
+      
+        # The environment of the runtime.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # The name of the runtime, e.g., 'go113', 'nodejs12', etc.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The stage of life this runtime is in, e.g., BETA, GA, etc.
+        # Corresponds to the JSON property `stage`
+        # @return [String]
+        attr_accessor :stage
+      
+        # Warning messages, e.g., a deprecation warning.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<String>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment = args[:environment] if args.key?(:environment)
+          @name = args[:name] if args.key?(:name)
+          @stage = args[:stage] if args.key?(:stage)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
