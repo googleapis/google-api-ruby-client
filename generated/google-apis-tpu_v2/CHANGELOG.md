@@ -1,5 +1,9 @@
 # Release history for google-apis-tpu_v2
 
+### v0.8.0 (2023-08-13)
+
+* Regenerated from discovery document revision 20230803
+
 ### v0.7.0 (2023-07-16)
 
 * Regenerated from discovery document revision 20230707
