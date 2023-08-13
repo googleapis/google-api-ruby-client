@@ -189,12 +189,12 @@ module Google
         # @return [Google::Apis::ChatV1::AttachmentDataRef]
         attr_accessor :attachment_data_ref
       
-        # The original file name for the content, not the full path.
+        # Output only. The original file name for the content, not the full path.
         # Corresponds to the JSON property `contentName`
         # @return [String]
         attr_accessor :content_name
       
-        # The content type (MIME type) of the file.
+        # Output only. The content type (MIME type) of the file.
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
@@ -217,7 +217,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The source of the attachment.
+        # Output only. The source of the attachment.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -3423,13 +3423,18 @@ module Google
         # @return [Google::Apis::ChatV1::Space]
         attr_accessor :space
       
-        # Plain-text body of the message. The first link to an image, video, web page,
-        # or other preview-able item generates a preview chip.
+        # Plain-text body of the message. The first link to an image, video, or web page
+        # generates a preview chip. You can also @mention a Google Chat user, or
+        # everyone in the space. To learn about creating text messages, see [Create a
+        # text message](https://developers.google.com/chat/api/guides/message-formats/
+        # text).
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
       
-        # A thread in Google Chat.
+        # A thread in a Google Chat space. For example usage, see [Start or reply to a
+        # message thread](https://developers.google.com/chat/api/guides/crudl/messages#
+        # start_or_reply_to_a_message_thread).
         # Corresponds to the JSON property `thread`
         # @return [Google::Apis::ChatV1::Thread]
         attr_accessor :thread
@@ -3747,8 +3752,11 @@ module Google
         alias_method :admin_installed?, :admin_installed
       
         # The space's display name. Required when [creating a space](https://developers.
-        # google.com/chat/api/reference/rest/v1/spaces/create). For direct messages,
-        # this field might be empty. Supports up to 128 characters.
+        # google.com/chat/api/reference/rest/v1/spaces/create). If you receive the error
+        # message `ALREADY_EXISTS` when creating a space or updating the `displayName`,
+        # try a different `displayName`. An existing space within the Google Workspace
+        # organization might already use this display name. For direct messages, this
+        # field might be empty. Supports up to 128 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3986,7 +3994,9 @@ module Google
         end
       end
       
-      # A thread in Google Chat.
+      # A thread in a Google Chat space. For example usage, see [Start or reply to a
+      # message thread](https://developers.google.com/chat/api/guides/crudl/messages#
+      # start_or_reply_to_a_message_thread).
       class Thread
         include Google::Apis::Core::Hashable
       
@@ -3995,11 +4005,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. Opaque thread identifier. To start or add to a thread, create a
-        # message and specify a `threadKey` or the thread.name. For example usage, see [
-        # Start or reply to a message thread](https://developers.google.com/chat/api/
-        # guides/crudl/messages#start_or_reply_to_a_message_thread). For other requests,
-        # this is an output only field.
+        # Optional. ID for the thread. Supports up to 4000 characters. Input for
+        # creating or updating a thread. Otherwise, output only.
         # Corresponds to the JSON property `threadKey`
         # @return [String]
         attr_accessor :thread_key
