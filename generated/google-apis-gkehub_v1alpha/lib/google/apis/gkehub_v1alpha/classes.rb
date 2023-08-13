@@ -465,11 +465,6 @@ module Google
         # @return [Array<Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgradeFeatureCondition>]
         attr_accessor :conditions
       
-        # Scope-level upgrade state.
-        # Corresponds to the JSON property `state`
-        # @return [Array<Google::Apis::GkehubV1alpha::ClusterUpgradeScopeGkeUpgradeState>]
-        attr_accessor :state
-      
         # Upgrade state. It will eventually replace `state`.
         # Corresponds to the JSON property `upgradeState`
         # @return [Array<Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgradeState>]
@@ -482,7 +477,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @conditions = args[:conditions] if args.key?(:conditions)
-          @state = args[:state] if args.key?(:state)
           @upgrade_state = args[:upgrade_state] if args.key?(:upgrade_state)
         end
       end
@@ -649,37 +643,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @soaking = args[:soaking] if args.key?(:soaking)
-        end
-      end
-      
-      # ScopeGKEUpgradeState is a GKEUpgrade and its state at the scope level.
-      class ClusterUpgradeScopeGkeUpgradeState
-        include Google::Apis::Core::Hashable
-      
-        # Number of GKE clusters in each status code.
-        # Corresponds to the JSON property `stats`
-        # @return [Hash<String,Fixnum>]
-        attr_accessor :stats
-      
-        # UpgradeStatus provides status information for each upgrade.
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::GkehubV1alpha::ClusterUpgradeUpgradeStatus]
-        attr_accessor :status
-      
-        # GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.
-        # Corresponds to the JSON property `upgrade`
-        # @return [Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgrade]
-        attr_accessor :upgrade
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @stats = args[:stats] if args.key?(:stats)
-          @status = args[:status] if args.key?(:status)
-          @upgrade = args[:upgrade] if args.key?(:upgrade)
         end
       end
       
@@ -2769,6 +2732,11 @@ module Google
         # @return [String]
         attr_accessor :tenant
       
+        # Optional. Claim in the AzureAD ID Token that holds the user details.
+        # Corresponds to the JSON property `userClaim`
+        # @return [String]
+        attr_accessor :user_claim
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2780,6 +2748,7 @@ module Google
           @encrypted_client_secret = args[:encrypted_client_secret] if args.key?(:encrypted_client_secret)
           @kubectl_redirect_uri = args[:kubectl_redirect_uri] if args.key?(:kubectl_redirect_uri)
           @tenant = args[:tenant] if args.key?(:tenant)
+          @user_claim = args[:user_claim] if args.key?(:user_claim)
         end
       end
       
@@ -4240,13 +4209,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -4354,22 +4323,22 @@ module Google
       # evaluates to `true`. A condition can add constraints based on attributes of
       # the request, the resource, or both. To learn which resources support
       # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
       # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
       # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
       # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
       # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
       # ], "condition": ` "title": "expirable access", "description": "Does not grant
       # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-      # bindings: - members: - user:mike@example.com - group:admins@example.com -
-      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-      # access description: Does not grant access after Sep 2020 expression: request.
-      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-      # a description of IAM and its features, see the [IAM documentation](https://
-      # cloud.google.com/iam/docs/).
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+      # title: expirable access description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -5484,22 +5453,22 @@ module Google
         # evaluates to `true`. A condition can add constraints based on attributes of
         # the request, the resource, or both. To learn which resources support
         # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
         # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
         # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
         # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-        # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-        # a description of IAM and its features, see the [IAM documentation](https://
-        # cloud.google.com/iam/docs/).
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::GkehubV1alpha::Policy]
         attr_accessor :policy

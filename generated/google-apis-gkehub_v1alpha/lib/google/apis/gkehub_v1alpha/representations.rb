@@ -148,12 +148,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ClusterUpgradeScopeGkeUpgradeState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ClusterUpgradeScopeSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1101,8 +1095,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :conditions, as: 'conditions', class: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgradeFeatureCondition, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgradeFeatureCondition::Representation
       
-          collection :state, as: 'state', class: Google::Apis::GkehubV1alpha::ClusterUpgradeScopeGkeUpgradeState, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeScopeGkeUpgradeState::Representation
-      
           collection :upgrade_state, as: 'upgradeState', class: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgradeState, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgradeState::Representation
       
         end
@@ -1162,17 +1154,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :soaking, as: 'soaking'
-        end
-      end
-      
-      class ClusterUpgradeScopeGkeUpgradeState
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :stats, as: 'stats'
-          property :status, as: 'status', class: Google::Apis::GkehubV1alpha::ClusterUpgradeUpgradeStatus, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeUpgradeStatus::Representation
-      
-          property :upgrade, as: 'upgrade', class: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgrade, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgrade::Representation
-      
         end
       end
       
@@ -1791,6 +1772,7 @@ module Google
           property :encrypted_client_secret, :base64 => true, as: 'encryptedClientSecret'
           property :kubectl_redirect_uri, as: 'kubectlRedirectUri'
           property :tenant, as: 'tenant'
+          property :user_claim, as: 'userClaim'
         end
       end
       
