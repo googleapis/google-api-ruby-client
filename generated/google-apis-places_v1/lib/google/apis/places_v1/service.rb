@@ -28,10 +28,10 @@ module Google
       #    require 'google/apis/places_v1'
       #
       #    Places = Google::Apis::PlacesV1 # Alias the module
-      #    service = Places::PlacesAPINewService.new
+      #    service = Places::MapsPlacesService.new
       #
       # @see https://mapsplatform.google.com/maps-products/#places-section
-      class PlacesAPINewService < Google::Apis::Core::BaseService
+      class MapsPlacesService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
