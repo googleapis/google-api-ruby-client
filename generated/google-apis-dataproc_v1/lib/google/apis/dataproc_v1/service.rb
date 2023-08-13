@@ -1455,6 +1455,14 @@ module Google
         # @param [String] cluster_uuid
         #   Optional. Specifying the cluster_uuid means the RPC should fail (with error
         #   NOT_FOUND) if cluster with specified UUID does not exist.
+        # @param [String] graceful_termination_timeout
+        #   Optional. The graceful termination timeout for the deletion of the cluster.
+        #   Indicate the time the request will wait to complete the running jobs on the
+        #   cluster before its forceful deletion. Default value is 0 indicating that the
+        #   user has not enabled the graceful termination. Value can be between 60 second
+        #   and 6 Hours, in case the graceful termination is enabled. (There is no
+        #   separate flag to check the enabling or disabling of graceful termination, it
+        #   can be checked by the values in the field).
         # @param [String] request_id
         #   Optional. A unique ID used to identify the request. If the server receives two
         #   DeleteClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
@@ -1482,7 +1490,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_cluster(project_id, region, cluster_name, cluster_uuid: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_cluster(project_id, region, cluster_name, cluster_uuid: nil, graceful_termination_timeout: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
           command.response_representation = Google::Apis::DataprocV1::Operation::Representation
           command.response_class = Google::Apis::DataprocV1::Operation
@@ -1490,6 +1498,7 @@ module Google
           command.params['region'] = region unless region.nil?
           command.params['clusterName'] = cluster_name unless cluster_name.nil?
           command.query['clusterUuid'] = cluster_uuid unless cluster_uuid.nil?
+          command.query['gracefulTerminationTimeout'] = graceful_termination_timeout unless graceful_termination_timeout.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

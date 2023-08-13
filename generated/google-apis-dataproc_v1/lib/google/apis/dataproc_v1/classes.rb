@@ -2244,6 +2244,23 @@ module Google
         # @return [String]
         attr_accessor :min_cpu_platform
       
+        # Optional. The minimum number of instances to create. If min_num_instances is
+        # set, min_num_instances is used for a criteria to decide the cluster. Cluster
+        # creation will be failed by being an error state if the total number of
+        # instances created is less than the min_num_instances. For example, given that
+        # num_instances = 5 and min_num_instances = 3, * if 4 instances are created and
+        # then registered successfully but one instance is failed, the failed VM will be
+        # deleted and the cluster will be resized to 4 instances in running state. * if
+        # 2 instances are created successfully and 3 instances are failed, the cluster
+        # will be in an error state and does not delete failed VMs for debugging. * if 2
+        # instance are created and then registered successfully but 3 instances are
+        # failed to initialize, the cluster will be in an error state and does not
+        # delete failed VMs for debugging. NB: This can only be set for primary workers
+        # now.
+        # Corresponds to the JSON property `minNumInstances`
+        # @return [Fixnum]
+        attr_accessor :min_num_instances
+      
         # Optional. The number of VM instances in the instance group. For HA cluster
         # master_config groups, must be set to 3. For standard cluster master_config
         # groups, must be set to 1.
@@ -2273,6 +2290,7 @@ module Google
           @machine_type_uri = args[:machine_type_uri] if args.key?(:machine_type_uri)
           @managed_group_config = args[:managed_group_config] if args.key?(:managed_group_config)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
+          @min_num_instances = args[:min_num_instances] if args.key?(:min_num_instances)
           @num_instances = args[:num_instances] if args.key?(:num_instances)
           @preemptibility = args[:preemptibility] if args.key?(:preemptibility)
         end
@@ -3529,12 +3547,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as Delete, the response is google.
-        # protobuf.Empty. If the original method is standard Get/Create/Update, the
-        # response should be the resource. For other methods, the response should have
-        # the type XxxResponse, where Xxx is the original method name. For example, if
-        # the original method name is TakeSnapshot(), the inferred response type is
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as Delete, the response is google.protobuf.
+        # Empty. If the original method is standard Get/Create/Update, the response
+        # should be the resource. For other methods, the response should have the type
+        # XxxResponse, where Xxx is the original method name. For example, if the
+        # original method name is TakeSnapshot(), the inferred response type is
         # TakeSnapshotResponse.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
