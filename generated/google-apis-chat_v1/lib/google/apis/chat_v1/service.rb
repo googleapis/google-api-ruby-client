@@ -141,9 +141,11 @@ module Google
         
         # Creates a named space. Spaces grouped by topics aren't supported. For an
         # example, see [Create a space](https://developers.google.com/chat/api/guides/v1/
-        # spaces/create). Requires [user authentication](https://developers.google.com/
-        # chat/api/guides/auth/users) and the `chat.spaces.create` or `chat.spaces`
-        # scope.
+        # spaces/create). If you receive the error message `ALREADY_EXISTS` when
+        # creating a space, try a different `displayName`. An existing space within the
+        # Google Workspace organization might already use this display name. Requires [
+        # user authentication](https://developers.google.com/chat/api/guides/auth/users)
+        # and the `chat.spaces.create` or `chat.spaces` scope.
         # @param [Google::Apis::ChatV1::Space] space_object
         # @param [String] request_id
         #   Optional. A unique identifier for this request. A random UUID is recommended.
@@ -365,9 +367,12 @@ module Google
         end
         
         # Updates a space. For an example, see [Update a space](https://developers.
-        # google.com/chat/api/guides/v1/spaces/update). Requires [user authentication](
-        # https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces`
-        # scope.
+        # google.com/chat/api/guides/v1/spaces/update). If you're updating the `
+        # displayName` field and receive the error message `ALREADY_EXISTS`, try a
+        # different display name.. An existing space within the Google Workspace
+        # organization might already use this display name. Requires [user
+        # authentication](https://developers.google.com/chat/api/guides/auth/users) and
+        # the `chat.spaces` scope.
         # @param [String] name
         #   Resource name of the space. Format: `spaces/`space``
         # @param [Google::Apis::ChatV1::Space] space_object
@@ -377,18 +382,20 @@ module Google
         #   display name of a space with the `SPACE` type, or when also including the `
         #   space_type` mask to change a `GROUP_CHAT` space type to `SPACE`. Trying to
         #   update the display name of a `GROUP_CHAT` or a `DIRECT_MESSAGE` space results
-        #   in an invalid argument error.) - `space_type` (Only supports changing a `
-        #   GROUP_CHAT` space type to `SPACE`. Include `display_name` together with `
-        #   space_type` in the update mask and ensure that the specified space has a non-
-        #   empty display name and the `SPACE` space type. Including the `space_type` mask
-        #   and the `SPACE` type in the specified space when updating the display name is
-        #   optional if the existing space already has the `SPACE` type. Trying to update
-        #   the space type in other ways results in an invalid argument error). - `
-        #   space_details` - `space_history_state` (Supports [turning history on or off
-        #   for the space](https://support.google.com/chat/answer/7664687) if [the
-        #   organization allows users to change their history setting](https://support.
-        #   google.com/a/answer/7664184). Warning: mutually exclusive with all other field
-        #   paths.)
+        #   in an invalid argument error. If you receive the error message `ALREADY_EXISTS`
+        #   when updating the `displayName`, try a different `displayName`. An existing
+        #   space within the Google Workspace organization might already use this display
+        #   name.) - `space_type` (Only supports changing a `GROUP_CHAT` space type to `
+        #   SPACE`. Include `display_name` together with `space_type` in the update mask
+        #   and ensure that the specified space has a non-empty display name and the `
+        #   SPACE` space type. Including the `space_type` mask and the `SPACE` type in the
+        #   specified space when updating the display name is optional if the existing
+        #   space already has the `SPACE` type. Trying to update the space type in other
+        #   ways results in an invalid argument error). - `space_details` - `
+        #   space_history_state` (Supports [turning history on or off for the space](https:
+        #   //support.google.com/chat/answer/7664687) if [the organization allows users to
+        #   change their history setting](https://support.google.com/a/answer/7664184).
+        #   Warning: mutually exclusive with all other field paths.)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -442,9 +449,12 @@ module Google
         # membership](https://developers.google.com/chat/api/guides/v1/members/create).
         # If a DM already exists between two users, even when one user blocks the other
         # at the time a request is made, then the existing DM is returned. Spaces with
-        # threaded replies or guest access aren't supported. Requires [user
-        # authentication](https://developers.google.com/chat/api/guides/auth/users) and
-        # the `chat.spaces.create` or `chat.spaces` scope.
+        # threaded replies aren't supported. If you receive the error message `
+        # ALREADY_EXISTS` when setting up a space, try a different `displayName`. An
+        # existing space within the Google Workspace organization might already use this
+        # display name. Requires [user authentication](https://developers.google.com/
+        # chat/api/guides/auth/users) and the `chat.spaces.create` or `chat.spaces`
+        # scope.
         # @param [Google::Apis::ChatV1::SetUpSpaceRequest] set_up_space_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -725,11 +735,11 @@ module Google
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
-        #   Optional. Deprecated: Use thread.thread_key instead. Opaque thread identifier.
-        #   To start or add to a thread, create a message and specify a `threadKey` or the
-        #   thread.name. For example usage, see [Start or reply to a message thread](https:
-        #   //developers.google.com/chat/api/guides/crudl/messages#
-        #   start_or_reply_to_a_message_thread).
+        #   Optional. Deprecated: Use thread.thread_key instead. ID for the thread.
+        #   Supports up to 4000 characters. To start or add to a thread, create a message
+        #   and specify a `threadKey` or the thread.name. For example usage, see [Start or
+        #   reply to a message thread](https://developers.google.com/chat/api/guides/crudl/
+        #   messages#start_or_reply_to_a_message_thread).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
