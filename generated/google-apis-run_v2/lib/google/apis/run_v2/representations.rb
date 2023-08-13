@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2CancelExecutionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2CloudSqlInstance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -339,6 +345,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :breakglass_justification, as: 'breakglassJustification'
           property :use_default, as: 'useDefault'
+        end
+      end
+      
+      class GoogleCloudRunV2CancelExecutionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
         end
       end
       
@@ -741,6 +755,7 @@ module Google
       
           collection :traffic_statuses, as: 'trafficStatuses', class: Google::Apis::RunV2::GoogleCloudRunV2TrafficTargetStatus, decorator: Google::Apis::RunV2::GoogleCloudRunV2TrafficTargetStatus::Representation
       
+          property :traffic_tags_cleanup_threshold, :numeric_string => true, as: 'trafficTagsCleanupThreshold'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :uri, as: 'uri'
