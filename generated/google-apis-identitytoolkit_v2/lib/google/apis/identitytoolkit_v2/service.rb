@@ -298,6 +298,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieve a passkey configuration for an Identity Toolkit project.
+        # @param [String] name
+        #   Required. The resource name of the config, for example: 'projects/my-awesome-
+        #   project/passkeyConfig'.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_passkey_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig::Representation
+          command.response_class = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Update an Identity Toolkit project configuration.
         # @param [String] name
         #   Output only. The name of the Config resource. Example: "projects/my-awesome-
@@ -331,6 +362,45 @@ module Google
           command.request_object = google_cloud_identitytoolkit_admin_v2_config_object
           command.response_representation = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2Config::Representation
           command.response_class = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2Config
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a passkey configuration for an Identity Toolkit project.
+        # @param [String] name
+        #   Required. The name of the PasskeyConfig resource.
+        # @param [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig] google_cloud_identitytoolkit_admin_v2_passkey_config_object
+        # @param [String] update_mask
+        #   Optional. The update mask applies to the resource. Empty update mask will
+        #   result in updating nothing. For the `FieldMask` definition, see https://
+        #   developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_passkey_config(name, google_cloud_identitytoolkit_admin_v2_passkey_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig::Representation
+          command.request_object = google_cloud_identitytoolkit_admin_v2_passkey_config_object
+          command.response_representation = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig::Representation
+          command.response_class = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1031,6 +1101,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieve a passkey configuration for an Identity Toolkit project.
+        # @param [String] name
+        #   Required. The resource name of the config, for example: 'projects/my-awesome-
+        #   project/passkeyConfig'.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_tenant_passkey_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig::Representation
+          command.response_class = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List tenants under the given agent project. Requires read permission on the
         # Agent project.
         # @param [String] parent
@@ -1177,6 +1278,45 @@ module Google
           command.response_representation = Google::Apis::IdentitytoolkitV2::GoogleIamV1TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV2::GoogleIamV1TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a passkey configuration for an Identity Toolkit project.
+        # @param [String] name
+        #   Required. The name of the PasskeyConfig resource.
+        # @param [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig] google_cloud_identitytoolkit_admin_v2_passkey_config_object
+        # @param [String] update_mask
+        #   Optional. The update mask applies to the resource. Empty update mask will
+        #   result in updating nothing. For the `FieldMask` definition, see https://
+        #   developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_tenant_passkey_config(name, google_cloud_identitytoolkit_admin_v2_passkey_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig::Representation
+          command.request_object = google_cloud_identitytoolkit_admin_v2_passkey_config_object
+          command.response_representation = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig::Representation
+          command.response_class = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasskeyConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
