@@ -1841,10 +1841,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an in-app product (i.e. a managed product or a subscription). This
-        # method should no longer be used to delete subscriptions. See [this article](
-        # https://android-developers.googleblog.com/2023/06/changes-to-google-play-
-        # developer-api-june-2023.html) for more information.
+        # Deletes an in-app product (a managed product or a subscription). This method
+        # should no longer be used to delete subscriptions. See [this article](https://
+        # android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-
+        # june-2023.html) for more information.
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] sku
@@ -1911,10 +1911,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an in-app product (i.e. a managed product or a subscription). This
-        # method should no longer be used to create subscriptions. See [this article](
-        # https://android-developers.googleblog.com/2023/06/changes-to-google-play-
-        # developer-api-june-2023.html) for more information.
+        # Creates an in-app product (a managed product or a subscription). This method
+        # should no longer be used to create subscriptions. See [this article](https://
+        # android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-
+        # june-2023.html) for more information.
         # @param [String] package_name
         #   Package name of the app.
         # @param [Google::Apis::AndroidpublisherV3::InAppProduct] in_app_product_object
@@ -1997,10 +1997,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches an in-app product (i.e. a managed product or a subscription). This
-        # method should no longer be used to update subscriptions. See [this article](
-        # https://android-developers.googleblog.com/2023/06/changes-to-google-play-
-        # developer-api-june-2023.html) for more information.
+        # Patches an in-app product (a managed product or a subscription). This method
+        # should no longer be used to update subscriptions. See [this article](https://
+        # android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-
+        # june-2023.html) for more information.
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] sku
@@ -2041,10 +2041,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an in-app product (i.e. a managed product or a subscription). This
-        # method should no longer be used to update subscriptions. See [this article](
-        # https://android-developers.googleblog.com/2023/06/changes-to-google-play-
-        # developer-api-june-2023.html) for more information.
+        # Updates an in-app product (a managed product or a subscription). This method
+        # should no longer be used to update subscriptions. See [this article](https://
+        # android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-
+        # june-2023.html) for more information.
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] sku
