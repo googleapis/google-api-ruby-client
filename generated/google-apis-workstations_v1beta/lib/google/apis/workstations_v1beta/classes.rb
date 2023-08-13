@@ -26,13 +26,13 @@ module Google
       class Accelerator
         include Google::Apis::Core::Hashable
       
-        # Number of accelerator cards exposed to the instance.
+        # Optional. Number of accelerator cards exposed to the instance.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
       
-        # Type of accelerator resource to attach to the instance, for example, "nvidia-
-        # tesla-p100".
+        # Optional. Type of accelerator resource to attach to the instance, for example,
+        # `"nvidia-tesla-p100"`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -212,24 +212,24 @@ module Google
       class Container
         include Google::Apis::Core::Hashable
       
-        # Arguments passed to the entrypoint.
+        # Optional. Arguments passed to the entrypoint.
         # Corresponds to the JSON property `args`
         # @return [Array<String>]
         attr_accessor :args
       
-        # If set, overrides the default ENTRYPOINT specified by the image.
+        # Optional. If set, overrides the default ENTRYPOINT specified by the image.
         # Corresponds to the JSON property `command`
         # @return [Array<String>]
         attr_accessor :command
       
-        # Environment variables passed to the container's entrypoint.
+        # Optional. Environment variables passed to the container's entrypoint.
         # Corresponds to the JSON property `env`
         # @return [Hash<String,String>]
         attr_accessor :env
       
-        # A Docker container image that defines a custom environment. Cloud Workstations
-        # provides a number of [preconfigured images](https://cloud.google.com/
-        # workstations/docs/preconfigured-base-images), but you can create your own [
+        # Optional. A Docker container image that defines a custom environment. Cloud
+        # Workstations provides a number of [preconfigured images](https://cloud.google.
+        # com/workstations/docs/preconfigured-base-images), but you can create your own [
         # custom container images](https://cloud.google.com/workstations/docs/custom-
         # container-images). If using a private image, the `host.gceInstance.
         # serviceAccount` field must be specified in the workstation configuration and
@@ -239,12 +239,12 @@ module Google
         # @return [String]
         attr_accessor :image
       
-        # If set, overrides the USER specified in the image with the given uid.
+        # Optional. If set, overrides the USER specified in the image with the given uid.
         # Corresponds to the JSON property `runAsUser`
         # @return [Fixnum]
         attr_accessor :run_as_user
       
-        # If set, overrides the default DIR specified by the image.
+        # Optional. If set, overrides the default DIR specified by the image.
         # Corresponds to the JSON property `workingDir`
         # @return [String]
         attr_accessor :working_dir
@@ -272,8 +272,8 @@ module Google
       class CustomerEncryptionKey
         include Google::Apis::Core::Hashable
       
-        # Immutable. The name of the Google Cloud KMS encryption key. For example, `
-        # projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+        # Immutable. The name of the Google Cloud KMS encryption key. For example, `"
+        # projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`.
         # The key must be in the same region as the workstation configuration.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
@@ -358,7 +358,7 @@ module Google
       class GceConfidentialInstanceConfig
         include Google::Apis::Core::Hashable
       
-        # Whether the instance has confidential compute enabled.
+        # Optional. Whether the instance has confidential compute enabled.
         # Corresponds to the JSON property `enableConfidentialCompute`
         # @return [Boolean]
         attr_accessor :enable_confidential_compute
@@ -378,13 +378,14 @@ module Google
       class GceInstance
         include Google::Apis::Core::Hashable
       
-        # A list of the type and count of accelerator cards attached to the instance.
+        # Optional. A list of the type and count of accelerator cards attached to the
+        # instance.
         # Corresponds to the JSON property `accelerators`
         # @return [Array<Google::Apis::WorkstationsV1beta::Accelerator>]
         attr_accessor :accelerators
       
-        # The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk
-        # size is `30` GB. Defaults to `50` GB.
+        # Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum
+        # boot disk size is `30` GB. Defaults to `50` GB.
         # Corresponds to the JSON property `bootDiskSizeGb`
         # @return [Fixnum]
         attr_accessor :boot_disk_size_gb
@@ -394,33 +395,56 @@ module Google
         # @return [Google::Apis::WorkstationsV1beta::GceConfidentialInstanceConfig]
         attr_accessor :confidential_instance_config
       
-        # When set to true, disables public IP addresses for VMs. If you disable public
-        # IP addresses, you must set up Private Google Access or Cloud NAT on your
-        # network. If you use Private Google Access and you use `private.googleapis.com`
-        # or `restricted.googleapis.com` for Container Registry and Artifact Registry,
-        # make sure that you set up DNS records for domains `*.gcr.io` and `*.pkg.dev`.
-        # Defaults to false (VMs have public IP addresses).
+        # Optional. When set to true, disables public IP addresses for VMs. If you
+        # disable public IP addresses, you must set up Private Google Access or Cloud
+        # NAT on your network. If you use Private Google Access and you use `private.
+        # googleapis.com` or `restricted.googleapis.com` for Container Registry and
+        # Artifact Registry, make sure that you set up DNS records for domains `*.gcr.io`
+        # and `*.pkg.dev`. Defaults to false (VMs have public IP addresses).
         # Corresponds to the JSON property `disablePublicIpAddresses`
         # @return [Boolean]
         attr_accessor :disable_public_ip_addresses
         alias_method :disable_public_ip_addresses?, :disable_public_ip_addresses
       
-        # Whether to enable nested virtualization on instances.
+        # Optional. Whether to enable nested virtualization on Cloud Workstations VMs
+        # created under this workstation configuration. Nested virtualization lets you
+        # run virtual machine (VM) instances inside your workstation. Before enabling
+        # nested virtualization, consider the following important considerations. Cloud
+        # Workstations instances are subject to the [same restrictions as Compute Engine
+        # instances](https://cloud.google.com/compute/docs/instances/nested-
+        # virtualization/overview#restrictions): * **Organization policy**: projects,
+        # folders, or organizations may be restricted from creating nested VMs if the **
+        # Disable VM nested virtualization** constraint is enforced in the organization
+        # policy. For more information, see the Compute Engine section, [Checking
+        # whether nested virtualization is allowed](https://cloud.google.com/compute/
+        # docs/instances/nested-virtualization/managing-constraint#
+        # checking_whether_nested_virtualization_is_allowed). * **Performance**: nested
+        # VMs might experience a 10% or greater decrease in performance for workloads
+        # that are CPU-bound and possibly greater than a 10% decrease for workloads that
+        # are input/output bound. * **Machine Type**: nested virtualization can only be
+        # enabled on workstation configurations that specify a machine_type in the N1 or
+        # N2 machine series. * **GPUs**: nested virtualization may not be enabled on
+        # workstation configurations with accelerators. * **Operating System**: Because [
+        # Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-
+        # details#container-optimized_os_cos) does not support nested virtualization,
+        # when nested virtualization is enabled, the underlying Compute Engine VM
+        # instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/
+        # images/os-details#ubuntu_lts) image.
         # Corresponds to the JSON property `enableNestedVirtualization`
         # @return [Boolean]
         attr_accessor :enable_nested_virtualization
         alias_method :enable_nested_virtualization?, :enable_nested_virtualization
       
-        # The type of machine to use for VM instances—for example, `e2-standard-4`. For
-        # more information about machine types that Cloud Workstations supports, see the
-        # list of [available machine types](https://cloud.google.com/workstations/docs/
-        # available-machine-types).
+        # Optional. The type of machine to use for VM instances—for example, `"e2-
+        # standard-4"`. For more information about machine types that Cloud Workstations
+        # supports, see the list of [available machine types](https://cloud.google.com/
+        # workstations/docs/available-machine-types).
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
       
-        # The number of VMs that the system should keep idle so that new workstations
-        # can be started quickly for new users. Defaults to `0` in the API.
+        # Optional. The number of VMs that the system should keep idle so that new
+        # workstations can be started quickly for new users. Defaults to `0` in the API.
         # Corresponds to the JSON property `poolSize`
         # @return [Fixnum]
         attr_accessor :pool_size
@@ -431,17 +455,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :pooled_instances
       
-        # The email address of the service account for Cloud Workstations VMs created
-        # with this configuration. When specified, be sure that the service account has `
-        # logginglogEntries.create` permission on the project so it can write logs out
-        # to Cloud Logging. If using a custom container image, the service account must
-        # have permissions to pull the specified image. If you as the administrator want
-        # to be able to `ssh` into the underlying VM, you need to set this value to a
-        # service account for which you have the `iam.serviceAccounts.actAs` permission.
-        # Conversely, if you don't want anyone to be able to `ssh` into the underlying
-        # VM, use a service account where no one has that permission. If not set, VMs
-        # run with a service account provided by the Cloud Workstations service, and the
-        # image must be publicly accessible.
+        # Optional. The email address of the service account for Cloud Workstations VMs
+        # created with this configuration. When specified, be sure that the service
+        # account has `logginglogEntries.create` permission on the project so it can
+        # write logs out to Cloud Logging. If using a custom container image, the
+        # service account must have permissions to pull the specified image. If you as
+        # the administrator want to be able to `ssh` into the underlying VM, you need to
+        # set this value to a service account for which you have the `iam.
+        # serviceAccounts.actAs` permission. Conversely, if you don't want anyone to be
+        # able to `ssh` into the underlying VM, use a service account where no one has
+        # that permission. If not set, VMs run with a service account provided by the
+        # Cloud Workstations service, and the image must be publicly accessible.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -451,10 +475,10 @@ module Google
         # @return [Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig]
         attr_accessor :shielded_instance_config
       
-        # Network tags to add to the Compute Engine machines backing the workstations.
-        # This option applies [network tags](https://cloud.google.com/vpc/docs/add-
-        # remove-network-tags) to VMs created with this configuration. These network
-        # tags enable the creation of [firewall rules](https://cloud.google.com/
+        # Optional. Network tags to add to the Compute Engine VMs backing the
+        # workstations. This option applies [network tags](https://cloud.google.com/vpc/
+        # docs/add-remove-network-tags) to VMs created with this configuration. These
+        # network tags enable the creation of [firewall rules](https://cloud.google.com/
         # workstations/docs/configure-firewall-rules).
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
@@ -481,7 +505,7 @@ module Google
       end
       
       # A PersistentDirectory backed by a Compute Engine regional persistent disk. The
-      # `persistentDirectories[]` field is repeated, but it may contain only one entry.
+      # persistent_directories field is repeated, but it may contain only one entry.
       # It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/
       # persistent-disks) that mounts to the workstation VM at `/home` when the
       # session starts and detaches when the session ends. If this field is empty,
@@ -490,35 +514,35 @@ module Google
       class GceRegionalPersistentDisk
         include Google::Apis::Core::Hashable
       
-        # The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#
-        # disk-types) for the home directory. Defaults to `pd-standard`.
+        # Optional. The [type of the persistent disk](https://cloud.google.com/compute/
+        # docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
       
-        # Type of file system that the disk should be formatted with. The workstation
-        # image must support this file system type. Must be empty if source_snapshot is
-        # set. Defaults to `ext4`.
+        # Optional. Type of file system that the disk should be formatted with. The
+        # workstation image must support this file system type. Must be empty if
+        # source_snapshot is set. Defaults to `"ext4"`.
         # Corresponds to the JSON property `fsType`
         # @return [String]
         attr_accessor :fs_type
       
-        # Whether the persistent disk should be deleted when the workstation is deleted.
-        # Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
+        # Optional. Whether the persistent disk should be deleted when the workstation
+        # is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
         # Corresponds to the JSON property `reclaimPolicy`
         # @return [String]
         attr_accessor :reclaim_policy
       
-        # The GB capacity of a persistent home directory for each workstation created
-        # with this configuration. Must be empty if `source_snapshot` is set. Valid
-        # values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If
-        # less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
+        # Optional. The GB capacity of a persistent home directory for each workstation
+        # created with this configuration. Must be empty if source_snapshot is set.
+        # Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`.
+        # If less than `200` GB, the disk_type must be `"pd-balanced"` or `"pd-ssd"`.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
       
-        # Name of the snapshot to use as the source for the disk. If set, size_gb and
-        # fs_type must be empty.
+        # Optional. Name of the snapshot to use as the source for the disk. If set,
+        # size_gb and fs_type must be empty.
         # Corresponds to the JSON property `sourceSnapshot`
         # @return [String]
         attr_accessor :source_snapshot
@@ -541,19 +565,19 @@ module Google
       class GceShieldedInstanceConfig
         include Google::Apis::Core::Hashable
       
-        # Whether the instance has integrity monitoring enabled.
+        # Optional. Whether the instance has integrity monitoring enabled.
         # Corresponds to the JSON property `enableIntegrityMonitoring`
         # @return [Boolean]
         attr_accessor :enable_integrity_monitoring
         alias_method :enable_integrity_monitoring?, :enable_integrity_monitoring
       
-        # Whether the instance has Secure Boot enabled.
+        # Optional. Whether the instance has Secure Boot enabled.
         # Corresponds to the JSON property `enableSecureBoot`
         # @return [Boolean]
         attr_accessor :enable_secure_boot
         alias_method :enable_secure_boot?, :enable_secure_boot
       
-        # Whether the instance has the vTPM enabled.
+        # Optional. Whether the instance has the vTPM enabled.
         # Corresponds to the JSON property `enableVtpm`
         # @return [Boolean]
         attr_accessor :enable_vtpm
@@ -819,13 +843,13 @@ module Google
       class ListWorkstationsResponse
         include Google::Apis::Core::Hashable
       
-        # Token to retrieve the next page of results, or empty if there are no more
-        # results in the list.
+        # Optional. Token to retrieve the next page of results, or empty if there are no
+        # more results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # Unreachable resources.
+        # Optional. Unreachable resources.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -884,13 +908,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -971,7 +995,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A PersistentDirectory backed by a Compute Engine regional persistent disk. The
-        # `persistentDirectories[]` field is repeated, but it may contain only one entry.
+        # persistent_directories field is repeated, but it may contain only one entry.
         # It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/
         # persistent-disks) that mounts to the workstation VM at `/home` when the
         # session starts and detaches when the session ends. If this field is empty,
@@ -981,7 +1005,7 @@ module Google
         # @return [Google::Apis::WorkstationsV1beta::GceRegionalPersistentDisk]
         attr_accessor :gce_pd
       
-        # Location of this directory in the running workstation.
+        # Optional. Location of this directory in the running workstation.
         # Corresponds to the JSON property `mountPath`
         # @return [String]
         attr_accessor :mount_path
@@ -1008,22 +1032,22 @@ module Google
       # evaluates to `true`. A condition can add constraints based on attributes of
       # the request, the resource, or both. To learn which resources support
       # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
       # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
       # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
       # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
       # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
       # ], "condition": ` "title": "expirable access", "description": "Does not grant
       # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-      # bindings: - members: - user:mike@example.com - group:admins@example.com -
-      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-      # access description: Does not grant access after Sep 2020 expression: request.
-      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-      # a description of IAM and its features, see the [IAM documentation](https://
-      # cloud.google.com/iam/docs/).
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+      # title: expirable access description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -1092,21 +1116,22 @@ module Google
         end
       end
       
-      # Configuration options for private clusters.
+      # Configuration options for private workstation clusters.
       class PrivateClusterConfig
         include Google::Apis::Core::Hashable
       
-        # Additional projects that are allowed to attach to the workstation cluster's
-        # service attachment. By default, the workstation cluster's project and the VPC
-        # host project (if different) are allowed.
+        # Optional. Additional projects that are allowed to attach to the workstation
+        # cluster's service attachment. By default, the workstation cluster's project
+        # and the VPC host project (if different) are allowed.
         # Corresponds to the JSON property `allowedProjects`
         # @return [Array<String>]
         attr_accessor :allowed_projects
       
         # Output only. Hostname for the workstation cluster. This field will be
         # populated only when private endpoint is enabled. To access workstations in the
-        # cluster, create a new DNS zone mapping this domain name to an internal IP
-        # address and a forwarding rule mapping that address to the service attachment.
+        # workstation cluster, create a new DNS zone mapping this domain name to an
+        # internal IP address and a forwarding rule mapping that address to the service
+        # attachment.
         # Corresponds to the JSON property `clusterHostname`
         # @return [String]
         attr_accessor :cluster_hostname
@@ -1119,9 +1144,9 @@ module Google
       
         # Output only. Service attachment URI for the workstation cluster. The service
         # attachemnt is created when private endpoint is enabled. To access workstations
-        # in the cluster, configure access to the managed service using [Private Service
-        # Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-
-        # services).
+        # in the workstation cluster, configure access to the managed service using [
+        # Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-
+        # service-connect-services).
         # Corresponds to the JSON property `serviceAttachmentUri`
         # @return [String]
         attr_accessor :service_attachment_uri
@@ -1143,12 +1168,12 @@ module Google
       class ReadinessCheck
         include Google::Apis::Core::Hashable
       
-        # Path to which the request should be sent.
+        # Optional. Path to which the request should be sent.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
       
-        # Port to which the request should be sent.
+        # Optional. Port to which the request should be sent.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -1179,22 +1204,22 @@ module Google
         # evaluates to `true`. A condition can add constraints based on attributes of
         # the request, the resource, or both. To learn which resources support
         # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
         # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
         # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
         # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-        # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-        # a description of IAM and its features, see the [IAM documentation](https://
-        # cloud.google.com/iam/docs/).
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::WorkstationsV1beta::Policy]
         attr_accessor :policy
@@ -1221,14 +1246,14 @@ module Google
       class StartWorkstationRequest
         include Google::Apis::Core::Hashable
       
-        # If set, the request will be rejected if the latest version of the workstation
-        # on the server does not have this ETag.
+        # Optional. If set, the request will be rejected if the latest version of the
+        # workstation on the server does not have this ETag.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # If set, validate the request and preview the review, but do not actually apply
-        # it.
+        # Optional. If set, validate the request and preview the review, but do not
+        # actually apply it.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -1288,14 +1313,14 @@ module Google
       class StopWorkstationRequest
         include Google::Apis::Core::Hashable
       
-        # If set, the request will be rejected if the latest version of the workstation
-        # on the server does not have this ETag.
+        # Optional. If set, the request will be rejected if the latest version of the
+        # workstation on the server does not have this ETag.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # If set, validate the request and preview the review, but do not actually apply
-        # it.
+        # Optional. If set, validate the request and preview the review, but do not
+        # actually apply it.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -1356,33 +1381,35 @@ module Google
       class Workstation
         include Google::Apis::Core::Hashable
       
-        # Client-specified annotations.
+        # Optional. Client-specified annotations.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Output only. Time when this resource was created.
+        # Output only. Time when this workstation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. Time when this resource was soft-deleted.
+        # Output only. Time when this workstation was soft-deleted.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
         attr_accessor :delete_time
       
-        # Human-readable name for this resource.
+        # Optional. Human-readable name for this workstation.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Environment variables passed to the workstation container's entrypoint.
+        # Optional. Environment variables passed to the workstation container's
+        # entrypoint.
         # Corresponds to the JSON property `env`
         # @return [Hash<String,String>]
         attr_accessor :env
       
-        # Checksum computed by the server. May be sent on update and delete requests to
-        # make sure that the client has an up-to-date value before proceeding.
+        # Optional. Checksum computed by the server. May be sent on update and delete
+        # requests to make sure that the client has an up-to-date value before
+        # proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1395,18 +1422,19 @@ module Google
         # @return [String]
         attr_accessor :host
       
-        # Client-specified labels that are applied to the resource and that are also
-        # propagated to the underlying Compute Engine resources.
+        # Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources)
+        # that are applied to the workstation and that are also propagated to the
+        # underlying Compute Engine resources.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Full name of this resource.
+        # Full name of this workstation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. Indicates whether this resource is currently being updated to
+        # Output only. Indicates whether this workstation is currently being updated to
         # match its intended state.
         # Corresponds to the JSON property `reconciling`
         # @return [Boolean]
@@ -1418,12 +1446,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. A system-assigned unique identifier for this resource.
+        # Output only. A system-assigned unique identifier for this workstation.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
       
-        # Output only. Time when this resource was most recently updated.
+        # Output only. Time when this workstation was most recently updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1450,100 +1478,103 @@ module Google
         end
       end
       
-      # A grouping of workstation configurations and the associated workstations in
-      # that region.
+      # A workstation cluster resource in the Cloud Workstations API. Defines a group
+      # of workstations in a particular region and the VPC network they're attached to.
       class WorkstationCluster
         include Google::Apis::Core::Hashable
       
-        # Client-specified annotations.
+        # Optional. Client-specified annotations.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Output only. Status conditions describing the current resource state.
+        # Output only. Status conditions describing the workstation cluster's current
+        # state.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::WorkstationsV1beta::Status>]
         attr_accessor :conditions
       
-        # Output only. The private IP address of the control plane for this cluster.
-        # Workstation VMs need access to this IP address to work with the service, so
-        # make sure that your firewall rules allow egress from the workstation VMs to
-        # this address.
+        # Output only. The private IP address of the control plane for this workstation
+        # cluster. Workstation VMs need access to this IP address to work with the
+        # service, so make sure that your firewall rules allow egress from the
+        # workstation VMs to this address.
         # Corresponds to the JSON property `controlPlaneIp`
         # @return [String]
         attr_accessor :control_plane_ip
       
-        # Output only. Time when this resource was created.
+        # Output only. Time when this workstation cluster was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. Whether this resource is in degraded mode, in which case it may
-        # require user action to restore full functionality. Details can be found in the
-        # `conditions` field.
+        # Output only. Whether this workstation cluster is in degraded mode, in which
+        # case it may require user action to restore full functionality. Details can be
+        # found in conditions.
         # Corresponds to the JSON property `degraded`
         # @return [Boolean]
         attr_accessor :degraded
         alias_method :degraded?, :degraded
       
-        # Output only. Time when this resource was soft-deleted.
+        # Output only. Time when this workstation cluster was soft-deleted.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
         attr_accessor :delete_time
       
-        # Human-readable name for this resource.
+        # Optional. Human-readable name for this workstation cluster.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Checksum computed by the server. May be sent on update and delete requests to
-        # make sure that the client has an up-to-date value before proceeding.
+        # Optional. Checksum computed by the server. May be sent on update and delete
+        # requests to make sure that the client has an up-to-date value before
+        # proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # Client-specified labels that are applied to the resource and that are also
-        # propagated to the underlying Compute Engine resources.
+        # Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources)
+        # that are applied to the workstation cluster and that are also propagated to
+        # the underlying Compute Engine resources.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Full name of this resource.
+        # Full name of this workstation cluster.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Immutable. Name of the Compute Engine network in which instances associated
-        # with this cluster will be created.
+        # with this workstation cluster will be created.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Configuration options for private clusters.
+        # Configuration options for private workstation clusters.
         # Corresponds to the JSON property `privateClusterConfig`
         # @return [Google::Apis::WorkstationsV1beta::PrivateClusterConfig]
         attr_accessor :private_cluster_config
       
-        # Output only. Indicates whether this resource is currently being updated to
-        # match its intended state.
+        # Output only. Indicates whether this workstation cluster is currently being
+        # updated to match its intended state.
         # Corresponds to the JSON property `reconciling`
         # @return [Boolean]
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
         # Immutable. Name of the Compute Engine subnetwork in which instances associated
-        # with this cluster will be created. Must be part of the subnetwork specified
-        # for this cluster.
+        # with this workstation cluster will be created. Must be part of the subnetwork
+        # specified for this workstation cluster.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
       
-        # Output only. A system-assigned unique identifier for this resource.
+        # Output only. A system-assigned unique identifier for this workstation cluster.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
       
-        # Output only. Time when this resource was most recently updated.
+        # Output only. Time when this workstation cluster was most recently updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1573,13 +1604,17 @@ module Google
         end
       end
       
-      # A set of configuration options that describe how a workstation runs.
-      # Workstation configurations are intended to be shared across multiple
-      # workstations.
+      # A workstation configuration resource in the Cloud Workstations API.
+      # Workstation configurations act as templates for workstations. The workstation
+      # configuration defines details such as the workstation virtual machine (VM)
+      # instance type, persistent storage, container image defining environment, which
+      # IDE or Code Editor to use, and more. Administrators and platform teams can
+      # also use [Identity and Access Management (IAM)](https://cloud.google.com/iam/
+      # docs/overview) rules to grant access to teams or to individual developers.
       class WorkstationConfig
         include Google::Apis::Core::Hashable
       
-        # Client-specified annotations.
+        # Optional. Client-specified annotations.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -1594,32 +1629,33 @@ module Google
         # @return [Google::Apis::WorkstationsV1beta::Container]
         attr_accessor :container
       
-        # Output only. Time when this resource was created.
+        # Output only. Time when this workstation configuration was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
         # Output only. Whether this resource is degraded, in which case it may require
-        # user action to restore full functionality. See also the `conditions` field.
+        # user action to restore full functionality. See also the conditions field.
         # Corresponds to the JSON property `degraded`
         # @return [Boolean]
         attr_accessor :degraded
         alias_method :degraded?, :degraded
       
-        # Output only. Time when this resource was soft-deleted.
+        # Output only. Time when this workstation configuration was soft-deleted.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
         attr_accessor :delete_time
       
-        # Human-readable name for this resource.
+        # Optional. Human-readable name for this workstation configuration.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Whether to enable Linux `auditd` logging on the workstation. When enabled, a
-        # service account must also be specified that has `logging.buckets.write`
-        # permission on the project. Operating system audit logging is distinct from [
-        # Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        # Optional. Whether to enable Linux `auditd` logging on the workstation. When
+        # enabled, a service account must also be specified that has `logging.buckets.
+        # write` permission on the project. Operating system audit logging is distinct
+        # from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-
+        # logging).
         # Corresponds to the JSON property `enableAuditAgent`
         # @return [Boolean]
         attr_accessor :enable_audit_agent
@@ -1634,8 +1670,9 @@ module Google
         # @return [Google::Apis::WorkstationsV1beta::CustomerEncryptionKey]
         attr_accessor :encryption_key
       
-        # Checksum computed by the server. May be sent on update and delete requests to
-        # make sure that the client has an up-to-date value before proceeding.
+        # Optional. Checksum computed by the server. May be sent on update and delete
+        # requests to make sure that the client has an up-to-date value before
+        # proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1645,69 +1682,72 @@ module Google
         # @return [Google::Apis::WorkstationsV1beta::Host]
         attr_accessor :host
       
-        # Number of seconds to wait before automatically stopping a workstation after it
-        # last received user traffic. A value of `0s` indicates that Cloud Workstations
-        # VMs created with this configuration should never time out due to idleness.
-        # Provide [duration](https://developers.google.com/protocol-buffers/docs/
-        # reference/google.protobuf#duration) terminated by `s` for seconds—for example,
-        # `7200s` (2 hours). The default is `1200s` (20 minutes).
+        # Optional. Number of seconds to wait before automatically stopping a
+        # workstation after it last received user traffic. A value of `"0s"` indicates
+        # that Cloud Workstations VMs created with this configuration should never time
+        # out due to idleness. Provide [duration](https://developers.google.com/protocol-
+        # buffers/docs/reference/google.protobuf#duration) terminated by `s` for seconds—
+        # for example, `"7200s"` (2 hours). The default is `"1200s"` (20 minutes).
         # Corresponds to the JSON property `idleTimeout`
         # @return [String]
         attr_accessor :idle_timeout
       
-        # Client-specified labels that are applied to the resource and that are also
-        # propagated to the underlying Compute Engine resources.
+        # Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources)
+        # that are applied to the workstation configuration and that are also propagated
+        # to the underlying Compute Engine resources.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Full name of this resource.
+        # Full name of this workstation configuration.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Directories to persist across workstation sessions.
+        # Optional. Directories to persist across workstation sessions.
         # Corresponds to the JSON property `persistentDirectories`
         # @return [Array<Google::Apis::WorkstationsV1beta::PersistentDirectory>]
         attr_accessor :persistent_directories
       
-        # Readiness checks to perform when starting a workstation using this workstation
-        # configuration. Mark a workstation as running only after all specified
-        # readiness checks return 200 status codes.
+        # Optional. Readiness checks to perform when starting a workstation using this
+        # workstation configuration. Mark a workstation as running only after all
+        # specified readiness checks return 200 status codes.
         # Corresponds to the JSON property `readinessChecks`
         # @return [Array<Google::Apis::WorkstationsV1beta::ReadinessCheck>]
         attr_accessor :readiness_checks
       
-        # Output only. Indicates whether this resource is currently being updated to
-        # match its intended state.
+        # Output only. Indicates whether this workstation configuration is currently
+        # being updated to match its intended state.
         # Corresponds to the JSON property `reconciling`
         # @return [Boolean]
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
-        # Number of seconds that a workstation can run until it is automatically shut
-        # down. We recommend that workstations be shut down daily to reduce costs and so
-        # that security updates can be applied upon restart. The `idleTimeout` and `
-        # runningTimeout` parameters are independent of each other. Note that the `
-        # runningTimeout` parameter shuts down VMs after the specified time, regardless
-        # of whether or not the VMs are idle. Provide duration terminated by `s` for
-        # seconds—for example, `54000s` (15 hours). Defaults to `43200s` (12 hours). A
-        # value of `0` indicates that workstations using this configuration should never
-        # time out. If `encryption_key` is set, it must be greater than `0` and less
-        # than `86400s` (24 hours). Warning: A value of `0s` indicates that Cloud
-        # Workstations VMs created with this configuration have no maximum running time.
-        # This is strongly discouraged because you incur costs and will not pick up
-        # security updates.
+        # Optional. Number of seconds that a workstation can run until it is
+        # automatically shut down. We recommend that workstations be shut down daily to
+        # reduce costs and so that security updates can be applied upon restart. The
+        # idle_timeout and running_timeout fields are independent of each other. Note
+        # that the running_timeout field shuts down VMs after the specified time,
+        # regardless of whether or not the VMs are idle. Provide duration terminated by `
+        # s` for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12
+        # hours). A value of `"0s"` indicates that workstations using this configuration
+        # should never time out. If encryption_key is set, it must be greater than `"0s"`
+        # and less than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates
+        # that Cloud Workstations VMs created with this configuration have no maximum
+        # running time. This is strongly discouraged because you incur costs and will
+        # not pick up security updates.
         # Corresponds to the JSON property `runningTimeout`
         # @return [String]
         attr_accessor :running_timeout
       
-        # Output only. A system-assigned unique identifier for this resource.
+        # Output only. A system-assigned unique identifier for this workstation
+        # configuration.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
       
-        # Output only. Time when this resource was most recently updated.
+        # Output only. Time when this workstation configuration was most recently
+        # updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
