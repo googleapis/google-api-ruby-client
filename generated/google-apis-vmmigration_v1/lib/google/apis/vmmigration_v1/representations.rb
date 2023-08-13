@@ -587,6 +587,7 @@ module Google
           collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1::AwsDiskDetails, decorator: Google::Apis::VmmigrationV1::AwsDiskDetails::Representation
       
           property :firmware, as: 'firmware'
+          collection :vm_capabilities, as: 'vmCapabilities'
         end
       end
       
