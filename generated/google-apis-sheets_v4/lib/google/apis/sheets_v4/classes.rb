@@ -9560,7 +9560,7 @@ module Google
         # @return [Google::Apis::SheetsV4::TextFormat]
         attr_accessor :format
       
-        # The character index where this run starts.
+        # The zero-based character index where this run starts, in UTF-16 code units.
         # Corresponds to the JSON property `startIndex`
         # @return [Fixnum]
         attr_accessor :start_index
