@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRuntimesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListServicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -407,6 +413,12 @@ module Google
       end
       
       class Resources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Runtime
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -915,6 +927,15 @@ module Google
         end
       end
       
+      class ListRuntimesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :runtimes, as: 'runtimes', class: Google::Apis::AppengineV1beta::Runtime, decorator: Google::Apis::AppengineV1beta::Runtime::Representation
+      
+        end
+      end
+      
       class ListServicesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1159,6 +1180,16 @@ module Google
           property :memory_gb, as: 'memoryGb'
           collection :volumes, as: 'volumes', class: Google::Apis::AppengineV1beta::Volume, decorator: Google::Apis::AppengineV1beta::Volume::Representation
       
+        end
+      end
+      
+      class Runtime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment, as: 'environment'
+          property :name, as: 'name'
+          property :stage, as: 'stage'
+          collection :warnings, as: 'warnings'
         end
       end
       
