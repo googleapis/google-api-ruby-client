@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisableInteractiveSerialConsoleResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +53,12 @@ module Google
       end
       
       class EnableInteractiveSerialConsoleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnableInteractiveSerialConsoleResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -65,6 +77,12 @@ module Google
       end
       
       class GoogleCloudBaremetalsolutionV2LogicalInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -125,6 +143,12 @@ module Google
       end
       
       class ListNfsSharesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOsImagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OsImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +329,12 @@ module Google
       end
       
       class SshKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServerNetworkTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -410,6 +446,12 @@ module Google
         end
       end
       
+      class DisableInteractiveSerialConsoleResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -417,6 +459,12 @@ module Google
       end
       
       class EnableInteractiveSerialConsoleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EnableInteractiveSerialConsoleResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -441,6 +489,15 @@ module Google
           collection :logical_network_interfaces, as: 'logicalNetworkInterfaces', class: Google::Apis::BaremetalsolutionV2::LogicalNetworkInterface, decorator: Google::Apis::BaremetalsolutionV2::LogicalNetworkInterface::Representation
       
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :required, as: 'required'
+          property :type, as: 'type'
         end
       end
       
@@ -568,6 +625,15 @@ module Google
           collection :nfs_shares, as: 'nfsShares', class: Google::Apis::BaremetalsolutionV2::NfsShare, decorator: Google::Apis::BaremetalsolutionV2::NfsShare::Representation
       
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListOsImagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :os_images, as: 'osImages', class: Google::Apis::BaremetalsolutionV2::OsImage, decorator: Google::Apis::BaremetalsolutionV2::OsImage::Representation
+      
         end
       end
       
@@ -766,6 +832,17 @@ module Google
         end
       end
       
+      class OsImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :applicable_instance_types, as: 'applicableInstanceTypes'
+          property :code, as: 'code'
+          property :description, as: 'description'
+          property :name, as: 'name'
+          collection :supported_network_templates, as: 'supportedNetworkTemplates'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -882,6 +959,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :public_key, as: 'publicKey'
+        end
+      end
+      
+      class ServerNetworkTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :applicable_instance_types, as: 'applicableInstanceTypes'
+          collection :logical_interfaces, as: 'logicalInterfaces', class: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface, decorator: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface::Representation
+      
+          property :name, as: 'name'
         end
       end
       
