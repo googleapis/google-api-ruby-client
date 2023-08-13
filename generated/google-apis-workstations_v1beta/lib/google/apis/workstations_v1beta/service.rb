@@ -198,8 +198,8 @@ module Google
         #   Required. Parent resource name.
         # @param [Google::Apis::WorkstationsV1beta::WorkstationCluster] workstation_cluster_object
         # @param [Boolean] validate_only
-        #   If set, validate the request and preview the review, but do not actually apply
-        #   it.
+        #   Optional. If set, validate the request and preview the review, but do not
+        #   actually apply it.
         # @param [String] workstation_cluster_id
         #   Required. ID to use for the workstation cluster.
         # @param [String] fields
@@ -237,14 +237,15 @@ module Google
         # @param [String] name
         #   Required. Name of the workstation cluster to delete.
         # @param [String] etag
-        #   If set, the request will be rejected if the latest version of the workstation
-        #   cluster on the server does not have this ETag.
+        #   Optional. If set, the request will be rejected if the latest version of the
+        #   workstation cluster on the server does not have this ETag.
         # @param [Boolean] force
-        #   If set, any workstation configurations and workstations in the workstation
-        #   cluster are also deleted. Otherwise, the request only works if the workstation
-        #   cluster has no configurations or workstations.
+        #   Optional. If set, any workstation configurations and workstations in the
+        #   workstation cluster are also deleted. Otherwise, the request only works if the
+        #   workstation cluster has no configurations or workstations.
         # @param [Boolean] validate_only
-        #   If set, validate the request and preview the review, but do not apply it.
+        #   Optional. If set, validate the request and preview the review, but do not
+        #   apply it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -309,9 +310,9 @@ module Google
         # @param [String] parent
         #   Required. Parent resource name.
         # @param [Fixnum] page_size
-        #   Maximum number of items to return.
+        #   Optional. Maximum number of items to return.
         # @param [String] page_token
-        #   next_page_token value returned from a previous List request, if any.
+        #   Optional. next_page_token value returned from a previous List request, if any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -343,17 +344,17 @@ module Google
         
         # Updates an existing workstation cluster.
         # @param [String] name
-        #   Full name of this resource.
+        #   Full name of this workstation cluster.
         # @param [Google::Apis::WorkstationsV1beta::WorkstationCluster] workstation_cluster_object
         # @param [Boolean] allow_missing
-        #   If set, and the workstation cluster is not found, a new workstation cluster
-        #   will be created. In this situation, update_mask is ignored.
+        #   Optional. If set, and the workstation cluster is not found, a new workstation
+        #   cluster will be created. In this situation, update_mask is ignored.
         # @param [String] update_mask
         #   Required. Mask that specifies which fields in the workstation cluster should
         #   be updated.
         # @param [Boolean] validate_only
-        #   If set, validate the request and preview the review, but do not actually apply
-        #   it.
+        #   Optional. If set, validate the request and preview the review, but do not
+        #   actually apply it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -391,8 +392,8 @@ module Google
         #   Required. Parent resource name.
         # @param [Google::Apis::WorkstationsV1beta::WorkstationConfig] workstation_config_object
         # @param [Boolean] validate_only
-        #   If set, validate the request and preview the review, but do not actually apply
-        #   it.
+        #   Optional. If set, validate the request and preview the review, but do not
+        #   actually apply it.
         # @param [String] workstation_config_id
         #   Required. ID to use for the workstation configuration.
         # @param [String] fields
@@ -430,15 +431,15 @@ module Google
         # @param [String] name
         #   Required. Name of the workstation configuration to delete.
         # @param [String] etag
-        #   If set, the request is rejected if the latest version of the workstation
-        #   configuration on the server does not have this ETag.
+        #   Optional. If set, the request is rejected if the latest version of the
+        #   workstation configuration on the server does not have this ETag.
         # @param [Boolean] force
-        #   If set, any workstations in the workstation configuration are also deleted.
-        #   Otherwise, the request works only if the workstation configuration has no
-        #   workstations.
+        #   Optional. If set, any workstations in the workstation configuration are also
+        #   deleted. Otherwise, the request works only if the workstation configuration
+        #   has no workstations.
         # @param [Boolean] validate_only
-        #   If set, validate the request and preview the review, but do not actually apply
-        #   it.
+        #   Optional. If set, validate the request and preview the review, but do not
+        #   actually apply it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -548,9 +549,9 @@ module Google
         # @param [String] parent
         #   Required. Parent resource name.
         # @param [Fixnum] page_size
-        #   Maximum number of items to return.
+        #   Optional. Maximum number of items to return.
         # @param [String] page_token
-        #   next_page_token value returned from a previous List request, if any.
+        #   Optional. next_page_token value returned from a previous List request, if any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -585,9 +586,9 @@ module Google
         # @param [String] parent
         #   Required. Parent resource name.
         # @param [Fixnum] page_size
-        #   Maximum number of items to return.
+        #   Optional. Maximum number of items to return.
         # @param [String] page_token
-        #   next_page_token value returned from a previous List request, if any.
+        #   Optional. next_page_token value returned from a previous List request, if any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -619,17 +620,18 @@ module Google
         
         # Updates an existing workstation configuration.
         # @param [String] name
-        #   Full name of this resource.
+        #   Full name of this workstation configuration.
         # @param [Google::Apis::WorkstationsV1beta::WorkstationConfig] workstation_config_object
         # @param [Boolean] allow_missing
-        #   If set and the workstation configuration is not found, a new workstation
-        #   configuration will be created. In this situation, update_mask is ignored.
+        #   Optional. If set and the workstation configuration is not found, a new
+        #   workstation configuration will be created. In this situation, update_mask is
+        #   ignored.
         # @param [String] update_mask
         #   Required. Mask specifying which fields in the workstation configuration should
         #   be updated.
         # @param [Boolean] validate_only
-        #   If set, validate the request and preview the review, but do not actually apply
-        #   it.
+        #   Optional. If set, validate the request and preview the review, but do not
+        #   actually apply it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -743,8 +745,8 @@ module Google
         #   Required. Parent resource name.
         # @param [Google::Apis::WorkstationsV1beta::Workstation] workstation_object
         # @param [Boolean] validate_only
-        #   If set, validate the request and preview the review, but do not actually apply
-        #   it.
+        #   Optional. If set, validate the request and preview the review, but do not
+        #   actually apply it.
         # @param [String] workstation_id
         #   Required. ID to use for the workstation.
         # @param [String] fields
@@ -782,11 +784,11 @@ module Google
         # @param [String] name
         #   Required. Name of the workstation to delete.
         # @param [String] etag
-        #   If set, the request will be rejected if the latest version of the workstation
-        #   on the server does not have this ETag.
+        #   Optional. If set, the request will be rejected if the latest version of the
+        #   workstation on the server does not have this ETag.
         # @param [Boolean] validate_only
-        #   If set, validate the request and preview the review, but do not actually apply
-        #   it.
+        #   Optional. If set, validate the request and preview the review, but do not
+        #   actually apply it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -930,9 +932,9 @@ module Google
         # @param [String] parent
         #   Required. Parent resource name.
         # @param [Fixnum] page_size
-        #   Maximum number of items to return.
+        #   Optional. Maximum number of items to return.
         # @param [String] page_token
-        #   next_page_token value returned from a previous List request, if any.
+        #   Optional. next_page_token value returned from a previous List request, if any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -967,9 +969,9 @@ module Google
         # @param [String] parent
         #   Required. Parent resource name.
         # @param [Fixnum] page_size
-        #   Maximum number of items to return.
+        #   Optional. Maximum number of items to return.
         # @param [String] page_token
-        #   next_page_token value returned from a previous List request, if any.
+        #   Optional. next_page_token value returned from a previous List request, if any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1001,17 +1003,18 @@ module Google
         
         # Updates an existing workstation.
         # @param [String] name
-        #   Full name of this resource.
+        #   Full name of this workstation.
         # @param [Google::Apis::WorkstationsV1beta::Workstation] workstation_object
         # @param [Boolean] allow_missing
-        #   If set and the workstation configuration is not found, a new workstation
-        #   configuration is created. In this situation, update_mask is ignored.
+        #   Optional. If set and the workstation configuration is not found, a new
+        #   workstation configuration is created. In this situation, update_mask is
+        #   ignored.
         # @param [String] update_mask
         #   Required. Mask specifying which fields in the workstation configuration should
         #   be updated.
         # @param [Boolean] validate_only
-        #   If set, validate the request and preview the review, but do not actually apply
-        #   it.
+        #   Optional. If set, validate the request and preview the review, but do not
+        #   actually apply it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
