@@ -26,6 +26,11 @@ module Google
       class GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Acknowledge type of specified violation.
+        # Corresponds to the JSON property `acknowledgeType`
+        # @return [String]
+        attr_accessor :acknowledge_type
+      
         # Required. Business justification explaining the need for violation
         # acknowledgement
         # Corresponds to the JSON property `comment`
@@ -47,6 +52,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acknowledge_type = args[:acknowledge_type] if args.key?(:acknowledge_type)
           @comment = args[:comment] if args.key?(:comment)
           @non_compliant_org_policy = args[:non_compliant_org_policy] if args.key?(:non_compliant_org_policy)
         end
@@ -65,15 +71,26 @@ module Google
         end
       end
       
-      # A response that includes the analysis of the hypothetical resource move.
+      # Response containing the analysis results for the hypothetical resource move.
       class GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse
         include Google::Apis::Core::Hashable
       
+        # List of analysis results for each asset in scope.
+        # Corresponds to the JSON property `assetMoveAnalyses`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis>]
+        attr_accessor :asset_move_analyses
+      
         # A list of blockers that should be addressed before moving the source project
-        # or project-based workload to the destination folder-based workload.
+        # or project-based workload to the destination folder-based workload. This field
+        # is now deprecated.
         # Corresponds to the JSON property `blockers`
         # @return [Array<String>]
         attr_accessor :blockers
+      
+        # The next page token. Is empty if the last page is reached.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
       
         def initialize(**args)
            update!(**args)
@@ -81,7 +98,43 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @asset_move_analyses = args[:asset_move_analyses] if args.key?(:asset_move_analyses)
           @blockers = args[:blockers] if args.key?(:blockers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Represents move analysis results for an asset.
+      class GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis
+        include Google::Apis::Core::Hashable
+      
+        # List of eligible analyses performed for the asset.
+        # Corresponds to the JSON property `analysisGroups`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroup>]
+        attr_accessor :analysis_groups
+      
+        # The full resource name of the asset being analyzed. Example: //compute.
+        # googleapis.com/projects/my_project_123/zones/zone1/instances/instance1
+        # Corresponds to the JSON property `asset`
+        # @return [String]
+        attr_accessor :asset
+      
+        # Type of the asset being analyzed. Possible values will be among the ones
+        # listed [here](https://cloud.google.com/asset-inventory/docs/supported-asset-
+        # types#searchable_asset_types).
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis_groups = args[:analysis_groups] if args.key?(:analysis_groups)
+          @asset = args[:asset] if args.key?(:asset)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
         end
       end
       
@@ -127,6 +180,19 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @parent = args[:parent] if args.key?(:parent)
           @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
+        end
+      end
+      
+      # Response for EnableResourceMonitoring endpoint.
+      class GoogleCloudAssuredworkloadsV1beta1EnableResourceMonitoringResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -180,6 +246,90 @@ module Google
         end
       end
       
+      # Represents a logical group of checks performed for an asset. If successful,
+      # the group contains the analysis result, otherwise it contains an error with
+      # the failure reason.
+      class GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroup
+        include Google::Apis::Core::Hashable
+      
+        # Represents the successful move analysis results for a group.
+        # Corresponds to the JSON property `analysisResult`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1MoveAnalysisResult]
+        attr_accessor :analysis_result
+      
+        # Name of the analysis group.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis_result = args[:analysis_result] if args.key?(:analysis_result)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @error = args[:error] if args.key?(:error)
+        end
+      end
+      
+      # Represents the successful move analysis results for a group.
+      class GoogleCloudAssuredworkloadsV1beta1MoveAnalysisResult
+        include Google::Apis::Core::Hashable
+      
+        # List of blockers. If not resolved, these will result in compliance violations
+        # in the target.
+        # Corresponds to the JSON property `blockers`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1MoveImpact>]
+        attr_accessor :blockers
+      
+        # List of warnings. These are risks that may or may not result in compliance
+        # violations.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1MoveImpact>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blockers = args[:blockers] if args.key?(:blockers)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Represents the impact of moving the asset to the target.
+      class GoogleCloudAssuredworkloadsV1beta1MoveImpact
+        include Google::Apis::Core::Hashable
+      
+        # Explanation of the impact.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detail = args[:detail] if args.key?(:detail)
+        end
+      end
+      
       # Request for restricting list of available resources in Workload environment.
       class GoogleCloudAssuredworkloadsV1beta1RestrictAllowedResourcesRequest
         include Google::Apis::Core::Hashable
@@ -230,6 +380,12 @@ module Google
         # Corresponds to the JSON property `acknowledgementTime`
         # @return [String]
         attr_accessor :acknowledgement_time
+      
+        # Optional. Output only. Violation Id of the org-policy violation due to which
+        # the resource violation is caused. Empty for org-policy violations.
+        # Corresponds to the JSON property `associatedOrgPolicyViolationId`
+        # @return [String]
+        attr_accessor :associated_org_policy_violation_id
       
         # Output only. Immutable. Audit Log Link for violated resource Format: https://
         # console.cloud.google.com/logs/query;query=`logName``protoPayload.resourceName``
@@ -289,6 +445,12 @@ module Google
         # @return [String]
         attr_accessor :org_policy_constraint
       
+        # Optional. Output only. Parent project number where resource is present. Empty
+        # for org-policy violations.
+        # Corresponds to the JSON property `parentProjectNumber`
+        # @return [String]
+        attr_accessor :parent_project_number
+      
         # Represents remediation guidance to resolve compliance violation for
         # AssuredWorkload
         # Corresponds to the JSON property `remediation`
@@ -301,6 +463,18 @@ module Google
         # @return [String]
         attr_accessor :resolve_time
       
+        # Optional. Output only. Name of the resource like //storage.googleapis.com/
+        # myprojectxyz-testbucket. Empty for org-policy violations.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Optional. Output only. Type of the resource like compute.googleapis.com/Disk,
+        # etc. Empty for org-policy violations.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
         # Output only. State of the violation
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -311,6 +485,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. Type of the violation
+        # Corresponds to the JSON property `violationType`
+        # @return [String]
+        attr_accessor :violation_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -319,6 +498,7 @@ module Google
         def update!(**args)
           @acknowledged = args[:acknowledged] if args.key?(:acknowledged)
           @acknowledgement_time = args[:acknowledgement_time] if args.key?(:acknowledgement_time)
+          @associated_org_policy_violation_id = args[:associated_org_policy_violation_id] if args.key?(:associated_org_policy_violation_id)
           @audit_log_link = args[:audit_log_link] if args.key?(:audit_log_link)
           @begin_time = args[:begin_time] if args.key?(:begin_time)
           @category = args[:category] if args.key?(:category)
@@ -328,10 +508,14 @@ module Google
           @name = args[:name] if args.key?(:name)
           @non_compliant_org_policy = args[:non_compliant_org_policy] if args.key?(:non_compliant_org_policy)
           @org_policy_constraint = args[:org_policy_constraint] if args.key?(:org_policy_constraint)
+          @parent_project_number = args[:parent_project_number] if args.key?(:parent_project_number)
           @remediation = args[:remediation] if args.key?(:remediation)
           @resolve_time = args[:resolve_time] if args.key?(:resolve_time)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @violation_type = args[:violation_type] if args.key?(:violation_type)
         end
       end
       
@@ -607,6 +791,14 @@ module Google
         # @return [String]
         attr_accessor :provisioned_resources_parent
       
+        # Output only. Indicates whether resource monitoring is enabled for workload or
+        # not. It is true when Resource feed is subscribed to AWM topic and AWM Service
+        # Agent Role is binded to AW Service Account for resource Assured workload.
+        # Corresponds to the JSON property `resourceMonitoringEnabled`
+        # @return [Boolean]
+        attr_accessor :resource_monitoring_enabled
+        alias_method :resource_monitoring_enabled?, :resource_monitoring_enabled
+      
         # Input only. Resource properties that are used to customize workload resources.
         # These properties (such as custom project id) will be used to create workload
         # resources if possible. This field is optional.
@@ -662,6 +854,7 @@ module Google
           @partner = args[:partner] if args.key?(:partner)
           @partner_permissions = args[:partner_permissions] if args.key?(:partner_permissions)
           @provisioned_resources_parent = args[:provisioned_resources_parent] if args.key?(:provisioned_resources_parent)
+          @resource_monitoring_enabled = args[:resource_monitoring_enabled] if args.key?(:resource_monitoring_enabled)
           @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
           @resources = args[:resources] if args.key?(:resources)
           @saa_enrollment_response = args[:saa_enrollment_response] if args.key?(:saa_enrollment_response)
@@ -692,10 +885,20 @@ module Google
       class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatus
         include Google::Apis::Core::Hashable
       
+        # Number of current resource violations which are not acknowledged.
+        # Corresponds to the JSON property `acknowledgedResourceViolationCount`
+        # @return [Fixnum]
+        attr_accessor :acknowledged_resource_violation_count
+      
         # Number of current orgPolicy violations which are acknowledged.
         # Corresponds to the JSON property `acknowledgedViolationCount`
         # @return [Fixnum]
         attr_accessor :acknowledged_violation_count
+      
+        # Number of current resource violations which are acknowledged.
+        # Corresponds to the JSON property `activeResourceViolationCount`
+        # @return [Fixnum]
+        attr_accessor :active_resource_violation_count
       
         # Number of current orgPolicy violations which are not acknowledged.
         # Corresponds to the JSON property `activeViolationCount`
@@ -708,7 +911,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acknowledged_resource_violation_count = args[:acknowledged_resource_violation_count] if args.key?(:acknowledged_resource_violation_count)
           @acknowledged_violation_count = args[:acknowledged_violation_count] if args.key?(:acknowledged_violation_count)
+          @active_resource_violation_count = args[:active_resource_violation_count] if args.key?(:active_resource_violation_count)
           @active_violation_count = args[:active_violation_count] if args.key?(:active_violation_count)
         end
       end
@@ -1012,13 +1217,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
