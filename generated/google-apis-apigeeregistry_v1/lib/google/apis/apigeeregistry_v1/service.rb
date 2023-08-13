@@ -1168,7 +1168,8 @@ module Google
         
         # Adds a tag to a specified revision of a deployment.
         # @param [String] name
-        #   Required. The name of the deployment to be tagged, including the revision ID.
+        #   Required. The name of the deployment to be tagged, including the revision ID
+        #   is optional. If a revision is not specified, it will tag the latest revision.
         # @param [Google::Apis::ApigeeregistryV1::TagApiDeploymentRevisionRequest] tag_api_deployment_revision_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2531,7 +2532,8 @@ module Google
         
         # Adds a tag to a specified revision of a spec.
         # @param [String] name
-        #   Required. The name of the spec to be tagged, including the revision ID.
+        #   Required. The name of the spec to be tagged, including the revision ID is
+        #   optional. If a revision is not specified, it will tag the latest revision.
         # @param [Google::Apis::ApigeeregistryV1::TagApiSpecRevisionRequest] tag_api_spec_revision_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3599,13 +3601,7 @@ module Google
         end
         
         # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
-        # binding allows API services to override the binding to use different resource
-        # name schemes, such as `users/*/operations`. To override the binding, API
-        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
-        # service configuration. For backwards compatibility, the default name includes
-        # the operations collection id, however overriding users must ensure the name
-        # binding is the parent resource, without the operations collection id.
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
