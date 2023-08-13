@@ -319,6 +319,12 @@ module Google
         # @return [String]
         attr_accessor :firmware
       
+        # Output only. Unordered list. List of VM certain capabilities needed for some
+        # Compute Engine features.
+        # Corresponds to the JSON property `vmCapabilities`
+        # @return [Array<String>]
+        attr_accessor :vm_capabilities
+      
         def initialize(**args)
            update!(**args)
         end
@@ -328,6 +334,7 @@ module Google
           @committed_storage_bytes = args[:committed_storage_bytes] if args.key?(:committed_storage_bytes)
           @disks = args[:disks] if args.key?(:disks)
           @firmware = args[:firmware] if args.key?(:firmware)
+          @vm_capabilities = args[:vm_capabilities] if args.key?(:vm_capabilities)
         end
       end
       
@@ -2272,13 +2279,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
