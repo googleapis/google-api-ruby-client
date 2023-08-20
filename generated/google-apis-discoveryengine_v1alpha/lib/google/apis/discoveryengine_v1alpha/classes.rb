@@ -276,6 +276,58 @@ module Google
         end
       end
       
+      # Metadata for Create Schema LRO.
+      class GoogleCloudDiscoveryengineV1CreateSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata for DeleteSchema LRO.
+      class GoogleCloudDiscoveryengineV1DeleteSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Metadata related to the progress of the ImportDocuments operation. This is
       # returned by the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1ImportDocumentsMetadata
@@ -544,6 +596,52 @@ module Google
         end
       end
       
+      # Metadata for UpdateSchema LRO.
+      class GoogleCloudDiscoveryengineV1UpdateSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # AdditionalParams message for WidgetService methods for security and privacy
+      # enhancement.
+      class GoogleCloudDiscoveryengineV1alphaAdditionalParams
+        include Google::Apis::Core::Hashable
+      
+        # Token that used for non-human user check.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
       # Response message for SiteSearchEngineService.BatchCreateTargetSites method.
       class GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse
         include Google::Apis::Core::Hashable
@@ -631,6 +729,126 @@ module Google
         end
       end
       
+      # Request message for CompletionService.CompleteQuery method.
+      class GoogleCloudDiscoveryengineV1alphaCompleteQueryRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The parent data store resource name for which the completion is
+        # performed, such as `projects/*/locations/global/collections/default_collection/
+        # dataStores/default_data_store`.
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # Indicates if tail suggestions should be returned if there are no suggestions
+        # that match the full query. Even if set to true, if there are suggestions that
+        # match the full query, those are returned and no tail suggestions are returned.
+        # Corresponds to the JSON property `includeTailSuggestions`
+        # @return [Boolean]
+        attr_accessor :include_tail_suggestions
+        alias_method :include_tail_suggestions?, :include_tail_suggestions
+      
+        # Required. The typeahead input used to fetch suggestions. Maximum length is 128
+        # characters.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Selects data model of query suggestions for serving. Currently supported
+        # values: * `document` - Using suggestions generated from user-imported
+        # documents. * `search-history` - Using suggestions generated from the past
+        # history of SearchService.Search API calls. Do not use it when there is no
+        # traffic for Search API. * `user-event` - Using suggestions generated from user-
+        # imported search events. * `document-completable` - Using suggestions taken
+        # directly from user-imported document fields marked as completable. Default
+        # values: * `document` is the default model for regular dataStores. * `search-
+        # history` is the default model for IndustryVertical.SITE_SEARCH dataStores.
+        # Corresponds to the JSON property `queryModel`
+        # @return [String]
+        attr_accessor :query_model
+      
+        # A unique identifier for tracking visitors. For example, this could be
+        # implemented with an HTTP cookie, which should be able to uniquely identify a
+        # visitor on a single device. This unique identifier should not change if the
+        # visitor logs in or out of the website. This field should NOT have a fixed
+        # value such as `unknown_visitor`. This should be the same identifier as
+        # UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a
+        # UTF-8 encoded string with a length limit of 128 characters. Otherwise, an `
+        # INVALID_ARGUMENT` error is returned.
+        # Corresponds to the JSON property `userPseudoId`
+        # @return [String]
+        attr_accessor :user_pseudo_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @include_tail_suggestions = args[:include_tail_suggestions] if args.key?(:include_tail_suggestions)
+          @query = args[:query] if args.key?(:query)
+          @query_model = args[:query_model] if args.key?(:query_model)
+          @user_pseudo_id = args[:user_pseudo_id] if args.key?(:user_pseudo_id)
+        end
+      end
+      
+      # Response message for CompletionService.CompleteQuery method.
+      class GoogleCloudDiscoveryengineV1alphaCompleteQueryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Results of the matched query suggestions. The result list is ordered and the
+        # first result is a top suggestion.
+        # Corresponds to the JSON property `querySuggestions`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCompleteQueryResponseQuerySuggestion>]
+        attr_accessor :query_suggestions
+      
+        # True if the returned suggestions are all tail suggestions. For tail matching
+        # to be triggered, include_tail_suggestions in the request must be true and
+        # there must be no suggestions that match the full query.
+        # Corresponds to the JSON property `tailMatchTriggered`
+        # @return [Boolean]
+        attr_accessor :tail_match_triggered
+        alias_method :tail_match_triggered?, :tail_match_triggered
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query_suggestions = args[:query_suggestions] if args.key?(:query_suggestions)
+          @tail_match_triggered = args[:tail_match_triggered] if args.key?(:tail_match_triggered)
+        end
+      end
+      
+      # Suggestions as search queries.
+      class GoogleCloudDiscoveryengineV1alphaCompleteQueryResponseQuerySuggestion
+        include Google::Apis::Core::Hashable
+      
+        # The unique document field paths that serve as the source of this suggestion if
+        # it was generated from completable fields. This field is only populated for the
+        # document-completable model.
+        # Corresponds to the JSON property `completableFieldPath`
+        # @return [Array<String>]
+        attr_accessor :completable_field_path
+      
+        # The suggestion for the query.
+        # Corresponds to the JSON property `suggestion`
+        # @return [String]
+        attr_accessor :suggestion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completable_field_path = args[:completable_field_path] if args.key?(:completable_field_path)
+          @suggestion = args[:suggestion] if args.key?(:suggestion)
+        end
+      end
+      
       # Detailed completion information including completion attribution token and
       # clicked completion info.
       class GoogleCloudDiscoveryengineV1alphaCompletionInfo
@@ -655,6 +873,245 @@ module Google
         def update!(**args)
           @selected_position = args[:selected_position] if args.key?(:selected_position)
           @selected_suggestion = args[:selected_suggestion] if args.key?(:selected_suggestion)
+        end
+      end
+      
+      # External conversation proto definition.
+      class GoogleCloudDiscoveryengineV1alphaConversation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the conversation finished.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Conversation messages.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConversationMessage>]
+        attr_accessor :messages
+      
+        # Immutable. Fully qualified name `project/*/locations/global/collections/`
+        # collection`/dataStore/*/conversations/*`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time the conversation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The state of the Conversation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A unique identifier for tracking users.
+        # Corresponds to the JSON property `userPseudoId`
+        # @return [String]
+        attr_accessor :user_pseudo_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @messages = args[:messages] if args.key?(:messages)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @user_pseudo_id = args[:user_pseudo_id] if args.key?(:user_pseudo_id)
+        end
+      end
+      
+      # Defines context of the conversation
+      class GoogleCloudDiscoveryengineV1alphaConversationContext
+        include Google::Apis::Core::Hashable
+      
+        # The current active document the user opened. It contains the document resource
+        # reference.
+        # Corresponds to the JSON property `activeDocument`
+        # @return [String]
+        attr_accessor :active_document
+      
+        # The current list of documents the user is seeing. It contains the document
+        # resource references.
+        # Corresponds to the JSON property `contextDocuments`
+        # @return [Array<String>]
+        attr_accessor :context_documents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_document = args[:active_document] if args.key?(:active_document)
+          @context_documents = args[:context_documents] if args.key?(:context_documents)
+        end
+      end
+      
+      # Defines a conversation message.
+      class GoogleCloudDiscoveryengineV1alphaConversationMessage
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Message creation timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Defines a reply message to user.
+        # Corresponds to the JSON property `reply`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaReply]
+        attr_accessor :reply
+      
+        # Defines text input.
+        # Corresponds to the JSON property `userInput`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaTextInput]
+        attr_accessor :user_input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @reply = args[:reply] if args.key?(:reply)
+          @user_input = args[:user_input] if args.key?(:user_input)
+        end
+      end
+      
+      # Request message for ConversationalSearchService.ConverseConversation method.
+      class GoogleCloudDiscoveryengineV1alphaConverseConversationRequest
+        include Google::Apis::Core::Hashable
+      
+        # External conversation proto definition.
+        # Corresponds to the JSON property `conversation`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConversation]
+        attr_accessor :conversation
+      
+        # Required. The resource name of the Conversation to get. Format: `projects/`
+        # project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        # data_store_id`/conversations/`conversation_id``. Use `projects/`project_number`
+        # /locations/`location_id`/collections/`collection`/dataStores/`data_store_id`/
+        # conversations/-` to activate auto session mode, which automatically creates a
+        # new conversation inside a ConverseConversation session.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Defines text input.
+        # Corresponds to the JSON property `query`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaTextInput]
+        attr_accessor :query
+      
+        # Whether to turn on safe search.
+        # Corresponds to the JSON property `safeSearch`
+        # @return [Boolean]
+        attr_accessor :safe_search
+        alias_method :safe_search?, :safe_search
+      
+        # The resource name of the Serving Config to use. Format: `projects/`
+        # project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        # data_store_id`/servingConfigs/`serving_config_id`` If this is not set, the
+        # default serving config will be used.
+        # Corresponds to the JSON property `servingConfig`
+        # @return [String]
+        attr_accessor :serving_config
+      
+        # The user labels applied to a resource must meet the following requirements: *
+        # Each resource can have multiple labels, up to a maximum of 64. * Each label
+        # must be a key-value pair. * Keys have a minimum length of 1 character and a
+        # maximum length of 63 characters and cannot be empty. Values can be empty and
+        # have a maximum length of 63 characters. * Keys and values can contain only
+        # lowercase letters, numeric characters, underscores, and dashes. All characters
+        # must use UTF-8 encoding, and international characters are allowed. * The key
+        # portion of a label must be unique. However, you can use the same key with
+        # multiple resources. * Keys must start with a lowercase letter or international
+        # character. See [Google Cloud Document](https://cloud.google.com/resource-
+        # manager/docs/creating-managing-labels#requirements) for more details.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @name = args[:name] if args.key?(:name)
+          @query = args[:query] if args.key?(:query)
+          @safe_search = args[:safe_search] if args.key?(:safe_search)
+          @serving_config = args[:serving_config] if args.key?(:serving_config)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
+        end
+      end
+      
+      # Response message for ConversationalSearchService.ConverseConversation method.
+      class GoogleCloudDiscoveryengineV1alphaConverseConversationResponse
+        include Google::Apis::Core::Hashable
+      
+        # External conversation proto definition.
+        # Corresponds to the JSON property `conversation`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConversation]
+        attr_accessor :conversation
+      
+        # Suggested related questions.
+        # Corresponds to the JSON property `relatedQuestions`
+        # @return [Array<String>]
+        attr_accessor :related_questions
+      
+        # Defines a reply message to user.
+        # Corresponds to the JSON property `reply`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaReply]
+        attr_accessor :reply
+      
+        # Search Results.
+        # Corresponds to the JSON property `searchResults`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResult>]
+        attr_accessor :search_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @related_questions = args[:related_questions] if args.key?(:related_questions)
+          @reply = args[:reply] if args.key?(:reply)
+          @search_results = args[:search_results] if args.key?(:search_results)
+        end
+      end
+      
+      # Metadata for Create Schema LRO.
+      class GoogleCloudDiscoveryengineV1alphaCreateSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -691,10 +1148,47 @@ module Google
         end
       end
       
+      # Metadata for DeleteSchema LRO.
+      class GoogleCloudDiscoveryengineV1alphaDeleteSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Document captures all raw metadata information of items to be recommended or
       # searched.
       class GoogleCloudDiscoveryengineV1alphaDocument
         include Google::Apis::Core::Hashable
+      
+        # Unstructured data linked to this document.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentContent]
+        attr_accessor :content
+      
+        # Output only. This field is OUTPUT_ONLY. It contains derived data that are not
+        # in the original input document.
+        # Corresponds to the JSON property `derivedStructData`
+        # @return [Hash<String,Object>]
+        attr_accessor :derived_struct_data
       
         # Immutable. The identifier of the document. Id should conform to [RFC-1034](
         # https://tools.ietf.org/html/rfc1034) standard with a length limit of 63
@@ -741,12 +1235,57 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @derived_struct_data = args[:derived_struct_data] if args.key?(:derived_struct_data)
           @id = args[:id] if args.key?(:id)
           @json_data = args[:json_data] if args.key?(:json_data)
           @name = args[:name] if args.key?(:name)
           @parent_document_id = args[:parent_document_id] if args.key?(:parent_document_id)
           @schema_id = args[:schema_id] if args.key?(:schema_id)
           @struct_data = args[:struct_data] if args.key?(:struct_data)
+        end
+      end
+      
+      # Unstructured data linked to this document.
+      class GoogleCloudDiscoveryengineV1alphaDocumentContent
+        include Google::Apis::Core::Hashable
+      
+        # The MIME type of the content. Supported types: * `application/pdf` (PDF, only
+        # native PDFs are supported for now) * `text/html` (HTML) * `application/vnd.
+        # openxmlformats-officedocument.wordprocessingml.document` (DOCX) * `application/
+        # vnd.openxmlformats-officedocument.presentationml.presentation` (PPTX) * `text/
+        # plain` (TXT) See https://www.iana.org/assignments/media-types/media-types.
+        # xhtml.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # The content represented as a stream of bytes. The maximum length is 1,000,000
+        # bytes (1 MB / ~0.95 MiB). Note: As with all `bytes` fields, this field is
+        # represented as pure binary in Protocol Buffers and base64-encoded string in
+        # JSON. For example, `abc123!?$*&()'-=@~` should be represented as `
+        # YWJjMTIzIT8kKiYoKSctPUB+` in JSON. See https://developers.google.com/protocol-
+        # buffers/docs/proto3#json.
+        # Corresponds to the JSON property `rawBytes`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :raw_bytes
+      
+        # The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/
+        # to/file`) are supported. The maximum file size is 100 MB.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @raw_bytes = args[:raw_bytes] if args.key?(:raw_bytes)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -796,6 +1335,142 @@ module Google
           @promotion_ids = args[:promotion_ids] if args.key?(:promotion_ids)
           @quantity = args[:quantity] if args.key?(:quantity)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Double list.
+      class GoogleCloudDiscoveryengineV1alphaDoubleList
+        include Google::Apis::Core::Hashable
+      
+        # Double values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Float>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Configurations for fields of a schema. For example, configuring a field is
+      # indexable, or searchable.
+      class GoogleCloudDiscoveryengineV1alphaFieldConfig
+        include Google::Apis::Core::Hashable
+      
+        # If completable_option is COMPLETABLE_ENABLED, field values are directly used
+        # and returned as suggestions for Autocomplete in CompletionService.
+        # CompleteQuery. If completable_option is unset, the server behavior defaults to
+        # COMPLETABLE_DISABLED for fields that support setting completable options,
+        # which are just `string` fields. For those fields that do not support setting
+        # completable options, the server will skip completable option setting, and
+        # setting completable_option for those fields will throw `INVALID_ARGUMENT`
+        # error.
+        # Corresponds to the JSON property `completableOption`
+        # @return [String]
+        attr_accessor :completable_option
+      
+        # If dynamic_facetable_option is DYNAMIC_FACETABLE_ENABLED, field values are
+        # available for dynamic facet. Could only be DYNAMIC_FACETABLE_DISABLED if
+        # FieldConfig.indexable_option is INDEXABLE_DISABLED. Otherwise, an `
+        # INVALID_ARGUMENT` error will be returned. If dynamic_facetable_option is unset,
+        # the server behavior defaults to DYNAMIC_FACETABLE_DISABLED for fields that
+        # support setting dynamic facetable options. For those fields that do not
+        # support setting dynamic facetable options, such as `object` and `boolean`, the
+        # server will skip dynamic facetable option setting, and setting
+        # dynamic_facetable_option for those fields will throw `INVALID_ARGUMENT` error.
+        # Corresponds to the JSON property `dynamicFacetableOption`
+        # @return [String]
+        attr_accessor :dynamic_facetable_option
+      
+        # Required. Field path of the schema field. For example: `title`, `description`,
+        # `release_info.release_year`.
+        # Corresponds to the JSON property `fieldPath`
+        # @return [String]
+        attr_accessor :field_path
+      
+        # Output only. Raw type of the field.
+        # Corresponds to the JSON property `fieldType`
+        # @return [String]
+        attr_accessor :field_type
+      
+        # If indexable_option is INDEXABLE_ENABLED, field values are indexed so that it
+        # can be filtered or faceted in SearchService.Search. If indexable_option is
+        # unset, the server behavior defaults to INDEXABLE_DISABLED for fields that
+        # support setting indexable options. For those fields that do not support
+        # setting indexable options, such as `object` and `boolean` and key properties,
+        # the server will skip indexable_option setting, and setting indexable_option
+        # for those fields will throw `INVALID_ARGUMENT` error.
+        # Corresponds to the JSON property `indexableOption`
+        # @return [String]
+        attr_accessor :indexable_option
+      
+        # Output only. Type of the key property that this field is mapped to. Empty
+        # string if this is not annotated as mapped to a key property. Example types are
+        # `title`, `description`. Full list is defined by `keyPropertyMapping` in the
+        # schema field annotation. If the schema field has a `KeyPropertyMapping`
+        # annotation, `indexable_option` and `searchable_option` of this field cannot be
+        # modified.
+        # Corresponds to the JSON property `keyPropertyType`
+        # @return [String]
+        attr_accessor :key_property_type
+      
+        # If recs_filterable_option is FILTERABLE_ENABLED, field values are filterable
+        # by filter expression in RecommendationService.Recommend. If FILTERABLE_ENABLED
+        # but the field type is numerical, field values are not filterable by text
+        # queries in RecommendationService.Recommend. Only textual fields are supported.
+        # If recs_filterable_option is unset, the default setting is FILTERABLE_DISABLED
+        # for fields that support setting filterable options. When a field set to [
+        # FILTERABLE_DISABLED] is filtered, a warning is generated and an empty result
+        # is returned.
+        # Corresponds to the JSON property `recsFilterableOption`
+        # @return [String]
+        attr_accessor :recs_filterable_option
+      
+        # If retrievable_option is RETRIEVABLE_ENABLED, field values are included in the
+        # search results. If retrievable_option is unset, the server behavior defaults
+        # to RETRIEVABLE_DISABLED for fields that support setting retrievable options.
+        # For those fields that do not support setting retrievable options, such as `
+        # object` and `boolean`, the server will skip retrievable option setting, and
+        # setting retrievable_option for those fields will throw `INVALID_ARGUMENT`
+        # error.
+        # Corresponds to the JSON property `retrievableOption`
+        # @return [String]
+        attr_accessor :retrievable_option
+      
+        # If searchable_option is SEARCHABLE_ENABLED, field values are searchable by
+        # text queries in SearchService.Search. If SEARCHABLE_ENABLED but field type is
+        # numerical, field values will not be searchable by text queries in
+        # SearchService.Search, as there are no text values associated to numerical
+        # fields. If searchable_option is unset, the server behavior defaults to
+        # SEARCHABLE_DISABLED for fields that support setting searchable options. Only `
+        # string` fields that have no key property mapping support setting
+        # searchable_option. For those fields that do not support setting searchable
+        # options, the server will skip searchable option setting, and setting
+        # searchable_option for those fields will throw `INVALID_ARGUMENT` error.
+        # Corresponds to the JSON property `searchableOption`
+        # @return [String]
+        attr_accessor :searchable_option
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completable_option = args[:completable_option] if args.key?(:completable_option)
+          @dynamic_facetable_option = args[:dynamic_facetable_option] if args.key?(:dynamic_facetable_option)
+          @field_path = args[:field_path] if args.key?(:field_path)
+          @field_type = args[:field_type] if args.key?(:field_type)
+          @indexable_option = args[:indexable_option] if args.key?(:indexable_option)
+          @key_property_type = args[:key_property_type] if args.key?(:key_property_type)
+          @recs_filterable_option = args[:recs_filterable_option] if args.key?(:recs_filterable_option)
+          @retrievable_option = args[:retrievable_option] if args.key?(:retrievable_option)
+          @searchable_option = args[:searchable_option] if args.key?(:searchable_option)
         end
       end
       
@@ -1158,6 +1833,68 @@ module Google
         end
       end
       
+      # A floating point interval.
+      class GoogleCloudDiscoveryengineV1alphaInterval
+        include Google::Apis::Core::Hashable
+      
+        # Exclusive upper bound.
+        # Corresponds to the JSON property `exclusiveMaximum`
+        # @return [Float]
+        attr_accessor :exclusive_maximum
+      
+        # Exclusive lower bound.
+        # Corresponds to the JSON property `exclusiveMinimum`
+        # @return [Float]
+        attr_accessor :exclusive_minimum
+      
+        # Inclusive upper bound.
+        # Corresponds to the JSON property `maximum`
+        # @return [Float]
+        attr_accessor :maximum
+      
+        # Inclusive lower bound.
+        # Corresponds to the JSON property `minimum`
+        # @return [Float]
+        attr_accessor :minimum
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclusive_maximum = args[:exclusive_maximum] if args.key?(:exclusive_maximum)
+          @exclusive_minimum = args[:exclusive_minimum] if args.key?(:exclusive_minimum)
+          @maximum = args[:maximum] if args.key?(:maximum)
+          @minimum = args[:minimum] if args.key?(:minimum)
+        end
+      end
+      
+      # Response for ListConversations method.
+      class GoogleCloudDiscoveryengineV1alphaListConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # All the Conversations for a given data store.
+        # Corresponds to the JSON property `conversations`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConversation>]
+        attr_accessor :conversations
+      
+        # Pagination token, if not returned indicates the last page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversations = args[:conversations] if args.key?(:conversations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for DocumentService.ListDocuments method.
       class GoogleCloudDiscoveryengineV1alphaListDocumentsResponse
         include Google::Apis::Core::Hashable
@@ -1181,6 +1918,70 @@ module Google
         def update!(**args)
           @documents = args[:documents] if args.key?(:documents)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for SchemaService.ListSchemas method.
+      class GoogleCloudDiscoveryengineV1alphaListSchemasResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as ListSchemasRequest.page_token to retrieve the next
+        # page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The Schemas.
+        # Corresponds to the JSON property `schemas`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSchema>]
+        attr_accessor :schemas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @schemas = args[:schemas] if args.key?(:schemas)
+        end
+      end
+      
+      # Request message for WidgetService.LookupWidgetConfig method.
+      class GoogleCloudDiscoveryengineV1alphaLookupWidgetConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The UUID of the Widget Config.
+        # Corresponds to the JSON property `widgetConfigId`
+        # @return [String]
+        attr_accessor :widget_config_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @widget_config_id = args[:widget_config_id] if args.key?(:widget_config_id)
+        end
+      end
+      
+      # Response message for WidgetService.LookupWidgetConfig method.
+      class GoogleCloudDiscoveryengineV1alphaLookupWidgetConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # WidgetConfig captures configs at the Widget level.
+        # Corresponds to the JSON property `anonymousWidgetConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig]
+        attr_accessor :anonymous_widget_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @anonymous_widget_config = args[:anonymous_widget_config] if args.key?(:anonymous_widget_config)
         end
       end
       
@@ -1668,9 +2469,82 @@ module Google
         end
       end
       
+      # Defines a reply message to user.
+      class GoogleCloudDiscoveryengineV1alphaReply
+        include Google::Apis::Core::Hashable
+      
+        # References in the reply.
+        # Corresponds to the JSON property `references`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaReplyReference>]
+        attr_accessor :references
+      
+        # DEPRECATED: use `summary` instead. Text reply.
+        # Corresponds to the JSON property `reply`
+        # @return [String]
+        attr_accessor :reply
+      
+        # Summary of the top N search result specified by the summary spec.
+        # Corresponds to the JSON property `summary`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummary]
+        attr_accessor :summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @references = args[:references] if args.key?(:references)
+          @reply = args[:reply] if args.key?(:reply)
+          @summary = args[:summary] if args.key?(:summary)
+        end
+      end
+      
+      # Defines reference in reply.
+      class GoogleCloudDiscoveryengineV1alphaReplyReference
+        include Google::Apis::Core::Hashable
+      
+        # Anchor text.
+        # Corresponds to the JSON property `anchorText`
+        # @return [String]
+        attr_accessor :anchor_text
+      
+        # Anchor text end index.
+        # Corresponds to the JSON property `end`
+        # @return [Fixnum]
+        attr_accessor :end
+      
+        # Anchor text start index.
+        # Corresponds to the JSON property `start`
+        # @return [Fixnum]
+        attr_accessor :start
+      
+        # URI link reference.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @anchor_text = args[:anchor_text] if args.key?(:anchor_text)
+          @end = args[:end] if args.key?(:end)
+          @start = args[:start] if args.key?(:start)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Defines the structure and layout of a type of document data.
       class GoogleCloudDiscoveryengineV1alphaSchema
         include Google::Apis::Core::Hashable
+      
+        # Output only. Configurations for fields of the schema.
+        # Corresponds to the JSON property `fieldConfigs`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFieldConfig>]
+        attr_accessor :field_configs
       
         # The JSON representation of the schema.
         # Corresponds to the JSON property `jsonSchema`
@@ -1696,6 +2570,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @field_configs = args[:field_configs] if args.key?(:field_configs)
           @json_schema = args[:json_schema] if args.key?(:json_schema)
           @name = args[:name] if args.key?(:name)
           @struct_schema = args[:struct_schema] if args.key?(:struct_schema)
@@ -1747,6 +2622,1011 @@ module Google
         end
       end
       
+      # Request message for SearchService.Search method.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequest
+        include Google::Apis::Core::Hashable
+      
+        # Boost specification to boost certain documents.
+        # Corresponds to the JSON property `boostSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec]
+        attr_accessor :boost_spec
+      
+        # The branch resource name, such as `projects/*/locations/global/collections/
+        # default_collection/dataStores/default_data_store/branches/0`. Use `
+        # default_branch` as the branch ID or leave this field empty, to search
+        # documents under the default branch.
+        # Corresponds to the JSON property `branch`
+        # @return [String]
+        attr_accessor :branch
+      
+        # A specification for configuring the behavior of content search.
+        # Corresponds to the JSON property `contentSearchSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec]
+        attr_accessor :content_search_spec
+      
+        # The specification that uses customized query embedding vector to do semantic
+        # document retrieval.
+        # Corresponds to the JSON property `embeddingSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpec]
+        attr_accessor :embedding_spec
+      
+        # Facet specifications for faceted search. If empty, no facets are returned. A
+        # maximum of 100 values are allowed. Otherwise, an `INVALID_ARGUMENT` error is
+        # returned.
+        # Corresponds to the JSON property `facetSpecs`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpec>]
+        attr_accessor :facet_specs
+      
+        # The filter syntax consists of an expression language for constructing a
+        # predicate from one or more fields of the documents being filtered. Filter
+        # expression is case-sensitive. If this field is unrecognizable, an `
+        # INVALID_ARGUMENT` is returned.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Specifies the image query input.
+        # Corresponds to the JSON property `imageQuery`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestImageQuery]
+        attr_accessor :image_query
+      
+        # A 0-indexed integer that specifies the current offset (that is, starting
+        # result location, amongst the Documents deemed by the API as relevant) in
+        # search results. This field is only considered if page_token is unset. If this
+        # field is negative, an `INVALID_ARGUMENT` is returned.
+        # Corresponds to the JSON property `offset`
+        # @return [Fixnum]
+        attr_accessor :offset
+      
+        # The order in which documents are returned. Documents can be ordered by a field
+        # in an Document object. Leave it unset if ordered by relevance. `order_by`
+        # expression is case-sensitive. If this field is unrecognizable, an `
+        # INVALID_ARGUMENT` is returned.
+        # Corresponds to the JSON property `orderBy`
+        # @return [String]
+        attr_accessor :order_by
+      
+        # Maximum number of Documents to return. If unspecified, defaults to a
+        # reasonable value. The maximum allowed value is 100. Values above 100 are
+        # coerced to 100. If this field is negative, an `INVALID_ARGUMENT` is returned.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # A page token received from a previous SearchService.Search call. Provide this
+        # to retrieve the subsequent page. When paginating, all other parameters
+        # provided to SearchService.Search must match the call that provided the page
+        # token. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Additional search parameters. For public website search only, supported values
+        # are: * `user_country_code`: string. Default empty. If set to non-empty,
+        # results are restricted or boosted based on the location provided. * `
+        # search_type`: double. Default empty. Enables non-webpage searching depending
+        # on the value. The only valid non-default value is 1, which enables image
+        # searching.
+        # Corresponds to the JSON property `params`
+        # @return [Hash<String,Object>]
+        attr_accessor :params
+      
+        # Raw search query.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Specification to determine under which conditions query expansion should occur.
+        # Corresponds to the JSON property `queryExpansionSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec]
+        attr_accessor :query_expansion_spec
+      
+        # The ranking expression controls the customized ranking on retrieval documents.
+        # This overrides ServingConfig.ranking_expression. The ranking expression is a
+        # single function or multiple functions that are joint by "+". *
+        # ranking_expression = function, ` " + ", function `; Supported functions: *
+        # double * relevance_score * double * dotProduct(embedding_field_path) Function
+        # variables: `relevance_score`: pre-defined keywords, used for measure relevance
+        # between query and document. `embedding_field_path`: the document embedding
+        # field used with query embedding vector. `dotProduct`: embedding function
+        # between embedding_field_path and query embedding vector. Example ranking
+        # expression: If document has an embedding field doc_embedding, the ranking
+        # expression could be `0.5 * relevance_score + 0.3 * dotProduct(doc_embedding)`.
+        # Corresponds to the JSON property `rankingExpression`
+        # @return [String]
+        attr_accessor :ranking_expression
+      
+        # Whether to turn on safe search. This is only supported for website search.
+        # Corresponds to the JSON property `safeSearch`
+        # @return [Boolean]
+        attr_accessor :safe_search
+        alias_method :safe_search?, :safe_search
+      
+        # Required. The resource name of the Search serving config, such as `projects/*/
+        # locations/global/collections/default_collection/dataStores/default_data_store/
+        # servingConfigs/default_serving_config`. This field is used to identify the
+        # serving configuration name, set of models used to make the search.
+        # Corresponds to the JSON property `servingConfig`
+        # @return [String]
+        attr_accessor :serving_config
+      
+        # The specification for query spell correction.
+        # Corresponds to the JSON property `spellCorrectionSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestSpellCorrectionSpec]
+        attr_accessor :spell_correction_spec
+      
+        # Information of an end user.
+        # Corresponds to the JSON property `userInfo`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserInfo]
+        attr_accessor :user_info
+      
+        # The user labels applied to a resource must meet the following requirements: *
+        # Each resource can have multiple labels, up to a maximum of 64. * Each label
+        # must be a key-value pair. * Keys have a minimum length of 1 character and a
+        # maximum length of 63 characters and cannot be empty. Values can be empty and
+        # have a maximum length of 63 characters. * Keys and values can contain only
+        # lowercase letters, numeric characters, underscores, and dashes. All characters
+        # must use UTF-8 encoding, and international characters are allowed. * The key
+        # portion of a label must be unique. However, you can use the same key with
+        # multiple resources. * Keys must start with a lowercase letter or international
+        # character. See [Google Cloud Document](https://cloud.google.com/resource-
+        # manager/docs/creating-managing-labels#requirements) for more details.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
+        # A unique identifier for tracking visitors. For example, this could be
+        # implemented with an HTTP cookie, which should be able to uniquely identify a
+        # visitor on a single device. This unique identifier should not change if the
+        # visitor logs in or out of the website. This field should NOT have a fixed
+        # value such as `unknown_visitor`. This should be the same identifier as
+        # UserEvent.user_pseudo_id and CompleteQueryRequest.user_pseudo_id The field
+        # must be a UTF-8 encoded string with a length limit of 128 characters.
+        # Otherwise, an `INVALID_ARGUMENT` error is returned.
+        # Corresponds to the JSON property `userPseudoId`
+        # @return [String]
+        attr_accessor :user_pseudo_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
+          @branch = args[:branch] if args.key?(:branch)
+          @content_search_spec = args[:content_search_spec] if args.key?(:content_search_spec)
+          @embedding_spec = args[:embedding_spec] if args.key?(:embedding_spec)
+          @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
+          @filter = args[:filter] if args.key?(:filter)
+          @image_query = args[:image_query] if args.key?(:image_query)
+          @offset = args[:offset] if args.key?(:offset)
+          @order_by = args[:order_by] if args.key?(:order_by)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @params = args[:params] if args.key?(:params)
+          @query = args[:query] if args.key?(:query)
+          @query_expansion_spec = args[:query_expansion_spec] if args.key?(:query_expansion_spec)
+          @ranking_expression = args[:ranking_expression] if args.key?(:ranking_expression)
+          @safe_search = args[:safe_search] if args.key?(:safe_search)
+          @serving_config = args[:serving_config] if args.key?(:serving_config)
+          @spell_correction_spec = args[:spell_correction_spec] if args.key?(:spell_correction_spec)
+          @user_info = args[:user_info] if args.key?(:user_info)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
+          @user_pseudo_id = args[:user_pseudo_id] if args.key?(:user_pseudo_id)
+        end
+      end
+      
+      # Boost specification to boost certain documents.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec
+        include Google::Apis::Core::Hashable
+      
+        # Condition boost specifications. If a document matches multiple conditions in
+        # the specifictions, boost scores from these specifications are all applied and
+        # combined in a non-linear way. Maximum number of specifications is 20.
+        # Corresponds to the JSON property `conditionBoostSpecs`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpec>]
+        attr_accessor :condition_boost_specs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition_boost_specs = args[:condition_boost_specs] if args.key?(:condition_boost_specs)
+        end
+      end
+      
+      # Boost applies to documents which match a condition.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpec
+        include Google::Apis::Core::Hashable
+      
+        # Strength of the condition boost, which should be in [-1, 1]. Negative boost
+        # means demotion. Default is 0.0. Setting to 1.0 gives the document a big
+        # promotion. However, it does not necessarily mean that the boosted document
+        # will be the top result at all times, nor that other documents will be excluded.
+        # Results could still be shown even when none of them matches the condition.
+        # And results that are significantly more relevant to the search query can still
+        # trump your heavily favored but irrelevant documents. Setting to -1.0 gives the
+        # document a big demotion. However, results that are deeply relevant might still
+        # be shown. The document will have an upstream battle to get a fairly high
+        # ranking, but it is not blocked out completely. Setting to 0.0 means no boost
+        # applied. The boosting condition is ignored.
+        # Corresponds to the JSON property `boost`
+        # @return [Float]
+        attr_accessor :boost
+      
+        # An expression which specifies a boost condition. The syntax and supported
+        # fields are the same as a filter expression. See SearchRequest.filter for
+        # detail syntax and limitations. Examples: * To boost documents with document ID
+        # "doc_1" or "doc_2", and color "Red" or "Blue": * (id: ANY("doc_1", "doc_2"))
+        # AND (color: ANY("Red","Blue"))
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost = args[:boost] if args.key?(:boost)
+          @condition = args[:condition] if args.key?(:condition)
+        end
+      end
+      
+      # A specification for configuring the behavior of content search.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec
+        include Google::Apis::Core::Hashable
+      
+        # A specification for configuring the extractive content in a search response.
+        # Corresponds to the JSON property `extractiveContentSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecExtractiveContentSpec]
+        attr_accessor :extractive_content_spec
+      
+        # A specification for configuring snippets in a search response.
+        # Corresponds to the JSON property `snippetSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSnippetSpec]
+        attr_accessor :snippet_spec
+      
+        # A specification for configuring a summary returned in a search response.
+        # Corresponds to the JSON property `summarySpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpec]
+        attr_accessor :summary_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extractive_content_spec = args[:extractive_content_spec] if args.key?(:extractive_content_spec)
+          @snippet_spec = args[:snippet_spec] if args.key?(:snippet_spec)
+          @summary_spec = args[:summary_spec] if args.key?(:summary_spec)
+        end
+      end
+      
+      # A specification for configuring the extractive content in a search response.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecExtractiveContentSpec
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of extractive answers returned in each search result. An
+        # extractive answer is a verbatim answer extracted from the original document,
+        # which provides a precise and contextually relevant answer to the search query.
+        # If the number of matching answers is less than the `
+        # max_extractive_answer_count`, return all of the answers. Otherwise, return the
+        # `max_extractive_answer_count`. At most one answer is returned for each
+        # SearchResult.
+        # Corresponds to the JSON property `maxExtractiveAnswerCount`
+        # @return [Fixnum]
+        attr_accessor :max_extractive_answer_count
+      
+        # The max number of extractive segments returned in each search result. Only
+        # applied if the DataStore is set to DataStore.ContentConfig.CONTENT_REQUIRED or
+        # DataStore.solution_types is SOLUTION_TYPE_CHAT. An extractive segment is a
+        # text segment extracted from the original document that is relevant to the
+        # search query, and, in general, more verbose than an extractive answer. The
+        # segment could then be used as input for LLMs to generate summaries and answers.
+        # If the number of matching segments is less than `max_extractive_segment_count`
+        # , return all of the segments. Otherwise, return the `
+        # max_extractive_segment_count`.
+        # Corresponds to the JSON property `maxExtractiveSegmentCount`
+        # @return [Fixnum]
+        attr_accessor :max_extractive_segment_count
+      
+        # Return at most `num_next_segments` segments after each selected segments.
+        # Corresponds to the JSON property `numNextSegments`
+        # @return [Fixnum]
+        attr_accessor :num_next_segments
+      
+        # Specifies whether to also include the adjacent from each selected segments.
+        # Return at most `num_previous_segments` segments before each selected segments.
+        # Corresponds to the JSON property `numPreviousSegments`
+        # @return [Fixnum]
+        attr_accessor :num_previous_segments
+      
+        # Specifies whether to return the confidence score from the extractive segments
+        # in each search result. The default value is `false`.
+        # Corresponds to the JSON property `returnExtractiveSegmentScore`
+        # @return [Boolean]
+        attr_accessor :return_extractive_segment_score
+        alias_method :return_extractive_segment_score?, :return_extractive_segment_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_extractive_answer_count = args[:max_extractive_answer_count] if args.key?(:max_extractive_answer_count)
+          @max_extractive_segment_count = args[:max_extractive_segment_count] if args.key?(:max_extractive_segment_count)
+          @num_next_segments = args[:num_next_segments] if args.key?(:num_next_segments)
+          @num_previous_segments = args[:num_previous_segments] if args.key?(:num_previous_segments)
+          @return_extractive_segment_score = args[:return_extractive_segment_score] if args.key?(:return_extractive_segment_score)
+        end
+      end
+      
+      # A specification for configuring snippets in a search response.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSnippetSpec
+        include Google::Apis::Core::Hashable
+      
+        # [DEPRECATED] This field is deprecated. To control snippet return, use `
+        # return_snippet` field. For backwards compatibility, we will return snippet if
+        # max_snippet_count > 0.
+        # Corresponds to the JSON property `maxSnippetCount`
+        # @return [Fixnum]
+        attr_accessor :max_snippet_count
+      
+        # [DEPRECATED] This field is deprecated and will have no affect on the snippet.
+        # Corresponds to the JSON property `referenceOnly`
+        # @return [Boolean]
+        attr_accessor :reference_only
+        alias_method :reference_only?, :reference_only
+      
+        # If `true`, then return snippet. If no snippet can be generated, we return "No
+        # snippet is available for this page." A `snippet_status` with `SUCCESS` or `
+        # NO_SNIPPET_AVAILABLE` will also be returned.
+        # Corresponds to the JSON property `returnSnippet`
+        # @return [Boolean]
+        attr_accessor :return_snippet
+        alias_method :return_snippet?, :return_snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_snippet_count = args[:max_snippet_count] if args.key?(:max_snippet_count)
+          @reference_only = args[:reference_only] if args.key?(:reference_only)
+          @return_snippet = args[:return_snippet] if args.key?(:return_snippet)
+        end
+      end
+      
+      # A specification for configuring a summary returned in a search response.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpec
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether to filter out adversarial queries. The default value is `
+        # false`. Google employs search-query classification to detect adversarial
+        # queries. No summary is returned if the search query is classified as an
+        # adversarial query. For example, a user might ask a question regarding negative
+        # comments about the company or submit a query designed to generate unsafe,
+        # policy-violating output. If this field is set to `true`, we skip generating
+        # summaries for adversarial queries and return fallback messages instead.
+        # Corresponds to the JSON property `ignoreAdversarialQuery`
+        # @return [Boolean]
+        attr_accessor :ignore_adversarial_query
+        alias_method :ignore_adversarial_query?, :ignore_adversarial_query
+      
+        # Specifies whether to filter out queries that are not summary-seeking. The
+        # default value is `false`. Google employs search-query classification to detect
+        # summary-seeking queries. No summary is returned if the search query is
+        # classified as a non-summary seeking query. For example, `why is the sky blue`
+        # and `Who is the best soccer player in the world?` are summary-seeking queries,
+        # but `SFO airport` and `world cup 2026` are not. They are most likely
+        # navigational queries. If this field is set to `true`, we skip generating
+        # summaries for non-summary seeking queries and return fallback messages instead.
+        # Corresponds to the JSON property `ignoreNonSummarySeekingQuery`
+        # @return [Boolean]
+        attr_accessor :ignore_non_summary_seeking_query
+        alias_method :ignore_non_summary_seeking_query?, :ignore_non_summary_seeking_query
+      
+        # Specifies whether to include citations in the summary. The default value is `
+        # false`. When this field is set to `true`, summaries include in-line citation
+        # numbers. Example summary including citations: BigQuery is Google Cloud's fully
+        # managed and completely serverless enterprise data warehouse [1]. BigQuery
+        # supports all data types, works across clouds, and has built-in machine
+        # learning and business intelligence, all within a unified platform [2, 3]. The
+        # citation numbers refer to the returned search results and are 1-indexed. For
+        # example, [1] means that the sentence is attributed to the first search result.
+        # [2, 3] means that the sentence is attributed to both the second and third
+        # search results.
+        # Corresponds to the JSON property `includeCitations`
+        # @return [Boolean]
+        attr_accessor :include_citations
+        alias_method :include_citations?, :include_citations
+      
+        # Language code for Summary. Use language tags defined by BCP47.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # The number of top results to generate the summary from. If the number of
+        # results returned is less than `summaryResultCount`, the summary is generated
+        # from all of the results. At most five results can be used to generate a
+        # summary.
+        # Corresponds to the JSON property `summaryResultCount`
+        # @return [Fixnum]
+        attr_accessor :summary_result_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ignore_adversarial_query = args[:ignore_adversarial_query] if args.key?(:ignore_adversarial_query)
+          @ignore_non_summary_seeking_query = args[:ignore_non_summary_seeking_query] if args.key?(:ignore_non_summary_seeking_query)
+          @include_citations = args[:include_citations] if args.key?(:include_citations)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @summary_result_count = args[:summary_result_count] if args.key?(:summary_result_count)
+        end
+      end
+      
+      # The specification that uses customized query embedding vector to do semantic
+      # document retrieval.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpec
+        include Google::Apis::Core::Hashable
+      
+        # The embedding vector used for retrieval. Limit to 1.
+        # Corresponds to the JSON property `embeddingVectors`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpecEmbeddingVector>]
+        attr_accessor :embedding_vectors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @embedding_vectors = args[:embedding_vectors] if args.key?(:embedding_vectors)
+        end
+      end
+      
+      # Embedding vector.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpecEmbeddingVector
+        include Google::Apis::Core::Hashable
+      
+        # Embedding field path in schema.
+        # Corresponds to the JSON property `fieldPath`
+        # @return [String]
+        attr_accessor :field_path
+      
+        # Query embedding vector.
+        # Corresponds to the JSON property `vector`
+        # @return [Array<Float>]
+        attr_accessor :vector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_path = args[:field_path] if args.key?(:field_path)
+          @vector = args[:vector] if args.key?(:vector)
+        end
+      end
+      
+      # A facet specification to perform faceted search.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpec
+        include Google::Apis::Core::Hashable
+      
+        # Enables dynamic position for this facet. If set to true, the position of this
+        # facet among all facets in the response is determined automatically. If dynamic
+        # facets are enabled, it is ordered together. If set to false, the position of
+        # this facet in the response is the same as in the request, and it is ranked
+        # before the facets with dynamic position enable and all dynamic facets. For
+        # example, you may always want to have rating facet returned in the response,
+        # but it's not necessarily to always display the rating facet at the top. In
+        # that case, you can set enable_dynamic_position to true so that the position of
+        # rating facet in response is determined automatically. Another example,
+        # assuming you have the following facets in the request: * "rating",
+        # enable_dynamic_position = true * "price", enable_dynamic_position = false * "
+        # brands", enable_dynamic_position = false And also you have a dynamic facets
+        # enabled, which generates a facet `gender`. Then the final order of the facets
+        # in the response can be ("price", "brands", "rating", "gender") or ("price", "
+        # brands", "gender", "rating") depends on how API orders "gender" and "rating"
+        # facets. However, notice that "price" and "brands" are always ranked at first
+        # and second position because their enable_dynamic_position is false.
+        # Corresponds to the JSON property `enableDynamicPosition`
+        # @return [Boolean]
+        attr_accessor :enable_dynamic_position
+        alias_method :enable_dynamic_position?, :enable_dynamic_position
+      
+        # List of keys to exclude when faceting. By default, FacetKey.key is not
+        # excluded from the filter unless it is listed in this field. Listing a facet
+        # key in this field allows its values to appear as facet results, even when they
+        # are filtered out of search results. Using this field does not affect what
+        # search results are returned. For example, suppose there are 100 documents with
+        # the color facet "Red" and 200 documents with the color facet "Blue". A query
+        # containing the filter "color:ANY("Red")" and having "color" as FacetKey.key
+        # would by default return only "Red" documents in the search results, and also
+        # return "Red" with count 100 as the only color facet. Although there are also
+        # blue documents available, "Blue" would not be shown as an available facet
+        # value. If "color" is listed in "excludedFilterKeys", then the query returns
+        # the facet values "Red" with count 100 and "Blue" with count 200, because the "
+        # color" key is now excluded from the filter. Because this field doesn't affect
+        # search results, the search results are still correctly filtered to return only
+        # "Red" documents. A maximum of 100 values are allowed. Otherwise, an `
+        # INVALID_ARGUMENT` error is returned.
+        # Corresponds to the JSON property `excludedFilterKeys`
+        # @return [Array<String>]
+        attr_accessor :excluded_filter_keys
+      
+        # Specifies how a facet is computed.
+        # Corresponds to the JSON property `facetKey`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpecFacetKey]
+        attr_accessor :facet_key
+      
+        # Maximum of facet values that should be returned for this facet. If unspecified,
+        # defaults to 20. The maximum allowed value is 300. Values above 300 are
+        # coerced to 300. If this field is negative, an `INVALID_ARGUMENT` is returned.
+        # Corresponds to the JSON property `limit`
+        # @return [Fixnum]
+        attr_accessor :limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_dynamic_position = args[:enable_dynamic_position] if args.key?(:enable_dynamic_position)
+          @excluded_filter_keys = args[:excluded_filter_keys] if args.key?(:excluded_filter_keys)
+          @facet_key = args[:facet_key] if args.key?(:facet_key)
+          @limit = args[:limit] if args.key?(:limit)
+        end
+      end
+      
+      # Specifies how a facet is computed.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpecFacetKey
+        include Google::Apis::Core::Hashable
+      
+        # True to make facet keys case insensitive when getting faceting values with
+        # prefixes or contains; false otherwise.
+        # Corresponds to the JSON property `caseInsensitive`
+        # @return [Boolean]
+        attr_accessor :case_insensitive
+        alias_method :case_insensitive?, :case_insensitive
+      
+        # Only get facet values that contains the given strings. For example, suppose "
+        # category" has three values "Action > 2022", "Action > 2021" and "Sci-Fi > 2022"
+        # . If set "contains" to "2022", the "category" facet only contains "Action >
+        # 2022" and "Sci-Fi > 2022". Only supported on textual fields. Maximum is 10.
+        # Corresponds to the JSON property `contains`
+        # @return [Array<String>]
+        attr_accessor :contains
+      
+        # Set only if values should be bucketed into intervals. Must be set for facets
+        # with numerical values. Must not be set for facet with text values. Maximum
+        # number of intervals is 30.
+        # Corresponds to the JSON property `intervals`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaInterval>]
+        attr_accessor :intervals
+      
+        # Required. Supported textual and numerical facet keys in Document object, over
+        # which the facet values are computed. Facet key is case-sensitive.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The order in which documents are returned. Allowed values are: * "count desc",
+        # which means order by SearchResponse.Facet.values.count descending. * "value
+        # desc", which means order by SearchResponse.Facet.values.value descending. Only
+        # applies to textual facets. If not set, textual values are sorted in [natural
+        # order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals
+        # are sorted in the order given by FacetSpec.FacetKey.intervals.
+        # Corresponds to the JSON property `orderBy`
+        # @return [String]
+        attr_accessor :order_by
+      
+        # Only get facet values that start with the given string prefix. For example,
+        # suppose "category" has three values "Action > 2022", "Action > 2021" and "Sci-
+        # Fi > 2022". If set "prefixes" to "Action", the "category" facet only contains "
+        # Action > 2022" and "Action > 2021". Only supported on textual fields. Maximum
+        # is 10.
+        # Corresponds to the JSON property `prefixes`
+        # @return [Array<String>]
+        attr_accessor :prefixes
+      
+        # Only get facet for the given restricted values. Only supported on textual
+        # fields. For example, suppose "category" has three values "Action > 2022", "
+        # Action > 2021" and "Sci-Fi > 2022". If set "restricted_values" to "Action >
+        # 2022", the "category" facet only contains "Action > 2022". Only supported on
+        # textual fields. Maximum is 10.
+        # Corresponds to the JSON property `restrictedValues`
+        # @return [Array<String>]
+        attr_accessor :restricted_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @case_insensitive = args[:case_insensitive] if args.key?(:case_insensitive)
+          @contains = args[:contains] if args.key?(:contains)
+          @intervals = args[:intervals] if args.key?(:intervals)
+          @key = args[:key] if args.key?(:key)
+          @order_by = args[:order_by] if args.key?(:order_by)
+          @prefixes = args[:prefixes] if args.key?(:prefixes)
+          @restricted_values = args[:restricted_values] if args.key?(:restricted_values)
+        end
+      end
+      
+      # Specifies the image query input.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestImageQuery
+        include Google::Apis::Core::Hashable
+      
+        # Base64 encoded image bytes. Supported image formats: JPEG, PNG, and BMP.
+        # Corresponds to the JSON property `imageBytes`
+        # @return [String]
+        attr_accessor :image_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_bytes = args[:image_bytes] if args.key?(:image_bytes)
+        end
+      end
+      
+      # Specification to determine under which conditions query expansion should occur.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec
+        include Google::Apis::Core::Hashable
+      
+        # The condition under which query expansion should occur. Default to Condition.
+        # DISABLED.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # Whether to pin unexpanded results. If this field is set to true, unexpanded
+        # products are always at the top of the search results, followed by the expanded
+        # results.
+        # Corresponds to the JSON property `pinUnexpandedResults`
+        # @return [Boolean]
+        attr_accessor :pin_unexpanded_results
+        alias_method :pin_unexpanded_results?, :pin_unexpanded_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @pin_unexpanded_results = args[:pin_unexpanded_results] if args.key?(:pin_unexpanded_results)
+        end
+      end
+      
+      # The specification for query spell correction.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestSpellCorrectionSpec
+        include Google::Apis::Core::Hashable
+      
+        # The mode under which spell correction should take effect to replace the
+        # original search query. Default to Mode.AUTO.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # Response message for SearchService.Search method.
+      class GoogleCloudDiscoveryengineV1alphaSearchResponse
+        include Google::Apis::Core::Hashable
+      
+        # Controls applied as part of the Control service.
+        # Corresponds to the JSON property `appliedControls`
+        # @return [Array<String>]
+        attr_accessor :applied_controls
+      
+        # A unique search token. This should be included in the UserEvent logs resulting
+        # from this search, which enables accurate attribution of search model
+        # performance.
+        # Corresponds to the JSON property `attributionToken`
+        # @return [String]
+        attr_accessor :attribution_token
+      
+        # Contains the spell corrected query, if found. If the spell correction type is
+        # AUTOMATIC, then the search results are based on corrected_query. Otherwise the
+        # original query is used for search.
+        # Corresponds to the JSON property `correctedQuery`
+        # @return [String]
+        attr_accessor :corrected_query
+      
+        # Results of facets requested by user.
+        # Corresponds to the JSON property `facets`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseFacet>]
+        attr_accessor :facets
+      
+        # Guided search result. The guided search helps user to refine the search
+        # results and narrow down to the real needs from a broaded search results.
+        # Corresponds to the JSON property `guidedSearchResult`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResult]
+        attr_accessor :guided_search_result
+      
+        # A token that can be sent as SearchRequest.page_token to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Information describing query expansion including whether expansion has
+        # occurred.
+        # Corresponds to the JSON property `queryExpansionInfo`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseQueryExpansionInfo]
+        attr_accessor :query_expansion_info
+      
+        # The URI of a customer-defined redirect page. If redirect action is triggered,
+        # no search is performed, and only redirect_uri and attribution_token are set in
+        # the response.
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        # A list of matched documents. The order represents the ranking.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResult>]
+        attr_accessor :results
+      
+        # Summary of the top N search result specified by the summary spec.
+        # Corresponds to the JSON property `summary`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummary]
+        attr_accessor :summary
+      
+        # The estimated total count of matched items irrespective of pagination. The
+        # count of results returned by pagination may be less than the total_size that
+        # matches.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @applied_controls = args[:applied_controls] if args.key?(:applied_controls)
+          @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
+          @corrected_query = args[:corrected_query] if args.key?(:corrected_query)
+          @facets = args[:facets] if args.key?(:facets)
+          @guided_search_result = args[:guided_search_result] if args.key?(:guided_search_result)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @query_expansion_info = args[:query_expansion_info] if args.key?(:query_expansion_info)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+          @results = args[:results] if args.key?(:results)
+          @summary = args[:summary] if args.key?(:summary)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # A facet result.
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseFacet
+        include Google::Apis::Core::Hashable
+      
+        # Whether the facet is dynamically generated.
+        # Corresponds to the JSON property `dynamicFacet`
+        # @return [Boolean]
+        attr_accessor :dynamic_facet
+        alias_method :dynamic_facet?, :dynamic_facet
+      
+        # The key for this facet. E.g., "colors" or "price". It matches SearchRequest.
+        # FacetSpec.FacetKey.key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The facet values for this field.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseFacetFacetValue>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_facet = args[:dynamic_facet] if args.key?(:dynamic_facet)
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # A facet value which contains value names and their count.
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseFacetFacetValue
+        include Google::Apis::Core::Hashable
+      
+        # Number of items that have this facet value.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # A floating point interval.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaInterval]
+        attr_accessor :interval
+      
+        # Text value of a facet, such as "Black" for facet "colors".
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @interval = args[:interval] if args.key?(:interval)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Guided search result. The guided search helps user to refine the search
+      # results and narrow down to the real needs from a broaded search results.
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResult
+        include Google::Apis::Core::Hashable
+      
+        # Suggested follow-up questions.
+        # Corresponds to the JSON property `followUpQuestions`
+        # @return [Array<String>]
+        attr_accessor :follow_up_questions
+      
+        # A list of ranked refinement attributes.
+        # Corresponds to the JSON property `refinementAttributes`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResultRefinementAttribute>]
+        attr_accessor :refinement_attributes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @follow_up_questions = args[:follow_up_questions] if args.key?(:follow_up_questions)
+          @refinement_attributes = args[:refinement_attributes] if args.key?(:refinement_attributes)
+        end
+      end
+      
+      # Useful attribute for search result refinements.
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResultRefinementAttribute
+        include Google::Apis::Core::Hashable
+      
+        # Attribute key used to refine the results e.g. 'movie_type'.
+        # Corresponds to the JSON property `attributeKey`
+        # @return [String]
+        attr_accessor :attribute_key
+      
+        # Attribute value used to refine the results e.g. 'drama'.
+        # Corresponds to the JSON property `attributeValue`
+        # @return [String]
+        attr_accessor :attribute_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_key = args[:attribute_key] if args.key?(:attribute_key)
+          @attribute_value = args[:attribute_value] if args.key?(:attribute_value)
+        end
+      end
+      
+      # Information describing query expansion including whether expansion has
+      # occurred.
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseQueryExpansionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Bool describing whether query expansion has occurred.
+        # Corresponds to the JSON property `expandedQuery`
+        # @return [Boolean]
+        attr_accessor :expanded_query
+        alias_method :expanded_query?, :expanded_query
+      
+        # Number of pinned results. This field will only be set when expansion happens
+        # and SearchRequest.QueryExpansionSpec.pin_unexpanded_results is set to true.
+        # Corresponds to the JSON property `pinnedResultCount`
+        # @return [Fixnum]
+        attr_accessor :pinned_result_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expanded_query = args[:expanded_query] if args.key?(:expanded_query)
+          @pinned_result_count = args[:pinned_result_count] if args.key?(:pinned_result_count)
+        end
+      end
+      
+      # Represents the search results.
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResult
+        include Google::Apis::Core::Hashable
+      
+        # Document captures all raw metadata information of items to be recommended or
+        # searched.
+        # Corresponds to the JSON property `document`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocument]
+        attr_accessor :document
+      
+        # Document.id of the searched Document.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Google provided available scores.
+        # Corresponds to the JSON property `modelScores`
+        # @return [Hash<String,Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDoubleList>]
+        attr_accessor :model_scores
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document = args[:document] if args.key?(:document)
+          @id = args[:id] if args.key?(:id)
+          @model_scores = args[:model_scores] if args.key?(:model_scores)
+        end
+      end
+      
+      # Summary of the top N search result specified by the summary spec.
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseSummary
+        include Google::Apis::Core::Hashable
+      
+        # Additional summary-skipped reasons. This provides the reason for ignored cases.
+        # If nothing is skipped, this field is not set.
+        # Corresponds to the JSON property `summarySkippedReasons`
+        # @return [Array<String>]
+        attr_accessor :summary_skipped_reasons
+      
+        # The summary content.
+        # Corresponds to the JSON property `summaryText`
+        # @return [String]
+        attr_accessor :summary_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @summary_skipped_reasons = args[:summary_skipped_reasons] if args.key?(:summary_skipped_reasons)
+          @summary_text = args[:summary_text] if args.key?(:summary_text)
+        end
+      end
+      
       # Verification information for target sites in advanced site search.
       class GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo
         include Google::Apis::Core::Hashable
@@ -1787,10 +3667,20 @@ module Google
         attr_accessor :exact_match
         alias_method :exact_match?, :exact_match
       
+        # Site search indexing failure reasons.
+        # Corresponds to the JSON property `failureReason`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReason]
+        attr_accessor :failure_reason
+      
         # Output only. This is system-generated based on the provided_uri_pattern.
         # Corresponds to the JSON property `generatedUriPattern`
         # @return [String]
         attr_accessor :generated_uri_pattern
+      
+        # Output only. Indexing status.
+        # Corresponds to the JSON property `indexingStatus`
+        # @return [String]
+        attr_accessor :indexing_status
       
         # Output only. The fully qualified resource name of the target site. `projects/`
         # project`/locations/`location`/collections/`collection`/dataStores/`data_store`/
@@ -1829,12 +3719,78 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exact_match = args[:exact_match] if args.key?(:exact_match)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
           @generated_uri_pattern = args[:generated_uri_pattern] if args.key?(:generated_uri_pattern)
+          @indexing_status = args[:indexing_status] if args.key?(:indexing_status)
           @name = args[:name] if args.key?(:name)
           @provided_uri_pattern = args[:provided_uri_pattern] if args.key?(:provided_uri_pattern)
           @site_verification_info = args[:site_verification_info] if args.key?(:site_verification_info)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Site search indexing failure reasons.
+      class GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReason
+        include Google::Apis::Core::Hashable
+      
+        # Failed due to insufficient quota.
+        # Corresponds to the JSON property `quotaFailure`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure]
+        attr_accessor :quota_failure
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quota_failure = args[:quota_failure] if args.key?(:quota_failure)
+        end
+      end
+      
+      # 
+      class GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure
+        include Google::Apis::Core::Hashable
+      
+        # This number is an estimation on how much total quota this project needs to
+        # successfully complete indexing.
+        # Corresponds to the JSON property `totalRequiredQuota`
+        # @return [Fixnum]
+        attr_accessor :total_required_quota
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_required_quota = args[:total_required_quota] if args.key?(:total_required_quota)
+        end
+      end
+      
+      # Defines text input.
+      class GoogleCloudDiscoveryengineV1alphaTextInput
+        include Google::Apis::Core::Hashable
+      
+        # Defines context of the conversation
+        # Corresponds to the JSON property `context`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConversationContext]
+        attr_accessor :context
+      
+        # Text input.
+        # Corresponds to the JSON property `input`
+        # @return [String]
+        attr_accessor :input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context = args[:context] if args.key?(:context)
+          @input = args[:input] if args.key?(:input)
         end
       end
       
@@ -1894,6 +3850,32 @@ module Google
           @tax = args[:tax] if args.key?(:tax)
           @transaction_id = args[:transaction_id] if args.key?(:transaction_id)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Metadata for UpdateSchema LRO.
+      class GoogleCloudDiscoveryengineV1alphaUpdateSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -2125,6 +4107,478 @@ module Google
         def update!(**args)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Request message for WidgetService.WidgetCompleteQuery method.
+      class GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryRequest
+        include Google::Apis::Core::Hashable
+      
+        # AdditionalParams message for WidgetService methods for security and privacy
+        # enhancement.
+        # Corresponds to the JSON property `additionalParams`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdditionalParams]
+        attr_accessor :additional_params
+      
+        # Request message for CompletionService.CompleteQuery method.
+        # Corresponds to the JSON property `completeQueryRequest`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCompleteQueryRequest]
+        attr_accessor :complete_query_request
+      
+        # Required. The UUID of the WidgetConfig. This field is used to identify the
+        # widget configuration, set of models used to make the auto complete query.
+        # Corresponds to the JSON property `configId`
+        # @return [String]
+        attr_accessor :config_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_params = args[:additional_params] if args.key?(:additional_params)
+          @complete_query_request = args[:complete_query_request] if args.key?(:complete_query_request)
+          @config_id = args[:config_id] if args.key?(:config_id)
+        end
+      end
+      
+      # Response message for WidgetService.WidgetCompleteQuery method.
+      class GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token in response.
+        # Corresponds to the JSON property `uToken`
+        # @return [String]
+        attr_accessor :u_token
+      
+        # Results of the matched query suggestions in widget. The result list is ordered
+        # and the first result is a top suggestion.
+        # Corresponds to the JSON property `widgetQuerySuggestions`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryResponseWidgetQuerySuggestion>]
+        attr_accessor :widget_query_suggestions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @u_token = args[:u_token] if args.key?(:u_token)
+          @widget_query_suggestions = args[:widget_query_suggestions] if args.key?(:widget_query_suggestions)
+        end
+      end
+      
+      # Suggestions as search queries.
+      class GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryResponseWidgetQuerySuggestion
+        include Google::Apis::Core::Hashable
+      
+        # The suggestion for the query.
+        # Corresponds to the JSON property `suggestion`
+        # @return [String]
+        attr_accessor :suggestion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @suggestion = args[:suggestion] if args.key?(:suggestion)
+        end
+      end
+      
+      # WidgetConfig captures configs at the Widget level.
+      class GoogleCloudDiscoveryengineV1alphaWidgetConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether allow no-auth integration with widget. If set true, public access to
+        # search or other solutions from widget is allowed without authenication token
+        # provided by customer hosted backend server.
+        # Corresponds to the JSON property `allowPublicAccess`
+        # @return [Boolean]
+        attr_accessor :allow_public_access
+        alias_method :allow_public_access?, :allow_public_access
+      
+        # Allowlisted domains that can load this widget.
+        # Corresponds to the JSON property `allowlistedDomains`
+        # @return [Array<String>]
+        attr_accessor :allowlisted_domains
+      
+        # Output only. Unique obfuscated identifier of a WidgetConfig.
+        # Corresponds to the JSON property `configId`
+        # @return [String]
+        attr_accessor :config_id
+      
+        # A specification for configuring the behavior of content search.
+        # Corresponds to the JSON property `contentSearchSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec]
+        attr_accessor :content_search_spec
+      
+        # Output only. Timestamp the WidgetConfig was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The type of the parent data store.
+        # Corresponds to the JSON property `dataStoreType`
+        # @return [String]
+        attr_accessor :data_store_type
+      
+        # Required. The human readable widget config display name. Used in Discovery UI.
+        # This field must be a UTF-8 encoded string with a length limit of 128
+        # characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Whether or not to enable autocomplete.
+        # Corresponds to the JSON property `enableAutocomplete`
+        # @return [Boolean]
+        attr_accessor :enable_autocomplete
+        alias_method :enable_autocomplete?, :enable_autocomplete
+      
+        # Whether to allow conversational search (LLM, multi-turn) or not (non-LLM,
+        # single-turn).
+        # Corresponds to the JSON property `enableConversationalSearch`
+        # @return [Boolean]
+        attr_accessor :enable_conversational_search
+        alias_method :enable_conversational_search?, :enable_conversational_search
+      
+        # Turn on or off collecting the search result quality feedback from end users.
+        # Corresponds to the JSON property `enableQualityFeedback`
+        # @return [Boolean]
+        attr_accessor :enable_quality_feedback
+        alias_method :enable_quality_feedback?, :enable_quality_feedback
+      
+        # Whether to show the result score.
+        # Corresponds to the JSON property `enableResultScore`
+        # @return [Boolean]
+        attr_accessor :enable_result_score
+        alias_method :enable_result_score?, :enable_result_score
+      
+        # Whether to enable safe search.
+        # Corresponds to the JSON property `enableSafeSearch`
+        # @return [Boolean]
+        attr_accessor :enable_safe_search
+        alias_method :enable_safe_search?, :enable_safe_search
+      
+        # Turn on or off summary for each snippets result.
+        # Corresponds to the JSON property `enableSnippetResultSummary`
+        # @return [Boolean]
+        attr_accessor :enable_snippet_result_summary
+        alias_method :enable_snippet_result_summary?, :enable_snippet_result_summary
+      
+        # Turn on or off summarization for the search response.
+        # Corresponds to the JSON property `enableSummarization`
+        # @return [Boolean]
+        attr_accessor :enable_summarization
+        alias_method :enable_summarization?, :enable_summarization
+      
+        # The configuration and appearance of facets in the end user view.
+        # Corresponds to the JSON property `facetField`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigFacetField>]
+        attr_accessor :facet_field
+      
+        # The key is the UI component. Mock. Currently supported `title`, `thumbnail`, `
+        # url`, `custom1`, `custom2`, `custom3`. The value is the name of the field
+        # along with its device visibility. The 3 custom fields are optional and can be
+        # added or removed. `title`, `thumbnail`, `url` are required UI components that
+        # cannot be removed.
+        # Corresponds to the JSON property `fieldsUiComponentsMap`
+        # @return [Hash<String,Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigUiComponentField>]
+        attr_accessor :fields_ui_components_map
+      
+        # Output only. Whether LLM is enabled in the corresponding data store.
+        # Corresponds to the JSON property `llmEnabled`
+        # @return [Boolean]
+        attr_accessor :llm_enabled
+        alias_method :llm_enabled?, :llm_enabled
+      
+        # Immutable. The full resource name of the widget config. Format: `projects/`
+        # project`/locations/`location`/collections/`collection_id`/dataStores/`
+        # data_store_id`/widgetConfigs/`widget_config_id``. This field must be a UTF-8
+        # encoded string with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. Specifies the solution type that this WidgetConfig can be
+        # used for.
+        # Corresponds to the JSON property `solutionType`
+        # @return [String]
+        attr_accessor :solution_type
+      
+        # Output only. Timestamp the WidgetConfig was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_public_access = args[:allow_public_access] if args.key?(:allow_public_access)
+          @allowlisted_domains = args[:allowlisted_domains] if args.key?(:allowlisted_domains)
+          @config_id = args[:config_id] if args.key?(:config_id)
+          @content_search_spec = args[:content_search_spec] if args.key?(:content_search_spec)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data_store_type = args[:data_store_type] if args.key?(:data_store_type)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_autocomplete = args[:enable_autocomplete] if args.key?(:enable_autocomplete)
+          @enable_conversational_search = args[:enable_conversational_search] if args.key?(:enable_conversational_search)
+          @enable_quality_feedback = args[:enable_quality_feedback] if args.key?(:enable_quality_feedback)
+          @enable_result_score = args[:enable_result_score] if args.key?(:enable_result_score)
+          @enable_safe_search = args[:enable_safe_search] if args.key?(:enable_safe_search)
+          @enable_snippet_result_summary = args[:enable_snippet_result_summary] if args.key?(:enable_snippet_result_summary)
+          @enable_summarization = args[:enable_summarization] if args.key?(:enable_summarization)
+          @facet_field = args[:facet_field] if args.key?(:facet_field)
+          @fields_ui_components_map = args[:fields_ui_components_map] if args.key?(:fields_ui_components_map)
+          @llm_enabled = args[:llm_enabled] if args.key?(:llm_enabled)
+          @name = args[:name] if args.key?(:name)
+          @solution_type = args[:solution_type] if args.key?(:solution_type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Facet fields that store the mapping of fields to end user widget appearance.
+      class GoogleCloudDiscoveryengineV1alphaWidgetConfigFacetField
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The field name that end users will see.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. Registered field name. The format is `field.abc`.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # Facet field that maps to a UI Component.
+      class GoogleCloudDiscoveryengineV1alphaWidgetConfigUiComponentField
+        include Google::Apis::Core::Hashable
+      
+        # The field visibility on different types of devices.
+        # Corresponds to the JSON property `deviceVisibility`
+        # @return [Array<String>]
+        attr_accessor :device_visibility
+      
+        # The template to customize how the field is displayed. An example value would
+        # be a string that looks like: "Price: `value`".
+        # Corresponds to the JSON property `displayTemplate`
+        # @return [String]
+        attr_accessor :display_template
+      
+        # Required. Registered field name. The format is `field.abc`.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_visibility = args[:device_visibility] if args.key?(:device_visibility)
+          @display_template = args[:display_template] if args.key?(:display_template)
+          @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # Request message for WidgetService.WidgetConverseConversation method.
+      class GoogleCloudDiscoveryengineV1alphaWidgetConverseConversationRequest
+        include Google::Apis::Core::Hashable
+      
+        # AdditionalParams message for WidgetService methods for security and privacy
+        # enhancement.
+        # Corresponds to the JSON property `additionalParams`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdditionalParams]
+        attr_accessor :additional_params
+      
+        # Required. The UUID of the WidgetConfig. This field is used to identify the
+        # widget configuration, set of models used to make the user event collection.
+        # Corresponds to the JSON property `configId`
+        # @return [String]
+        attr_accessor :config_id
+      
+        # The id of the Conversation to get. Use "-" to activate auto session mode,
+        # which automatically creates a new conversation inside a ConverseConversation
+        # session.
+        # Corresponds to the JSON property `conversationId`
+        # @return [String]
+        attr_accessor :conversation_id
+      
+        # Request message for ConversationalSearchService.ConverseConversation method.
+        # Corresponds to the JSON property `converseConversationRequest`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConverseConversationRequest]
+        attr_accessor :converse_conversation_request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_params = args[:additional_params] if args.key?(:additional_params)
+          @config_id = args[:config_id] if args.key?(:config_id)
+          @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
+          @converse_conversation_request = args[:converse_conversation_request] if args.key?(:converse_conversation_request)
+        end
+      end
+      
+      # Response message for WidgetService.WidgetConverseConversation method.
+      class GoogleCloudDiscoveryengineV1alphaWidgetConverseConversationResponse
+        include Google::Apis::Core::Hashable
+      
+        # The id of the Conversation returned.
+        # Corresponds to the JSON property `conversationId`
+        # @return [String]
+        attr_accessor :conversation_id
+      
+        # Response message for ConversationalSearchService.ConverseConversation method.
+        # Corresponds to the JSON property `converseConversationResponse`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConverseConversationResponse]
+        attr_accessor :converse_conversation_response
+      
+        # The token in response.
+        # Corresponds to the JSON property `uToken`
+        # @return [String]
+        attr_accessor :u_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
+          @converse_conversation_response = args[:converse_conversation_response] if args.key?(:converse_conversation_response)
+          @u_token = args[:u_token] if args.key?(:u_token)
+        end
+      end
+      
+      # Request message for WidgetService.WidgetSearch method.
+      class GoogleCloudDiscoveryengineV1alphaWidgetSearchRequest
+        include Google::Apis::Core::Hashable
+      
+        # AdditionalParams message for WidgetService methods for security and privacy
+        # enhancement.
+        # Corresponds to the JSON property `additionalParams`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdditionalParams]
+        attr_accessor :additional_params
+      
+        # Required. The UUID of the Search WidgetConfig. This field is used to identify
+        # the search widget configuration, set of models used to make the search.
+        # Corresponds to the JSON property `configId`
+        # @return [String]
+        attr_accessor :config_id
+      
+        # Request message for SearchService.Search method.
+        # Corresponds to the JSON property `searchRequest`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequest]
+        attr_accessor :search_request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_params = args[:additional_params] if args.key?(:additional_params)
+          @config_id = args[:config_id] if args.key?(:config_id)
+          @search_request = args[:search_request] if args.key?(:search_request)
+        end
+      end
+      
+      # Response message for WidgetService.WidgetSearch method.
+      class GoogleCloudDiscoveryengineV1alphaWidgetSearchResponse
+        include Google::Apis::Core::Hashable
+      
+        # Response message for SearchService.Search method.
+        # Corresponds to the JSON property `searchResponse`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponse]
+        attr_accessor :search_response
+      
+        # The token in response.
+        # Corresponds to the JSON property `uToken`
+        # @return [String]
+        attr_accessor :u_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @search_response = args[:search_response] if args.key?(:search_response)
+          @u_token = args[:u_token] if args.key?(:u_token)
+        end
+      end
+      
+      # Metadata for Create Schema LRO.
+      class GoogleCloudDiscoveryengineV1betaCreateSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata for DeleteSchema LRO.
+      class GoogleCloudDiscoveryengineV1betaDeleteSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -2393,6 +4847,32 @@ module Google
           @json_schema = args[:json_schema] if args.key?(:json_schema)
           @name = args[:name] if args.key?(:name)
           @struct_schema = args[:struct_schema] if args.key?(:struct_schema)
+        end
+      end
+      
+      # Metadata for UpdateSchema LRO.
+      class GoogleCloudDiscoveryengineV1betaUpdateSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
