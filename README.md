@@ -53,7 +53,7 @@ content.authorization = Google::Auth::ServiceAccountCredentials.make_creds(
   scope: scope)
 
 content.authorization.fetch_access_token!
-# Service methods: https://googleapis.dev/ruby/google-api-client/latest/Google/Apis/ContentV2_1/ShoppingContentService.html
+# Service methods: https://rubydoc.info/gems/google-apis-content_v2_1/Google/Apis/ContentV2_1/ShoppingContentService
 content.list_datafeeds(merchant_id) # Returns Google::Apis::ContentV2_1::ListDatafeedsResponse
 ```
 
