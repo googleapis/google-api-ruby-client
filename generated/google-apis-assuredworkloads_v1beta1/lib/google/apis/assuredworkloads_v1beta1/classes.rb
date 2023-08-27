@@ -363,7 +363,7 @@ module Google
         end
       end
       
-      # Workload monitoring Violation. Next Id: 27
+      # Workload monitoring Violation. Next Id: 28
       class GoogleCloudAssuredworkloadsV1beta1Violation
         include Google::Apis::Core::Hashable
       
