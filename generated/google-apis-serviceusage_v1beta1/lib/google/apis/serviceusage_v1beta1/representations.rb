@@ -586,6 +586,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProducerQuotaPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Publishing
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1698,6 +1704,18 @@ module Google
         end
       end
       
+      class ProducerQuotaPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container, as: 'container'
+          hash :dimensions, as: 'dimensions'
+          property :metric, as: 'metric'
+          property :name, as: 'name'
+          property :policy_value, :numeric_string => true, as: 'policyValue'
+          property :unit, as: 'unit'
+        end
+      end
+      
       class Publishing
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1745,6 +1763,8 @@ module Google
           hash :dimensions, as: 'dimensions'
           property :effective_limit, :numeric_string => true, as: 'effectiveLimit'
           property :producer_override, as: 'producerOverride', class: Google::Apis::ServiceusageV1beta1::QuotaOverride, decorator: Google::Apis::ServiceusageV1beta1::QuotaOverride::Representation
+      
+          property :producer_quota_policy, as: 'producerQuotaPolicy', class: Google::Apis::ServiceusageV1beta1::ProducerQuotaPolicy, decorator: Google::Apis::ServiceusageV1beta1::ProducerQuotaPolicy::Representation
       
         end
       end
