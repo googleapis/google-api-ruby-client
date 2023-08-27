@@ -63,6 +63,58 @@ module Google
         end
       end
       
+      # Alert that is triggered when Google support requests to access customer data.
+      class AccessApproval
+        include Google::Apis::Core::Hashable
+      
+        # Justification for data access based on justification enums.
+        # Corresponds to the JSON property `justificationReason`
+        # @return [Array<String>]
+        attr_accessor :justification_reason
+      
+        # Office location of Google staff requesting access such as "US".
+        # Corresponds to the JSON property `officeLocation`
+        # @return [String]
+        attr_accessor :office_location
+      
+        # Products within scope of the Access Approvals request.
+        # Corresponds to the JSON property `products`
+        # @return [Array<String>]
+        attr_accessor :products
+      
+        # ID of the Access Approvals request. This is a helpful field when requesting
+        # support from Google.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Scope of access, also known as a resource. This is further narrowed down by
+        # the product field.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Support tickets related to this Access Approvals request. Populated if there
+        # is an associated case number.
+        # Corresponds to the JSON property `tickets`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::SupportTicket>]
+        attr_accessor :tickets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @justification_reason = args[:justification_reason] if args.key?(:justification_reason)
+          @office_location = args[:office_location] if args.key?(:office_location)
+          @products = args[:products] if args.key?(:products)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @scope = args[:scope] if args.key?(:scope)
+          @tickets = args[:tickets] if args.key?(:tickets)
+        end
+      end
+      
       # Details about why an account is receiving an account suspension warning.
       class AccountSuspensionDetails
         include Google::Apis::Core::Hashable
@@ -1965,6 +2017,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @user_email = args[:user_email] if args.key?(:user_email)
+        end
+      end
+      
+      # Support ticket related to Access Approvals request
+      class SupportTicket
+        include Google::Apis::Core::Hashable
+      
+        # Support ticket ID
+        # Corresponds to the JSON property `ticketId`
+        # @return [String]
+        attr_accessor :ticket_id
+      
+        # Link to support ticket
+        # Corresponds to the JSON property `ticketUrl`
+        # @return [String]
+        attr_accessor :ticket_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ticket_id = args[:ticket_id] if args.key?(:ticket_id)
+          @ticket_url = args[:ticket_url] if args.key?(:ticket_url)
         end
       end
       

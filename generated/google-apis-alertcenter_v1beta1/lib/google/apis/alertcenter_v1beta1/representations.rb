@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccessApproval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountSuspensionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -364,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SupportTicket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SuspiciousActivity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -438,6 +450,19 @@ module Google
           property :product, as: 'product'
           property :sub_alert_id, as: 'subAlertId'
           property :variation_type, as: 'variationType'
+        end
+      end
+      
+      class AccessApproval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :justification_reason, as: 'justificationReason'
+          property :office_location, as: 'officeLocation'
+          collection :products, as: 'products'
+          property :request_id, as: 'requestId'
+          property :scope, as: 'scope'
+          collection :tickets, as: 'tickets', class: Google::Apis::AlertcenterV1beta1::SupportTicket, decorator: Google::Apis::AlertcenterV1beta1::SupportTicket::Representation
+      
         end
       end
       
@@ -987,6 +1012,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :user_email, as: 'userEmail'
+        end
+      end
+      
+      class SupportTicket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ticket_id, as: 'ticketId'
+          property :ticket_url, as: 'ticketUrl'
         end
       end
       
