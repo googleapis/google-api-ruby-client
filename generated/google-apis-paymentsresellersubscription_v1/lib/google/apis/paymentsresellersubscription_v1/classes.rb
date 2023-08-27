@@ -319,6 +319,26 @@ module Google
         end
       end
       
+      # Details for a subscriptiin line item with finite billing cycles.
+      class GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. The number of a subscription line item billing cycles after which
+        # billing will stop automatically.
+        # Corresponds to the JSON property `billingCycleCountLimit`
+        # @return [Fixnum]
+        attr_accessor :billing_cycle_count_limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_cycle_count_limit = args[:billing_cycle_count_limit] if args.key?(:billing_cycle_count_limit)
+        end
+      end
+      
       # Payload specific to Google One products.
       class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
         include Google::Apis::Core::Hashable
@@ -438,6 +458,11 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1Product
         include Google::Apis::Core::Hashable
       
+        # Details for a subscriptiin line item with finite billing cycles.
+        # Corresponds to the JSON property `finiteBillingCycleDetails`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails]
+        attr_accessor :finite_billing_cycle_details
+      
         # Output only. Response only. Resource name of the product. It will have the
         # format of "partners/`partner_id`/products/`product_id`"
         # Corresponds to the JSON property `name`
@@ -471,6 +496,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @finite_billing_cycle_details = args[:finite_billing_cycle_details] if args.key?(:finite_billing_cycle_details)
           @name = args[:name] if args.key?(:name)
           @price_configs = args[:price_configs] if args.key?(:price_configs)
           @region_codes = args[:region_codes] if args.key?(:region_codes)
@@ -870,6 +896,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Details for a subscriptiin line item with finite billing cycles.
+        # Corresponds to the JSON property `finiteBillingCycleDetails`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails]
+        attr_accessor :finite_billing_cycle_details
+      
         # Output only. The free trial end time will be populated after the line item is
         # successfully processed. End time of the line item free trial period, in ISO
         # 8061 format. For example, "2019-08-31T17:28:54.564Z". It will be set the same
@@ -925,6 +956,7 @@ module Google
         def update!(**args)
           @amount = args[:amount] if args.key?(:amount)
           @description = args[:description] if args.key?(:description)
+          @finite_billing_cycle_details = args[:finite_billing_cycle_details] if args.key?(:finite_billing_cycle_details)
           @line_item_free_trial_end_time = args[:line_item_free_trial_end_time] if args.key?(:line_item_free_trial_end_time)
           @line_item_index = args[:line_item_index] if args.key?(:line_item_index)
           @line_item_promotion_specs = args[:line_item_promotion_specs] if args.key?(:line_item_promotion_specs)
