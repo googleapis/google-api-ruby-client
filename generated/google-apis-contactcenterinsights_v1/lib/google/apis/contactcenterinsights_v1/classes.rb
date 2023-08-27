@@ -1696,6 +1696,19 @@ module Google
         end
       end
       
+      # Response from export issue model
+      class GoogleCloudContactcenterinsightsV1ExportIssueModelResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Agent Assist frequently-asked-question answer data.
       class GoogleCloudContactcenterinsightsV1FaqAnswerData
         include Google::Apis::Core::Hashable
@@ -1778,6 +1791,19 @@ module Google
       
       # The data for a hold annotation.
       class GoogleCloudContactcenterinsightsV1HoldData
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response from import issue model
+      class GoogleCloudContactcenterinsightsV1ImportIssueModelResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -4715,6 +4741,19 @@ module Google
         end
       end
       
+      # Response from export issue model
+      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Agent Assist frequently-asked-question answer data.
       class GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData
         include Google::Apis::Core::Hashable
@@ -4797,6 +4836,19 @@ module Google
       
       # The data for a hold annotation.
       class GoogleCloudContactcenterinsightsV1alpha1HoldData
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response from import issue model
+      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
