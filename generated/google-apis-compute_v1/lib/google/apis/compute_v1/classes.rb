@@ -4931,6 +4931,50 @@ module Google
       end
       
       # 
+      class BulkInsertOperationStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Count of VMs successfully created so far.
+        # Corresponds to the JSON property `createdVmCount`
+        # @return [Fixnum]
+        attr_accessor :created_vm_count
+      
+        # [Output Only] Count of VMs that got deleted during rollback.
+        # Corresponds to the JSON property `deletedVmCount`
+        # @return [Fixnum]
+        attr_accessor :deleted_vm_count
+      
+        # [Output Only] Count of VMs that started creating but encountered an error.
+        # Corresponds to the JSON property `failedToCreateVmCount`
+        # @return [Fixnum]
+        attr_accessor :failed_to_create_vm_count
+      
+        # [Output Only] Creation status of BulkInsert operation - information if the
+        # flow is rolling forward or rolling back.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # [Output Only] Count of VMs originally planned to be created.
+        # Corresponds to the JSON property `targetVmCount`
+        # @return [Fixnum]
+        attr_accessor :target_vm_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_vm_count = args[:created_vm_count] if args.key?(:created_vm_count)
+          @deleted_vm_count = args[:deleted_vm_count] if args.key?(:deleted_vm_count)
+          @failed_to_create_vm_count = args[:failed_to_create_vm_count] if args.key?(:failed_to_create_vm_count)
+          @status = args[:status] if args.key?(:status)
+          @target_vm_count = args[:target_vm_count] if args.key?(:target_vm_count)
+        end
+      end
+      
+      # 
       class CacheInvalidationRule
         include Google::Apis::Core::Hashable
       
@@ -6152,7 +6196,7 @@ module Google
         # a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk
         # parameter, or specify it alone to create an empty persistent disk. If you
         # specify this field along with a source, the value of sizeGb must not be less
-        # than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        # than the size of the source. Acceptable values are greater than 0.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
@@ -16745,6 +16789,26 @@ module Google
       end
       
       # 
+      class InstancesBulkInsertOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Status information per location (location name is key). Example key: zones/us-
+        # central1-a
+        # Corresponds to the JSON property `perLocationStatus`
+        # @return [Hash<String,Google::Apis::ComputeV1::BulkInsertOperationStatus>]
+        attr_accessor :per_location_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @per_location_status = args[:per_location_status] if args.key?(:per_location_status)
+        end
+      end
+      
+      # 
       class InstancesGetEffectiveFirewallsResponse
         include Google::Apis::Core::Hashable
       
@@ -17549,9 +17613,8 @@ module Google
         attr_accessor :operational_status
       
         # [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present
-        # for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-        # initiate provisioning with a selected partner. Of the form "XXXXX/region/
-        # domain"
+        # for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate
+        # provisioning with a selected partner. Of the form "XXXXX/region/domain"
         # Corresponds to the JSON property `pairingKey`
         # @return [String]
         attr_accessor :pairing_key
@@ -25623,6 +25686,11 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
+        # 
+        # Corresponds to the JSON property `instancesBulkInsertOperationMetadata`
+        # @return [Google::Apis::ComputeV1::InstancesBulkInsertOperationMetadata]
+        attr_accessor :instances_bulk_insert_operation_metadata
+      
         # [Output Only] Type of the resource. Always `compute#operation` for Operation
         # resources.
         # Corresponds to the JSON property `kind`
@@ -25735,6 +25803,7 @@ module Google
           @http_error_status_code = args[:http_error_status_code] if args.key?(:http_error_status_code)
           @id = args[:id] if args.key?(:id)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
+          @instances_bulk_insert_operation_metadata = args[:instances_bulk_insert_operation_metadata] if args.key?(:instances_bulk_insert_operation_metadata)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @operation_group_id = args[:operation_group_id] if args.key?(:operation_group_id)
@@ -32824,8 +32893,9 @@ module Google
       class RouterNat
         include Google::Apis::Core::Hashable
       
-        # The network tier to use when automatically reserving IP addresses. Must be one
-        # of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+        # The network tier to use when automatically reserving NAT IP addresses. Must be
+        # one of: PREMIUM, STANDARD. If not specified, then the current project-level
+        # default tier is used.
         # Corresponds to the JSON property `autoNetworkTier`
         # @return [String]
         attr_accessor :auto_network_tier
@@ -44289,12 +44359,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :peer_external_gateway_interface
       
-        # URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+        # URL of the peer side HA VPN gateway to which this VPN tunnel is connected.
         # Provided by the client when the VPN tunnel is created. This field can be used
         # when creating highly available VPN from VPC network to VPC network, the field
         # is exclusive with the field peerExternalGateway. If provided, the VPN tunnel
-        # will automatically use the same vpnGatewayInterface ID in the peer GCP VPN
-        # gateway.
+        # will automatically use the same vpnGatewayInterface ID in the peer Google
+        # Cloud VPN gateway.
         # Corresponds to the JSON property `peerGcpGateway`
         # @return [String]
         attr_accessor :peer_gcp_gateway
