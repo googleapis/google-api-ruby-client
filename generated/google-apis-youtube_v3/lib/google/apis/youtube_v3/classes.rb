@@ -2926,7 +2926,7 @@ module Google
         alias_method :enabled?, :enabled
       
         # If set, automatic cuepoint insertion is paused until this timestamp ("No Ad
-        # Zone").
+        # Zone"). The value is specified in ISO 8601 format.
         # Corresponds to the JSON property `pauseAdsUntil`
         # @return [String]
         attr_accessor :pause_ads_until
