@@ -307,6 +307,16 @@ module Google
         attr_accessor :disable_default_iam_recipients
         alias_method :disable_default_iam_recipients?, :disable_default_iam_recipients
       
+        # Optional. When set to true, and when the budget has a single project
+        # configured, notifications will be sent to project level recipients of that
+        # project. This field will be ignored if the budget has multiple or no project
+        # configured. Currently, project level recipients are the users with `Owner`
+        # role on a cloud project.
+        # Corresponds to the JSON property `enableProjectLevelRecipients`
+        # @return [Boolean]
+        attr_accessor :enable_project_level_recipients
+        alias_method :enable_project_level_recipients?, :enable_project_level_recipients
+      
         # Optional. Email targets to send notifications to when a threshold is exceeded.
         # This is in addition to the `DefaultIamRecipients` who receive alert emails
         # based on their billing account IAM role. The value is the full REST resource
@@ -366,6 +376,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disable_default_iam_recipients = args[:disable_default_iam_recipients] if args.key?(:disable_default_iam_recipients)
+          @enable_project_level_recipients = args[:enable_project_level_recipients] if args.key?(:enable_project_level_recipients)
           @monitoring_notification_channels = args[:monitoring_notification_channels] if args.key?(:monitoring_notification_channels)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
           @schema_version = args[:schema_version] if args.key?(:schema_version)
