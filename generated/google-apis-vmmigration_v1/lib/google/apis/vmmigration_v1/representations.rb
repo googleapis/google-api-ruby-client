@@ -478,7 +478,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VmwareDiskDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmwareSourceDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmwareSourceVmDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -587,7 +599,6 @@ module Google
           collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1::AwsDiskDetails, decorator: Google::Apis::VmmigrationV1::AwsDiskDetails::Representation
       
           property :firmware, as: 'firmware'
-          collection :vm_capabilities, as: 'vmCapabilities'
         end
       end
       
@@ -1059,6 +1070,8 @@ module Google
           property :state, as: 'state'
           property :state_time, as: 'stateTime'
           property :update_time, as: 'updateTime'
+          property :vmware_source_vm_details, as: 'vmwareSourceVmDetails', class: Google::Apis::VmmigrationV1::VmwareSourceVmDetails, decorator: Google::Apis::VmmigrationV1::VmwareSourceVmDetails::Representation
+      
         end
       end
       
@@ -1344,6 +1357,15 @@ module Google
         end
       end
       
+      class VmwareDiskDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_number, as: 'diskNumber'
+          property :label, as: 'label'
+          property :size_gb, :numeric_string => true, as: 'sizeGb'
+        end
+      end
+      
       class VmwareSourceDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1352,6 +1374,16 @@ module Google
           property :thumbprint, as: 'thumbprint'
           property :username, as: 'username'
           property :vcenter_ip, as: 'vcenterIp'
+        end
+      end
+      
+      class VmwareSourceVmDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :committed_storage_bytes, :numeric_string => true, as: 'committedStorageBytes'
+          collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1::VmwareDiskDetails, decorator: Google::Apis::VmmigrationV1::VmwareDiskDetails::Representation
+      
+          property :firmware, as: 'firmware'
         end
       end
       
