@@ -1166,7 +1166,8 @@ module Google
         #   projects/*/locations/*`.
         # @param [Google::Apis::CertificatemanagerV1::TrustConfig] trust_config_object
         # @param [String] trust_config_id
-        #   Required. A user-provided name of the TrustConfig.
+        #   Required. A user-provided name of the TrustConfig. Must match the regexp `[a-
+        #   z0-9-]`1,63``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
