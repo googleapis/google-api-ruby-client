@@ -472,6 +472,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1CreateExtensionControllerOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1CreateExtensionDeploymentOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1CreateFeatureOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1241,6 +1253,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1ImportDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImportExtensionOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4855,6 +4873,22 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1CreateExtensionControllerOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1CreateExtensionDeploymentOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1CreateFeatureOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5861,11 +5895,6 @@ module Google
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
           property :value_type, as: 'valueType'
-          property :version_create_time, as: 'versionCreateTime'
-          property :version_description, as: 'versionDescription'
-          property :version_id, as: 'versionId'
-          hash :version_labels, as: 'versionLabels'
-          property :version_update_time, as: 'versionUpdateTime'
         end
       end
       
@@ -6208,6 +6237,14 @@ module Google
       class GoogleCloudAiplatformV1beta1ImportDataResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImportExtensionOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata::Representation
+      
         end
       end
       
@@ -7619,6 +7656,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :expiration_time, as: 'expirationTime'
           property :health_state, as: 'healthState'
           property :name, as: 'name'
           property :notebook_runtime_template_ref, as: 'notebookRuntimeTemplateRef', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookRuntimeTemplateRef, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookRuntimeTemplateRef::Representation
@@ -7727,6 +7765,7 @@ module Google
           collection :reserved_ip_ranges, as: 'reservedIpRanges'
           property :runtime_config, as: 'runtimeConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig::Representation
       
+          property :schedule_name, as: 'scheduleName'
           property :service_account, as: 'serviceAccount'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
@@ -7950,6 +7989,8 @@ module Google
           property :create_application, as: 'createApplication', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences::Representation
       
           property :deploy, as: 'deploy', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeploy, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeploy::Representation
+      
+          property :open_evaluation_pipeline, as: 'openEvaluationPipeline', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences::Representation
       
           property :open_fine_tuning_pipeline, as: 'openFineTuningPipeline', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences::Representation
       
@@ -8310,7 +8351,6 @@ module Google
           property :disk_spec, as: 'diskSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DiskSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DiskSpec::Representation
       
           property :id, as: 'id'
-          property :idle_replica_count, :numeric_string => true, as: 'idleReplicaCount'
           property :machine_spec, as: 'machineSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MachineSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MachineSpec::Representation
       
           property :replica_count, :numeric_string => true, as: 'replicaCount'
@@ -8462,6 +8502,7 @@ module Google
       class GoogleCloudAiplatformV1beta1Scheduling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_retries, as: 'disableRetries'
           property :restart_job_on_worker_restart, as: 'restartJobOnWorkerRestart'
           property :timeout, as: 'timeout'
         end

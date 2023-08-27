@@ -2386,6 +2386,44 @@ module Google
         end
       end
       
+      # Details of ExtensionControllerService.CreateExtensionController operation.
+      class GoogleCloudAiplatformV1beta1CreateExtensionControllerOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
+      # Details of ExtensionRegistryService.CreateExtensionDeployment operation.
+      class GoogleCloudAiplatformV1beta1CreateExtensionDeploymentOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
       # Details of operations that perform create Feature.
       class GoogleCloudAiplatformV1beta1CreateFeatureOperationMetadata
         include Google::Apis::Core::Hashable
@@ -6158,37 +6196,6 @@ module Google
         # @return [String]
         attr_accessor :value_type
       
-        # Output only. Timestamp when this version was created.
-        # Corresponds to the JSON property `versionCreateTime`
-        # @return [String]
-        attr_accessor :version_create_time
-      
-        # The description of this version.
-        # Corresponds to the JSON property `versionDescription`
-        # @return [String]
-        attr_accessor :version_description
-      
-        # Output only. Immutable. The version ID of the feature. It is an auto-
-        # incrementing decimal number in string representation. A new version is
-        # committed when a new model version is created under an existing feature id.
-        # Corresponds to the JSON property `versionId`
-        # @return [String]
-        attr_accessor :version_id
-      
-        # The labels with user-defined metadata to organize your versions. Label keys
-        # and values can be no longer than 64 characters (Unicode codepoints), can only
-        # contain lowercase letters, numeric characters, underscores and dashes.
-        # International characters are allowed. See https://goo.gl/xmQnxf for more
-        # information and examples of labels.
-        # Corresponds to the JSON property `versionLabels`
-        # @return [Hash<String,String>]
-        attr_accessor :version_labels
-      
-        # Output only. Timestamp when this version was most recently updated.
-        # Corresponds to the JSON property `versionUpdateTime`
-        # @return [String]
-        attr_accessor :version_update_time
-      
         def initialize(**args)
            update!(**args)
         end
@@ -6206,11 +6213,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @value_type = args[:value_type] if args.key?(:value_type)
-          @version_create_time = args[:version_create_time] if args.key?(:version_create_time)
-          @version_description = args[:version_description] if args.key?(:version_description)
-          @version_id = args[:version_id] if args.key?(:version_id)
-          @version_labels = args[:version_labels] if args.key?(:version_labels)
-          @version_update_time = args[:version_update_time] if args.key?(:version_update_time)
         end
       end
       
@@ -7483,6 +7485,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Details of ExtensionRegistryService.ImportExtension operation.
+      class GoogleCloudAiplatformV1beta1ImportExtensionOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
       
@@ -12527,6 +12548,15 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. Timestamp when this NotebookRuntime will be expired: 1. System
+        # Predefined NotebookRuntime: 24 hours after creation. After expiration, system
+        # predifined runtime will be deleted. 2. User created NotebookRuntime: 6 months
+        # after last upgrade. After expiration, user created runtime will be stopped and
+        # allowed for upgrade.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
+      
         # Output only. The health state of the NotebookRuntime.
         # Corresponds to the JSON property `healthState`
         # @return [String]
@@ -12576,6 +12606,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @health_state = args[:health_state] if args.key?(:health_state)
           @name = args[:name] if args.key?(:name)
           @notebook_runtime_template_ref = args[:notebook_runtime_template_ref] if args.key?(:notebook_runtime_template_ref)
@@ -12987,6 +13018,12 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig]
         attr_accessor :runtime_config
       
+        # Output only. The schedule resource name. Only returned if the Pipeline is
+        # created by Schedule API.
+        # Corresponds to the JSON property `scheduleName`
+        # @return [String]
+        attr_accessor :schedule_name
+      
         # The service account that the pipeline workload runs as. If not specified, the
         # Compute Engine default service account in the project will be used. See https:/
         # /cloud.google.com/compute/docs/access/service-accounts#default_service_account
@@ -13041,6 +13078,7 @@ module Google
           @pipeline_spec = args[:pipeline_spec] if args.key?(:pipeline_spec)
           @reserved_ip_ranges = args[:reserved_ip_ranges] if args.key?(:reserved_ip_ranges)
           @runtime_config = args[:runtime_config] if args.key?(:runtime_config)
+          @schedule_name = args[:schedule_name] if args.key?(:schedule_name)
           @service_account = args[:service_account] if args.key?(:service_account)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
@@ -13843,6 +13881,12 @@ module Google
       
         # The regional resource name or the URI. Key is region, e.g., us-central1,
         # europe-west2, global, etc..
+        # Corresponds to the JSON property `openEvaluationPipeline`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences]
+        attr_accessor :open_evaluation_pipeline
+      
+        # The regional resource name or the URI. Key is region, e.g., us-central1,
+        # europe-west2, global, etc..
         # Corresponds to the JSON property `openFineTuningPipeline`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences]
         attr_accessor :open_fine_tuning_pipeline
@@ -13890,6 +13934,7 @@ module Google
         def update!(**args)
           @create_application = args[:create_application] if args.key?(:create_application)
           @deploy = args[:deploy] if args.key?(:deploy)
+          @open_evaluation_pipeline = args[:open_evaluation_pipeline] if args.key?(:open_evaluation_pipeline)
           @open_fine_tuning_pipeline = args[:open_fine_tuning_pipeline] if args.key?(:open_fine_tuning_pipeline)
           @open_generation_ai_studio = args[:open_generation_ai_studio] if args.key?(:open_generation_ai_studio)
           @open_genie = args[:open_genie] if args.key?(:open_genie)
@@ -14936,18 +14981,12 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DiskSpec]
         attr_accessor :disk_spec
       
-        # Optional. The unique ID in a PersistentResource to refer the this resource
+        # Immutable. The unique ID in a PersistentResource to refer the this resource
         # pool. User can specify it if need to use it, otherwise we will generate it
         # automatically.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
-      
-        # Output only. The number of machines currently not in use by training jobs for
-        # this resource pool. Deprecated. Use `used_replica_count` instead.
-        # Corresponds to the JSON property `idleReplicaCount`
-        # @return [Fixnum]
-        attr_accessor :idle_replica_count
       
         # Specification of a single machine.
         # Corresponds to the JSON property `machineSpec`
@@ -14974,7 +15013,6 @@ module Google
           @autoscaling_spec = args[:autoscaling_spec] if args.key?(:autoscaling_spec)
           @disk_spec = args[:disk_spec] if args.key?(:disk_spec)
           @id = args[:id] if args.key?(:id)
-          @idle_replica_count = args[:idle_replica_count] if args.key?(:idle_replica_count)
           @machine_spec = args[:machine_spec] if args.key?(:machine_spec)
           @replica_count = args[:replica_count] if args.key?(:replica_count)
           @used_replica_count = args[:used_replica_count] if args.key?(:used_replica_count)
@@ -15505,6 +15543,14 @@ module Google
       class GoogleCloudAiplatformV1beta1Scheduling
         include Google::Apis::Core::Hashable
       
+        # Optional. Indicates if the job should retry for internal errors after the job
+        # starts running. If true, overrides `Scheduling.restart_job_on_worker_restart`
+        # to false.
+        # Corresponds to the JSON property `disableRetries`
+        # @return [Boolean]
+        attr_accessor :disable_retries
+        alias_method :disable_retries?, :disable_retries
+      
         # Restarts the entire CustomJob if a worker gets restarted. This feature can be
         # used by distributed training jobs that are not resilient to workers leaving
         # and joining a job.
@@ -15524,6 +15570,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disable_retries = args[:disable_retries] if args.key?(:disable_retries)
           @restart_job_on_worker_restart = args[:restart_job_on_worker_restart] if args.key?(:restart_job_on_worker_restart)
           @timeout = args[:timeout] if args.key?(:timeout)
         end
@@ -24753,22 +24800,22 @@ module Google
       # evaluates to `true`. A condition can add constraints based on attributes of
       # the request, the resource, or both. To learn which resources support
       # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
       # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
       # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
       # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
       # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
       # ], "condition": ` "title": "expirable access", "description": "Does not grant
       # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-      # bindings: - members: - user:mike@example.com - group:admins@example.com -
-      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-      # access description: Does not grant access after Sep 2020 expression: request.
-      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-      # a description of IAM and its features, see the [IAM documentation](https://
-      # cloud.google.com/iam/docs/).
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+      # title: expirable access description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class GoogleIamV1Policy
         include Google::Apis::Core::Hashable
       
@@ -24846,22 +24893,22 @@ module Google
         # evaluates to `true`. A condition can add constraints based on attributes of
         # the request, the resource, or both. To learn which resources support
         # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
         # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
         # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
         # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-        # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-        # a description of IAM and its features, see the [IAM documentation](https://
-        # cloud.google.com/iam/docs/).
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::AiplatformV1beta1::GoogleIamV1Policy]
         attr_accessor :policy
@@ -24978,13 +25025,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
