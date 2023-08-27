@@ -1,0 +1,13 @@
+--hide-void-return
+--no-private
+--verbose
+--title=google-apis-language_v2
+--markup-provider=redcarpet
+--markup=markdown
+--main OVERVIEW.md
+lib/google/apis/language_v2/*.rb
+lib/google/apis/language_v2.rb
+-
+OVERVIEW.md
+CHANGELOG.md
+LICENSE.md

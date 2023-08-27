@@ -1,0 +1,7 @@
+{
+    "api_id": "language:v2",
+    "name_pretty": "Cloud Natural Language API",
+    "distribution_name": "google-apis-language_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
