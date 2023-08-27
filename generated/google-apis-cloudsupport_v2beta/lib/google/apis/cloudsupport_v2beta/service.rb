@@ -135,14 +135,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new case and associate it with the given Google Cloud Resource. The
-        # case object must have the following fields set: `display_name`, `description`,
-        # `classification`, and `priority`. Here is an example of calling this endpoint
-        # using cURL: ```shell parent="projects/some-project" curl \ --request POST \ --
-        # header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header '
-        # Content-Type: application/json' \ --data '` "display_name": "Test case created
-        # by me.", "description": "a random test case, feel free to close", "
-        # classification": ` "id": "
+        # Create a new case and associate it with a Google Cloud Resource. The case
+        # object must have the following fields set: `display_name`, `description`, `
+        # classification`, and `priority`. If you're just testing the API and don't want
+        # to route your case to an agent, set `testCase=true`. Here is an example of
+        # calling this endpoint using cURL: ```shell parent="projects/some-project" curl
+        # \ --request POST \ --header "Authorization: Bearer $(gcloud auth print-access-
+        # token)" \ --header 'Content-Type: application/json' \ --data '` "display_name":
+        # "Test case created by me.", "description": "a random test case, feel free to
+        # close", "classification": ` "id": "
         # 1BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8"
         # `, "time_zone": "-07:00", "subscriber_email_addresses": [ "foo@domain.com", "
         # bar@domain.com" ], "testCase": true, "priority": "P3" `' \ "https://
