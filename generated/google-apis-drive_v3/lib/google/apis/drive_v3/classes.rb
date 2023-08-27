@@ -226,7 +226,9 @@ module Google
         # @return [String]
         attr_accessor :change_type
       
-        # Representation of a shared drive.
+        # Representation of a shared drive. Some resource methods (such as `drives.
+        # update`) require a `driveId`. Use the `drives.list` method to retrieve the ID
+        # for a shared drive.
         # Corresponds to the JSON property `drive`
         # @return [Google::Apis::DriveV3::Drive]
         attr_accessor :drive
@@ -236,7 +238,8 @@ module Google
         # @return [String]
         attr_accessor :drive_id
       
-        # The metadata for a file.
+        # The metadata for a file. Some resource methods (such as `files.update`)
+        # require a `fileId`. Use the `files.list` method to retrieve the ID for a file.
         # Corresponds to the JSON property `file`
         # @return [Google::Apis::DriveV3::File]
         attr_accessor :file
@@ -419,7 +422,9 @@ module Google
         end
       end
       
-      # A comment on a file.
+      # A comment on a file. Some resource methods (such as `comments.update`) require
+      # a `commentId`. Use the `comments.list` method to retrieve the ID for a comment
+      # in a file.
       class Comment
         include Google::Apis::Core::Hashable
       
@@ -637,7 +642,9 @@ module Google
         end
       end
       
-      # Representation of a shared drive.
+      # Representation of a shared drive. Some resource methods (such as `drives.
+      # update`) require a `driveId`. Use the `drives.list` method to retrieve the ID
+      # for a shared drive.
       class Drive
         include Google::Apis::Core::Hashable
       
@@ -1051,7 +1058,8 @@ module Google
         end
       end
       
-      # The metadata for a file.
+      # The metadata for a file. Some resource methods (such as `files.update`)
+      # require a `fileId`. Use the `files.list` method to retrieve the ID for a file.
       class File
         include Google::Apis::Core::Hashable
       
@@ -2568,8 +2576,10 @@ module Google
         end
       end
       
-      # A permission for a file. A permission grants a user, group, domain or the
-      # world access to a file or a folder hierarchy.
+      # A permission for a file. A permission grants a user, group, domain, or the
+      # world access to a file or a folder hierarchy. Some resource methods (such as `
+      # permissions.update`) require a `permissionId`. Use the `permissions.list`
+      # method to retrieve the ID for a file, folder, or shared drive.
       class Permission
         include Google::Apis::Core::Hashable
       
@@ -2817,7 +2827,9 @@ module Google
         end
       end
       
-      # A reply to a comment on a file.
+      # A reply to a comment on a file. Some resource methods (such as `replies.update`
+      # ) require a `replyId`. Use the `replies.list` method to retrieve the ID for a
+      # reply.
       class Reply
         include Google::Apis::Core::Hashable
       
@@ -2927,7 +2939,9 @@ module Google
         end
       end
       
-      # The metadata for a revision to a file.
+      # The metadata for a revision to a file. Some resource methods (such as `
+      # revisions.update`) require a `revisionId`. Use the `revisions.list` method to
+      # retrieve the ID for a revision.
       class Revision
         include Google::Apis::Core::Hashable
       
