@@ -5236,6 +5236,7 @@ module Google
           property :bidding_strategy, as: 'biddingStrategy', class: Google::Apis::DisplayvideoV2::YoutubeAndPartnersBiddingStrategy, decorator: Google::Apis::DisplayvideoV2::YoutubeAndPartnersBiddingStrategy::Representation
       
           property :content_category, as: 'contentCategory'
+          property :effective_content_category, as: 'effectiveContentCategory'
           property :inventory_source_settings, as: 'inventorySourceSettings', class: Google::Apis::DisplayvideoV2::YoutubeAndPartnersInventorySourceConfig, decorator: Google::Apis::DisplayvideoV2::YoutubeAndPartnersInventorySourceConfig::Representation
       
           property :lead_form_id, :numeric_string => true, as: 'leadFormId'
