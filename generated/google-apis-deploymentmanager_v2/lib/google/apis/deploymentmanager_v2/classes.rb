@@ -170,6 +170,50 @@ module Google
       end
       
       # 
+      class BulkInsertOperationStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Count of VMs successfully created so far.
+        # Corresponds to the JSON property `createdVmCount`
+        # @return [Fixnum]
+        attr_accessor :created_vm_count
+      
+        # [Output Only] Count of VMs that got deleted during rollback.
+        # Corresponds to the JSON property `deletedVmCount`
+        # @return [Fixnum]
+        attr_accessor :deleted_vm_count
+      
+        # [Output Only] Count of VMs that started creating but encountered an error.
+        # Corresponds to the JSON property `failedToCreateVmCount`
+        # @return [Fixnum]
+        attr_accessor :failed_to_create_vm_count
+      
+        # [Output Only] Creation status of BulkInsert operation - information if the
+        # flow is rolling forward or rolling back.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # [Output Only] Count of VMs originally planned to be created.
+        # Corresponds to the JSON property `targetVmCount`
+        # @return [Fixnum]
+        attr_accessor :target_vm_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_vm_count = args[:created_vm_count] if args.key?(:created_vm_count)
+          @deleted_vm_count = args[:deleted_vm_count] if args.key?(:deleted_vm_count)
+          @failed_to_create_vm_count = args[:failed_to_create_vm_count] if args.key?(:failed_to_create_vm_count)
+          @status = args[:status] if args.key?(:status)
+          @target_vm_count = args[:target_vm_count] if args.key?(:target_vm_count)
+        end
+      end
+      
+      # 
       class ConfigFile
         include Google::Apis::Core::Hashable
       
@@ -254,7 +298,7 @@ module Google
         # requests. For more information, read Handling API responses. Operations can be
         # global, regional or zonal. - For global operations, use the `globalOperations`
         # resource. - For regional operations, use the `regionOperations` resource. -
-        # For zonal operations, use the `zonalOperations` resource. For more information,
+        # For zonal operations, use the `zoneOperations` resource. For more information,
         # read Global, Regional, and Zonal Resources.
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::DeploymentmanagerV2::Operation]
@@ -553,22 +597,22 @@ module Google
         # evaluates to `true`. A condition can add constraints based on attributes of
         # the request, the resource, or both. To learn which resources support
         # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
         # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
         # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
         # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-        # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-        # a description of IAM and its features, see the [IAM documentation](https://
-        # cloud.google.com/iam/docs/).
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::DeploymentmanagerV2::Policy]
         attr_accessor :policy
@@ -607,6 +651,26 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
+      class InstancesBulkInsertOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Status information per location (location name is key). Example key: zones/us-
+        # central1-a
+        # Corresponds to the JSON property `perLocationStatus`
+        # @return [Hash<String,Google::Apis::DeploymentmanagerV2::BulkInsertOperationStatus>]
+        attr_accessor :per_location_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @per_location_status = args[:per_location_status] if args.key?(:per_location_status)
         end
       end
       
@@ -718,7 +782,7 @@ module Google
       # requests. For more information, read Handling API responses. Operations can be
       # global, regional or zonal. - For global operations, use the `globalOperations`
       # resource. - For regional operations, use the `regionOperations` resource. -
-      # For zonal operations, use the `zonalOperations` resource. For more information,
+      # For zonal operations, use the `zoneOperations` resource. For more information,
       # read Global, Regional, and Zonal Resources.
       class Operation
         include Google::Apis::Core::Hashable
@@ -777,6 +841,11 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
+        # 
+        # Corresponds to the JSON property `instancesBulkInsertOperationMetadata`
+        # @return [Google::Apis::DeploymentmanagerV2::InstancesBulkInsertOperationMetadata]
+        attr_accessor :instances_bulk_insert_operation_metadata
+      
         # [Output Only] Type of the resource. Always `compute#operation` for Operation
         # resources.
         # Corresponds to the JSON property `kind`
@@ -819,6 +888,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] If the operation is for projects.setCommonInstanceMetadata, this
+        # field will contain information on all underlying zonal actions and their state.
+        # Corresponds to the JSON property `setCommonInstanceMetadataOperationMetadata`
+        # @return [Google::Apis::DeploymentmanagerV2::SetCommonInstanceMetadataOperationMetadata]
+        attr_accessor :set_common_instance_metadata_operation_metadata
+      
         # [Output Only] The time that this operation was started by the server. This
         # value is in RFC3339 text format.
         # Corresponds to the JSON property `startTime`
@@ -851,7 +926,7 @@ module Google
         attr_accessor :target_link
       
         # [Output Only] User who requested the operation, for example: `user@example.com`
-        # .
+        # or `alice_smith_identifier (global/workforcePools/example-com-us-employees)`.
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
@@ -883,6 +958,7 @@ module Google
           @http_error_status_code = args[:http_error_status_code] if args.key?(:http_error_status_code)
           @id = args[:id] if args.key?(:id)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
+          @instances_bulk_insert_operation_metadata = args[:instances_bulk_insert_operation_metadata] if args.key?(:instances_bulk_insert_operation_metadata)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @operation_group_id = args[:operation_group_id] if args.key?(:operation_group_id)
@@ -890,6 +966,7 @@ module Google
           @progress = args[:progress] if args.key?(:progress)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @set_common_instance_metadata_operation_metadata = args[:set_common_instance_metadata_operation_metadata] if args.key?(:set_common_instance_metadata_operation_metadata)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
@@ -1054,22 +1131,22 @@ module Google
       # evaluates to `true`. A condition can add constraints based on attributes of
       # the request, the resource, or both. To learn which resources support
       # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
       # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
       # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
       # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
       # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
       # ], "condition": ` "title": "expirable access", "description": "Does not grant
       # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-      # bindings: - members: - user:mike@example.com - group:admins@example.com -
-      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-      # access description: Does not grant access after Sep 2020 expression: request.
-      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-      # a description of IAM and its features, see the [IAM documentation](https://
-      # cloud.google.com/iam/docs/).
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+      # title: expirable access description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -1521,6 +1598,102 @@ module Google
       end
       
       # 
+      class SetCommonInstanceMetadataOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The client operation id.
+        # Corresponds to the JSON property `clientOperationId`
+        # @return [String]
+        attr_accessor :client_operation_id
+      
+        # [Output Only] Status information per location (location name is key). Example
+        # key: zones/us-central1-a
+        # Corresponds to the JSON property `perLocationOperations`
+        # @return [Hash<String,Google::Apis::DeploymentmanagerV2::SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo>]
+        attr_accessor :per_location_operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_operation_id = args[:client_operation_id] if args.key?(:client_operation_id)
+          @per_location_operations = args[:per_location_operations] if args.key?(:per_location_operations)
+        end
+      end
+      
+      # 
+      class SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DeploymentmanagerV2::Status]
+        attr_accessor :error
+      
+        # [Output Only] Status of the action, which can be one of the following: `
+        # PROPAGATING`, `PROPAGATED`, `ABANDONED`, `FAILED`, or `DONE`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # 
       class TargetConfiguration
         include Google::Apis::Core::Hashable
       
@@ -1613,7 +1786,7 @@ module Google
         # requests. For more information, read Handling API responses. Operations can be
         # global, regional or zonal. - For global operations, use the `globalOperations`
         # resource. - For regional operations, use the `regionOperations` resource. -
-        # For zonal operations, use the `zonalOperations` resource. For more information,
+        # For zonal operations, use the `zoneOperations` resource. For more information,
         # read Global, Regional, and Zonal Resources.
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::DeploymentmanagerV2::Operation]
