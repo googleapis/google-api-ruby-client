@@ -1161,13 +1161,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -1306,6 +1306,45 @@ module Google
           @disable_notification = args[:disable_notification] if args.key?(:disable_notification)
           @policy = args[:policy] if args.key?(:policy)
           @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # Metadata returned by the long running operation for the SetupSasAnalytics rpc.
+      class SasPortalSetupSasAnalyticsMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request for the SetupSasAnalytics rpc.
+      class SasPortalSetupSasAnalyticsRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response returned by the long running operation for the SetupSasAnalytics rpc.
+      class SasPortalSetupSasAnalyticsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
