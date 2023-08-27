@@ -479,6 +479,7 @@ module Google
           property :destination_network_uri, as: 'destinationNetworkUri'
           property :destination_port, as: 'destinationPort'
           property :protocol, as: 'protocol'
+          property :source_agent_uri, as: 'sourceAgentUri'
           property :source_ip, as: 'sourceIp'
           property :source_network_uri, as: 'sourceNetworkUri'
           property :source_port, as: 'sourcePort'
