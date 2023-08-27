@@ -93,7 +93,7 @@ module Google
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
         # @param [Fixnum] steps_to_increment
-        #   The number of steps to increment.
+        #   Required. The number of steps to increment.
         # @param [Fixnum] request_id
         #   A randomly generated numeric ID for each request specified by the caller. This
         #   number is used at the server to ensure that the request is handled correctly
@@ -212,7 +212,7 @@ module Google
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
         # @param [Fixnum] steps
-        #   The minimum value to set the steps to.
+        #   Required. The minimum value to set the steps to.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -827,7 +827,7 @@ module Google
         
         # Checks whether the games client is out of date.
         # @param [String] client_revision
-        #   The revision of the client SDK used by your application. Format: `[
+        #   Required. The revision of the client SDK used by your application. Format: `[
         #   PLATFORM_TYPE]:[VERSION_NUMBER]`. Possible values of `PLATFORM_TYPE` are: * `
         #   ANDROID` - Client is running the Android SDK. * `IOS` - Client is running the
         #   iOS SDK. * `WEB_APP` - Client is running as a Web App.
@@ -921,7 +921,7 @@ module Google
         # @param [String] collection
         #   The collection of scores you're requesting.
         # @param [String] time_span
-        #   The time span for the scores and ranks you're requesting.
+        #   Required. The time span for the scores and ranks you're requesting.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [Fixnum] max_results
@@ -968,7 +968,7 @@ module Google
         # @param [String] collection
         #   The collection of scores you're requesting.
         # @param [String] time_span
-        #   The time span for the scores and ranks you're requesting.
+        #   Required. The time span for the scores and ranks you're requesting.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [Fixnum] max_results
@@ -1023,12 +1023,12 @@ module Google
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
         # @param [Fixnum] score
-        #   The score you're submitting. The submitted score is ignored if it is worse
-        #   than a previously submitted score, where worse depends on the leaderboard sort
-        #   order. The meaning of the score value depends on the leaderboard format type.
-        #   For fixed-point, the score represents the raw value. For time, the score
-        #   represents elapsed time in milliseconds. For currency, the score represents a
-        #   value in micro units.
+        #   Required. The score you're submitting. The submitted score is ignored if it is
+        #   worse than a previously submitted score, where worse depends on the
+        #   leaderboard sort order. The meaning of the score value depends on the
+        #   leaderboard format type. For fixed-point, the score represents the raw value.
+        #   For time, the score represents elapsed time in milliseconds. For currency, the
+        #   score represents a value in micro units.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] score_tag
