@@ -424,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SshAuthenticationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -757,6 +763,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authentication_token_secret_version, as: 'authenticationTokenSecretVersion'
           property :default_branch, as: 'defaultBranch'
+          property :ssh_authentication_config, as: 'sshAuthenticationConfig', class: Google::Apis::DataformV1beta1::SshAuthenticationConfig, decorator: Google::Apis::DataformV1beta1::SshAuthenticationConfig::Representation
+      
           property :token_status, as: 'tokenStatus'
           property :url, as: 'url'
         end
@@ -1142,6 +1150,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::DataformV1beta1::Policy, decorator: Google::Apis::DataformV1beta1::Policy::Representation
       
+        end
+      end
+      
+      class SshAuthenticationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host_public_key, as: 'hostPublicKey'
+          property :user_private_key_secret_version, as: 'userPrivateKeySecretVersion'
         end
       end
       
