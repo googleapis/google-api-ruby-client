@@ -1076,6 +1076,92 @@ module Google
         end
       end
       
+      # A widget that displays timeseries data as a pie or a donut.
+      class PieChart
+        include Google::Apis::Core::Hashable
+      
+        # Required. Indicates the visualization type for the PieChart.
+        # Corresponds to the JSON property `chartType`
+        # @return [String]
+        attr_accessor :chart_type
+      
+        # Required. The queries for the chart's data.
+        # Corresponds to the JSON property `dataSets`
+        # @return [Array<Google::Apis::MonitoringV1::PieChartDataSet>]
+        attr_accessor :data_sets
+      
+        # Optional. Indicates whether or not the pie chart should show slices' labels
+        # Corresponds to the JSON property `showLabels`
+        # @return [Boolean]
+        attr_accessor :show_labels
+        alias_method :show_labels?, :show_labels
+      
+        # Optional. Indicates whether or not donut chart should show the total in the
+        # middle
+        # Corresponds to the JSON property `showTotal`
+        # @return [Boolean]
+        attr_accessor :show_total
+        alias_method :show_total?, :show_total
+      
+        # Optional. If slices's values are smaller than this value, they will be
+        # combined into other category
+        # Corresponds to the JSON property `sliceAggregatedThreshold`
+        # @return [Float]
+        attr_accessor :slice_aggregated_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chart_type = args[:chart_type] if args.key?(:chart_type)
+          @data_sets = args[:data_sets] if args.key?(:data_sets)
+          @show_labels = args[:show_labels] if args.key?(:show_labels)
+          @show_total = args[:show_total] if args.key?(:show_total)
+          @slice_aggregated_threshold = args[:slice_aggregated_threshold] if args.key?(:slice_aggregated_threshold)
+        end
+      end
+      
+      # Groups a time series query definition.
+      class PieChartDataSet
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The lower bound on data point frequency for this data set,
+        # implemented by specifying the minimum alignment period to use in a time series
+        # query. For example, if the data is published once every 10 minutes, the
+        # min_alignment_period should be at least 10 minutes. It would not make sense to
+        # fetch and align data at one minute intervals.
+        # Corresponds to the JSON property `minAlignmentPeriod`
+        # @return [String]
+        attr_accessor :min_alignment_period
+      
+        # Optional. A template for the name of the slice. This name will be displayed in
+        # the legend and the tooltip of the pie chart. It replaces the auto-generated
+        # names for the slices. For example, if the template is set to $`resource.labels.
+        # zone`, the zone's value will be used for the name instead of the default name.
+        # Corresponds to the JSON property `sliceNameTemplate`
+        # @return [String]
+        attr_accessor :slice_name_template
+      
+        # TimeSeriesQuery collects the set of supported methods for querying time series
+        # data from the Stackdriver metrics API.
+        # Corresponds to the JSON property `timeSeriesQuery`
+        # @return [Google::Apis::MonitoringV1::TimeSeriesQuery]
+        attr_accessor :time_series_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min_alignment_period = args[:min_alignment_period] if args.key?(:min_alignment_period)
+          @slice_name_template = args[:slice_name_template] if args.key?(:slice_name_template)
+          @time_series_query = args[:time_series_query] if args.key?(:time_series_query)
+        end
+      end
+      
       # QueryExemplarsRequest holds all parameters of the Prometheus upstream API for
       # querying exemplars.
       class QueryExemplarsRequest
@@ -2163,6 +2249,11 @@ module Google
         # @return [Google::Apis::MonitoringV1::LogsPanel]
         attr_accessor :logs_panel
       
+        # A widget that displays timeseries data as a pie or a donut.
+        # Corresponds to the JSON property `pieChart`
+        # @return [Google::Apis::MonitoringV1::PieChart]
+        attr_accessor :pie_chart
+      
         # A widget showing the latest value of a metric, and how this value relates to
         # one or more thresholds.
         # Corresponds to the JSON property `scorecard`
@@ -2200,6 +2291,7 @@ module Google
           @collapsible_group = args[:collapsible_group] if args.key?(:collapsible_group)
           @incident_list = args[:incident_list] if args.key?(:incident_list)
           @logs_panel = args[:logs_panel] if args.key?(:logs_panel)
+          @pie_chart = args[:pie_chart] if args.key?(:pie_chart)
           @scorecard = args[:scorecard] if args.key?(:scorecard)
           @text = args[:text] if args.key?(:text)
           @time_series_table = args[:time_series_table] if args.key?(:time_series_table)
