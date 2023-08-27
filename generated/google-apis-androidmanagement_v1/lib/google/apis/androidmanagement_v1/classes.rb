@@ -520,7 +520,9 @@ module Google
       end
       
       # Policy for an individual app. Note: Application availability on a given device
-      # cannot be changed using this policy if installAppsDisabled is enabled.
+      # cannot be changed using this policy if installAppsDisabled is enabled. The
+      # maximum number of applications that you can specify per enterprise policy is 3,
+      # 000.
       class ApplicationPolicy
         include Google::Apis::Core::Hashable
       
@@ -566,7 +568,8 @@ module Google
         # @return [String]
         attr_accessor :default_permission_policy
       
-        # The scopes delegated to the app from Android Device Policy.
+        # The scopes delegated to the app from Android Device Policy. These provide
+        # additional privileges for the applications they are applied to.
         # Corresponds to the JSON property `delegatedScopes`
         # @return [Array<String>]
         attr_accessor :delegated_scopes
@@ -1343,7 +1346,9 @@ module Google
         end
       end
       
-      # Cross-profile policies applied on the device.
+      # Controls the data from the work profile that can be accessed from the personal
+      # profile and vice versa. A nonComplianceDetail with MANAGEMENT_MODE is reported
+      # if the device does not have a work profile.
       class CrossProfilePolicies
         include Google::Apis::Core::Hashable
       
@@ -3517,12 +3522,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as Delete, the response is google.
-        # protobuf.Empty. If the original method is standard Get/Create/Update, the
-        # response should be the resource. For other methods, the response should have
-        # the type XxxResponse, where Xxx is the original method name. For example, if
-        # the original method name is TakeSnapshot(), the inferred response type is
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as Delete, the response is google.protobuf.
+        # Empty. If the original method is standard Get/Create/Update, the response
+        # should be the resource. For other methods, the response should have the type
+        # XxxResponse, where Xxx is the original method name. For example, if the
+        # original method name is TakeSnapshot(), the inferred response type is
         # TakeSnapshotResponse.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
@@ -4022,7 +4027,8 @@ module Google
         alias_method :cell_broadcasts_config_disabled?, :cell_broadcasts_config_disabled
       
         # Rules for determining apps' access to private keys. See ChoosePrivateKeyRule
-        # for details.
+        # for details. This must be empty if any application has CERT_SELECTION
+        # delegation scope.
         # Corresponds to the JSON property `choosePrivateKeyRules`
         # @return [Array<Google::Apis::AndroidmanagementV1::ChoosePrivateKeyRule>]
         attr_accessor :choose_private_key_rules
@@ -4047,7 +4053,9 @@ module Google
         attr_accessor :credentials_config_disabled
         alias_method :credentials_config_disabled?, :credentials_config_disabled
       
-        # Cross-profile policies applied on the device.
+        # Controls the data from the work profile that can be accessed from the personal
+        # profile and vice versa. A nonComplianceDetail with MANAGEMENT_MODE is reported
+        # if the device does not have a work profile.
         # Corresponds to the JSON property `crossProfilePolicies`
         # @return [Google::Apis::AndroidmanagementV1::CrossProfilePolicies]
         attr_accessor :cross_profile_policies
@@ -4318,7 +4326,8 @@ module Google
       
         # Allows showing UI on a device for a user to choose a private key alias if
         # there are no matching rules in ChoosePrivateKeyRules. For devices below
-        # Android P, setting this may leave enterprise keys vulnerable.
+        # Android P, setting this may leave enterprise keys vulnerable. This value will
+        # have no effect if any application has CERT_SELECTION delegation scope.
         # Corresponds to the JSON property `privateKeySelectionEnabled`
         # @return [Boolean]
         attr_accessor :private_key_selection_enabled
