@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Filter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleLongrunningCancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +113,12 @@ module Google
       end
       
       class Hub
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -167,6 +179,12 @@ module Google
       end
       
       class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListPolicyBasedRoutesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -239,6 +257,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyBasedRoute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -370,6 +394,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VirtualMachine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Warnings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceptSpokeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -449,6 +485,16 @@ module Google
         end
       end
       
+      class Filter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dest_range, as: 'destRange'
+          property :ip_protocol, as: 'ipProtocol'
+          property :protocol_version, as: 'protocolVersion'
+          property :src_range, as: 'srcRange'
+        end
+      end
+      
       class GoogleLongrunningCancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -522,6 +568,13 @@ module Google
           property :state, as: 'state'
           property :unique_id, as: 'uniqueId'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class InterconnectAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :region, as: 'region'
         end
       end
       
@@ -626,6 +679,16 @@ module Google
           collection :locations, as: 'locations', class: Google::Apis::NetworkconnectivityV1::Location, decorator: Google::Apis::NetworkconnectivityV1::Location::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListPolicyBasedRoutesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :policy_based_routes, as: 'policyBasedRoutes', class: Google::Apis::NetworkconnectivityV1::PolicyBasedRoute, decorator: Google::Apis::NetworkconnectivityV1::PolicyBasedRoute::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -746,6 +809,31 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PolicyBasedRoute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :filter, as: 'filter', class: Google::Apis::NetworkconnectivityV1::Filter, decorator: Google::Apis::NetworkconnectivityV1::Filter::Representation
+      
+          property :interconnect_attachment, as: 'interconnectAttachment', class: Google::Apis::NetworkconnectivityV1::InterconnectAttachment, decorator: Google::Apis::NetworkconnectivityV1::InterconnectAttachment::Representation
+      
+          property :kind, as: 'kind'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :next_hop_ilb_ip, as: 'nextHopIlbIp'
+          property :next_hop_other_routes, as: 'nextHopOtherRoutes'
+          property :priority, as: 'priority'
+          property :self_link, as: 'selfLink'
+          property :update_time, as: 'updateTime'
+          property :virtual_machine, as: 'virtualMachine', class: Google::Apis::NetworkconnectivityV1::VirtualMachine, decorator: Google::Apis::NetworkconnectivityV1::VirtualMachine::Representation
+      
+          collection :warnings, as: 'warnings', class: Google::Apis::NetworkconnectivityV1::Warnings, decorator: Google::Apis::NetworkconnectivityV1::Warnings::Representation
+      
         end
       end
       
@@ -997,6 +1085,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class VirtualMachine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tags, as: 'tags'
+        end
+      end
+      
+      class Warnings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          hash :data, as: 'data'
+          property :warning_message, as: 'warningMessage'
         end
       end
     end

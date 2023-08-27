@@ -410,6 +410,47 @@ module Google
         end
       end
       
+      # Filter matches L4 traffic.
+      class Filter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The destination IP range of outgoing packets that this policy based
+        # route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        # Corresponds to the JSON property `destRange`
+        # @return [String]
+        attr_accessor :dest_range
+      
+        # Optional. The IP protocol that this policy based route applies to. Valid
+        # values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+        # Corresponds to the JSON property `ipProtocol`
+        # @return [String]
+        attr_accessor :ip_protocol
+      
+        # Required. Internet protocol versions this policy based route applies to. For
+        # this version, only IPV4 is supported.
+        # Corresponds to the JSON property `protocolVersion`
+        # @return [String]
+        attr_accessor :protocol_version
+      
+        # Optional. The source IP range of outgoing packets that this policy based route
+        # applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        # Corresponds to the JSON property `srcRange`
+        # @return [String]
+        attr_accessor :src_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dest_range = args[:dest_range] if args.key?(:dest_range)
+          @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
+          @protocol_version = args[:protocol_version] if args.key?(:protocol_version)
+          @src_range = args[:src_range] if args.key?(:src_range)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class GoogleLongrunningCancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -600,9 +641,7 @@ module Google
         end
       end
       
-      # A group is a set of spokes to which you can apply policies. Each group of
-      # spokes has its own route table. For each group, you can also set different
-      # rules for whether spokes can be automatically attached to the hub.
+      # A group represents a subset of spokes attached to a hub.
       class Group
         include Google::Apis::Core::Hashable
       
@@ -751,6 +790,26 @@ module Google
           @state = args[:state] if args.key?(:state)
           @unique_id = args[:unique_id] if args.key?(:unique_id)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # InterconnectAttachment to which this route applies to.
+      class InterconnectAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Cloud region to install this policy based route on interconnect
+        # attachment. Use `all` to install it on all interconnect attachments.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region = args[:region] if args.key?(:region)
         end
       end
       
@@ -1160,6 +1219,38 @@ module Google
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for PolicyBasedRouting.ListPolicyBasedRoutes method.
+      class ListPolicyBasedRoutesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The next pagination token in the List response. It should be used as
+        # page_token for the following request. An empty value means no more result.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Policy based routes to be returned.
+        # Corresponds to the JSON property `policyBasedRoutes`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::PolicyBasedRoute>]
+        attr_accessor :policy_based_routes
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @policy_based_routes = args[:policy_based_routes] if args.key?(:policy_based_routes)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1626,6 +1717,124 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Policy Based Routes (PBR) are more powerful routes that allows GCP customers
+      # to route their L4 network traffic based on not just destination IP, but also
+      # source IP, protocol and more. A PBR always take precedence when it conflicts
+      # with other types of routes. Next id: 22
+      class PolicyBasedRoute
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when the PolicyBasedRoute was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An optional description of this resource. Provide this field when
+        # you create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Filter matches L4 traffic.
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::NetworkconnectivityV1::Filter]
+        attr_accessor :filter
+      
+        # InterconnectAttachment to which this route applies to.
+        # Corresponds to the JSON property `interconnectAttachment`
+        # @return [Google::Apis::NetworkconnectivityV1::InterconnectAttachment]
+        attr_accessor :interconnect_attachment
+      
+        # Output only. Type of this resource. Always networkconnectivity#
+        # policyBasedRoute for Policy Based Route resources.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. A unique name of the resource in the form of `projects/`
+        # project_number`/locations/global/PolicyBasedRoutes/`policy_based_route_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Fully-qualified URL of the network that this route applies to. e.g.
+        # projects/my-project/global/networks/my-network.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Optional. The IP of a global access enabled L4 ILB that should be the next hop
+        # to handle matching packets. For this version, only next_hop_ilb_ip is
+        # supported.
+        # Corresponds to the JSON property `nextHopIlbIp`
+        # @return [String]
+        attr_accessor :next_hop_ilb_ip
+      
+        # Optional. Other routes that will be referenced to determine the next hop of
+        # the packet.
+        # Corresponds to the JSON property `nextHopOtherRoutes`
+        # @return [String]
+        attr_accessor :next_hop_other_routes
+      
+        # Optional. The priority of this policy based route. Priority is used to break
+        # ties in cases where there are more than one matching policy based routes found.
+        # In cases where multiple policy based routes are matched, the one with the
+        # lowest-numbered priority value wins. The default value is 1000. The priority
+        # value must be from 1 to 65535, inclusive.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # Output only. Server-defined fully-qualified URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. Time when the PolicyBasedRoute was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # VM instances to which this policy based route applies to.
+        # Corresponds to the JSON property `virtualMachine`
+        # @return [Google::Apis::NetworkconnectivityV1::VirtualMachine]
+        attr_accessor :virtual_machine
+      
+        # Output only. If potential misconfigurations are detected for this route, this
+        # field will be populated with warning messages.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::Warnings>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @filter = args[:filter] if args.key?(:filter)
+          @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
+          @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @next_hop_ilb_ip = args[:next_hop_ilb_ip] if args.key?(:next_hop_ilb_ip)
+          @next_hop_other_routes = args[:next_hop_other_routes] if args.key?(:next_hop_other_routes)
+          @priority = args[:priority] if args.key?(:priority)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @virtual_machine = args[:virtual_machine] if args.key?(:virtual_machine)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -2397,7 +2606,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The name of the group that this spoke is associated with.
+        # Optional. The name of the group that this spoke is associated with.
         # Corresponds to the JSON property `group`
         # @return [String]
         attr_accessor :group
@@ -2687,6 +2896,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # VM instances to which this policy based route applies to.
+      class VirtualMachine
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of VM instance tags to which this policy based route applies
+        # to. VM instances that have ANY of tags specified here will install this PBR.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Informational warning message.
+      class Warnings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A warning code, if applicable.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Output only. Metadata about this warning in key: value format. The key should
+        # provides more detail on the warning being returned. For example, for warnings
+        # where there are no results in a list request for a particular zone, this key
+        # might be scope and the key value might be the zone name. Other examples might
+        # be a key indicating a deprecated resource and a suggested replacement.
+        # Corresponds to the JSON property `data`
+        # @return [Hash<String,String>]
+        attr_accessor :data
+      
+        # Output only. A human-readable description of the warning code.
+        # Corresponds to the JSON property `warningMessage`
+        # @return [String]
+        attr_accessor :warning_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @data = args[:data] if args.key?(:data)
+          @warning_message = args[:warning_message] if args.key?(:warning_message)
         end
       end
     end
