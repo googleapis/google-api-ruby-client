@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3DataStoreConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3KnowledgeConnectorSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3Page
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -335,6 +347,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3ResponseMessageEndInteraction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -592,6 +610,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1DataStoreConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1DeleteDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -796,6 +820,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1Page
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -845,6 +875,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2975,6 +3011,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3DataStoreConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_store, as: 'dataStore'
+          property :data_store_type, as: 'dataStoreType'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3289,6 +3333,19 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3KnowledgeConnectorSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_store_connections, as: 'dataStoreConnections', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3DataStoreConnection, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3DataStoreConnection::Representation
+      
+          property :enabled, as: 'enabled'
+          property :target_flow, as: 'targetFlow'
+          property :target_page, as: 'targetPage'
+          property :trigger_fulfillment, as: 'triggerFulfillment', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3Fulfillment, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3Fulfillment::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3Page
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3298,6 +3355,8 @@ module Google
           collection :event_handlers, as: 'eventHandlers', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3EventHandler, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3EventHandler::Representation
       
           property :form, as: 'form', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3Form, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3Form::Representation
+      
+          property :knowledge_connector_settings, as: 'knowledgeConnectorSettings', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3KnowledgeConnectorSettings, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3KnowledgeConnectorSettings::Representation
       
           property :name, as: 'name'
           collection :transition_route_groups, as: 'transitionRouteGroups'
@@ -3368,6 +3427,8 @@ module Google
       
           property :end_interaction, as: 'endInteraction', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessageEndInteraction, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessageEndInteraction::Representation
       
+          property :knowledge_info_card, as: 'knowledgeInfoCard', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard::Representation
+      
           property :live_agent_handoff, as: 'liveAgentHandoff', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff::Representation
       
           property :mixed_audio, as: 'mixedAudio', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessageMixedAudio, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessageMixedAudio::Representation
@@ -3393,6 +3454,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3ResponseMessageEndInteraction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -3569,6 +3636,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :condition, as: 'condition'
+          property :description, as: 'description'
           property :intent, as: 'intent'
           property :name, as: 'name'
           property :target_flow, as: 'targetFlow'
@@ -3818,6 +3886,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1DataStoreConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_store, as: 'dataStore'
+          property :data_store_type, as: 'dataStoreType'
         end
       end
       
@@ -4135,6 +4211,19 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_store_connections, as: 'dataStoreConnections', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1DataStoreConnection, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1DataStoreConnection::Representation
+      
+          property :enabled, as: 'enabled'
+          property :target_flow, as: 'targetFlow'
+          property :target_page, as: 'targetPage'
+          property :trigger_fulfillment, as: 'triggerFulfillment', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1Fulfillment, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1Fulfillment::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1Page
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4144,6 +4233,8 @@ module Google
           collection :event_handlers, as: 'eventHandlers', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1EventHandler, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1EventHandler::Representation
       
           property :form, as: 'form', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1Form, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1Form::Representation
+      
+          property :knowledge_connector_settings, as: 'knowledgeConnectorSettings', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings::Representation
       
           property :name, as: 'name'
           collection :transition_route_groups, as: 'transitionRouteGroups'
@@ -4214,6 +4305,8 @@ module Google
       
           property :end_interaction, as: 'endInteraction', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction::Representation
       
+          property :knowledge_info_card, as: 'knowledgeInfoCard', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard::Representation
+      
           property :live_agent_handoff, as: 'liveAgentHandoff', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff::Representation
       
           property :mixed_audio, as: 'mixedAudio', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio::Representation
@@ -4238,6 +4331,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -4414,6 +4513,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :condition, as: 'condition'
+          property :description, as: 'description'
           property :intent, as: 'intent'
           property :name, as: 'name'
           property :target_flow, as: 'targetFlow'
@@ -6055,6 +6155,7 @@ module Google
       class GoogleCloudDialogflowV2beta1GenerateStatelessSummaryResponseSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :baseline_model_version, as: 'baselineModelVersion'
           property :text, as: 'text'
           hash :text_sections, as: 'textSections'
         end
@@ -7325,6 +7426,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :answer_record, as: 'answerRecord'
+          property :baseline_model_version, as: 'baselineModelVersion'
           property :text, as: 'text'
           hash :text_sections, as: 'textSections'
         end
