@@ -196,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PieChart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PieChartDataSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueryExemplarsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -628,6 +640,28 @@ module Google
         end
       end
       
+      class PieChart
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chart_type, as: 'chartType'
+          collection :data_sets, as: 'dataSets', class: Google::Apis::MonitoringV1::PieChartDataSet, decorator: Google::Apis::MonitoringV1::PieChartDataSet::Representation
+      
+          property :show_labels, as: 'showLabels'
+          property :show_total, as: 'showTotal'
+          property :slice_aggregated_threshold, as: 'sliceAggregatedThreshold'
+        end
+      end
+      
+      class PieChartDataSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_alignment_period, as: 'minAlignmentPeriod'
+          property :slice_name_template, as: 'sliceNameTemplate'
+          property :time_series_query, as: 'timeSeriesQuery', class: Google::Apis::MonitoringV1::TimeSeriesQuery, decorator: Google::Apis::MonitoringV1::TimeSeriesQuery::Representation
+      
+        end
+      end
+      
       class QueryExemplarsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -903,6 +937,8 @@ module Google
           property :incident_list, as: 'incidentList', class: Google::Apis::MonitoringV1::IncidentList, decorator: Google::Apis::MonitoringV1::IncidentList::Representation
       
           property :logs_panel, as: 'logsPanel', class: Google::Apis::MonitoringV1::LogsPanel, decorator: Google::Apis::MonitoringV1::LogsPanel::Representation
+      
+          property :pie_chart, as: 'pieChart', class: Google::Apis::MonitoringV1::PieChart, decorator: Google::Apis::MonitoringV1::PieChart::Representation
       
           property :scorecard, as: 'scorecard', class: Google::Apis::MonitoringV1::Scorecard, decorator: Google::Apis::MonitoringV1::Scorecard::Representation
       
