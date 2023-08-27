@@ -2170,6 +2170,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceSettingsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5142,6 +5154,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAttachmentTunnelingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8663,6 +8681,7 @@ module Google
           property :all_ports, as: 'allPorts'
           property :allow_global_access, as: 'allowGlobalAccess'
           property :allow_psc_global_access, as: 'allowPscGlobalAccess'
+          property :allow_psc_packet_injection, as: 'allowPscPacketInjection'
           property :backend_service, as: 'backendService'
           property :base_forwarding_rule, as: 'baseForwardingRule'
           property :creation_timestamp, as: 'creationTimestamp'
@@ -10722,6 +10741,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance, as: 'instance'
+        end
+      end
+      
+      class InstanceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::ComputeBeta::InstanceSettingsMetadata, decorator: Google::Apis::ComputeBeta::InstanceSettingsMetadata::Representation
+      
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class InstanceSettingsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :items, as: 'items'
+          property :kind, as: 'kind'
         end
       end
       
@@ -16107,6 +16145,8 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :target_service, as: 'targetService'
+          property :tunneling_config, as: 'tunnelingConfig', class: Google::Apis::ComputeBeta::ServiceAttachmentTunnelingConfig, decorator: Google::Apis::ComputeBeta::ServiceAttachmentTunnelingConfig::Representation
+      
         end
       end
       
@@ -16191,6 +16231,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ServiceAttachmentTunnelingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encapsulation_profile, as: 'encapsulationProfile'
+          property :routing_mode, as: 'routingMode'
         end
       end
       
