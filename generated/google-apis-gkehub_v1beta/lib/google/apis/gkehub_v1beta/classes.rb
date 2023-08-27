@@ -2654,13 +2654,6 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
-        # Whether the membershipbinding is Fleet-wide; true means that this Membership
-        # should be bound to all Namespaces in this entire Fleet.
-        # Corresponds to the JSON property `fleet`
-        # @return [Boolean]
-        attr_accessor :fleet
-        alias_method :fleet?, :fleet
-      
         # Optional. Labels for this MembershipBinding.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -2702,7 +2695,6 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
-          @fleet = args[:fleet] if args.key?(:fleet)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @scope = args[:scope] if args.key?(:scope)
