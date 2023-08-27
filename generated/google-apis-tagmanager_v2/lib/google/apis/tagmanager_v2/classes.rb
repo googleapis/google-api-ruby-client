@@ -1937,9 +1937,10 @@ module Google
       class Parameter
         include Google::Apis::Core::Hashable
       
-        # Whether or not a reference type parameter is strongly or weakly referenced. @
-        # mutable tagmanager.accounts.containers.workspaces.transformations.create @
-        # mutable tagmanager.accounts.containers.workspaces.transformations.update
+        # Whether or not a reference type parameter is strongly or weakly referenced.
+        # Only used by Transformations. @mutable tagmanager.accounts.containers.
+        # workspaces.transformations.create @mutable tagmanager.accounts.containers.
+        # workspaces.transformations.update
         # Corresponds to the JSON property `isWeakReference`
         # @return [Boolean]
         attr_accessor :is_weak_reference

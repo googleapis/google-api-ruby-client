@@ -1902,7 +1902,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Moves entities to a GTM Folder.
+        # Moves entities to a GTM Folder. If `folder_id` in the request path equals 0,
+        # this will instead move entities out of the folder they currently belong to.
         # @param [String] path
         #   GTM Folder's API relative path. Example: accounts/`account_id`/containers/`
         #   container_id`/workspaces/`workspace_id`/folders/`folder_id`
