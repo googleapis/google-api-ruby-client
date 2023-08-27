@@ -992,9 +992,8 @@ module Google
         attr_accessor :order_by
       
         # Optional. The maximum number of results to return from this request. Default
-        # is 50. If the value is negative or exceeds 1000, the request is rejected. The
-        # presence of next_page_token in the response indicates that more results might
-        # be available.
+        # is 50. If the value is negative, the request is rejected.The presence of
+        # next_page_token in the response indicates that more results might be available.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
@@ -1573,9 +1572,9 @@ module Google
         # https://cloud.google.com/trace) in association with this log entry. For
         # example, if your trace data is stored in the Cloud project "my-trace-project"
         # and if the service that is creating the log entry receives a trace header that
-        # includes the trace ID "12345", then the service should use "projects/my-
-        # tracing-project/traces/12345".The trace field provides the link between logs
-        # and traces. By using this field, you can navigate from a log entry to a trace.
+        # includes the trace ID "12345", then the service should use "projects/my-trace-
+        # project/traces/12345".The trace field provides the link between logs and
+        # traces. By using this field, you can navigate from a log entry to a trace.
         # Corresponds to the JSON property `trace`
         # @return [String]
         attr_accessor :trace
