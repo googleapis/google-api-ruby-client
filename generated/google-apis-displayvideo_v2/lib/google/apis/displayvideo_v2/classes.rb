@@ -2146,7 +2146,8 @@ module Google
         # as the pageToken in a subsequent call to `
         # BulkListAdGroupAssignedTargetingOptions` to fetch the next page of results.
         # This token will be absent if there are no more
-        # youtube_ad_group_assigned_targeting_options to return.
+        # youtube_ad_group_assigned_targeting_options or
+        # ad_group_assigned_targeting_options to return.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -12087,6 +12088,13 @@ module Google
         # @return [String]
         attr_accessor :content_category
       
+        # Output only. The content category which takes effect when serving the line
+        # item. When content category is set in both line item and advertiser, the
+        # stricter one will take effect when serving the line item.
+        # Corresponds to the JSON property `effectiveContentCategory`
+        # @return [String]
+        attr_accessor :effective_content_category
+      
         # Settings that control what YouTube related inventories the YouTube and
         # Partners line item will target.
         # Corresponds to the JSON property `inventorySourceSettings`
@@ -12140,6 +12148,7 @@ module Google
         def update!(**args)
           @bidding_strategy = args[:bidding_strategy] if args.key?(:bidding_strategy)
           @content_category = args[:content_category] if args.key?(:content_category)
+          @effective_content_category = args[:effective_content_category] if args.key?(:effective_content_category)
           @inventory_source_settings = args[:inventory_source_settings] if args.key?(:inventory_source_settings)
           @lead_form_id = args[:lead_form_id] if args.key?(:lead_form_id)
           @linked_merchant_id = args[:linked_merchant_id] if args.key?(:linked_merchant_id)

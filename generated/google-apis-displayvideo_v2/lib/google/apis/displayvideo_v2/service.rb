@@ -239,10 +239,6 @@ module Google
         #   04T18:54:47Z"` The length of this field should be no more than 500 characters.
         #   Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/
         #   filters) guide for more information.
-        # @param [String] internal_debugging_config
-        #   The config used in internal debugging and manual testing. Use comma to
-        #   separate multiple values. Examples: To allow entity search to go through
-        #   tangle `searchUsingTangle` To get only the advertiser Ids use `idOnly`
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
         #   default) * `entityStatus` * `updateTime` The default sorting order is
@@ -276,12 +272,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_advertisers(filter: nil, internal_debugging_config: nil, order_by: nil, page_size: nil, page_token: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_advertisers(filter: nil, order_by: nil, page_size: nil, page_token: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/advertisers', options)
           command.response_representation = Google::Apis::DisplayvideoV2::ListAdvertisersResponse::Representation
           command.response_class = Google::Apis::DisplayvideoV2::ListAdvertisersResponse
           command.query['filter'] = filter unless filter.nil?
-          command.query['internalDebuggingConfig'] = internal_debugging_config unless internal_debugging_config.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -4104,30 +4099,32 @@ module Google
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the line items belongs to.
         # @param [String] filter
-        #   Allows filtering by assigned targeting option fields. Supported syntax: *
-        #   Filter expressions are made up of one or more restrictions. * Restrictions can
-        #   be combined by the logical operator `OR`. * A restriction has the form of ``
-        #   field` `operator` `value``. * All fields must use the `EQUALS (=)` operator.
-        #   Supported fields: * `targetingType` Examples: * `AssignedTargetingOption`
-        #   resources of targeting type `TARGETING_TYPE_YOUTUBE_VIDEO` or `
-        #   TARGETING_TYPE_YOUTUBE_CHANNEL`: `targetingType="TARGETING_TYPE_YOUTUBE_VIDEO"
-        #   OR targetingType="TARGETING_TYPE_YOUTUBE_CHANNEL"` The length of this field
-        #   should be no more than 500 characters. Reference our [filter `LIST` requests](/
-        #   display-video/api/guides/how-tos/filters) guide for more information.
+        #   Optional. Allows filtering by assigned targeting option fields. Supported
+        #   syntax: * Filter expressions are made up of one or more restrictions. *
+        #   Restrictions can be combined by the logical operator `OR`. * A restriction has
+        #   the form of ``field` `operator` `value``. * All fields must use the `EQUALS (=)
+        #   ` operator. Supported fields: * `targetingType` Examples: * `
+        #   AssignedTargetingOption` resources of targeting type `
+        #   TARGETING_TYPE_YOUTUBE_VIDEO` or `TARGETING_TYPE_YOUTUBE_CHANNEL`: `
+        #   targetingType="TARGETING_TYPE_YOUTUBE_VIDEO" OR targetingType="
+        #   TARGETING_TYPE_YOUTUBE_CHANNEL"` The length of this field should be no more
+        #   than 500 characters. Reference our [filter `LIST` requests](/display-video/api/
+        #   guides/how-tos/filters) guide for more information.
         # @param [String] order_by
-        #   Field by which to sort the list. Acceptable values are: * `youtubeAdGroupId` (
-        #   default) * `assignedTargetingOption.targetingType` The default sorting order
-        #   is ascending. To specify descending order for a field, a suffix "desc" should
-        #   be added to the field name. Example: `targetingType desc`.
+        #   Optional. Field by which to sort the list. Acceptable values are: * `
+        #   youtubeAdGroupId` (acceptable in v2) * `adGroupId` (acceptable in v3) * `
+        #   assignedTargetingOption.targetingType` The default sorting order is ascending.
+        #   To specify descending order for a field, a suffix "desc" should be added to
+        #   the field name. Example: `targetingType desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. The size must be an integer between `1` and `5000`. If
-        #   unspecified, the default is `5000`. Returns error code `INVALID_ARGUMENT` if
-        #   an invalid value is specified.
+        #   Optional. Requested page size. The size must be an integer between `1` and `
+        #   5000`. If unspecified, the default is `5000`. Returns error code `
+        #   INVALID_ARGUMENT` if an invalid value is specified.
         # @param [String] page_token
-        #   A token that lets the client fetch the next page of results. Typically, this
-        #   is the value of next_page_token returned from the previous call to the `
-        #   BulkListAdGroupAssignedTargetingOptions` method. If not specified, the first
-        #   page of results will be returned.
+        #   Optional. A token that lets the client fetch the next page of results.
+        #   Typically, this is the value of next_page_token returned from the previous
+        #   call to the `BulkListAdGroupAssignedTargetingOptions` method. If not specified,
+        #   the first page of results will be returned.
         # @param [Array<Fixnum>, Fixnum] youtube_ad_group_ids
         #   Required. The IDs of the youtube ad groups to list assigned targeting options
         #   for.
