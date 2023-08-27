@@ -257,6 +257,74 @@ module Google
         end
       end
       
+      # 
+      class GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        # The list of response details of each document.
+        # Corresponds to the JSON property `individualBatchUpdateStatuses`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus>]
+        attr_accessor :individual_batch_update_statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @individual_batch_update_statuses = args[:individual_batch_update_statuses] if args.key?(:individual_batch_update_statuses)
+        end
+      end
+      
+      # The status of each individual document in the batch update process.
+      class GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus
+        include Google::Apis::Core::Hashable
+      
+        # Document Identifier.
+        # Corresponds to the JSON property `documentId`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3DocumentId]
+        attr_accessor :document_id
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Response of the batch update documents operation.
+      class GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The common metadata for long running operations.
       class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata
         include Google::Apis::Core::Hashable
