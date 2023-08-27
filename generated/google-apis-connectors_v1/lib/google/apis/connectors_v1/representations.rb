@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HpaConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Header
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -437,6 +443,18 @@ module Google
       end
       
       class Resource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceLimits
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceRequests
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -746,8 +764,14 @@ module Google
       class ConnectorInfraConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :hpa_config, as: 'hpaConfig', class: Google::Apis::ConnectorsV1::HpaConfig, decorator: Google::Apis::ConnectorsV1::HpaConfig::Representation
+      
           property :internalclient_ratelimit_threshold, :numeric_string => true, as: 'internalclientRatelimitThreshold'
           property :ratelimit_threshold, :numeric_string => true, as: 'ratelimitThreshold'
+          property :resource_limits, as: 'resourceLimits', class: Google::Apis::ConnectorsV1::ResourceLimits, decorator: Google::Apis::ConnectorsV1::ResourceLimits::Representation
+      
+          property :resource_requests, as: 'resourceRequests', class: Google::Apis::ConnectorsV1::ResourceRequests, decorator: Google::Apis::ConnectorsV1::ResourceRequests::Representation
+      
         end
       end
       
@@ -787,8 +811,14 @@ module Google
       class ConnectorVersionInfraConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :hpa_config, as: 'hpaConfig', class: Google::Apis::ConnectorsV1::HpaConfig, decorator: Google::Apis::ConnectorsV1::HpaConfig::Representation
+      
           property :internalclient_ratelimit_threshold, :numeric_string => true, as: 'internalclientRatelimitThreshold'
           property :ratelimit_threshold, :numeric_string => true, as: 'ratelimitThreshold'
+          property :resource_limits, as: 'resourceLimits', class: Google::Apis::ConnectorsV1::ResourceLimits, decorator: Google::Apis::ConnectorsV1::ResourceLimits::Representation
+      
+          property :resource_requests, as: 'resourceRequests', class: Google::Apis::ConnectorsV1::ResourceRequests, decorator: Google::Apis::ConnectorsV1::ResourceRequests::Representation
+      
         end
       end
       
@@ -1045,6 +1075,14 @@ module Google
           property :int_value, :numeric_string => true, as: 'intValue'
           property :key, as: 'key'
           property :string_value, as: 'stringValue'
+        end
+      end
+      
+      class HpaConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_utilization_threshold, :numeric_string => true, as: 'cpuUtilizationThreshold'
+          property :memory_utilization_threshold, :numeric_string => true, as: 'memoryUtilizationThreshold'
         end
       end
       
@@ -1346,6 +1384,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :path_template, as: 'pathTemplate'
           property :type, as: 'type'
+        end
+      end
+      
+      class ResourceLimits
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu, as: 'cpu'
+          property :memory, as: 'memory'
+        end
+      end
+      
+      class ResourceRequests
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu, as: 'cpu'
+          property :memory, as: 'memory'
         end
       end
       

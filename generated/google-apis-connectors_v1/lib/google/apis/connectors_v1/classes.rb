@@ -836,6 +836,11 @@ module Google
       class ConnectorInfraConfig
         include Google::Apis::Core::Hashable
       
+        # Autoscaling config for connector deployment system metrics.
+        # Corresponds to the JSON property `hpaConfig`
+        # @return [Google::Apis::ConnectorsV1::HpaConfig]
+        attr_accessor :hpa_config
+      
         # Max QPS supported for internal requests originating from Connd.
         # Corresponds to the JSON property `internalclientRatelimitThreshold`
         # @return [Fixnum]
@@ -846,14 +851,27 @@ module Google
         # @return [Fixnum]
         attr_accessor :ratelimit_threshold
       
+        # Resource limits defined for connection pods of a given connector type.
+        # Corresponds to the JSON property `resourceLimits`
+        # @return [Google::Apis::ConnectorsV1::ResourceLimits]
+        attr_accessor :resource_limits
+      
+        # Resource requests defined for connection pods of a given connector type.
+        # Corresponds to the JSON property `resourceRequests`
+        # @return [Google::Apis::ConnectorsV1::ResourceRequests]
+        attr_accessor :resource_requests
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @hpa_config = args[:hpa_config] if args.key?(:hpa_config)
           @internalclient_ratelimit_threshold = args[:internalclient_ratelimit_threshold] if args.key?(:internalclient_ratelimit_threshold)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
+          @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
+          @resource_requests = args[:resource_requests] if args.key?(:resource_requests)
         end
       end
       
@@ -989,6 +1007,11 @@ module Google
       class ConnectorVersionInfraConfig
         include Google::Apis::Core::Hashable
       
+        # Autoscaling config for connector deployment system metrics.
+        # Corresponds to the JSON property `hpaConfig`
+        # @return [Google::Apis::ConnectorsV1::HpaConfig]
+        attr_accessor :hpa_config
+      
         # Output only. Max QPS supported for internal requests originating from Connd.
         # Corresponds to the JSON property `internalclientRatelimitThreshold`
         # @return [Fixnum]
@@ -1000,14 +1023,27 @@ module Google
         # @return [Fixnum]
         attr_accessor :ratelimit_threshold
       
+        # Resource limits defined for connection pods of a given connector type.
+        # Corresponds to the JSON property `resourceLimits`
+        # @return [Google::Apis::ConnectorsV1::ResourceLimits]
+        attr_accessor :resource_limits
+      
+        # Resource requests defined for connection pods of a given connector type.
+        # Corresponds to the JSON property `resourceRequests`
+        # @return [Google::Apis::ConnectorsV1::ResourceRequests]
+        attr_accessor :resource_requests
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @hpa_config = args[:hpa_config] if args.key?(:hpa_config)
           @internalclient_ratelimit_threshold = args[:internalclient_ratelimit_threshold] if args.key?(:internalclient_ratelimit_threshold)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
+          @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
+          @resource_requests = args[:resource_requests] if args.key?(:resource_requests)
         end
       end
       
@@ -1951,6 +1987,31 @@ module Google
           @int_value = args[:int_value] if args.key?(:int_value)
           @key = args[:key] if args.key?(:key)
           @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
+      # Autoscaling config for connector deployment system metrics.
+      class HpaConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Percent CPU utilization where HPA triggers autoscaling.
+        # Corresponds to the JSON property `cpuUtilizationThreshold`
+        # @return [Fixnum]
+        attr_accessor :cpu_utilization_threshold
+      
+        # Output only. Percent Memory utilization where HPA triggers autoscaling.
+        # Corresponds to the JSON property `memoryUtilizationThreshold`
+        # @return [Fixnum]
+        attr_accessor :memory_utilization_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu_utilization_threshold = args[:cpu_utilization_threshold] if args.key?(:cpu_utilization_threshold)
+          @memory_utilization_threshold = args[:memory_utilization_threshold] if args.key?(:memory_utilization_threshold)
         end
       end
       
@@ -3044,6 +3105,56 @@ module Google
         def update!(**args)
           @path_template = args[:path_template] if args.key?(:path_template)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Resource limits defined for connection pods of a given connector type.
+      class ResourceLimits
+        include Google::Apis::Core::Hashable
+      
+        # Output only. CPU limit.
+        # Corresponds to the JSON property `cpu`
+        # @return [String]
+        attr_accessor :cpu
+      
+        # Output only. Memory limit.
+        # Corresponds to the JSON property `memory`
+        # @return [String]
+        attr_accessor :memory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu = args[:cpu] if args.key?(:cpu)
+          @memory = args[:memory] if args.key?(:memory)
+        end
+      end
+      
+      # Resource requests defined for connection pods of a given connector type.
+      class ResourceRequests
+        include Google::Apis::Core::Hashable
+      
+        # Output only. CPU request.
+        # Corresponds to the JSON property `cpu`
+        # @return [String]
+        attr_accessor :cpu
+      
+        # Output only. Memory request.
+        # Corresponds to the JSON property `memory`
+        # @return [String]
+        attr_accessor :memory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu = args[:cpu] if args.key?(:cpu)
+          @memory = args[:memory] if args.key?(:memory)
         end
       end
       
