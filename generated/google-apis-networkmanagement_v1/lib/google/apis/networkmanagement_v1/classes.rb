@@ -712,6 +712,11 @@ module Google
         # @return [String]
         attr_accessor :protocol
       
+        # URI of the source telemetry agent this packet originates from.
+        # Corresponds to the JSON property `sourceAgentUri`
+        # @return [String]
+        attr_accessor :source_agent_uri
+      
         # Source IP address.
         # Corresponds to the JSON property `sourceIp`
         # @return [String]
@@ -737,6 +742,7 @@ module Google
           @destination_network_uri = args[:destination_network_uri] if args.key?(:destination_network_uri)
           @destination_port = args[:destination_port] if args.key?(:destination_port)
           @protocol = args[:protocol] if args.key?(:protocol)
+          @source_agent_uri = args[:source_agent_uri] if args.key?(:source_agent_uri)
           @source_ip = args[:source_ip] if args.key?(:source_ip)
           @source_network_uri = args[:source_network_uri] if args.key?(:source_network_uri)
           @source_port = args[:source_port] if args.key?(:source_port)
