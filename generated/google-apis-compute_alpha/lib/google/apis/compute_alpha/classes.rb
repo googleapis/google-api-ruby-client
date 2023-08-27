@@ -5738,6 +5738,70 @@ module Google
         end
       end
       
+      # Represents the network information between workload placements.
+      class CapacityConstraint
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `constraintMetadata`
+        # @return [String]
+        attr_accessor :constraint_metadata
+      
+        # Weighted sum of BandwidthTerms (each term is coefficient * term) must be less
+        # than or equal to max_sum.
+        # Corresponds to the JSON property `maxSumGbps`
+        # @return [Float]
+        attr_accessor :max_sum_gbps
+      
+        # 
+        # Corresponds to the JSON property `terms`
+        # @return [Array<Google::Apis::ComputeAlpha::CapacityConstraintConstraintTerm>]
+        attr_accessor :terms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constraint_metadata = args[:constraint_metadata] if args.key?(:constraint_metadata)
+          @max_sum_gbps = args[:max_sum_gbps] if args.key?(:max_sum_gbps)
+          @terms = args[:terms] if args.key?(:terms)
+        end
+      end
+      
+      # 
+      class CapacityConstraintConstraintTerm
+        include Google::Apis::Core::Hashable
+      
+        # Coefficient of this term in the linear expression. The value of the term will
+        # be coefficient * (demand from src to dst in Gbps).
+        # Corresponds to the JSON property `coefficient`
+        # @return [Float]
+        attr_accessor :coefficient
+      
+        # 
+        # Corresponds to the JSON property `destinationNode`
+        # @return [Google::Apis::ComputeAlpha::PlacementLocation]
+        attr_accessor :destination_node
+      
+        # Source and destination nodes.
+        # Corresponds to the JSON property `sourceNode`
+        # @return [Google::Apis::ComputeAlpha::PlacementLocation]
+        attr_accessor :source_node
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @coefficient = args[:coefficient] if args.key?(:coefficient)
+          @destination_node = args[:destination_node] if args.key?(:destination_node)
+          @source_node = args[:source_node] if args.key?(:source_node)
+        end
+      end
+      
       # [Deprecated] gRPC channel credentials to access the SDS server. gRPC channel
       # credentials to access the SDS server.
       class ChannelCredentials
@@ -7185,7 +7249,7 @@ module Google
         # a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk
         # parameter, or specify it alone to create an empty persistent disk. If you
         # specify this field along with a source, the value of sizeGb must not be less
-        # than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        # than the size of the source. Acceptable values are greater than 0.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
@@ -10386,6 +10450,16 @@ module Google
         attr_accessor :allow_psc_global_access
         alias_method :allow_psc_global_access?, :allow_psc_global_access
       
+        # This is used in PSC consumer ForwardingRule to control whether the producer is
+        # allowed to inject packets into the consumer's network. If set to true, the
+        # target service attachment must have tunneling enabled and TunnelingConfig.
+        # RoutingMode set to PACKET_INJECTION Non-PSC forwarding rules should not use
+        # this field.
+        # Corresponds to the JSON property `allowPscPacketInjection`
+        # @return [Boolean]
+        attr_accessor :allow_psc_packet_injection
+        alias_method :allow_psc_packet_injection?, :allow_psc_packet_injection
+      
         # Identifies the backend service to which the forwarding rule sends traffic.
         # Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must
         # be omitted for all other load balancer types.
@@ -10431,12 +10505,12 @@ module Google
         attr_accessor :id
       
         # Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP in
-        # IPV6_FORWARDING_RULE_CREATION mode. Use one of the following formats to
-        # specify a sub-PDP when creating an IPv6 NetLB forwarding rule using BYOIP:
+        # EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode. Use one of the following formats
+        # to specify a sub-PDP when creating an IPv6 NetLB forwarding rule using BYOIP:
         # Full resource URL, as in https://www.googleapis.com/compute/v1/projects/
-        # project_id/regions/region/publicDelegatedPrefixes/sub-pdp-name Partial URL, as
-        # in: - projects/project_id/regions/region/publicDelegatedPrefixes/sub-pdp-name -
-        # regions/region/publicDelegatedPrefixes/sub-pdp-name
+        # project_id/regions/region /publicDelegatedPrefixes/sub-pdp-name Partial URL,
+        # as in: - projects/project_id/regions/region/publicDelegatedPrefixes/sub-pdp-
+        # name - regions/region/publicDelegatedPrefixes/sub-pdp-name
         # Corresponds to the JSON property `ipCollection`
         # @return [String]
         attr_accessor :ip_collection
@@ -10680,6 +10754,7 @@ module Google
           @all_ports = args[:all_ports] if args.key?(:all_ports)
           @allow_global_access = args[:allow_global_access] if args.key?(:allow_global_access)
           @allow_psc_global_access = args[:allow_psc_global_access] if args.key?(:allow_psc_global_access)
+          @allow_psc_packet_injection = args[:allow_psc_packet_injection] if args.key?(:allow_psc_packet_injection)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
           @base_forwarding_rule = args[:base_forwarding_rule] if args.key?(:base_forwarding_rule)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -11876,6 +11951,25 @@ module Google
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
           @port_specification = args[:port_specification] if args.key?(:port_specification)
+        end
+      end
+      
+      # 
+      class GetNetworkCapacityConstraintsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Set of capacity constraints that describe network adjacency.
+        # Corresponds to the JSON property `capacityConstraints`
+        # @return [Array<Google::Apis::ComputeAlpha::CapacityConstraint>]
+        attr_accessor :capacity_constraints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capacity_constraints = args[:capacity_constraints] if args.key?(:capacity_constraints)
         end
       end
       
@@ -17441,6 +17535,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::QueuingPolicy]
         attr_accessor :queuing_policy
       
+        # The number of instances to be created by this resize request. The group's
+        # target size will be increased by this number.
+        # Corresponds to the JSON property `resizeBy`
+        # @return [Fixnum]
+        attr_accessor :resize_by
+      
         # [Output Only] The URL for this resize request. The server defines this URL.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -17456,11 +17556,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # [Output only] Status of the request. The Status message is aligned with
-        # QueuedResource.status. ResizeRequest.queuing_policy contains the queuing
-        # policy as provided by the user; it could have either valid_until_time or
-        # valid_until_duration. ResizeRequest.status.queuing_policy always contains
-        # absolute time as calculated by the server when the request is queued.
+        # [Output only] Status of the request.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatus]
         attr_accessor :status
@@ -17484,6 +17580,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @queuing_policy = args[:queuing_policy] if args.key?(:queuing_policy)
+          @resize_by = args[:resize_by] if args.key?(:resize_by)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @state = args[:state] if args.key?(:state)
@@ -19742,16 +19839,16 @@ module Google
       class InstanceSettingsMetadata
         include Google::Apis::Core::Hashable
       
+        # A metadata key/value items map. The total size of all keys and values must be
+        # less than 512KB.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,String>]
+        attr_accessor :items
+      
         # [Output Only] Type of the resource. Always compute#metadata for metadata.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
-        # A metadata key/value map. The total size of all keys and values must be less
-        # than 512KB.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,String>]
-        attr_accessor :metadata
       
         def initialize(**args)
            update!(**args)
@@ -19759,8 +19856,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -21784,9 +21881,8 @@ module Google
         attr_accessor :operational_status
       
         # [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present
-        # for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-        # initiate provisioning with a selected partner. Of the form "XXXXX/region/
-        # domain"
+        # for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate
+        # provisioning with a selected partner. Of the form "XXXXX/region/domain"
         # Corresponds to the JSON property `pairingKey`
         # @return [String]
         attr_accessor :pairing_key
@@ -33088,6 +33184,31 @@ module Google
         end
       end
       
+      # 
+      class PlacementLocation
+        include Google::Apis::Core::Hashable
+      
+        # Aggregation block id of the placement group.
+        # Corresponds to the JSON property `aggregationBlockId`
+        # @return [String]
+        attr_accessor :aggregation_block_id
+      
+        # Partial or full URL of the resource policy for the placement group.
+        # Corresponds to the JSON property `resourcePolicy`
+        # @return [String]
+        attr_accessor :resource_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_block_id = args[:aggregation_block_id] if args.key?(:aggregation_block_id)
+          @resource_policy = args[:resource_policy] if args.key?(:resource_policy)
+        end
+      end
+      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members`, or principals, to a single `role`.
@@ -40211,8 +40332,9 @@ module Google
       class RouterNat
         include Google::Apis::Core::Hashable
       
-        # The network tier to use when automatically reserving IP addresses. Must be one
-        # of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+        # The network tier to use when automatically reserving NAT IP addresses. Must be
+        # one of: PREMIUM, STANDARD. If not specified, then the current project-level
+        # default tier is used.
         # Corresponds to the JSON property `autoNetworkTier`
         # @return [String]
         attr_accessor :auto_network_tier
@@ -43694,6 +43816,14 @@ module Google
         # @return [String]
         attr_accessor :target_service
       
+        # Use to configure this PSC connection in tunneling mode. In tunneling mode
+        # traffic from consumer to producer will be encapsulated as it crosses the VPC
+        # boundary and traffic from producer to consumer will be decapsulated in the
+        # same manner.
+        # Corresponds to the JSON property `tunnelingConfig`
+        # @return [Google::Apis::ComputeAlpha::ServiceAttachmentTunnelingConfig]
+        attr_accessor :tunneling_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -43719,6 +43849,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @target_service = args[:target_service] if args.key?(:target_service)
+          @tunneling_config = args[:tunneling_config] if args.key?(:tunneling_config)
         end
       end
       
@@ -44028,6 +44159,36 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Use to configure this PSC connection in tunneling mode. In tunneling mode
+      # traffic from consumer to producer will be encapsulated as it crosses the VPC
+      # boundary and traffic from producer to consumer will be decapsulated in the
+      # same manner.
+      class ServiceAttachmentTunnelingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specify the encapsulation protocol and what metadata to include in incoming
+        # encapsulated packet headers.
+        # Corresponds to the JSON property `encapsulationProfile`
+        # @return [String]
+        attr_accessor :encapsulation_profile
+      
+        # How this Service Attachment will treat traffic sent to the tunnel_ip, destined
+        # for the consumer network.
+        # Corresponds to the JSON property `routingMode`
+        # @return [String]
+        attr_accessor :routing_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encapsulation_profile = args[:encapsulation_profile] if args.key?(:encapsulation_profile)
+          @routing_mode = args[:routing_mode] if args.key?(:routing_mode)
         end
       end
       
@@ -54177,12 +54338,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :peer_external_gateway_interface
       
-        # URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+        # URL of the peer side HA VPN gateway to which this VPN tunnel is connected.
         # Provided by the client when the VPN tunnel is created. This field can be used
         # when creating highly available VPN from VPC network to VPC network, the field
         # is exclusive with the field peerExternalGateway. If provided, the VPN tunnel
-        # will automatically use the same vpnGatewayInterface ID in the peer GCP VPN
-        # gateway.
+        # will automatically use the same vpnGatewayInterface ID in the peer Google
+        # Cloud VPN gateway.
         # Corresponds to the JSON property `peerGcpGateway`
         # @return [String]
         attr_accessor :peer_gcp_gateway
