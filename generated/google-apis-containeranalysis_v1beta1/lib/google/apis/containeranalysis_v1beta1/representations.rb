@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1459,6 +1465,15 @@ module Google
         end
       end
       
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dir, as: 'dir'
+          property :repository, as: 'repository'
+          property :revision, as: 'revision'
+        end
+      end
+      
       class ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1555,6 +1570,8 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1Source
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :connected_repository, as: 'connectedRepository', class: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository, decorator: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository::Representation
+      
           property :git_source, as: 'gitSource', class: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource, decorator: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource::Representation
       
           property :repo_source, as: 'repoSource', class: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource, decorator: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource::Representation
