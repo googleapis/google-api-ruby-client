@@ -2222,6 +2222,39 @@ module Google
         end
       end
       
+      # Location of the source in a 2nd-gen Google Cloud Build repository resource.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository
+        include Google::Apis::Core::Hashable
+      
+        # Directory, relative to the source root, in which to run the build.
+        # Corresponds to the JSON property `dir`
+        # @return [String]
+        attr_accessor :dir
+      
+        # Required. Name of the Google Cloud Build repository, formatted as `projects/*/
+        # locations/*/connections/*/repositories/*`.
+        # Corresponds to the JSON property `repository`
+        # @return [String]
+        attr_accessor :repository
+      
+        # The revision to fetch from the Git repository such as a branch, a tag, a
+        # commit SHA, or any Git ref.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dir = args[:dir] if args.key?(:dir)
+          @repository = args[:repository] if args.key?(:repository)
+          @revision = args[:revision] if args.key?(:revision)
+        end
+      end
+      
       # Container message for hashes of byte content of files, used in
       # SourceProvenance messages to verify integrity of source input to the build.
       class ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes
@@ -2568,6 +2601,11 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1Source
         include Google::Apis::Core::Hashable
       
+        # Location of the source in a 2nd-gen Google Cloud Build repository resource.
+        # Corresponds to the JSON property `connectedRepository`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository]
+        attr_accessor :connected_repository
+      
         # Location of the source in any accessible Git repository.
         # Corresponds to the JSON property `gitSource`
         # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource]
@@ -2596,6 +2634,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @connected_repository = args[:connected_repository] if args.key?(:connected_repository)
           @git_source = args[:git_source] if args.key?(:git_source)
           @repo_source = args[:repo_source] if args.key?(:repo_source)
           @storage_source = args[:storage_source] if args.key?(:storage_source)
