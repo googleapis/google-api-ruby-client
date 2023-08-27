@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +311,13 @@ module Google
         end
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_cycle_count_limit, :numeric_string => true, as: 'billingCycleCountLimit'
+        end
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -344,6 +357,8 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1Product
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :finite_billing_cycle_details, as: 'finiteBillingCycleDetails', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails::Representation
+      
           property :name, as: 'name'
           collection :price_configs, as: 'priceConfigs', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig::Representation
       
@@ -461,6 +476,8 @@ module Google
           property :amount, as: 'amount', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Amount, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Amount::Representation
       
           property :description, as: 'description'
+          property :finite_billing_cycle_details, as: 'finiteBillingCycleDetails', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails::Representation
+      
           property :line_item_free_trial_end_time, as: 'lineItemFreeTrialEndTime'
           property :line_item_index, as: 'lineItemIndex'
           collection :line_item_promotion_specs, as: 'lineItemPromotionSpecs', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec::Representation
