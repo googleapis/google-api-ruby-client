@@ -1101,7 +1101,9 @@ module Google
         end
       end
       
-      # Response for a request to get remarketing tag.
+      # Deprecated. This will be removed in October 2023. For more information, see
+      # the release notes: https://developers.google.com/authorized-buyers/apis/
+      # relnotes#real-time-bidding-api Response for a request to get remarketing tag.
       class GetRemarketingTagResponse
         include Google::Apis::Core::Hashable
       
@@ -2101,8 +2103,10 @@ module Google
         end
       end
       
-      # Represents the URL restriction (for the URL captured by the pixel callback)
-      # for a user list.
+      # Deprecated. This will be removed in October 2023. For more information, see
+      # the release notes: https://developers.google.com/authorized-buyers/apis/
+      # relnotes#real-time-bidding-api Represents the URL restriction (for the URL
+      # captured by the pixel callback) for a user list.
       class UrlRestriction
         include Google::Apis::Core::Hashable
       
@@ -2192,8 +2196,10 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # Represents the URL restriction (for the URL captured by the pixel callback)
-        # for a user list.
+        # Deprecated. This will be removed in October 2023. For more information, see
+        # the release notes: https://developers.google.com/authorized-buyers/apis/
+        # relnotes#real-time-bidding-api Represents the URL restriction (for the URL
+        # captured by the pixel callback) for a user list.
         # Corresponds to the JSON property `urlRestriction`
         # @return [Google::Apis::RealtimebiddingV1::UrlRestriction]
         attr_accessor :url_restriction
