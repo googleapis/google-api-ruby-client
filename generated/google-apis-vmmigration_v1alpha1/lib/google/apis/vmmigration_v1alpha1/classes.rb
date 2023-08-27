@@ -319,12 +319,6 @@ module Google
         # @return [String]
         attr_accessor :firmware
       
-        # Output only. Unordered list. List of VM certain capabilities needed for some
-        # Compute Engine features.
-        # Corresponds to the JSON property `vmCapabilities`
-        # @return [Array<String>]
-        attr_accessor :vm_capabilities
-      
         def initialize(**args)
            update!(**args)
         end
@@ -334,7 +328,6 @@ module Google
           @committed_storage_bytes = args[:committed_storage_bytes] if args.key?(:committed_storage_bytes)
           @disks = args[:disks] if args.key?(:disks)
           @firmware = args[:firmware] if args.key?(:firmware)
-          @vm_capabilities = args[:vm_capabilities] if args.key?(:vm_capabilities)
         end
       end
       
@@ -2077,6 +2070,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Represent the source Vmware VM details.
+        # Corresponds to the JSON property `vmwareSourceVmDetails`
+        # @return [Google::Apis::VmmigrationV1alpha1::VmwareSourceVmDetails]
+        attr_accessor :vmware_source_vm_details
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2106,6 +2104,7 @@ module Google
           @state_time = args[:state_time] if args.key?(:state_time)
           @target_defaults = args[:target_defaults] if args.key?(:target_defaults)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @vmware_source_vm_details = args[:vmware_source_vm_details] if args.key?(:vmware_source_vm_details)
         end
       end
       
@@ -3359,6 +3358,37 @@ module Google
         end
       end
       
+      # The details of a Vmware VM disk.
+      class VmwareDiskDetails
+        include Google::Apis::Core::Hashable
+      
+        # The ordinal number of the disk.
+        # Corresponds to the JSON property `diskNumber`
+        # @return [Fixnum]
+        attr_accessor :disk_number
+      
+        # The disk label.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Size in GB.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_number = args[:disk_number] if args.key?(:disk_number)
+          @label = args[:label] if args.key?(:label)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+        end
+      end
+      
       # VmwareSourceDetails message describes a specific source details for the vmware
       # source type.
       class VmwareSourceDetails
@@ -3401,6 +3431,37 @@ module Google
           @thumbprint = args[:thumbprint] if args.key?(:thumbprint)
           @username = args[:username] if args.key?(:username)
           @vcenter_ip = args[:vcenter_ip] if args.key?(:vcenter_ip)
+        end
+      end
+      
+      # Represent the source Vmware VM details.
+      class VmwareSourceVmDetails
+        include Google::Apis::Core::Hashable
+      
+        # The total size of the disks being migrated in bytes.
+        # Corresponds to the JSON property `committedStorageBytes`
+        # @return [Fixnum]
+        attr_accessor :committed_storage_bytes
+      
+        # The disks attached to the source VM.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::VmwareDiskDetails>]
+        attr_accessor :disks
+      
+        # The firmware type of the source VM.
+        # Corresponds to the JSON property `firmware`
+        # @return [String]
+        attr_accessor :firmware
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @committed_storage_bytes = args[:committed_storage_bytes] if args.key?(:committed_storage_bytes)
+          @disks = args[:disks] if args.key?(:disks)
+          @firmware = args[:firmware] if args.key?(:firmware)
         end
       end
       
