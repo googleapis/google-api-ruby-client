@@ -1789,8 +1789,9 @@ module Google
         # field does NOT affect existing Backups under it. Backups created AFTER a
         # successful update will automatically pick up the new value. NOTE:
         # backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is
-        # defined, then this must be <= 360 * the creation interval. Default: 0 (no
-        # automatic deletion)
+        # defined, then this must be <= 360 * the creation interval. If rpo_config is
+        # defined, then this must be <= 360 * target_rpo_minutes / (1440minutes/day).
+        # Default: 0 (no automatic deletion)
         # Corresponds to the JSON property `backupRetainDays`
         # @return [Fixnum]
         attr_accessor :backup_retain_days
