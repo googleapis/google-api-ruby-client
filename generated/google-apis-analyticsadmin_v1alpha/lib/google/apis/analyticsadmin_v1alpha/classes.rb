@@ -1773,12 +1773,6 @@ module Google
         attr_accessor :daily_export_enabled
         alias_method :daily_export_enabled?, :daily_export_enabled
       
-        # If set true, enables enterprise export to the linked Google Cloud project.
-        # Corresponds to the JSON property `enterpriseExportEnabled`
-        # @return [Boolean]
-        attr_accessor :enterprise_export_enabled
-        alias_method :enterprise_export_enabled?, :enterprise_export_enabled
-      
         # The list of event names that will be excluded from exports.
         # Corresponds to the JSON property `excludedEvents`
         # @return [Array<String>]
@@ -1790,6 +1784,12 @@ module Google
         # Corresponds to the JSON property `exportStreams`
         # @return [Array<String>]
         attr_accessor :export_streams
+      
+        # If set true, enables fresh daily export to the linked Google Cloud project.
+        # Corresponds to the JSON property `freshDailyExportEnabled`
+        # @return [Boolean]
+        attr_accessor :fresh_daily_export_enabled
+        alias_method :fresh_daily_export_enabled?, :fresh_daily_export_enabled
       
         # If set true, exported data will include advertising identifiers for mobile app
         # streams.
@@ -1828,9 +1828,9 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @daily_export_enabled = args[:daily_export_enabled] if args.key?(:daily_export_enabled)
-          @enterprise_export_enabled = args[:enterprise_export_enabled] if args.key?(:enterprise_export_enabled)
           @excluded_events = args[:excluded_events] if args.key?(:excluded_events)
           @export_streams = args[:export_streams] if args.key?(:export_streams)
+          @fresh_daily_export_enabled = args[:fresh_daily_export_enabled] if args.key?(:fresh_daily_export_enabled)
           @include_advertising_id = args[:include_advertising_id] if args.key?(:include_advertising_id)
           @name = args[:name] if args.key?(:name)
           @project = args[:project] if args.key?(:project)
@@ -2015,6 +2015,11 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link]
         attr_accessor :search_ads360_link
       
+        # SKAdNetwork conversion value schema of an iOS stream.
+        # Corresponds to the JSON property `skadnetworkConversionValueSchema`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema]
+        attr_accessor :skadnetwork_conversion_value_schema
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2043,6 +2048,7 @@ module Google
           @measurement_protocol_secret = args[:measurement_protocol_secret] if args.key?(:measurement_protocol_secret)
           @property = args[:property] if args.key?(:property)
           @search_ads360_link = args[:search_ads360_link] if args.key?(:search_ads360_link)
+          @skadnetwork_conversion_value_schema = args[:skadnetwork_conversion_value_schema] if args.key?(:skadnetwork_conversion_value_schema)
         end
       end
       
@@ -2367,6 +2373,61 @@ module Google
           @deletable = args[:deletable] if args.key?(:deletable)
           @event_name = args[:event_name] if args.key?(:event_name)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Conversion value settings for a postback window for SKAdNetwork conversion
+      # value schema.
+      class GoogleAnalyticsAdminV1alphaConversionValues
+        include Google::Apis::Core::Hashable
+      
+        # Required. A coarse grained conversion value. This value is not guaranteed to
+        # be unique.
+        # Corresponds to the JSON property `coarseValue`
+        # @return [String]
+        attr_accessor :coarse_value
+      
+        # Display name of the SKAdNetwork conversion value. The max allowed display name
+        # length is 50 UTF-16 code units.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Event conditions that must be met for this Conversion Value to be achieved.
+        # The conditions in this list are ANDed together. It must have minimum of 1
+        # entry and maximum of 3 entries, if the postback window is enabled.
+        # Corresponds to the JSON property `eventMappings`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventMapping>]
+        attr_accessor :event_mappings
+      
+        # The fine-grained conversion value. This is applicable only to the first
+        # postback window. Its valid values are [0,63], both inclusive. It must be set
+        # for postback window 1, and must not be set for postback window 2 & 3. This
+        # value is not guaranteed to be unique. If the configuration for the first
+        # postback window is re-used for second or third postback windows this field has
+        # no effect.
+        # Corresponds to the JSON property `fineValue`
+        # @return [Fixnum]
+        attr_accessor :fine_value
+      
+        # If true, the SDK should lock to this conversion value for the current postback
+        # window.
+        # Corresponds to the JSON property `lockEnabled`
+        # @return [Boolean]
+        attr_accessor :lock_enabled
+        alias_method :lock_enabled?, :lock_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @coarse_value = args[:coarse_value] if args.key?(:coarse_value)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @event_mappings = args[:event_mappings] if args.key?(:event_mappings)
+          @fine_value = args[:fine_value] if args.key?(:fine_value)
+          @lock_enabled = args[:lock_enabled] if args.key?(:lock_enabled)
         end
       end
       
@@ -3207,6 +3268,57 @@ module Google
           @name = args[:name] if args.key?(:name)
           @parameter_mutations = args[:parameter_mutations] if args.key?(:parameter_mutations)
           @source_copy_parameters = args[:source_copy_parameters] if args.key?(:source_copy_parameters)
+        end
+      end
+      
+      # Event setting conditions to match an event.
+      class GoogleAnalyticsAdminV1alphaEventMapping
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the GA4 event. It must always be set. The max allowed
+        # display name length is 40 UTF-16 code units.
+        # Corresponds to the JSON property `eventName`
+        # @return [String]
+        attr_accessor :event_name
+      
+        # The maximum number of times the event occurred. If not set, maximum event
+        # count won't be checked.
+        # Corresponds to the JSON property `maxEventCount`
+        # @return [Fixnum]
+        attr_accessor :max_event_count
+      
+        # The maximum revenue generated due to the event. Revenue currency will be
+        # defined at the property level. If not set, maximum event value won't be
+        # checked.
+        # Corresponds to the JSON property `maxEventValue`
+        # @return [Float]
+        attr_accessor :max_event_value
+      
+        # At least one of the following four min/max values must be set. The values set
+        # will be ANDed together to qualify an event. The minimum number of times the
+        # event occurred. If not set, minimum event count won't be checked.
+        # Corresponds to the JSON property `minEventCount`
+        # @return [Fixnum]
+        attr_accessor :min_event_count
+      
+        # The minimum revenue generated due to the event. Revenue currency will be
+        # defined at the property level. If not set, minimum event value won't be
+        # checked.
+        # Corresponds to the JSON property `minEventValue`
+        # @return [Float]
+        attr_accessor :min_event_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_name = args[:event_name] if args.key?(:event_name)
+          @max_event_count = args[:max_event_count] if args.key?(:max_event_count)
+          @max_event_value = args[:max_event_value] if args.key?(:max_event_value)
+          @min_event_count = args[:min_event_count] if args.key?(:min_event_count)
+          @min_event_value = args[:min_event_value] if args.key?(:min_event_value)
         end
       end
       
@@ -4229,6 +4341,34 @@ module Google
         end
       end
       
+      # Response message for ListSKAdNetworkConversionValueSchemas RPC
+      class GoogleAnalyticsAdminV1alphaListSkAdNetworkConversionValueSchemasResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. Currently, Google Analytics
+        # supports only one SKAdNetworkConversionValueSchema per dataStream, so this
+        # will never be populated.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of SKAdNetworkConversionValueSchemas. This will have at most one value.
+        # Corresponds to the JSON property `skadnetworkConversionValueSchemas`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema>]
+        attr_accessor :skadnetwork_conversion_value_schemas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @skadnetwork_conversion_value_schemas = args[:skadnetwork_conversion_value_schemas] if args.key?(:skadnetwork_conversion_value_schemas)
+        end
+      end
+      
       # Response message for ListSearchAds360Links RPC.
       class GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse
         include Google::Apis::Core::Hashable
@@ -4415,6 +4555,40 @@ module Google
         def update!(**args)
           @parameter = args[:parameter] if args.key?(:parameter)
           @parameter_value = args[:parameter_value] if args.key?(:parameter_value)
+        end
+      end
+      
+      # Settings for a SKAdNetwork conversion postback window.
+      class GoogleAnalyticsAdminV1alphaPostbackWindow
+        include Google::Apis::Core::Hashable
+      
+        # Ordering of the repeated field will be used to prioritize the conversion value
+        # settings. Lower indexed entries are prioritized higher. The first conversion
+        # value setting that evaluates to true will be selected. It must have at least
+        # one entry if enable_postback_window_settings is set to true. It can have
+        # maximum of 128 entries.
+        # Corresponds to the JSON property `conversionValues`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionValues>]
+        attr_accessor :conversion_values
+      
+        # If enable_postback_window_settings is true, conversion_values must be
+        # populated and will be used for determining when and how to set the Conversion
+        # Value on a client device and exporting schema to linked Ads accounts. If false,
+        # the settings are not used, but are retained in case they may be used in the
+        # future. This must always be true for postback_window_one.
+        # Corresponds to the JSON property `postbackWindowSettingsEnabled`
+        # @return [Boolean]
+        attr_accessor :postback_window_settings_enabled
+        alias_method :postback_window_settings_enabled?, :postback_window_settings_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversion_values = args[:conversion_values] if args.key?(:conversion_values)
+          @postback_window_settings_enabled = args[:postback_window_settings_enabled] if args.key?(:postback_window_settings_enabled)
         end
       end
       
@@ -4761,6 +4935,56 @@ module Google
           @quota = args[:quota] if args.key?(:quota)
           @row_count = args[:row_count] if args.key?(:row_count)
           @rows = args[:rows] if args.key?(:rows)
+        end
+      end
+      
+      # SKAdNetwork conversion value schema of an iOS stream.
+      class GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema
+        include Google::Apis::Core::Hashable
+      
+        # If enabled, the GA SDK will set conversion values using this schema definition,
+        # and schema will be exported to any Google Ads accounts linked to this
+        # property. If disabled, the GA SDK will not automatically set conversion values,
+        # and also the schema will not be exported to Ads.
+        # Corresponds to the JSON property `applyConversionValues`
+        # @return [Boolean]
+        attr_accessor :apply_conversion_values
+        alias_method :apply_conversion_values?, :apply_conversion_values
+      
+        # Output only. Resource name of the schema. This will be child of ONLY an iOS
+        # stream, and there can be at most one such child under an iOS stream. Format:
+        # properties/`property`/dataStreams/`dataStream`/
+        # sKAdNetworkConversionValueSchema
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Settings for a SKAdNetwork conversion postback window.
+        # Corresponds to the JSON property `postbackWindowOne`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaPostbackWindow]
+        attr_accessor :postback_window_one
+      
+        # Settings for a SKAdNetwork conversion postback window.
+        # Corresponds to the JSON property `postbackWindowThree`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaPostbackWindow]
+        attr_accessor :postback_window_three
+      
+        # Settings for a SKAdNetwork conversion postback window.
+        # Corresponds to the JSON property `postbackWindowTwo`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaPostbackWindow]
+        attr_accessor :postback_window_two
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apply_conversion_values = args[:apply_conversion_values] if args.key?(:apply_conversion_values)
+          @name = args[:name] if args.key?(:name)
+          @postback_window_one = args[:postback_window_one] if args.key?(:postback_window_one)
+          @postback_window_three = args[:postback_window_three] if args.key?(:postback_window_three)
+          @postback_window_two = args[:postback_window_two] if args.key?(:postback_window_two)
         end
       end
       
