@@ -665,6 +665,409 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create an session template, synchronously.
+        # @param [String] parent
+        #   Required. The parent resource where this session template will be created.
+        # @param [Google::Apis::DataprocV1::SessionTemplate] session_template_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SessionTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SessionTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_session_template(parent, session_template_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/sessionTemplates', options)
+          command.request_representation = Google::Apis::DataprocV1::SessionTemplate::Representation
+          command.request_object = session_template_object
+          command.response_representation = Google::Apis::DataprocV1::SessionTemplate::Representation
+          command.response_class = Google::Apis::DataprocV1::SessionTemplate
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a session template.
+        # @param [String] name
+        #   Required. The name of the session template resource to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_session_template(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1::Empty::Representation
+          command.response_class = Google::Apis::DataprocV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the resource representation for a session template.
+        # @param [String] name
+        #   Required. The name of the session template to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SessionTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SessionTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_session_template(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1::SessionTemplate::Representation
+          command.response_class = Google::Apis::DataprocV1::SessionTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists session templates.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of session templates.
+        # @param [String] filter
+        #   Optional. A filter for the session templates to return in the response.
+        #   Filters are case sensitive and have the following syntax:field = value AND
+        #   field = value ...
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of sessions to return in each response. The
+        #   service may return fewer than this value.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous ListSessions call. Provide
+        #   this token to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::ListSessionTemplatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::ListSessionTemplatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_session_templates(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/sessionTemplates', options)
+          command.response_representation = Google::Apis::DataprocV1::ListSessionTemplatesResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::ListSessionTemplatesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the session template, synchronously.Disable check for update_mask,
+        # because all updates will be full replacements.
+        # @param [String] name
+        #   Required. The resource name of the session template.
+        # @param [Google::Apis::DataprocV1::SessionTemplate] session_template_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SessionTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SessionTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_session_template(name, session_template_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataprocV1::SessionTemplate::Representation
+          command.request_object = session_template_object
+          command.response_representation = Google::Apis::DataprocV1::SessionTemplate::Representation
+          command.response_class = Google::Apis::DataprocV1::SessionTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create an interactive session asynchronously.
+        # @param [String] parent
+        #   Required. The parent resource where this session will be created.
+        # @param [Google::Apis::DataprocV1::Session] session_object
+        # @param [String] request_id
+        #   Optional. A unique ID used to identify the request. If the service receives
+        #   two CreateSessionRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
+        #   google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateSessionRequest)s with
+        #   the same ID, the second request is ignored and the first Session is created
+        #   and stored in the backend is returned.Recommendation: Set this value to a UUID
+        #   (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must
+        #   contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-
+        #   ). The maximum length is 40 characters.
+        # @param [String] session_id
+        #   Required. The ID to use for the session, which becomes the final component of
+        #   the session's resource name.This value must be 4-63 characters. Valid
+        #   characters are /a-z-/.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_session(parent, session_object = nil, request_id: nil, session_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/sessions', options)
+          command.request_representation = Google::Apis::DataprocV1::Session::Representation
+          command.request_object = session_object
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['sessionId'] = session_id unless session_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the interactive session resource. If the session is not in terminal
+        # state, it will be terminated and deleted afterwards.
+        # @param [String] name
+        #   Required. The name of the session resource to delete.
+        # @param [String] request_id
+        #   Optional. A unique ID used to identify the request. If the service receives
+        #   two DeleteSessionRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
+        #   google.cloud.dataproc.v1#google.cloud.dataproc.v1.DeleteSessionRequest)s with
+        #   the same ID, the second request is ignored.Recommendation: Set this value to a
+        #   UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value
+        #   must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+        #   hyphens (-). The maximum length is 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_session(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the resource representation for an interactive session.
+        # @param [String] name
+        #   Required. The name of the session to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Session] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Session]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_session(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1::Session::Representation
+          command.response_class = Google::Apis::DataprocV1::Session
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inject Credentials in the interactive session.
+        # @param [String] session
+        #   Required. The name of the session resource to inject credentials to.
+        # @param [Google::Apis::DataprocV1::InjectSessionCredentialsRequest] inject_session_credentials_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def inject_project_location_session_credentials(session, inject_session_credentials_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+session}:injectCredentials', options)
+          command.request_representation = Google::Apis::DataprocV1::InjectSessionCredentialsRequest::Representation
+          command.request_object = inject_session_credentials_request_object
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
+          command.params['session'] = session unless session.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists interactive sessions.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of sessions.
+        # @param [String] filter
+        #   Optional. A filter for the sessions to return in the response.A filter is a
+        #   logical expression constraining the values of various fields in each session
+        #   resource. Filters are case sensitive, and may contain multiple clauses
+        #   combined with logical operators (AND/OR). Supported fields are session_id,
+        #   session_uuid, state, and create_time.e.g. state = ACTIVE and create_time < "
+        #   2023-01-01T00:00:00Z" filters for sessions in state ACTIVE that were created
+        #   before 2023-01-01See https://google.aip.dev/assets/misc/ebnf-filtering.txt for
+        #   a detailed description of the filter syntax and a list of supported
+        #   comparisons.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of sessions to return in each response. The
+        #   service may return fewer than this value.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous ListSessions call. Provide
+        #   this token to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::ListSessionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::ListSessionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_sessions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/sessions', options)
+          command.response_representation = Google::Apis::DataprocV1::ListSessionsResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::ListSessionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Terminates the interactive session.
+        # @param [String] name
+        #   Required. The name of the session resource to terminate.
+        # @param [Google::Apis::DataprocV1::TerminateSessionRequest] terminate_session_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def terminate_session(name, terminate_session_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:terminate', options)
+          command.request_representation = Google::Apis::DataprocV1::TerminateSessionRequest::Representation
+          command.request_object = terminate_session_request_object
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates new workflow template.
         # @param [String] parent
         #   Required. The resource name of the region or location, as described in https://

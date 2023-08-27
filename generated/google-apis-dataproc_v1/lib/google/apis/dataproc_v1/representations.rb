@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InjectSessionCredentialsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupAutoscalingPolicyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JupyterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KerberosConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -407,6 +419,18 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSessionTemplatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSessionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -586,7 +610,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Session
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SessionOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SessionStateHistory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SessionTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -689,6 +731,12 @@ module Google
       end
       
       class TemplateParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TerminateSessionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1290,6 +1338,14 @@ module Google
         end
       end
       
+      class InjectSessionCredentialsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :credentials_ciphertext, as: 'credentialsCiphertext'
+          property :request_id, as: 'requestId'
+        end
+      end
+      
       class InstanceGroupAutoscalingPolicyConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1439,6 +1495,14 @@ module Google
         end
       end
       
+      class JupyterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :kernel, as: 'kernel'
+        end
+      end
+      
       class KerberosConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1530,6 +1594,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DataprocV1::Operation, decorator: Google::Apis::DataprocV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListSessionTemplatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :session_templates, as: 'sessionTemplates', class: Google::Apis::DataprocV1::SessionTemplate, decorator: Google::Apis::DataprocV1::SessionTemplate::Representation
+      
+        end
+      end
+      
+      class ListSessionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sessions, as: 'sessions', class: Google::Apis::DataprocV1::Session, decorator: Google::Apis::DataprocV1::Session::Representation
       
         end
       end
@@ -1845,6 +1927,32 @@ module Google
         end
       end
       
+      class Session
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :creator, as: 'creator'
+          property :environment_config, as: 'environmentConfig', class: Google::Apis::DataprocV1::EnvironmentConfig, decorator: Google::Apis::DataprocV1::EnvironmentConfig::Representation
+      
+          property :jupyter_session, as: 'jupyterSession', class: Google::Apis::DataprocV1::JupyterConfig, decorator: Google::Apis::DataprocV1::JupyterConfig::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :runtime_config, as: 'runtimeConfig', class: Google::Apis::DataprocV1::RuntimeConfig, decorator: Google::Apis::DataprocV1::RuntimeConfig::Representation
+      
+          property :runtime_info, as: 'runtimeInfo', class: Google::Apis::DataprocV1::RuntimeInfo, decorator: Google::Apis::DataprocV1::RuntimeInfo::Representation
+      
+          property :session_template, as: 'sessionTemplate'
+          property :state, as: 'state'
+          collection :state_history, as: 'stateHistory', class: Google::Apis::DataprocV1::SessionStateHistory, decorator: Google::Apis::DataprocV1::SessionStateHistory::Representation
+      
+          property :state_message, as: 'stateMessage'
+          property :state_time, as: 'stateTime'
+          property :user, as: 'user'
+          property :uuid, as: 'uuid'
+        end
+      end
+      
       class SessionOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1856,6 +1964,33 @@ module Google
           property :session, as: 'session'
           property :session_uuid, as: 'sessionUuid'
           collection :warnings, as: 'warnings'
+        end
+      end
+      
+      class SessionStateHistory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :state_message, as: 'stateMessage'
+          property :state_start_time, as: 'stateStartTime'
+        end
+      end
+      
+      class SessionTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :creator, as: 'creator'
+          property :description, as: 'description'
+          property :environment_config, as: 'environmentConfig', class: Google::Apis::DataprocV1::EnvironmentConfig, decorator: Google::Apis::DataprocV1::EnvironmentConfig::Representation
+      
+          property :jupyter_session, as: 'jupyterSession', class: Google::Apis::DataprocV1::JupyterConfig, decorator: Google::Apis::DataprocV1::JupyterConfig::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :runtime_config, as: 'runtimeConfig', class: Google::Apis::DataprocV1::RuntimeConfig, decorator: Google::Apis::DataprocV1::RuntimeConfig::Representation
+      
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -2027,6 +2162,13 @@ module Google
           property :name, as: 'name'
           property :validation, as: 'validation', class: Google::Apis::DataprocV1::ParameterValidation, decorator: Google::Apis::DataprocV1::ParameterValidation::Representation
       
+        end
+      end
+      
+      class TerminateSessionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
         end
       end
       
