@@ -3797,6 +3797,188 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a SKAdNetworkConversionValueSchema.
+        # @param [String] parent
+        #   Required. The parent resource where this schema will be created. Format:
+        #   properties/`property`/dataStreams/`dataStream`
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema] google_analytics_admin_v1alpha_sk_ad_network_conversion_value_schema_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_property_data_stream_s_k_ad_network_conversion_value_schema(parent, google_analytics_admin_v1alpha_sk_ad_network_conversion_value_schema_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/sKAdNetworkConversionValueSchema', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema::Representation
+          command.request_object = google_analytics_admin_v1alpha_sk_ad_network_conversion_value_schema_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes target SKAdNetworkConversionValueSchema.
+        # @param [String] name
+        #   Required. The name of the SKAdNetworkConversionValueSchema to delete. Format:
+        #   properties/`property`/dataStreams/`dataStream`/
+        #   sKAdNetworkConversionValueSchema/`skadnetwork_conversion_value_schema`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_property_data_stream_s_k_ad_network_conversion_value_schema(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Looks up a single SKAdNetworkConversionValueSchema.
+        # @param [String] name
+        #   Required. The resource name of SKAdNetwork conversion value schema to look up.
+        #   Format: properties/`property`/dataStreams/`dataStream`/
+        #   sKAdNetworkConversionValueSchema/`skadnetwork_conversion_value_schema`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_property_data_stream_s_k_ad_network_conversion_value_schema(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists SKAdNetworkConversionValueSchema on a stream. Properties can have at
+        # most one SKAdNetworkConversionValueSchema.
+        # @param [String] parent
+        #   Required. Format: properties/`property_id`/dataStreams/`dataStream`/
+        #   sKAdNetworkConversionValueSchema Example: properties/1234/dataStreams/5678/
+        #   sKAdNetworkConversionValueSchema
+        # @param [Fixnum] page_size
+        #   The maximum number of resources to return. The service may return fewer than
+        #   this value, even if there are additional pages. If unspecified, at most 50
+        #   resources will be returned. The maximum value is 200; (higher values will be
+        #   coerced to the maximum)
+        # @param [String] page_token
+        #   A page token, received from a previous `ListSKAdNetworkConversionValueSchemas`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListSKAdNetworkConversionValueSchema` must match the
+        #   call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListSkAdNetworkConversionValueSchemasResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListSkAdNetworkConversionValueSchemasResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_property_data_stream_s_k_ad_network_conversion_value_schemas(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/sKAdNetworkConversionValueSchema', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListSkAdNetworkConversionValueSchemasResponse::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListSkAdNetworkConversionValueSchemasResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a SKAdNetworkConversionValueSchema.
+        # @param [String] name
+        #   Output only. Resource name of the schema. This will be child of ONLY an iOS
+        #   stream, and there can be at most one such child under an iOS stream. Format:
+        #   properties/`property`/dataStreams/`dataStream`/
+        #   sKAdNetworkConversionValueSchema
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema] google_analytics_admin_v1alpha_sk_ad_network_conversion_value_schema_object
+        # @param [String] update_mask
+        #   Required. The list of fields to be updated. Omitted fields will not be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_property_data_stream_s_k_ad_network_conversion_value_schema(name, google_analytics_admin_v1alpha_sk_ad_network_conversion_value_schema_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema::Representation
+          command.request_object = google_analytics_admin_v1alpha_sk_ad_network_conversion_value_schema_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Approves a DisplayVideo360AdvertiserLinkProposal. The
         # DisplayVideo360AdvertiserLinkProposal will be deleted and a new
         # DisplayVideo360AdvertiserLink will be created.

@@ -472,6 +472,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaConversionValues
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -581,6 +587,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaEventCreateRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaEventMapping
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -802,6 +814,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaListSkAdNetworkConversionValueSchemasResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -838,6 +856,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaPostbackWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaProperty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -869,6 +893,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaRunAccessReportResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1495,9 +1525,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :daily_export_enabled, as: 'dailyExportEnabled'
-          property :enterprise_export_enabled, as: 'enterpriseExportEnabled'
           collection :excluded_events, as: 'excludedEvents'
           collection :export_streams, as: 'exportStreams'
+          property :fresh_daily_export_enabled, as: 'freshDailyExportEnabled'
           property :include_advertising_id, as: 'includeAdvertisingId'
           property :name, as: 'name'
           property :project, as: 'project'
@@ -1569,6 +1599,8 @@ module Google
           property :property, as: 'property', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
       
           property :search_ads360_link, as: 'searchAds360Link', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link::Representation
+      
+          property :skadnetwork_conversion_value_schema, as: 'skadnetworkConversionValueSchema', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema::Representation
       
         end
       end
@@ -1663,6 +1695,18 @@ module Google
           property :deletable, as: 'deletable'
           property :event_name, as: 'eventName'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaConversionValues
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :coarse_value, as: 'coarseValue'
+          property :display_name, as: 'displayName'
+          collection :event_mappings, as: 'eventMappings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventMapping, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventMapping::Representation
+      
+          property :fine_value, as: 'fineValue'
+          property :lock_enabled, as: 'lockEnabled'
         end
       end
       
@@ -1864,6 +1908,17 @@ module Google
           collection :parameter_mutations, as: 'parameterMutations', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaParameterMutation, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaParameterMutation::Representation
       
           property :source_copy_parameters, as: 'sourceCopyParameters'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaEventMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_name, as: 'eventName'
+          property :max_event_count, :numeric_string => true, as: 'maxEventCount'
+          property :max_event_value, as: 'maxEventValue'
+          property :min_event_count, :numeric_string => true, as: 'minEventCount'
+          property :min_event_value, as: 'minEventValue'
         end
       end
       
@@ -2193,6 +2248,15 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaListSkAdNetworkConversionValueSchemasResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :skadnetwork_conversion_value_schemas, as: 'skadnetworkConversionValueSchemas', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema::Representation
+      
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2243,6 +2307,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :parameter, as: 'parameter'
           property :parameter_value, as: 'parameterValue'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaPostbackWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversion_values, as: 'conversionValues', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionValues, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionValues::Representation
+      
+          property :postback_window_settings_enabled, as: 'postbackWindowSettingsEnabled'
         end
       end
       
@@ -2324,6 +2397,20 @@ module Google
       
           property :row_count, as: 'rowCount'
           collection :rows, as: 'rows', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessRow, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessRow::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_conversion_values, as: 'applyConversionValues'
+          property :name, as: 'name'
+          property :postback_window_one, as: 'postbackWindowOne', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaPostbackWindow, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaPostbackWindow::Representation
+      
+          property :postback_window_three, as: 'postbackWindowThree', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaPostbackWindow, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaPostbackWindow::Representation
+      
+          property :postback_window_two, as: 'postbackWindowTwo', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaPostbackWindow, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaPostbackWindow::Representation
       
         end
       end
