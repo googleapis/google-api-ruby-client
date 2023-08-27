@@ -647,6 +647,7 @@ module Google
           property :identity_constraints, as: 'identityConstraints', class: Google::Apis::PrivatecaV1::CertificateIdentityConstraints, decorator: Google::Apis::PrivatecaV1::CertificateIdentityConstraints::Representation
       
           hash :labels, as: 'labels'
+          property :maximum_lifetime, as: 'maximumLifetime'
           property :name, as: 'name'
           property :passthrough_extensions, as: 'passthroughExtensions', class: Google::Apis::PrivatecaV1::CertificateExtensionConstraints, decorator: Google::Apis::PrivatecaV1::CertificateExtensionConstraints::Representation
       
