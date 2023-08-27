@@ -34,6 +34,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdUnitMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdUnitRewardSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Adapter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdapterAdapterConfigMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class App
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -52,6 +76,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchCreateAdUnitMappingsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchCreateAdUnitMappingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateCampaignsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateCampaignsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Campaign
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CampaignCpiSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CampaignReportSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateAdUnitMappingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +131,18 @@ module Google
       end
       
       class DateRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateCampaignReportRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateCampaignReportResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -94,13 +178,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAdUnitMappingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAdUnitsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAdaptersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAppsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCampaignsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMediationGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -113,6 +221,36 @@ module Google
       end
       
       class LocalizationSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MediationAbExperiment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MediationAbExperimentExperimentMediationLine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MediationGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MediationGroupMediationGroupLine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MediationGroupTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,7 +334,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StopMediationAbExperimentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StringList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateCampaignRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -220,6 +370,49 @@ module Google
           property :app_id, as: 'appId'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :reward_settings, as: 'rewardSettings', class: Google::Apis::AdmobV1beta::AdUnitRewardSettings, decorator: Google::Apis::AdmobV1beta::AdUnitRewardSettings::Representation
+      
+        end
+      end
+      
+      class AdUnitMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :ad_unit_configurations, as: 'adUnitConfigurations'
+          property :adapter_id, :numeric_string => true, as: 'adapterId'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
+      class AdUnitRewardSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :unit_amount, :numeric_string => true, as: 'unitAmount'
+          property :unit_type, as: 'unitType'
+        end
+      end
+      
+      class Adapter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :adapter_config_metadata, as: 'adapterConfigMetadata', class: Google::Apis::AdmobV1beta::AdapterAdapterConfigMetadata, decorator: Google::Apis::AdmobV1beta::AdapterAdapterConfigMetadata::Representation
+      
+          property :adapter_id, as: 'adapterId'
+          collection :formats, as: 'formats'
+          property :name, as: 'name'
+          property :platform, as: 'platform'
+          property :title, as: 'title'
+        end
+      end
+      
+      class AdapterAdapterConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adapter_config_metadata_id, as: 'adapterConfigMetadataId'
+          property :adapter_config_metadata_label, as: 'adapterConfigMetadataLabel'
+          property :is_required, as: 'isRequired'
         end
       end
       
@@ -240,6 +433,7 @@ module Google
       class AppLinkedAppInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :android_app_stores, as: 'androidAppStores'
           property :app_store_id, as: 'appStoreId'
           property :display_name, as: 'displayName'
         end
@@ -249,6 +443,76 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+        end
+      end
+      
+      class BatchCreateAdUnitMappingsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AdmobV1beta::CreateAdUnitMappingRequest, decorator: Google::Apis::AdmobV1beta::CreateAdUnitMappingRequest::Representation
+      
+        end
+      end
+      
+      class BatchCreateAdUnitMappingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ad_unit_mappings, as: 'adUnitMappings', class: Google::Apis::AdmobV1beta::AdUnitMapping, decorator: Google::Apis::AdmobV1beta::AdUnitMapping::Representation
+      
+        end
+      end
+      
+      class BatchUpdateCampaignsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AdmobV1beta::UpdateCampaignRequest, decorator: Google::Apis::AdmobV1beta::UpdateCampaignRequest::Representation
+      
+        end
+      end
+      
+      class BatchUpdateCampaignsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :campaigns, as: 'campaigns', class: Google::Apis::AdmobV1beta::Campaign, decorator: Google::Apis::AdmobV1beta::Campaign::Representation
+      
+        end
+      end
+      
+      class Campaign
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpi_setting, as: 'cpiSetting', class: Google::Apis::AdmobV1beta::CampaignCpiSetting, decorator: Google::Apis::AdmobV1beta::CampaignCpiSetting::Representation
+      
+          property :display_name, as: 'displayName'
+          property :goal_type, as: 'goalType'
+          property :name, as: 'name'
+        end
+      end
+      
+      class CampaignCpiSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpi_micros, :numeric_string => true, as: 'cpiMicros'
+        end
+      end
+      
+      class CampaignReportSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_range, as: 'dateRange', class: Google::Apis::AdmobV1beta::DateRange, decorator: Google::Apis::AdmobV1beta::DateRange::Representation
+      
+          collection :dimensions, as: 'dimensions'
+          property :language_code, as: 'languageCode'
+          collection :metrics, as: 'metrics'
+        end
+      end
+      
+      class CreateAdUnitMappingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_unit_mapping, as: 'adUnitMapping', class: Google::Apis::AdmobV1beta::AdUnitMapping, decorator: Google::Apis::AdmobV1beta::AdUnitMapping::Representation
+      
+          property :parent, as: 'parent'
         end
       end
       
@@ -267,6 +531,22 @@ module Google
           property :end_date, as: 'endDate', class: Google::Apis::AdmobV1beta::Date, decorator: Google::Apis::AdmobV1beta::Date::Representation
       
           property :start_date, as: 'startDate', class: Google::Apis::AdmobV1beta::Date, decorator: Google::Apis::AdmobV1beta::Date::Representation
+      
+        end
+      end
+      
+      class GenerateCampaignReportRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :report_spec, as: 'reportSpec', class: Google::Apis::AdmobV1beta::CampaignReportSpec, decorator: Google::Apis::AdmobV1beta::CampaignReportSpec::Representation
+      
+        end
+      end
+      
+      class GenerateCampaignReportResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rows, as: 'rows', class: Google::Apis::AdmobV1beta::ReportRow, decorator: Google::Apis::AdmobV1beta::ReportRow::Representation
       
         end
       end
@@ -320,6 +600,15 @@ module Google
         end
       end
       
+      class ListAdUnitMappingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ad_unit_mappings, as: 'adUnitMappings', class: Google::Apis::AdmobV1beta::AdUnitMapping, decorator: Google::Apis::AdmobV1beta::AdUnitMapping::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListAdUnitsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -329,10 +618,37 @@ module Google
         end
       end
       
+      class ListAdaptersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :adapters, as: 'adapters', class: Google::Apis::AdmobV1beta::Adapter, decorator: Google::Apis::AdmobV1beta::Adapter::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListAppsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :apps, as: 'apps', class: Google::Apis::AdmobV1beta::App, decorator: Google::Apis::AdmobV1beta::App::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListCampaignsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :campaigns, as: 'campaigns', class: Google::Apis::AdmobV1beta::Campaign, decorator: Google::Apis::AdmobV1beta::Campaign::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListMediationGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mediation_groups, as: 'mediationGroups', class: Google::Apis::AdmobV1beta::MediationGroup, decorator: Google::Apis::AdmobV1beta::MediationGroup::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -352,6 +668,70 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :currency_code, as: 'currencyCode'
           property :language_code, as: 'languageCode'
+        end
+      end
+      
+      class MediationAbExperiment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :control_mediation_lines, as: 'controlMediationLines', class: Google::Apis::AdmobV1beta::MediationAbExperimentExperimentMediationLine, decorator: Google::Apis::AdmobV1beta::MediationAbExperimentExperimentMediationLine::Representation
+      
+          property :display_name, as: 'displayName'
+          property :experiment_id, as: 'experimentId'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          collection :treatment_mediation_lines, as: 'treatmentMediationLines', class: Google::Apis::AdmobV1beta::MediationAbExperimentExperimentMediationLine, decorator: Google::Apis::AdmobV1beta::MediationAbExperimentExperimentMediationLine::Representation
+      
+          property :treatment_traffic_percentage, :numeric_string => true, as: 'treatmentTrafficPercentage'
+        end
+      end
+      
+      class MediationAbExperimentExperimentMediationLine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mediation_group_line, as: 'mediationGroupLine', class: Google::Apis::AdmobV1beta::MediationGroupMediationGroupLine, decorator: Google::Apis::AdmobV1beta::MediationGroupMediationGroupLine::Representation
+      
+        end
+      end
+      
+      class MediationGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :mediation_ab_experiment_state, as: 'mediationAbExperimentState'
+          property :mediation_group_id, as: 'mediationGroupId'
+          hash :mediation_group_lines, as: 'mediationGroupLines', class: Google::Apis::AdmobV1beta::MediationGroupMediationGroupLine, decorator: Google::Apis::AdmobV1beta::MediationGroupMediationGroupLine::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :targeting, as: 'targeting', class: Google::Apis::AdmobV1beta::MediationGroupTargeting, decorator: Google::Apis::AdmobV1beta::MediationGroupTargeting::Representation
+      
+        end
+      end
+      
+      class MediationGroupMediationGroupLine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_source_id, as: 'adSourceId'
+          hash :ad_unit_mappings, as: 'adUnitMappings'
+          property :cpm_micros, :numeric_string => true, as: 'cpmMicros'
+          property :cpm_mode, as: 'cpmMode'
+          property :display_name, as: 'displayName'
+          property :experiment_variant, as: 'experimentVariant'
+          property :id, as: 'id'
+          property :state, as: 'state'
+        end
+      end
+      
+      class MediationGroupTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ad_unit_ids, as: 'adUnitIds'
+          collection :excluded_region_codes, as: 'excludedRegionCodes'
+          property :format, as: 'format'
+          property :idfa_targeting, as: 'idfaTargeting'
+          property :platform, as: 'platform'
+          collection :targeted_region_codes, as: 'targetedRegionCodes'
         end
       end
       
@@ -492,10 +872,26 @@ module Google
         end
       end
       
+      class StopMediationAbExperimentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :variant_choice, as: 'variantChoice'
+        end
+      end
+      
       class StringList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :values, as: 'values'
+        end
+      end
+      
+      class UpdateCampaignRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :campaign, as: 'campaign', class: Google::Apis::AdmobV1beta::Campaign, decorator: Google::Apis::AdmobV1beta::Campaign::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
     end
