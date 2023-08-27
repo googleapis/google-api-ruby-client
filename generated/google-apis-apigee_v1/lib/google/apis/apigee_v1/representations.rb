@@ -982,6 +982,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ProfileConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ProfileConfigAbuse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ProfileConfigAuthorization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ProfileConfigCors
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ProfileConfigCategory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ProfileConfigMtls
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ProfileConfigMediation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ProfileConfigThreat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Properties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3261,6 +3309,68 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ProfileConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :categories, as: 'categories', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigCategory, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigCategory::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1ProfileConfigAbuse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApigeeV1ProfileConfigAuthorization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApigeeV1ProfileConfigCors
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApigeeV1ProfileConfigCategory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :abuse, as: 'abuse', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigAbuse, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigAbuse::Representation
+      
+          property :authorization, as: 'authorization', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigAuthorization, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigAuthorization::Representation
+      
+          property :cors, as: 'cors', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigCors, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigCors::Representation
+      
+          property :mediation, as: 'mediation', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigMediation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigMediation::Representation
+      
+          property :mtls, as: 'mtls', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigMtls, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigMtls::Representation
+      
+          property :threat, as: 'threat', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigThreat, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigThreat::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1ProfileConfigMtls
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApigeeV1ProfileConfigMediation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApigeeV1ProfileConfigThreat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudApigeeV1Properties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3721,6 +3831,8 @@ module Google
           property :max_score, as: 'maxScore'
           property :min_score, as: 'minScore'
           property :name, as: 'name'
+          property :profile_config, as: 'profileConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfig::Representation
+      
           property :revision_create_time, as: 'revisionCreateTime'
           property :revision_id, :numeric_string => true, as: 'revisionId'
           property :revision_publish_time, as: 'revisionPublishTime'

@@ -1870,12 +1870,7 @@ module Google
         
         # Creates an AppGroup. Once created, user can register apps under the AppGroup
         # to obtain secret key and password. At creation time, the AppGroup's state is
-        # set as `active`. The attribute `Attribute` with key `attribute_name` as `
-        # __apigee_reserved__developer_details` can be used to store developers and
-        # their roles. The JSON format expected is: [ ` "developer_id":"", "roles":[ "" ]
-        # ` ] and is dealt in base64encoded format. Etag will be available in attribute
-        # `Attribute` with key `attribute_name` as `
-        # __apigee_reserved__developer_details_etag` for that AppGroup.
+        # set as `active`.
         # @param [String] parent
         #   Required. Name of the Apigee organization in which the AppGroup is created.
         #   Use the following structure in your request: `organizations/`org``.
@@ -1984,8 +1979,8 @@ module Google
         #   request: `organizations/`org``.
         # @param [String] filter
         #   The filter expression to be used to get the list of AppGroups, where filtering
-        #   can be done on name, correlationID or channelID of the app group. Example:
-        #   filter = "name = foobar"
+        #   can be done on status, channelId or channelUri of the app group. Examples:
+        #   filter=status=active", filter=channelId=, filter=channelUri=
         # @param [Fixnum] page_size
         #   Count of AppGroups a single page can have in the response. If unspecified, at
         #   most 1000 AppGroups will be returned. The maximum value is 1000; values above
@@ -2025,14 +2020,13 @@ module Google
         # Updates an appGroup. This API replaces the existing appGroup details with
         # those specified in the request. Include or exclude any existing details that
         # you want to retain or delete, respectively. Note that the state of the
-        # AppGroup should be updated using `action`, and not via AppGroup. The custom
-        # attribute limit is 1000, and is how `__apigee_reserved__developer_details` can
-        # be updated. **Note**: OAuth access tokens and Key Management Service (KMS)
-        # entities (apps, developers, and API products) are cached for 180 seconds (
-        # current default). Any custom attributes associated with these entities are
-        # cached for at least 180 seconds after the entity is accessed at runtime.
-        # Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to
-        # expire an access token in less than 180 seconds.
+        # AppGroup should be updated using `action`, and not via AppGroup. **Note**:
+        # OAuth access tokens and Key Management Service (KMS) entities (apps,
+        # developers, and API products) are cached for 180 seconds (current default).
+        # Any custom attributes associated with these entities are cached for at least
+        # 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn`
+        # element on the OAuthV2 policy won't be able to expire an access token in less
+        # than 180 seconds.
         # @param [String] name
         #   Required. Name of the AppGroup. Use the following structure in your request: `
         #   organizations/`org`/appgroups/`app_group_name``
@@ -2530,9 +2524,9 @@ module Google
         # @param [String] filter
         #   Optional. The filter expression to be used to get the list of apps, where
         #   filtering can be done on developerEmail, apiProduct, consumerKey, status,
-        #   appId, appName and appType. Examples: "developerEmail=foo@bar.com", "appType=
-        #   AppGroup", or "appType=Developer" "filter" is supported from ver 1.10.0 and
-        #   above.
+        #   appId, appName, appType and appGroup. Examples: "developerEmail=foo@bar.com", "
+        #   appType=AppGroup", or "appType=Developer" "filter" is supported from ver 1.10.
+        #   0 and above.
         # @param [String] ids
         #   Optional. Comma-separated list of app IDs on which to filter.
         # @param [Boolean] include_cred
@@ -7673,11 +7667,11 @@ module Google
         #   filtering can be done on API Proxies. Example: filter = "api_proxy = /", "
         #   first_detected_time >", "last_detected_time <"
         # @param [Fixnum] page_size
-        #   The maximum number of incidents to return. The service may return fewer than
-        #   this value. If unspecified, at most 50 incidents will be returned.
+        #   Optional. The maximum number of incidents to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 incidents will be returned.
         # @param [String] page_token
-        #   A page token, received from a previous `ListSecurityIncident` call. Provide
-        #   this to retrieve the subsequent page.
+        #   Optional. A page token, received from a previous `ListSecurityIncident` call.
+        #   Provide this to retrieve the subsequent page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10145,6 +10139,75 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # CreateSecurityProfile create a new custom security profile.
+        # @param [String] parent
+        #   Required. Name of organization. Format: organizations/`org`
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile] google_cloud_apigee_v1_security_profile_object
+        # @param [String] security_profile_id
+        #   Required. The ID to use for the SecurityProfile, which will become the final
+        #   component of the action's resource name. This value should be 4-63 characters,
+        #   and valid characters are /(^[a-z]([a-z0-9-]`​0,61`[a-z0-9])?$/.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_security_profile(parent, google_cloud_apigee_v1_security_profile_object = nil, security_profile_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/securityProfiles', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile::Representation
+          command.request_object = google_cloud_apigee_v1_security_profile_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile
+          command.params['parent'] = parent unless parent.nil?
+          command.query['securityProfileId'] = security_profile_id unless security_profile_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # DeleteSecurityProfile delete a profile with all its revisions.
+        # @param [String] name
+        #   Required. Name of profile. Format: organizations/`org`/securityProfiles/`
+        #   profile`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_security_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # GetSecurityProfile gets the specified security profile. Returns NOT_FOUND if
         # security profile is not present for the specified organization.
         # @param [String] name
@@ -10253,6 +10316,43 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # UpdateSecurityProfile update the metadata of security profile.
+        # @param [String] name
+        #   Immutable. Name of the security profile resource. Format: organizations/`org`/
+        #   securityProfiles/`profile`
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile] google_cloud_apigee_v1_security_profile_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_security_profile(name, google_cloud_apigee_v1_security_profile_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile::Representation
+          command.request_object = google_cloud_apigee_v1_security_profile_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

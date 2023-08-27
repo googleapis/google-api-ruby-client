@@ -6675,6 +6675,164 @@ module Google
         end
       end
       
+      # ProfileConfig defines a set of categories and policies which will be used to
+      # compute security score.
+      class GoogleCloudApigeeV1ProfileConfig
+        include Google::Apis::Core::Hashable
+      
+        # List of categories of profile config.
+        # Corresponds to the JSON property `categories`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigCategory>]
+        attr_accessor :categories
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @categories = args[:categories] if args.key?(:categories)
+        end
+      end
+      
+      # Checks for abuse, which includes any requests sent to the API for purposes
+      # other than what it is intended for, such as high volumes of requests, data
+      # scraping, and abuse related to authorization.
+      class GoogleCloudApigeeV1ProfileConfigAbuse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # By default, following policies will be included: - JWS - JWT - OAuth -
+      # BasicAuth - APIKey
+      class GoogleCloudApigeeV1ProfileConfigAuthorization
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Checks to see if you have CORS policy in place.
+      class GoogleCloudApigeeV1ProfileConfigCors
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Advanced API Security provides security profile that scores the following
+      # categories.
+      class GoogleCloudApigeeV1ProfileConfigCategory
+        include Google::Apis::Core::Hashable
+      
+        # Checks for abuse, which includes any requests sent to the API for purposes
+        # other than what it is intended for, such as high volumes of requests, data
+        # scraping, and abuse related to authorization.
+        # Corresponds to the JSON property `abuse`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigAbuse]
+        attr_accessor :abuse
+      
+        # By default, following policies will be included: - JWS - JWT - OAuth -
+        # BasicAuth - APIKey
+        # Corresponds to the JSON property `authorization`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigAuthorization]
+        attr_accessor :authorization
+      
+        # Checks to see if you have CORS policy in place.
+        # Corresponds to the JSON property `cors`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigCors]
+        attr_accessor :cors
+      
+        # By default, following policies will be included: - OASValidation -
+        # SOAPMessageValidation
+        # Corresponds to the JSON property `mediation`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigMediation]
+        attr_accessor :mediation
+      
+        # Checks to see if you have configured mTLS for the target server.
+        # Corresponds to the JSON property `mtls`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigMtls]
+        attr_accessor :mtls
+      
+        # By default, following policies will be included: - XMLThreatProtection -
+        # JSONThreatProtection
+        # Corresponds to the JSON property `threat`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigThreat]
+        attr_accessor :threat
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abuse = args[:abuse] if args.key?(:abuse)
+          @authorization = args[:authorization] if args.key?(:authorization)
+          @cors = args[:cors] if args.key?(:cors)
+          @mediation = args[:mediation] if args.key?(:mediation)
+          @mtls = args[:mtls] if args.key?(:mtls)
+          @threat = args[:threat] if args.key?(:threat)
+        end
+      end
+      
+      # Checks to see if you have configured mTLS for the target server.
+      class GoogleCloudApigeeV1ProfileConfigMtls
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # By default, following policies will be included: - OASValidation -
+      # SOAPMessageValidation
+      class GoogleCloudApigeeV1ProfileConfigMediation
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # By default, following policies will be included: - XMLThreatProtection -
+      # JSONThreatProtection
+      class GoogleCloudApigeeV1ProfileConfigThreat
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Message for compatibility with legacy Edge specification for Java Properties
       # object in JSON.
       class GoogleCloudApigeeV1Properties
@@ -8355,7 +8513,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :detection_types
       
-        # Display name of the security incident.
+        # Optional. Display name of the security incident.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -8440,6 +8598,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # ProfileConfig defines a set of categories and policies which will be used to
+        # compute security score.
+        # Corresponds to the JSON property `profileConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfig]
+        attr_accessor :profile_config
+      
         # Output only. The time when revision was created.
         # Corresponds to the JSON property `revisionCreateTime`
         # @return [String]
@@ -8479,6 +8643,7 @@ module Google
           @max_score = args[:max_score] if args.key?(:max_score)
           @min_score = args[:min_score] if args.key?(:min_score)
           @name = args[:name] if args.key?(:name)
+          @profile_config = args[:profile_config] if args.key?(:profile_config)
           @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @revision_publish_time = args[:revision_publish_time] if args.key?(:revision_publish_time)
@@ -9973,22 +10138,22 @@ module Google
       # evaluates to `true`. A condition can add constraints based on attributes of
       # the request, the resource, or both. To learn which resources support
       # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
       # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
       # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
       # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
       # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
       # ], "condition": ` "title": "expirable access", "description": "Does not grant
       # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-      # bindings: - members: - user:mike@example.com - group:admins@example.com -
-      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-      # access description: Does not grant access after Sep 2020 expression: request.
-      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-      # a description of IAM and its features, see the [IAM documentation](https://
-      # cloud.google.com/iam/docs/).
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+      # title: expirable access description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class GoogleIamV1Policy
         include Google::Apis::Core::Hashable
       
@@ -10072,22 +10237,22 @@ module Google
         # evaluates to `true`. A condition can add constraints based on attributes of
         # the request, the resource, or both. To learn which resources support
         # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
         # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
         # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
         # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-        # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-        # a description of IAM and its features, see the [IAM documentation](https://
-        # cloud.google.com/iam/docs/).
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::ApigeeV1::GoogleIamV1Policy]
         attr_accessor :policy
@@ -10212,13 +10377,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
