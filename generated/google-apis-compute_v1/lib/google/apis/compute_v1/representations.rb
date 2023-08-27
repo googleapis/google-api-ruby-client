@@ -562,6 +562,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkInsertOperationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CacheInvalidationRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2027,6 +2033,12 @@ module Google
       end
       
       class InstancesAddResourcePoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesBulkInsertOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7060,6 +7072,17 @@ module Google
         end
       end
       
+      class BulkInsertOperationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_vm_count, as: 'createdVmCount'
+          property :deleted_vm_count, as: 'deletedVmCount'
+          property :failed_to_create_vm_count, as: 'failedToCreateVmCount'
+          property :status, as: 'status'
+          property :target_vm_count, as: 'targetVmCount'
+        end
+      end
+      
       class CacheInvalidationRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9878,6 +9901,14 @@ module Google
         end
       end
       
+      class InstancesBulkInsertOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :per_location_status, as: 'perLocationStatus', class: Google::Apis::ComputeV1::BulkInsertOperationStatus, decorator: Google::Apis::ComputeV1::BulkInsertOperationStatus::Representation
+      
+        end
+      end
+      
       class InstancesGetEffectiveFirewallsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12121,6 +12152,8 @@ module Google
           property :http_error_status_code, as: 'httpErrorStatusCode'
           property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
+          property :instances_bulk_insert_operation_metadata, as: 'instancesBulkInsertOperationMetadata', class: Google::Apis::ComputeV1::InstancesBulkInsertOperationMetadata, decorator: Google::Apis::ComputeV1::InstancesBulkInsertOperationMetadata::Representation
+      
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :operation_group_id, as: 'operationGroupId'
