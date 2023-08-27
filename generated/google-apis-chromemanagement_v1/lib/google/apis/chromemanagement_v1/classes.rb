@@ -1154,6 +1154,32 @@ module Google
         end
       end
       
+      # Device activity report. * Granular permission needed:
+      # TELEMETRY_API_DEVICE_ACTIVITY_REPORT
+      class GoogleChromeManagementV1DeviceActivityReport
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Device activity state.
+        # Corresponds to the JSON property `deviceActivityState`
+        # @return [String]
+        attr_accessor :device_activity_state
+      
+        # Output only. Timestamp of when the report was collected.
+        # Corresponds to the JSON property `reportTime`
+        # @return [String]
+        attr_accessor :report_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_activity_state = args[:device_activity_state] if args.key?(:device_activity_state)
+          @report_time = args[:report_time] if args.key?(:report_time)
+        end
+      end
+      
       # Report for CountChromeDevicesPerAueDateResponse, contains the count of devices
       # of a specific model and auto update expiration range.
       class GoogleChromeManagementV1DeviceAueCountReport
@@ -2758,6 +2784,12 @@ module Google
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AudioStatusReport>]
         attr_accessor :audio_status_report
       
+        # Output only. Device activity reports collected periodically sorted in a
+        # decreasing order of report_time.
+        # Corresponds to the JSON property `deviceActivityReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceActivityReport>]
+        attr_accessor :device_activity_report
+      
         # The unique Directory API ID of the device. This value is the same as the Admin
         # Console's Directory API ID in the ChromeOS Devices tab.
         # Corresponds to the JSON property `deviceId`
@@ -2777,6 +2809,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_status_report = args[:audio_status_report] if args.key?(:audio_status_report)
+          @device_activity_report = args[:device_activity_report] if args.key?(:device_activity_report)
           @device_id = args[:device_id] if args.key?(:device_id)
           @peripherals_report = args[:peripherals_report] if args.key?(:peripherals_report)
         end

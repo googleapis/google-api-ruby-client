@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1DeviceActivityReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1DeviceAueCountReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -701,6 +707,14 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1DeviceActivityReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_activity_state, as: 'deviceActivityState'
+          property :report_time, as: 'reportTime'
+        end
+      end
+      
       class GoogleChromeManagementV1DeviceAueCountReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1110,6 +1124,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :audio_status_report, as: 'audioStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AudioStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AudioStatusReport::Representation
+      
+          collection :device_activity_report, as: 'deviceActivityReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceActivityReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceActivityReport::Representation
       
           property :device_id, as: 'deviceId'
           collection :peripherals_report, as: 'peripheralsReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PeripheralsReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PeripheralsReport::Representation
