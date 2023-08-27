@@ -2807,6 +2807,7 @@ module Google
         #   Filter on embeddable videos.
         # @param [String] video_license
         #   Filter on the license of the videos.
+        # @param [String] video_paid_product_placement
         # @param [String] video_syndicated
         #   Filter on syndicated videos.
         # @param [String] video_type
@@ -2828,7 +2829,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_searches(part, channel_id: nil, channel_type: nil, event_type: nil, for_content_owner: nil, for_developer: nil, for_mine: nil, location: nil, location_radius: nil, max_results: nil, on_behalf_of_content_owner: nil, order: nil, page_token: nil, published_after: nil, published_before: nil, q: nil, region_code: nil, related_to_video_id: nil, relevance_language: nil, safe_search: nil, topic_id: nil, type: nil, video_caption: nil, video_category_id: nil, video_definition: nil, video_dimension: nil, video_duration: nil, video_embeddable: nil, video_license: nil, video_syndicated: nil, video_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_searches(part, channel_id: nil, channel_type: nil, event_type: nil, for_content_owner: nil, for_developer: nil, for_mine: nil, location: nil, location_radius: nil, max_results: nil, on_behalf_of_content_owner: nil, order: nil, page_token: nil, published_after: nil, published_before: nil, q: nil, region_code: nil, related_to_video_id: nil, relevance_language: nil, safe_search: nil, topic_id: nil, type: nil, video_caption: nil, video_category_id: nil, video_definition: nil, video_dimension: nil, video_duration: nil, video_embeddable: nil, video_license: nil, video_paid_product_placement: nil, video_syndicated: nil, video_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'youtube/v3/search', options)
           command.response_representation = Google::Apis::YoutubeV3::SearchListsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::SearchListsResponse
@@ -2861,6 +2862,7 @@ module Google
           command.query['videoDuration'] = video_duration unless video_duration.nil?
           command.query['videoEmbeddable'] = video_embeddable unless video_embeddable.nil?
           command.query['videoLicense'] = video_license unless video_license.nil?
+          command.query['videoPaidProductPlacement'] = video_paid_product_placement unless video_paid_product_placement.nil?
           command.query['videoSyndicated'] = video_syndicated unless video_syndicated.nil?
           command.query['videoType'] = video_type unless video_type.nil?
           command.query['fields'] = fields unless fields.nil?
