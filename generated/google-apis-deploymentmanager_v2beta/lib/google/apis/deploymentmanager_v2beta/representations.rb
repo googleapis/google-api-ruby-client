@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkInsertOperationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CollectionOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +167,12 @@ module Google
       end
       
       class InputMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesBulkInsertOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -293,6 +305,24 @@ module Google
       end
       
       class ServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetCommonInstanceMetadataOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -436,6 +466,17 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class BulkInsertOperationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_vm_count, as: 'createdVmCount'
+          property :deleted_vm_count, as: 'deletedVmCount'
+          property :failed_to_create_vm_count, as: 'failedToCreateVmCount'
+          property :status, as: 'status'
+          property :target_vm_count, as: 'targetVmCount'
         end
       end
       
@@ -619,6 +660,14 @@ module Google
         end
       end
       
+      class InstancesBulkInsertOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :per_location_status, as: 'perLocationStatus', class: Google::Apis::DeploymentmanagerV2beta::BulkInsertOperationStatus, decorator: Google::Apis::DeploymentmanagerV2beta::BulkInsertOperationStatus::Representation
+      
+        end
+      end
+      
       class Manifest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -659,6 +708,8 @@ module Google
           property :http_error_status_code, as: 'httpErrorStatusCode'
           property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
+          property :instances_bulk_insert_operation_metadata, as: 'instancesBulkInsertOperationMetadata', class: Google::Apis::DeploymentmanagerV2beta::InstancesBulkInsertOperationMetadata, decorator: Google::Apis::DeploymentmanagerV2beta::InstancesBulkInsertOperationMetadata::Representation
+      
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :operation_group_id, as: 'operationGroupId'
@@ -666,6 +717,8 @@ module Google
           property :progress, as: 'progress'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :set_common_instance_metadata_operation_metadata, as: 'setCommonInstanceMetadataOperationMetadata', class: Google::Apis::DeploymentmanagerV2beta::SetCommonInstanceMetadataOperationMetadata, decorator: Google::Apis::DeploymentmanagerV2beta::SetCommonInstanceMetadataOperationMetadata::Representation
+      
           property :start_time, as: 'startTime'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
@@ -870,6 +923,33 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
+        end
+      end
+      
+      class SetCommonInstanceMetadataOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_operation_id, as: 'clientOperationId'
+          hash :per_location_operations, as: 'perLocationOperations', class: Google::Apis::DeploymentmanagerV2beta::SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo, decorator: Google::Apis::DeploymentmanagerV2beta::SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo::Representation
+      
+        end
+      end
+      
+      class SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::DeploymentmanagerV2beta::Status, decorator: Google::Apis::DeploymentmanagerV2beta::Status::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
