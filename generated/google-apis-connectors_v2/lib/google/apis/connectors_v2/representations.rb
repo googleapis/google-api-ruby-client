@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Reference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,7 +251,19 @@ module Google
       class Query
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_rows, :numeric_string => true, as: 'maxRows'
           property :query, as: 'query'
+          collection :query_parameters, as: 'queryParameters', class: Google::Apis::ConnectorsV2::QueryParameter, decorator: Google::Apis::ConnectorsV2::QueryParameter::Representation
+      
+          property :timeout, :numeric_string => true, as: 'timeout'
+        end
+      end
+      
+      class QueryParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_type, as: 'dataType'
+          property :value, as: 'value'
         end
       end
       

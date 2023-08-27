@@ -419,10 +419,27 @@ module Google
       class Query
         include Google::Apis::Core::Hashable
       
+        # Sets the limit for the maximum number of rows returned after the query
+        # execution.
+        # Corresponds to the JSON property `maxRows`
+        # @return [Fixnum]
+        attr_accessor :max_rows
+      
         # Required. Sql query to execute.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
+      
+        # In the struct, the value corresponds to the value of query parameter and date
+        # type corresponds to the date type of the query parameter.
+        # Corresponds to the JSON property `queryParameters`
+        # @return [Array<Google::Apis::ConnectorsV2::QueryParameter>]
+        attr_accessor :query_parameters
+      
+        # Sets the number of seconds the driver will wait for a query to execute.
+        # Corresponds to the JSON property `timeout`
+        # @return [Fixnum]
+        attr_accessor :timeout
       
         def initialize(**args)
            update!(**args)
@@ -430,7 +447,35 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @max_rows = args[:max_rows] if args.key?(:max_rows)
           @query = args[:query] if args.key?(:query)
+          @query_parameters = args[:query_parameters] if args.key?(:query_parameters)
+          @timeout = args[:timeout] if args.key?(:timeout)
+        end
+      end
+      
+      # Query parameter definition
+      class QueryParameter
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
