@@ -2590,6 +2590,13 @@ module Google
         # @return [String]
         attr_accessor :eea_withdrawal_right_type
       
+        # Whether this in-app product is declared as a product representing a tokenized
+        # digital asset.
+        # Corresponds to the JSON property `isTokenizedDigitalAsset`
+        # @return [Boolean]
+        attr_accessor :is_tokenized_digital_asset
+        alias_method :is_tokenized_digital_asset?, :is_tokenized_digital_asset
+      
         # A mapping from region code to tax rate details. The keys are region codes as
         # defined by Unicode's "CLDR".
         # Corresponds to the JSON property `taxRateInfoByRegionCode`
@@ -2603,6 +2610,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @eea_withdrawal_right_type = args[:eea_withdrawal_right_type] if args.key?(:eea_withdrawal_right_type)
+          @is_tokenized_digital_asset = args[:is_tokenized_digital_asset] if args.key?(:is_tokenized_digital_asset)
           @tax_rate_info_by_region_code = args[:tax_rate_info_by_region_code] if args.key?(:tax_rate_info_by_region_code)
         end
       end
@@ -4781,6 +4789,13 @@ module Google
         # @return [String]
         attr_accessor :eea_withdrawal_right_type
       
+        # Whether this subscription is declared as a product representing a tokenized
+        # digital asset.
+        # Corresponds to the JSON property `isTokenizedDigitalAsset`
+        # @return [Boolean]
+        attr_accessor :is_tokenized_digital_asset
+        alias_method :is_tokenized_digital_asset?, :is_tokenized_digital_asset
+      
         # A mapping from region code to tax rate details. The keys are region codes as
         # defined by Unicode's "CLDR".
         # Corresponds to the JSON property `taxRateInfoByRegionCode`
@@ -4794,7 +4809,42 @@ module Google
         # Update properties of this object
         def update!(**args)
           @eea_withdrawal_right_type = args[:eea_withdrawal_right_type] if args.key?(:eea_withdrawal_right_type)
+          @is_tokenized_digital_asset = args[:is_tokenized_digital_asset] if args.key?(:is_tokenized_digital_asset)
           @tax_rate_info_by_region_code = args[:tax_rate_info_by_region_code] if args.key?(:tax_rate_info_by_region_code)
+        end
+      end
+      
+      # Options for system APKs.
+      class SystemApkOptions
+        include Google::Apis::Core::Hashable
+      
+        # Whether to use the rotated key for signing the system APK.
+        # Corresponds to the JSON property `rotated`
+        # @return [Boolean]
+        attr_accessor :rotated
+        alias_method :rotated?, :rotated
+      
+        # Whether system APK was generated with uncompressed dex files.
+        # Corresponds to the JSON property `uncompressedDexFiles`
+        # @return [Boolean]
+        attr_accessor :uncompressed_dex_files
+        alias_method :uncompressed_dex_files?, :uncompressed_dex_files
+      
+        # Whether system APK was generated with uncompressed native libraries.
+        # Corresponds to the JSON property `uncompressedNativeLibraries`
+        # @return [Boolean]
+        attr_accessor :uncompressed_native_libraries
+        alias_method :uncompressed_native_libraries?, :uncompressed_native_libraries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rotated = args[:rotated] if args.key?(:rotated)
+          @uncompressed_dex_files = args[:uncompressed_dex_files] if args.key?(:uncompressed_dex_files)
+          @uncompressed_native_libraries = args[:uncompressed_native_libraries] if args.key?(:uncompressed_native_libraries)
         end
       end
       
@@ -5527,6 +5577,11 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::DeviceSpec]
         attr_accessor :device_spec
       
+        # Options for system APKs.
+        # Corresponds to the JSON property `options`
+        # @return [Google::Apis::AndroidpublisherV3::SystemApkOptions]
+        attr_accessor :options
+      
         # Output only. The ID of a previously created system APK variant.
         # Corresponds to the JSON property `variantId`
         # @return [Fixnum]
@@ -5539,6 +5594,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device_spec = args[:device_spec] if args.key?(:device_spec)
+          @options = args[:options] if args.key?(:options)
           @variant_id = args[:variant_id] if args.key?(:variant_id)
         end
       end

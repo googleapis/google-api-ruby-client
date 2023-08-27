@@ -880,6 +880,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SystemApkOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SystemApksListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1849,6 +1855,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :eea_withdrawal_right_type, as: 'eeaWithdrawalRightType'
+          property :is_tokenized_digital_asset, as: 'isTokenizedDigitalAsset'
           hash :tax_rate_info_by_region_code, as: 'taxRateInfoByRegionCode', class: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo, decorator: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo::Representation
       
         end
@@ -2467,8 +2474,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :eea_withdrawal_right_type, as: 'eeaWithdrawalRightType'
+          property :is_tokenized_digital_asset, as: 'isTokenizedDigitalAsset'
           hash :tax_rate_info_by_region_code, as: 'taxRateInfoByRegionCode', class: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo, decorator: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo::Representation
       
+        end
+      end
+      
+      class SystemApkOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rotated, as: 'rotated'
+          property :uncompressed_dex_files, as: 'uncompressedDexFiles'
+          property :uncompressed_native_libraries, as: 'uncompressedNativeLibraries'
         end
       end
       
@@ -2688,6 +2705,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_spec, as: 'deviceSpec', class: Google::Apis::AndroidpublisherV3::DeviceSpec, decorator: Google::Apis::AndroidpublisherV3::DeviceSpec::Representation
+      
+          property :options, as: 'options', class: Google::Apis::AndroidpublisherV3::SystemApkOptions, decorator: Google::Apis::AndroidpublisherV3::SystemApkOptions::Representation
       
           property :variant_id, as: 'variantId'
         end
