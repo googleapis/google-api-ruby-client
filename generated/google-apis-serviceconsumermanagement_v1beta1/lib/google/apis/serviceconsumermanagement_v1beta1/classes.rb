@@ -3910,6 +3910,11 @@ module Google
         # @return [Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1QuotaOverride]
         attr_accessor :producer_override
       
+        # Quota policy created by service producer.
+        # Corresponds to the JSON property `producerQuotaPolicy`
+        # @return [Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy]
+        attr_accessor :producer_quota_policy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3922,6 +3927,7 @@ module Google
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @effective_limit = args[:effective_limit] if args.key?(:effective_limit)
           @producer_override = args[:producer_override] if args.key?(:producer_override)
+          @producer_quota_policy = args[:producer_quota_policy] if args.key?(:producer_quota_policy)
         end
       end
       
