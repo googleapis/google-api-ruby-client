@@ -60,7 +60,7 @@ module Google
         # permission on the parent account, which is typically given to billing account [
         # administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
         # This method will return an error if the parent account has not been
-        # provisioned as a reseller account.
+        # provisioned for subaccounts.
         # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -173,11 +173,11 @@ module Google
         # Lists the billing accounts that the current authenticated user has permission
         # to [view](https://cloud.google.com/billing/docs/how-to/billing-access).
         # @param [String] filter
-        #   Options for how to filter the returned billing accounts. Currently this only
-        #   supports filtering for [subaccounts](https://cloud.google.com/billing/docs/
-        #   concepts) under a single provided reseller billing account. (e.g. "
-        #   master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean algebra
-        #   and other fields are not currently supported.
+        #   Options for how to filter the returned billing accounts. This only supports
+        #   filtering for [subaccounts](https://cloud.google.com/billing/docs/concepts)
+        #   under a single provided parent billing account. (e.g. "master_billing_account=
+        #   billingAccounts/012345-678901-ABCDEF"). Boolean algebra and other fields are
+        #   not currently supported.
         # @param [Fixnum] page_size
         #   Requested page size. The maximum page size is 100; this is also the default.
         # @param [String] page_token
