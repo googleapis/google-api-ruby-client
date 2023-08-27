@@ -163,6 +163,32 @@ module Google
         end
       end
       
+      # Boot disk configurations.
+      class BootDiskConfig
+        include Google::Apis::Core::Hashable
+      
+        # Customer's encryption key.
+        # Corresponds to the JSON property `customerEncryptionKey`
+        # @return [Google::Apis::TpuV2alpha1::CustomerEncryptionKey]
+        attr_accessor :customer_encryption_key
+      
+        # Optional. Whether the boot disk will be created with confidential compute mode.
+        # Corresponds to the JSON property `enableConfidentialCompute`
+        # @return [Boolean]
+        attr_accessor :enable_confidential_compute
+        alias_method :enable_confidential_compute?, :enable_confidential_compute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_encryption_key = args[:customer_encryption_key] if args.key?(:customer_encryption_key)
+          @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
+        end
+      end
+      
       # Further data for the creating state.
       class CreatingData
         include Google::Apis::Core::Hashable
@@ -173,6 +199,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Customer's encryption key.
+      class CustomerEncryptionKey
+        include Google::Apis::Core::Hashable
+      
+        # The name of the encryption key that is stored in Google Cloud KMS. For example:
+        # "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/
+        # cryptoKeys/key The fully-qualifed key name may be returned for resource GET
+        # requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/
+        # keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
         end
       end
       
@@ -787,6 +836,11 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
+        # Boot disk configurations.
+        # Corresponds to the JSON property `bootDiskConfig`
+        # @return [Google::Apis::TpuV2alpha1::BootDiskConfig]
+        attr_accessor :boot_disk_config
+      
         # The CIDR block that the TPU node will use when selecting an IP address. This
         # CIDR block must be a /29 block; the Compute Engine networks API forbids a
         # smaller block, and using a larger block would be wasteful (a node can only
@@ -913,6 +967,7 @@ module Google
           @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @api_version = args[:api_version] if args.key?(:api_version)
+          @boot_disk_config = args[:boot_disk_config] if args.key?(:boot_disk_config)
           @cidr_block = args[:cidr_block] if args.key?(:cidr_block)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_disks = args[:data_disks] if args.key?(:data_disks)

@@ -64,7 +64,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BootDiskConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreatingData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerEncryptionKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -391,9 +403,25 @@ module Google
         end
       end
       
+      class BootDiskConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_encryption_key, as: 'customerEncryptionKey', class: Google::Apis::TpuV2alpha1::CustomerEncryptionKey, decorator: Google::Apis::TpuV2alpha1::CustomerEncryptionKey::Representation
+      
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
+        end
+      end
+      
       class CreatingData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CustomerEncryptionKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
         end
       end
       
@@ -593,6 +621,8 @@ module Google
       
           property :accelerator_type, as: 'acceleratorType'
           property :api_version, as: 'apiVersion'
+          property :boot_disk_config, as: 'bootDiskConfig', class: Google::Apis::TpuV2alpha1::BootDiskConfig, decorator: Google::Apis::TpuV2alpha1::BootDiskConfig::Representation
+      
           property :cidr_block, as: 'cidrBlock'
           property :create_time, as: 'createTime'
           collection :data_disks, as: 'dataDisks', class: Google::Apis::TpuV2alpha1::AttachedDisk, decorator: Google::Apis::TpuV2alpha1::AttachedDisk::Representation
