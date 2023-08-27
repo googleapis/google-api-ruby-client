@@ -1312,7 +1312,7 @@ module Google
         # while it's idling. Exceeding this threshold causes the session to terminate.
         # This field cannot be set on a batch workload. Minimum value is 10 minutes;
         # maximum value is 14 days (see JSON representation of Duration (https://
-        # developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours
+        # developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 1 hour
         # if not set. If both ttl and idle_ttl are specified for an interactive session,
         # the conditions are treated as OR conditions: the workload will be terminated
         # when it has been idle for idle_ttl or when ttl has been exceeded, whichever
@@ -2124,6 +2124,41 @@ module Google
         end
       end
       
+      # A request to inject credentials to a session.
+      class InjectSessionCredentialsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The encrypted credentials being injected in to the session.The
+        # client is responsible for encrypting the credentials in a way that is
+        # supported by the session.A wrapped value is used here so that the actual
+        # contents of the encrypted credentials are not written to audit logs.
+        # Corresponds to the JSON property `credentialsCiphertext`
+        # @return [String]
+        attr_accessor :credentials_ciphertext
+      
+        # Optional. A unique ID used to identify the request. If the service receives
+        # two TerminateSessionRequest (https://cloud.google.com/dataproc/docs/reference/
+        # rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.TerminateSessionRequest)
+        # s with the same ID, the first request is ignored to ensure the most recent
+        # credentials are injected.Recommendation: Set this value to a UUID (https://en.
+        # wikipedia.org/wiki/Universally_unique_identifier).The value must contain only
+        # letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        # maximum length is 40 characters.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @credentials_ciphertext = args[:credentials_ciphertext] if args.key?(:credentials_ciphertext)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
       # Configuration for the size bounds of an instance group, including its
       # proportional size to other groups.
       class InstanceGroupAutoscalingPolicyConfig
@@ -2751,6 +2786,31 @@ module Google
         end
       end
       
+      # Jupyter configuration for an interactive session.
+      class JupyterConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Display name, shown in the Jupyter kernelspec card.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Kernel
+        # Corresponds to the JSON property `kernel`
+        # @return [String]
+        attr_accessor :kernel
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @kernel = args[:kernel] if args.key?(:kernel)
+        end
+      end
+      
       # Specifies Kerberos related configuration.
       class KerberosConfig
         include Google::Apis::Core::Hashable
@@ -3113,6 +3173,58 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # A list of session templates.
+      class ListSessionTemplatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as page_token to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Session template list
+        # Corresponds to the JSON property `sessionTemplates`
+        # @return [Array<Google::Apis::DataprocV1::SessionTemplate>]
+        attr_accessor :session_templates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @session_templates = args[:session_templates] if args.key?(:session_templates)
+        end
+      end
+      
+      # A list of interactive sessions.
+      class ListSessionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as page_token to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. The sessions from the specified collection.
+        # Corresponds to the JSON property `sessions`
+        # @return [Array<Google::Apis::DataprocV1::Session>]
+        attr_accessor :sessions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sessions = args[:sessions] if args.key?(:sessions)
         end
       end
       
@@ -4370,6 +4482,120 @@ module Google
         end
       end
       
+      # A representation of a session in the service. Next ID: 18
+      class Session
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the session was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The email address of the user who created the session.
+        # Corresponds to the JSON property `creator`
+        # @return [String]
+        attr_accessor :creator
+      
+        # Environment configuration for a workload.
+        # Corresponds to the JSON property `environmentConfig`
+        # @return [Google::Apis::DataprocV1::EnvironmentConfig]
+        attr_accessor :environment_config
+      
+        # Jupyter configuration for an interactive session.
+        # Corresponds to the JSON property `jupyterSession`
+        # @return [Google::Apis::DataprocV1::JupyterConfig]
+        attr_accessor :jupyter_session
+      
+        # Optional. The labels to associate with this session. Label keys must contain 1
+        # to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/
+        # rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63
+        # characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt)
+        # . No more than 32 labels can be associated with a session.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. The resource name of the session.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Runtime configuration for a workload.
+        # Corresponds to the JSON property `runtimeConfig`
+        # @return [Google::Apis::DataprocV1::RuntimeConfig]
+        attr_accessor :runtime_config
+      
+        # Runtime information about workload execution.
+        # Corresponds to the JSON property `runtimeInfo`
+        # @return [Google::Apis::DataprocV1::RuntimeInfo]
+        attr_accessor :runtime_info
+      
+        # Optional. The session template used by the session.Only resource names
+        # including project ID and location are valid.Example: * https://www.googleapis.
+        # com/compute/v1/projects/[project_id]/locations/[dataproc_region]/
+        # sessionTemplates/[template_id] * projects/[project_id]/locations/[
+        # dataproc_region]/sessionTemplates/[template_id]Note that the template must be
+        # in the same project and Dataproc region.
+        # Corresponds to the JSON property `sessionTemplate`
+        # @return [String]
+        attr_accessor :session_template
+      
+        # Output only. A state of the session.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Historical state information for the session.
+        # Corresponds to the JSON property `stateHistory`
+        # @return [Array<Google::Apis::DataprocV1::SessionStateHistory>]
+        attr_accessor :state_history
+      
+        # Output only. Session state details, such as a failure description if the state
+        # is FAILED.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # Output only. The time when the session entered a current state.
+        # Corresponds to the JSON property `stateTime`
+        # @return [String]
+        attr_accessor :state_time
+      
+        # Optional. The email address of the user who owns the session.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        # Output only. A session UUID (Unique Universal Identifier). The service
+        # generates this value when it creates the session.
+        # Corresponds to the JSON property `uuid`
+        # @return [String]
+        attr_accessor :uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator = args[:creator] if args.key?(:creator)
+          @environment_config = args[:environment_config] if args.key?(:environment_config)
+          @jupyter_session = args[:jupyter_session] if args.key?(:jupyter_session)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @runtime_config = args[:runtime_config] if args.key?(:runtime_config)
+          @runtime_info = args[:runtime_info] if args.key?(:runtime_info)
+          @session_template = args[:session_template] if args.key?(:session_template)
+          @state = args[:state] if args.key?(:state)
+          @state_history = args[:state_history] if args.key?(:state_history)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @state_time = args[:state_time] if args.key?(:state_time)
+          @user = args[:user] if args.key?(:user)
+          @uuid = args[:uuid] if args.key?(:uuid)
+        end
+      end
+      
       # Metadata describing the Session operation.
       class SessionOperationMetadata
         include Google::Apis::Core::Hashable
@@ -4428,6 +4654,109 @@ module Google
           @session = args[:session] if args.key?(:session)
           @session_uuid = args[:session_uuid] if args.key?(:session_uuid)
           @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Historical state information.
+      class SessionStateHistory
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state of the session at this point in history.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Details about the state at this point in history.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # Output only. The time when the session entered the historical state.
+        # Corresponds to the JSON property `stateStartTime`
+        # @return [String]
+        attr_accessor :state_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @state_start_time = args[:state_start_time] if args.key?(:state_start_time)
+        end
+      end
+      
+      # A representation of a session template in the service. Next ID: 12
+      class SessionTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the template was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The email address of the user who created the template.
+        # Corresponds to the JSON property `creator`
+        # @return [String]
+        attr_accessor :creator
+      
+        # Optional. Brief description of the template.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Environment configuration for a workload.
+        # Corresponds to the JSON property `environmentConfig`
+        # @return [Google::Apis::DataprocV1::EnvironmentConfig]
+        attr_accessor :environment_config
+      
+        # Jupyter configuration for an interactive session.
+        # Corresponds to the JSON property `jupyterSession`
+        # @return [Google::Apis::DataprocV1::JupyterConfig]
+        attr_accessor :jupyter_session
+      
+        # Optional. The labels to associate with sessions created using this template.
+        # Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (
+        # https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if
+        # present, must contain 1 to 63 characters, and must conform to RFC 1035 (https:/
+        # /www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with
+        # a session.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. The resource name of the session template.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Runtime configuration for a workload.
+        # Corresponds to the JSON property `runtimeConfig`
+        # @return [Google::Apis::DataprocV1::RuntimeConfig]
+        attr_accessor :runtime_config
+      
+        # Output only. The time template was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator = args[:creator] if args.key?(:creator)
+          @description = args[:description] if args.key?(:description)
+          @environment_config = args[:environment_config] if args.key?(:environment_config)
+          @jupyter_session = args[:jupyter_session] if args.key?(:jupyter_session)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @runtime_config = args[:runtime_config] if args.key?(:runtime_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -5183,6 +5512,31 @@ module Google
           @fields = args[:fields] if args.key?(:fields)
           @name = args[:name] if args.key?(:name)
           @validation = args[:validation] if args.key?(:validation)
+        end
+      end
+      
+      # A request to terminate an interactive session.
+      class TerminateSessionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A unique ID used to identify the request. If the service receives
+        # two TerminateSessionRequest (https://cloud.google.com/dataproc/docs/reference/
+        # rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.TerminateSessionRequest)
+        # s with the same ID, the second request is ignored.Recommendation: Set this
+        # value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).
+        # The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+        # and hyphens (-). The maximum length is 40 characters.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       
