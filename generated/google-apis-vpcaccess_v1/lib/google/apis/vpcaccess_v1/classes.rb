@@ -47,7 +47,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_instances
       
-        # Maximum throughput of the connector in Mbps. Default is 300, max is 1000.
+        # Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If
+        # both max-throughput and max-instances are provided, max-instances takes
+        # precedence over max-throughput.
         # Corresponds to the JSON property `maxThroughput`
         # @return [Fixnum]
         attr_accessor :max_throughput
@@ -57,7 +59,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_instances
       
-        # Minimum throughput of the connector in Mbps. Default and min is 200.
+        # Minimum throughput of the connector in Mbps. Default and min is 200. If both
+        # min-throughput and min-instances are provided, min-instances takes precedence
+        # over min-throughput.
         # Corresponds to the JSON property `minThroughput`
         # @return [Fixnum]
         attr_accessor :min_throughput
@@ -261,13 +265,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response

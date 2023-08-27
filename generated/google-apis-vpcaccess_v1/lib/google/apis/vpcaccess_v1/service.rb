@@ -94,7 +94,7 @@ module Google
         
         # Creates a Serverless VPC Access connector, returns an operation.
         # @param [String] parent
-        #   Required. The project and location in which the configuration should be
+        #   Required. The project id and location in which the configuration should be
         #   created, specified in the format `projects/*/locations/*`.
         # @param [Google::Apis::VpcaccessV1::Connector] connector_object
         # @param [String] connector_id
