@@ -896,6 +896,26 @@ module Google
         end
       end
       
+      # Specification that applies to a dataset. Valid only for entries with the `
+      # DATASET` type.
+      class GoogleCloudDatacatalogV1DatasetSpec
+        include Google::Apis::Core::Hashable
+      
+        # Specification for vertex dataset resources.
+        # Corresponds to the JSON property `vertexDatasetSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1VertexDatasetSpec]
+        attr_accessor :vertex_dataset_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vertex_dataset_spec = args[:vertex_dataset_spec] if args.key?(:vertex_dataset_spec)
+        end
+      end
+      
       # Wrapper for any item that can be contained in the dump.
       class GoogleCloudDatacatalogV1DumpItem
         include Google::Apis::Core::Hashable
@@ -967,6 +987,12 @@ module Google
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DatabaseTableSpec]
         attr_accessor :database_table_spec
       
+        # Specification that applies to a dataset. Valid only for entries with the `
+        # DATASET` type.
+        # Corresponds to the JSON property `datasetSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DatasetSpec]
+        attr_accessor :dataset_spec
+      
         # Entry description that can consist of several sentences or paragraphs that
         # describe entry contents. The description must not contain Unicode non-
         # characters as well as C0 and C1 control codes except tabs (HT), new lines (LF),
@@ -1033,6 +1059,12 @@ module Google
         # Corresponds to the JSON property `lookerSystemSpec`
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1LookerSystemSpec]
         attr_accessor :looker_system_spec
+      
+        # Specification that applies to a model. Valid only for entries with the `MODEL`
+        # type.
+        # Corresponds to the JSON property `modelSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1ModelSpec]
+        attr_accessor :model_spec
       
         # Output only. The resource name of an entry in URL format. Note: The entry
         # itself and its child resources might not be stored in the location specified
@@ -1120,6 +1152,7 @@ module Google
           @data_source = args[:data_source] if args.key?(:data_source)
           @data_source_connection_spec = args[:data_source_connection_spec] if args.key?(:data_source_connection_spec)
           @database_table_spec = args[:database_table_spec] if args.key?(:database_table_spec)
+          @dataset_spec = args[:dataset_spec] if args.key?(:dataset_spec)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @fileset_spec = args[:fileset_spec] if args.key?(:fileset_spec)
@@ -1129,6 +1162,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @linked_resource = args[:linked_resource] if args.key?(:linked_resource)
           @looker_system_spec = args[:looker_system_spec] if args.key?(:looker_system_spec)
+          @model_spec = args[:model_spec] if args.key?(:model_spec)
           @name = args[:name] if args.key?(:name)
           @personal_details = args[:personal_details] if args.key?(:personal_details)
           @routine_spec = args[:routine_spec] if args.key?(:routine_spec)
@@ -1358,6 +1392,26 @@ module Google
           @parent_model_id = args[:parent_model_id] if args.key?(:parent_model_id)
           @parent_view_display_name = args[:parent_view_display_name] if args.key?(:parent_view_display_name)
           @parent_view_id = args[:parent_view_id] if args.key?(:parent_view_id)
+        end
+      end
+      
+      # Specification that applies to a model. Valid only for entries with the `MODEL`
+      # type.
+      class GoogleCloudDatacatalogV1ModelSpec
+        include Google::Apis::Core::Hashable
+      
+        # Specification for vertex model resources.
+        # Corresponds to the JSON property `vertexModelSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1VertexModelSpec]
+        attr_accessor :vertex_model_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vertex_model_spec = args[:vertex_model_spec] if args.key?(:vertex_model_spec)
         end
       end
       
@@ -2106,6 +2160,103 @@ module Google
           @total_completions = args[:total_completions] if args.key?(:total_completions)
           @total_execution_time_for_completions_millis = args[:total_execution_time_for_completions_millis] if args.key?(:total_execution_time_for_completions_millis)
           @total_failures = args[:total_failures] if args.key?(:total_failures)
+        end
+      end
+      
+      # Specification for vertex dataset resources.
+      class GoogleCloudDatacatalogV1VertexDatasetSpec
+        include Google::Apis::Core::Hashable
+      
+        # The number of DataItems in this Dataset. Only apply for non-structured Dataset.
+        # Corresponds to the JSON property `dataItemCount`
+        # @return [Fixnum]
+        attr_accessor :data_item_count
+      
+        # Type of the dataset.
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_item_count = args[:data_item_count] if args.key?(:data_item_count)
+          @data_type = args[:data_type] if args.key?(:data_type)
+        end
+      end
+      
+      # Detail description of the source information of a Vertex model.
+      class GoogleCloudDatacatalogV1VertexModelSourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # If this Model is copy of another Model. If true then source_type pertains to
+        # the original.
+        # Corresponds to the JSON property `copy`
+        # @return [Boolean]
+        attr_accessor :copy
+        alias_method :copy?, :copy
+      
+        # Type of the model source.
+        # Corresponds to the JSON property `sourceType`
+        # @return [String]
+        attr_accessor :source_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @copy = args[:copy] if args.key?(:copy)
+          @source_type = args[:source_type] if args.key?(:source_type)
+        end
+      end
+      
+      # Specification for vertex model resources.
+      class GoogleCloudDatacatalogV1VertexModelSpec
+        include Google::Apis::Core::Hashable
+      
+        # URI of the Docker image to be used as the custom container for serving
+        # predictions.
+        # Corresponds to the JSON property `containerImageUri`
+        # @return [String]
+        attr_accessor :container_image_uri
+      
+        # User provided version aliases so that a model version can be referenced via
+        # alias
+        # Corresponds to the JSON property `versionAliases`
+        # @return [Array<String>]
+        attr_accessor :version_aliases
+      
+        # The description of this version.
+        # Corresponds to the JSON property `versionDescription`
+        # @return [String]
+        attr_accessor :version_description
+      
+        # The version ID of the model.
+        # Corresponds to the JSON property `versionId`
+        # @return [String]
+        attr_accessor :version_id
+      
+        # Detail description of the source information of a Vertex model.
+        # Corresponds to the JSON property `vertexModelSourceInfo`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1VertexModelSourceInfo]
+        attr_accessor :vertex_model_source_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_image_uri = args[:container_image_uri] if args.key?(:container_image_uri)
+          @version_aliases = args[:version_aliases] if args.key?(:version_aliases)
+          @version_description = args[:version_description] if args.key?(:version_description)
+          @version_id = args[:version_id] if args.key?(:version_id)
+          @vertex_model_source_info = args[:vertex_model_source_info] if args.key?(:vertex_model_source_info)
         end
       end
       
