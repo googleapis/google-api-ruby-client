@@ -867,10 +867,11 @@ module Google
         attr_accessor :rank_preference
       
         # The Unicode country/region code (CLDR) of the location where the request is
-        # coming from. It is used to display the place details, like region-specific
-        # place name, if available. For more information, see http://www.unicode.org/
-        # reports/tr35/#unicode_region_subtag. Note that 3-digit region codes are not
-        # currently supported.
+        # coming from. This parameter is used to display the place details, like region-
+        # specific place name, if available. The parameter can affect results based on
+        # applicable law. For more information, see http://www.unicode.org/reports/tr35/#
+        # unicode_region_subtag. Note that 3-digit region codes are not currently
+        # supported.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
         attr_accessor :region_code
