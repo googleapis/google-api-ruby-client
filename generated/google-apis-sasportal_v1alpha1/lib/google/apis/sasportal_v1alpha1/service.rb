@@ -239,6 +239,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Setups the a GCP Project to receive SAS Analytics messages via GCP Pub/Sub
+        # with a subscription to BigQuery. All the Pub/Sub topics and BigQuery tables
+        # are created automatically as part of this service.
+        # @param [Google::Apis::SasportalV1alpha1::SasPortalSetupSasAnalyticsRequest] sas_portal_setup_sas_analytics_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def setup_customer_sas_analytics(sas_portal_setup_sas_analytics_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha1/customers:setupSasAnalytics', options)
+          command.request_representation = Google::Apis::SasportalV1alpha1::SasPortalSetupSasAnalyticsRequest::Representation
+          command.request_object = sas_portal_setup_sas_analytics_request_object
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalOperation::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalOperation
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new deployment.
         # @param [String] parent
         #   Required. The parent resource name where the deployment is to be created.
