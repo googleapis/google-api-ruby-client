@@ -337,6 +337,34 @@ module Google
         end
       end
       
+      # A data store connection. It represents a data store in Discovery Engine and
+      # the type of the contents it contains.
+      class GoogleCloudDialogflowCxV3DataStoreConnection
+        include Google::Apis::Core::Hashable
+      
+        # The full name of the referenced data store. Formats: `projects/`project`/
+        # locations/`location`/collections/`collection`/dataStores/`data_store`` `
+        # projects/`project`/locations/`location`/dataStores/`data_store``
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # The type of the connected data store.
+        # Corresponds to the JSON property `dataStoreType`
+        # @return [String]
+        attr_accessor :data_store_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @data_store_type = args[:data_store_type] if args.key?(:data_store_type)
+        end
+      end
+      
       # Metadata for DeleteDocument operation.
       class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata
         include Google::Apis::Core::Hashable
@@ -1483,6 +1511,60 @@ module Google
         end
       end
       
+      # The Knowledge Connector settings for this page or flow. This includes
+      # information such as the attached Knowledge Bases, and the way to execute
+      # fulfillment.
+      class GoogleCloudDialogflowCxV3KnowledgeConnectorSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of related data store connections.
+        # Corresponds to the JSON property `dataStoreConnections`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3DataStoreConnection>]
+        attr_accessor :data_store_connections
+      
+        # Whether Knowledge Connector is enabled or not.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # The target flow to transition to. Format: `projects//locations//agents//flows/`
+        # .
+        # Corresponds to the JSON property `targetFlow`
+        # @return [String]
+        attr_accessor :target_flow
+      
+        # The target page to transition to. Format: `projects//locations//agents//flows//
+        # pages/`.
+        # Corresponds to the JSON property `targetPage`
+        # @return [String]
+        attr_accessor :target_page
+      
+        # A fulfillment can do one or more of the following actions at the same time: *
+        # Generate rich message responses. * Set parameter values. * Call the webhook.
+        # Fulfillments can be called at various stages in the Page or Form lifecycle.
+        # For example, when a DetectIntentRequest drives a session to enter a new page,
+        # the page's entry fulfillment can add a static response to the QueryResult in
+        # the returning DetectIntentResponse, call the webhook (for example, to load
+        # user data from a database), or both.
+        # Corresponds to the JSON property `triggerFulfillment`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3Fulfillment]
+        attr_accessor :trigger_fulfillment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store_connections = args[:data_store_connections] if args.key?(:data_store_connections)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @target_flow = args[:target_flow] if args.key?(:target_flow)
+          @target_page = args[:target_page] if args.key?(:target_page)
+          @trigger_fulfillment = args[:trigger_fulfillment] if args.key?(:trigger_fulfillment)
+        end
+      end
+      
       # A Dialogflow CX conversation (session) can be described and visualized as a
       # state machine. The states of a CX session are represented by pages. For each
       # flow, you define many pages, where your combined pages can handle a complete
@@ -1529,6 +1611,13 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3Form]
         attr_accessor :form
       
+        # The Knowledge Connector settings for this page or flow. This includes
+        # information such as the attached Knowledge Bases, and the way to execute
+        # fulfillment.
+        # Corresponds to the JSON property `knowledgeConnectorSettings`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3KnowledgeConnectorSettings]
+        attr_accessor :knowledge_connector_settings
+      
         # The unique identifier of the page. Required for the Pages.UpdatePage method.
         # Pages.CreatePage populates the name automatically. Format: `projects//
         # locations//agents//flows//pages/`.
@@ -1536,14 +1625,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Ordered list of `TransitionRouteGroups` associated with the page. Transition
-        # route groups must be unique within a page. * If multiple transition routes
-        # within a page scope refer to the same intent, then the precedence order is:
-        # page's transition route -> page's transition route group -> flow's transition
-        # routes. * If multiple transition route groups within a page contain the same
-        # intent, then the first group in the ordered list takes precedence. Format:`
-        # projects//locations//agents//flows//transitionRouteGroups/` or `projects//
-        # locations//agents//transitionRouteGroups/` for agent-level groups.
+        # Ordered list of `TransitionRouteGroups` added to the page. Transition route
+        # groups must be unique within a page. If the page links both flow-level
+        # transition route groups and agent-level transition route groups, the flow-
+        # level ones will have higher priority and will be put before the agent-level
+        # ones. * If multiple transition routes within a page scope refer to the same
+        # intent, then the precedence order is: page's transition route -> page's
+        # transition route group -> flow's transition routes. * If multiple transition
+        # route groups within a page contain the same intent, then the first group in
+        # the ordered list takes precedence. Format:`projects//locations//agents//flows//
+        # transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/
+        # ` for agent-level groups.
         # Corresponds to the JSON property `transitionRouteGroups`
         # @return [Array<String>]
         attr_accessor :transition_route_groups
@@ -1572,6 +1664,7 @@ module Google
           @entry_fulfillment = args[:entry_fulfillment] if args.key?(:entry_fulfillment)
           @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
           @form = args[:form] if args.key?(:form)
+          @knowledge_connector_settings = args[:knowledge_connector_settings] if args.key?(:knowledge_connector_settings)
           @name = args[:name] if args.key?(:name)
           @transition_route_groups = args[:transition_route_groups] if args.key?(:transition_route_groups)
           @transition_routes = args[:transition_routes] if args.key?(:transition_routes)
@@ -1802,6 +1895,13 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessageEndInteraction]
         attr_accessor :end_interaction
       
+        # Represents info card response. If the response contains generative knowledge
+        # prediction, Dialogflow will return a payload with Infobot Messenger compatible
+        # info card. Otherwise, the info card response is skipped.
+        # Corresponds to the JSON property `knowledgeInfoCard`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard]
+        attr_accessor :knowledge_info_card
+      
         # Indicates that the conversation should be handed off to a live agent.
         # Dialogflow only uses this to determine which conversations were handed off to
         # a human agent for measurement purposes. What else to do with this signal is up
@@ -1862,6 +1962,7 @@ module Google
           @channel = args[:channel] if args.key?(:channel)
           @conversation_success = args[:conversation_success] if args.key?(:conversation_success)
           @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
+          @knowledge_info_card = args[:knowledge_info_card] if args.key?(:knowledge_info_card)
           @live_agent_handoff = args[:live_agent_handoff] if args.key?(:live_agent_handoff)
           @mixed_audio = args[:mixed_audio] if args.key?(:mixed_audio)
           @output_audio_text = args[:output_audio_text] if args.key?(:output_audio_text)
@@ -1903,6 +2004,21 @@ module Google
       # Indicates that interaction with the Dialogflow agent has ended. This message
       # is generated by Dialogflow only and not supposed to be defined by the user.
       class GoogleCloudDialogflowCxV3ResponseMessageEndInteraction
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Represents info card response. If the response contains generative knowledge
+      # prediction, Dialogflow will return a payload with Infobot Messenger compatible
+      # info card. Otherwise, the info card response is skipped.
+      class GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -2497,6 +2613,12 @@ module Google
         # @return [String]
         attr_accessor :condition
       
+        # Optional. The description of the transition route. The maximum length is 500
+        # characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # The unique identifier of an Intent. Format: `projects//locations//agents//
         # intents/`. Indicates that the transition can only happen when the given intent
         # is matched. At least one of `intent` or `condition` must be specified. When
@@ -2541,6 +2663,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @condition = args[:condition] if args.key?(:condition)
+          @description = args[:description] if args.key?(:description)
           @intent = args[:intent] if args.key?(:intent)
           @name = args[:name] if args.key?(:name)
           @target_flow = args[:target_flow] if args.key?(:target_flow)
@@ -3921,6 +4044,34 @@ module Google
         end
       end
       
+      # A data store connection. It represents a data store in Discovery Engine and
+      # the type of the contents it contains.
+      class GoogleCloudDialogflowCxV3beta1DataStoreConnection
+        include Google::Apis::Core::Hashable
+      
+        # The full name of the referenced data store. Formats: `projects/`project`/
+        # locations/`location`/collections/`collection`/dataStores/`data_store`` `
+        # projects/`project`/locations/`location`/dataStores/`data_store``
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # The type of the connected data store.
+        # Corresponds to the JSON property `dataStoreType`
+        # @return [String]
+        attr_accessor :data_store_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @data_store_type = args[:data_store_type] if args.key?(:data_store_type)
+        end
+      end
+      
       # Metadata for DeleteDocument operation.
       class GoogleCloudDialogflowCxV3beta1DeleteDocumentOperationMetadata
         include Google::Apis::Core::Hashable
@@ -5140,6 +5291,13 @@ module Google
         # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EventHandler>]
         attr_accessor :event_handlers
       
+        # The Knowledge Connector settings for this page or flow. This includes
+        # information such as the attached Knowledge Bases, and the way to execute
+        # fulfillment.
+        # Corresponds to the JSON property `knowledgeConnectorSettings`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings]
+        attr_accessor :knowledge_connector_settings
+      
         # The unique identifier of the flow. Format: `projects//locations//agents//flows/
         # `.
         # Corresponds to the JSON property `name`
@@ -5183,6 +5341,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
+          @knowledge_connector_settings = args[:knowledge_connector_settings] if args.key?(:knowledge_connector_settings)
           @name = args[:name] if args.key?(:name)
           @nlu_settings = args[:nlu_settings] if args.key?(:nlu_settings)
           @transition_route_groups = args[:transition_route_groups] if args.key?(:transition_route_groups)
@@ -6202,6 +6361,60 @@ module Google
         end
       end
       
+      # The Knowledge Connector settings for this page or flow. This includes
+      # information such as the attached Knowledge Bases, and the way to execute
+      # fulfillment.
+      class GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of related data store connections.
+        # Corresponds to the JSON property `dataStoreConnections`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DataStoreConnection>]
+        attr_accessor :data_store_connections
+      
+        # Whether Knowledge Connector is enabled or not.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # The target flow to transition to. Format: `projects//locations//agents//flows/`
+        # .
+        # Corresponds to the JSON property `targetFlow`
+        # @return [String]
+        attr_accessor :target_flow
+      
+        # The target page to transition to. Format: `projects//locations//agents//flows//
+        # pages/`.
+        # Corresponds to the JSON property `targetPage`
+        # @return [String]
+        attr_accessor :target_page
+      
+        # A fulfillment can do one or more of the following actions at the same time: *
+        # Generate rich message responses. * Set parameter values. * Call the webhook.
+        # Fulfillments can be called at various stages in the Page or Form lifecycle.
+        # For example, when a DetectIntentRequest drives a session to enter a new page,
+        # the page's entry fulfillment can add a static response to the QueryResult in
+        # the returning DetectIntentResponse, call the webhook (for example, to load
+        # user data from a database), or both.
+        # Corresponds to the JSON property `triggerFulfillment`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Fulfillment]
+        attr_accessor :trigger_fulfillment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store_connections = args[:data_store_connections] if args.key?(:data_store_connections)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @target_flow = args[:target_flow] if args.key?(:target_flow)
+          @target_page = args[:target_page] if args.key?(:target_page)
+          @trigger_fulfillment = args[:trigger_fulfillment] if args.key?(:trigger_fulfillment)
+        end
+      end
+      
       # The response message for Agents.ListAgents.
       class GoogleCloudDialogflowCxV3beta1ListAgentsResponse
         include Google::Apis::Core::Hashable
@@ -6999,6 +7212,13 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Form]
         attr_accessor :form
       
+        # The Knowledge Connector settings for this page or flow. This includes
+        # information such as the attached Knowledge Bases, and the way to execute
+        # fulfillment.
+        # Corresponds to the JSON property `knowledgeConnectorSettings`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings]
+        attr_accessor :knowledge_connector_settings
+      
         # The unique identifier of the page. Required for the Pages.UpdatePage method.
         # Pages.CreatePage populates the name automatically. Format: `projects//
         # locations//agents//flows//pages/`.
@@ -7006,14 +7226,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Ordered list of `TransitionRouteGroups` associated with the page. Transition
-        # route groups must be unique within a page. * If multiple transition routes
-        # within a page scope refer to the same intent, then the precedence order is:
-        # page's transition route -> page's transition route group -> flow's transition
-        # routes. * If multiple transition route groups within a page contain the same
-        # intent, then the first group in the ordered list takes precedence. Format:`
-        # projects//locations//agents//flows//transitionRouteGroups/` or `projects//
-        # locations//agents//transitionRouteGroups/` for agent-level groups.
+        # Ordered list of `TransitionRouteGroups` added to the page. Transition route
+        # groups must be unique within a page. If the page links both flow-level
+        # transition route groups and agent-level transition route groups, the flow-
+        # level ones will have higher priority and will be put before the agent-level
+        # ones. * If multiple transition routes within a page scope refer to the same
+        # intent, then the precedence order is: page's transition route -> page's
+        # transition route group -> flow's transition routes. * If multiple transition
+        # route groups within a page contain the same intent, then the first group in
+        # the ordered list takes precedence. Format:`projects//locations//agents//flows//
+        # transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/
+        # ` for agent-level groups.
         # Corresponds to the JSON property `transitionRouteGroups`
         # @return [Array<String>]
         attr_accessor :transition_route_groups
@@ -7042,6 +7265,7 @@ module Google
           @entry_fulfillment = args[:entry_fulfillment] if args.key?(:entry_fulfillment)
           @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
           @form = args[:form] if args.key?(:form)
+          @knowledge_connector_settings = args[:knowledge_connector_settings] if args.key?(:knowledge_connector_settings)
           @name = args[:name] if args.key?(:name)
           @transition_route_groups = args[:transition_route_groups] if args.key?(:transition_route_groups)
           @transition_routes = args[:transition_routes] if args.key?(:transition_routes)
@@ -7588,6 +7812,13 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction]
         attr_accessor :end_interaction
       
+        # Represents info card response. If the response contains generative knowledge
+        # prediction, Dialogflow will return a payload with Infobot Messenger compatible
+        # info card. Otherwise, the info card response is skipped.
+        # Corresponds to the JSON property `knowledgeInfoCard`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard]
+        attr_accessor :knowledge_info_card
+      
         # Indicates that the conversation should be handed off to a live agent.
         # Dialogflow only uses this to determine which conversations were handed off to
         # a human agent for measurement purposes. What else to do with this signal is up
@@ -7643,6 +7874,7 @@ module Google
           @channel = args[:channel] if args.key?(:channel)
           @conversation_success = args[:conversation_success] if args.key?(:conversation_success)
           @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
+          @knowledge_info_card = args[:knowledge_info_card] if args.key?(:knowledge_info_card)
           @live_agent_handoff = args[:live_agent_handoff] if args.key?(:live_agent_handoff)
           @mixed_audio = args[:mixed_audio] if args.key?(:mixed_audio)
           @output_audio_text = args[:output_audio_text] if args.key?(:output_audio_text)
@@ -7683,6 +7915,21 @@ module Google
       # Indicates that interaction with the Dialogflow agent has ended. This message
       # is generated by Dialogflow only and not supposed to be defined by the user.
       class GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Represents info card response. If the response contains generative knowledge
+      # prediction, Dialogflow will return a payload with Infobot Messenger compatible
+      # info card. Otherwise, the info card response is skipped.
+      class GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -8986,6 +9233,12 @@ module Google
         # @return [String]
         attr_accessor :condition
       
+        # Optional. The description of the transition route. The maximum length is 500
+        # characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # The unique identifier of an Intent. Format: `projects//locations//agents//
         # intents/`. Indicates that the transition can only happen when the given intent
         # is matched. At least one of `intent` or `condition` must be specified. When
@@ -9030,6 +9283,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @condition = args[:condition] if args.key?(:condition)
+          @description = args[:description] if args.key?(:description)
           @intent = args[:intent] if args.key?(:intent)
           @name = args[:name] if args.key?(:name)
           @target_flow = args[:target_flow] if args.key?(:target_flow)
