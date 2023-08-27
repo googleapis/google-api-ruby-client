@@ -165,6 +165,13 @@ module Google
         #   Optional. The value returned by the last `ListBudgetsResponse` which indicates
         #   that this is a continuation of a prior `ListBudgets` call, and that the system
         #   should return the next page of data.
+        # @param [String] scope
+        #   Optional. Set the scope of the budgets to be returned, in the format of the
+        #   resource name. The scope of a budget is the cost that it tracks, such as costs
+        #   for a single project, or the costs for all projects in a folder. Only project
+        #   scope (in the format of "projects/project-id" or "projects/123") is supported
+        #   in this field. When this field is set to a project's resource name, the
+        #   budgets returned are tracking the costs for that project.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -182,13 +189,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_billing_account_budgets(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_billing_account_budgets(parent, page_size: nil, page_token: nil, scope: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/budgets', options)
           command.response_representation = Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse::Representation
           command.response_class = Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['scope'] = scope unless scope.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

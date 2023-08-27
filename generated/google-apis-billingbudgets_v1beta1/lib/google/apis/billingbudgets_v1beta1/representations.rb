@@ -104,6 +104,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_default_iam_recipients, as: 'disableDefaultIamRecipients'
+          property :enable_project_level_recipients, as: 'enableProjectLevelRecipients'
           collection :monitoring_notification_channels, as: 'monitoringNotificationChannels'
           property :pubsub_topic, as: 'pubsubTopic'
           property :schema_version, as: 'schemaVersion'
