@@ -2944,6 +2944,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :gateways
       
+        # Optional. Set of label tags associated with the TlsRoute resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one
         # of the routing rules to route the requests served by the mesh. Each mesh
         # reference should match the pattern: `projects/*/locations/global/meshes/` The
@@ -2984,6 +2989,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @gateways = args[:gateways] if args.key?(:gateways)
+          @labels = args[:labels] if args.key?(:labels)
           @meshes = args[:meshes] if args.key?(:meshes)
           @name = args[:name] if args.key?(:name)
           @rules = args[:rules] if args.key?(:rules)
