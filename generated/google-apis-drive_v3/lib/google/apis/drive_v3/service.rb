@@ -530,7 +530,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Permanently deletes a shared drive for which the user is an organizer. The
+        # Permanently deletes a shared drive for which the user is an `organizer`. The
         # shared drive cannot contain any untrashed items.
         # @param [String] drive_id
         #   The ID of the shared drive.
@@ -903,9 +903,9 @@ module Google
         end
         
         # Permanently deletes a file owned by the user without moving it to the trash.
-        # If the file belongs to a shared drive the user must be an organizer on the
-        # parent. If the target is a folder, all descendants owned by the user are also
-        # deleted.
+        # If the file belongs to a shared drive, the user must be an `organizer` on the
+        # parent folder. If the target is a folder, all descendants owned by the user
+        # are also deleted.
         # @param [String] file_id
         #   The ID of the file.
         # @param [Boolean] enforce_single_parent
@@ -1205,7 +1205,7 @@ module Google
         
         # Lists the labels on a file.
         # @param [String] file_id
-        #   The ID for the file or shared drive.
+        #   The ID for the file.
         # @param [Fixnum] max_results
         #   The maximum number of labels to return per page. When not set, defaults to 100.
         # @param [String] page_token
