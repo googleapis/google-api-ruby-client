@@ -1309,6 +1309,45 @@ module Google
         end
       end
       
+      # Metadata returned by the long running operation for the SetupSasAnalytics rpc.
+      class SasPortalSetupSasAnalyticsMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request for the SetupSasAnalytics rpc.
+      class SasPortalSetupSasAnalyticsRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response returned by the long running operation for the SetupSasAnalytics rpc.
+      class SasPortalSetupSasAnalyticsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request for SignDevice.
       class SasPortalSignDeviceRequest
         include Google::Apis::Core::Hashable
