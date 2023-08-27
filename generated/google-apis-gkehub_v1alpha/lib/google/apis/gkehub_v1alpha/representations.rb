@@ -94,6 +94,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClusterUpgradeFleetSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterUpgradeFleetState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClusterUpgradeGkeUpgrade
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1072,6 +1084,28 @@ module Google
         end
       end
       
+      class ClusterUpgradeFleetSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gke_upgrade_overrides, as: 'gkeUpgradeOverrides', class: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgradeOverride, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgradeOverride::Representation
+      
+          property :post_conditions, as: 'postConditions', class: Google::Apis::GkehubV1alpha::ClusterUpgradePostConditions, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradePostConditions::Representation
+      
+          collection :upstream_fleets, as: 'upstreamFleets'
+        end
+      end
+      
+      class ClusterUpgradeFleetState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :downstream_fleets, as: 'downstreamFleets'
+          property :gke_state, as: 'gkeState', class: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgradeFeatureState, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgradeFeatureState::Representation
+      
+          hash :ignored, as: 'ignored', class: Google::Apis::GkehubV1alpha::ClusterUpgradeIgnoredMembership, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeIgnoredMembership::Representation
+      
+        end
+      end
+      
       class ClusterUpgradeGkeUpgrade
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1142,6 +1176,7 @@ module Google
       class ClusterUpgradeMembershipState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :fleet, as: 'fleet'
           property :ignored, as: 'ignored', class: Google::Apis::GkehubV1alpha::ClusterUpgradeIgnoredMembership, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeIgnoredMembership::Representation
       
           collection :scopes, as: 'scopes'
@@ -1197,6 +1232,8 @@ module Google
       
           property :cloudauditlogging, as: 'cloudauditlogging', class: Google::Apis::GkehubV1alpha::CloudAuditLoggingFeatureSpec, decorator: Google::Apis::GkehubV1alpha::CloudAuditLoggingFeatureSpec::Representation
       
+          property :clusterupgrade, as: 'clusterupgrade', class: Google::Apis::GkehubV1alpha::ClusterUpgradeFleetSpec, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeFleetSpec::Representation
+      
           property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1alpha::FleetObservabilityFeatureSpec, decorator: Google::Apis::GkehubV1alpha::FleetObservabilityFeatureSpec::Representation
       
           property :multiclusteringress, as: 'multiclusteringress', class: Google::Apis::GkehubV1alpha::MultiClusterIngressFeatureSpec, decorator: Google::Apis::GkehubV1alpha::MultiClusterIngressFeatureSpec::Representation
@@ -1210,6 +1247,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1alpha::AppDevExperienceFeatureState, decorator: Google::Apis::GkehubV1alpha::AppDevExperienceFeatureState::Representation
+      
+          property :clusterupgrade, as: 'clusterupgrade', class: Google::Apis::GkehubV1alpha::ClusterUpgradeFleetState, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeFleetState::Representation
       
           property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1alpha::FleetObservabilityFeatureState, decorator: Google::Apis::GkehubV1alpha::FleetObservabilityFeatureState::Representation
       
@@ -2005,7 +2044,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
-          property :fleet, as: 'fleet'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :scope, as: 'scope'
