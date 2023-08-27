@@ -1485,7 +1485,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
-          property :fleet, as: 'fleet'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :scope, as: 'scope'
