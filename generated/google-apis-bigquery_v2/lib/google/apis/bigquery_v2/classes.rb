@@ -1687,6 +1687,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # [Optional] Information about the external metadata storage where the dataset
+        # is defined. Filled out when the dataset type is EXTERNAL.
+        # Corresponds to the JSON property `externalDatasetReference`
+        # @return [Google::Apis::BigqueryV2::ExternalDatasetReference]
+        attr_accessor :external_dataset_reference
+      
         # [Optional] A descriptive name for the dataset.
         # Corresponds to the JSON property `friendlyName`
         # @return [String]
@@ -1775,6 +1781,7 @@ module Google
           @default_table_expiration_ms = args[:default_table_expiration_ms] if args.key?(:default_table_expiration_ms)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
+          @external_dataset_reference = args[:external_dataset_reference] if args.key?(:external_dataset_reference)
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
           @id = args[:id] if args.key?(:id)
           @is_case_insensitive = args[:is_case_insensitive] if args.key?(:is_case_insensitive)
@@ -2845,6 +2852,33 @@ module Google
           @schema = args[:schema] if args.key?(:schema)
           @source_format = args[:source_format] if args.key?(:source_format)
           @source_uris = args[:source_uris] if args.key?(:source_uris)
+        end
+      end
+      
+      # 
+      class ExternalDatasetReference
+        include Google::Apis::Core::Hashable
+      
+        # [Required] The connection id that is used to access the external_source.
+        # Format: projects/`project_id`/locations/`location_id`/connections/`
+        # connection_id`
+        # Corresponds to the JSON property `connection`
+        # @return [String]
+        attr_accessor :connection
+      
+        # [Required] External source that backs this dataset.
+        # Corresponds to the JSON property `externalSource`
+        # @return [String]
+        attr_accessor :external_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection = args[:connection] if args.key?(:connection)
+          @external_source = args[:external_source] if args.key?(:external_source)
         end
       end
       
@@ -8221,6 +8255,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :precision
       
+        # Optional. The subtype of the RANGE, if the type of this field is RANGE. If the
+        # type is RANGE, this field is required. Possible values for the field element
+        # type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+        # Corresponds to the JSON property `rangeElementType`
+        # @return [Google::Apis::BigqueryV2::TableFieldSchema::RangeElementType]
+        attr_accessor :range_element_type
+      
         # Optional. Rounding Mode specification of the field. It only can be set on
         # NUMERIC or BIGNUMERIC type fields.
         # Corresponds to the JSON property `roundingMode`
@@ -8257,6 +8298,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @policy_tags = args[:policy_tags] if args.key?(:policy_tags)
           @precision = args[:precision] if args.key?(:precision)
+          @range_element_type = args[:range_element_type] if args.key?(:range_element_type)
           @rounding_mode = args[:rounding_mode] if args.key?(:rounding_mode)
           @scale = args[:scale] if args.key?(:scale)
           @type = args[:type] if args.key?(:type)
@@ -8300,6 +8342,27 @@ module Google
           # Update properties of this object
           def update!(**args)
             @names = args[:names] if args.key?(:names)
+          end
+        end
+        
+        # Optional. The subtype of the RANGE, if the type of this field is RANGE. If the
+        # type is RANGE, this field is required. Possible values for the field element
+        # type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+        class RangeElementType
+          include Google::Apis::Core::Hashable
+        
+          # The field element type of a RANGE
+          # Corresponds to the JSON property `type`
+          # @return [String]
+          attr_accessor :type
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @type = args[:type] if args.key?(:type)
           end
         end
       end

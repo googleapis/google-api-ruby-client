@@ -376,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalDatasetReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FeatureValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -984,6 +990,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+        
+        class RangeElementType
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1487,6 +1499,8 @@ module Google
           property :default_table_expiration_ms, :numeric_string => true, as: 'defaultTableExpirationMs'
           property :description, as: 'description'
           property :etag, as: 'etag'
+          property :external_dataset_reference, as: 'externalDatasetReference', class: Google::Apis::BigqueryV2::ExternalDatasetReference, decorator: Google::Apis::BigqueryV2::ExternalDatasetReference::Representation
+      
           property :friendly_name, as: 'friendlyName'
           property :id, as: 'id'
           property :is_case_insensitive, as: 'isCaseInsensitive'
@@ -1761,6 +1775,14 @@ module Google
       
           property :source_format, as: 'sourceFormat'
           collection :source_uris, as: 'sourceUris'
+        end
+      end
+      
+      class ExternalDatasetReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection, as: 'connection'
+          property :external_source, as: 'externalSource'
         end
       end
       
@@ -3104,6 +3126,8 @@ module Google
           property :policy_tags, as: 'policyTags', class: Google::Apis::BigqueryV2::TableFieldSchema::PolicyTags, decorator: Google::Apis::BigqueryV2::TableFieldSchema::PolicyTags::Representation
       
           property :precision, :numeric_string => true, as: 'precision'
+          property :range_element_type, as: 'rangeElementType', class: Google::Apis::BigqueryV2::TableFieldSchema::RangeElementType, decorator: Google::Apis::BigqueryV2::TableFieldSchema::RangeElementType::Representation
+      
           property :rounding_mode, as: 'roundingMode'
           property :scale, :numeric_string => true, as: 'scale'
           property :type, as: 'type'
@@ -3120,6 +3144,13 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :names, as: 'names'
+          end
+        end
+        
+        class RangeElementType
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :type, as: 'type'
           end
         end
       end
