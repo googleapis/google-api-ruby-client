@@ -854,7 +854,7 @@ module Google
         end
       end
       
-      # The definition of a notebook instance.
+      # The definition of a notebook instance. Next tag: 43
       class Instance
         include Google::Apis::Core::Hashable
       
@@ -940,6 +940,12 @@ module Google
         attr_accessor :install_gpu_driver
         alias_method :install_gpu_driver?, :install_gpu_driver
       
+        # InstanceMigrationEligibility represents the feasibility information of a
+        # migration from UmN to WbI. Next tag: 3
+        # Corresponds to the JSON property `instanceMigrationEligibility`
+        # @return [Google::Apis::NotebooksV1::InstanceMigrationEligibility]
+        attr_accessor :instance_migration_eligibility
+      
         # Input only. The owner of this instance after creation. Format: `alias@example.
         # com` Currently supports one owner only. If not specified, all of the service
         # account users of your VM instance's service account can use the instance.
@@ -1022,11 +1028,6 @@ module Google
         # Corresponds to the JSON property `postStartupScript`
         # @return [String]
         attr_accessor :post_startup_script
-      
-        # PreMigrationCheck checks how feasible a migration from UmN is.
-        # Corresponds to the JSON property `preMigrationCheck`
-        # @return [Google::Apis::NotebooksV1::PreMigrationCheck]
-        attr_accessor :pre_migration_check
       
         # Output only. The proxy endpoint that is used to access the Jupyter notebook.
         # Corresponds to the JSON property `proxyUri`
@@ -1116,6 +1117,7 @@ module Google
           @disk_encryption = args[:disk_encryption] if args.key?(:disk_encryption)
           @disks = args[:disks] if args.key?(:disks)
           @install_gpu_driver = args[:install_gpu_driver] if args.key?(:install_gpu_driver)
+          @instance_migration_eligibility = args[:instance_migration_eligibility] if args.key?(:instance_migration_eligibility)
           @instance_owners = args[:instance_owners] if args.key?(:instance_owners)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @labels = args[:labels] if args.key?(:labels)
@@ -1129,7 +1131,6 @@ module Google
           @no_public_ip = args[:no_public_ip] if args.key?(:no_public_ip)
           @no_remove_data_disk = args[:no_remove_data_disk] if args.key?(:no_remove_data_disk)
           @post_startup_script = args[:post_startup_script] if args.key?(:post_startup_script)
-          @pre_migration_check = args[:pre_migration_check] if args.key?(:pre_migration_check)
           @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -1168,6 +1169,33 @@ module Google
         def update!(**args)
           @enable_health_monitoring = args[:enable_health_monitoring] if args.key?(:enable_health_monitoring)
           @notebook_upgrade_schedule = args[:notebook_upgrade_schedule] if args.key?(:notebook_upgrade_schedule)
+        end
+      end
+      
+      # InstanceMigrationEligibility represents the feasibility information of a
+      # migration from UmN to WbI. Next tag: 3
+      class InstanceMigrationEligibility
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Certain configurations make the UmN ineligible for an automatic
+        # migration. A manual migration is required.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<String>]
+        attr_accessor :errors
+      
+        # Output only. Certain configurations will be defaulted during the migration.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<String>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -1677,13 +1705,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -1777,22 +1805,22 @@ module Google
       # evaluates to `true`. A condition can add constraints based on attributes of
       # the request, the resource, or both. To learn which resources support
       # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
       # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
       # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
       # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
       # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
       # ], "condition": ` "title": "expirable access", "description": "Does not grant
       # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-      # bindings: - members: - user:mike@example.com - group:admins@example.com -
-      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-      # access description: Does not grant access after Sep 2020 expression: request.
-      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-      # a description of IAM and its features, see the [IAM documentation](https://
-      # cloud.google.com/iam/docs/).
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+      # title: expirable access description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -1852,31 +1880,6 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
-        end
-      end
-      
-      # PreMigrationCheck checks how feasible a migration from UmN is.
-      class PreMigrationCheck
-        include Google::Apis::Core::Hashable
-      
-        # Message provides a summary or workaround.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        # Result returns the result of the check.
-        # Corresponds to the JSON property `result`
-        # @return [String]
-        attr_accessor :result
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @message = args[:message] if args.key?(:message)
-          @result = args[:result] if args.key?(:result)
         end
       end
       
@@ -2156,6 +2159,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # RuntimeMigrationEligibility represents the feasibility information of a
+        # migration from GmN to WbI. Next tag: 3
+        # Corresponds to the JSON property `runtimeMigrationEligibility`
+        # @return [Google::Apis::NotebooksV1::RuntimeMigrationEligibility]
+        attr_accessor :runtime_migration_eligibility
+      
         # Specifies the selection and configuration of software inside the runtime. The
         # properties to set on runtime. Properties keys are specified in `key:value`
         # format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `
@@ -2192,6 +2201,7 @@ module Google
           @metrics = args[:metrics] if args.key?(:metrics)
           @migrated = args[:migrated] if args.key?(:migrated)
           @name = args[:name] if args.key?(:name)
+          @runtime_migration_eligibility = args[:runtime_migration_eligibility] if args.key?(:runtime_migration_eligibility)
           @software_config = args[:software_config] if args.key?(:software_config)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -2303,6 +2313,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @system_metrics = args[:system_metrics] if args.key?(:system_metrics)
+        end
+      end
+      
+      # RuntimeMigrationEligibility represents the feasibility information of a
+      # migration from GmN to WbI. Next tag: 3
+      class RuntimeMigrationEligibility
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Certain configurations make the GmN ineligible for an automatic
+        # migration. A manual migration is required.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<String>]
+        attr_accessor :errors
+      
+        # Output only. Certain configurations will be defaulted during the migration.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<String>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -2582,22 +2619,22 @@ module Google
         # evaluates to `true`. A condition can add constraints based on attributes of
         # the request, the resource, or both. To learn which resources support
         # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
         # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
         # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
         # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-        # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-        # a description of IAM and its features, see the [IAM documentation](https://
-        # cloud.google.com/iam/docs/).
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::NotebooksV1::Policy]
         attr_accessor :policy

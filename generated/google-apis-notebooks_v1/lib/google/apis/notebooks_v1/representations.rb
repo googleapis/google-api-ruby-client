@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceMigrationEligibility
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IsInstanceUpgradeableResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,12 +233,6 @@ module Google
       end
       
       class Policy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PreMigrationCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -323,6 +323,12 @@ module Google
       end
       
       class RuntimeMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RuntimeMigrationEligibility
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -722,6 +728,8 @@ module Google
           collection :disks, as: 'disks', class: Google::Apis::NotebooksV1::Disk, decorator: Google::Apis::NotebooksV1::Disk::Representation
       
           property :install_gpu_driver, as: 'installGpuDriver'
+          property :instance_migration_eligibility, as: 'instanceMigrationEligibility', class: Google::Apis::NotebooksV1::InstanceMigrationEligibility, decorator: Google::Apis::NotebooksV1::InstanceMigrationEligibility::Representation
+      
           collection :instance_owners, as: 'instanceOwners'
           property :kms_key, as: 'kmsKey'
           hash :labels, as: 'labels'
@@ -735,8 +743,6 @@ module Google
           property :no_public_ip, as: 'noPublicIp'
           property :no_remove_data_disk, as: 'noRemoveDataDisk'
           property :post_startup_script, as: 'postStartupScript'
-          property :pre_migration_check, as: 'preMigrationCheck', class: Google::Apis::NotebooksV1::PreMigrationCheck, decorator: Google::Apis::NotebooksV1::PreMigrationCheck::Representation
-      
           property :proxy_uri, as: 'proxyUri'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::NotebooksV1::ReservationAffinity, decorator: Google::Apis::NotebooksV1::ReservationAffinity::Representation
       
@@ -760,6 +766,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_health_monitoring, as: 'enableHealthMonitoring'
           property :notebook_upgrade_schedule, as: 'notebookUpgradeSchedule'
+        end
+      end
+      
+      class InstanceMigrationEligibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors'
+          collection :warnings, as: 'warnings'
         end
       end
       
@@ -919,14 +933,6 @@ module Google
         end
       end
       
-      class PreMigrationCheck
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :message, as: 'message'
-          property :result, as: 'result'
-        end
-      end
-      
       class RefreshRuntimeTokenInternalRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1016,6 +1022,8 @@ module Google
       
           property :migrated, as: 'migrated'
           property :name, as: 'name'
+          property :runtime_migration_eligibility, as: 'runtimeMigrationEligibility', class: Google::Apis::NotebooksV1::RuntimeMigrationEligibility, decorator: Google::Apis::NotebooksV1::RuntimeMigrationEligibility::Representation
+      
           property :software_config, as: 'softwareConfig', class: Google::Apis::NotebooksV1::RuntimeSoftwareConfig, decorator: Google::Apis::NotebooksV1::RuntimeSoftwareConfig::Representation
       
           property :state, as: 'state'
@@ -1053,6 +1061,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :system_metrics, as: 'systemMetrics'
+        end
+      end
+      
+      class RuntimeMigrationEligibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors'
+          collection :warnings, as: 'warnings'
         end
       end
       
