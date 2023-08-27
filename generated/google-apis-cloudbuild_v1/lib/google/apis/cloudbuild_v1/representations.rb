@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConnectedRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateBitbucketServerConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1027,6 +1033,15 @@ module Google
         end
       end
       
+      class ConnectedRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dir, as: 'dir'
+          property :repository, as: 'repository'
+          property :revision, as: 'revision'
+        end
+      end
+      
       class CreateBitbucketServerConfigOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1632,6 +1647,8 @@ module Google
       class Source
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :connected_repository, as: 'connectedRepository', class: Google::Apis::CloudbuildV1::ConnectedRepository, decorator: Google::Apis::CloudbuildV1::ConnectedRepository::Representation
+      
           property :git_source, as: 'gitSource', class: Google::Apis::CloudbuildV1::GitSource, decorator: Google::Apis::CloudbuildV1::GitSource::Representation
       
           property :repo_source, as: 'repoSource', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
