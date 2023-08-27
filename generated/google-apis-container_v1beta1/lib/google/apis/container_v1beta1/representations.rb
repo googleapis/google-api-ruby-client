@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscaledRolloutPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AvailableVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1247,6 +1253,12 @@ module Google
         end
       end
       
+      class AutoscaledRolloutPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AvailableVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1294,6 +1306,8 @@ module Google
       class BlueGreenSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaled_rollout_policy, as: 'autoscaledRolloutPolicy', class: Google::Apis::ContainerV1beta1::AutoscaledRolloutPolicy, decorator: Google::Apis::ContainerV1beta1::AutoscaledRolloutPolicy::Representation
+      
           property :node_pool_soak_duration, as: 'nodePoolSoakDuration'
           property :standard_rollout_policy, as: 'standardRolloutPolicy', class: Google::Apis::ContainerV1beta1::StandardRolloutPolicy, decorator: Google::Apis::ContainerV1beta1::StandardRolloutPolicy::Representation
       
@@ -2954,6 +2968,8 @@ module Google
           property :cluster_id, as: 'clusterId'
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1beta1::ConfidentialNodes, decorator: Google::Apis::ContainerV1beta1::ConfidentialNodes::Representation
       
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :disk_type, as: 'diskType'
           property :etag, as: 'etag'
           property :fast_socket, as: 'fastSocket', class: Google::Apis::ContainerV1beta1::FastSocket, decorator: Google::Apis::ContainerV1beta1::FastSocket::Representation
       
@@ -2971,6 +2987,7 @@ module Google
           collection :locations, as: 'locations'
           property :logging_config, as: 'loggingConfig', class: Google::Apis::ContainerV1beta1::NodePoolLoggingConfig, decorator: Google::Apis::ContainerV1beta1::NodePoolLoggingConfig::Representation
       
+          property :machine_type, as: 'machineType'
           property :name, as: 'name'
           property :node_network_config, as: 'nodeNetworkConfig', class: Google::Apis::ContainerV1beta1::NodeNetworkConfig, decorator: Google::Apis::ContainerV1beta1::NodeNetworkConfig::Representation
       

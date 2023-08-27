@@ -563,6 +563,20 @@ module Google
         end
       end
       
+      # Autoscaled rollout policy uses cluster autoscaler during blue-green upgrades
+      # to scale both the green and blue pools.
+      class AutoscaledRolloutPolicy
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Deprecated.
       class AvailableVersion
         include Google::Apis::Core::Hashable
@@ -722,6 +736,12 @@ module Google
       class BlueGreenSettings
         include Google::Apis::Core::Hashable
       
+        # Autoscaled rollout policy uses cluster autoscaler during blue-green upgrades
+        # to scale both the green and blue pools.
+        # Corresponds to the JSON property `autoscaledRolloutPolicy`
+        # @return [Google::Apis::ContainerV1beta1::AutoscaledRolloutPolicy]
+        attr_accessor :autoscaled_rollout_policy
+      
         # Time needed after draining entire blue pool. After this period, blue pool will
         # be cleaned up.
         # Corresponds to the JSON property `nodePoolSoakDuration`
@@ -739,6 +759,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autoscaled_rollout_policy = args[:autoscaled_rollout_policy] if args.key?(:autoscaled_rollout_policy)
           @node_pool_soak_duration = args[:node_pool_soak_duration] if args.key?(:node_pool_soak_duration)
           @standard_rollout_policy = args[:standard_rollout_policy] if args.key?(:standard_rollout_policy)
         end
@@ -7089,6 +7110,20 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ConfidentialNodes]
         attr_accessor :confidential_nodes
       
+        # Optional. The desired disk size for nodes in the node pool. Initiates an
+        # upgrade operation that migrates the nodes in the node pool to the specified
+        # disk size.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # Optional. The desired disk type for nodes in the node pool. Initiates an
+        # upgrade operation that migrates the nodes in the node pool to the specified
+        # disk type.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
         # The current etag of the node pool. If an etag is provided and does not match
         # the current etag of the node pool, update will be blocked and an ABORTED error
         # will be returned.
@@ -7147,6 +7182,13 @@ module Google
         # Corresponds to the JSON property `loggingConfig`
         # @return [Google::Apis::ContainerV1beta1::NodePoolLoggingConfig]
         attr_accessor :logging_config
+      
+        # Optional. The desired machine type for nodes in the node pool. Initiates an
+        # upgrade operation that migrates the nodes in the node pool to the specified
+        # machine type.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
       
         # The name (project, location, cluster, node pool) of the node pool to update.
         # Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.
@@ -7251,6 +7293,8 @@ module Google
         def update!(**args)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
           @etag = args[:etag] if args.key?(:etag)
           @fast_socket = args[:fast_socket] if args.key?(:fast_socket)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
@@ -7261,6 +7305,7 @@ module Google
           @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
           @locations = args[:locations] if args.key?(:locations)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
           @name = args[:name] if args.key?(:name)
           @node_network_config = args[:node_network_config] if args.key?(:node_network_config)
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
