@@ -1,5 +1,9 @@
 # Release history for google-apis-recommendationengine_v1beta1
 
+### v0.24.0 (2023-08-27)
+
+* Regenerated from discovery document revision 20230810
+
 ### v0.23.0 (2023-03-26)
 
 * Regenerated from discovery document revision 20230321
