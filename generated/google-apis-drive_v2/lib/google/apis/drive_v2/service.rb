@@ -826,7 +826,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Permanently deletes a shared drive for which the user is an organizer. The
+        # Permanently deletes a shared drive for which the user is an `organizer`. The
         # shared drive cannot contain any untrashed items.
         # @param [String] drive_id
         #   The ID of the shared drive.
@@ -1151,8 +1151,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Permanently deletes a file by ID. Skips the trash. The currently authenticated
-        # user must own the file or be an organizer on the parent for shared drive files.
+        # Permanently deletes a file owned by the user without moving it to the trash.
+        # If the file belongs to a shared drive, the user must be an `organizer` on the
+        # parent folder. If the target is a folder, all descendants owned by the user
+        # are also deleted.
         # @param [String] file_id
         #   The ID of the file to delete.
         # @param [Boolean] enforce_single_parent
@@ -1565,7 +1567,7 @@ module Google
         
         # Lists the labels on a file.
         # @param [String] file_id
-        #   The ID for the file or shared drive.
+        #   The ID for the file.
         # @param [Fixnum] max_results
         #   The maximum number of labels to return per page. When not set, defaults to 100.
         # @param [String] page_token
@@ -1785,13 +1787,7 @@ module Google
         end
         
         # Moves a file to the trash. The currently authenticated user must own the file
-        # or be at least a `fileOrganizer` on the parent for shared drive files. Only
-        # the owner may trash a file. The trashed item is excluded from all `files.list`
-        # responses returned for any user who doesn't own the file. However, all users
-        # with access to the file can see the trashed item metadata in an API response.
-        # All users with access can copy, download, export, and share the file. *Note:*
-        # Files moved to the trash still appear by default in results from the `files.
-        # list` method. To permanently remove a file, use `files.delete`.
+        # or be at least a `fileOrganizer` on the parent for shared drive files.
         # @param [String] file_id
         #   The ID of the file to trash.
         # @param [String] include_labels
@@ -1837,7 +1833,6 @@ module Google
         
         # Restores a file from the trash. The currently authenticated user must own the
         # file or be at least a `fileOrganizer` on the parent for shared drive files.
-        # Only the owner may untrash a file.
         # @param [String] file_id
         #   The ID of the file to untrash.
         # @param [String] include_labels

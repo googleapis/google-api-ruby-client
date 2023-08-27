@@ -452,7 +452,8 @@ module Google
       
       # The apps resource provides a list of the apps that a user has installed, with
       # information about each app's supported MIME types, file extensions, and other
-      # details.
+      # details. Some resource methods (such as `apps.get`) require an `appId`. Use
+      # the `apps.list` method to retrieve the ID for an installed application.
       class App
         include Google::Apis::Core::Hashable
       
@@ -717,7 +718,9 @@ module Google
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # Representation of a shared drive.
+        # Representation of a shared drive. Some resource methods (such as `drives.
+        # update`) require a `driveId`. Use the `drives.list` method to retrieve the ID
+        # for a shared drive.
         # Corresponds to the JSON property `drive`
         # @return [Google::Apis::DriveV2::Drive]
         attr_accessor :drive
@@ -727,7 +730,8 @@ module Google
         # @return [String]
         attr_accessor :drive_id
       
-        # The metadata for a file.
+        # The metadata for a file. Some resource methods (such as `files.update`)
+        # require a `fileId`. Use the `files.list` method to retrieve the ID for a file.
         # Corresponds to the JSON property `file`
         # @return [Google::Apis::DriveV2::File]
         attr_accessor :file
@@ -991,7 +995,9 @@ module Google
         end
       end
       
-      # A reference to a folder's child.
+      # A reference to a folder's child. Some resource methods (such as `children.get`)
+      # require a `childId`. Use the `children.list` method to retrieve the ID of the
+      # child.
       class ChildReference
         include Google::Apis::Core::Hashable
       
@@ -1028,7 +1034,9 @@ module Google
         end
       end
       
-      # A comment on a file in Google Drive.
+      # A comment on a file in Google Drive. Some resource methods (such as `comments.
+      # update`) require a `commentId`. Use the `comments.list` method to retrieve the
+      # ID for a comment in a file.
       class Comment
         include Google::Apis::Core::Hashable
       
@@ -1213,7 +1221,9 @@ module Google
         end
       end
       
-      # A comment on a file in Google Drive.
+      # A comment on a file in Google Drive. Some resource methods (such as `replies.
+      # update`) require a `replyId`. Use the `replies.list` method to retrieve the ID
+      # for a reply.
       class CommentReply
         include Google::Apis::Core::Hashable
       
@@ -1393,7 +1403,9 @@ module Google
         end
       end
       
-      # Representation of a shared drive.
+      # Representation of a shared drive. Some resource methods (such as `drives.
+      # update`) require a `driveId`. Use the `drives.list` method to retrieve the ID
+      # for a shared drive.
       class Drive
         include Google::Apis::Core::Hashable
       
@@ -1804,7 +1816,8 @@ module Google
         end
       end
       
-      # The metadata for a file.
+      # The metadata for a file. Some resource methods (such as `files.update`)
+      # require a `fileId`. Use the `files.list` method to retrieve the ID for a file.
       class File
         include Google::Apis::Core::Hashable
       
@@ -2227,7 +2240,10 @@ module Google
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :trashing_user
       
-        # A permission for a file.
+        # A permission for a file. A permission grants a user, group, domain, or the
+        # world access to a file or a folder hierarchy. Some resource methods (such as `
+        # permissions.update`) require a `permissionId`. Use the `permissions.list`
+        # method to retrieve the ID for a file, folder, or shared drive.
         # Corresponds to the JSON property `userPermission`
         # @return [Google::Apis::DriveV2::Permission]
         attr_accessor :user_permission
@@ -3503,7 +3519,9 @@ module Google
         end
       end
       
-      # A reference to a file's parent.
+      # A reference to a file's parent. Some resource methods (such as `parents.get`)
+      # require a `parentId`. Use the `parents.list` method to retrieve the ID for a
+      # parent.
       class ParentReference
         include Google::Apis::Core::Hashable
       
@@ -3547,7 +3565,10 @@ module Google
         end
       end
       
-      # A permission for a file.
+      # A permission for a file. A permission grants a user, group, domain, or the
+      # world access to a file or a folder hierarchy. Some resource methods (such as `
+      # permissions.update`) require a `permissionId`. Use the `permissions.list`
+      # method to retrieve the ID for a file, folder, or shared drive.
       class Permission
         include Google::Apis::Core::Hashable
       
@@ -3876,7 +3897,9 @@ module Google
       # application. The following limits apply to file properties: * Maximum of 100
       # properties total per file * Maximum of 30 private properties per app * Maximum
       # of 30 public properties * Maximum of 124 bytes size limit on (key + value)
-      # string in UTF-8 encoding for a single property
+      # string in UTF-8 encoding for a single property Some resource methods (such as `
+      # properties.update`) require a `propertyKey`. Use the `properties.list` method
+      # to retrieve the key for a property.
       class Property
         include Google::Apis::Core::Hashable
       
@@ -3966,7 +3989,9 @@ module Google
         end
       end
       
-      # A revision of a file.
+      # A revision of a file. Some resource methods (such as `revisions.update`)
+      # require a `revisionId`. Use the `revisions.list` method to retrieve the ID for
+      # a revision.
       class Revision
         include Google::Apis::Core::Hashable
       
