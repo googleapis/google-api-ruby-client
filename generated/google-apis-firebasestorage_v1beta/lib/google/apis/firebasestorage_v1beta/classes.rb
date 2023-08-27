@@ -39,7 +39,7 @@ module Google
       class Bucket
         include Google::Apis::Core::Hashable
       
-        # Resource name of the bucket.
+        # Output only. Resource name of the bucket.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
