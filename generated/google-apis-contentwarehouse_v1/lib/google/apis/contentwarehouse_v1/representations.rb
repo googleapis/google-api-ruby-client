@@ -3268,12 +3268,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ClassifierPornAggregatedUrlPornScores
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ClassifierPornClassifierData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11560,7 +11554,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class QualityTimebasedDateReliability
+      class QualityTimebasedDateUnreliability
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11584,7 +11578,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class QualityTimebasedPetacatDateReliability
+      class QualityTimebasedPetacatDateUnreliability
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -20656,6 +20650,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :album_release_type, as: 'albumReleaseType'
           property :ambiguity_classifier, as: 'ambiguityClassifier'
+          property :entity_mid, as: 'entityMid'
           property :has_type_semantic_edge, as: 'hasTypeSemanticEdge'
           property :is_cast_video, as: 'isCastVideo'
           property :is_media_search_query_subset_of_entity_name_and_artist, as: 'isMediaSearchQuerySubsetOfEntityNameAndArtist'
@@ -21171,6 +21166,7 @@ module Google
           property :intent_name_auis_score, as: 'intentNameAuisScore'
           property :intent_name_auis_score_exp, as: 'intentNameAuisScoreExp'
           property :intent_name_pauis, as: 'intentNamePauis'
+          property :intent_type, as: 'intentType'
           property :is_feasible, as: 'isFeasible'
           property :is_fully_grounded, as: 'isFullyGrounded'
           property :is_high_confidence_podcast_intent, as: 'isHighConfidencePodcastIntent'
@@ -21438,6 +21434,7 @@ module Google
       
           collection :plural, as: 'plural'
           property :primary_name, as: 'primaryName'
+          property :report_state_status, as: 'reportStateStatus'
           property :role_information, as: 'roleInformation', class: Google::Apis::ContentwarehouseV1::AssistantVerticalsHomeautomationProtoRoleInformation, decorator: Google::Apis::ContentwarehouseV1::AssistantVerticalsHomeautomationProtoRoleInformation::Representation
       
           property :routable_via_gcm, as: 'routableViaGcm'
@@ -21769,14 +21766,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id', class: Google::Apis::ContentwarehouseV1::GoogleInternalCommunicationsInstantmessagingV1Id, decorator: Google::Apis::ContentwarehouseV1::GoogleInternalCommunicationsInstantmessagingV1Id::Representation
       
-        end
-      end
-      
-      class ClassifierPornAggregatedUrlPornScores
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :average_url_porn_score, as: 'averageUrlPornScore'
-          property :url_count, as: 'urlCount'
         end
       end
       
@@ -32953,6 +32942,7 @@ module Google
       
           collection :signals_fallback_intents, as: 'signalsFallbackIntents', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQuerySignalComputationFallbackIntent, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQuerySignalComputationFallbackIntent::Representation
       
+          property :uses_prefulfillment_ranker, as: 'usesPrefulfillmentRanker'
         end
       end
       
@@ -39016,8 +39006,6 @@ module Google
       
           property :semantic_sexualization_score, as: 'semanticSexualizationScore'
           property :url, as: 'url'
-          property :url_porn_scores, as: 'urlPornScores', class: Google::Apis::ContentwarehouseV1::ClassifierPornAggregatedUrlPornScores, decorator: Google::Apis::ContentwarehouseV1::ClassifierPornAggregatedUrlPornScores::Representation
-      
         end
       end
       
@@ -39944,6 +39932,8 @@ module Google
           property :delta_link_outgoing, as: 'deltaLinkOutgoing'
           property :delta_page_quality, as: 'deltaPageQuality'
           property :delta_subchunk_adjustment, as: 'deltaSubchunkAdjustment'
+          collection :keto, as: 'keto', class: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal, decorator: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal::Representation
+      
           property :link_incoming, as: 'linkIncoming'
           property :link_outgoing, as: 'linkOutgoing'
           property :num_offdomain_anchors, as: 'numOffdomainAnchors'
@@ -40803,10 +40793,10 @@ module Google
         end
       end
       
-      class QualityTimebasedDateReliability
+      class QualityTimebasedDateUnreliability
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :petacat_scores, as: 'petacatScores', class: Google::Apis::ContentwarehouseV1::QualityTimebasedPetacatDateReliability, decorator: Google::Apis::ContentwarehouseV1::QualityTimebasedPetacatDateReliability::Representation
+          collection :petacat_scores, as: 'petacatScores', class: Google::Apis::ContentwarehouseV1::QualityTimebasedPetacatDateUnreliability, decorator: Google::Apis::ContentwarehouseV1::QualityTimebasedPetacatDateUnreliability::Representation
       
           property :unreliable_dates_score, as: 'unreliableDatesScore'
           property :unreliable_dates_score_exposure_adjusted, as: 'unreliableDatesScoreExposureAdjusted'
@@ -40819,7 +40809,7 @@ module Google
           property :adjustment_info, as: 'adjustmentInfo', class: Google::Apis::ContentwarehouseV1::QualityTimebasedLastSignificantUpdateAdjustments, decorator: Google::Apis::ContentwarehouseV1::QualityTimebasedLastSignificantUpdateAdjustments::Representation
       
           property :date, :numeric_string => true, as: 'date'
-          property :date_reliability_info, as: 'dateReliabilityInfo', class: Google::Apis::ContentwarehouseV1::QualityTimebasedDateReliability, decorator: Google::Apis::ContentwarehouseV1::QualityTimebasedDateReliability::Representation
+          property :date_unreliability_info, as: 'dateUnreliabilityInfo', class: Google::Apis::ContentwarehouseV1::QualityTimebasedDateUnreliability, decorator: Google::Apis::ContentwarehouseV1::QualityTimebasedDateUnreliability::Representation
       
           property :source, as: 'source'
         end
@@ -40845,7 +40835,7 @@ module Google
         end
       end
       
-      class QualityTimebasedPetacatDateReliability
+      class QualityTimebasedPetacatDateUnreliability
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contentage_reliability, as: 'contentageReliability'
@@ -41203,7 +41193,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :debug_string, as: 'debugString'
-          property :listiness, as: 'listiness'
           property :mid, :numeric_string => true, as: 'mid'
         end
       end
@@ -41677,7 +41666,6 @@ module Google
       class RepositoryWebrefEntityScores
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :all_caps_prob, as: 'allCapsProb'
           property :alpha_entity_idf, as: 'alphaEntityIdf'
           property :common_ngram_prob, as: 'commonNgramProb'
           property :entity_idf, as: 'entityIdf'
