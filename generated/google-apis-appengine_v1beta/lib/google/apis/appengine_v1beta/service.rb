@@ -87,6 +87,8 @@ module Google
         # Gets information about an application.
         # @param [String] apps_id
         #   Part of `name`. Name of the Application resource to get. Example: apps/myapp.
+        # @param [String] include_extra_data
+        #   Optional. Options to include extra data
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -104,11 +106,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_app(apps_id, fields: nil, quota_user: nil, options: nil, &block)
+        def get_app(apps_id, include_extra_data: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta/apps/{appsId}', options)
           command.response_representation = Google::Apis::AppengineV1beta::Application::Representation
           command.response_class = Google::Apis::AppengineV1beta::Application
           command.params['appsId'] = apps_id unless apps_id.nil?
+          command.query['includeExtraData'] = include_extra_data unless include_extra_data.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
