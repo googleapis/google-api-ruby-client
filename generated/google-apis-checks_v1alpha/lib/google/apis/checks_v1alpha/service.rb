@@ -234,7 +234,155 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Analyzes the privacy policy of the given policy URL or content.
+        # Gets a report. By default, only the name and results_uri fields are returned.
+        # You can include other fields by listing them in the `fields` URL query
+        # parameter. For example, `?fields=name,checks` will return the name and checks
+        # fields.
+        # @param [String] name
+        #   Required. Resource name of the report. Example: `accounts/123/apps/456/reports/
+        #   789`
+        # @param [String] checks_filter
+        #   Optional. An [AIP-160](https://google.aip.dev/160) filter string to filter
+        #   checks within the report. Only checks that match the filter string are
+        #   included in the response. Example: `state = FAILED`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaReport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaReport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_app_report(name, checks_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaReport::Representation
+          command.response_class = Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaReport
+          command.params['name'] = name unless name.nil?
+          command.query['checksFilter'] = checks_filter unless checks_filter.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists reports for the specified app. By default, only the name and results_uri
+        # fields are returned. You can include other fields by listing them in the `
+        # fields` URL query parameter. For example, `?fields=reports(name,checks)` will
+        # return the name and checks fields.
+        # @param [String] parent
+        #   Required. Resource name of the app. Example: `accounts/123/apps/456`
+        # @param [String] checks_filter
+        #   Optional. An [AIP-160](https://google.aip.dev/160) filter string to filter
+        #   checks within reports. Only checks that match the filter string are included
+        #   in the response. Example: `state = FAILED`
+        # @param [String] filter
+        #   Optional. An [AIP-160](https://google.aip.dev/160) filter string to filter
+        #   reports. Example: `appBundle.releaseType = PRE_RELEASE`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of reports to return. If unspecified, at most 10
+        #   reports will be returned. The maximum value is 50; values above 50 will be
+        #   coerced to 50.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous `ListReports` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListReports` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaListReportsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaListReportsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_app_reports(parent, checks_filter: nil, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/reports', options)
+          command.response_representation = Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaListReportsResponse::Representation
+          command.response_class = Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaListReportsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['checksFilter'] = checks_filter unless checks_filter.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Analyzes the uploaded app bundle and returns a google.longrunning.Operation
+        # containing the generated Report. ## Example (upload only) Send a regular POST
+        # request with the header `X-Goog-Upload-Protocol: raw`. ``` POST https://checks.
+        # googleapis.com/upload/v1alpha/`parent=accounts/*/apps/*`/reports:analyzeUpload
+        # HTTP/1.1 X-Goog-Upload-Protocol: raw Content-Length: Content-Type: application/
+        # octet-stream ``` ## Example (upload with metadata) Send a multipart POST
+        # request where the first body part contains the metadata JSON and the second
+        # body part contains the binary upload. Include the header `X-Goog-Upload-
+        # Protocol: multipart`. ``` POST https://checks.googleapis.com/upload/v1alpha/`
+        # parent=accounts/*/apps/*`/reports:analyzeUpload HTTP/1.1 X-Goog-Upload-
+        # Protocol: multipart Content-Length: ? Content-Type: multipart/related;
+        # boundary=BOUNDARY --BOUNDARY Content-Type: application/json `"
+        # code_reference_id":"db5bcc20f94055fb5bc08cbb9b0e7a5530308786"` --BOUNDARY --
+        # BOUNDARY-- ``` *Note:* Metadata-only requests are not supported.
+        # @param [String] parent
+        #   Required. Resource name of the app. Example: `accounts/123/apps/456`
+        # @param [Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaAnalyzeUploadRequest] google_checks_report_v1alpha_analyze_upload_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChecksV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChecksV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_medium(parent, google_checks_report_v1alpha_analyze_upload_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command = make_simple_command(:post, 'v1alpha/{+parent}/reports:analyzeUpload', options)
+          else
+            command = make_upload_command(:post, 'v1alpha/{+parent}/reports:analyzeUpload', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.request_representation = Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaAnalyzeUploadRequest::Representation
+          command.request_object = google_checks_report_v1alpha_analyze_upload_request_object
+          command.response_representation = Google::Apis::ChecksV1alpha::Operation::Representation
+          command.response_class = Google::Apis::ChecksV1alpha::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Performs a synchronous analysis of a privacy policy, where the policy content
+        # is mapped to privacy categories, data types, and purposes.
         # @param [Google::Apis::ChecksV1alpha::AnalyzePrivacyPolicyRequest] analyze_privacy_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
