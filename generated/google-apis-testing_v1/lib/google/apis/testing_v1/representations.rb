@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IosRoboTest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IosRuntimeConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -875,6 +881,17 @@ module Google
         end
       end
       
+      class IosRoboTest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_bundle_id, as: 'appBundleId'
+          property :app_ipa, as: 'appIpa', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
+      
+          property :robo_script, as: 'roboScript', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
+      
+        end
+      end
+      
       class IosRuntimeConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1229,6 +1246,8 @@ module Google
       
           property :disable_performance_metrics, as: 'disablePerformanceMetrics'
           property :disable_video_recording, as: 'disableVideoRecording'
+          property :ios_robo_test, as: 'iosRoboTest', class: Google::Apis::TestingV1::IosRoboTest, decorator: Google::Apis::TestingV1::IosRoboTest::Representation
+      
           property :ios_test_loop, as: 'iosTestLoop', class: Google::Apis::TestingV1::IosTestLoop, decorator: Google::Apis::TestingV1::IosTestLoop::Representation
       
           property :ios_test_setup, as: 'iosTestSetup', class: Google::Apis::TestingV1::IosTestSetup, decorator: Google::Apis::TestingV1::IosTestSetup::Representation

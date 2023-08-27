@@ -1391,6 +1391,38 @@ module Google
         end
       end
       
+      # A test that explores an iOS application on an iOS device.
+      class IosRoboTest
+        include Google::Apis::Core::Hashable
+      
+        # The bundle ID for the app-under-test. This is determined by examining the
+        # application's "Info.plist" file.
+        # Corresponds to the JSON property `appBundleId`
+        # @return [String]
+        attr_accessor :app_bundle_id
+      
+        # A reference to a file, used for user inputs.
+        # Corresponds to the JSON property `appIpa`
+        # @return [Google::Apis::TestingV1::FileReference]
+        attr_accessor :app_ipa
+      
+        # A reference to a file, used for user inputs.
+        # Corresponds to the JSON property `roboScript`
+        # @return [Google::Apis::TestingV1::FileReference]
+        attr_accessor :robo_script
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_bundle_id = args[:app_bundle_id] if args.key?(:app_bundle_id)
+          @app_ipa = args[:app_ipa] if args.key?(:app_ipa)
+          @robo_script = args[:robo_script] if args.key?(:robo_script)
+        end
+      end
+      
       # iOS configuration that can be selected at the time a test is run.
       class IosRuntimeConfiguration
         include Google::Apis::Core::Hashable
@@ -2494,8 +2526,8 @@ module Google
         # @return [Google::Apis::TestingV1::Account]
         attr_accessor :account
       
-        # APKs to install in addition to those being directly tested. Currently capped
-        # at 100.
+        # APKs to install in addition to those being directly tested. These will be
+        # installed after the app under test. Currently capped at 100.
         # Corresponds to the JSON property `additionalApks`
         # @return [Array<Google::Apis::TestingV1::Apk>]
         attr_accessor :additional_apks
@@ -2597,6 +2629,11 @@ module Google
         attr_accessor :disable_video_recording
         alias_method :disable_video_recording?, :disable_video_recording
       
+        # A test that explores an iOS application on an iOS device.
+        # Corresponds to the JSON property `iosRoboTest`
+        # @return [Google::Apis::TestingV1::IosRoboTest]
+        attr_accessor :ios_robo_test
+      
         # A test of an iOS application that implements one or more game loop scenarios.
         # This test type accepts an archived application (.ipa file) and a list of
         # integer scenarios that will be executed on the app sequentially.
@@ -2641,6 +2678,7 @@ module Google
           @android_test_loop = args[:android_test_loop] if args.key?(:android_test_loop)
           @disable_performance_metrics = args[:disable_performance_metrics] if args.key?(:disable_performance_metrics)
           @disable_video_recording = args[:disable_video_recording] if args.key?(:disable_video_recording)
+          @ios_robo_test = args[:ios_robo_test] if args.key?(:ios_robo_test)
           @ios_test_loop = args[:ios_test_loop] if args.key?(:ios_test_loop)
           @ios_test_setup = args[:ios_test_setup] if args.key?(:ios_test_setup)
           @ios_xc_test = args[:ios_xc_test] if args.key?(:ios_xc_test)
