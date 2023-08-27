@@ -244,6 +244,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SasPortalSetupSasAnalyticsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SasPortalSetupSasAnalyticsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SasPortalSetupSasAnalyticsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SasPortalSignDeviceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -643,6 +661,24 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::ProdTtSasportalV1alpha1::SasPortalPolicy, decorator: Google::Apis::ProdTtSasportalV1alpha1::SasPortalPolicy::Representation
       
           property :resource, as: 'resource'
+        end
+      end
+      
+      class SasPortalSetupSasAnalyticsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SasPortalSetupSasAnalyticsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SasPortalSetupSasAnalyticsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
