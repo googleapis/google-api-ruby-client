@@ -297,10 +297,6 @@ module Google
         #   04T18:54:47Z"` The length of this field should be no more than 500 characters.
         #   Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/
         #   filters) guide for more information.
-        # @param [String] internal_debugging_config
-        #   The config used in internal debugging and manual testing. Use comma to
-        #   separate multiple values. Examples: To allow entity search to go through
-        #   tangle `searchUsingTangle` To get only the advertiser Ids use `idOnly`
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
         #   default) * `entityStatus` * `updateTime` The default sorting order is
@@ -334,12 +330,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_advertisers(filter: nil, internal_debugging_config: nil, order_by: nil, page_size: nil, page_token: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_advertisers(filter: nil, order_by: nil, page_size: nil, page_token: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/advertisers', options)
           command.response_representation = Google::Apis::DisplayvideoV1::ListAdvertisersResponse::Representation
           command.response_class = Google::Apis::DisplayvideoV1::ListAdvertisersResponse
           command.query['filter'] = filter unless filter.nil?
-          command.query['internalDebuggingConfig'] = internal_debugging_config unless internal_debugging_config.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
