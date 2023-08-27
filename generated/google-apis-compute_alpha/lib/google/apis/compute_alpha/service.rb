@@ -21269,6 +21269,56 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates an association for the specified network firewall policy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] firewall_policy
+        #   Name of the firewall policy to update.
+        # @param [Google::Apis::ComputeAlpha::FirewallPolicyAssociation] firewall_policy_association_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_network_firewall_policy_association(project, firewall_policy, firewall_policy_association_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/firewallPolicies/{firewallPolicy}/patchAssociation', options)
+          command.request_representation = Google::Apis::ComputeAlpha::FirewallPolicyAssociation::Representation
+          command.request_object = firewall_policy_association_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['firewallPolicy'] = firewall_policy unless firewall_policy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Patches a rule of the specified priority.
         # @param [String] project
         #   Project ID for this request.
@@ -38574,6 +38624,46 @@ module Google
           command.params['region'] = region unless region.nil?
           command.params['resource'] = resource unless resource.nil?
           command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the network capacity constraints for the specified placement policies.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [Array<String>, String] resource_policies
+        #   Partial or full URL of the resource policies for which to retrieve the network
+        #   capacity constraints.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::GetNetworkCapacityConstraintsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::GetNetworkCapacityConstraintsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_resource_policy_network_capacity_constraints(project, region, resource_policies: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/resourcePolicies/getNetworkCapacityConstraints', options)
+          command.response_representation = Google::Apis::ComputeAlpha::GetNetworkCapacityConstraintsResponse::Representation
+          command.response_class = Google::Apis::ComputeAlpha::GetNetworkCapacityConstraintsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['resourcePolicies'] = resource_policies unless resource_policies.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

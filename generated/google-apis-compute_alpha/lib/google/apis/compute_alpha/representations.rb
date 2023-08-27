@@ -658,6 +658,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CapacityConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityConstraintConstraintTerm
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChannelCredentials
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1391,6 +1403,12 @@ module Google
       end
       
       class GrpcHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetNetworkCapacityConstraintsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4204,6 +4222,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PlacementLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5736,6 +5760,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAttachmentTunnelingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8536,6 +8566,27 @@ module Google
         end
       end
       
+      class CapacityConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraint_metadata, as: 'constraintMetadata'
+          property :max_sum_gbps, as: 'maxSumGbps'
+          collection :terms, as: 'terms', class: Google::Apis::ComputeAlpha::CapacityConstraintConstraintTerm, decorator: Google::Apis::ComputeAlpha::CapacityConstraintConstraintTerm::Representation
+      
+        end
+      end
+      
+      class CapacityConstraintConstraintTerm
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :coefficient, as: 'coefficient'
+          property :destination_node, as: 'destinationNode', class: Google::Apis::ComputeAlpha::PlacementLocation, decorator: Google::Apis::ComputeAlpha::PlacementLocation::Representation
+      
+          property :source_node, as: 'sourceNode', class: Google::Apis::ComputeAlpha::PlacementLocation, decorator: Google::Apis::ComputeAlpha::PlacementLocation::Representation
+      
+        end
+      end
+      
       class ChannelCredentials
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9612,6 +9663,7 @@ module Google
           property :all_ports, as: 'allPorts'
           property :allow_global_access, as: 'allowGlobalAccess'
           property :allow_psc_global_access, as: 'allowPscGlobalAccess'
+          property :allow_psc_packet_injection, as: 'allowPscPacketInjection'
           property :backend_service, as: 'backendService'
           property :base_forwarding_rule, as: 'baseForwardingRule'
           property :creation_timestamp, as: 'creationTimestamp'
@@ -9954,6 +10006,14 @@ module Google
           property :port, as: 'port'
           property :port_name, as: 'portName'
           property :port_specification, as: 'portSpecification'
+        end
+      end
+      
+      class GetNetworkCapacityConstraintsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :capacity_constraints, as: 'capacityConstraints', class: Google::Apis::ComputeAlpha::CapacityConstraint, decorator: Google::Apis::ComputeAlpha::CapacityConstraint::Representation
+      
         end
       end
       
@@ -11243,6 +11303,7 @@ module Google
           property :name, as: 'name'
           property :queuing_policy, as: 'queuingPolicy', class: Google::Apis::ComputeAlpha::QueuingPolicy, decorator: Google::Apis::ComputeAlpha::QueuingPolicy::Representation
       
+          property :resize_by, as: 'resizeBy'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :state, as: 'state'
@@ -11888,8 +11949,8 @@ module Google
       class InstanceSettingsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :items, as: 'items'
           property :kind, as: 'kind'
-          hash :metadata, as: 'metadata'
         end
       end
       
@@ -15279,6 +15340,14 @@ module Google
         end
       end
       
+      class PlacementLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_block_id, as: 'aggregationBlockId'
+          property :resource_policy, as: 'resourcePolicy'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -17987,6 +18056,8 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :target_service, as: 'targetService'
+          property :tunneling_config, as: 'tunnelingConfig', class: Google::Apis::ComputeAlpha::ServiceAttachmentTunnelingConfig, decorator: Google::Apis::ComputeAlpha::ServiceAttachmentTunnelingConfig::Representation
+      
         end
       end
       
@@ -18071,6 +18142,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ServiceAttachmentTunnelingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encapsulation_profile, as: 'encapsulationProfile'
+          property :routing_mode, as: 'routingMode'
         end
       end
       
