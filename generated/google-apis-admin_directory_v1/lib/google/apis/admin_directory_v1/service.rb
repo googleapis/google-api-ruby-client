@@ -3988,6 +3988,10 @@ module Google
         # message to see if this is the case. Retrying the calls after some time can
         # help in this case.
         # @param [Google::Apis::AdminDirectoryV1::User] user_object
+        # @param [Boolean] resolve_conflict_account
+        #   Optional. If set to `true`, the option selected for [handling unmanaged user
+        #   accounts](https://support.google.com/a/answer/11112794) will apply. Default: `
+        #   false`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4005,12 +4009,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_user(user_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_user(user_object = nil, resolve_conflict_account: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'admin/directory/v1/users', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::User::Representation
           command.request_object = user_object
           command.response_representation = Google::Apis::AdminDirectoryV1::User::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::User
+          command.query['resolveConflictAccount'] = resolve_conflict_account unless resolve_conflict_account.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
