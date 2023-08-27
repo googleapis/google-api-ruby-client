@@ -123,6 +123,11 @@ module Google
       class VerifyChallengeResponseResult
         include Google::Apis::Core::Hashable
       
+        # Attested device id (ADID) of the device, read from the verified data.
+        # Corresponds to the JSON property `attestedDeviceId`
+        # @return [String]
+        attr_accessor :attested_device_id
+      
         # Device enrollment id is returned in this field (for the machine response only).
         # Corresponds to the JSON property `deviceEnrollmentId`
         # @return [String]
@@ -155,6 +160,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attested_device_id = args[:attested_device_id] if args.key?(:attested_device_id)
           @device_enrollment_id = args[:device_enrollment_id] if args.key?(:device_enrollment_id)
           @device_permanent_id = args[:device_permanent_id] if args.key?(:device_permanent_id)
           @signed_public_key_and_challenge = args[:signed_public_key_and_challenge] if args.key?(:signed_public_key_and_challenge)
