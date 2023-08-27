@@ -895,6 +895,11 @@ module Google
         # @return [String]
         attr_accessor :default_branch
       
+        # Configures fields for performing SSH authentication.
+        # Corresponds to the JSON property `sshAuthenticationConfig`
+        # @return [Google::Apis::DataformV1beta1::SshAuthenticationConfig]
+        attr_accessor :ssh_authentication_config
+      
         # Output only. Deprecated: The field does not contain any token status
         # information. Instead use https://cloud.google.com/dataform/reference/rest/
         # v1beta1/projects.locations.repositories/computeAccessTokenStatus
@@ -915,6 +920,7 @@ module Google
         def update!(**args)
           @authentication_token_secret_version = args[:authentication_token_secret_version] if args.key?(:authentication_token_secret_version)
           @default_branch = args[:default_branch] if args.key?(:default_branch)
+          @ssh_authentication_config = args[:ssh_authentication_config] if args.key?(:ssh_authentication_config)
           @token_status = args[:token_status] if args.key?(:token_status)
           @url = args[:url] if args.key?(:url)
         end
@@ -2314,6 +2320,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # Configures fields for performing SSH authentication.
+      class SshAuthenticationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Content of a public SSH key to verify an identity of a remote Git
+        # host.
+        # Corresponds to the JSON property `hostPublicKey`
+        # @return [String]
+        attr_accessor :host_public_key
+      
+        # Required. The name of the Secret Manager secret version to use as a ssh
+        # private key for Git operations. Must be in the format `projects/*/secrets/*/
+        # versions/*`.
+        # Corresponds to the JSON property `userPrivateKeySecretVersion`
+        # @return [String]
+        attr_accessor :user_private_key_secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_public_key = args[:host_public_key] if args.key?(:host_public_key)
+          @user_private_key_secret_version = args[:user_private_key_secret_version] if args.key?(:user_private_key_secret_version)
         end
       end
       
