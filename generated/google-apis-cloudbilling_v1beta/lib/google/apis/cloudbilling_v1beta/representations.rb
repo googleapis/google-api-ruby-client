@@ -226,12 +226,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudBillingBillingaccountpricesV1betaSourceDiscountOnTargetPrice
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudBillingBillingaccountpricesV1betaUnitInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -918,10 +912,7 @@ module Google
       class GoogleCloudBillingBillingaccountpricesV1betaMigratedPrice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :source_discount_on_target_price, as: 'sourceDiscountOnTargetPrice', class: Google::Apis::CloudbillingV1beta::GoogleCloudBillingBillingaccountpricesV1betaSourceDiscountOnTargetPrice, decorator: Google::Apis::CloudbillingV1beta::GoogleCloudBillingBillingaccountpricesV1betaSourceDiscountOnTargetPrice::Representation
-      
           property :source_sku, as: 'sourceSku'
-          property :type, as: 'type'
         end
       end
       
@@ -968,14 +959,6 @@ module Google
           property :list_price, as: 'listPrice', class: Google::Apis::CloudbillingV1beta::Money, decorator: Google::Apis::CloudbillingV1beta::Money::Representation
       
           property :start_amount, as: 'startAmount', class: Google::Apis::CloudbillingV1beta::Decimal, decorator: Google::Apis::CloudbillingV1beta::Decimal::Representation
-      
-        end
-      end
-      
-      class GoogleCloudBillingBillingaccountpricesV1betaSourceDiscountOnTargetPrice
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :migrated_discount_percent, as: 'migratedDiscountPercent', class: Google::Apis::CloudbillingV1beta::Decimal, decorator: Google::Apis::CloudbillingV1beta::Decimal::Representation
       
         end
       end

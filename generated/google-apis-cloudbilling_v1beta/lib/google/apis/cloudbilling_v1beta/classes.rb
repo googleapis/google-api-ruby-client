@@ -146,7 +146,7 @@ module Google
         # @return [Array<Google::Apis::CloudbillingV1beta::VlanAttachment>]
         attr_accessor :interconnect_attachments
       
-        # Vlan attachment type.
+        # VLAN attachment type
         # Corresponds to the JSON property `interconnectType`
         # @return [String]
         attr_accessor :interconnect_type
@@ -956,22 +956,11 @@ module Google
       class GoogleCloudBillingBillingaccountpricesV1betaMigratedPrice
         include Google::Apis::Core::Hashable
       
-        # Encapsulates a type of MigratedPrice where the source SKU floating discount is
-        # applied on the target SKU's default price.
-        # Corresponds to the JSON property `sourceDiscountOnTargetPrice`
-        # @return [Google::Apis::CloudbillingV1beta::GoogleCloudBillingBillingaccountpricesV1betaSourceDiscountOnTargetPrice]
-        attr_accessor :source_discount_on_target_price
-      
-        # Source SKU where the discount is migrated from.
+        # Source SKU where the discount is migrated from. Format: billingAccounts/`
+        # billing_account`/skus/`sku`
         # Corresponds to the JSON property `sourceSku`
         # @return [String]
         attr_accessor :source_sku
-      
-        # Type of the migrated price. It can have values such as 'source-discount-on-
-        # target-price'.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
       
         def initialize(**args)
            update!(**args)
@@ -979,9 +968,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @source_discount_on_target_price = args[:source_discount_on_target_price] if args.key?(:source_discount_on_target_price)
           @source_sku = args[:source_sku] if args.key?(:source_sku)
-          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1133,30 +1120,6 @@ module Google
           @effective_discount_percent = args[:effective_discount_percent] if args.key?(:effective_discount_percent)
           @list_price = args[:list_price] if args.key?(:list_price)
           @start_amount = args[:start_amount] if args.key?(:start_amount)
-        end
-      end
-      
-      # Encapsulates a type of MigratedPrice where the source SKU floating discount is
-      # applied on the target SKU's default price.
-      class GoogleCloudBillingBillingaccountpricesV1betaSourceDiscountOnTargetPrice
-        include Google::Apis::Core::Hashable
-      
-        # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
-        # Corresponds to the JSON property `migratedDiscountPercent`
-        # @return [Google::Apis::CloudbillingV1beta::Decimal]
-        attr_accessor :migrated_discount_percent
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @migrated_discount_percent = args[:migrated_discount_percent] if args.key?(:migrated_discount_percent)
         end
       end
       
@@ -2843,7 +2806,7 @@ module Google
         end
       end
       
-      # VLAN attachment for cloud interconnect.
+      # VLAN attachment for Cloud Interconnect.
       class VlanAttachment
         include Google::Apis::Core::Hashable
       
