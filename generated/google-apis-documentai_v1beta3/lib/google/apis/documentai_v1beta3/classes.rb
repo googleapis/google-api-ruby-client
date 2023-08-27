@@ -257,6 +257,74 @@ module Google
         end
       end
       
+      # 
+      class GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        # The list of response details of each document.
+        # Corresponds to the JSON property `individualBatchUpdateStatuses`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus>]
+        attr_accessor :individual_batch_update_statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @individual_batch_update_statuses = args[:individual_batch_update_statuses] if args.key?(:individual_batch_update_statuses)
+        end
+      end
+      
+      # The status of each individual document in the batch update process.
+      class GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus
+        include Google::Apis::Core::Hashable
+      
+        # Document Identifier.
+        # Corresponds to the JSON property `documentId`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentId]
+        attr_accessor :document_id
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Response of the batch update documents operation.
+      class GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The common metadata for long running operations.
       class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata
         include Google::Apis::Core::Hashable
@@ -9535,6 +9603,25 @@ module Google
         end
       end
       
+      # Metadata for how this field value is extracted.
+      class GoogleCloudDocumentaiV1beta3FieldExtractionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Metadata for document summarization.
+        # Corresponds to the JSON property `summaryOptions`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SummaryOptions]
+        attr_accessor :summary_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @summary_options = args[:summary_options] if args.key?(:summary_options)
+        end
+      end
+      
       # Specifies a document stored on Cloud Storage.
       class GoogleCloudDocumentaiV1beta3GcsDocument
         include Google::Apis::Core::Hashable
@@ -10158,6 +10245,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfig]
         attr_accessor :ocr_config
       
+        # The schema defines the output of the processed document by a processor.
+        # Corresponds to the JSON property `schemaOverride`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema]
+        attr_accessor :schema_override
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10165,6 +10257,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ocr_config = args[:ocr_config] if args.key?(:ocr_config)
+          @schema_override = args[:schema_override] if args.key?(:schema_override)
         end
       end
       
@@ -10552,6 +10645,11 @@ module Google
       class GoogleCloudDocumentaiV1beta3PropertyMetadata
         include Google::Apis::Core::Hashable
       
+        # Metadata for how this field value is extracted.
+        # Corresponds to the JSON property `fieldExtractionMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3FieldExtractionMetadata]
+        attr_accessor :field_extraction_metadata
+      
         # Whether the property should be considered as "inactive".
         # Corresponds to the JSON property `inactive`
         # @return [Boolean]
@@ -10564,6 +10662,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @field_extraction_metadata = args[:field_extraction_metadata] if args.key?(:field_extraction_metadata)
           @inactive = args[:inactive] if args.key?(:inactive)
         end
       end
@@ -10817,6 +10916,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata for document summarization.
+      class GoogleCloudDocumentaiV1beta3SummaryOptions
+        include Google::Apis::Core::Hashable
+      
+        # What format the summary should be in.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # How long the summary should be.
+        # Corresponds to the JSON property `length`
+        # @return [String]
+        attr_accessor :length
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @format = args[:format] if args.key?(:format)
+          @length = args[:length] if args.key?(:length)
         end
       end
       

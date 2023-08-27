@@ -76,6 +76,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1630,6 +1648,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3FieldExtractionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3GcsDocument
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1876,6 +1900,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3SummaryOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2091,6 +2121,32 @@ module Google
       end
       
       class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
+      
+          collection :individual_batch_update_statuses, as: 'individualBatchUpdateStatuses', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_id, as: 'documentId', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentId, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentId::Representation
+      
+          property :status, as: 'status', class: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -4818,6 +4874,14 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3FieldExtractionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :summary_options, as: 'summaryOptions', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SummaryOptions, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SummaryOptions::Representation
+      
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3GcsDocument
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5024,6 +5088,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ocr_config, as: 'ocrConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfig::Representation
       
+          property :schema_override, as: 'schemaOverride', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema::Representation
+      
         end
       end
       
@@ -5131,6 +5197,8 @@ module Google
       class GoogleCloudDocumentaiV1beta3PropertyMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_extraction_metadata, as: 'fieldExtractionMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3FieldExtractionMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3FieldExtractionMetadata::Representation
+      
           property :inactive, as: 'inactive'
         end
       end
@@ -5207,6 +5275,14 @@ module Google
       class GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3SummaryOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :format, as: 'format'
+          property :length, as: 'length'
         end
       end
       
