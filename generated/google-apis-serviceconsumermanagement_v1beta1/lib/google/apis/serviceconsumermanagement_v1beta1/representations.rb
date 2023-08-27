@@ -1482,6 +1482,8 @@ module Google
           property :effective_limit, :numeric_string => true, as: 'effectiveLimit'
           property :producer_override, as: 'producerOverride', class: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1QuotaOverride, decorator: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1QuotaOverride::Representation
       
+          property :producer_quota_policy, as: 'producerQuotaPolicy', class: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy, decorator: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1ProducerQuotaPolicy::Representation
+      
         end
       end
       
