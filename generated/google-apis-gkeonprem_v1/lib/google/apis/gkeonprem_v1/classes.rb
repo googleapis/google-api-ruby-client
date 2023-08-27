@@ -94,6 +94,11 @@ module Google
         # @return [String]
         attr_accessor :bare_metal_version
       
+        # Configuration for Binary Authorization.
+        # Corresponds to the JSON property `binaryAuthorization`
+        # @return [Google::Apis::GkeonpremV1::BinaryAuthorization]
+        attr_accessor :binary_authorization
+      
         # BareMetalAdminClusterOperationsConfig specifies the admin cluster's
         # observability infrastructure.
         # Corresponds to the JSON property `clusterOperations`
@@ -253,6 +258,7 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @bare_metal_version = args[:bare_metal_version] if args.key?(:bare_metal_version)
+          @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
           @cluster_operations = args[:cluster_operations] if args.key?(:cluster_operations)
           @control_plane = args[:control_plane] if args.key?(:control_plane)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -887,6 +893,11 @@ module Google
         # @return [String]
         attr_accessor :bare_metal_version
       
+        # Configuration for Binary Authorization.
+        # Corresponds to the JSON property `binaryAuthorization`
+        # @return [Google::Apis::GkeonpremV1::BinaryAuthorization]
+        attr_accessor :binary_authorization
+      
         # Specifies the bare metal user cluster's observability infrastructure.
         # Corresponds to the JSON property `clusterOperations`
         # @return [Google::Apis::GkeonpremV1::BareMetalClusterOperationsConfig]
@@ -1051,6 +1062,7 @@ module Google
           @admin_cluster_name = args[:admin_cluster_name] if args.key?(:admin_cluster_name)
           @annotations = args[:annotations] if args.key?(:annotations)
           @bare_metal_version = args[:bare_metal_version] if args.key?(:bare_metal_version)
+          @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
           @cluster_operations = args[:cluster_operations] if args.key?(:cluster_operations)
           @control_plane = args[:control_plane] if args.key?(:control_plane)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -2080,6 +2092,26 @@ module Google
         end
       end
       
+      # Configuration for Binary Authorization.
+      class BinaryAuthorization
+        include Google::Apis::Core::Hashable
+      
+        # Mode of operation for binauthz policy evaluation. If unspecified, defaults to
+        # DISABLED.
+        # Corresponds to the JSON property `evaluationMode`
+        # @return [String]
+        attr_accessor :evaluation_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_mode = args[:evaluation_mode] if args.key?(:evaluation_mode)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -2879,13 +2911,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -3057,22 +3089,22 @@ module Google
       # evaluates to `true`. A condition can add constraints based on attributes of
       # the request, the resource, or both. To learn which resources support
       # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
       # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
       # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
       # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
       # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
       # ], "condition": ` "title": "expirable access", "description": "Does not grant
       # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-      # bindings: - members: - user:mike@example.com - group:admins@example.com -
-      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-      # access description: Does not grant access after Sep 2020 expression: request.
-      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-      # a description of IAM and its features, see the [IAM documentation](https://
-      # cloud.google.com/iam/docs/).
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+      # title: expirable access description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -3283,22 +3315,22 @@ module Google
         # evaluates to `true`. A condition can add constraints based on attributes of
         # the request, the resource, or both. To learn which resources support
         # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
         # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
         # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
         # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-        # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-        # a description of IAM and its features, see the [IAM documentation](https://
-        # cloud.google.com/iam/docs/).
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::GkeonpremV1::Policy]
         attr_accessor :policy
@@ -4103,6 +4135,11 @@ module Google
         # @return [String]
         attr_accessor :master_ip
       
+        # Name to be used by Stackdriver.
+        # Corresponds to the JSON property `stackdriverName`
+        # @return [String]
+        attr_accessor :stackdriver_name
+      
         # Names of the VMs created for this Seesaw group.
         # Corresponds to the JSON property `vms`
         # @return [Array<String>]
@@ -4118,6 +4155,7 @@ module Google
           @group = args[:group] if args.key?(:group)
           @ip_blocks = args[:ip_blocks] if args.key?(:ip_blocks)
           @master_ip = args[:master_ip] if args.key?(:master_ip)
+          @stackdriver_name = args[:stackdriver_name] if args.key?(:stackdriver_name)
           @vms = args[:vms] if args.key?(:vms)
         end
       end
@@ -4349,6 +4387,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Disable bundled ingress.
+        # Corresponds to the JSON property `disableBundledIngress`
+        # @return [Boolean]
+        attr_accessor :disable_bundled_ingress
+        alias_method :disable_bundled_ingress?, :disable_bundled_ingress
+      
         # Enable control plane V2. Default to false.
         # Corresponds to the JSON property `enableControlPlaneV2`
         # @return [Boolean]
@@ -4442,6 +4486,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # VmwareClusterUpgradePolicy defines the cluster upgrade policy.
+        # Corresponds to the JSON property `upgradePolicy`
+        # @return [Google::Apis::GkeonpremV1::VmwareClusterUpgradePolicy]
+        attr_accessor :upgrade_policy
+      
         # ValidationCheck represents the result of preflight check.
         # Corresponds to the JSON property `validationCheck`
         # @return [Google::Apis::GkeonpremV1::ValidationCheck]
@@ -4475,6 +4524,7 @@ module Google
           @dataplane_v2 = args[:dataplane_v2] if args.key?(:dataplane_v2)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @description = args[:description] if args.key?(:description)
+          @disable_bundled_ingress = args[:disable_bundled_ingress] if args.key?(:disable_bundled_ingress)
           @enable_control_plane_v2 = args[:enable_control_plane_v2] if args.key?(:enable_control_plane_v2)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @etag = args[:etag] if args.key?(:etag)
@@ -4490,9 +4540,30 @@ module Google
           @storage = args[:storage] if args.key?(:storage)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @upgrade_policy = args[:upgrade_policy] if args.key?(:upgrade_policy)
           @validation_check = args[:validation_check] if args.key?(:validation_check)
           @vcenter = args[:vcenter] if args.key?(:vcenter)
           @vm_tracking_enabled = args[:vm_tracking_enabled] if args.key?(:vm_tracking_enabled)
+        end
+      end
+      
+      # VmwareClusterUpgradePolicy defines the cluster upgrade policy.
+      class VmwareClusterUpgradePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Controls whether the upgrade applies to the control plane only.
+        # Corresponds to the JSON property `controlPlaneOnly`
+        # @return [Boolean]
+        attr_accessor :control_plane_only
+        alias_method :control_plane_only?, :control_plane_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_plane_only = args[:control_plane_only] if args.key?(:control_plane_only)
         end
       end
       
@@ -4570,6 +4641,11 @@ module Google
         # @return [String]
         attr_accessor :datastore
       
+        # The Vsphere storage policy used by the control plane Node.
+        # Corresponds to the JSON property `storagePolicyName`
+        # @return [String]
+        attr_accessor :storage_policy_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4577,6 +4653,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datastore = args[:datastore] if args.key?(:datastore)
+          @storage_policy_name = args[:storage_policy_name] if args.key?(:storage_policy_name)
         end
       end
       
@@ -4781,6 +4858,26 @@ module Google
         # @return [Google::Apis::GkeonpremV1::VmwareMetalLbConfig]
         attr_accessor :metal_lb_config
       
+        # VmwareSeesawConfig represents configuration parameters for an already existing
+        # Seesaw load balancer. IMPORTANT: Please note that the Anthos On-Prem API will
+        # not generate or update Seesaw configurations it can only bind a pre-existing
+        # configuration to a new user cluster. IMPORTANT: When attempting to create a
+        # user cluster with a pre-existing Seesaw load balancer you will need to follow
+        # some preparation steps before calling the 'CreateVmwareCluster' API method.
+        # First you will need to create the user cluster's namespace via kubectl. The
+        # namespace will need to use the following naming convention : -gke-onprem-mgmt
+        # or -gke-onprem-mgmt depending on whether you used the 'VmwareCluster.
+        # local_name' to disambiguate collisions; for more context see the documentation
+        # of 'VmwareCluster.local_name'. Once the namespace is created you will need to
+        # create a secret resource via kubectl. This secret will contain copies of your
+        # Seesaw credentials. The Secret must be called 'user-cluster-creds' and contain
+        # Seesaw's SSH and Cert credentials. The credentials must be keyed with the
+        # following names: 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-
+        # ssh-ca-key', 'seesaw-ssh-ca-cert'.
+        # Corresponds to the JSON property `seesawConfig`
+        # @return [Google::Apis::GkeonpremV1::VmwareSeesawConfig]
+        attr_accessor :seesaw_config
+      
         # Specifies the VIP config for the VMware user cluster load balancer.
         # Corresponds to the JSON property `vipConfig`
         # @return [Google::Apis::GkeonpremV1::VmwareVipConfig]
@@ -4795,6 +4892,7 @@ module Google
           @f5_config = args[:f5_config] if args.key?(:f5_config)
           @manual_lb_config = args[:manual_lb_config] if args.key?(:manual_lb_config)
           @metal_lb_config = args[:metal_lb_config] if args.key?(:metal_lb_config)
+          @seesaw_config = args[:seesaw_config] if args.key?(:seesaw_config)
           @vip_config = args[:vip_config] if args.key?(:vip_config)
         end
       end
@@ -5189,6 +5287,73 @@ module Google
         end
       end
       
+      # VmwareSeesawConfig represents configuration parameters for an already existing
+      # Seesaw load balancer. IMPORTANT: Please note that the Anthos On-Prem API will
+      # not generate or update Seesaw configurations it can only bind a pre-existing
+      # configuration to a new user cluster. IMPORTANT: When attempting to create a
+      # user cluster with a pre-existing Seesaw load balancer you will need to follow
+      # some preparation steps before calling the 'CreateVmwareCluster' API method.
+      # First you will need to create the user cluster's namespace via kubectl. The
+      # namespace will need to use the following naming convention : -gke-onprem-mgmt
+      # or -gke-onprem-mgmt depending on whether you used the 'VmwareCluster.
+      # local_name' to disambiguate collisions; for more context see the documentation
+      # of 'VmwareCluster.local_name'. Once the namespace is created you will need to
+      # create a secret resource via kubectl. This secret will contain copies of your
+      # Seesaw credentials. The Secret must be called 'user-cluster-creds' and contain
+      # Seesaw's SSH and Cert credentials. The credentials must be keyed with the
+      # following names: 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-
+      # ssh-ca-key', 'seesaw-ssh-ca-cert'.
+      class VmwareSeesawConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enable two load balancer VMs to achieve a highly-available Seesaw load
+        # balancer.
+        # Corresponds to the JSON property `enableHa`
+        # @return [Boolean]
+        attr_accessor :enable_ha
+        alias_method :enable_ha?, :enable_ha
+      
+        # Required. In general the following format should be used for the Seesaw group
+        # name: seesaw-for-[cluster_name].
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        # Required. The IP Blocks to be used by the Seesaw load balancer
+        # Corresponds to the JSON property `ipBlocks`
+        # @return [Array<Google::Apis::GkeonpremV1::VmwareIpBlock>]
+        attr_accessor :ip_blocks
+      
+        # Required. MasterIP is the IP announced by the master of Seesaw group.
+        # Corresponds to the JSON property `masterIp`
+        # @return [String]
+        attr_accessor :master_ip
+      
+        # Name to be used by Stackdriver.
+        # Corresponds to the JSON property `stackdriverName`
+        # @return [String]
+        attr_accessor :stackdriver_name
+      
+        # Names of the VMs created for this Seesaw group.
+        # Corresponds to the JSON property `vms`
+        # @return [Array<String>]
+        attr_accessor :vms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_ha = args[:enable_ha] if args.key?(:enable_ha)
+          @group = args[:group] if args.key?(:group)
+          @ip_blocks = args[:ip_blocks] if args.key?(:ip_blocks)
+          @master_ip = args[:master_ip] if args.key?(:master_ip)
+          @stackdriver_name = args[:stackdriver_name] if args.key?(:stackdriver_name)
+          @vms = args[:vms] if args.key?(:vms)
+        end
+      end
+      
       # Represents the network configuration required for the VMware user clusters
       # with Static IP configurations.
       class VmwareStaticIpConfig
@@ -5269,6 +5434,11 @@ module Google
         # @return [String]
         attr_accessor :resource_pool
       
+        # The name of the vCenter storage policy for the user cluster.
+        # Corresponds to the JSON property `storagePolicyName`
+        # @return [String]
+        attr_accessor :storage_policy_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5282,6 +5452,7 @@ module Google
           @datastore = args[:datastore] if args.key?(:datastore)
           @folder = args[:folder] if args.key?(:folder)
           @resource_pool = args[:resource_pool] if args.key?(:resource_pool)
+          @storage_policy_name = args[:storage_policy_name] if args.key?(:storage_policy_name)
         end
       end
       
