@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1ExportIssueModelResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1FaqAnswerData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +305,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1HoldData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ImportIssueModelResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -796,6 +808,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -809,6 +827,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1HoldData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1495,6 +1519,12 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1ExportIssueModelResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1FaqAnswerData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1516,6 +1546,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1HoldData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ImportIssueModelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -2382,6 +2418,12 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2403,6 +2445,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1HoldData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
