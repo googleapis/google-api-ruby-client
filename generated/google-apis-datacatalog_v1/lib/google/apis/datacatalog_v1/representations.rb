@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1DatasetSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1DumpItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,6 +329,12 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1LookerSystemSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1ModelSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -593,6 +605,24 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1UsageStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1VertexDatasetSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1VertexModelSourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1VertexModelSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -903,6 +933,14 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogV1DatasetSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vertex_dataset_spec, as: 'vertexDatasetSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1VertexDatasetSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1VertexDatasetSpec::Representation
+      
+        end
+      end
+      
       class GoogleCloudDatacatalogV1DumpItem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -928,6 +966,8 @@ module Google
       
           property :database_table_spec, as: 'databaseTableSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DatabaseTableSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DatabaseTableSpec::Representation
       
+          property :dataset_spec, as: 'datasetSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DatasetSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DatasetSpec::Representation
+      
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :fileset_spec, as: 'filesetSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1FilesetSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1FilesetSpec::Representation
@@ -939,6 +979,8 @@ module Google
           hash :labels, as: 'labels'
           property :linked_resource, as: 'linkedResource'
           property :looker_system_spec, as: 'lookerSystemSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1LookerSystemSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1LookerSystemSpec::Representation
+      
+          property :model_spec, as: 'modelSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ModelSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ModelSpec::Representation
       
           property :name, as: 'name'
           property :personal_details, as: 'personalDetails', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PersonalDetails, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PersonalDetails::Representation
@@ -1143,6 +1185,14 @@ module Google
           property :parent_model_id, as: 'parentModelId'
           property :parent_view_display_name, as: 'parentViewDisplayName'
           property :parent_view_id, as: 'parentViewId'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1ModelSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vertex_model_spec, as: 'vertexModelSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1VertexModelSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1VertexModelSpec::Representation
+      
         end
       end
       
@@ -1570,6 +1620,34 @@ module Google
           property :total_completions, as: 'totalCompletions'
           property :total_execution_time_for_completions_millis, as: 'totalExecutionTimeForCompletionsMillis'
           property :total_failures, as: 'totalFailures'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1VertexDatasetSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_item_count, :numeric_string => true, as: 'dataItemCount'
+          property :data_type, as: 'dataType'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1VertexModelSourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :copy, as: 'copy'
+          property :source_type, as: 'sourceType'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1VertexModelSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_image_uri, as: 'containerImageUri'
+          collection :version_aliases, as: 'versionAliases'
+          property :version_description, as: 'versionDescription'
+          property :version_id, as: 'versionId'
+          property :vertex_model_source_info, as: 'vertexModelSourceInfo', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1VertexModelSourceInfo, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1VertexModelSourceInfo::Representation
+      
         end
       end
       
