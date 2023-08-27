@@ -394,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BinaryAuthorization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -748,6 +754,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VmwareClusterUpgradePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmwareControlPlaneNodeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -850,6 +862,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VmwareSeesawConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmwareStaticIpConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -913,6 +931,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
           property :bare_metal_version, as: 'bareMetalVersion'
+          property :binary_authorization, as: 'binaryAuthorization', class: Google::Apis::GkeonpremV1::BinaryAuthorization, decorator: Google::Apis::GkeonpremV1::BinaryAuthorization::Representation
+      
           property :cluster_operations, as: 'clusterOperations', class: Google::Apis::GkeonpremV1::BareMetalAdminClusterOperationsConfig, decorator: Google::Apis::GkeonpremV1::BareMetalAdminClusterOperationsConfig::Representation
       
           property :control_plane, as: 'controlPlane', class: Google::Apis::GkeonpremV1::BareMetalAdminControlPlaneConfig, decorator: Google::Apis::GkeonpremV1::BareMetalAdminControlPlaneConfig::Representation
@@ -1155,6 +1175,8 @@ module Google
           property :admin_cluster_name, as: 'adminClusterName'
           hash :annotations, as: 'annotations'
           property :bare_metal_version, as: 'bareMetalVersion'
+          property :binary_authorization, as: 'binaryAuthorization', class: Google::Apis::GkeonpremV1::BinaryAuthorization, decorator: Google::Apis::GkeonpremV1::BinaryAuthorization::Representation
+      
           property :cluster_operations, as: 'clusterOperations', class: Google::Apis::GkeonpremV1::BareMetalClusterOperationsConfig, decorator: Google::Apis::GkeonpremV1::BareMetalClusterOperationsConfig::Representation
       
           property :control_plane, as: 'controlPlane', class: Google::Apis::GkeonpremV1::BareMetalControlPlaneConfig, decorator: Google::Apis::GkeonpremV1::BareMetalControlPlaneConfig::Representation
@@ -1515,6 +1537,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container_runtime, as: 'containerRuntime'
           property :max_pods_per_node, :numeric_string => true, as: 'maxPodsPerNode'
+        end
+      end
+      
+      class BinaryAuthorization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :evaluation_mode, as: 'evaluationMode'
         end
       end
       
@@ -2044,6 +2073,7 @@ module Google
           collection :ip_blocks, as: 'ipBlocks', class: Google::Apis::GkeonpremV1::VmwareIpBlock, decorator: Google::Apis::GkeonpremV1::VmwareIpBlock::Representation
       
           property :master_ip, as: 'masterIp'
+          property :stackdriver_name, as: 'stackdriverName'
           collection :vms, as: 'vms'
         end
       end
@@ -2112,6 +2142,7 @@ module Google
       
           property :delete_time, as: 'deleteTime'
           property :description, as: 'description'
+          property :disable_bundled_ingress, as: 'disableBundledIngress'
           property :enable_control_plane_v2, as: 'enableControlPlaneV2'
           property :endpoint, as: 'endpoint'
           property :etag, as: 'etag'
@@ -2132,11 +2163,20 @@ module Google
       
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+          property :upgrade_policy, as: 'upgradePolicy', class: Google::Apis::GkeonpremV1::VmwareClusterUpgradePolicy, decorator: Google::Apis::GkeonpremV1::VmwareClusterUpgradePolicy::Representation
+      
           property :validation_check, as: 'validationCheck', class: Google::Apis::GkeonpremV1::ValidationCheck, decorator: Google::Apis::GkeonpremV1::ValidationCheck::Representation
       
           property :vcenter, as: 'vcenter', class: Google::Apis::GkeonpremV1::VmwareVCenterConfig, decorator: Google::Apis::GkeonpremV1::VmwareVCenterConfig::Representation
       
           property :vm_tracking_enabled, as: 'vmTrackingEnabled'
+        end
+      end
+      
+      class VmwareClusterUpgradePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_plane_only, as: 'controlPlaneOnly'
         end
       end
       
@@ -2165,6 +2205,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :datastore, as: 'datastore'
+          property :storage_policy_name, as: 'storagePolicyName'
         end
       end
       
@@ -2228,6 +2269,8 @@ module Google
           property :manual_lb_config, as: 'manualLbConfig', class: Google::Apis::GkeonpremV1::VmwareManualLbConfig, decorator: Google::Apis::GkeonpremV1::VmwareManualLbConfig::Representation
       
           property :metal_lb_config, as: 'metalLbConfig', class: Google::Apis::GkeonpremV1::VmwareMetalLbConfig, decorator: Google::Apis::GkeonpremV1::VmwareMetalLbConfig::Representation
+      
+          property :seesaw_config, as: 'seesawConfig', class: Google::Apis::GkeonpremV1::VmwareSeesawConfig, decorator: Google::Apis::GkeonpremV1::VmwareSeesawConfig::Representation
       
           property :vip_config, as: 'vipConfig', class: Google::Apis::GkeonpremV1::VmwareVipConfig, decorator: Google::Apis::GkeonpremV1::VmwareVipConfig::Representation
       
@@ -2330,6 +2373,19 @@ module Google
         end
       end
       
+      class VmwareSeesawConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_ha, as: 'enableHa'
+          property :group, as: 'group'
+          collection :ip_blocks, as: 'ipBlocks', class: Google::Apis::GkeonpremV1::VmwareIpBlock, decorator: Google::Apis::GkeonpremV1::VmwareIpBlock::Representation
+      
+          property :master_ip, as: 'masterIp'
+          property :stackdriver_name, as: 'stackdriverName'
+          collection :vms, as: 'vms'
+        end
+      end
+      
       class VmwareStaticIpConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2355,6 +2411,7 @@ module Google
           property :datastore, as: 'datastore'
           property :folder, as: 'folder'
           property :resource_pool, as: 'resourcePool'
+          property :storage_policy_name, as: 'storagePolicyName'
         end
       end
       
