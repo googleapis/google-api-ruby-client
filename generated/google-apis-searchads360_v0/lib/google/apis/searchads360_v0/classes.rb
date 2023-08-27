@@ -22,6 +22,59 @@ module Google
   module Apis
     module Searchads360V0
       
+      # Represents an AdSchedule criterion. AdSchedule is specified as the day of the
+      # week and a time interval within which ads will be shown. No more than six
+      # AdSchedules can be added for the same day.
+      class GoogleAdsSearchads360V0CommonAdScheduleInfo
+        include Google::Apis::Core::Hashable
+      
+        # Day of the week the schedule applies to. This field is required for CREATE
+        # operations and is prohibited on UPDATE operations.
+        # Corresponds to the JSON property `dayOfWeek`
+        # @return [String]
+        attr_accessor :day_of_week
+      
+        # Ending hour in 24 hour time; 24 signifies end of the day. This field must be
+        # between 0 and 24, inclusive. This field is required for CREATE operations and
+        # is prohibited on UPDATE operations.
+        # Corresponds to the JSON property `endHour`
+        # @return [Fixnum]
+        attr_accessor :end_hour
+      
+        # Minutes after the end hour at which this schedule ends. The schedule is
+        # exclusive of the end minute. This field is required for CREATE operations and
+        # is prohibited on UPDATE operations.
+        # Corresponds to the JSON property `endMinute`
+        # @return [String]
+        attr_accessor :end_minute
+      
+        # Starting hour in 24 hour time. This field must be between 0 and 23, inclusive.
+        # This field is required for CREATE operations and is prohibited on UPDATE
+        # operations.
+        # Corresponds to the JSON property `startHour`
+        # @return [Fixnum]
+        attr_accessor :start_hour
+      
+        # Minutes after the start hour at which this schedule starts. This field is
+        # required for CREATE operations and is prohibited on UPDATE operations.
+        # Corresponds to the JSON property `startMinute`
+        # @return [String]
+        attr_accessor :start_minute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day_of_week = args[:day_of_week] if args.key?(:day_of_week)
+          @end_hour = args[:end_hour] if args.key?(:end_hour)
+          @end_minute = args[:end_minute] if args.key?(:end_minute)
+          @start_hour = args[:start_hour] if args.key?(:start_hour)
+          @start_minute = args[:start_minute] if args.key?(:start_minute)
+        end
+      end
+      
       # An age range criterion.
       class GoogleAdsSearchads360V0CommonAgeRangeInfo
         include Google::Apis::Core::Hashable
@@ -38,6 +91,68 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # An AssetInteractionTarget segment.
+      class GoogleAdsSearchads360V0CommonAssetInteractionTarget
+        include Google::Apis::Core::Hashable
+      
+        # The asset resource name.
+        # Corresponds to the JSON property `asset`
+        # @return [String]
+        attr_accessor :asset
+      
+        # Only used with CustomerAsset, CampaignAsset and AdGroupAsset metrics.
+        # Indicates whether the interaction metrics occurred on the asset itself or a
+        # different asset or ad unit.
+        # Corresponds to the JSON property `interactionOnThisAsset`
+        # @return [Boolean]
+        attr_accessor :interaction_on_this_asset
+        alias_method :interaction_on_this_asset?, :interaction_on_this_asset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset = args[:asset] if args.key?(:asset)
+          @interaction_on_this_asset = args[:interaction_on_this_asset] if args.key?(:interaction_on_this_asset)
+        end
+      end
+      
+      # Business Profile location data synced from the linked Business Profile account.
+      class GoogleAdsSearchads360V0CommonBusinessProfileLocation
+        include Google::Apis::Core::Hashable
+      
+        # Advertiser specified label for the location on the Business Profile account.
+        # This is synced from the Business Profile account.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<String>]
+        attr_accessor :labels
+      
+        # Listing ID of this Business Profile location. This is synced from the linked
+        # Business Profile account.
+        # Corresponds to the JSON property `listingId`
+        # @return [Fixnum]
+        attr_accessor :listing_id
+      
+        # Business Profile store code of this location. This is synced from the Business
+        # Profile account.
+        # Corresponds to the JSON property `storeCode`
+        # @return [String]
+        attr_accessor :store_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @listing_id = args[:listing_id] if args.key?(:listing_id)
+          @store_code = args[:store_code] if args.key?(:store_code)
         end
       end
       
@@ -522,11 +637,17 @@ module Google
         attr_accessor :average_cost
       
         # The total cost of all clicks divided by the total number of clicks received.
+        # This metric is a monetary value and returned in the customer's currency by
+        # default. See the metrics_currency parameter at https://developers.google.com/
+        # search-ads/reporting/query/query-structure#parameters_clause
         # Corresponds to the JSON property `averageCpc`
         # @return [Float]
         attr_accessor :average_cpc
       
-        # Average cost-per-thousand impressions (CPM).
+        # Average cost-per-thousand impressions (CPM). This metric is a monetary value
+        # and returned in the customer's currency by default. See the metrics_currency
+        # parameter at https://developers.google.com/search-ads/reporting/query/query-
+        # structure#parameters_clause
         # Corresponds to the JSON property `averageCpm`
         # @return [Float]
         attr_accessor :average_cpm
@@ -632,7 +753,10 @@ module Google
         attr_accessor :conversions_value_per_cost
       
         # The sum of your cost-per-click (CPC) and cost-per-thousand impressions (CPM)
-        # costs during this period.
+        # costs during this period. This metric is a monetary value and returned in the
+        # customer's currency by default. See the metrics_currency parameter at https://
+        # developers.google.com/search-ads/reporting/query/query-structure#
+        # parameters_clause
         # Corresponds to the JSON property `costMicros`
         # @return [Fixnum]
         attr_accessor :cost_micros
@@ -1210,6 +1334,11 @@ module Google
         # @return [String]
         attr_accessor :ad_network_type
       
+        # An AssetInteractionTarget segment.
+        # Corresponds to the JSON property `assetInteractionTarget`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAssetInteractionTarget]
+        attr_accessor :asset_interaction_target
+      
         # Resource name of the conversion action.
         # Corresponds to the JSON property `conversionAction`
         # @return [String]
@@ -1276,6 +1405,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ad_network_type = args[:ad_network_type] if args.key?(:ad_network_type)
+          @asset_interaction_target = args[:asset_interaction_target] if args.key?(:asset_interaction_target)
           @conversion_action = args[:conversion_action] if args.key?(:conversion_action)
           @conversion_action_category = args[:conversion_action_category] if args.key?(:conversion_action_category)
           @conversion_action_name = args[:conversion_action_name] if args.key?(:conversion_action_name)
@@ -1547,6 +1677,282 @@ module Google
         end
       end
       
+      # A unified call asset.
+      class GoogleAdsSearchads360V0CommonUnifiedCallAsset
+        include Google::Apis::Core::Hashable
+      
+        # List of non-overlapping schedules specifying all time intervals for which the
+        # asset may serve. There can be a maximum of 6 schedules per day, 42 in total.
+        # Corresponds to the JSON property `adScheduleTargets`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAdScheduleInfo>]
+        attr_accessor :ad_schedule_targets
+      
+        # The conversion action to attribute a call conversion to. If not set, the
+        # default conversion action is used. This field only has effect if
+        # call_conversion_reporting_state is set to
+        # USE_RESOURCE_LEVEL_CALL_CONVERSION_ACTION.
+        # Corresponds to the JSON property `callConversionAction`
+        # @return [String]
+        attr_accessor :call_conversion_action
+      
+        # Output only. Indicates whether this CallAsset should use its own call
+        # conversion setting, follow the account level setting, or disable call
+        # conversion.
+        # Corresponds to the JSON property `callConversionReportingState`
+        # @return [String]
+        attr_accessor :call_conversion_reporting_state
+      
+        # Whether the call only shows the phone number without a link to the website.
+        # Applies to Microsoft Ads.
+        # Corresponds to the JSON property `callOnly`
+        # @return [Boolean]
+        attr_accessor :call_only
+        alias_method :call_only?, :call_only
+      
+        # Whether the call should be enabled on call tracking. Applies to Microsoft Ads.
+        # Corresponds to the JSON property `callTrackingEnabled`
+        # @return [Boolean]
+        attr_accessor :call_tracking_enabled
+        alias_method :call_tracking_enabled?, :call_tracking_enabled
+      
+        # Two-letter country code of the phone number. Examples: 'US', 'us'.
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        # Last date of when this asset is effective and still serving, in yyyy-MM-dd
+        # format.
+        # Corresponds to the JSON property `endDate`
+        # @return [String]
+        attr_accessor :end_date
+      
+        # The advertiser's raw phone number. Examples: '1234567890', '(123)456-7890'
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # Start date of when this asset is effective and can begin serving, in yyyy-MM-
+        # dd format.
+        # Corresponds to the JSON property `startDate`
+        # @return [String]
+        attr_accessor :start_date
+      
+        # Whether to show the call extension in search user's time zone. Applies to
+        # Microsoft Ads.
+        # Corresponds to the JSON property `useSearcherTimeZone`
+        # @return [Boolean]
+        attr_accessor :use_searcher_time_zone
+        alias_method :use_searcher_time_zone?, :use_searcher_time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_schedule_targets = args[:ad_schedule_targets] if args.key?(:ad_schedule_targets)
+          @call_conversion_action = args[:call_conversion_action] if args.key?(:call_conversion_action)
+          @call_conversion_reporting_state = args[:call_conversion_reporting_state] if args.key?(:call_conversion_reporting_state)
+          @call_only = args[:call_only] if args.key?(:call_only)
+          @call_tracking_enabled = args[:call_tracking_enabled] if args.key?(:call_tracking_enabled)
+          @country_code = args[:country_code] if args.key?(:country_code)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @use_searcher_time_zone = args[:use_searcher_time_zone] if args.key?(:use_searcher_time_zone)
+        end
+      end
+      
+      # A unified callout asset.
+      class GoogleAdsSearchads360V0CommonUnifiedCalloutAsset
+        include Google::Apis::Core::Hashable
+      
+        # List of non-overlapping schedules specifying all time intervals for which the
+        # asset may serve. There can be a maximum of 6 schedules per day, 42 in total.
+        # Corresponds to the JSON property `adScheduleTargets`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAdScheduleInfo>]
+        attr_accessor :ad_schedule_targets
+      
+        # The callout text. The length of this string should be between 1 and 25,
+        # inclusive.
+        # Corresponds to the JSON property `calloutText`
+        # @return [String]
+        attr_accessor :callout_text
+      
+        # Last date of when this asset is effective and still serving, in yyyy-MM-dd
+        # format.
+        # Corresponds to the JSON property `endDate`
+        # @return [String]
+        attr_accessor :end_date
+      
+        # Start date of when this asset is effective and can begin serving, in yyyy-MM-
+        # dd format.
+        # Corresponds to the JSON property `startDate`
+        # @return [String]
+        attr_accessor :start_date
+      
+        # Whether to show the asset in search user's time zone. Applies to Microsoft Ads.
+        # Corresponds to the JSON property `useSearcherTimeZone`
+        # @return [Boolean]
+        attr_accessor :use_searcher_time_zone
+        alias_method :use_searcher_time_zone?, :use_searcher_time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_schedule_targets = args[:ad_schedule_targets] if args.key?(:ad_schedule_targets)
+          @callout_text = args[:callout_text] if args.key?(:callout_text)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @use_searcher_time_zone = args[:use_searcher_time_zone] if args.key?(:use_searcher_time_zone)
+        end
+      end
+      
+      # A unified location asset.
+      class GoogleAdsSearchads360V0CommonUnifiedLocationAsset
+        include Google::Apis::Core::Hashable
+      
+        # The list of business locations for the customer. This will only be returned if
+        # the Location Asset is syncing from the Business Profile account. It is
+        # possible to have multiple Business Profile listings under the same account
+        # that point to the same Place ID.
+        # Corresponds to the JSON property `businessProfileLocations`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonBusinessProfileLocation>]
+        attr_accessor :business_profile_locations
+      
+        # The type of location ownership. If the type is BUSINESS_OWNER, it will be
+        # served as a location extension. If the type is AFFILIATE, it will be served as
+        # an affiliate location.
+        # Corresponds to the JSON property `locationOwnershipType`
+        # @return [String]
+        attr_accessor :location_ownership_type
+      
+        # Place IDs uniquely identify a place in the Google Places database and on
+        # Google Maps. This field is unique for a given customer ID and asset type. See
+        # https://developers.google.com/places/web-service/place-id to learn more about
+        # Place ID.
+        # Corresponds to the JSON property `placeId`
+        # @return [String]
+        attr_accessor :place_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business_profile_locations = args[:business_profile_locations] if args.key?(:business_profile_locations)
+          @location_ownership_type = args[:location_ownership_type] if args.key?(:location_ownership_type)
+          @place_id = args[:place_id] if args.key?(:place_id)
+        end
+      end
+      
+      # A Unified Page Feed asset.
+      class GoogleAdsSearchads360V0CommonUnifiedPageFeedAsset
+        include Google::Apis::Core::Hashable
+      
+        # Labels used to group the page urls.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<String>]
+        attr_accessor :labels
+      
+        # The webpage that advertisers want to target.
+        # Corresponds to the JSON property `pageUrl`
+        # @return [String]
+        attr_accessor :page_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @page_url = args[:page_url] if args.key?(:page_url)
+        end
+      end
+      
+      # A unified sitelink asset.
+      class GoogleAdsSearchads360V0CommonUnifiedSitelinkAsset
+        include Google::Apis::Core::Hashable
+      
+        # List of non-overlapping schedules specifying all time intervals for which the
+        # asset may serve. There can be a maximum of 6 schedules per day, 42 in total.
+        # Corresponds to the JSON property `adScheduleTargets`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAdScheduleInfo>]
+        attr_accessor :ad_schedule_targets
+      
+        # First line of the description for the sitelink. If set, the length should be
+        # between 1 and 35, inclusive, and description2 must also be set.
+        # Corresponds to the JSON property `description1`
+        # @return [String]
+        attr_accessor :description1
+      
+        # Second line of the description for the sitelink. If set, the length should be
+        # between 1 and 35, inclusive, and description1 must also be set.
+        # Corresponds to the JSON property `description2`
+        # @return [String]
+        attr_accessor :description2
+      
+        # Last date of when this asset is effective and still serving, in yyyy-MM-dd
+        # format.
+        # Corresponds to the JSON property `endDate`
+        # @return [String]
+        attr_accessor :end_date
+      
+        # URL display text for the sitelink. The length of this string should be between
+        # 1 and 25, inclusive.
+        # Corresponds to the JSON property `linkText`
+        # @return [String]
+        attr_accessor :link_text
+      
+        # Whether the preference is for the sitelink asset to be displayed on mobile
+        # devices. Applies to Microsoft Ads.
+        # Corresponds to the JSON property `mobilePreferred`
+        # @return [Boolean]
+        attr_accessor :mobile_preferred
+        alias_method :mobile_preferred?, :mobile_preferred
+      
+        # Start date of when this asset is effective and can begin serving, in yyyy-MM-
+        # dd format.
+        # Corresponds to the JSON property `startDate`
+        # @return [String]
+        attr_accessor :start_date
+      
+        # ID used for tracking clicks for the sitelink asset. This is a Yahoo! Japan
+        # only field.
+        # Corresponds to the JSON property `trackingId`
+        # @return [Fixnum]
+        attr_accessor :tracking_id
+      
+        # Whether to show the sitelink asset in search user's time zone. Applies to
+        # Microsoft Ads.
+        # Corresponds to the JSON property `useSearcherTimeZone`
+        # @return [Boolean]
+        attr_accessor :use_searcher_time_zone
+        alias_method :use_searcher_time_zone?, :use_searcher_time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_schedule_targets = args[:ad_schedule_targets] if args.key?(:ad_schedule_targets)
+          @description1 = args[:description1] if args.key?(:description1)
+          @description2 = args[:description2] if args.key?(:description2)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @link_text = args[:link_text] if args.key?(:link_text)
+          @mobile_preferred = args[:mobile_preferred] if args.key?(:mobile_preferred)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
+          @use_searcher_time_zone = args[:use_searcher_time_zone] if args.key?(:use_searcher_time_zone)
+        end
+      end
+      
       # A User List criterion. Represents a user list that is defined by the
       # advertiser to be targeted.
       class GoogleAdsSearchads360V0CommonUserListInfo
@@ -1752,6 +2158,11 @@ module Google
         # @return [String]
         attr_accessor :internal_error
       
+        # The reasons for invalid parameter errors.
+        # Corresponds to the JSON property `invalidParameterError`
+        # @return [String]
+        attr_accessor :invalid_parameter_error
+      
         # An error with the query
         # Corresponds to the JSON property `queryError`
         # @return [String]
@@ -1786,6 +2197,7 @@ module Google
           @distinct_error = args[:distinct_error] if args.key?(:distinct_error)
           @header_error = args[:header_error] if args.key?(:header_error)
           @internal_error = args[:internal_error] if args.key?(:internal_error)
+          @invalid_parameter_error = args[:invalid_parameter_error] if args.key?(:invalid_parameter_error)
           @query_error = args[:query_error] if args.key?(:query_error)
           @quota_error = args[:quota_error] if args.key?(:quota_error)
           @request_error = args[:request_error] if args.key?(:request_error)
@@ -1939,6 +2351,26 @@ module Google
         end
       end
       
+      # Estimates for criterion bids at various positions.
+      class GoogleAdsSearchads360V0ResourcesAdGroupCriterionPositionEstimates
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The estimate of the CPC bid required for ad to be displayed at
+        # the top of the first page of search results.
+        # Corresponds to the JSON property `topOfPageCpcMicros`
+        # @return [Fixnum]
+        attr_accessor :top_of_page_cpc_micros
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @top_of_page_cpc_micros = args[:top_of_page_cpc_micros] if args.key?(:top_of_page_cpc_micros)
+        end
+      end
+      
       # A container for ad group criterion quality information.
       class GoogleAdsSearchads360V0ResourcesAdGroupCriterionQualityInfo
         include Google::Apis::Core::Hashable
@@ -2083,7 +2515,9 @@ module Google
       end
       
       # Selective optimization setting for this campaign, which includes a set of
-      # conversion actions to optimize this campaign towards.
+      # conversion actions to optimize this campaign towards. This feature only
+      # applies to app campaigns that use MULTI_CHANNEL as AdvertisingChannelType and
+      # APP_CAMPAIGN or APP_CAMPAIGN_FOR_ENGAGEMENT as AdvertisingChannelSubType.
       class GoogleAdsSearchads360V0ResourcesCampaignSelectiveOptimization
         include Google::Apis::Core::Hashable
       
@@ -2596,6 +3030,85 @@ module Google
         end
       end
       
+      # A link between an ad group and an asset.
+      class GoogleAdsSearchads360V0ResourcesAdGroupAsset
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The ad group to which the asset is linked.
+        # Corresponds to the JSON property `adGroup`
+        # @return [String]
+        attr_accessor :ad_group
+      
+        # Required. Immutable. The asset which is linked to the ad group.
+        # Corresponds to the JSON property `asset`
+        # @return [String]
+        attr_accessor :asset
+      
+        # Immutable. The resource name of the ad group asset. AdGroupAsset resource
+        # names have the form: `customers/`customer_id`/adGroupAssets/`ad_group_id`~`
+        # asset_id`~`field_type``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Status of the ad group asset.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_group = args[:ad_group] if args.key?(:ad_group)
+          @asset = args[:asset] if args.key?(:asset)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # AdGroupAssetSet is the linkage between an ad group and an asset set. Creating
+      # an AdGroupAssetSet links an asset set with an ad group.
+      class GoogleAdsSearchads360V0ResourcesAdGroupAssetSet
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The ad group to which this asset set is linked.
+        # Corresponds to the JSON property `adGroup`
+        # @return [String]
+        attr_accessor :ad_group
+      
+        # Immutable. The asset set which is linked to the ad group.
+        # Corresponds to the JSON property `assetSet`
+        # @return [String]
+        attr_accessor :asset_set
+      
+        # Immutable. The resource name of the ad group asset set. Ad group asset set
+        # resource names have the form: `customers/`customer_id`/adGroupAssetSets/`
+        # ad_group_id`~`asset_set_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. The status of the ad group asset set. Read-only.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_group = args[:ad_group] if args.key?(:ad_group)
+          @asset_set = args[:asset_set] if args.key?(:asset_set)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # An ad group audience view. Includes performance data from interests and
       # remarketing lists for Display Network and YouTube Network ads, and remarketing
       # lists for search ads (RLSA), aggregated at the audience level.
@@ -2758,6 +3271,11 @@ module Google
         attr_accessor :negative
         alias_method :negative?, :negative
       
+        # Estimates for criterion bids at various positions.
+        # Corresponds to the JSON property `positionEstimates`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterionPositionEstimates]
+        attr_accessor :position_estimates
+      
         # A container for ad group criterion quality information.
         # Corresponds to the JSON property `qualityInfo`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterionQualityInfo]
@@ -2827,6 +3345,7 @@ module Google
           @listing_group = args[:listing_group] if args.key?(:listing_group)
           @location = args[:location] if args.key?(:location)
           @negative = args[:negative] if args.key?(:negative)
+          @position_estimates = args[:position_estimates] if args.key?(:position_estimates)
           @quality_info = args[:quality_info] if args.key?(:quality_info)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @status = args[:status] if args.key?(:status)
@@ -2931,6 +3450,16 @@ module Google
       class GoogleAdsSearchads360V0ResourcesAsset
         include Google::Apis::Core::Hashable
       
+        # A unified call asset.
+        # Corresponds to the JSON property `callAsset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedCallAsset]
+        attr_accessor :call_asset
+      
+        # A unified callout asset.
+        # Corresponds to the JSON property `calloutAsset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedCalloutAsset]
+        attr_accessor :callout_asset
+      
         # Output only. The timestamp when this asset was created. The timestamp is in
         # the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format.
         # Corresponds to the JSON property `creationTime`
@@ -2958,16 +3487,31 @@ module Google
         # @return [String]
         attr_accessor :last_modified_time
       
+        # A unified location asset.
+        # Corresponds to the JSON property `locationAsset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedLocationAsset]
+        attr_accessor :location_asset
+      
         # An asset representing a mobile app.
         # Corresponds to the JSON property `mobileAppAsset`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonMobileAppAsset]
         attr_accessor :mobile_app_asset
+      
+        # A Unified Page Feed asset.
+        # Corresponds to the JSON property `pageFeedAsset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedPageFeedAsset]
+        attr_accessor :page_feed_asset
       
         # Immutable. The resource name of the asset. Asset resource names have the form:
         # `customers/`customer_id`/assets/`asset_id``
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
+      
+        # A unified sitelink asset.
+        # Corresponds to the JSON property `sitelinkAsset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedSitelinkAsset]
+        attr_accessor :sitelink_asset
       
         # Output only. The status of the asset.
         # Corresponds to the JSON property `status`
@@ -2990,13 +3534,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @call_asset = args[:call_asset] if args.key?(:call_asset)
+          @callout_asset = args[:callout_asset] if args.key?(:callout_asset)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @engine_status = args[:engine_status] if args.key?(:engine_status)
           @final_urls = args[:final_urls] if args.key?(:final_urls)
           @id = args[:id] if args.key?(:id)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @location_asset = args[:location_asset] if args.key?(:location_asset)
           @mobile_app_asset = args[:mobile_app_asset] if args.key?(:mobile_app_asset)
+          @page_feed_asset = args[:page_feed_asset] if args.key?(:page_feed_asset)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @sitelink_asset = args[:sitelink_asset] if args.key?(:sitelink_asset)
           @status = args[:status] if args.key?(:status)
           @tracking_url_template = args[:tracking_url_template] if args.key?(:tracking_url_template)
           @type = args[:type] if args.key?(:type)
@@ -3027,6 +3576,46 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # AssetSetAsset is the link between an asset and an asset set. Adding an
+      # AssetSetAsset links an asset with an asset set.
+      class GoogleAdsSearchads360V0ResourcesAssetSetAsset
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The asset which this asset set asset is linking to.
+        # Corresponds to the JSON property `asset`
+        # @return [String]
+        attr_accessor :asset
+      
+        # Immutable. The asset set which this asset set asset is linking to.
+        # Corresponds to the JSON property `assetSet`
+        # @return [String]
+        attr_accessor :asset_set
+      
+        # Immutable. The resource name of the asset set asset. Asset set asset resource
+        # names have the form: `customers/`customer_id`/assetSetAssets/`asset_set_id`~`
+        # asset_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. The status of the asset set asset. Read-only.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset = args[:asset] if args.key?(:asset)
+          @asset_set = args[:asset_set] if args.key?(:asset_set)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -3357,7 +3946,9 @@ module Google
         attr_accessor :resource_name
       
         # Selective optimization setting for this campaign, which includes a set of
-        # conversion actions to optimize this campaign towards.
+        # conversion actions to optimize this campaign towards. This feature only
+        # applies to app campaigns that use MULTI_CHANNEL as AdvertisingChannelType and
+        # APP_CAMPAIGN or APP_CAMPAIGN_FOR_ENGAGEMENT as AdvertisingChannelSubType.
         # Corresponds to the JSON property `selectiveOptimization`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignSelectiveOptimization]
         attr_accessor :selective_optimization
@@ -3492,6 +4083,85 @@ module Google
           @tracking_url_template = args[:tracking_url_template] if args.key?(:tracking_url_template)
           @url_custom_parameters = args[:url_custom_parameters] if args.key?(:url_custom_parameters)
           @url_expansion_opt_out = args[:url_expansion_opt_out] if args.key?(:url_expansion_opt_out)
+        end
+      end
+      
+      # A link between a Campaign and an Asset.
+      class GoogleAdsSearchads360V0ResourcesCampaignAsset
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The asset which is linked to the campaign.
+        # Corresponds to the JSON property `asset`
+        # @return [String]
+        attr_accessor :asset
+      
+        # Immutable. The campaign to which the asset is linked.
+        # Corresponds to the JSON property `campaign`
+        # @return [String]
+        attr_accessor :campaign
+      
+        # Immutable. The resource name of the campaign asset. CampaignAsset resource
+        # names have the form: `customers/`customer_id`/campaignAssets/`campaign_id`~`
+        # asset_id`~`field_type``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. Status of the campaign asset.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset = args[:asset] if args.key?(:asset)
+          @campaign = args[:campaign] if args.key?(:campaign)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # CampaignAssetSet is the linkage between a campaign and an asset set. Adding a
+      # CampaignAssetSet links an asset set with a campaign.
+      class GoogleAdsSearchads360V0ResourcesCampaignAssetSet
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The asset set which is linked to the campaign.
+        # Corresponds to the JSON property `assetSet`
+        # @return [String]
+        attr_accessor :asset_set
+      
+        # Immutable. The campaign to which this asset set is linked.
+        # Corresponds to the JSON property `campaign`
+        # @return [String]
+        attr_accessor :campaign
+      
+        # Immutable. The resource name of the campaign asset set. Asset set asset
+        # resource names have the form: `customers/`customer_id`/campaignAssetSets/`
+        # campaign_id`~`asset_set_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. The status of the campaign asset set asset. Read-only.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_set = args[:asset_set] if args.key?(:asset_set)
+          @campaign = args[:campaign] if args.key?(:campaign)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -4119,6 +4789,79 @@ module Google
         end
       end
       
+      # A link between a customer and an asset.
+      class GoogleAdsSearchads360V0ResourcesCustomerAsset
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The asset which is linked to the customer.
+        # Corresponds to the JSON property `asset`
+        # @return [String]
+        attr_accessor :asset
+      
+        # Immutable. The resource name of the customer asset. CustomerAsset resource
+        # names have the form: `customers/`customer_id`/customerAssets/`asset_id`~`
+        # field_type``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Status of the customer asset.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset = args[:asset] if args.key?(:asset)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # CustomerAssetSet is the linkage between a customer and an asset set. Adding a
+      # CustomerAssetSet links an asset set with a customer.
+      class GoogleAdsSearchads360V0ResourcesCustomerAssetSet
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The asset set which is linked to the customer.
+        # Corresponds to the JSON property `assetSet`
+        # @return [String]
+        attr_accessor :asset_set
+      
+        # Immutable. The customer to which this asset set is linked.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        # Immutable. The resource name of the customer asset set. Asset set asset
+        # resource names have the form: `customers/`customer_id`/customerAssetSets/`
+        # asset_set_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. The status of the customer asset set asset. Read-only.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_set = args[:asset_set] if args.key?(:asset_set)
+          @customer = args[:customer] if args.key?(:customer)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # A link between the given customer and a client customer. CustomerClients only
       # exist for manager customers. All direct and indirect client customers are
       # included, as well as the manager itself.
@@ -4337,6 +5080,72 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # A geo target constant.
+      class GoogleAdsSearchads360V0ResourcesGeoTargetConstant
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The fully qualified English name, consisting of the target's name
+        # and that of its parent and country.
+        # Corresponds to the JSON property `canonicalName`
+        # @return [String]
+        attr_accessor :canonical_name
+      
+        # Output only. The ISO-3166-1 alpha-2 country code that is associated with the
+        # target.
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        # Output only. The ID of the geo target constant.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Output only. Geo target constant English name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The resource name of the parent geo target constant. Geo target
+        # constant resource names have the form: `geoTargetConstants/`
+        # parent_geo_target_constant_id``
+        # Corresponds to the JSON property `parentGeoTarget`
+        # @return [String]
+        attr_accessor :parent_geo_target
+      
+        # Output only. The resource name of the geo target constant. Geo target constant
+        # resource names have the form: `geoTargetConstants/`geo_target_constant_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. Geo target constant status.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Output only. Geo target constant target type.
+        # Corresponds to the JSON property `targetType`
+        # @return [String]
+        attr_accessor :target_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
+          @country_code = args[:country_code] if args.key?(:country_code)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @parent_geo_target = args[:parent_geo_target] if args.key?(:parent_geo_target)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
+          @target_type = args[:target_type] if args.key?(:target_type)
         end
       end
       
@@ -4715,6 +5524,17 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAdLabel]
         attr_accessor :ad_group_ad_label
       
+        # A link between an ad group and an asset.
+        # Corresponds to the JSON property `adGroupAsset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAsset]
+        attr_accessor :ad_group_asset
+      
+        # AdGroupAssetSet is the linkage between an ad group and an asset set. Creating
+        # an AdGroupAssetSet links an asset set with an ad group.
+        # Corresponds to the JSON property `adGroupAssetSet`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAssetSet]
+        attr_accessor :ad_group_asset_set
+      
         # An ad group audience view. Includes performance data from interests and
         # remarketing lists for Display Network and YouTube Network ads, and remarketing
         # lists for search ads (RLSA), aggregated at the audience level.
@@ -4761,6 +5581,12 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetSet]
         attr_accessor :asset_set
       
+        # AssetSetAsset is the link between an asset and an asset set. Adding an
+        # AssetSetAsset links an asset with an asset set.
+        # Corresponds to the JSON property `assetSetAsset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetSetAsset]
+        attr_accessor :asset_set_asset
+      
         # A bidding strategy.
         # Corresponds to the JSON property `biddingStrategy`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesBiddingStrategy]
@@ -4770,6 +5596,17 @@ module Google
         # Corresponds to the JSON property `campaign`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaign]
         attr_accessor :campaign
+      
+        # A link between a Campaign and an Asset.
+        # Corresponds to the JSON property `campaignAsset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignAsset]
+        attr_accessor :campaign_asset
+      
+        # CampaignAssetSet is the linkage between a campaign and an asset set. Adding a
+        # CampaignAssetSet links an asset set with a campaign.
+        # Corresponds to the JSON property `campaignAssetSet`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignAssetSet]
+        attr_accessor :campaign_asset_set
       
         # A campaign audience view. Includes performance data from interests and
         # remarketing lists for Display Network and YouTube Network ads, and remarketing
@@ -4809,6 +5646,17 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCustomer]
         attr_accessor :customer
       
+        # A link between a customer and an asset.
+        # Corresponds to the JSON property `customerAsset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCustomerAsset]
+        attr_accessor :customer_asset
+      
+        # CustomerAssetSet is the linkage between a customer and an asset set. Adding a
+        # CustomerAssetSet links an asset set with a customer.
+        # Corresponds to the JSON property `customerAssetSet`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCustomerAssetSet]
+        attr_accessor :customer_asset_set
+      
         # A link between the given customer and a client customer. CustomerClients only
         # exist for manager customers. All direct and indirect client customers are
         # included, as well as the manager itself.
@@ -4830,6 +5678,11 @@ module Google
         # Corresponds to the JSON property `genderView`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesGenderView]
         attr_accessor :gender_view
+      
+        # A geo target constant.
+        # Corresponds to the JSON property `geoTargetConstant`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesGeoTargetConstant]
+        attr_accessor :geo_target_constant
       
         # A keyword view.
         # Corresponds to the JSON property `keywordView`
@@ -4880,6 +5733,8 @@ module Google
           @ad_group = args[:ad_group] if args.key?(:ad_group)
           @ad_group_ad = args[:ad_group_ad] if args.key?(:ad_group_ad)
           @ad_group_ad_label = args[:ad_group_ad_label] if args.key?(:ad_group_ad_label)
+          @ad_group_asset = args[:ad_group_asset] if args.key?(:ad_group_asset)
+          @ad_group_asset_set = args[:ad_group_asset_set] if args.key?(:ad_group_asset_set)
           @ad_group_audience_view = args[:ad_group_audience_view] if args.key?(:ad_group_audience_view)
           @ad_group_bid_modifier = args[:ad_group_bid_modifier] if args.key?(:ad_group_bid_modifier)
           @ad_group_criterion = args[:ad_group_criterion] if args.key?(:ad_group_criterion)
@@ -4888,8 +5743,11 @@ module Google
           @age_range_view = args[:age_range_view] if args.key?(:age_range_view)
           @asset = args[:asset] if args.key?(:asset)
           @asset_set = args[:asset_set] if args.key?(:asset_set)
+          @asset_set_asset = args[:asset_set_asset] if args.key?(:asset_set_asset)
           @bidding_strategy = args[:bidding_strategy] if args.key?(:bidding_strategy)
           @campaign = args[:campaign] if args.key?(:campaign)
+          @campaign_asset = args[:campaign_asset] if args.key?(:campaign_asset)
+          @campaign_asset_set = args[:campaign_asset_set] if args.key?(:campaign_asset_set)
           @campaign_audience_view = args[:campaign_audience_view] if args.key?(:campaign_audience_view)
           @campaign_budget = args[:campaign_budget] if args.key?(:campaign_budget)
           @campaign_criterion = args[:campaign_criterion] if args.key?(:campaign_criterion)
@@ -4897,10 +5755,13 @@ module Google
           @conversion_action = args[:conversion_action] if args.key?(:conversion_action)
           @custom_columns = args[:custom_columns] if args.key?(:custom_columns)
           @customer = args[:customer] if args.key?(:customer)
+          @customer_asset = args[:customer_asset] if args.key?(:customer_asset)
+          @customer_asset_set = args[:customer_asset_set] if args.key?(:customer_asset_set)
           @customer_client = args[:customer_client] if args.key?(:customer_client)
           @customer_manager_link = args[:customer_manager_link] if args.key?(:customer_manager_link)
           @dynamic_search_ads_search_term_view = args[:dynamic_search_ads_search_term_view] if args.key?(:dynamic_search_ads_search_term_view)
           @gender_view = args[:gender_view] if args.key?(:gender_view)
+          @geo_target_constant = args[:geo_target_constant] if args.key?(:geo_target_constant)
           @keyword_view = args[:keyword_view] if args.key?(:keyword_view)
           @label = args[:label] if args.key?(:label)
           @location_view = args[:location_view] if args.key?(:location_view)
