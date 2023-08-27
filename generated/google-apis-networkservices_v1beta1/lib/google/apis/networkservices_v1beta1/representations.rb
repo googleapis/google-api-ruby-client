@@ -1178,6 +1178,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           collection :gateways, as: 'gateways'
+          hash :labels, as: 'labels'
           collection :meshes, as: 'meshes'
           property :name, as: 'name'
           collection :rules, as: 'rules', class: Google::Apis::NetworkservicesV1beta1::TlsRouteRouteRule, decorator: Google::Apis::NetworkservicesV1beta1::TlsRouteRouteRule::Representation
