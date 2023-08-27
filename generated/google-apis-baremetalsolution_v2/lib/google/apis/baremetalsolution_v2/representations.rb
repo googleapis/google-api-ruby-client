@@ -1083,9 +1083,7 @@ module Google
           property :snapshot_enabled, as: 'snapshotEnabled'
           property :snapshot_reservation_detail, as: 'snapshotReservationDetail', class: Google::Apis::BaremetalsolutionV2::SnapshotReservationDetail, decorator: Google::Apis::BaremetalsolutionV2::SnapshotReservationDetail::Representation
       
-          property :snapshot_schedule_policy, as: 'snapshotSchedulePolicy'
           property :state, as: 'state'
-          property :storage_aggregate_pool, as: 'storageAggregatePool'
           property :storage_type, as: 'storageType'
           property :workload_profile, as: 'workloadProfile'
         end
@@ -1106,7 +1104,6 @@ module Google
           property :protocol, as: 'protocol'
           property :size_gb, as: 'sizeGb'
           property :snapshots_enabled, as: 'snapshotsEnabled'
-          property :storage_aggregate_pool, as: 'storageAggregatePool'
           property :type, as: 'type'
           property :user_note, as: 'userNote'
         end
