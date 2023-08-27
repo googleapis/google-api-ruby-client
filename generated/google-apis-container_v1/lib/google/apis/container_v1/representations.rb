@@ -2252,6 +2252,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy_name, as: 'policyName'
+          property :tpu_topology, as: 'tpuTopology'
           property :type, as: 'type'
         end
       end
@@ -2678,6 +2679,8 @@ module Google
           property :cluster_id, as: 'clusterId'
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1::ConfidentialNodes, decorator: Google::Apis::ContainerV1::ConfidentialNodes::Representation
       
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :disk_type, as: 'diskType'
           property :etag, as: 'etag'
           property :fast_socket, as: 'fastSocket', class: Google::Apis::ContainerV1::FastSocket, decorator: Google::Apis::ContainerV1::FastSocket::Representation
       
@@ -2695,6 +2698,7 @@ module Google
           collection :locations, as: 'locations'
           property :logging_config, as: 'loggingConfig', class: Google::Apis::ContainerV1::NodePoolLoggingConfig, decorator: Google::Apis::ContainerV1::NodePoolLoggingConfig::Representation
       
+          property :machine_type, as: 'machineType'
           property :name, as: 'name'
           property :node_network_config, as: 'nodeNetworkConfig', class: Google::Apis::ContainerV1::NodeNetworkConfig, decorator: Google::Apis::ContainerV1::NodeNetworkConfig::Representation
       

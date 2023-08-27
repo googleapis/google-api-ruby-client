@@ -4820,6 +4820,12 @@ module Google
         # @return [String]
         attr_accessor :policy_name
       
+        # Optional. TPU placement topology for pod slice node pool. https://cloud.google.
+        # com/tpu/docs/types-topologies#tpu_topologies
+        # Corresponds to the JSON property `tpuTopology`
+        # @return [String]
+        attr_accessor :tpu_topology
+      
         # The type of placement.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -4832,6 +4838,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @policy_name = args[:policy_name] if args.key?(:policy_name)
+          @tpu_topology = args[:tpu_topology] if args.key?(:tpu_topology)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -6529,6 +6536,20 @@ module Google
         # @return [Google::Apis::ContainerV1::ConfidentialNodes]
         attr_accessor :confidential_nodes
       
+        # Optional. The desired disk size for nodes in the node pool specified in GB.
+        # The smallest allowed disk size is 10GB. Initiates an upgrade operation that
+        # migrates the nodes in the node pool to the specified disk size.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # Optional. The desired disk type (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced')
+        # for nodes in the node pool. Initiates an upgrade operation that migrates the
+        # nodes in the node pool to the specified disk type.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
         # The current etag of the node pool. If an etag is provided and does not match
         # the current etag of the node pool, update will be blocked and an ABORTED error
         # will be returned.
@@ -6588,6 +6609,14 @@ module Google
         # Corresponds to the JSON property `loggingConfig`
         # @return [Google::Apis::ContainerV1::NodePoolLoggingConfig]
         attr_accessor :logging_config
+      
+        # Optional. The desired [Google Compute Engine machine type](https://cloud.
+        # google.com/compute/docs/machine-types) for nodes in the node pool. Initiates
+        # an upgrade operation that migrates the nodes in the node pool to the specified
+        # machine type.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
       
         # The name (project, location, cluster, node pool) of the node pool to update.
         # Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.
@@ -6705,6 +6734,8 @@ module Google
         def update!(**args)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
           @etag = args[:etag] if args.key?(:etag)
           @fast_socket = args[:fast_socket] if args.key?(:fast_socket)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
@@ -6715,6 +6746,7 @@ module Google
           @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
           @locations = args[:locations] if args.key?(:locations)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
           @name = args[:name] if args.key?(:name)
           @node_network_config = args[:node_network_config] if args.key?(:node_network_config)
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
