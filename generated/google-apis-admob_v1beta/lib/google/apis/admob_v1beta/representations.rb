@@ -88,30 +88,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BatchUpdateCampaignsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BatchUpdateCampaignsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Campaign
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CampaignCpiSetting
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CampaignReportSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,12 +173,6 @@ module Google
       end
       
       class ListAppsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListCampaignsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -346,12 +316,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UpdateCampaignRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AdSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -459,40 +423,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ad_unit_mappings, as: 'adUnitMappings', class: Google::Apis::AdmobV1beta::AdUnitMapping, decorator: Google::Apis::AdmobV1beta::AdUnitMapping::Representation
       
-        end
-      end
-      
-      class BatchUpdateCampaignsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :requests, as: 'requests', class: Google::Apis::AdmobV1beta::UpdateCampaignRequest, decorator: Google::Apis::AdmobV1beta::UpdateCampaignRequest::Representation
-      
-        end
-      end
-      
-      class BatchUpdateCampaignsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :campaigns, as: 'campaigns', class: Google::Apis::AdmobV1beta::Campaign, decorator: Google::Apis::AdmobV1beta::Campaign::Representation
-      
-        end
-      end
-      
-      class Campaign
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cpi_setting, as: 'cpiSetting', class: Google::Apis::AdmobV1beta::CampaignCpiSetting, decorator: Google::Apis::AdmobV1beta::CampaignCpiSetting::Representation
-      
-          property :display_name, as: 'displayName'
-          property :goal_type, as: 'goalType'
-          property :name, as: 'name'
-        end
-      end
-      
-      class CampaignCpiSetting
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cpi_micros, :numeric_string => true, as: 'cpiMicros'
         end
       end
       
@@ -631,15 +561,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :apps, as: 'apps', class: Google::Apis::AdmobV1beta::App, decorator: Google::Apis::AdmobV1beta::App::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class ListCampaignsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :campaigns, as: 'campaigns', class: Google::Apis::AdmobV1beta::Campaign, decorator: Google::Apis::AdmobV1beta::Campaign::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -883,15 +804,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :values, as: 'values'
-        end
-      end
-      
-      class UpdateCampaignRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :campaign, as: 'campaign', class: Google::Apis::AdmobV1beta::Campaign, decorator: Google::Apis::AdmobV1beta::Campaign::Representation
-      
-          property :update_mask, as: 'updateMask'
         end
       end
     end
