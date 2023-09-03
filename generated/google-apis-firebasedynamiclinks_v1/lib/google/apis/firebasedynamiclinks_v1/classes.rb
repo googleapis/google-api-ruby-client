@@ -510,8 +510,8 @@ module Google
         attr_accessor :sdk_version
       
         # Possible unique matched link that server need to check before performing
-        # fingerprint match. If passed link is short server need to expand the link. If
-        # link is long server need to vslidate the link.
+        # device heuristics match. If passed link is short server need to expand the
+        # link. If link is long server need to vslidate the link.
         # Corresponds to the JSON property `uniqueMatchLinkToCheck`
         # @return [String]
         attr_accessor :unique_match_link_to_check
@@ -554,8 +554,8 @@ module Google
         # @return [String]
         attr_accessor :attribution_confidence
       
-        # The deep-link attributed post-install via one of several techniques (
-        # fingerprint, copy unique).
+        # The deep-link attributed post-install via one of several techniques (device
+        # heuristics, copy unique).
         # Corresponds to the JSON property `deepLink`
         # @return [String]
         attr_accessor :deep_link
@@ -576,8 +576,8 @@ module Google
         # @return [String]
         attr_accessor :fallback_link
       
-        # Invitation ID attributed post-install via one of several techniques (
-        # fingerprint, copy unique).
+        # Invitation ID attributed post-install via one of several techniques (device
+        # heuristics, copy unique).
         # Corresponds to the JSON property `invitationId`
         # @return [String]
         attr_accessor :invitation_id
@@ -602,7 +602,7 @@ module Google
         attr_accessor :request_ip_version
       
         # Entire FDL (short or long) attributed post-install via one of several
-        # techniques (fingerprint, copy unique).
+        # techniques (device heuristics, copy unique).
         # Corresponds to the JSON property `requestedLink`
         # @return [String]
         attr_accessor :requested_link
