@@ -183,6 +183,57 @@ module Google
         end
       end
       
+      # Represents an app in Checks.
+      class GoogleChecksAccountV1alphaApp
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the app. Example: `accounts/123/apps/456`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The app's title.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # The response message for AccountService.ListApps.
+      class GoogleChecksAccountV1alphaListAppsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The apps.
+        # Corresponds to the JSON property `apps`
+        # @return [Array<Google::Apis::ChecksV1alpha::GoogleChecksAccountV1alphaApp>]
+        attr_accessor :apps
+      
+        # A token which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apps = args[:apps] if args.key?(:apps)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The request message for ReportService.AnalyzeUpload.
       class GoogleChecksReportV1alphaAnalyzeUploadRequest
         include Google::Apis::Core::Hashable

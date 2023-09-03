@@ -50,6 +50,75 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Gets an app.
+        # @param [String] name
+        #   Required. Resource name of the app. Example: `accounts/123/apps/456`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChecksV1alpha::GoogleChecksAccountV1alphaApp] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChecksV1alpha::GoogleChecksAccountV1alphaApp]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_app(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::ChecksV1alpha::GoogleChecksAccountV1alphaApp::Representation
+          command.response_class = Google::Apis::ChecksV1alpha::GoogleChecksAccountV1alphaApp
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the apps under the given account.
+        # @param [String] parent
+        #   Required. The parent account. Example: `accounts/123`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return. The server may further
+        #   constrain the maximum number of results returned in a single page. If
+        #   unspecified, the server will decide the number of results to be returned.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous `ListApps` call. Provide this
+        #   to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChecksV1alpha::GoogleChecksAccountV1alphaListAppsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChecksV1alpha::GoogleChecksAccountV1alphaListAppsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_apps(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/apps', options)
+          command.response_representation = Google::Apis::ChecksV1alpha::GoogleChecksAccountV1alphaListAppsResponse::Representation
+          command.response_class = Google::Apis::ChecksV1alpha::GoogleChecksAccountV1alphaListAppsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
