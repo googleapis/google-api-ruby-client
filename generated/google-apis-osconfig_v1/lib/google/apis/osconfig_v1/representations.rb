@@ -914,7 +914,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_no_resource_group_match, as: 'allowNoResourceGroupMatch'
           property :description, as: 'description'
-          property :fingerprint, as: 'fingerprint'
           property :id, as: 'id'
           property :mode, as: 'mode'
           collection :resource_groups, as: 'resourceGroups', class: Google::Apis::OsconfigV1::OsPolicyResourceGroup, decorator: Google::Apis::OsconfigV1::OsPolicyResourceGroup::Representation
