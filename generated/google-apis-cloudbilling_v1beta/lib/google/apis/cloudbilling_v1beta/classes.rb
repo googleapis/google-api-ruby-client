@@ -841,7 +841,7 @@ module Google
         attr_accessor :discount_percent
       
         # Type of the fixed discount scope which indicates the source of the discount.
-        # It can have values such as 'sku-group'.
+        # It can have values such as 'unspecified' and 'sku-group'.
         # Corresponds to the JSON property `discountScopeType`
         # @return [String]
         attr_accessor :discount_scope_type
@@ -898,7 +898,7 @@ module Google
         attr_accessor :discount_percent
       
         # Type of the floating discount scope which indicates the source of the discount.
-        # It can have values such as 'sku-group'.
+        # It can have values such as 'unspecified' and 'sku-group'.
         # Corresponds to the JSON property `discountScopeType`
         # @return [String]
         attr_accessor :discount_scope_type
@@ -1021,9 +1021,9 @@ module Google
         # @return [Google::Apis::CloudbillingV1beta::GoogleCloudBillingBillingaccountpricesV1betaMigratedPrice]
         attr_accessor :migrated_price
       
-        # Type of the price reason. It can values such as 'default-price', 'fixed-price',
-        # 'fixed-discount', 'floating-discount', 'migrated-price', 'merged-price', '
-        # list-price-as-ceiling'.
+        # Type of the price reason. It can have values such as 'unspecified', 'default-
+        # price', 'fixed-price', 'fixed-discount', 'floating-discount', 'migrated-price',
+        # 'merged-price', 'list-price-as-ceiling'.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
