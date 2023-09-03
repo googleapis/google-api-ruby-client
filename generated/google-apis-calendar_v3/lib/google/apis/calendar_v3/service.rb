@@ -1282,15 +1282,15 @@ module Google
         #   Event types to return. Optional. Possible values are:
         #   - "default"
         #   - "focusTime"
-        #   - "outOfOffice"This parameter can be repeated multiple times to return events
-        #   of different types. Currently, this is the only allowed value for this field:
-        #   - ["default", "focusTime", "outOfOffice"] This value is the default.
-        #   If you're enrolled in the Working Location developer preview program, in
-        #   addition to the default value above you can also set the "workingLocation"
-        #   event type:
+        #   - "outOfOffice"
+        #   - "workingLocation"This parameter can be repeated multiple times to return
+        #   events of different types. Currently, these are the only allowed values for
+        #   this field:
+        #   - ["default", "focusTime", "outOfOffice"]
         #   - ["default", "focusTime", "outOfOffice", "workingLocation"]
-        #   - ["workingLocation"] Additional combinations of these four event types will
-        #   be made available in later releases. Developer Preview.
+        #   - ["workingLocation"] The default is ["default", "focusTime", "outOfOffice"].
+        #   Additional combinations of these four event types will be made available in
+        #   later releases.
         # @param [String] i_cal_uid
         #   Specifies an event ID in the iCalendar format to be provided in the response.
         #   Optional. Use this if you want to search for an event by its iCalendar ID.
@@ -1679,15 +1679,15 @@ module Google
         #   Event types to return. Optional. Possible values are:
         #   - "default"
         #   - "focusTime"
-        #   - "outOfOffice"This parameter can be repeated multiple times to return events
-        #   of different types. Currently, this is the only allowed value for this field:
-        #   - ["default", "focusTime", "outOfOffice"] This value is the default.
-        #   If you're enrolled in the Working Location developer preview program, in
-        #   addition to the default value above you can also set the "workingLocation"
-        #   event type:
+        #   - "outOfOffice"
+        #   - "workingLocation"This parameter can be repeated multiple times to return
+        #   events of different types. Currently, these are the only allowed values for
+        #   this field:
+        #   - ["default", "focusTime", "outOfOffice"]
         #   - ["default", "focusTime", "outOfOffice", "workingLocation"]
-        #   - ["workingLocation"] Additional combinations of these four event types will
-        #   be made available in later releases. Developer Preview.
+        #   - ["workingLocation"] The default is ["default", "focusTime", "outOfOffice"].
+        #   Additional combinations of these four event types will be made available in
+        #   later releases.
         # @param [String] i_cal_uid
         #   Specifies an event ID in the iCalendar format to be provided in the response.
         #   Optional. Use this if you want to search for an event by its iCalendar ID.
