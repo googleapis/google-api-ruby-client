@@ -1974,8 +1974,8 @@ module Google
         # create the assigned targeting options provided in
         # BulkEditLineItemAssignedTargetingOptionsRequest.create_requests. Requests to
         # this endpoint cannot be made concurrently with the following requests updating
-        # the same line item: * UpdateLineItem * CreateLineItemAssignedTargetingOption *
-        # DeleteLineItemAssignedTargetingOption
+        # the same line item: * lineItems.patch * assignedTargetingOptions.create *
+        # assignedTargetingOptions.delete
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the line item belongs to.
         # @param [Fixnum] line_item_id
@@ -2288,8 +2288,8 @@ module Google
         # Updates an existing line item. Returns the updated line item if successful.
         # Requests to this endpoint cannot be made concurrently with the following
         # requests updating the same line item: * BulkEditAssignedTargetingOptions *
-        # BulkUpdateLineItems * CreateLineItemAssignedTargetingOption *
-        # DeleteLineItemAssignedTargetingOption
+        # BulkUpdateLineItems * assignedTargetingOptions.create *
+        # assignedTargetingOptions.delete
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the line item belongs to.
         # @param [Fixnum] line_item_id
@@ -2330,8 +2330,8 @@ module Google
         
         # Assigns a targeting option to a line item. Returns the assigned targeting
         # option if successful. Requests to this endpoint cannot be made concurrently
-        # with the following requests updating the same line item: *
-        # BulkEditAssignedTargetingOptions * BulkUpdate * UpdateLineItem *
+        # with the following requests updating the same line item: * lineItems.
+        # bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch *
         # DeleteLineItemAssignedTargetingOption
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the line item belongs to.
@@ -2398,8 +2398,8 @@ module Google
         
         # Deletes an assigned targeting option from a line item. Requests to this
         # endpoint cannot be made concurrently with the following requests updating the
-        # same line item: * BulkEditAssignedTargetingOptions * BulkUpdate *
-        # UpdateLineItem * CreateLineItemAssignedTargetingOption
+        # same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.
+        # bulkUpdate * lineItems.patch * CreateLineItemAssignedTargetingOption
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the line item belongs to.
         # @param [Fixnum] line_item_id
@@ -5446,9 +5446,6 @@ module Google
         # Gets an inventory source.
         # @param [Fixnum] inventory_source_id
         #   Required. The ID of the inventory source to fetch.
-        # @param [Fixnum] advertiser_id
-        #   Optional. The advertiser_id is optional, when it is provided, the advertiser
-        #   access is used.
         # @param [Fixnum] partner_id
         #   Required. The ID of the DV360 partner to which the fetched inventory source is
         #   permissioned.
@@ -5469,12 +5466,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_inventory_source(inventory_source_id, advertiser_id: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_inventory_source(inventory_source_id, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/inventorySources/{+inventorySourceId}', options)
           command.response_representation = Google::Apis::DisplayvideoV1::InventorySource::Representation
           command.response_class = Google::Apis::DisplayvideoV1::InventorySource
           command.params['inventorySourceId'] = inventory_source_id unless inventory_source_id.nil?
-          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
           command.query['partnerId'] = partner_id unless partner_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

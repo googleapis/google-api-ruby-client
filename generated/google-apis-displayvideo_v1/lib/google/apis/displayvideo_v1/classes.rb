@@ -662,7 +662,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The ID of the targeting option assigned to the location list. Must
+        # Required. The ID of the targeting option assigned to the location list.
+        # Assigned locations can only be modified in TARGETING_LOCATION_TYPE_REGIONAL
+        # location lists. When creating or deleting assigned locations, this value must
         # be of type TARGETING_TYPE_GEO_REGION.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
@@ -1982,7 +1984,7 @@ module Google
         end
       end
       
-      # Response message for BulkListCampaignAssignedTargetingOptions.
+      # 
       class BulkListCampaignAssignedTargetingOptionsResponse
         include Google::Apis::Core::Hashable
       
@@ -2011,7 +2013,7 @@ module Google
         end
       end
       
-      # Response message for BulkListInsertionOrderAssignedTargetingOptions.
+      # 
       class BulkListInsertionOrderAssignedTargetingOptionsResponse
         include Google::Apis::Core::Hashable
       
@@ -7510,7 +7512,7 @@ module Google
         end
       end
       
-      # Response message for ListInsertionOrderAssignedTargetingOptions.
+      # 
       class ListInsertionOrderAssignedTargetingOptionsResponse
         include Google::Apis::Core::Hashable
       
