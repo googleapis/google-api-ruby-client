@@ -600,10 +600,11 @@ module Google
         # Updates a data transfer configuration. All fields must be set, even if they
         # are not updated.
         # @param [String] name
-        #   The resource name of the transfer config. Transfer config names have the form `
-        #   projects/`project_id`/locations/`region`/transferConfigs/`config_id``. Where `
-        #   config_id` is usually a uuid, even though it is not guaranteed or required.
-        #   The name is ignored when creating a transfer config.
+        #   The resource name of the transfer config. Transfer config names have the form
+        #   either `projects/`project_id`/locations/`region`/transferConfigs/`config_id``
+        #   or `projects/`project_id`/transferConfigs/`config_id``, where `config_id` is
+        #   usually a UUID, even though it is not guaranteed or required. The name is
+        #   ignored when creating a transfer config.
         # @param [Google::Apis::BigquerydatatransferV1::TransferConfig] transfer_config_object
         # @param [String] authorization_code
         #   Optional OAuth2 authorization code to use with this transfer configuration.
@@ -1083,10 +1084,11 @@ module Google
         # Updates a data transfer configuration. All fields must be set, even if they
         # are not updated.
         # @param [String] name
-        #   The resource name of the transfer config. Transfer config names have the form `
-        #   projects/`project_id`/locations/`region`/transferConfigs/`config_id``. Where `
-        #   config_id` is usually a uuid, even though it is not guaranteed or required.
-        #   The name is ignored when creating a transfer config.
+        #   The resource name of the transfer config. Transfer config names have the form
+        #   either `projects/`project_id`/locations/`region`/transferConfigs/`config_id``
+        #   or `projects/`project_id`/transferConfigs/`config_id``, where `config_id` is
+        #   usually a UUID, even though it is not guaranteed or required. The name is
+        #   ignored when creating a transfer config.
         # @param [Google::Apis::BigquerydatatransferV1::TransferConfig] transfer_config_object
         # @param [String] authorization_code
         #   Optional OAuth2 authorization code to use with this transfer configuration.
