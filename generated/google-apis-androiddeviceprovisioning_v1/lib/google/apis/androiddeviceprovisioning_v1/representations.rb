@@ -178,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetDeviceSimLockStateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetDeviceSimLockStateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleWorkspaceAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -527,6 +539,21 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class GetDeviceSimLockStateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_identifier, as: 'deviceIdentifier', class: Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier, decorator: Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier::Representation
+      
+        end
+      end
+      
+      class GetDeviceSimLockStateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sim_lock_state, as: 'simLockState'
         end
       end
       

@@ -1,5 +1,9 @@
 # Release history for google-apis-androiddeviceprovisioning_v1
 
+### v0.21.0 (2023-09-03)
+
+* Regenerated from discovery document revision 20230829
+
 ### v0.20.0 (2023-05-14)
 
 * Regenerated from discovery document revision 20230509
