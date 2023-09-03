@@ -827,7 +827,7 @@ module Google
         attr_accessor :deal_serving_status
       
         # The resource name of the finalized deal. Format: `buyers/`accountId`/
-        # finalizeddeals/`finalizedDealId``
+        # finalizedDeals/`finalizedDealId``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
