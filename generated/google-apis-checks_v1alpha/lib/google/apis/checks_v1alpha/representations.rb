@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChecksAccountV1alphaApp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksAccountV1alphaListAppsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChecksReportV1alphaAnalyzeUploadRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -382,6 +394,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :privacy_policy, as: 'privacyPolicy'
+        end
+      end
+      
+      class GoogleChecksAccountV1alphaApp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleChecksAccountV1alphaListAppsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apps, as: 'apps', class: Google::Apis::ChecksV1alpha::GoogleChecksAccountV1alphaApp, decorator: Google::Apis::ChecksV1alpha::GoogleChecksAccountV1alphaApp::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

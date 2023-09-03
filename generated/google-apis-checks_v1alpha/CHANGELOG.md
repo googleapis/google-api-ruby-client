@@ -1,8 +1,8 @@
 # Release history for google-apis-checks_v1alpha
 
-### v0.4.0 (2023-08-27)
+### v0.4.0 (2023-09-03)
 
-* Regenerated from discovery document revision 20230817
+* Regenerated from discovery document revision 20230829
 
 ### v0.3.0 (2023-08-06)
 
