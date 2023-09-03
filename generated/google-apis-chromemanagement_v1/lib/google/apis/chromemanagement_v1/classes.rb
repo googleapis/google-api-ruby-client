@@ -1828,6 +1828,32 @@ module Google
         end
       end
       
+      # Response message for listing notification configs for a customer.
+      class GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The telemetry notification configs from the specified customer.
+        # Corresponds to the JSON property `telemetryNotificationConfigs`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNotificationConfig>]
+        attr_accessor :telemetry_notification_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @telemetry_notification_configs = args[:telemetry_notification_configs] if args.key?(:telemetry_notification_configs)
+        end
+      end
+      
       # Response message for listing telemetry users for a customer.
       class GoogleChromeManagementV1ListTelemetryUsersResponse
         include Google::Apis::Core::Hashable
@@ -2674,6 +2700,25 @@ module Google
         end
       end
       
+      # Configures how the telemetry events should be filtered.
+      class GoogleChromeManagementV1TelemetryEventNotificationFilter
+        include Google::Apis::Core::Hashable
+      
+        # Only sends the notifications for events of these types. Must not be empty.
+        # Corresponds to the JSON property `eventTypes`
+        # @return [Array<String>]
+        attr_accessor :event_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_types = args[:event_types] if args.key?(:event_types)
+        end
+      end
+      
       # Https latency routine is run periodically and `
       # TelemetryHttpsLatencyChangeEvent` is triggered if a latency problem was
       # detected or if the device has recovered from a latency problem. * Granular
@@ -2700,6 +2745,89 @@ module Google
         def update!(**args)
           @https_latency_routine_data = args[:https_latency_routine_data] if args.key?(:https_latency_routine_data)
           @https_latency_state = args[:https_latency_state] if args.key?(:https_latency_state)
+        end
+      end
+      
+      # Configuration to receive notifications of telemetry data.
+      class GoogleChromeManagementV1TelemetryNotificationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Google Workspace customer that owns the resource.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        # Configures how the telemetry data should be filtered.
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNotificationFilter]
+        attr_accessor :filter
+      
+        # The pubsub topic to which notifications are published to.
+        # Corresponds to the JSON property `googleCloudPubsubTopic`
+        # @return [String]
+        attr_accessor :google_cloud_pubsub_topic
+      
+        # Output only. Resource name of the notification configuration.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+          @filter = args[:filter] if args.key?(:filter)
+          @google_cloud_pubsub_topic = args[:google_cloud_pubsub_topic] if args.key?(:google_cloud_pubsub_topic)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Configures how the telemetry data should be filtered.
+      class GoogleChromeManagementV1TelemetryNotificationFilter
+        include Google::Apis::Core::Hashable
+      
+        # If set, only sends notifications for telemetry data coming from this device.
+        # Corresponds to the JSON property `deviceId`
+        # @return [String]
+        attr_accessor :device_id
+      
+        # If set, only sends notifications for telemetry data coming from devices in
+        # this org unit.
+        # Corresponds to the JSON property `deviceOrgUnitId`
+        # @return [String]
+        attr_accessor :device_org_unit_id
+      
+        # Configures how the telemetry events should be filtered.
+        # Corresponds to the JSON property `telemetryEventNotificationFilter`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryEventNotificationFilter]
+        attr_accessor :telemetry_event_notification_filter
+      
+        # If set, only sends notifications for telemetry data coming from devices owned
+        # by this user.
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        # If set, only sends notifications for telemetry data coming from devices owned
+        # by users in this org unit.
+        # Corresponds to the JSON property `userOrgUnitId`
+        # @return [String]
+        attr_accessor :user_org_unit_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_id = args[:device_id] if args.key?(:device_id)
+          @device_org_unit_id = args[:device_org_unit_id] if args.key?(:device_org_unit_id)
+          @telemetry_event_notification_filter = args[:telemetry_event_notification_filter] if args.key?(:telemetry_event_notification_filter)
+          @user_email = args[:user_email] if args.key?(:user_email)
+          @user_org_unit_id = args[:user_org_unit_id] if args.key?(:user_org_unit_id)
         end
       end
       
@@ -3027,6 +3155,22 @@ module Google
           @subclass_id = args[:subclass_id] if args.key?(:subclass_id)
           @vendor = args[:vendor] if args.key?(:vendor)
           @vid = args[:vid] if args.key?(:vid)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class GoogleProtobufEmpty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
