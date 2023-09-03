@@ -1,0 +1,7 @@
+{
+    "api_id": "playgrouping:v1alpha1",
+    "name_pretty": "Google Play Grouping API",
+    "distribution_name": "google-apis-playgrouping_v1alpha1",
+    "language": "ruby",
+    "library_type": "REST"
+}
