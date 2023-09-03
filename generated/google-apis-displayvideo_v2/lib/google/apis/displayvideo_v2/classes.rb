@@ -707,7 +707,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The ID of the targeting option assigned to the location list. Must
+        # Required. The ID of the targeting option assigned to the location list.
+        # Assigned locations can only be modified in TARGETING_LOCATION_TYPE_REGIONAL
+        # location lists. When creating or deleting assigned locations, this value must
         # be of type TARGETING_TYPE_GEO_REGION.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
@@ -2227,7 +2229,7 @@ module Google
         end
       end
       
-      # Response message for BulkListCampaignAssignedTargetingOptions.
+      # 
       class BulkListCampaignAssignedTargetingOptionsResponse
         include Google::Apis::Core::Hashable
       
@@ -2256,7 +2258,7 @@ module Google
         end
       end
       
-      # Response message for BulkListInsertionOrderAssignedTargetingOptions.
+      # 
       class BulkListInsertionOrderAssignedTargetingOptionsResponse
         include Google::Apis::Core::Hashable
       
@@ -7995,7 +7997,7 @@ module Google
         end
       end
       
-      # Response message for ListInsertionOrderAssignedTargetingOptions.
+      # 
       class ListInsertionOrderAssignedTargetingOptionsResponse
         include Google::Apis::Core::Hashable
       
@@ -12018,7 +12020,8 @@ module Google
         # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` * `
         # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` * `
         # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `
-        # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM` If not using an
+        # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM` * `
+        # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` If not using an
         # applicable strategy, the value of this field will be 0.
         # Corresponds to the JSON property `value`
         # @return [Fixnum]
