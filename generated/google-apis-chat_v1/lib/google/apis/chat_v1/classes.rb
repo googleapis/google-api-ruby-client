@@ -110,12 +110,14 @@ module Google
         end
       end
       
-      # Annotations associated with the plain-text body of the message. Example plain-
-      # text message body: ``` Hello @FooBot how are you!" ``` The corresponding
-      # annotations metadata: ``` "annotations":[` "type":"USER_MENTION", "startIndex":
-      # 6, "length":7, "userMention": ` "user": ` "name":"users/`user`", "displayName":
-      # "FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" `, "type":"MENTION"
-      # ` `] ```
+      # Output only. Annotations associated with the plain-text body of the message.
+      # To add basic formatting to a text message, see [Format text messages](https://
+      # developers.google.com/chat/api/guides/message-formats/text#format-texts).
+      # Example plain-text message body: ``` Hello @FooBot how are you!" ``` The
+      # corresponding annotations metadata: ``` "annotations":[` "type":"USER_MENTION",
+      # "startIndex":6, "length":7, "userMention": ` "user": ` "name":"users/`user`",
+      # "displayName":"FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" `, "
+      # type":"MENTION" ` `] ```
       class Annotation
         include Google::Apis::Core::Hashable
       
@@ -3432,8 +3434,11 @@ module Google
         attr_accessor :text
       
         # A thread in a Google Chat space. For example usage, see [Start or reply to a
-        # message thread](https://developers.google.com/chat/api/guides/crudl/messages#
-        # start_or_reply_to_a_message_thread).
+        # message thread](https://developers.google.com/chat/api/guides/v1/messages/
+        # create#create-message-thread). If you specify a thread when creating a message,
+        # you can set the [`messageReplyOption`](https://developers.google.com/chat/api/
+        # reference/rest/v1/spaces.messages/create#messagereplyoption) field to
+        # determine what happens if no matching thread is found.
         # Corresponds to the JSON property `thread`
         # @return [Google::Apis::ChatV1::Thread]
         attr_accessor :thread
@@ -3994,18 +3999,26 @@ module Google
       end
       
       # A thread in a Google Chat space. For example usage, see [Start or reply to a
-      # message thread](https://developers.google.com/chat/api/guides/crudl/messages#
-      # start_or_reply_to_a_message_thread).
+      # message thread](https://developers.google.com/chat/api/guides/v1/messages/
+      # create#create-message-thread). If you specify a thread when creating a message,
+      # you can set the [`messageReplyOption`](https://developers.google.com/chat/api/
+      # reference/rest/v1/spaces.messages/create#messagereplyoption) field to
+      # determine what happens if no matching thread is found.
       class Thread
         include Google::Apis::Core::Hashable
       
-        # Resource name of the thread. Example: `spaces/`space`/threads/`thread``
+        # Output only. Resource name of the thread. Example: `spaces/`space`/threads/`
+        # thread``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Optional. ID for the thread. Supports up to 4000 characters. Input for
-        # creating or updating a thread. Otherwise, output only.
+        # Optional. Input for creating or updating a thread. Otherwise, output only. ID
+        # for the thread. Supports up to 4000 characters. This ID is unique to the Chat
+        # app that sets it. For example, if multiple Chat apps create a message using
+        # the same thread key, the messages are posted in different threads. To reply in
+        # a thread created by a person or another Chat app, specify the thread `name`
+        # field instead.
         # Corresponds to the JSON property `threadKey`
         # @return [String]
         attr_accessor :thread_key
