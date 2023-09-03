@@ -687,7 +687,7 @@ module Google
       
       # Replace field value with masking character. Supported [types](https://www.hl7.
       # org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown,
-      # Oid, String, Uri, Uuid, Xhtml
+      # Oid, String, Uri, Uuid, Xhtml.
       class CharacterMaskField
         include Google::Apis::Core::Hashable
       
@@ -774,7 +774,7 @@ module Google
       # marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://
       # dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These
       # contextual phrases are replaced with the token "[CTX]". This option uses an
-      # additional `InfoType` during inspection.
+      # additional infoType during inspection.
       class CleanDescriptorsOption
         include Google::Apis::Core::Hashable
       
@@ -787,10 +787,10 @@ module Google
         end
       end
       
-      # Inspect text and transform sensitive text. Configure using `TextConfig`.
+      # Inspect text and transform sensitive text. Configure using TextConfig.
       # Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date,
       # DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri,
-      # Uuid, Xhtml
+      # Uuid, Xhtml.
       class CleanTextField
         include Google::Apis::Core::Hashable
       
@@ -1112,11 +1112,12 @@ module Google
         end
       end
       
-      # The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are
-      # collected into a contextual phrase list. For fields marked `CleanText`, the
-      # process attempts to transform phrases matching these contextual entries. These
-      # contextual phrases are replaced with the token "[CTX]". This feature uses an
-      # additional InfoType during inspection.
+      # Fields that don't match a KeepField or CleanTextField `action` in the BASIC
+      # profile are collected into a contextual phrase list. For fields that match a
+      # CleanTextField `action` in FieldMetadata or ProfileType, the process attempts
+      # to transform phrases matching these contextual entries. These contextual
+      # phrases are replaced with the token "[CTX]". This feature uses an additional
+      # InfoType during inspection.
       class ContextualDeidConfig
         include Google::Apis::Core::Hashable
       
@@ -1157,8 +1158,8 @@ module Google
       
         # An AES 128/192/256 bit key. Causes the hash to be computed based on this key.
         # A default key is generated for each Deidentify operation and is used when
-        # neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `
-        # kms_wrapped` is set.
+        # neither crypto_key nor kms_wrapped is specified. Must not be set if
+        # kms_wrapped is set.
         # Corresponds to the JSON property `cryptoKey`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1186,7 +1187,7 @@ module Google
       
       # Replace field value with a hash of that value. Supported [types](https://www.
       # hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode,
-      # Markdown, Oid, String, Uri, Uuid, Xhtml
+      # Markdown, Oid, String, Uri, Uuid, Xhtml.
       class CryptoHashField
         include Google::Apis::Core::Hashable
       
@@ -1238,10 +1239,10 @@ module Google
       
         # An AES 128/192/256 bit key. The date shift is computed based on this key and
         # the patient ID. If the patient ID is empty for a DICOM resource, the date
-        # shift is computed based on this key and the study instance UID. If `crypto_key`
-        # is not set, then `kms_wrapped` is used to calculate the date shift. If
-        # neither is set, a default key is generated for each de-identify operation.
-        # Must not be set if `kms_wrapped` is set.
+        # shift is computed based on this key and the study instance UID. If crypto_key
+        # is not set, then kms_wrapped is used to calculate the date shift. If neither
+        # is set, a default key is generated for each de-identify operation. Must not be
+        # set if kms_wrapped is set.
         # Corresponds to the JSON property `cryptoKey`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1269,7 +1270,7 @@ module Google
       
       # Shift the date by a randomized number of days. See [date shifting](https://
       # cloud.google.com/dlp/docs/concepts-date-shifting) for more information.
-      # Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+      # Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
       class DateShiftField
         include Google::Apis::Core::Hashable
       
@@ -2426,15 +2427,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies FHIR paths to match and how to transform them. Any field that is not
-        # matched by a `FieldMetadata` is passed through to the output dataset
-        # unmodified. All extensions will be processed according to `keep_extensions`.
-        # If a field can be matched by more than one `FieldMetadata`, the first `
-        # FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+        # matched by a FieldMetadata `action` is passed through to the output dataset
+        # unmodified. All extensions will be processed according to keep_extensions. If
+        # a field can be matched by more than one FieldMetadata `action`, the first `
+        # action` option is applied. Overrides options and the union field `profile` in
+        # FhirFieldConfig.
         # Corresponds to the JSON property `fieldMetadataList`
         # @return [Array<Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata>]
         attr_accessor :field_metadata_list
       
-        # Specifies additional options to apply to the base `profile`.
+        # Specifies additional options to apply to the base ProfileType.
         # Corresponds to the JSON property `options`
         # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DeidentifyOptions]
         attr_accessor :options
@@ -3170,29 +3172,29 @@ module Google
       
         # Replace field value with masking character. Supported [types](https://www.hl7.
         # org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown,
-        # Oid, String, Uri, Uuid, Xhtml
+        # Oid, String, Uri, Uuid, Xhtml.
         # Corresponds to the JSON property `characterMaskField`
         # @return [Google::Apis::HealthcareV1beta1::CharacterMaskField]
         attr_accessor :character_mask_field
       
-        # Inspect text and transform sensitive text. Configure using `TextConfig`.
+        # Inspect text and transform sensitive text. Configure using TextConfig.
         # Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date,
         # DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri,
-        # Uuid, Xhtml
+        # Uuid, Xhtml.
         # Corresponds to the JSON property `cleanTextField`
         # @return [Google::Apis::HealthcareV1beta1::CleanTextField]
         attr_accessor :clean_text_field
       
         # Replace field value with a hash of that value. Supported [types](https://www.
         # hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode,
-        # Markdown, Oid, String, Uri, Uuid, Xhtml
+        # Markdown, Oid, String, Uri, Uuid, Xhtml.
         # Corresponds to the JSON property `cryptoHashField`
         # @return [Google::Apis::HealthcareV1beta1::CryptoHashField]
         attr_accessor :crypto_hash_field
       
         # Shift the date by a randomized number of days. See [date shifting](https://
         # cloud.google.com/dlp/docs/concepts-date-shifting) for more information.
-        # Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+        # Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
         # Corresponds to the JSON property `dateShiftField`
         # @return [Google::Apis::HealthcareV1beta1::DateShiftField]
         attr_accessor :date_shift_field
@@ -3203,20 +3205,21 @@ module Google
         attr_accessor :keep_field
       
         # List of paths to FHIR fields to redact. Each path is a period-separated list
-        # where each component is either a field name or FHIR type name. All types begin
-        # with an upper case letter. For example, the resource field "Patient.Address.
-        # city", which uses a string type, can be matched by "Patient.Address.String".
-        # Path also supports partialkk matching. For example, "Patient.Address.city" can
-        # be matched by "Address.city" (Patient omitted). Partial matching and type
-        # matching can be combined, for example "Patient.Address.city" can be matched by
-        # "Address.String". For "choice" types (those defined in the FHIR spec with the
-        # form: field[x]), use two separate components. For example, "deceasedAge.unit"
-        # is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/
-        # datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code,
-        # Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode,
-        # Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-
-        # type for HumanName (for example HumanName.given, HumanName.family) can be
-        # omitted.
+        # where each component is either a field name or FHIR [type](https://www.hl7.org/
+        # fhir/datatypes.html) name. All types begin with an upper case letter. For
+        # example, the resource field `Patient.Address.city`, which uses a [string](
+        # https://www.hl7.org/fhir/datatypes-definitions.html#Address.city) type, can be
+        # matched by `Patient.Address.String`. Partial matching is supported. For
+        # example, `Patient.Address.city` can be matched by `Address.city` (with `
+        # Patient` omitted). Partial matching and type matching can be combined, for
+        # example `Patient.Address.city` can be matched by `Address.String`. For "choice"
+        # types (those defined in the FHIR spec with the format `field[x]`), use two
+        # separate components. For example, `deceasedAge.unit` is matched by `Deceased.
+        # Age.unit`. The following types are supported: AdministrativeGenderCode,
+        # Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant,
+        # Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri,
+        # Uuid, Xhtml. The sub-type for HumanName (for example `HumanName.given`, `
+        # HumanName.family`) can be omitted.
         # Corresponds to the JSON property `paths`
         # @return [Array<String>]
         attr_accessor :paths
@@ -3242,7 +3245,7 @@ module Google
         end
       end
       
-      # Specifies additional options to apply to the base `profile`.
+      # Specifies additional options to apply to the base ProfileType.
       class GoogleCloudHealthcareV1beta1DeidentifyOptions
         include Google::Apis::Core::Hashable
       
@@ -3251,11 +3254,12 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::CharacterMaskConfig]
         attr_accessor :character_mask_config
       
-        # The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are
-        # collected into a contextual phrase list. For fields marked `CleanText`, the
-        # process attempts to transform phrases matching these contextual entries. These
-        # contextual phrases are replaced with the token "[CTX]". This feature uses an
-        # additional InfoType during inspection.
+        # Fields that don't match a KeepField or CleanTextField `action` in the BASIC
+        # profile are collected into a contextual phrase list. For fields that match a
+        # CleanTextField `action` in FieldMetadata or ProfileType, the process attempts
+        # to transform phrases matching these contextual entries. These contextual
+        # phrases are replaced with the token "[CTX]". This feature uses an additional
+        # InfoType during inspection.
         # Corresponds to the JSON property `contextualDeid`
         # @return [Google::Apis::HealthcareV1beta1::ContextualDeidConfig]
         attr_accessor :contextual_deid
@@ -3273,7 +3277,7 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::DateShiftConfig]
         attr_accessor :date_shift_config
       
-        # The behaviour for handling FHIR extensions that aren't otherwise specified for
+        # The behavior for handling FHIR extensions that aren't otherwise specified for
         # de-identification. If provided, all extensions are preserved during de-
         # identification by default. If unspecified, all extensions are removed during
         # de-identification by default.
@@ -4195,7 +4199,7 @@ module Google
         end
       end
       
-      # The behaviour for handling FHIR extensions that aren't otherwise specified for
+      # The behavior for handling FHIR extensions that aren't otherwise specified for
       # de-identification. If provided, all extensions are preserved during de-
       # identification by default. If unspecified, all extensions are removed during
       # de-identification by default.
@@ -4991,7 +4995,7 @@ module Google
         # marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://
         # dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These
         # contextual phrases are replaced with the token "[CTX]". This option uses an
-        # additional `InfoType` during inspection.
+        # additional infoType during inspection.
         # Corresponds to the JSON property `cleanDescriptors`
         # @return [Google::Apis::HealthcareV1beta1::CleanDescriptorsOption]
         attr_accessor :clean_descriptors
