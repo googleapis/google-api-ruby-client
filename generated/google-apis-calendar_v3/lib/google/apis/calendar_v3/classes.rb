@@ -1110,11 +1110,14 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Specific type of the event. Read-only. Possible values are:
+        # Specific type of the event. This cannot be modified after the event is created.
+        # Possible values are:
         # - "default" - A regular event or not further specified.
         # - "outOfOffice" - An out-of-office event.
         # - "focusTime" - A focus-time event.
-        # - "workingLocation" - A working location event. Developer Preview.
+        # - "workingLocation" - A working location event.  Currently, only "default "
+        # and "workingLocation" events can be created using the API. Extended support
+        # for other event types will be made available in later releases.
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type
@@ -1334,7 +1337,7 @@ module Google
         # @return [String]
         attr_accessor :visibility
       
-        # Working Location event data. Developer Preview.
+        # Working location event data.
         # Corresponds to the JSON property `workingLocationProperties`
         # @return [Google::Apis::CalendarV3::EventWorkingLocationProperties]
         attr_accessor :working_location_properties
@@ -1845,9 +1848,13 @@ module Google
         # @return [Google::Apis::CalendarV3::EventWorkingLocationProperties::OfficeLocation]
         attr_accessor :office_location
       
-        # Indicates what kind of location this is. Any details are specified in a sub-
-        # field of the specified name (but which may be missing if empty). Any other
-        # fields are ignored.
+        # Type of the working location. Possible values are:
+        # - "homeOffice" - The user is working at home.
+        # - "officeLocation" - The user is working from an office.
+        # - "customLocation" - The user is working from a custom location.  Any details
+        # are specified in a sub-field of the specified name, but this field may be
+        # missing if empty. Any other fields are ignored.
+        # Required when adding working location properties.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1893,22 +1900,24 @@ module Google
           # @return [String]
           attr_accessor :building_id
         
-          # An optional arbitrary desk identifier.
+          # An optional desk identifier.
           # Corresponds to the JSON property `deskId`
           # @return [String]
           attr_accessor :desk_id
         
-          # An optional arbitrary floor identifier.
+          # An optional floor identifier.
           # Corresponds to the JSON property `floorId`
           # @return [String]
           attr_accessor :floor_id
         
-          # An optional arbitrary floor section identifier.
+          # An optional floor section identifier.
           # Corresponds to the JSON property `floorSectionId`
           # @return [String]
           attr_accessor :floor_section_id
         
-          # An optional extra label for additional information.
+          # The office name that's displayed in Calendar Web and Mobile clients. We
+          # recommend you reference a building name in the organization's Resources
+          # database.
           # Corresponds to the JSON property `label`
           # @return [String]
           attr_accessor :label
