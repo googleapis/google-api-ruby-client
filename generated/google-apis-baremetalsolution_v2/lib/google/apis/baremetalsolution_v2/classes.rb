@@ -371,8 +371,8 @@ module Google
         attr_accessor :os_image
       
         # Immutable. Pod name. Pod is an independent part of infrastructure. Instance
-        # can be connected to the assets (networks, volumes) allocated in the same pod
-        # only.
+        # can only be connected to the assets (networks, volumes) allocated in the same
+        # pod.
         # Corresponds to the JSON property `pod`
         # @return [String]
         attr_accessor :pod
@@ -466,7 +466,7 @@ module Google
         # @return [Array<Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2LogicalInterface>]
         attr_accessor :logical_interfaces
       
-        # Output only. The name of the instance config.
+        # The name of the instance config.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -493,7 +493,7 @@ module Google
         # @return [Google::Apis::BaremetalsolutionV2::NetworkAddress]
         attr_accessor :private_network
       
-        # List of names of ssh keys used to provision the instance.
+        # Optional. List of names of ssh keys used to provision the instance.
         # Corresponds to the JSON property `sshKeyNames`
         # @return [Array<String>]
         attr_accessor :ssh_key_names
@@ -1162,7 +1162,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. Pod name.
+        # Immutable. Pod name. Pod is an independent part of infrastructure. Network can
+        # only be connected to the assets (instances, nfsshares) allocated in the same
+        # pod.
         # Corresponds to the JSON property `pod`
         # @return [String]
         attr_accessor :pod
@@ -1529,6 +1531,13 @@ module Google
         # @return [String]
         attr_accessor :nfs_share_id
       
+        # Immutable. Pod name. Pod is an independent part of infrastructure. NFSShare
+        # can only be connected to the assets (networks, instances) allocated in the
+        # same pod.
+        # Corresponds to the JSON property `pod`
+        # @return [String]
+        attr_accessor :pod
+      
         # The requested size, in GiB.
         # Corresponds to the JSON property `requestedSizeGib`
         # @return [Fixnum]
@@ -1561,6 +1570,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @nfs_share_id = args[:nfs_share_id] if args.key?(:nfs_share_id)
+          @pod = args[:pod] if args.key?(:pod)
           @requested_size_gib = args[:requested_size_gib] if args.key?(:requested_size_gib)
           @state = args[:state] if args.key?(:state)
           @storage_type = args[:storage_type] if args.key?(:storage_type)
@@ -1722,6 +1732,13 @@ module Google
         # @return [Array<Google::Apis::BaremetalsolutionV2::NetworkConfig>]
         attr_accessor :networks
       
+        # Optional. Pod name. Pod is an independent part of infrastructure. Instance can
+        # be connected to the assets (networks, volumes, nfsshares) allocated in the
+        # same pod only.
+        # Corresponds to the JSON property `pod`
+        # @return [String]
+        attr_accessor :pod
+      
         # Output only. State of ProvisioningConfig.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1767,6 +1784,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @networks = args[:networks] if args.key?(:networks)
+          @pod = args[:pod] if args.key?(:pod)
           @state = args[:state] if args.key?(:state)
           @status_message = args[:status_message] if args.key?(:status_message)
           @ticket_id = args[:ticket_id] if args.key?(:ticket_id)
@@ -2417,7 +2435,8 @@ module Google
         # @return [String]
         attr_accessor :performance_tier
       
-        # Immutable. Pod name.
+        # Immutable. Pod name. Pod is an independent part of infrastructure. Volume can
+        # only be connected to the instances allocated in the same pod.
         # Corresponds to the JSON property `pod`
         # @return [String]
         attr_accessor :pod

@@ -825,6 +825,7 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :nfs_share_id, as: 'nfsShareId'
+          property :pod, as: 'pod'
           property :requested_size_gib, :numeric_string => true, as: 'requestedSizeGib'
           property :state, as: 'state'
           property :storage_type, as: 'storageType'
@@ -868,6 +869,7 @@ module Google
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::BaremetalsolutionV2::NetworkConfig, decorator: Google::Apis::BaremetalsolutionV2::NetworkConfig::Representation
       
+          property :pod, as: 'pod'
           property :state, as: 'state'
           property :status_message, as: 'statusMessage'
           property :ticket_id, as: 'ticketId'
