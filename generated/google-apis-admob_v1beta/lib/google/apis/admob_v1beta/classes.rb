@@ -448,105 +448,6 @@ module Google
         end
       end
       
-      # The request for the BatchUpdateCampaigns API.
-      class BatchUpdateCampaignsRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The individual requests to update campaigns. Max 1000 allowed.
-        # Corresponds to the JSON property `requests`
-        # @return [Array<Google::Apis::AdmobV1beta::UpdateCampaignRequest>]
-        attr_accessor :requests
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @requests = args[:requests] if args.key?(:requests)
-        end
-      end
-      
-      # The response for the BatchUpdateCampaigns API.
-      class BatchUpdateCampaignsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The updated campaigns per the request.
-        # Corresponds to the JSON property `campaigns`
-        # @return [Array<Google::Apis::AdmobV1beta::Campaign>]
-        attr_accessor :campaigns
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @campaigns = args[:campaigns] if args.key?(:campaigns)
-        end
-      end
-      
-      # Describes an AdMob campaign.
-      class Campaign
-        include Google::Apis::Core::Hashable
-      
-        # CPI setting for AdMob campaign. Ignored unless campaign goal type is MAX_CPI
-        # or TARGET_CPI.
-        # Corresponds to the JSON property `cpiSetting`
-        # @return [Google::Apis::AdmobV1beta::CampaignCpiSetting]
-        attr_accessor :cpi_setting
-      
-        # Output only. The display name for the campaign.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Output only. The Goal type of the campaign.
-        # Corresponds to the JSON property `goalType`
-        # @return [String]
-        attr_accessor :goal_type
-      
-        # Output only. Resource name for this campaign. Format is: accounts/`
-        # publisher_id`/campaigns/`campaign_id` Example: accounts/pub-9876543210987654/
-        # campaigns/0123456789
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cpi_setting = args[:cpi_setting] if args.key?(:cpi_setting)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @goal_type = args[:goal_type] if args.key?(:goal_type)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # CPI setting for AdMob campaign. Ignored unless campaign goal type is MAX_CPI
-      # or TARGET_CPI.
-      class CampaignCpiSetting
-        include Google::Apis::Core::Hashable
-      
-        # Cost-per-install for this campaign in micro units in the currency of the
-        # GoogleAds account linked to this AdMob publisher.
-        # Corresponds to the JSON property `cpiMicros`
-        # @return [Fixnum]
-        attr_accessor :cpi_micros
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cpi_micros = args[:cpi_micros] if args.key?(:cpi_micros)
-        end
-      end
-      
       # The specification for generating a Campaign report. For example, the
       # specification to get IMPRESSIONS and CLICKS sliced by CAMPAIGN_ID can look
       # like the following example: ` "date_range": ` "start_date": `"year": 2021, "
@@ -1014,32 +915,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @apps = args[:apps] if args.key?(:apps)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Response for the ListCampaignsRequest.
-      class ListCampaignsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The resulting mediation groups for the requested account.
-        # Corresponds to the JSON property `campaigns`
-        # @return [Array<Google::Apis::AdmobV1beta::Campaign>]
-        attr_accessor :campaigns
-      
-        # Used to set the `page_token` in the `ListCampaignsRequest` to retrieve the
-        # next page. If this field is omitted, there are no subsequent pages.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @campaigns = args[:campaigns] if args.key?(:campaigns)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -1935,33 +1810,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @values = args[:values] if args.key?(:values)
-        end
-      end
-      
-      # An update request for a singular campaign. Currently only cpi_micros of
-      # MAX_CPI and TARGET_CPI campaigns can be updated.
-      class UpdateCampaignRequest
-        include Google::Apis::Core::Hashable
-      
-        # Describes an AdMob campaign.
-        # Corresponds to the JSON property `campaign`
-        # @return [Google::Apis::AdmobV1beta::Campaign]
-        attr_accessor :campaign
-      
-        # List of campaign fields to be updated. Currently this field is not supported
-        # as only the cpi_micros field can be updated.
-        # Corresponds to the JSON property `updateMask`
-        # @return [String]
-        attr_accessor :update_mask
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @campaign = args[:campaign] if args.key?(:campaign)
-          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
     end
