@@ -94,6 +94,9 @@ module Google
         #   Required. Immutable. A globally unique identifier for the Hosting site. This
         #   identifier is used to construct the Firebase-provisioned subdomains for the
         #   site, so it must also be a valid domain name label.
+        # @param [Boolean] validate_only
+        #   Optional. If set, validates that the site_id is available and that the request
+        #   would succeed, returning the expected resulting site or error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -111,7 +114,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_site(parent, site_object = nil, site_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_site(parent, site_object = nil, site_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1beta1/{+parent}/sites', options)
           command.request_representation = Google::Apis::FirebasehostingV1beta1::Site::Representation
           command.request_object = site_object
@@ -119,6 +122,7 @@ module Google
           command.response_class = Google::Apis::FirebasehostingV1beta1::Site
           command.params['parent'] = parent unless parent.nil?
           command.query['siteId'] = site_id unless site_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
