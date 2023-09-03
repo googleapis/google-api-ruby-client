@@ -351,6 +351,11 @@ module Google
         # @return [String]
         attr_accessor :authority
       
+        # Required. A unique code to identify the certification.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
         # Optional. A URL link to the certification.
         # Corresponds to the JSON property `link`
         # @return [String]
@@ -371,7 +376,7 @@ module Google
         # @return [String]
         attr_accessor :valid_until
       
-        # Required. A custom value of the certification.
+        # Optional. A custom value of the certification.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -383,6 +388,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authority = args[:authority] if args.key?(:authority)
+          @code = args[:code] if args.key?(:code)
           @link = args[:link] if args.key?(:link)
           @logo = args[:logo] if args.key?(:logo)
           @name = args[:name] if args.key?(:name)

@@ -203,6 +203,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authority, as: 'authority'
+          property :code, as: 'code'
           property :link, as: 'link'
           property :logo, as: 'logo'
           property :name, as: 'name'
