@@ -1010,6 +1010,46 @@ module Google
         end
       end
       
+      # Request to get a device's SIM lock status.
+      class GetDeviceSimLockStateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Encapsulates hardware and product IDs to identify a manufactured device. To
+        # understand requirements on identifier sets, read [Identifiers](https://
+        # developers.google.com/zero-touch/guides/identifiers).
+        # Corresponds to the JSON property `deviceIdentifier`
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
+        attr_accessor :device_identifier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_identifier = args[:device_identifier] if args.key?(:device_identifier)
+        end
+      end
+      
+      # Response containing a device's SimLock state.
+      class GetDeviceSimLockStateResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `simLockState`
+        # @return [String]
+        attr_accessor :sim_lock_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sim_lock_state = args[:sim_lock_state] if args.key?(:sim_lock_state)
+        end
+      end
+      
       # A Google Workspace customer.
       class GoogleWorkspaceAccount
         include Google::Apis::Core::Hashable
