@@ -262,6 +262,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LinkPersonaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LinkPersonaResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MetagameConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -364,6 +376,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RecallToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResetPersonaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResetPersonaResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetrievePlayerTokensResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckRevisionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -401,6 +437,18 @@ module Google
       end
       
       class StatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UnlinkPersonaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UnlinkPersonaResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -840,6 +888,26 @@ module Google
         end
       end
       
+      class LinkPersonaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cardinality_constraint, as: 'cardinalityConstraint'
+          property :conflicting_links_resolution_policy, as: 'conflictingLinksResolutionPolicy'
+          property :expire_time, as: 'expireTime'
+          property :persona, as: 'persona'
+          property :session_id, as: 'sessionId'
+          property :token, as: 'token'
+          property :ttl, as: 'ttl'
+        end
+      end
+      
+      class LinkPersonaResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+        end
+      end
+      
       class MetagameConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1039,6 +1107,37 @@ module Google
         end
       end
       
+      class RecallToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :multi_player_persona, as: 'multiPlayerPersona'
+          property :token, as: 'token'
+        end
+      end
+      
+      class ResetPersonaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :persona, as: 'persona'
+        end
+      end
+      
+      class ResetPersonaResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :unlinked, as: 'unlinked'
+        end
+      end
+      
+      class RetrievePlayerTokensResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tokens, as: 'tokens', class: Google::Apis::GamesV1::RecallToken, decorator: Google::Apis::GamesV1::RecallToken::Representation
+      
+        end
+      end
+      
       class CheckRevisionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1120,6 +1219,22 @@ module Google
           property :spend_percentile, as: 'spend_percentile'
           property :spend_probability, as: 'spend_probability'
           property :total_spend_next_28_days, as: 'total_spend_next_28_days'
+        end
+      end
+      
+      class UnlinkPersonaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :persona, as: 'persona'
+          property :session_id, as: 'sessionId'
+          property :token, as: 'token'
+        end
+      end
+      
+      class UnlinkPersonaResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :unlinked, as: 'unlinked'
         end
       end
     end

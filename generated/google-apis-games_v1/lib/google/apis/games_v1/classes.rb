@@ -1624,6 +1624,86 @@ module Google
         end
       end
       
+      # Request to link an in-game account with a PGS principal (encoded in the
+      # session id).
+      class LinkPersonaRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Cardinality constraint to observe when linking a persona to a player
+        # in the scope of a game.
+        # Corresponds to the JSON property `cardinalityConstraint`
+        # @return [String]
+        attr_accessor :cardinality_constraint
+      
+        # Required. Resolution policy to apply when the linking of a persona to a player
+        # would result in violating the specified cardinality constraint.
+        # Corresponds to the JSON property `conflictingLinksResolutionPolicy`
+        # @return [String]
+        attr_accessor :conflicting_links_resolution_policy
+      
+        # Input only. Optional expiration time.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Required. Stable identifier of the in-game account. Please refrain from re-
+        # using the same persona for different games.
+        # Corresponds to the JSON property `persona`
+        # @return [String]
+        attr_accessor :persona
+      
+        # Required. Opaque server-generated string that encodes all the necessary
+        # information to identify the PGS player / Google user and application.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
+        # Required. Value of the token to create. Opaque to Play Games and assumed to be
+        # non-stable (encrypted with key rotation).
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        # Input only. Optional time-to-live.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cardinality_constraint = args[:cardinality_constraint] if args.key?(:cardinality_constraint)
+          @conflicting_links_resolution_policy = args[:conflicting_links_resolution_policy] if args.key?(:conflicting_links_resolution_policy)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @persona = args[:persona] if args.key?(:persona)
+          @session_id = args[:session_id] if args.key?(:session_id)
+          @token = args[:token] if args.key?(:token)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
+      # Outcome of a persona linking attempt.
+      class LinkPersonaResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. State of a persona linking attempt.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # The metagame config resource
       class MetagameConfig
         include Google::Apis::Core::Hashable
@@ -2358,6 +2438,99 @@ module Google
         end
       end
       
+      # Recall token data returned from RetrievePlayerTokens RPC
+      class RecallToken
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional expiration time of the token
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Required. Whether the persona identified by the token is linked to multiple
+        # PGS Players
+        # Corresponds to the JSON property `multiPlayerPersona`
+        # @return [Boolean]
+        attr_accessor :multi_player_persona
+        alias_method :multi_player_persona?, :multi_player_persona
+      
+        # Required. Value of the Recall token as it is provided by the client via
+        # LinkPersona RPC
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @multi_player_persona = args[:multi_player_persona] if args.key?(:multi_player_persona)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
+      # Request to remove all Recall tokens associated with a persona for an app.
+      class ResetPersonaRequest
+        include Google::Apis::Core::Hashable
+      
+        # Value of the 'persona' field as it was provided by the client in LinkPersona
+        # RPC
+        # Corresponds to the JSON property `persona`
+        # @return [String]
+        attr_accessor :persona
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @persona = args[:persona] if args.key?(:persona)
+        end
+      end
+      
+      # Response for the ResetPersona RPC
+      class ResetPersonaResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. Whether any tokens were unlinked as a result of this request.
+        # Corresponds to the JSON property `unlinked`
+        # @return [Boolean]
+        attr_accessor :unlinked
+        alias_method :unlinked?, :unlinked
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @unlinked = args[:unlinked] if args.key?(:unlinked)
+        end
+      end
+      
+      # Response for the RetrievePlayerTokens RPC
+      class RetrievePlayerTokensResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. Recall tokens associated with the requested PGS Player principal
+        # Corresponds to the JSON property `tokens`
+        # @return [Array<Google::Apis::GamesV1::RecallToken>]
+        attr_accessor :tokens
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tokens = args[:tokens] if args.key?(:tokens)
+        end
+      end
+      
       # A third party checking a revision response.
       class CheckRevisionResponse
         include Google::Apis::Core::Hashable
@@ -2719,6 +2892,61 @@ module Google
           @spend_percentile = args[:spend_percentile] if args.key?(:spend_percentile)
           @spend_probability = args[:spend_probability] if args.key?(:spend_probability)
           @total_spend_next_28_days = args[:total_spend_next_28_days] if args.key?(:total_spend_next_28_days)
+        end
+      end
+      
+      # Request to remove a Recall token linking PGS principal and an in-game account
+      class UnlinkPersonaRequest
+        include Google::Apis::Core::Hashable
+      
+        # Value of the 'persona' field as it was provided by the client in LinkPersona
+        # RPC
+        # Corresponds to the JSON property `persona`
+        # @return [String]
+        attr_accessor :persona
+      
+        # Required. Opaque server-generated string that encodes all the necessary
+        # information to identify the PGS player / Google user and application.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
+        # Value of the Recall token as it was provided by the client in LinkPersona RPC
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @persona = args[:persona] if args.key?(:persona)
+          @session_id = args[:session_id] if args.key?(:session_id)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
+      # Response for the UnlinkPersona RPC
+      class UnlinkPersonaResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. Whether a Recall token specified by the request was deleted. Can be '
+        # false' when there were no Recall tokens satisfied the criteria from the
+        # request.
+        # Corresponds to the JSON property `unlinked`
+        # @return [Boolean]
+        attr_accessor :unlinked
+        alias_method :unlinked?, :unlinked
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @unlinked = args[:unlinked] if args.key?(:unlinked)
         end
       end
     end

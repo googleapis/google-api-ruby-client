@@ -30,6 +30,9 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
+      # View and manage your Google Play Developer account
+      AUTH_ANDROIDPUBLISHER = 'https://www.googleapis.com/auth/androidpublisher'
+
       # See, create, and delete its own configuration data in your Google Drive
       AUTH_DRIVE_APPDATA = 'https://www.googleapis.com/auth/drive.appdata'
 
