@@ -40,12 +40,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleMapsPlacesV1Int32Range
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleMapsPlacesV1Place
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,12 +95,6 @@ module Google
       end
       
       class GoogleMapsPlacesV1SearchTextRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleMapsPlacesV1SearchTextRequestLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -173,14 +161,6 @@ module Google
           property :center, as: 'center', class: Google::Apis::PlacesV1::GoogleTypeLatLng, decorator: Google::Apis::PlacesV1::GoogleTypeLatLng::Representation
       
           property :radius, as: 'radius'
-        end
-      end
-      
-      class GoogleMapsPlacesV1Int32Range
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :max, as: 'max'
-          property :min, as: 'min'
         end
       end
       
@@ -289,7 +269,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :date, as: 'date', class: Google::Apis::PlacesV1::GoogleTypeDate, decorator: Google::Apis::PlacesV1::GoogleTypeDate::Representation
       
-          property :date_deprecated, as: 'dateDeprecated'
           property :day, as: 'day'
           property :hour, as: 'hour'
           property :minute, as: 'minute'
@@ -333,8 +312,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :included_type, as: 'includedType'
           property :language_code, as: 'languageCode'
-          property :location, as: 'location', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestLocation, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestLocation::Representation
-      
           property :location_bias, as: 'locationBias', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestLocationBias, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestLocationBias::Representation
       
           property :location_restriction, as: 'locationRestriction', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestLocationRestriction, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestLocationRestriction::Representation
@@ -343,21 +320,10 @@ module Google
           property :min_rating, as: 'minRating'
           property :open_now, as: 'openNow'
           collection :price_levels, as: 'priceLevels'
-          property :price_range, as: 'priceRange', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1Int32Range, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1Int32Range::Representation
-      
           property :rank_preference, as: 'rankPreference'
           property :region_code, as: 'regionCode'
           property :strict_type_filtering, as: 'strictTypeFiltering'
           property :text_query, as: 'textQuery'
-        end
-      end
-      
-      class GoogleMapsPlacesV1SearchTextRequestLocation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :rectangle, as: 'rectangle', class: Google::Apis::PlacesV1::GoogleGeoTypeViewport, decorator: Google::Apis::PlacesV1::GoogleGeoTypeViewport::Representation
-      
-          property :strict_restriction, as: 'strictRestriction'
         end
       end
       

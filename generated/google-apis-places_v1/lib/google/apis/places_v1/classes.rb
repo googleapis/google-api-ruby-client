@@ -127,33 +127,6 @@ module Google
         end
       end
       
-      # int 32 range. Both min and max are optional. If only min is set, then the
-      # range only has a lower bound. If only max is set, then range only has an upper
-      # bound. At least one of min and max must be set. Values are inclusive.
-      class GoogleMapsPlacesV1Int32Range
-        include Google::Apis::Core::Hashable
-      
-        # Upper bound. If unset, behavior is documented on the range field.
-        # Corresponds to the JSON property `max`
-        # @return [Fixnum]
-        attr_accessor :max
-      
-        # Lower bound. If unset, behavior is documented on the range field.
-        # Corresponds to the JSON property `min`
-        # @return [Fixnum]
-        attr_accessor :min
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @max = args[:max] if args.key?(:max)
-          @min = args[:min] if args.key?(:min)
-        end
-      end
-      
       # All the information representing a Place.
       class GoogleMapsPlacesV1Place
         include Google::Apis::Core::Hashable
@@ -632,12 +605,6 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeDate]
         attr_accessor :date
       
-        # Output only. Date of the endpoint expressed in RFC3339 format in the local
-        # timezone for the place. For example 2010-12-31.
-        # Corresponds to the JSON property `dateDeprecated`
-        # @return [String]
-        attr_accessor :date_deprecated
-      
         # Output only. A day of the week, as an integer in the range 0-6. 0 is Sunday, 1
         # is Monday, etc.
         # Corresponds to the JSON property `day`
@@ -670,7 +637,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @date = args[:date] if args.key?(:date)
-          @date_deprecated = args[:date_deprecated] if args.key?(:date_deprecated)
           @day = args[:day] if args.key?(:day)
           @hour = args[:hour] if args.key?(:hour)
           @minute = args[:minute] if args.key?(:minute)
@@ -806,11 +772,6 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # [Deprecated!]The region to search.
-        # Corresponds to the JSON property `location`
-        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestLocation]
-        attr_accessor :location
-      
         # The region to search. This location serves as a bias which means results
         # around given location might be returned.
         # Corresponds to the JSON property `locationBias`
@@ -854,13 +815,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :price_levels
       
-        # int 32 range. Both min and max are optional. If only min is set, then the
-        # range only has a lower bound. If only max is set, then range only has an upper
-        # bound. At least one of min and max must be set. Values are inclusive.
-        # Corresponds to the JSON property `priceRange`
-        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1Int32Range]
-        attr_accessor :price_range
-      
         # How results will be ranked in the response.
         # Corresponds to the JSON property `rankPreference`
         # @return [String]
@@ -896,60 +850,16 @@ module Google
         def update!(**args)
           @included_type = args[:included_type] if args.key?(:included_type)
           @language_code = args[:language_code] if args.key?(:language_code)
-          @location = args[:location] if args.key?(:location)
           @location_bias = args[:location_bias] if args.key?(:location_bias)
           @location_restriction = args[:location_restriction] if args.key?(:location_restriction)
           @max_result_count = args[:max_result_count] if args.key?(:max_result_count)
           @min_rating = args[:min_rating] if args.key?(:min_rating)
           @open_now = args[:open_now] if args.key?(:open_now)
           @price_levels = args[:price_levels] if args.key?(:price_levels)
-          @price_range = args[:price_range] if args.key?(:price_range)
           @rank_preference = args[:rank_preference] if args.key?(:rank_preference)
           @region_code = args[:region_code] if args.key?(:region_code)
           @strict_type_filtering = args[:strict_type_filtering] if args.key?(:strict_type_filtering)
           @text_query = args[:text_query] if args.key?(:text_query)
-        end
-      end
-      
-      # [Deprecated!]The region to search.
-      class GoogleMapsPlacesV1SearchTextRequestLocation
-        include Google::Apis::Core::Hashable
-      
-        # A latitude-longitude viewport, represented as two diagonally opposite `low`
-        # and `high` points. A viewport is considered a closed region, i.e. it includes
-        # its boundary. The latitude bounds must range between -90 to 90 degrees
-        # inclusive, and the longitude bounds must range between -180 to 180 degrees
-        # inclusive. Various cases include: - If `low` = `high`, the viewport consists
-        # of that single point. - If `low.longitude` > `high.longitude`, the longitude
-        # range is inverted (the viewport crosses the 180 degree longitude line). - If `
-        # low.longitude` = -180 degrees and `high.longitude` = 180 degrees, the viewport
-        # includes all longitudes. - If `low.longitude` = 180 degrees and `high.
-        # longitude` = -180 degrees, the longitude range is empty. - If `low.latitude` >
-        # `high.latitude`, the latitude range is empty. Both `low` and `high` must be
-        # populated, and the represented box cannot be empty (as specified by the
-        # definitions above). An empty viewport will result in an error. For example,
-        # this viewport fully encloses New York City: ` "low": ` "latitude": 40.477398, "
-        # longitude": -74.259087 `, "high": ` "latitude": 40.91618, "longitude": -73.
-        # 70018 ` `
-        # Corresponds to the JSON property `rectangle`
-        # @return [Google::Apis::PlacesV1::GoogleGeoTypeViewport]
-        attr_accessor :rectangle
-      
-        # Make location field a strict restriction and filter out POIs outside of the
-        # given location. If location type field is unset this field will have no effect.
-        # Corresponds to the JSON property `strictRestriction`
-        # @return [Boolean]
-        attr_accessor :strict_restriction
-        alias_method :strict_restriction?, :strict_restriction
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @rectangle = args[:rectangle] if args.key?(:rectangle)
-          @strict_restriction = args[:strict_restriction] if args.key?(:strict_restriction)
         end
       end
       
