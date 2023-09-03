@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1ListTelemetryUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,7 +364,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1TelemetryEventNotificationFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TelemetryNotificationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TelemetryNotificationFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -413,6 +437,12 @@ module Google
       end
       
       class GoogleChromeManagementV1UsbPeripheralReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleProtobufEmpty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -879,6 +909,15 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :telemetry_notification_configs, as: 'telemetryNotificationConfigs', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNotificationConfig, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNotificationConfig::Representation
+      
+        end
+      end
+      
       class GoogleChromeManagementV1ListTelemetryUsersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1090,12 +1129,42 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1TelemetryEventNotificationFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_types, as: 'eventTypes'
+        end
+      end
+      
       class GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :https_latency_routine_data, as: 'httpsLatencyRoutineData', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1HttpsLatencyRoutineData, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1HttpsLatencyRoutineData::Representation
       
           property :https_latency_state, as: 'httpsLatencyState'
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryNotificationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
+          property :filter, as: 'filter', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNotificationFilter, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNotificationFilter::Representation
+      
+          property :google_cloud_pubsub_topic, as: 'googleCloudPubsubTopic'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryNotificationFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, as: 'deviceId'
+          property :device_org_unit_id, as: 'deviceOrgUnitId'
+          property :telemetry_event_notification_filter, as: 'telemetryEventNotificationFilter', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryEventNotificationFilter, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryEventNotificationFilter::Representation
+      
+          property :user_email, as: 'userEmail'
+          property :user_org_unit_id, as: 'userOrgUnitId'
         end
       end
       
@@ -1187,6 +1256,12 @@ module Google
           property :subclass_id, as: 'subclassId'
           property :vendor, as: 'vendor'
           property :vid, as: 'vid'
+        end
+      end
+      
+      class GoogleProtobufEmpty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

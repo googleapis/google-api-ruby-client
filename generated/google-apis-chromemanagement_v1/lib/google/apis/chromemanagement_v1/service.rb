@@ -647,6 +647,112 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a telemetry notification config.
+        # @param [String] parent
+        #   Required. The parent resource where this notification config will be created.
+        #   Format: `customers/`customer``
+        # @param [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNotificationConfig] google_chrome_management_v1_telemetry_notification_config_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNotificationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNotificationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_customer_telemetry_notification_config(parent, google_chrome_management_v1_telemetry_notification_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/telemetry/notificationConfigs', options)
+          command.request_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNotificationConfig::Representation
+          command.request_object = google_chrome_management_v1_telemetry_notification_config_object
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNotificationConfig::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNotificationConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a telemetry notification config.
+        # @param [String] name
+        #   Required. The name of the notification config to delete. Format: `customers/`
+        #   customer`/telemetry/notificationConfigs/`notification_config``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_customer_telemetry_notification_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all telemetry notification configs.
+        # @param [String] parent
+        #   Required. The parent which owns the notification configs.
+        # @param [Fixnum] page_size
+        #   The maximum number of notification configs to return. The service may return
+        #   fewer than this value. If unspecified, at most 100 notification configs will
+        #   be returned. The maximum value is 100; values above 100 will be coerced to 100.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListTelemetryNotificationConfigs` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListTelemetryNotificationConfigs` must match the call
+        #   that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_telemetry_notification_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/telemetry/notificationConfigs', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get telemetry user.
         # @param [String] name
         #   Required. Name of the `TelemetryUser` to return.
