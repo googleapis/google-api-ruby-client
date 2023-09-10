@@ -48,8 +48,8 @@ module Google
         attr_accessor :max_instances
       
         # Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If
-        # both maxThroughput and maxInstances are set, the value for maxInstances is
-        # utilzed.
+        # both max-throughput and max-instances are provided, max-instances takes
+        # precedence over max-throughput.
         # Corresponds to the JSON property `maxThroughput`
         # @return [Fixnum]
         attr_accessor :max_throughput
@@ -60,8 +60,8 @@ module Google
         attr_accessor :min_instances
       
         # Minimum throughput of the connector in Mbps. Default and min is 200. If both
-        # max-throughput and max-instances are provided, max-instances takes precedence
-        # over max-throughput.
+        # min-throughput and min-instances are provided, min-instances takes precedence
+        # over min-throughput.
         # Corresponds to the JSON property `minThroughput`
         # @return [Fixnum]
         attr_accessor :min_throughput
