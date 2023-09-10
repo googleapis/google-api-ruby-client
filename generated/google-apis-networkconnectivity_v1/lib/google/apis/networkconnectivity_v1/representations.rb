@@ -22,6 +22,12 @@ module Google
   module Apis
     module NetworkconnectivityV1
       
+      class AcceptHubSpokeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceptSpokeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RejectHubSpokeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RejectSpokeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -404,6 +416,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceptHubSpokeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+          property :spoke_uri, as: 'spokeUri'
+        end
       end
       
       class AcceptSpokeRequest
@@ -866,6 +886,15 @@ module Google
           property :gce_operation, as: 'gceOperation'
           property :psc_connection_id, as: 'pscConnectionId'
           property :state, as: 'state'
+        end
+      end
+      
+      class RejectHubSpokeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :request_id, as: 'requestId'
+          property :spoke_uri, as: 'spokeUri'
         end
       end
       
