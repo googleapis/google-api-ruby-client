@@ -2931,10 +2931,10 @@ module Google
         # @return [String]
         attr_accessor :pause_ads_until
       
-        # Interval frequency that api uses to insert cuepoints automatically.
-        # Corresponds to the JSON property `repeatInterval`
-        # @return [String]
-        attr_accessor :repeat_interval
+        # Interval frequency in seconds that api uses to insert cuepoints automatically.
+        # Corresponds to the JSON property `repeatIntervalSecs`
+        # @return [Fixnum]
+        attr_accessor :repeat_interval_secs
       
         # The strategy to use when scheduling cuepoints.
         # Corresponds to the JSON property `scheduleStrategy`
@@ -2949,7 +2949,7 @@ module Google
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
           @pause_ads_until = args[:pause_ads_until] if args.key?(:pause_ads_until)
-          @repeat_interval = args[:repeat_interval] if args.key?(:repeat_interval)
+          @repeat_interval_secs = args[:repeat_interval_secs] if args.key?(:repeat_interval_secs)
           @schedule_strategy = args[:schedule_strategy] if args.key?(:schedule_strategy)
         end
       end
