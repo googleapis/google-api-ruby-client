@@ -1479,6 +1479,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Initiates a long-running bulk restore operation on the specified bucket.
+        # @param [String] bucket
+        #   Name of the bucket in which the object resides.
+        # @param [Google::Apis::StorageV1::BulkRestoreObjectsRequest] bulk_restore_objects_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_restore_objects(bucket, bulk_restore_objects_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/o/bulkRestore', options)
+          command.request_representation = Google::Apis::StorageV1::BulkRestoreObjectsRequest::Representation
+          command.request_object = bulk_restore_objects_request_object
+          command.response_representation = Google::Apis::StorageV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::StorageV1::GoogleLongrunningOperation
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Concatenates a list of existing objects into a new object in the same bucket.
         # @param [String] destination_bucket
         #   Name of the bucket containing the source objects. The destination object is
@@ -1736,6 +1772,9 @@ module Google
         #   does not match the given value.
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
+        # @param [Boolean] soft_deleted
+        #   If true, only soft-deleted object versions will be listed. The default is
+        #   false. For more information, see Soft Delete.
         # @param [String] user_project
         #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
@@ -1759,7 +1798,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_object(bucket, object, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def get_object(bucket, object, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, projection: nil, soft_deleted: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
         
           if download_dest.nil?
             command = make_simple_command(:get, 'b/{bucket}/o/{object}', options)
@@ -1777,6 +1816,7 @@ module Google
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
           command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
           command.query['projection'] = projection unless projection.nil?
+          command.query['softDeleted'] = soft_deleted unless soft_deleted.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1953,6 +1993,9 @@ module Google
         #   Filter results to objects whose names begin with this prefix.
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
+        # @param [Boolean] soft_deleted
+        #   If true, only soft-deleted object versions will be listed. The default is
+        #   false. For more information, see Soft Delete.
         # @param [String] start_offset
         #   Filter results to objects whose names are lexicographically equal to or after
         #   startOffset. If endOffset is also set, the objects listed will have names
@@ -1981,7 +2024,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_objects(bucket, delimiter: nil, end_offset: nil, include_trailing_delimiter: nil, match_glob: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, start_offset: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_objects(bucket, delimiter: nil, end_offset: nil, include_trailing_delimiter: nil, match_glob: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, soft_deleted: nil, start_offset: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'b/{bucket}/o', options)
           command.response_representation = Google::Apis::StorageV1::Objects::Representation
           command.response_class = Google::Apis::StorageV1::Objects
@@ -1994,6 +2037,7 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['prefix'] = prefix unless prefix.nil?
           command.query['projection'] = projection unless projection.nil?
+          command.query['softDeleted'] = soft_deleted unless soft_deleted.nil?
           command.query['startOffset'] = start_offset unless start_offset.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['versions'] = versions unless versions.nil?
@@ -2068,6 +2112,72 @@ module Google
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
           command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
           command.query['predefinedAcl'] = predefined_acl unless predefined_acl.nil?
+          command.query['projection'] = projection unless projection.nil?
+          command.query['userProject'] = user_project unless user_project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Restores a soft-deleted object.
+        # @param [String] bucket
+        #   Name of the bucket in which the object resides.
+        # @param [String] object
+        #   Name of the object. For information about how to URL encode object names to be
+        #   path safe, see Encoding URI Path Parts.
+        # @param [Google::Apis::StorageV1::Object] object_object
+        # @param [Fixnum] if_generation_match
+        #   Makes the operation conditional on whether the object's one live generation
+        #   matches the given value. Setting to 0 makes the operation succeed only if
+        #   there are no live versions of the object.
+        # @param [Fixnum] if_generation_not_match
+        #   Makes the operation conditional on whether none of the object's live
+        #   generations match the given value. If no live object exists, the precondition
+        #   fails. Setting to 0 makes the operation succeed only if there is a live
+        #   version of the object.
+        # @param [Fixnum] if_metageneration_match
+        #   Makes the operation conditional on whether the object's one live
+        #   metageneration matches the given value.
+        # @param [Fixnum] if_metageneration_not_match
+        #   Makes the operation conditional on whether none of the object's live
+        #   metagenerations match the given value.
+        # @param [String] projection
+        #   Set of properties to return. Defaults to full.
+        # @param [String] user_project
+        #   The project to be billed for this request. Required for Requester Pays buckets.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::Object] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::Object]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restore_object(bucket, object, object_object = nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/o/{object}/restore', options)
+          command.request_representation = Google::Apis::StorageV1::Object::Representation
+          command.request_object = object_object
+          command.response_representation = Google::Apis::StorageV1::Object::Representation
+          command.response_class = Google::Apis::StorageV1::Object
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['object'] = object unless object.nil?
+          command.query['generation'] = generation unless generation.nil?
+          command.query['ifGenerationMatch'] = if_generation_match unless if_generation_match.nil?
+          command.query['ifGenerationNotMatch'] = if_generation_not_match unless if_generation_not_match.nil?
+          command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
+          command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
           command.query['projection'] = projection unless projection.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2441,6 +2551,123 @@ module Google
           command.query['startOffset'] = start_offset unless start_offset.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['versions'] = versions unless versions.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed.
+        # @param [String] bucket
+        #   The parent bucket of the operation resource.
+        # @param [String] operation_id
+        #   The ID of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_bucket_operation(bucket, operation_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/operations/{operationId}/cancel', options)
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['operationId'] = operation_id unless operation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation.
+        # @param [String] bucket
+        #   The parent bucket of the operation resource.
+        # @param [String] operation_id
+        #   The ID of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_bucket_operation(bucket, operation_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'b/{bucket}/operations/{operationId}', options)
+          command.response_representation = Google::Apis::StorageV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::StorageV1::GoogleLongrunningOperation
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['operationId'] = operation_id unless operation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists operations that match the specified filter in the request.
+        # @param [String] bucket
+        #   Name of the bucket in which to look for operations.
+        # @param [String] filter
+        #   A filter to narrow down results to a preferred subset. The filtering language
+        #   is documented in more detail in [AIP-160](https://google.aip.dev/160).
+        # @param [Fixnum] page_size
+        #   Maximum number of items to return in a single page of responses. Fewer total
+        #   results may be returned than requested. The service uses this parameter or 100
+        #   items, whichever is smaller.
+        # @param [String] page_token
+        #   A previously-returned page token representing part of the larger set of
+        #   results to view.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::GoogleLongrunningListOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::GoogleLongrunningListOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_bucket_operations(bucket, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'b/{bucket}/operations', options)
+          command.response_representation = Google::Apis::StorageV1::GoogleLongrunningListOperationsResponse::Representation
+          command.response_class = Google::Apis::StorageV1::GoogleLongrunningListOperationsResponse
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

@@ -979,6 +979,59 @@ module Google
         end
       end
       
+      # A bulk restore objects request.
+      class BulkRestoreObjectsRequest
+        include Google::Apis::Core::Hashable
+      
+        # If false (default), the restore will not overwrite live objects with the same
+        # name at the destination. This means some deleted objects may be skipped. If
+        # true, live objects will be overwritten resulting in a noncurrent object (if
+        # versioning is enabled). If versioning is not enabled, overwriting the object
+        # will result in a soft-deleted object. In either case, if a noncurrent object
+        # already exists with the same name, a live version can be written without issue.
+        # Corresponds to the JSON property `allowOverwrite`
+        # @return [Boolean]
+        attr_accessor :allow_overwrite
+        alias_method :allow_overwrite?, :allow_overwrite
+      
+        # If true, copies the source object's ACL; otherwise, uses the bucket's default
+        # object ACL. The default is false.
+        # Corresponds to the JSON property `copySourceAcl`
+        # @return [Boolean]
+        attr_accessor :copy_source_acl
+        alias_method :copy_source_acl?, :copy_source_acl
+      
+        # Restores only the objects matching any of the specified glob(s). If this
+        # parameter is not specified, all objects will be restored within the specified
+        # time range.
+        # Corresponds to the JSON property `matchGlobs`
+        # @return [Array<String>]
+        attr_accessor :match_globs
+      
+        # Restores only the objects that were soft-deleted after this time.
+        # Corresponds to the JSON property `softDeletedAfterTime`
+        # @return [DateTime]
+        attr_accessor :soft_deleted_after_time
+      
+        # Restores only the objects that were soft-deleted before this time.
+        # Corresponds to the JSON property `softDeletedBeforeTime`
+        # @return [DateTime]
+        attr_accessor :soft_deleted_before_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_overwrite = args[:allow_overwrite] if args.key?(:allow_overwrite)
+          @copy_source_acl = args[:copy_source_acl] if args.key?(:copy_source_acl)
+          @match_globs = args[:match_globs] if args.key?(:match_globs)
+          @soft_deleted_after_time = args[:soft_deleted_after_time] if args.key?(:soft_deleted_after_time)
+          @soft_deleted_before_time = args[:soft_deleted_before_time] if args.key?(:soft_deleted_before_time)
+        end
+      end
+      
       # An notification channel used to watch for resource changes.
       class Channel
         include Google::Apis::Core::Hashable
@@ -1181,6 +1234,131 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # The response message for storage.buckets.operations.list.
+      class GoogleLongrunningListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The continuation token, used to page through large result sets. Provide this
+        # value in a subsequent request to return the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::StorageV1::GoogleLongrunningOperation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class GoogleLongrunningOperation
+        include Google::Apis::Core::Hashable
+      
+        # If the value is "false", it means the operation is still in progress. If "true"
+        # , the operation is completed, and either "error" or "response" is available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The "Status" type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each "Status" message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::StorageV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the "name" should
+        # be a resource name ending with "operations/`operationId`".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as "Delete", the response is google.
+        # protobuf.Empty. If the original method is standard Get/Create/Update, the
+        # response should be the resource. For other methods, the response should have
+        # the type "XxxResponse", where "Xxx" is the original method name. For example,
+        # if the original method name is "TakeSnapshot()", the inferred response type is
+        # "TakeSnapshotResponse".
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # The "Status" type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each "Status" message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class GoogleRpcStatus
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
