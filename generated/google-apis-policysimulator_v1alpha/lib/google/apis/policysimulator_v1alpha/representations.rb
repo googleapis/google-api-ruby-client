@@ -82,6 +82,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPolicysimulatorV1alphaAccessStateDiff
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaAccessTuple
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaBindingExplanation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaBindingExplanationAnnotatedMembership
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaExplainedAccess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaExplainedPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPolicysimulatorV1alphaGenerateOrgPolicyViolationsPreviewOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +131,18 @@ module Google
       end
       
       class GoogleCloudPolicysimulatorV1alphaListOrgPolicyViolationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaListReplayResultsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaListReplaysResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -131,6 +179,36 @@ module Google
       end
       
       class GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreviewResourceCounts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaReplay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaReplayConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaReplayDiff
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaReplayResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaReplayResultsSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -343,6 +421,73 @@ module Google
         end
       end
       
+      class GoogleCloudPolicysimulatorV1alphaAccessStateDiff
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_change, as: 'accessChange'
+          property :baseline, as: 'baseline', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaExplainedAccess, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaExplainedAccess::Representation
+      
+          property :simulated, as: 'simulated', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaExplainedAccess, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaExplainedAccess::Representation
+      
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaAccessTuple
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_resource_name, as: 'fullResourceName'
+          property :permission, as: 'permission'
+          property :principal, as: 'principal'
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaBindingExplanation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access, as: 'access'
+          property :condition, as: 'condition', class: Google::Apis::PolicysimulatorV1alpha::GoogleTypeExpr, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleTypeExpr::Representation
+      
+          hash :memberships, as: 'memberships', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaBindingExplanationAnnotatedMembership, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaBindingExplanationAnnotatedMembership::Representation
+      
+          property :relevance, as: 'relevance'
+          property :role, as: 'role'
+          property :role_permission, as: 'rolePermission'
+          property :role_permission_relevance, as: 'rolePermissionRelevance'
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaBindingExplanationAnnotatedMembership
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :membership, as: 'membership'
+          property :relevance, as: 'relevance'
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaExplainedAccess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_state, as: 'accessState'
+          collection :errors, as: 'errors', class: Google::Apis::PolicysimulatorV1alpha::GoogleRpcStatus, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleRpcStatus::Representation
+      
+          collection :policies, as: 'policies', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaExplainedPolicy, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaExplainedPolicy::Representation
+      
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaExplainedPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access, as: 'access'
+          collection :binding_explanations, as: 'bindingExplanations', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaBindingExplanation, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaBindingExplanation::Representation
+      
+          property :full_resource_name, as: 'fullResourceName'
+          property :policy, as: 'policy', class: Google::Apis::PolicysimulatorV1alpha::GoogleIamV1Policy, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleIamV1Policy::Representation
+      
+          property :relevance, as: 'relevance'
+        end
+      end
+      
       class GoogleCloudPolicysimulatorV1alphaGenerateOrgPolicyViolationsPreviewOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -369,6 +514,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :org_policy_violations, as: 'orgPolicyViolations', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaOrgPolicyViolation, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaOrgPolicyViolation::Representation
+      
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaListReplayResultsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :replay_results, as: 'replayResults', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplayResult, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplayResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaListReplaysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :replays, as: 'replays', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay::Representation
       
         end
       end
@@ -435,6 +598,65 @@ module Google
           property :noncompliant, as: 'noncompliant'
           property :scanned, as: 'scanned'
           property :unenforced, as: 'unenforced'
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaReplay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplayConfig, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplayConfig::Representation
+      
+          property :name, as: 'name'
+          property :results_summary, as: 'resultsSummary', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplayResultsSummary, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplayResultsSummary::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaReplayConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_source, as: 'logSource'
+          hash :policy_overlay, as: 'policyOverlay', class: Google::Apis::PolicysimulatorV1alpha::GoogleIamV1Policy, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleIamV1Policy::Representation
+      
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaReplayDiff
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_diff, as: 'accessDiff', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaAccessStateDiff, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaAccessStateDiff::Representation
+      
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaReplayResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_tuple, as: 'accessTuple', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaAccessTuple, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaAccessTuple::Representation
+      
+          property :diff, as: 'diff', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplayDiff, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplayDiff::Representation
+      
+          property :error, as: 'error', class: Google::Apis::PolicysimulatorV1alpha::GoogleRpcStatus, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleRpcStatus::Representation
+      
+          property :last_seen_date, as: 'lastSeenDate', class: Google::Apis::PolicysimulatorV1alpha::GoogleTypeDate, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleTypeDate::Representation
+      
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1alphaReplayResultsSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :difference_count, as: 'differenceCount'
+          property :error_count, as: 'errorCount'
+          property :log_count, as: 'logCount'
+          property :newest_date, as: 'newestDate', class: Google::Apis::PolicysimulatorV1alpha::GoogleTypeDate, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleTypeDate::Representation
+      
+          property :oldest_date, as: 'oldestDate', class: Google::Apis::PolicysimulatorV1alpha::GoogleTypeDate, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleTypeDate::Representation
+      
+          property :unchanged_count, as: 'unchangedCount'
         end
       end
       

@@ -86,6 +86,122 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates and starts a Replay using the given ReplayConfig.
+        # @param [String] parent
+        #   Required. The parent resource where this Replay will be created. This resource
+        #   must be a project, folder, or organization with a location. Example: `projects/
+        #   my-example-project/locations/global`
+        # @param [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay] google_cloud_policysimulator_v1alpha_replay_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_folder_location_replay(parent, google_cloud_policysimulator_v1alpha_replay_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/replays', options)
+          command.request_representation = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay::Representation
+          command.request_object = google_cloud_policysimulator_v1alpha_replay_object
+          command.response_representation = Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified Replay. Each `Replay` is available for at least 7 days.
+        # @param [String] name
+        #   Required. The name of the Replay to retrieve, in the following format: ``
+        #   projects|folders|organizations`/`resource-id`/locations/global/replays/`replay-
+        #   id``, where ``resource-id`` is the ID of the project, folder, or organization
+        #   that owns the `Replay`. Example: `projects/my-example-project/locations/global/
+        #   replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_location_replay(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists each Replay in a project, folder, or organization. Each `Replay` is
+        # available for at least 7 days.
+        # @param [String] parent
+        #   Required. The parent resource, in the following format: ``projects|folders|
+        #   organizations`/`resource-id`/locations/global`, where ``resource-id`` is the
+        #   ID of the project, folder, or organization that owns the Replay. Example: `
+        #   projects/my-example-project/locations/global` Only `Replay` objects that are
+        #   direct children of the provided parent are listed. In other words, `Replay`
+        #   objects that are children of a project will not be included when the parent is
+        #   a folder of that project.
+        # @param [Fixnum] page_size
+        #   The maximum number of Replay objects to return. Defaults to 50. The maximum
+        #   value is 1000; values above 1000 are rounded down to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous Simulator.ListReplays call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to Simulator.ListReplays must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplaysResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplaysResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_location_replays(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/replays', options)
+          command.response_representation = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplaysResponse::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplaysResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -150,6 +266,49 @@ module Google
           command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningListOperationsResponse
           command.params['name'] = name unless name.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the results of running a Replay.
+        # @param [String] parent
+        #   Required. The Replay whose results are listed, in the following format: ``
+        #   projects|folders|organizations`/`resource-id`/locations/global/replays/`replay-
+        #   id`` Example: `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-
+        #   8e03-479ce1833c36`
+        # @param [Fixnum] page_size
+        #   The maximum number of ReplayResult objects to return. Defaults to 5000. The
+        #   maximum value is 5000; values above 5000 are rounded down to 5000.
+        # @param [String] page_token
+        #   A page token, received from a previous Simulator.ListReplayResults call.
+        #   Provide this token to retrieve the next page of results. When paginating, all
+        #   other parameters provided to [Simulator.ListReplayResults[] must match the
+        #   call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplayResultsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplayResultsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_location_replay_results(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/results', options)
+          command.response_representation = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplayResultsResponse::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplayResultsResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -413,6 +572,122 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates and starts a Replay using the given ReplayConfig.
+        # @param [String] parent
+        #   Required. The parent resource where this Replay will be created. This resource
+        #   must be a project, folder, or organization with a location. Example: `projects/
+        #   my-example-project/locations/global`
+        # @param [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay] google_cloud_policysimulator_v1alpha_replay_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_replay(parent, google_cloud_policysimulator_v1alpha_replay_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/replays', options)
+          command.request_representation = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay::Representation
+          command.request_object = google_cloud_policysimulator_v1alpha_replay_object
+          command.response_representation = Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified Replay. Each `Replay` is available for at least 7 days.
+        # @param [String] name
+        #   Required. The name of the Replay to retrieve, in the following format: ``
+        #   projects|folders|organizations`/`resource-id`/locations/global/replays/`replay-
+        #   id``, where ``resource-id`` is the ID of the project, folder, or organization
+        #   that owns the `Replay`. Example: `projects/my-example-project/locations/global/
+        #   replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_replay(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists each Replay in a project, folder, or organization. Each `Replay` is
+        # available for at least 7 days.
+        # @param [String] parent
+        #   Required. The parent resource, in the following format: ``projects|folders|
+        #   organizations`/`resource-id`/locations/global`, where ``resource-id`` is the
+        #   ID of the project, folder, or organization that owns the Replay. Example: `
+        #   projects/my-example-project/locations/global` Only `Replay` objects that are
+        #   direct children of the provided parent are listed. In other words, `Replay`
+        #   objects that are children of a project will not be included when the parent is
+        #   a folder of that project.
+        # @param [Fixnum] page_size
+        #   The maximum number of Replay objects to return. Defaults to 50. The maximum
+        #   value is 1000; values above 1000 are rounded down to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous Simulator.ListReplays call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to Simulator.ListReplays must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplaysResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplaysResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_replays(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/replays', options)
+          command.response_representation = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplaysResponse::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplaysResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -484,6 +759,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the results of running a Replay.
+        # @param [String] parent
+        #   Required. The Replay whose results are listed, in the following format: ``
+        #   projects|folders|organizations`/`resource-id`/locations/global/replays/`replay-
+        #   id`` Example: `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-
+        #   8e03-479ce1833c36`
+        # @param [Fixnum] page_size
+        #   The maximum number of ReplayResult objects to return. Defaults to 5000. The
+        #   maximum value is 5000; values above 5000 are rounded down to 5000.
+        # @param [String] page_token
+        #   A page token, received from a previous Simulator.ListReplayResults call.
+        #   Provide this token to retrieve the next page of results. When paginating, all
+        #   other parameters provided to [Simulator.ListReplayResults[] must match the
+        #   call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplayResultsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplayResultsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_replay_results(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/results', options)
+          command.response_representation = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplayResultsResponse::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplayResultsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -510,6 +828,122 @@ module Google
           command.response_representation = Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates and starts a Replay using the given ReplayConfig.
+        # @param [String] parent
+        #   Required. The parent resource where this Replay will be created. This resource
+        #   must be a project, folder, or organization with a location. Example: `projects/
+        #   my-example-project/locations/global`
+        # @param [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay] google_cloud_policysimulator_v1alpha_replay_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_replay(parent, google_cloud_policysimulator_v1alpha_replay_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/replays', options)
+          command.request_representation = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay::Representation
+          command.request_object = google_cloud_policysimulator_v1alpha_replay_object
+          command.response_representation = Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified Replay. Each `Replay` is available for at least 7 days.
+        # @param [String] name
+        #   Required. The name of the Replay to retrieve, in the following format: ``
+        #   projects|folders|organizations`/`resource-id`/locations/global/replays/`replay-
+        #   id``, where ``resource-id`` is the ID of the project, folder, or organization
+        #   that owns the `Replay`. Example: `projects/my-example-project/locations/global/
+        #   replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_replay(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaReplay
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists each Replay in a project, folder, or organization. Each `Replay` is
+        # available for at least 7 days.
+        # @param [String] parent
+        #   Required. The parent resource, in the following format: ``projects|folders|
+        #   organizations`/`resource-id`/locations/global`, where ``resource-id`` is the
+        #   ID of the project, folder, or organization that owns the Replay. Example: `
+        #   projects/my-example-project/locations/global` Only `Replay` objects that are
+        #   direct children of the provided parent are listed. In other words, `Replay`
+        #   objects that are children of a project will not be included when the parent is
+        #   a folder of that project.
+        # @param [Fixnum] page_size
+        #   The maximum number of Replay objects to return. Defaults to 50. The maximum
+        #   value is 1000; values above 1000 are rounded down to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous Simulator.ListReplays call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to Simulator.ListReplays must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplaysResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplaysResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_replays(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/replays', options)
+          command.response_representation = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplaysResponse::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplaysResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -579,6 +1013,49 @@ module Google
           command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningListOperationsResponse
           command.params['name'] = name unless name.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the results of running a Replay.
+        # @param [String] parent
+        #   Required. The Replay whose results are listed, in the following format: ``
+        #   projects|folders|organizations`/`resource-id`/locations/global/replays/`replay-
+        #   id`` Example: `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-
+        #   8e03-479ce1833c36`
+        # @param [Fixnum] page_size
+        #   The maximum number of ReplayResult objects to return. Defaults to 5000. The
+        #   maximum value is 5000; values above 5000 are rounded down to 5000.
+        # @param [String] page_token
+        #   A page token, received from a previous Simulator.ListReplayResults call.
+        #   Provide this token to retrieve the next page of results. When paginating, all
+        #   other parameters provided to [Simulator.ListReplayResults[] must match the
+        #   call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplayResultsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplayResultsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_replay_results(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/results', options)
+          command.response_representation = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplayResultsResponse::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaListReplayResultsResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
