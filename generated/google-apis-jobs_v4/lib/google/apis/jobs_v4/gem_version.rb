@@ -16,13 +16,13 @@ module Google
   module Apis
     module JobsV4
       # Version of the google-apis-jobs_v4 gem
-      GEM_VERSION = "0.27.0"
+      GEM_VERSION = "0.28.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.12.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20221219"
+      REVISION = "20230822"
     end
   end
 end
