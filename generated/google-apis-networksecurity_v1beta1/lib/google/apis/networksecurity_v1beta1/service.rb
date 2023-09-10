@@ -534,12 +534,12 @@ module Google
         # @param [String] parent
         #   Required. Parent value for ListEndpointsRequest
         # @param [String] filter
-        #   Filtering results
+        #   Optional. Filtering results
         # @param [String] order_by
         #   Hint for how to order the results
         # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer items than requested. If
-        #   unspecified, server will pick an appropriate default.
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
         # @param [String] page_token
         #   A token identifying a page of results the server should return.
         # @param [String] fields
@@ -2429,12 +2429,12 @@ module Google
         # @param [String] parent
         #   Required. Parent value for ListAssociationsRequest
         # @param [String] filter
-        #   Filtering results
+        #   Optional. Filtering results
         # @param [String] order_by
         #   Hint for how to order the results
         # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer items than requested. If
-        #   unspecified, server will pick an appropriate default.
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
         # @param [String] page_token
         #   A token identifying a page of results the server should return.
         # @param [String] fields
