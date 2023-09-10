@@ -3500,6 +3500,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :custom_metadata
       
+        # Optional. The default values will pre-populate the parameter with the given
+        # value from the proto. If default_value is left empty, the parameter will be
+        # populated with a default of the relevant type, e.g. false for a boolean.
+        # Corresponds to the JSON property `defaultValue`
+        # @return [String]
+        attr_accessor :default_value
+      
         # Optional. The options shown when ENUM ParameterType is specified.
         # Corresponds to the JSON property `enumOptions`
         # @return [Array<Google::Apis::DataflowV1b3::ParameterMetadataEnumOption>]
@@ -3565,6 +3572,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
+          @default_value = args[:default_value] if args.key?(:default_value)
           @enum_options = args[:enum_options] if args.key?(:enum_options)
           @group_name = args[:group_name] if args.key?(:group_name)
           @help_text = args[:help_text] if args.key?(:help_text)

@@ -1994,6 +1994,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :custom_metadata, as: 'customMetadata'
+          property :default_value, as: 'defaultValue'
           collection :enum_options, as: 'enumOptions', class: Google::Apis::DataflowV1b3::ParameterMetadataEnumOption, decorator: Google::Apis::DataflowV1b3::ParameterMetadataEnumOption::Representation
       
           property :group_name, as: 'groupName'
