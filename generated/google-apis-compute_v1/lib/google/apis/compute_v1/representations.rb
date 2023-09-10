@@ -2110,6 +2110,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesSetSecurityPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesSetServiceAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4564,6 +4570,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyRuleNetworkMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyRulePreconfiguredWafConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4601,6 +4619,12 @@ module Google
       end
       
       class SecurityPolicyRuleRedirectOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyUserDefinedField
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6135,6 +6159,7 @@ module Google
           property :nat_ip, as: 'natIP'
           property :network_tier, as: 'networkTier'
           property :public_ptr_domain_name, as: 'publicPtrDomainName'
+          property :security_policy, as: 'securityPolicy'
           property :set_public_ptr, as: 'setPublicPtr'
           property :type, as: 'type'
         end
@@ -10001,6 +10026,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_name, as: 'currentName'
           property :name, as: 'name'
+        end
+      end
+      
+      class InstancesSetSecurityPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_interfaces, as: 'networkInterfaces'
+          property :security_policy, as: 'securityPolicy'
         end
       end
       
@@ -14385,6 +14418,8 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :type, as: 'type'
+          collection :user_defined_fields, as: 'userDefinedFields', class: Google::Apis::ComputeV1::SecurityPolicyUserDefinedField, decorator: Google::Apis::ComputeV1::SecurityPolicyUserDefinedField::Representation
+      
         end
       end
       
@@ -14496,6 +14531,8 @@ module Google
           property :kind, as: 'kind'
           property :match, as: 'match', class: Google::Apis::ComputeV1::SecurityPolicyRuleMatcher, decorator: Google::Apis::ComputeV1::SecurityPolicyRuleMatcher::Representation
       
+          property :network_match, as: 'networkMatch', class: Google::Apis::ComputeV1::SecurityPolicyRuleNetworkMatcher, decorator: Google::Apis::ComputeV1::SecurityPolicyRuleNetworkMatcher::Representation
+      
           property :preconfigured_waf_config, as: 'preconfiguredWafConfig', class: Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfig::Representation
       
           property :preview, as: 'preview'
@@ -14538,6 +14575,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :src_ip_ranges, as: 'srcIpRanges'
+        end
+      end
+      
+      class SecurityPolicyRuleNetworkMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dest_ip_ranges, as: 'destIpRanges'
+          collection :dest_ports, as: 'destPorts'
+          collection :ip_protocols, as: 'ipProtocols'
+          collection :src_asns, as: 'srcAsns'
+          collection :src_ip_ranges, as: 'srcIpRanges'
+          collection :src_ports, as: 'srcPorts'
+          collection :src_region_codes, as: 'srcRegionCodes'
+          collection :user_defined_fields, as: 'userDefinedFields', class: Google::Apis::ComputeV1::SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch, decorator: Google::Apis::ComputeV1::SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :values, as: 'values'
         end
       end
       
@@ -14613,6 +14673,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :target, as: 'target'
           property :type, as: 'type'
+        end
+      end
+      
+      class SecurityPolicyUserDefinedField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base, as: 'base'
+          property :mask, as: 'mask'
+          property :name, as: 'name'
+          property :offset, as: 'offset'
+          property :size, as: 'size'
         end
       end
       
@@ -15764,6 +15835,7 @@ module Google
           property :name, as: 'name'
           property :nat_policy, as: 'natPolicy'
           property :network, as: 'network'
+          property :security_policy, as: 'securityPolicy'
           property :self_link, as: 'selfLink'
           property :zone, as: 'zone'
         end
@@ -15875,6 +15947,7 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :region, as: 'region'
+          property :security_policy, as: 'securityPolicy'
           property :self_link, as: 'selfLink'
           property :session_affinity, as: 'sessionAffinity'
         end
