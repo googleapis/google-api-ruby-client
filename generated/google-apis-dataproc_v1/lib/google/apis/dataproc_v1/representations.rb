@@ -292,7 +292,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InjectSessionCredentialsRequest
+      class InstanceFlexibilityPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -311,6 +311,18 @@ module Google
       end
       
       class InstanceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceSelection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceSelectionResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -550,6 +562,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PyPiRepositoryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PySparkBatch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -575,6 +593,12 @@ module Google
       end
       
       class RepairClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepositoryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1094,6 +1118,7 @@ module Google
       
           property :job, as: 'job'
           collection :jobs, as: 'jobs'
+          property :tarball_gcs_dir, as: 'tarballGcsDir'
           property :yarn_application_id, as: 'yarnApplicationId'
           collection :yarn_application_ids, as: 'yarnApplicationIds'
         end
@@ -1338,11 +1363,13 @@ module Google
         end
       end
       
-      class InjectSessionCredentialsRequest
+      class InstanceFlexibilityPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :credentials_ciphertext, as: 'credentialsCiphertext'
-          property :request_id, as: 'requestId'
+          collection :instance_selection_list, as: 'instanceSelectionList', class: Google::Apis::DataprocV1::InstanceSelection, decorator: Google::Apis::DataprocV1::InstanceSelection::Representation
+      
+          collection :instance_selection_results, as: 'instanceSelectionResults', class: Google::Apis::DataprocV1::InstanceSelectionResult, decorator: Google::Apis::DataprocV1::InstanceSelectionResult::Representation
+      
         end
       end
       
@@ -1363,6 +1390,8 @@ module Google
           property :disk_config, as: 'diskConfig', class: Google::Apis::DataprocV1::DiskConfig, decorator: Google::Apis::DataprocV1::DiskConfig::Representation
       
           property :image_uri, as: 'imageUri'
+          property :instance_flexibility_policy, as: 'instanceFlexibilityPolicy', class: Google::Apis::DataprocV1::InstanceFlexibilityPolicy, decorator: Google::Apis::DataprocV1::InstanceFlexibilityPolicy::Representation
+      
           collection :instance_names, as: 'instanceNames'
           collection :instance_references, as: 'instanceReferences', class: Google::Apis::DataprocV1::InstanceReference, decorator: Google::Apis::DataprocV1::InstanceReference::Representation
       
@@ -1384,6 +1413,22 @@ module Google
           property :instance_name, as: 'instanceName'
           property :public_ecies_key, as: 'publicEciesKey'
           property :public_key, as: 'publicKey'
+        end
+      end
+      
+      class InstanceSelection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :machine_types, as: 'machineTypes'
+          property :rank, as: 'rank'
+        end
+      end
+      
+      class InstanceSelectionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :machine_type, as: 'machineType'
+          property :vm_count, as: 'vmCount'
         end
       end
       
@@ -1646,6 +1691,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_group_manager_name, as: 'instanceGroupManagerName'
+          property :instance_group_manager_uri, as: 'instanceGroupManagerUri'
           property :instance_template_name, as: 'instanceTemplateName'
         end
       end
@@ -1824,6 +1870,13 @@ module Google
         end
       end
       
+      class PyPiRepositoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pypi_repository, as: 'pypiRepository'
+        end
+      end
+      
       class PySparkBatch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1877,6 +1930,14 @@ module Google
         end
       end
       
+      class RepositoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pypi_repository_config, as: 'pypiRepositoryConfig', class: Google::Apis::DataprocV1::PyPiRepositoryConfig, decorator: Google::Apis::DataprocV1::PyPiRepositoryConfig::Representation
+      
+        end
+      end
+      
       class ReservationAffinity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1900,6 +1961,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container_image, as: 'containerImage'
           hash :properties, as: 'properties'
+          property :repository_config, as: 'repositoryConfig', class: Google::Apis::DataprocV1::RepositoryConfig, decorator: Google::Apis::DataprocV1::RepositoryConfig::Representation
+      
           property :version, as: 'version'
         end
       end

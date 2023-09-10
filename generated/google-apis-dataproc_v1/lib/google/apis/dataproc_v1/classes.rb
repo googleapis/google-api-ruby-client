@@ -1089,6 +1089,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :jobs
       
+        # Optional. (Optional) The output Cloud Storage directory for the diagnostic
+        # tarball. If not specified, a task-specific directory in the cluster's staging
+        # bucket will be used.
+        # Corresponds to the JSON property `tarballGcsDir`
+        # @return [String]
+        attr_accessor :tarball_gcs_dir
+      
         # Optional. DEPRECATED Specifies the yarn application on which diagnosis is to
         # be performed.
         # Corresponds to the JSON property `yarnApplicationId`
@@ -1110,6 +1117,7 @@ module Google
           @diagnosis_interval = args[:diagnosis_interval] if args.key?(:diagnosis_interval)
           @job = args[:job] if args.key?(:job)
           @jobs = args[:jobs] if args.key?(:jobs)
+          @tarball_gcs_dir = args[:tarball_gcs_dir] if args.key?(:tarball_gcs_dir)
           @yarn_application_id = args[:yarn_application_id] if args.key?(:yarn_application_id)
           @yarn_application_ids = args[:yarn_application_ids] if args.key?(:yarn_application_ids)
         end
@@ -2124,29 +2132,21 @@ module Google
         end
       end
       
-      # A request to inject credentials to a session.
-      class InjectSessionCredentialsRequest
+      # Instance flexibility Policy allowing a mixture of VM shapes and provisioning
+      # models.
+      class InstanceFlexibilityPolicy
         include Google::Apis::Core::Hashable
       
-        # Required. The encrypted credentials being injected in to the session.The
-        # client is responsible for encrypting the credentials in a way that is
-        # supported by the session.A wrapped value is used here so that the actual
-        # contents of the encrypted credentials are not written to audit logs.
-        # Corresponds to the JSON property `credentialsCiphertext`
-        # @return [String]
-        attr_accessor :credentials_ciphertext
+        # Optional. List of instance selection options that the group will use when
+        # creating new VMs.
+        # Corresponds to the JSON property `instanceSelectionList`
+        # @return [Array<Google::Apis::DataprocV1::InstanceSelection>]
+        attr_accessor :instance_selection_list
       
-        # Optional. A unique ID used to identify the request. If the service receives
-        # two TerminateSessionRequest (https://cloud.google.com/dataproc/docs/reference/
-        # rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.TerminateSessionRequest)
-        # s with the same ID, the first request is ignored to ensure the most recent
-        # credentials are injected.Recommendation: Set this value to a UUID (https://en.
-        # wikipedia.org/wiki/Universally_unique_identifier).The value must contain only
-        # letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
-        # maximum length is 40 characters.
-        # Corresponds to the JSON property `requestId`
-        # @return [String]
-        attr_accessor :request_id
+        # Output only. A list of instance selection results in the group.
+        # Corresponds to the JSON property `instanceSelectionResults`
+        # @return [Array<Google::Apis::DataprocV1::InstanceSelectionResult>]
+        attr_accessor :instance_selection_results
       
         def initialize(**args)
            update!(**args)
@@ -2154,8 +2154,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @credentials_ciphertext = args[:credentials_ciphertext] if args.key?(:credentials_ciphertext)
-          @request_id = args[:request_id] if args.key?(:request_id)
+          @instance_selection_list = args[:instance_selection_list] if args.key?(:instance_selection_list)
+          @instance_selection_results = args[:instance_selection_results] if args.key?(:instance_selection_results)
         end
       end
       
@@ -2238,6 +2238,12 @@ module Google
         # @return [String]
         attr_accessor :image_uri
       
+        # Instance flexibility Policy allowing a mixture of VM shapes and provisioning
+        # models.
+        # Corresponds to the JSON property `instanceFlexibilityPolicy`
+        # @return [Google::Apis::DataprocV1::InstanceFlexibilityPolicy]
+        attr_accessor :instance_flexibility_policy
+      
         # Output only. The list of instance names. Dataproc derives the names from
         # cluster_name, num_instances, and the instance group.
         # Corresponds to the JSON property `instanceNames`
@@ -2279,19 +2285,14 @@ module Google
         # @return [String]
         attr_accessor :min_cpu_platform
       
-        # Optional. The minimum number of instances to create. If min_num_instances is
-        # set, min_num_instances is used for a criteria to decide the cluster. Cluster
-        # creation will be failed by being an error state if the total number of
-        # instances created is less than the min_num_instances. For example, given that
-        # num_instances = 5 and min_num_instances = 3, * if 4 instances are created and
-        # then registered successfully but one instance is failed, the failed VM will be
-        # deleted and the cluster will be resized to 4 instances in running state. * if
-        # 2 instances are created successfully and 3 instances are failed, the cluster
-        # will be in an error state and does not delete failed VMs for debugging. * if 2
-        # instance are created and then registered successfully but 3 instances are
-        # failed to initialize, the cluster will be in an error state and does not
-        # delete failed VMs for debugging. NB: This can only be set for primary workers
-        # now.
+        # Optional. The minimum number of primary worker instances to create. If
+        # min_num_instances is set, cluster creation will succeed if the number of
+        # primary workers created is at least equal to the min_num_instances number.
+        # Example: Cluster creation request with num_instances = 5 and min_num_instances
+        # = 3: If 4 VMs are created and 1 instance fails, the failed VM is deleted. The
+        # cluster is resized to 4 instances and placed in a RUNNING state. If 2
+        # instances are created and 3 instances fail, the cluster in placed in an ERROR
+        # state. The failed VMs are not deleted.
         # Corresponds to the JSON property `minNumInstances`
         # @return [Fixnum]
         attr_accessor :min_num_instances
@@ -2319,6 +2320,7 @@ module Google
           @accelerators = args[:accelerators] if args.key?(:accelerators)
           @disk_config = args[:disk_config] if args.key?(:disk_config)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @instance_flexibility_policy = args[:instance_flexibility_policy] if args.key?(:instance_flexibility_policy)
           @instance_names = args[:instance_names] if args.key?(:instance_names)
           @instance_references = args[:instance_references] if args.key?(:instance_references)
           @is_preemptible = args[:is_preemptible] if args.key?(:is_preemptible)
@@ -2365,6 +2367,60 @@ module Google
           @instance_name = args[:instance_name] if args.key?(:instance_name)
           @public_ecies_key = args[:public_ecies_key] if args.key?(:public_ecies_key)
           @public_key = args[:public_key] if args.key?(:public_key)
+        end
+      end
+      
+      # Defines machines types and a rank to which the machines types belong.
+      class InstanceSelection
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Full machine-type names, e.g. "n1-standard-16".
+        # Corresponds to the JSON property `machineTypes`
+        # @return [Array<String>]
+        attr_accessor :machine_types
+      
+        # Optional. Preference of this instance selection. Lower number means higher
+        # preference. Dataproc will first try to create a VM based on the machine-type
+        # with priority rank and fallback to next rank based on availability. Machine
+        # types and instance selections with the same priority have the same preference.
+        # Corresponds to the JSON property `rank`
+        # @return [Fixnum]
+        attr_accessor :rank
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_types = args[:machine_types] if args.key?(:machine_types)
+          @rank = args[:rank] if args.key?(:rank)
+        end
+      end
+      
+      # Defines a mapping from machine types to the number of VMs that are created
+      # with each machine type.
+      class InstanceSelectionResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Full machine-type names, e.g. "n1-standard-16".
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Output only. Number of VM provisioned with the machine_type.
+        # Corresponds to the JSON property `vmCount`
+        # @return [Fixnum]
+        attr_accessor :vm_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @vm_count = args[:vm_count] if args.key?(:vm_count)
         end
       end
       
@@ -3206,7 +3262,7 @@ module Google
       class ListSessionsResponse
         include Google::Apis::Core::Hashable
       
-        # A token, which can be sent as page_token to retrieve the next page. If this
+        # A token, which can be sent as page_token, to retrieve the next page. If this
         # field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -3323,6 +3379,12 @@ module Google
         # @return [String]
         attr_accessor :instance_group_manager_name
       
+        # Output only. The partial URI to the instance group manager for this group. E.g.
+        # projects/my-project/regions/us-central1/instanceGroupManagers/my-igm.
+        # Corresponds to the JSON property `instanceGroupManagerUri`
+        # @return [String]
+        attr_accessor :instance_group_manager_uri
+      
         # Output only. The name of the Instance Template used for the Managed Instance
         # Group.
         # Corresponds to the JSON property `instanceTemplateName`
@@ -3336,6 +3398,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instance_group_manager_name = args[:instance_group_manager_name] if args.key?(:instance_group_manager_name)
+          @instance_group_manager_uri = args[:instance_group_manager_uri] if args.key?(:instance_group_manager_uri)
           @instance_template_name = args[:instance_template_name] if args.key?(:instance_template_name)
         end
       end
@@ -4066,6 +4129,25 @@ module Google
         end
       end
       
+      # Configuration for PyPi repository
+      class PyPiRepositoryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. PyPi repository address
+        # Corresponds to the JSON property `pypiRepository`
+        # @return [String]
+        attr_accessor :pypi_repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pypi_repository = args[:pypi_repository] if args.key?(:pypi_repository)
+        end
+      end
+      
       # A configuration for running an Apache PySpark (https://spark.apache.org/docs/
       # latest/api/python/getting_started/quickstart.html) batch workload.
       class PySparkBatch
@@ -4297,6 +4379,25 @@ module Google
         end
       end
       
+      # Configuration for dependency repositories
+      class RepositoryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for PyPi repository
+        # Corresponds to the JSON property `pypiRepositoryConfig`
+        # @return [Google::Apis::DataprocV1::PyPiRepositoryConfig]
+        attr_accessor :pypi_repository_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pypi_repository_config = args[:pypi_repository_config] if args.key?(:pypi_repository_config)
+        end
+      end
+      
       # Reservation Affinity for consuming Zonal reservation.
       class ReservationAffinity
         include Google::Apis::Core::Hashable
@@ -4393,6 +4494,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :properties
       
+        # Configuration for dependency repositories
+        # Corresponds to the JSON property `repositoryConfig`
+        # @return [Google::Apis::DataprocV1::RepositoryConfig]
+        attr_accessor :repository_config
+      
         # Optional. Version of the batch runtime.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -4406,6 +4512,7 @@ module Google
         def update!(**args)
           @container_image = args[:container_image] if args.key?(:container_image)
           @properties = args[:properties] if args.key?(:properties)
+          @repository_config = args[:repository_config] if args.key?(:repository_config)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -4482,7 +4589,7 @@ module Google
         end
       end
       
-      # A representation of a session in the service. Next ID: 18
+      # A representation of a session.
       class Session
         include Google::Apis::Core::Hashable
       
@@ -4506,7 +4613,7 @@ module Google
         # @return [Google::Apis::DataprocV1::JupyterConfig]
         attr_accessor :jupyter_session
       
-        # Optional. The labels to associate with this session. Label keys must contain 1
+        # Optional. The labels to associate with the session. Label keys must contain 1
         # to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/
         # rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63
         # characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt)
@@ -4530,12 +4637,12 @@ module Google
         # @return [Google::Apis::DataprocV1::RuntimeInfo]
         attr_accessor :runtime_info
       
-        # Optional. The session template used by the session.Only resource names
-        # including project ID and location are valid.Example: * https://www.googleapis.
+        # Optional. The session template used by the session.Only resource names,
+        # including project ID and location, are valid.Example: * https://www.googleapis.
         # com/compute/v1/projects/[project_id]/locations/[dataproc_region]/
         # sessionTemplates/[template_id] * projects/[project_id]/locations/[
-        # dataproc_region]/sessionTemplates/[template_id]Note that the template must be
-        # in the same project and Dataproc region.
+        # dataproc_region]/sessionTemplates/[template_id]The template must be in the
+        # same project and Dataproc region as the session.
         # Corresponds to the JSON property `sessionTemplate`
         # @return [String]
         attr_accessor :session_template
@@ -4550,13 +4657,13 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::SessionStateHistory>]
         attr_accessor :state_history
       
-        # Output only. Session state details, such as a failure description if the state
-        # is FAILED.
+        # Output only. Session state details, such as the failure description if the
+        # state is FAILED.
         # Corresponds to the JSON property `stateMessage`
         # @return [String]
         attr_accessor :state_message
       
-        # Output only. The time when the session entered a current state.
+        # Output only. The time when the session entered the current state.
         # Corresponds to the JSON property `stateTime`
         # @return [String]
         attr_accessor :state_time
@@ -4661,12 +4768,12 @@ module Google
       class SessionStateHistory
         include Google::Apis::Core::Hashable
       
-        # Output only. The state of the session at this point in history.
+        # Output only. The state of the session at this point in the session history.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output only. Details about the state at this point in history.
+        # Output only. Details about the state at this point in the session history.
         # Corresponds to the JSON property `stateMessage`
         # @return [String]
         attr_accessor :state_message
@@ -4688,7 +4795,7 @@ module Google
         end
       end
       
-      # A representation of a session template in the service. Next ID: 12
+      # A representation of a session template.
       class SessionTemplate
         include Google::Apis::Core::Hashable
       
@@ -4717,12 +4824,11 @@ module Google
         # @return [Google::Apis::DataprocV1::JupyterConfig]
         attr_accessor :jupyter_session
       
-        # Optional. The labels to associate with sessions created using this template.
-        # Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (
-        # https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if
-        # present, must contain 1 to 63 characters, and must conform to RFC 1035 (https:/
-        # /www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with
-        # a session.
+        # Optional. Labels to associate with sessions created using this template. Label
+        # keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://
+        # www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present,
+        # must contain 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/
+        # rfc/rfc1035.txt). No more than 32 labels can be associated with a session.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -4737,7 +4843,7 @@ module Google
         # @return [Google::Apis::DataprocV1::RuntimeConfig]
         attr_accessor :runtime_config
       
-        # Output only. The time template was last updated.
+        # Output only. The time the template was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
