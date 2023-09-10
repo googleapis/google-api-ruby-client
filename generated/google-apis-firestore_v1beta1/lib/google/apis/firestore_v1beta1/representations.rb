@@ -208,6 +208,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1CreateDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1DeleteDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1Progress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -782,6 +794,18 @@ module Google
       
           property :unary_filter, as: 'unaryFilter', class: Google::Apis::FirestoreV1beta1::UnaryFilter, decorator: Google::Apis::FirestoreV1beta1::UnaryFilter::Representation
       
+        end
+      end
+      
+      class GoogleFirestoreAdminV1CreateDatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1DeleteDatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
