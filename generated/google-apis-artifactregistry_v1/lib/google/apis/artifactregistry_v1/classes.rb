@@ -2033,12 +2033,6 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Config for whether to generate SBOMs for resources in this repository, as well
-        # as output fields describing current state.
-        # Corresponds to the JSON property `sbomConfig`
-        # @return [Google::Apis::ArtifactregistryV1::SbomConfig]
-        attr_accessor :sbom_config
-      
         # Output only. The size, in bytes, of all artifact storage in this repository.
         # Repositories that are generally available or in public preview use this to
         # calculate storage costs.
@@ -2075,36 +2069,9 @@ module Google
           @name = args[:name] if args.key?(:name)
           @remote_repository_config = args[:remote_repository_config] if args.key?(:remote_repository_config)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
-          @sbom_config = args[:sbom_config] if args.key?(:sbom_config)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @update_time = args[:update_time] if args.key?(:update_time)
           @virtual_repository_config = args[:virtual_repository_config] if args.key?(:virtual_repository_config)
-        end
-      end
-      
-      # Config for whether to generate SBOMs for resources in this repository, as well
-      # as output fields describing current state.
-      class SbomConfig
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Config for whether this repository has sbom generation disabled.
-        # Corresponds to the JSON property `enablementConfig`
-        # @return [String]
-        attr_accessor :enablement_config
-      
-        # Output only. The last time this repository config was set to INHERITED.
-        # Corresponds to the JSON property `lastEnableTime`
-        # @return [String]
-        attr_accessor :last_enable_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enablement_config = args[:enablement_config] if args.key?(:enablement_config)
-          @last_enable_time = args[:last_enable_time] if args.key?(:last_enable_time)
         end
       end
       
@@ -2550,7 +2517,7 @@ module Google
       class UploadYumArtifactResponse
         include Google::Apis::Core::Hashable
       
-        # The Apt artifacts updated.
+        # The Yum artifacts updated.
         # Corresponds to the JSON property `yumArtifacts`
         # @return [Array<Google::Apis::ArtifactregistryV1::YumArtifact>]
         attr_accessor :yum_artifacts
