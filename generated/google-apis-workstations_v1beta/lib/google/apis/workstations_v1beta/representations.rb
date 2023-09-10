@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EphemeralDirectory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +83,12 @@ module Google
       end
       
       class GceInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcePersistentDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -305,6 +317,15 @@ module Google
         end
       end
       
+      class EphemeralDirectory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gce_pd, as: 'gcePd', class: Google::Apis::WorkstationsV1beta::GcePersistentDisk, decorator: Google::Apis::WorkstationsV1beta::GcePersistentDisk::Representation
+      
+          property :mount_path, as: 'mountPath'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -336,9 +357,20 @@ module Google
           property :pool_size, as: 'poolSize'
           property :pooled_instances, as: 'pooledInstances'
           property :service_account, as: 'serviceAccount'
+          collection :service_account_scopes, as: 'serviceAccountScopes'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig, decorator: Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig::Representation
       
           collection :tags, as: 'tags'
+        end
+      end
+      
+      class GcePersistentDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_type, as: 'diskType'
+          property :read_only, as: 'readOnly'
+          property :source_image, as: 'sourceImage'
+          property :source_snapshot, as: 'sourceSnapshot'
         end
       end
       
@@ -576,6 +608,7 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
+          property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
@@ -621,6 +654,8 @@ module Google
           property :enable_audit_agent, as: 'enableAuditAgent'
           property :encryption_key, as: 'encryptionKey', class: Google::Apis::WorkstationsV1beta::CustomerEncryptionKey, decorator: Google::Apis::WorkstationsV1beta::CustomerEncryptionKey::Representation
       
+          collection :ephemeral_directories, as: 'ephemeralDirectories', class: Google::Apis::WorkstationsV1beta::EphemeralDirectory, decorator: Google::Apis::WorkstationsV1beta::EphemeralDirectory::Representation
+      
           property :etag, as: 'etag'
           property :host, as: 'host', class: Google::Apis::WorkstationsV1beta::Host, decorator: Google::Apis::WorkstationsV1beta::Host::Representation
       
@@ -632,6 +667,7 @@ module Google
           collection :readiness_checks, as: 'readinessChecks', class: Google::Apis::WorkstationsV1beta::ReadinessCheck, decorator: Google::Apis::WorkstationsV1beta::ReadinessCheck::Representation
       
           property :reconciling, as: 'reconciling'
+          collection :replica_zones, as: 'replicaZones'
           property :running_timeout, as: 'runningTimeout'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
