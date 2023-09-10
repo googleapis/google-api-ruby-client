@@ -300,6 +300,32 @@ module Google
         end
       end
       
+      # An ephemeral directory which won't persist across workstation sessions. It is
+      # freshly created on every workstation start operation.
+      class EphemeralDirectory
+        include Google::Apis::Core::Hashable
+      
+        # An EphemeralDirectory is backed by a Compute Engine persistent disk.
+        # Corresponds to the JSON property `gcePd`
+        # @return [Google::Apis::WorkstationsV1beta::GcePersistentDisk]
+        attr_accessor :gce_pd
+      
+        # Required. Location of this directory in the running workstation.
+        # Corresponds to the JSON property `mountPath`
+        # @return [String]
+        attr_accessor :mount_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gce_pd = args[:gce_pd] if args.key?(:gce_pd)
+          @mount_path = args[:mount_path] if args.key?(:mount_path)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -470,6 +496,14 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # Optional. Scopes to grant to the service_account. Various scopes are
+        # automatically added based on feature usage. When specified, users of
+        # workstations under this configuration must have `iam.serviceAccounts.actAs` on
+        # the service account.
+        # Corresponds to the JSON property `serviceAccountScopes`
+        # @return [Array<String>]
+        attr_accessor :service_account_scopes
+      
         # A set of Compute Engine Shielded instance options.
         # Corresponds to the JSON property `shieldedInstanceConfig`
         # @return [Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig]
@@ -499,8 +533,54 @@ module Google
           @pool_size = args[:pool_size] if args.key?(:pool_size)
           @pooled_instances = args[:pooled_instances] if args.key?(:pooled_instances)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # An EphemeralDirectory is backed by a Compute Engine persistent disk.
+      class GcePersistentDisk
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Type of the disk to use. Defaults to `"pd-standard"`.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # Optional. Whether the disk is read only. If true, the disk may be shared by
+        # multiple VMs and source_snapshot must be set.
+        # Corresponds to the JSON property `readOnly`
+        # @return [Boolean]
+        attr_accessor :read_only
+        alias_method :read_only?, :read_only
+      
+        # Optional. Name of the disk image to use as the source for the disk. Must be
+        # empty if source_snapshot is set. Updating source_image will update content in
+        # the ephemeral directory after the workstation is restarted. This field is
+        # mutable.
+        # Corresponds to the JSON property `sourceImage`
+        # @return [String]
+        attr_accessor :source_image
+      
+        # Optional. Name of the snapshot to use as the source for the disk. Must be
+        # empty if source_image is set. Updating source_snapshot will update content in
+        # the ephemeral directory after the workstation is restarted. This field is
+        # mutable.
+        # Corresponds to the JSON property `sourceSnapshot`
+        # @return [String]
+        attr_accessor :source_snapshot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @read_only = args[:read_only] if args.key?(:read_only)
+          @source_image = args[:source_image] if args.key?(:source_image)
+          @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
         end
       end
       
@@ -1441,6 +1521,12 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Output only. Time when this workstation was most recently successfully started,
+        # regardless of the workstation's initial state.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
         # Output only. Current state of the workstation.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1472,6 +1558,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1670,6 +1757,12 @@ module Google
         # @return [Google::Apis::WorkstationsV1beta::CustomerEncryptionKey]
         attr_accessor :encryption_key
       
+        # Optional. Ephemeral directories which won't persist across workstation
+        # sessions.
+        # Corresponds to the JSON property `ephemeralDirectories`
+        # @return [Array<Google::Apis::WorkstationsV1beta::EphemeralDirectory>]
+        attr_accessor :ephemeral_directories
+      
         # Optional. Checksum computed by the server. May be sent on update and delete
         # requests to make sure that the client has an up-to-date value before
         # proceeding.
@@ -1723,6 +1816,15 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Optional. Immutable. Specifies the zones used to replicate the VM and disk
+        # resources within the region. If set, exactly two zones within the workstation
+        # cluster's region must be specified—for example, `['us-central1-a', 'us-
+        # central1-f']`. If this field is empty, two default zones within the region are
+        # used. Immutable after the workstation configuration is created.
+        # Corresponds to the JSON property `replicaZones`
+        # @return [Array<String>]
+        attr_accessor :replica_zones
+      
         # Optional. Number of seconds that a workstation can run until it is
         # automatically shut down. We recommend that workstations be shut down daily to
         # reduce costs and so that security updates can be applied upon restart. The
@@ -1767,6 +1869,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_audit_agent = args[:enable_audit_agent] if args.key?(:enable_audit_agent)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @ephemeral_directories = args[:ephemeral_directories] if args.key?(:ephemeral_directories)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
           @idle_timeout = args[:idle_timeout] if args.key?(:idle_timeout)
@@ -1775,6 +1878,7 @@ module Google
           @persistent_directories = args[:persistent_directories] if args.key?(:persistent_directories)
           @readiness_checks = args[:readiness_checks] if args.key?(:readiness_checks)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @running_timeout = args[:running_timeout] if args.key?(:running_timeout)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
