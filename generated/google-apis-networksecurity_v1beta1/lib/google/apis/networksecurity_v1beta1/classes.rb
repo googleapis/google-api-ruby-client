@@ -455,7 +455,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Labels as key value pairs
+        # Optional. Labels as key value pairs
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -512,7 +512,7 @@ module Google
         # @return [String]
         attr_accessor :firewall_endpoint
       
-        # Labels as key value pairs
+        # Optional. Labels as key value pairs
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
