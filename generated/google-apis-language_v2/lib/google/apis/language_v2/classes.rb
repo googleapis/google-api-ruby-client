@@ -383,10 +383,8 @@ module Google
         # @return [Array<Google::Apis::LanguageV2::EntityMention>]
         attr_accessor :mentions
       
-        # Metadata associated with the entity. For most entity types, the metadata is a
-        # Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are
-        # available. For the metadata associated with other entity types, see the Type
-        # table below.
+        # Metadata associated with the entity. For the metadata associated with other
+        # entity types, see the Type table below.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
         attr_accessor :metadata
