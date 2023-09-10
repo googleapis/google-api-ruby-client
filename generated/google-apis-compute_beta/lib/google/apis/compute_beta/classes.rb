@@ -2729,7 +2729,7 @@ module Google
         attr_accessor :schedule
       
         # The time zone to use when interpreting the schedule. The value of this field
-        # must be a time zone name from the tz database: http://en.wikipedia.org/wiki/
+        # must be a time zone name from the tz database: https://en.wikipedia.org/wiki/
         # Tz_database. This field is assigned a default value of “UTC” if left empty.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
@@ -13548,8 +13548,8 @@ module Google
         # weightedBackendServices, service must not be set. Conversely if service is set,
         # routeAction cannot contain any weightedBackendServices. Only one of
         # urlRedirect, service or routeAction.weightedBackendService must be set. URL
-        # maps for Classic external HTTP(S) load balancers only support the urlRewrite
-        # action within a route rule's routeAction.
+        # maps for classic Application Load Balancers only support the urlRewrite action
+        # within a route rule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeBeta::HttpRouteAction]
         attr_accessor :route_action
@@ -15439,6 +15439,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # Instance flexibility allowing MIG to create VMs from multiple types of
+        # machines. Instance flexibility configuration on MIG overrides instance
+        # template configuration.
+        # Corresponds to the JSON property `instanceFlexibilityPolicy`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicy]
+        attr_accessor :instance_flexibility_policy
+      
         # [Output Only] The URL of the Instance Group resource.
         # Corresponds to the JSON property `instanceGroup`
         # @return [String]
@@ -15564,6 +15571,7 @@ module Google
           @failover_action = args[:failover_action] if args.key?(:failover_action)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
+          @instance_flexibility_policy = args[:instance_flexibility_policy] if args.key?(:instance_flexibility_policy)
           @instance_group = args[:instance_group] if args.key?(:instance_group)
           @instance_lifecycle_policy = args[:instance_lifecycle_policy] if args.key?(:instance_lifecycle_policy)
           @instance_template = args[:instance_template] if args.key?(:instance_template)
@@ -15870,6 +15878,54 @@ module Google
         def update!(**args)
           @health_check = args[:health_check] if args.key?(:health_check)
           @initial_delay_sec = args[:initial_delay_sec] if args.key?(:initial_delay_sec)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerInstanceFlexibilityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # List of instance selection options that the group will use when creating new
+        # VMs.
+        # Corresponds to the JSON property `instanceSelectionLists`
+        # @return [Hash<String,Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>]
+        attr_accessor :instance_selection_lists
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_selection_lists = args[:instance_selection_lists] if args.key?(:instance_selection_lists)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
+        include Google::Apis::Core::Hashable
+      
+        # Full machine-type names, e.g. "n1-standard-16".
+        # Corresponds to the JSON property `machineTypes`
+        # @return [Array<String>]
+        attr_accessor :machine_types
+      
+        # Preference of this instance selection. Lower number means higher preference.
+        # MIG will first try to create a VM based on the machine-type with lowest rank
+        # and fallback to next rank based on availability. Machine types and instance
+        # selections with the same rank have the same preference.
+        # Corresponds to the JSON property `rank`
+        # @return [Fixnum]
+        attr_accessor :rank
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_types = args[:machine_types] if args.key?(:machine_types)
+          @rank = args[:rank] if args.key?(:rank)
         end
       end
       
@@ -24959,9 +25015,8 @@ module Google
       
       # Represents a collection of network endpoints. A network endpoint group (NEG)
       # defines how a set of endpoints should be reached, whether they are reachable,
-      # and where they are located. For more information about using NEGs, see Setting
-      # up external HTTP(S) Load Balancing with internet NEGs, Setting up zonal NEGs,
-      # or Setting up external HTTP(S) Load Balancing with serverless NEGs.
+      # and where they are located. For more information about using NEGs for
+      # different use cases, see Network endpoint groups overview.
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
@@ -30066,8 +30121,8 @@ module Google
         # If defaultRouteAction specifies any weightedBackendServices, defaultService
         # must not be set. Conversely if defaultService is set, defaultRouteAction
         # cannot contain any weightedBackendServices. Only one of defaultRouteAction or
-        # defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load
-        # balancers only support the urlRewrite action within a path matcher's
+        # defaultUrlRedirect must be set. URL maps for classic Application Load
+        # Balancers only support the urlRewrite action within a path matcher's
         # defaultRouteAction.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeBeta::HttpRouteAction]
@@ -30174,9 +30229,8 @@ module Google
         # the request to the selected backend. If routeAction specifies any
         # weightedBackendServices, service must not be set. Conversely if service is set,
         # routeAction cannot contain any weightedBackendServices. Only one of
-        # routeAction or urlRedirect must be set. URL maps for Classic external HTTP(S)
-        # load balancers only support the urlRewrite action within a path rule's
-        # routeAction.
+        # routeAction or urlRedirect must be set. URL maps for classic Application Load
+        # Balancers only support the urlRewrite action within a path rule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeBeta::HttpRouteAction]
         attr_accessor :route_action
@@ -33342,17 +33396,19 @@ module Google
         # Global](/compute/docs/reference/rest/beta/urlMaps) * [Regional](/compute/docs/
         # reference/rest/beta/regionUrlMaps) A URL map resource is a component of
         # certain types of cloud load balancers and Traffic Director: * urlMaps are used
-        # by external HTTP(S) load balancers and Traffic Director. * regionUrlMaps are
-        # used by internal HTTP(S) load balancers. For a list of supported URL map
-        # features by the load balancer type, see the Load balancing features: Routing
-        # and traffic management table. For a list of supported URL map features for
-        # Traffic Director, see the Traffic Director features: Routing and traffic
-        # management table. This resource defines mappings from hostnames and URL paths
-        # to either a backend service or a backend bucket. To use the global urlMaps
-        # resource, the backend service must have a loadBalancingScheme of either
-        # EXTERNAL or INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource, the
-        # backend service must have a loadBalancingScheme of INTERNAL_MANAGED. For more
-        # information, read URL Map Concepts.
+        # by global external Application Load Balancers, classic Application Load
+        # Balancers, and cross-region internal Application Load Balancers. *
+        # regionUrlMaps are used by internal Application Load Balancers, regional
+        # external Application Load Balancers and regional internal Application Load
+        # Balancers. For a list of supported URL map features by the load balancer type,
+        # see the Load balancing features: Routing and traffic management table. For a
+        # list of supported URL map features for Traffic Director, see the Traffic
+        # Director features: Routing and traffic management table. This resource defines
+        # mappings from hostnames and URL paths to either a backend service or a backend
+        # bucket. To use the global urlMaps resource, the backend service must have a
+        # loadBalancingScheme of either EXTERNAL or INTERNAL_SELF_MANAGED. To use the
+        # regionUrlMaps resource, the backend service must have a loadBalancingScheme of
+        # INTERNAL_MANAGED. For more information, read URL Map Concepts.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ComputeBeta::UrlMap]
         attr_accessor :resource
@@ -34377,6 +34433,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_distance
       
+        # Specifies the number of slices in a multislice workload.
+        # Corresponds to the JSON property `sliceCount`
+        # @return [Fixnum]
+        attr_accessor :slice_count
+      
+        # Specifies the shape of the TPU slice
+        # Corresponds to the JSON property `tpuTopology`
+        # @return [String]
+        attr_accessor :tpu_topology
+      
         # Number of VMs in this placement group. Google does not recommend that you use
         # this field unless you use a compact policy and you want your policy to work
         # only if it contains this exact number of VMs.
@@ -34393,6 +34459,8 @@ module Google
           @availability_domain_count = args[:availability_domain_count] if args.key?(:availability_domain_count)
           @collocation = args[:collocation] if args.key?(:collocation)
           @max_distance = args[:max_distance] if args.key?(:max_distance)
+          @slice_count = args[:slice_count] if args.key?(:slice_count)
+          @tpu_topology = args[:tpu_topology] if args.key?(:tpu_topology)
           @vm_count = args[:vm_count] if args.key?(:vm_count)
         end
       end
@@ -35372,9 +35440,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Router interfaces. Each interface requires either one linked resource, (for
-        # example, linkedVpnTunnel), or IP address and IP address range (for example,
-        # ipRange), or both.
+        # Router interfaces. To create a BGP peer that uses a router interface, the
+        # interface must have one of the following fields specified: - linkedVpnTunnel -
+        # linkedInterconnectAttachment - subnetwork You can create a router interface
+        # without any of these fields specified. However, you cannot create a BGP peer
+        # that uses that interface.
         # Corresponds to the JSON property `interfaces`
         # @return [Array<Google::Apis::ComputeBeta::RouterInterface>]
         attr_accessor :interfaces
@@ -35901,14 +35971,14 @@ module Google
       
         # URI of the linked Interconnect attachment. It must be in the same region as
         # the router. Each interface can have one linked resource, which can be a VPN
-        # tunnel, an Interconnect attachment, or a virtual machine instance.
+        # tunnel, an Interconnect attachment, or a subnetwork.
         # Corresponds to the JSON property `linkedInterconnectAttachment`
         # @return [String]
         attr_accessor :linked_interconnect_attachment
       
         # URI of the linked VPN tunnel, which must be in the same region as the router.
         # Each interface can have one linked resource, which can be a VPN tunnel, an
-        # Interconnect attachment, or a virtual machine instance.
+        # Interconnect attachment, or a subnetwork.
         # Corresponds to the JSON property `linkedVpnTunnel`
         # @return [String]
         attr_accessor :linked_vpn_tunnel
@@ -36109,7 +36179,7 @@ module Google
         attr_accessor :key
       
         # Name used to identify the key. Must be unique within a router. Must be
-        # referenced by at least one bgpPeer. Must comply with RFC1035.
+        # referenced by exactly one bgpPeer. Must comply with RFC1035.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -40867,17 +40937,20 @@ module Google
         end
       end
       
-      # Represents an SSL Certificate resource. Google Compute Engine has two SSL
-      # Certificate resources: * [Global](/compute/docs/reference/rest/beta/
+      # Represents an SSL certificate resource. Google Compute Engine has two SSL
+      # certificate resources: * [Global](/compute/docs/reference/rest/beta/
       # sslCertificates) * [Regional](/compute/docs/reference/rest/beta/
-      # regionSslCertificates) The sslCertificates are used by: - external HTTPS load
-      # balancers - SSL proxy load balancers The regionSslCertificates are used by
-      # internal HTTPS load balancers. Optionally, certificate file contents that you
-      # upload can contain a set of up to five PEM-encoded certificates. The API call
-      # creates an object (sslCertificate) that holds this data. You can use SSL keys
-      # and certificates to secure connections to a load balancer. For more
-      # information, read Creating and using SSL certificates, SSL certificates quotas
-      # and limits, and Troubleshooting SSL certificates.
+      # regionSslCertificates) The global SSL certificates (sslCertificates) are used
+      # by: - Global external Application Load Balancers - Classic Application Load
+      # Balancers - Proxy Network Load Balancers (with target SSL proxies) The
+      # regional SSL certificates (regionSslCertificates) are used by: - Regional
+      # external Application Load Balancers - Regional internal Application Load
+      # Balancers Optionally, certificate file contents that you upload can contain a
+      # set of up to five PEM-encoded certificates. The API call creates an object (
+      # sslCertificate) that holds this data. You can use SSL keys and certificates to
+      # secure connections to a load balancer. For more information, read Creating and
+      # using SSL certificates, SSL certificates quotas and limits, and
+      # Troubleshooting SSL certificates.
       class SslCertificate
         include Google::Apis::Core::Hashable
       
@@ -43257,11 +43330,13 @@ module Google
       # HTTP Proxy resources: * [Global](/compute/docs/reference/rest/beta/
       # targetHttpProxies) * [Regional](/compute/docs/reference/rest/beta/
       # regionTargetHttpProxies) A target HTTP proxy is a component of GCP HTTP load
-      # balancers. * targetHttpProxies are used by external HTTP load balancers and
-      # Traffic Director. * regionTargetHttpProxies are used by internal HTTP load
-      # balancers. Forwarding rules reference a target HTTP proxy, and the target
-      # proxy then references a URL map. For more information, read Using Target
-      # Proxies and Forwarding rule concepts.
+      # balancers. * targetHttpProxies are used by global external Application Load
+      # Balancers, classic Application Load Balancers, cross-region internal
+      # Application Load Balancers, and Traffic Director. * regionTargetHttpProxies
+      # are used by regional internal Application Load Balancers and regional external
+      # Application Load Balancers. Forwarding rules reference a target HTTP proxy,
+      # and the target proxy then references a URL map. For more information, read
+      # Using Target Proxies and Forwarding rule concepts.
       class TargetHttpProxy
         include Google::Apis::Core::Hashable
       
@@ -43304,10 +43379,10 @@ module Google
       
         # Specifies how long to keep a connection open, after completing a response,
         # while there is no matching traffic (in seconds). If an HTTP keep-alive is not
-        # specified, a default value (610 seconds) will be used. For Global external
-        # HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum
-        # allowed value is 1200 seconds. For Global external HTTP(S) load balancer (
-        # classic), this option is not available publicly.
+        # specified, a default value (610 seconds) will be used. For global external
+        # Application Load Balancers, the minimum allowed value is 5 seconds and the
+        # maximum allowed value is 1200 seconds. For classic Application Load Balancers,
+        # this option is not supported.
         # Corresponds to the JSON property `httpKeepAliveTimeoutSec`
         # @return [Fixnum]
         attr_accessor :http_keep_alive_timeout_sec
@@ -43783,11 +43858,13 @@ module Google
       # HTTPS Proxy resources: * [Global](/compute/docs/reference/rest/beta/
       # targetHttpsProxies) * [Regional](/compute/docs/reference/rest/beta/
       # regionTargetHttpsProxies) A target HTTPS proxy is a component of GCP HTTPS
-      # load balancers. * targetHttpsProxies are used by external HTTPS load balancers.
-      # * regionTargetHttpsProxies are used by internal HTTPS load balancers.
-      # Forwarding rules reference a target HTTPS proxy, and the target proxy then
-      # references a URL map. For more information, read Using Target Proxies and
-      # Forwarding rule concepts.
+      # load balancers. * targetHttpProxies are used by global external Application
+      # Load Balancers, classic Application Load Balancers, cross-region internal
+      # Application Load Balancers, and Traffic Director. * regionTargetHttpProxies
+      # are used by regional internal Application Load Balancers and regional external
+      # Application Load Balancers. Forwarding rules reference a target HTTPS proxy,
+      # and the target proxy then references a URL map. For more information, read
+      # Using Target Proxies and Forwarding rule concepts.
       class TargetHttpsProxy
         include Google::Apis::Core::Hashable
       
@@ -43860,10 +43937,10 @@ module Google
       
         # Specifies how long to keep a connection open, after completing a response,
         # while there is no matching traffic (in seconds). If an HTTP keep-alive is not
-        # specified, a default value (610 seconds) will be used. For Global external
-        # HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum
-        # allowed value is 1200 seconds. For Global external HTTP(S) load balancer (
-        # classic), this option is not available publicly.
+        # specified, a default value (610 seconds) will be used. For global external
+        # Application Load Balancers, the minimum allowed value is 5 seconds and the
+        # maximum allowed value is 1200 seconds. For classic Application Load Balancers,
+        # this option is not supported.
         # Corresponds to the JSON property `httpKeepAliveTimeoutSec`
         # @return [Fixnum]
         attr_accessor :http_keep_alive_timeout_sec
@@ -46610,17 +46687,19 @@ module Google
       # Global](/compute/docs/reference/rest/beta/urlMaps) * [Regional](/compute/docs/
       # reference/rest/beta/regionUrlMaps) A URL map resource is a component of
       # certain types of cloud load balancers and Traffic Director: * urlMaps are used
-      # by external HTTP(S) load balancers and Traffic Director. * regionUrlMaps are
-      # used by internal HTTP(S) load balancers. For a list of supported URL map
-      # features by the load balancer type, see the Load balancing features: Routing
-      # and traffic management table. For a list of supported URL map features for
-      # Traffic Director, see the Traffic Director features: Routing and traffic
-      # management table. This resource defines mappings from hostnames and URL paths
-      # to either a backend service or a backend bucket. To use the global urlMaps
-      # resource, the backend service must have a loadBalancingScheme of either
-      # EXTERNAL or INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource, the
-      # backend service must have a loadBalancingScheme of INTERNAL_MANAGED. For more
-      # information, read URL Map Concepts.
+      # by global external Application Load Balancers, classic Application Load
+      # Balancers, and cross-region internal Application Load Balancers. *
+      # regionUrlMaps are used by internal Application Load Balancers, regional
+      # external Application Load Balancers and regional internal Application Load
+      # Balancers. For a list of supported URL map features by the load balancer type,
+      # see the Load balancing features: Routing and traffic management table. For a
+      # list of supported URL map features for Traffic Director, see the Traffic
+      # Director features: Routing and traffic management table. This resource defines
+      # mappings from hostnames and URL paths to either a backend service or a backend
+      # bucket. To use the global urlMaps resource, the backend service must have a
+      # loadBalancingScheme of either EXTERNAL or INTERNAL_SELF_MANAGED. To use the
+      # regionUrlMaps resource, the backend service must have a loadBalancingScheme of
+      # INTERNAL_MANAGED. For more information, read URL Map Concepts.
       class UrlMap
         include Google::Apis::Core::Hashable
       
@@ -46641,8 +46720,8 @@ module Google
         # defaultRouteAction specifies any weightedBackendServices, defaultService must
         # not be set. Conversely if defaultService is set, defaultRouteAction cannot
         # contain any weightedBackendServices. Only one of defaultRouteAction or
-        # defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load
-        # balancers only support the urlRewrite action within defaultRouteAction.
+        # defaultUrlRedirect must be set. URL maps for classic Application Load
+        # Balancers only support the urlRewrite action within defaultRouteAction.
         # defaultRouteAction has no effect when the URL map is bound to a target gRPC
         # proxy that has the validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultRouteAction`
@@ -47260,16 +47339,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies the load balancer type(s) this validation request is for. Use
-        # EXTERNAL_MANAGED for HTTP/HTTPS External Global Load Balancer with Advanced
-        # Traffic Management. Use EXTERNAL for Classic HTTP/HTTPS External Global Load
-        # Balancer. Other load balancer types are not supported. For more information,
-        # refer to Choosing a load balancer. If unspecified, the load balancing scheme
-        # will be inferred from the backend service resources this URL map references.
-        # If that can not be inferred (for example, this URL map only references backend
-        # buckets, or this Url map is for rewrites and redirects only and doesn't
-        # reference any backends), EXTERNAL will be used as the default type. If
-        # specified, the scheme(s) must not conflict with the load balancing scheme of
-        # the backend service resources this Url map references.
+        # EXTERNAL_MANAGED for global external Application Load Balancers and regional
+        # external Application Load Balancers. Use EXTERNAL for classic Application Load
+        # Balancers. Use INTERNAL_MANAGED for internal Application Load Balancers. For
+        # more information, refer to Choosing a load balancer. If unspecified, the load
+        # balancing scheme will be inferred from the backend service resources this URL
+        # map references. If that can not be inferred (for example, this URL map only
+        # references backend buckets, or this Url map is for rewrites and redirects only
+        # and doesn't reference any backends), EXTERNAL will be used as the default type.
+        # If specified, the scheme(s) must not conflict with the load balancing scheme
+        # of the backend service resources this Url map references.
         # Corresponds to the JSON property `loadBalancingSchemes`
         # @return [Array<String>]
         attr_accessor :load_balancing_schemes
@@ -47278,17 +47357,19 @@ module Google
         # Global](/compute/docs/reference/rest/beta/urlMaps) * [Regional](/compute/docs/
         # reference/rest/beta/regionUrlMaps) A URL map resource is a component of
         # certain types of cloud load balancers and Traffic Director: * urlMaps are used
-        # by external HTTP(S) load balancers and Traffic Director. * regionUrlMaps are
-        # used by internal HTTP(S) load balancers. For a list of supported URL map
-        # features by the load balancer type, see the Load balancing features: Routing
-        # and traffic management table. For a list of supported URL map features for
-        # Traffic Director, see the Traffic Director features: Routing and traffic
-        # management table. This resource defines mappings from hostnames and URL paths
-        # to either a backend service or a backend bucket. To use the global urlMaps
-        # resource, the backend service must have a loadBalancingScheme of either
-        # EXTERNAL or INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource, the
-        # backend service must have a loadBalancingScheme of INTERNAL_MANAGED. For more
-        # information, read URL Map Concepts.
+        # by global external Application Load Balancers, classic Application Load
+        # Balancers, and cross-region internal Application Load Balancers. *
+        # regionUrlMaps are used by internal Application Load Balancers, regional
+        # external Application Load Balancers and regional internal Application Load
+        # Balancers. For a list of supported URL map features by the load balancer type,
+        # see the Load balancing features: Routing and traffic management table. For a
+        # list of supported URL map features for Traffic Director, see the Traffic
+        # Director features: Routing and traffic management table. This resource defines
+        # mappings from hostnames and URL paths to either a backend service or a backend
+        # bucket. To use the global urlMaps resource, the backend service must have a
+        # loadBalancingScheme of either EXTERNAL or INTERNAL_SELF_MANAGED. To use the
+        # regionUrlMaps resource, the backend service must have a loadBalancingScheme of
+        # INTERNAL_MANAGED. For more information, read URL Map Concepts.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ComputeBeta::UrlMap]
         attr_accessor :resource
