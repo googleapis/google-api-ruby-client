@@ -271,11 +271,34 @@ module Google
         # @return [Float]
         attr_accessor :spf_success_ratio
       
-        # The ratio of user-report spam vs. email that was sent to the inbox. This
+        # The ratio of user-report spam vs. email that was sent to the inbox. This is
+        # potentially inexact -- users may want to refer to the description of the
+        # interval fields userReportedSpamRatioLowerBound and
+        # userReportedSpamRatioUpperBound for more explicit accuracy guarantees. This
         # metric only pertains to emails authenticated by [DKIM](http://www.dkim.org/).
         # Corresponds to the JSON property `userReportedSpamRatio`
         # @return [Float]
         attr_accessor :user_reported_spam_ratio
+      
+        # The lower bound of the confidence interval for the user reported spam ratio.
+        # If this field is set, then the value of userReportedSpamRatio is set to the
+        # midpoint of this interval and is thus inexact. However, the true ratio is
+        # guaranteed to be in between this lower bound and the corresponding upper bound
+        # 95% of the time. This metric only pertains to emails authenticated by [DKIM](
+        # http://www.dkim.org/).
+        # Corresponds to the JSON property `userReportedSpamRatioLowerBound`
+        # @return [Float]
+        attr_accessor :user_reported_spam_ratio_lower_bound
+      
+        # The upper bound of the confidence interval for the user reported spam ratio.
+        # If this field is set, then the value of userReportedSpamRatio is set to the
+        # midpoint of this interval and is thus inexact. However, the true ratio is
+        # guaranteed to be in between this upper bound and the corresponding lower bound
+        # 95% of the time. This metric only pertains to emails authenticated by [DKIM](
+        # http://www.dkim.org/).
+        # Corresponds to the JSON property `userReportedSpamRatioUpperBound`
+        # @return [Float]
+        attr_accessor :user_reported_spam_ratio_upper_bound
       
         def initialize(**args)
            update!(**args)
@@ -294,6 +317,8 @@ module Google
           @spammy_feedback_loops = args[:spammy_feedback_loops] if args.key?(:spammy_feedback_loops)
           @spf_success_ratio = args[:spf_success_ratio] if args.key?(:spf_success_ratio)
           @user_reported_spam_ratio = args[:user_reported_spam_ratio] if args.key?(:user_reported_spam_ratio)
+          @user_reported_spam_ratio_lower_bound = args[:user_reported_spam_ratio_lower_bound] if args.key?(:user_reported_spam_ratio_lower_bound)
+          @user_reported_spam_ratio_upper_bound = args[:user_reported_spam_ratio_upper_bound] if args.key?(:user_reported_spam_ratio_upper_bound)
         end
       end
     end

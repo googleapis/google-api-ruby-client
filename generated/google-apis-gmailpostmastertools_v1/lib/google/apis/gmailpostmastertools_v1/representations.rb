@@ -134,6 +134,8 @@ module Google
       
           property :spf_success_ratio, as: 'spfSuccessRatio'
           property :user_reported_spam_ratio, as: 'userReportedSpamRatio'
+          property :user_reported_spam_ratio_lower_bound, as: 'userReportedSpamRatioLowerBound'
+          property :user_reported_spam_ratio_upper_bound, as: 'userReportedSpamRatioUpperBound'
         end
       end
     end
