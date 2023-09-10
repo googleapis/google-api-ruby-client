@@ -88,8 +88,8 @@ module Google
         
         # Creates or updates a project's policy, and returns a copy of the new policy. A
         # policy is always updated as a whole, to avoid race conditions with concurrent
-        # policy enforcement (or management!) requests. Returns NOT_FOUND if the project
-        # does not exist, INVALID_ARGUMENT if the request is malformed.
+        # policy enforcement (or management!) requests. Returns `NOT_FOUND` if the
+        # project does not exist, `INVALID_ARGUMENT` if the request is malformed.
         # @param [String] name
         #   Output only. The resource name, in the format `projects/*/policy`. There is at
         #   most one policy per project.
@@ -123,9 +123,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND
-        # if the project does not exist, INVALID_ARGUMENT if the request is malformed,
-        # ALREADY_EXISTS if the attestor already exists.
+        # Creates an attestor, and returns a copy of the new attestor. Returns `
+        # NOT_FOUND` if the project does not exist, `INVALID_ARGUMENT` if the request is
+        # malformed, `ALREADY_EXISTS` if the attestor already exists.
         # @param [String] parent
         #   Required. The parent of this attestor.
         # @param [Google::Apis::BinaryauthorizationV1::Attestor] attestor_object
@@ -161,7 +161,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an attestor. Returns NOT_FOUND if the attestor does not exist.
+        # Deletes an attestor. Returns `NOT_FOUND` if the attestor does not exist.
         # @param [String] name
         #   Required. The name of the attestors to delete, in the format `projects/*/
         #   attestors/*`.
@@ -192,7 +192,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
+        # Gets an attestor. Returns `NOT_FOUND` if the attestor does not exist.
         # @param [String] name
         #   Required. The name of the attestor to retrieve, in the format `projects/*/
         #   attestors/*`.
@@ -268,7 +268,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists attestors. Returns INVALID_ARGUMENT if the project does not exist.
+        # Lists attestors. Returns `INVALID_ARGUMENT` if the project does not exist.
         # @param [String] parent
         #   Required. The resource name of the project associated with the attestors, in
         #   the format `projects/*`.
@@ -384,7 +384,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an attestor. Returns NOT_FOUND if the attestor does not exist.
+        # Updates an attestor. Returns `NOT_FOUND` if the attestor does not exist.
         # @param [String] name
         #   Required. The resource name, in the format: `projects/*/attestors/*`. This
         #   field may not be updated.
@@ -418,8 +418,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns whether the given Attestation for the given image URI was signed by
-        # the given Attestor
+        # Returns whether the given `Attestation` for the given image URI was signed by
+        # the given `Attestor`
         # @param [String] attestor
         #   Required. The resource name of the Attestor of the occurrence, in the format `
         #   projects/*/attestors/*`.
@@ -453,11 +453,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a platform policy, and returns a copy of it. Returns NOT_FOUND if the
-        # project or platform doesn't exist, INVALID_ARGUMENT if the request is
-        # malformed, ALREADY_EXISTS if the policy already exists, and INVALID_ARGUMENT
-        # if the policy contains a platform-specific policy that does not match the
-        # platform value specified in the URL.
+        # Creates a platform policy, and returns a copy of it. Returns `NOT_FOUND` if
+        # the project or platform doesn't exist, `INVALID_ARGUMENT` if the request is
+        # malformed, `ALREADY_EXISTS` if the policy already exists, and `
+        # INVALID_ARGUMENT` if the policy contains a platform-specific policy that does
+        # not match the platform value specified in the URL.
         # @param [String] parent
         #   Required. The parent of this platform policy.
         # @param [Google::Apis::BinaryauthorizationV1::PlatformPolicy] platform_policy_object
@@ -493,7 +493,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a platform policy. Returns NOT_FOUND if the policy doesn't exist.
+        # Deletes a platform policy. Returns `NOT_FOUND` if the policy doesn't exist.
         # @param [String] name
         #   Required. The name of the platform policy to delete, in the format `projects/*/
         #   platforms/*/policies/*`.
@@ -524,7 +524,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a platform policy. Returns NOT_FOUND if the policy doesn't exist.
+        # Gets a platform policy. Returns `NOT_FOUND` if the policy doesn't exist.
         # @param [String] name
         #   Required. The name of the platform policy to retrieve in the format `projects/*
         #   /platforms/*/policies/*`.
@@ -555,8 +555,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists platform policies owned by a project in the specified platform. Returns
-        # INVALID_ARGUMENT if the project or the platform doesn't exist.
+        # Lists platform policies owned by a project in the specified platform. Returns `
+        # INVALID_ARGUMENT` if the project or the platform doesn't exist.
         # @param [String] parent
         #   Required. The resource name of the platform associated with the platform
         #   policies using the format `projects/*/platforms/*`.
@@ -596,10 +596,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Replaces a platform policy. Returns NOT_FOUND if the policy doesn't exist.
+        # Replaces a platform policy. Returns `NOT_FOUND` if the policy doesn't exist.
         # @param [String] name
-        #   Output only. The relative resource name of the BinAuthz platform policy, in
-        #   the form of `projects/*/platforms/*/policies/*`.
+        #   Output only. The relative resource name of the Binary Authorization platform
+        #   policy, in the form of `projects/*/platforms/*/policies/*`.
         # @param [Google::Apis::BinaryauthorizationV1::PlatformPolicy] platform_policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
