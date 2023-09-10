@@ -22,6 +22,24 @@ module Google
   module Apis
     module DialogflowV2
       
+      class GoogleCloudDialogflowCxV3AdvancedSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3AudioInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +233,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3GcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -550,6 +574,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1AudioInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -743,6 +785,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1GcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1090,6 +1138,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1348,6 +1402,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2DialogflowAssistAnswer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2Document
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1559,6 +1619,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1858,6 +1924,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2IntentSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2IntentTrainingPhrase
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2062,6 +2134,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2SearchKnowledgeAnswer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2Sentiment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2189,6 +2285,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2SuggestionFeature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SuggestionInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2872,6 +2974,35 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3AdvancedSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_export_gcs_destination, as: 'audioExportGcsDestination', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GcsDestination, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GcsDestination::Representation
+      
+          property :dtmf_settings, as: 'dtmfSettings', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings::Representation
+      
+          property :logging_settings, as: 'loggingSettings', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :finish_digit, as: 'finishDigit'
+          property :max_digits, as: 'maxDigits'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_interaction_logging, as: 'enableInteractionLogging'
+          property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3AudioInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3111,6 +3242,8 @@ module Google
       class GoogleCloudDialogflowCxV3FormParameter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3AdvancedSettings, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3AdvancedSettings::Representation
+      
           property :default_value, as: 'defaultValue'
           property :display_name, as: 'displayName'
           property :entity_type, as: 'entityType'
@@ -3135,8 +3268,11 @@ module Google
       class GoogleCloudDialogflowCxV3Fulfillment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3AdvancedSettings, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3AdvancedSettings::Representation
+      
           collection :conditional_cases, as: 'conditionalCases', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3FulfillmentConditionalCases, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3FulfillmentConditionalCases::Representation
       
+          property :enable_generative_fallback, as: 'enableGenerativeFallback'
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ResponseMessage::Representation
       
           property :return_partial_responses, as: 'returnPartialResponses'
@@ -3179,6 +3315,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :parameter, as: 'parameter'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
         end
       end
       
@@ -3307,6 +3450,8 @@ module Google
       class GoogleCloudDialogflowCxV3Page
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3AdvancedSettings, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3AdvancedSettings::Representation
+      
           property :display_name, as: 'displayName'
           property :entry_fulfillment, as: 'entryFulfillment', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3Fulfillment, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3Fulfillment::Representation
       
@@ -3750,6 +3895,35 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_export_gcs_destination, as: 'audioExportGcsDestination', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GcsDestination, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GcsDestination::Representation
+      
+          property :dtmf_settings, as: 'dtmfSettings', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings::Representation
+      
+          property :logging_settings, as: 'loggingSettings', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :finish_digit, as: 'finishDigit'
+          property :max_digits, as: 'maxDigits'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_interaction_logging, as: 'enableInteractionLogging'
+          property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1AudioInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3989,6 +4163,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1FormParameter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1AdvancedSettings, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1AdvancedSettings::Representation
+      
           property :default_value, as: 'defaultValue'
           property :display_name, as: 'displayName'
           property :entity_type, as: 'entityType'
@@ -4013,8 +4189,11 @@ module Google
       class GoogleCloudDialogflowCxV3beta1Fulfillment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1AdvancedSettings, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1AdvancedSettings::Representation
+      
           collection :conditional_cases, as: 'conditionalCases', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases::Representation
       
+          property :enable_generative_fallback, as: 'enableGenerativeFallback'
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessage, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessage::Representation
       
           property :return_partial_responses, as: 'returnPartialResponses'
@@ -4057,6 +4236,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :parameter, as: 'parameter'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
         end
       end
       
@@ -4185,6 +4371,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1Page
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1AdvancedSettings, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1AdvancedSettings::Representation
+      
           property :display_name, as: 'displayName'
           property :entry_fulfillment, as: 'entryFulfillment', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1Fulfillment, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1Fulfillment::Representation
       
@@ -4651,8 +4839,18 @@ module Google
           property :answer_relevance, as: 'answerRelevance'
           property :document_correctness, as: 'documentCorrectness'
           property :document_efficiency, as: 'documentEfficiency'
+          property :knowledge_search_feedback, as: 'knowledgeSearchFeedback', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback::Representation
+      
           property :summarization_feedback, as: 'summarizationFeedback', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_copied, as: 'answerCopied'
+          collection :clicked_uris, as: 'clickedUris'
         end
       end
       
@@ -4669,6 +4867,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :article_suggestion_answer, as: 'articleSuggestionAnswer', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ArticleAnswer, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ArticleAnswer::Representation
+      
+          property :dialogflow_assist_answer, as: 'dialogflowAssistAnswer', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2DialogflowAssistAnswer, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2DialogflowAssistAnswer::Representation
       
           property :faq_answer, as: 'faqAnswer', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2FaqAnswer, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2FaqAnswer::Representation
       
@@ -4688,6 +4888,8 @@ module Google
           property :reply_audio_config, as: 'replyAudioConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2OutputAudioConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2OutputAudioConfig::Representation
       
           property :request_id, as: 'requestId'
+          property :suggestion_input, as: 'suggestionInput', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SuggestionInput, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SuggestionInput::Representation
+      
           property :text_input, as: 'textInput', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2TextInput, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2TextInput::Representation
       
         end
@@ -5109,6 +5311,17 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2DialogflowAssistAnswer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_record, as: 'answerRecord'
+          property :intent_suggestion, as: 'intentSuggestion', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2IntentSuggestion, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2IntentSuggestion::Representation
+      
+          property :query_result, as: 'queryResult', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2QueryResult, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2QueryResult::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2Document
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5424,6 +5637,7 @@ module Google
       
           property :conversation_process_config, as: 'conversationProcessConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig::Representation
       
+          property :disable_agent_query_logging, as: 'disableAgentQueryLogging'
           property :enable_event_based_suggestion, as: 'enableEventBasedSuggestion'
           property :query_config, as: 'queryConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig::Representation
       
@@ -5460,6 +5674,15 @@ module Google
       end
       
       class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent, as: 'agent'
+          property :human_agent_side_config, as: 'humanAgentSideConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent, as: 'agent'
@@ -5968,6 +6191,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2IntentSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :intent_v2, as: 'intentV2'
+        end
+      end
+      
       class GoogleCloudDialogflowV2IntentTrainingPhrase
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6315,6 +6547,47 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2SearchKnowledgeAnswer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer, as: 'answer'
+          property :answer_record, as: 'answerRecord'
+          collection :answer_sources, as: 'answerSources', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource::Representation
+      
+          property :answer_type, as: 'answerType'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snippet, as: 'snippet'
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation, as: 'conversation'
+          property :conversation_profile, as: 'conversationProfile'
+          property :latest_message, as: 'latestMessage'
+          property :parent, as: 'parent'
+          property :query, as: 'query', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2TextInput, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2TextInput::Representation
+      
+          property :session_id, as: 'sessionId'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :answers, as: 'answers', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeAnswer, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeAnswer::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2Sentiment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6414,6 +6687,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model, as: 'model'
           property :speech_model_variant, as: 'speechModelVariant'
+          property :use_timeout_based_endpointing, as: 'useTimeoutBasedEndpointing'
         end
       end
       
@@ -6511,6 +6785,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SuggestionInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_record, as: 'answerRecord'
         end
       end
       
