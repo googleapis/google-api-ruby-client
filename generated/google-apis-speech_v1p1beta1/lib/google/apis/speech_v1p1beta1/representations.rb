@@ -243,12 +243,20 @@ module Google
       class CustomClass
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :custom_class_id, as: 'customClassId'
+          property :delete_time, as: 'deleteTime'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :expire_time, as: 'expireTime'
           collection :items, as: 'items', class: Google::Apis::SpeechV1p1beta1::ClassItem, decorator: Google::Apis::SpeechV1p1beta1::ClassItem::Representation
       
           property :kms_key_name, as: 'kmsKeyName'
           property :kms_key_version_name, as: 'kmsKeyVersionName'
           property :name, as: 'name'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :uid, as: 'uid'
         end
       end
       
@@ -357,12 +365,20 @@ module Google
       class PhraseSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :boost, as: 'boost'
+          property :delete_time, as: 'deleteTime'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :expire_time, as: 'expireTime'
           property :kms_key_name, as: 'kmsKeyName'
           property :kms_key_version_name, as: 'kmsKeyVersionName'
           property :name, as: 'name'
           collection :phrases, as: 'phrases', class: Google::Apis::SpeechV1p1beta1::Phrase, decorator: Google::Apis::SpeechV1p1beta1::Phrase::Representation
       
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :uid, as: 'uid'
         end
       end
       

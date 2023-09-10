@@ -126,11 +126,44 @@ module Google
       class CustomClass
         include Google::Apis::Core::Hashable
       
+        # Output only. Allows users to store small amounts of arbitrary data. Both the
+        # key and the value must be 63 characters or less each. At most 100 annotations.
+        # This field is not used.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
         # If this custom class is a resource, the custom_class_id is the resource id of
         # the CustomClass. Case sensitive.
         # Corresponds to the JSON property `customClassId`
         # @return [String]
         attr_accessor :custom_class_id
+      
+        # Output only. The time at which this resource was requested for deletion. This
+        # field is not used.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Output only. User-settable, human-readable name for the CustomClass. Must be
+        # 63 characters or less. This field is not used.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. This checksum is computed by the server based on the value of
+        # other fields. This may be sent on update, undelete, and delete requests to
+        # ensure the client has an up-to-date value before proceeding. This field is not
+        # used.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The time at which this resource will be purged. This field is not
+        # used.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
       
         # A collection of class items.
         # Corresponds to the JSON property `items`
@@ -159,17 +192,43 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether or not this CustomClass is in the process of being
+        # updated. This field is not used.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. The CustomClass lifecycle state. This field is not used.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. System-assigned unique identifier for the CustomClass. This field
+        # is not used.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @custom_class_id = args[:custom_class_id] if args.key?(:custom_class_id)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @items = args[:items] if args.key?(:items)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
           @name = args[:name] if args.key?(:name)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       
@@ -559,6 +618,13 @@ module Google
       class PhraseSet
         include Google::Apis::Core::Hashable
       
+        # Output only. Allows users to store small amounts of arbitrary data. Both the
+        # key and the value must be 63 characters or less each. At most 100 annotations.
+        # This field is not used.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
         # Hint Boost. Positive value will increase the probability that a specific
         # phrase will be recognized over other similar sounding phrases. The higher the
         # boost, the higher the chance of false positive recognition as well. Negative
@@ -571,6 +637,32 @@ module Google
         # Corresponds to the JSON property `boost`
         # @return [Float]
         attr_accessor :boost
+      
+        # Output only. The time at which this resource was requested for deletion. This
+        # field is not used.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Output only. User-settable, human-readable name for the PhraseSet. Must be 63
+        # characters or less. This field is not used.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. This checksum is computed by the server based on the value of
+        # other fields. This may be sent on update, undelete, and delete requests to
+        # ensure the client has an up-to-date value before proceeding. This field is not
+        # used.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The time at which this resource will be purged. This field is not
+        # used.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
       
         # Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-
         # hierarchy#keys) with which the content of the PhraseSet is encrypted. The
@@ -599,17 +691,43 @@ module Google
         # @return [Array<Google::Apis::SpeechV1p1beta1::Phrase>]
         attr_accessor :phrases
       
+        # Output only. Whether or not this PhraseSet is in the process of being updated.
+        # This field is not used.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. The CustomClass lifecycle state. This field is not used.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. System-assigned unique identifier for the PhraseSet. This field
+        # is not used.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @boost = args[:boost] if args.key?(:boost)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
           @name = args[:name] if args.key?(:name)
           @phrases = args[:phrases] if args.key?(:phrases)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       
