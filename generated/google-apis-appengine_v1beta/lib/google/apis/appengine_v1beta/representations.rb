@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DebugInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -534,6 +540,7 @@ module Google
           property :feature_settings, as: 'featureSettings', class: Google::Apis::AppengineV1beta::FeatureSettings, decorator: Google::Apis::AppengineV1beta::FeatureSettings::Representation
       
           property :gcr_domain, as: 'gcrDomain'
+          hash :generated_customer_metadata, as: 'generatedCustomerMetadata'
           property :iap, as: 'iap', class: Google::Apis::AppengineV1beta::IdentityAwareProxy, decorator: Google::Apis::AppengineV1beta::IdentityAwareProxy::Representation
       
           property :id, as: 'id'
@@ -686,6 +693,15 @@ module Google
           property :single_instance_assignment, as: 'singleInstanceAssignment'
           property :target_type, as: 'targetType'
           property :target_utilization, as: 'targetUtilization'
+        end
+      end
+      
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
         end
       end
       
@@ -1186,6 +1202,12 @@ module Google
       class Runtime
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :decommissioned_date, as: 'decommissionedDate', class: Google::Apis::AppengineV1beta::Date, decorator: Google::Apis::AppengineV1beta::Date::Representation
+      
+          property :deprecation_date, as: 'deprecationDate', class: Google::Apis::AppengineV1beta::Date, decorator: Google::Apis::AppengineV1beta::Date::Representation
+      
+          property :end_of_support_date, as: 'endOfSupportDate', class: Google::Apis::AppengineV1beta::Date, decorator: Google::Apis::AppengineV1beta::Date::Representation
+      
           property :environment, as: 'environment'
           property :name, as: 'name'
           property :stage, as: 'stage'
