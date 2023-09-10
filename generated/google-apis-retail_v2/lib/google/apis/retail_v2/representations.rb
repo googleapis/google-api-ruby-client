@@ -142,6 +142,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2CatalogAttributeFacetConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2ColorInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -592,6 +610,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2RuleForceReturnFacetAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2RuleIgnoreAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -605,6 +635,12 @@ module Google
       end
       
       class GoogleCloudRetailV2RuleRedirectAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2RuleRemoveFacetAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1493,12 +1529,43 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dynamic_facetable_option, as: 'dynamicFacetableOption'
           property :exact_searchable_option, as: 'exactSearchableOption'
+          property :facet_config, as: 'facetConfig', class: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfig, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfig::Representation
+      
           property :in_use, as: 'inUse'
           property :indexable_option, as: 'indexableOption'
           property :key, as: 'key'
           property :retrievable_option, as: 'retrievableOption'
           property :searchable_option, as: 'searchableOption'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudRetailV2CatalogAttributeFacetConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :facet_intervals, as: 'facetIntervals', class: Google::Apis::RetailV2::GoogleCloudRetailV2Interval, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2Interval::Representation
+      
+          collection :ignored_facet_values, as: 'ignoredFacetValues', class: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues::Representation
+      
+          collection :merged_facet_values, as: 'mergedFacetValues', class: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :merged_value, as: 'mergedValue'
+          collection :values, as: 'values'
         end
       end
       
@@ -1579,6 +1646,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :active_time_range, as: 'activeTimeRange', class: Google::Apis::RetailV2::GoogleCloudRetailV2ConditionTimeRange, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2ConditionTimeRange::Representation
       
+          collection :page_categories, as: 'pageCategories'
           collection :query_terms, as: 'queryTerms', class: Google::Apis::RetailV2::GoogleCloudRetailV2ConditionQueryTerm, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2ConditionQueryTerm::Representation
       
         end
@@ -2202,11 +2270,15 @@ module Google
       
           property :filter_action, as: 'filterAction', class: Google::Apis::RetailV2::GoogleCloudRetailV2RuleFilterAction, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2RuleFilterAction::Representation
       
+          property :force_return_facet_action, as: 'forceReturnFacetAction', class: Google::Apis::RetailV2::GoogleCloudRetailV2RuleForceReturnFacetAction, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2RuleForceReturnFacetAction::Representation
+      
           property :ignore_action, as: 'ignoreAction', class: Google::Apis::RetailV2::GoogleCloudRetailV2RuleIgnoreAction, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2RuleIgnoreAction::Representation
       
           property :oneway_synonyms_action, as: 'onewaySynonymsAction', class: Google::Apis::RetailV2::GoogleCloudRetailV2RuleOnewaySynonymsAction, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2RuleOnewaySynonymsAction::Representation
       
           property :redirect_action, as: 'redirectAction', class: Google::Apis::RetailV2::GoogleCloudRetailV2RuleRedirectAction, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2RuleRedirectAction::Representation
+      
+          property :remove_facet_action, as: 'removeFacetAction', class: Google::Apis::RetailV2::GoogleCloudRetailV2RuleRemoveFacetAction, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2RuleRemoveFacetAction::Representation
       
           property :replacement_action, as: 'replacementAction', class: Google::Apis::RetailV2::GoogleCloudRetailV2RuleReplacementAction, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2RuleReplacementAction::Representation
       
@@ -2239,6 +2311,22 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2RuleForceReturnFacetAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :facet_position_adjustments, as: 'facetPositionAdjustments', class: Google::Apis::RetailV2::GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_name, as: 'attributeName'
+          property :position, as: 'position'
+        end
+      end
+      
       class GoogleCloudRetailV2RuleIgnoreAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2259,6 +2347,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :redirect_uri, as: 'redirectUri'
+        end
+      end
+      
+      class GoogleCloudRetailV2RuleRemoveFacetAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attribute_names, as: 'attributeNames'
         end
       end
       
