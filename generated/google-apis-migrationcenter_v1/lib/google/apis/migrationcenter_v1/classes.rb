@@ -3835,8 +3835,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Count of the number of assets in this group which are also included in another
-        # group within the same report.
+        # This field is deprecated, do not rely on it having a value.
         # Corresponds to the JSON property `overlappingAssetCount`
         # @return [Fixnum]
         attr_accessor :overlapping_asset_count
