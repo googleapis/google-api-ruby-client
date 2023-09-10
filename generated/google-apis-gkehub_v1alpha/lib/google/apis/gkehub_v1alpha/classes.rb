@@ -213,13 +213,13 @@ module Google
         attr_accessor :identity_provider
       
         # Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://
-        # ` and be a valid URL with length <2000 characters. If set, then Google will
-        # allow valid OIDC tokens from this issuer to authenticate within the
-        # workload_identity_pool. OIDC discovery will be performed on this URI to
-        # validate tokens from the issuer. Clearing `issuer` disables Workload Identity.
-        # `issuer` cannot be directly modified; it must be cleared (and Workload
-        # Identity disabled) before using a new issuer (and re-enabling Workload
-        # Identity).
+        # ` and be a valid URL with length <2000 characters, it must use `location`
+        # rather than `zone` for GKE clusters. If set, then Google will allow valid OIDC
+        # tokens from this issuer to authenticate within the workload_identity_pool.
+        # OIDC discovery will be performed on this URI to validate tokens from the
+        # issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be
+        # directly modified; it must be cleared (and Workload Identity disabled) before
+        # using a new issuer (and re-enabling Workload Identity).
         # Corresponds to the JSON property `issuer`
         # @return [String]
         attr_accessor :issuer
@@ -2823,11 +2823,6 @@ module Google
         # @return [String]
         attr_accessor :tenant
       
-        # Optional. Claim in the AzureAD ID Token that holds the user details.
-        # Corresponds to the JSON property `userClaim`
-        # @return [String]
-        attr_accessor :user_claim
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2839,7 +2834,6 @@ module Google
           @encrypted_client_secret = args[:encrypted_client_secret] if args.key?(:encrypted_client_secret)
           @kubectl_redirect_uri = args[:kubectl_redirect_uri] if args.key?(:kubectl_redirect_uri)
           @tenant = args[:tenant] if args.key?(:tenant)
-          @user_claim = args[:user_claim] if args.key?(:user_claim)
         end
       end
       
