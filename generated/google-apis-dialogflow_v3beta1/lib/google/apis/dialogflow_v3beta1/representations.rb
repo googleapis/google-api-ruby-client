@@ -22,6 +22,24 @@ module Google
   module Apis
     module DialogflowV3beta1
       
+      class GoogleCloudDialogflowCxV3AdvancedSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3AudioInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +233,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3GcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -556,6 +580,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -563,6 +593,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1Agent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -959,6 +995,30 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1GcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1GenerativeSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettingsPromptTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1GenerativeSettingsKnowledgeConnectorSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1391,6 +1451,18 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1RunTestCaseResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1SafetySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2746,6 +2818,35 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3AdvancedSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_export_gcs_destination, as: 'audioExportGcsDestination', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3GcsDestination, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3GcsDestination::Representation
+      
+          property :dtmf_settings, as: 'dtmfSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings::Representation
+      
+          property :logging_settings, as: 'loggingSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :finish_digit, as: 'finishDigit'
+          property :max_digits, as: 'maxDigits'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_interaction_logging, as: 'enableInteractionLogging'
+          property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3AudioInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2985,6 +3086,8 @@ module Google
       class GoogleCloudDialogflowCxV3FormParameter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3AdvancedSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3AdvancedSettings::Representation
+      
           property :default_value, as: 'defaultValue'
           property :display_name, as: 'displayName'
           property :entity_type, as: 'entityType'
@@ -3009,8 +3112,11 @@ module Google
       class GoogleCloudDialogflowCxV3Fulfillment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3AdvancedSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3AdvancedSettings::Representation
+      
           collection :conditional_cases, as: 'conditionalCases', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3FulfillmentConditionalCases, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3FulfillmentConditionalCases::Representation
       
+          property :enable_generative_fallback, as: 'enableGenerativeFallback'
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessage::Representation
       
           property :return_partial_responses, as: 'returnPartialResponses'
@@ -3053,6 +3159,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :parameter, as: 'parameter'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
         end
       end
       
@@ -3181,6 +3294,8 @@ module Google
       class GoogleCloudDialogflowCxV3Page
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3AdvancedSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3AdvancedSettings::Representation
+      
           property :display_name, as: 'displayName'
           property :entry_fulfillment, as: 'entryFulfillment', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3Fulfillment, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3Fulfillment::Representation
       
@@ -3629,8 +3744,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_export_gcs_destination, as: 'audioExportGcsDestination', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1GcsDestination, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1GcsDestination::Representation
       
+          property :dtmf_settings, as: 'dtmfSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings::Representation
+      
           property :logging_settings, as: 'loggingSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :finish_digit, as: 'finishDigit'
+          property :max_digits, as: 'maxDigits'
         end
       end
       
@@ -3653,6 +3779,8 @@ module Google
           property :display_name, as: 'displayName'
           property :enable_spell_correction, as: 'enableSpellCorrection'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
+          property :gen_app_builder_settings, as: 'genAppBuilderSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings::Representation
+      
           property :git_integration_settings, as: 'gitIntegrationSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings::Representation
       
           property :locked, as: 'locked'
@@ -3665,6 +3793,13 @@ module Google
           property :text_to_speech_settings, as: 'textToSpeechSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TextToSpeechSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TextToSpeechSettings::Representation
       
           property :time_zone, as: 'timeZone'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :engine, as: 'engine'
         end
       end
       
@@ -4183,6 +4318,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1Flow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings::Representation
+      
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           collection :event_handlers, as: 'eventHandlers', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EventHandler, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EventHandler::Representation
@@ -4226,6 +4363,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1FormParameter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings::Representation
+      
           property :default_value, as: 'defaultValue'
           property :display_name, as: 'displayName'
           property :entity_type, as: 'entityType'
@@ -4274,8 +4413,11 @@ module Google
       class GoogleCloudDialogflowCxV3beta1Fulfillment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings::Representation
+      
           collection :conditional_cases, as: 'conditionalCases', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases::Representation
       
+          property :enable_generative_fallback, as: 'enableGenerativeFallback'
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage::Representation
       
           property :return_partial_responses, as: 'returnPartialResponses'
@@ -4325,6 +4467,49 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1GenerativeSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fallback_settings, as: 'fallbackSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettings::Representation
+      
+          property :generative_safety_settings, as: 'generativeSafetySettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SafetySettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SafetySettings::Representation
+      
+          property :knowledge_connector_settings, as: 'knowledgeConnectorSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1GenerativeSettingsKnowledgeConnectorSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1GenerativeSettingsKnowledgeConnectorSettings::Representation
+      
+          property :language_code, as: 'languageCode'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :prompt_templates, as: 'promptTemplates', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettingsPromptTemplate, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettingsPromptTemplate::Representation
+      
+          property :selected_prompt, as: 'selectedPrompt'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettingsPromptTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :frozen, as: 'frozen'
+          property :prompt_text, as: 'promptText'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1GenerativeSettingsKnowledgeConnectorSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent, as: 'agent'
+          property :agent_identity, as: 'agentIdentity'
+          property :agent_scope, as: 'agentScope'
+          property :business, as: 'business'
+          property :business_description, as: 'businessDescription'
         end
       end
       
@@ -4715,6 +4900,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1Page
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings::Representation
+      
           property :display_name, as: 'displayName'
           property :entry_fulfillment, as: 'entryFulfillment', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Fulfillment, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Fulfillment::Representation
       
@@ -4800,6 +4987,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1QueryResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings::Representation
+      
           property :current_page, as: 'currentPage', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Page, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Page::Representation
       
           hash :diagnostic_info, as: 'diagnosticInfo'
@@ -5032,6 +5221,22 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1SafetySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :banned_phrases, as: 'bannedPhrases', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+          property :text, as: 'text'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1SecuritySettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5046,6 +5251,7 @@ module Google
           collection :purge_data_types, as: 'purgeDataTypes'
           property :redaction_scope, as: 'redactionScope'
           property :redaction_strategy, as: 'redactionStrategy'
+          property :retention_strategy, as: 'retentionStrategy'
           property :retention_window_days, as: 'retentionWindowDays'
         end
       end
