@@ -344,6 +344,25 @@ module Google
         end
       end
       
+      # Request for UpgradeInstance.
+      class GoogleCloudMemcacheV1beta2UpgradeInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the target version of memcached engine to upgrade to.
+        # Corresponds to the JSON property `memcacheVersion`
+        # @return [String]
+        attr_accessor :memcache_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @memcache_version = args[:memcache_version] if args.key?(:memcache_version)
+        end
+      end
+      
       # 
       class GoogleCloudMemcacheV1beta2ZoneMetadata
         include Google::Apis::Core::Hashable
@@ -1283,6 +1302,18 @@ module Google
         # @return [String]
         attr_accessor :host
       
+        # Output only. The full version of memcached server running on this node. e.g. -
+        # memcached-1.5.16
+        # Corresponds to the JSON property `memcacheFullVersion`
+        # @return [String]
+        attr_accessor :memcache_full_version
+      
+        # Output only. Major version of memcached server running on this node, e.g.
+        # MEMCACHE_1_5
+        # Corresponds to the JSON property `memcacheVersion`
+        # @return [String]
+        attr_accessor :memcache_version
+      
         # Output only. Identifier of the Memcached node. The node id does not include
         # project or location like the Memcached instance name.
         # Corresponds to the JSON property `nodeId`
@@ -1322,6 +1353,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @host = args[:host] if args.key?(:host)
+          @memcache_full_version = args[:memcache_full_version] if args.key?(:memcache_full_version)
+          @memcache_version = args[:memcache_version] if args.key?(:memcache_version)
           @node_id = args[:node_id] if args.key?(:node_id)
           @parameters = args[:parameters] if args.key?(:parameters)
           @port = args[:port] if args.key?(:port)

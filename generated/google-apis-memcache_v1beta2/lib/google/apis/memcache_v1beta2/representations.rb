@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMemcacheV1beta2UpgradeInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMemcacheV1beta2ZoneMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -376,6 +382,13 @@ module Google
         end
       end
       
+      class GoogleCloudMemcacheV1beta2UpgradeInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :memcache_version, as: 'memcacheVersion'
+        end
+      end
+      
       class GoogleCloudMemcacheV1beta2ZoneMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -615,6 +628,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :host, as: 'host'
+          property :memcache_full_version, as: 'memcacheFullVersion'
+          property :memcache_version, as: 'memcacheVersion'
           property :node_id, as: 'nodeId'
           property :parameters, as: 'parameters', class: Google::Apis::MemcacheV1beta2::MemcacheParameters, decorator: Google::Apis::MemcacheV1beta2::MemcacheParameters::Representation
       
