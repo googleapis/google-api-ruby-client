@@ -130,6 +130,7 @@ module Google
       class SecurityKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_nickname, as: 'deviceNickname'
           property :private_key, as: 'privateKey'
           property :public_key, as: 'publicKey'
           property :universal_two_factor, as: 'universalTwoFactor', class: Google::Apis::OsloginV1alpha::UniversalTwoFactor, decorator: Google::Apis::OsloginV1alpha::UniversalTwoFactor::Representation
