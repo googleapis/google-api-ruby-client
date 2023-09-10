@@ -2320,7 +2320,7 @@ module Google
         # List of build step outputs, produced by builder images, in the order
         # corresponding to build step indices. [Cloud Builders](https://cloud.google.com/
         # cloud-build/docs/cloud-builders) can produce this output by writing to `$
-        # BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
+        # BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.
         # Corresponds to the JSON property `buildStepOutputs`
         # @return [Array<String>]
         attr_accessor :build_step_outputs
