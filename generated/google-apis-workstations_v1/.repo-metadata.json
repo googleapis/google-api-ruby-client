@@ -1,0 +1,7 @@
+{
+    "api_id": "workstations:v1",
+    "name_pretty": "Cloud Workstations API",
+    "distribution_name": "google-apis-workstations_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
