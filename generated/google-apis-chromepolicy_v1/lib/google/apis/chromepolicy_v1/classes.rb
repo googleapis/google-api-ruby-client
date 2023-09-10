@@ -1622,6 +1622,11 @@ module Google
       class Proto2FileDescriptorProto
         include Google::Apis::Core::Hashable
       
+        # The edition of the proto file.
+        # Corresponds to the JSON property `editionEnum`
+        # @return [String]
+        attr_accessor :edition_enum
+      
         # 
         # Corresponds to the JSON property `enumType`
         # @return [Array<Google::Apis::ChromepolicyV1::Proto2EnumDescriptorProto>]
@@ -1654,6 +1659,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition_enum = args[:edition_enum] if args.key?(:edition_enum)
           @enum_type = args[:enum_type] if args.key?(:enum_type)
           @message_type = args[:message_type] if args.key?(:message_type)
           @name = args[:name] if args.key?(:name)
