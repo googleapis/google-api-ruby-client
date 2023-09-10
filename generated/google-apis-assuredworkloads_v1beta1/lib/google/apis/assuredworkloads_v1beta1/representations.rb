@@ -252,7 +252,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :asset_move_analyses, as: 'assetMoveAnalyses', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis::Representation
       
-          collection :blockers, as: 'blockers'
           property :next_page_token, as: 'nextPageToken'
         end
       end

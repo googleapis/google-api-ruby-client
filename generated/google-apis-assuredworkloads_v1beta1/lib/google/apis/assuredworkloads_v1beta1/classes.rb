@@ -80,13 +80,6 @@ module Google
         # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis>]
         attr_accessor :asset_move_analyses
       
-        # A list of blockers that should be addressed before moving the source project
-        # or project-based workload to the destination folder-based workload. This field
-        # is now deprecated.
-        # Corresponds to the JSON property `blockers`
-        # @return [Array<String>]
-        attr_accessor :blockers
-      
         # The next page token. Is empty if the last page is reached.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -99,7 +92,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @asset_move_analyses = args[:asset_move_analyses] if args.key?(:asset_move_analyses)
-          @blockers = args[:blockers] if args.key?(:blockers)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
