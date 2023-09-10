@@ -319,6 +319,12 @@ module Google
         # @return [String]
         attr_accessor :firmware
       
+        # Migrating VM source information about the VM capabilities needed for some
+        # Compute Engine features.
+        # Corresponds to the JSON property `vmCapabilitiesInfo`
+        # @return [Google::Apis::VmmigrationV1alpha1::VmCapabilities]
+        attr_accessor :vm_capabilities_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -328,6 +334,7 @@ module Google
           @committed_storage_bytes = args[:committed_storage_bytes] if args.key?(:committed_storage_bytes)
           @disks = args[:disks] if args.key?(:disks)
           @firmware = args[:firmware] if args.key?(:firmware)
+          @vm_capabilities_info = args[:vm_capabilities_info] if args.key?(:vm_capabilities_info)
         end
       end
       
@@ -471,6 +478,252 @@ module Google
         end
       end
       
+      # The details of an Azure VM disk.
+      class AzureDiskDetails
+        include Google::Apis::Core::Hashable
+      
+        # Azure disk ID.
+        # Corresponds to the JSON property `diskId`
+        # @return [String]
+        attr_accessor :disk_id
+      
+        # The ordinal number of the disk.
+        # Corresponds to the JSON property `diskNumber`
+        # @return [Fixnum]
+        attr_accessor :disk_number
+      
+        # Size in GB.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_id = args[:disk_id] if args.key?(:disk_id)
+          @disk_number = args[:disk_number] if args.key?(:disk_number)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+        end
+      end
+      
+      # AzureSourceDetails message describes a specific source details for the Azure
+      # source type.
+      class AzureSourceDetails
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The Azure location (region) that the source VMs will be migrated
+        # from.
+        # Corresponds to the JSON property `azureLocation`
+        # @return [String]
+        attr_accessor :azure_location
+      
+        # Message describing Azure Credentials using tenant ID, client ID and secret.
+        # Corresponds to the JSON property `clientSecretCreds`
+        # @return [Google::Apis::VmmigrationV1alpha1::ClientSecretCredentials]
+        attr_accessor :client_secret_creds
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::VmmigrationV1alpha1::Status]
+        attr_accessor :error
+      
+        # User specified tags to add to every M2VM generated resource in Azure. These
+        # tags will be set in addition to the default tags that are set as part of the
+        # migration process. The tags must not begin with the reserved prefix `m4ce` or `
+        # m2vm`.
+        # Corresponds to the JSON property `migrationResourcesUserTags`
+        # @return [Hash<String,String>]
+        attr_accessor :migration_resources_user_tags
+      
+        # Output only. The ID of the Azure resource group that contains all resources
+        # related to the migration process of this source.
+        # Corresponds to the JSON property `resourceGroupId`
+        # @return [String]
+        attr_accessor :resource_group_id
+      
+        # Output only. State of the source as determined by the health check.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Immutable. Azure subscription ID.
+        # Corresponds to the JSON property `subscriptionId`
+        # @return [String]
+        attr_accessor :subscription_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @azure_location = args[:azure_location] if args.key?(:azure_location)
+          @client_secret_creds = args[:client_secret_creds] if args.key?(:client_secret_creds)
+          @error = args[:error] if args.key?(:error)
+          @migration_resources_user_tags = args[:migration_resources_user_tags] if args.key?(:migration_resources_user_tags)
+          @resource_group_id = args[:resource_group_id] if args.key?(:resource_group_id)
+          @state = args[:state] if args.key?(:state)
+          @subscription_id = args[:subscription_id] if args.key?(:subscription_id)
+        end
+      end
+      
+      # Represent the source Azure VM details.
+      class AzureSourceVmDetails
+        include Google::Apis::Core::Hashable
+      
+        # The total size of the disks being migrated in bytes.
+        # Corresponds to the JSON property `committedStorageBytes`
+        # @return [Fixnum]
+        attr_accessor :committed_storage_bytes
+      
+        # The disks attached to the source VM.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::AzureDiskDetails>]
+        attr_accessor :disks
+      
+        # The firmware type of the source VM.
+        # Corresponds to the JSON property `firmware`
+        # @return [String]
+        attr_accessor :firmware
+      
+        # Migrating VM source information about the VM capabilities needed for some
+        # Compute Engine features.
+        # Corresponds to the JSON property `vmCapabilitiesInfo`
+        # @return [Google::Apis::VmmigrationV1alpha1::VmCapabilities]
+        attr_accessor :vm_capabilities_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @committed_storage_bytes = args[:committed_storage_bytes] if args.key?(:committed_storage_bytes)
+          @disks = args[:disks] if args.key?(:disks)
+          @firmware = args[:firmware] if args.key?(:firmware)
+          @vm_capabilities_info = args[:vm_capabilities_info] if args.key?(:vm_capabilities_info)
+        end
+      end
+      
+      # AwsVmDetails describes a VM in AWS.
+      class AzureVmDetails
+        include Google::Apis::Core::Hashable
+      
+        # The VM Boot Option.
+        # Corresponds to the JSON property `bootOption`
+        # @return [String]
+        attr_accessor :boot_option
+      
+        # The total size of the storage allocated to the VM in MB.
+        # Corresponds to the JSON property `committedStorageMb`
+        # @return [Fixnum]
+        attr_accessor :committed_storage_mb
+      
+        # The VM's ComputerName.
+        # Corresponds to the JSON property `computerName`
+        # @return [String]
+        attr_accessor :computer_name
+      
+        # The number of cpus the VM has.
+        # Corresponds to the JSON property `cpuCount`
+        # @return [Fixnum]
+        attr_accessor :cpu_count
+      
+        # The number of disks the VM has, including OS disk.
+        # Corresponds to the JSON property `diskCount`
+        # @return [Fixnum]
+        attr_accessor :disk_count
+      
+        # Description of the data disks.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::Disk>]
+        attr_accessor :disks
+      
+        # The memory size of the VM in MB.
+        # Corresponds to the JSON property `memoryMb`
+        # @return [Fixnum]
+        attr_accessor :memory_mb
+      
+        # A message describing the VM's OS. Including OS, Publisher, Offer and Plan if
+        # applicable.
+        # Corresponds to the JSON property `osDescription`
+        # @return [Google::Apis::VmmigrationV1alpha1::OsDescription]
+        attr_accessor :os_description
+      
+        # A message describing the OS disk.
+        # Corresponds to the JSON property `osDisk`
+        # @return [Google::Apis::VmmigrationV1alpha1::OsDisk]
+        attr_accessor :os_disk
+      
+        # The power state of the VM at the moment list was taken.
+        # Corresponds to the JSON property `powerState`
+        # @return [String]
+        attr_accessor :power_state
+      
+        # The tags of the VM.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        # The VM full path in Azure.
+        # Corresponds to the JSON property `vmId`
+        # @return [String]
+        attr_accessor :vm_id
+      
+        # VM size as configured in Azure. Determines the VM's hardware spec.
+        # Corresponds to the JSON property `vmSize`
+        # @return [String]
+        attr_accessor :vm_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boot_option = args[:boot_option] if args.key?(:boot_option)
+          @committed_storage_mb = args[:committed_storage_mb] if args.key?(:committed_storage_mb)
+          @computer_name = args[:computer_name] if args.key?(:computer_name)
+          @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
+          @disk_count = args[:disk_count] if args.key?(:disk_count)
+          @disks = args[:disks] if args.key?(:disks)
+          @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
+          @os_description = args[:os_description] if args.key?(:os_description)
+          @os_disk = args[:os_disk] if args.key?(:os_disk)
+          @power_state = args[:power_state] if args.key?(:power_state)
+          @tags = args[:tags] if args.key?(:tags)
+          @vm_id = args[:vm_id] if args.key?(:vm_id)
+          @vm_size = args[:vm_size] if args.key?(:vm_size)
+        end
+      end
+      
+      # AzureVmsDetails describes VMs in Azure.
+      class AzureVmsDetails
+        include Google::Apis::Core::Hashable
+      
+        # The details of the Azure VMs.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::AzureVmDetails>]
+        attr_accessor :details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+        end
+      end
+      
       # Request message for 'CancelCloneJob' request.
       class CancelCloneJobRequest
         include Google::Apis::Core::Hashable
@@ -507,6 +760,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Message describing Azure Credentials using tenant ID, client ID and secret.
+      class ClientSecretCredentials
+        include Google::Apis::Core::Hashable
+      
+        # Azure client ID.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Input only. Azure client secret.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Azure tenant ID.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
         end
       end
       
@@ -1348,6 +1632,37 @@ module Google
         end
       end
       
+      # A message describing a data disk.
+      class Disk
+        include Google::Apis::Core::Hashable
+      
+        # The disk's Logical Unit Number (LUN).
+        # Corresponds to the JSON property `lun`
+        # @return [Fixnum]
+        attr_accessor :lun
+      
+        # The disk name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The disk size in GB.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lun = args[:lun] if args.key?(:lun)
+          @name = args[:name] if args.key?(:name)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1373,6 +1688,11 @@ module Google
         # @return [Google::Apis::VmmigrationV1alpha1::AwsVmsDetails]
         attr_accessor :aws_vms
       
+        # AzureVmsDetails describes VMs in Azure.
+        # Corresponds to the JSON property `azureVms`
+        # @return [Google::Apis::VmmigrationV1alpha1::AzureVmsDetails]
+        attr_accessor :azure_vms
+      
         # Output only. A token, which can be sent as `page_token` to retrieve the next
         # page. If this field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
@@ -1397,6 +1717,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aws_vms = args[:aws_vms] if args.key?(:aws_vms)
+          @azure_vms = args[:azure_vms] if args.key?(:azure_vms)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vmware_vms = args[:vmware_vms] if args.key?(:vmware_vms)
@@ -1939,6 +2260,11 @@ module Google
         # @return [Google::Apis::VmmigrationV1alpha1::AwsSourceVmDetails]
         attr_accessor :aws_source_vm_details
       
+        # Represent the source Azure VM details.
+        # Corresponds to the JSON property `azureSourceVmDetails`
+        # @return [Google::Apis::VmmigrationV1alpha1::AzureSourceVmDetails]
+        attr_accessor :azure_source_vm_details
+      
         # ComputeEngineDisksTargetDefaults is a collection of details for creating
         # Persistent Disks in a target Compute Engine project.
         # Corresponds to the JSON property `computeEngineDisksTargetDefaults`
@@ -2082,6 +2408,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aws_source_vm_details = args[:aws_source_vm_details] if args.key?(:aws_source_vm_details)
+          @azure_source_vm_details = args[:azure_source_vm_details] if args.key?(:azure_source_vm_details)
           @compute_engine_disks_target_defaults = args[:compute_engine_disks_target_defaults] if args.key?(:compute_engine_disks_target_defaults)
           @compute_engine_target_defaults = args[:compute_engine_target_defaults] if args.key?(:compute_engine_target_defaults)
           @compute_engine_vm_defaults = args[:compute_engine_vm_defaults] if args.key?(:compute_engine_vm_defaults)
@@ -2238,6 +2565,75 @@ module Google
           @internal_ip = args[:internal_ip] if args.key?(:internal_ip)
           @network = args[:network] if args.key?(:network)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+        end
+      end
+      
+      # A message describing the VM's OS. Including OS, Publisher, Offer and Plan if
+      # applicable.
+      class OsDescription
+        include Google::Apis::Core::Hashable
+      
+        # OS offer.
+        # Corresponds to the JSON property `offer`
+        # @return [String]
+        attr_accessor :offer
+      
+        # OS plan.
+        # Corresponds to the JSON property `plan`
+        # @return [String]
+        attr_accessor :plan
+      
+        # OS publisher.
+        # Corresponds to the JSON property `publisher`
+        # @return [String]
+        attr_accessor :publisher
+      
+        # OS type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @offer = args[:offer] if args.key?(:offer)
+          @plan = args[:plan] if args.key?(:plan)
+          @publisher = args[:publisher] if args.key?(:publisher)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A message describing the OS disk.
+      class OsDisk
+        include Google::Apis::Core::Hashable
+      
+        # The disk's full name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The disk's size in GB.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        # The disk's type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -2722,6 +3118,12 @@ module Google
         # @return [Google::Apis::VmmigrationV1alpha1::AwsSourceDetails]
         attr_accessor :aws
       
+        # AzureSourceDetails message describes a specific source details for the Azure
+        # source type.
+        # Corresponds to the JSON property `azure`
+        # @return [Google::Apis::VmmigrationV1alpha1::AzureSourceDetails]
+        attr_accessor :azure
+      
         # Output only. The create time timestamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2770,6 +3172,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aws = args[:aws] if args.key?(:aws)
+          @azure = args[:azure] if args.key?(:azure)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @error = args[:error] if args.key?(:error)
@@ -3214,6 +3617,33 @@ module Google
         end
       end
       
+      # Migrating VM source information about the VM capabilities needed for some
+      # Compute Engine features.
+      class VmCapabilities
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The last time OS capabilities list was updated.
+        # Corresponds to the JSON property `lastOsCapabilitiesUpdateTime`
+        # @return [String]
+        attr_accessor :last_os_capabilities_update_time
+      
+        # Output only. Unordered list. List of certain VM OS capabilities needed for
+        # some Compute Engine features.
+        # Corresponds to the JSON property `osCapabilities`
+        # @return [Array<String>]
+        attr_accessor :os_capabilities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_os_capabilities_update_time = args[:last_os_capabilities_update_time] if args.key?(:last_os_capabilities_update_time)
+          @os_capabilities = args[:os_capabilities] if args.key?(:os_capabilities)
+        end
+      end
+      
       # Utilization information of a single VM.
       class VmUtilizationInfo
         include Google::Apis::Core::Hashable
@@ -3453,6 +3883,12 @@ module Google
         # @return [String]
         attr_accessor :firmware
       
+        # Migrating VM source information about the VM capabilities needed for some
+        # Compute Engine features.
+        # Corresponds to the JSON property `vmCapabilitiesInfo`
+        # @return [Google::Apis::VmmigrationV1alpha1::VmCapabilities]
+        attr_accessor :vm_capabilities_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3462,6 +3898,7 @@ module Google
           @committed_storage_bytes = args[:committed_storage_bytes] if args.key?(:committed_storage_bytes)
           @disks = args[:disks] if args.key?(:disks)
           @firmware = args[:firmware] if args.key?(:firmware)
+          @vm_capabilities_info = args[:vm_capabilities_info] if args.key?(:vm_capabilities_info)
         end
       end
       

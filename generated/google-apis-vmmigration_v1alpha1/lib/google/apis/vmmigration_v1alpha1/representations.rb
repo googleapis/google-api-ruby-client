@@ -94,6 +94,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AzureDiskDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AzureSourceDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AzureSourceVmDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AzureVmDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AzureVmsDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelCloneJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +137,12 @@ module Google
       end
       
       class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClientSecretCredentials
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -179,6 +215,12 @@ module Google
       end
       
       class DatacenterConnector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Disk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,6 +370,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OsDescription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OsDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -472,6 +526,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VmCapabilities
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmUtilizationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -605,6 +665,8 @@ module Google
           collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1alpha1::AwsDiskDetails, decorator: Google::Apis::VmmigrationV1alpha1::AwsDiskDetails::Representation
       
           property :firmware, as: 'firmware'
+          property :vm_capabilities_info, as: 'vmCapabilitiesInfo', class: Google::Apis::VmmigrationV1alpha1::VmCapabilities, decorator: Google::Apis::VmmigrationV1alpha1::VmCapabilities::Representation
+      
         end
       end
       
@@ -641,6 +703,72 @@ module Google
         end
       end
       
+      class AzureDiskDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_id, as: 'diskId'
+          property :disk_number, as: 'diskNumber'
+          property :size_gb, :numeric_string => true, as: 'sizeGb'
+        end
+      end
+      
+      class AzureSourceDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :azure_location, as: 'azureLocation'
+          property :client_secret_creds, as: 'clientSecretCreds', class: Google::Apis::VmmigrationV1alpha1::ClientSecretCredentials, decorator: Google::Apis::VmmigrationV1alpha1::ClientSecretCredentials::Representation
+      
+          property :error, as: 'error', class: Google::Apis::VmmigrationV1alpha1::Status, decorator: Google::Apis::VmmigrationV1alpha1::Status::Representation
+      
+          hash :migration_resources_user_tags, as: 'migrationResourcesUserTags'
+          property :resource_group_id, as: 'resourceGroupId'
+          property :state, as: 'state'
+          property :subscription_id, as: 'subscriptionId'
+        end
+      end
+      
+      class AzureSourceVmDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :committed_storage_bytes, :numeric_string => true, as: 'committedStorageBytes'
+          collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1alpha1::AzureDiskDetails, decorator: Google::Apis::VmmigrationV1alpha1::AzureDiskDetails::Representation
+      
+          property :firmware, as: 'firmware'
+          property :vm_capabilities_info, as: 'vmCapabilitiesInfo', class: Google::Apis::VmmigrationV1alpha1::VmCapabilities, decorator: Google::Apis::VmmigrationV1alpha1::VmCapabilities::Representation
+      
+        end
+      end
+      
+      class AzureVmDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boot_option, as: 'bootOption'
+          property :committed_storage_mb, :numeric_string => true, as: 'committedStorageMb'
+          property :computer_name, as: 'computerName'
+          property :cpu_count, as: 'cpuCount'
+          property :disk_count, as: 'diskCount'
+          collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1alpha1::Disk, decorator: Google::Apis::VmmigrationV1alpha1::Disk::Representation
+      
+          property :memory_mb, as: 'memoryMb'
+          property :os_description, as: 'osDescription', class: Google::Apis::VmmigrationV1alpha1::OsDescription, decorator: Google::Apis::VmmigrationV1alpha1::OsDescription::Representation
+      
+          property :os_disk, as: 'osDisk', class: Google::Apis::VmmigrationV1alpha1::OsDisk, decorator: Google::Apis::VmmigrationV1alpha1::OsDisk::Representation
+      
+          property :power_state, as: 'powerState'
+          hash :tags, as: 'tags'
+          property :vm_id, as: 'vmId'
+          property :vm_size, as: 'vmSize'
+        end
+      end
+      
+      class AzureVmsDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details', class: Google::Apis::VmmigrationV1alpha1::AzureVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::AzureVmDetails::Representation
+      
+        end
+      end
+      
       class CancelCloneJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -656,6 +784,15 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ClientSecretCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          property :tenant_id, as: 'tenantId'
         end
       end
       
@@ -868,6 +1005,15 @@ module Google
         end
       end
       
+      class Disk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lun, as: 'lun'
+          property :name, as: 'name'
+          property :size_gb, as: 'sizeGb'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -878,6 +1024,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aws_vms, as: 'awsVms', class: Google::Apis::VmmigrationV1alpha1::AwsVmsDetails, decorator: Google::Apis::VmmigrationV1alpha1::AwsVmsDetails::Representation
+      
+          property :azure_vms, as: 'azureVms', class: Google::Apis::VmmigrationV1alpha1::AzureVmsDetails, decorator: Google::Apis::VmmigrationV1alpha1::AzureVmsDetails::Representation
       
           property :next_page_token, as: 'nextPageToken'
           property :update_time, as: 'updateTime'
@@ -1056,6 +1204,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aws_source_vm_details, as: 'awsSourceVmDetails', class: Google::Apis::VmmigrationV1alpha1::AwsSourceVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::AwsSourceVmDetails::Representation
       
+          property :azure_source_vm_details, as: 'azureSourceVmDetails', class: Google::Apis::VmmigrationV1alpha1::AzureSourceVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::AzureSourceVmDetails::Representation
+      
           property :compute_engine_disks_target_defaults, as: 'computeEngineDisksTargetDefaults', class: Google::Apis::VmmigrationV1alpha1::ComputeEngineDisksTargetDefaults, decorator: Google::Apis::VmmigrationV1alpha1::ComputeEngineDisksTargetDefaults::Representation
       
           property :compute_engine_target_defaults, as: 'computeEngineTargetDefaults', class: Google::Apis::VmmigrationV1alpha1::ComputeEngineTargetDefaults, decorator: Google::Apis::VmmigrationV1alpha1::ComputeEngineTargetDefaults::Representation
@@ -1130,6 +1280,25 @@ module Google
           property :internal_ip, as: 'internalIp'
           property :network, as: 'network'
           property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
+      class OsDescription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :offer, as: 'offer'
+          property :plan, as: 'plan'
+          property :publisher, as: 'publisher'
+          property :type, as: 'type'
+        end
+      end
+      
+      class OsDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :size_gb, as: 'sizeGb'
+          property :type, as: 'type'
         end
       end
       
@@ -1272,6 +1441,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aws, as: 'aws', class: Google::Apis::VmmigrationV1alpha1::AwsSourceDetails, decorator: Google::Apis::VmmigrationV1alpha1::AwsSourceDetails::Representation
       
+          property :azure, as: 'azure', class: Google::Apis::VmmigrationV1alpha1::AzureSourceDetails, decorator: Google::Apis::VmmigrationV1alpha1::AzureSourceDetails::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :error, as: 'error', class: Google::Apis::VmmigrationV1alpha1::Status, decorator: Google::Apis::VmmigrationV1alpha1::Status::Representation
@@ -1386,6 +1557,14 @@ module Google
         end
       end
       
+      class VmCapabilities
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_os_capabilities_update_time, as: 'lastOsCapabilitiesUpdateTime'
+          collection :os_capabilities, as: 'osCapabilities'
+        end
+      end
+      
       class VmUtilizationInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1446,6 +1625,8 @@ module Google
           collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1alpha1::VmwareDiskDetails, decorator: Google::Apis::VmmigrationV1alpha1::VmwareDiskDetails::Representation
       
           property :firmware, as: 'firmware'
+          property :vm_capabilities_info, as: 'vmCapabilitiesInfo', class: Google::Apis::VmmigrationV1alpha1::VmCapabilities, decorator: Google::Apis::VmmigrationV1alpha1::VmCapabilities::Representation
+      
         end
       end
       
