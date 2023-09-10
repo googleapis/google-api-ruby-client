@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkRestoreObjectsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Channel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +185,24 @@ module Google
       end
       
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleLongrunningListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleLongrunningOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleRpcStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -540,6 +564,19 @@ module Google
         end
       end
       
+      class BulkRestoreObjectsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_overwrite, as: 'allowOverwrite'
+          property :copy_source_acl, as: 'copySourceAcl'
+          collection :match_globs, as: 'matchGlobs'
+          property :soft_deleted_after_time, as: 'softDeletedAfterTime', type: DateTime
+      
+          property :soft_deleted_before_time, as: 'softDeletedBeforeTime', type: DateTime
+      
+        end
+      end
+      
       class Channel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -591,6 +628,36 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class GoogleLongrunningListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::StorageV1::GoogleLongrunningOperation, decorator: Google::Apis::StorageV1::GoogleLongrunningOperation::Representation
+      
+        end
+      end
+      
+      class GoogleLongrunningOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::StorageV1::GoogleRpcStatus, decorator: Google::Apis::StorageV1::GoogleRpcStatus::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
+      class GoogleRpcStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
