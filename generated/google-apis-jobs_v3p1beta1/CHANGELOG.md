@@ -1,5 +1,9 @@
 # Release history for google-apis-jobs_v3p1beta1
 
+### v0.24.0 (2023-09-10)
+
+* Regenerated from discovery document revision 20230822
+
 ### v0.23.0 (2023-02-26)
 
 * Regenerated using generator version 0.12.0
