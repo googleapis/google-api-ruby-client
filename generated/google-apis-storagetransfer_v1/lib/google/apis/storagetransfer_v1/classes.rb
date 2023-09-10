@@ -154,6 +154,13 @@ module Google
         # @return [String]
         attr_accessor :bucket_name
       
+        # Optional. Cloudfront domain name pointing to this bucket (as origin), to use
+        # when fetching. Format: `https://`id`.cloudfront.net` or any valid custom
+        # domain `https://...`
+        # Corresponds to the JSON property `cloudfrontDomain`
+        # @return [String]
+        attr_accessor :cloudfront_domain
+      
         # Optional. The Resource name of a secret in Secret Manager. The Azure SAS token
         # must be stored in Secret Manager in JSON format: ` "sas_token" : "SAS_TOKEN" `
         # GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for
@@ -192,6 +199,7 @@ module Google
         def update!(**args)
           @aws_access_key = args[:aws_access_key] if args.key?(:aws_access_key)
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @cloudfront_domain = args[:cloudfront_domain] if args.key?(:cloudfront_domain)
           @credentials_secret = args[:credentials_secret] if args.key?(:credentials_secret)
           @path = args[:path] if args.key?(:path)
           @role_arn = args[:role_arn] if args.key?(:role_arn)

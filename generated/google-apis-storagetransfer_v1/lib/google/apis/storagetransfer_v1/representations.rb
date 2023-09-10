@@ -293,6 +293,7 @@ module Google
           property :aws_access_key, as: 'awsAccessKey', class: Google::Apis::StoragetransferV1::AwsAccessKey, decorator: Google::Apis::StoragetransferV1::AwsAccessKey::Representation
       
           property :bucket_name, as: 'bucketName'
+          property :cloudfront_domain, as: 'cloudfrontDomain'
           property :credentials_secret, as: 'credentialsSecret'
           property :path, as: 'path'
           property :role_arn, as: 'roleArn'
