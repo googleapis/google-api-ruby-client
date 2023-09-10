@@ -833,6 +833,7 @@ module Google
       
           collection :targets, as: 'targets', class: Google::Apis::SecuritycenterV1beta1::ExfilResource, decorator: Google::Apis::SecuritycenterV1beta1::ExfilResource::Representation
       
+          property :total_exfiltrated_bytes, :numeric_string => true, as: 'totalExfiltratedBytes'
         end
       end
       
