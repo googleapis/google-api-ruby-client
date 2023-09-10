@@ -7242,8 +7242,8 @@ module Google
         # @return [Array<Google::Apis::CloudsearchV1::MatchRange>]
         attr_accessor :match_ranges
       
-        # The snippet of the document. The snippet of the document. May contain escaped
-        # HTML character that should be unescaped prior to rendering.
+        # The snippet of the document. May contain escaped HTML character that should be
+        # unescaped prior to rendering.
         # Corresponds to the JSON property `snippet`
         # @return [String]
         attr_accessor :snippet
