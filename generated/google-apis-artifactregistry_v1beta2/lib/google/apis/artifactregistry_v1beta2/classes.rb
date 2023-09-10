@@ -1338,7 +1338,7 @@ module Google
       class UploadYumArtifactResponse
         include Google::Apis::Core::Hashable
       
-        # The Apt artifacts updated.
+        # The Yum artifacts updated.
         # Corresponds to the JSON property `yumArtifacts`
         # @return [Array<Google::Apis::ArtifactregistryV1beta2::YumArtifact>]
         attr_accessor :yum_artifacts
