@@ -1331,7 +1331,6 @@ module Google
           property :encrypted_client_secret, :base64 => true, as: 'encryptedClientSecret'
           property :kubectl_redirect_uri, as: 'kubectlRedirectUri'
           property :tenant, as: 'tenant'
-          property :user_claim, as: 'userClaim'
         end
       end
       

@@ -2103,11 +2103,6 @@ module Google
         # @return [String]
         attr_accessor :tenant
       
-        # Optional. Claim in the AzureAD ID Token that holds the user details.
-        # Corresponds to the JSON property `userClaim`
-        # @return [String]
-        attr_accessor :user_claim
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2119,7 +2114,6 @@ module Google
           @encrypted_client_secret = args[:encrypted_client_secret] if args.key?(:encrypted_client_secret)
           @kubectl_redirect_uri = args[:kubectl_redirect_uri] if args.key?(:kubectl_redirect_uri)
           @tenant = args[:tenant] if args.key?(:tenant)
-          @user_claim = args[:user_claim] if args.key?(:user_claim)
         end
       end
       
