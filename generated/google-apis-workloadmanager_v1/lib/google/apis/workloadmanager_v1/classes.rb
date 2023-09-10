@@ -273,7 +273,7 @@ module Google
         # @return [String]
         attr_accessor :instance_id
       
-        # LINT.IfChange The schema of SAP system discovery data.
+        # The schema of SAP system discovery data.
         # Corresponds to the JSON property `sapDiscovery`
         # @return [Google::Apis::WorkloadmanagerV1::SapDiscovery]
         attr_accessor :sap_discovery
@@ -582,13 +582,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -873,7 +873,7 @@ module Google
         end
       end
       
-      # LINT.IfChange The schema of SAP system discovery data.
+      # The schema of SAP system discovery data.
       class SapDiscovery
         include Google::Apis::Core::Hashable
       
@@ -892,13 +892,13 @@ module Google
         # @return [Google::Apis::WorkloadmanagerV1::SapDiscoveryMetadata]
         attr_accessor :metadata
       
-        # A combination of database SID, database instance URI and tenant DB name to
-        # make a unique identifier per-system.
+        # Output only. A combination of database SID, database instance URI and tenant
+        # DB name to make a unique identifier per-system.
         # Corresponds to the JSON property `systemId`
         # @return [String]
         attr_accessor :system_id
       
-        # Unix timestamp this system has been updated last.
+        # Required. Unix timestamp this system has been updated last.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -931,18 +931,18 @@ module Google
         # @return [Google::Apis::WorkloadmanagerV1::SapDiscoveryComponentDatabaseProperties]
         attr_accessor :database_properties
       
-        # Pantheon Project in which the resources reside.
+        # Required. Pantheon Project in which the resources reside.
         # Corresponds to the JSON property `hostProject`
         # @return [String]
         attr_accessor :host_project
       
-        # The resources in a component.
+        # Optional. The resources in a component.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::WorkloadmanagerV1::SapDiscoveryResource>]
         attr_accessor :resources
       
-        # The sap identifier, used by the SAP software and helps differentiate systems
-        # for customers.
+        # Optional. The SAP identifier, used by the SAP software and helps differentiate
+        # systems for customers.
         # Corresponds to the JSON property `sid`
         # @return [String]
         attr_accessor :sid
@@ -970,7 +970,7 @@ module Google
         # @return [String]
         attr_accessor :application_type
       
-        # Required. Resource URI of the recognized ASCS host of the application.
+        # Optional. Resource URI of the recognized ASCS host of the application.
         # Corresponds to the JSON property `ascsUri`
         # @return [String]
         attr_accessor :ascs_uri
@@ -1029,22 +1029,23 @@ module Google
       class SapDiscoveryMetadata
         include Google::Apis::Core::Hashable
       
-        # Customer region string for customer's use. Does not represent GCP region.
+        # Optional. Customer region string for customer's use. Does not represent GCP
+        # region.
         # Corresponds to the JSON property `customerRegion`
         # @return [String]
         attr_accessor :customer_region
       
-        # Customer defined, something like "E-commerce pre prod"
+        # Optional. Customer defined, something like "E-commerce pre prod"
         # Corresponds to the JSON property `definedSystem`
         # @return [String]
         attr_accessor :defined_system
       
-        # Should be "prod", "QA", "dev", "staging", etc.
+        # Optional. Should be "prod", "QA", "dev", "staging", etc.
         # Corresponds to the JSON property `environmentType`
         # @return [String]
         attr_accessor :environment_type
       
-        # This sap product name
+        # Optional. This SAP product name
         # Corresponds to the JSON property `sapProduct`
         # @return [String]
         attr_accessor :sap_product
@@ -1066,7 +1067,7 @@ module Google
       class SapDiscoveryResource
         include Google::Apis::Core::Hashable
       
-        # A list of resource URIs related to this resource.
+        # Optional. A list of resource URIs related to this resource.
         # Corresponds to the JSON property `relatedResources`
         # @return [Array<String>]
         attr_accessor :related_resources
@@ -1081,12 +1082,13 @@ module Google
         # @return [String]
         attr_accessor :resource_type
       
-        # URI of the resource, includes project, location, and name.
+        # Required. URI of the resource, includes project, location, and name.
         # Corresponds to the JSON property `resourceUri`
         # @return [String]
         attr_accessor :resource_uri
       
-        # Unix timestamp of when this resource last had its discovery data updated.
+        # Required. Unix timestamp of when this resource last had its discovery data
+        # updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1110,7 +1112,7 @@ module Google
       class SapValidation
         include Google::Apis::Core::Hashable
       
-        # A list of SAP validation metrics data.
+        # Optional. A list of SAP validation metrics data.
         # Corresponds to the JSON property `validationDetails`
         # @return [Array<Google::Apis::WorkloadmanagerV1::SapValidationValidationDetail>]
         attr_accessor :validation_details
@@ -1129,12 +1131,12 @@ module Google
       class SapValidationValidationDetail
         include Google::Apis::Core::Hashable
       
-        # The pairs of metrics data: field name & field value.
+        # Optional. The pairs of metrics data: field name & field value.
         # Corresponds to the JSON property `details`
         # @return [Hash<String,String>]
         attr_accessor :details
       
-        # The SAP system that the validation data is from.
+        # Optional. The SAP system that the validation data is from.
         # Corresponds to the JSON property `sapValidationType`
         # @return [String]
         attr_accessor :sap_validation_type
@@ -1174,7 +1176,7 @@ module Google
       class SqlserverValidation
         include Google::Apis::Core::Hashable
       
-        # The agent version collected this data point
+        # Optional. The agent version collected this data point
         # Corresponds to the JSON property `agentVersion`
         # @return [String]
         attr_accessor :agent_version
@@ -1191,7 +1193,7 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
-        # A list of SqlServer validation metrics data.
+        # Optional. A list of SqlServer validation metrics data.
         # Corresponds to the JSON property `validationDetails`
         # @return [Array<Google::Apis::WorkloadmanagerV1::SqlserverValidationValidationDetail>]
         attr_accessor :validation_details
@@ -1237,7 +1239,7 @@ module Google
         # @return [Array<Google::Apis::WorkloadmanagerV1::SqlserverValidationDetails>]
         attr_accessor :details
       
-        # The Sqlserver system that the validation data is from.
+        # Optional. The Sqlserver system that the validation data is from.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
