@@ -146,6 +146,13 @@ module Google
         # @return [String]
         attr_accessor :gcr_domain
       
+        # Additional Google Generated Customer Metadata, this field won't be provided by
+        # default and can be requested by setting the IncludeExtraData field in
+        # GetApplicationRequest
+        # Corresponds to the JSON property `generatedCustomerMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :generated_customer_metadata
+      
         # Identity-Aware Proxy
         # Corresponds to the JSON property `iap`
         # @return [Google::Apis::AppengineV1::IdentityAwareProxy]
@@ -199,6 +206,7 @@ module Google
           @dispatch_rules = args[:dispatch_rules] if args.key?(:dispatch_rules)
           @feature_settings = args[:feature_settings] if args.key?(:feature_settings)
           @gcr_domain = args[:gcr_domain] if args.key?(:gcr_domain)
+          @generated_customer_metadata = args[:generated_customer_metadata] if args.key?(:generated_customer_metadata)
           @iap = args[:iap] if args.key?(:iap)
           @id = args[:id] if args.key?(:id)
           @location_id = args[:location_id] if args.key?(:location_id)
@@ -3278,7 +3286,7 @@ module Google
         # @return [String]
         attr_accessor :egress_setting
       
-        # Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/
+        # Full Serverless VPC Access Connector name e.g. projects/my-project/locations/
         # us-central1/connectors/c1.
         # Corresponds to the JSON property `name`
         # @return [String]

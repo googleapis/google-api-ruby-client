@@ -510,6 +510,7 @@ module Google
           property :feature_settings, as: 'featureSettings', class: Google::Apis::AppengineV1::FeatureSettings, decorator: Google::Apis::AppengineV1::FeatureSettings::Representation
       
           property :gcr_domain, as: 'gcrDomain'
+          hash :generated_customer_metadata, as: 'generatedCustomerMetadata'
           property :iap, as: 'iap', class: Google::Apis::AppengineV1::IdentityAwareProxy, decorator: Google::Apis::AppengineV1::IdentityAwareProxy::Representation
       
           property :id, as: 'id'
