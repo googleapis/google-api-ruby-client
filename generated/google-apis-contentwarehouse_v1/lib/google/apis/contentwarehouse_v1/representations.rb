@@ -1276,12 +1276,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AssistantApiCapabilitiesHomeAppCapabilities
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AssistantApiCarAssistantCapabilities
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2939,6 +2933,12 @@ module Google
       end
       
       class AssistantPfrSmartHomeIntentMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantPfrTiebreakingMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4955,6 +4955,12 @@ module Google
       end
       
       class GeostoreSegmentProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeostoreSegmentProtoRampProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7198,6 +7204,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageRepositoryS3RecognizerMetadataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImageRepositoryShoppingProductInformation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -9148,6 +9160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NlpMeaningComponentSpecificContracts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NlpMeaningMeaningRemodeling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -9161,6 +9179,12 @@ module Google
       end
       
       class NlpMeaningMeaningRemodelings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NlpMeaningSemanticTypeNameComponentSpecificContracts
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -15232,6 +15256,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WatchpageLanguageWatchPageLanguageModelPredictions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WatchpageLanguageWatchPageLanguageModelPredictionsLanguageScore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WatchpageLanguageWatchPageLanguageResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -17917,13 +17953,6 @@ module Google
         end
       end
       
-      class AssistantApiCapabilitiesHomeAppCapabilities
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :setup_state, as: 'setupState'
-        end
-      end
-      
       class AssistantApiCarAssistantCapabilities
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -19701,8 +19730,6 @@ module Google
       
           property :gcm_capabilities, as: 'gcmCapabilities', class: Google::Apis::ContentwarehouseV1::AssistantApiGcmCapabilities, decorator: Google::Apis::ContentwarehouseV1::AssistantApiGcmCapabilities::Representation
       
-          property :home_app_capabilities, as: 'homeAppCapabilities', class: Google::Apis::ContentwarehouseV1::AssistantApiCapabilitiesHomeAppCapabilities, decorator: Google::Apis::ContentwarehouseV1::AssistantApiCapabilitiesHomeAppCapabilities::Representation
-      
           property :live_tv_channel_capabilities, as: 'liveTvChannelCapabilities', class: Google::Apis::ContentwarehouseV1::AssistantApiLiveTvChannelCapabilities, decorator: Google::Apis::ContentwarehouseV1::AssistantApiLiveTvChannelCapabilities::Representation
       
           property :oem_capabilities, as: 'oemCapabilities', class: Google::Apis::ContentwarehouseV1::AssistantApiOemCapabilities, decorator: Google::Apis::ContentwarehouseV1::AssistantApiOemCapabilities::Representation
@@ -20550,6 +20577,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :distance, as: 'distance'
           property :is_docked, as: 'isDocked'
+          property :is_local, as: 'isLocal'
           property :is_locked, as: 'isLocked'
           property :is_tethered, as: 'isTethered'
         end
@@ -20651,6 +20679,7 @@ module Google
           property :album_release_type, as: 'albumReleaseType'
           property :ambiguity_classifier, as: 'ambiguityClassifier'
           property :entity_mid, as: 'entityMid'
+          property :has_cast_video_deeplink, as: 'hasCastVideoDeeplink'
           property :has_type_semantic_edge, as: 'hasTypeSemanticEdge'
           property :is_cast_video, as: 'isCastVideo'
           property :is_media_search_query_subset_of_entity_name_and_artist, as: 'isMediaSearchQuerySubsetOfEntityNameAndArtist'
@@ -20675,6 +20704,7 @@ module Google
           property :popularity_score, as: 'popularityScore'
           property :scubed_ng3_model_score, as: 'scubedNg3ModelScore'
           property :scubed_tstar_score, as: 'scubedTstarScore'
+          property :youtube_confidence_score, as: 'youtubeConfidenceScore'
         end
       end
       
@@ -21144,6 +21174,14 @@ module Google
         end
       end
       
+      class AssistantPfrTiebreakingMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :numeric_string => true, as: 'fingerprint'
+          property :sorted_name_string, as: 'sortedNameString'
+        end
+      end
+      
       class AssistantPrefulfillmentRankerPrefulfillmentSignals
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -21175,6 +21213,7 @@ module Google
           property :is_podcast_generic_intent, as: 'isPodcastGenericIntent'
           property :is_podcast_intent, as: 'isPodcastIntent'
           property :is_sage_disabled_intent, as: 'isSageDisabledIntent'
+          property :is_sage_in_nage_intent, as: 'isSageInNageIntent'
           property :is_sage_intent, as: 'isSageIntent'
           property :is_tvm_intent, as: 'isTvmIntent'
           property :is_valid_smarthome_intent, as: 'isValidSmarthomeIntent'
@@ -21194,6 +21233,7 @@ module Google
           property :num_variables_grounded, as: 'numVariablesGrounded'
           property :parsing_score_mse8_bucket_id, as: 'parsingScoreMse8BucketId'
           property :phase, as: 'phase'
+          property :platinum_source, as: 'platinumSource'
           property :pq2t_vs_assistant_ibst_cosine, as: 'pq2tVsAssistantIbstCosine'
           property :pq2t_vs_ibst_cosine, as: 'pq2tVsIbstCosine'
           property :predicted_intent_confidence, as: 'predictedIntentConfidence'
@@ -21202,6 +21242,8 @@ module Google
           property :smarthome_intent_metadata, as: 'smarthomeIntentMetadata', class: Google::Apis::ContentwarehouseV1::AssistantPfrSmartHomeIntentMetadata, decorator: Google::Apis::ContentwarehouseV1::AssistantPfrSmartHomeIntentMetadata::Representation
       
           property :sub_intent_type, as: 'subIntentType'
+          property :tiebreaking_metadata, as: 'tiebreakingMetadata', class: Google::Apis::ContentwarehouseV1::AssistantPfrTiebreakingMetadata, decorator: Google::Apis::ContentwarehouseV1::AssistantPfrTiebreakingMetadata::Representation
+      
           property :top_hypothesis_confidence, as: 'topHypothesisConfidence'
           property :vertical_confidence_score, as: 'verticalConfidenceScore'
         end
@@ -22202,6 +22244,7 @@ module Google
           property :indexing_ts, :numeric_string => true, as: 'indexingTs'
           property :no_longer_canonical_timestamp, :numeric_string => true, as: 'noLongerCanonicalTimestamp'
           property :normalized_click_score, as: 'normalizedClickScore'
+          property :primary_vertical, as: 'primaryVertical'
           property :raw_navboost, as: 'rawNavboost'
           property :row_timestamp, :numeric_string => true, as: 'rowTimestamp'
           property :selection_tier_rank, as: 'selectionTierRank'
@@ -22212,6 +22255,7 @@ module Google
       
           property :url_pattern_signals, as: 'urlPatternSignals', class: Google::Apis::ContentwarehouseV1::IndexingSignalAggregatorUrlPatternSignals, decorator: Google::Apis::ContentwarehouseV1::IndexingSignalAggregatorUrlPatternSignals::Representation
       
+          collection :verticals, as: 'verticals'
           property :video_indexing_info, as: 'videoIndexingInfo', class: Google::Apis::ContentwarehouseV1::ImageRepositoryVideoIndexingInfo, decorator: Google::Apis::ContentwarehouseV1::ImageRepositoryVideoIndexingInfo::Representation
       
         end
@@ -24345,6 +24389,8 @@ module Google
       
           collection :storefront_geometry, as: 'storefrontGeometry', class: Google::Apis::ContentwarehouseV1::GeostoreAnchoredGeometryProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreAnchoredGeometryProto::Representation
       
+          property :storefront_geometry_model, as: 'storefrontGeometryModel', class: Google::Apis::ContentwarehouseV1::GeostoreGeometryStoreReferenceProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreGeometryStoreReferenceProto::Representation
+      
           property :synthetic_geometry, as: 'syntheticGeometry'
           property :temporary_data, as: 'temporaryData', class: Google::Apis::ContentwarehouseV1::Proto2BridgeMessageSet, decorator: Google::Apis::ContentwarehouseV1::Proto2BridgeMessageSet::Representation
       
@@ -25392,6 +25438,8 @@ module Google
           property :priority, as: 'priority'
           property :priority_metadata, as: 'priorityMetadata', class: Google::Apis::ContentwarehouseV1::GeostoreFieldMetadataProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreFieldMetadataProto::Representation
       
+          property :ramp, as: 'ramp', class: Google::Apis::ContentwarehouseV1::GeostoreSegmentProtoRampProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreSegmentProtoRampProto::Representation
+      
           collection :restriction, as: 'restriction', class: Google::Apis::ContentwarehouseV1::GeostoreRestrictionProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreRestrictionProto::Representation
       
           collection :road_monitor, as: 'roadMonitor', class: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto::Representation
@@ -25416,6 +25464,13 @@ module Google
           property :usage, as: 'usage'
           collection :visible_landmark, as: 'visibleLandmark', class: Google::Apis::ContentwarehouseV1::GeostoreLandmarkReferenceProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreLandmarkReferenceProto::Representation
       
+        end
+      end
+      
+      class GeostoreSegmentProtoRampProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_connected_priority, as: 'maxConnectedPriority'
         end
       end
       
@@ -29273,6 +29328,7 @@ module Google
           property :licensed_web_images_opt_in_state, as: 'licensedWebImagesOptInState'
           property :lineart_detector_score, as: 'lineartDetectorScore'
           property :lineart_detector_version, as: 'lineartDetectorVersion'
+          property :linkinfo_type, :numeric_string => true, as: 'linkinfoType'
           property :multibang_kg_entities, as: 'multibangKgEntities', class: Google::Apis::ContentwarehouseV1::ImageDataMultibangEntities, decorator: Google::Apis::ContentwarehouseV1::ImageDataMultibangEntities::Representation
       
           property :near_dup_features, :base64 => true, as: 'nearDupFeatures'
@@ -29645,6 +29701,8 @@ module Google
           property :model_identifier, as: 'modelIdentifier'
           collection :results, as: 'results', class: Google::Apis::ContentwarehouseV1::ImageRepositorySpeechRecognitionResult, decorator: Google::Apis::ContentwarehouseV1::ImageRepositorySpeechRecognitionResult::Representation
       
+          property :s3_recognizer_metadata_response, as: 's3RecognizerMetadataResponse', class: Google::Apis::ContentwarehouseV1::ImageRepositoryS3RecognizerMetadataResponse, decorator: Google::Apis::ContentwarehouseV1::ImageRepositoryS3RecognizerMetadataResponse::Representation
+      
           property :transcript_asr, as: 'transcriptAsr', class: Google::Apis::ContentwarehouseV1::PseudoVideoData, decorator: Google::Apis::ContentwarehouseV1::PseudoVideoData::Representation
       
         end
@@ -29900,6 +29958,15 @@ module Google
           property :speech_frame_count, as: 'speechFrameCount'
           property :start_sec, :numeric_string => true, as: 'startSec'
           property :total_frame_count, as: 'totalFrameCount'
+        end
+      end
+      
+      class ImageRepositoryS3RecognizerMetadataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+          property :model_info_label, as: 'modelInfoLabel'
+          property :service_name, as: 'serviceName'
         end
       end
       
@@ -32333,6 +32400,8 @@ module Google
       class KnowledgeAnswersAnyType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
       
         end
@@ -32342,6 +32411,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :attribute, as: 'attribute'
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :pivot_entity_slot, as: 'pivotEntitySlot'
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
       
@@ -32351,6 +32422,8 @@ module Google
       class KnowledgeAnswersBooleanType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
       
         end
@@ -32360,6 +32433,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :collection, as: 'collection'
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
       
         end
@@ -32368,6 +32443,8 @@ module Google
       class KnowledgeAnswersCompoundType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
       
         end
@@ -32396,6 +32473,8 @@ module Google
           property :allow_symbolic_time, as: 'allowSymbolicTime'
           property :allow_time_resolutions_without_explicit_timezone, as: 'allowTimeResolutionsWithoutExplicitTimezone'
           property :allow_year_resolution, as: 'allowYearResolution'
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
       
           property :sub_type, as: 'subType'
@@ -32405,6 +32484,8 @@ module Google
       class KnowledgeAnswersDependencyType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :container_type, as: 'containerType', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersContainerType, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersContainerType::Representation
       
           property :intersect_type, as: 'intersectType', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntersectType, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntersectType::Representation
@@ -32429,6 +32510,8 @@ module Google
       class KnowledgeAnswersDurationType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :range_constraint, as: 'rangeConstraint', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersRangeConstraint, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersRangeConstraint::Representation
       
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
@@ -32440,6 +32523,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :collection, as: 'collection'
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           collection :excluded_collection, as: 'excludedCollection'
           collection :id, as: 'id'
           collection :identifier, as: 'identifier', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryIdentifier, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryIdentifier::Representation
@@ -32691,6 +32776,7 @@ module Google
       
           property :location_markers_signals, as: 'locationMarkersSignals', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryLocationMarkersSignals, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryLocationMarkersSignals::Representation
       
+          property :location_type, as: 'locationType'
           property :media_entity_signals, as: 'mediaEntitySignals', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryMediaEntitySignals, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryMediaEntitySignals::Representation
       
           collection :merged_implied_entity, as: 'mergedImpliedEntity', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryImpliedEntity, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryImpliedEntity::Representation
@@ -32919,6 +33005,7 @@ module Google
           property :is_disambiguation_card_intent, as: 'isDisambiguationCardIntent'
           property :is_disambiguation_intent, as: 'isDisambiguationIntent'
           property :is_neural_categorical_interpretation, as: 'isNeuralCategoricalInterpretation'
+          property :is_refined_meaning, as: 'isRefinedMeaning'
           property :is_ui_composition_intent, as: 'isUiCompositionIntent'
           property :local_signals, as: 'localSignals', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryLocalSignals, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryLocalSignals::Representation
       
@@ -33320,6 +33407,8 @@ module Google
       class KnowledgeAnswersMeasurementType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
       
         end
@@ -33328,6 +33417,8 @@ module Google
       class KnowledgeAnswersNormalizedStringType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           collection :normalized_value, as: 'normalizedValue'
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
       
@@ -33337,6 +33428,8 @@ module Google
       class KnowledgeAnswersNumberType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :keep_as_string, as: 'keepAsString'
           property :range_constraint, as: 'rangeConstraint', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersRangeConstraint, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersRangeConstraint::Representation
       
@@ -33539,6 +33632,8 @@ module Google
       
           property :component_reference_type, as: 'componentReferenceType', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersOpaqueComponentReferenceIndexType, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersOpaqueComponentReferenceIndexType::Representation
       
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :device_id_type, as: 'deviceIdType', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersOpaqueDeviceIdType, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersOpaqueDeviceIdType::Representation
       
           property :device_type, as: 'deviceType', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersOpaqueDeviceType, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersOpaqueDeviceType::Representation
@@ -33589,6 +33684,8 @@ module Google
       class KnowledgeAnswersPlexityRequirement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
       
           property :simple_plexity, as: 'simplePlexity'
@@ -33598,6 +33695,8 @@ module Google
       class KnowledgeAnswersPolarQuestionType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
       
         end
@@ -33632,8 +33731,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_all, as: 'allowAll'
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :includes_containing_intent, as: 'includesContainingIntent'
           collection :name, as: 'name'
+          collection :name_contracts, as: 'nameContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningSemanticTypeNameComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningSemanticTypeNameComponentSpecificContracts::Representation
+      
           collection :name_remodelings, as: 'nameRemodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningSemanticTypeNameMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningSemanticTypeNameMeaningRemodelings::Representation
       
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
@@ -33766,6 +33869,8 @@ module Google
       class KnowledgeAnswersStateOfAffairsType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
       
         end
@@ -33774,6 +33879,8 @@ module Google
       class KnowledgeAnswersStringType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
       
           property :single_token, as: 'singleToken'
@@ -33783,6 +33890,8 @@ module Google
       class KnowledgeAnswersTimeZoneType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
       
         end
@@ -33791,6 +33900,8 @@ module Google
       class KnowledgeAnswersTrackingNumberType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
           property :remodelings, as: 'remodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelings::Representation
       
         end
@@ -34786,6 +34897,13 @@ module Google
         end
       end
       
+      class NlpMeaningComponentSpecificContracts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :component_specific_contracts, as: 'componentSpecificContracts'
+        end
+      end
+      
       class NlpMeaningMeaningRemodeling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -34806,6 +34924,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :remodeling, as: 'remodeling', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodeling, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodeling::Representation
       
+        end
+      end
+      
+      class NlpMeaningSemanticTypeNameComponentSpecificContracts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_specific_contracts, as: 'componentSpecificContracts', class: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningComponentSpecificContracts::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -38434,6 +38561,8 @@ module Google
           property :nickname, as: 'nickname'
           property :point, as: 'point', class: Google::Apis::ContentwarehouseV1::GeostorePointProto, decorator: Google::Apis::ContentwarehouseV1::GeostorePointProto::Representation
       
+          property :ptoken, as: 'ptoken', class: Google::Apis::ContentwarehouseV1::PtokenPToken, decorator: Google::Apis::ContentwarehouseV1::PtokenPToken::Representation
+      
           property :sticker_id, as: 'stickerId'
           property :synthetic_feature, as: 'syntheticFeature'
           property :timestamp, :numeric_string => true, as: 'timestamp'
@@ -38515,6 +38644,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adobe_hdr, as: 'adobeHdr'
+          property :apple_hdr, as: 'appleHdr'
           property :google_hdr, as: 'googleHdr'
         end
       end
@@ -39844,6 +39974,7 @@ module Google
           property :article_score_v2, as: 'articleScoreV2'
           property :chard_encoded, as: 'chardEncoded'
           property :chard_variance, as: 'chardVariance'
+          property :chrome_in_total, as: 'chromeInTotal'
           property :cluster_id, as: 'clusterId'
           property :cluster_uplift, as: 'clusterUplift', class: Google::Apis::ContentwarehouseV1::QualityNsrNsrDataClusterUplift, decorator: Google::Apis::ContentwarehouseV1::QualityNsrNsrDataClusterUplift::Representation
       
@@ -41440,11 +41571,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connectedness, as: 'connectedness'
           property :doc_score, as: 'docScore'
-          property :geo_topic_normalized_score, as: 'geoTopicNormalizedScore'
           property :is_author, as: 'isAuthor'
           property :is_publisher, as: 'isPublisher'
           property :is_reference_page, as: 'isReferencePage'
-          property :local_entity_location_confidence, as: 'localEntityLocationConfidence'
           property :normalized_topicality, as: 'normalizedTopicality'
           property :profile_url, as: 'profileUrl'
           property :reference_page_scores, as: 'referencePageScores', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefReferencePageScores, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefReferencePageScores::Representation
@@ -42396,7 +42525,6 @@ module Google
           collection :product_line_id, as: 'productLineId'
           property :shopping_ids, as: 'shoppingIds', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryShoppingIds, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryShoppingIds::Representation
       
-          property :type, as: 'type'
           collection :variant_cluster_id, as: 'variantClusterId'
         end
       end
@@ -42479,16 +42607,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :book_score, as: 'bookScore'
-          property :first_score, as: 'firstScore'
-          property :has_special_links, as: 'hasSpecialLinks'
-          property :median_mention_score, as: 'medianMentionScore'
-          property :navboost_coverage, as: 'navboostCoverage'
           property :reference_page_score, as: 'referencePageScore'
           property :selected, as: 'selected'
           property :single_topicness, as: 'singleTopicness'
           property :single_topicness_v2, as: 'singleTopicnessV2'
-          property :title_coverage, as: 'titleCoverage'
-          property :total_sum, as: 'totalSum'
         end
       end
       
@@ -44502,6 +44624,7 @@ module Google
           property :contain_vulgar_candidates, as: 'containVulgarCandidates'
           property :disable_ng3_scoring, as: 'disableNg3Scoring'
           property :disable_query_features, as: 'disableQueryFeatures'
+          property :force_leading_text_or_meta, as: 'forceLeadingTextOrMeta'
           property :snippet_brain_selected_candidate_index, as: 'snippetBrainSelectedCandidateIndex'
           property :snippetsbrain_model_info, as: 'snippetsbrainModelInfo', class: Google::Apis::ContentwarehouseV1::SnippetExtraInfoSnippetsBrainModelInfo, decorator: Google::Apis::ContentwarehouseV1::SnippetExtraInfoSnippetsBrainModelInfo::Representation
       
@@ -46261,6 +46384,7 @@ module Google
           property :num_dropped_replies, :numeric_string => true, as: 'numDroppedReplies'
           property :original_client_params, as: 'originalClientParams', class: Google::Apis::ContentwarehouseV1::TrawlerOriginalClientParams, decorator: Google::Apis::ContentwarehouseV1::TrawlerOriginalClientParams::Representation
       
+          property :prod_region, as: 'prodRegion'
           property :resource_bucket, as: 'resourceBucket'
           property :sub_resource_bucket, as: 'subResourceBucket'
           property :tier, as: 'tier'
@@ -46332,9 +46456,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :category_id, as: 'categoryId'
           property :id, as: 'id'
+          property :is_localized, as: 'isLocalized'
           property :level, as: 'level'
           property :predicate_name, as: 'predicateName'
           property :query_text, as: 'queryText'
+          collection :recs_topic_id, as: 'recsTopicId'
           property :score, as: 'score'
           property :title, as: 'title'
           property :user_visible, as: 'userVisible'
@@ -48695,9 +48821,29 @@ module Google
         end
       end
       
+      class WatchpageLanguageWatchPageLanguageModelPredictions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :language_score, as: 'languageScore', class: Google::Apis::ContentwarehouseV1::WatchpageLanguageWatchPageLanguageModelPredictionsLanguageScore, decorator: Google::Apis::ContentwarehouseV1::WatchpageLanguageWatchPageLanguageModelPredictionsLanguageScore::Representation
+      
+          property :uses_speech_signals, as: 'usesSpeechSignals'
+          property :version, as: 'version'
+        end
+      end
+      
+      class WatchpageLanguageWatchPageLanguageModelPredictionsLanguageScore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+          property :watchpage_language, as: 'watchpageLanguage'
+        end
+      end
+      
       class WatchpageLanguageWatchPageLanguageResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :predictions, as: 'predictions', class: Google::Apis::ContentwarehouseV1::WatchpageLanguageWatchPageLanguageModelPredictions, decorator: Google::Apis::ContentwarehouseV1::WatchpageLanguageWatchPageLanguageModelPredictions::Representation
+      
           property :watchpage_language, as: 'watchpageLanguage'
         end
       end
