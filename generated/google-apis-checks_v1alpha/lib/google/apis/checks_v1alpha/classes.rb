@@ -22,77 +22,6 @@ module Google
   module Apis
     module ChecksV1alpha
       
-      # Request for the AnalyzePrivacyPolicy method.
-      class AnalyzePrivacyPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # The HTML content of the privacy policy. This is useful if you'd like to manage
-        # the crawling and rendering of the privacy policy.
-        # Corresponds to the JSON property `privacyPolicyPageContent`
-        # @return [String]
-        attr_accessor :privacy_policy_page_content
-      
-        # The URI that points to the web page for the privacy policy.
-        # Corresponds to the JSON property `privacyPolicyUri`
-        # @return [String]
-        attr_accessor :privacy_policy_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @privacy_policy_page_content = args[:privacy_policy_page_content] if args.key?(:privacy_policy_page_content)
-          @privacy_policy_uri = args[:privacy_policy_uri] if args.key?(:privacy_policy_uri)
-        end
-      end
-      
-      # Response containing the analyzed privacy policy for the AnalyzePrivacyPolicy
-      # method.
-      class AnalyzePrivacyPolicyResponse
-        include Google::Apis::Core::Hashable
-      
-        # A list of detected purposes in the privacy policy.
-        # Corresponds to the JSON property `dataPurposeAnnotations`
-        # @return [Array<Google::Apis::ChecksV1alpha::PolicyPurposeOfUseAnnotation>]
-        attr_accessor :data_purpose_annotations
-      
-        # A list of detected data types in the privacy policy.
-        # Corresponds to the JSON property `dataTypeAnnotations`
-        # @return [Array<Google::Apis::ChecksV1alpha::PolicyDataTypeAnnotation>]
-        attr_accessor :data_type_annotations
-      
-        # HTML content for the privacy policy page. The byte offsets in each annotated
-        # section will match this content.
-        # Corresponds to the JSON property `htmlContent`
-        # @return [String]
-        attr_accessor :html_content
-      
-        # Information about the date when the privacy policy was last updated.
-        # Corresponds to the JSON property `lastUpdatedDateInfo`
-        # @return [Google::Apis::ChecksV1alpha::LastUpdatedDate]
-        attr_accessor :last_updated_date_info
-      
-        # A list of detected topics in the privacy policy.
-        # Corresponds to the JSON property `sectionAnnotations`
-        # @return [Array<Google::Apis::ChecksV1alpha::PolicySectionAnnotation>]
-        attr_accessor :section_annotations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data_purpose_annotations = args[:data_purpose_annotations] if args.key?(:data_purpose_annotations)
-          @data_type_annotations = args[:data_type_annotations] if args.key?(:data_type_annotations)
-          @html_content = args[:html_content] if args.key?(:html_content)
-          @last_updated_date_info = args[:last_updated_date_info] if args.key?(:last_updated_date_info)
-          @section_annotations = args[:section_annotations] if args.key?(:section_annotations)
-        end
-      end
-      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -103,47 +32,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Represents a whole or partial calendar date, such as a birthday. The time of
-      # day and time zone are either specified elsewhere or are insignificant. The
-      # date is relative to the Gregorian Calendar. This can represent one of the
-      # following: * A full date, with non-zero year, month, and day values. * A month
-      # and day, with a zero year (for example, an anniversary). * A year on its own,
-      # with a zero month and a zero day. * A year and month, with a zero day (for
-      # example, a credit card expiration date). Related types: * google.type.
-      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
-      class Date
-        include Google::Apis::Core::Hashable
-      
-        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
-        # specify a year by itself or a year and month where the day isn't significant.
-        # Corresponds to the JSON property `day`
-        # @return [Fixnum]
-        attr_accessor :day
-      
-        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
-        # and day.
-        # Corresponds to the JSON property `month`
-        # @return [Fixnum]
-        attr_accessor :month
-      
-        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
-        # year.
-        # Corresponds to the JSON property `year`
-        # @return [Fixnum]
-        attr_accessor :year
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @day = args[:day] if args.key?(:day)
-          @month = args[:month] if args.key?(:month)
-          @year = args[:year] if args.key?(:year)
         end
       end
       
@@ -160,26 +48,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Response containing the analyzed privacy policy for the FindPrivacyPolicy
-      # method.
-      class FindPrivacyPolicyResponse
-        include Google::Apis::Core::Hashable
-      
-        # Resource name of the PrivacyPolicy that was found.
-        # Corresponds to the JSON property `privacyPolicy`
-        # @return [String]
-        attr_accessor :privacy_policy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @privacy_policy = args[:privacy_policy] if args.key?(:privacy_policy)
         end
       end
       
@@ -1242,52 +1110,6 @@ module Google
         end
       end
       
-      # Information about the date when the privacy policy was last updated.
-      class LastUpdatedDate
-        include Google::Apis::Core::Hashable
-      
-        # Byte offsets for the end of the date text inside the full text.
-        # Corresponds to the JSON property `endOffset`
-        # @return [Fixnum]
-        attr_accessor :end_offset
-      
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values. * A month
-        # and day, with a zero year (for example, an anniversary). * A year on its own,
-        # with a zero month and a zero day. * A year and month, with a zero day (for
-        # example, a credit card expiration date). Related types: * google.type.
-        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
-        # Corresponds to the JSON property `lastUpdatedDate`
-        # @return [Google::Apis::ChecksV1alpha::Date]
-        attr_accessor :last_updated_date
-      
-        # Byte offsets for the start of the date text inside the full text.
-        # Corresponds to the JSON property `startOffset`
-        # @return [Fixnum]
-        attr_accessor :start_offset
-      
-        # The bytes of actual text content in the section. Note: - This will correspond
-        # to the whole sentence that includes the date. - This field might contain HTML
-        # and it is not sanitized.
-        # Corresponds to the JSON property `textContent`
-        # @return [String]
-        attr_accessor :text_content
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_offset = args[:end_offset] if args.key?(:end_offset)
-          @last_updated_date = args[:last_updated_date] if args.key?(:last_updated_date)
-          @start_offset = args[:start_offset] if args.key?(:start_offset)
-          @text_content = args[:text_content] if args.key?(:text_content)
-        end
-      end
-      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -1372,141 +1194,6 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
-        end
-      end
-      
-      # 
-      class PolicyDataTypeAnnotation
-        include Google::Apis::Core::Hashable
-      
-        # Type of the data mentioned in the policy.
-        # Corresponds to the JSON property `dataType`
-        # @return [String]
-        attr_accessor :data_type
-      
-        # Byte offsets for the end of the data type sentence inside the full text.
-        # Corresponds to the JSON property `endOffset`
-        # @return [Fixnum]
-        attr_accessor :end_offset
-      
-        # Score given by the model representing how confident it was regarding this `
-        # text_content` being of `data_type`.
-        # Corresponds to the JSON property `score`
-        # @return [Float]
-        attr_accessor :score
-      
-        # Byte offsets for the start of the data type sentence inside the full text.
-        # Corresponds to the JSON property `startOffset`
-        # @return [Fixnum]
-        attr_accessor :start_offset
-      
-        # Actual text content in the section. This makes it much easier to consume the
-        # information. NOTE: This field might contain HTML and does not guarantee a
-        # SafeHtml security contract go/safehtmltypecontracts#safehtml.
-        # Corresponds to the JSON property `textContent`
-        # @return [String]
-        attr_accessor :text_content
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data_type = args[:data_type] if args.key?(:data_type)
-          @end_offset = args[:end_offset] if args.key?(:end_offset)
-          @score = args[:score] if args.key?(:score)
-          @start_offset = args[:start_offset] if args.key?(:start_offset)
-          @text_content = args[:text_content] if args.key?(:text_content)
-        end
-      end
-      
-      # 
-      class PolicyPurposeOfUseAnnotation
-        include Google::Apis::Core::Hashable
-      
-        # Byte offsets for the end of the purpose of use sentence inside the full text.
-        # Corresponds to the JSON property `endOffset`
-        # @return [Fixnum]
-        attr_accessor :end_offset
-      
-        # Purpose of use mentioned in the policy.
-        # Corresponds to the JSON property `purposeOfUse`
-        # @return [String]
-        attr_accessor :purpose_of_use
-      
-        # Score given by the model representing how confident it was regarding this `
-        # text_content` being of `purpose_of_use`.
-        # Corresponds to the JSON property `score`
-        # @return [Float]
-        attr_accessor :score
-      
-        # Byte offsets for the start of the purpose of use sentence inside the full text.
-        # Corresponds to the JSON property `startOffset`
-        # @return [Fixnum]
-        attr_accessor :start_offset
-      
-        # The bytes of actual text content in the sentence that mentions the purpose of
-        # use. This makes it much easier to consume the information.
-        # Corresponds to the JSON property `textContent`
-        # @return [String]
-        attr_accessor :text_content
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_offset = args[:end_offset] if args.key?(:end_offset)
-          @purpose_of_use = args[:purpose_of_use] if args.key?(:purpose_of_use)
-          @score = args[:score] if args.key?(:score)
-          @start_offset = args[:start_offset] if args.key?(:start_offset)
-          @text_content = args[:text_content] if args.key?(:text_content)
-        end
-      end
-      
-      # 
-      class PolicySectionAnnotation
-        include Google::Apis::Core::Hashable
-      
-        # Byte offsets for the end of the section inside the full text.
-        # Corresponds to the JSON property `endOffset`
-        # @return [Fixnum]
-        attr_accessor :end_offset
-      
-        # Score given by the model representing how confident it was regarding this `
-        # text_content` being of `section_type`.
-        # Corresponds to the JSON property `score`
-        # @return [Float]
-        attr_accessor :score
-      
-        # Detected type of the high-level topic in the policy.
-        # Corresponds to the JSON property `sectionType`
-        # @return [String]
-        attr_accessor :section_type
-      
-        # Byte offsets for the start of the section inside the full text.
-        # Corresponds to the JSON property `startOffset`
-        # @return [Fixnum]
-        attr_accessor :start_offset
-      
-        # Actual text content in the section.
-        # Corresponds to the JSON property `textContent`
-        # @return [String]
-        attr_accessor :text_content
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_offset = args[:end_offset] if args.key?(:end_offset)
-          @score = args[:score] if args.key?(:score)
-          @section_type = args[:section_type] if args.key?(:section_type)
-          @start_offset = args[:start_offset] if args.key?(:start_offset)
-          @text_content = args[:text_content] if args.key?(:text_content)
         end
       end
       
