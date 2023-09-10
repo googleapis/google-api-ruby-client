@@ -983,12 +983,13 @@ module Google
         # user visits a page containing a remarketing tag, Google adds the user to a
         # user list.
         # @param [String] name
-        #   Required. To fetch remarketing tag for an account, name must follow the
-        #   pattern `buyers/`accountId`` where ``accountId`` represents ID of a buyer that
-        #   owns the remarketing tag. For a bidder accessing remarketing tag on behalf of
-        #   a child seat buyer, ``accountId`` should represent the ID of the child seat
-        #   buyer. To fetch remarketing tag for a specific user list, name must follow the
-        #   pattern `buyers/`accountId`/userLists/`userListId``. See UserList.name.
+        #   Required. To fetch the remarketing tag for an account, the name must follow
+        #   the pattern `buyers/`accountId``, where ``accountId`` represents the ID of the
+        #   buyer that owns the remarketing tag. For a bidder accessing the remarketing
+        #   tag on behalf of a child seat buyer, ``accountId`` should represent the ID of
+        #   the child seat buyer. To fetch the remarketing tag for a specific user list,
+        #   the name must follow the pattern `buyers/`accountId`/userLists/`userListId``.
+        #   See UserList.name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1235,8 +1236,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Change the status of a user list to CLOSED. This prevents new users from being
-        # added to the user list.
+        # Changes the status of a user list to CLOSED. This prevents new users from
+        # being added to the user list.
         # @param [String] name
         #   Required. The name of the user list to close. See UserList.name
         # @param [Google::Apis::RealtimebiddingV1::CloseUserListRequest] close_user_list_request_object
@@ -1269,12 +1270,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new user list.
+        # Creates a new user list.
         # @param [String] parent
-        #   Required. The name of the parent buyer of the user list to be retrieved that
+        #   Required. The name of the parent buyer of the user list to be retrieved, which
         #   must follow the pattern `buyers/`buyerAccountId``, where ``buyerAccountId``
-        #   represents the account ID of the buyer who owns user lists. For a bidder
-        #   accessing user lists on behalf of a child seat buyer , ``buyerAccountId``
+        #   represents the account ID of the buyer who owns the user list. For a bidder
+        #   accessing user lists on behalf of a child seat buyer, ``buyerAccountId``
         #   should represent the account ID of the child seat buyer.
         # @param [Google::Apis::RealtimebiddingV1::UserList] user_list_object
         # @param [String] fields
@@ -1343,12 +1344,13 @@ module Google
         # user visits a page containing a remarketing tag, Google adds the user to a
         # user list.
         # @param [String] name
-        #   Required. To fetch remarketing tag for an account, name must follow the
-        #   pattern `buyers/`accountId`` where ``accountId`` represents ID of a buyer that
-        #   owns the remarketing tag. For a bidder accessing remarketing tag on behalf of
-        #   a child seat buyer, ``accountId`` should represent the ID of the child seat
-        #   buyer. To fetch remarketing tag for a specific user list, name must follow the
-        #   pattern `buyers/`accountId`/userLists/`userListId``. See UserList.name.
+        #   Required. To fetch the remarketing tag for an account, the name must follow
+        #   the pattern `buyers/`accountId``, where ``accountId`` represents the ID of the
+        #   buyer that owns the remarketing tag. For a bidder accessing the remarketing
+        #   tag on behalf of a child seat buyer, ``accountId`` should represent the ID of
+        #   the child seat buyer. To fetch the remarketing tag for a specific user list,
+        #   the name must follow the pattern `buyers/`accountId`/userLists/`userListId``.
+        #   See UserList.name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1386,7 +1388,7 @@ module Google
         # @param [Fixnum] page_size
         #   The number of results to return per page.
         # @param [String] page_token
-        #   Continuation page token (as received from a previous response).
+        #   Continuation page token as received from a previous response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1416,8 +1418,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Change the status of a user list to OPEN. This allows new users to be added to
-        # the user list.
+        # Changes the status of a user list to OPEN. This allows new users to be added
+        # to the user list.
         # @param [String] name
         #   Required. The name of the user list to open. See UserList.name
         # @param [Google::Apis::RealtimebiddingV1::OpenUserListRequest] open_user_list_request_object
@@ -1450,7 +1452,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the given user list. Only user lists with URLRestrictions can be
+        # Updates the given user list. Only user lists with URLRestrictions can be
         # updated.
         # @param [String] name
         #   Output only. Name of the user list that must follow the pattern `buyers/`buyer`

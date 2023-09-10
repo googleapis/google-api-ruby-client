@@ -1107,10 +1107,10 @@ module Google
       class GetRemarketingTagResponse
         include Google::Apis::Core::Hashable
       
-        # A HTML tag that can be placed on the advertiser's page to add users to a user
-        # list. For more information and code samples on using snippet on your website
-        # refer to [Tag your site for remarketing]( https://support.google.com/google-
-        # ads/answer/2476688).
+        # An HTML tag that can be placed on the advertiser's page to add users to a user
+        # list. For more information and code samples on using snippets on your website,
+        # refer to [Tag your site for remarketing](https://support.google.com/google-ads/
+        # answer/2476688).
         # Corresponds to the JSON property `snippet`
         # @return [String]
         attr_accessor :snippet
@@ -1405,8 +1405,8 @@ module Google
       
         # The continuation page token to send back to the server in a subsequent request.
         # Due to a currently known issue, it is recommended that the caller keep
-        # invoking the list method till the time a next page token is not returned (even
-        # if the result set is empty).
+        # invoking the list method until the time a next page token is not returned,
+        # even if the result set is empty.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
