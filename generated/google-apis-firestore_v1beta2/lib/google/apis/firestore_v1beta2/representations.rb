@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1CreateDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1DeleteDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1Progress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +161,18 @@ module Google
       end
       
       class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1CreateDatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1DeleteDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end

@@ -38,6 +38,32 @@ module Google
         end
       end
       
+      # Metadata related to the create database operation.
+      class GoogleFirestoreAdminV1CreateDatabaseMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to the delete database operation.
+      class GoogleFirestoreAdminV1DeleteDatabaseMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Describes the progress of the operation. Unit of work is generic and must be
       # interpreted based on where Progress is used.
       class GoogleFirestoreAdminV1Progress
