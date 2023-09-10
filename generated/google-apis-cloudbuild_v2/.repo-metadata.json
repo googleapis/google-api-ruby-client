@@ -1,0 +1,7 @@
+{
+    "api_id": "cloudbuild:v2",
+    "name_pretty": "Cloud Build API",
+    "distribution_name": "google-apis-cloudbuild_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
