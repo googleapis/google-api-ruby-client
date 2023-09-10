@@ -39,6 +39,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GcsDestination]
         attr_accessor :audio_export_gcs_destination
       
+        # Define behaviors for DTMF (dual tone multi frequency).
+        # Corresponds to the JSON property `dtmfSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings]
+        attr_accessor :dtmf_settings
+      
         # Define behaviors on logging.
         # Corresponds to the JSON property `loggingSettings`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings]
@@ -51,7 +56,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_export_gcs_destination = args[:audio_export_gcs_destination] if args.key?(:audio_export_gcs_destination)
+          @dtmf_settings = args[:dtmf_settings] if args.key?(:dtmf_settings)
           @logging_settings = args[:logging_settings] if args.key?(:logging_settings)
+        end
+      end
+      
+      # Define behaviors for DTMF (dual tone multi frequency).
+      class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings
+        include Google::Apis::Core::Hashable
+      
+        # If true, incoming audio is processed for DTMF (dual tone multi frequency)
+        # events. For example, if the caller presses a button on their telephone keypad
+        # and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3"
+        # was pressed) in the incoming audio and pass the event to the bot to drive
+        # business logic (e.g. when 3 is pressed, return the account balance).
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # The digit that terminates a DTMF digit sequence.
+        # Corresponds to the JSON property `finishDigit`
+        # @return [String]
+        attr_accessor :finish_digit
+      
+        # Max length of DTMF digits.
+        # Corresponds to the JSON property `maxDigits`
+        # @return [Fixnum]
+        attr_accessor :max_digits
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @finish_digit = args[:finish_digit] if args.key?(:finish_digit)
+          @max_digits = args[:max_digits] if args.key?(:max_digits)
         end
       end
       
@@ -142,6 +184,11 @@ module Google
         attr_accessor :enable_stackdriver_logging
         alias_method :enable_stackdriver_logging?, :enable_stackdriver_logging
       
+        # Settings for Gen App Builder.
+        # Corresponds to the JSON property `genAppBuilderSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings]
+        attr_accessor :gen_app_builder_settings
+      
         # Settings for connecting to Git repository for an agent.
         # Corresponds to the JSON property `gitIntegrationSettings`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentGitIntegrationSettings]
@@ -209,6 +256,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_spell_correction = args[:enable_spell_correction] if args.key?(:enable_spell_correction)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
+          @gen_app_builder_settings = args[:gen_app_builder_settings] if args.key?(:gen_app_builder_settings)
           @git_integration_settings = args[:git_integration_settings] if args.key?(:git_integration_settings)
           @locked = args[:locked] if args.key?(:locked)
           @name = args[:name] if args.key?(:name)
@@ -218,6 +266,27 @@ module Google
           @supported_language_codes = args[:supported_language_codes] if args.key?(:supported_language_codes)
           @text_to_speech_settings = args[:text_to_speech_settings] if args.key?(:text_to_speech_settings)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # Settings for Gen App Builder.
+      class GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full name of the Gen App Builder engine related to this agent if
+        # there is one. Format: `projects/`Project ID`/locations/`Location ID`/
+        # collections/`Collection ID`/engines/`Engine ID``
+        # Corresponds to the JSON property `engine`
+        # @return [String]
+        attr_accessor :engine
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @engine = args[:engine] if args.key?(:engine)
         end
       end
       
@@ -2054,6 +2123,18 @@ module Google
       class GoogleCloudDialogflowCxV3Flow
         include Google::Apis::Core::Hashable
       
+        # Hierarchical advanced settings for agent/flow/page/fulfillment/parameter.
+        # Settings exposed at lower level overrides the settings exposed at higher level.
+        # Overriding occurs at the sub-setting level. For example, the
+        # playback_interruption_settings at fulfillment level only overrides the
+        # playback_interruption_settings at the agent level, leaving other settings at
+        # the agent level unchanged. DTMF settings does not override each other. DTMF
+        # settings set at different levels define DTMF detections running in parallel.
+        # Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        # Corresponds to the JSON property `advancedSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettings]
+        attr_accessor :advanced_settings
+      
         # The description of the flow. The maximum length is 500 characters. If exceeded,
         # the request is rejected.
         # Corresponds to the JSON property `description`
@@ -2123,6 +2204,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
@@ -2215,6 +2297,18 @@ module Google
       class GoogleCloudDialogflowCxV3FormParameter
         include Google::Apis::Core::Hashable
       
+        # Hierarchical advanced settings for agent/flow/page/fulfillment/parameter.
+        # Settings exposed at lower level overrides the settings exposed at higher level.
+        # Overriding occurs at the sub-setting level. For example, the
+        # playback_interruption_settings at fulfillment level only overrides the
+        # playback_interruption_settings at the agent level, leaving other settings at
+        # the agent level unchanged. DTMF settings does not override each other. DTMF
+        # settings set at different levels define DTMF detections running in parallel.
+        # Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        # Corresponds to the JSON property `advancedSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettings]
+        attr_accessor :advanced_settings
+      
         # The default value of an optional parameter. If the parameter is required, the
         # default value will be ignored.
         # Corresponds to the JSON property `defaultValue`
@@ -2268,6 +2362,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @default_value = args[:default_value] if args.key?(:default_value)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entity_type = args[:entity_type] if args.key?(:entity_type)
@@ -2415,10 +2510,31 @@ module Google
       class GoogleCloudDialogflowCxV3Fulfillment
         include Google::Apis::Core::Hashable
       
+        # Hierarchical advanced settings for agent/flow/page/fulfillment/parameter.
+        # Settings exposed at lower level overrides the settings exposed at higher level.
+        # Overriding occurs at the sub-setting level. For example, the
+        # playback_interruption_settings at fulfillment level only overrides the
+        # playback_interruption_settings at the agent level, leaving other settings at
+        # the agent level unchanged. DTMF settings does not override each other. DTMF
+        # settings set at different levels define DTMF detections running in parallel.
+        # Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        # Corresponds to the JSON property `advancedSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettings]
+        attr_accessor :advanced_settings
+      
         # Conditional cases for this fulfillment.
         # Corresponds to the JSON property `conditionalCases`
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FulfillmentConditionalCases>]
         attr_accessor :conditional_cases
+      
+        # If the flag is true, the agent will utilize LLM to generate a text response.
+        # If LLM generation fails, the defined responses in the fulfillment will be
+        # respected. This flag is only useful for fulfillments associated with no-match
+        # event handlers.
+        # Corresponds to the JSON property `enableGenerativeFallback`
+        # @return [Boolean]
+        attr_accessor :enable_generative_fallback
+        alias_method :enable_generative_fallback?, :enable_generative_fallback
       
         # The list of rich message responses to present to the user.
         # Corresponds to the JSON property `messages`
@@ -2462,7 +2578,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @conditional_cases = args[:conditional_cases] if args.key?(:conditional_cases)
+          @enable_generative_fallback = args[:enable_generative_fallback] if args.key?(:enable_generative_fallback)
           @messages = args[:messages] if args.key?(:messages)
           @return_partial_responses = args[:return_partial_responses] if args.key?(:return_partial_responses)
           @set_parameter_actions = args[:set_parameter_actions] if args.key?(:set_parameter_actions)
@@ -2601,6 +2719,159 @@ module Google
         # Update properties of this object
         def update!(**args)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Settings for Generative AI.
+      class GoogleCloudDialogflowCxV3GenerativeSettings
+        include Google::Apis::Core::Hashable
+      
+        # Settings for Generative Fallback.
+        # Corresponds to the JSON property `fallbackSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings]
+        attr_accessor :fallback_settings
+      
+        # Settings for Generative Safety.
+        # Corresponds to the JSON property `generativeSafetySettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SafetySettings]
+        attr_accessor :generative_safety_settings
+      
+        # Settings for knowledge connector. These parameters are used for LLM prompt
+        # like "You are . You are a helpful and verbose at , . Your task is to help
+        # humans on ".
+        # Corresponds to the JSON property `knowledgeConnectorSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings]
+        attr_accessor :knowledge_connector_settings
+      
+        # Language for this settings.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Format: `projects//locations//agents//generativeSettings`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fallback_settings = args[:fallback_settings] if args.key?(:fallback_settings)
+          @generative_safety_settings = args[:generative_safety_settings] if args.key?(:generative_safety_settings)
+          @knowledge_connector_settings = args[:knowledge_connector_settings] if args.key?(:knowledge_connector_settings)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Settings for Generative Fallback.
+      class GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings
+        include Google::Apis::Core::Hashable
+      
+        # Stored prompts that can be selected, for example default templates like "
+        # conservative" or "chatty", or user defined ones.
+        # Corresponds to the JSON property `promptTemplates`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate>]
+        attr_accessor :prompt_templates
+      
+        # Display name of the selected prompt.
+        # Corresponds to the JSON property `selectedPrompt`
+        # @return [String]
+        attr_accessor :selected_prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prompt_templates = args[:prompt_templates] if args.key?(:prompt_templates)
+          @selected_prompt = args[:selected_prompt] if args.key?(:selected_prompt)
+        end
+      end
+      
+      # Prompt template.
+      class GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Prompt name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # If the flag is true, the prompt is frozen and cannot be modified by users.
+        # Corresponds to the JSON property `frozen`
+        # @return [Boolean]
+        attr_accessor :frozen
+        alias_method :frozen?, :frozen
+      
+        # Prompt text that is sent to a LLM on no-match default, placeholders are filled
+        # downstream. For example: "Here is a conversation $conversation, a response is:
+        # "
+        # Corresponds to the JSON property `promptText`
+        # @return [String]
+        attr_accessor :prompt_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @frozen = args[:frozen] if args.key?(:frozen)
+          @prompt_text = args[:prompt_text] if args.key?(:prompt_text)
+        end
+      end
+      
+      # Settings for knowledge connector. These parameters are used for LLM prompt
+      # like "You are . You are a helpful and verbose at , . Your task is to help
+      # humans on ".
+      class GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings
+        include Google::Apis::Core::Hashable
+      
+        # Name of the virtual agent. Used for LLM prompt. Can be left empty.
+        # Corresponds to the JSON property `agent`
+        # @return [String]
+        attr_accessor :agent
+      
+        # Identity of the agent, e.g. "virtual agent", "AI assistant".
+        # Corresponds to the JSON property `agentIdentity`
+        # @return [String]
+        attr_accessor :agent_identity
+      
+        # Agent scope, e.g. "Example company website", "internal Example company website
+        # for employees", "manual of car owner".
+        # Corresponds to the JSON property `agentScope`
+        # @return [String]
+        attr_accessor :agent_scope
+      
+        # Name of the company, organization or other entity that the agent represents.
+        # Used for knowledge connector LLM prompt and for knowledge search.
+        # Corresponds to the JSON property `business`
+        # @return [String]
+        attr_accessor :business
+      
+        # Company description, used for LLM prompt, e.g. "a family company selling
+        # freshly roasted coffee beans".
+        # Corresponds to the JSON property `businessDescription`
+        # @return [String]
+        attr_accessor :business_description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent = args[:agent] if args.key?(:agent)
+          @agent_identity = args[:agent_identity] if args.key?(:agent_identity)
+          @agent_scope = args[:agent_scope] if args.key?(:agent_scope)
+          @business = args[:business] if args.key?(:business)
+          @business_description = args[:business_description] if args.key?(:business_description)
         end
       end
       
@@ -3965,6 +4236,18 @@ module Google
       class GoogleCloudDialogflowCxV3Page
         include Google::Apis::Core::Hashable
       
+        # Hierarchical advanced settings for agent/flow/page/fulfillment/parameter.
+        # Settings exposed at lower level overrides the settings exposed at higher level.
+        # Overriding occurs at the sub-setting level. For example, the
+        # playback_interruption_settings at fulfillment level only overrides the
+        # playback_interruption_settings at the agent level, leaving other settings at
+        # the agent level unchanged. DTMF settings does not override each other. DTMF
+        # settings set at different levels define DTMF detections running in parallel.
+        # Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        # Corresponds to the JSON property `advancedSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettings]
+        attr_accessor :advanced_settings
+      
         # Required. The human-readable name of the page, unique within the flow.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -4045,6 +4328,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entry_fulfillment = args[:entry_fulfillment] if args.key?(:entry_fulfillment)
           @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
@@ -4356,6 +4640,18 @@ module Google
       class GoogleCloudDialogflowCxV3QueryResult
         include Google::Apis::Core::Hashable
       
+        # Hierarchical advanced settings for agent/flow/page/fulfillment/parameter.
+        # Settings exposed at lower level overrides the settings exposed at higher level.
+        # Overriding occurs at the sub-setting level. For example, the
+        # playback_interruption_settings at fulfillment level only overrides the
+        # playback_interruption_settings at the agent level, leaving other settings at
+        # the agent level unchanged. DTMF settings does not override each other. DTMF
+        # settings set at different levels define DTMF detections running in parallel.
+        # Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        # Corresponds to the JSON property `advancedSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettings]
+        attr_accessor :advanced_settings
+      
         # A Dialogflow CX conversation (session) can be described and visualized as a
         # state machine. The states of a CX session are represented by pages. For each
         # flow, you define many pages, where your combined pages can handle a complete
@@ -4492,6 +4788,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @current_page = args[:current_page] if args.key?(:current_page)
           @diagnostic_info = args[:diagnostic_info] if args.key?(:diagnostic_info)
           @dtmf = args[:dtmf] if args.key?(:dtmf)
@@ -5196,6 +5493,50 @@ module Google
         end
       end
       
+      # Settings for Generative Safety.
+      class GoogleCloudDialogflowCxV3SafetySettings
+        include Google::Apis::Core::Hashable
+      
+        # Banned phrases for generated text.
+        # Corresponds to the JSON property `bannedPhrases`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SafetySettingsPhrase>]
+        attr_accessor :banned_phrases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @banned_phrases = args[:banned_phrases] if args.key?(:banned_phrases)
+        end
+      end
+      
+      # Text input which can be used for prompt or banned phrases.
+      class GoogleCloudDialogflowCxV3SafetySettingsPhrase
+        include Google::Apis::Core::Hashable
+      
+        # Required. Language code of the phrase.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Required. Text input which can be used for prompt or banned phrases.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
       # Represents the settings related to security issues, such as data redaction and
       # data retention. It may take hours for updates on the settings to propagate to
       # all the related components and take effect.
@@ -5269,6 +5610,11 @@ module Google
         # @return [String]
         attr_accessor :redaction_strategy
       
+        # Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
+        # Corresponds to the JSON property `retentionStrategy`
+        # @return [String]
+        attr_accessor :retention_strategy
+      
         # Retains the data for the specified number of days. User must set a value lower
         # than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher
         # value will be ignored and use default. Setting a value higher than that has no
@@ -5292,6 +5638,7 @@ module Google
           @purge_data_types = args[:purge_data_types] if args.key?(:purge_data_types)
           @redaction_scope = args[:redaction_scope] if args.key?(:redaction_scope)
           @redaction_strategy = args[:redaction_strategy] if args.key?(:redaction_strategy)
+          @retention_strategy = args[:retention_strategy] if args.key?(:retention_strategy)
           @retention_window_days = args[:retention_window_days] if args.key?(:retention_window_days)
         end
       end
@@ -7017,6 +7364,108 @@ module Google
         end
       end
       
+      # Hierarchical advanced settings for agent/flow/page/fulfillment/parameter.
+      # Settings exposed at lower level overrides the settings exposed at higher level.
+      # Overriding occurs at the sub-setting level. For example, the
+      # playback_interruption_settings at fulfillment level only overrides the
+      # playback_interruption_settings at the agent level, leaving other settings at
+      # the agent level unchanged. DTMF settings does not override each other. DTMF
+      # settings set at different levels define DTMF detections running in parallel.
+      # Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettings
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage location for a Dialogflow operation that writes or
+        # exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
+        # Corresponds to the JSON property `audioExportGcsDestination`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1GcsDestination]
+        attr_accessor :audio_export_gcs_destination
+      
+        # Define behaviors for DTMF (dual tone multi frequency).
+        # Corresponds to the JSON property `dtmfSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings]
+        attr_accessor :dtmf_settings
+      
+        # Define behaviors on logging.
+        # Corresponds to the JSON property `loggingSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings]
+        attr_accessor :logging_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_export_gcs_destination = args[:audio_export_gcs_destination] if args.key?(:audio_export_gcs_destination)
+          @dtmf_settings = args[:dtmf_settings] if args.key?(:dtmf_settings)
+          @logging_settings = args[:logging_settings] if args.key?(:logging_settings)
+        end
+      end
+      
+      # Define behaviors for DTMF (dual tone multi frequency).
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings
+        include Google::Apis::Core::Hashable
+      
+        # If true, incoming audio is processed for DTMF (dual tone multi frequency)
+        # events. For example, if the caller presses a button on their telephone keypad
+        # and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3"
+        # was pressed) in the incoming audio and pass the event to the bot to drive
+        # business logic (e.g. when 3 is pressed, return the account balance).
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # The digit that terminates a DTMF digit sequence.
+        # Corresponds to the JSON property `finishDigit`
+        # @return [String]
+        attr_accessor :finish_digit
+      
+        # Max length of DTMF digits.
+        # Corresponds to the JSON property `maxDigits`
+        # @return [Fixnum]
+        attr_accessor :max_digits
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @finish_digit = args[:finish_digit] if args.key?(:finish_digit)
+          @max_digits = args[:max_digits] if args.key?(:max_digits)
+        end
+      end
+      
+      # Define behaviors on logging.
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings
+        include Google::Apis::Core::Hashable
+      
+        # If true, DF Interaction logging is currently enabled.
+        # Corresponds to the JSON property `enableInteractionLogging`
+        # @return [Boolean]
+        attr_accessor :enable_interaction_logging
+        alias_method :enable_interaction_logging?, :enable_interaction_logging
+      
+        # If true, StackDriver logging is currently enabled.
+        # Corresponds to the JSON property `enableStackdriverLogging`
+        # @return [Boolean]
+        attr_accessor :enable_stackdriver_logging
+        alias_method :enable_stackdriver_logging?, :enable_stackdriver_logging
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_interaction_logging = args[:enable_interaction_logging] if args.key?(:enable_interaction_logging)
+          @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
+        end
+      end
+      
       # Represents the natural speech audio to be processed.
       class GoogleCloudDialogflowCxV3beta1AudioInput
         include Google::Apis::Core::Hashable
@@ -7802,6 +8251,18 @@ module Google
       class GoogleCloudDialogflowCxV3beta1FormParameter
         include Google::Apis::Core::Hashable
       
+        # Hierarchical advanced settings for agent/flow/page/fulfillment/parameter.
+        # Settings exposed at lower level overrides the settings exposed at higher level.
+        # Overriding occurs at the sub-setting level. For example, the
+        # playback_interruption_settings at fulfillment level only overrides the
+        # playback_interruption_settings at the agent level, leaving other settings at
+        # the agent level unchanged. DTMF settings does not override each other. DTMF
+        # settings set at different levels define DTMF detections running in parallel.
+        # Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        # Corresponds to the JSON property `advancedSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1AdvancedSettings]
+        attr_accessor :advanced_settings
+      
         # The default value of an optional parameter. If the parameter is required, the
         # default value will be ignored.
         # Corresponds to the JSON property `defaultValue`
@@ -7855,6 +8316,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @default_value = args[:default_value] if args.key?(:default_value)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entity_type = args[:entity_type] if args.key?(:entity_type)
@@ -7925,10 +8387,31 @@ module Google
       class GoogleCloudDialogflowCxV3beta1Fulfillment
         include Google::Apis::Core::Hashable
       
+        # Hierarchical advanced settings for agent/flow/page/fulfillment/parameter.
+        # Settings exposed at lower level overrides the settings exposed at higher level.
+        # Overriding occurs at the sub-setting level. For example, the
+        # playback_interruption_settings at fulfillment level only overrides the
+        # playback_interruption_settings at the agent level, leaving other settings at
+        # the agent level unchanged. DTMF settings does not override each other. DTMF
+        # settings set at different levels define DTMF detections running in parallel.
+        # Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        # Corresponds to the JSON property `advancedSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1AdvancedSettings]
+        attr_accessor :advanced_settings
+      
         # Conditional cases for this fulfillment.
         # Corresponds to the JSON property `conditionalCases`
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases>]
         attr_accessor :conditional_cases
+      
+        # If the flag is true, the agent will utilize LLM to generate a text response.
+        # If LLM generation fails, the defined responses in the fulfillment will be
+        # respected. This flag is only useful for fulfillments associated with no-match
+        # event handlers.
+        # Corresponds to the JSON property `enableGenerativeFallback`
+        # @return [Boolean]
+        attr_accessor :enable_generative_fallback
+        alias_method :enable_generative_fallback?, :enable_generative_fallback
       
         # The list of rich message responses to present to the user.
         # Corresponds to the JSON property `messages`
@@ -7972,7 +8455,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @conditional_cases = args[:conditional_cases] if args.key?(:conditional_cases)
+          @enable_generative_fallback = args[:enable_generative_fallback] if args.key?(:enable_generative_fallback)
           @messages = args[:messages] if args.key?(:messages)
           @return_partial_responses = args[:return_partial_responses] if args.key?(:return_partial_responses)
           @set_parameter_actions = args[:set_parameter_actions] if args.key?(:set_parameter_actions)
@@ -8089,6 +8574,28 @@ module Google
         def update!(**args)
           @parameter = args[:parameter] if args.key?(:parameter)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Google Cloud Storage location for a Dialogflow operation that writes or
+      # exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
+      class GoogleCloudDialogflowCxV3beta1GcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Google Cloud Storage URI for the exported objects. A URI is of
+        # the form: `gs://bucket/object-name-or-prefix` Whether a full object name, or
+        # just a prefix, its usage depends on the Dialogflow operation.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -8575,6 +9082,18 @@ module Google
       class GoogleCloudDialogflowCxV3beta1Page
         include Google::Apis::Core::Hashable
       
+        # Hierarchical advanced settings for agent/flow/page/fulfillment/parameter.
+        # Settings exposed at lower level overrides the settings exposed at higher level.
+        # Overriding occurs at the sub-setting level. For example, the
+        # playback_interruption_settings at fulfillment level only overrides the
+        # playback_interruption_settings at the agent level, leaving other settings at
+        # the agent level unchanged. DTMF settings does not override each other. DTMF
+        # settings set at different levels define DTMF detections running in parallel.
+        # Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        # Corresponds to the JSON property `advancedSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1AdvancedSettings]
+        attr_accessor :advanced_settings
+      
         # Required. The human-readable name of the page, unique within the flow.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -8655,6 +9174,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entry_fulfillment = args[:entry_fulfillment] if args.key?(:entry_fulfillment)
           @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
