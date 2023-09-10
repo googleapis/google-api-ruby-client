@@ -610,6 +610,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2InfoTypeLikelihood
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2InfoTypeLimit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2474,6 +2480,15 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2InfoTypeLikelihood
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :info_type, as: 'infoType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
+      
+          property :min_likelihood, as: 'minLikelihood'
+        end
+      end
+      
       class GooglePrivacyDlpV2InfoTypeLimit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2532,6 +2547,8 @@ module Google
           property :limits, as: 'limits', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FindingLimits, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FindingLimits::Representation
       
           property :min_likelihood, as: 'minLikelihood'
+          collection :min_likelihood_per_info_type, as: 'minLikelihoodPerInfoType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeLikelihood, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeLikelihood::Representation
+      
           collection :rule_set, as: 'ruleSet', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectionRuleSet, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectionRuleSet::Representation
       
         end

@@ -3764,6 +3764,35 @@ module Google
         end
       end
       
+      # Configuration to control custom minimum likelihoods per infotype. Used when
+      # certain infotypes need to return with higher or lower precision than the
+      # baseline, i.e. when wanting PERSON_NAME to return all possible names without
+      # lowering the precision of other infotypes.
+      class GooglePrivacyDlpV2InfoTypeLikelihood
+        include Google::Apis::Core::Hashable
+      
+        # Type of information detected by the API.
+        # Corresponds to the JSON property `infoType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
+        attr_accessor :info_type
+      
+        # Only returns findings equal or above this threshold. This field is required or
+        # else the configuration fails.
+        # Corresponds to the JSON property `minLikelihood`
+        # @return [String]
+        attr_accessor :min_likelihood
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @info_type = args[:info_type] if args.key?(:info_type)
+          @min_likelihood = args[:min_likelihood] if args.key?(:min_likelihood)
+        end
+      end
+      
       # Max findings configuration per infoType, per content item or long running
       # DlpJob.
       class GooglePrivacyDlpV2InfoTypeLimit
@@ -3947,6 +3976,13 @@ module Google
         # @return [String]
         attr_accessor :min_likelihood
       
+        # Per infotype likelihoods. For each infotype, a user can specify a minimum
+        # likelihood, and only return that infotype if it is above that threshold. If an
+        # infotype is not included, it uses the InspectConfig min_likelihood.
+        # Corresponds to the JSON property `minLikelihoodPerInfoType`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeLikelihood>]
+        attr_accessor :min_likelihood_per_info_type
+      
         # Set of rules to apply to the findings for this InspectConfig. Exclusion rules,
         # contained in the set are executed in the end, other rules are executed in the
         # order they are specified for each info type.
@@ -3967,6 +4003,7 @@ module Google
           @info_types = args[:info_types] if args.key?(:info_types)
           @limits = args[:limits] if args.key?(:limits)
           @min_likelihood = args[:min_likelihood] if args.key?(:min_likelihood)
+          @min_likelihood_per_info_type = args[:min_likelihood_per_info_type] if args.key?(:min_likelihood_per_info_type)
           @rule_set = args[:rule_set] if args.key?(:rule_set)
         end
       end
