@@ -1635,8 +1635,8 @@ module Google
       class PropertyReference
         include Google::Apis::Core::Hashable
       
-        # The name of the property. If name includes "."s, it may be interpreted as a
-        # property name path.
+        # A reference to a property. Requires: * MUST be a dot-delimited (`.`) string of
+        # segments, where each segment conforms to entity property name limitations.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
