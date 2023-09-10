@@ -2030,6 +2030,7 @@ module Google
           property :project, as: 'project'
           hash :relationships, as: 'relationships', class: Google::Apis::CloudassetV1::RelatedResources, decorator: Google::Apis::CloudassetV1::RelatedResources::Representation
       
+          hash :scc_security_marks, as: 'sccSecurityMarks'
           property :state, as: 'state'
           collection :tag_keys, as: 'tagKeys'
           collection :tag_value_ids, as: 'tagValueIds'
