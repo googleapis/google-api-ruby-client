@@ -989,6 +989,71 @@ module Google
         end
       end
       
+      # Response containing a summary printing report for each printer from the
+      # specified organizational unit for the requested time interval.
+      class GoogleChromeManagementV1CountPrintJobsByPrinterResponse
+        include Google::Apis::Core::Hashable
+      
+        # Pagination token for requesting the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of PrinterReports matching request.
+        # Corresponds to the JSON property `printerReports`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PrinterReport>]
+        attr_accessor :printer_reports
+      
+        # Total number of printers matching request.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @printer_reports = args[:printer_reports] if args.key?(:printer_reports)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response containing a summary printing report for each user that has initiated
+      # a print job with a printer from the specified organizational unit during the
+      # requested time interval.
+      class GoogleChromeManagementV1CountPrintJobsByUserResponse
+        include Google::Apis::Core::Hashable
+      
+        # Pagination token for requesting the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Total number of users matching request.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        # List of UserPrintReports matching request.
+        # Corresponds to the JSON property `userPrintReports`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UserPrintReport>]
+        attr_accessor :user_print_reports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
+          @user_print_reports = args[:user_print_reports] if args.key?(:user_print_reports)
+        end
+      end
+      
       # CPU specifications for the device * This field provides device information,
       # which is static and will not change over time. * Data for this field is
       # controlled via policy: [ReportDeviceCpuInfo](https://chromeenterprise.google/
@@ -1449,6 +1514,38 @@ module Google
           @refresh_rate = args[:refresh_rate] if args.key?(:refresh_rate)
           @resolution_height = args[:resolution_height] if args.key?(:resolution_height)
           @resolution_width = args[:resolution_width] if args.key?(:resolution_width)
+        end
+      end
+      
+      # Response containing a list of print jobs.
+      class GoogleChromeManagementV1EnumeratePrintJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be used in a subsequent request to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of requested print jobs.
+        # Corresponds to the JSON property `printJobs`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PrintJob>]
+        attr_accessor :print_jobs
+      
+        # Total number of print jobs matching request.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @print_jobs = args[:print_jobs] if args.key?(:print_jobs)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       
@@ -2279,6 +2376,150 @@ module Google
         def update!(**args)
           @report_time = args[:report_time] if args.key?(:report_time)
           @usb_peripheral_report = args[:usb_peripheral_report] if args.key?(:usb_peripheral_report)
+        end
+      end
+      
+      # Represents a request to print a document that has been submitted to a printer.
+      class GoogleChromeManagementV1PrintJob
+        include Google::Apis::Core::Hashable
+      
+        # Color mode.
+        # Corresponds to the JSON property `colorMode`
+        # @return [String]
+        attr_accessor :color_mode
+      
+        # Print job completion timestamp.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Number of copies.
+        # Corresponds to the JSON property `copyCount`
+        # @return [Fixnum]
+        attr_accessor :copy_count
+      
+        # Print job creation timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Number of pages in the document.
+        # Corresponds to the JSON property `documentPageCount`
+        # @return [Fixnum]
+        attr_accessor :document_page_count
+      
+        # Duplex mode.
+        # Corresponds to the JSON property `duplexMode`
+        # @return [String]
+        attr_accessor :duplex_mode
+      
+        # Unique ID of the print job.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Name of the printer used for printing.
+        # Corresponds to the JSON property `printer`
+        # @return [String]
+        attr_accessor :printer
+      
+        # API ID of the printer used for printing.
+        # Corresponds to the JSON property `printerId`
+        # @return [String]
+        attr_accessor :printer_id
+      
+        # The final state of the job.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The title of the document.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # The primary e-mail address of the user who submitted the print job.
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        # The unique Directory API ID of the user who submitted the print job.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @color_mode = args[:color_mode] if args.key?(:color_mode)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @copy_count = args[:copy_count] if args.key?(:copy_count)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @document_page_count = args[:document_page_count] if args.key?(:document_page_count)
+          @duplex_mode = args[:duplex_mode] if args.key?(:duplex_mode)
+          @id = args[:id] if args.key?(:id)
+          @printer = args[:printer] if args.key?(:printer)
+          @printer_id = args[:printer_id] if args.key?(:printer_id)
+          @state = args[:state] if args.key?(:state)
+          @title = args[:title] if args.key?(:title)
+          @user_email = args[:user_email] if args.key?(:user_email)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Report for CountPrintJobsByPrinter, contains statistics on printer usage.
+      # Contains the total number of print jobs initiated with this printer, the
+      # number of users and the number of devices that have initiated at least one
+      # print job with this printer.
+      class GoogleChromeManagementV1PrinterReport
+        include Google::Apis::Core::Hashable
+      
+        # Number of chrome devices that have been used to send print jobs to the
+        # specified printer.
+        # Corresponds to the JSON property `deviceCount`
+        # @return [Fixnum]
+        attr_accessor :device_count
+      
+        # Number of print jobs sent to the printer.
+        # Corresponds to the JSON property `jobCount`
+        # @return [Fixnum]
+        attr_accessor :job_count
+      
+        # Printer name.
+        # Corresponds to the JSON property `printer`
+        # @return [String]
+        attr_accessor :printer
+      
+        # Printer API ID.
+        # Corresponds to the JSON property `printerId`
+        # @return [String]
+        attr_accessor :printer_id
+      
+        # Printer model.
+        # Corresponds to the JSON property `printerModel`
+        # @return [String]
+        attr_accessor :printer_model
+      
+        # Number of users that have sent print jobs to the printer.
+        # Corresponds to the JSON property `userCount`
+        # @return [Fixnum]
+        attr_accessor :user_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_count = args[:device_count] if args.key?(:device_count)
+          @job_count = args[:job_count] if args.key?(:job_count)
+          @printer = args[:printer] if args.key?(:printer)
+          @printer_id = args[:printer_id] if args.key?(:printer_id)
+          @printer_model = args[:printer_model] if args.key?(:printer_model)
+          @user_count = args[:user_count] if args.key?(:user_count)
         end
       end
       
@@ -3155,6 +3396,52 @@ module Google
           @subclass_id = args[:subclass_id] if args.key?(:subclass_id)
           @vendor = args[:vendor] if args.key?(:vendor)
           @vid = args[:vid] if args.key?(:vid)
+        end
+      end
+      
+      # Report for CountPrintJobsByUser, contains printing statistics for a user.
+      # Contains the number of printers, the number of devices used to initiate print
+      # jobs, and the number of print jobs initiated.
+      class GoogleChromeManagementV1UserPrintReport
+        include Google::Apis::Core::Hashable
+      
+        # Number of chrome devices that have been used to initiate print jobs by the
+        # user.
+        # Corresponds to the JSON property `deviceCount`
+        # @return [Fixnum]
+        attr_accessor :device_count
+      
+        # Number of print jobs initiated by the user.
+        # Corresponds to the JSON property `jobCount`
+        # @return [Fixnum]
+        attr_accessor :job_count
+      
+        # Number of printers used by the user.
+        # Corresponds to the JSON property `printerCount`
+        # @return [Fixnum]
+        attr_accessor :printer_count
+      
+        # The primary e-mail address of the user.
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        # The unique Directory API ID of the user.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_count = args[:device_count] if args.key?(:device_count)
+          @job_count = args[:job_count] if args.key?(:job_count)
+          @printer_count = args[:printer_count] if args.key?(:printer_count)
+          @user_email = args[:user_email] if args.key?(:user_email)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
