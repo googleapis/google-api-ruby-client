@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1CreateDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1DailyRecurrence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +233,12 @@ module Google
       end
       
       class GoogleFirestoreAdminV1Database
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1DeleteDatabaseMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -933,6 +945,12 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1CreateDatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleFirestoreAdminV1DailyRecurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -956,6 +974,12 @@ module Google
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :version_retention_period, as: 'versionRetentionPeriod'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1DeleteDatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
