@@ -388,6 +388,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :login_hint, as: 'loginHint'
+          collection :programmatic_clients, as: 'programmaticClients'
         end
       end
       
