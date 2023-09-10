@@ -347,6 +347,12 @@ module Google
       class Consumer
         include Google::Apis::Core::Hashable
       
+        # Output only. The location of the endpoint URI. Format: projects/`project`/
+        # locations/`location`.
+        # Corresponds to the JSON property `endpointLocation`
+        # @return [String]
+        attr_accessor :endpoint_location
+      
         # Output only. The URI of the endpoint used to access the metastore service.
         # Corresponds to the JSON property `endpointUri`
         # @return [String]
@@ -368,6 +374,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @endpoint_location = args[:endpoint_location] if args.key?(:endpoint_location)
           @endpoint_uri = args[:endpoint_uri] if args.key?(:endpoint_uri)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
