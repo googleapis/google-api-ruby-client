@@ -744,6 +744,320 @@ module Google
         end
       end
       
+      # A summary and comparison of the principal's access under the current (baseline)
+      # policies and the proposed (simulated) policies for a single access tuple.
+      class GoogleCloudPolicysimulatorV1betaAccessStateDiff
+        include Google::Apis::Core::Hashable
+      
+        # How the principal's access, specified in the AccessState field, changed
+        # between the current (baseline) policies and proposed (simulated) policies.
+        # Corresponds to the JSON property `accessChange`
+        # @return [String]
+        attr_accessor :access_change
+      
+        # Details about how a set of policies, listed in ExplainedPolicy, resulted in a
+        # certain AccessState when replaying an access tuple.
+        # Corresponds to the JSON property `baseline`
+        # @return [Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1betaExplainedAccess]
+        attr_accessor :baseline
+      
+        # Details about how a set of policies, listed in ExplainedPolicy, resulted in a
+        # certain AccessState when replaying an access tuple.
+        # Corresponds to the JSON property `simulated`
+        # @return [Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1betaExplainedAccess]
+        attr_accessor :simulated
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_change = args[:access_change] if args.key?(:access_change)
+          @baseline = args[:baseline] if args.key?(:baseline)
+          @simulated = args[:simulated] if args.key?(:simulated)
+        end
+      end
+      
+      # Information about the principal, resource, and permission to check.
+      class GoogleCloudPolicysimulatorV1betaAccessTuple
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full resource name that identifies the resource. For example, `//
+        # compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-
+        # instance`. For examples of full resource names for Google Cloud services, see
+        # https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # Required. The IAM permission to check for the specified principal and resource.
+        # For a complete list of IAM permissions, see https://cloud.google.com/iam/help/
+        # permissions/reference. For a complete list of predefined IAM roles and the
+        # permissions in each role, see https://cloud.google.com/iam/help/roles/
+        # reference.
+        # Corresponds to the JSON property `permission`
+        # @return [String]
+        attr_accessor :permission
+      
+        # Required. The principal whose access you want to check, in the form of the
+        # email address that represents that principal. For example, `alice@example.com`
+        # or `my-service-account@my-project.iam.gserviceaccount.com`. The principal must
+        # be a Google Account or a service account. Other types of principals are not
+        # supported.
+        # Corresponds to the JSON property `principal`
+        # @return [String]
+        attr_accessor :principal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @permission = args[:permission] if args.key?(:permission)
+          @principal = args[:principal] if args.key?(:principal)
+        end
+      end
+      
+      # Details about how a binding in a policy affects a principal's ability to use a
+      # permission.
+      class GoogleCloudPolicysimulatorV1betaBindingExplanation
+        include Google::Apis::Core::Hashable
+      
+        # Required. Indicates whether _this binding_ provides the specified permission
+        # to the specified principal for the specified resource. This field does _not_
+        # indicate whether the principal actually has the permission for the resource.
+        # There might be another binding that overrides this binding. To determine
+        # whether the principal actually has the permission, use the `access` field in
+        # the TroubleshootIamPolicyResponse.
+        # Corresponds to the JSON property `access`
+        # @return [String]
+        attr_accessor :access
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::PolicysimulatorV1beta::GoogleTypeExpr]
+        attr_accessor :condition
+      
+        # Indicates whether each principal in the binding includes the principal
+        # specified in the request, either directly or indirectly. Each key identifies a
+        # principal in the binding, and each value indicates whether the principal in
+        # the binding includes the principal in the request. For example, suppose that a
+        # binding includes the following principals: * `user:alice@example.com` * `group:
+        # product-eng@example.com` The principal in the replayed access tuple is `user:
+        # bob@example.com`. This user is a principal of the group `group:product-eng@
+        # example.com`. For the first principal in the binding, the key is `user:alice@
+        # example.com`, and the `membership` field in the value is set to `
+        # MEMBERSHIP_NOT_INCLUDED`. For the second principal in the binding, the key is `
+        # group:product-eng@example.com`, and the `membership` field in the value is set
+        # to `MEMBERSHIP_INCLUDED`.
+        # Corresponds to the JSON property `memberships`
+        # @return [Hash<String,Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership>]
+        attr_accessor :memberships
+      
+        # The relevance of this binding to the overall determination for the entire
+        # policy.
+        # Corresponds to the JSON property `relevance`
+        # @return [String]
+        attr_accessor :relevance
+      
+        # The role that this binding grants. For example, `roles/compute.serviceAgent`.
+        # For a complete list of predefined IAM roles, as well as the permissions in
+        # each role, see https://cloud.google.com/iam/help/roles/reference.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        # Indicates whether the role granted by this binding contains the specified
+        # permission.
+        # Corresponds to the JSON property `rolePermission`
+        # @return [String]
+        attr_accessor :role_permission
+      
+        # The relevance of the permission's existence, or nonexistence, in the role to
+        # the overall determination for the entire policy.
+        # Corresponds to the JSON property `rolePermissionRelevance`
+        # @return [String]
+        attr_accessor :role_permission_relevance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access = args[:access] if args.key?(:access)
+          @condition = args[:condition] if args.key?(:condition)
+          @memberships = args[:memberships] if args.key?(:memberships)
+          @relevance = args[:relevance] if args.key?(:relevance)
+          @role = args[:role] if args.key?(:role)
+          @role_permission = args[:role_permission] if args.key?(:role_permission)
+          @role_permission_relevance = args[:role_permission_relevance] if args.key?(:role_permission_relevance)
+        end
+      end
+      
+      # Details about whether the binding includes the principal.
+      class GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether the binding includes the principal.
+        # Corresponds to the JSON property `membership`
+        # @return [String]
+        attr_accessor :membership
+      
+        # The relevance of the principal's status to the overall determination for the
+        # binding.
+        # Corresponds to the JSON property `relevance`
+        # @return [String]
+        attr_accessor :relevance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @membership = args[:membership] if args.key?(:membership)
+          @relevance = args[:relevance] if args.key?(:relevance)
+        end
+      end
+      
+      # Details about how a set of policies, listed in ExplainedPolicy, resulted in a
+      # certain AccessState when replaying an access tuple.
+      class GoogleCloudPolicysimulatorV1betaExplainedAccess
+        include Google::Apis::Core::Hashable
+      
+        # Whether the principal in the access tuple has permission to access the
+        # resource in the access tuple under the given policies.
+        # Corresponds to the JSON property `accessState`
+        # @return [String]
+        attr_accessor :access_state
+      
+        # If the AccessState is `UNKNOWN`, this field contains a list of errors
+        # explaining why the result is `UNKNOWN`. If the `AccessState` is `GRANTED` or `
+        # NOT_GRANTED`, this field is omitted.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::PolicysimulatorV1beta::GoogleRpcStatus>]
+        attr_accessor :errors
+      
+        # If the AccessState is `UNKNOWN`, this field contains the policies that led to
+        # that result. If the `AccessState` is `GRANTED` or `NOT_GRANTED`, this field is
+        # omitted.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1betaExplainedPolicy>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_state = args[:access_state] if args.key?(:access_state)
+          @errors = args[:errors] if args.key?(:errors)
+          @policies = args[:policies] if args.key?(:policies)
+        end
+      end
+      
+      # Details about how a specific IAM Policy contributed to the access check.
+      class GoogleCloudPolicysimulatorV1betaExplainedPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether _this policy_ provides the specified permission to the
+        # specified principal for the specified resource. This field does _not_ indicate
+        # whether the principal actually has the permission for the resource. There
+        # might be another policy that overrides this policy. To determine whether the
+        # principal actually has the permission, use the `access` field in the
+        # TroubleshootIamPolicyResponse.
+        # Corresponds to the JSON property `access`
+        # @return [String]
+        attr_accessor :access
+      
+        # Details about how each binding in the policy affects the principal's ability,
+        # or inability, to use the permission for the resource. If the user who created
+        # the Replay does not have access to the policy, this field is omitted.
+        # Corresponds to the JSON property `bindingExplanations`
+        # @return [Array<Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1betaBindingExplanation>]
+        attr_accessor :binding_explanations
+      
+        # The full resource name that identifies the resource. For example, `//compute.
+        # googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`.
+        # If the user who created the Replay does not have access to the policy, this
+        # field is omitted. For examples of full resource names for Google Cloud
+        # services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-
+        # names.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # An Identity and Access Management (IAM) policy, which specifies access
+        # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+        # A `binding` binds one or more `members`, or principals, to a single `role`.
+        # Principals can be user accounts, service accounts, Google groups, and domains (
+        # such as G Suite). A `role` is a named list of permissions; each `role` can be
+        # an IAM predefined role or a user-created custom role. For some types of Google
+        # Cloud resources, a `binding` can also specify a `condition`, which is a
+        # logical expression that allows access to a resource only if the expression
+        # evaluates to `true`. A condition can add constraints based on attributes of
+        # the request, the resource, or both. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
+        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::PolicysimulatorV1beta::GoogleIamV1Policy]
+        attr_accessor :policy
+      
+        # The relevance of this policy to the overall determination in the
+        # TroubleshootIamPolicyResponse. If the user who created the Replay does not
+        # have access to the policy, this field is omitted.
+        # Corresponds to the JSON property `relevance`
+        # @return [String]
+        attr_accessor :relevance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access = args[:access] if args.key?(:access)
+          @binding_explanations = args[:binding_explanations] if args.key?(:binding_explanations)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @policy = args[:policy] if args.key?(:policy)
+          @relevance = args[:relevance] if args.key?(:relevance)
+        end
+      end
+      
       # GenerateOrgPolicyViolationsPreviewOperationMetadata is metadata about an
       # OrgPolicyViolationsPreview generations operation.
       class GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata
@@ -847,6 +1161,58 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @org_policy_violations = args[:org_policy_violations] if args.key?(:org_policy_violations)
+        end
+      end
+      
+      # Response message for Simulator.ListReplayResults.
+      class GoogleCloudPolicysimulatorV1betaListReplayResultsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that you can use to retrieve the next page of ReplayResult objects. If
+        # this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The results of running a Replay.
+        # Corresponds to the JSON property `replayResults`
+        # @return [Array<Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1betaReplayResult>]
+        attr_accessor :replay_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @replay_results = args[:replay_results] if args.key?(:replay_results)
+        end
+      end
+      
+      # Response message for Simulator.ListReplays.
+      class GoogleCloudPolicysimulatorV1betaListReplaysResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that you can use to retrieve the next page of results. If this field
+        # is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Replay objects.
+        # Corresponds to the JSON property `replays`
+        # @return [Array<Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1betaReplay>]
+        attr_accessor :replays
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @replays = args[:replays] if args.key?(:replays)
         end
       end
       
@@ -1083,6 +1449,237 @@ module Google
           @noncompliant = args[:noncompliant] if args.key?(:noncompliant)
           @scanned = args[:scanned] if args.key?(:scanned)
           @unenforced = args[:unenforced] if args.key?(:unenforced)
+        end
+      end
+      
+      # A resource describing a `Replay`, or simulation.
+      class GoogleCloudPolicysimulatorV1betaReplay
+        include Google::Apis::Core::Hashable
+      
+        # The configuration used for a Replay.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1betaReplayConfig]
+        attr_accessor :config
+      
+        # Output only. The resource name of the `Replay`, which has the following format:
+        # ``projects|folders|organizations`/`resource-id`/locations/global/replays/`
+        # replay-id``, where ``resource-id`` is the ID of the project, folder, or
+        # organization that owns the Replay. Example: `projects/my-example-project/
+        # locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Summary statistics about the replayed log entries.
+        # Corresponds to the JSON property `resultsSummary`
+        # @return [Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1betaReplayResultsSummary]
+        attr_accessor :results_summary
+      
+        # Output only. The current state of the `Replay`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @name = args[:name] if args.key?(:name)
+          @results_summary = args[:results_summary] if args.key?(:results_summary)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The configuration used for a Replay.
+      class GoogleCloudPolicysimulatorV1betaReplayConfig
+        include Google::Apis::Core::Hashable
+      
+        # The logs to use as input for the Replay.
+        # Corresponds to the JSON property `logSource`
+        # @return [String]
+        attr_accessor :log_source
+      
+        # A mapping of the resources that you want to simulate policies for and the
+        # policies that you want to simulate. Keys are the full resource names for the
+        # resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-
+        # project`. For examples of full resource names for Google Cloud services, see
+        # https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values
+        # are Policy objects representing the policies that you want to simulate.
+        # Replays automatically take into account any IAM policies inherited through the
+        # resource hierarchy, and any policies set on descendant resources. You do not
+        # need to include these policies in the policy overlay.
+        # Corresponds to the JSON property `policyOverlay`
+        # @return [Hash<String,Google::Apis::PolicysimulatorV1beta::GoogleIamV1Policy>]
+        attr_accessor :policy_overlay
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_source = args[:log_source] if args.key?(:log_source)
+          @policy_overlay = args[:policy_overlay] if args.key?(:policy_overlay)
+        end
+      end
+      
+      # The difference between the results of evaluating an access tuple under the
+      # current (baseline) policies and under the proposed (simulated) policies. This
+      # difference explains how a principal's access could change if the proposed
+      # policies were applied.
+      class GoogleCloudPolicysimulatorV1betaReplayDiff
+        include Google::Apis::Core::Hashable
+      
+        # A summary and comparison of the principal's access under the current (baseline)
+        # policies and the proposed (simulated) policies for a single access tuple.
+        # Corresponds to the JSON property `accessDiff`
+        # @return [Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1betaAccessStateDiff]
+        attr_accessor :access_diff
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_diff = args[:access_diff] if args.key?(:access_diff)
+        end
+      end
+      
+      # The result of replaying a single access tuple against a simulated state.
+      class GoogleCloudPolicysimulatorV1betaReplayResult
+        include Google::Apis::Core::Hashable
+      
+        # Information about the principal, resource, and permission to check.
+        # Corresponds to the JSON property `accessTuple`
+        # @return [Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1betaAccessTuple]
+        attr_accessor :access_tuple
+      
+        # The difference between the results of evaluating an access tuple under the
+        # current (baseline) policies and under the proposed (simulated) policies. This
+        # difference explains how a principal's access could change if the proposed
+        # policies were applied.
+        # Corresponds to the JSON property `diff`
+        # @return [Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1betaReplayDiff]
+        attr_accessor :diff
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::PolicysimulatorV1beta::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `lastSeenDate`
+        # @return [Google::Apis::PolicysimulatorV1beta::GoogleTypeDate]
+        attr_accessor :last_seen_date
+      
+        # The resource name of the `ReplayResult`, in the following format: ``projects|
+        # folders|organizations`/`resource-id`/locations/global/replays/`replay-id`/
+        # results/`replay-result-id``, where ``resource-id`` is the ID of the project,
+        # folder, or organization that owns the Replay. Example: `projects/my-example-
+        # project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36/results/
+        # 1234`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The Replay that the access tuple was included in.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_tuple = args[:access_tuple] if args.key?(:access_tuple)
+          @diff = args[:diff] if args.key?(:diff)
+          @error = args[:error] if args.key?(:error)
+          @last_seen_date = args[:last_seen_date] if args.key?(:last_seen_date)
+          @name = args[:name] if args.key?(:name)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # Summary statistics about the replayed log entries.
+      class GoogleCloudPolicysimulatorV1betaReplayResultsSummary
+        include Google::Apis::Core::Hashable
+      
+        # The number of replayed log entries with a difference between baseline and
+        # simulated policies.
+        # Corresponds to the JSON property `differenceCount`
+        # @return [Fixnum]
+        attr_accessor :difference_count
+      
+        # The number of log entries that could not be replayed.
+        # Corresponds to the JSON property `errorCount`
+        # @return [Fixnum]
+        attr_accessor :error_count
+      
+        # The total number of log entries replayed.
+        # Corresponds to the JSON property `logCount`
+        # @return [Fixnum]
+        attr_accessor :log_count
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `newestDate`
+        # @return [Google::Apis::PolicysimulatorV1beta::GoogleTypeDate]
+        attr_accessor :newest_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `oldestDate`
+        # @return [Google::Apis::PolicysimulatorV1beta::GoogleTypeDate]
+        attr_accessor :oldest_date
+      
+        # The number of replayed log entries with no difference between baseline and
+        # simulated policies.
+        # Corresponds to the JSON property `unchangedCount`
+        # @return [Fixnum]
+        attr_accessor :unchanged_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @difference_count = args[:difference_count] if args.key?(:difference_count)
+          @error_count = args[:error_count] if args.key?(:error_count)
+          @log_count = args[:log_count] if args.key?(:log_count)
+          @newest_date = args[:newest_date] if args.key?(:newest_date)
+          @oldest_date = args[:oldest_date] if args.key?(:oldest_date)
+          @unchanged_count = args[:unchanged_count] if args.key?(:unchanged_count)
         end
       end
       
