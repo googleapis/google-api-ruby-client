@@ -80,6 +80,190 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # POST /v1/projects/`project_id`/deviceSessions/`device_session_id`:cancel
+        # Changes the DeviceSession to state FINISHED and terminates all connections.
+        # Canceled sessions are not deleted and can be retrieved or listed by the user
+        # until they expire based on the 28 day deletion policy.
+        # @param [String] name
+        #   Required. Name of the DeviceSession, e.g. "projects/`project_id`/
+        #   deviceSessions/`session_id`"
+        # @param [Google::Apis::TestingV1::CancelDeviceSessionRequest] cancel_device_session_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TestingV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TestingV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_device_session(name, cancel_device_session_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::TestingV1::CancelDeviceSessionRequest::Representation
+          command.request_object = cancel_device_session_request_object
+          command.response_representation = Google::Apis::TestingV1::Empty::Representation
+          command.response_class = Google::Apis::TestingV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # POST /v1/projects/`project_id`/deviceSessions
+        # @param [String] parent
+        #   Required. The Compute Engine project under which this device will be allocated.
+        #   "projects/`project_id`"
+        # @param [Google::Apis::TestingV1::DeviceSession] device_session_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TestingV1::DeviceSession] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TestingV1::DeviceSession]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_device_session(parent, device_session_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/deviceSessions', options)
+          command.request_representation = Google::Apis::TestingV1::DeviceSession::Representation
+          command.request_object = device_session_object
+          command.response_representation = Google::Apis::TestingV1::DeviceSession::Representation
+          command.response_class = Google::Apis::TestingV1::DeviceSession
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # GET /v1/projects/`project_id`/deviceSessions/`device_session_id` Return a
+        # DeviceSession, which documents the allocation status and whether the device is
+        # allocated. Clients making requests from this API must poll GetDeviceSession.
+        # @param [String] name
+        #   Required. Name of the DeviceSession, e.g. "projects/`project_id`/
+        #   deviceSessions/`session_id`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TestingV1::DeviceSession] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TestingV1::DeviceSession]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_device_session(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::TestingV1::DeviceSession::Representation
+          command.response_class = Google::Apis::TestingV1::DeviceSession
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # GET /v1/projects/`project_id`/deviceSessions Lists device Sessions owned by
+        # the project user.
+        # @param [String] parent
+        #   Required. The name of the parent to request, e.g. "projects/`project_id`"
+        # @param [String] filter
+        #   Optional. If specified, responses will be filtered by the given filter.
+        #   Allowed fields are: session_state.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of DeviceSessions to return.
+        # @param [String] page_token
+        #   Optional. A continuation token for paging.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TestingV1::ListDeviceSessionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TestingV1::ListDeviceSessionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_device_sessions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/deviceSessions', options)
+          command.response_representation = Google::Apis::TestingV1::ListDeviceSessionsResponse::Representation
+          command.response_class = Google::Apis::TestingV1::ListDeviceSessionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # PATCH /v1/projects/`projectId`/deviceSessions/deviceSessionId`:
+        # updateDeviceSession Updates the current device session to the fields described
+        # by the update_mask.
+        # @param [String] name
+        #   Optional. Name of the DeviceSession, e.g. "projects/`project_id`/
+        #   deviceSessions/`session_id`"
+        # @param [Google::Apis::TestingV1::DeviceSession] device_session_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TestingV1::DeviceSession] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TestingV1::DeviceSession]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_device_session(name, device_session_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::TestingV1::DeviceSession::Representation
+          command.request_object = device_session_object
+          command.response_representation = Google::Apis::TestingV1::DeviceSession::Representation
+          command.response_class = Google::Apis::TestingV1::DeviceSession
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Cancels unfinished test executions in a test matrix. This call returns
         # immediately and cancellation proceeds asynchronously. If the matrix is already
         # final, this operation will have no effect. May return any of the following

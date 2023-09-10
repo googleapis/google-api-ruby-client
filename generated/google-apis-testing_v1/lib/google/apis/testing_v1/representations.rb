@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelDeviceSessionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelTestMatrixResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,7 +160,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeviceSession
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DirectAccessVersionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Distribution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -280,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListDeviceSessionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Locale
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +401,12 @@ module Google
       end
       
       class Service
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SessionStateEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -686,6 +722,12 @@ module Google
         end
       end
       
+      class CancelDeviceSessionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CancelTestMatrixResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -747,11 +789,45 @@ module Google
         end
       end
       
+      class DeviceSession
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_start_time, as: 'activeStartTime'
+          property :android_device, as: 'androidDevice', class: Google::Apis::TestingV1::AndroidDevice, decorator: Google::Apis::TestingV1::AndroidDevice::Representation
+      
+          property :android_device_list, as: 'androidDeviceList', class: Google::Apis::TestingV1::AndroidDeviceList, decorator: Google::Apis::TestingV1::AndroidDeviceList::Representation
+      
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :expire_time, as: 'expireTime'
+          property :inactivity_timeout, as: 'inactivityTimeout'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          collection :state_histories, as: 'stateHistories', class: Google::Apis::TestingV1::SessionStateEvent, decorator: Google::Apis::TestingV1::SessionStateEvent::Representation
+      
+          property :ttl, as: 'ttl'
+        end
+      end
+      
+      class DirectAccessVersionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :direct_access_supported, as: 'directAccessSupported'
+          property :minimum_android_studio_version, as: 'minimumAndroidStudioVersion'
+        end
+      end
+      
       class Distribution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :market_share, as: 'marketShare'
           property :measurement_time, as: 'measurementTime'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -955,6 +1031,15 @@ module Google
         end
       end
       
+      class ListDeviceSessionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_sessions, as: 'deviceSessions', class: Google::Apis::TestingV1::DeviceSession, decorator: Google::Apis::TestingV1::DeviceSession::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class Locale
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1028,6 +1113,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_capacity, as: 'deviceCapacity'
+          property :direct_access_version_info, as: 'directAccessVersionInfo', class: Google::Apis::TestingV1::DirectAccessVersionInfo, decorator: Google::Apis::TestingV1::DirectAccessVersionInfo::Representation
+      
           property :version_id, as: 'versionId'
         end
       end
@@ -1098,6 +1185,15 @@ module Google
           collection :intent_filter, as: 'intentFilter', class: Google::Apis::TestingV1::IntentFilter, decorator: Google::Apis::TestingV1::IntentFilter::Representation
       
           property :name, as: 'name'
+        end
+      end
+      
+      class SessionStateEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_time, as: 'eventTime'
+          property :session_state, as: 'sessionState'
+          property :state_message, as: 'stateMessage'
         end
       end
       
