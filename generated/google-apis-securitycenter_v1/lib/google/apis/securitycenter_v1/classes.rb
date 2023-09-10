@@ -1410,6 +1410,11 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1::ExfilResource>]
         attr_accessor :targets
       
+        # Total exfiltrated bytes processed for the entire job.
+        # Corresponds to the JSON property `totalExfiltratedBytes`
+        # @return [Fixnum]
+        attr_accessor :total_exfiltrated_bytes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1418,6 +1423,7 @@ module Google
         def update!(**args)
           @sources = args[:sources] if args.key?(:sources)
           @targets = args[:targets] if args.key?(:targets)
+          @total_exfiltrated_bytes = args[:total_exfiltrated_bytes] if args.key?(:total_exfiltrated_bytes)
         end
       end
       
@@ -2225,13 +2231,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :assignees
       
-        # The most recent time when the corresponding finding's ticket/tracker was
-        # updated in the external system.
+        # The time when the case was last updated, as reported by the external system.
         # Corresponds to the JSON property `externalSystemUpdateTime`
         # @return [String]
         attr_accessor :external_system_update_time
       
-        # Identifier that's used to track the given finding in the external system.
+        # The identifier that's used to track the finding's corresponding case in the
+        # external system.
         # Corresponds to the JSON property `externalUid`
         # @return [String]
         attr_accessor :external_uid
@@ -2244,7 +2250,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Most recent status of the corresponding finding's ticket/tracker in the
+        # The most recent status of the finding's corresponding case, as reported by the
         # external system.
         # Corresponds to the JSON property `status`
         # @return [String]
