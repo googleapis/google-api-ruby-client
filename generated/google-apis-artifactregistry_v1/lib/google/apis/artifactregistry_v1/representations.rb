@@ -382,12 +382,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SbomConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1127,20 +1121,10 @@ module Google
           property :remote_repository_config, as: 'remoteRepositoryConfig', class: Google::Apis::ArtifactregistryV1::RemoteRepositoryConfig, decorator: Google::Apis::ArtifactregistryV1::RemoteRepositoryConfig::Representation
       
           property :satisfies_pzs, as: 'satisfiesPzs'
-          property :sbom_config, as: 'sbomConfig', class: Google::Apis::ArtifactregistryV1::SbomConfig, decorator: Google::Apis::ArtifactregistryV1::SbomConfig::Representation
-      
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :update_time, as: 'updateTime'
           property :virtual_repository_config, as: 'virtualRepositoryConfig', class: Google::Apis::ArtifactregistryV1::VirtualRepositoryConfig, decorator: Google::Apis::ArtifactregistryV1::VirtualRepositoryConfig::Representation
       
-        end
-      end
-      
-      class SbomConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :enablement_config, as: 'enablementConfig'
-          property :last_enable_time, as: 'lastEnableTime'
         end
       end
       
