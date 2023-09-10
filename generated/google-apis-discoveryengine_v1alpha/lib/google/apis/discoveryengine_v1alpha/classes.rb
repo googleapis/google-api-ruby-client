@@ -829,9 +829,9 @@ module Google
         # The unique document field paths that serve as the source of this suggestion if
         # it was generated from completable fields. This field is only populated for the
         # document-completable model.
-        # Corresponds to the JSON property `completableFieldPath`
+        # Corresponds to the JSON property `completableFieldPaths`
         # @return [Array<String>]
-        attr_accessor :completable_field_path
+        attr_accessor :completable_field_paths
       
         # The suggestion for the query.
         # Corresponds to the JSON property `suggestion`
@@ -844,7 +844,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @completable_field_path = args[:completable_field_path] if args.key?(:completable_field_path)
+          @completable_field_paths = args[:completable_field_paths] if args.key?(:completable_field_paths)
           @suggestion = args[:suggestion] if args.key?(:suggestion)
         end
       end
@@ -1022,6 +1022,11 @@ module Google
         # @return [String]
         attr_accessor :serving_config
       
+        # A specification for configuring a summary returned in a search response.
+        # Corresponds to the JSON property `summarySpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpec]
+        attr_accessor :summary_spec
+      
         # The user labels applied to a resource must meet the following requirements: *
         # Each resource can have multiple labels, up to a maximum of 64. * Each label
         # must be a key-value pair. * Keys have a minimum length of 1 character and a
@@ -1048,6 +1053,7 @@ module Google
           @query = args[:query] if args.key?(:query)
           @safe_search = args[:safe_search] if args.key?(:safe_search)
           @serving_config = args[:serving_config] if args.key?(:serving_config)
+          @summary_spec = args[:summary_spec] if args.key?(:summary_spec)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
@@ -3605,6 +3611,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaSearchResponseSummary
         include Google::Apis::Core::Hashable
       
+        # Safety Attribute categories and their associated confidence scores.
+        # Corresponds to the JSON property `safetyAttributes`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes]
+        attr_accessor :safety_attributes
+      
         # Additional summary-skipped reasons. This provides the reason for ignored cases.
         # If nothing is skipped, this field is not set.
         # Corresponds to the JSON property `summarySkippedReasons`
@@ -3622,8 +3633,36 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @safety_attributes = args[:safety_attributes] if args.key?(:safety_attributes)
           @summary_skipped_reasons = args[:summary_skipped_reasons] if args.key?(:summary_skipped_reasons)
           @summary_text = args[:summary_text] if args.key?(:summary_text)
+        end
+      end
+      
+      # Safety Attribute categories and their associated confidence scores.
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes
+        include Google::Apis::Core::Hashable
+      
+        # The display names of Safety Attribute categories associated with the generated
+        # content. Order matches the Scores.
+        # Corresponds to the JSON property `categories`
+        # @return [Array<String>]
+        attr_accessor :categories
+      
+        # The confidence scores of the each category, higher value means higher
+        # confidence. Order matches the Categories.
+        # Corresponds to the JSON property `scores`
+        # @return [Array<Float>]
+        attr_accessor :scores
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @categories = args[:categories] if args.key?(:categories)
+          @scores = args[:scores] if args.key?(:scores)
         end
       end
       
@@ -3753,19 +3792,12 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure
         include Google::Apis::Core::Hashable
       
-        # This number is an estimation on how much total quota this project needs to
-        # successfully complete indexing.
-        # Corresponds to the JSON property `totalRequiredQuota`
-        # @return [Fixnum]
-        attr_accessor :total_required_quota
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @total_required_quota = args[:total_required_quota] if args.key?(:total_required_quota)
         end
       end
       
