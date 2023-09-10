@@ -1088,12 +1088,12 @@ module Google
       class MysqlLogPosition
         include Google::Apis::Core::Hashable
       
-        # The binary log file name.
+        # Required. The binary log file name.
         # Corresponds to the JSON property `logFile`
         # @return [String]
         attr_accessor :log_file
       
-        # The position within the binary log file. Default is head of file.
+        # Optional. The position within the binary log file. Default is head of file.
         # Corresponds to the JSON property `logPosition`
         # @return [Fixnum]
         attr_accessor :log_position
@@ -1572,6 +1572,11 @@ module Google
         # @return [String]
         attr_accessor :hostname
       
+        # Oracle SSL configuration information.
+        # Corresponds to the JSON property `oracleSslConfig`
+        # @return [Google::Apis::DatastreamV1::OracleSslConfig]
+        attr_accessor :oracle_ssl_config
+      
         # Required. Password for the Oracle connection.
         # Corresponds to the JSON property `password`
         # @return [String]
@@ -1596,6 +1601,7 @@ module Google
           @connection_attributes = args[:connection_attributes] if args.key?(:connection_attributes)
           @database_service = args[:database_service] if args.key?(:database_service)
           @hostname = args[:hostname] if args.key?(:hostname)
+          @oracle_ssl_config = args[:oracle_ssl_config] if args.key?(:oracle_ssl_config)
           @password = args[:password] if args.key?(:password)
           @port = args[:port] if args.key?(:port)
           @username = args[:username] if args.key?(:username)
@@ -1694,6 +1700,34 @@ module Google
           @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
           @max_concurrent_cdc_tasks = args[:max_concurrent_cdc_tasks] if args.key?(:max_concurrent_cdc_tasks)
           @stream_large_objects = args[:stream_large_objects] if args.key?(:stream_large_objects)
+        end
+      end
+      
+      # Oracle SSL configuration information.
+      class OracleSslConfig
+        include Google::Apis::Core::Hashable
+      
+        # Input only. PEM-encoded certificate of the CA that signed the source database
+        # server's certificate.
+        # Corresponds to the JSON property `caCertificate`
+        # @return [String]
+        attr_accessor :ca_certificate
+      
+        # Output only. Indicates whether the ca_certificate field has been set for this
+        # Connection-Profile.
+        # Corresponds to the JSON property `caCertificateSet`
+        # @return [Boolean]
+        attr_accessor :ca_certificate_set
+        alias_method :ca_certificate_set?, :ca_certificate_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
+          @ca_certificate_set = args[:ca_certificate_set] if args.key?(:ca_certificate_set)
         end
       end
       
@@ -2422,6 +2456,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Output only. If the stream was recovered, the time of the last recovery. Note:
+        # This field is currently experimental.
+        # Corresponds to the JSON property `lastRecoveryTime`
+        # @return [String]
+        attr_accessor :last_recovery_time
+      
         # Output only. The stream's name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2456,6 +2496,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @errors = args[:errors] if args.key?(:errors)
           @labels = args[:labels] if args.key?(:labels)
+          @last_recovery_time = args[:last_recovery_time] if args.key?(:last_recovery_time)
           @name = args[:name] if args.key?(:name)
           @source_config = args[:source_config] if args.key?(:source_config)
           @state = args[:state] if args.key?(:state)

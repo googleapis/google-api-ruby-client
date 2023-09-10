@@ -1096,9 +1096,9 @@ module Google
         #   Output only. The stream's name.
         # @param [Google::Apis::DatastreamV1::Stream] stream_object
         # @param [String] cdc_strategy_specific_start_position_mysql_log_position_log_file
-        #   The binary log file name.
+        #   Required. The binary log file name.
         # @param [Fixnum] cdc_strategy_specific_start_position_mysql_log_position_log_position
-        #   The position within the binary log file. Default is head of file.
+        #   Optional. The position within the binary log file. Default is head of file.
         # @param [Boolean] force
         #   Optional. Update the stream without validating it.
         # @param [String] request_id

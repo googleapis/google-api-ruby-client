@@ -316,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OracleSslConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OracleTable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -961,6 +967,8 @@ module Google
           hash :connection_attributes, as: 'connectionAttributes'
           property :database_service, as: 'databaseService'
           property :hostname, as: 'hostname'
+          property :oracle_ssl_config, as: 'oracleSslConfig', class: Google::Apis::DatastreamV1::OracleSslConfig, decorator: Google::Apis::DatastreamV1::OracleSslConfig::Representation
+      
           property :password, as: 'password'
           property :port, as: 'port'
           property :username, as: 'username'
@@ -997,6 +1005,14 @@ module Google
           property :max_concurrent_cdc_tasks, as: 'maxConcurrentCdcTasks'
           property :stream_large_objects, as: 'streamLargeObjects', class: Google::Apis::DatastreamV1::StreamLargeObjects, decorator: Google::Apis::DatastreamV1::StreamLargeObjects::Representation
       
+        end
+      end
+      
+      class OracleSslConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_certificate, as: 'caCertificate'
+          property :ca_certificate_set, as: 'caCertificateSet'
         end
       end
       
@@ -1231,6 +1247,7 @@ module Google
           collection :errors, as: 'errors', class: Google::Apis::DatastreamV1::Error, decorator: Google::Apis::DatastreamV1::Error::Representation
       
           hash :labels, as: 'labels'
+          property :last_recovery_time, as: 'lastRecoveryTime'
           property :name, as: 'name'
           property :source_config, as: 'sourceConfig', class: Google::Apis::DatastreamV1::SourceConfig, decorator: Google::Apis::DatastreamV1::SourceConfig::Representation
       
