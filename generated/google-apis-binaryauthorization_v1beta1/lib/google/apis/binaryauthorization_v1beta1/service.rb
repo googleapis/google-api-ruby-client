@@ -418,8 +418,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns whether the given Attestation for the given image URI was signed by
-        # the given Attestor
+        # Returns whether the given `Attestation` for the given image URI was signed by
+        # the given `Attestor`
         # @param [String] attestor
         #   Required. The resource name of the Attestor of the occurrence, in the format `
         #   projects/*/attestors/*`.
