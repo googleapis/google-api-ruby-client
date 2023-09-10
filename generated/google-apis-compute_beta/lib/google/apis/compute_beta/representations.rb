@@ -1792,6 +1792,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerInstanceFlexibilityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerInstanceLifecyclePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10019,6 +10031,8 @@ module Google
           property :failover_action, as: 'failoverAction'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
+          property :instance_flexibility_policy, as: 'instanceFlexibilityPolicy', class: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicy, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicy::Representation
+      
           property :instance_group, as: 'instanceGroup'
           property :instance_lifecycle_policy, as: 'instanceLifecyclePolicy', class: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceLifecyclePolicy, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceLifecyclePolicy::Representation
       
@@ -10110,6 +10124,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :health_check, as: 'healthCheck'
           property :initial_delay_sec, as: 'initialDelaySec'
+        end
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :instance_selection_lists, as: 'instanceSelectionLists', class: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :machine_types, as: 'machineTypes'
+          property :rank, as: 'rank'
         end
       end
       
@@ -14927,6 +14957,8 @@ module Google
           property :availability_domain_count, as: 'availabilityDomainCount'
           property :collocation, as: 'collocation'
           property :max_distance, as: 'maxDistance'
+          property :slice_count, as: 'sliceCount'
+          property :tpu_topology, as: 'tpuTopology'
           property :vm_count, as: 'vmCount'
         end
       end
