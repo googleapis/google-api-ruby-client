@@ -199,7 +199,9 @@ module Google
         end
         
         # Batch create the ad unit mappings under the specific AdMob account. The
-        # maximum allowed batch size is 100.
+        # maximum allowed batch size is 100. This method has limited access. If you see
+        # a 403 permission denied error, please reach out to your account manager for
+        # access.
         # @param [String] parent
         #   Required. The AdMob account which owns this collection of ad unit mappings.
         #   Format: accounts/`publisher_id` See https://support.google.com/admob/answer/
@@ -234,7 +236,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an ad unit under the specified AdMob account.
+        # Creates an ad unit under the specified AdMob account. This method has limited
+        # access. If you see a 403 permission denied error, please reach out to your
+        # account manager for access.
         # @param [String] parent
         #   Required. Resource name of the account to create the specified ad unit for.
         #   Example: accounts/pub-9876543210987654
@@ -309,7 +313,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create an ad unit mapping under the specific AdMob account and ad unit.
+        # Create an ad unit mapping under the specific AdMob account and ad unit. This
+        # method has limited access. If you see a 403 permission denied error, please
+        # reach out to your account manager for access.
         # @param [String] parent
         #   Required. The parent which owns the ad unit mapping. Format: accounts/`
         #   publisher_id`/adUnits/`ad_unit_id`
@@ -343,7 +349,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List ad unit mappings under the specified AdMob account and ad unit.
+        # List ad unit mappings under the specified AdMob account and ad unit. This
+        # method has limited access. If you see a 403 permission denied error, please
+        # reach out to your account manager for access.
         # @param [String] parent
         #   Required. The parent which owns this collection of ad unit mappings. Format:
         #   accounts/`publisher_id`/adUnits/`ad_unit_id`
@@ -391,7 +399,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an app under the specified AdMob account.
+        # Creates an app under the specified AdMob account. This method has limited
+        # access. If you see a 403 permission denied error, please reach out to your
+        # account manager for access.
         # @param [String] parent
         #   Required. Resource name of the account for which the app is being created.
         #   Example: accounts/pub-9876543210987654
@@ -500,7 +510,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a mediation group under the specific AdMob account.
+        # Create a mediation group under the specific AdMob account. This method has
+        # limited access. If you see a 403 permission denied error, please reach out to
+        # your account manager for access.
         # @param [String] parent
         #   Required. The parent which owns the mediation group. Format: accounts/`
         #   publisher_id`
@@ -534,7 +546,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List mediation groups under the specified AdMob account.
+        # List mediation groups under the specified AdMob account. This method has
+        # limited access. If you see a 403 permission denied error, please reach out to
+        # your account manager for access.
         # @param [String] parent
         #   Required. Resource name of the account to list mediation groups for. Example:
         #   accounts/pub-9876543210987654
@@ -589,7 +603,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the specified mediation group under the specified AdMob account.
+        # Update the specified mediation group under the specified AdMob account. This
+        # method has limited access. If you see a 403 permission denied error, please
+        # reach out to your account manager for access.
         # @param [String] name
         #   Resource name for this mediation group. Format is: accounts/`publisher_id`/
         #   mediationGroups/`mediation_group_id` Example: accounts/pub-9876543210987654/
@@ -641,7 +657,8 @@ module Google
         end
         
         # Create an A/B testing experiment for a specified AdMob account and a mediation
-        # group.
+        # group. This method has limited access. If you see a 403 permission denied
+        # error, please reach out to your account manager for access.
         # @param [String] parent
         #   Required. The parent which owns the mediation group. Format: accounts/`
         #   publisher_id`/mediationGroups/`mediation_group_id`
@@ -675,7 +692,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Stop the mediation A/B experiment and choose a variant.
+        # Stop the mediation A/B experiment and choose a variant. This method has
+        # limited access. If you see a 403 permission denied error, please reach out to
+        # your account manager for access.
         # @param [String] name
         #   Name of the mediation group, the experiment for which to choose a variant for.
         #   Example: accounts/pub-9876543210987654/mediationGroups/0123456789/
