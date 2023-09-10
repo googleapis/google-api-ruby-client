@@ -187,6 +187,11 @@ module Google
       class SecurityKey
         include Google::Apis::Core::Hashable
       
+        # The security key nickname explicitly set by the user.
+        # Corresponds to the JSON property `deviceNickname`
+        # @return [String]
+        attr_accessor :device_nickname
+      
         # Hardware-backed private key text in SSH format.
         # Corresponds to the JSON property `privateKey`
         # @return [String]
@@ -214,6 +219,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @device_nickname = args[:device_nickname] if args.key?(:device_nickname)
           @private_key = args[:private_key] if args.key?(:private_key)
           @public_key = args[:public_key] if args.key?(:public_key)
           @universal_two_factor = args[:universal_two_factor] if args.key?(:universal_two_factor)
