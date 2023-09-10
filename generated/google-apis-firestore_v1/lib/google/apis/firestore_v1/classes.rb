@@ -588,20 +588,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The document's fields. The map keys represent field names. A simple field name
-        # contains only characters `a` to `z`, `A` to `Z`, `0` to `9`, or `_`, and must
-        # not start with `0` to `9`. For example, `foo_bar_17`. Field names matching the
-        # regular expression `__.*__` are reserved. Reserved field names are forbidden
-        # except in certain documented contexts. The map keys, represented as UTF-8,
-        # must not exceed 1,500 bytes and cannot be empty. Field paths may be used in
-        # other contexts to refer to structured fields defined here. For `map_value`,
-        # the field path is represented by the simple or quoted field names of the
-        # containing fields, delimited by `.`. For example, the structured field `"foo" :
-        # ` map_value: ` "x&y" : ` string_value: "hello" ```` would be represented by
-        # the field path `foo.x&y`. Within a field path, a quoted field name starts and
-        # ends with `` ` `` and may contain any character. Some characters, including ``
-        # ` ``, must be escaped using a `\`. For example, `` `x&y` `` represents `x&y`
-        # and `` `bak\`tik` `` represents `` bak`tik ``.
+        # 
         # Corresponds to the JSON property `fields`
         # @return [Hash<String,Google::Apis::FirestoreV1::Value>]
         attr_accessor :fields
@@ -903,8 +890,9 @@ module Google
       class FieldReference
         include Google::Apis::Core::Hashable
       
-        # The relative path of the document being referenced. Requires: * Conform to
-        # document field name limitations.
+        # A reference to a field in a document. Requires: * MUST be a dot-delimited (`.`)
+        # string of segments, where each segment conforms to document field name
+        # limitations.
         # Corresponds to the JSON property `fieldPath`
         # @return [String]
         attr_accessor :field_path
@@ -1006,7 +994,7 @@ module Google
       end
       
       # A Backup of a Cloud Firestore Database. The backup contains all documents and
-      # index configurations for the given database at specific point in time.
+      # index configurations for the given database at a specific point in time.
       class GoogleFirestoreAdminV1Backup
         include Google::Apis::Core::Hashable
       
@@ -1124,6 +1112,19 @@ module Google
         end
       end
       
+      # Metadata related to the create database operation.
+      class GoogleFirestoreAdminV1CreateDatabaseMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represent a recurring schedule that runs at a specific time every day. The
       # time zone is UTC.
       class GoogleFirestoreAdminV1DailyRecurrence
@@ -1138,8 +1139,7 @@ module Google
         end
       end
       
-      # A Cloud Firestore Database. Currently only one database is allowed per cloud
-      # project; this database must have a `database_id` of '(default)'.
+      # A Cloud Firestore Database.
       class GoogleFirestoreAdminV1Database
         include Google::Apis::Core::Hashable
       
@@ -1254,6 +1254,19 @@ module Google
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version_retention_period = args[:version_retention_period] if args.key?(:version_retention_period)
+        end
+      end
+      
+      # Metadata related to the delete database operation.
+      class GoogleFirestoreAdminV1DeleteDatabaseMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -3237,7 +3250,17 @@ module Google
         attr_accessor :resume_token
       
         # The target ID that identifies the target on the stream. Must be a positive
-        # number and non-zero.
+        # number and non-zero. If `target_id` is 0 (or unspecified), the server will
+        # assign an ID for this target and return that in a `TargetChange::ADD` event.
+        # Once a target with `target_id=0` is added, all subsequent targets must also
+        # have `target_id=0`. If an `AddTarget` request with `target_id != 0` is sent to
+        # the server after a target with `target_id=0` is added, the server will
+        # immediately send a response with a `TargetChange::Remove` event. Note that if
+        # the client sends multiple `AddTarget` requests without an ID, the order of IDs
+        # returned in `TargetChage.target_ids` are undefined. Therefore, clients should
+        # provide a target ID instead of relying on the server to assign one. If `
+        # target_id` is non-zero, there must not be an existing active target on this
+        # stream with the same ID.
         # Corresponds to the JSON property `targetId`
         # @return [Fixnum]
         attr_accessor :target_id
