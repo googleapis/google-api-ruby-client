@@ -35,7 +35,7 @@ module Google
         end
       end
       
-      # The response message of "AddEnableRules" method.
+      # The response message of `AddEnableRules` method.
       class AddEnableRulesResponse
         include Google::Apis::Core::Hashable
       
@@ -806,10 +806,10 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Output only. The resource name of the policy. For example, We only allow
-        # consumer policy name as "default" for now: `projects/12345/consumerPolicies/
-        # default`, `folders/12345/consumerPolicies/default`, `organizations/12345/
-        # consumerPolicies/default`. Legacy format: `projects/12345/consumerPoly`
+        # Output only. The resource name of the policy. We only allow consumer policy
+        # name as `default` for now: `projects/12345/consumerPolicies/default`, `folders/
+        # 12345/consumerPolicies/default`, `organizations/12345/consumerPolicies/default`
+        # .
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1479,7 +1479,7 @@ module Google
       
         # DEPRECATED: Please use field `values`. Service group should have prefix `
         # groups/`. The names of the service groups that are enabled (Not Implemented).
-        # go/predefined-service-groups. Example: `groups/googleServices`.
+        # Example: `groups/googleServices`.
         # Corresponds to the JSON property `groups`
         # @return [Array<String>]
         attr_accessor :groups
@@ -1491,7 +1491,8 @@ module Google
         attr_accessor :services
       
         # The names of the services or service groups that are enabled. Example: `
-        # services/storage.googleapis.com`, groups/googleServices`, groups/allServices`.
+        # services/storage.googleapis.com`, `groups/googleServices`, `groups/allServices`
+        # .
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
@@ -4521,7 +4522,7 @@ module Google
         end
       end
       
-      # The response message of "RemoveEnableRules" method.
+      # The response message of `RemoveEnableRules` method.
       class RemoveEnableRulesResponse
         include Google::Apis::Core::Hashable
       
