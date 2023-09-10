@@ -873,8 +873,7 @@ module Google
       
         # A subscription represents a subscribers' access to a particular set of
         # published data. It contains references to associated listings, data exchanges,
-        # and linked datasets. TODO(b/267528977) Consider port the new resource to
-        # v1beta1 and dataexchange APIs.
+        # and linked datasets.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::AnalyticshubV1beta1::Subscription]
         attr_accessor :subscription
@@ -985,8 +984,7 @@ module Google
       
         # A subscription represents a subscribers' access to a particular set of
         # published data. It contains references to associated listings, data exchanges,
-        # and linked datasets. TODO(b/267528977) Consider port the new resource to
-        # v1beta1 and dataexchange APIs.
+        # and linked datasets.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::AnalyticshubV1beta1::Subscription]
         attr_accessor :subscription
@@ -1035,8 +1033,7 @@ module Google
       
       # A subscription represents a subscribers' access to a particular set of
       # published data. It contains references to associated listings, data exchanges,
-      # and linked datasets. TODO(b/267528977) Consider port the new resource to
-      # v1beta1 and dataexchange APIs.
+      # and linked datasets.
       class Subscription
         include Google::Apis::Core::Hashable
       
