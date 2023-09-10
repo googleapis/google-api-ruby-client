@@ -574,6 +574,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1003,7 +1009,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaCompleteQueryResponseQuerySuggestion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :completable_field_path, as: 'completableFieldPath'
+          collection :completable_field_paths, as: 'completableFieldPaths'
           property :suggestion, as: 'suggestion'
         end
       end
@@ -1058,6 +1064,8 @@ module Google
       
           property :safe_search, as: 'safeSearch'
           property :serving_config, as: 'servingConfig'
+          property :summary_spec, as: 'summarySpec', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpec, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpec::Representation
+      
           hash :user_labels, as: 'userLabels'
         end
       end
@@ -1704,8 +1712,18 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaSearchResponseSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :safety_attributes, as: 'safetyAttributes', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes::Representation
+      
           collection :summary_skipped_reasons, as: 'summarySkippedReasons'
           property :summary_text, as: 'summaryText'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :categories, as: 'categories'
+          collection :scores, as: 'scores'
         end
       end
       
@@ -1745,7 +1763,6 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :total_required_quota, :numeric_string => true, as: 'totalRequiredQuota'
         end
       end
       
