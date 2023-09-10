@@ -1906,7 +1906,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :pause_ads_until, as: 'pauseAdsUntil'
-          property :repeat_interval, as: 'repeatInterval'
+          property :repeat_interval_secs, as: 'repeatIntervalSecs'
           property :schedule_strategy, as: 'scheduleStrategy'
         end
       end
