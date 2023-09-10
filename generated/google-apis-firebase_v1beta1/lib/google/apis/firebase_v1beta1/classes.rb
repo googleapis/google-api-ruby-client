@@ -78,17 +78,18 @@ module Google
       class AdminSdkConfig
         include Google::Apis::Core::Hashable
       
-        # The default Firebase Realtime Database URL.
+        # 
         # Corresponds to the JSON property `databaseURL`
         # @return [String]
         attr_accessor :database_url
       
-        # The ID of the Project's default GCP resource location. The location is one of
-        # the available [GCP resource locations](https://firebase.google.com/docs/
-        # projects/locations). This field is omitted if the default GCP resource
-        # location has not been finalized yet. To set a Project's default GCP resource
-        # location, call [`FinalizeDefaultLocation`](../projects.defaultLocation/
-        # finalize) after you add Firebase resources to the Project.
+        # **DEPRECATED.** _Instead, use product-specific REST APIs to find the location
+        # of resources._ The ID of the Project's default GCP resource location. The
+        # location is one of the available [GCP resource locations](https://firebase.
+        # google.com/docs/projects/locations). This field is omitted if the default GCP
+        # resource location has not been finalized yet. To set a Project's default GCP
+        # resource location, call [`FinalizeDefaultLocation`](../projects.
+        # defaultLocation/finalize) after you add Firebase resources to the Project.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -101,7 +102,12 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
-        # The default Cloud Storage for Firebase storage bucket name.
+        # **DEPRECATED.** _Instead, find the default Cloud Storage for Firebase bucket
+        # using the [list endpoint](https://firebase.google.com/docs/reference/rest/
+        # storage/rest/v1beta/projects.buckets/list) within the Cloud Storage for
+        # Firebase REST API. Note that the default bucket for the Project might not yet
+        # be provisioned, so the return might not contain a default bucket._ The default
+        # Cloud Storage for Firebase storage bucket name.
         # Corresponds to the JSON property `storageBucket`
         # @return [String]
         attr_accessor :storage_bucket
@@ -323,46 +329,66 @@ module Google
         end
       end
       
-      # The default resources associated with the Project.
+      # **DEPRECATED.** _Auto-provisioning of these resources is changing, so this
+      # object no longer reliably provides information about the resources within the
+      # Project. Instead, retrieve information about each resource directly from its
+      # resource-specific API._ The default auto-provisioned resources associated with
+      # the Project.
       class DefaultResources
         include Google::Apis::Core::Hashable
       
-        # Output only. The default Firebase Hosting site name, in the format: PROJECT_ID
-        # Though rare, your `projectId` might already be used as the name for an
-        # existing Hosting site in another project (learn more about creating non-
-        # default, [additional sites](https://firebase.google.com/docs/hosting/
-        # multisites)). In these cases, your `projectId` is appended with a hyphen then
-        # five alphanumeric characters to create your default Hosting site name. For
-        # example, if your `projectId` is `myproject123`, your default Hosting site name
-        # might be: `myproject123-a5c16`
+        # Output only. **DEPRECATED.** _Instead, find the default Firebase Hosting site
+        # name using the [ListSites](https://firebase.google.com/docs/reference/hosting/
+        # rest/v1beta1/projects.sites/list) within the Firebase Hosting REST API. Note
+        # that the default site for the Project might not yet be provisioned, so the
+        # return might not contain a default site._ The default Firebase Hosting site
+        # name, in the format: PROJECT_ID Though rare, your `projectId` might already be
+        # used as the name for an existing Hosting site in another project (learn more
+        # about creating non-default, [additional sites](https://firebase.google.com/
+        # docs/hosting/multisites)). In these cases, your `projectId` is appended with a
+        # hyphen then five alphanumeric characters to create your default Hosting site
+        # name. For example, if your `projectId` is `myproject123`, your default Hosting
+        # site name might be: `myproject123-a5c16`
         # Corresponds to the JSON property `hostingSite`
         # @return [String]
         attr_accessor :hosting_site
       
-        # Output only. The ID of the Project's default GCP resource location. The
-        # location is one of the available [GCP resource locations](https://firebase.
-        # google.com/docs/projects/locations). This field is omitted if the default GCP
-        # resource location has not been finalized yet. To set a Project's default GCP
-        # resource location, call [`FinalizeDefaultLocation`](../projects.
+        # Output only. **DEPRECATED.** _Instead, use product-specific REST APIs to find
+        # the location of resources._ The ID of the Project's default GCP resource
+        # location. The location is one of the available [GCP resource locations](https:/
+        # /firebase.google.com/docs/projects/locations). This field is omitted if the
+        # default GCP resource location has not been finalized yet. To set a Project's
+        # default GCP resource location, call [`FinalizeDefaultLocation`](../projects.
         # defaultLocation/finalize) after you add Firebase resources to the Project.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
       
-        # Output only. The default Firebase Realtime Database instance name, in the
-        # format: PROJECT_ID Though rare, your `projectId` might already be used as the
-        # name for an existing Realtime Database instance in another project (learn more
-        # about [database sharding](https://firebase.google.com/docs/database/usage/
-        # sharding)). In these cases, your `projectId` is appended with a hyphen then
-        # five alphanumeric characters to create your default Realtime Database instance
-        # name. For example, if your `projectId` is `myproject123`, your default
-        # database instance name might be: `myproject123-a5c16`
+        # Output only. **DEPRECATED.** _Instead, find the default Firebase Realtime
+        # Database instance name using the [list endpoint](https://firebase.google.com/
+        # docs/reference/rest/database/database-management/rest/v1beta/projects.
+        # locations.instances/list) within the Firebase Realtime Database REST API. Note
+        # that the default instance for the Project might not yet be provisioned, so the
+        # return might not contain a default instance._ The default Firebase Realtime
+        # Database instance name, in the format: PROJECT_ID Though rare, your `projectId`
+        # might already be used as the name for an existing Realtime Database instance
+        # in another project (learn more about [database sharding](https://firebase.
+        # google.com/docs/database/usage/sharding)). In these cases, your `projectId` is
+        # appended with a hyphen then five alphanumeric characters to create your
+        # default Realtime Database instance name. For example, if your `projectId` is `
+        # myproject123`, your default database instance name might be: `myproject123-
+        # a5c16`
         # Corresponds to the JSON property `realtimeDatabaseInstance`
         # @return [String]
         attr_accessor :realtime_database_instance
       
-        # Output only. The default Cloud Storage for Firebase storage bucket, in the
-        # format: PROJECT_ID.appspot.com
+        # Output only. **DEPRECATED.** _Instead, find the default Cloud Storage for
+        # Firebase bucket using the [list endpoint](https://firebase.google.com/docs/
+        # reference/rest/storage/rest/v1beta/projects.buckets/list) within the Cloud
+        # Storage for Firebase REST API. Note that the default bucket for the Project
+        # might not yet be provisioned, so the return might not contain a default bucket.
+        # _ The default Cloud Storage for Firebase storage bucket, in the format:
+        # PROJECT_ID.appspot.com
         # Corresponds to the JSON property `storageBucket`
         # @return [String]
         attr_accessor :storage_bucket
@@ -562,7 +588,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :project_number
       
-        # The default resources associated with the Project.
+        # **DEPRECATED.** _Auto-provisioning of these resources is changing, so this
+        # object no longer reliably provides information about the resources within the
+        # Project. Instead, retrieve information about each resource directly from its
+        # resource-specific API._ The default auto-provisioned resources associated with
+        # the Project.
         # Corresponds to the JSON property `resources`
         # @return [Google::Apis::FirebaseV1beta1::DefaultResources]
         attr_accessor :resources
@@ -919,7 +949,10 @@ module Google
         end
       end
       
-      # A GCP resource location that can be selected for a FirebaseProject.
+      # **DEPRECATED.** _This Location is no longer used to determine Firebase
+      # resource locations. Instead, consult product documentation to determine valid
+      # locations for each resource used in your Project._ A GCP resource location
+      # that can be selected for a FirebaseProject.
       class Location
         include Google::Apis::Core::Hashable
       
@@ -1671,17 +1704,23 @@ module Google
         # @return [String]
         attr_accessor :auth_domain
       
-        # The default Firebase Realtime Database URL.
+        # **DEPRECATED.** _Instead, find the default Firebase Realtime Database instance
+        # name using the [list endpoint](https://firebase.google.com/docs/reference/rest/
+        # database/database-management/rest/v1beta/projects.locations.instances/list)
+        # within the Firebase Realtime Database REST API. Note that the default instance
+        # for the Project might not yet be provisioned, so the return might not contain
+        # a default instance._ The default Firebase Realtime Database URL.
         # Corresponds to the JSON property `databaseURL`
         # @return [String]
         attr_accessor :database_url
       
-        # The ID of the Project's default GCP resource location. The location is one of
-        # the available [GCP resource locations](https://firebase.google.com/docs/
-        # projects/locations). This field is omitted if the default GCP resource
-        # location has not been finalized yet. To set a Project's default GCP resource
-        # location, call [`FinalizeDefaultLocation`](../projects.defaultLocation/
-        # finalize) after you add Firebase resources to the Project.
+        # **DEPRECATED.** _Instead, use product-specific REST APIs to find the location
+        # of resources._ The ID of the Project's default GCP resource location. The
+        # location is one of the available [GCP resource locations](https://firebase.
+        # google.com/docs/projects/locations). This field is omitted if the default GCP
+        # resource location has not been finalized yet. To set a Project's default GCP
+        # resource location, call [`FinalizeDefaultLocation`](../projects.
+        # defaultLocation/finalize) after you add Firebase resources to the Project.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -1712,7 +1751,12 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
-        # The default Cloud Storage for Firebase storage bucket name.
+        # **DEPRECATED.** _Instead, find the default Cloud Storage for Firebase bucket
+        # using the [list endpoint](https://firebase.google.com/docs/reference/rest/
+        # storage/rest/v1beta/projects.buckets/list) within the Cloud Storage for
+        # Firebase REST API. Note that the default bucket for the Project might not yet
+        # be provisioned, so the return might not contain a default bucket._ The default
+        # Cloud Storage for Firebase storage bucket name.
         # Corresponds to the JSON property `storageBucket`
         # @return [String]
         attr_accessor :storage_bucket
