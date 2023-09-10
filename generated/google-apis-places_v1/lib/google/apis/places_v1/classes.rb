@@ -386,8 +386,8 @@ module Google
         # @return [String]
         attr_accessor :website_uri
       
-        # Output only. Specifies if the place has an entrance that is wheelchair-
-        # accessible.
+        # Output only. [Deprecated!] Specifies if the place has an entrance that is
+        # wheelchair-accessible.
         # Corresponds to the JSON property `wheelchairAccessibleEntrance`
         # @return [Boolean]
         attr_accessor :wheelchair_accessible_entrance
