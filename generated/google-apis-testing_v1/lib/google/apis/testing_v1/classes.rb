@@ -767,6 +767,19 @@ module Google
         end
       end
       
+      # The request object for cancelling a Device Session.
+      class CancelDeviceSessionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Response containing the current state of the specified test matrix.
       class CancelTestMatrixResponse
         include Google::Apis::Core::Hashable
@@ -961,6 +974,124 @@ module Google
         end
       end
       
+      # Protobuf message describing the device message, used from several RPCs.
+      class DeviceSession
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp that the session first became ACTIVE.
+        # Corresponds to the JSON property `activeStartTime`
+        # @return [String]
+        attr_accessor :active_start_time
+      
+        # A single Android device.
+        # Corresponds to the JSON property `androidDevice`
+        # @return [Google::Apis::TestingV1::AndroidDevice]
+        attr_accessor :android_device
+      
+        # A list of Android device configurations in which the test is to be executed.
+        # Corresponds to the JSON property `androidDeviceList`
+        # @return [Google::Apis::TestingV1::AndroidDeviceList]
+        attr_accessor :android_device_list
+      
+        # Output only. The time that the Session was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The title of the DeviceSession to be presented in the UI.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. If the device is still in use at this time, any connections will be
+        # ended and the SessionState will transition from ACTIVE to FINISHED.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. The interval of time that this device must be interacted with
+        # before it transitions from ACTIVE to TIMEOUT_INACTIVITY.
+        # Corresponds to the JSON property `inactivityTimeout`
+        # @return [String]
+        attr_accessor :inactivity_timeout
+      
+        # Optional. Name of the DeviceSession, e.g. "projects/`project_id`/
+        # deviceSessions/`session_id`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Current state of the DeviceSession.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The historical state transitions of the session_state message
+        # including the current session state.
+        # Corresponds to the JSON property `stateHistories`
+        # @return [Array<Google::Apis::TestingV1::SessionStateEvent>]
+        attr_accessor :state_histories
+      
+        # Optional. The amount of time that a device will be initially allocated for.
+        # This can eventually be extended with the ExtendDeviceSession RPC. Default: 3
+        # hours.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_start_time = args[:active_start_time] if args.key?(:active_start_time)
+          @android_device = args[:android_device] if args.key?(:android_device)
+          @android_device_list = args[:android_device_list] if args.key?(:android_device_list)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @inactivity_timeout = args[:inactivity_timeout] if args.key?(:inactivity_timeout)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @state_histories = args[:state_histories] if args.key?(:state_histories)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
+      # Denotes whether Direct Access is supported, and by which client versions.
+      # DirectAccessService is currently available as a preview to select developers.
+      # You can register today on behalf of you and your team at https://developer.
+      # android.com/studio/preview/android-device-streaming
+      class DirectAccessVersionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Whether direct access is supported at all. Clients are expected to filter down
+        # the device list to only android models and versions which support Direct
+        # Access when that is the user intent.
+        # Corresponds to the JSON property `directAccessSupported`
+        # @return [Boolean]
+        attr_accessor :direct_access_supported
+        alias_method :direct_access_supported?, :direct_access_supported
+      
+        # Output only. Indicates client-device compatibility, where a device is known to
+        # work only with certain workarounds implemented in the Android Studio client.
+        # Expected format "major.minor.micro.patch", e.g. "5921.22.2211.8881706".
+        # Corresponds to the JSON property `minimumAndroidStudioVersion`
+        # @return [String]
+        attr_accessor :minimum_android_studio_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @direct_access_supported = args[:direct_access_supported] if args.key?(:direct_access_supported)
+          @minimum_android_studio_version = args[:minimum_android_studio_version] if args.key?(:minimum_android_studio_version)
+        end
+      end
+      
       # Data about the relative number of devices running a given configuration of the
       # Android platform.
       class Distribution
@@ -985,6 +1116,22 @@ module Google
         def update!(**args)
           @market_share = args[:market_share] if args.key?(:market_share)
           @measurement_time = args[:measurement_time] if args.key?(:measurement_time)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1634,6 +1781,32 @@ module Google
         end
       end
       
+      # A list of device sessions.
+      class ListDeviceSessionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The sessions matching the specified filter in the given cloud project.
+        # Corresponds to the JSON property `deviceSessions`
+        # @return [Array<Google::Apis::TestingV1::DeviceSession>]
+        attr_accessor :device_sessions
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_sessions = args[:device_sessions] if args.key?(:device_sessions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # A location/region designation for language.
       class Locale
         include Google::Apis::Core::Hashable
@@ -1854,6 +2027,14 @@ module Google
         # @return [String]
         attr_accessor :device_capacity
       
+        # Denotes whether Direct Access is supported, and by which client versions.
+        # DirectAccessService is currently available as a preview to select developers.
+        # You can register today on behalf of you and your team at https://developer.
+        # android.com/studio/preview/android-device-streaming
+        # Corresponds to the JSON property `directAccessVersionInfo`
+        # @return [Google::Apis::TestingV1::DirectAccessVersionInfo]
+        attr_accessor :direct_access_version_info
+      
         # An Android version.
         # Corresponds to the JSON property `versionId`
         # @return [String]
@@ -1866,6 +2047,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device_capacity = args[:device_capacity] if args.key?(:device_capacity)
+          @direct_access_version_info = args[:direct_access_version_info] if args.key?(:direct_access_version_info)
           @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
@@ -2094,6 +2276,38 @@ module Google
         def update!(**args)
           @intent_filter = args[:intent_filter] if args.key?(:intent_filter)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A message encapsulating a series of Session states and the time that the
+      # DeviceSession first entered those states.
+      class SessionStateEvent
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time that the session_state first encountered that state.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # Output only. The session_state tracked by this event
+        # Corresponds to the JSON property `sessionState`
+        # @return [String]
+        attr_accessor :session_state
+      
+        # Output only. A human-readable message to explain the state.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @session_state = args[:session_state] if args.key?(:session_state)
+          @state_message = args[:state_message] if args.key?(:state_message)
         end
       end
       
