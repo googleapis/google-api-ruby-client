@@ -146,6 +146,13 @@ module Google
         # @return [String]
         attr_accessor :gcr_domain
       
+        # Additional Google Generated Customer Metadata, this field won't be provided by
+        # default and can be requested by setting the IncludeExtraData field in
+        # GetApplicationRequest
+        # Corresponds to the JSON property `generatedCustomerMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :generated_customer_metadata
+      
         # Identity-Aware Proxy
         # Corresponds to the JSON property `iap`
         # @return [Google::Apis::AppengineV1beta::IdentityAwareProxy]
@@ -199,6 +206,7 @@ module Google
           @dispatch_rules = args[:dispatch_rules] if args.key?(:dispatch_rules)
           @feature_settings = args[:feature_settings] if args.key?(:feature_settings)
           @gcr_domain = args[:gcr_domain] if args.key?(:gcr_domain)
+          @generated_customer_metadata = args[:generated_customer_metadata] if args.key?(:generated_customer_metadata)
           @iap = args[:iap] if args.key?(:iap)
           @id = args[:id] if args.key?(:id)
           @location_id = args[:location_id] if args.key?(:location_id)
@@ -733,6 +741,47 @@ module Google
           @single_instance_assignment = args[:single_instance_assignment] if args.key?(:single_instance_assignment)
           @target_type = args[:target_type] if args.key?(:target_type)
           @target_utilization = args[:target_utilization] if args.key?(:target_utilization)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: A full date, with non-zero year, month, and day values. A month and
+      # day, with a zero year (for example, an anniversary). A year on its own, with a
+      # zero month and a zero day. A year and month, with a zero day (for example, a
+      # credit card expiration date).Related types: google.type.TimeOfDay google.type.
+      # DateTime google.protobuf.Timestamp
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
         end
       end
       
@@ -2627,6 +2676,42 @@ module Google
       class Runtime
         include Google::Apis::Core::Hashable
       
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: A full date, with non-zero year, month, and day values. A month and
+        # day, with a zero year (for example, an anniversary). A year on its own, with a
+        # zero month and a zero day. A year and month, with a zero day (for example, a
+        # credit card expiration date).Related types: google.type.TimeOfDay google.type.
+        # DateTime google.protobuf.Timestamp
+        # Corresponds to the JSON property `decommissionedDate`
+        # @return [Google::Apis::AppengineV1beta::Date]
+        attr_accessor :decommissioned_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: A full date, with non-zero year, month, and day values. A month and
+        # day, with a zero year (for example, an anniversary). A year on its own, with a
+        # zero month and a zero day. A year and month, with a zero day (for example, a
+        # credit card expiration date).Related types: google.type.TimeOfDay google.type.
+        # DateTime google.protobuf.Timestamp
+        # Corresponds to the JSON property `deprecationDate`
+        # @return [Google::Apis::AppengineV1beta::Date]
+        attr_accessor :deprecation_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: A full date, with non-zero year, month, and day values. A month and
+        # day, with a zero year (for example, an anniversary). A year on its own, with a
+        # zero month and a zero day. A year and month, with a zero day (for example, a
+        # credit card expiration date).Related types: google.type.TimeOfDay google.type.
+        # DateTime google.protobuf.Timestamp
+        # Corresponds to the JSON property `endOfSupportDate`
+        # @return [Google::Apis::AppengineV1beta::Date]
+        attr_accessor :end_of_support_date
+      
         # The environment of the runtime.
         # Corresponds to the JSON property `environment`
         # @return [String]
@@ -2653,6 +2738,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @decommissioned_date = args[:decommissioned_date] if args.key?(:decommissioned_date)
+          @deprecation_date = args[:deprecation_date] if args.key?(:deprecation_date)
+          @end_of_support_date = args[:end_of_support_date] if args.key?(:end_of_support_date)
           @environment = args[:environment] if args.key?(:environment)
           @name = args[:name] if args.key?(:name)
           @stage = args[:stage] if args.key?(:stage)
@@ -3419,7 +3507,7 @@ module Google
         # @return [String]
         attr_accessor :egress_setting
       
-        # Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/
+        # Full Serverless VPC Access Connector name e.g. projects/my-project/locations/
         # us-central1/connectors/c1.
         # Corresponds to the JSON property `name`
         # @return [String]
