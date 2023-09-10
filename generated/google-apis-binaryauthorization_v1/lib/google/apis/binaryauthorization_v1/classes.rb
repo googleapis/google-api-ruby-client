@@ -44,8 +44,8 @@ module Google
         # image, in the format `projects/*/attestors/*`. Each attestor must exist before
         # a policy can reference it. To add an attestor to a policy the principal
         # issuing the policy change request must be able to read the attestor resource.
-        # Note: this field must be non-empty when the evaluation_mode field specifies
-        # REQUIRE_ATTESTATION, otherwise it must be empty.
+        # Note: this field must be non-empty when the `evaluation_mode` field specifies `
+        # REQUIRE_ATTESTATION`, otherwise it must be empty.
         # Corresponds to the JSON property `requireAttestationsBy`
         # @return [Array<String>]
         attr_accessor :require_attestations_by
@@ -94,7 +94,7 @@ module Google
       class AttestationAuthenticator
         include Google::Apis::Core::Hashable
       
-        # Optional. A user-provided name for this AttestationAuthenticator. This field
+        # Optional. A user-provided name for this `AttestationAuthenticator`. This field
         # has no effect on the policy evaluation behavior except to improve readability
         # of messages in evaluation results.
         # Corresponds to the JSON property `displayName`
@@ -102,8 +102,9 @@ module Google
         attr_accessor :display_name
       
         # A bundle of PKIX public keys, used to authenticate attestation signatures.
-        # Generally, a signature is considered to be authenticated by a PkixPublicKeySet
-        # if any of the public keys verify it (i.e. it is an "OR" of the keys).
+        # Generally, a signature is considered to be authenticated by a `
+        # PkixPublicKeySet` if any of the public keys verify it (i.e. it is an "OR" of
+        # the keys).
         # Corresponds to the JSON property `pkixPublicKeySet`
         # @return [Google::Apis::BinaryauthorizationV1::PkixPublicKeySet]
         attr_accessor :pkix_public_key_set
@@ -170,8 +171,8 @@ module Google
       class AttestationSource
         include Google::Apis::Core::Hashable
       
-        # The ids of the GCP projects storing the SLSA attestations as container
-        # analysis Occurrences.
+        # The IDs of the GCP projects storing the SLSA attestations as Container
+        # Analysis Occurrences.
         # Corresponds to the JSON property `containerAnalysisAttestationProjects`
         # @return [Array<String>]
         attr_accessor :container_analysis_attestation_projects
@@ -242,10 +243,11 @@ module Google
       
         # ASCII-armored representation of a PGP public key, as the entire output by the
         # command `gpg --export --armor foo@example.com` (either LF or CRLF line endings)
-        # . When using this field, `id` should be left blank. The BinAuthz API handlers
-        # will calculate the ID and fill it in automatically. BinAuthz computes this ID
-        # as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id`
-        # is provided by the caller, it will be overwritten by the API-calculated ID.
+        # . When using this field, `id` should be left blank. The Binary Authorization
+        # API handlers will calculate the ID and fill it in automatically. Binary
+        # Authorization computes this ID as the OpenPGP RFC4880 V4 fingerprint,
+        # represented as upper-case hex. If `id` is provided by the caller, it will be
+        # overwritten by the API-calculated ID.
         # Corresponds to the JSON property `asciiArmoredPgpPublicKey`
         # @return [String]
         attr_accessor :ascii_armored_pgp_public_key
@@ -255,18 +257,18 @@ module Google
         # @return [String]
         attr_accessor :comment
       
-        # The ID of this public key. Signatures verified by BinAuthz must include the ID
-        # of the public key that can be used to verify them, and that ID must match the
-        # contents of this field exactly. Additional restrictions on this field can be
-        # imposed based on which public key type is encapsulated. See the documentation
-        # on `public_key` cases below for details.
+        # The ID of this public key. Signatures verified by Binary Authorization must
+        # include the ID of the public key that can be used to verify them, and that ID
+        # must match the contents of this field exactly. Additional restrictions on this
+        # field can be imposed based on which public key type is encapsulated. See the
+        # documentation on `public_key` cases below for details.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # A public key in the PkixPublicKey format (see https://tools.ietf.org/html/
-        # rfc5280#section-4.1.2.7 for details). Public keys of this type are typically
-        # textually encoded using the PEM format.
+        # A public key in the PkixPublicKey [format](https://tools.ietf.org/html/rfc5280#
+        # section-4.1.2.7). Public keys of this type are typically textually encoded
+        # using the PEM format.
         # Corresponds to the JSON property `pkixPublicKey`
         # @return [Google::Apis::BinaryauthorizationV1::PkixPublicKey]
         attr_accessor :pkix_public_key
@@ -360,21 +362,21 @@ module Google
         end
       end
       
-      # A single check to perform against a Pod. Checks are grouped into CheckSets,
-      # which are defined by the top-level policy.
+      # A single check to perform against a Pod. Checks are grouped into `CheckSet`
+      # objects, which are defined by the top-level policy.
       class Check
         include Google::Apis::Core::Hashable
       
         # Optional. A special-case check that always denies. Note that this still only
-        # applies when the scope of the CheckSet applies and the image isn't exempted by
-        # an image allowlist. This check is primarily useful for testing, or to set the
-        # default behavior for all unmatched scopes to "deny".
+        # applies when the scope of the `CheckSet` applies and the image isn't exempted
+        # by an image allowlist. This check is primarily useful for testing, or to set
+        # the default behavior for all unmatched scopes to "deny".
         # Corresponds to the JSON property `alwaysDeny`
         # @return [Boolean]
         attr_accessor :always_deny
         alias_method :always_deny?, :always_deny
       
-        # Optional. A user-provided name for this Check. This field has no effect on the
+        # Optional. A user-provided name for this check. This field has no effect on the
         # policy evaluation behavior except to improve readability of messages in
         # evaluation results.
         # Corresponds to the JSON property `displayName`
@@ -434,22 +436,22 @@ module Google
       end
       
       # A conjunction of policy checks, scoped to a particular namespace or Kubernetes
-      # service account. In order for evaluation of a CheckSet to return "allowed" for
-      # a given image in a given Pod, one of the following conditions must be
+      # service account. In order for evaluation of a `CheckSet` to return "allowed"
+      # for a given image in a given Pod, one of the following conditions must be
       # satisfied: * The image is explicitly exempted by an entry in `image_allowlist`,
       # OR * ALL of the `checks` evaluate to "allowed".
       class CheckSet
         include Google::Apis::Core::Hashable
       
         # Optional. The checks to apply. The ultimate result of evaluating the check set
-        # will be "allow" if and only if every check in 'checks' evaluates to "allow".
+        # will be "allow" if and only if every check in `checks` evaluates to "allow".
         # If `checks` is empty, the default behavior is "always allow".
         # Corresponds to the JSON property `checks`
         # @return [Array<Google::Apis::BinaryauthorizationV1::Check>]
         attr_accessor :checks
       
-        # Optional. A user-provided name for this CheckSet. This field has no effect on
-        # the policy evaluation behavior except to improve readability of messages in
+        # Optional. A user-provided name for this `CheckSet`. This field has no effect
+        # on the policy evaluation behavior except to improve readability of messages in
         # evaluation results.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -460,7 +462,7 @@ module Google
         # @return [Google::Apis::BinaryauthorizationV1::ImageAllowlist]
         attr_accessor :image_allowlist
       
-        # A scope specifier for CheckSets.
+        # A scope specifier for `CheckSet` objects.
         # Corresponds to the JSON property `scope`
         # @return [Google::Apis::BinaryauthorizationV1::Scope]
         attr_accessor :scope
@@ -553,21 +555,22 @@ module Google
       class GkePolicy
         include Google::Apis::Core::Hashable
       
-        # Optional. The CheckSets to apply, scoped by namespace or namespace and service
-        # account. Exactly one CheckSet will be evaluated for a given Pod (unless the
-        # list is empty, in which case the behavior is "always allow"). If multiple
-        # CheckSets have scopes that match the namespace and service account of the Pod
-        # being evaluated, only the CheckSet with the MOST SPECIFIC scope will match.
-        # CheckSets must be listed in order of decreasing specificity, i.e. if a scope
-        # matches a given service account (which must include the namespace), it must
-        # come before a CheckSet with a scope matching just that namespace. This
-        # property is enforced by server-side validation. The purpose of this
-        # restriction is to ensure that if more than one CheckSet matches a given Pod,
-        # the CheckSet that will be evaluated will always be the first in the list to
-        # match (because if any other matches, it must be less specific). If `check_sets`
-        # is empty, the default behavior is to allow all images. If `check_sets` is non-
-        # empty, the last `check_sets` entry must always be a CheckSet with no scope set,
-        # i.e. a catchall to handle any situation not caught by the preceding CheckSets.
+        # Optional. The `CheckSet` objects to apply, scoped by namespace or namespace
+        # and service account. Exactly one `CheckSet` will be evaluated for a given Pod (
+        # unless the list is empty, in which case the behavior is "always allow"). If
+        # multiple `CheckSet` objects have scopes that match the namespace and service
+        # account of the Pod being evaluated, only the `CheckSet` with the MOST SPECIFIC
+        # scope will match. `CheckSet` objects must be listed in order of decreasing
+        # specificity, i.e. if a scope matches a given service account (which must
+        # include the namespace), it must come before a `CheckSet` with a scope matching
+        # just that namespace. This property is enforced by server-side validation. The
+        # purpose of this restriction is to ensure that if more than one `CheckSet`
+        # matches a given Pod, the `CheckSet` that will be evaluated will always be the
+        # first in the list to match (because if any other matches, it must be less
+        # specific). If `check_sets` is empty, the default behavior is to allow all
+        # images. If `check_sets` is non-empty, the last `check_sets` entry must always
+        # be a `CheckSet` with no scope set, i.e. a catchall to handle any situation not
+        # caught by the preceding `CheckSet` objects.
         # Corresponds to the JSON property `checkSets`
         # @return [Array<Google::Apis::BinaryauthorizationV1::CheckSet>]
         attr_accessor :check_sets
@@ -739,7 +742,7 @@ module Google
         end
       end
       
-      # Response message for BinauthzManagementService.ListAttestors.
+      # Response message for BinauthzManagementServiceV1.ListAttestors.
       class ListAttestorsResponse
         include Google::Apis::Core::Hashable
       
@@ -793,9 +796,9 @@ module Google
         end
       end
       
-      # A public key in the PkixPublicKey format (see https://tools.ietf.org/html/
-      # rfc5280#section-4.1.2.7 for details). Public keys of this type are typically
-      # textually encoded using the PEM format.
+      # A public key in the PkixPublicKey [format](https://tools.ietf.org/html/rfc5280#
+      # section-4.1.2.7). Public keys of this type are typically textually encoded
+      # using the PEM format.
       class PkixPublicKey
         include Google::Apis::Core::Hashable
       
@@ -825,8 +828,9 @@ module Google
       end
       
       # A bundle of PKIX public keys, used to authenticate attestation signatures.
-      # Generally, a signature is considered to be authenticated by a PkixPublicKeySet
-      # if any of the public keys verify it (i.e. it is an "OR" of the keys).
+      # Generally, a signature is considered to be authenticated by a `
+      # PkixPublicKeySet` if any of the public keys verify it (i.e. it is an "OR" of
+      # the keys).
       class PkixPublicKeySet
         include Google::Apis::Core::Hashable
       
@@ -860,8 +864,8 @@ module Google
         # @return [Google::Apis::BinaryauthorizationV1::GkePolicy]
         attr_accessor :gke_policy
       
-        # Output only. The relative resource name of the BinAuthz platform policy, in
-        # the form of `projects/*/platforms/*/policies/*`.
+        # Output only. The relative resource name of the Binary Authorization platform
+        # policy, in the form of `projects/*/platforms/*/policies/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -983,7 +987,7 @@ module Google
         end
       end
       
-      # A scope specifier for CheckSets.
+      # A scope specifier for `CheckSet` objects.
       class Scope
         include Google::Apis::Core::Hashable
       
@@ -993,8 +997,8 @@ module Google
         # @return [String]
         attr_accessor :kubernetes_namespace
       
-        # Optional. Matches a single Kubernetes service account, e.g. 'my-namespace:my-
-        # service-account'. `kubernetes_service_account` scope is always more specific
+        # Optional. Matches a single Kubernetes service account, e.g. `my-namespace:my-
+        # service-account`. `kubernetes_service_account` scope is always more specific
         # than `kubernetes_namespace` scope for the same namespace.
         # Corresponds to the JSON property `kubernetesServiceAccount`
         # @return [String]
@@ -1216,19 +1220,20 @@ module Google
       
         # Required. List of trusted directory patterns. A pattern is in the form "
         # registry/path/to/directory". The registry domain part is defined as two or
-        # more dot-separated words, e.g., us.pkg.dev, or gcr.io. Additionally, * can be
-        # used in three ways as wildcards: 1. leading * to match varying prefixes in
-        # registry subdomain (useful for location prefixes); 2. trailing * after
-        # registry/ to match varying endings; 3. trailing ** after registry/ to match "/"
-        # as well. For example: -- gcr.io/my-project/my-repo is valid to match a single
-        # directory -- *-docker.pkg.dev/my-project/my-repo or *.gcr.io/my-project are
-        # valid to match varying prefixes -- gcr.io/my-project/* will match all direct
-        # directories in my-project -- gcr.io/my-project/** would match all directories
-        # in my-project -- gcr.i* is not allowed since the registry is not completely
-        # specified -- sub*domain.gcr.io/nginx is not valid because only leading * or
-        # trailing * are allowed. -- *pkg.dev/my-project/my-repo is not valid because
-        # leading * can only match subdomain -- **-docker.pkg.dev is not valid because
-        # one leading * is allowed, and that it cannot match "/"
+        # more dot-separated words, e.g., `us.pkg.dev`, or `gcr.io`. Additionally, `*`
+        # can be used in three ways as wildcards: 1. leading `*` to match varying
+        # prefixes in registry subdomain (useful for location prefixes); 2. trailing `*`
+        # after registry/ to match varying endings; 3. trailing `**` after registry/ to
+        # match "/" as well. For example: -- `gcr.io/my-project/my-repo` is valid to
+        # match a single directory -- `*-docker.pkg.dev/my-project/my-repo` or `*.gcr.io/
+        # my-project` are valid to match varying prefixes -- `gcr.io/my-project/*` will
+        # match all direct directories in `my-project` -- `gcr.io/my-project/**` would
+        # match all directories in `my-project` -- `gcr.i*` is not allowed since the
+        # registry is not completely specified -- `sub*domain.gcr.io/nginx` is not valid
+        # because only leading `*` or trailing `*` are allowed. -- `*pkg.dev/my-project/
+        # my-repo` is not valid because leading `*` can only match subdomain -- `**-
+        # docker.pkg.dev` is not valid because one leading `*` is allowed, and that it
+        # cannot match `/`
         # Corresponds to the JSON property `trustedDirPatterns`
         # @return [Array<String>]
         attr_accessor :trusted_dir_patterns
@@ -1249,11 +1254,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. This field will contain the service account email address that
-        # this Attestor will use as the principal when querying Container Analysis.
+        # this attestor will use as the principal when querying Container Analysis.
         # Attestor administrators must grant this service account the IAM role needed to
         # read attestations from the note_reference in Container Analysis (`
         # containeranalysis.notes.occurrences.viewer`). This email address is fixed for
-        # the lifetime of the Attestor, but callers should not make any other
+        # the lifetime of the attestor, but callers should not make any other
         # assumptions about the service account email; future versions may use an email
         # based on a different naming pattern.
         # Corresponds to the JSON property `delegationServiceAccountEmail`
@@ -1367,8 +1372,8 @@ module Google
         # @return [Google::Apis::BinaryauthorizationV1::AttestationSource]
         attr_accessor :attestation_source
       
-        # If true, require the image to be built from a top-level configuration.
-        # trusted_source_repo patterns specifies the repositories containing this
+        # If true, require the image to be built from a top-level configuration. `
+        # trusted_source_repo_patterns` specifies the repositories containing this
         # configuration.
         # Corresponds to the JSON property `configBasedBuildRequired`
         # @return [Boolean]
@@ -1385,19 +1390,19 @@ module Google
         attr_accessor :trusted_builder
       
         # List of trusted source code repository URL patterns. These patterns match the
-        # full repository URL without its scheme (e.g. "https://"). The patterns must
-        # not include schemes. For example, the pattern "source.cloud.google.com/my-
-        # project/my-repo-name" matches the following URLs: - "source.cloud.google.com/
-        # my-project/my-repo-name" - "git+ssh://source.cloud.google.com/my-project/my-
-        # repo-name" - "https://source.cloud.google.com/my-project/my-repo-name" A
-        # pattern matches a URL either exactly or with * wildcards. * can be used in
-        # only two ways: 1. trailing * after hosturi/ to match varying endings; 2.
-        # trailing ** after hosturi/ to match "/" as well. * and ** can only be used as
-        # wildcards and can only occur at the end of the pattern after a /. (So it's not
-        # possible to match a URL that contains literal *.) For example: - "github.com/
-        # my-project/my-repo" is valid to match a single repo - "github.com/my-project/*"
-        # will match all direct repos in my-project - "github.com/**" matches all repos
-        # in GitHub
+        # full repository URL without its scheme (e.g. `https://`). The patterns must
+        # not include schemes. For example, the pattern `source.cloud.google.com/my-
+        # project/my-repo-name` matches the following URLs: - `source.cloud.google.com/
+        # my-project/my-repo-name` - `git+ssh://source.cloud.google.com/my-project/my-
+        # repo-name` - `https://source.cloud.google.com/my-project/my-repo-name` A
+        # pattern matches a URL either exactly or with `*` wildcards. `*` can be used in
+        # only two ways: 1. trailing `*` after hosturi/ to match varying endings; 2.
+        # trailing `**` after hosturi/ to match `/` as well. `*` and `**` can only be
+        # used as wildcards and can only occur at the end of the pattern after a `/`. (
+        # So it's not possible to match a URL that contains literal `*`.) For example: -
+        # `github.com/my-project/my-repo` is valid to match a single repo - `github.com/
+        # my-project/*` will match all direct repos in `my-project` - `github.com/**`
+        # matches all repos in GitHub
         # Corresponds to the JSON property `trustedSourceRepoPatterns`
         # @return [Array<String>]
         attr_accessor :trusted_source_repo_patterns
@@ -1421,33 +1426,33 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. A list of specific CVEs to ignore even if the vulnerability level
-        # violates maximumUnfixableSeverity or maximumFixableSeverity. CVEs are listed
-        # in the format of Container Analysis note id. For example: - CVE-2021-20305 -
-        # CVE-2020-10543 The CVEs are applicable regardless of note provider project, e.
-        # g., an entry of `CVE-2021-20305` will allow vulnerabilities with a note name
-        # of either `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-
-        # PROJECT/notes/CVE-2021-20305`.
+        # violates `maximumUnfixableSeverity` or `maximumFixableSeverity`. CVEs are
+        # listed in the format of Container Analysis note id. For example: - CVE-2021-
+        # 20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider
+        # project, e.g., an entry of `CVE-2021-20305` will allow vulnerabilities with a
+        # note name of either `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/
+        # CUSTOM-PROJECT/notes/CVE-2021-20305`.
         # Corresponds to the JSON property `allowedCves`
         # @return [Array<String>]
         attr_accessor :allowed_cves
       
         # Optional. A list of specific CVEs to always raise warnings about even if the
-        # vulnerability level meets maximumUnfixableSeverity or maximumFixableSeverity.
-        # CVEs are listed in the format of Container Analysis note id. For example: -
-        # CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note
-        # provider project, e.g., an entry of `CVE-2021-20305` will block
-        # vulnerabilities with a note name of either `projects/goog-vulnz/notes/CVE-2021-
-        # 20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`.
+        # vulnerability level meets `maximumUnfixableSeverity` or `
+        # maximumFixableSeverity`. CVEs are listed in the format of Container Analysis
+        # note id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are
+        # applicable regardless of note provider project, e.g., an entry of `CVE-2021-
+        # 20305` will block vulnerabilities with a note name of either `projects/goog-
+        # vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`.
         # Corresponds to the JSON property `blockedCves`
         # @return [Array<String>]
         attr_accessor :blocked_cves
       
         # Optional. The projects where vulnerabilities are stored as Container Analysis
         # Occurrences. Each project is expressed in the resource format of `projects/[
-        # PROJECT_ID]`, e.g., projects/my-gcp-project. An attempt will be made for each
-        # project to fetch vulnerabilities, and all valid vulnerabilities will be used
-        # to check against the vulnerability policy. If no valid scan is found in all
-        # projects configured here, an error will be returned for the check.
+        # PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for
+        # each project to fetch vulnerabilities, and all valid vulnerabilities will be
+        # used to check against the vulnerability policy. If no valid scan is found in
+        # all projects configured here, an error will be returned for the check.
         # Corresponds to the JSON property `containerAnalysisVulnerabilityProjects`
         # @return [Array<String>]
         attr_accessor :container_analysis_vulnerability_projects
