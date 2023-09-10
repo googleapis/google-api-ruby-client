@@ -22,6 +22,12 @@ module Google
   module Apis
     module WorkflowexecutionsV1
       
+      class Callback
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelExecutionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,6 +41,18 @@ module Google
       end
       
       class Execution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCallbacksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -94,6 +112,16 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Callback
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :available_payloads, as: 'availablePayloads'
+          property :method_prop, as: 'method'
+          property :name, as: 'name'
+          property :waiters, :numeric_string => true, as: 'waiters'
+        end
+      end
+      
       class CancelExecutionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -129,6 +157,22 @@ module Google
           property :status, as: 'status', class: Google::Apis::WorkflowexecutionsV1::Status, decorator: Google::Apis::WorkflowexecutionsV1::Status::Representation
       
           property :workflow_revision_id, as: 'workflowRevisionId'
+        end
+      end
+      
+      class ExportDataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data'
+        end
+      end
+      
+      class ListCallbacksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :callbacks, as: 'callbacks', class: Google::Apis::WorkflowexecutionsV1::Callback, decorator: Google::Apis::WorkflowexecutionsV1::Callback::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

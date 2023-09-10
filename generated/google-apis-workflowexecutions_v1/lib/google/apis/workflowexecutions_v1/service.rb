@@ -153,6 +153,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns all metadata stored about an execution, excluding most data that is
+        # already accessible via other API methods.
+        # @param [String] name
+        #   Required. Name of the execution to be data exported. Format: projects/`project`
+        #   /locations/`location`/workflows/`workflow`/executions/`execution`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkflowexecutionsV1::ExportDataResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkflowexecutionsV1::ExportDataResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_project_location_workflow_execution_data(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:exportData', options)
+          command.response_representation = Google::Apis::WorkflowexecutionsV1::ExportDataResponse::Representation
+          command.response_class = Google::Apis::WorkflowexecutionsV1::ExportDataResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns an execution of the given name.
         # @param [String] name
         #   Required. Name of the execution to be retrieved. Format: projects/`project`/
@@ -244,6 +276,49 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of active callbacks which belong to the execution with the
+        # given name. The returned callbacks are ordered by callback ID. first).
+        # @param [String] parent
+        #   Required. Name of the execution for which the callbacks should be listed.
+        #   Format: projects/`project`/locations/`location`/workflows/`workflow`/
+        #   executions/`execution`
+        # @param [Fixnum] page_size
+        #   Maximum number of callbacks to return per call. The default value is 100 and
+        #   is also the maximum value.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListCallbacks` call. Provide this to
+        #   retrieve the subsequent page. Note that pagination is applied to dynamic data.
+        #   The list of callbacks returned can change between page requests if callbacks
+        #   are created or deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkflowexecutionsV1::ListCallbacksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkflowexecutionsV1::ListCallbacksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_workflow_execution_callbacks(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/callbacks', options)
+          command.response_representation = Google::Apis::WorkflowexecutionsV1::ListCallbacksResponse::Representation
+          command.response_class = Google::Apis::WorkflowexecutionsV1::ListCallbacksResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
