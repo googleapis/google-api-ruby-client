@@ -22,6 +22,46 @@ module Google
   module Apis
     module WorkflowexecutionsV1
       
+      # An instance of a Callback created by an execution.
+      class Callback
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The payloads received by the callback that have not been
+        # processed by a waiting execution step.
+        # Corresponds to the JSON property `availablePayloads`
+        # @return [Array<String>]
+        attr_accessor :available_payloads
+      
+        # Output only. The method accepted by the callback. E.g. GET, POST, PUT.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # Output only. The resource name of the callback. Format: projects/`project`/
+        # locations/`location`/workflows/`workflow`/executions/`execution`/callback/`
+        # callback`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Number of execution steps waiting on this callback.
+        # Corresponds to the JSON property `waiters`
+        # @return [Fixnum]
+        attr_accessor :waiters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @available_payloads = args[:available_payloads] if args.key?(:available_payloads)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @name = args[:name] if args.key?(:name)
+          @waiters = args[:waiters] if args.key?(:waiters)
+        end
+      end
+      
       # Request for the CancelExecution method.
       class CancelExecutionRequest
         include Google::Apis::Core::Hashable
@@ -165,6 +205,52 @@ module Google
           @state_error = args[:state_error] if args.key?(:state_error)
           @status = args[:status] if args.key?(:status)
           @workflow_revision_id = args[:workflow_revision_id] if args.key?(:workflow_revision_id)
+        end
+      end
+      
+      # Response for the ExportData method.
+      class ExportDataResponse
+        include Google::Apis::Core::Hashable
+      
+        # The JSON string with customer data and metadata of an execution of the given
+        # name
+        # Corresponds to the JSON property `data`
+        # @return [String]
+        attr_accessor :data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+        end
+      end
+      
+      # RPC response object for the ListCallbacks method.
+      class ListCallbacksResponse
+        include Google::Apis::Core::Hashable
+      
+        # The callbacks which match the request.
+        # Corresponds to the JSON property `callbacks`
+        # @return [Array<Google::Apis::WorkflowexecutionsV1::Callback>]
+        attr_accessor :callbacks
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @callbacks = args[:callbacks] if args.key?(:callbacks)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
