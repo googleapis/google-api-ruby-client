@@ -404,6 +404,7 @@ module Google
       class Consumer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint_location, as: 'endpointLocation'
           property :endpoint_uri, as: 'endpointUri'
           property :subnetwork, as: 'subnetwork'
         end
