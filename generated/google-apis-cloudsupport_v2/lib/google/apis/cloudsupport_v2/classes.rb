@@ -730,14 +730,14 @@ module Google
       class ListAttachmentsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of attachments associated with the given case.
+        # The list of attachments associated with a case.
         # Corresponds to the JSON property `attachments`
         # @return [Array<Google::Apis::CloudsupportV2::Attachment>]
         attr_accessor :attachments
       
-        # A token to retrieve the next page of results. This should be set in the `
-        # page_token` field of subsequent `cases.attachments.list` requests. If
-        # unspecified, there are no more results to retrieve.
+        # A token to retrieve the next page of results. Set this in the `page_token`
+        # field of subsequent `cases.attachments.list` requests. If unspecified, there
+        # are no more results to retrieve.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -785,14 +785,14 @@ module Google
       class ListCommentsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of Comments associated with the given Case.
+        # List of the comments associated with the case.
         # Corresponds to the JSON property `comments`
         # @return [Array<Google::Apis::CloudsupportV2::Comment>]
         attr_accessor :comments
       
-        # A token to retrieve the next page of results. This should be set in the `
-        # page_token` field of subsequent `ListCommentsRequest` message that is issued.
-        # If unspecified, there are no more results to retrieve.
+        # A token to retrieve the next page of results. Set this in the `page_token`
+        # field of subsequent `cases.comments.list` requests. If unspecified, there are
+        # no more results to retrieve.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
