@@ -827,6 +827,7 @@ module Google
       
           property :out_of_disk_report, as: 'outOfDiskReport', class: Google::Apis::SqladminV1::SqlOutOfDiskReport, decorator: Google::Apis::SqladminV1::SqlOutOfDiskReport::Representation
       
+          property :primary_dns_name, as: 'primaryDnsName'
           property :project, as: 'project'
           property :psc_service_attachment_link, as: 'pscServiceAttachmentLink'
           property :region, as: 'region'
