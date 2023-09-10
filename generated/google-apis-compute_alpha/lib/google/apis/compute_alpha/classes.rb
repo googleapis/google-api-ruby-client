@@ -2954,7 +2954,7 @@ module Google
         attr_accessor :schedule
       
         # The time zone to use when interpreting the schedule. The value of this field
-        # must be a time zone name from the tz database: http://en.wikipedia.org/wiki/
+        # must be a time zone name from the tz database: https://en.wikipedia.org/wiki/
         # Tz_database. This field is assigned a default value of “UTC” if left empty.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
@@ -4684,6 +4684,11 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # A list of BackendService resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::BackendService>]
+        attr_accessor :items
+      
         # [Output Only] Type of resource. Always compute#usableBackendServiceList for
         # lists of usable backend services.
         # Corresponds to the JSON property `kind`
@@ -4716,6 +4721,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -5332,6 +5338,101 @@ module Google
         end
       end
       
+      # 
+      class BgpRoute
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] AS-PATH for the route
+        # Corresponds to the JSON property `asPaths`
+        # @return [Array<Google::Apis::ComputeAlpha::BgpRouteAsPath>]
+        attr_accessor :as_paths
+      
+        # [Output only] BGP communities in human-readable A:B format.
+        # Corresponds to the JSON property `communities`
+        # @return [Array<String>]
+        attr_accessor :communities
+      
+        # Network Layer Reachability Information (NLRI) for a route.
+        # Corresponds to the JSON property `destination`
+        # @return [Google::Apis::ComputeAlpha::BgpRouteNetworkLayerReachabilityInformation]
+        attr_accessor :destination
+      
+        # [Output only] BGP multi-exit discriminator
+        # Corresponds to the JSON property `med`
+        # @return [Fixnum]
+        attr_accessor :med
+      
+        # [Output only] BGP origin (EGP, IGP or INCOMPLETE)
+        # Corresponds to the JSON property `origin`
+        # @return [String]
+        attr_accessor :origin
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @as_paths = args[:as_paths] if args.key?(:as_paths)
+          @communities = args[:communities] if args.key?(:communities)
+          @destination = args[:destination] if args.key?(:destination)
+          @med = args[:med] if args.key?(:med)
+          @origin = args[:origin] if args.key?(:origin)
+        end
+      end
+      
+      # 
+      class BgpRouteAsPath
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] ASNs in the path segment. When type is SEQUENCE, these are
+        # ordered.
+        # Corresponds to the JSON property `asns`
+        # @return [Array<Fixnum>]
+        attr_accessor :asns
+      
+        # [Output only] Type of AS-PATH segment (SEQUENCE or SET)
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asns = args[:asns] if args.key?(:asns)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Network Layer Reachability Information (NLRI) for a route.
+      class BgpRouteNetworkLayerReachabilityInformation
+        include Google::Apis::Core::Hashable
+      
+        # Human readable CIDR notation for a prefix. E.g. 10.42.0.0/16.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # If the BGP session supports multiple paths (RFC 7911), the path identifier for
+        # this route.
+        # Corresponds to the JSON property `pathId`
+        # @return [Fixnum]
+        attr_accessor :path_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+          @path_id = args[:path_id] if args.key?(:path_id)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -5735,70 +5836,6 @@ module Google
         def update!(**args)
           @call_credential_type = args[:call_credential_type] if args.key?(:call_credential_type)
           @from_plugin = args[:from_plugin] if args.key?(:from_plugin)
-        end
-      end
-      
-      # Represents the network information between workload placements.
-      class CapacityConstraint
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `constraintMetadata`
-        # @return [String]
-        attr_accessor :constraint_metadata
-      
-        # Weighted sum of BandwidthTerms (each term is coefficient * term) must be less
-        # than or equal to max_sum.
-        # Corresponds to the JSON property `maxSumGbps`
-        # @return [Float]
-        attr_accessor :max_sum_gbps
-      
-        # 
-        # Corresponds to the JSON property `terms`
-        # @return [Array<Google::Apis::ComputeAlpha::CapacityConstraintConstraintTerm>]
-        attr_accessor :terms
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @constraint_metadata = args[:constraint_metadata] if args.key?(:constraint_metadata)
-          @max_sum_gbps = args[:max_sum_gbps] if args.key?(:max_sum_gbps)
-          @terms = args[:terms] if args.key?(:terms)
-        end
-      end
-      
-      # 
-      class CapacityConstraintConstraintTerm
-        include Google::Apis::Core::Hashable
-      
-        # Coefficient of this term in the linear expression. The value of the term will
-        # be coefficient * (demand from src to dst in Gbps).
-        # Corresponds to the JSON property `coefficient`
-        # @return [Float]
-        attr_accessor :coefficient
-      
-        # 
-        # Corresponds to the JSON property `destinationNode`
-        # @return [Google::Apis::ComputeAlpha::PlacementLocation]
-        attr_accessor :destination_node
-      
-        # Source and destination nodes.
-        # Corresponds to the JSON property `sourceNode`
-        # @return [Google::Apis::ComputeAlpha::PlacementLocation]
-        attr_accessor :source_node
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @coefficient = args[:coefficient] if args.key?(:coefficient)
-          @destination_node = args[:destination_node] if args.key?(:destination_node)
-          @source_node = args[:source_node] if args.key?(:source_node)
         end
       end
       
@@ -11955,25 +11992,6 @@ module Google
       end
       
       # 
-      class GetNetworkCapacityConstraintsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Set of capacity constraints that describe network adjacency.
-        # Corresponds to the JSON property `capacityConstraints`
-        # @return [Array<Google::Apis::ComputeAlpha::CapacityConstraint>]
-        attr_accessor :capacity_constraints
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @capacity_constraints = args[:capacity_constraints] if args.key?(:capacity_constraints)
-        end
-      end
-      
-      # 
       class GetOwnerInstanceResponse
         include Google::Apis::Core::Hashable
       
@@ -14767,8 +14785,8 @@ module Google
         # weightedBackendServices, service must not be set. Conversely if service is set,
         # routeAction cannot contain any weightedBackendServices. Only one of
         # urlRedirect, service or routeAction.weightedBackendService must be set. URL
-        # maps for Classic external HTTP(S) load balancers only support the urlRewrite
-        # action within a route rule's routeAction.
+        # maps for classic Application Load Balancers only support the urlRewrite action
+        # within a route rule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :route_action
@@ -27317,9 +27335,8 @@ module Google
       
       # Represents a collection of network endpoints. A network endpoint group (NEG)
       # defines how a set of endpoints should be reached, whether they are reachable,
-      # and where they are located. For more information about using NEGs, see Setting
-      # up external HTTP(S) Load Balancing with internet NEGs, Setting up zonal NEGs,
-      # or Setting up external HTTP(S) Load Balancing with serverless NEGs.
+      # and where they are located. For more information about using NEGs for
+      # different use cases, see Network endpoint groups overview.
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
@@ -28794,6 +28811,20 @@ module Google
       class NetworkRoutingConfig
         include Google::Apis::Core::Hashable
       
+        # Enable comparison of Multi-Exit Discriminators (MED) across routes with
+        # different neighbor ASNs when using the STANDARD BGP best path selection
+        # algorithm.
+        # Corresponds to the JSON property `bgpAlwaysCompareMed`
+        # @return [Boolean]
+        attr_accessor :bgp_always_compare_med
+        alias_method :bgp_always_compare_med?, :bgp_always_compare_med
+      
+        # The BGP best path selection algorithm to be employed within this network for
+        # dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD.
+        # Corresponds to the JSON property `bgpBestPathSelectionMode`
+        # @return [String]
+        attr_accessor :bgp_best_path_selection_mode
+      
         # The network-wide routing mode to use. If set to REGIONAL, this network's Cloud
         # Routers will only advertise routes with subnets of this network in the same
         # region as the router. If set to GLOBAL, this network's Cloud Routers will
@@ -28808,6 +28839,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bgp_always_compare_med = args[:bgp_always_compare_med] if args.key?(:bgp_always_compare_med)
+          @bgp_best_path_selection_mode = args[:bgp_best_path_selection_mode] if args.key?(:bgp_best_path_selection_mode)
           @routing_mode = args[:routing_mode] if args.key?(:routing_mode)
         end
       end
@@ -32876,8 +32909,8 @@ module Google
         # If defaultRouteAction specifies any weightedBackendServices, defaultService
         # must not be set. Conversely if defaultService is set, defaultRouteAction
         # cannot contain any weightedBackendServices. Only one of defaultRouteAction or
-        # defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load
-        # balancers only support the urlRewrite action within a path matcher's
+        # defaultUrlRedirect must be set. URL maps for classic Application Load
+        # Balancers only support the urlRewrite action within a path matcher's
         # defaultRouteAction.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
@@ -32984,9 +33017,8 @@ module Google
         # the request to the selected backend. If routeAction specifies any
         # weightedBackendServices, service must not be set. Conversely if service is set,
         # routeAction cannot contain any weightedBackendServices. Only one of
-        # routeAction or urlRedirect must be set. URL maps for Classic external HTTP(S)
-        # load balancers only support the urlRewrite action within a path rule's
-        # routeAction.
+        # routeAction or urlRedirect must be set. URL maps for classic Application Load
+        # Balancers only support the urlRewrite action within a path rule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :route_action
@@ -33181,31 +33213,6 @@ module Google
         def update!(**args)
           @key = args[:key] if args.key?(:key)
           @values = args[:values] if args.key?(:values)
-        end
-      end
-      
-      # 
-      class PlacementLocation
-        include Google::Apis::Core::Hashable
-      
-        # Aggregation block id of the placement group.
-        # Corresponds to the JSON property `aggregationBlockId`
-        # @return [String]
-        attr_accessor :aggregation_block_id
-      
-        # Partial or full URL of the resource policy for the placement group.
-        # Corresponds to the JSON property `resourcePolicy`
-        # @return [String]
-        attr_accessor :resource_policy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @aggregation_block_id = args[:aggregation_block_id] if args.key?(:aggregation_block_id)
-          @resource_policy = args[:resource_policy] if args.key?(:resource_policy)
         end
       end
       
@@ -37241,17 +37248,19 @@ module Google
         # Global](/compute/docs/reference/rest/alpha/urlMaps) * [Regional](/compute/docs/
         # reference/rest/alpha/regionUrlMaps) A URL map resource is a component of
         # certain types of cloud load balancers and Traffic Director: * urlMaps are used
-        # by external HTTP(S) load balancers and Traffic Director. * regionUrlMaps are
-        # used by internal HTTP(S) load balancers. For a list of supported URL map
-        # features by the load balancer type, see the Load balancing features: Routing
-        # and traffic management table. For a list of supported URL map features for
-        # Traffic Director, see the Traffic Director features: Routing and traffic
-        # management table. This resource defines mappings from hostnames and URL paths
-        # to either a backend service or a backend bucket. To use the global urlMaps
-        # resource, the backend service must have a loadBalancingScheme of either
-        # EXTERNAL or INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource, the
-        # backend service must have a loadBalancingScheme of INTERNAL_MANAGED. For more
-        # information, read URL Map Concepts.
+        # by global external Application Load Balancers, classic Application Load
+        # Balancers, and cross-region internal Application Load Balancers. *
+        # regionUrlMaps are used by internal Application Load Balancers, regional
+        # external Application Load Balancers and regional internal Application Load
+        # Balancers. For a list of supported URL map features by the load balancer type,
+        # see the Load balancing features: Routing and traffic management table. For a
+        # list of supported URL map features for Traffic Director, see the Traffic
+        # Director features: Routing and traffic management table. This resource defines
+        # mappings from hostnames and URL paths to either a backend service or a backend
+        # bucket. To use the global urlMaps resource, the backend service must have a
+        # loadBalancingScheme of either EXTERNAL or INTERNAL_SELF_MANAGED. To use the
+        # regionUrlMaps resource, the backend service must have a loadBalancingScheme of
+        # INTERNAL_MANAGED. For more information, read URL Map Concepts.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ComputeAlpha::UrlMap]
         attr_accessor :resource
@@ -39455,6 +39464,98 @@ module Google
         end
       end
       
+      # 
+      class RoutePolicy
+        include Google::Apis::Core::Hashable
+      
+        # A fingerprint for the Route Policy being applied to this Router, which is
+        # essentially a hash of the Route Policy used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update Route Policy. You must always provide an up-to-
+        # date fingerprint hash in order to update or change labels. To see the latest
+        # fingerprint, make a getRoutePolicy() request to retrieve a Route Policy.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # Route Policy name, which must be a resource ID segment and unique within all
+        # the router's Route Policies. Name should conform to RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # List of terms (the order in the list is not important, they are evaluated in
+        # order of priority). Order of policies is not retained and might change when
+        # getting policy later.
+        # Corresponds to the JSON property `terms`
+        # @return [Array<Google::Apis::ComputeAlpha::RoutePolicyPolicyTerm>]
+        attr_accessor :terms
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+          @terms = args[:terms] if args.key?(:terms)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class RoutePolicyPolicyTerm
+        include Google::Apis::Core::Hashable
+      
+        # CEL expressions to evaluate to modify a route when this term matches.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::ComputeAlpha::Expr>]
+        attr_accessor :actions
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `match`
+        # @return [Google::Apis::ComputeAlpha::Expr]
+        attr_accessor :match
+      
+        # The evaluation priority for this term, which must be between 0 (inclusive) and
+        # 2^31 (exclusive), and unique within the list.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @match = args[:match] if args.key?(:match)
+          @priority = args[:priority] if args.key?(:priority)
+        end
+      end
+      
       # Represents a Cloud Router resource. For more information about Cloud Router,
       # read the Cloud Router overview.
       class Router
@@ -39496,9 +39597,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Router interfaces. Each interface requires either one linked resource, (for
-        # example, linkedVpnTunnel), or IP address and IP address range (for example,
-        # ipRange), or both.
+        # Router interfaces. To create a BGP peer that uses a router interface, the
+        # interface must have one of the following fields specified: - linkedVpnTunnel -
+        # linkedInterconnectAttachment - subnetwork You can create a router interface
+        # without any of these fields specified. However, you cannot create a BGP peer
+        # that uses that interface.
         # Corresponds to the JSON property `interfaces`
         # @return [Array<Google::Apis::ComputeAlpha::RouterInterface>]
         attr_accessor :interfaces
@@ -40099,14 +40202,14 @@ module Google
       
         # URI of the linked Interconnect attachment. It must be in the same region as
         # the router. Each interface can have one linked resource, which can be a VPN
-        # tunnel, an Interconnect attachment, or a virtual machine instance.
+        # tunnel, an Interconnect attachment, or a subnetwork.
         # Corresponds to the JSON property `linkedInterconnectAttachment`
         # @return [String]
         attr_accessor :linked_interconnect_attachment
       
         # URI of the linked VPN tunnel, which must be in the same region as the router.
         # Each interface can have one linked resource, which can be a VPN tunnel, an
-        # Interconnect attachment, or a virtual machine instance.
+        # Interconnect attachment, or a subnetwork.
         # Corresponds to the JSON property `linkedVpnTunnel`
         # @return [String]
         attr_accessor :linked_vpn_tunnel
@@ -40308,7 +40411,7 @@ module Google
         attr_accessor :key
       
         # Name used to identify the key. Must be unique within a router. Must be
-        # referenced by at least one bgpPeer. Must comply with RFC1035.
+        # referenced by exactly one bgpPeer. Must comply with RFC1035.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -40963,6 +41066,293 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # 
+      class RoutersGetRoutePolicyResponse
+        include Google::Apis::Core::Hashable
+      
+        # end_interface: MixerGetResponseWithEtagBuilder
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # 
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::ComputeAlpha::RoutePolicy]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # 
+      class RoutersListBgpRoutes
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] Type of resource. Always compute#routersListBgpRoutes for lists
+        # of bgp routes.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] A list of bgp routes.
+        # Corresponds to the JSON property `result`
+        # @return [Array<Google::Apis::ComputeAlpha::BgpRoute>]
+        attr_accessor :result
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::RoutersListBgpRoutes::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @result = args[:result] if args.key?(:result)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::RoutersListBgpRoutes::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class RoutersListRoutePolicies
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] Type of resource. Always compute#routersListRoutePolicies for
+        # lists of route policies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] A list of route policies.
+        # Corresponds to the JSON property `result`
+        # @return [Array<Google::Apis::ComputeAlpha::RoutePolicy>]
+        attr_accessor :result
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::RoutersListRoutePolicies::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @result = args[:result] if args.key?(:result)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::RoutersListRoutePolicies::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -45402,17 +45792,20 @@ module Google
         end
       end
       
-      # Represents an SSL Certificate resource. Google Compute Engine has two SSL
-      # Certificate resources: * [Global](/compute/docs/reference/rest/alpha/
+      # Represents an SSL certificate resource. Google Compute Engine has two SSL
+      # certificate resources: * [Global](/compute/docs/reference/rest/alpha/
       # sslCertificates) * [Regional](/compute/docs/reference/rest/alpha/
-      # regionSslCertificates) The sslCertificates are used by: - external HTTPS load
-      # balancers - SSL proxy load balancers The regionSslCertificates are used by
-      # internal HTTPS load balancers. Optionally, certificate file contents that you
-      # upload can contain a set of up to five PEM-encoded certificates. The API call
-      # creates an object (sslCertificate) that holds this data. You can use SSL keys
-      # and certificates to secure connections to a load balancer. For more
-      # information, read Creating and using SSL certificates, SSL certificates quotas
-      # and limits, and Troubleshooting SSL certificates.
+      # regionSslCertificates) The global SSL certificates (sslCertificates) are used
+      # by: - Global external Application Load Balancers - Classic Application Load
+      # Balancers - Proxy Network Load Balancers (with target SSL proxies) The
+      # regional SSL certificates (regionSslCertificates) are used by: - Regional
+      # external Application Load Balancers - Regional internal Application Load
+      # Balancers Optionally, certificate file contents that you upload can contain a
+      # set of up to five PEM-encoded certificates. The API call creates an object (
+      # sslCertificate) that holds this data. You can use SSL keys and certificates to
+      # secure connections to a load balancer. For more information, read Creating and
+      # using SSL certificates, SSL certificates quotas and limits, and
+      # Troubleshooting SSL certificates.
       class SslCertificate
         include Google::Apis::Core::Hashable
       
@@ -48660,11 +49053,13 @@ module Google
       # HTTP Proxy resources: * [Global](/compute/docs/reference/rest/alpha/
       # targetHttpProxies) * [Regional](/compute/docs/reference/rest/alpha/
       # regionTargetHttpProxies) A target HTTP proxy is a component of GCP HTTP load
-      # balancers. * targetHttpProxies are used by external HTTP load balancers and
-      # Traffic Director. * regionTargetHttpProxies are used by internal HTTP load
-      # balancers. Forwarding rules reference a target HTTP proxy, and the target
-      # proxy then references a URL map. For more information, read Using Target
-      # Proxies and Forwarding rule concepts.
+      # balancers. * targetHttpProxies are used by global external Application Load
+      # Balancers, classic Application Load Balancers, cross-region internal
+      # Application Load Balancers, and Traffic Director. * regionTargetHttpProxies
+      # are used by regional internal Application Load Balancers and regional external
+      # Application Load Balancers. Forwarding rules reference a target HTTP proxy,
+      # and the target proxy then references a URL map. For more information, read
+      # Using Target Proxies and Forwarding rule concepts.
       class TargetHttpProxy
         include Google::Apis::Core::Hashable
       
@@ -48707,10 +49102,10 @@ module Google
       
         # Specifies how long to keep a connection open, after completing a response,
         # while there is no matching traffic (in seconds). If an HTTP keep-alive is not
-        # specified, a default value (610 seconds) will be used. For Global external
-        # HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum
-        # allowed value is 1200 seconds. For Global external HTTP(S) load balancer (
-        # classic), this option is not available publicly.
+        # specified, a default value (610 seconds) will be used. For global external
+        # Application Load Balancers, the minimum allowed value is 5 seconds and the
+        # maximum allowed value is 1200 seconds. For classic Application Load Balancers,
+        # this option is not supported.
         # Corresponds to the JSON property `httpKeepAliveTimeoutSec`
         # @return [Fixnum]
         attr_accessor :http_keep_alive_timeout_sec
@@ -49192,11 +49587,13 @@ module Google
       # HTTPS Proxy resources: * [Global](/compute/docs/reference/rest/alpha/
       # targetHttpsProxies) * [Regional](/compute/docs/reference/rest/alpha/
       # regionTargetHttpsProxies) A target HTTPS proxy is a component of GCP HTTPS
-      # load balancers. * targetHttpsProxies are used by external HTTPS load balancers.
-      # * regionTargetHttpsProxies are used by internal HTTPS load balancers.
-      # Forwarding rules reference a target HTTPS proxy, and the target proxy then
-      # references a URL map. For more information, read Using Target Proxies and
-      # Forwarding rule concepts.
+      # load balancers. * targetHttpProxies are used by global external Application
+      # Load Balancers, classic Application Load Balancers, cross-region internal
+      # Application Load Balancers, and Traffic Director. * regionTargetHttpProxies
+      # are used by regional internal Application Load Balancers and regional external
+      # Application Load Balancers. Forwarding rules reference a target HTTPS proxy,
+      # and the target proxy then references a URL map. For more information, read
+      # Using Target Proxies and Forwarding rule concepts.
       class TargetHttpsProxy
         include Google::Apis::Core::Hashable
       
@@ -49269,10 +49666,10 @@ module Google
       
         # Specifies how long to keep a connection open, after completing a response,
         # while there is no matching traffic (in seconds). If an HTTP keep-alive is not
-        # specified, a default value (610 seconds) will be used. For Global external
-        # HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum
-        # allowed value is 1200 seconds. For Global external HTTP(S) load balancer (
-        # classic), this option is not available publicly.
+        # specified, a default value (610 seconds) will be used. For global external
+        # Application Load Balancers, the minimum allowed value is 5 seconds and the
+        # maximum allowed value is 1200 seconds. For classic Application Load Balancers,
+        # this option is not supported.
         # Corresponds to the JSON property `httpKeepAliveTimeoutSec`
         # @return [Fixnum]
         attr_accessor :http_keep_alive_timeout_sec
@@ -52301,17 +52698,19 @@ module Google
       # Global](/compute/docs/reference/rest/alpha/urlMaps) * [Regional](/compute/docs/
       # reference/rest/alpha/regionUrlMaps) A URL map resource is a component of
       # certain types of cloud load balancers and Traffic Director: * urlMaps are used
-      # by external HTTP(S) load balancers and Traffic Director. * regionUrlMaps are
-      # used by internal HTTP(S) load balancers. For a list of supported URL map
-      # features by the load balancer type, see the Load balancing features: Routing
-      # and traffic management table. For a list of supported URL map features for
-      # Traffic Director, see the Traffic Director features: Routing and traffic
-      # management table. This resource defines mappings from hostnames and URL paths
-      # to either a backend service or a backend bucket. To use the global urlMaps
-      # resource, the backend service must have a loadBalancingScheme of either
-      # EXTERNAL or INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource, the
-      # backend service must have a loadBalancingScheme of INTERNAL_MANAGED. For more
-      # information, read URL Map Concepts.
+      # by global external Application Load Balancers, classic Application Load
+      # Balancers, and cross-region internal Application Load Balancers. *
+      # regionUrlMaps are used by internal Application Load Balancers, regional
+      # external Application Load Balancers and regional internal Application Load
+      # Balancers. For a list of supported URL map features by the load balancer type,
+      # see the Load balancing features: Routing and traffic management table. For a
+      # list of supported URL map features for Traffic Director, see the Traffic
+      # Director features: Routing and traffic management table. This resource defines
+      # mappings from hostnames and URL paths to either a backend service or a backend
+      # bucket. To use the global urlMaps resource, the backend service must have a
+      # loadBalancingScheme of either EXTERNAL or INTERNAL_SELF_MANAGED. To use the
+      # regionUrlMaps resource, the backend service must have a loadBalancingScheme of
+      # INTERNAL_MANAGED. For more information, read URL Map Concepts.
       class UrlMap
         include Google::Apis::Core::Hashable
       
@@ -52332,8 +52731,8 @@ module Google
         # defaultRouteAction specifies any weightedBackendServices, defaultService must
         # not be set. Conversely if defaultService is set, defaultRouteAction cannot
         # contain any weightedBackendServices. Only one of defaultRouteAction or
-        # defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load
-        # balancers only support the urlRewrite action within defaultRouteAction.
+        # defaultUrlRedirect must be set. URL maps for classic Application Load
+        # Balancers only support the urlRewrite action within defaultRouteAction.
         # defaultRouteAction has no effect when the URL map is bound to a target gRPC
         # proxy that has the validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultRouteAction`
@@ -52965,16 +53364,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies the load balancer type(s) this validation request is for. Use
-        # EXTERNAL_MANAGED for HTTP/HTTPS External Global Load Balancer with Advanced
-        # Traffic Management. Use EXTERNAL for Classic HTTP/HTTPS External Global Load
-        # Balancer. Other load balancer types are not supported. For more information,
-        # refer to Choosing a load balancer. If unspecified, the load balancing scheme
-        # will be inferred from the backend service resources this URL map references.
-        # If that can not be inferred (for example, this URL map only references backend
-        # buckets, or this Url map is for rewrites and redirects only and doesn't
-        # reference any backends), EXTERNAL will be used as the default type. If
-        # specified, the scheme(s) must not conflict with the load balancing scheme of
-        # the backend service resources this Url map references.
+        # EXTERNAL_MANAGED for global external Application Load Balancers and regional
+        # external Application Load Balancers. Use EXTERNAL for classic Application Load
+        # Balancers. Use INTERNAL_MANAGED for internal Application Load Balancers. For
+        # more information, refer to Choosing a load balancer. If unspecified, the load
+        # balancing scheme will be inferred from the backend service resources this URL
+        # map references. If that can not be inferred (for example, this URL map only
+        # references backend buckets, or this Url map is for rewrites and redirects only
+        # and doesn't reference any backends), EXTERNAL will be used as the default type.
+        # If specified, the scheme(s) must not conflict with the load balancing scheme
+        # of the backend service resources this Url map references.
         # Corresponds to the JSON property `loadBalancingSchemes`
         # @return [Array<String>]
         attr_accessor :load_balancing_schemes
@@ -52983,17 +53382,19 @@ module Google
         # Global](/compute/docs/reference/rest/alpha/urlMaps) * [Regional](/compute/docs/
         # reference/rest/alpha/regionUrlMaps) A URL map resource is a component of
         # certain types of cloud load balancers and Traffic Director: * urlMaps are used
-        # by external HTTP(S) load balancers and Traffic Director. * regionUrlMaps are
-        # used by internal HTTP(S) load balancers. For a list of supported URL map
-        # features by the load balancer type, see the Load balancing features: Routing
-        # and traffic management table. For a list of supported URL map features for
-        # Traffic Director, see the Traffic Director features: Routing and traffic
-        # management table. This resource defines mappings from hostnames and URL paths
-        # to either a backend service or a backend bucket. To use the global urlMaps
-        # resource, the backend service must have a loadBalancingScheme of either
-        # EXTERNAL or INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource, the
-        # backend service must have a loadBalancingScheme of INTERNAL_MANAGED. For more
-        # information, read URL Map Concepts.
+        # by global external Application Load Balancers, classic Application Load
+        # Balancers, and cross-region internal Application Load Balancers. *
+        # regionUrlMaps are used by internal Application Load Balancers, regional
+        # external Application Load Balancers and regional internal Application Load
+        # Balancers. For a list of supported URL map features by the load balancer type,
+        # see the Load balancing features: Routing and traffic management table. For a
+        # list of supported URL map features for Traffic Director, see the Traffic
+        # Director features: Routing and traffic management table. This resource defines
+        # mappings from hostnames and URL paths to either a backend service or a backend
+        # bucket. To use the global urlMaps resource, the backend service must have a
+        # loadBalancingScheme of either EXTERNAL or INTERNAL_SELF_MANAGED. To use the
+        # regionUrlMaps resource, the backend service must have a loadBalancingScheme of
+        # INTERNAL_MANAGED. For more information, read URL Map Concepts.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ComputeAlpha::UrlMap]
         attr_accessor :resource
