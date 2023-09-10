@@ -665,7 +665,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create an session template, synchronously.
+        # Create a session template synchronously.
         # @param [String] parent
         #   Required. The parent resource where this session template will be created.
         # @param [Google::Apis::DataprocV1::SessionTemplate] session_template_object
@@ -760,7 +760,7 @@ module Google
         
         # Lists session templates.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of session templates.
+        #   Required. The parent that owns this collection of session templates.
         # @param [String] filter
         #   Optional. A filter for the session templates to return in the response.
         #   Filters are case sensitive and have the following syntax:field = value AND
@@ -801,8 +801,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the session template, synchronously.Disable check for update_mask,
-        # because all updates will be full replacements.
+        # Updates the session template synchronously.
         # @param [String] name
         #   Required. The resource name of the session template.
         # @param [Google::Apis::DataprocV1::SessionTemplate] session_template_object
@@ -841,11 +840,11 @@ module Google
         # @param [Google::Apis::DataprocV1::Session] session_object
         # @param [String] request_id
         #   Optional. A unique ID used to identify the request. If the service receives
-        #   two CreateSessionRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
-        #   google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateSessionRequest)s with
-        #   the same ID, the second request is ignored and the first Session is created
-        #   and stored in the backend is returned.Recommendation: Set this value to a UUID
-        #   (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must
+        #   two CreateSessionRequests (https://cloud.google.com/dataproc/docs/reference/
+        #   rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateSessionRequest)s
+        #   with the same ID, the second request is ignored, and the first Session is
+        #   created and stored in the backend.Recommendation: Set this value to a UUID (
+        #   https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must
         #   contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-
         #   ). The maximum length is 40 characters.
         # @param [String] session_id
@@ -884,7 +883,7 @@ module Google
         end
         
         # Deletes the interactive session resource. If the session is not in terminal
-        # state, it will be terminated and deleted afterwards.
+        # state, it is terminated, and then deleted.
         # @param [String] name
         #   Required. The name of the session resource to delete.
         # @param [String] request_id
@@ -953,39 +952,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Inject Credentials in the interactive session.
-        # @param [String] session
-        #   Required. The name of the session resource to inject credentials to.
-        # @param [Google::Apis::DataprocV1::InjectSessionCredentialsRequest] inject_session_credentials_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataprocV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def inject_project_location_session_credentials(session, inject_session_credentials_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+session}:injectCredentials', options)
-          command.request_representation = Google::Apis::DataprocV1::InjectSessionCredentialsRequest::Representation
-          command.request_object = inject_session_credentials_request_object
-          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
-          command.response_class = Google::Apis::DataprocV1::Operation
-          command.params['session'] = session unless session.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Lists interactive sessions.
         # @param [String] parent
         #   Required. The parent, which owns this collection of sessions.
@@ -993,12 +959,12 @@ module Google
         #   Optional. A filter for the sessions to return in the response.A filter is a
         #   logical expression constraining the values of various fields in each session
         #   resource. Filters are case sensitive, and may contain multiple clauses
-        #   combined with logical operators (AND/OR). Supported fields are session_id,
-        #   session_uuid, state, and create_time.e.g. state = ACTIVE and create_time < "
-        #   2023-01-01T00:00:00Z" filters for sessions in state ACTIVE that were created
-        #   before 2023-01-01See https://google.aip.dev/assets/misc/ebnf-filtering.txt for
-        #   a detailed description of the filter syntax and a list of supported
-        #   comparisons.
+        #   combined with logical operators (AND, OR). Supported fields are session_id,
+        #   session_uuid, state, and create_time.Example: state = ACTIVE and create_time <
+        #   "2023-01-01T00:00:00Z" is a filter for sessions in an ACTIVE state that were
+        #   created before 2023-01-01.See https://google.aip.dev/assets/misc/ebnf-
+        #   filtering.txt for a detailed description of the filter syntax and a list of
+        #   supported comparators.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of sessions to return in each response. The
         #   service may return fewer than this value.
