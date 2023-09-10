@@ -2749,17 +2749,16 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # The scopes of a policy define which resources an ACM policy can restrict, and
-        # where ACM resources can be referenced. For example, a policy with scopes=["
-        # folders/123"] has the following behavior: - vpcsc perimeters can only restrict
-        # projects within folders/123 - access levels can only be referenced by
-        # resources within folders/123. If empty, there are no limitations on which
-        # resources can be restricted by an ACM policy, and there are no limitations on
-        # where ACM resources can be referenced. Only one policy can include a given
-        # scope (attempting to create a second policy which includes "folders/123" will
-        # result in an error). Currently, scopes cannot be modified after a policy is
-        # created. Currently, policies can only have a single scope. Format: list of `
-        # folders/`folder_number`` or `projects/`project_number``
+        # The scopes of the AccessPolicy. Scopes define which resources a policy can
+        # restrict and where its resources can be referenced. For example, policy A with
+        # `scopes=["folders/123"]` has the following behavior: - ServicePerimeter can
+        # only restrict projects within `folders/123`. - ServicePerimeter within policy
+        # A can only reference access levels defined within policy A. - Only one policy
+        # can include a given scope; thus, attempting to create a second policy which
+        # includes `folders/123` will result in an error. If no scopes are provided,
+        # then any resource within the organization can be restricted. Scopes cannot be
+        # modified after a policy is created. Policies can only have a single scope.
+        # Format: list of `folders/`folder_number`` or `projects/`project_number``
         # Corresponds to the JSON property `scopes`
         # @return [Array<String>]
         attr_accessor :scopes
@@ -5238,6 +5237,18 @@ module Google
         # @return [Hash<String,Google::Apis::CloudassetV1::RelatedResources>]
         attr_accessor :relationships
       
+        # The actual content of Security Command Center security marks associated with
+        # the asset. Note that both staging & prod SecurityMarks are attached on prod
+        # resources. In CAS preprod/prod, both staging & prod SecurityMarks are ingested
+        # and returned in the following `security_marks` map. In that case, the prefix "
+        # staging." will be added to the keys of all the staging marks. To search
+        # against SCC SecurityMarks field: * Use a field query: - query by a given key
+        # value pair. Example: `sccSecurityMarks.foo=bar` - query by a given key's
+        # existence. Example: `sccSecurityMarks.foo:*`
+        # Corresponds to the JSON property `sccSecurityMarks`
+        # @return [Hash<String,String>]
+        attr_accessor :scc_security_marks
+      
         # The state of this resource. Different resources types have different state
         # definitions that are mapped from various fields of different resource types.
         # This field is available only when the resource's Protobuf contains it. Example:
@@ -5322,6 +5333,7 @@ module Google
           @parent_full_resource_name = args[:parent_full_resource_name] if args.key?(:parent_full_resource_name)
           @project = args[:project] if args.key?(:project)
           @relationships = args[:relationships] if args.key?(:relationships)
+          @scc_security_marks = args[:scc_security_marks] if args.key?(:scc_security_marks)
           @state = args[:state] if args.key?(:state)
           @tag_keys = args[:tag_keys] if args.key?(:tag_keys)
           @tag_value_ids = args[:tag_value_ids] if args.key?(:tag_value_ids)
