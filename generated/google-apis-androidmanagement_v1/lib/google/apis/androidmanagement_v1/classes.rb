@@ -1762,7 +1762,7 @@ module Google
       class DeviceRadioState
         include Google::Apis::Core::Hashable
       
-        # Controls whether airplane mode can be toggled by the user or not
+        # Controls whether airplane mode can be toggled by the user or not.
         # Corresponds to the JSON property `airplaneModeState`
         # @return [String]
         attr_accessor :airplane_mode_state
