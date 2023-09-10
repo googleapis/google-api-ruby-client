@@ -844,6 +844,11 @@ module Google
         # @return [Google::Apis::SqladminV1::SqlOutOfDiskReport]
         attr_accessor :out_of_disk_report
       
+        # Output only. The dns name of the primary instance in a replication group.
+        # Corresponds to the JSON property `primaryDnsName`
+        # @return [String]
+        attr_accessor :primary_dns_name
+      
         # The project ID of the project containing the Cloud SQL instance. The Google
         # apps domain is prefixed if applicable.
         # Corresponds to the JSON property `project`
@@ -958,6 +963,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @on_premises_configuration = args[:on_premises_configuration] if args.key?(:on_premises_configuration)
           @out_of_disk_report = args[:out_of_disk_report] if args.key?(:out_of_disk_report)
+          @primary_dns_name = args[:primary_dns_name] if args.key?(:primary_dns_name)
           @project = args[:project] if args.key?(:project)
           @psc_service_attachment_link = args[:psc_service_attachment_link] if args.key?(:psc_service_attachment_link)
           @region = args[:region] if args.key?(:region)
@@ -2343,7 +2349,8 @@ module Google
         attr_accessor :kind
       
         # The preferred Compute Engine zone for the secondary/failover (for example: us-
-        # central1-a, us-central1-b, etc.).
+        # central1-a, us-central1-b, etc.). To disable this field, set it to '
+        # no_secondary_zone'.
         # Corresponds to the JSON property `secondaryZone`
         # @return [String]
         attr_accessor :secondary_zone
