@@ -1510,6 +1510,12 @@ module Google
         # @return [String]
         attr_accessor :exact_searchable_option
       
+        # Possible options for the facet that corresponds to the current attribute
+        # config.
+        # Corresponds to the JSON property `facetConfig`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttributeFacetConfig]
+        attr_accessor :facet_config
+      
         # Output only. Indicates whether this attribute has been used by any products. `
         # True` if at least one Product is using this attribute in Product.attributes.
         # Otherwise, this field is `False`. CatalogAttribute can be pre-loaded by using
@@ -1585,6 +1591,7 @@ module Google
         def update!(**args)
           @dynamic_facetable_option = args[:dynamic_facetable_option] if args.key?(:dynamic_facetable_option)
           @exact_searchable_option = args[:exact_searchable_option] if args.key?(:exact_searchable_option)
+          @facet_config = args[:facet_config] if args.key?(:facet_config)
           @in_use = args[:in_use] if args.key?(:in_use)
           @indexable_option = args[:indexable_option] if args.key?(:indexable_option)
           @key = args[:key] if args.key?(:key)
@@ -1592,6 +1599,121 @@ module Google
           @retrievable_option = args[:retrievable_option] if args.key?(:retrievable_option)
           @searchable_option = args[:searchable_option] if args.key?(:searchable_option)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Possible options for the facet that corresponds to the current attribute
+      # config.
+      class GoogleCloudRetailV2alphaCatalogAttributeFacetConfig
+        include Google::Apis::Core::Hashable
+      
+        # If you don't set the facet SearchRequest.FacetSpec.FacetKey.intervals in the
+        # request to a numerical attribute, then we use the computed intervals with
+        # rounded bounds obtained from all its product numerical attribute values. The
+        # computed intervals might not be ideal for some attributes. Therefore, we give
+        # you the option to overwrite them with the facet_intervals field. The maximum
+        # of facet intervals per CatalogAttribute is 40. Each interval must have a lower
+        # bound or an upper bound. If both bounds are provided, then the lower bound
+        # must be smaller or equal than the upper bound.
+        # Corresponds to the JSON property `facetIntervals`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaInterval>]
+        attr_accessor :facet_intervals
+      
+        # Each instance represents a list of attribute values to ignore as facet values
+        # for a specific time range. The maximum number of instances per
+        # CatalogAttribute is 25.
+        # Corresponds to the JSON property `ignoredFacetValues`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttributeFacetConfigIgnoredFacetValues>]
+        attr_accessor :ignored_facet_values
+      
+        # Each instance replaces a list of facet values by a merged facet value. If a
+        # facet value is not in any list, then it will stay the same. To avoid conflicts,
+        # only paths of length 1 are accepted. In other words, if "dark_blue" merged
+        # into "BLUE", then the latter can't merge into "blues" because this would
+        # create a path of length 2. The maximum number of instances of MergedFacetValue
+        # per CatalogAttribute is 100.
+        # Corresponds to the JSON property `mergedFacetValues`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttributeFacetConfigMergedFacetValue>]
+        attr_accessor :merged_facet_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @facet_intervals = args[:facet_intervals] if args.key?(:facet_intervals)
+          @ignored_facet_values = args[:ignored_facet_values] if args.key?(:ignored_facet_values)
+          @merged_facet_values = args[:merged_facet_values] if args.key?(:merged_facet_values)
+        end
+      end
+      
+      # Facet values to ignore on facets during the specified time range for the given
+      # SearchResponse.Facet.key attribute.
+      class GoogleCloudRetailV2alphaCatalogAttributeFacetConfigIgnoredFacetValues
+        include Google::Apis::Core::Hashable
+      
+        # If start time is empty and end time is not empty, then ignore these facet
+        # values before end time.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Time range for the current list of facet values to ignore. If multiple time
+        # ranges are specified for an facet value for the current attribute, consider
+        # all of them. If both are empty, ignore always. If start time and end time are
+        # set, then start time must be before end time. If start time is not empty and
+        # end time is empty, then will ignore these facet values after the start time.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # List of facet values to ignore for the following time range. The facet values
+        # are the same as the attribute values. There is a limit of 10 values per
+        # instance of IgnoredFacetValues. Each value can have at most 60 characters.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Replaces a set of facet values by the same (possibly different) merged facet
+      # value. Each facet value should appear at most once as a value per
+      # CatalogAttribute.
+      class GoogleCloudRetailV2alphaCatalogAttributeFacetConfigMergedFacetValue
+        include Google::Apis::Core::Hashable
+      
+        # All the previous values are replaced by this merged facet value. This
+        # merged_value must be non-empty and can have up to 60 characters.
+        # Corresponds to the JSON property `mergedValue`
+        # @return [String]
+        attr_accessor :merged_value
+      
+        # All the facet values that are replaces by the same merged_value that follows.
+        # The maximum number of values per MergedFacetValue is 25. Each value can have
+        # up to 60 characters.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @merged_value = args[:merged_value] if args.key?(:merged_value)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -1933,6 +2055,12 @@ module Google
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConditionTimeRange>]
         attr_accessor :active_time_range
       
+        # Used to support browse uses cases. A list (up to 10 entries) of categories or
+        # departments. The format should be the same as UserEvent.page_categories;
+        # Corresponds to the JSON property `pageCategories`
+        # @return [Array<String>]
+        attr_accessor :page_categories
+      
         # A list (up to 10 entries) of terms to match the query on. If not specified,
         # match all queries. If many query terms are specified, the condition is matched
         # if any of the terms is a match (i.e. using the OR operator).
@@ -1947,6 +2075,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @active_time_range = args[:active_time_range] if args.key?(:active_time_range)
+          @page_categories = args[:page_categories] if args.key?(:page_categories)
           @query_terms = args[:query_terms] if args.key?(:query_terms)
         end
       end
@@ -5144,6 +5273,22 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRuleFilterAction]
         attr_accessor :filter_action
       
+        # Force returns an attribute/facet in the request around a certain position or
+        # above. * Rule Condition: - Must specify non-empty Condition.query_terms (for
+        # search only) or Condition.page_categories (for browse only), but can't specify
+        # both. * Action Inputs: attribute name, position * Action Result: Will force
+        # return a facet key around a certain position or above if the condition is
+        # satisfied. Example: Suppose the query is "shoes", the Condition.query_terms is
+        # "shoes", the ForceReturnFacetAction.FacetPositionAdjustment.attribute_name is "
+        # size" and the ForceReturnFacetAction.FacetPositionAdjustment.position is 8.
+        # Two cases: a) The facet key "size" is not already in the top 8 slots, then the
+        # facet "size" will appear at a position close to 8. b) The facet key "size" in
+        # among the top 8 positions in the request, then it will stay at its current
+        # rank.
+        # Corresponds to the JSON property `forceReturnFacetAction`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRuleForceReturnFacetAction]
+        attr_accessor :force_return_facet_action
+      
         # Prevents a term in the query from being used in search. Example: Don't search
         # for "shoddy".
         # Corresponds to the JSON property `ignoreAction`
@@ -5164,6 +5309,17 @@ module Google
         # Corresponds to the JSON property `redirectAction`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRuleRedirectAction]
         attr_accessor :redirect_action
+      
+        # Removes an attribute/facet in the request if is present. * Rule Condition: -
+        # Must specify non-empty Condition.query_terms (for search only) or Condition.
+        # page_categories (for browse only), but can't specify both. * Action Input:
+        # attribute name * Action Result: Will remove the attribute (as a facet) from
+        # the request if it is present. Example: Suppose the query is "shoes", the
+        # Condition.query_terms is "shoes" and the attribute name "size", then facet key
+        # "size" will be removed from the request (if it is present).
+        # Corresponds to the JSON property `removeFacetAction`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRuleRemoveFacetAction]
+        attr_accessor :remove_facet_action
       
         # Replaces a term in the query. Multiple replacement candidates can be specified.
         # All `query_terms` will be replaced with the replacement term. Example:
@@ -5189,9 +5345,11 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @do_not_associate_action = args[:do_not_associate_action] if args.key?(:do_not_associate_action)
           @filter_action = args[:filter_action] if args.key?(:filter_action)
+          @force_return_facet_action = args[:force_return_facet_action] if args.key?(:force_return_facet_action)
           @ignore_action = args[:ignore_action] if args.key?(:ignore_action)
           @oneway_synonyms_action = args[:oneway_synonyms_action] if args.key?(:oneway_synonyms_action)
           @redirect_action = args[:redirect_action] if args.key?(:redirect_action)
+          @remove_facet_action = args[:remove_facet_action] if args.key?(:remove_facet_action)
           @replacement_action = args[:replacement_action] if args.key?(:replacement_action)
           @twoway_synonyms_action = args[:twoway_synonyms_action] if args.key?(:twoway_synonyms_action)
         end
@@ -5300,6 +5458,65 @@ module Google
         end
       end
       
+      # Force returns an attribute/facet in the request around a certain position or
+      # above. * Rule Condition: - Must specify non-empty Condition.query_terms (for
+      # search only) or Condition.page_categories (for browse only), but can't specify
+      # both. * Action Inputs: attribute name, position * Action Result: Will force
+      # return a facet key around a certain position or above if the condition is
+      # satisfied. Example: Suppose the query is "shoes", the Condition.query_terms is
+      # "shoes", the ForceReturnFacetAction.FacetPositionAdjustment.attribute_name is "
+      # size" and the ForceReturnFacetAction.FacetPositionAdjustment.position is 8.
+      # Two cases: a) The facet key "size" is not already in the top 8 slots, then the
+      # facet "size" will appear at a position close to 8. b) The facet key "size" in
+      # among the top 8 positions in the request, then it will stay at its current
+      # rank.
+      class GoogleCloudRetailV2alphaRuleForceReturnFacetAction
+        include Google::Apis::Core::Hashable
+      
+        # Each instance corresponds to a force return attribute for the given condition.
+        # There can't be more 3 instances here.
+        # Corresponds to the JSON property `facetPositionAdjustments`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRuleForceReturnFacetActionFacetPositionAdjustment>]
+        attr_accessor :facet_position_adjustments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @facet_position_adjustments = args[:facet_position_adjustments] if args.key?(:facet_position_adjustments)
+        end
+      end
+      
+      # Each facet position adjustment consists of a single attribute name (i.e. facet
+      # key) along with a specified position.
+      class GoogleCloudRetailV2alphaRuleForceReturnFacetActionFacetPositionAdjustment
+        include Google::Apis::Core::Hashable
+      
+        # The attribute name to force return as a facet. Each attribute name should be a
+        # valid attribute name, be non-empty and contain at most 80 characters long.
+        # Corresponds to the JSON property `attributeName`
+        # @return [String]
+        attr_accessor :attribute_name
+      
+        # This is the position in the request as explained above. It should be strictly
+        # positive be at most 100.
+        # Corresponds to the JSON property `position`
+        # @return [Fixnum]
+        attr_accessor :position
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_name = args[:attribute_name] if args.key?(:attribute_name)
+          @position = args[:position] if args.key?(:position)
+        end
+      end
+      
       # Prevents a term in the query from being used in search. Example: Don't search
       # for "shoddy".
       class GoogleCloudRetailV2alphaRuleIgnoreAction
@@ -5374,6 +5591,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+        end
+      end
+      
+      # Removes an attribute/facet in the request if is present. * Rule Condition: -
+      # Must specify non-empty Condition.query_terms (for search only) or Condition.
+      # page_categories (for browse only), but can't specify both. * Action Input:
+      # attribute name * Action Result: Will remove the attribute (as a facet) from
+      # the request if it is present. Example: Suppose the query is "shoes", the
+      # Condition.query_terms is "shoes" and the attribute name "size", then facet key
+      # "size" will be removed from the request (if it is present).
+      class GoogleCloudRetailV2alphaRuleRemoveFacetAction
+        include Google::Apis::Core::Hashable
+      
+        # The attribute names (i.e. facet keys) to remove from the dynamic facets (if
+        # present in the request). There can't be more 3 attribute names. Each attribute
+        # name should be a valid attribute name, be non-empty and contain at most 80
+        # characters.
+        # Corresponds to the JSON property `attributeNames`
+        # @return [Array<String>]
+        attr_accessor :attribute_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_names = args[:attribute_names] if args.key?(:attribute_names)
         end
       end
       
