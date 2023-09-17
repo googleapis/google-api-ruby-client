@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListWorkflowRevisionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListWorkflowsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -102,6 +108,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::WorkflowsV1::Operation, decorator: Google::Apis::WorkflowsV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListWorkflowRevisionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :workflows, as: 'workflows', class: Google::Apis::WorkflowsV1::Workflow, decorator: Google::Apis::WorkflowsV1::Workflow::Representation
       
         end
       end

@@ -88,6 +88,32 @@ module Google
         end
       end
       
+      # Response for the ListWorkflowRevisions method.
+      class ListWorkflowRevisionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The revisions of the workflow, ordered in reverse chronological order.
+        # Corresponds to the JSON property `workflows`
+        # @return [Array<Google::Apis::WorkflowsV1::Workflow>]
+        attr_accessor :workflows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workflows = args[:workflows] if args.key?(:workflows)
+        end
+      end
+      
       # Response for the ListWorkflows method.
       class ListWorkflowsResponse
         include Google::Apis::Core::Hashable
