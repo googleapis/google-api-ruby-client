@@ -508,6 +508,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RollbackTargetConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackTargetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackTargetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Rollout
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1428,6 +1446,36 @@ module Google
         end
       end
       
+      class RollbackTargetConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rollout, as: 'rollout', class: Google::Apis::ClouddeployV1::Rollout, decorator: Google::Apis::ClouddeployV1::Rollout::Representation
+      
+          property :starting_phase_id, as: 'startingPhaseId'
+        end
+      end
+      
+      class RollbackTargetRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :release_id, as: 'releaseId'
+          property :rollback_config, as: 'rollbackConfig', class: Google::Apis::ClouddeployV1::RollbackTargetConfig, decorator: Google::Apis::ClouddeployV1::RollbackTargetConfig::Representation
+      
+          property :rollout_id, as: 'rolloutId'
+          property :rollout_to_roll_back, as: 'rolloutToRollBack'
+          property :target_id, as: 'targetId'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class RollbackTargetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rollback_config, as: 'rollbackConfig', class: Google::Apis::ClouddeployV1::RollbackTargetConfig, decorator: Google::Apis::ClouddeployV1::RollbackTargetConfig::Representation
+      
+        end
+      end
+      
       class Rollout
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1450,6 +1498,8 @@ module Google
           property :name, as: 'name'
           collection :phases, as: 'phases', class: Google::Apis::ClouddeployV1::Phase, decorator: Google::Apis::ClouddeployV1::Phase::Representation
       
+          property :rollback_of_rollout, as: 'rollbackOfRollout'
+          collection :rolled_back_by_rollouts, as: 'rolledBackByRollouts'
           property :state, as: 'state'
           property :target_id, as: 'targetId'
           property :uid, as: 'uid'
