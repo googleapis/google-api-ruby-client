@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WebServerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -381,6 +387,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :state, as: 'state'
+          property :storage_config, as: 'storageConfig', class: Google::Apis::ComposerV1::StorageConfig, decorator: Google::Apis::ComposerV1::StorageConfig::Representation
+      
           property :update_time, as: 'updateTime'
           property :uuid, as: 'uuid'
         end
@@ -725,6 +733,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_done, as: 'isDone'
           collection :output, as: 'output'
+        end
+      end
+      
+      class StorageConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
