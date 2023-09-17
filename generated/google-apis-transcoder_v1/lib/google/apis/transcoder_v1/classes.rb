@@ -757,6 +757,27 @@ module Google
         end
       end
       
+      # `fmp4` container configuration.
+      class Fmp4Config
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specify the codec tag string that will be used in the media
+        # bitstream. When not specified, the codec appropriate value is used. Supported
+        # H265 codec tags: - `hvc1` (default) - `hev1`
+        # Corresponds to the JSON property `codecTag`
+        # @return [String]
+        attr_accessor :codec_tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @codec_tag = args[:codec_tag] if args.key?(:codec_tag)
+        end
+      end
+      
       # H264 codec settings.
       class H264CodecSettings
         include Google::Apis::Core::Hashable
@@ -1585,6 +1606,11 @@ module Google
         # @return [String]
         attr_accessor :file_name
       
+        # `fmp4` container configuration.
+        # Corresponds to the JSON property `fmp4`
+        # @return [Google::Apis::TranscoderV1::Fmp4Config]
+        attr_accessor :fmp4
+      
         # A unique key for this multiplexed stream.
         # Corresponds to the JSON property `key`
         # @return [String]
@@ -1605,6 +1631,7 @@ module Google
           @elementary_streams = args[:elementary_streams] if args.key?(:elementary_streams)
           @encryption_id = args[:encryption_id] if args.key?(:encryption_id)
           @file_name = args[:file_name] if args.key?(:file_name)
+          @fmp4 = args[:fmp4] if args.key?(:fmp4)
           @key = args[:key] if args.key?(:key)
           @segment_settings = args[:segment_settings] if args.key?(:segment_settings)
         end
