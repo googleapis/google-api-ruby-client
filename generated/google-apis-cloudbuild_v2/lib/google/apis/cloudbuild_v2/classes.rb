@@ -1043,6 +1043,31 @@ module Google
         end
       end
       
+      # The response message for Locations.ListLocations.
+      class ListLocationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of locations that matches the specified filter in the request.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::CloudbuildV2::Location>]
+        attr_accessor :locations
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Message for response to listing Repositories.
       class ListRepositoriesResponse
         include Google::Apis::Core::Hashable
@@ -1065,6 +1090,53 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @repositories = args[:repositories] if args.key?(:repositories)
+        end
+      end
+      
+      # A resource that represents a Google Cloud location.
+      class Location
+        include Google::Apis::Core::Hashable
+      
+        # The friendly name for this location, typically a nearby city name. For example,
+        # "Tokyo".
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Cross-service attributes for the location. For example `"cloud.googleapis.com/
+        # region": "us-east1"`
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The canonical id for this location. For example: `"us-east1"`.
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
+        # Service-specific metadata. For example the available capacity at the given
+        # location.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # Resource name for the location, which may vary between implementations. For
+        # example: `"projects/example-project/locations/us-east1"`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @location_id = args[:location_id] if args.key?(:location_id)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1501,6 +1573,12 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV2::PipelineTask>]
         attr_accessor :finally_tasks
       
+        # Output only. auto-generated yaml that is output only for display purpose for
+        # workflows using pipeline_spec, used by UI/gcloud cli for Workflows.
+        # Corresponds to the JSON property `generatedYaml`
+        # @return [String]
+        attr_accessor :generated_yaml
+      
         # List of parameters.
         # Corresponds to the JSON property `params`
         # @return [Array<Google::Apis::CloudbuildV2::ParamSpec>]
@@ -1524,6 +1602,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @finally_tasks = args[:finally_tasks] if args.key?(:finally_tasks)
+          @generated_yaml = args[:generated_yaml] if args.key?(:generated_yaml)
           @params = args[:params] if args.key?(:params)
           @tasks = args[:tasks] if args.key?(:tasks)
           @workspaces = args[:workspaces] if args.key?(:workspaces)
@@ -2179,11 +2258,6 @@ module Google
       class TaskRef
         include Google::Apis::Core::Hashable
       
-        # Optional. The CustomTask definition to use.
-        # Corresponds to the JSON property `customTask`
-        # @return [String]
-        attr_accessor :custom_task
-      
         # Name of the task.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2208,7 +2282,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @custom_task = args[:custom_task] if args.key?(:custom_task)
           @name = args[:name] if args.key?(:name)
           @params = args[:params] if args.key?(:params)
           @resolver = args[:resolver] if args.key?(:resolver)
