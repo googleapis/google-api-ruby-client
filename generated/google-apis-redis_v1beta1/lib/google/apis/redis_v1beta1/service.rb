@@ -122,13 +122,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a Redis cluster based on the specified tier and memory size. The
-        # creation is executed asynchronously and callers may check the returned
-        # operation to track its progress. Once the operation is completed the Redis
-        # cluster will be fully functional. The completed longrunning.Operation will
-        # contain the new cluster object in the response field. The returned operation
-        # is automatically deleted after a few hours, so there is no need to call
-        # DeleteOperation.
+        # Creates a Redis cluster based on the specified properties. The creation is
+        # executed asynchronously and callers may check the returned operation to track
+        # its progress. Once the operation is completed the Redis cluster will be fully
+        # functional. The completed longrunning.Operation will contain the new cluster
+        # object in the response field. The returned operation is automatically deleted
+        # after a few hours, so there is no need to call DeleteOperation.
         # @param [String] parent
         #   Required. The resource name of the cluster location using the form: `projects/`
         #   project_id`/locations/`location_id`` where `location_id` refers to a GCP
