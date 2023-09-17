@@ -22,7 +22,8 @@ module Google
     module DataformV1beta1
       # Dataform API
       #
-      # 
+      # Service to develop, version control, and operationalize SQL pipelines in
+      #  BigQuery.
       #
       # @example
       #    require 'google/apis/dataform_v1beta1'
