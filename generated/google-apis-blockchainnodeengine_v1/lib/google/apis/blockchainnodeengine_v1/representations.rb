@@ -139,6 +139,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :endpoint_info, as: 'endpointInfo', class: Google::Apis::BlockchainnodeengineV1::EndpointInfo, decorator: Google::Apis::BlockchainnodeengineV1::EndpointInfo::Representation
       
+          property :service_attachment, as: 'serviceAttachment'
         end
       end
       
