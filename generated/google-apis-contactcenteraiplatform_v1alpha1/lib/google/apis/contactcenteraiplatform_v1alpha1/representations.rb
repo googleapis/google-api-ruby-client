@@ -277,6 +277,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :certificate, as: 'certificate'
+          property :email_mapping, as: 'emailMapping'
           property :entity_id, as: 'entityId'
           property :sso_uri, as: 'ssoUri'
           property :user_email, as: 'userEmail'
