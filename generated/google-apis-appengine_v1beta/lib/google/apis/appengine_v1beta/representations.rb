@@ -1225,6 +1225,7 @@ module Google
       class Service
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :generated_customer_metadata, as: 'generatedCustomerMetadata'
           property :id, as: 'id'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -1338,6 +1339,7 @@ module Google
       
           property :flexible_runtime_settings, as: 'flexibleRuntimeSettings', class: Google::Apis::AppengineV1beta::FlexibleRuntimeSettings, decorator: Google::Apis::AppengineV1beta::FlexibleRuntimeSettings::Representation
       
+          hash :generated_customer_metadata, as: 'generatedCustomerMetadata'
           collection :handlers, as: 'handlers', class: Google::Apis::AppengineV1beta::UrlMap, decorator: Google::Apis::AppengineV1beta::UrlMap::Representation
       
           property :health_check, as: 'healthCheck', class: Google::Apis::AppengineV1beta::HealthCheck, decorator: Google::Apis::AppengineV1beta::HealthCheck::Representation
