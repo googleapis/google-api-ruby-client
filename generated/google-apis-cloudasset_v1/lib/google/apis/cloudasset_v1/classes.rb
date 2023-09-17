@@ -2901,6 +2901,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :required_access_levels
       
+        # The request must originate from one of the provided VPC networks in Google
+        # Cloud. Cannot specify this field together with `ip_subnetworks`.
+        # Corresponds to the JSON property `vpcNetworkSources`
+        # @return [Array<Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1VpcNetworkSource>]
+        attr_accessor :vpc_network_sources
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2913,6 +2919,7 @@ module Google
           @negate = args[:negate] if args.key?(:negate)
           @regions = args[:regions] if args.key?(:regions)
           @required_access_levels = args[:required_access_levels] if args.key?(:required_access_levels)
+          @vpc_network_sources = args[:vpc_network_sources] if args.key?(:vpc_network_sources)
         end
       end
       
@@ -3033,6 +3040,19 @@ module Google
         # @return [String]
         attr_accessor :identity_type
       
+        # Whether to enforce traffic restrictions based on `sources` field. If the `
+        # sources` fields is non-empty, then this field must be set to `
+        # SOURCE_RESTRICTION_ENABLED`.
+        # Corresponds to the JSON property `sourceRestriction`
+        # @return [String]
+        attr_accessor :source_restriction
+      
+        # Sources that this EgressPolicy authorizes access from. If this field is not
+        # empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1EgressSource>]
+        attr_accessor :sources
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3041,6 +3061,8 @@ module Google
         def update!(**args)
           @identities = args[:identities] if args.key?(:identities)
           @identity_type = args[:identity_type] if args.key?(:identity_type)
+          @source_restriction = args[:source_restriction] if args.key?(:source_restriction)
+          @sources = args[:sources] if args.key?(:sources)
         end
       end
       
@@ -3087,6 +3109,33 @@ module Google
         def update!(**args)
           @egress_from = args[:egress_from] if args.key?(:egress_from)
           @egress_to = args[:egress_to] if args.key?(:egress_to)
+        end
+      end
+      
+      # The source that EgressPolicy authorizes access from inside the
+      # ServicePerimeter to somewhere outside the ServicePerimeter boundaries.
+      class GoogleIdentityAccesscontextmanagerV1EgressSource
+        include Google::Apis::Core::Hashable
+      
+        # An AccessLevel resource name that allows protected resources inside the
+        # ServicePerimeters to access outside the ServicePerimeter boundaries.
+        # AccessLevels listed must be in the same policy as this ServicePerimeter.
+        # Referencing a nonexistent AccessLevel will cause an error. If an AccessLevel
+        # name is not specified, only resources within the perimeter can be accessed
+        # through Google Cloud calls with request origins within the perimeter. Example:
+        # `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified
+        # for `access_level`, then all EgressSources will be allowed.
+        # Corresponds to the JSON property `accessLevel`
+        # @return [String]
+        attr_accessor :access_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_level = args[:access_level] if args.key?(:access_level)
         end
       end
       
@@ -3525,6 +3574,59 @@ module Google
         def update!(**args)
           @allowed_services = args[:allowed_services] if args.key?(:allowed_services)
           @enable_restriction = args[:enable_restriction] if args.key?(:enable_restriction)
+        end
+      end
+      
+      # The originating network source in Google Cloud.
+      class GoogleIdentityAccesscontextmanagerV1VpcNetworkSource
+        include Google::Apis::Core::Hashable
+      
+        # Sub-segment ranges inside of a VPC Network.
+        # Corresponds to the JSON property `vpcSubnetwork`
+        # @return [Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1VpcSubNetwork]
+        attr_accessor :vpc_subnetwork
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vpc_subnetwork = args[:vpc_subnetwork] if args.key?(:vpc_subnetwork)
+        end
+      end
+      
+      # Sub-segment ranges inside of a VPC Network.
+      class GoogleIdentityAccesscontextmanagerV1VpcSubNetwork
+        include Google::Apis::Core::Hashable
+      
+        # Required. Network name. If the network is not part of the organization, the `
+        # compute.network.get` permission must be granted to the caller. Format: `//
+        # compute.googleapis.com/projects/`PROJECT_ID`/global/networks/`NETWORK_NAME``
+        # Example: `//compute.googleapis.com/projects/my-project/global/networks/network-
+        # 1`
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # CIDR block IP subnetwork specification. The IP address must be an IPv4 address
+        # and can be a public or private IP address. Note that for a CIDR IP address
+        # block, the specified IP address portion must be properly truncated (i.e. all
+        # the host bits must be zero) or the input is considered malformed. For example,
+        # "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP
+        # addresses are allowed.
+        # Corresponds to the JSON property `vpcIpSubnetworks`
+        # @return [Array<String>]
+        attr_accessor :vpc_ip_subnetworks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+          @vpc_ip_subnetworks = args[:vpc_ip_subnetworks] if args.key?(:vpc_ip_subnetworks)
         end
       end
       
