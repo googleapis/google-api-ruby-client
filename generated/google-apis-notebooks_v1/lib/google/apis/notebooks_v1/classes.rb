@@ -854,7 +854,7 @@ module Google
         end
       end
       
-      # The definition of a notebook instance. Next tag: 43
+      # The definition of a notebook instance.
       class Instance
         include Google::Apis::Core::Hashable
       
@@ -941,7 +941,7 @@ module Google
         alias_method :install_gpu_driver?, :install_gpu_driver
       
         # InstanceMigrationEligibility represents the feasibility information of a
-        # migration from UmN to WbI. Next tag: 3
+        # migration from UmN to WbI.
         # Corresponds to the JSON property `instanceMigrationEligibility`
         # @return [Google::Apis::NotebooksV1::InstanceMigrationEligibility]
         attr_accessor :instance_migration_eligibility
@@ -1173,7 +1173,7 @@ module Google
       end
       
       # InstanceMigrationEligibility represents the feasibility information of a
-      # migration from UmN to WbI. Next tag: 3
+      # migration from UmN to WbI.
       class InstanceMigrationEligibility
         include Google::Apis::Core::Hashable
       
@@ -2160,7 +2160,7 @@ module Google
         attr_accessor :name
       
         # RuntimeMigrationEligibility represents the feasibility information of a
-        # migration from GmN to WbI. Next tag: 3
+        # migration from GmN to WbI.
         # Corresponds to the JSON property `runtimeMigrationEligibility`
         # @return [Google::Apis::NotebooksV1::RuntimeMigrationEligibility]
         attr_accessor :runtime_migration_eligibility
@@ -2317,7 +2317,7 @@ module Google
       end
       
       # RuntimeMigrationEligibility represents the feasibility information of a
-      # migration from GmN to WbI. Next tag: 3
+      # migration from GmN to WbI.
       class RuntimeMigrationEligibility
         include Google::Apis::Core::Hashable
       
