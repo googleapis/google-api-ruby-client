@@ -1001,7 +1001,7 @@ module Google
         end
       end
       
-      # The mediation A/B experiment. NEXT ID: 12
+      # The mediation A/B experiment.
       class MediationAbExperiment
         include Google::Apis::Core::Hashable
       
