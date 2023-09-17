@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AggregationFunction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AlertChart
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,6 +41,12 @@ module Google
       end
       
       class Axis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Breakdown
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -83,6 +95,12 @@ module Google
       end
       
       class DataSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Dimension
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Measure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MetricsScope
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,7 +208,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OpsAnalyticsQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Option
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Parameter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -380,6 +416,15 @@ module Google
         end
       end
       
+      class AggregationFunction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :parameters, as: 'parameters', class: Google::Apis::MonitoringV1::Parameter, decorator: Google::Apis::MonitoringV1::Parameter::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
       class AlertChart
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -395,9 +440,21 @@ module Google
         end
       end
       
+      class Breakdown
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_function, as: 'aggregationFunction', class: Google::Apis::MonitoringV1::AggregationFunction, decorator: Google::Apis::MonitoringV1::AggregationFunction::Representation
+      
+          property :column, as: 'column'
+          property :limit, as: 'limit'
+          property :sort_order, as: 'sortOrder'
+        end
+      end
+      
       class ChartOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_horizontal, as: 'displayHorizontal'
           property :mode, as: 'mode'
         end
       end
@@ -467,12 +524,32 @@ module Google
       class DataSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :breakdowns, as: 'breakdowns', class: Google::Apis::MonitoringV1::Breakdown, decorator: Google::Apis::MonitoringV1::Breakdown::Representation
+      
+          collection :dimensions, as: 'dimensions', class: Google::Apis::MonitoringV1::Dimension, decorator: Google::Apis::MonitoringV1::Dimension::Representation
+      
           property :legend_template, as: 'legendTemplate'
+          collection :measures, as: 'measures', class: Google::Apis::MonitoringV1::Measure, decorator: Google::Apis::MonitoringV1::Measure::Representation
+      
           property :min_alignment_period, as: 'minAlignmentPeriod'
           property :plot_type, as: 'plotType'
           property :target_axis, as: 'targetAxis'
           property :time_series_query, as: 'timeSeriesQuery', class: Google::Apis::MonitoringV1::TimeSeriesQuery, decorator: Google::Apis::MonitoringV1::TimeSeriesQuery::Representation
       
+        end
+      end
+      
+      class Dimension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :column_type, as: 'columnType'
+          property :float_bin_size, as: 'floatBinSize'
+          property :max_bin_count, as: 'maxBinCount'
+          property :numeric_bin_size, as: 'numericBinSize'
+          property :sort_column, as: 'sortColumn'
+          property :sort_order, as: 'sortOrder'
+          property :time_bin_size, as: 'timeBinSize'
         end
       end
       
@@ -566,6 +643,15 @@ module Google
         end
       end
       
+      class Measure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_function, as: 'aggregationFunction', class: Google::Apis::MonitoringV1::AggregationFunction, decorator: Google::Apis::MonitoringV1::AggregationFunction::Representation
+      
+          property :column, as: 'column'
+        end
+      end
+      
       class MetricsScope
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -623,11 +709,26 @@ module Google
         end
       end
       
+      class OpsAnalyticsQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sql, as: 'sql'
+        end
+      end
+      
       class Option
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           hash :value, as: 'value'
+        end
+      end
+      
+      class Parameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :double_value, as: 'doubleValue'
+          property :int_value, :numeric_string => true, as: 'intValue'
         end
       end
       
@@ -887,6 +988,8 @@ module Google
       class TimeSeriesQuery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ops_analytics_query, as: 'opsAnalyticsQuery', class: Google::Apis::MonitoringV1::OpsAnalyticsQuery, decorator: Google::Apis::MonitoringV1::OpsAnalyticsQuery::Representation
+      
           property :output_full_duration, as: 'outputFullDuration'
           property :prometheus_query, as: 'prometheusQuery'
           property :time_series_filter, as: 'timeSeriesFilter', class: Google::Apis::MonitoringV1::TimeSeriesFilter, decorator: Google::Apis::MonitoringV1::TimeSeriesFilter::Representation

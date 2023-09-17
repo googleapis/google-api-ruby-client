@@ -116,6 +116,39 @@ module Google
         end
       end
       
+      # Preview: An identifier for an aggregation function. Aggregation functions are
+      # SQL functions that group or transform data from multiple points to a single
+      # point. This is a preview feature and may be subject to change before final
+      # release.
+      class AggregationFunction
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Parameters applied to the aggregation function. Only used for
+        # functions that require them.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::MonitoringV1::Parameter>]
+        attr_accessor :parameters
+      
+        # Required. The type of aggregation function, must be one of the following: "
+        # none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric
+        # value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "
+        # count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "
+        # sum" - SUM()
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A chart that displays alert policy data.
       class AlertChart
         include Google::Apis::Core::Hashable
@@ -161,9 +194,63 @@ module Google
         end
       end
       
+      # Preview: A breakdown is an aggregation applied to the measures over a
+      # specified column. A breakdown can result in multiple series across a category
+      # for the provided measure. This is a preview feature and may be subject to
+      # change before final release.
+      class Breakdown
+        include Google::Apis::Core::Hashable
+      
+        # Preview: An identifier for an aggregation function. Aggregation functions are
+        # SQL functions that group or transform data from multiple points to a single
+        # point. This is a preview feature and may be subject to change before final
+        # release.
+        # Corresponds to the JSON property `aggregationFunction`
+        # @return [Google::Apis::MonitoringV1::AggregationFunction]
+        attr_accessor :aggregation_function
+      
+        # Required. The name of the column in the dataset containing the breakdown
+        # values.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Required. A limit to the number of breakdowns. If set to zero then all
+        # possible breakdowns are applied. The list of breakdowns is dependent on the
+        # value of the sort_order field.
+        # Corresponds to the JSON property `limit`
+        # @return [Fixnum]
+        attr_accessor :limit
+      
+        # Required. The sort order is applied to the values of the breakdown column.
+        # Corresponds to the JSON property `sortOrder`
+        # @return [String]
+        attr_accessor :sort_order
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_function = args[:aggregation_function] if args.key?(:aggregation_function)
+          @column = args[:column] if args.key?(:column)
+          @limit = args[:limit] if args.key?(:limit)
+          @sort_order = args[:sort_order] if args.key?(:sort_order)
+        end
+      end
+      
       # Options to control visual rendering of a chart.
       class ChartOptions
         include Google::Apis::Core::Hashable
+      
+        # Preview: Configures whether the charted values are shown on the horizontal or
+        # vertical axis. By default, values are represented the vertical axis. This is a
+        # preview feature and may be subject to change before final release.
+        # Corresponds to the JSON property `displayHorizontal`
+        # @return [Boolean]
+        attr_accessor :display_horizontal
+        alias_method :display_horizontal?, :display_horizontal
       
         # The chart mode.
         # Corresponds to the JSON property `mode`
@@ -176,6 +263,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_horizontal = args[:display_horizontal] if args.key?(:display_horizontal)
           @mode = args[:mode] if args.key?(:mode)
         end
       end
@@ -396,12 +484,27 @@ module Google
       class DataSet
         include Google::Apis::Core::Hashable
       
+        # Optional. The collection of breakdowns to be applied to the dataset.
+        # Corresponds to the JSON property `breakdowns`
+        # @return [Array<Google::Apis::MonitoringV1::Breakdown>]
+        attr_accessor :breakdowns
+      
+        # Optional. A collection of dimension columns.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::MonitoringV1::Dimension>]
+        attr_accessor :dimensions
+      
         # A template string for naming TimeSeries in the resulting data set. This should
         # be a string with interpolations of the form $`label_name`, which will resolve
         # to the label's value.
         # Corresponds to the JSON property `legendTemplate`
         # @return [String]
         attr_accessor :legend_template
+      
+        # Optional. A collection of measures.
+        # Corresponds to the JSON property `measures`
+        # @return [Array<Google::Apis::MonitoringV1::Measure>]
+        attr_accessor :measures
       
         # Optional. The lower bound on data point frequency for this data set,
         # implemented by specifying the minimum alignment period to use in a time series
@@ -434,11 +537,89 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @breakdowns = args[:breakdowns] if args.key?(:breakdowns)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
           @legend_template = args[:legend_template] if args.key?(:legend_template)
+          @measures = args[:measures] if args.key?(:measures)
           @min_alignment_period = args[:min_alignment_period] if args.key?(:min_alignment_period)
           @plot_type = args[:plot_type] if args.key?(:plot_type)
           @target_axis = args[:target_axis] if args.key?(:target_axis)
           @time_series_query = args[:time_series_query] if args.key?(:time_series_query)
+        end
+      end
+      
+      # Preview: A chart dimension for an SQL query. This is applied over the x-axis.
+      # This is a preview feature and may be subject to change before final release.
+      class Dimension
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the column in the source SQL query that is used to chart
+        # the dimension.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Optional. The type of the dimension column. This is relevant only if one of
+        # the bin_size fields is set. If it is empty, the type TIMESTAMP or INT64 will
+        # be assumed based on which bin_size field is set. If populated, this should be
+        # set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC,
+        # INT64, NUMERIC, FLOAT64.
+        # Corresponds to the JSON property `columnType`
+        # @return [String]
+        attr_accessor :column_type
+      
+        # Optional. float_bin_size is used when the column type used for a dimension is
+        # a floating point numeric column.
+        # Corresponds to the JSON property `floatBinSize`
+        # @return [Float]
+        attr_accessor :float_bin_size
+      
+        # A limit to the number of bins generated. When 0 is specified, the maximum
+        # count is not enforced.
+        # Corresponds to the JSON property `maxBinCount`
+        # @return [Fixnum]
+        attr_accessor :max_bin_count
+      
+        # numeric_bin_size is used when the column type used for a dimension is numeric
+        # or string.
+        # Corresponds to the JSON property `numericBinSize`
+        # @return [Fixnum]
+        attr_accessor :numeric_bin_size
+      
+        # The column name to sort on for binning. This column can be the same column as
+        # this dimension or any other column used as a measure in the results. If
+        # sort_order is set to NONE, then this value is not used.
+        # Corresponds to the JSON property `sortColumn`
+        # @return [String]
+        attr_accessor :sort_column
+      
+        # The sort order applied to the sort column.
+        # Corresponds to the JSON property `sortOrder`
+        # @return [String]
+        attr_accessor :sort_order
+      
+        # time_bin_size is used when the data type specified by column is a time type
+        # and the bin size is determined by a time duration. If column_type is DATE,
+        # this must be a whole value multiple of 1 day. If column_type is TIME, this
+        # must be less than or equal to 24 hours.
+        # Corresponds to the JSON property `timeBinSize`
+        # @return [String]
+        attr_accessor :time_bin_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @column_type = args[:column_type] if args.key?(:column_type)
+          @float_bin_size = args[:float_bin_size] if args.key?(:float_bin_size)
+          @max_bin_count = args[:max_bin_count] if args.key?(:max_bin_count)
+          @numeric_bin_size = args[:numeric_bin_size] if args.key?(:numeric_bin_size)
+          @sort_column = args[:sort_column] if args.key?(:sort_column)
+          @sort_order = args[:sort_order] if args.key?(:sort_order)
+          @time_bin_size = args[:time_bin_size] if args.key?(:time_bin_size)
         end
       end
       
@@ -773,6 +954,35 @@ module Google
         end
       end
       
+      # Preview: A chart measure for an SQL query. This is applied over the y-axis.
+      # This is a preview feature and may be subject to change before final release.
+      class Measure
+        include Google::Apis::Core::Hashable
+      
+        # Preview: An identifier for an aggregation function. Aggregation functions are
+        # SQL functions that group or transform data from multiple points to a single
+        # point. This is a preview feature and may be subject to change before final
+        # release.
+        # Corresponds to the JSON property `aggregationFunction`
+        # @return [Google::Apis::MonitoringV1::AggregationFunction]
+        attr_accessor :aggregation_function
+      
+        # Required. The column name within in the dataset used for the measure.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_function = args[:aggregation_function] if args.key?(:aggregation_function)
+          @column = args[:column] if args.key?(:column)
+        end
+      end
+      
       # Represents a Metrics Scope (https://cloud.google.com/monitoring/settings#
       # concept-scope) in Cloud Monitoring, which specifies one or more Google
       # projects and zero or more AWS accounts to monitor together.
@@ -1007,6 +1217,26 @@ module Google
         end
       end
       
+      # Preview: A query that produces an aggregated response and supporting data.
+      # This is a preview feature and may be subject to change before final release.
+      class OpsAnalyticsQuery
+        include Google::Apis::Core::Hashable
+      
+        # A SQL query to fetch time series, category series, or numeric series data.
+        # Corresponds to the JSON property `sql`
+        # @return [String]
+        attr_accessor :sql
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sql = args[:sql] if args.key?(:sql)
+        end
+      end
+      
       # A protocol buffer option, which can be attached to a message, field,
       # enumeration, etc.
       class Option
@@ -1036,6 +1266,32 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Preview: Parameter value applied to the aggregation function. This is a
+      # preview feature and may be subject to change before final release.
+      class Parameter
+        include Google::Apis::Core::Hashable
+      
+        # A floating-point parameter value.
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
+        # An integer parameter value.
+        # Corresponds to the JSON property `intValue`
+        # @return [Fixnum]
+        attr_accessor :int_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @int_value = args[:int_value] if args.key?(:int_value)
         end
       end
       
@@ -2072,6 +2328,12 @@ module Google
       class TimeSeriesQuery
         include Google::Apis::Core::Hashable
       
+        # Preview: A query that produces an aggregated response and supporting data.
+        # This is a preview feature and may be subject to change before final release.
+        # Corresponds to the JSON property `opsAnalyticsQuery`
+        # @return [Google::Apis::MonitoringV1::OpsAnalyticsQuery]
+        attr_accessor :ops_analytics_query
+      
         # Optional. If set, Cloud Monitoring will treat the full query duration as the
         # alignment period so that there will be only 1 output value.*Note: This could
         # override the configured alignment period except for the cases where a series
@@ -2119,6 +2381,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ops_analytics_query = args[:ops_analytics_query] if args.key?(:ops_analytics_query)
           @output_full_duration = args[:output_full_duration] if args.key?(:output_full_duration)
           @prometheus_query = args[:prometheus_query] if args.key?(:prometheus_query)
           @time_series_filter = args[:time_series_filter] if args.key?(:time_series_filter)
