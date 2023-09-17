@@ -1,0 +1,7 @@
+{
+    "api_id": "rapidmigrationassessment:v1",
+    "name_pretty": "Rapid Migration Assessment API",
+    "distribution_name": "google-apis-rapidmigrationassessment_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
