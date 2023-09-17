@@ -3438,6 +3438,11 @@ module Google
         # @return [String]
         attr_accessor :local_name
       
+        # Membership names are formatted as `projects//locations//memberships/`.
+        # Corresponds to the JSON property `membership`
+        # @return [String]
+        attr_accessor :membership
+      
         # Resource name of the dependency.
         # Corresponds to the JSON property `resourceName`
         # @return [String]
@@ -3457,6 +3462,7 @@ module Google
         def update!(**args)
           @current_version = args[:current_version] if args.key?(:current_version)
           @local_name = args[:local_name] if args.key?(:local_name)
+          @membership = args[:membership] if args.key?(:membership)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @target_version = args[:target_version] if args.key?(:target_version)
         end
@@ -5399,7 +5405,7 @@ module Google
       class VmwareVCenterConfig
         include Google::Apis::Core::Hashable
       
-        # The vCenter IP address.
+        # Output only. The vCenter IP address.
         # Corresponds to the JSON property `address`
         # @return [String]
         attr_accessor :address
@@ -5460,6 +5466,11 @@ module Google
       class VmwareVersionInfo
         include Google::Apis::Core::Hashable
       
+        # The list of upgrade dependencies for this version.
+        # Corresponds to the JSON property `dependencies`
+        # @return [Array<Google::Apis::GkeonpremV1::UpgradeDependency>]
+        attr_accessor :dependencies
+      
         # If set, the cluster dependencies (e.g. the admin cluster, other user clusters
         # managed by the same admin cluster) must be upgraded before this version can be
         # installed or upgraded to.
@@ -5487,6 +5498,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dependencies = args[:dependencies] if args.key?(:dependencies)
           @has_dependencies = args[:has_dependencies] if args.key?(:has_dependencies)
           @is_installed = args[:is_installed] if args.key?(:is_installed)
           @version = args[:version] if args.key?(:version)
