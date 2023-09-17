@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataCacheConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseEngineInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -902,6 +908,8 @@ module Google
           property :availability_type, as: 'availabilityType'
           property :cmek_key_name, as: 'cmekKeyName'
           property :collation, as: 'collation'
+          property :data_cache_config, as: 'dataCacheConfig', class: Google::Apis::DatamigrationV1::DataCacheConfig, decorator: Google::Apis::DatamigrationV1::DataCacheConfig::Representation
+      
           property :data_disk_size_gb, :numeric_string => true, as: 'dataDiskSizeGb'
           property :data_disk_type, as: 'dataDiskType'
           hash :database_flags, as: 'databaseFlags'
@@ -1048,6 +1056,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :only_if_no_primary_key, as: 'onlyIfNoPrimaryKey'
+        end
+      end
+      
+      class DataCacheConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_cache_enabled, as: 'dataCacheEnabled'
         end
       end
       
