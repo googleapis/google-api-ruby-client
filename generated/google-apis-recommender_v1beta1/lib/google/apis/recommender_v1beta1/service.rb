@@ -471,7 +471,7 @@ module Google
         # recommendations in ACTIVE state. Requires the recommender.*.update IAM
         # permission for the specified recommender.
         # @param [String] name
-        #   Name of the recommendation.
+        #   Required. Name of the recommendation.
         # @param [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest] google_cloud_recommender_v1beta1_mark_recommendation_dismissed_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -847,7 +847,7 @@ module Google
         # recommendations in ACTIVE state. Requires the recommender.*.update IAM
         # permission for the specified recommender.
         # @param [String] name
-        #   Name of the recommendation.
+        #   Required. Name of the recommendation.
         # @param [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest] google_cloud_recommender_v1beta1_mark_recommendation_dismissed_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1413,7 +1413,7 @@ module Google
         # recommendations in ACTIVE state. Requires the recommender.*.update IAM
         # permission for the specified recommender.
         # @param [String] name
-        #   Name of the recommendation.
+        #   Required. Name of the recommendation.
         # @param [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest] google_cloud_recommender_v1beta1_mark_recommendation_dismissed_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1944,7 +1944,7 @@ module Google
         # recommendations in ACTIVE state. Requires the recommender.*.update IAM
         # permission for the specified recommender.
         # @param [String] name
-        #   Name of the recommendation.
+        #   Required. Name of the recommendation.
         # @param [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest] google_cloud_recommender_v1beta1_mark_recommendation_dismissed_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
