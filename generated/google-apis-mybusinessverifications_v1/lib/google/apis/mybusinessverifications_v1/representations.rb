@@ -64,25 +64,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GenerateVerificationTokenRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GenerateVerificationTokenResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListVerificationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -212,40 +194,12 @@ module Google
         end
       end
       
-      class GenerateVerificationTokenRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :location, as: 'location', class: Google::Apis::MybusinessverificationsV1::Location, decorator: Google::Apis::MybusinessverificationsV1::Location::Representation
-      
-        end
-      end
-      
-      class GenerateVerificationTokenResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :token, as: 'token', class: Google::Apis::MybusinessverificationsV1::VerificationToken, decorator: Google::Apis::MybusinessverificationsV1::VerificationToken::Representation
-      
-        end
-      end
-      
       class ListVerificationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :verifications, as: 'verifications', class: Google::Apis::MybusinessverificationsV1::Verification, decorator: Google::Apis::MybusinessverificationsV1::Verification::Representation
       
-        end
-      end
-      
-      class Location
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :address, as: 'address', class: Google::Apis::MybusinessverificationsV1::PostalAddress, decorator: Google::Apis::MybusinessverificationsV1::PostalAddress::Representation
-      
-          property :name, as: 'name'
-          property :primary_category_id, as: 'primaryCategoryId'
-          property :primary_phone, as: 'primaryPhone'
-          property :website_uri, as: 'websiteUri'
         end
       end
       
