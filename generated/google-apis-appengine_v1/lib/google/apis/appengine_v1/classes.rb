@@ -2555,6 +2555,13 @@ module Google
       class Service
         include Google::Apis::Core::Hashable
       
+        # Additional Google Generated Customer Metadata, this field won't be provided by
+        # default and can be requested by setting the IncludeExtraData field in
+        # GetServiceRequest
+        # Corresponds to the JSON property `generatedCustomerMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :generated_customer_metadata
+      
         # Relative name of the service within the application. Example: default.@
         # OutputOnly
         # Corresponds to the JSON property `id`
@@ -2599,6 +2606,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @generated_customer_metadata = args[:generated_customer_metadata] if args.key?(:generated_customer_metadata)
           @id = args[:id] if args.key?(:id)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)

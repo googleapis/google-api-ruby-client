@@ -1139,6 +1139,7 @@ module Google
       class Service
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :generated_customer_metadata, as: 'generatedCustomerMetadata'
           property :id, as: 'id'
           hash :labels, as: 'labels'
           property :name, as: 'name'
