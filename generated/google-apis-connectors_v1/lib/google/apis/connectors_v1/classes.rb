@@ -559,6 +559,12 @@ module Google
         # @return [String]
         attr_accessor :image_location
       
+        # Output only. Is trusted tester program enabled for the project.
+        # Corresponds to the JSON property `isTrustedTester`
+        # @return [Boolean]
+        attr_accessor :is_trusted_tester
+        alias_method :is_trusted_tester?, :is_trusted_tester
+      
         # Optional. Resource labels to represent user-provided metadata. Refer to cloud
         # documentation on labels for more details. https://cloud.google.com/compute/
         # docs/labeling-resources
@@ -649,6 +655,7 @@ module Google
           @eventing_enablement_type = args[:eventing_enablement_type] if args.key?(:eventing_enablement_type)
           @eventing_runtime_data = args[:eventing_runtime_data] if args.key?(:eventing_runtime_data)
           @image_location = args[:image_location] if args.key?(:image_location)
+          @is_trusted_tester = args[:is_trusted_tester] if args.key?(:is_trusted_tester)
           @labels = args[:labels] if args.key?(:labels)
           @lock_config = args[:lock_config] if args.key?(:lock_config)
           @log_config = args[:log_config] if args.key?(:log_config)
@@ -861,6 +868,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::ResourceRequests]
         attr_accessor :resource_requests
       
+        # The name of shared connector deployment.
+        # Corresponds to the JSON property `sharedDeployment`
+        # @return [String]
+        attr_accessor :shared_deployment
+      
         def initialize(**args)
            update!(**args)
         end
@@ -872,6 +884,7 @@ module Google
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
           @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
           @resource_requests = args[:resource_requests] if args.key?(:resource_requests)
+          @shared_deployment = args[:shared_deployment] if args.key?(:shared_deployment)
         end
       end
       
@@ -1033,6 +1046,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::ResourceRequests]
         attr_accessor :resource_requests
       
+        # Output only. The name of shared connector deployment.
+        # Corresponds to the JSON property `sharedDeployment`
+        # @return [String]
+        attr_accessor :shared_deployment
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1044,6 +1062,7 @@ module Google
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
           @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
           @resource_requests = args[:resource_requests] if args.key?(:resource_requests)
+          @shared_deployment = args[:shared_deployment] if args.key?(:shared_deployment)
         end
       end
       
@@ -1585,6 +1604,17 @@ module Google
         attr_accessor :enrichment_enabled
         alias_method :enrichment_enabled?, :enrichment_enabled
       
+        # Optional. Private Connectivity Enabled.
+        # Corresponds to the JSON property `privateConnectivityEnabled`
+        # @return [Boolean]
+        attr_accessor :private_connectivity_enabled
+        alias_method :private_connectivity_enabled?, :private_connectivity_enabled
+      
+        # Optional. Public Events listener endpoint.
+        # Corresponds to the JSON property `publicEventsListenerEndpoint`
+        # @return [String]
+        attr_accessor :public_events_listener_endpoint
+      
         # Define the Connectors target endpoint.
         # Corresponds to the JSON property `registrationDestinationConfig`
         # @return [Google::Apis::ConnectorsV1::DestinationConfig]
@@ -1600,6 +1630,8 @@ module Google
           @auth_config = args[:auth_config] if args.key?(:auth_config)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @enrichment_enabled = args[:enrichment_enabled] if args.key?(:enrichment_enabled)
+          @private_connectivity_enabled = args[:private_connectivity_enabled] if args.key?(:private_connectivity_enabled)
+          @public_events_listener_endpoint = args[:public_events_listener_endpoint] if args.key?(:public_events_listener_endpoint)
           @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
         end
       end
@@ -1910,6 +1942,11 @@ module Google
         # @return [String]
         attr_accessor :field
       
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [Google::Apis::ConnectorsV1::JsonSchema]
+        attr_accessor :json_schema
+      
         # The following boolean field specifies if the current Field acts as a primary
         # key or id if the parent is of type entity.
         # Corresponds to the JSON property `key`
@@ -1940,6 +1977,7 @@ module Google
           @default_value = args[:default_value] if args.key?(:default_value)
           @description = args[:description] if args.key?(:description)
           @field = args[:field] if args.key?(:field)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
           @key = args[:key] if args.key?(:key)
           @nullable = args[:nullable] if args.key?(:nullable)
           @readonly = args[:readonly] if args.key?(:readonly)
@@ -2060,6 +2098,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [Google::Apis::ConnectorsV1::JsonSchema]
+        attr_accessor :json_schema
+      
         # Specifies whether a null value is allowed.
         # Corresponds to the JSON property `nullable`
         # @return [Boolean]
@@ -2080,8 +2123,80 @@ module Google
           @data_type = args[:data_type] if args.key?(:data_type)
           @default_value = args[:default_value] if args.key?(:default_value)
           @description = args[:description] if args.key?(:description)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
           @nullable = args[:nullable] if args.key?(:nullable)
           @parameter = args[:parameter] if args.key?(:parameter)
+        end
+      end
+      
+      # JsonSchema representation of schema metadata
+      class JsonSchema
+        include Google::Apis::Core::Hashable
+      
+        # The default value of the field or object described by this schema.
+        # Corresponds to the JSON property `default`
+        # @return [Object]
+        attr_accessor :default
+      
+        # A description of this schema.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Possible values for an enumeration. This works in conjunction with `type` to
+        # represent types with a fixed set of legal values
+        # Corresponds to the JSON property `enum`
+        # @return [Array<Object>]
+        attr_accessor :enum
+      
+        # Format of the value as per https://json-schema.org/understanding-json-schema/
+        # reference/string.html#format
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `items`
+        # @return [Google::Apis::ConnectorsV1::JsonSchema]
+        attr_accessor :items
+      
+        # JDBC datatype of the field.
+        # Corresponds to the JSON property `jdbcType`
+        # @return [String]
+        attr_accessor :jdbc_type
+      
+        # The child schemas, applicable only if this is of type `object`. The key is the
+        # name of the property and the value is the json schema that describes that
+        # property
+        # Corresponds to the JSON property `properties`
+        # @return [Hash<String,Google::Apis::ConnectorsV1::JsonSchema>]
+        attr_accessor :properties
+      
+        # Whether this property is required.
+        # Corresponds to the JSON property `required`
+        # @return [Array<String>]
+        attr_accessor :required
+      
+        # JSON Schema Validation: A Vocabulary for Structural Validation of JSON
+        # Corresponds to the JSON property `type`
+        # @return [Array<String>]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default = args[:default] if args.key?(:default)
+          @description = args[:description] if args.key?(:description)
+          @enum = args[:enum] if args.key?(:enum)
+          @format = args[:format] if args.key?(:format)
+          @items = args[:items] if args.key?(:items)
+          @jdbc_type = args[:jdbc_type] if args.key?(:jdbc_type)
+          @properties = args[:properties] if args.key?(:properties)
+          @required = args[:required] if args.key?(:required)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -3177,6 +3292,11 @@ module Google
         # @return [String]
         attr_accessor :field
       
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [Google::Apis::ConnectorsV1::JsonSchema]
+        attr_accessor :json_schema
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3186,6 +3306,7 @@ module Google
           @data_type = args[:data_type] if args.key?(:data_type)
           @description = args[:description] if args.key?(:description)
           @field = args[:field] if args.key?(:field)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
         end
       end
       
@@ -3252,10 +3373,20 @@ module Google
         # @return [String]
         attr_accessor :action
       
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `inputJsonSchema`
+        # @return [Google::Apis::ConnectorsV1::JsonSchema]
+        attr_accessor :input_json_schema
+      
         # Output only. List of input parameter metadata for the action.
         # Corresponds to the JSON property `inputParameters`
         # @return [Array<Google::Apis::ConnectorsV1::InputParameter>]
         attr_accessor :input_parameters
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `resultJsonSchema`
+        # @return [Google::Apis::ConnectorsV1::JsonSchema]
+        attr_accessor :result_json_schema
       
         # Output only. List of result field metadata.
         # Corresponds to the JSON property `resultMetadata`
@@ -3269,7 +3400,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @input_json_schema = args[:input_json_schema] if args.key?(:input_json_schema)
           @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+          @result_json_schema = args[:result_json_schema] if args.key?(:result_json_schema)
           @result_metadata = args[:result_metadata] if args.key?(:result_metadata)
         end
       end
@@ -3368,6 +3501,11 @@ module Google
         # @return [Array<Google::Apis::ConnectorsV1::Field>]
         attr_accessor :fields
       
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [Google::Apis::ConnectorsV1::JsonSchema]
+        attr_accessor :json_schema
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3376,6 +3514,7 @@ module Google
         def update!(**args)
           @entity = args[:entity] if args.key?(:entity)
           @fields = args[:fields] if args.key?(:fields)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
         end
       end
       
