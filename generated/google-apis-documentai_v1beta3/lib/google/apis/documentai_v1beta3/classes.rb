@@ -9947,12 +9947,13 @@ module Google
         end
       end
       
-      # The request message for the ImportProcessorVersion method. Requirements: - The
-      # Document AI [Service Agent](https://cloud.google.com/iam/docs/service-agents)
-      # of the destination project must have [Document AI Editor role](https://cloud.
-      # google.com/document-ai/docs/access-control/iam-roles) on the source project.
-      # The destination project is specified as part of the parent field. The source
-      # project is specified as part of the source field.
+      # The request message for the ImportProcessorVersion method. The Document AI [
+      # Service Agent](https://cloud.google.com/iam/docs/service-agents) of the
+      # destination project must have [Document AI Editor role](https://cloud.google.
+      # com/document-ai/docs/access-control/iam-roles) on the source project. The
+      # destination project is specified as part of the parent field. The source
+      # project is specified as part of the source or
+      # external_processor_version_source field.
       class GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest
         include Google::Apis::Core::Hashable
       
@@ -10164,8 +10165,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :advanced_ocr_options
       
-        # Turn on font id model and returns font style information. Use PremiumFeatures.
-        # compute_style_info instead.
+        # Turn on font identification model and return font style information.
         # Corresponds to the JSON property `computeStyleInfo`
         # @return [Boolean]
         attr_accessor :compute_style_info
@@ -10679,7 +10679,7 @@ module Google
       
         # The display name of the document, it supports all Unicode characters except
         # the following: `*`, `?`, `[`, `]`, `%`, ```, ```,`'`, `\"`, `,` `~`, `=` and `:
-        # ` are reserved. If not specified, a default ID will be generated.
+        # ` are reserved. If not specified, a default ID is generated.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -10923,7 +10923,7 @@ module Google
       class GoogleCloudDocumentaiV1beta3SummaryOptions
         include Google::Apis::Core::Hashable
       
-        # What format the summary should be in.
+        # The format the summary should be in.
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
