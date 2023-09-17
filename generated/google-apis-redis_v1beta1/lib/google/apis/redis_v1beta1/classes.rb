@@ -1217,9 +1217,9 @@ module Google
       class PscConfig
         include Google::Apis::Core::Hashable
       
-        # Required. The consumer network where the IP address of the discovery endpoint
-        # will be reserved, in the form of projects/`network_host_project`/global/
-        # networks/`network_id`.
+        # Required. The network where the IP address of the discovery endpoint will be
+        # reserved, in the form of projects/`network_project`/global/networks/`
+        # network_id`.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -1256,7 +1256,7 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # The consumer project_id where the forwarding rule is created from.
+        # Output only. The consumer project_id where the forwarding rule is created from.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
