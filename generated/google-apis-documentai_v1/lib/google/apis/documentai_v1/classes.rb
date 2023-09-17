@@ -4535,8 +4535,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :advanced_ocr_options
       
-        # Turn on font id model and returns font style information. Use PremiumFeatures.
-        # compute_style_info instead.
+        # Turn on font identification model and return font style information.
         # Corresponds to the JSON property `computeStyleInfo`
         # @return [Boolean]
         attr_accessor :compute_style_info
@@ -5001,7 +5000,7 @@ module Google
       
         # The display name of the document, it supports all Unicode characters except
         # the following: `*`, `?`, `[`, `]`, `%`, ```, ```,`'`, `\"`, `,` `~`, `=` and `:
-        # ` are reserved. If not specified, a default ID will be generated.
+        # ` are reserved. If not specified, a default ID is generated.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
