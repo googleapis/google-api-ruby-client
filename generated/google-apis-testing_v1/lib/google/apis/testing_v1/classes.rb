@@ -1033,8 +1033,8 @@ module Google
         attr_accessor :state_histories
       
         # Optional. The amount of time that a device will be initially allocated for.
-        # This can eventually be extended with the ExtendDeviceSession RPC. Default: 3
-        # hours.
+        # This can eventually be extended with the ExtendDeviceSession RPC. Default: 30
+        # minutes.
         # Corresponds to the JSON property `ttl`
         # @return [String]
         attr_accessor :ttl
