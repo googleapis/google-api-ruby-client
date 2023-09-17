@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CertVerification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Certificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Channel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +65,36 @@ module Google
       end
       
       class CloudRunRewrite
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomDomain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomDomainMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DnsRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DnsRecordSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DnsUpdates
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class I18nConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,7 +148,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListCustomDomainsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDomainsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -125,6 +185,12 @@ module Google
       end
       
       class ListVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiveMigrationStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UndeleteCustomDomainRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Version
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -229,6 +301,30 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :path, as: 'path'
           property :token, as: 'token'
+        end
+      end
+      
+      class CertVerification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns, as: 'dns', class: Google::Apis::FirebasehostingV1beta1::DnsUpdates, decorator: Google::Apis::FirebasehostingV1beta1::DnsUpdates::Representation
+      
+          property :http, as: 'http', class: Google::Apis::FirebasehostingV1beta1::HttpUpdate, decorator: Google::Apis::FirebasehostingV1beta1::HttpUpdate::Representation
+      
+        end
+      end
+      
+      class Certificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :expire_time, as: 'expireTime'
+          collection :issues, as: 'issues', class: Google::Apis::FirebasehostingV1beta1::Status, decorator: Google::Apis::FirebasehostingV1beta1::Status::Representation
+      
+          property :state, as: 'state'
+          property :type, as: 'type'
+          property :verification, as: 'verification', class: Google::Apis::FirebasehostingV1beta1::CertVerification, decorator: Google::Apis::FirebasehostingV1beta1::CertVerification::Representation
+      
         end
       end
       
@@ -266,6 +362,78 @@ module Google
           property :region, as: 'region'
           property :service_id, as: 'serviceId'
           property :tag, as: 'tag'
+        end
+      end
+      
+      class CustomDomain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :cert, as: 'cert', class: Google::Apis::FirebasehostingV1beta1::Certificate, decorator: Google::Apis::FirebasehostingV1beta1::Certificate::Representation
+      
+          property :cert_preference, as: 'certPreference'
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :etag, as: 'etag'
+          property :expire_time, as: 'expireTime'
+          property :host_state, as: 'hostState'
+          collection :issues, as: 'issues', class: Google::Apis::FirebasehostingV1beta1::Status, decorator: Google::Apis::FirebasehostingV1beta1::Status::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :ownership_state, as: 'ownershipState'
+          property :reconciling, as: 'reconciling'
+          property :redirect_target, as: 'redirectTarget'
+          property :required_dns_updates, as: 'requiredDnsUpdates', class: Google::Apis::FirebasehostingV1beta1::DnsUpdates, decorator: Google::Apis::FirebasehostingV1beta1::DnsUpdates::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class CustomDomainMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cert_state, as: 'certState'
+          property :host_state, as: 'hostState'
+          collection :issues, as: 'issues', class: Google::Apis::FirebasehostingV1beta1::Status, decorator: Google::Apis::FirebasehostingV1beta1::Status::Representation
+      
+          collection :live_migration_steps, as: 'liveMigrationSteps', class: Google::Apis::FirebasehostingV1beta1::LiveMigrationStep, decorator: Google::Apis::FirebasehostingV1beta1::LiveMigrationStep::Representation
+      
+          property :ownership_state, as: 'ownershipState'
+          property :quick_setup_updates, as: 'quickSetupUpdates', class: Google::Apis::FirebasehostingV1beta1::DnsUpdates, decorator: Google::Apis::FirebasehostingV1beta1::DnsUpdates::Representation
+      
+        end
+      end
+      
+      class DnsRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain_name, as: 'domainName'
+          property :rdata, as: 'rdata'
+          property :required_action, as: 'requiredAction'
+          property :type, as: 'type'
+        end
+      end
+      
+      class DnsRecordSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :check_error, as: 'checkError', class: Google::Apis::FirebasehostingV1beta1::Status, decorator: Google::Apis::FirebasehostingV1beta1::Status::Representation
+      
+          property :domain_name, as: 'domainName'
+          collection :records, as: 'records', class: Google::Apis::FirebasehostingV1beta1::DnsRecord, decorator: Google::Apis::FirebasehostingV1beta1::DnsRecord::Representation
+      
+        end
+      end
+      
+      class DnsUpdates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :check_time, as: 'checkTime'
+          collection :desired, as: 'desired', class: Google::Apis::FirebasehostingV1beta1::DnsRecordSet, decorator: Google::Apis::FirebasehostingV1beta1::DnsRecordSet::Representation
+      
+          collection :discovered, as: 'discovered', class: Google::Apis::FirebasehostingV1beta1::DnsRecordSet, decorator: Google::Apis::FirebasehostingV1beta1::DnsRecordSet::Representation
+      
         end
       end
       
@@ -322,6 +490,18 @@ module Google
         end
       end
       
+      class HttpUpdate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :check_error, as: 'checkError', class: Google::Apis::FirebasehostingV1beta1::Status, decorator: Google::Apis::FirebasehostingV1beta1::Status::Representation
+      
+          property :desired, as: 'desired'
+          property :discovered, as: 'discovered'
+          property :last_check_time, as: 'lastCheckTime'
+          property :path, as: 'path'
+        end
+      end
+      
       class I18nConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -338,12 +518,30 @@ module Google
         end
       end
       
+      class ListCustomDomainsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_domains, as: 'customDomains', class: Google::Apis::FirebasehostingV1beta1::CustomDomain, decorator: Google::Apis::FirebasehostingV1beta1::CustomDomain::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListDomainsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :domains, as: 'domains', class: Google::Apis::FirebasehostingV1beta1::Domain, decorator: Google::Apis::FirebasehostingV1beta1::Domain::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::FirebasehostingV1beta1::Operation, decorator: Google::Apis::FirebasehostingV1beta1::Operation::Representation
+      
         end
       end
       
@@ -380,6 +578,19 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :versions, as: 'versions', class: Google::Apis::FirebasehostingV1beta1::Version, decorator: Google::Apis::FirebasehostingV1beta1::Version::Representation
       
+        end
+      end
+      
+      class LiveMigrationStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cert_verification, as: 'certVerification', class: Google::Apis::FirebasehostingV1beta1::CertVerification, decorator: Google::Apis::FirebasehostingV1beta1::CertVerification::Representation
+      
+          property :dns_updates, as: 'dnsUpdates', class: Google::Apis::FirebasehostingV1beta1::DnsUpdates, decorator: Google::Apis::FirebasehostingV1beta1::DnsUpdates::Representation
+      
+          collection :issues, as: 'issues', class: Google::Apis::FirebasehostingV1beta1::Status, decorator: Google::Apis::FirebasehostingV1beta1::Status::Representation
+      
+          property :state, as: 'state'
         end
       end
       
@@ -497,6 +708,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class UndeleteCustomDomainRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
         end
       end
       
