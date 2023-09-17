@@ -286,6 +286,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # The configuration for data storage in the environment.
+        # Corresponds to the JSON property `storageConfig`
+        # @return [Google::Apis::ComposerV1::StorageConfig]
+        attr_accessor :storage_config
+      
         # Output only. The time at which this environment was last modified.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -308,6 +313,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
+          @storage_config = args[:storage_config] if args.key?(:storage_config)
           @update_time = args[:update_time] if args.key?(:update_time)
           @uuid = args[:uuid] if args.key?(:uuid)
         end
@@ -1758,6 +1764,19 @@ module Google
         def update!(**args)
           @is_done = args[:is_done] if args.key?(:is_done)
           @output = args[:output] if args.key?(:output)
+        end
+      end
+      
+      # The configuration for data storage in the environment.
+      class StorageConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
