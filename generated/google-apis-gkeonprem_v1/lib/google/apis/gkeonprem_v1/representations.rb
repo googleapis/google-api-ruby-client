@@ -1890,6 +1890,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_version, as: 'currentVersion'
           property :local_name, as: 'localName'
+          property :membership, as: 'membership'
           property :resource_name, as: 'resourceName'
           property :target_version, as: 'targetVersion'
         end
@@ -2418,6 +2419,8 @@ module Google
       class VmwareVersionInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dependencies, as: 'dependencies', class: Google::Apis::GkeonpremV1::UpgradeDependency, decorator: Google::Apis::GkeonpremV1::UpgradeDependency::Representation
+      
           property :has_dependencies, as: 'hasDependencies'
           property :is_installed, as: 'isInstalled'
           property :version, as: 'version'
