@@ -2443,8 +2443,7 @@ module Google
         end
       end
       
-      # Request message for FeaturestoreService.CreateFeature and
-      # FeatureRegistryService.CreateFeature.
+      # Request message for FeaturestoreService.CreateFeature.
       class GoogleCloudAiplatformV1beta1CreateFeatureRequest
         include Google::Apis::Core::Hashable
       
@@ -2458,15 +2457,14 @@ module Google
         # Required. The ID to use for the Feature, which will become the final component
         # of the Feature's resource name. This value may be up to 128 characters, and
         # valid characters are `[a-z0-9_]`. The first character cannot be a number. The
-        # value must be unique within an EntityType/FeatureGroup.
+        # value must be unique within an EntityType .
         # Corresponds to the JSON property `featureId`
         # @return [String]
         attr_accessor :feature_id
       
-        # Required. The resource name of the EntityType or FeatureGroup to create a
-        # Feature. Format: `projects/`project`/locations/`location`/featurestores/`
-        # featurestore`/entityTypes/`entity_type`` `projects/`project`/locations/`
-        # location`/featureGroups/`feature_group``
+        # Required. The resource name of the EntityType to create a Feature. Format: `
+        # projects/`project`/locations/`location`/featurestores/`featurestore`/
+        # entityTypes/`entity_type``
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -5757,6 +5755,63 @@ module Google
         end
       end
       
+      # Details of EndpointService.ExportEndpoint operation.
+      class GoogleCloudAiplatformV1beta1ExportEndpointOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
+      # Response message of EndpointService.ExportEndpoint operation.
+      class GoogleCloudAiplatformV1beta1ExportEndpointResponse
+        include Google::Apis::Core::Hashable
+      
+        # Describes the output of the ExportEndpoint.
+        # Corresponds to the JSON property `outputInfo`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExportEndpointResponseOutputInfo]
+        attr_accessor :output_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_info = args[:output_info] if args.key?(:output_info)
+        end
+      end
+      
+      # Describes the output of the ExportEndpoint.
+      class GoogleCloudAiplatformV1beta1ExportEndpointResponseOutputInfo
+        include Google::Apis::Core::Hashable
+      
+        # The BigQuery location for the output content.
+        # Corresponds to the JSON property `bigQueryDestination`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BigQueryDestination]
+        attr_accessor :big_query_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @big_query_destination = args[:big_query_destination] if args.key?(:big_query_destination)
+        end
+      end
+      
       # Details of operations that exports Features values.
       class GoogleCloudAiplatformV1beta1ExportFeatureValuesOperationMetadata
         include Google::Apis::Core::Hashable
@@ -6191,7 +6246,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Required. Immutable. Type of Feature value.
+        # Immutable. Type of Feature value.
         # Corresponds to the JSON property `valueType`
         # @return [String]
         attr_accessor :value_type
@@ -7767,6 +7822,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Represents a customer-managed encryption key spec that can be applied to a top-
+        # level resource.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
         # Used to perform consistent read-modify-write updates. If not set, a blind "
         # overwrite" update happens.
         # Corresponds to the JSON property `etag`
@@ -7836,6 +7897,7 @@ module Google
           @deployed_indexes = args[:deployed_indexes] if args.key?(:deployed_indexes)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @etag = args[:etag] if args.key?(:etag)
           @index_stats = args[:index_stats] if args.key?(:index_stats)
           @index_update_method = args[:index_update_method] if args.key?(:index_update_method)
@@ -7871,8 +7933,8 @@ module Google
       
         # Optional. List of Restrict of the datapoint, used to perform "restricted
         # searches" where boolean rule are used to filter the subset of the database
-        # eligible for matching. See: https://cloud.google.com/vertex-ai/docs/matching-
-        # engine/filtering
+        # eligible for matching. This uses categorical tokens. See: https://cloud.google.
+        # com/vertex-ai/docs/matching-engine/filtering
         # Corresponds to the JSON property `restricts`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1IndexDatapointRestriction>]
         attr_accessor :restricts
@@ -7920,17 +7982,17 @@ module Google
       class GoogleCloudAiplatformV1beta1IndexDatapointRestriction
         include Google::Apis::Core::Hashable
       
-        # The attributes to allow in this namespace. eg: 'red'
+        # The attributes to allow in this namespace. e.g.: 'red'
         # Corresponds to the JSON property `allowList`
         # @return [Array<String>]
         attr_accessor :allow_list
       
-        # The attributes to deny in this namespace. eg: 'blue'
+        # The attributes to deny in this namespace. e.g.: 'blue'
         # Corresponds to the JSON property `denyList`
         # @return [Array<String>]
         attr_accessor :deny_list
       
-        # The namespace of this restriction. eg: color.
+        # The namespace of this restriction. e.g.: color.
         # Corresponds to the JSON property `namespace`
         # @return [String]
         attr_accessor :namespace
@@ -7980,6 +8042,12 @@ module Google
         # @return [Boolean]
         attr_accessor :enable_private_service_connect
         alias_method :enable_private_service_connect?, :enable_private_service_connect
+      
+        # Represents a customer-managed encryption key spec that can be applied to a top-
+        # level resource.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec]
+        attr_accessor :encryption_spec
       
         # Used to perform consistent read-modify-write updates. If not set, a blind "
         # overwrite" update happens.
@@ -8049,6 +8117,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_private_service_connect = args[:enable_private_service_connect] if args.key?(:enable_private_service_connect)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -8676,8 +8745,7 @@ module Google
         end
       end
       
-      # Response message for FeaturestoreService.ListFeatures. Response message for
-      # FeatureRegistryService.ListFeatures.
+      # Response message for FeaturestoreService.ListFeatures.
       class GoogleCloudAiplatformV1beta1ListFeaturesResponse
         include Google::Apis::Core::Hashable
       
@@ -12597,6 +12665,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. The VM os image version of NotebookRuntime.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -12615,6 +12688,7 @@ module Google
           @runtime_user = args[:runtime_user] if args.key?(:runtime_user)
           @service_account = args[:service_account] if args.key?(:service_account)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -14505,10 +14579,12 @@ module Google
       class GoogleCloudAiplatformV1beta1RaySpec
         include Google::Apis::Core::Hashable
       
-        # Specification of a single machine.
-        # Corresponds to the JSON property `headMachineSpec`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MachineSpec]
-        attr_accessor :head_machine_spec
+        # Optional. This will be used to indicate which resource pool will serve as the
+        # Ray head node(the first node within that pool). Will use the machine from the
+        # first workerpool as the head node by default if this field is not set.
+        # Corresponds to the JSON property `headNodeResourcePoolId`
+        # @return [String]
+        attr_accessor :head_node_resource_pool_id
       
         # Optional. Default image for user to choose a preferred ML framework(e.g.
         # tensorflow or Pytorch) by choosing from Vertex prebuild images(https://cloud.
@@ -14520,14 +14596,24 @@ module Google
         # @return [String]
         attr_accessor :image_uri
       
+        # Optional. Required if image_uri is not set. A map of resource_pool_id to
+        # prebuild Ray image if user need to use different images for different head/
+        # worker pools. This map needs to cover all the resource pool ids. Example: ` "
+        # ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "
+        # ray_worker_node_pool2": "another worker image" `
+        # Corresponds to the JSON property `resourcePoolImages`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_pool_images
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @head_machine_spec = args[:head_machine_spec] if args.key?(:head_machine_spec)
+          @head_node_resource_pool_id = args[:head_node_resource_pool_id] if args.key?(:head_node_resource_pool_id)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @resource_pool_images = args[:resource_pool_images] if args.key?(:resource_pool_images)
         end
       end
       
@@ -15057,6 +15143,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :access_uris
       
+        # Output only. The resource name of NotebookRuntimeTemplate for the RoV
+        # Persistent Cluster The NotebokRuntimeTemplate is created in the same VPC (if
+        # set), and with the same Ray and Python version as the Persistent Cluster.
+        # Example: "projects/1000/locations/us-central1/notebookRuntimeTemplates/abc123"
+        # Corresponds to the JSON property `notebookRuntimeTemplate`
+        # @return [String]
+        attr_accessor :notebook_runtime_template
+      
         def initialize(**args)
            update!(**args)
         end
@@ -15064,6 +15158,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_uris = args[:access_uris] if args.key?(:access_uris)
+          @notebook_runtime_template = args[:notebook_runtime_template] if args.key?(:notebook_runtime_template)
         end
       end
       
@@ -22778,6 +22873,36 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
+        # Optional. This allows you to specify the "context" for a Trial; a context is a
+        # slice (a subspace) of the search space. Typical uses for contexts: 1) You are
+        # using Vizier to tune a server for best performance, but there's a strong
+        # weekly cycle. The context specifies the day-of-week. This allows Tuesday to
+        # generalize from Wednesday without assuming that everything is identical. 2)
+        # Imagine you're optimizing some medical treatment for people. As they walk in
+        # the door, you know certain facts about them (e.g. sex, weight, height, blood-
+        # pressure). Put that information in the context, and Vizier will adapt its
+        # suggestions to the patient. 3) You want to do a fair A/B test efficiently.
+        # Specify the "A" and "B" conditions as contexts, and Vizier will generalize
+        # between "A" and "B" conditions. If they are similar, this will allow Vizier to
+        # converge to the optimum faster than if "A" and "B" were separate Studies. NOTE:
+        # You can also enter contexts as REQUESTED Trials, e.g. via the CreateTrial()
+        # RPC; that's the asynchronous option where you don't need a close association
+        # between contexts and suggestions. NOTE: All the Parameters you set in a
+        # context MUST be defined in the Study. NOTE: You must supply 0 or $
+        # suggestion_count contexts. If you don't supply any contexts, Vizier will make
+        # suggestions from the full search space specified in the StudySpec; if you
+        # supply a full set of context, each suggestion will match the corresponding
+        # context. NOTE: A Context with no features set matches anything, and allows
+        # suggestions from the full search space. NOTE: Contexts MUST lie within the
+        # search space specified in the StudySpec. It's an error if they don't. NOTE:
+        # Contexts preferentially match ACTIVE then REQUESTED trials before new
+        # suggestions are generated. NOTE: Generation of suggestions involves a match
+        # between a Context and (optionally) a REQUESTED trial; if that match is not
+        # fully specified, a suggestion will be geneated in the merged subspace.
+        # Corresponds to the JSON property `contexts`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrialContext>]
+        attr_accessor :contexts
+      
         # Required. The number of suggestions requested. It must be positive.
         # Corresponds to the JSON property `suggestionCount`
         # @return [Fixnum]
@@ -22790,6 +22915,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @client_id = args[:client_id] if args.key?(:client_id)
+          @contexts = args[:contexts] if args.key?(:contexts)
           @suggestion_count = args[:suggestion_count] if args.key?(:suggestion_count)
         end
       end
@@ -23796,6 +23922,38 @@ module Google
         end
       end
       
+      # Next ID: 3
+      class GoogleCloudAiplatformV1beta1TrialContext
+        include Google::Apis::Core::Hashable
+      
+        # A human-readable field which can store a description of this context. This
+        # will become part of the resulting Trial's description field.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # If/when a Trial is generated or selected from this Context, its Parameters
+        # will match any parameters specified here. (I.e. if this context specifies
+        # parameter name:'a' int_value:3, then a resulting Trial will have int_value:3
+        # for its parameter named 'a'.) Note that we first attempt to match existing
+        # REQUESTED Trials with contexts, and if there are no matches, we generate
+        # suggestions in the subspace defined by the parameters specified here. NOTE: a
+        # Context without any Parameters matches the entire feasible search space.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrialParameter>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
       # A message representing a parameter to be tuned.
       class GoogleCloudAiplatformV1beta1TrialParameter
         include Google::Apis::Core::Hashable
@@ -24112,6 +24270,25 @@ module Google
       # Runtime operation information for JobService.
       # UpdateModelDeploymentMonitoringJob.
       class GoogleCloudAiplatformV1beta1UpdateModelDeploymentMonitoringJobOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
+      # Details of operations that perform update PersistentResource.
+      class GoogleCloudAiplatformV1beta1UpdatePersistentResourceOperationMetadata
         include Google::Apis::Core::Hashable
       
         # Generic Metadata shared by all operations.

@@ -6052,16 +6052,15 @@ module Google
         
         # Creates a new Feature in a given EntityType.
         # @param [String] parent
-        #   Required. The resource name of the EntityType or FeatureGroup to create a
-        #   Feature. Format: `projects/`project`/locations/`location`/featurestores/`
-        #   featurestore`/entityTypes/`entity_type`` `projects/`project`/locations/`
-        #   location`/featureGroups/`feature_group``
+        #   Required. The resource name of the EntityType to create a Feature. Format: `
+        #   projects/`project`/locations/`location`/featurestores/`featurestore`/
+        #   entityTypes/`entity_type``
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Feature] google_cloud_aiplatform_v1beta1_feature_object
         # @param [String] feature_id
         #   Required. The ID to use for the Feature, which will become the final component
         #   of the Feature's resource name. This value may be up to 128 characters, and
         #   valid characters are `[a-z0-9_]`. The first character cannot be a number. The
-        #   value must be unique within an EntityType/FeatureGroup.
+        #   value must be unique within an EntityType .
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6096,8 +6095,7 @@ module Google
         # @param [String] name
         #   Required. The name of the Features to be deleted. Format: `projects/`project`/
         #   locations/`location`/featurestores/`featurestore`/entityTypes/`entity_type`/
-        #   features/`feature`` `projects/`project`/locations/`location`/featureGroups/`
-        #   feature_group`/features/`feature``
+        #   features/`feature``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6128,8 +6126,7 @@ module Google
         # Gets details of a single Feature.
         # @param [String] name
         #   Required. The name of the Feature resource. Format: `projects/`project`/
-        #   locations/`location`/featurestores/`featurestore`/entityTypes/`entity_type`` `
-        #   projects/`project`/locations/`location`/featureGroups/`feature_group``
+        #   locations/`location`/featurestores/`featurestore`/entityTypes/`entity_type``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6161,8 +6158,7 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the Location to list Features. Format: `
         #   projects/`project`/locations/`location`/featurestores/`featurestore`/
-        #   entityTypes/`entity_type`` `projects/`project`/locations/`location`/
-        #   featureGroups/`feature_group``
+        #   entityTypes/`entity_type``
         # @param [String] filter
         #   Lists the Features that match the filter expression. The following filters are
         #   supported: * `value_type`: Supports = and != comparisons. * `create_time`:
@@ -6182,7 +6178,8 @@ module Google
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `feature_id` * `
-        #   value_type` * `create_time` * `update_time`
+        #   value_type` (Not supported for FeatureRegistry Feature) * `create_time` * `
+        #   update_time`
         # @param [Fixnum] page_size
         #   The maximum number of Features to return. The service may return fewer than
         #   this value. If unspecified, at most 1000 Features will be returned. The
@@ -11809,6 +11806,76 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Internal only: Called from Compute Engine instance to obtain EUC for owner
+        # Anonymous access: authenticates caller using VM identity JWT. Design doc: go/
+        # colab-on-vertex-euc-dd
+        # @param [String] name
+        #   Required. The name of the NotebookRuntime resource. Format: `projects/`project`
+        #   /locations/`location`/notebookRuntimes/`notebook_runtime``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateAccessTokenRequest] google_cloud_aiplatform_v1beta1_generate_access_token_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateAccessTokenResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateAccessTokenResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_notebook_execution_job_access_token(name, google_cloud_aiplatform_v1beta1_generate_access_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:generateAccessToken', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateAccessTokenRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_generate_access_token_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateAccessTokenResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateAccessTokenResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # 
+        # @param [String] name
+        #   Required. The name of the NotebookRuntime resource. Format: `projects/`project`
+        #   /locations/`location`/notebookRuntimes/`notebook_runtime``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReportRuntimeEventRequest] google_cloud_aiplatform_v1beta1_report_runtime_event_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReportRuntimeEventResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReportRuntimeEventResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def report_project_location_notebook_execution_job_event(name, google_cloud_aiplatform_v1beta1_report_runtime_event_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:reportEvent', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReportRuntimeEventRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_report_runtime_event_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReportRuntimeEventResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReportRuntimeEventResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a NotebookRuntimeTemplate.
         # @param [String] parent
         #   Required. The resource name of the Location to create the
@@ -12687,6 +12754,43 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a PersistentResource.
+        # @param [String] name
+        #   Immutable. Resource name of a PersistentResource.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PersistentResource] google_cloud_aiplatform_v1beta1_persistent_resource_object
+        # @param [String] update_mask
+        #   Required. Specify the fields to be overwritten in the PersistentResource by
+        #   the update method.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_persistent_resource(name, google_cloud_aiplatform_v1beta1_persistent_resource_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PersistentResource::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_persistent_resource_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
