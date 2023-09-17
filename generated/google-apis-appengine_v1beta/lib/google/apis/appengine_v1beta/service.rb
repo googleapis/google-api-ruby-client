@@ -1053,6 +1053,8 @@ module Google
         #   default.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
+        # @param [String] include_extra_data
+        #   Optional. Options to include extra data
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1070,12 +1072,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_app_service(apps_id, services_id, fields: nil, quota_user: nil, options: nil, &block)
+        def get_app_service(apps_id, services_id, include_extra_data: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta/apps/{appsId}/services/{servicesId}', options)
           command.response_representation = Google::Apis::AppengineV1beta::Service::Representation
           command.response_class = Google::Apis::AppengineV1beta::Service
           command.params['appsId'] = apps_id unless apps_id.nil?
           command.params['servicesId'] = services_id unless services_id.nil?
+          command.query['includeExtraData'] = include_extra_data unless include_extra_data.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1254,6 +1257,8 @@ module Google
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
         #   Part of `name`. See documentation of `appsId`.
+        # @param [String] include_extra_data
+        #   Optional. Options to include extra data
         # @param [String] view
         #   Controls the set of fields returned in the Get response.
         # @param [String] fields
@@ -1273,13 +1278,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_app_service_version(apps_id, services_id, versions_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_app_service_version(apps_id, services_id, versions_id, include_extra_data: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}', options)
           command.response_representation = Google::Apis::AppengineV1beta::Version::Representation
           command.response_class = Google::Apis::AppengineV1beta::Version
           command.params['appsId'] = apps_id unless apps_id.nil?
           command.params['servicesId'] = services_id unless services_id.nil?
           command.params['versionsId'] = versions_id unless versions_id.nil?
+          command.query['includeExtraData'] = include_extra_data unless include_extra_data.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
