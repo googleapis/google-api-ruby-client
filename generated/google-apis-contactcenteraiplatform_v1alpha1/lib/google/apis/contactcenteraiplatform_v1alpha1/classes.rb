@@ -582,6 +582,11 @@ module Google
         # @return [String]
         attr_accessor :certificate
       
+        # IdP field that maps to the user’s email address
+        # Corresponds to the JSON property `emailMapping`
+        # @return [String]
+        attr_accessor :email_mapping
+      
         # Entity id URL
         # Corresponds to the JSON property `entityId`
         # @return [String]
@@ -604,6 +609,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @certificate = args[:certificate] if args.key?(:certificate)
+          @email_mapping = args[:email_mapping] if args.key?(:email_mapping)
           @entity_id = args[:entity_id] if args.key?(:entity_id)
           @sso_uri = args[:sso_uri] if args.key?(:sso_uri)
           @user_email = args[:user_email] if args.key?(:user_email)
