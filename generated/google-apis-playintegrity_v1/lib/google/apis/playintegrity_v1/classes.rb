@@ -178,10 +178,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # This shows when there is an issue with at least one of the integrity verdicts,
-        # and provides user remediation guidance.
-        # Corresponds to the JSON property `userRemediation`
-        # @return [Array<String>]
-        attr_accessor :user_remediation
+        # which can be remedied by the user and provides additional details.
+        # Corresponds to the JSON property `userRemediationDetails`
+        # @return [Array<Google::Apis::PlayintegrityV1::UserRemediationDetails>]
+        attr_accessor :user_remediation_details
       
         def initialize(**args)
            update!(**args)
@@ -189,7 +189,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @user_remediation = args[:user_remediation] if args.key?(:user_remediation)
+          @user_remediation_details = args[:user_remediation_details] if args.key?(:user_remediation_details)
         end
       end
       
@@ -302,6 +302,26 @@ module Google
           @guidance_details = args[:guidance_details] if args.key?(:guidance_details)
           @request_details = args[:request_details] if args.key?(:request_details)
           @testing_details = args[:testing_details] if args.key?(:testing_details)
+        end
+      end
+      
+      # Contains details of remediation guidance that the user can perform. See go/pia-
+      # interstitials-dd
+      class UserRemediationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Description of the user remediation action. Required.
+        # Corresponds to the JSON property `remediation`
+        # @return [String]
+        attr_accessor :remediation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @remediation = args[:remediation] if args.key?(:remediation)
         end
       end
     end

@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserRemediationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountActivity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -133,7 +139,8 @@ module Google
       class GuidanceDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :user_remediation, as: 'userRemediation'
+          collection :user_remediation_details, as: 'userRemediationDetails', class: Google::Apis::PlayintegrityV1::UserRemediationDetails, decorator: Google::Apis::PlayintegrityV1::UserRemediationDetails::Representation
+      
         end
       end
       
@@ -169,6 +176,13 @@ module Google
       
           property :testing_details, as: 'testingDetails', class: Google::Apis::PlayintegrityV1::TestingDetails, decorator: Google::Apis::PlayintegrityV1::TestingDetails::Representation
       
+        end
+      end
+      
+      class UserRemediationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :remediation, as: 'remediation'
         end
       end
     end
