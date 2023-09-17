@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAdvisorynotificationsV1NotificationSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAdvisorynotificationsV1Settings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAdvisorynotificationsV1Subject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -140,6 +152,23 @@ module Google
           property :name, as: 'name'
           property :notification_type, as: 'notificationType'
           property :subject, as: 'subject', class: Google::Apis::AdvisorynotificationsV1::GoogleCloudAdvisorynotificationsV1Subject, decorator: Google::Apis::AdvisorynotificationsV1::GoogleCloudAdvisorynotificationsV1Subject::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAdvisorynotificationsV1NotificationSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class GoogleCloudAdvisorynotificationsV1Settings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          hash :notification_settings, as: 'notificationSettings', class: Google::Apis::AdvisorynotificationsV1::GoogleCloudAdvisorynotificationsV1NotificationSettings, decorator: Google::Apis::AdvisorynotificationsV1::GoogleCloudAdvisorynotificationsV1NotificationSettings::Representation
       
         end
       end
