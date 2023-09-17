@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIdentityAccesscontextmanagerV1EgressSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIdentityAccesscontextmanagerV1EgressTo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +233,18 @@ module Google
       end
       
       class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1VpcNetworkSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1VpcSubNetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -484,6 +502,8 @@ module Google
           property :negate, as: 'negate'
           collection :regions, as: 'regions'
           collection :required_access_levels, as: 'requiredAccessLevels'
+          collection :vpc_network_sources, as: 'vpcNetworkSources', class: Google::Apis::CloudassetV1p1beta1::GoogleIdentityAccesscontextmanagerV1VpcNetworkSource, decorator: Google::Apis::CloudassetV1p1beta1::GoogleIdentityAccesscontextmanagerV1VpcNetworkSource::Representation
+      
         end
       end
       
@@ -513,6 +533,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :identities, as: 'identities'
           property :identity_type, as: 'identityType'
+          property :source_restriction, as: 'sourceRestriction'
+          collection :sources, as: 'sources', class: Google::Apis::CloudassetV1p1beta1::GoogleIdentityAccesscontextmanagerV1EgressSource, decorator: Google::Apis::CloudassetV1p1beta1::GoogleIdentityAccesscontextmanagerV1EgressSource::Representation
+      
         end
       end
       
@@ -523,6 +546,13 @@ module Google
       
           property :egress_to, as: 'egressTo', class: Google::Apis::CloudassetV1p1beta1::GoogleIdentityAccesscontextmanagerV1EgressTo, decorator: Google::Apis::CloudassetV1p1beta1::GoogleIdentityAccesscontextmanagerV1EgressTo::Representation
       
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1EgressSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_level, as: 'accessLevel'
         end
       end
       
@@ -625,6 +655,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_services, as: 'allowedServices'
           property :enable_restriction, as: 'enableRestriction'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1VpcNetworkSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vpc_subnetwork, as: 'vpcSubnetwork', class: Google::Apis::CloudassetV1p1beta1::GoogleIdentityAccesscontextmanagerV1VpcSubNetwork, decorator: Google::Apis::CloudassetV1p1beta1::GoogleIdentityAccesscontextmanagerV1VpcSubNetwork::Representation
+      
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1VpcSubNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          collection :vpc_ip_subnetworks, as: 'vpcIpSubnetworks'
         end
       end
       
