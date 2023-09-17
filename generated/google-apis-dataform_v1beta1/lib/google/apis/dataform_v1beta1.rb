@@ -21,7 +21,8 @@ module Google
   module Apis
     # Dataform API
     #
-    # 
+    # Service to develop, version control, and operationalize SQL pipelines in
+    # BigQuery.
     #
     # @see https://cloud.google.com/dataform/docs
     module DataformV1beta1
