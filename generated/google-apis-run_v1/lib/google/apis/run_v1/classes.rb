@@ -377,8 +377,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
-        # resources must have, which includes all objects users must create.
+        # google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources
+        # must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
@@ -715,8 +715,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
-        # resources must have, which includes all objects users must create.
+        # google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources
+        # must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
@@ -1003,8 +1003,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
-        # resources must have, which includes all objects users must create.
+        # google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources
+        # must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
@@ -1192,8 +1192,8 @@ module Google
       class ExecutionTemplateSpec
         include Google::Apis::Core::Hashable
       
-        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
-        # resources must have, which includes all objects users must create.
+        # google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources
+        # must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
@@ -1480,8 +1480,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
-        # resources must have, which includes all objects users must create.
+        # google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources
+        # must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
@@ -2119,8 +2119,8 @@ module Google
         end
       end
       
-      # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
-      # resources must have, which includes all objects users must create.
+      # google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources
+      # must have, which includes all objects users must create.
       class ObjectMeta
         include Google::Apis::Core::Hashable
       
@@ -2136,14 +2136,15 @@ module Google
         # googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/
         # container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`:
         # Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.
-        # com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`
-        # : Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.
-        # googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.
-        # com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.
-        # googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-
-        # interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-
-        # action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. *
-        # `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/
+        # com/description`: Service. * `run.googleapis.com/disable-default-uri`: Service.
+        # * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.
+        # googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/
+        # execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-
+        # tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/
+        # launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`:
+        # Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`:
+        # Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.
+        # googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/
         # sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision.
         # * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.
         # googleapis.com/vpc-access-egress`: Revision, Execution.
@@ -2597,8 +2598,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
-        # resources must have, which includes all objects users must create.
+        # google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources
+        # must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
@@ -2756,8 +2757,8 @@ module Google
       class RevisionTemplate
         include Google::Apis::Core::Hashable
       
-        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
-        # resources must have, which includes all objects users must create.
+        # google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources
+        # must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
@@ -2798,8 +2799,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
-        # resources must have, which includes all objects users must create.
+        # google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources
+        # must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
@@ -2883,8 +2884,8 @@ module Google
         attr_accessor :traffic
       
         # URL holds the url that will distribute traffic over the provided traffic
-        # targets. It generally has the form: https://`route-hash`-`project-hash`-`
-        # cluster-level-suffix`.a.run.app
+        # targets. It generally has the form: `https://`route-hash`-`project-hash`-`
+        # cluster-level-suffix`.a.run.app`
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -3111,8 +3112,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
-        # resources must have, which includes all objects users must create.
+        # google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources
+        # must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
@@ -3216,8 +3217,8 @@ module Google
         attr_accessor :traffic
       
         # URL that will distribute traffic over the provided traffic targets. It
-        # generally has the form https://`route-hash`-`project-hash`-`cluster-level-
-        # suffix`.a.run.app
+        # generally has the form `https://`route-hash`-`project-hash`-`cluster-level-
+        # suffix`.a.run.app`
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -3488,8 +3489,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
-        # resources must have, which includes all objects users must create.
+        # google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources
+        # must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
