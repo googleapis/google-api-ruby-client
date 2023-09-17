@@ -538,6 +538,11 @@ module Google
         # @return [String]
         attr_accessor :collation
       
+        # Data cache configurations.
+        # Corresponds to the JSON property `dataCacheConfig`
+        # @return [Google::Apis::DatamigrationV1::DataCacheConfig]
+        attr_accessor :data_cache_config
+      
         # The storage capacity available to the database, in GB. The minimum (and
         # default) size is 10GB.
         # Corresponds to the JSON property `dataDiskSizeGb`
@@ -635,6 +640,7 @@ module Google
           @availability_type = args[:availability_type] if args.key?(:availability_type)
           @cmek_key_name = args[:cmek_key_name] if args.key?(:cmek_key_name)
           @collation = args[:collation] if args.key?(:collation)
+          @data_cache_config = args[:data_cache_config] if args.key?(:data_cache_config)
           @data_disk_size_gb = args[:data_disk_size_gb] if args.key?(:data_disk_size_gb)
           @data_disk_type = args[:data_disk_type] if args.key?(:data_disk_type)
           @database_flags = args[:database_flags] if args.key?(:database_flags)
@@ -1192,6 +1198,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @only_if_no_primary_key = args[:only_if_no_primary_key] if args.key?(:only_if_no_primary_key)
+        end
+      end
+      
+      # Data cache configurations.
+      class DataCacheConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether data cache is enabled for the instance.
+        # Corresponds to the JSON property `dataCacheEnabled`
+        # @return [Boolean]
+        attr_accessor :data_cache_enabled
+        alias_method :data_cache_enabled?, :data_cache_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_cache_enabled = args[:data_cache_enabled] if args.key?(:data_cache_enabled)
         end
       end
       
