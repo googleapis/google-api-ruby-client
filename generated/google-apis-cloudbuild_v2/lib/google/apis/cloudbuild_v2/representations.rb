@@ -196,7 +196,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListRepositoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -694,12 +706,32 @@ module Google
         end
       end
       
+      class ListLocationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locations, as: 'locations', class: Google::Apis::CloudbuildV2::Location, decorator: Google::Apis::CloudbuildV2::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListRepositoriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :repositories, as: 'repositories', class: Google::Apis::CloudbuildV2::Repository, decorator: Google::Apis::CloudbuildV2::Repository::Representation
       
+        end
+      end
+      
+      class Location
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
+          property :location_id, as: 'locationId'
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
         end
       end
       
@@ -816,6 +848,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :finally_tasks, as: 'finallyTasks', class: Google::Apis::CloudbuildV2::PipelineTask, decorator: Google::Apis::CloudbuildV2::PipelineTask::Representation
       
+          property :generated_yaml, as: 'generatedYaml'
           collection :params, as: 'params', class: Google::Apis::CloudbuildV2::ParamSpec, decorator: Google::Apis::CloudbuildV2::ParamSpec::Representation
       
           collection :tasks, as: 'tasks', class: Google::Apis::CloudbuildV2::PipelineTask, decorator: Google::Apis::CloudbuildV2::PipelineTask::Representation
@@ -980,7 +1013,6 @@ module Google
       class TaskRef
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :custom_task, as: 'customTask'
           property :name, as: 'name'
           collection :params, as: 'params', class: Google::Apis::CloudbuildV2::Param, decorator: Google::Apis::CloudbuildV2::Param::Representation
       
