@@ -103,6 +103,12 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class ObjectRetention
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class Owner
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -110,6 +116,12 @@ module Google
         end
         
         class RetentionPolicy
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
+        class SoftDeletePolicy
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
           include Google::Apis::Core::JsonObjectSupport
@@ -252,6 +264,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+        
+        class Retention
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -342,6 +360,8 @@ module Google
       
           property :metageneration, :numeric_string => true, as: 'metageneration'
           property :name, as: 'name'
+          property :object_retention, as: 'objectRetention', class: Google::Apis::StorageV1::Bucket::ObjectRetention, decorator: Google::Apis::StorageV1::Bucket::ObjectRetention::Representation
+      
           property :owner, as: 'owner', class: Google::Apis::StorageV1::Bucket::Owner, decorator: Google::Apis::StorageV1::Bucket::Owner::Representation
       
           property :project_number, :numeric_string => true, as: 'projectNumber'
@@ -350,6 +370,8 @@ module Google
           property :rpo, as: 'rpo'
           property :satisfies_pzs, as: 'satisfiesPZS'
           property :self_link, as: 'selfLink'
+          property :soft_delete_policy, as: 'softDeletePolicy', class: Google::Apis::StorageV1::Bucket::SoftDeletePolicy, decorator: Google::Apis::StorageV1::Bucket::SoftDeletePolicy::Representation
+      
           property :storage_class, as: 'storageClass'
           property :time_created, as: 'timeCreated', type: DateTime
       
@@ -365,6 +387,9 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :enabled, as: 'enabled'
+            property :terminal_storage_class, as: 'terminalStorageClass'
+            property :terminal_storage_class_update_time, as: 'terminalStorageClassUpdateTime', type: DateTime
+        
             property :toggle_time, as: 'toggleTime', type: DateTime
         
           end
@@ -485,6 +510,13 @@ module Google
           end
         end
         
+        class ObjectRetention
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :mode, as: 'mode'
+          end
+        end
+        
         class Owner
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -500,6 +532,15 @@ module Google
         
             property :is_locked, as: 'isLocked'
             property :retention_period, :numeric_string => true, as: 'retentionPeriod'
+          end
+        end
+        
+        class SoftDeletePolicy
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :effective_time, as: 'effectiveTime', type: DateTime
+        
+            property :retention_duration_seconds, :numeric_string => true, as: 'retentionDurationSeconds'
           end
         end
         
@@ -753,6 +794,8 @@ module Google
           property :name, as: 'name'
           property :owner, as: 'owner', class: Google::Apis::StorageV1::Object::Owner, decorator: Google::Apis::StorageV1::Object::Owner::Representation
       
+          property :retention, as: 'retention', class: Google::Apis::StorageV1::Object::Retention, decorator: Google::Apis::StorageV1::Object::Retention::Representation
+      
           property :retention_expiration_time, as: 'retentionExpirationTime', type: DateTime
       
           property :self_link, as: 'selfLink'
@@ -782,6 +825,15 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :entity, as: 'entity'
             property :entity_id, as: 'entityId'
+          end
+        end
+        
+        class Retention
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :mode, as: 'mode'
+            property :retain_until_time, as: 'retainUntilTime', type: DateTime
+        
           end
         end
       end
