@@ -458,6 +458,11 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1Product
         include Google::Apis::Core::Hashable
       
+        # Details for a bundle product.
+        # Corresponds to the JSON property `bundleDetails`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails]
+        attr_accessor :bundle_details
+      
         # Details for a subscriptiin line item with finite billing cycles.
         # Corresponds to the JSON property `finiteBillingCycleDetails`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails]
@@ -473,6 +478,11 @@ module Google
         # Corresponds to the JSON property `priceConfigs`
         # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig>]
         attr_accessor :price_configs
+      
+        # Output only. Output Only. Specifies the type of the product.
+        # Corresponds to the JSON property `productType`
+        # @return [String]
+        attr_accessor :product_type
       
         # Output only. 2-letter ISO region code where the product is available in. Ex. "
         # US" Please refers to: https://en.wikipedia.org/wiki/ISO_3166-1
@@ -496,12 +506,59 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bundle_details = args[:bundle_details] if args.key?(:bundle_details)
           @finite_billing_cycle_details = args[:finite_billing_cycle_details] if args.key?(:finite_billing_cycle_details)
           @name = args[:name] if args.key?(:name)
           @price_configs = args[:price_configs] if args.key?(:price_configs)
+          @product_type = args[:product_type] if args.key?(:product_type)
           @region_codes = args[:region_codes] if args.key?(:region_codes)
           @subscription_billing_cycle_duration = args[:subscription_billing_cycle_duration] if args.key?(:subscription_billing_cycle_duration)
           @titles = args[:titles] if args.key?(:titles)
+        end
+      end
+      
+      # Details for a bundle product.
+      class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails
+        include Google::Apis::Core::Hashable
+      
+        # The individual products that are included in the bundle.
+        # Corresponds to the JSON property `bundleElements`
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement>]
+        attr_accessor :bundle_elements
+      
+        # The entitlement mode of the bundle product.
+        # Corresponds to the JSON property `entitlementMode`
+        # @return [String]
+        attr_accessor :entitlement_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_elements = args[:bundle_elements] if args.key?(:bundle_elements)
+          @entitlement_mode = args[:entitlement_mode] if args.key?(:entitlement_mode)
+        end
+      end
+      
+      # The individual product that is included in the bundle.
+      class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output only. Product resource name that identifies the bundle
+        # element. The format is 'partners/`partner_id`/products/`product_id`'.
+        # Corresponds to the JSON property `product`
+        # @return [String]
+        attr_accessor :product
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product = args[:product] if args.key?(:product)
         end
       end
       

@@ -124,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -357,16 +369,35 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1Product
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bundle_details, as: 'bundleDetails', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails::Representation
+      
           property :finite_billing_cycle_details, as: 'finiteBillingCycleDetails', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails::Representation
       
           property :name, as: 'name'
           collection :price_configs, as: 'priceConfigs', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig::Representation
       
+          property :product_type, as: 'productType'
           collection :region_codes, as: 'regionCodes'
           property :subscription_billing_cycle_duration, as: 'subscriptionBillingCycleDuration', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Duration, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Duration::Representation
       
           collection :titles, as: 'titles', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleTypeLocalizedText, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleTypeLocalizedText::Representation
       
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bundle_elements, as: 'bundleElements', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement::Representation
+      
+          property :entitlement_mode, as: 'entitlementMode'
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product, as: 'product'
         end
       end
       
