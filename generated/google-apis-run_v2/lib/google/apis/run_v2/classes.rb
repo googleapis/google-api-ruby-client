@@ -707,7 +707,7 @@ module Google
         attr_accessor :port
       
         # Service is the name of the service to place in the gRPC HealthCheckRequest (
-        # see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this
+        # see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this
         # is not specified, the default behavior is defined by gRPC.
         # Corresponds to the JSON property `service`
         # @return [String]
@@ -1116,6 +1116,37 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @tasks = args[:tasks] if args.key?(:tasks)
+        end
+      end
+      
+      # VPC network settings.
+      class GoogleCloudRunV2NetworkInterface
+        include Google::Apis::Core::Hashable
+      
+        # The VPC network name to access to. Defaults to "default" network.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # The VPC subnetwork name to access to. Defaults to the same vaule of network.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        # Network tags applied to this VPC network.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -2534,6 +2565,11 @@ module Google
         # @return [String]
         attr_accessor :egress
       
+        # VPC network to access to. Currently only single network interface is supported.
+        # Corresponds to the JSON property `networkInterfaces`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2NetworkInterface>]
+        attr_accessor :network_interfaces
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2542,6 +2578,7 @@ module Google
         def update!(**args)
           @connector = args[:connector] if args.key?(:connector)
           @egress = args[:egress] if args.key?(:egress)
+          @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
         end
       end
       

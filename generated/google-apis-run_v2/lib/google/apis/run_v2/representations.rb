@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2NetworkInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2Probe
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -597,6 +603,15 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2NetworkInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :subnetwork, as: 'subnetwork'
+          collection :tags, as: 'tags'
+        end
+      end
+      
       class GoogleCloudRunV2Probe
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -892,6 +907,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connector, as: 'connector'
           property :egress, as: 'egress'
+          collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::RunV2::GoogleCloudRunV2NetworkInterface, decorator: Google::Apis::RunV2::GoogleCloudRunV2NetworkInterface::Representation
+      
         end
       end
       
