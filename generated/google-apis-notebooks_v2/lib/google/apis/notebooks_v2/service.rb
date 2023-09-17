@@ -339,6 +339,11 @@ module Google
         # Lists instances in a given project and location.
         # @param [String] parent
         #   Required. Format: `parent=projects/`project_id`/locations/`location``
+        # @param [String] filter
+        #   Optional. List filter.
+        # @param [String] order_by
+        #   Optional. Sort results. Supported values are "name", "name desc" or "" (
+        #   unsorted).
         # @param [Fixnum] page_size
         #   Optional. Maximum return size of the list call.
         # @param [String] page_token
@@ -361,11 +366,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_instances(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_instances(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/instances', options)
           command.response_representation = Google::Apis::NotebooksV2::ListInstancesResponse::Representation
           command.response_class = Google::Apis::NotebooksV2::ListInstancesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
