@@ -648,6 +648,315 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a `CustomDomain`.
+        # @param [String] parent
+        #   Required. The custom domain's parent, specifically a Firebase Hosting `Site`.
+        # @param [Google::Apis::FirebasehostingV1beta1::CustomDomain] custom_domain_object
+        # @param [String] custom_domain_id
+        #   Required. The ID of the `CustomDomain`, which is the domain name you'd like to
+        #   use with Firebase Hosting.
+        # @param [Boolean] validate_only
+        #   If true, Hosting validates that it's possible to complete your request but
+        #   doesn't actually create a new `CustomDomain`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_site_custom_domain(parent, custom_domain_object = nil, custom_domain_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/customDomains', options)
+          command.request_representation = Google::Apis::FirebasehostingV1beta1::CustomDomain::Representation
+          command.request_object = custom_domain_object
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['customDomainId'] = custom_domain_id unless custom_domain_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified `CustomDomain`.
+        # @param [String] name
+        #   Required. The name of the `CustomDomain` to delete.
+        # @param [Boolean] allow_missing
+        #   If true, the request succeeds even if the `CustomDomain` doesn't exist.
+        # @param [String] etag
+        #   A tag that represents the state of the `CustomDomain` as you know it. If
+        #   present, the supplied tag must match the current value on your `CustomDomain`,
+        #   or the request fails.
+        # @param [Boolean] validate_only
+        #   If true, Hosting validates that it's possible to complete your request but
+        #   doesn't actually delete the `CustomDomain`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_site_custom_domain(name, allow_missing: nil, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified `CustomDomain`.
+        # @param [String] name
+        #   Required. The name of the `CustomDomain` to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::CustomDomain] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::CustomDomain]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_site_custom_domain(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::CustomDomain::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::CustomDomain
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists each `CustomDomain` associated with the specified parent Hosting site.
+        # Returns `CustomDomain`s in a consistent, but undefined, order to facilitate
+        # pagination.
+        # @param [String] parent
+        #   Required. The Firebase Hosting `Site` with `CustomDomain` entities you'd like
+        #   to list.
+        # @param [Fixnum] page_size
+        #   The max number of `CustomDomain` entities to return in a request. Defaults to
+        #   10.
+        # @param [String] page_token
+        #   A token from a previous call to `ListCustomDomains` that tells the server
+        #   where to resume listing.
+        # @param [Boolean] show_deleted
+        #   If true, the request returns soft-deleted `CustomDomain`s that haven't been
+        #   fully-deleted yet. To restore deleted `CustomDomain`s, make an `
+        #   UndeleteCustomDomain` request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::ListCustomDomainsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::ListCustomDomainsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_site_custom_domains(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/customDomains', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::ListCustomDomainsResponse::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::ListCustomDomainsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified `CustomDomain`.
+        # @param [String] name
+        #   Output only. The fully-qualified name of the `CustomDomain`.
+        # @param [Google::Apis::FirebasehostingV1beta1::CustomDomain] custom_domain_object
+        # @param [Boolean] allow_missing
+        #   If true, Hosting creates the `CustomDomain` if it doesn't already exist.
+        # @param [String] update_mask
+        #   The set of field names from your `CustomDomain` that you want to update. A
+        #   field will be overwritten if, and only if, it's in the mask. If you don't
+        #   provide a mask, Hosting updates the entire `CustomDomain`.
+        # @param [Boolean] validate_only
+        #   If true, Hosting validates that it's possible to complete your request but
+        #   doesn't actually create or update the `CustomDomain`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_site_custom_domain(name, custom_domain_object = nil, allow_missing: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::FirebasehostingV1beta1::CustomDomain::Representation
+          command.request_object = custom_domain_object
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Undeletes the specified `CustomDomain` if it has been soft-deleted. Hosting
+        # retains soft-deleted custom domains for around 30 days before permanently
+        # deleting them.
+        # @param [String] name
+        #   Required. The name of the `CustomDomain` to delete.
+        # @param [Google::Apis::FirebasehostingV1beta1::UndeleteCustomDomainRequest] undelete_custom_domain_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_custom_domain(name, undelete_custom_domain_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:undelete', options)
+          command.request_representation = Google::Apis::FirebasehostingV1beta1::UndeleteCustomDomainRequest::Representation
+          command.request_object = undelete_custom_domain_request_object
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation. Use this method to poll the
+        # operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_site_custom_domain_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists operations that match the specified filter in the request.
+        # @param [String] name
+        #   The name of the operation's parent resource.
+        # @param [String] filter
+        #   The standard list filter.
+        # @param [Fixnum] page_size
+        #   The standard list page size.
+        # @param [String] page_token
+        #   The standard list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::ListOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::ListOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_site_custom_domain_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/operations', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::ListOperationsResponse::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::ListOperationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a domain mapping on the specified site.
         # @param [String] parent
         #   Required. The parent to create the domain association for, in the format:

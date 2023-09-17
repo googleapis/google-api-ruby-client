@@ -1,5 +1,9 @@
 # Release history for google-apis-firebasehosting_v1beta1
 
+### v0.26.0 (2023-09-17)
+
+* Regenerated from discovery document revision 20230913
+
 ### v0.25.0 (2023-09-03)
 
 * Regenerated from discovery document revision 20230827

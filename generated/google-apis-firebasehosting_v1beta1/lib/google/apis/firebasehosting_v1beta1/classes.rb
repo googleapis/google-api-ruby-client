@@ -102,6 +102,102 @@ module Google
         end
       end
       
+      # A set of ACME challenges you can use to allow Hosting to create an SSL
+      # certificate for your domain name before directing traffic to Hosting servers.
+      # Use either the DNS or HTTP challenge; it's not necessary to provide both.
+      class CertVerification
+        include Google::Apis::Core::Hashable
+      
+        # A set of DNS record updates that you should make to allow Hosting to serve
+        # secure content in response to requests against your domain name. These updates
+        # present the current state of your domain name's DNS records when Hosting last
+        # queried them, and the desired set of records that Hosting needs to see before
+        # your custom domain can be fully active.
+        # Corresponds to the JSON property `dns`
+        # @return [Google::Apis::FirebasehostingV1beta1::DnsUpdates]
+        attr_accessor :dns
+      
+        # A file you can add to your existing, non-Hosting hosting service that confirms
+        # your intent to allow Hosting's Certificate Authorities to create an SSL
+        # certificate for your domain.
+        # Corresponds to the JSON property `http`
+        # @return [Google::Apis::FirebasehostingV1beta1::HttpUpdate]
+        attr_accessor :http
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns = args[:dns] if args.key?(:dns)
+          @http = args[:http] if args.key?(:http)
+        end
+      end
+      
+      # An SSL certificate used to provide end-to-end encryption for requests against
+      # your domain name. A `Certificate` can be an actual SSL certificate or, for
+      # newly-created custom domains, Hosting's intent to create one.
+      class Certificate
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The certificate's creation time. For `TEMPORARY` certs this is
+        # the time Hosting first generated challenges for your domain name. For all
+        # other cert types, it's the time the actual cert was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The certificate's expiration time. After this time, the cert can
+        # no longer be used to provide secure communication between Hosting and your
+        # site's visitors.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. A set of errors Hosting encountered when attempting to create a
+        # cert for your domain name. Resolve these issues to ensure Hosting is able to
+        # provide secure communication with your site's visitors.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::FirebasehostingV1beta1::Status>]
+        attr_accessor :issues
+      
+        # Output only. The state of the certificate. Only the `CERT_ACTIVE` and `
+        # CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the
+        # state is `PROPAGATING` and Hosting had an active cert for the domain name
+        # before, that formerly-active cert provides SSL coverage for the domain name
+        # until the current cert propagates.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The certificate's type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # A set of ACME challenges you can use to allow Hosting to create an SSL
+        # certificate for your domain name before directing traffic to Hosting servers.
+        # Use either the DNS or HTTP challenge; it's not necessary to provide both.
+        # Corresponds to the JSON property `verification`
+        # @return [Google::Apis::FirebasehostingV1beta1::CertVerification]
+        attr_accessor :verification
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @issues = args[:issues] if args.key?(:issues)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
+          @verification = args[:verification] if args.key?(:verification)
+        end
+      end
+      
       # A `Channel` represents a stream of releases for a site. All sites have a
       # default `live` channel that serves content to the Firebase-provided subdomains
       # and any connected custom domains.
@@ -258,6 +354,324 @@ module Google
           @region = args[:region] if args.key?(:region)
           @service_id = args[:service_id] if args.key?(:service_id)
           @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # A `CustomDomain` is an entity that links a domain name to a Firebase Hosting
+      # site. Add a `CustomDomain` to your site to allow Hosting to serve the site's
+      # content in response to requests against your domain name.
+      class CustomDomain
+        include Google::Apis::Core::Hashable
+      
+        # Annotations you can add to leave both human- and machine-readable metadata
+        # about your `CustomDomain`.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # An SSL certificate used to provide end-to-end encryption for requests against
+        # your domain name. A `Certificate` can be an actual SSL certificate or, for
+        # newly-created custom domains, Hosting's intent to create one.
+        # Corresponds to the JSON property `cert`
+        # @return [Google::Apis::FirebasehostingV1beta1::Certificate]
+        attr_accessor :cert
+      
+        # A field that lets you specify which SSL certificate type Hosting creates for
+        # your domain name. Spark plan custom domains only have access to the `GROUPED`
+        # cert type, while Blaze plan domains can select any option.
+        # Corresponds to the JSON property `certPreference`
+        # @return [String]
+        attr_accessor :cert_preference
+      
+        # Output only. The custom domain's create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the `CustomDomain` was deleted; null for custom domains
+        # that haven't been deleted. Deleted custom domains persist for approximately 30
+        # days, after which time Hosting removes them completely. To restore a deleted
+        # custom domain, make an `UndeleteCustomDomain` request.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Output only. A string that represents the current state of the `CustomDomain`
+        # and allows you to confirm its initial state in requests that would modify it.
+        # Use the tag to ensure consistency when making `UpdateCustomDomain`, `
+        # DeleteCustomDomain`, and `UndeleteCustomDomain` requests.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The minimum time before a soft-deleted `CustomDomain` is
+        # completely removed from Hosting; null for custom domains that haven't been
+        # deleted.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. The `HostState` of the domain name this `CustomDomain` refers to.
+        # Corresponds to the JSON property `hostState`
+        # @return [String]
+        attr_accessor :host_state
+      
+        # Output only. A set of errors Hosting systems encountered when trying to
+        # establish Hosting's ability to serve secure content for your domain name.
+        # Resolve these issues to ensure your `CustomDomain` behaves properly.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::FirebasehostingV1beta1::Status>]
+        attr_accessor :issues
+      
+        # Labels used for extra metadata and/or filtering.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The fully-qualified name of the `CustomDomain`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The `OwnershipState` of the domain name this `CustomDomain`
+        # refers to.
+        # Corresponds to the JSON property `ownershipState`
+        # @return [String]
+        attr_accessor :ownership_state
+      
+        # Output only. A field that, if true, indicates that Hosting's systems are
+        # attmepting to make the custom domain's state match your preferred state. This
+        # is most frequently `true` when initially provisioning a `CustomDomain` after a
+        # `CreateCustomDomain` request or when creating a new SSL certificate to match
+        # an updated `cert_preference` after an `UpdateCustomDomain` request.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # A domain name that this `CustomDomain` should direct traffic towards. If
+        # specified, Hosting will respond to requests against this custom domain with an
+        # HTTP 301 code, and route traffic to the specified `redirect_target` instead.
+        # Corresponds to the JSON property `redirectTarget`
+        # @return [String]
+        attr_accessor :redirect_target
+      
+        # A set of DNS record updates that you should make to allow Hosting to serve
+        # secure content in response to requests against your domain name. These updates
+        # present the current state of your domain name's DNS records when Hosting last
+        # queried them, and the desired set of records that Hosting needs to see before
+        # your custom domain can be fully active.
+        # Corresponds to the JSON property `requiredDnsUpdates`
+        # @return [Google::Apis::FirebasehostingV1beta1::DnsUpdates]
+        attr_accessor :required_dns_updates
+      
+        # Output only. The last time the `CustomDomain` was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @cert = args[:cert] if args.key?(:cert)
+          @cert_preference = args[:cert_preference] if args.key?(:cert_preference)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @host_state = args[:host_state] if args.key?(:host_state)
+          @issues = args[:issues] if args.key?(:issues)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @ownership_state = args[:ownership_state] if args.key?(:ownership_state)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @redirect_target = args[:redirect_target] if args.key?(:redirect_target)
+          @required_dns_updates = args[:required_dns_updates] if args.key?(:required_dns_updates)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata associated with a`CustomDomain` operation.
+      class CustomDomainMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The `CertState` of the domain name's SSL certificate.
+        # Corresponds to the JSON property `certState`
+        # @return [String]
+        attr_accessor :cert_state
+      
+        # The `HostState` of the domain name this `CustomDomain` refers to.
+        # Corresponds to the JSON property `hostState`
+        # @return [String]
+        attr_accessor :host_state
+      
+        # A list of issues that are currently preventing Hosting from completing the
+        # operation. These are generally DNS-related issues that Hosting encounters when
+        # querying a domain name's records or attempting to mint an SSL certificate.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::FirebasehostingV1beta1::Status>]
+        attr_accessor :issues
+      
+        # A set of DNS record updates and ACME challenges that allow you to transition
+        # domain names to Firebase Hosting with zero downtime. These updates allow
+        # Hosting to create an SSL certificate and establish ownership for your custom
+        # domain before Hosting begins serving traffic on it. If your domain name is
+        # already in active use with another provider, add one of the challenges and
+        # make the recommended DNS updates. After adding challenges and adjusting DNS
+        # records as necessary, wait for the `ownershipState` to be `OWNERSHIP_ACTIVE`
+        # and the `certState` to be `CERT_ACTIVE` before sending traffic to Hosting.
+        # Corresponds to the JSON property `liveMigrationSteps`
+        # @return [Array<Google::Apis::FirebasehostingV1beta1::LiveMigrationStep>]
+        attr_accessor :live_migration_steps
+      
+        # The `OwnershipState` of the domain name this `CustomDomain` refers to.
+        # Corresponds to the JSON property `ownershipState`
+        # @return [String]
+        attr_accessor :ownership_state
+      
+        # A set of DNS record updates that you should make to allow Hosting to serve
+        # secure content in response to requests against your domain name. These updates
+        # present the current state of your domain name's DNS records when Hosting last
+        # queried them, and the desired set of records that Hosting needs to see before
+        # your custom domain can be fully active.
+        # Corresponds to the JSON property `quickSetupUpdates`
+        # @return [Google::Apis::FirebasehostingV1beta1::DnsUpdates]
+        attr_accessor :quick_setup_updates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cert_state = args[:cert_state] if args.key?(:cert_state)
+          @host_state = args[:host_state] if args.key?(:host_state)
+          @issues = args[:issues] if args.key?(:issues)
+          @live_migration_steps = args[:live_migration_steps] if args.key?(:live_migration_steps)
+          @ownership_state = args[:ownership_state] if args.key?(:ownership_state)
+          @quick_setup_updates = args[:quick_setup_updates] if args.key?(:quick_setup_updates)
+        end
+      end
+      
+      # DNS records are resource records that define how systems and services should
+      # behave when handling requests for a domain name. For example, when you add `A`
+      # records to your domain name's DNS records, you're informing other systems (
+      # such as your users' web browsers) to contact those IPv4 addresses to retrieve
+      # resources relevant to your domain name (such as your Hosting site files).
+      class DnsRecord
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The domain name the record pertains to, e.g. `foo.bar.com.`.
+        # Corresponds to the JSON property `domainName`
+        # @return [String]
+        attr_accessor :domain_name
+      
+        # Output only. The data of the record. The meaning of the value depends on
+        # record type: - A and AAAA: IP addresses for the domain name. - CNAME: Another
+        # domain to check for records. - TXT: Arbitrary text strings associated with the
+        # domain name. Hosting uses TXT records to determine which Firebase projects
+        # have permission to act on the domain name's behalf. - CAA: The record's flags,
+        # tag, and value, e.g. `0 issue "pki.goog"`.
+        # Corresponds to the JSON property `rdata`
+        # @return [String]
+        attr_accessor :rdata
+      
+        # Output only. An enum that indicates the a required action for this record.
+        # Corresponds to the JSON property `requiredAction`
+        # @return [String]
+        attr_accessor :required_action
+      
+        # Output only. The record's type, which determines what data the record contains.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain_name = args[:domain_name] if args.key?(:domain_name)
+          @rdata = args[:rdata] if args.key?(:rdata)
+          @required_action = args[:required_action] if args.key?(:required_action)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A set of DNS records relevant to the setup and maintenance of a custom domain
+      # in Firebase Hosting.
+      class DnsRecordSet
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `checkError`
+        # @return [Google::Apis::FirebasehostingV1beta1::Status]
+        attr_accessor :check_error
+      
+        # Output only. The domain name the record set pertains to.
+        # Corresponds to the JSON property `domainName`
+        # @return [String]
+        attr_accessor :domain_name
+      
+        # Output only. Records on the domain.
+        # Corresponds to the JSON property `records`
+        # @return [Array<Google::Apis::FirebasehostingV1beta1::DnsRecord>]
+        attr_accessor :records
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @check_error = args[:check_error] if args.key?(:check_error)
+          @domain_name = args[:domain_name] if args.key?(:domain_name)
+          @records = args[:records] if args.key?(:records)
+        end
+      end
+      
+      # A set of DNS record updates that you should make to allow Hosting to serve
+      # secure content in response to requests against your domain name. These updates
+      # present the current state of your domain name's DNS records when Hosting last
+      # queried them, and the desired set of records that Hosting needs to see before
+      # your custom domain can be fully active.
+      class DnsUpdates
+        include Google::Apis::Core::Hashable
+      
+        # The last time Hosting checked your custom domain's DNS records.
+        # Corresponds to the JSON property `checkTime`
+        # @return [String]
+        attr_accessor :check_time
+      
+        # The set of DNS records Hosting needs to serve secure content on the domain.
+        # Corresponds to the JSON property `desired`
+        # @return [Array<Google::Apis::FirebasehostingV1beta1::DnsRecordSet>]
+        attr_accessor :desired
+      
+        # The set of DNS records Hosting discovered when inspecting a domain.
+        # Corresponds to the JSON property `discovered`
+        # @return [Array<Google::Apis::FirebasehostingV1beta1::DnsRecordSet>]
+        attr_accessor :discovered
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @check_time = args[:check_time] if args.key?(:check_time)
+          @desired = args[:desired] if args.key?(:desired)
+          @discovered = args[:discovered] if args.key?(:discovered)
         end
       end
       
@@ -452,6 +866,57 @@ module Google
         end
       end
       
+      # A file you can add to your existing, non-Hosting hosting service that confirms
+      # your intent to allow Hosting's Certificate Authorities to create an SSL
+      # certificate for your domain.
+      class HttpUpdate
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `checkError`
+        # @return [Google::Apis::FirebasehostingV1beta1::Status]
+        attr_accessor :check_error
+      
+        # Output only. A text string to serve at the path.
+        # Corresponds to the JSON property `desired`
+        # @return [String]
+        attr_accessor :desired
+      
+        # Output only. Whether Hosting was able to find the required file contents on
+        # the specified path during its last check.
+        # Corresponds to the JSON property `discovered`
+        # @return [String]
+        attr_accessor :discovered
+      
+        # Output only. The last time Hosting systems checked for the file contents.
+        # Corresponds to the JSON property `lastCheckTime`
+        # @return [String]
+        attr_accessor :last_check_time
+      
+        # Output only. The path to the file.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @check_error = args[:check_error] if args.key?(:check_error)
+          @desired = args[:desired] if args.key?(:desired)
+          @discovered = args[:discovered] if args.key?(:discovered)
+          @last_check_time = args[:last_check_time] if args.key?(:last_check_time)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
       # If provided, i18n rewrites are enabled.
       class I18nConfig
         include Google::Apis::Core::Hashable
@@ -499,6 +964,34 @@ module Google
         end
       end
       
+      # The response from `ListCustomDomains`.
+      class ListCustomDomainsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of `CustomDomain` entities associated with the specified Firebase `Site`
+        # .
+        # Corresponds to the JSON property `customDomains`
+        # @return [Array<Google::Apis::FirebasehostingV1beta1::CustomDomain>]
+        attr_accessor :custom_domains
+      
+        # The pagination token, if more results exist beyond the ones in this response.
+        # Include this token in your next call to `ListCustomDomains`. Page tokens are
+        # short-lived and should not be stored.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_domains = args[:custom_domains] if args.key?(:custom_domains)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response to listing Domains.
       class ListDomainsResponse
         include Google::Apis::Core::Hashable
@@ -521,6 +1014,31 @@ module Google
         def update!(**args)
           @domains = args[:domains] if args.key?(:domains)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::FirebasehostingV1beta1::Operation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
         end
       end
       
@@ -629,6 +1147,57 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @versions = args[:versions] if args.key?(:versions)
+        end
+      end
+      
+      # A set of updates including ACME challenges and DNS records that allow Hosting
+      # to create an SSL certificate and establish project ownership for your domain
+      # name before you direct traffic to Hosting servers. Use these updates to
+      # facilitate zero downtime migrations to Hosting from other services. After you'
+      # ve made the recommended updates, check your custom domain's `ownershipState`
+      # and `certState`. To avoid downtime, they should be `OWNERSHIP_ACTIVE` and `
+      # CERT_ACTIVE`, respectively, before you update your `A` and `AAAA` records.
+      class LiveMigrationStep
+        include Google::Apis::Core::Hashable
+      
+        # A set of ACME challenges you can use to allow Hosting to create an SSL
+        # certificate for your domain name before directing traffic to Hosting servers.
+        # Use either the DNS or HTTP challenge; it's not necessary to provide both.
+        # Corresponds to the JSON property `certVerification`
+        # @return [Google::Apis::FirebasehostingV1beta1::CertVerification]
+        attr_accessor :cert_verification
+      
+        # A set of DNS record updates that you should make to allow Hosting to serve
+        # secure content in response to requests against your domain name. These updates
+        # present the current state of your domain name's DNS records when Hosting last
+        # queried them, and the desired set of records that Hosting needs to see before
+        # your custom domain can be fully active.
+        # Corresponds to the JSON property `dnsUpdates`
+        # @return [Google::Apis::FirebasehostingV1beta1::DnsUpdates]
+        attr_accessor :dns_updates
+      
+        # Output only. Issues that prevent the current step from completing.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::FirebasehostingV1beta1::Status>]
+        attr_accessor :issues
+      
+        # Output only. The state of the live migration step, indicates whether you
+        # should work to complete the step now, in the future, or have already completed
+        # it.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cert_verification = args[:cert_verification] if args.key?(:cert_verification)
+          @dns_updates = args[:dns_updates] if args.key?(:dns_updates)
+          @issues = args[:issues] if args.key?(:issues)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -1119,6 +1688,35 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # The request sent to `UndeleteCustomDomain`.
+      class UndeleteCustomDomainRequest
+        include Google::Apis::Core::Hashable
+      
+        # A tag that represents the state of the `CustomDomain` as you know it. If
+        # present, the supplied tag must match the current value on your `CustomDomain`,
+        # or the request fails.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # If true, Hosting validates that it's possible to complete your request but
+        # doesn't actually delete the `CustomDomain`.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
       
