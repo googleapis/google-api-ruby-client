@@ -57,6 +57,29 @@ module Google
         end
       end
       
+      # The response for HubService.AcceptHubSpoke.
+      class AcceptHubSpokeResponse
+        include Google::Apis::Core::Hashable
+      
+        # A Network Connectivity Center spoke represents one or more network
+        # connectivity resources. When you create a spoke, you associate it with a hub.
+        # You must also identify a value for exactly one of the following fields: *
+        # linked_vpn_tunnels * linked_interconnect_attachments *
+        # linked_router_appliance_instances * linked_vpc_network
+        # Corresponds to the JSON property `spoke`
+        # @return [Google::Apis::NetworkconnectivityV1::Spoke]
+        attr_accessor :spoke
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spoke = args[:spoke] if args.key?(:spoke)
+        end
+      end
+      
       # The request for HubService.AcceptSpoke.
       class AcceptSpokeRequest
         include Google::Apis::Core::Hashable
@@ -2038,6 +2061,29 @@ module Google
           @details = args[:details] if args.key?(:details)
           @request_id = args[:request_id] if args.key?(:request_id)
           @spoke_uri = args[:spoke_uri] if args.key?(:spoke_uri)
+        end
+      end
+      
+      # The response for HubService.RejectHubSpoke.
+      class RejectHubSpokeResponse
+        include Google::Apis::Core::Hashable
+      
+        # A Network Connectivity Center spoke represents one or more network
+        # connectivity resources. When you create a spoke, you associate it with a hub.
+        # You must also identify a value for exactly one of the following fields: *
+        # linked_vpn_tunnels * linked_interconnect_attachments *
+        # linked_router_appliance_instances * linked_vpc_network
+        # Corresponds to the JSON property `spoke`
+        # @return [Google::Apis::NetworkconnectivityV1::Spoke]
+        attr_accessor :spoke
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spoke = args[:spoke] if args.key?(:spoke)
         end
       end
       
