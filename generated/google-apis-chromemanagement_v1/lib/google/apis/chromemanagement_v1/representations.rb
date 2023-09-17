@@ -406,6 +406,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1TelemetryNotificationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1218,10 +1230,16 @@ module Google
           property :https_latency_change_event, as: 'httpsLatencyChangeEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent::Representation
       
           property :name, as: 'name'
+          property :network_state_change_event, as: 'networkStateChangeEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent::Representation
+      
           property :report_time, as: 'reportTime'
           property :usb_peripherals_event, as: 'usbPeripheralsEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUsbPeripheralsEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUsbPeripheralsEvent::Representation
       
           property :user, as: 'user', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUserInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUserInfo::Representation
+      
+          property :vpn_connection_state_change_event, as: 'vpnConnectionStateChangeEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent::Representation
+      
+          property :wifi_signal_strength_event, as: 'wifiSignalStrengthEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent::Representation
       
         end
       end
@@ -1239,6 +1257,22 @@ module Google
           property :https_latency_routine_data, as: 'httpsLatencyRoutineData', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1HttpsLatencyRoutineData, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1HttpsLatencyRoutineData::Representation
       
           property :https_latency_state, as: 'httpsLatencyState'
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_state, as: 'connectionState'
+          property :guid, as: 'guid'
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :guid, as: 'guid'
+          property :signal_strength_dbm, as: 'signalStrengthDbm'
         end
       end
       
