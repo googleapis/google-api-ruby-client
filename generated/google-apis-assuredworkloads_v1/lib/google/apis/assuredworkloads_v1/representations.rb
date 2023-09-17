@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +59,24 @@ module Google
       end
       
       class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1MoveAnalysisGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1MoveAnalysisResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1MoveImpact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -192,6 +222,25 @@ module Google
         end
       end
       
+      class GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :asset_move_analyses, as: 'assetMoveAnalyses', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AssetMoveAnalysis, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AssetMoveAnalysis::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :analysis_groups, as: 'analysisGroups', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1MoveAnalysisGroup, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1MoveAnalysisGroup::Representation
+      
+          property :asset, as: 'asset'
+          property :asset_type, as: 'assetType'
+        end
+      end
+      
       class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -217,6 +266,34 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :workloads, as: 'workloads', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Workload, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Workload::Representation
       
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1MoveAnalysisGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis_result, as: 'analysisResult', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1MoveAnalysisResult, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1MoveAnalysisResult::Representation
+      
+          property :display_name, as: 'displayName'
+          property :error, as: 'error', class: Google::Apis::AssuredworkloadsV1::GoogleRpcStatus, decorator: Google::Apis::AssuredworkloadsV1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1MoveAnalysisResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blockers, as: 'blockers', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1MoveImpact, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1MoveImpact::Representation
+      
+          collection :warnings, as: 'warnings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1MoveImpact, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1MoveImpact::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1MoveImpact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detail, as: 'detail'
         end
       end
       

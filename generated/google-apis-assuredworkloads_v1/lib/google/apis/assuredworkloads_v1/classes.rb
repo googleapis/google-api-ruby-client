@@ -65,6 +65,65 @@ module Google
         end
       end
       
+      # Response containing the analysis results for the hypothetical resource move.
+      class GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of analysis results for each asset in scope.
+        # Corresponds to the JSON property `assetMoveAnalyses`
+        # @return [Array<Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AssetMoveAnalysis>]
+        attr_accessor :asset_move_analyses
+      
+        # The next page token. Is empty if the last page is reached.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_move_analyses = args[:asset_move_analyses] if args.key?(:asset_move_analyses)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Represents move analysis results for an asset.
+      class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis
+        include Google::Apis::Core::Hashable
+      
+        # List of eligible analyses performed for the asset.
+        # Corresponds to the JSON property `analysisGroups`
+        # @return [Array<Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1MoveAnalysisGroup>]
+        attr_accessor :analysis_groups
+      
+        # The full resource name of the asset being analyzed. Example: //compute.
+        # googleapis.com/projects/my_project_123/zones/zone1/instances/instance1
+        # Corresponds to the JSON property `asset`
+        # @return [String]
+        attr_accessor :asset
+      
+        # Type of the asset being analyzed. Possible values will be among the ones
+        # listed [here](https://cloud.google.com/asset-inventory/docs/supported-asset-
+        # types#searchable_asset_types).
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis_groups = args[:analysis_groups] if args.key?(:analysis_groups)
+          @asset = args[:asset] if args.key?(:asset)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
+        end
+      end
+      
       # Operation metadata to give request details of CreateWorkload.
       class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata
         include Google::Apis::Core::Hashable
@@ -150,6 +209,90 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @workloads = args[:workloads] if args.key?(:workloads)
+        end
+      end
+      
+      # Represents a logical group of checks performed for an asset. If successful,
+      # the group contains the analysis result, otherwise it contains an error with
+      # the failure reason.
+      class GoogleCloudAssuredworkloadsV1MoveAnalysisGroup
+        include Google::Apis::Core::Hashable
+      
+        # Represents the successful move analysis results for a group.
+        # Corresponds to the JSON property `analysisResult`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1MoveAnalysisResult]
+        attr_accessor :analysis_result
+      
+        # Name of the analysis group.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis_result = args[:analysis_result] if args.key?(:analysis_result)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @error = args[:error] if args.key?(:error)
+        end
+      end
+      
+      # Represents the successful move analysis results for a group.
+      class GoogleCloudAssuredworkloadsV1MoveAnalysisResult
+        include Google::Apis::Core::Hashable
+      
+        # List of blockers. If not resolved, these will result in compliance violations
+        # in the target.
+        # Corresponds to the JSON property `blockers`
+        # @return [Array<Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1MoveImpact>]
+        attr_accessor :blockers
+      
+        # List of warnings. These are risks that may or may not result in compliance
+        # violations.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1MoveImpact>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blockers = args[:blockers] if args.key?(:blockers)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Represents the impact of moving the asset to the target.
+      class GoogleCloudAssuredworkloadsV1MoveImpact
+        include Google::Apis::Core::Hashable
+      
+        # Explanation of the impact.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detail = args[:detail] if args.key?(:detail)
         end
       end
       
