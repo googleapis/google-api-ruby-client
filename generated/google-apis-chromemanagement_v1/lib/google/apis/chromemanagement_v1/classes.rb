@@ -2907,6 +2907,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # `TelemetryNetworkConnectionStateChangeEvent` is triggered on network
+        # connection state changes. * Granular permission needed:
+        # TELEMETRY_API_NETWORK_REPORT
+        # Corresponds to the JSON property `networkStateChangeEvent`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent]
+        attr_accessor :network_state_change_event
+      
         # Timestamp that represents when the event was reported.
         # Corresponds to the JSON property `reportTime`
         # @return [String]
@@ -2924,6 +2931,19 @@ module Google
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUserInfo]
         attr_accessor :user
       
+        # `TelemetryNetworkConnectionStateChangeEvent` is triggered on network
+        # connection state changes. * Granular permission needed:
+        # TELEMETRY_API_NETWORK_REPORT
+        # Corresponds to the JSON property `vpnConnectionStateChangeEvent`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent]
+        attr_accessor :vpn_connection_state_change_event
+      
+        # `TelemetryNetworkSignalStrengthEvent` is triggered on WiFi signal strength
+        # events. * Granular permission needed: TELEMETRY_API_NETWORK_REPORT
+        # Corresponds to the JSON property `wifiSignalStrengthEvent`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent]
+        attr_accessor :wifi_signal_strength_event
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2935,9 +2955,12 @@ module Google
           @event_type = args[:event_type] if args.key?(:event_type)
           @https_latency_change_event = args[:https_latency_change_event] if args.key?(:https_latency_change_event)
           @name = args[:name] if args.key?(:name)
+          @network_state_change_event = args[:network_state_change_event] if args.key?(:network_state_change_event)
           @report_time = args[:report_time] if args.key?(:report_time)
           @usb_peripherals_event = args[:usb_peripherals_event] if args.key?(:usb_peripherals_event)
           @user = args[:user] if args.key?(:user)
+          @vpn_connection_state_change_event = args[:vpn_connection_state_change_event] if args.key?(:vpn_connection_state_change_event)
+          @wifi_signal_strength_event = args[:wifi_signal_strength_event] if args.key?(:wifi_signal_strength_event)
         end
       end
       
@@ -2986,6 +3009,59 @@ module Google
         def update!(**args)
           @https_latency_routine_data = args[:https_latency_routine_data] if args.key?(:https_latency_routine_data)
           @https_latency_state = args[:https_latency_state] if args.key?(:https_latency_state)
+        end
+      end
+      
+      # `TelemetryNetworkConnectionStateChangeEvent` is triggered on network
+      # connection state changes. * Granular permission needed:
+      # TELEMETRY_API_NETWORK_REPORT
+      class GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent
+        include Google::Apis::Core::Hashable
+      
+        # Current connection state of the network.
+        # Corresponds to the JSON property `connectionState`
+        # @return [String]
+        attr_accessor :connection_state
+      
+        # Unique identifier of the network.
+        # Corresponds to the JSON property `guid`
+        # @return [String]
+        attr_accessor :guid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_state = args[:connection_state] if args.key?(:connection_state)
+          @guid = args[:guid] if args.key?(:guid)
+        end
+      end
+      
+      # `TelemetryNetworkSignalStrengthEvent` is triggered on WiFi signal strength
+      # events. * Granular permission needed: TELEMETRY_API_NETWORK_REPORT
+      class GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier of the network.
+        # Corresponds to the JSON property `guid`
+        # @return [String]
+        attr_accessor :guid
+      
+        # Signal strength RSSI value.
+        # Corresponds to the JSON property `signalStrengthDbm`
+        # @return [Fixnum]
+        attr_accessor :signal_strength_dbm
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @guid = args[:guid] if args.key?(:guid)
+          @signal_strength_dbm = args[:signal_strength_dbm] if args.key?(:signal_strength_dbm)
         end
       end
       
