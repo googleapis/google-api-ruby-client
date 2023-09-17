@@ -1984,7 +1984,7 @@ module Google
         # @return [Google::Apis::ArtifactregistryV1::DockerRepositoryConfig]
         attr_accessor :docker_config
       
-        # The format of packages that are stored in the repository.
+        # Optional. The format of packages that are stored in the repository.
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
@@ -2011,7 +2011,7 @@ module Google
         # @return [Google::Apis::ArtifactregistryV1::MavenRepositoryConfig]
         attr_accessor :maven_config
       
-        # The mode of the repository.
+        # Optional. The mode of the repository.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
