@@ -1050,12 +1050,6 @@ module Google
         # @return [Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaAppBundle]
         attr_accessor :app_bundle
       
-        # Resource name of the base report used for comparison. May be absent if this is
-        # the first report generated for the app.
-        # Corresponds to the JSON property `baseReport`
-        # @return [String]
-        attr_accessor :base_report
-      
         # List of checks that were run on the app bundle.
         # Corresponds to the JSON property `checks`
         # @return [Array<Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaCheck>]
@@ -1083,7 +1077,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_bundle = args[:app_bundle] if args.key?(:app_bundle)
-          @base_report = args[:base_report] if args.key?(:base_report)
           @checks = args[:checks] if args.key?(:checks)
           @data_monitoring = args[:data_monitoring] if args.key?(:data_monitoring)
           @name = args[:name] if args.key?(:name)
