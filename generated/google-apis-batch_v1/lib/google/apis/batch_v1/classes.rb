@@ -828,8 +828,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not
-        # indicated, "NVMe" will be the default one for local ssds. We only support "
-        # SCSI" for persistent disks now.
+        # indicated, "NVMe" will be the default one for local ssds. This field is
+        # ignored for persistent disks as the interface is chosen automatically. See
+        # https://cloud.google.com/compute/docs/disks/persistent-disks#
+        # choose_an_interface.
         # Corresponds to the JSON property `diskInterface`
         # @return [String]
         attr_accessor :disk_interface
