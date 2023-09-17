@@ -3013,6 +3013,8 @@ module Google
       
         # Applies the repricing configuration at the channel partner level. The channel
         # partner value is derived from the resource name. Takes an empty json object.
+        # Deprecated: This is no longer supported. Use RepricingConfig.
+        # EntitlementGranularity instead.
         # Corresponds to the JSON property `channelPartnerGranularity`
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity]
         attr_accessor :channel_partner_granularity
@@ -3064,6 +3066,8 @@ module Google
       
       # Applies the repricing configuration at the channel partner level. The channel
       # partner value is derived from the resource name. Takes an empty json object.
+      # Deprecated: This is no longer supported. Use RepricingConfig.
+      # EntitlementGranularity instead.
       class GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
         include Google::Apis::Core::Hashable
       
