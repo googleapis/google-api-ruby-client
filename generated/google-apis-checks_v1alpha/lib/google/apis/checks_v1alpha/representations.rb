@@ -673,7 +673,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_bundle, as: 'appBundle', class: Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaAppBundle, decorator: Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaAppBundle::Representation
       
-          property :base_report, as: 'baseReport'
           collection :checks, as: 'checks', class: Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaCheck, decorator: Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaCheck::Representation
       
           property :data_monitoring, as: 'dataMonitoring', class: Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaDataMonitoring, decorator: Google::Apis::ChecksV1alpha::GoogleChecksReportV1alphaDataMonitoring::Representation
