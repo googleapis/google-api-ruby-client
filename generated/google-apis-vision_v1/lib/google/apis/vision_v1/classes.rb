@@ -331,6 +331,15 @@ module Google
       class AsyncBatchAnnotateFilesRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The labels with user-defined metadata for the request. Label keys
+        # and values can be no longer than 63 characters (Unicode codepoints), can only
+        # contain lowercase letters, numeric characters, underscores and dashes.
+        # International characters are allowed. Label values are optional. Label keys
+        # must start with a letter.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Optional. Target project and location to make a call. Format: `projects/`
         # project-id`/locations/`location-id``. If no parent is specified, a region will
         # be chosen automatically. Supported location-ids: `us`: USA country only, `asia`
@@ -351,6 +360,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
           @parent = args[:parent] if args.key?(:parent)
           @requests = args[:requests] if args.key?(:requests)
         end
@@ -380,6 +390,15 @@ module Google
       class AsyncBatchAnnotateImagesRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The labels with user-defined metadata for the request. Label keys
+        # and values can be no longer than 63 characters (Unicode codepoints), can only
+        # contain lowercase letters, numeric characters, underscores and dashes.
+        # International characters are allowed. Label values are optional. Label keys
+        # must start with a letter.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The desired output location and metadata.
         # Corresponds to the JSON property `outputConfig`
         # @return [Google::Apis::VisionV1::OutputConfig]
@@ -405,6 +424,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
           @output_config = args[:output_config] if args.key?(:output_config)
           @parent = args[:parent] if args.key?(:parent)
           @requests = args[:requests] if args.key?(:requests)
@@ -434,6 +454,15 @@ module Google
       class BatchAnnotateFilesRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The labels with user-defined metadata for the request. Label keys
+        # and values can be no longer than 63 characters (Unicode codepoints), can only
+        # contain lowercase letters, numeric characters, underscores and dashes.
+        # International characters are allowed. Label values are optional. Label keys
+        # must start with a letter.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Optional. Target project and location to make a call. Format: `projects/`
         # project-id`/locations/`location-id``. If no parent is specified, a region will
         # be chosen automatically. Supported location-ids: `us`: USA country only, `asia`
@@ -455,6 +484,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
           @parent = args[:parent] if args.key?(:parent)
           @requests = args[:requests] if args.key?(:requests)
         end
@@ -484,6 +514,15 @@ module Google
       class BatchAnnotateImagesRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The labels with user-defined metadata for the request. Label keys
+        # and values can be no longer than 63 characters (Unicode codepoints), can only
+        # contain lowercase letters, numeric characters, underscores and dashes.
+        # International characters are allowed. Label values are optional. Label keys
+        # must start with a letter.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Optional. Target project and location to make a call. Format: `projects/`
         # project-id`/locations/`location-id``. If no parent is specified, a region will
         # be chosen automatically. Supported location-ids: `us`: USA country only, `asia`
@@ -504,6 +543,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
           @parent = args[:parent] if args.key?(:parent)
           @requests = args[:requests] if args.key?(:requests)
         end
