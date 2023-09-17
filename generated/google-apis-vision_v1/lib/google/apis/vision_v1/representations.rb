@@ -1812,6 +1812,7 @@ module Google
       class AsyncBatchAnnotateFilesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
           property :parent, as: 'parent'
           collection :requests, as: 'requests', class: Google::Apis::VisionV1::AsyncAnnotateFileRequest, decorator: Google::Apis::VisionV1::AsyncAnnotateFileRequest::Representation
       
@@ -1829,6 +1830,7 @@ module Google
       class AsyncBatchAnnotateImagesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
           property :output_config, as: 'outputConfig', class: Google::Apis::VisionV1::OutputConfig, decorator: Google::Apis::VisionV1::OutputConfig::Representation
       
           property :parent, as: 'parent'
@@ -1848,6 +1850,7 @@ module Google
       class BatchAnnotateFilesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
           property :parent, as: 'parent'
           collection :requests, as: 'requests', class: Google::Apis::VisionV1::AnnotateFileRequest, decorator: Google::Apis::VisionV1::AnnotateFileRequest::Representation
       
@@ -1865,6 +1868,7 @@ module Google
       class BatchAnnotateImagesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
           property :parent, as: 'parent'
           collection :requests, as: 'requests', class: Google::Apis::VisionV1::AnnotateImageRequest, decorator: Google::Apis::VisionV1::AnnotateImageRequest::Representation
       
