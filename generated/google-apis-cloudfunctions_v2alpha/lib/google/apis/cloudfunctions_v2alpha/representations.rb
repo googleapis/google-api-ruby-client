@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EventFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -334,6 +340,15 @@ module Google
       
           property :source_token, as: 'sourceToken'
           property :worker_pool, as: 'workerPool'
+        end
+      end
+      
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
         end
       end
       
@@ -661,6 +676,10 @@ module Google
       class Runtime
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :decommission_date, as: 'decommissionDate', class: Google::Apis::CloudfunctionsV2alpha::Date, decorator: Google::Apis::CloudfunctionsV2alpha::Date::Representation
+      
+          property :deprecation_date, as: 'deprecationDate', class: Google::Apis::CloudfunctionsV2alpha::Date, decorator: Google::Apis::CloudfunctionsV2alpha::Date::Representation
+      
           property :display_name, as: 'displayName'
           property :environment, as: 'environment'
           property :name, as: 'name'
