@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Fmp4Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class H264CodecSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -561,6 +567,13 @@ module Google
         end
       end
       
+      class Fmp4Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :codec_tag, as: 'codecTag'
+        end
+      end
+      
       class H264CodecSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -738,6 +751,8 @@ module Google
           collection :elementary_streams, as: 'elementaryStreams'
           property :encryption_id, as: 'encryptionId'
           property :file_name, as: 'fileName'
+          property :fmp4, as: 'fmp4', class: Google::Apis::TranscoderV1::Fmp4Config, decorator: Google::Apis::TranscoderV1::Fmp4Config::Representation
+      
           property :key, as: 'key'
           property :segment_settings, as: 'segmentSettings', class: Google::Apis::TranscoderV1::SegmentSettings, decorator: Google::Apis::TranscoderV1::SegmentSettings::Representation
       

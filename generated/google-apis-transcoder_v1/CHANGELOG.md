@@ -1,5 +1,9 @@
 # Release history for google-apis-transcoder_v1
 
+### v0.21.0 (2023-09-17)
+
+* Regenerated from discovery document revision 20230906
+
 ### v0.20.0 (2023-07-23)
 
 * Regenerated from discovery document revision 20230712
