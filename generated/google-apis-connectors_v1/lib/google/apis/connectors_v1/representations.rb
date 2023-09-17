@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JsonSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class JwtClaims
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -702,6 +708,7 @@ module Google
           property :eventing_runtime_data, as: 'eventingRuntimeData', class: Google::Apis::ConnectorsV1::EventingRuntimeData, decorator: Google::Apis::ConnectorsV1::EventingRuntimeData::Representation
       
           property :image_location, as: 'imageLocation'
+          property :is_trusted_tester, as: 'isTrustedTester'
           hash :labels, as: 'labels'
           property :lock_config, as: 'lockConfig', class: Google::Apis::ConnectorsV1::LockConfig, decorator: Google::Apis::ConnectorsV1::LockConfig::Representation
       
@@ -772,6 +779,7 @@ module Google
       
           property :resource_requests, as: 'resourceRequests', class: Google::Apis::ConnectorsV1::ResourceRequests, decorator: Google::Apis::ConnectorsV1::ResourceRequests::Representation
       
+          property :shared_deployment, as: 'sharedDeployment'
         end
       end
       
@@ -819,6 +827,7 @@ module Google
       
           property :resource_requests, as: 'resourceRequests', class: Google::Apis::ConnectorsV1::ResourceRequests, decorator: Google::Apis::ConnectorsV1::ResourceRequests::Representation
       
+          property :shared_deployment, as: 'sharedDeployment'
         end
       end
       
@@ -973,6 +982,8 @@ module Google
           property :encryption_key, as: 'encryptionKey', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
       
           property :enrichment_enabled, as: 'enrichmentEnabled'
+          property :private_connectivity_enabled, as: 'privateConnectivityEnabled'
+          property :public_events_listener_endpoint, as: 'publicEventsListenerEndpoint'
           property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
       
         end
@@ -1061,6 +1072,8 @@ module Google
           property :default_value, as: 'defaultValue'
           property :description, as: 'description'
           property :field, as: 'field'
+          property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
           property :key, as: 'key'
           property :nullable, as: 'nullable'
           property :readonly, as: 'readonly'
@@ -1100,8 +1113,27 @@ module Google
           property :data_type, as: 'dataType'
           property :default_value, as: 'defaultValue'
           property :description, as: 'description'
+          property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
           property :nullable, as: 'nullable'
           property :parameter, as: 'parameter'
+        end
+      end
+      
+      class JsonSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default, as: 'default'
+          property :description, as: 'description'
+          collection :enum, as: 'enum'
+          property :format, as: 'format'
+          property :items, as: 'items', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
+          property :jdbc_type, as: 'jdbcType'
+          hash :properties, as: 'properties', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
+          collection :required, as: 'required'
+          collection :type, as: 'type'
         end
       end
       
@@ -1409,6 +1441,8 @@ module Google
           property :data_type, as: 'dataType'
           property :description, as: 'description'
           property :field, as: 'field'
+          property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
         end
       end
       
@@ -1433,7 +1467,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
+          property :input_json_schema, as: 'inputJsonSchema', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
           collection :input_parameters, as: 'inputParameters', class: Google::Apis::ConnectorsV1::InputParameter, decorator: Google::Apis::ConnectorsV1::InputParameter::Representation
+      
+          property :result_json_schema, as: 'resultJsonSchema', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
       
           collection :result_metadata, as: 'resultMetadata', class: Google::Apis::ConnectorsV1::ResultMetadata, decorator: Google::Apis::ConnectorsV1::ResultMetadata::Representation
       
@@ -1461,6 +1499,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :entity, as: 'entity'
           collection :fields, as: 'fields', class: Google::Apis::ConnectorsV1::Field, decorator: Google::Apis::ConnectorsV1::Field::Representation
+      
+          property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
       
         end
       end
