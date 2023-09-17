@@ -473,6 +473,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Results of active probing from the last run of the test.
+        # Corresponds to the JSON property `probingDetails`
+        # @return [Google::Apis::NetworkmanagementV1::ProbingDetails]
+        attr_accessor :probing_details
+      
         # IP Protocol of the test. When not provided, "TCP" is assumed.
         # Corresponds to the JSON property `protocol`
         # @return [String]
@@ -511,6 +516,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @probing_details = args[:probing_details] if args.key?(:probing_details)
           @protocol = args[:protocol] if args.key?(:protocol)
           @reachability_details = args[:reachability_details] if args.key?(:reachability_details)
           @related_projects = args[:related_projects] if args.key?(:related_projects)
@@ -569,6 +575,26 @@ module Google
         end
       end
       
+      # Representation of a network edge location as per https://cloud.google.com/vpc/
+      # docs/edge-locations.
+      class EdgeLocation
+        include Google::Apis::Core::Hashable
+      
+        # Name of the metropolitan area.
+        # Corresponds to the JSON property `metropolitanArea`
+        # @return [String]
+        attr_accessor :metropolitan_area
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metropolitan_area = args[:metropolitan_area] if args.key?(:metropolitan_area)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -619,6 +645,11 @@ module Google
         # @return [String]
         attr_accessor :forwarding_rule
       
+        # Output only. Specifies the type of the target of the forwarding rule.
+        # Corresponds to the JSON property `forwardingRuleTarget`
+        # @return [String]
+        attr_accessor :forwarding_rule_target
+      
         # A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/
         # kubernetes-engine/docs/concepts/cluster-architecture).
         # Corresponds to the JSON property `gkeMasterCluster`
@@ -632,10 +663,22 @@ module Google
       
         # The IP address of the endpoint, which can be an external or internal IP. An
         # IPv6 address is only allowed when the test's destination is a [global load
-        # balancer VIP](/load-balancing/docs/load-balancing-overview).
+        # balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-
+        # overview).
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # Output only. ID of the load balancer the forwarding rule points to. Empty for
+        # forwarding rules not related to load balancers.
+        # Corresponds to the JSON property `loadBalancerId`
+        # @return [String]
+        attr_accessor :load_balancer_id
+      
+        # Output only. Type of the load balancer the forwarding rule points to.
+        # Corresponds to the JSON property `loadBalancerType`
+        # @return [String]
+        attr_accessor :load_balancer_type
       
         # A Compute Engine network URI.
         # Corresponds to the JSON property `network`
@@ -676,9 +719,12 @@ module Google
           @cloud_run_revision = args[:cloud_run_revision] if args.key?(:cloud_run_revision)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @forwarding_rule_target = args[:forwarding_rule_target] if args.key?(:forwarding_rule_target)
           @gke_master_cluster = args[:gke_master_cluster] if args.key?(:gke_master_cluster)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @load_balancer_id = args[:load_balancer_id] if args.key?(:load_balancer_id)
+          @load_balancer_type = args[:load_balancer_type] if args.key?(:load_balancer_type)
           @network = args[:network] if args.key?(:network)
           @network_type = args[:network_type] if args.key?(:network_type)
           @port = args[:port] if args.key?(:port)
@@ -1087,6 +1133,51 @@ module Google
           @network_uri = args[:network_uri] if args.key?(:network_uri)
           @service_account = args[:service_account] if args.key?(:service_account)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Describes measured latency distribution.
+      class LatencyDistribution
+        include Google::Apis::Core::Hashable
+      
+        # Representative latency percentiles.
+        # Corresponds to the JSON property `latencyPercentiles`
+        # @return [Array<Google::Apis::NetworkmanagementV1::LatencyPercentile>]
+        attr_accessor :latency_percentiles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latency_percentiles = args[:latency_percentiles] if args.key?(:latency_percentiles)
+        end
+      end
+      
+      # Latency percentile rank and value.
+      class LatencyPercentile
+        include Google::Apis::Core::Hashable
+      
+        # percent-th percentile of latency observed, in microseconds. Fraction of
+        # percent/100 of samples have latency lower or equal to the value of this field.
+        # Corresponds to the JSON property `latencyMicros`
+        # @return [Fixnum]
+        attr_accessor :latency_micros
+      
+        # Percentage of samples this data point applies to.
+        # Corresponds to the JSON property `percent`
+        # @return [Fixnum]
+        attr_accessor :percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latency_micros = args[:latency_micros] if args.key?(:latency_micros)
+          @percent = args[:percent] if args.key?(:percent)
         end
       end
       
@@ -1546,6 +1637,81 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Results of active probing from the last run of the test.
+      class ProbingDetails
+        include Google::Apis::Core::Hashable
+      
+        # The reason probing was aborted.
+        # Corresponds to the JSON property `abortCause`
+        # @return [String]
+        attr_accessor :abort_cause
+      
+        # Representation of a network edge location as per https://cloud.google.com/vpc/
+        # docs/edge-locations.
+        # Corresponds to the JSON property `destinationEgressLocation`
+        # @return [Google::Apis::NetworkmanagementV1::EdgeLocation]
+        attr_accessor :destination_egress_location
+      
+        # For display only. The specification of the endpoints for the test.
+        # EndpointInfo is derived from source and destination Endpoint and validated by
+        # the backend data plane model.
+        # Corresponds to the JSON property `endpointInfo`
+        # @return [Google::Apis::NetworkmanagementV1::EndpointInfo]
+        attr_accessor :endpoint_info
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::NetworkmanagementV1::Status]
+        attr_accessor :error
+      
+        # Describes measured latency distribution.
+        # Corresponds to the JSON property `probingLatency`
+        # @return [Google::Apis::NetworkmanagementV1::LatencyDistribution]
+        attr_accessor :probing_latency
+      
+        # The overall result of active probing.
+        # Corresponds to the JSON property `result`
+        # @return [String]
+        attr_accessor :result
+      
+        # Number of probes sent.
+        # Corresponds to the JSON property `sentProbeCount`
+        # @return [Fixnum]
+        attr_accessor :sent_probe_count
+      
+        # Number of probes that reached the destination.
+        # Corresponds to the JSON property `successfulProbeCount`
+        # @return [Fixnum]
+        attr_accessor :successful_probe_count
+      
+        # The time that reachability was assessed through active probing.
+        # Corresponds to the JSON property `verifyTime`
+        # @return [String]
+        attr_accessor :verify_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abort_cause = args[:abort_cause] if args.key?(:abort_cause)
+          @destination_egress_location = args[:destination_egress_location] if args.key?(:destination_egress_location)
+          @endpoint_info = args[:endpoint_info] if args.key?(:endpoint_info)
+          @error = args[:error] if args.key?(:error)
+          @probing_latency = args[:probing_latency] if args.key?(:probing_latency)
+          @result = args[:result] if args.key?(:result)
+          @sent_probe_count = args[:sent_probe_count] if args.key?(:sent_probe_count)
+          @successful_probe_count = args[:successful_probe_count] if args.key?(:successful_probe_count)
+          @verify_time = args[:verify_time] if args.key?(:verify_time)
         end
       end
       
