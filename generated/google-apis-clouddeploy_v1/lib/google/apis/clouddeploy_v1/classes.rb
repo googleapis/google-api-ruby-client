@@ -2762,6 +2762,106 @@ module Google
         end
       end
       
+      # Configs for the Rollback rollout.
+      class RollbackTargetConfig
+        include Google::Apis::Core::Hashable
+      
+        # A `Rollout` resource in the Cloud Deploy API. A `Rollout` contains information
+        # around a specific deployment to a `Target`.
+        # Corresponds to the JSON property `rollout`
+        # @return [Google::Apis::ClouddeployV1::Rollout]
+        attr_accessor :rollout
+      
+        # Optional. The starting phase ID for the `Rollout`. If unspecified, the `
+        # Rollout` will start in the stable phase.
+        # Corresponds to the JSON property `startingPhaseId`
+        # @return [String]
+        attr_accessor :starting_phase_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rollout = args[:rollout] if args.key?(:rollout)
+          @starting_phase_id = args[:starting_phase_id] if args.key?(:starting_phase_id)
+        end
+      end
+      
+      # The request object for `RollbackTarget`.
+      class RollbackTargetRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. ID of the `Release` to roll back to. If this isn't specified, the
+        # previous successful `Rollout` to the specified target will be used to
+        # determine the `Release`.
+        # Corresponds to the JSON property `releaseId`
+        # @return [String]
+        attr_accessor :release_id
+      
+        # Configs for the Rollback rollout.
+        # Corresponds to the JSON property `rollbackConfig`
+        # @return [Google::Apis::ClouddeployV1::RollbackTargetConfig]
+        attr_accessor :rollback_config
+      
+        # Required. ID of the rollback `Rollout` to create.
+        # Corresponds to the JSON property `rolloutId`
+        # @return [String]
+        attr_accessor :rollout_id
+      
+        # Optional. If provided, this must be the latest `Rollout` that is on the `
+        # Target`.
+        # Corresponds to the JSON property `rolloutToRollBack`
+        # @return [String]
+        attr_accessor :rollout_to_roll_back
+      
+        # Required. ID of the `Target` that is being rolled back.
+        # Corresponds to the JSON property `targetId`
+        # @return [String]
+        attr_accessor :target_id
+      
+        # Optional. If set to true, the request is validated and the user is provided
+        # with a `RollbackTargetResponse`.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @release_id = args[:release_id] if args.key?(:release_id)
+          @rollback_config = args[:rollback_config] if args.key?(:rollback_config)
+          @rollout_id = args[:rollout_id] if args.key?(:rollout_id)
+          @rollout_to_roll_back = args[:rollout_to_roll_back] if args.key?(:rollout_to_roll_back)
+          @target_id = args[:target_id] if args.key?(:target_id)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # The response object from `RollbackTarget`.
+      class RollbackTargetResponse
+        include Google::Apis::Core::Hashable
+      
+        # Configs for the Rollback rollout.
+        # Corresponds to the JSON property `rollbackConfig`
+        # @return [Google::Apis::ClouddeployV1::RollbackTargetConfig]
+        attr_accessor :rollback_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rollback_config = args[:rollback_config] if args.key?(:rollback_config)
+        end
+      end
+      
       # A `Rollout` resource in the Cloud Deploy API. A `Rollout` contains information
       # around a specific deployment to a `Target`.
       class Rollout
@@ -2869,6 +2969,17 @@ module Google
         # @return [Array<Google::Apis::ClouddeployV1::Phase>]
         attr_accessor :phases
       
+        # Output only. Name of the `Rollout` that is rolled back by this `Rollout`.
+        # Empty if this `Rollout` wasn't created as a rollback.
+        # Corresponds to the JSON property `rollbackOfRollout`
+        # @return [String]
+        attr_accessor :rollback_of_rollout
+      
+        # Output only. Names of `Rollouts` that rolled back this `Rollout`.
+        # Corresponds to the JSON property `rolledBackByRollouts`
+        # @return [Array<String>]
+        attr_accessor :rolled_back_by_rollouts
+      
         # Output only. Current state of the `Rollout`.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2907,6 +3018,8 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @phases = args[:phases] if args.key?(:phases)
+          @rollback_of_rollout = args[:rollback_of_rollout] if args.key?(:rollback_of_rollout)
+          @rolled_back_by_rollouts = args[:rolled_back_by_rollouts] if args.key?(:rolled_back_by_rollouts)
           @state = args[:state] if args.key?(:state)
           @target_id = args[:target_id] if args.key?(:target_id)
           @uid = args[:uid] if args.key?(:uid)
