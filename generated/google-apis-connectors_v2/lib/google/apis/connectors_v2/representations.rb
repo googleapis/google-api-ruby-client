@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JsonSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListActionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -133,9 +139,13 @@ module Google
       class Action
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_json_schema, as: 'inputJsonSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
           collection :input_parameters, as: 'inputParameters', class: Google::Apis::ConnectorsV2::InputParameter, decorator: Google::Apis::ConnectorsV2::InputParameter::Representation
       
           property :name, as: 'name'
+          property :result_json_schema, as: 'resultJsonSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
           collection :result_metadata, as: 'resultMetadata', class: Google::Apis::ConnectorsV2::ResultMetadata, decorator: Google::Apis::ConnectorsV2::ResultMetadata::Representation
       
         end
@@ -159,6 +169,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :fields, as: 'fields', class: Google::Apis::ConnectorsV2::Field, decorator: Google::Apis::ConnectorsV2::Field::Representation
+      
+          property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
       
           property :name, as: 'name'
         end
@@ -200,6 +212,8 @@ module Google
           property :data_type, as: 'dataType'
           property :default_value, as: 'defaultValue'
           property :description, as: 'description'
+          property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
           property :key, as: 'key'
           property :name, as: 'name'
           property :nullable, as: 'nullable'
@@ -214,8 +228,28 @@ module Google
           property :data_type, as: 'dataType'
           property :default_value, as: 'defaultValue'
           property :description, as: 'description'
+          property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
           property :name, as: 'name'
           property :nullable, as: 'nullable'
+        end
+      end
+      
+      class JsonSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_details, as: 'additionalDetails'
+          property :default, as: 'default'
+          property :description, as: 'description'
+          collection :enum, as: 'enum'
+          property :format, as: 'format'
+          property :items, as: 'items', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
+          property :jdbc_type, as: 'jdbcType'
+          hash :properties, as: 'properties', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
+          collection :required, as: 'required'
+          collection :type, as: 'type'
         end
       end
       
@@ -280,6 +314,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_type, as: 'dataType'
           property :description, as: 'description'
+          property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
+      
           property :name, as: 'name'
         end
       end

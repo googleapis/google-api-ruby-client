@@ -27,6 +27,11 @@ module Google
       class Action
         include Google::Apis::Core::Hashable
       
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `inputJsonSchema`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :input_json_schema
+      
         # List containing input parameter metadata.
         # Corresponds to the JSON property `inputParameters`
         # @return [Array<Google::Apis::ConnectorsV2::InputParameter>]
@@ -36,6 +41,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `resultJsonSchema`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :result_json_schema
       
         # List containing the metadata of result fields.
         # Corresponds to the JSON property `resultMetadata`
@@ -48,8 +58,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @input_json_schema = args[:input_json_schema] if args.key?(:input_json_schema)
           @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
           @name = args[:name] if args.key?(:name)
+          @result_json_schema = args[:result_json_schema] if args.key?(:result_json_schema)
           @result_metadata = args[:result_metadata] if args.key?(:result_metadata)
         end
       end
@@ -107,6 +119,11 @@ module Google
         # @return [Array<Google::Apis::ConnectorsV2::Field>]
         attr_accessor :fields
       
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :json_schema
+      
         # The name of the entity type.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -119,6 +136,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fields = args[:fields] if args.key?(:fields)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -237,6 +255,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :json_schema
+      
         # The following boolean field specifies if the current Field acts as a primary
         # key or id if the parent is of type entity.
         # Corresponds to the JSON property `key`
@@ -271,6 +294,7 @@ module Google
           @data_type = args[:data_type] if args.key?(:data_type)
           @default_value = args[:default_value] if args.key?(:default_value)
           @description = args[:description] if args.key?(:description)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
           @key = args[:key] if args.key?(:key)
           @name = args[:name] if args.key?(:name)
           @nullable = args[:nullable] if args.key?(:nullable)
@@ -299,6 +323,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :json_schema
+      
         # Name of the Parameter.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -319,8 +348,87 @@ module Google
           @data_type = args[:data_type] if args.key?(:data_type)
           @default_value = args[:default_value] if args.key?(:default_value)
           @description = args[:description] if args.key?(:description)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
           @name = args[:name] if args.key?(:name)
           @nullable = args[:nullable] if args.key?(:nullable)
+        end
+      end
+      
+      # JsonSchema representation of schema metadata
+      class JsonSchema
+        include Google::Apis::Core::Hashable
+      
+        # Additional details apart from standard json schema fields, this gives
+        # flexibility to store metadata about the schema
+        # Corresponds to the JSON property `additionalDetails`
+        # @return [Hash<String,Object>]
+        attr_accessor :additional_details
+      
+        # The default value of the field or object described by this schema.
+        # Corresponds to the JSON property `default`
+        # @return [Object]
+        attr_accessor :default
+      
+        # A description of this schema.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Possible values for an enumeration. This works in conjunction with `type` to
+        # represent types with a fixed set of legal values
+        # Corresponds to the JSON property `enum`
+        # @return [Array<Object>]
+        attr_accessor :enum
+      
+        # Format of the value as per https://json-schema.org/understanding-json-schema/
+        # reference/string.html#format
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `items`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :items
+      
+        # JDBC datatype of the field.
+        # Corresponds to the JSON property `jdbcType`
+        # @return [String]
+        attr_accessor :jdbc_type
+      
+        # The child schemas, applicable only if this is of type `object`. The key is the
+        # name of the property and the value is the json schema that describes that
+        # property
+        # Corresponds to the JSON property `properties`
+        # @return [Hash<String,Google::Apis::ConnectorsV2::JsonSchema>]
+        attr_accessor :properties
+      
+        # Whether this property is required.
+        # Corresponds to the JSON property `required`
+        # @return [Array<String>]
+        attr_accessor :required
+      
+        # JSON Schema Validation: A Vocabulary for Structural Validation of JSON
+        # Corresponds to the JSON property `type`
+        # @return [Array<String>]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_details = args[:additional_details] if args.key?(:additional_details)
+          @default = args[:default] if args.key?(:default)
+          @description = args[:description] if args.key?(:description)
+          @enum = args[:enum] if args.key?(:enum)
+          @format = args[:format] if args.key?(:format)
+          @items = args[:items] if args.key?(:items)
+          @jdbc_type = args[:jdbc_type] if args.key?(:jdbc_type)
+          @properties = args[:properties] if args.key?(:properties)
+          @required = args[:required] if args.key?(:required)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -519,6 +627,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [Google::Apis::ConnectorsV2::JsonSchema]
+        attr_accessor :json_schema
+      
         # Name of the metadata field.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -532,6 +645,7 @@ module Google
         def update!(**args)
           @data_type = args[:data_type] if args.key?(:data_type)
           @description = args[:description] if args.key?(:description)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
           @name = args[:name] if args.key?(:name)
         end
       end
