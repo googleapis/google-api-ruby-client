@@ -2453,6 +2453,7 @@ module Google
       class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
           property :parent, as: 'parent'
           collection :requests, as: 'requests', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AsyncAnnotateFileRequest, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AsyncAnnotateFileRequest::Representation
       
@@ -2470,6 +2471,7 @@ module Google
       class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateImagesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
           property :output_config, as: 'outputConfig', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1OutputConfig, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1OutputConfig::Representation
       
           property :parent, as: 'parent'
@@ -2481,6 +2483,7 @@ module Google
       class GoogleCloudVisionV1p2beta1BatchAnnotateFilesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
           property :parent, as: 'parent'
           collection :requests, as: 'requests', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AnnotateFileRequest, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AnnotateFileRequest::Representation
       
@@ -2498,6 +2501,7 @@ module Google
       class GoogleCloudVisionV1p2beta1BatchAnnotateImagesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
           property :parent, as: 'parent'
           collection :requests, as: 'requests', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AnnotateImageRequest, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AnnotateImageRequest::Representation
       
