@@ -652,7 +652,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The format of packages that are stored in the repository.
+        # Optional. The format of packages that are stored in the repository.
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
