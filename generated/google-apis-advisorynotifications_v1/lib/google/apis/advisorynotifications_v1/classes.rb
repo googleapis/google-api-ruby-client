@@ -228,6 +228,63 @@ module Google
         end
       end
       
+      # Settings for each NotificationType.
+      class GoogleCloudAdvisorynotificationsV1NotificationSettings
+        include Google::Apis::Core::Hashable
+      
+        # Whether the associated NotificationType is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Settings for Advisory Notifications.
+      class GoogleCloudAdvisorynotificationsV1Settings
+        include Google::Apis::Core::Hashable
+      
+        # Required. Fingerprint for optimistic concurrency returned in Get requests.
+        # Must be provided for Update requests. If the value provided does not match the
+        # value known to the server, ABORTED will be thrown, and the client should retry
+        # the read-modify-write cycle.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The resource name of the settings to retrieve. Format:
+        # organizations/`organization`/locations/`location`/settings.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Map of each notification type and its settings to get/set all
+        # settings at once. The server will validate the value for each notification
+        # type.
+        # Corresponds to the JSON property `notificationSettings`
+        # @return [Hash<String,Google::Apis::AdvisorynotificationsV1::GoogleCloudAdvisorynotificationsV1NotificationSettings>]
+        attr_accessor :notification_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @notification_settings = args[:notification_settings] if args.key?(:notification_settings)
+        end
+      end
+      
       # A subject line of a notification.
       class GoogleCloudAdvisorynotificationsV1Subject
         include Google::Apis::Core::Hashable

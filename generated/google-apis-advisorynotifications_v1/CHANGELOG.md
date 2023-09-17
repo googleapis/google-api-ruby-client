@@ -1,5 +1,9 @@
 # Release history for google-apis-advisorynotifications_v1
 
+### v0.6.0 (2023-09-17)
+
+* Regenerated from discovery document revision 20230912
+
 ### v0.5.0 (2023-08-13)
 
 * Regenerated from discovery document revision 20230806
