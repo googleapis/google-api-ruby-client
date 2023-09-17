@@ -137,6 +137,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The bucket's object retention config.
+        # Corresponds to the JSON property `objectRetention`
+        # @return [Google::Apis::StorageV1::Bucket::ObjectRetention]
+        attr_accessor :object_retention
+      
         # The owner of the bucket. This is always the project team's owner group.
         # Corresponds to the JSON property `owner`
         # @return [Google::Apis::StorageV1::Bucket::Owner]
@@ -176,6 +181,12 @@ module Google
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
+      
+        # The bucket's soft delete policy, which defines the period of time that soft-
+        # deleted objects will be retained, and cannot be permanently deleted.
+        # Corresponds to the JSON property `softDeletePolicy`
+        # @return [Google::Apis::StorageV1::Bucket::SoftDeletePolicy]
+        attr_accessor :soft_delete_policy
       
         # The bucket's default storage class, used whenever no storageClass is specified
         # for a newly-created object. This defines how objects in the bucket are stored
@@ -235,12 +246,14 @@ module Google
           @logging = args[:logging] if args.key?(:logging)
           @metageneration = args[:metageneration] if args.key?(:metageneration)
           @name = args[:name] if args.key?(:name)
+          @object_retention = args[:object_retention] if args.key?(:object_retention)
           @owner = args[:owner] if args.key?(:owner)
           @project_number = args[:project_number] if args.key?(:project_number)
           @retention_policy = args[:retention_policy] if args.key?(:retention_policy)
           @rpo = args[:rpo] if args.key?(:rpo)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @soft_delete_policy = args[:soft_delete_policy] if args.key?(:soft_delete_policy)
           @storage_class = args[:storage_class] if args.key?(:storage_class)
           @time_created = args[:time_created] if args.key?(:time_created)
           @updated = args[:updated] if args.key?(:updated)
@@ -258,6 +271,19 @@ module Google
           attr_accessor :enabled
           alias_method :enabled?, :enabled
         
+          # The storage class that objects in the bucket eventually transition to if they
+          # are not read for a certain length of time. Valid values are NEARLINE and
+          # ARCHIVE.
+          # Corresponds to the JSON property `terminalStorageClass`
+          # @return [String]
+          attr_accessor :terminal_storage_class
+        
+          # A date and time in RFC 3339 format representing the time of the most recent
+          # update to "terminalStorageClass".
+          # Corresponds to the JSON property `terminalStorageClassUpdateTime`
+          # @return [DateTime]
+          attr_accessor :terminal_storage_class_update_time
+        
           # A date and time in RFC 3339 format representing the instant at which "enabled"
           # was last toggled.
           # Corresponds to the JSON property `toggleTime`
@@ -271,6 +297,8 @@ module Google
           # Update properties of this object
           def update!(**args)
             @enabled = args[:enabled] if args.key?(:enabled)
+            @terminal_storage_class = args[:terminal_storage_class] if args.key?(:terminal_storage_class)
+            @terminal_storage_class_update_time = args[:terminal_storage_class_update_time] if args.key?(:terminal_storage_class_update_time)
             @toggle_time = args[:toggle_time] if args.key?(:toggle_time)
           end
         end
@@ -682,6 +710,25 @@ module Google
           end
         end
         
+        # The bucket's object retention config.
+        class ObjectRetention
+          include Google::Apis::Core::Hashable
+        
+          # The bucket's object retention mode. Can be Enabled.
+          # Corresponds to the JSON property `mode`
+          # @return [String]
+          attr_accessor :mode
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @mode = args[:mode] if args.key?(:mode)
+          end
+        end
+        
         # The owner of the bucket. This is always the project team's owner group.
         class Owner
           include Google::Apis::Core::Hashable
@@ -748,6 +795,34 @@ module Google
             @effective_time = args[:effective_time] if args.key?(:effective_time)
             @is_locked = args[:is_locked] if args.key?(:is_locked)
             @retention_period = args[:retention_period] if args.key?(:retention_period)
+          end
+        end
+        
+        # The bucket's soft delete policy, which defines the period of time that soft-
+        # deleted objects will be retained, and cannot be permanently deleted.
+        class SoftDeletePolicy
+          include Google::Apis::Core::Hashable
+        
+          # Server-determined value that indicates the time from which the policy, or one
+          # with a greater retention, was effective. This value is in RFC 3339 format.
+          # Corresponds to the JSON property `effectiveTime`
+          # @return [DateTime]
+          attr_accessor :effective_time
+        
+          # The period of time in seconds, that soft-deleted objects in the bucket will be
+          # retained and cannot be permanently deleted.
+          # Corresponds to the JSON property `retentionDurationSeconds`
+          # @return [Fixnum]
+          attr_accessor :retention_duration_seconds
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @effective_time = args[:effective_time] if args.key?(:effective_time)
+            @retention_duration_seconds = args[:retention_duration_seconds] if args.key?(:retention_duration_seconds)
           end
         end
         
@@ -1740,6 +1815,11 @@ module Google
         # @return [Google::Apis::StorageV1::Object::Owner]
         attr_accessor :owner
       
+        # A collection of object level retention parameters.
+        # Corresponds to the JSON property `retention`
+        # @return [Google::Apis::StorageV1::Object::Retention]
+        attr_accessor :retention
+      
         # A server-determined value that specifies the earliest time that the object's
         # retention period expires. This value is in RFC 3339 format. Note 1: This field
         # is not provided for objects with an active event-based hold, since retention
@@ -1830,6 +1910,7 @@ module Google
           @metageneration = args[:metageneration] if args.key?(:metageneration)
           @name = args[:name] if args.key?(:name)
           @owner = args[:owner] if args.key?(:owner)
+          @retention = args[:retention] if args.key?(:retention)
           @retention_expiration_time = args[:retention_expiration_time] if args.key?(:retention_expiration_time)
           @self_link = args[:self_link] if args.key?(:self_link)
           @size = args[:size] if args.key?(:size)
@@ -1889,6 +1970,31 @@ module Google
           def update!(**args)
             @entity = args[:entity] if args.key?(:entity)
             @entity_id = args[:entity_id] if args.key?(:entity_id)
+          end
+        end
+        
+        # A collection of object level retention parameters.
+        class Retention
+          include Google::Apis::Core::Hashable
+        
+          # The bucket's object retention mode, can only be Unlocked or Locked.
+          # Corresponds to the JSON property `mode`
+          # @return [String]
+          attr_accessor :mode
+        
+          # A time in RFC 3339 format until which object retention protects this object.
+          # Corresponds to the JSON property `retainUntilTime`
+          # @return [DateTime]
+          attr_accessor :retain_until_time
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @mode = args[:mode] if args.key?(:mode)
+            @retain_until_time = args[:retain_until_time] if args.key?(:retain_until_time)
           end
         end
       end

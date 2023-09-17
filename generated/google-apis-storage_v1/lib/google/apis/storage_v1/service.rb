@@ -426,6 +426,8 @@ module Google
         # @param [String] project
         #   A valid API project identifier.
         # @param [Google::Apis::StorageV1::Bucket] bucket_object
+        # @param [Boolean] enable_object_retention
+        #   When set to true, object retention is enabled for this bucket.
         # @param [String] predefined_acl
         #   Apply a predefined set of access controls to this bucket.
         # @param [String] predefined_default_object_acl
@@ -454,12 +456,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_bucket(project, bucket_object = nil, predefined_acl: nil, predefined_default_object_acl: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_bucket(project, bucket_object = nil, enable_object_retention: nil, predefined_acl: nil, predefined_default_object_acl: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'b', options)
           command.request_representation = Google::Apis::StorageV1::Bucket::Representation
           command.request_object = bucket_object
           command.response_representation = Google::Apis::StorageV1::Bucket::Representation
           command.response_class = Google::Apis::StorageV1::Bucket
+          command.query['enableObjectRetention'] = enable_object_retention unless enable_object_retention.nil?
           command.query['predefinedAcl'] = predefined_acl unless predefined_acl.nil?
           command.query['predefinedDefaultObjectAcl'] = predefined_default_object_acl unless predefined_default_object_acl.nil?
           command.query['project'] = project unless project.nil?
@@ -2073,6 +2076,9 @@ module Google
         # @param [Fixnum] if_metageneration_not_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   does not match the given value.
+        # @param [Boolean] override_unlocked_retention
+        #   Must be true to remove the retention configuration, reduce its unlocked
+        #   retention period, or change its mode from unlocked to locked.
         # @param [String] predefined_acl
         #   Apply a predefined set of access controls to this object.
         # @param [String] projection
@@ -2098,7 +2104,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_object(bucket, object, object_object = nil, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_object(bucket, object, object_object = nil, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, override_unlocked_retention: nil, predefined_acl: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:patch, 'b/{bucket}/o/{object}', options)
           command.request_representation = Google::Apis::StorageV1::Object::Representation
           command.request_object = object_object
@@ -2111,6 +2117,7 @@ module Google
           command.query['ifGenerationNotMatch'] = if_generation_not_match unless if_generation_not_match.nil?
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
           command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
+          command.query['overrideUnlockedRetention'] = override_unlocked_retention unless override_unlocked_retention.nil?
           command.query['predefinedAcl'] = predefined_acl unless predefined_acl.nil?
           command.query['projection'] = projection unless projection.nil?
           command.query['userProject'] = user_project unless user_project.nil?
@@ -2430,6 +2437,9 @@ module Google
         # @param [Fixnum] if_metageneration_not_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   does not match the given value.
+        # @param [Boolean] override_unlocked_retention
+        #   Must be true to remove the retention configuration, reduce its unlocked
+        #   retention period, or change its mode from unlocked to locked.
         # @param [String] predefined_acl
         #   Apply a predefined set of access controls to this object.
         # @param [String] projection
@@ -2455,7 +2465,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_object(bucket, object, object_object = nil, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_object(bucket, object, object_object = nil, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, override_unlocked_retention: nil, predefined_acl: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:put, 'b/{bucket}/o/{object}', options)
           command.request_representation = Google::Apis::StorageV1::Object::Representation
           command.request_object = object_object
@@ -2468,6 +2478,7 @@ module Google
           command.query['ifGenerationNotMatch'] = if_generation_not_match unless if_generation_not_match.nil?
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
           command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
+          command.query['overrideUnlockedRetention'] = override_unlocked_retention unless override_unlocked_retention.nil?
           command.query['predefinedAcl'] = predefined_acl unless predefined_acl.nil?
           command.query['projection'] = projection unless projection.nil?
           command.query['userProject'] = user_project unless user_project.nil?
