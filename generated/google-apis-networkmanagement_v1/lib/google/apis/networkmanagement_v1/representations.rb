@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EdgeLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LatencyDistribution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LatencyPercentile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListConnectivityTestsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +245,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProbingDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -419,6 +443,8 @@ module Google
           property :display_name, as: 'displayName'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :probing_details, as: 'probingDetails', class: Google::Apis::NetworkmanagementV1::ProbingDetails, decorator: Google::Apis::NetworkmanagementV1::ProbingDetails::Representation
+      
           property :protocol, as: 'protocol'
           property :reachability_details, as: 'reachabilityDetails', class: Google::Apis::NetworkmanagementV1::ReachabilityDetails, decorator: Google::Apis::NetworkmanagementV1::ReachabilityDetails::Representation
       
@@ -445,6 +471,13 @@ module Google
         end
       end
       
+      class EdgeLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metropolitan_area, as: 'metropolitanArea'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -462,9 +495,12 @@ module Google
       
           property :cloud_sql_instance, as: 'cloudSqlInstance'
           property :forwarding_rule, as: 'forwardingRule'
+          property :forwarding_rule_target, as: 'forwardingRuleTarget'
           property :gke_master_cluster, as: 'gkeMasterCluster'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
+          property :load_balancer_id, as: 'loadBalancerId'
+          property :load_balancer_type, as: 'loadBalancerType'
           property :network, as: 'network'
           property :network_type, as: 'networkType'
           property :port, as: 'port'
@@ -562,6 +598,22 @@ module Google
           property :network_uri, as: 'networkUri'
           property :service_account, as: 'serviceAccount'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class LatencyDistribution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :latency_percentiles, as: 'latencyPercentiles', class: Google::Apis::NetworkmanagementV1::LatencyPercentile, decorator: Google::Apis::NetworkmanagementV1::LatencyPercentile::Representation
+      
+        end
+      end
+      
+      class LatencyPercentile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latency_micros, :numeric_string => true, as: 'latencyMicros'
+          property :percent, as: 'percent'
         end
       end
       
@@ -670,6 +722,25 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class ProbingDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :abort_cause, as: 'abortCause'
+          property :destination_egress_location, as: 'destinationEgressLocation', class: Google::Apis::NetworkmanagementV1::EdgeLocation, decorator: Google::Apis::NetworkmanagementV1::EdgeLocation::Representation
+      
+          property :endpoint_info, as: 'endpointInfo', class: Google::Apis::NetworkmanagementV1::EndpointInfo, decorator: Google::Apis::NetworkmanagementV1::EndpointInfo::Representation
+      
+          property :error, as: 'error', class: Google::Apis::NetworkmanagementV1::Status, decorator: Google::Apis::NetworkmanagementV1::Status::Representation
+      
+          property :probing_latency, as: 'probingLatency', class: Google::Apis::NetworkmanagementV1::LatencyDistribution, decorator: Google::Apis::NetworkmanagementV1::LatencyDistribution::Representation
+      
+          property :result, as: 'result'
+          property :sent_probe_count, as: 'sentProbeCount'
+          property :successful_probe_count, as: 'successfulProbeCount'
+          property :verify_time, as: 'verifyTime'
         end
       end
       
