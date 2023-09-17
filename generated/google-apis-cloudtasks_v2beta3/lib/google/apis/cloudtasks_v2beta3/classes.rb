@@ -1271,13 +1271,16 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta3::QueueStats]
         attr_accessor :stats
       
-        # The maximum amount of time that a task will be retained in this queue. Queues
-        # created by Cloud Tasks have a default `task_ttl` of 31 days. After a task has
-        # lived for `task_ttl`, the task will be deleted regardless of whether it was
-        # dispatched or not. The `task_ttl` for queues created via queue.yaml/xml is
-        # equal to the maximum duration because there is a [storage quota](https://cloud.
-        # google.com/appengine/quotas#Task_Queue) for these queues. To view the maximum
-        # valid duration, see the documentation for Duration.
+        # The maximum amount of time that a task will be retained in this queue. After a
+        # task has lived for `task_ttl`, the task will be deleted regardless of whether
+        # it was dispatched or not. The minimum value is 10 days. The maximum value is
+        # 10 years. The value must be given as a string that indicates the length of
+        # time (in seconds) followed by `s` (for "seconds"). For more information on the
+        # format, see the documentation for [Duration](https://protobuf.dev/reference/
+        # protobuf/google.protobuf/#duration). Queues created by Cloud Tasks have a
+        # default `task_ttl` of 31 days. . Queues created by queue.yaml/xml have a fixed
+        # `task_ttl` of the maximum duration, because there is a [storage quota](https://
+        # cloud.google.com/appengine/quotas#Task_Queue) for these queues.
         # Corresponds to the JSON property `taskTtl`
         # @return [String]
         attr_accessor :task_ttl
@@ -1287,8 +1290,12 @@ module Google
         # tombstone_ttl`. The tombstone is used by task de-duplication; another task
         # with the same name can't be created until the tombstone has expired. For more
         # information about task de-duplication, see the documentation for
-        # CreateTaskRequest. Queues created by Cloud Tasks have a default `tombstone_ttl`
-        # of 1 hour.
+        # CreateTaskRequest. The minimum value is 1 hour. The maximum value is 9 days.
+        # The value must be given as a string that indicates the length of time (in
+        # seconds) followed by `s` (for "seconds"). For more information on the format,
+        # see the documentation for [Duration](https://protobuf.dev/reference/protobuf/
+        # google.protobuf/#duration). Queues created by Cloud Tasks have a default `
+        # tombstone_ttl` of 1 hour.
         # Corresponds to the JSON property `tombstoneTtl`
         # @return [String]
         attr_accessor :tombstone_ttl
@@ -1465,10 +1472,13 @@ module Google
         # A task will be scheduled for retry between min_backoff and max_backoff
         # duration after it fails, if the queue's RetryConfig specifies that the task
         # should be retried. If unspecified when the queue is created, Cloud Tasks will
-        # pick the default. `max_backoff` will be truncated to the nearest second. This
-        # field has the same meaning as [max_backoff_seconds in queue.yaml/xml](https://
-        # cloud.google.com/appengine/docs/standard/python/config/queueref#
-        # retry_parameters).
+        # pick the default. The value must be given as a string that indicates the
+        # length of time (in seconds) followed by `s` (for "seconds"). For more
+        # information on the format, see the documentation for [Duration](https://
+        # protobuf.dev/reference/protobuf/google.protobuf/#duration). `max_backoff` will
+        # be truncated to the nearest second. This field has the same meaning as [
+        # max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/
+        # standard/python/config/queueref#retry_parameters).
         # Corresponds to the JSON property `maxBackoff`
         # @return [String]
         attr_accessor :max_backoff
@@ -1494,10 +1504,14 @@ module Google
         # max_retry_duration` time has passed *and* the task has been attempted
         # max_attempts times, no further attempts will be made and the task will be
         # deleted. If zero, then the task age is unlimited. If unspecified when the
-        # queue is created, Cloud Tasks will pick the default. `max_retry_duration` will
-        # be truncated to the nearest second. This field has the same meaning as [
-        # task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/
-        # standard/python/config/queueref#retry_parameters).
+        # queue is created, Cloud Tasks will pick the default. The value must be given
+        # as a string that indicates the length of time (in seconds) followed by `s` (
+        # for "seconds"). For the maximum possible value or the format, see the
+        # documentation for [Duration](https://protobuf.dev/reference/protobuf/google.
+        # protobuf/#duration). `max_retry_duration` will be truncated to the nearest
+        # second. This field has the same meaning as [task_age_limit in queue.yaml/xml](
+        # https://cloud.google.com/appengine/docs/standard/python/config/queueref#
+        # retry_parameters).
         # Corresponds to the JSON property `maxRetryDuration`
         # @return [String]
         attr_accessor :max_retry_duration
@@ -1505,10 +1519,13 @@ module Google
         # A task will be scheduled for retry between min_backoff and max_backoff
         # duration after it fails, if the queue's RetryConfig specifies that the task
         # should be retried. If unspecified when the queue is created, Cloud Tasks will
-        # pick the default. `min_backoff` will be truncated to the nearest second. This
-        # field has the same meaning as [min_backoff_seconds in queue.yaml/xml](https://
-        # cloud.google.com/appengine/docs/standard/python/config/queueref#
-        # retry_parameters).
+        # pick the default. The value must be given as a string that indicates the
+        # length of time (in seconds) followed by `s` (for "seconds"). For more
+        # information on the format, see the documentation for [Duration](https://
+        # protobuf.dev/reference/protobuf/google.protobuf/#duration). `min_backoff` will
+        # be truncated to the nearest second. This field has the same meaning as [
+        # min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/
+        # standard/python/config/queueref#retry_parameters).
         # Corresponds to the JSON property `minBackoff`
         # @return [String]
         attr_accessor :min_backoff
@@ -1729,8 +1746,11 @@ module Google
         # service's timeout. We recommend setting the `dispatch_deadline` to at most a
         # few seconds more than the app handler's timeout. For more information see [
         # Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#
-        # timeouts). `dispatch_deadline` will be truncated to the nearest millisecond.
-        # The deadline is an approximate deadline.
+        # timeouts). The value must be given as a string that indicates the length of
+        # time (in seconds) followed by `s` (for "seconds"). For more information on the
+        # format, see the documentation for [Duration](https://protobuf.dev/reference/
+        # protobuf/google.protobuf/#duration). `dispatch_deadline` will be truncated to
+        # the nearest millisecond. The deadline is an approximate deadline.
         # Corresponds to the JSON property `dispatchDeadline`
         # @return [String]
         attr_accessor :dispatch_deadline
