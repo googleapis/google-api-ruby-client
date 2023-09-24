@@ -124,12 +124,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -190,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +227,18 @@ module Google
       end
       
       class GoogleTypeLocalizedText
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProductBundleDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubscriptionLineItemBundleDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -369,7 +381,7 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1Product
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :bundle_details, as: 'bundleDetails', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails::Representation
+          property :bundle_details, as: 'bundleDetails', class: Google::Apis::PaymentsresellersubscriptionV1::ProductBundleDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::ProductBundleDetails::Representation
       
           property :finite_billing_cycle_details, as: 'finiteBillingCycleDetails', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails::Representation
       
@@ -382,15 +394,6 @@ module Google
       
           collection :titles, as: 'titles', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleTypeLocalizedText, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleTypeLocalizedText::Representation
       
-        end
-      end
-      
-      class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :bundle_elements, as: 'bundleElements', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement::Representation
-      
-          property :entitlement_mode, as: 'entitlementMode'
         end
       end
       
@@ -506,6 +509,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :amount, as: 'amount', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Amount, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Amount::Representation
       
+          property :bundle_details, as: 'bundleDetails', class: Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItemBundleDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItemBundleDetails::Representation
+      
           property :description, as: 'description'
           property :finite_billing_cycle_details, as: 'finiteBillingCycleDetails', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails::Representation
       
@@ -520,6 +525,14 @@ module Google
       
           property :recurrence_type, as: 'recurrenceType'
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product, as: 'product'
+          property :user_account_linked_time, as: 'userAccountLinkedTime'
         end
       end
       
@@ -578,6 +591,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :language_code, as: 'languageCode'
           property :text, as: 'text'
+        end
+      end
+      
+      class ProductBundleDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bundle_elements, as: 'bundleElements', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement::Representation
+      
+          property :entitlement_mode, as: 'entitlementMode'
+        end
+      end
+      
+      class SubscriptionLineItemBundleDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bundle_element_details, as: 'bundleElementDetails', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails::Representation
+      
         end
       end
     end
