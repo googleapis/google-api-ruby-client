@@ -11398,7 +11398,7 @@ module Google
         attr_accessor :lookback_configuration
       
         # Report generation time zone ID of this account. This is a required field that
-        # can only be changed by a superuser. Acceptable values are: - "1" for "America/
+        # cannot be changed on update. Acceptable values are: - "1" for "America/
         # New_York" - "2" for "Europe/London" - "3" for "Europe/Paris" - "4" for "Africa/
         # Johannesburg" - "5" for "Asia/Jerusalem" - "6" for "Asia/Shanghai" - "7" for "
         # Asia/Hong_Kong" - "8" for "Asia/Tokyo" - "9" for "Australia/Sydney" - "10" for
