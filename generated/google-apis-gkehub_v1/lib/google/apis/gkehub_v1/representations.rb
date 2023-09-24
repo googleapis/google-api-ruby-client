@@ -785,6 +785,8 @@ module Google
       class CommonFleetDefaultMemberConfigSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1::ConfigManagementMembershipSpec::Representation
+      
         end
       end
       
