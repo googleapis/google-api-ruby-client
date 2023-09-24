@@ -88,6 +88,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutomationEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutomationRunEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -743,6 +755,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
           property :log_type, as: 'logType'
+        end
+      end
+      
+      class AutomationEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :automation, as: 'automation'
+          property :message, as: 'message'
+          property :pipeline_uid, as: 'pipelineUid'
+          property :type, as: 'type'
+        end
+      end
+      
+      class AutomationRunEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :automation_id, as: 'automationId'
+          property :automation_run, as: 'automationRun'
+          property :destination_target_id, as: 'destinationTargetId'
+          property :message, as: 'message'
+          property :pipeline_uid, as: 'pipelineUid'
+          property :rule_id, as: 'ruleId'
+          property :type, as: 'type'
         end
       end
       
