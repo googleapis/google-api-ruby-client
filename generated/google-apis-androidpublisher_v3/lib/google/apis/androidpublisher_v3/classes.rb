@@ -5250,7 +5250,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # All tracks.
+        # All tracks (including tracks with no releases).
         # Corresponds to the JSON property `tracks`
         # @return [Array<Google::Apis::AndroidpublisherV3::Track>]
         attr_accessor :tracks
