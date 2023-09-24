@@ -1326,12 +1326,19 @@ module Google
       class SasPortalSetupSasAnalyticsRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. User id to setup analytics for, if not provided the user id
+        # associated with the project is used. optional
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
