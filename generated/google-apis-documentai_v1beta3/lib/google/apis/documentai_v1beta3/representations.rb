@@ -1792,7 +1792,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3OcrConfigPremiumFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3ProcessOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2058,6 +2070,8 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_id, as: 'documentId', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentId, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentId::Representation
+      
           property :gcs_uri, as: 'gcsUri'
           property :status, as: 'status', class: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus::Representation
       
@@ -5068,10 +5082,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :advanced_ocr_options, as: 'advancedOcrOptions'
           property :compute_style_info, as: 'computeStyleInfo'
+          property :disable_character_boxes_detection, as: 'disableCharacterBoxesDetection'
           property :enable_image_quality_scores, as: 'enableImageQualityScores'
           property :enable_native_pdf_parsing, as: 'enableNativePdfParsing'
           property :enable_symbol, as: 'enableSymbol'
           property :hints, as: 'hints', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfigHints, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfigHints::Representation
+      
+          property :premium_features, as: 'premiumFeatures', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfigPremiumFeatures, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfigPremiumFeatures::Representation
       
         end
       end
@@ -5083,13 +5100,33 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3OcrConfigPremiumFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compute_style_info, as: 'computeStyleInfo'
+          property :enable_math_ocr, as: 'enableMathOcr'
+          property :enable_selection_mark_detection, as: 'enableSelectionMarkDetection'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3ProcessOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :from_end, as: 'fromEnd'
+          property :from_start, as: 'fromStart'
+          property :individual_page_selector, as: 'individualPageSelector', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector::Representation
+      
           property :ocr_config, as: 'ocrConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfig::Representation
       
           property :schema_override, as: 'schemaOverride', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema::Representation
       
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :pages, as: 'pages'
         end
       end
       
