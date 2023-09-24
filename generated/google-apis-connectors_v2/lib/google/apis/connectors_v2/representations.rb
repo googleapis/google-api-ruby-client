@@ -139,6 +139,8 @@ module Google
       class Action
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
           property :input_json_schema, as: 'inputJsonSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
       
           collection :input_parameters, as: 'inputParameters', class: Google::Apis::ConnectorsV2::InputParameter, decorator: Google::Apis::ConnectorsV2::InputParameter::Representation
@@ -225,6 +227,7 @@ module Google
       class InputParameter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_details, as: 'additionalDetails'
           property :data_type, as: 'dataType'
           property :default_value, as: 'defaultValue'
           property :description, as: 'description'

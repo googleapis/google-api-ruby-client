@@ -27,6 +27,16 @@ module Google
       class Action
         include Google::Apis::Core::Hashable
       
+        # Brief Description of action
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display Name of action to be shown on client side
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # JsonSchema representation of schema metadata
         # Corresponds to the JSON property `inputJsonSchema`
         # @return [Google::Apis::ConnectorsV2::JsonSchema]
@@ -58,6 +68,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @input_json_schema = args[:input_json_schema] if args.key?(:input_json_schema)
           @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
           @name = args[:name] if args.key?(:name)
@@ -307,6 +319,12 @@ module Google
       class InputParameter
         include Google::Apis::Core::Hashable
       
+        # The following map contains fields that are not explicitly mentioned above,this
+        # give connectors the flexibility to add new metadata fields.
+        # Corresponds to the JSON property `additionalDetails`
+        # @return [Hash<String,Object>]
+        attr_accessor :additional_details
+      
         # The data type of the Parameter
         # Corresponds to the JSON property `dataType`
         # @return [String]
@@ -345,6 +363,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_details = args[:additional_details] if args.key?(:additional_details)
           @data_type = args[:data_type] if args.key?(:data_type)
           @default_value = args[:default_value] if args.key?(:default_value)
           @description = args[:description] if args.key?(:description)
@@ -573,7 +592,7 @@ module Google
       
         # 
         # Corresponds to the JSON property `value`
-        # @return [String]
+        # @return [Object]
         attr_accessor :value
       
         def initialize(**args)
