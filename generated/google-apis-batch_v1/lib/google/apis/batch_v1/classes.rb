@@ -799,7 +799,13 @@ module Google
       
         # Volumes to mount (bind mount) from the host machine files or directories into
         # the container, formatted to match docker run's --volume option, e.g. /foo:/bar,
-        # or /foo:/bar:ro
+        # or /foo:/bar:ro If the `TaskSpec.Volumes` field is specified but this field
+        # is not, Batch will mount each volume from the host machine to the container
+        # with the same mount path by default. In this case, the default mount option
+        # for containers will be read-only (ro) for existing persistent disks and read-
+        # write (rw) for other volume types, regardless of the original mount options
+        # specified in `TaskSpec.Volumes`. If you need different mount settings, you can
+        # explicitly configure them in this field.
         # Corresponds to the JSON property `volumes`
         # @return [Array<String>]
         attr_accessor :volumes
@@ -843,7 +849,8 @@ module Google
         # customized image in short names. The following image values are supported for
         # a boot disk: * `batch-debian`: use Batch Debian images. * `batch-centos`: use
         # Batch CentOS images. * `batch-cos`: use Batch Container-Optimized images. * `
-        # batch-hpc-centos`: use Batch HPC CentOS images.
+        # batch-hpc-centos`: use Batch HPC CentOS images. * `batch-hpc-rocky`: use Batch
+        # HPC Rocky Linux images.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
@@ -1002,6 +1009,12 @@ module Google
         # @return [String]
         attr_accessor :provisioning_model
       
+        # Optional. If specified, VMs will consume only the specified reservation. If
+        # not specified (default), VMs will consume any applicable reservation.
+        # Corresponds to the JSON property `reservation`
+        # @return [String]
+        attr_accessor :reservation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1014,6 +1027,7 @@ module Google
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
+          @reservation = args[:reservation] if args.key?(:reservation)
         end
       end
       
