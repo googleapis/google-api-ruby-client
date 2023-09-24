@@ -22,6 +22,12 @@ module Google
   module Apis
     module HealthcareV1beta1
       
+      class AccessDeterminationLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Action
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -29,6 +35,12 @@ module Google
       end
       
       class ActivateConsentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdminConsents
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -65,6 +77,30 @@ module Google
       end
       
       class AnnotationStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApplyAdminConsentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApplyAdminConsentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApplyConsentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApplyConsentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,7 +232,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConsentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConsentEvaluation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConsentHeaderHandling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -922,6 +970,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PatientScope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1144,6 +1198,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Type
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1172,6 +1232,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessDeterminationLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_level, as: 'logLevel'
+        end
       end
       
       class Action
@@ -1203,6 +1270,13 @@ module Google
           property :consent_artifact, as: 'consentArtifact'
           property :expire_time, as: 'expireTime'
           property :ttl, as: 'ttl'
+        end
+      end
+      
+      class AdminConsents
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
         end
       end
       
@@ -1265,6 +1339,45 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
           property :name, as: 'name'
+        end
+      end
+      
+      class ApplyAdminConsentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_consents_list, as: 'newConsentsList', class: Google::Apis::HealthcareV1beta1::AdminConsents, decorator: Google::Apis::HealthcareV1beta1::AdminConsents::Representation
+      
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class ApplyAdminConsentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :affected_resources, :numeric_string => true, as: 'affectedResources'
+          property :consent_apply_success, :numeric_string => true, as: 'consentApplySuccess'
+          property :failed_resources, :numeric_string => true, as: 'failedResources'
+        end
+      end
+      
+      class ApplyConsentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :patient_scope, as: 'patientScope', class: Google::Apis::HealthcareV1beta1::PatientScope, decorator: Google::Apis::HealthcareV1beta1::PatientScope::Representation
+      
+          property :time_range, as: 'timeRange', class: Google::Apis::HealthcareV1beta1::TimeRange, decorator: Google::Apis::HealthcareV1beta1::TimeRange::Representation
+      
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class ApplyConsentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :affected_resources, :numeric_string => true, as: 'affectedResources'
+          property :consent_apply_failure, :numeric_string => true, as: 'consentApplyFailure'
+          property :consent_apply_success, :numeric_string => true, as: 'consentApplySuccess'
+          property :failed_resources, :numeric_string => true, as: 'failedResources'
         end
       end
       
@@ -1451,10 +1564,30 @@ module Google
         end
       end
       
+      class ConsentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_determination_log_config, as: 'accessDeterminationLogConfig', class: Google::Apis::HealthcareV1beta1::AccessDeterminationLogConfig, decorator: Google::Apis::HealthcareV1beta1::AccessDeterminationLogConfig::Representation
+      
+          property :access_enforced, as: 'accessEnforced'
+          property :consent_header_handling, as: 'consentHeaderHandling', class: Google::Apis::HealthcareV1beta1::ConsentHeaderHandling, decorator: Google::Apis::HealthcareV1beta1::ConsentHeaderHandling::Representation
+      
+          collection :enforced_admin_consents, as: 'enforcedAdminConsents'
+          property :version, as: 'version'
+        end
+      end
+      
       class ConsentEvaluation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :evaluation_result, as: 'evaluationResult'
+        end
+      end
+      
+      class ConsentHeaderHandling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :profile, as: 'profile'
         end
       end
       
@@ -1882,6 +2015,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :complex_data_type_reference_parsing, as: 'complexDataTypeReferenceParsing'
+          property :consent_config, as: 'consentConfig', class: Google::Apis::HealthcareV1beta1::ConsentConfig, decorator: Google::Apis::HealthcareV1beta1::ConsentConfig::Representation
+      
           property :default_search_handling_strict, as: 'defaultSearchHandlingStrict'
           property :disable_referential_integrity, as: 'disableReferentialIntegrity'
           property :disable_resource_versioning, as: 'disableResourceVersioning'
@@ -2582,6 +2717,13 @@ module Google
         end
       end
       
+      class PatientScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :patient_ids, as: 'patientIds'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2599,6 +2741,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failure, :numeric_string => true, as: 'failure'
           property :pending, :numeric_string => true, as: 'pending'
+          property :secondary_failure, :numeric_string => true, as: 'secondaryFailure'
+          property :secondary_success, :numeric_string => true, as: 'secondarySuccess'
           property :success, :numeric_string => true, as: 'success'
         end
       end
@@ -2885,6 +3029,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expiration_ms, :numeric_string => true, as: 'expirationMs'
           property :type, as: 'type'
+        end
+      end
+      
+      class TimeRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, as: 'end'
+          property :start, as: 'start'
         end
       end
       

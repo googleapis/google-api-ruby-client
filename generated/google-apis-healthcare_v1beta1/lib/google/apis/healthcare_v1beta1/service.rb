@@ -3877,6 +3877,100 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Applies the admin Consent resources for the FHIR store and reindexes the
+        # underlying resources in the FHIR store according to the aggregate consents.
+        # This method also updates the `consent_config.enforced_admin_consents` field of
+        # the FhirStore unless `validate_only=true` in ApplyAdminConsentsRequest. Any
+        # admin Consent resource change after this operation execution (including
+        # deletion) requires you to call ApplyAdminConsents again for the change to take
+        # effect. This method returns an Operation that can be used to track the
+        # progress of the resources that were reindexed, by calling GetOperation. Upon
+        # completion, the ApplyAdminConsentsResponse additionally contains the number of
+        # resources that were reindexed. If at least one Consent resource contains an
+        # error or fails be be enforced for any reason, the method returns an error
+        # instead of an Operation. No resources will be reindexed and the `
+        # consent_config.enforced_admin_consents` field will be unchanged. To enforce a
+        # consent check for data access, `consent_config.access_enforced` must be set to
+        # true for the FhirStore.
+        # @param [String] name
+        #   The name of the FHIR store to enforce, in the format `projects/`project_id`/
+        #   locations/`location_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id``.
+        # @param [Google::Apis::HealthcareV1beta1::ApplyAdminConsentsRequest] apply_admin_consents_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def apply_fhir_store_admin_consents(name, apply_admin_consents_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:applyAdminConsents', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::ApplyAdminConsentsRequest::Representation
+          command.request_object = apply_admin_consents_request_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Apply the Consent resources for the FHIR store and reindex the underlying
+        # resources in the FHIR store according to the aggregate consent. The aggregate
+        # consent of the patient in scope in this request replaces any previous call of
+        # this method. Any Consent resource change after this operation execution (
+        # including deletion) requires you to call ApplyConsents again to have effect.
+        # This method returns an Operation that can be used to track the progress of the
+        # consent resources that were processed by calling GetOperation. Upon completion,
+        # the ApplyConsentsResponse additionally contains the number of resources that
+        # was reindexed. Errors are logged to Cloud Logging (see [Viewing error logs in
+        # Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). To
+        # enforce consent check for data access, `consent_config.access_enforced` must
+        # be set to true for the FhirStore.
+        # @param [String] name
+        #   Required. The name of the FHIR store to enforce, in the format `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/`
+        #   fhir_store_id``.
+        # @param [Google::Apis::HealthcareV1beta1::ApplyConsentsRequest] apply_consents_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def apply_fhir_store_consents(name, apply_consents_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:applyConsents', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::ApplyConsentsRequest::Representation
+          command.request_object = apply_consents_request_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Configure the search parameters for the FHIR store and reindex resources in
         # the FHIR store according to the defined search parameters. The search
         # parameters provided in this request will replace any previous search
@@ -4545,6 +4639,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the consent enforcement status of a single consent resource. On
+        # success, the response body contains a JSON-encoded representation of a `
+        # Parameters` (http://hl7.org/fhir/parameters.html) FHIR resource, containing
+        # the current enforcement status. Does not support DSTU2.
+        # @param [String] name
+        #   Required. The name of the consent resource to find enforcement status, in the
+        #   format `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   fhirStores/`fhir_store_id`/fhir/Consent/`consent_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def consent_project_location_dataset_fhir_store_fhir_enforcement_status(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/$consent-enforcement-status', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves the N most recent `Observation` resources for a subject matching
         # search criteria specified as query parameters, grouped by `Observation.code`,
         # sorted from most recent to oldest. Implements the FHIR extended operation
@@ -4592,6 +4721,54 @@ module Google
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the consent enforcement status of all consent resources for a patient.
+        # On success, the response body contains a JSON-encoded representation of a
+        # bundle of `Parameters` (http://hl7.org/fhir/parameters.html) FHIR resources,
+        # containing the current enforcement status for each consent resource of the
+        # patient. Does not support DSTU2.
+        # @param [String] name
+        #   Required. The name of the patient to find enforcement statuses, in the format `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/
+        #   `fhir_store_id`/fhir/Patient/`patient_id``
+        # @param [Fixnum] _count
+        #   Optional. The maximum number of results on a page. If not specified, 100 is
+        #   used. May not be larger than 1000.
+        # @param [String] _page_token
+        #   Optional. Used to retrieve the first, previous, next, or last page of consent
+        #   enforcement statuses when using pagination. Value should be set to the value
+        #   of `_page_token` set in next or previous page links' URLs. Next and previous
+        #   page are returned in the response bundle's links field, where `link.relation`
+        #   is "previous" or "next". Omit `_page_token` if no previous request has been
+        #   made.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patient_project_location_dataset_fhir_store_fhir_consent_enforcement_status(name, _count: nil, _page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/$consent-enforcement-status', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['_count'] = _count unless _count.nil?
+          command.query['_page_token'] = _page_token unless _page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
