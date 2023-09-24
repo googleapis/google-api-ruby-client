@@ -172,6 +172,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllocationAggregateReservation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AllocationAggregateReservationReservedResourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AllocationAggregateReservationReservedResourceInfoAccelerator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocationResourceStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -478,6 +496,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceListUsable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceLocalityLoadBalancingPolicyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -503,6 +539,12 @@ module Google
       end
       
       class BackendServiceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceUsedBy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6830,6 +6872,34 @@ module Google
         end
       end
       
+      class AllocationAggregateReservation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :in_use_resources, as: 'inUseResources', class: Google::Apis::ComputeBeta::AllocationAggregateReservationReservedResourceInfo, decorator: Google::Apis::ComputeBeta::AllocationAggregateReservationReservedResourceInfo::Representation
+      
+          collection :reserved_resources, as: 'reservedResources', class: Google::Apis::ComputeBeta::AllocationAggregateReservationReservedResourceInfo, decorator: Google::Apis::ComputeBeta::AllocationAggregateReservationReservedResourceInfo::Representation
+      
+          property :vm_family, as: 'vmFamily'
+          property :workload_type, as: 'workloadType'
+        end
+      end
+      
+      class AllocationAggregateReservationReservedResourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator, as: 'accelerator', class: Google::Apis::ComputeBeta::AllocationAggregateReservationReservedResourceInfoAccelerator, decorator: Google::Apis::ComputeBeta::AllocationAggregateReservationReservedResourceInfoAccelerator::Representation
+      
+        end
+      end
+      
+      class AllocationAggregateReservationReservedResourceInfoAccelerator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_count, as: 'acceleratorCount'
+          property :accelerator_type, as: 'acceleratorType'
+        end
+      end
+      
       class AllocationResourceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7340,6 +7410,8 @@ module Google
           property :subsetting, as: 'subsetting', class: Google::Apis::ComputeBeta::Subsetting, decorator: Google::Apis::ComputeBeta::Subsetting::Representation
       
           property :timeout_sec, as: 'timeoutSec'
+          collection :used_by, as: 'usedBy', class: Google::Apis::ComputeBeta::BackendServiceUsedBy, decorator: Google::Apis::ComputeBeta::BackendServiceUsedBy::Representation
+      
         end
       end
       
@@ -7483,6 +7555,38 @@ module Google
         end
       end
       
+      class BackendServiceListUsable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::BackendService, decorator: Google::Apis::ComputeBeta::BackendService::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::BackendServiceListUsable::Warning, decorator: Google::Apis::ComputeBeta::BackendServiceListUsable::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::BackendServiceListUsable::Warning::Datum, decorator: Google::Apis::ComputeBeta::BackendServiceListUsable::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class BackendServiceLocalityLoadBalancingPolicyConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7522,6 +7626,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_service, as: 'backendService'
+        end
+      end
+      
+      class BackendServiceUsedBy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reference, as: 'reference'
         end
       end
       
@@ -14701,6 +14812,8 @@ module Google
       class Reservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregate_reservation, as: 'aggregateReservation', class: Google::Apis::ComputeBeta::AllocationAggregateReservation, decorator: Google::Apis::ComputeBeta::AllocationAggregateReservation::Representation
+      
           property :commitment, as: 'commitment'
           property :creation_timestamp, as: 'creationTimestamp'
           property :delete_after_duration, as: 'deleteAfterDuration', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
