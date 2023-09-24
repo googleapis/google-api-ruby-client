@@ -344,6 +344,12 @@ module Google
       class CommonFleetDefaultMemberConfigSpec
         include Google::Apis::Core::Hashable
       
+        # **Anthos Config Management**: Configuration for a single cluster. Intended to
+        # parallel the ConfigManagement CR.
+        # Corresponds to the JSON property `configmanagement`
+        # @return [Google::Apis::GkehubV1beta::ConfigManagementMembershipSpec]
+        attr_accessor :configmanagement
+      
         # **Anthos Identity Service**: Configuration for a single Membership.
         # Corresponds to the JSON property `identityservice`
         # @return [Google::Apis::GkehubV1beta::IdentityServiceMembershipSpec]
@@ -355,6 +361,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
           @identityservice = args[:identityservice] if args.key?(:identityservice)
         end
       end
