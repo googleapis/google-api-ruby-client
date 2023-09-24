@@ -854,7 +854,8 @@ module Google
         end
       end
       
-      # The dimensions and metrics currently accepted in reporting methods.
+      # The dimensions, metrics and comparisons currently accepted in reporting
+      # methods.
       class Metadata
         include Google::Apis::Core::Hashable
       
