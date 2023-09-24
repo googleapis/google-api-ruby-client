@@ -459,8 +459,9 @@ module Google
         # ListOrgPolicyViolationsPreviews lists each OrgPolicyViolationsPreview in an
         # organization. Each OrgPolicyViolationsPreview is available for at least 7 days.
         # @param [String] parent
-        #   Required. The parent the violations are scoped to. Format: organizations/`
-        #   organization`
+        #   Required. The parent the violations are scoped to. Format: `organizations/`
+        #   organization`/locations/`location`` Example: `organizations/my-example-org/
+        #   locations/global`
         # @param [Fixnum] page_size
         #   The maximum number of items to return. The service may return fewer than this
         #   value. If unspecified, at most 5 items will be returned. The maximum value is
