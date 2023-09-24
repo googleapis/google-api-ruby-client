@@ -1604,16 +1604,17 @@ module Google
         attr_accessor :enrichment_enabled
         alias_method :enrichment_enabled?, :enrichment_enabled
       
+        # Optional. Ingress endpoint of the event listener. This is used only when
+        # private connectivity is enabled.
+        # Corresponds to the JSON property `eventsListenerIngressEndpoint`
+        # @return [String]
+        attr_accessor :events_listener_ingress_endpoint
+      
         # Optional. Private Connectivity Enabled.
         # Corresponds to the JSON property `privateConnectivityEnabled`
         # @return [Boolean]
         attr_accessor :private_connectivity_enabled
         alias_method :private_connectivity_enabled?, :private_connectivity_enabled
-      
-        # Optional. Public Events listener endpoint.
-        # Corresponds to the JSON property `publicEventsListenerEndpoint`
-        # @return [String]
-        attr_accessor :public_events_listener_endpoint
       
         # Define the Connectors target endpoint.
         # Corresponds to the JSON property `registrationDestinationConfig`
@@ -1630,8 +1631,8 @@ module Google
           @auth_config = args[:auth_config] if args.key?(:auth_config)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @enrichment_enabled = args[:enrichment_enabled] if args.key?(:enrichment_enabled)
+          @events_listener_ingress_endpoint = args[:events_listener_ingress_endpoint] if args.key?(:events_listener_ingress_endpoint)
           @private_connectivity_enabled = args[:private_connectivity_enabled] if args.key?(:private_connectivity_enabled)
-          @public_events_listener_endpoint = args[:public_events_listener_endpoint] if args.key?(:public_events_listener_endpoint)
           @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
         end
       end
@@ -1770,6 +1771,13 @@ module Google
         # @return [String]
         attr_accessor :events_listener_endpoint
       
+        # Output only. Events listener PSC Service attachment. The value will be
+        # populated after provisioning the events listener with private connectivity
+        # enabled.
+        # Corresponds to the JSON property `eventsListenerPscSa`
+        # @return [String]
+        attr_accessor :events_listener_psc_sa
+      
         # EventingStatus indicates the state of eventing.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::ConnectorsV1::EventingStatus]
@@ -1782,6 +1790,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @events_listener_endpoint = args[:events_listener_endpoint] if args.key?(:events_listener_endpoint)
+          @events_listener_psc_sa = args[:events_listener_psc_sa] if args.key?(:events_listener_psc_sa)
           @status = args[:status] if args.key?(:status)
         end
       end
@@ -3373,6 +3382,16 @@ module Google
         # @return [String]
         attr_accessor :action
       
+        # Output only. Brief Description of action
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Display Name of action to be shown on client side
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # JsonSchema representation of schema metadata
         # Corresponds to the JSON property `inputJsonSchema`
         # @return [Google::Apis::ConnectorsV1::JsonSchema]
@@ -3400,6 +3419,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @input_json_schema = args[:input_json_schema] if args.key?(:input_json_schema)
           @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
           @result_json_schema = args[:result_json_schema] if args.key?(:result_json_schema)
