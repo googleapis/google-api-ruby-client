@@ -1,5 +1,9 @@
 # Release history for google-apis-policysimulator_v1
 
+### v0.28.0 (2023-09-24)
+
+* Regenerated from discovery document revision 20230917
+
 ### v0.27.0 (2023-08-13)
 
 * Regenerated from discovery document revision 20230806

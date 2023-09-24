@@ -996,7 +996,10 @@ module Google
         # The OrgPolicy CustomConstraint changes to preview violations for. Any existing
         # CustomConstraints with the same name will be overridden in the simulation.
         # That is, violations will be determined as if all custom constraints in the
-        # overlay were instantiated.
+        # overlay were instantiated. Only a single custom_constraint is supported in the
+        # overlay at a time. For evaluating multiple constraints, multiple `
+        # GenerateOrgPolicyViolationsPreview` requests are made, where each request
+        # evaluates a single constraint.
         # Corresponds to the JSON property `customConstraints`
         # @return [Array<Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayCustomConstraintOverlay>]
         attr_accessor :custom_constraints
@@ -1081,6 +1084,22 @@ module Google
       class GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreview
         include Google::Apis::Core::Hashable
       
+        # Output only. Time when this `OrgPolicyViolationsPreview` was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The names of the constraints against which all `
+        # OrgPolicyViolations` were evaluated. If `OrgPolicyOverlay` only contains `
+        # PolicyOverlay` then it contains the name of the configured custom constraint,
+        # applicable to the specified policies. Otherwise it contains the name of the
+        # constraint specified in `CustomConstraintOverlay`. Format: `organizations/`
+        # organization_id`/customConstraints/`custom_constraint_id`` Example: `
+        # organizations/123/customConstraints/custom.createOnlyE2TypeVms`
+        # Corresponds to the JSON property `customConstraints`
+        # @return [Array<String>]
+        attr_accessor :custom_constraints
+      
         # Output only. The resource name of the `OrgPolicyViolationsPreview`. It has the
         # following format: `organizations/`organization`/locations/`location`/
         # orgPolicyViolationsPreviews/`orgPolicyViolationsPreview`` Example: `
@@ -1122,6 +1141,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_constraints = args[:custom_constraints] if args.key?(:custom_constraints)
           @name = args[:name] if args.key?(:name)
           @overlay = args[:overlay] if args.key?(:overlay)
           @resource_counts = args[:resource_counts] if args.key?(:resource_counts)
@@ -1235,7 +1256,10 @@ module Google
         # The OrgPolicy CustomConstraint changes to preview violations for. Any existing
         # CustomConstraints with the same name will be overridden in the simulation.
         # That is, violations will be determined as if all custom constraints in the
-        # overlay were instantiated.
+        # overlay were instantiated. Only a single custom_constraint is supported in the
+        # overlay at a time. For evaluating multiple constraints, multiple `
+        # GenerateOrgPolicyViolationsPreview` requests are made, where each request
+        # evaluates a single constraint.
         # Corresponds to the JSON property `customConstraints`
         # @return [Array<Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>]
         attr_accessor :custom_constraints
@@ -1320,6 +1344,22 @@ module Google
       class GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview
         include Google::Apis::Core::Hashable
       
+        # Output only. Time when this `OrgPolicyViolationsPreview` was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The names of the constraints against which all `
+        # OrgPolicyViolations` were evaluated. If `OrgPolicyOverlay` only contains `
+        # PolicyOverlay` then it contains the name of the configured custom constraint,
+        # applicable to the specified policies. Otherwise it contains the name of the
+        # constraint specified in `CustomConstraintOverlay`. Format: `organizations/`
+        # organization_id`/customConstraints/`custom_constraint_id`` Example: `
+        # organizations/123/customConstraints/custom.createOnlyE2TypeVms`
+        # Corresponds to the JSON property `customConstraints`
+        # @return [Array<String>]
+        attr_accessor :custom_constraints
+      
         # Output only. The resource name of the `OrgPolicyViolationsPreview`. It has the
         # following format: `organizations/`organization`/locations/`location`/
         # orgPolicyViolationsPreviews/`orgPolicyViolationsPreview`` Example: `
@@ -1361,6 +1401,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_constraints = args[:custom_constraints] if args.key?(:custom_constraints)
           @name = args[:name] if args.key?(:name)
           @overlay = args[:overlay] if args.key?(:overlay)
           @resource_counts = args[:resource_counts] if args.key?(:resource_counts)

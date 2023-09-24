@@ -516,6 +516,8 @@ module Google
       class GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreview
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          collection :custom_constraints, as: 'customConstraints'
           property :name, as: 'name'
           property :overlay, as: 'overlay', class: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlay, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlay::Representation
       
@@ -580,6 +582,8 @@ module Google
       class GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          collection :custom_constraints, as: 'customConstraints'
           property :name, as: 'name'
           property :overlay, as: 'overlay', class: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay, decorator: Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay::Representation
       
