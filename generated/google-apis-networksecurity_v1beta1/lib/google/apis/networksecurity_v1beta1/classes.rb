@@ -450,6 +450,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :associated_networks
       
+        # Optional. Project to bill on endpoint uptime usage.
+        # Corresponds to the JSON property `billingProjectId`
+        # @return [String]
+        attr_accessor :billing_project_id
+      
         # Output only. Create time stamp
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -489,6 +494,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @associated_networks = args[:associated_networks] if args.key?(:associated_networks)
+          @billing_project_id = args[:billing_project_id] if args.key?(:billing_project_id)
           @create_time = args[:create_time] if args.key?(:create_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)

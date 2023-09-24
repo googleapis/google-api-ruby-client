@@ -469,6 +469,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :associated_networks, as: 'associatedNetworks'
+          property :billing_project_id, as: 'billingProjectId'
           property :create_time, as: 'createTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
