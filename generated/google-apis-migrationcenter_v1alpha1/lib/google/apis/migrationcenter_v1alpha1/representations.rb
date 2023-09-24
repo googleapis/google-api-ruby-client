@@ -922,6 +922,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VirtualMachinePreferencesNetworkCostParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VirtualMachinePreferencesSizingOptimizationCustomParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmwareDiskConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2480,7 +2492,11 @@ module Google
           property :commitment_plan, as: 'commitmentPlan'
           property :compute_engine_preferences, as: 'computeEnginePreferences', class: Google::Apis::MigrationcenterV1alpha1::ComputeEnginePreferences, decorator: Google::Apis::MigrationcenterV1alpha1::ComputeEnginePreferences::Representation
       
+          property :network_cost_parameters, as: 'networkCostParameters', class: Google::Apis::MigrationcenterV1alpha1::VirtualMachinePreferencesNetworkCostParameters, decorator: Google::Apis::MigrationcenterV1alpha1::VirtualMachinePreferencesNetworkCostParameters::Representation
+      
           property :region_preferences, as: 'regionPreferences', class: Google::Apis::MigrationcenterV1alpha1::RegionPreferences, decorator: Google::Apis::MigrationcenterV1alpha1::RegionPreferences::Representation
+      
+          property :sizing_optimization_custom_parameters, as: 'sizingOptimizationCustomParameters', class: Google::Apis::MigrationcenterV1alpha1::VirtualMachinePreferencesSizingOptimizationCustomParameters, decorator: Google::Apis::MigrationcenterV1alpha1::VirtualMachinePreferencesSizingOptimizationCustomParameters::Representation
       
           property :sizing_optimization_strategy, as: 'sizingOptimizationStrategy'
           property :sole_tenancy_preferences, as: 'soleTenancyPreferences', class: Google::Apis::MigrationcenterV1alpha1::SoleTenancyPreferences, decorator: Google::Apis::MigrationcenterV1alpha1::SoleTenancyPreferences::Representation
@@ -2488,6 +2504,23 @@ module Google
           property :target_product, as: 'targetProduct'
           property :vmware_engine_preferences, as: 'vmwareEnginePreferences', class: Google::Apis::MigrationcenterV1alpha1::VmwareEnginePreferences, decorator: Google::Apis::MigrationcenterV1alpha1::VmwareEnginePreferences::Representation
       
+        end
+      end
+      
+      class VirtualMachinePreferencesNetworkCostParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :estimated_egress_traffic_percentage, as: 'estimatedEgressTrafficPercentage'
+        end
+      end
+      
+      class VirtualMachinePreferencesSizingOptimizationCustomParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_method, as: 'aggregationMethod'
+          property :cpu_usage_percentage, as: 'cpuUsagePercentage'
+          property :memory_usage_percentage, as: 'memoryUsagePercentage'
+          property :storage_multiplier, as: 'storageMultiplier'
         end
       end
       

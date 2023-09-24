@@ -1636,13 +1636,13 @@ module Google
         end
       end
       
-      # An insight about an asset (experimental insight)
+      # A generic insight about an asset.
       class GenericInsight
         include Google::Apis::Core::Hashable
       
         # Output only. Additional information about the insight, each entry can be a
         # logical entry and must make sense if it is displayed with line breaks between
-        # each entry. Text can contain md style links
+        # each entry. Text can contain md style links.
         # Corresponds to the JSON property `additionalInformation`
         # @return [Array<String>]
         attr_accessor :additional_information
@@ -2225,7 +2225,7 @@ module Google
       class Insight
         include Google::Apis::Core::Hashable
       
-        # An insight about an asset (experimental insight)
+        # A generic insight about an asset.
         # Corresponds to the JSON property `genericInsight`
         # @return [Google::Apis::MigrationcenterV1alpha1::GenericInsight]
         attr_accessor :generic_insight
@@ -5115,10 +5115,20 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::ComputeEnginePreferences]
         attr_accessor :compute_engine_preferences
       
+        # Parameters that affect network cost estimations.
+        # Corresponds to the JSON property `networkCostParameters`
+        # @return [Google::Apis::MigrationcenterV1alpha1::VirtualMachinePreferencesNetworkCostParameters]
+        attr_accessor :network_cost_parameters
+      
         # The user preferences relating to target regions.
         # Corresponds to the JSON property `regionPreferences`
         # @return [Google::Apis::MigrationcenterV1alpha1::RegionPreferences]
         attr_accessor :region_preferences
+      
+        # Custom data to use for sizing optimizations.
+        # Corresponds to the JSON property `sizingOptimizationCustomParameters`
+        # @return [Google::Apis::MigrationcenterV1alpha1::VirtualMachinePreferencesSizingOptimizationCustomParameters]
+        attr_accessor :sizing_optimization_custom_parameters
       
         # Sizing optimization strategy specifies the preferred strategy used when
         # extrapolating usage data to calculate insights and recommendations for a
@@ -5152,11 +5162,74 @@ module Google
         def update!(**args)
           @commitment_plan = args[:commitment_plan] if args.key?(:commitment_plan)
           @compute_engine_preferences = args[:compute_engine_preferences] if args.key?(:compute_engine_preferences)
+          @network_cost_parameters = args[:network_cost_parameters] if args.key?(:network_cost_parameters)
           @region_preferences = args[:region_preferences] if args.key?(:region_preferences)
+          @sizing_optimization_custom_parameters = args[:sizing_optimization_custom_parameters] if args.key?(:sizing_optimization_custom_parameters)
           @sizing_optimization_strategy = args[:sizing_optimization_strategy] if args.key?(:sizing_optimization_strategy)
           @sole_tenancy_preferences = args[:sole_tenancy_preferences] if args.key?(:sole_tenancy_preferences)
           @target_product = args[:target_product] if args.key?(:target_product)
           @vmware_engine_preferences = args[:vmware_engine_preferences] if args.key?(:vmware_engine_preferences)
+        end
+      end
+      
+      # Parameters that affect network cost estimations.
+      class VirtualMachinePreferencesNetworkCostParameters
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An estimated percentage of priced outbound traffic (egress traffic)
+        # from the measured outbound traffic. Must be in the interval [0, 100].
+        # Corresponds to the JSON property `estimatedEgressTrafficPercentage`
+        # @return [Fixnum]
+        attr_accessor :estimated_egress_traffic_percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @estimated_egress_traffic_percentage = args[:estimated_egress_traffic_percentage] if args.key?(:estimated_egress_traffic_percentage)
+        end
+      end
+      
+      # Custom data to use for sizing optimizations.
+      class VirtualMachinePreferencesSizingOptimizationCustomParameters
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Type of statistical aggregation of a resource utilization data, on
+        # which to base the sizing metrics.
+        # Corresponds to the JSON property `aggregationMethod`
+        # @return [String]
+        attr_accessor :aggregation_method
+      
+        # Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (
+        # or 0 for default value).
+        # Corresponds to the JSON property `cpuUsagePercentage`
+        # @return [Fixnum]
+        attr_accessor :cpu_usage_percentage
+      
+        # Optional. Desired percentage of memory usage. Must be in the interval [1, 100]
+        # (or 0 for default value).
+        # Corresponds to the JSON property `memoryUsagePercentage`
+        # @return [Fixnum]
+        attr_accessor :memory_usage_percentage
+      
+        # Optional. Desired increase factor of storage, relative to currently used
+        # storage. Must be in the interval [1.0, 2.0] (or 0 for default value).
+        # Corresponds to the JSON property `storageMultiplier`
+        # @return [Float]
+        attr_accessor :storage_multiplier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_method = args[:aggregation_method] if args.key?(:aggregation_method)
+          @cpu_usage_percentage = args[:cpu_usage_percentage] if args.key?(:cpu_usage_percentage)
+          @memory_usage_percentage = args[:memory_usage_percentage] if args.key?(:memory_usage_percentage)
+          @storage_multiplier = args[:storage_multiplier] if args.key?(:storage_multiplier)
         end
       end
       
