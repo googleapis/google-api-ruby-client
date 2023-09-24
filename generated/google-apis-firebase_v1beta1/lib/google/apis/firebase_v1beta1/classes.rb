@@ -78,7 +78,12 @@ module Google
       class AdminSdkConfig
         include Google::Apis::Core::Hashable
       
-        # 
+        # **DEPRECATED.** _Instead, find the default Firebase Realtime Database instance
+        # name using the [list endpoint](https://firebase.google.com/docs/reference/rest/
+        # database/database-management/rest/v1beta/projects.locations.instances/list)
+        # within the Firebase Realtime Database REST API. Note that the default instance
+        # for the Project might not yet be provisioned, so the return might not contain
+        # a default instance._ The default Firebase Realtime Database URL.
         # Corresponds to the JSON property `databaseURL`
         # @return [String]
         attr_accessor :database_url
