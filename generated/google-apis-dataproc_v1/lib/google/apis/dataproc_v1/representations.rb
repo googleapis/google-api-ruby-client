@@ -1159,7 +1159,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gce_pd_kms_key_name, as: 'gcePdKmsKeyName'
-          property :kms_key, as: 'kmsKey'
         end
       end
       
@@ -1785,6 +1784,8 @@ module Google
       class OrderedJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :flink_job, as: 'flinkJob', class: Google::Apis::DataprocV1::FlinkJob, decorator: Google::Apis::DataprocV1::FlinkJob::Representation
+      
           property :hadoop_job, as: 'hadoopJob', class: Google::Apis::DataprocV1::HadoopJob, decorator: Google::Apis::DataprocV1::HadoopJob::Representation
       
           property :hive_job, as: 'hiveJob', class: Google::Apis::DataprocV1::HiveJob, decorator: Google::Apis::DataprocV1::HiveJob::Representation
@@ -2054,6 +2055,7 @@ module Google
           property :runtime_config, as: 'runtimeConfig', class: Google::Apis::DataprocV1::RuntimeConfig, decorator: Google::Apis::DataprocV1::RuntimeConfig::Representation
       
           property :update_time, as: 'updateTime'
+          property :uuid, as: 'uuid'
         end
       end
       
