@@ -57,6 +57,11 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus
         include Google::Apis::Core::Hashable
       
+        # Document Identifier.
+        # Corresponds to the JSON property `documentId`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3DocumentId]
+        attr_accessor :document_id
+      
         # The gcs_uri of the auto-labeling document, which uniquely identifies a dataset
         # document.
         # Corresponds to the JSON property `gcsUri`
@@ -79,6 +84,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
           @status = args[:status] if args.key?(:status)
         end
@@ -6765,7 +6771,7 @@ module Google
       end
       
       # A singleton resource under a Processor which configures a collection of
-      # documents.
+      # documents. Next Id: 8.
       class GoogleCloudDocumentaiV1beta3Dataset
         include Google::Apis::Core::Hashable
       
