@@ -1190,7 +1190,7 @@ module Google
         # @return [String]
         attr_accessor :key_prefix
       
-        # The location of the database. Available databases are listed at https://cloud.
+        # The location of the database. Available locations are listed at https://cloud.
         # google.com/firestore/docs/locations.
         # Corresponds to the JSON property `locationId`
         # @return [String]
