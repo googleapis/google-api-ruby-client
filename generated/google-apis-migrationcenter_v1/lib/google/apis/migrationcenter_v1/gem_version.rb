@@ -16,13 +16,13 @@ module Google
   module Apis
     module MigrationcenterV1
       # Version of the google-apis-migrationcenter_v1 gem
-      GEM_VERSION = "0.3.0"
+      GEM_VERSION = "0.4.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.12.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20230901"
+      REVISION = "20230918"
     end
   end
 end

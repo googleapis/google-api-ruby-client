@@ -1513,13 +1513,13 @@ module Google
         end
       end
       
-      # An insight about an asset (experimental insight)
+      # A generic insight about an asset.
       class GenericInsight
         include Google::Apis::Core::Hashable
       
         # Output only. Additional information about the insight, each entry can be a
         # logical entry and must make sense if it is displayed with line breaks between
-        # each entry. Text can contain md style links
+        # each entry. Text can contain md style links.
         # Corresponds to the JSON property `additionalInformation`
         # @return [Array<String>]
         attr_accessor :additional_information
@@ -2062,7 +2062,7 @@ module Google
       class Insight
         include Google::Apis::Core::Hashable
       
-        # An insight about an asset (experimental insight)
+        # A generic insight about an asset.
         # Corresponds to the JSON property `genericInsight`
         # @return [Google::Apis::MigrationcenterV1::GenericInsight]
         attr_accessor :generic_insight
@@ -3281,7 +3281,7 @@ module Google
         # @return [Google::Apis::MigrationcenterV1::NetworkUsageSample]
         attr_accessor :network
       
-        # Time the sample was If omitted, the frame report time will be used.
+        # Time the sample was collected. If omitted, the frame report time will be used.
         # Corresponds to the JSON property `sampleTime`
         # @return [String]
         attr_accessor :sample_time
