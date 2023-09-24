@@ -460,7 +460,7 @@ module Google
       
         # Details for a bundle product.
         # Corresponds to the JSON property `bundleDetails`
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::ProductBundleDetails]
         attr_accessor :bundle_details
       
         # Details for a subscriptiin line item with finite billing cycles.
@@ -514,31 +514,6 @@ module Google
           @region_codes = args[:region_codes] if args.key?(:region_codes)
           @subscription_billing_cycle_duration = args[:subscription_billing_cycle_duration] if args.key?(:subscription_billing_cycle_duration)
           @titles = args[:titles] if args.key?(:titles)
-        end
-      end
-      
-      # Details for a bundle product.
-      class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails
-        include Google::Apis::Core::Hashable
-      
-        # The individual products that are included in the bundle.
-        # Corresponds to the JSON property `bundleElements`
-        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement>]
-        attr_accessor :bundle_elements
-      
-        # The entitlement mode of the bundle product.
-        # Corresponds to the JSON property `entitlementMode`
-        # @return [String]
-        attr_accessor :entitlement_mode
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bundle_elements = args[:bundle_elements] if args.key?(:bundle_elements)
-          @entitlement_mode = args[:entitlement_mode] if args.key?(:entitlement_mode)
         end
       end
       
@@ -948,6 +923,11 @@ module Google
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Amount]
         attr_accessor :amount
       
+        # The bundle details for a line item corresponding to a hard bundle.
+        # Corresponds to the JSON property `bundleDetails`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItemBundleDetails]
+        attr_accessor :bundle_details
+      
         # Output only. Description of this line item.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -1012,6 +992,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @amount = args[:amount] if args.key?(:amount)
+          @bundle_details = args[:bundle_details] if args.key?(:bundle_details)
           @description = args[:description] if args.key?(:description)
           @finite_billing_cycle_details = args[:finite_billing_cycle_details] if args.key?(:finite_billing_cycle_details)
           @line_item_free_trial_end_time = args[:line_item_free_trial_end_time] if args.key?(:line_item_free_trial_end_time)
@@ -1022,6 +1003,32 @@ module Google
           @product_payload = args[:product_payload] if args.key?(:product_payload)
           @recurrence_type = args[:recurrence_type] if args.key?(:recurrence_type)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The details for an element in the hard bundle.
+      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Product resource name that identifies the bundle element. The
+        # format is 'partners/`partner_id`/products/`product_id`'.
+        # Corresponds to the JSON property `product`
+        # @return [String]
+        attr_accessor :product
+      
+        # Output only. The time when this product is linked to an end user.
+        # Corresponds to the JSON property `userAccountLinkedTime`
+        # @return [String]
+        attr_accessor :user_account_linked_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product = args[:product] if args.key?(:product)
+          @user_account_linked_time = args[:user_account_linked_time] if args.key?(:user_account_linked_time)
         end
       end
       
@@ -1192,6 +1199,50 @@ module Google
         def update!(**args)
           @language_code = args[:language_code] if args.key?(:language_code)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Details for a bundle product.
+      class ProductBundleDetails
+        include Google::Apis::Core::Hashable
+      
+        # The individual products that are included in the bundle.
+        # Corresponds to the JSON property `bundleElements`
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement>]
+        attr_accessor :bundle_elements
+      
+        # The entitlement mode of the bundle product.
+        # Corresponds to the JSON property `entitlementMode`
+        # @return [String]
+        attr_accessor :entitlement_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_elements = args[:bundle_elements] if args.key?(:bundle_elements)
+          @entitlement_mode = args[:entitlement_mode] if args.key?(:entitlement_mode)
+        end
+      end
+      
+      # The bundle details for a line item corresponding to a hard bundle.
+      class SubscriptionLineItemBundleDetails
+        include Google::Apis::Core::Hashable
+      
+        # The details for each element in the hard bundle.
+        # Corresponds to the JSON property `bundleElementDetails`
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails>]
+        attr_accessor :bundle_element_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_element_details = args[:bundle_element_details] if args.key?(:bundle_element_details)
         end
       end
     end
