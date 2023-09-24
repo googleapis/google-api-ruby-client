@@ -337,6 +337,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # The current state of the environment.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -368,6 +374,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @storage_config = args[:storage_config] if args.key?(:storage_config)
           @update_time = args[:update_time] if args.key?(:update_time)
