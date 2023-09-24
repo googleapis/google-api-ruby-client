@@ -1,5 +1,9 @@
 # Release history for google-apis-playintegrity_v1
 
+### v0.17.0 (2023-09-24)
+
+* Regenerated from discovery document revision 20230920
+
 ### v0.16.0 (2023-09-17)
 
 * Regenerated from discovery document revision 20230910
