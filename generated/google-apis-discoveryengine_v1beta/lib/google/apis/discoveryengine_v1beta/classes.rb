@@ -3252,13 +3252,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_previous_segments
       
-        # Specifies whether to return the confidence score from the extractive segments
-        # in each search result. The default value is `false`.
-        # Corresponds to the JSON property `returnExtractiveSegmentScore`
-        # @return [Boolean]
-        attr_accessor :return_extractive_segment_score
-        alias_method :return_extractive_segment_score?, :return_extractive_segment_score
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3269,7 +3262,6 @@ module Google
           @max_extractive_segment_count = args[:max_extractive_segment_count] if args.key?(:max_extractive_segment_count)
           @num_next_segments = args[:num_next_segments] if args.key?(:num_next_segments)
           @num_previous_segments = args[:num_previous_segments] if args.key?(:num_previous_segments)
-          @return_extractive_segment_score = args[:return_extractive_segment_score] if args.key?(:return_extractive_segment_score)
         end
       end
       
@@ -3354,7 +3346,8 @@ module Google
         attr_accessor :include_citations
         alias_method :include_citations?, :include_citations
       
-        # Language code for Summary. Use language tags defined by BCP47.
+        # Language code for Summary. Use language tags defined by [BCP47](https://www.
+        # rfc-editor.org/rfc/bcp/bcp47.txt). Note: This is an experimental feature.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
