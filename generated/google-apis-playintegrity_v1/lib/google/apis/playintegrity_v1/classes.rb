@@ -157,7 +157,7 @@ module Google
       class DeviceIntegrity
         include Google::Apis::Core::Hashable
       
-        # Details about the integrity of the device the app is running on
+        # Details about the integrity of the device the app is running on.
         # Corresponds to the JSON property `deviceRecognitionVerdict`
         # @return [Array<String>]
         attr_accessor :device_recognition_verdict
