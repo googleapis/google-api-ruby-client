@@ -236,6 +236,11 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment]
         attr_accessor :fraud_prevention_assessment
       
+        # Fraud signals describing users and cards involved in the transaction.
+        # Corresponds to the JSON property `fraudSignals`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudSignals]
+        attr_accessor :fraud_signals
+      
         # Output only. The resource name for the Assessment in the format "projects/`
         # project`/assessments/`assessment`".
         # Corresponds to the JSON property `name`
@@ -268,6 +273,7 @@ module Google
           @event = args[:event] if args.key?(:event)
           @firewall_policy_assessment = args[:firewall_policy_assessment] if args.key?(:firewall_policy_assessment)
           @fraud_prevention_assessment = args[:fraud_prevention_assessment] if args.key?(:fraud_prevention_assessment)
+          @fraud_signals = args[:fraud_signals] if args.key?(:fraud_signals)
           @name = args[:name] if args.key?(:name)
           @private_password_leak_verification = args[:private_password_leak_verification] if args.key?(:private_password_leak_verification)
           @risk_analysis = args[:risk_analysis] if args.key?(:risk_analysis)
@@ -787,6 +793,78 @@ module Google
         # Update properties of this object
         def update!(**args)
           @risk = args[:risk] if args.key?(:risk)
+        end
+      end
+      
+      # Fraud signals describing users and cards involved in the transaction.
+      class GoogleCloudRecaptchaenterpriseV1FraudSignals
+        include Google::Apis::Core::Hashable
+      
+        # Signals describing the payment card used in this transaction.
+        # Corresponds to the JSON property `cardSignals`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals]
+        attr_accessor :card_signals
+      
+        # Signals describing the user involved in this transaction.
+        # Corresponds to the JSON property `userSignals`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals]
+        attr_accessor :user_signals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @card_signals = args[:card_signals] if args.key?(:card_signals)
+          @user_signals = args[:user_signals] if args.key?(:user_signals)
+        end
+      end
+      
+      # Signals describing the payment card used in this transaction.
+      class GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The labels for the payment card in this transaction.
+        # Corresponds to the JSON property `cardLabels`
+        # @return [Array<String>]
+        attr_accessor :card_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @card_labels = args[:card_labels] if args.key?(:card_labels)
+        end
+      end
+      
+      # Signals describing the user involved in this transaction.
+      class GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals
+        include Google::Apis::Core::Hashable
+      
+        # Output only. This user (based on email, phone, and other identifiers) has been
+        # seen on the internet for at least this number of days.
+        # Corresponds to the JSON property `activeDaysLowerBound`
+        # @return [Fixnum]
+        attr_accessor :active_days_lower_bound
+      
+        # Output only. Likelihood (from 0.0 to 1.0) this user includes synthetic
+        # components in their identity, such as a randomly generated email address,
+        # temporary phone number, or fake shipping address.
+        # Corresponds to the JSON property `syntheticRisk`
+        # @return [Float]
+        attr_accessor :synthetic_risk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_days_lower_bound = args[:active_days_lower_bound] if args.key?(:active_days_lower_bound)
+          @synthetic_risk = args[:synthetic_risk] if args.key?(:synthetic_risk)
         end
       end
       

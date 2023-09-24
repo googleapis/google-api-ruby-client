@@ -154,6 +154,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1FraudSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1IosKeySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -394,6 +412,8 @@ module Google
       
           property :fraud_prevention_assessment, as: 'fraudPreventionAssessment', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment::Representation
       
+          property :fraud_signals, as: 'fraudSignals', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudSignals, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudSignals::Representation
+      
           property :name, as: 'name'
           property :private_password_leak_verification, as: 'privatePasswordLeakVerification', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification::Representation
       
@@ -546,6 +566,31 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :risk, as: 'risk'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FraudSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :card_signals, as: 'cardSignals', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals::Representation
+      
+          property :user_signals, as: 'userSignals', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :card_labels, as: 'cardLabels'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_days_lower_bound, as: 'activeDaysLowerBound'
+          property :synthetic_risk, as: 'syntheticRisk'
         end
       end
       
