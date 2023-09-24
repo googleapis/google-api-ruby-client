@@ -1117,6 +1117,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cross_profile_copy_paste, as: 'crossProfileCopyPaste'
           property :cross_profile_data_sharing, as: 'crossProfileDataSharing'
+          property :exemptions_to_show_work_contacts_in_personal_profile, as: 'exemptionsToShowWorkContactsInPersonalProfile', class: Google::Apis::AndroidmanagementV1::PackageNameList, decorator: Google::Apis::AndroidmanagementV1::PackageNameList::Representation
+      
           property :show_work_contacts_in_personal_profile, as: 'showWorkContactsInPersonalProfile'
           property :work_profile_widgets_default, as: 'workProfileWidgetsDefault'
         end

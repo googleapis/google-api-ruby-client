@@ -1367,6 +1367,11 @@ module Google
         # @return [String]
         attr_accessor :cross_profile_data_sharing
       
+        # A list of package names.
+        # Corresponds to the JSON property `exemptionsToShowWorkContactsInPersonalProfile`
+        # @return [Google::Apis::AndroidmanagementV1::PackageNameList]
+        attr_accessor :exemptions_to_show_work_contacts_in_personal_profile
+      
         # Whether contacts stored in the work profile can be shown in personal profile
         # contact searches and incoming calls.
         # Corresponds to the JSON property `showWorkContactsInPersonalProfile`
@@ -1388,6 +1393,7 @@ module Google
         def update!(**args)
           @cross_profile_copy_paste = args[:cross_profile_copy_paste] if args.key?(:cross_profile_copy_paste)
           @cross_profile_data_sharing = args[:cross_profile_data_sharing] if args.key?(:cross_profile_data_sharing)
+          @exemptions_to_show_work_contacts_in_personal_profile = args[:exemptions_to_show_work_contacts_in_personal_profile] if args.key?(:exemptions_to_show_work_contacts_in_personal_profile)
           @show_work_contacts_in_personal_profile = args[:show_work_contacts_in_personal_profile] if args.key?(:show_work_contacts_in_personal_profile)
           @work_profile_widgets_default = args[:work_profile_widgets_default] if args.key?(:work_profile_widgets_default)
         end
