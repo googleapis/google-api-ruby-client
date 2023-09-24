@@ -22,6 +22,12 @@ module Google
   module Apis
     module IamV2beta
       
+      class GoogleCloudCommonOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIamAdminV1AuditData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -104,6 +110,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudCommonOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :cancel_requested, as: 'cancelRequested'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :status_detail, as: 'statusDetail'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
       end
       
       class GoogleIamAdminV1AuditData
