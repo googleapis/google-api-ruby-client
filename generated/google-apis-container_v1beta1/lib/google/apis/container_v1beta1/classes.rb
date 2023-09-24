@@ -563,20 +563,6 @@ module Google
         end
       end
       
-      # Autoscaled rollout policy uses cluster autoscaler during blue-green upgrades
-      # to scale both the green and blue pools.
-      class AutoscaledRolloutPolicy
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Deprecated.
       class AvailableVersion
         include Google::Apis::Core::Hashable
@@ -736,12 +722,6 @@ module Google
       class BlueGreenSettings
         include Google::Apis::Core::Hashable
       
-        # Autoscaled rollout policy uses cluster autoscaler during blue-green upgrades
-        # to scale both the green and blue pools.
-        # Corresponds to the JSON property `autoscaledRolloutPolicy`
-        # @return [Google::Apis::ContainerV1beta1::AutoscaledRolloutPolicy]
-        attr_accessor :autoscaled_rollout_policy
-      
         # Time needed after draining entire blue pool. After this period, blue pool will
         # be cleaned up.
         # Corresponds to the JSON property `nodePoolSoakDuration`
@@ -759,7 +739,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @autoscaled_rollout_policy = args[:autoscaled_rollout_policy] if args.key?(:autoscaled_rollout_policy)
           @node_pool_soak_duration = args[:node_pool_soak_duration] if args.key?(:node_pool_soak_duration)
           @standard_rollout_policy = args[:standard_rollout_policy] if args.key?(:standard_rollout_policy)
         end
@@ -4211,6 +4190,14 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # Optional. Enable confidential storage on Hyperdisk. boot_disk_kms_key is
+        # required when enable_confidential_storage is true. This is only available for
+        # private preview.
+        # Corresponds to the JSON property `enableConfidentialStorage`
+        # @return [Boolean]
+        attr_accessor :enable_confidential_storage
+        alias_method :enable_confidential_storage?, :enable_confidential_storage
+      
         # EphemeralStorageConfig contains configuration for the ephemeral storage
         # filesystem.
         # Corresponds to the JSON property `ephemeralStorageConfig`
@@ -4437,6 +4424,7 @@ module Google
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @enable_confidential_storage = args[:enable_confidential_storage] if args.key?(:enable_confidential_storage)
           @ephemeral_storage_config = args[:ephemeral_storage_config] if args.key?(:ephemeral_storage_config)
           @ephemeral_storage_local_ssd_config = args[:ephemeral_storage_local_ssd_config] if args.key?(:ephemeral_storage_local_ssd_config)
           @fast_socket = args[:fast_socket] if args.key?(:fast_socket)

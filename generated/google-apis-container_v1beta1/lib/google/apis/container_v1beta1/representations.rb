@@ -94,12 +94,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AutoscaledRolloutPolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AvailableVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1253,12 +1247,6 @@ module Google
         end
       end
       
-      class AutoscaledRolloutPolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class AvailableVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1306,8 +1294,6 @@ module Google
       class BlueGreenSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :autoscaled_rollout_policy, as: 'autoscaledRolloutPolicy', class: Google::Apis::ContainerV1beta1::AutoscaledRolloutPolicy, decorator: Google::Apis::ContainerV1beta1::AutoscaledRolloutPolicy::Representation
-      
           property :node_pool_soak_duration, as: 'nodePoolSoakDuration'
           property :standard_rollout_policy, as: 'standardRolloutPolicy', class: Google::Apis::ContainerV1beta1::StandardRolloutPolicy, decorator: Google::Apis::ContainerV1beta1::StandardRolloutPolicy::Representation
       
@@ -2256,6 +2242,7 @@ module Google
       
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
+          property :enable_confidential_storage, as: 'enableConfidentialStorage'
           property :ephemeral_storage_config, as: 'ephemeralStorageConfig', class: Google::Apis::ContainerV1beta1::EphemeralStorageConfig, decorator: Google::Apis::ContainerV1beta1::EphemeralStorageConfig::Representation
       
           property :ephemeral_storage_local_ssd_config, as: 'ephemeralStorageLocalSsdConfig', class: Google::Apis::ContainerV1beta1::EphemeralStorageLocalSsdConfig, decorator: Google::Apis::ContainerV1beta1::EphemeralStorageLocalSsdConfig::Representation
