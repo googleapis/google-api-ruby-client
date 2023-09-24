@@ -3496,6 +3496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConceptsConceptId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContentAttributions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4330,6 +4336,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeostoreDisputedAreaProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GeostoreDoodleProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4505,6 +4517,12 @@ module Google
       end
       
       class GeostoreGeopoliticalGeometryProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeostoreGeopoliticalProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4871,6 +4889,12 @@ module Google
       end
       
       class GeostoreRectProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeostoreRegionSpecificNameProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6976,6 +7000,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageDataVerticalIndexingInfoImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImageExactBoost
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7186,6 +7216,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageRepositoryLanguageIdentificationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImageRepositoryNimaOutput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7301,6 +7337,12 @@ module Google
       end
       
       class ImageRepositoryVideoProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageRepositoryVideoPropertiesVerticalIndexingInfoVideo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8063,6 +8105,12 @@ module Google
       end
       
       class KnowledgeAnswersIntentQueryCollectionScore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KnowledgeAnswersIntentQueryConceptInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -15322,6 +15370,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class YoutubeCommentsApiCommentModeratedRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeCommentsApiCommentModeratedRestrictionAutoModDecisionEnforcement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeCommentsApiCommentRestrictionIssuer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeCommentsApiCommentRestrictionIssuerChannelModeratorDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeCommentsApiCommentRestrictionIssuerChannelOwnerDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeCommentsApiCommentRestrictionReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class YoutubeCommentsClusteringMiniStanza
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -19853,6 +19937,7 @@ module Google
           property :client1m_providers_supported, as: 'client1mProvidersSupported'
           property :client_op_result_batching_supported, as: 'clientOpResultBatchingSupported'
           property :confirmation_before_reading_multiple_messages_supported, as: 'confirmationBeforeReadingMultipleMessagesSupported'
+          property :conversational_care_supported, as: 'conversationalCareSupported'
           property :cross_device_broadcast_supported, as: 'crossDeviceBroadcastSupported'
           property :cross_device_broadcast_version, as: 'crossDeviceBroadcastVersion'
           property :csat_visual_overlay_supported, as: 'csatVisualOverlaySupported'
@@ -20576,6 +20661,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :distance, as: 'distance'
+          property :has_buffering_media_session, as: 'hasBufferingMediaSession'
+          property :has_paused_media_session, as: 'hasPausedMediaSession'
+          property :has_playing_media_session, as: 'hasPlayingMediaSession'
+          property :has_same_structure, as: 'hasSameStructure'
           property :is_docked, as: 'isDocked'
           property :is_local, as: 'isLocal'
           property :is_locked, as: 'isLocked'
@@ -20682,6 +20771,7 @@ module Google
           property :has_cast_video_deeplink, as: 'hasCastVideoDeeplink'
           property :has_type_semantic_edge, as: 'hasTypeSemanticEdge'
           property :is_cast_video, as: 'isCastVideo'
+          property :is_exclusive_original_provider, as: 'isExclusiveOriginalProvider'
           property :is_media_search_query_subset_of_entity_name_and_artist, as: 'isMediaSearchQuerySubsetOfEntityNameAndArtist'
           property :is_most_recent_song_album_ambiguous, as: 'isMostRecentSongAlbumAmbiguous'
           property :is_seed_radio, as: 'isSeedRadio'
@@ -22376,6 +22466,14 @@ module Google
         end
       end
       
+      class ConceptsConceptId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :concept_id, as: 'conceptId'
+          property :id, :numeric_string => true, as: 'id'
+        end
+      end
+      
       class ContentAttributions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -22947,6 +23045,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :byte_size, :numeric_string => true, as: 'byteSize'
+          property :crc32c, as: 'crc32c'
           property :encoding_quality, as: 'encodingQuality'
           property :encoding_type, as: 'encodingType'
           property :height, as: 'height'
@@ -24041,6 +24140,15 @@ module Google
         end
       end
       
+      class GeostoreDisputedAreaProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :administered_by, as: 'administeredBy'
+          collection :claimant, as: 'claimant', class: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto::Representation
+      
+        end
+      end
+      
       class GeostoreDoodleProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -24269,6 +24377,8 @@ module Google
       
           property :display_data, as: 'displayData', class: Google::Apis::ContentwarehouseV1::GeostoreDisplayDataProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreDisplayDataProto::Representation
       
+          property :disputed_area, as: 'disputedArea', class: Google::Apis::ContentwarehouseV1::GeostoreDisputedAreaProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreDisputedAreaProto::Representation
+      
           property :doodle, as: 'doodle', class: Google::Apis::ContentwarehouseV1::GeostoreDoodleProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreDoodleProto::Representation
       
           property :elevation, as: 'elevation', class: Google::Apis::ContentwarehouseV1::GeostoreElevationProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreElevationProto::Representation
@@ -24288,6 +24398,8 @@ module Google
           property :geometry3d, as: 'geometry3d', class: Google::Apis::ContentwarehouseV1::GeostoreGeometryStoreReferenceProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreGeometryStoreReferenceProto::Representation
       
           property :geometry_precision_meters, as: 'geometryPrecisionMeters'
+          property :geopolitical, as: 'geopolitical', class: Google::Apis::ContentwarehouseV1::GeostoreGeopoliticalProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreGeopoliticalProto::Representation
+      
           property :geopolitical_geometry, as: 'geopoliticalGeometry', class: Google::Apis::ContentwarehouseV1::GeostoreGeopoliticalGeometryProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreGeopoliticalGeometryProto::Representation
       
           collection :html_text, as: 'htmlText', class: Google::Apis::ContentwarehouseV1::GeostoreHtmlTextProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreHtmlTextProto::Representation
@@ -24545,6 +24657,15 @@ module Google
           property :rest_of_world_polygon, as: 'restOfWorldPolygon', class: Google::Apis::ContentwarehouseV1::GeostorePolygonProto, decorator: Google::Apis::ContentwarehouseV1::GeostorePolygonProto::Representation
       
           property :self_polygon, as: 'selfPolygon', class: Google::Apis::ContentwarehouseV1::GeostorePolygonProto, decorator: Google::Apis::ContentwarehouseV1::GeostorePolygonProto::Representation
+      
+        end
+      end
+      
+      class GeostoreGeopoliticalProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conveys_attribution_to, as: 'conveysAttributionTo'
+          collection :region_specific_name, as: 'regionSpecificName', class: Google::Apis::ContentwarehouseV1::GeostoreRegionSpecificNameProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreRegionSpecificNameProto::Representation
       
         end
       end
@@ -25005,6 +25126,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :capital, as: 'capital', class: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto::Representation
       
+          collection :claim, as: 'claim', class: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto::Representation
+      
           property :gross_domestic_product_usd_millions, as: 'grossDomesticProductUsdMillions'
           property :literacy_percent, as: 'literacyPercent'
           property :population, :numeric_string => true, as: 'population'
@@ -25225,6 +25348,16 @@ module Google
       
           property :lo, as: 'lo', class: Google::Apis::ContentwarehouseV1::GeostorePointProto, decorator: Google::Apis::ContentwarehouseV1::GeostorePointProto::Representation
       
+        end
+      end
+      
+      class GeostoreRegionSpecificNameProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :displayable_as_alternative_name, as: 'displayableAsAlternativeName'
+          property :name, as: 'name', class: Google::Apis::ContentwarehouseV1::GeostoreNameProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreNameProto::Representation
+      
+          property :region_code, as: 'regionCode'
         end
       end
       
@@ -27041,6 +27174,7 @@ module Google
       class GoogleCloudContentwarehouseV1IngestPipelineConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_function, as: 'cloudFunction'
           property :document_acl_policy, as: 'documentAclPolicy', class: Google::Apis::ContentwarehouseV1::GoogleIamV1Policy, decorator: Google::Apis::ContentwarehouseV1::GoogleIamV1Policy::Representation
       
           property :enable_document_text_extraction, as: 'enableDocumentTextExtraction'
@@ -29317,6 +29451,8 @@ module Google
           property :image_regions, as: 'imageRegions', class: Google::Apis::ContentwarehouseV1::ImageRegionsImageRegions, decorator: Google::Apis::ContentwarehouseV1::ImageRegionsImageRegions::Representation
       
           property :imagerank, as: 'imagerank'
+          collection :indexed_verticals, as: 'indexedVerticals', class: Google::Apis::ContentwarehouseV1::ImageDataVerticalIndexingInfoImage, decorator: Google::Apis::ContentwarehouseV1::ImageDataVerticalIndexingInfoImage::Representation
+      
           property :is_iip_in_scope, as: 'isIipInScope'
           property :is_indexed_by_imagesearch, as: 'isIndexedByImagesearch'
           property :is_multiframe, as: 'isMultiframe'
@@ -29412,6 +29548,13 @@ module Google
           property :size, as: 'size'
           property :type, as: 'type'
           property :width, as: 'width'
+        end
+      end
+      
+      class ImageDataVerticalIndexingInfoImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -29698,6 +29841,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duplicate_of_yt_s3_asr, as: 'duplicateOfYtS3Asr'
           property :lang_without_locale, as: 'langWithoutLocale'
+          property :langid_input, as: 'langidInput', class: Google::Apis::ContentwarehouseV1::ImageRepositoryLanguageIdentificationResult, decorator: Google::Apis::ContentwarehouseV1::ImageRepositoryLanguageIdentificationResult::Representation
+      
           property :model_identifier, as: 'modelIdentifier'
           collection :results, as: 'results', class: Google::Apis::ContentwarehouseV1::ImageRepositorySpeechRecognitionResult, decorator: Google::Apis::ContentwarehouseV1::ImageRepositorySpeechRecognitionResult::Representation
       
@@ -29923,6 +30068,15 @@ module Google
         end
       end
       
+      class ImageRepositoryLanguageIdentificationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :locale_stripped, as: 'localeStripped'
+          property :s3_top_locale, as: 's3TopLocale'
+          property :yt_caps_audio_language, as: 'ytCapsAudioLanguage'
+        end
+      end
+      
       class ImageRepositoryNimaOutput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -30139,11 +30293,20 @@ module Google
       
           property :first_crawl_timestamp_sec, :numeric_string => true, as: 'firstCrawlTimestampSec'
           property :first_processing_timestamp_sec, :numeric_string => true, as: 'firstProcessingTimestampSec'
+          collection :indexed_verticals, as: 'indexedVerticals', class: Google::Apis::ContentwarehouseV1::ImageRepositoryVideoPropertiesVerticalIndexingInfoVideo, decorator: Google::Apis::ContentwarehouseV1::ImageRepositoryVideoPropertiesVerticalIndexingInfoVideo::Representation
+      
           property :inline_playback, as: 'inlinePlayback', class: Google::Apis::ContentwarehouseV1::VideoCrawlVideoInlinePlaybackMetadata, decorator: Google::Apis::ContentwarehouseV1::VideoCrawlVideoInlinePlaybackMetadata::Representation
       
           property :last_crawl_request_timestamp_sec, :numeric_string => true, as: 'lastCrawlRequestTimestampSec'
           property :last_processing_timestamp_sec, :numeric_string => true, as: 'lastProcessingTimestampSec'
           property :url, as: 'url'
+        end
+      end
+      
+      class ImageRepositoryVideoPropertiesVerticalIndexingInfoVideo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -32774,6 +32937,7 @@ module Google
           property :is_nimble_annotation, as: 'isNimbleAnnotation'
           property :location, as: 'location', class: Google::Apis::ContentwarehouseV1::GeostorePointProto, decorator: Google::Apis::ContentwarehouseV1::GeostorePointProto::Representation
       
+          property :location_classification_score, as: 'locationClassificationScore'
           property :location_markers_signals, as: 'locationMarkersSignals', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryLocationMarkersSignals, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryLocationMarkersSignals::Representation
       
           property :location_type, as: 'locationType'
@@ -32931,6 +33095,14 @@ module Google
         end
       end
       
+      class KnowledgeAnswersIntentQueryConceptInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id', class: Google::Apis::ContentwarehouseV1::ConceptsConceptId, decorator: Google::Apis::ContentwarehouseV1::ConceptsConceptId::Representation
+      
+        end
+      end
+      
       class KnowledgeAnswersIntentQueryCoreference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -32958,6 +33130,8 @@ module Google
           collection :argument, as: 'argument', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryArgument, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryArgument::Representation
       
           property :catalog_version, :numeric_string => true, as: 'catalogVersion'
+          property :concept_info, as: 'conceptInfo', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryConceptInfo, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryConceptInfo::Representation
+      
           collection :contextual_sensitivity, as: 'contextualSensitivity', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersSensitivitySensitivity, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersSensitivitySensitivity::Representation
       
           property :enabled_remodelings, as: 'enabledRemodelings', class: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelingControl, decorator: Google::Apis::ContentwarehouseV1::NlpMeaningMeaningRemodelingControl::Representation
@@ -33861,6 +34035,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :encrypt_argument_value, as: 'encryptArgumentValue'
+          property :encrypt_field_candidate_value_term, as: 'encryptFieldCandidateValueTerm'
           property :encrypt_query_annotation_data, as: 'encryptQueryAnnotationData'
           property :scrub_auxiliary_fields_in_conversation_snapshot, as: 'scrubAuxiliaryFieldsInConversationSnapshot'
         end
@@ -42102,7 +42277,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :flags, as: 'flags', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefLinkKindFlags, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefLinkKindFlags::Representation
       
-          property :kc_link_name, as: 'kcLinkName'
           property :topic_property_name, as: 'topicPropertyName'
         end
       end
@@ -42347,8 +42521,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :feature_type, as: 'featureType'
-          property :gconcepts, as: 'gconcepts', class: Google::Apis::ContentwarehouseV1::GeostoreOntologyRawGConceptInstanceContainerProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreOntologyRawGConceptInstanceContainerProto::Representation
-      
         end
       end
       
@@ -48370,6 +48542,7 @@ module Google
           property :num_timedtext_streams, as: 'numTimedtextStreams'
           property :num_video_streams, as: 'numVideoStreams'
           property :parsed_by_ffmpeg, as: 'parsedByFfmpeg'
+          property :parsed_by_in_house_parsers, as: 'parsedByInHouseParsers'
           property :partial_file, as: 'partialFile'
           property :pix_fmt, as: 'pixFmt'
           property :profile, as: 'profile'
@@ -48919,6 +49092,63 @@ module Google
         end
       end
       
+      class YoutubeCommentsApiCommentModeratedRestriction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_mod_enforcements, as: 'autoModEnforcements', class: Google::Apis::ContentwarehouseV1::YoutubeCommentsApiCommentModeratedRestrictionAutoModDecisionEnforcement, decorator: Google::Apis::ContentwarehouseV1::YoutubeCommentsApiCommentModeratedRestrictionAutoModDecisionEnforcement::Representation
+      
+          property :create_time, as: 'createTime'
+          property :external_comment_id, as: 'externalCommentId'
+          property :issuer, as: 'issuer', class: Google::Apis::ContentwarehouseV1::YoutubeCommentsApiCommentRestrictionIssuer, decorator: Google::Apis::ContentwarehouseV1::YoutubeCommentsApiCommentRestrictionIssuer::Representation
+      
+          property :reason, as: 'reason', class: Google::Apis::ContentwarehouseV1::YoutubeCommentsApiCommentRestrictionReason, decorator: Google::Apis::ContentwarehouseV1::YoutubeCommentsApiCommentRestrictionReason::Representation
+      
+          property :reviewable, as: 'reviewable'
+          property :status, as: 'status'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class YoutubeCommentsApiCommentModeratedRestrictionAutoModDecisionEnforcement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enforced, as: 'enforced'
+          property :name, as: 'name'
+        end
+      end
+      
+      class YoutubeCommentsApiCommentRestrictionIssuer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_moderator_details, as: 'channelModeratorDetails', class: Google::Apis::ContentwarehouseV1::YoutubeCommentsApiCommentRestrictionIssuerChannelModeratorDetails, decorator: Google::Apis::ContentwarehouseV1::YoutubeCommentsApiCommentRestrictionIssuerChannelModeratorDetails::Representation
+      
+          property :channel_owner_details, as: 'channelOwnerDetails', class: Google::Apis::ContentwarehouseV1::YoutubeCommentsApiCommentRestrictionIssuerChannelOwnerDetails, decorator: Google::Apis::ContentwarehouseV1::YoutubeCommentsApiCommentRestrictionIssuerChannelOwnerDetails::Representation
+      
+          property :issuer, as: 'issuer'
+        end
+      end
+      
+      class YoutubeCommentsApiCommentRestrictionIssuerChannelModeratorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_channel_id, as: 'externalChannelId'
+        end
+      end
+      
+      class YoutubeCommentsApiCommentRestrictionIssuerChannelOwnerDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_channel_id, as: 'externalChannelId'
+        end
+      end
+      
+      class YoutubeCommentsApiCommentRestrictionReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+        end
+      end
+      
       class YoutubeCommentsClusteringMiniStanza
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -48933,6 +49163,8 @@ module Google
           hash :comment_classification, as: 'commentClassification'
           collection :comment_classification_buckets, as: 'commentClassificationBuckets'
           hash :comment_classification_ranking, as: 'commentClassificationRanking'
+          collection :comment_moderated_restrictions, as: 'commentModeratedRestrictions', class: Google::Apis::ContentwarehouseV1::YoutubeCommentsApiCommentModeratedRestriction, decorator: Google::Apis::ContentwarehouseV1::YoutubeCommentsApiCommentModeratedRestriction::Representation
+      
           property :comment_type, as: 'commentType'
           property :content, as: 'content'
           property :content_update_timestamp, as: 'contentUpdateTimestamp'
@@ -48958,6 +49190,7 @@ module Google
           property :language_code, as: 'languageCode'
           property :last_reply_timestamp_usec, :numeric_string => true, as: 'lastReplyTimestampUsec'
           hash :low_quality_decisions, as: 'lowQualityDecisions'
+          hash :low_quality_scores, as: 'lowQualityScores'
           property :mentioned_timestamp_comment_second, as: 'mentionedTimestampCommentSecond'
           hash :misinfo_scores, as: 'misinfoScores'
           property :num_dislikes, as: 'numDislikes'
