@@ -2134,6 +2134,9 @@ module Google
         #   Name of the object. For information about how to URL encode object names to be
         #   path safe, see Encoding URI Path Parts.
         # @param [Google::Apis::StorageV1::Object] object_object
+        # @param [Boolean] copy_source_acl
+        #   If true, copies the source object's ACL; otherwise, uses the bucket's default
+        #   object ACL. The default is false.
         # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the object's one live generation
         #   matches the given value. Setting to 0 makes the operation succeed only if
@@ -2172,7 +2175,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def restore_object(bucket, object, object_object = nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def restore_object(bucket, object, object_object = nil, copy_source_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'b/{bucket}/o/{object}/restore', options)
           command.request_representation = Google::Apis::StorageV1::Object::Representation
           command.request_object = object_object
@@ -2180,6 +2183,7 @@ module Google
           command.response_class = Google::Apis::StorageV1::Object
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['object'] = object unless object.nil?
+          command.query['copySourceAcl'] = copy_source_acl unless copy_source_acl.nil?
           command.query['generation'] = generation unless generation.nil?
           command.query['ifGenerationMatch'] = if_generation_match unless if_generation_match.nil?
           command.query['ifGenerationNotMatch'] = if_generation_not_match unless if_generation_not_match.nil?
