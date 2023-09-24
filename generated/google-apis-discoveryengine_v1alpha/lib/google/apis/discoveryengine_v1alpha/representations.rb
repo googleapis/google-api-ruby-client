@@ -1544,7 +1544,6 @@ module Google
           property :max_extractive_segment_count, as: 'maxExtractiveSegmentCount'
           property :num_next_segments, as: 'numNextSegments'
           property :num_previous_segments, as: 'numPreviousSegments'
-          property :return_extractive_segment_score, as: 'returnExtractiveSegmentScore'
         end
       end
       
