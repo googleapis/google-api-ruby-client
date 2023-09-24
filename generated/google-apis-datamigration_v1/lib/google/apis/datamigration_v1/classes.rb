@@ -538,7 +538,10 @@ module Google
         # @return [String]
         attr_accessor :collation
       
-        # Data cache configurations.
+        # Data cache is an optional feature available for Cloud SQL for MySQL Enterprise
+        # Plus edition only. For more information on data cache, see [Data cache
+        # overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL
+        # documentation.
         # Corresponds to the JSON property `dataCacheConfig`
         # @return [Google::Apis::DatamigrationV1::DataCacheConfig]
         attr_accessor :data_cache_config
@@ -1201,7 +1204,10 @@ module Google
         end
       end
       
-      # Data cache configurations.
+      # Data cache is an optional feature available for Cloud SQL for MySQL Enterprise
+      # Plus edition only. For more information on data cache, see [Data cache
+      # overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL
+      # documentation.
       class DataCacheConfig
         include Google::Apis::Core::Hashable
       
