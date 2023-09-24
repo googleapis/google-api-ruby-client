@@ -1119,21 +1119,29 @@ module Google
         end
       end
       
-      # VPC network settings.
+      # Direct VPC egress settings.
       class GoogleCloudRunV2NetworkInterface
         include Google::Apis::Core::Hashable
       
-        # The VPC network name to access to. Defaults to "default" network.
+        # The VPC network that the Cloud Run resource will be able to send traffic to.
+        # At least one of network or subnetwork must be specified. If both network and
+        # subnetwork are specified, the given VPC subnetwork must belong to the given
+        # VPC network. If network is not specified, it will be looked up from the
+        # subnetwork.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # The VPC subnetwork name to access to. Defaults to the same vaule of network.
+        # The VPC subnetwork that the Cloud Run resource will get IPs from. At least one
+        # of network or subnetwork must be specified. If both network and subnetwork are
+        # specified, the given VPC subnetwork must belong to the given VPC network. If
+        # subnetwork is not specified, the subnetwork with the same name with the
+        # network will be used.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
       
-        # Network tags applied to this VPC network.
+        # Network tags applied to this Cloud Run resource.
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
@@ -1429,10 +1437,8 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
         attr_accessor :volumes
       
-        # VPC Access settings. For more information on creating a VPC Connector, visit
-        # https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For
-        # information on how to configure Cloud Run with an existing VPC Connector,
-        # visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+        # VPC Access settings. For more information on sending traffic to a VPC network,
+        # visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         # Corresponds to the JSON property `vpcAccess`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
         attr_accessor :vpc_access
@@ -1587,10 +1593,8 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
         attr_accessor :volumes
       
-        # VPC Access settings. For more information on creating a VPC Connector, visit
-        # https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For
-        # information on how to configure Cloud Run with an existing VPC Connector,
-        # visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+        # VPC Access settings. For more information on sending traffic to a VPC network,
+        # visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         # Corresponds to the JSON property `vpcAccess`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
         attr_accessor :vpc_access
@@ -2159,6 +2163,13 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
+        # Output only. Represents time when the task was scheduled to run by the system.
+        # It is not guaranteed to be set in happens-before order across separate
+        # operations.
+        # Corresponds to the JSON property `scheduledTime`
+        # @return [String]
+        attr_accessor :scheduled_time
+      
         # Email address of the IAM service account associated with the Task of a Job.
         # The service account represents the identity of the running task, and
         # determines what permissions the task has. If not provided, the task will use
@@ -2196,10 +2207,8 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
         attr_accessor :volumes
       
-        # VPC Access settings. For more information on creating a VPC Connector, visit
-        # https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For
-        # information on how to configure Cloud Run with an existing VPC Connector,
-        # visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+        # VPC Access settings. For more information on sending traffic to a VPC network,
+        # visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         # Corresponds to the JSON property `vpcAccess`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
         attr_accessor :vpc_access
@@ -2233,6 +2242,7 @@ module Google
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @retried = args[:retried] if args.key?(:retried)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @scheduled_time = args[:scheduled_time] if args.key?(:scheduled_time)
           @service_account = args[:service_account] if args.key?(:service_account)
           @start_time = args[:start_time] if args.key?(:start_time)
           @timeout = args[:timeout] if args.key?(:timeout)
@@ -2324,10 +2334,8 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
         attr_accessor :volumes
       
-        # VPC Access settings. For more information on creating a VPC Connector, visit
-        # https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For
-        # information on how to configure Cloud Run with an existing VPC Connector,
-        # visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+        # VPC Access settings. For more information on sending traffic to a VPC network,
+        # visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         # Corresponds to the JSON property `vpcAccess`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
         attr_accessor :vpc_access
@@ -2546,15 +2554,15 @@ module Google
         end
       end
       
-      # VPC Access settings. For more information on creating a VPC Connector, visit
-      # https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For
-      # information on how to configure Cloud Run with an existing VPC Connector,
-      # visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+      # VPC Access settings. For more information on sending traffic to a VPC network,
+      # visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
       class GoogleCloudRunV2VpcAccess
         include Google::Apis::Core::Hashable
       
         # VPC Access connector name. Format: projects/`project`/locations/`location`/
-        # connectors/`connector`, where `project` can be project id or number.
+        # connectors/`connector`, where `project` can be project id or number. For more
+        # information on sending traffic to a VPC network via a connector, visit https://
+        # cloud.google.com/run/docs/configuring/vpc-connectors.
         # Corresponds to the JSON property `connector`
         # @return [String]
         attr_accessor :connector
@@ -2565,7 +2573,8 @@ module Google
         # @return [String]
         attr_accessor :egress
       
-        # VPC network to access to. Currently only single network interface is supported.
+        # Direct VPC egress settings. Currently only single network interface is
+        # supported.
         # Corresponds to the JSON property `networkInterfaces`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2NetworkInterface>]
         attr_accessor :network_interfaces

@@ -813,6 +813,7 @@ module Google
           property :reconciling, as: 'reconciling'
           property :retried, as: 'retried'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :scheduled_time, as: 'scheduledTime'
           property :service_account, as: 'serviceAccount'
           property :start_time, as: 'startTime'
           property :timeout, as: 'timeout'
