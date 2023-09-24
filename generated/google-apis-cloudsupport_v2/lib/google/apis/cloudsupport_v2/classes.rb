@@ -757,15 +757,15 @@ module Google
       class ListCasesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of cases associated with the Google Cloud Resource, after any filters
-        # have been applied.
+        # The list of cases associated with the parent after any filters have been
+        # applied.
         # Corresponds to the JSON property `cases`
         # @return [Array<Google::Apis::CloudsupportV2::Case>]
         attr_accessor :cases
       
-        # A token to retrieve the next page of results. This should be set in the `
-        # page_token` field of the subsequent `ListCasesRequest` message that is issued.
-        # If unspecified, there are no more results to retrieve.
+        # A token to retrieve the next page of results. Set this in the `page_token`
+        # field of subsequent `cases.list` requests. If unspecified, there are no more
+        # results to retrieve.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1051,9 +1051,9 @@ module Google
         # @return [Array<Google::Apis::CloudsupportV2::CaseClassification>]
         attr_accessor :case_classifications
       
-        # A token to retrieve the next page of results. This should be set in the `
-        # page_token` field of subsequent `SearchCaseClassificationsRequest` message
-        # that is issued. If unspecified, there are no more results to retrieve.
+        # A token to retrieve the next page of results. Set this in the `page_token`
+        # field of subsequent `caseClassifications.list` requests. If unspecified, there
+        # are no more results to retrieve.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1073,15 +1073,15 @@ module Google
       class SearchCasesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of cases associated with the Google Cloud Resource, after any filters
-        # have been applied.
+        # The list of cases associated with the parent after any filters have been
+        # applied.
         # Corresponds to the JSON property `cases`
         # @return [Array<Google::Apis::CloudsupportV2::Case>]
         attr_accessor :cases
       
-        # A token to retrieve the next page of results. This should be set in the `
-        # page_token` field of subsequent `SearchCaseRequest` message that is issued. If
-        # unspecified, there are no more results to retrieve.
+        # A token to retrieve the next page of results. Set this in the `page_token`
+        # field of subsequent `cases.search` requests. If unspecified, there are no more
+        # results to retrieve.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
