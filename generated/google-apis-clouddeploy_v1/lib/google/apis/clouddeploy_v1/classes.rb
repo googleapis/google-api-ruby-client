@@ -246,6 +246,102 @@ module Google
         end
       end
       
+      # Payload proto for "clouddeploy.googleapis.com/automation" Platform Log event
+      # that describes the Automation related events.
+      class AutomationEvent
+        include Google::Apis::Core::Hashable
+      
+        # The name of the `AutomationRun`.
+        # Corresponds to the JSON property `automation`
+        # @return [String]
+        attr_accessor :automation
+      
+        # Debug message for when there is an update on the AutomationRun. Provides
+        # further details about the resource creation or state change.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Unique identifier of the `DeliveryPipeline`.
+        # Corresponds to the JSON property `pipelineUid`
+        # @return [String]
+        attr_accessor :pipeline_uid
+      
+        # Type of this notification, e.g. for a Pub/Sub failure.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automation = args[:automation] if args.key?(:automation)
+          @message = args[:message] if args.key?(:message)
+          @pipeline_uid = args[:pipeline_uid] if args.key?(:pipeline_uid)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Payload proto for "clouddeploy.googleapis.com/automation_run" Platform Log
+      # event that describes the AutomationRun related events.
+      class AutomationRunEvent
+        include Google::Apis::Core::Hashable
+      
+        # Identifier of the `Automation`.
+        # Corresponds to the JSON property `automationId`
+        # @return [String]
+        attr_accessor :automation_id
+      
+        # The name of the `AutomationRun`.
+        # Corresponds to the JSON property `automationRun`
+        # @return [String]
+        attr_accessor :automation_run
+      
+        # ID of the `Target` to which the `AutomationRun` is created.
+        # Corresponds to the JSON property `destinationTargetId`
+        # @return [String]
+        attr_accessor :destination_target_id
+      
+        # Debug message for when there is an update on the AutomationRun. Provides
+        # further details about the resource creation or state change.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Unique identifier of the `DeliveryPipeline`.
+        # Corresponds to the JSON property `pipelineUid`
+        # @return [String]
+        attr_accessor :pipeline_uid
+      
+        # Identifier of the `Automation` rule.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
+        # Type of this notification, e.g. for a Pub/Sub failure.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automation_id = args[:automation_id] if args.key?(:automation_id)
+          @automation_run = args[:automation_run] if args.key?(:automation_run)
+          @destination_target_id = args[:destination_target_id] if args.key?(:destination_target_id)
+          @message = args[:message] if args.key?(:message)
+          @pipeline_uid = args[:pipeline_uid] if args.key?(:pipeline_uid)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
