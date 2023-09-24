@@ -2522,6 +2522,16 @@ module Google
         # @return [Hash<String,Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes>]
         attr_accessor :file_hashes
       
+        # Location of the source in a 2nd-gen Google Cloud Build repository resource.
+        # Corresponds to the JSON property `resolvedConnectedRepository`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository]
+        attr_accessor :resolved_connected_repository
+      
+        # Location of the source in any accessible Git repository.
+        # Corresponds to the JSON property `resolvedGitSource`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource]
+        attr_accessor :resolved_git_source
+      
         # Location of the source in a Google Cloud Source Repository.
         # Corresponds to the JSON property `resolvedRepoSource`
         # @return [Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource]
@@ -2546,6 +2556,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
+          @resolved_connected_repository = args[:resolved_connected_repository] if args.key?(:resolved_connected_repository)
+          @resolved_git_source = args[:resolved_git_source] if args.key?(:resolved_git_source)
           @resolved_repo_source = args[:resolved_repo_source] if args.key?(:resolved_repo_source)
           @resolved_storage_source = args[:resolved_storage_source] if args.key?(:resolved_storage_source)
           @resolved_storage_source_manifest = args[:resolved_storage_source_manifest] if args.key?(:resolved_storage_source_manifest)
