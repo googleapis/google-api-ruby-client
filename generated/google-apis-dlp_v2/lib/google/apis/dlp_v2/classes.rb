@@ -2781,7 +2781,8 @@ module Google
         # @return [Google::Apis::DlpV2::GoogleRpcStatus]
         attr_accessor :details
       
-        # The times the error occurred.
+        # The times the error occurred. List includes the oldest timestamp, and the last
+        # 9 ones.
         # Corresponds to the JSON property `timestamps`
         # @return [Array<String>]
         attr_accessor :timestamps
