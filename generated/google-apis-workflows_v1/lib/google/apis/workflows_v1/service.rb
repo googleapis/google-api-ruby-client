@@ -393,12 +393,12 @@ module Google
         
         # Lists revisions for a given workflow.
         # @param [String] name
-        #   Required. Workflow from which the revisions should be listed. Format: projects/
-        #   `project`/locations/`location`/workflows/`workflow`
+        #   Required. Workflow for which the revisions should be listed. Format: projects/`
+        #   project`/locations/`location`/workflows/`workflow`
         # @param [Fixnum] page_size
         #   The maximum number of revisions to return per page. If a value is not
-        #   specified, a default value of 20 is used. The maximum permitted value is 100
-        #   and values greater than 100 coerced down to 100.
+        #   specified, a default value of 20 is used. The maximum permitted value is 100.
+        #   Values greater than 100 are coerced down to 100.
         # @param [String] page_token
         #   The page token, received from a previous ListWorkflowRevisions call. Provide
         #   this to retrieve the subsequent page.
@@ -437,7 +437,8 @@ module Google
         # revision is used in new workflow executions.
         # @param [String] name
         #   The resource name of the workflow. Format: projects/`project`/locations/`
-        #   location`/workflows/`workflow`
+        #   location`/workflows/`workflow`. This is a workflow-wide field and is not tied
+        #   to a specific revision.
         # @param [Google::Apis::WorkflowsV1::Workflow] workflow_object
         # @param [String] update_mask
         #   List of fields to be updated. If not present, the entire workflow will be

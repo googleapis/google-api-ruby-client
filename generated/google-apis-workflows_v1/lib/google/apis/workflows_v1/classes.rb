@@ -373,7 +373,8 @@ module Google
         # @return [String]
         attr_accessor :call_log_level
       
-        # Output only. The timestamp for when the workflow was created.
+        # Output only. The timestamp for when the workflow was created. This is a
+        # workflow-wide field and is not tied to a specific revision.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -388,8 +389,9 @@ module Google
         # @return [String]
         attr_accessor :crypto_key_name
       
-        # Description of the workflow provided by the user. Must be at most 1000 unicode
-        # characters long.
+        # Description of the workflow provided by the user. Must be at most 1000 Unicode
+        # characters long. This is a workflow-wide field and is not tied to a specific
+        # revision.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -397,13 +399,15 @@ module Google
         # Labels associated with this workflow. Labels can contain at most 64 entries.
         # Keys and values can be no longer than 63 characters and can only contain
         # lowercase letters, numeric characters, underscores, and dashes. Label keys
-        # must start with a letter. International characters are allowed.
+        # must start with a letter. International characters are allowed. This is a
+        # workflow-wide field and is not tied to a specific revision.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
         # The resource name of the workflow. Format: projects/`project`/locations/`
-        # location`/workflows/`workflow`
+        # location`/workflows/`workflow`. This is a workflow-wide field and is not tied
+        # to a specific revision.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -450,7 +454,8 @@ module Google
         # @return [Google::Apis::WorkflowsV1::StateError]
         attr_accessor :state_error
       
-        # Output only. The timestamp for when the workflow was last updated.
+        # Output only. The timestamp for when the workflow was last updated. This is a
+        # workflow-wide field and is not tied to a specific revision.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
