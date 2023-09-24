@@ -376,7 +376,7 @@ module Google
         # @return [Google::Apis::DataformV1beta1::CommitMetadata]
         attr_accessor :commit_metadata
       
-        # A map to the path of the file to the operation. The path is the ull file path
+        # A map to the path of the file to the operation. The path is the full file path
         # including filename, from repository root.
         # Corresponds to the JSON property `fileOperations`
         # @return [Hash<String,Google::Apis::DataformV1beta1::FileOperation>]
