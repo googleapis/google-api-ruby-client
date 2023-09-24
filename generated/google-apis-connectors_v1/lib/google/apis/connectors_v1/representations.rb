@@ -982,8 +982,8 @@ module Google
           property :encryption_key, as: 'encryptionKey', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
       
           property :enrichment_enabled, as: 'enrichmentEnabled'
+          property :events_listener_ingress_endpoint, as: 'eventsListenerIngressEndpoint'
           property :private_connectivity_enabled, as: 'privateConnectivityEnabled'
-          property :public_events_listener_endpoint, as: 'publicEventsListenerEndpoint'
           property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
       
         end
@@ -1024,6 +1024,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :events_listener_endpoint, as: 'eventsListenerEndpoint'
+          property :events_listener_psc_sa, as: 'eventsListenerPscSa'
           property :status, as: 'status', class: Google::Apis::ConnectorsV1::EventingStatus, decorator: Google::Apis::ConnectorsV1::EventingStatus::Representation
       
         end
@@ -1467,6 +1468,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
           property :input_json_schema, as: 'inputJsonSchema', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
       
           collection :input_parameters, as: 'inputParameters', class: Google::Apis::ConnectorsV1::InputParameter, decorator: Google::Apis::ConnectorsV1::InputParameter::Representation
