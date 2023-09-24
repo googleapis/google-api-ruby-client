@@ -1588,6 +1588,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :file_hashes, as: 'fileHashes', class: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes::Representation
       
+          property :resolved_connected_repository, as: 'resolvedConnectedRepository', class: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository, decorator: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository::Representation
+      
+          property :resolved_git_source, as: 'resolvedGitSource', class: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource, decorator: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource::Representation
+      
           property :resolved_repo_source, as: 'resolvedRepoSource', class: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource, decorator: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource::Representation
       
           property :resolved_storage_source, as: 'resolvedStorageSource', class: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource, decorator: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource::Representation
@@ -1745,6 +1749,7 @@ module Google
       
           property :continuous_analysis, as: 'continuousAnalysis'
           property :last_analysis_time, as: 'lastAnalysisTime'
+          property :last_scan_time, as: 'lastScanTime'
           property :sbom_status, as: 'sbomStatus', class: Google::Apis::ContaineranalysisV1beta1::SbomStatus, decorator: Google::Apis::ContaineranalysisV1beta1::SbomStatus::Representation
       
         end
@@ -2713,6 +2718,7 @@ module Google
           collection :cwe, as: 'cwe'
           collection :details, as: 'details', class: Google::Apis::ContaineranalysisV1beta1::Detail, decorator: Google::Apis::ContaineranalysisV1beta1::Detail::Representation
       
+          property :extra_details, as: 'extraDetails'
           property :severity, as: 'severity'
           property :source_update_time, as: 'sourceUpdateTime'
           collection :windows_details, as: 'windowsDetails', class: Google::Apis::ContaineranalysisV1beta1::WindowsDetail, decorator: Google::Apis::ContaineranalysisV1beta1::WindowsDetail::Representation

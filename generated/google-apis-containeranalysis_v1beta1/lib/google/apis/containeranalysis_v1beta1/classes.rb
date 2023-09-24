@@ -2514,6 +2514,16 @@ module Google
         # @return [Hash<String,Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes>]
         attr_accessor :file_hashes
       
+        # Location of the source in a 2nd-gen Google Cloud Build repository resource.
+        # Corresponds to the JSON property `resolvedConnectedRepository`
+        # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository]
+        attr_accessor :resolved_connected_repository
+      
+        # Location of the source in any accessible Git repository.
+        # Corresponds to the JSON property `resolvedGitSource`
+        # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource]
+        attr_accessor :resolved_git_source
+      
         # Location of the source in a Google Cloud Source Repository.
         # Corresponds to the JSON property `resolvedRepoSource`
         # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource]
@@ -2538,6 +2548,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
+          @resolved_connected_repository = args[:resolved_connected_repository] if args.key?(:resolved_connected_repository)
+          @resolved_git_source = args[:resolved_git_source] if args.key?(:resolved_git_source)
           @resolved_repo_source = args[:resolved_repo_source] if args.key?(:resolved_repo_source)
           @resolved_storage_source = args[:resolved_storage_source] if args.key?(:resolved_storage_source)
           @resolved_storage_source_manifest = args[:resolved_storage_source_manifest] if args.key?(:resolved_storage_source_manifest)
@@ -3069,6 +3081,11 @@ module Google
         # @return [String]
         attr_accessor :last_analysis_time
       
+        # The last time this resource was scanned.
+        # Corresponds to the JSON property `lastScanTime`
+        # @return [String]
+        attr_accessor :last_scan_time
+      
         # The status of an SBOM generation.
         # Corresponds to the JSON property `sbomStatus`
         # @return [Google::Apis::ContaineranalysisV1beta1::SbomStatus]
@@ -3086,6 +3103,7 @@ module Google
           @analysis_status_error = args[:analysis_status_error] if args.key?(:analysis_status_error)
           @continuous_analysis = args[:continuous_analysis] if args.key?(:continuous_analysis)
           @last_analysis_time = args[:last_analysis_time] if args.key?(:last_analysis_time)
+          @last_scan_time = args[:last_scan_time] if args.key?(:last_scan_time)
           @sbom_status = args[:sbom_status] if args.key?(:sbom_status)
         end
       end
@@ -3164,7 +3182,7 @@ module Google
       end
       
       # DocumentNote represents an SPDX Document Creation Information section: https://
-      # spdx.github.io/spdx-spec/v2.3/document-creation-information/
+      # spdx.github.io/spdx-spec/2-document-creation-information/
       class DocumentNote
         include Google::Apis::Core::Hashable
       
@@ -3192,7 +3210,7 @@ module Google
       end
       
       # DocumentOccurrence represents an SPDX Document Creation Information section:
-      # https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
+      # https://spdx.github.io/spdx-spec/2-document-creation-information/
       class DocumentOccurrence
         include Google::Apis::Core::Hashable
       
@@ -4772,7 +4790,7 @@ module Google
         attr_accessor :related_url
       
         # DocumentNote represents an SPDX Document Creation Information section: https://
-        # spdx.github.io/spdx-spec/v2.3/document-creation-information/
+        # spdx.github.io/spdx-spec/2-document-creation-information/
         # Corresponds to the JSON property `sbom`
         # @return [Google::Apis::ContaineranalysisV1beta1::DocumentNote]
         attr_accessor :sbom
@@ -4936,7 +4954,7 @@ module Google
         attr_accessor :resource
       
         # DocumentOccurrence represents an SPDX Document Creation Information section:
-        # https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
+        # https://spdx.github.io/spdx-spec/2-document-creation-information/
         # Corresponds to the JSON property `sbom`
         # @return [Google::Apis::ContaineranalysisV1beta1::DocumentOccurrence]
         attr_accessor :sbom
@@ -6652,6 +6670,11 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1beta1::Detail>]
         attr_accessor :details
       
+        # Occurrence-specific extra details about the vulnerability.
+        # Corresponds to the JSON property `extraDetails`
+        # @return [String]
+        attr_accessor :extra_details
+      
         # Note provider assigned impact of the vulnerability.
         # Corresponds to the JSON property `severity`
         # @return [String]
@@ -6684,6 +6707,7 @@ module Google
           @cvss_version = args[:cvss_version] if args.key?(:cvss_version)
           @cwe = args[:cwe] if args.key?(:cwe)
           @details = args[:details] if args.key?(:details)
+          @extra_details = args[:extra_details] if args.key?(:extra_details)
           @severity = args[:severity] if args.key?(:severity)
           @source_update_time = args[:source_update_time] if args.key?(:source_update_time)
           @windows_details = args[:windows_details] if args.key?(:windows_details)
