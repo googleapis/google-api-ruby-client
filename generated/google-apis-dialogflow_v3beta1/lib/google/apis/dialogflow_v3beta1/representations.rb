@@ -178,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3ExportIntentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ExportIntentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3ExportTestCasesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,6 +280,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3ImportIntentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ImportIntentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3ImportTestCasesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,6 +305,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3ImportTestCasesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3InlineDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -898,6 +934,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1ExportIntentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExportIntentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExportIntentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1054,6 +1108,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportIntentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportIntentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1067,6 +1145,18 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1InlineDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1InlineSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3061,6 +3151,21 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3ExportIntentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ExportIntentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intents_content, as: 'intentsContent', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3InlineDestination, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3InlineDestination::Representation
+      
+          property :intents_uri, as: 'intentsUri'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3ExportTestCasesMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3199,6 +3304,29 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3ImportIntentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ImportIntentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conflicting_resources, as: 'conflictingResources', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources::Representation
+      
+          collection :intents, as: 'intents'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entity_display_names, as: 'entityDisplayNames'
+          collection :intent_display_names, as: 'intentDisplayNames'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3ImportTestCasesMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3211,6 +3339,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :names, as: 'names'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3InlineDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, :base64 => true, as: 'content'
         end
       end
       
@@ -4292,6 +4427,31 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1ExportIntentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExportIntentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_format, as: 'dataFormat'
+          collection :intents, as: 'intents'
+          property :intents_content_inline, as: 'intentsContentInline'
+          property :intents_uri, as: 'intentsUri'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExportIntentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intents_content, as: 'intentsContent', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1InlineDestination, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1InlineDestination::Representation
+      
+          property :intents_uri, as: 'intentsUri'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4554,6 +4714,39 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportIntentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intents_content, as: 'intentsContent', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1InlineSource, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1InlineSource::Representation
+      
+          property :intents_uri, as: 'intentsUri'
+          property :merge_option, as: 'mergeOption'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportIntentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conflicting_resources, as: 'conflictingResources', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources::Representation
+      
+          collection :intents, as: 'intents'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entity_display_names, as: 'entityDisplayNames'
+          collection :intent_display_names, as: 'intentDisplayNames'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4574,6 +4767,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :names, as: 'names'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1InlineDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, :base64 => true, as: 'content'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1InlineSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, :base64 => true, as: 'content'
         end
       end
       
