@@ -131,6 +131,7 @@ module Google
           property :invalid_key_version, as: 'invalidKeyVersion'
           property :name, as: 'name'
           collection :notification_emails, as: 'notificationEmails'
+          property :notification_pubsub_topic, as: 'notificationPubsubTopic'
           property :prefer_no_broad_approval_requests, as: 'preferNoBroadApprovalRequests'
           property :preferred_request_expiration_days, as: 'preferredRequestExpirationDays'
         end

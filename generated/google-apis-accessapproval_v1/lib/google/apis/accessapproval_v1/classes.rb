@@ -121,6 +121,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :notification_emails
       
+        # Optional. A pubsub topic to which notifications relating to approval requests
+        # should be sent.
+        # Corresponds to the JSON property `notificationPubsubTopic`
+        # @return [String]
+        attr_accessor :notification_pubsub_topic
+      
         # This preference is communicated to Google personnel when sending an approval
         # request but can be overridden if necessary.
         # Corresponds to the JSON property `preferNoBroadApprovalRequests`
@@ -148,6 +154,7 @@ module Google
           @invalid_key_version = args[:invalid_key_version] if args.key?(:invalid_key_version)
           @name = args[:name] if args.key?(:name)
           @notification_emails = args[:notification_emails] if args.key?(:notification_emails)
+          @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
           @prefer_no_broad_approval_requests = args[:prefer_no_broad_approval_requests] if args.key?(:prefer_no_broad_approval_requests)
           @preferred_request_expiration_days = args[:preferred_request_expiration_days] if args.key?(:preferred_request_expiration_days)
         end
