@@ -249,11 +249,6 @@ module Google
         # @return [String]
         attr_accessor :national_phone_number
       
-        # Information about business hour of the place.
-        # Corresponds to the JSON property `openingHours`
-        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours]
-        attr_accessor :opening_hours
-      
         # Plus code (http://plus.codes) is a location reference with two formats: global
         # code defining a 14mx14m (1/8000th of a degree) or smaller rectangle, and
         # compound code, replacing the prefix with a reference location.
@@ -271,6 +266,21 @@ module Google
         # @return [Float]
         attr_accessor :rating
       
+        # Information about business hour of the place.
+        # Corresponds to the JSON property `regularOpeningHours`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours]
+        attr_accessor :regular_opening_hours
+      
+        # Output only. Contains an array of entries for information about regular
+        # secondary hours of a business. Secondary hours are different from a business's
+        # main hours. For example, a restaurant can specify drive through hours or
+        # delivery hours as its secondary hours. This field populates the type subfield,
+        # which draws from a predefined list of opening hours types (such as
+        # DRIVE_THROUGH, PICKUP, or TAKEOUT) based on the types of the place.
+        # Corresponds to the JSON property `regularSecondaryOpeningHours`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours>]
+        attr_accessor :regular_secondary_opening_hours
+      
         # Output only. Specifies if the place supports reservations.
         # Corresponds to the JSON property `reservable`
         # @return [Boolean]
@@ -281,16 +291,6 @@ module Google
         # Corresponds to the JSON property `reviews`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Review>]
         attr_accessor :reviews
-      
-        # Output only. Contains an array of entries for information about regular
-        # secondary hours of a business. Secondary hours are different from a business's
-        # main hours. For example, a restaurant can specify drive through hours or
-        # delivery hours as its secondary hours. This field populates the type subfield,
-        # which draws from a predefined list of opening hours types (such as
-        # DRIVE_THROUGH, PICKUP, or TAKEOUT) based on the types of the place.
-        # Corresponds to the JSON property `secondaryOpeningHours`
-        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours>]
-        attr_accessor :secondary_opening_hours
       
         # Output only. Specifies if the place serves beer.
         # Corresponds to the JSON property `servesBeer`
@@ -386,13 +386,6 @@ module Google
         # @return [String]
         attr_accessor :website_uri
       
-        # Output only. [Deprecated!] Specifies if the place has an entrance that is
-        # wheelchair-accessible.
-        # Corresponds to the JSON property `wheelchairAccessibleEntrance`
-        # @return [Boolean]
-        attr_accessor :wheelchair_accessible_entrance
-        alias_method :wheelchair_accessible_entrance?, :wheelchair_accessible_entrance
-      
         def initialize(**args)
            update!(**args)
         end
@@ -419,13 +412,13 @@ module Google
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @national_phone_number = args[:national_phone_number] if args.key?(:national_phone_number)
-          @opening_hours = args[:opening_hours] if args.key?(:opening_hours)
           @plus_code = args[:plus_code] if args.key?(:plus_code)
           @price_level = args[:price_level] if args.key?(:price_level)
           @rating = args[:rating] if args.key?(:rating)
+          @regular_opening_hours = args[:regular_opening_hours] if args.key?(:regular_opening_hours)
+          @regular_secondary_opening_hours = args[:regular_secondary_opening_hours] if args.key?(:regular_secondary_opening_hours)
           @reservable = args[:reservable] if args.key?(:reservable)
           @reviews = args[:reviews] if args.key?(:reviews)
-          @secondary_opening_hours = args[:secondary_opening_hours] if args.key?(:secondary_opening_hours)
           @serves_beer = args[:serves_beer] if args.key?(:serves_beer)
           @serves_breakfast = args[:serves_breakfast] if args.key?(:serves_breakfast)
           @serves_brunch = args[:serves_brunch] if args.key?(:serves_brunch)
@@ -439,7 +432,6 @@ module Google
           @utc_offset_minutes = args[:utc_offset_minutes] if args.key?(:utc_offset_minutes)
           @viewport = args[:viewport] if args.key?(:viewport)
           @website_uri = args[:website_uri] if args.key?(:website_uri)
-          @wheelchair_accessible_entrance = args[:wheelchair_accessible_entrance] if args.key?(:wheelchair_accessible_entrance)
         end
       end
       

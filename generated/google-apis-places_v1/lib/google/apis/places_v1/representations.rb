@@ -194,16 +194,16 @@ module Google
       
           property :name, as: 'name'
           property :national_phone_number, as: 'nationalPhoneNumber'
-          property :opening_hours, as: 'openingHours', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours::Representation
-      
           property :plus_code, as: 'plusCode', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePlusCode, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePlusCode::Representation
       
           property :price_level, as: 'priceLevel'
           property :rating, as: 'rating'
+          property :regular_opening_hours, as: 'regularOpeningHours', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours::Representation
+      
+          collection :regular_secondary_opening_hours, as: 'regularSecondaryOpeningHours', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours::Representation
+      
           property :reservable, as: 'reservable'
           collection :reviews, as: 'reviews', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1Review, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1Review::Representation
-      
-          collection :secondary_opening_hours, as: 'secondaryOpeningHours', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours::Representation
       
           property :serves_beer, as: 'servesBeer'
           property :serves_breakfast, as: 'servesBreakfast'
@@ -219,7 +219,6 @@ module Google
           property :viewport, as: 'viewport', class: Google::Apis::PlacesV1::GoogleGeoTypeViewport, decorator: Google::Apis::PlacesV1::GoogleGeoTypeViewport::Representation
       
           property :website_uri, as: 'websiteUri'
-          property :wheelchair_accessible_entrance, as: 'wheelchairAccessibleEntrance'
         end
       end
       
