@@ -841,6 +841,46 @@ module Google
         end
       end
       
+      # Metadata returned for the Intents.ExportIntents long running operation.
+      class GoogleCloudDialogflowCxV3ExportIntentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for Intents.ExportIntents.
+      class GoogleCloudDialogflowCxV3ExportIntentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Inline destination for a Dialogflow operation that writes or exports objects (
+        # e.g. intents) outside of Dialogflow.
+        # Corresponds to the JSON property `intentsContent`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3InlineDestination]
+        attr_accessor :intents_content
+      
+        # The URI to a file containing the exported intents. This field is populated
+        # only if `intents_uri` is specified in ExportIntentsRequest.
+        # Corresponds to the JSON property `intentsUri`
+        # @return [String]
+        attr_accessor :intents_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intents_content = args[:intents_content] if args.key?(:intents_content)
+          @intents_uri = args[:intents_uri] if args.key?(:intents_uri)
+        end
+      end
+      
       # Metadata returned for the TestCases.ExportTestCases long running operation.
       # This message currently has no fields.
       class GoogleCloudDialogflowCxV3ExportTestCasesMetadata
@@ -1334,6 +1374,74 @@ module Google
         end
       end
       
+      # Metadata returned for the Intents.ImportIntents long running operation.
+      class GoogleCloudDialogflowCxV3ImportIntentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for Intents.ImportIntents.
+      class GoogleCloudDialogflowCxV3ImportIntentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Conflicting resources detected during the import process. Only filled when
+        # REPORT_CONFLICT is set in the request and there are conflicts in the display
+        # names.
+        # Corresponds to the JSON property `conflictingResources`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources]
+        attr_accessor :conflicting_resources
+      
+        # The unique identifier of the imported intents. Format: `projects//locations//
+        # agents//intents/`.
+        # Corresponds to the JSON property `intents`
+        # @return [Array<String>]
+        attr_accessor :intents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conflicting_resources = args[:conflicting_resources] if args.key?(:conflicting_resources)
+          @intents = args[:intents] if args.key?(:intents)
+        end
+      end
+      
+      # Conflicting resources detected during the import process. Only filled when
+      # REPORT_CONFLICT is set in the request and there are conflicts in the display
+      # names.
+      class GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources
+        include Google::Apis::Core::Hashable
+      
+        # Display names of conflicting entities.
+        # Corresponds to the JSON property `entityDisplayNames`
+        # @return [Array<String>]
+        attr_accessor :entity_display_names
+      
+        # Display names of conflicting intents.
+        # Corresponds to the JSON property `intentDisplayNames`
+        # @return [Array<String>]
+        attr_accessor :intent_display_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_display_names = args[:entity_display_names] if args.key?(:entity_display_names)
+          @intent_display_names = args[:intent_display_names] if args.key?(:intent_display_names)
+        end
+      end
+      
       # Metadata returned for the TestCases.ImportTestCases long running operation.
       class GoogleCloudDialogflowCxV3ImportTestCasesMetadata
         include Google::Apis::Core::Hashable
@@ -1370,6 +1478,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @names = args[:names] if args.key?(:names)
+        end
+      end
+      
+      # Inline destination for a Dialogflow operation that writes or exports objects (
+      # e.g. intents) outside of Dialogflow.
+      class GoogleCloudDialogflowCxV3InlineDestination
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The uncompressed byte content for the objects. Only populated in
+        # responses.
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
         end
       end
       
@@ -5415,6 +5545,91 @@ module Google
         end
       end
       
+      # Metadata returned for the Intents.ExportIntents long running operation.
+      class GoogleCloudDialogflowCxV3beta1ExportIntentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request message for Intents.ExportIntents.
+      class GoogleCloudDialogflowCxV3beta1ExportIntentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The data format of the exported intents. If not specified, `BLOB` is
+        # assumed.
+        # Corresponds to the JSON property `dataFormat`
+        # @return [String]
+        attr_accessor :data_format
+      
+        # Required. The name of the intents to export. Format: `projects//locations//
+        # agents//intents/`.
+        # Corresponds to the JSON property `intents`
+        # @return [Array<String>]
+        attr_accessor :intents
+      
+        # Optional. The option to return the serialized intents inline.
+        # Corresponds to the JSON property `intentsContentInline`
+        # @return [Boolean]
+        attr_accessor :intents_content_inline
+        alias_method :intents_content_inline?, :intents_content_inline
+      
+        # Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/)
+        # URI to export the intents to. The format of this URI must be `gs:///`.
+        # Dialogflow performs a write operation for the Cloud Storage object on the
+        # caller's behalf, so your request authentication must have write permissions
+        # for the object. For more information, see [Dialogflow access control](https://
+        # cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
+        # Corresponds to the JSON property `intentsUri`
+        # @return [String]
+        attr_accessor :intents_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_format = args[:data_format] if args.key?(:data_format)
+          @intents = args[:intents] if args.key?(:intents)
+          @intents_content_inline = args[:intents_content_inline] if args.key?(:intents_content_inline)
+          @intents_uri = args[:intents_uri] if args.key?(:intents_uri)
+        end
+      end
+      
+      # The response message for Intents.ExportIntents.
+      class GoogleCloudDialogflowCxV3beta1ExportIntentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Inline destination for a Dialogflow operation that writes or exports objects (
+        # e.g. intents) outside of Dialogflow.
+        # Corresponds to the JSON property `intentsContent`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1InlineDestination]
+        attr_accessor :intents_content
+      
+        # The URI to a file containing the exported intents. This field is populated
+        # only if `intents_uri` is specified in ExportIntentsRequest.
+        # Corresponds to the JSON property `intentsUri`
+        # @return [String]
+        attr_accessor :intents_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intents_content = args[:intents_content] if args.key?(:intents_content)
+          @intents_uri = args[:intents_uri] if args.key?(:intents_uri)
+        end
+      end
+      
       # Metadata returned for the TestCases.ExportTestCases long running operation.
       # This message currently has no fields.
       class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata
@@ -6385,6 +6600,111 @@ module Google
         end
       end
       
+      # Metadata returned for the Intents.ImportIntents long running operation.
+      class GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request message for Intents.ImportIntents.
+      class GoogleCloudDialogflowCxV3beta1ImportIntentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Inline source for a Dialogflow operation that reads or imports objects (e.g.
+        # intents) into Dialogflow.
+        # Corresponds to the JSON property `intentsContent`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1InlineSource]
+        attr_accessor :intents_content
+      
+        # The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
+        # import intents from. The format of this URI must be `gs:///`. Dialogflow
+        # performs a read operation for the Cloud Storage object on the caller's behalf,
+        # so your request authentication must have read permissions for the object. For
+        # more information, see [Dialogflow access control](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/access-control#storage).
+        # Corresponds to the JSON property `intentsUri`
+        # @return [String]
+        attr_accessor :intents_uri
+      
+        # Merge option for importing intents. If not specified, `REJECT` is assumed.
+        # Corresponds to the JSON property `mergeOption`
+        # @return [String]
+        attr_accessor :merge_option
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intents_content = args[:intents_content] if args.key?(:intents_content)
+          @intents_uri = args[:intents_uri] if args.key?(:intents_uri)
+          @merge_option = args[:merge_option] if args.key?(:merge_option)
+        end
+      end
+      
+      # The response message for Intents.ImportIntents.
+      class GoogleCloudDialogflowCxV3beta1ImportIntentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Conflicting resources detected during the import process. Only filled when
+        # REPORT_CONFLICT is set in the request and there are conflicts in the display
+        # names.
+        # Corresponds to the JSON property `conflictingResources`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources]
+        attr_accessor :conflicting_resources
+      
+        # The unique identifier of the imported intents. Format: `projects//locations//
+        # agents//intents/`.
+        # Corresponds to the JSON property `intents`
+        # @return [Array<String>]
+        attr_accessor :intents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conflicting_resources = args[:conflicting_resources] if args.key?(:conflicting_resources)
+          @intents = args[:intents] if args.key?(:intents)
+        end
+      end
+      
+      # Conflicting resources detected during the import process. Only filled when
+      # REPORT_CONFLICT is set in the request and there are conflicts in the display
+      # names.
+      class GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources
+        include Google::Apis::Core::Hashable
+      
+        # Display names of conflicting entities.
+        # Corresponds to the JSON property `entityDisplayNames`
+        # @return [Array<String>]
+        attr_accessor :entity_display_names
+      
+        # Display names of conflicting intents.
+        # Corresponds to the JSON property `intentDisplayNames`
+        # @return [Array<String>]
+        attr_accessor :intent_display_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_display_names = args[:entity_display_names] if args.key?(:entity_display_names)
+          @intent_display_names = args[:intent_display_names] if args.key?(:intent_display_names)
+        end
+      end
+      
       # Metadata returned for the TestCases.ImportTestCases long running operation.
       class GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata
         include Google::Apis::Core::Hashable
@@ -6452,6 +6772,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @names = args[:names] if args.key?(:names)
+        end
+      end
+      
+      # Inline destination for a Dialogflow operation that writes or exports objects (
+      # e.g. intents) outside of Dialogflow.
+      class GoogleCloudDialogflowCxV3beta1InlineDestination
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The uncompressed byte content for the objects. Only populated in
+        # responses.
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+        end
+      end
+      
+      # Inline source for a Dialogflow operation that reads or imports objects (e.g.
+      # intents) into Dialogflow.
+      class GoogleCloudDialogflowCxV3beta1InlineSource
+        include Google::Apis::Core::Hashable
+      
+        # The uncompressed byte content for the objects.
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
         end
       end
       
