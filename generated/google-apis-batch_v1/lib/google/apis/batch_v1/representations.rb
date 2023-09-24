@@ -628,6 +628,7 @@ module Google
           property :machine_type, as: 'machineType'
           property :min_cpu_platform, as: 'minCpuPlatform'
           property :provisioning_model, as: 'provisioningModel'
+          property :reservation, as: 'reservation'
         end
       end
       
