@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BootDiskDefaults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelCloneJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +227,36 @@ module Google
       end
       
       class Disk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskImageDefaults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisksMigrationDisksTargetDefaults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisksMigrationDisksTargetDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisksMigrationVmTargetDefaults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisksMigrationVmTargetDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -520,6 +556,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VmAttachmentDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmCapabilities
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -763,6 +805,17 @@ module Google
         end
       end
       
+      class BootDiskDefaults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_name, as: 'deviceName'
+          property :disk_name, as: 'diskName'
+          property :disk_type, as: 'diskType'
+          property :image, as: 'image', class: Google::Apis::VmmigrationV1::DiskImageDefaults, decorator: Google::Apis::VmmigrationV1::DiskImageDefaults::Representation
+      
+        end
+      end
+      
       class CancelCloneJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -828,7 +881,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1::PersistentDiskDefaults, decorator: Google::Apis::VmmigrationV1::PersistentDiskDefaults::Representation
       
+          property :disks_target_defaults, as: 'disksTargetDefaults', class: Google::Apis::VmmigrationV1::DisksMigrationDisksTargetDefaults, decorator: Google::Apis::VmmigrationV1::DisksMigrationDisksTargetDefaults::Representation
+      
           property :target_project, as: 'targetProject'
+          property :vm_target_defaults, as: 'vmTargetDefaults', class: Google::Apis::VmmigrationV1::DisksMigrationVmTargetDefaults, decorator: Google::Apis::VmmigrationV1::DisksMigrationVmTargetDefaults::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -837,6 +894,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1::PersistentDisk, decorator: Google::Apis::VmmigrationV1::PersistentDisk::Representation
+      
+          property :disks_target_details, as: 'disksTargetDetails', class: Google::Apis::VmmigrationV1::DisksMigrationDisksTargetDetails, decorator: Google::Apis::VmmigrationV1::DisksMigrationDisksTargetDetails::Representation
+      
+          property :vm_target_details, as: 'vmTargetDetails', class: Google::Apis::VmmigrationV1::DisksMigrationVmTargetDetails, decorator: Google::Apis::VmmigrationV1::DisksMigrationVmTargetDetails::Representation
       
         end
       end
@@ -995,6 +1056,54 @@ module Google
           property :lun, as: 'lun'
           property :name, as: 'name'
           property :size_gb, as: 'sizeGb'
+        end
+      end
+      
+      class DiskImageDefaults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_image, as: 'sourceImage'
+        end
+      end
+      
+      class DisksMigrationDisksTargetDefaults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DisksMigrationDisksTargetDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DisksMigrationVmTargetDefaults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_licenses, as: 'additionalLicenses'
+          property :boot_disk_defaults, as: 'bootDiskDefaults', class: Google::Apis::VmmigrationV1::BootDiskDefaults, decorator: Google::Apis::VmmigrationV1::BootDiskDefaults::Representation
+      
+          property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1::ComputeScheduling::Representation
+      
+          property :hostname, as: 'hostname'
+          hash :labels, as: 'labels'
+          property :machine_type, as: 'machineType'
+          property :machine_type_series, as: 'machineTypeSeries'
+          hash :metadata, as: 'metadata'
+          collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::VmmigrationV1::NetworkInterface, decorator: Google::Apis::VmmigrationV1::NetworkInterface::Representation
+      
+          collection :network_tags, as: 'networkTags'
+          property :secure_boot, as: 'secureBoot'
+          property :service_account, as: 'serviceAccount'
+          property :vm_name, as: 'vmName'
+        end
+      end
+      
+      class DisksMigrationVmTargetDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vm_uri, as: 'vmUri'
         end
       end
       
@@ -1328,6 +1437,8 @@ module Google
           property :disk_name, as: 'diskName'
           property :disk_type, as: 'diskType'
           property :source_disk_number, as: 'sourceDiskNumber'
+          property :vm_attachment_details, as: 'vmAttachmentDetails', class: Google::Apis::VmmigrationV1::VmAttachmentDetails, decorator: Google::Apis::VmmigrationV1::VmAttachmentDetails::Representation
+      
         end
       end
       
@@ -1500,6 +1611,13 @@ module Google
           property :vm_count, as: 'vmCount'
           collection :vms, as: 'vms', class: Google::Apis::VmmigrationV1::VmUtilizationInfo, decorator: Google::Apis::VmmigrationV1::VmUtilizationInfo::Representation
       
+        end
+      end
+      
+      class VmAttachmentDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_name, as: 'deviceName'
         end
       end
       
