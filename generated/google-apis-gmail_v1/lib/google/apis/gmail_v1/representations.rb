@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HardwareKeyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class History
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,12 +286,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PivKeyMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PopSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -390,9 +390,9 @@ module Google
       class CsePrivateKeyMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kacls_key_metadata, as: 'kaclsKeyMetadata', class: Google::Apis::GmailV1::KaclsKeyMetadata, decorator: Google::Apis::GmailV1::KaclsKeyMetadata::Representation
+          property :hardware_key_metadata, as: 'hardwareKeyMetadata', class: Google::Apis::GmailV1::HardwareKeyMetadata, decorator: Google::Apis::GmailV1::HardwareKeyMetadata::Representation
       
-          property :piv_key_metadata, as: 'pivKeyMetadata', class: Google::Apis::GmailV1::PivKeyMetadata, decorator: Google::Apis::GmailV1::PivKeyMetadata::Representation
+          property :kacls_key_metadata, as: 'kaclsKeyMetadata', class: Google::Apis::GmailV1::KaclsKeyMetadata, decorator: Google::Apis::GmailV1::KaclsKeyMetadata::Representation
       
           property :private_key_metadata_id, as: 'privateKeyMetadataId'
         end
@@ -467,6 +467,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :forwarding_email, as: 'forwardingEmail'
           property :verification_status, as: 'verificationStatus'
+        end
+      end
+      
+      class HardwareKeyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
         end
       end
       
@@ -744,13 +751,6 @@ module Google
       class ObliterateCseKeyPairRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class PivKeyMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
         end
       end
       
