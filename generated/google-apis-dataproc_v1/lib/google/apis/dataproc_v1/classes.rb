@@ -1242,12 +1242,6 @@ module Google
         # @return [String]
         attr_accessor :gce_pd_kms_key_name
       
-        # Optional. The Cloud KMS key name to use for encrypting customer core content
-        # and cluster PD disk for all instances in the cluster.
-        # Corresponds to the JSON property `kmsKey`
-        # @return [String]
-        attr_accessor :kms_key
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1255,7 +1249,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gce_pd_kms_key_name = args[:gce_pd_kms_key_name] if args.key?(:gce_pd_kms_key_name)
-          @kms_key = args[:kms_key] if args.key?(:kms_key)
         end
       end
       
@@ -1365,18 +1358,18 @@ module Google
         # @return [String]
         attr_accessor :subnetwork_uri
       
-        # Optional. The duration after which the workload will be terminated. When the
-        # workload exceeds this duration, it will be unconditionally terminated without
-        # waiting for ongoing work to finish. If ttl is not specified for a batch
-        # workload, the workload will be allowed to run until it exits naturally (or
-        # runs forever without exiting). If ttl is not specified for an interactive
-        # session, it defaults to 24h. If ttl is not specified for a batch that uses 2.1+
-        # runtime version, it defaults to 4h. Minimum value is 10 minutes; maximum
-        # value is 14 days (see JSON representation of Duration (https://developers.
-        # google.com/protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are
-        # specified (for an interactive session), the conditions are treated as OR
-        # conditions: the workload will be terminated when it has been idle for idle_ttl
-        # or when ttl has been exceeded, whichever occurs first.
+        # Optional. The duration after which the workload will be terminated, specified
+        # as the JSON representation for Duration (https://protobuf.dev/programming-
+        # guides/proto3/#json). When the workload exceeds this duration, it will be
+        # unconditionally terminated without waiting for ongoing work to finish. If ttl
+        # is not specified for a batch workload, the workload will be allowed to run
+        # until it exits naturally (or run forever without exiting). If ttl is not
+        # specified for an interactive session, it defaults to 24 hours. If ttl is not
+        # specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
+        # Minimum value is 10 minutes; maximum value is 14 days. If both ttl and
+        # idle_ttl are specified (for an interactive session), the conditions are
+        # treated as OR conditions: the workload will be terminated when it has been
+        # idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
         # Corresponds to the JSON property `ttl`
         # @return [String]
         attr_accessor :ttl
@@ -1452,14 +1445,13 @@ module Google
         end
       end
       
-      # A Dataproc job for running Apache Flink (https://flink.apache.org/)
-      # applications on YARN.
+      # A Dataproc job for running Apache Flink applications on YARN.
       class FlinkJob
         include Google::Apis::Core::Hashable
       
         # Optional. The arguments to pass to the driver. Do not include arguments, such
-        # as --conf, that can be set as job properties, since a collision may occur that
-        # causes an incorrect job submission.
+        # as --conf, that can be set as job properties, since a collision might occur
+        # that causes an incorrect job submission.
         # Corresponds to the JSON property `args`
         # @return [Array<String>]
         attr_accessor :args
@@ -1476,7 +1468,7 @@ module Google
         attr_accessor :logging_config
       
         # The name of the driver's main class. The jar file that contains the class must
-        # be in the default CLASSPATH or specified in jar_file_uris.
+        # be in the default CLASSPATH or specified in jarFileUris.
         # Corresponds to the JSON property `mainClass`
         # @return [String]
         attr_accessor :main_class
@@ -1487,15 +1479,15 @@ module Google
         attr_accessor :main_jar_file_uri
       
         # Optional. A mapping of property names to values, used to configure Flink.
-        # Properties that conflict with values set by the Dataproc API may beoverwritten.
-        # Can include properties set in/etc/flink/conf/flink-defaults.conf and classes
-        # in user code.
+        # Properties that conflict with values set by the Dataproc API might
+        # beoverwritten. Can include properties set in/etc/flink/conf/flink-defaults.
+        # conf and classes in user code.
         # Corresponds to the JSON property `properties`
         # @return [Hash<String,String>]
         attr_accessor :properties
       
-        # Optional. HCFS URI of the savepoint which contains the last saved progress for
-        # this job
+        # Optional. HCFS URI of the savepoint, which contains the last saved progress
+        # for starting the current job.
         # Corresponds to the JSON property `savepointUri`
         # @return [String]
         attr_accessor :savepoint_uri
@@ -1964,7 +1956,7 @@ module Google
       
         # Optional. The arguments to pass to the driver. Do not include arguments, such
         # as -libjars or -Dfoo=bar, that can be set as job properties, since a collision
-        # may occur that causes an incorrect job submission.
+        # might occur that causes an incorrect job submission.
         # Corresponds to the JSON property `args`
         # @return [Array<String>]
         attr_accessor :args
@@ -2002,7 +1994,7 @@ module Google
         attr_accessor :main_jar_file_uri
       
         # Optional. A mapping of property names to values, used to configure Hadoop.
-        # Properties that conflict with values set by the Dataproc API may be
+        # Properties that conflict with values set by the Dataproc API might be
         # overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes
         # in user code.
         # Corresponds to the JSON property `properties`
@@ -2046,7 +2038,7 @@ module Google
         attr_accessor :jar_file_uris
       
         # Optional. A mapping of property names and values, used to configure Hive.
-        # Properties that conflict with values set by the Dataproc API may be
+        # Properties that conflict with values set by the Dataproc API might be
         # overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/
         # hive/conf/hive-site.xml, and classes in user code.
         # Corresponds to the JSON property `properties`
@@ -2506,8 +2498,8 @@ module Google
         attr_accessor :done
         alias_method :done?, :done
       
-        # Output only. If present, the location of miscellaneous control files which may
-        # be used as part of job setup and handling. If not present, control files may
+        # Output only. If present, the location of miscellaneous control files which can
+        # be used as part of job setup and handling. If not present, control files might
         # be placed in the same location as driver_output_uri.
         # Corresponds to the JSON property `driverControlFilesUri`
         # @return [String]
@@ -2524,8 +2516,7 @@ module Google
         # @return [Google::Apis::DataprocV1::DriverSchedulingConfig]
         attr_accessor :driver_scheduling_config
       
-        # A Dataproc job for running Apache Flink (https://flink.apache.org/)
-        # applications on YARN.
+        # A Dataproc job for running Apache Flink applications on YARN.
         # Corresponds to the JSON property `flinkJob`
         # @return [Google::Apis::DataprocV1::FlinkJob]
         attr_accessor :flink_job
@@ -2545,7 +2536,7 @@ module Google
         attr_accessor :hive_job
       
         # Output only. A UUID that uniquely identifies a job within the project over
-        # time. This is in contrast to a user-settable reference.job_id that may be
+        # time. This is in contrast to a user-settable reference.job_id that might be
         # reused over time.
         # Corresponds to the JSON property `jobUuid`
         # @return [String]
@@ -2553,7 +2544,7 @@ module Google
       
         # Optional. The labels to associate with this job. Label keys must contain 1 to
         # 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.
-        # txt). Label values may be empty, but, if present, must contain 1 to 63
+        # txt). Label values can be empty, but, if present, must contain 1 to 63
         # characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt)
         # . No more than 32 labels can be associated with a job.
         # Corresponds to the JSON property `labels`
@@ -2632,8 +2623,8 @@ module Google
         attr_accessor :trino_job
       
         # Output only. The collection of YARN applications spun up by this job.Beta
-        # Feature: This report is available for testing purposes only. It may be changed
-        # before final release.
+        # Feature: This report is available for testing purposes only. It might be
+        # changed before final release.
         # Corresponds to the JSON property `yarnApplications`
         # @return [Array<Google::Apis::DataprocV1::YarnApplication>]
         attr_accessor :yarn_applications
@@ -2771,18 +2762,18 @@ module Google
       class JobScheduling
         include Google::Apis::Core::Hashable
       
-        # Optional. Maximum number of times per hour a driver may be restarted as a
+        # Optional. Maximum number of times per hour a driver can be restarted as a
         # result of driver exiting with non-zero code before job is reported failed.A
-        # job may be reported as thrashing if the driver exits with a non-zero code four
-        # times within a 10-minute window.Maximum value is 10.Note: This restartable job
-        # option is not supported in Dataproc workflow templates (https://cloud.google.
-        # com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template)
-        # .
+        # job might be reported as thrashing if the driver exits with a non-zero code
+        # four times within a 10-minute window.Maximum value is 10.Note: This
+        # restartable job option is not supported in Dataproc workflow templates (https:/
+        # /cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#
+        # adding_jobs_to_a_template).
         # Corresponds to the JSON property `maxFailuresPerHour`
         # @return [Fixnum]
         attr_accessor :max_failures_per_hour
       
-        # Optional. Maximum total number of times a driver may be restarted as a result
+        # Optional. Maximum total number of times a driver can be restarted as a result
         # of the driver exiting with a non-zero code. After the maximum number is
         # reached, the job will be reported as failed.Maximum value is 240.Note:
         # Currently, this restartable job option is not supported in Dataproc workflow
@@ -3315,7 +3306,7 @@ module Google
       class LoggingConfig
         include Google::Apis::Core::Hashable
       
-        # The per-package log levels for the driver. This may include "root" package
+        # The per-package log levels for the driver. This can include "root" package
         # name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO'
         # - 'org.apache = DEBUG'
         # Corresponds to the JSON property `driverLogLevels`
@@ -3751,6 +3742,11 @@ module Google
       class OrderedJob
         include Google::Apis::Core::Hashable
       
+        # A Dataproc job for running Apache Flink applications on YARN.
+        # Corresponds to the JSON property `flinkJob`
+        # @return [Google::Apis::DataprocV1::FlinkJob]
+        attr_accessor :flink_job
+      
         # A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/
         # docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/
         # MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/
@@ -3847,6 +3843,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @flink_job = args[:flink_job] if args.key?(:flink_job)
           @hadoop_job = args[:hadoop_job] if args.key?(:hadoop_job)
           @hive_job = args[:hive_job] if args.key?(:hive_job)
           @labels = args[:labels] if args.key?(:labels)
@@ -3939,7 +3936,7 @@ module Google
         attr_accessor :logging_config
       
         # Optional. A mapping of property names to values, used to configure Pig.
-        # Properties that conflict with values set by the Dataproc API may be
+        # Properties that conflict with values set by the Dataproc API might be
         # overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/
         # pig/conf/pig.properties, and classes in user code.
         # Corresponds to the JSON property `properties`
@@ -4247,7 +4244,7 @@ module Google
         attr_accessor :main_python_file_uri
       
         # Optional. A mapping of property names to values, used to configure PySpark.
-        # Properties that conflict with values set by the Dataproc API may be
+        # Properties that conflict with values set by the Dataproc API might be
         # overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf
         # and classes in user code.
         # Corresponds to the JSON property `properties`
@@ -4848,6 +4845,12 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. A session template UUID (Unique Universal Identifier). The
+        # service generates this value when it creates the session template.
+        # Corresponds to the JSON property `uuid`
+        # @return [String]
+        attr_accessor :uuid
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4863,6 +4866,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @runtime_config = args[:runtime_config] if args.key?(:runtime_config)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @uuid = args[:uuid] if args.key?(:uuid)
         end
       end
       
@@ -5102,7 +5106,7 @@ module Google
         attr_accessor :logging_config
       
         # The name of the driver's main class. The jar file that contains the class must
-        # be in the default CLASSPATH or specified in jar_file_uris.
+        # be in the default CLASSPATH or specified in SparkJob.jar_file_uris.
         # Corresponds to the JSON property `mainClass`
         # @return [String]
         attr_accessor :main_class
@@ -5113,7 +5117,7 @@ module Google
         attr_accessor :main_jar_file_uri
       
         # Optional. A mapping of property names to values, used to configure Spark.
-        # Properties that conflict with values set by the Dataproc API may be
+        # Properties that conflict with values set by the Dataproc API might be
         # overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf
         # and classes in user code.
         # Corresponds to the JSON property `properties`
@@ -5216,7 +5220,7 @@ module Google
         attr_accessor :main_r_file_uri
       
         # Optional. A mapping of property names to values, used to configure SparkR.
-        # Properties that conflict with values set by the Dataproc API may be
+        # Properties that conflict with values set by the Dataproc API might be
         # overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf
         # and classes in user code.
         # Corresponds to the JSON property `properties`
@@ -5288,8 +5292,8 @@ module Google
         attr_accessor :logging_config
       
         # Optional. A mapping of property names to values, used to configure Spark SQL's
-        # SparkConf. Properties that conflict with values set by the Dataproc API may be
-        # overwritten.
+        # SparkConf. Properties that conflict with values set by the Dataproc API might
+        # be overwritten.
         # Corresponds to the JSON property `properties`
         # @return [Hash<String,String>]
         attr_accessor :properties
