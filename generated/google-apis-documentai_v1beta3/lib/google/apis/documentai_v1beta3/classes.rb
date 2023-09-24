@@ -57,6 +57,11 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus
         include Google::Apis::Core::Hashable
       
+        # Document Identifier.
+        # Corresponds to the JSON property `documentId`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentId]
+        attr_accessor :document_id
+      
         # The gcs_uri of the auto-labeling document, which uniquely identifies a dataset
         # document.
         # Corresponds to the JSON property `gcsUri`
@@ -79,6 +84,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
           @status = args[:status] if args.key?(:status)
         end
@@ -6728,7 +6734,7 @@ module Google
       end
       
       # A singleton resource under a Processor which configures a collection of
-      # documents.
+      # documents. Next Id: 8.
       class GoogleCloudDocumentaiV1beta3Dataset
         include Google::Apis::Core::Hashable
       
@@ -10166,10 +10172,18 @@ module Google
         attr_accessor :advanced_ocr_options
       
         # Turn on font identification model and return font style information.
+        # Deprecated, use PremiumFeatures.compute_style_info instead.
         # Corresponds to the JSON property `computeStyleInfo`
         # @return [Boolean]
         attr_accessor :compute_style_info
         alias_method :compute_style_info?, :compute_style_info
+      
+        # Turn off character box detector in OCR engine. Character box detection is
+        # enabled by default in OCR 2.0+ processors.
+        # Corresponds to the JSON property `disableCharacterBoxesDetection`
+        # @return [Boolean]
+        attr_accessor :disable_character_boxes_detection
+        alias_method :disable_character_boxes_detection?, :disable_character_boxes_detection
       
         # Enables intelligent document quality scores after OCR. Can help with
         # diagnosing why OCR responses are of poor quality for a given input. Adds
@@ -10197,6 +10211,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfigHints]
         attr_accessor :hints
       
+        # Configurations for premium OCR features.
+        # Corresponds to the JSON property `premiumFeatures`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfigPremiumFeatures]
+        attr_accessor :premium_features
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10205,10 +10224,12 @@ module Google
         def update!(**args)
           @advanced_ocr_options = args[:advanced_ocr_options] if args.key?(:advanced_ocr_options)
           @compute_style_info = args[:compute_style_info] if args.key?(:compute_style_info)
+          @disable_character_boxes_detection = args[:disable_character_boxes_detection] if args.key?(:disable_character_boxes_detection)
           @enable_image_quality_scores = args[:enable_image_quality_scores] if args.key?(:enable_image_quality_scores)
           @enable_native_pdf_parsing = args[:enable_native_pdf_parsing] if args.key?(:enable_native_pdf_parsing)
           @enable_symbol = args[:enable_symbol] if args.key?(:enable_symbol)
           @hints = args[:hints] if args.key?(:hints)
+          @premium_features = args[:premium_features] if args.key?(:premium_features)
         end
       end
       
@@ -10236,9 +10257,60 @@ module Google
         end
       end
       
+      # Configurations for premium OCR features.
+      class GoogleCloudDocumentaiV1beta3OcrConfigPremiumFeatures
+        include Google::Apis::Core::Hashable
+      
+        # Turn on font identification model and return font style information.
+        # Corresponds to the JSON property `computeStyleInfo`
+        # @return [Boolean]
+        attr_accessor :compute_style_info
+        alias_method :compute_style_info?, :compute_style_info
+      
+        # Turn on the model that can extract LaTeX math formulas.
+        # Corresponds to the JSON property `enableMathOcr`
+        # @return [Boolean]
+        attr_accessor :enable_math_ocr
+        alias_method :enable_math_ocr?, :enable_math_ocr
+      
+        # Turn on selection mark detector in OCR engine. Only available in OCR 2.0+
+        # processors.
+        # Corresponds to the JSON property `enableSelectionMarkDetection`
+        # @return [Boolean]
+        attr_accessor :enable_selection_mark_detection
+        alias_method :enable_selection_mark_detection?, :enable_selection_mark_detection
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compute_style_info = args[:compute_style_info] if args.key?(:compute_style_info)
+          @enable_math_ocr = args[:enable_math_ocr] if args.key?(:enable_math_ocr)
+          @enable_selection_mark_detection = args[:enable_selection_mark_detection] if args.key?(:enable_selection_mark_detection)
+        end
+      end
+      
       # Options for Process API
       class GoogleCloudDocumentaiV1beta3ProcessOptions
         include Google::Apis::Core::Hashable
+      
+        # Only process certain pages from the end, same as above.
+        # Corresponds to the JSON property `fromEnd`
+        # @return [Fixnum]
+        attr_accessor :from_end
+      
+        # Only process certain pages from the start, process all if the document has
+        # less pages.
+        # Corresponds to the JSON property `fromStart`
+        # @return [Fixnum]
+        attr_accessor :from_start
+      
+        # A list of individual page numbers.
+        # Corresponds to the JSON property `individualPageSelector`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector]
+        attr_accessor :individual_page_selector
       
         # Config for Document OCR.
         # Corresponds to the JSON property `ocrConfig`
@@ -10256,8 +10328,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @from_end = args[:from_end] if args.key?(:from_end)
+          @from_start = args[:from_start] if args.key?(:from_start)
+          @individual_page_selector = args[:individual_page_selector] if args.key?(:individual_page_selector)
           @ocr_config = args[:ocr_config] if args.key?(:ocr_config)
           @schema_override = args[:schema_override] if args.key?(:schema_override)
+        end
+      end
+      
+      # A list of individual page numbers.
+      class GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indices of the pages (starting from 1).
+        # Corresponds to the JSON property `pages`
+        # @return [Array<Fixnum>]
+        attr_accessor :pages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pages = args[:pages] if args.key?(:pages)
         end
       end
       
