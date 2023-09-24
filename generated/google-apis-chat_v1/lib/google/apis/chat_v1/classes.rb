@@ -2599,6 +2599,13 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :on_change_action
       
+        # Text that appears in the text input field when the field is empty. Use this
+        # text to prompt users to enter a value. For example, `Enter a number from 0 to
+        # 100`. Supported by Google Chat apps, but not Google Workspace Add-ons.
+        # Corresponds to the JSON property `placeholderText`
+        # @return [String]
+        attr_accessor :placeholder_text
+      
         # How a text input field appears in the user interface. For example, whether the
         # field is single or multi-line.
         # Corresponds to the JSON property `type`
@@ -2624,6 +2631,7 @@ module Google
           @label = args[:label] if args.key?(:label)
           @name = args[:name] if args.key?(:name)
           @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
+          @placeholder_text = args[:placeholder_text] if args.key?(:placeholder_text)
           @type = args[:type] if args.key?(:type)
           @value = args[:value] if args.key?(:value)
         end
@@ -3767,9 +3775,12 @@ module Google
         attr_accessor :display_name
       
         # Immutable. Whether this space permits any Google Chat user as a member. Input
-        # when creating a space in a Google Workspace organization. For Google Chat
-        # users that use a Google Account, omit this field when creating a space (By
-        # default, the space permits any Google Chat user). For existing spaces, this
+        # when creating a space in a Google Workspace organization. Omit this field when
+        # creating spaces in the following conditions: * The authenticated user uses a
+        # Google Account. By default, the space permits any Google Chat user. * The
+        # space is used to [import data to Google Chat] (https://developers.google.com/
+        # chat/api/guides/import-data-overview). Import mode spaces must only permit
+        # members from the same Google Workspace organization. For existing spaces, this
         # field is output only.
         # Corresponds to the JSON property `externalUserAllowed`
         # @return [Boolean]
@@ -4159,7 +4170,12 @@ module Google
         # Person `resource_name` is `people/`person_id``. For example, `users/123456789`
         # in Chat API represents the same person as `people/123456789` in People API. -
         # the `id` for a [user](https://developers.google.com/admin-sdk/directory/
-        # reference/rest/v1/users) in the Admin SDK Directory API.
+        # reference/rest/v1/users) in the Admin SDK Directory API. - the user's email
+        # address can be used as an alias for ``user`` in API requests. For example, if
+        # the People API Person `resourceName` for `user@example.com` is `people/
+        # 123456789`, you can use `users/user@example.com` as an alias to reference `
+        # users/123456789`. Only the canonical resource name (for example `users/
+        # 123456789`) will be returned from the API.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

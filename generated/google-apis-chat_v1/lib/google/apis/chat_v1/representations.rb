@@ -1219,6 +1219,7 @@ module Google
           property :name, as: 'name'
           property :on_change_action, as: 'onChangeAction', class: Google::Apis::ChatV1::GoogleAppsCardV1Action, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Action::Representation
       
+          property :placeholder_text, as: 'placeholderText'
           property :type, as: 'type'
           property :value, as: 'value'
         end
