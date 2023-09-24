@@ -724,6 +724,48 @@ module Google
         end
       end
       
+      # BootDiskDefaults hold information about the boot disk of a VM.
+      class BootDiskDefaults
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies a unique device name of your choice that is reflected into
+        # the /dev/disk/by-id/google-* tree of a Linux operating system running within
+        # the instance. If not specified, the server chooses a default device name to
+        # apply to this disk, in the form persistent-disk-x, where x is a number
+        # assigned by Google Compute Engine. This field is only applicable for
+        # persistent disks.
+        # Corresponds to the JSON property `deviceName`
+        # @return [String]
+        attr_accessor :device_name
+      
+        # Optional. The name of the disk.
+        # Corresponds to the JSON property `diskName`
+        # @return [String]
+        attr_accessor :disk_name
+      
+        # Optional. The type of disk provisioning to use for the VM.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # Contains details about the image source used to create the disk.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::VmmigrationV1alpha1::DiskImageDefaults]
+        attr_accessor :image
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_name = args[:device_name] if args.key?(:device_name)
+          @disk_name = args[:disk_name] if args.key?(:disk_name)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @image = args[:image] if args.key?(:image)
+        end
+      end
+      
       # Request message for 'CancelCloneJob' request.
       class CancelCloneJobRequest
         include Google::Apis::Core::Hashable
@@ -944,11 +986,21 @@ module Google
         # @return [Array<Google::Apis::VmmigrationV1alpha1::PersistentDiskDefaults>]
         attr_accessor :disks
       
+        # Details for a disk only migration.
+        # Corresponds to the JSON property `disksTargetDefaults`
+        # @return [Google::Apis::VmmigrationV1alpha1::DisksMigrationDisksTargetDefaults]
+        attr_accessor :disks_target_defaults
+      
         # The full path of the resource of type TargetProject which represents the
         # Compute Engine project in which to create the Persistent Disks.
         # Corresponds to the JSON property `targetProject`
         # @return [String]
         attr_accessor :target_project
+      
+        # Details for creation of a VM that migrated data disks will be attached to.
+        # Corresponds to the JSON property `vmTargetDefaults`
+        # @return [Google::Apis::VmmigrationV1alpha1::DisksMigrationVmTargetDefaults]
+        attr_accessor :vm_target_defaults
       
         # The zone in which to create the Persistent Disks.
         # Corresponds to the JSON property `zone`
@@ -962,7 +1014,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disks = args[:disks] if args.key?(:disks)
+          @disks_target_defaults = args[:disks_target_defaults] if args.key?(:disks_target_defaults)
           @target_project = args[:target_project] if args.key?(:target_project)
+          @vm_target_defaults = args[:vm_target_defaults] if args.key?(:vm_target_defaults)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -977,6 +1031,16 @@ module Google
         # @return [Array<Google::Apis::VmmigrationV1alpha1::PersistentDisk>]
         attr_accessor :disks
       
+        # Details for a disks-only migration.
+        # Corresponds to the JSON property `disksTargetDetails`
+        # @return [Google::Apis::VmmigrationV1alpha1::DisksMigrationDisksTargetDetails]
+        attr_accessor :disks_target_details
+      
+        # Details for the VM created VM as part of disks migration.
+        # Corresponds to the JSON property `vmTargetDetails`
+        # @return [Google::Apis::VmmigrationV1alpha1::DisksMigrationVmTargetDetails]
+        attr_accessor :vm_target_details
+      
         def initialize(**args)
            update!(**args)
         end
@@ -984,6 +1048,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disks = args[:disks] if args.key?(:disks)
+          @disks_target_details = args[:disks_target_details] if args.key?(:disks_target_details)
+          @vm_target_details = args[:vm_target_details] if args.key?(:vm_target_details)
         end
       end
       
@@ -1660,6 +1726,164 @@ module Google
           @lun = args[:lun] if args.key?(:lun)
           @name = args[:name] if args.key?(:name)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
+        end
+      end
+      
+      # Contains details about the image source used to create the disk.
+      class DiskImageDefaults
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Image resource used when creating the disk.
+        # Corresponds to the JSON property `sourceImage`
+        # @return [String]
+        attr_accessor :source_image
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_image = args[:source_image] if args.key?(:source_image)
+        end
+      end
+      
+      # Details for a disk only migration.
+      class DisksMigrationDisksTargetDefaults
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Details for a disks-only migration.
+      class DisksMigrationDisksTargetDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Details for creation of a VM that migrated data disks will be attached to.
+      class DisksMigrationVmTargetDefaults
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Additional licenses to assign to the VM.
+        # Corresponds to the JSON property `additionalLicenses`
+        # @return [Array<String>]
+        attr_accessor :additional_licenses
+      
+        # BootDiskDefaults hold information about the boot disk of a VM.
+        # Corresponds to the JSON property `bootDiskDefaults`
+        # @return [Google::Apis::VmmigrationV1alpha1::BootDiskDefaults]
+        attr_accessor :boot_disk_defaults
+      
+        # Scheduling information for VM on maintenance/restart behaviour and node
+        # allocation in sole tenant nodes.
+        # Corresponds to the JSON property `computeScheduling`
+        # @return [Google::Apis::VmmigrationV1alpha1::ComputeScheduling]
+        attr_accessor :compute_scheduling
+      
+        # Optional. The hostname to assign to the VM.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Optional. A map of labels to associate with the VM.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. The machine type to create the VM with.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Optional. The machine type series to create the VM with. For presentation only.
+        # Corresponds to the JSON property `machineTypeSeries`
+        # @return [String]
+        attr_accessor :machine_type_series
+      
+        # Optional. The metadata key/value pairs to assign to the VM.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # Optional. NICs to attach to the VM.
+        # Corresponds to the JSON property `networkInterfaces`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::NetworkInterface>]
+        attr_accessor :network_interfaces
+      
+        # Optional. A list of network tags to associate with the VM.
+        # Corresponds to the JSON property `networkTags`
+        # @return [Array<String>]
+        attr_accessor :network_tags
+      
+        # Optional. Defines whether the instance has Secure Boot enabled. This can be
+        # set to true only if the VM boot option is EFI.
+        # Corresponds to the JSON property `secureBoot`
+        # @return [Boolean]
+        attr_accessor :secure_boot
+        alias_method :secure_boot?, :secure_boot
+      
+        # Optional. The service account to associate the VM with.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Required. The name of the VM to create.
+        # Corresponds to the JSON property `vmName`
+        # @return [String]
+        attr_accessor :vm_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_licenses = args[:additional_licenses] if args.key?(:additional_licenses)
+          @boot_disk_defaults = args[:boot_disk_defaults] if args.key?(:boot_disk_defaults)
+          @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @labels = args[:labels] if args.key?(:labels)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @machine_type_series = args[:machine_type_series] if args.key?(:machine_type_series)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @network_tags = args[:network_tags] if args.key?(:network_tags)
+          @secure_boot = args[:secure_boot] if args.key?(:secure_boot)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @vm_name = args[:vm_name] if args.key?(:vm_name)
+        end
+      end
+      
+      # Details for the VM created VM as part of disks migration.
+      class DisksMigrationVmTargetDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The URI of the Compute Engine VM.
+        # Corresponds to the JSON property `vmUri`
+        # @return [String]
+        attr_accessor :vm_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vm_uri = args[:vm_uri] if args.key?(:vm_uri)
         end
       end
       
@@ -2820,6 +3044,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :source_disk_number
       
+        # Details for attachment of the disk to a VM.
+        # Corresponds to the JSON property `vmAttachmentDetails`
+        # @return [Google::Apis::VmmigrationV1alpha1::VmAttachmentDetails]
+        attr_accessor :vm_attachment_details
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2830,6 +3059,7 @@ module Google
           @disk_name = args[:disk_name] if args.key?(:disk_name)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @source_disk_number = args[:source_disk_number] if args.key?(:source_disk_number)
+          @vm_attachment_details = args[:vm_attachment_details] if args.key?(:vm_attachment_details)
         end
       end
       
@@ -3614,6 +3844,30 @@ module Google
           @vm_count = args[:vm_count] if args.key?(:vm_count)
           @vms = args[:vms] if args.key?(:vms)
           @vms_count = args[:vms_count] if args.key?(:vms_count)
+        end
+      end
+      
+      # Details for attachment of the disk to a VM.
+      class VmAttachmentDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies a unique device name of your choice that is reflected into
+        # the /dev/disk/by-id/google-* tree of a Linux operating system running within
+        # the instance. If not specified, the server chooses a default device name to
+        # apply to this disk, in the form persistent-disk-x, where x is a number
+        # assigned by Google Compute Engine. This field is only applicable for
+        # persistent disks.
+        # Corresponds to the JSON property `deviceName`
+        # @return [String]
+        attr_accessor :device_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_name = args[:device_name] if args.key?(:device_name)
         end
       end
       
