@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PatchServiceAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -658,6 +664,7 @@ module Google
           property :client_secret, as: 'clientSecret', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret::Representation
       
           property :issuer_uri, as: 'issuerUri'
+          property :jwks_json, as: 'jwksJson'
           property :web_sso_config, as: 'webSsoConfig', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig::Representation
       
         end
@@ -833,6 +840,19 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :cancel_requested, as: 'cancelRequested'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :status_detail, as: 'statusDetail'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
         end
       end
       

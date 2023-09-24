@@ -581,6 +581,17 @@ module Google
         # @return [String]
         attr_accessor :issuer_uri
       
+        # OIDC JWKs in JSON String format. For details on the definition of a JWK, see
+        # https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from the
+        # discovery document(fetched from the .well-known path of the `issuer_uri`) will
+        # be used. Currently, RSA and EC asymmetric keys are supported. The JWK must use
+        # following format and include only the following fields: ` "keys": [ ` "kty": "
+        # RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e": "", "x": "", "y": ""
+        # , "crv": "" ` ] `
+        # Corresponds to the JSON property `jwksJson`
+        # @return [String]
+        attr_accessor :jwks_json
+      
         # Configuration for web single sign-on for the OIDC provider.
         # Corresponds to the JSON property `webSsoConfig`
         # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig]
@@ -595,6 +606,7 @@ module Google
           @client_id = args[:client_id] if args.key?(:client_id)
           @client_secret = args[:client_secret] if args.key?(:client_secret)
           @issuer_uri = args[:issuer_uri] if args.key?(:issuer_uri)
+          @jwks_json = args[:jwks_json] if args.key?(:jwks_json)
           @web_sso_config = args[:web_sso_config] if args.key?(:web_sso_config)
         end
       end
@@ -693,7 +705,7 @@ module Google
         # document should satisfy the following constraints: 1) Must contain an Identity
         # Provider Entity ID. 2) Must contain at least one non-expired signing key
         # certificate. 3) For each signing key: a) Valid from should be no more than 7
-        # days from now. b) Valid to should be no more than 14 years in the future. 4)
+        # days from now. b) Valid to should be no more than 15 years in the future. 4)
         # Up to 3 IdP signing keys are allowed in the metadata xml. When updating the
         # provider's metadata xml, at least one non-expired signing key must overlap
         # with the existing metadata. This requirement is skipped if there are no non-
@@ -1213,6 +1225,65 @@ module Google
         end
       end
       
+      # Represents the metadata of the long-running operation.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. Identifies whether the user has requested cancellation of the
+        # operation. Operations that have been cancelled successfully have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `cancelRequested`
+        # @return [Boolean]
+        attr_accessor :cancel_requested
+        alias_method :cancel_requested?, :cancel_requested
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusDetail`
+        # @return [String]
+        attr_accessor :status_detail
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @status_detail = args[:status_detail] if args.key?(:status_detail)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
       # The service account patch request. You can patch only the `display_name` and `
       # description` fields. You must use the `update_mask` field to specify which of
       # these fields you want to patch. Only the fields specified in the request are
@@ -1700,7 +1771,7 @@ module Google
         # The metadata xml document should satisfy the following constraints: 1) Must
         # contain an Identity Provider Entity ID. 2) Must contain at least one non-
         # expired signing key certificate. 3) For each signing key: a) Valid from should
-        # be no more than 7 days from now. b) Valid to should be no more than 14 years
+        # be no more than 7 days from now. b) Valid to should be no more than 15 years
         # in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml.
         # When updating the provider's metadata xml, at lease one non-expired signing
         # key must overlap with the existing metadata. This requirement is skipped if
@@ -2564,8 +2635,8 @@ module Google
         end
       end
       
-      # Represents a collection of external workload identities. You can define IAM
-      # policies to grant these identities access to Google Cloud resources.
+      # Represents a collection of workload identities. You can define IAM policies to
+      # grant these identities access to Google Cloud resources.
       class WorkloadIdentityPool
         include Google::Apis::Core::Hashable
       
@@ -2651,10 +2722,10 @@ module Google
         # @return [String]
         attr_accessor :attribute_condition
       
-        # Maps attributes from authentication credentials issued by an external identity
-        # provider to Google Cloud attributes, such as `subject` and `segment`. Each key
-        # must be a string specifying the Google Cloud IAM attribute to map to. The
-        # following keys are supported: * `google.subject`: The principal IAM is
+        # Maps attributes from authentication credentials issued by an external
+        # identity provider to Google Cloud attributes, such as `subject` and `segment`.
+        # Each key must be a string specifying the Google Cloud IAM attribute to map to.
+        # The following keys are supported: * `google.subject`: The principal IAM is
         # authenticating. You can reference this value in IAM bindings. This is also the
         # subject that appears in Cloud Logging logs. Cannot exceed 127 bytes. * `google.
         # groups`: Groups the external identity belongs to. You can grant groups access
