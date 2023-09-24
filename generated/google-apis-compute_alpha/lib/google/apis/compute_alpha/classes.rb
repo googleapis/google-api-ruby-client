@@ -3921,9 +3921,9 @@ module Google
         attr_accessor :timeout_sec
       
         # 
-        # Corresponds to the JSON property `usedBys`
+        # Corresponds to the JSON property `usedBy`
         # @return [Array<Google::Apis::ComputeAlpha::BackendServiceUsedBy>]
-        attr_accessor :used_bys
+        attr_accessor :used_by
       
         # The network scope of the backends that can be added to the backend service.
         # This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend
@@ -3985,7 +3985,7 @@ module Google
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @subsetting = args[:subsetting] if args.key?(:subsetting)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
-          @used_bys = args[:used_bys] if args.key?(:used_bys)
+          @used_by = args[:used_by] if args.key?(:used_by)
           @vpc_network_scope = args[:vpc_network_scope] if args.key?(:vpc_network_scope)
         end
       end
@@ -4481,8 +4481,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether the serving infrastructure will authenticate and authorize all
-        # incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields
-        # must be non-empty.
+        # incoming requests.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -6070,7 +6069,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # List of reservations in this commitment.
+        # List of create-on-create reseravtions for this commitment.
         # Corresponds to the JSON property `reservations`
         # @return [Array<Google::Apis::ComputeAlpha::Reservation>]
         attr_accessor :reservations
@@ -10631,13 +10630,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # This field is not used for external load balancing. For Internal TCP/UDP Load
-        # Balancing, this field identifies the network that the load balanced IP should
-        # belong to for this Forwarding Rule. If the subnetwork is specified, the
-        # network of the subnetwork will be used. If neither subnetwork nor this field
-        # is specified, the default network will be used. For Private Service Connect
-        # forwarding rules that forward traffic to Google APIs, a network must be
-        # provided.
+        # This field is not used for global external load balancing. For Internal TCP/
+        # UDP Load Balancing, this field identifies the network that the load balanced
+        # IP should belong to for this Forwarding Rule. If the subnetwork is specified,
+        # the network of the subnetwork will be used. If neither subnetwork nor this
+        # field is specified, the default network will be used. For Private Service
+        # Connect forwarding rules that forward traffic to Google APIs, a network must
+        # be provided.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -16951,14 +16950,6 @@ module Google
         attr_accessor :creating_atomically
       
         # [Output Only] The number of instances that the managed instance group will
-        # attempt to create in bulk. If the desired count of instances cannot be created,
-        # entire batch will be deleted and the group will decrease its targetSize value
-        # accordingly.
-        # Corresponds to the JSON property `creatingInBulk`
-        # @return [Fixnum]
-        attr_accessor :creating_in_bulk
-      
-        # [Output Only] The number of instances that the managed instance group will
         # attempt to create. The group attempts to create each instance only once. If
         # the group fails to create any of these instances, it decreases the group's
         # targetSize value accordingly.
@@ -17045,7 +17036,6 @@ module Google
           @abandoning = args[:abandoning] if args.key?(:abandoning)
           @creating = args[:creating] if args.key?(:creating)
           @creating_atomically = args[:creating_atomically] if args.key?(:creating_atomically)
-          @creating_in_bulk = args[:creating_in_bulk] if args.key?(:creating_in_bulk)
           @creating_without_retries = args[:creating_without_retries] if args.key?(:creating_without_retries)
           @deleting = args[:deleting] if args.key?(:deleting)
           @none = args[:none] if args.key?(:none)
@@ -17277,8 +17267,8 @@ module Google
       class InstanceGroupManagerInstanceFlexibilityPolicy
         include Google::Apis::Core::Hashable
       
-        # List of instance selection options that the group will use when creating new
-        # VMs.
+        # Named instance selections configuring properties that the group will use when
+        # creating new VMs.
         # Corresponds to the JSON property `instanceSelectionLists`
         # @return [Hash<String,Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>]
         attr_accessor :instance_selection_lists
@@ -27284,6 +27274,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # Only valid for network endpoint groups created with client_port_mapping
+        # supported. Represents the port number to which original packet is sent.
+        # Corresponds to the JSON property `clientPort`
+        # @return [Fixnum]
+        attr_accessor :client_port
+      
         # Optional fully qualified domain name of network endpoint. This can only be
         # specified when NetworkEndpointGroup.network_endpoint_type is NON_GCP_FQDN_PORT.
         # Corresponds to the JSON property `fqdn`
@@ -27318,6 +27314,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # The name of the zone where the instance hosting the network endpoint is
+        # located (valid only for regional GCE_VM_IP_PORT NEGs). It should comply with
+        # RFC1035. The zone must belong to the region of the Network Endpoint Group.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
         def initialize(**args)
            update!(**args)
         end
@@ -27325,11 +27328,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @client_port = args[:client_port] if args.key?(:client_port)
           @fqdn = args[:fqdn] if args.key?(:fqdn)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @port = args[:port] if args.key?(:port)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -27353,6 +27358,12 @@ module Google
         # Corresponds to the JSON property `appEngine`
         # @return [Google::Apis::ComputeAlpha::NetworkEndpointGroupAppEngine]
         attr_accessor :app_engine
+      
+        # Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is
+        # regional.
+        # Corresponds to the JSON property `clientPortMappingMode`
+        # @return [String]
+        attr_accessor :client_port_mapping_mode
       
         # Configuration for a Cloud Function network endpoint group (NEG). The function
         # must be provided explicitly or in the URL mask. Note: Cloud Function must be
@@ -27492,6 +27503,7 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @app_engine = args[:app_engine] if args.key?(:app_engine)
+          @client_port_mapping_mode = args[:client_port_mapping_mode] if args.key?(:client_port_mapping_mode)
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -39968,6 +39980,20 @@ module Google
         attr_accessor :enable_ipv6
         alias_method :enable_ipv6?, :enable_ipv6
       
+        # List of export policies applied to this peer, in the order they must be
+        # evaluated. The name must correspond to an existing policy that has
+        # ROUTE_POLICY_TYPE_EXPORT type.
+        # Corresponds to the JSON property `exportPolicies`
+        # @return [Array<String>]
+        attr_accessor :export_policies
+      
+        # List of import policies applied to this peer, in the order they must be
+        # evaluated. The name must correspond to an existing policy that has
+        # ROUTE_POLICY_TYPE_IMPORT type.
+        # Corresponds to the JSON property `importPolicies`
+        # @return [Array<String>]
+        attr_accessor :import_policies
+      
         # Name of the interface the BGP peer is associated with.
         # Corresponds to the JSON property `interfaceName`
         # @return [String]
@@ -40062,6 +40088,8 @@ module Google
           @enable = args[:enable] if args.key?(:enable)
           @enable_ipv4 = args[:enable_ipv4] if args.key?(:enable_ipv4)
           @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
+          @export_policies = args[:export_policies] if args.key?(:export_policies)
+          @import_policies = args[:import_policies] if args.key?(:import_policies)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ipv4_nexthop_address = args[:ipv4_nexthop_address] if args.key?(:ipv4_nexthop_address)
@@ -40654,8 +40682,8 @@ module Google
         # "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.
         # 0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The
         # following example is a valid match expression for private NAT: "nexthop.hub ==
-        # 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/
-        # global/hub/hub-1'"
+        # '//networkconnectivity.googleapis.com/projects/my-project/locations/global/
+        # hubs/hub-1'"
         # Corresponds to the JSON property `match`
         # @return [String]
         attr_accessor :match
@@ -41135,9 +41163,9 @@ module Google
         attr_accessor :self_link
       
         # [Output Only] Unreachable resources.
-        # Corresponds to the JSON property `unreachable`
+        # Corresponds to the JSON property `unreachables`
         # @return [Array<String>]
-        attr_accessor :unreachable
+        attr_accessor :unreachables
       
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
@@ -41156,7 +41184,7 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @result = args[:result] if args.key?(:result)
           @self_link = args[:self_link] if args.key?(:self_link)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -41266,9 +41294,9 @@ module Google
         attr_accessor :self_link
       
         # [Output Only] Unreachable resources.
-        # Corresponds to the JSON property `unreachable`
+        # Corresponds to the JSON property `unreachables`
         # @return [Array<String>]
-        attr_accessor :unreachable
+        attr_accessor :unreachables
       
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
@@ -41287,7 +41315,7 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @result = args[:result] if args.key?(:result)
           @self_link = args[:self_link] if args.key?(:self_link)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -45265,6 +45293,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] URL of the region where the snapshot resides. Only applicable
+        # for regional snapshots.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -45413,6 +45447,7 @@ module Google
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @max_retention_days = args[:max_retention_days] if args.key?(:max_retention_days)
           @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -47129,11 +47164,6 @@ module Google
         # @return [String]
         attr_accessor :storage_pool_type
       
-        # Type of the storage pool
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
         # [Output Only] URL of the zone where the storage pool resides. You must specify
         # this field as part of the HTTP request URL. It is not settable as a field in
         # the request body.
@@ -47163,7 +47193,6 @@ module Google
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
           @storage_pool_type = args[:storage_pool_type] if args.key?(:storage_pool_type)
-          @type = args[:type] if args.key?(:type)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -47701,6 +47730,445 @@ module Google
           @used_bytes = args[:used_bytes] if args.key?(:used_bytes)
           @used_reduced_bytes = args[:used_reduced_bytes] if args.key?(:used_reduced_bytes)
           @used_throughput = args[:used_throughput] if args.key?(:used_throughput)
+        end
+      end
+      
+      # 
+      class StoragePoolType
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # Deprecation status for a public resource.
+        # Corresponds to the JSON property `deprecated`
+        # @return [Google::Apis::ComputeAlpha::DeprecationStatus]
+        attr_accessor :deprecated
+      
+        # [Output Only] An optional description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#storagePoolType for storage
+        # pool types.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] Maximum provisioned IOPS.
+        # Corresponds to the JSON property `maxProvisionedIops`
+        # @return [Fixnum]
+        attr_accessor :max_provisioned_iops
+      
+        # [Output Only] Maximum provisioned throughput.
+        # Corresponds to the JSON property `maxProvisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :max_provisioned_throughput
+      
+        # [Output Only] Maximum storage pool size in GB.
+        # Corresponds to the JSON property `maxSizeGb`
+        # @return [Fixnum]
+        attr_accessor :max_size_gb
+      
+        # [Output Only] Minimum provisioned IOPS.
+        # Corresponds to the JSON property `minProvisionedIops`
+        # @return [Fixnum]
+        attr_accessor :min_provisioned_iops
+      
+        # [Output Only] Minimum provisioned throughput.
+        # Corresponds to the JSON property `minProvisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :min_provisioned_throughput
+      
+        # [Output Only] Minimum storage pool size in GB.
+        # Corresponds to the JSON property `minSizeGb`
+        # @return [Fixnum]
+        attr_accessor :min_size_gb
+      
+        # [Output Only] Name of the resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # [Output Only] The list of disk types supported in this storage pool type.
+        # Corresponds to the JSON property `supportedDiskTypes`
+        # @return [Array<String>]
+        attr_accessor :supported_disk_types
+      
+        # [Output Only] URL of the zone where the storage pool type resides. You must
+        # specify this field as part of the HTTP request URL. It is not settable as a
+        # field in the request body.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @deprecated = args[:deprecated] if args.key?(:deprecated)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @max_provisioned_iops = args[:max_provisioned_iops] if args.key?(:max_provisioned_iops)
+          @max_provisioned_throughput = args[:max_provisioned_throughput] if args.key?(:max_provisioned_throughput)
+          @max_size_gb = args[:max_size_gb] if args.key?(:max_size_gb)
+          @min_provisioned_iops = args[:min_provisioned_iops] if args.key?(:min_provisioned_iops)
+          @min_provisioned_throughput = args[:min_provisioned_throughput] if args.key?(:min_provisioned_throughput)
+          @min_size_gb = args[:min_size_gb] if args.key?(:min_size_gb)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @supported_disk_types = args[:supported_disk_types] if args.key?(:supported_disk_types)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class StoragePoolTypeAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of StoragePoolTypesScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::StoragePoolTypesScopedList>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#storagePoolTypeAggregatedList .
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::StoragePoolTypeAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::StoragePoolTypeAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # Contains a list of storage pool types.
+      class StoragePoolTypeList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of StoragePoolType resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::StoragePoolType>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#storagePoolTypeList for storage
+        # pool types.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::StoragePoolTypeList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::StoragePoolTypeList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class StoragePoolTypesScopedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A list of storage pool types contained in this scope.
+        # Corresponds to the JSON property `storagePoolTypes`
+        # @return [Array<Google::Apis::ComputeAlpha::StoragePoolType>]
+        attr_accessor :storage_pool_types
+      
+        # [Output Only] Informational warning which replaces the list of storage pool
+        # types when the list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::StoragePoolTypesScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @storage_pool_types = args[:storage_pool_types] if args.key?(:storage_pool_types)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning which replaces the list of storage pool
+        # types when the list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::StoragePoolTypesScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
