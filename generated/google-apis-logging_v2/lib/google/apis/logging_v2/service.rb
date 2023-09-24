@@ -1744,7 +1744,8 @@ module Google
         # entries to Logging. This method is used, directly or indirectly, by the
         # Logging agent (fluentd) and all logging libraries configured to use Logging. A
         # single request may contain log entries for a maximum of 1000 different
-        # resources (projects, organizations, billing accounts or folders)
+        # resource names (projects, organizations, billing accounts or folders), where
+        # the resource name for a log entry is determined from its logName field.
         # @param [Google::Apis::LoggingV2::WriteLogEntriesRequest] write_log_entries_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
