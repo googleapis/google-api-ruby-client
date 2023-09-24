@@ -4079,8 +4079,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether the serving infrastructure will authenticate and authorize all
-        # incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields
-        # must be non-empty.
+        # incoming requests.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -5221,7 +5220,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # List of reservations in this commitment.
+        # List of create-on-create reseravtions for this commitment.
         # Corresponds to the JSON property `reservations`
         # @return [Array<Google::Apis::ComputeV1::Reservation>]
         attr_accessor :reservations
@@ -9339,13 +9338,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # This field is not used for external load balancing. For Internal TCP/UDP Load
-        # Balancing, this field identifies the network that the load balanced IP should
-        # belong to for this Forwarding Rule. If the subnetwork is specified, the
-        # network of the subnetwork will be used. If neither subnetwork nor this field
-        # is specified, the default network will be used. For Private Service Connect
-        # forwarding rules that forward traffic to Google APIs, a network must be
-        # provided.
+        # This field is not used for global external load balancing. For Internal TCP/
+        # UDP Load Balancing, this field identifies the network that the load balanced
+        # IP should belong to for this Forwarding Rule. If the subnetwork is specified,
+        # the network of the subnetwork will be used. If neither subnetwork nor this
+        # field is specified, the default network will be used. For Private Service
+        # Connect forwarding rules that forward traffic to Google APIs, a network must
+        # be provided.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -27477,6 +27476,18 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeV1::PreservedStatePreservedDisk>]
         attr_accessor :disks
       
+        # Preserved external IPs defined for this instance. This map is keyed with the
+        # name of the network interface.
+        # Corresponds to the JSON property `externalIPs`
+        # @return [Hash<String,Google::Apis::ComputeV1::PreservedStatePreservedNetworkIp>]
+        attr_accessor :external_i_ps
+      
+        # Preserved internal IPs defined for this instance. This map is keyed with the
+        # name of the network interface.
+        # Corresponds to the JSON property `internalIPs`
+        # @return [Hash<String,Google::Apis::ComputeV1::PreservedStatePreservedNetworkIp>]
+        attr_accessor :internal_i_ps
+      
         # Preserved metadata defined for this instance.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
@@ -27489,6 +27500,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disks = args[:disks] if args.key?(:disks)
+          @external_i_ps = args[:external_i_ps] if args.key?(:external_i_ps)
+          @internal_i_ps = args[:internal_i_ps] if args.key?(:internal_i_ps)
           @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
@@ -27527,6 +27540,60 @@ module Google
           @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
           @mode = args[:mode] if args.key?(:mode)
           @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # 
+      class PreservedStatePreservedNetworkIp
+        include Google::Apis::Core::Hashable
+      
+        # These stateful IPs will never be released during autohealing, update or VM
+        # instance recreate operations. This flag is used to configure if the IP
+        # reservation should be deleted after it is no longer used by the group, e.g.
+        # when the given instance or the whole group is deleted.
+        # Corresponds to the JSON property `autoDelete`
+        # @return [String]
+        attr_accessor :auto_delete
+      
+        # Ip address representation
+        # Corresponds to the JSON property `ipAddress`
+        # @return [Google::Apis::ComputeV1::PreservedStatePreservedNetworkIpIpAddress]
+        attr_accessor :ip_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+        end
+      end
+      
+      # 
+      class PreservedStatePreservedNetworkIpIpAddress
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the reservation for this IP address.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # An IPv4 internal network address to assign to the instance for this network
+        # interface.
+        # Corresponds to the JSON property `literal`
+        # @return [String]
+        attr_accessor :literal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @literal = args[:literal] if args.key?(:literal)
         end
       end
       
@@ -33142,8 +33209,8 @@ module Google
         # "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.
         # 0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The
         # following example is a valid match expression for private NAT: "nexthop.hub ==
-        # 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/
-        # global/hub/hub-1'"
+        # '//networkconnectivity.googleapis.com/projects/my-project/locations/global/
+        # hubs/hub-1'"
         # Corresponds to the JSON property `match`
         # @return [String]
         attr_accessor :match
@@ -38137,6 +38204,20 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeV1::StatefulPolicyPreservedStateDiskDevice>]
         attr_accessor :disks
       
+        # External network IPs assigned to the instances that will be preserved on
+        # instance delete, update, etc. This map is keyed with the network interface
+        # name.
+        # Corresponds to the JSON property `externalIPs`
+        # @return [Hash<String,Google::Apis::ComputeV1::StatefulPolicyPreservedStateNetworkIp>]
+        attr_accessor :external_i_ps
+      
+        # Internal network IPs assigned to the instances that will be preserved on
+        # instance delete, update, etc. This map is keyed with the network interface
+        # name.
+        # Corresponds to the JSON property `internalIPs`
+        # @return [Hash<String,Google::Apis::ComputeV1::StatefulPolicyPreservedStateNetworkIp>]
+        attr_accessor :internal_i_ps
+      
         def initialize(**args)
            update!(**args)
         end
@@ -38144,6 +38225,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disks = args[:disks] if args.key?(:disks)
+          @external_i_ps = args[:external_i_ps] if args.key?(:external_i_ps)
+          @internal_i_ps = args[:internal_i_ps] if args.key?(:internal_i_ps)
         end
       end
       
@@ -38156,6 +38239,28 @@ module Google
         # should be deleted after it is no longer used by the group, e.g. when the given
         # instance or the whole group is deleted. Note: disks attached in READ_ONLY mode
         # cannot be auto-deleted.
+        # Corresponds to the JSON property `autoDelete`
+        # @return [String]
+        attr_accessor :auto_delete
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
+        end
+      end
+      
+      # 
+      class StatefulPolicyPreservedStateNetworkIp
+        include Google::Apis::Core::Hashable
+      
+        # These stateful IPs will never be released during autohealing, update or VM
+        # instance recreate operations. This flag is used to configure if the IP
+        # reservation should be deleted after it is no longer used by the group, e.g.
+        # when the given instance or the whole group is deleted.
         # Corresponds to the JSON property `autoDelete`
         # @return [String]
         attr_accessor :auto_delete
