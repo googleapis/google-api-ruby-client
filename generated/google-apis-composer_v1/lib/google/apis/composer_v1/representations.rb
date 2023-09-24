@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TriggererResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WebServerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -386,6 +392,7 @@ module Google
           property :create_time, as: 'createTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :storage_config, as: 'storageConfig', class: Google::Apis::ComposerV1::StorageConfig, decorator: Google::Apis::ComposerV1::StorageConfig::Representation
       
@@ -742,6 +749,15 @@ module Google
         end
       end
       
+      class TriggererResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :cpu, as: 'cpu'
+          property :memory_gb, as: 'memoryGb'
+        end
+      end
+      
       class WebServerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -781,6 +797,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :scheduler, as: 'scheduler', class: Google::Apis::ComposerV1::SchedulerResource, decorator: Google::Apis::ComposerV1::SchedulerResource::Representation
+      
+          property :triggerer, as: 'triggerer', class: Google::Apis::ComposerV1::TriggererResource, decorator: Google::Apis::ComposerV1::TriggererResource::Representation
       
           property :web_server, as: 'webServer', class: Google::Apis::ComposerV1::WebServerResource, decorator: Google::Apis::ComposerV1::WebServerResource::Representation
       

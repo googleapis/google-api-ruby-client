@@ -281,6 +281,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # The current state of the environment.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -312,6 +318,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @storage_config = args[:storage_config] if args.key?(:storage_config)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1780,6 +1787,37 @@ module Google
         end
       end
       
+      # Configuration for resources used by Airflow triggerers.
+      class TriggererResource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of triggerers.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Optional. CPU request and limit for a single Airflow triggerer replica.
+        # Corresponds to the JSON property `cpu`
+        # @return [Float]
+        attr_accessor :cpu
+      
+        # Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+        # Corresponds to the JSON property `memoryGb`
+        # @return [Float]
+        attr_accessor :memory_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @cpu = args[:cpu] if args.key?(:cpu)
+          @memory_gb = args[:memory_gb] if args.key?(:memory_gb)
+        end
+      end
+      
       # The configuration settings for the Airflow web server App Engine instance.
       # Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.
       # *.*
@@ -1909,6 +1947,11 @@ module Google
         # @return [Google::Apis::ComposerV1::SchedulerResource]
         attr_accessor :scheduler
       
+        # Configuration for resources used by Airflow triggerers.
+        # Corresponds to the JSON property `triggerer`
+        # @return [Google::Apis::ComposerV1::TriggererResource]
+        attr_accessor :triggerer
+      
         # Configuration for resources used by Airflow web server.
         # Corresponds to the JSON property `webServer`
         # @return [Google::Apis::ComposerV1::WebServerResource]
@@ -1926,6 +1969,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @scheduler = args[:scheduler] if args.key?(:scheduler)
+          @triggerer = args[:triggerer] if args.key?(:triggerer)
           @web_server = args[:web_server] if args.key?(:web_server)
           @worker = args[:worker] if args.key?(:worker)
         end
