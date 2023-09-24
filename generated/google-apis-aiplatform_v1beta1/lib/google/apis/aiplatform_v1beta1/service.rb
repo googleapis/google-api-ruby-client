@@ -12626,7 +12626,7 @@ module Google
         # @param [String] persistent_resource_id
         #   Required. The ID to use for the PersistentResource, which become the final
         #   component of the PersistentResource's resource name. The maximum length is 63
-        #   characters, and valid characters are /^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$/.
+        #   characters, and valid characters are `/^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13028,7 +13028,8 @@ module Google
         # @param [String] pipeline_job_id
         #   The ID to use for the PipelineJob, which will become the final component of
         #   the PipelineJob name. If not provided, an ID will be automatically generated.
-        #   This value should be less than 128 characters, and valid characters are /a-z-/.
+        #   This value should be less than 128 characters, and valid characters are `/a-z-/
+        #   `.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15585,7 +15586,7 @@ module Google
         # @param [String] tensorboard_experiment_id
         #   Required. The ID to use for the Tensorboard experiment, which becomes the
         #   final component of the Tensorboard experiment's resource name. This value
-        #   should be 1-128 characters, and valid characters are /a-z-/.
+        #   should be 1-128 characters, and valid characters are `/a-z-/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16036,7 +16037,7 @@ module Google
         # @param [String] tensorboard_run_id
         #   Required. The ID to use for the Tensorboard run, which becomes the final
         #   component of the Tensorboard run's resource name. This value should be 1-128
-        #   characters, and valid characters are /a-z-/.
+        #   characters, and valid characters are `/a-z-/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

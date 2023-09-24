@@ -2618,7 +2618,8 @@ module Google
       
         # The ID to use for the PipelineJob, which will become the final component of
         # the PipelineJob name. If not provided, an ID will be automatically generated.
-        # This value should be less than 128 characters, and valid characters are /a-z-/.
+        # This value should be less than 128 characters, and valid characters are `/a-z-/
+        # `.
         # Corresponds to the JSON property `pipelineJobId`
         # @return [String]
         attr_accessor :pipeline_job_id
@@ -2711,7 +2712,7 @@ module Google
       
         # Required. The ID to use for the Tensorboard run, which becomes the final
         # component of the Tensorboard run's resource name. This value should be 1-128
-        # characters, and valid characters are /a-z-/.
+        # characters, and valid characters are `/a-z-/`.
         # Corresponds to the JSON property `tensorboardRunId`
         # @return [String]
         attr_accessor :tensorboard_run_id
@@ -3943,8 +3944,10 @@ module Google
         # for this DeployedIndex. If set, we will deploy the index within the provided
         # ip ranges. Otherwise, the index might be deployed to any ip ranges under the
         # provided VPC network. The value should be the name of the address (https://
-        # cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: 'vertex-ai-
-        # ip-range'.
+        # cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-
+        # ai-ip-range']. For more information about subnets and network IP ranges,
+        # please see https://cloud.google.com/vpc/docs/subnets#
+        # manually_created_subnet_ip_ranges.
         # Corresponds to the JSON property `reservedIpRanges`
         # @return [Array<String>]
         attr_accessor :reserved_ip_ranges
@@ -4105,7 +4108,7 @@ module Google
       
         # Immutable. The ID of the DeployedModel. If not provided upon deployment,
         # Vertex AI will generate a value for this ID. This value should be 1-10
-        # characters, and valid characters are /[0-9]/.
+        # characters, and valid characters are `/[0-9]/`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -12630,6 +12633,23 @@ module Google
         # @return [String]
         attr_accessor :health_state
       
+        # The labels with user-defined metadata to organize your NotebookRuntime. Label
+        # keys and values can be no longer than 64 characters (Unicode codepoints), can
+        # only contain lowercase letters, numeric characters, underscores and dashes.
+        # International characters are allowed. No more than 64 user labels can be
+        # associated with one Dataset (System labels are excluded). See https://goo.gl/
+        # xmQnxf for more information and examples of labels. System reserved label keys
+        # are prefixed with "aiplatform.googleapis.com/" and are immutable. Following
+        # system labels exist for NotebookRuntime: * "aiplatform.googleapis.com/
+        # notebook_runtime_gce_instance_id": output only, its value is the Compute
+        # Engine instance id. * "aiplatform.googleapis.com/
+        # colab_enterprise_entry_service": its value is either "BigQuery" or "Vertex";
+        # if absent, it should be "Vertex". This is to describe the entry service,
+        # either BigQuery or Vertex.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Output only. The resource name of the NotebookRuntime.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -12681,6 +12701,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @health_state = args[:health_state] if args.key?(:health_state)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @notebook_runtime_template_ref = args[:notebook_runtime_template_ref] if args.key?(:notebook_runtime_template_ref)
           @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)

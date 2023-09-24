@@ -7716,6 +7716,7 @@ module Google
           property :display_name, as: 'displayName'
           property :expiration_time, as: 'expirationTime'
           property :health_state, as: 'healthState'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :notebook_runtime_template_ref, as: 'notebookRuntimeTemplateRef', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookRuntimeTemplateRef, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookRuntimeTemplateRef::Representation
       
