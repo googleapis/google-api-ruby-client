@@ -1424,6 +1424,7 @@ module Google
           collection :emoji_reaction_summaries, as: 'emojiReactionSummaries', class: Google::Apis::ChatV1::EmojiReactionSummary, decorator: Google::Apis::ChatV1::EmojiReactionSummary::Representation
       
           property :fallback_text, as: 'fallbackText'
+          property :formatted_text, as: 'formattedText'
           property :last_update_time, as: 'lastUpdateTime'
           property :matched_url, as: 'matchedUrl', class: Google::Apis::ChatV1::MatchedUrl, decorator: Google::Apis::ChatV1::MatchedUrl::Representation
       

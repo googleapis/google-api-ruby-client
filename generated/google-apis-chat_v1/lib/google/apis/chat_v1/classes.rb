@@ -112,12 +112,11 @@ module Google
       
       # Output only. Annotations associated with the plain-text body of the message.
       # To add basic formatting to a text message, see [Format text messages](https://
-      # developers.google.com/chat/api/guides/message-formats/text#format-texts).
-      # Example plain-text message body: ``` Hello @FooBot how are you!" ``` The
-      # corresponding annotations metadata: ``` "annotations":[` "type":"USER_MENTION",
-      # "startIndex":6, "length":7, "userMention": ` "user": ` "name":"users/`user`",
-      # "displayName":"FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" `, "
-      # type":"MENTION" ` `] ```
+      # developers.google.com/chat/format-messages). Example plain-text message body: `
+      # `` Hello @FooBot how are you!" ``` The corresponding annotations metadata: ```
+      # "annotations":[` "type":"USER_MENTION", "startIndex":6, "length":7, "
+      # userMention": ` "user": ` "name":"users/`user`", "displayName":"FooBot", "
+      # avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" `, "type":"MENTION" ` `] ```
       class Annotation
         include Google::Apis::Core::Hashable
       
@@ -1110,8 +1109,8 @@ module Google
         # the user make changes while the action is being processed, set [`LoadIndicator`
         # ](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.
         # card.v1#loadindicator) to `NONE`. For [card messages](https://developers.
-        # google.com/chat/api/guides/message-formats/cards) in Chat apps, you must also
-        # set the action's [`ResponseType`](https://developers.google.com/chat/api/
+        # google.com/chat/api/guides/v1/messages/create#create) in Chat apps, you must
+        # also set the action's [`ResponseType`](https://developers.google.com/chat/api/
         # reference/rest/v1/spaces.messages#responsetype) to `UPDATE_MESSAGE` and use
         # the same [`card_id`](https://developers.google.com/chat/api/reference/rest/v1/
         # spaces.messages#CardWithId) from the card that contained the action. If `false`
@@ -1317,9 +1316,8 @@ module Google
       
         # An icon displayed in a widget on a card. For an example in Google Chat apps,
         # see [Icon](https://developers.google.com/chat/ui/widgets/icon). Supports [
-        # built-in](https://developers.google.com/chat/api/guides/message-formats/cards#
-        # builtinicons) and [custom](https://developers.google.com/chat/api/guides/
-        # message-formats/cards#customicons) icons.
+        # built-in](https://developers.google.com/chat/format-messages#builtinicons) and
+        # [custom](https://developers.google.com/chat/format-messages#customicons) icons.
         # Corresponds to the JSON property `icon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :icon
@@ -1420,8 +1418,8 @@ module Google
         # specifying a `primaryButton` or a `secondaryButton` causes an error. Supported
         # by Google Workspace Add-ons and Chat apps. For Chat apps, you can use fixed
         # footers in [dialogs](https://developers.google.com/chat/how-tos/dialogs), but
-        # not [card messages](https://developers.google.com/chat/api/guides/message-
-        # formats/cards).
+        # not [card messages](https://developers.google.com/chat/api/guides/v1/messages/
+        # create#create).
         # Corresponds to the JSON property `fixedFooter`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardFixedFooter]
         attr_accessor :fixed_footer
@@ -1508,8 +1506,8 @@ module Google
       # specifying a `primaryButton` or a `secondaryButton` causes an error. Supported
       # by Google Workspace Add-ons and Chat apps. For Chat apps, you can use fixed
       # footers in [dialogs](https://developers.google.com/chat/how-tos/dialogs), but
-      # not [card messages](https://developers.google.com/chat/api/guides/message-
-      # formats/cards).
+      # not [card messages](https://developers.google.com/chat/api/guides/v1/messages/
+      # create#create).
       class GoogleAppsCardV1CardFixedFooter
         include Google::Apis::Core::Hashable
       
@@ -1749,18 +1747,16 @@ module Google
       
         # An icon displayed in a widget on a card. For an example in Google Chat apps,
         # see [Icon](https://developers.google.com/chat/ui/widgets/icon). Supports [
-        # built-in](https://developers.google.com/chat/api/guides/message-formats/cards#
-        # builtinicons) and [custom](https://developers.google.com/chat/api/guides/
-        # message-formats/cards#customicons) icons.
+        # built-in](https://developers.google.com/chat/format-messages#builtinicons) and
+        # [custom](https://developers.google.com/chat/format-messages#customicons) icons.
         # Corresponds to the JSON property `endIcon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :end_icon
       
         # An icon displayed in a widget on a card. For an example in Google Chat apps,
         # see [Icon](https://developers.google.com/chat/ui/widgets/icon). Supports [
-        # built-in](https://developers.google.com/chat/api/guides/message-formats/cards#
-        # builtinicons) and [custom](https://developers.google.com/chat/api/guides/
-        # message-formats/cards#customicons) icons.
+        # built-in](https://developers.google.com/chat/format-messages#builtinicons) and
+        # [custom](https://developers.google.com/chat/format-messages#customicons) icons.
         # Corresponds to the JSON property `icon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :icon
@@ -1773,9 +1769,8 @@ module Google
       
         # An icon displayed in a widget on a card. For an example in Google Chat apps,
         # see [Icon](https://developers.google.com/chat/ui/widgets/icon). Supports [
-        # built-in](https://developers.google.com/chat/api/guides/message-formats/cards#
-        # builtinicons) and [custom](https://developers.google.com/chat/api/guides/
-        # message-formats/cards#customicons) icons.
+        # built-in](https://developers.google.com/chat/format-messages#builtinicons) and
+        # [custom](https://developers.google.com/chat/format-messages#customicons) icons.
         # Corresponds to the JSON property `startIcon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :start_icon
@@ -1788,9 +1783,9 @@ module Google
       
         # Required. The primary text. Supports simple formatting. For more information
         # about formatting text, see [Formatting text in Google Chat apps](https://
-        # developers.google.com/chat/api/guides/message-formats/cards#card-formatting)
-        # and [Formatting text in Google Workspace Add-ons](https://developers.google.
-        # com/apps-script/add-ons/concepts/widgets#text_formatting).
+        # developers.google.com/chat/format-messages#card-formatting) and [Formatting
+        # text in Google Workspace Add-ons](https://developers.google.com/apps-script/
+        # add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -1949,9 +1944,8 @@ module Google
       
       # An icon displayed in a widget on a card. For an example in Google Chat apps,
       # see [Icon](https://developers.google.com/chat/ui/widgets/icon). Supports [
-      # built-in](https://developers.google.com/chat/api/guides/message-formats/cards#
-      # builtinicons) and [custom](https://developers.google.com/chat/api/guides/
-      # message-formats/cards#customicons) icons.
+      # built-in](https://developers.google.com/chat/format-messages#builtinicons) and
+      # [custom](https://developers.google.com/chat/format-messages#customicons) icons.
       class GoogleAppsCardV1Icon
         include Google::Apis::Core::Hashable
       
@@ -1983,7 +1977,7 @@ module Google
         # Display one of the built-in icons provided by Google Workspace. For example,
         # to display an airplane icon, specify `AIRPLANE`. For a bus, specify `BUS`. For
         # a full list of supported icons, see [built-in icons](https://developers.google.
-        # com/chat/api/guides/message-formats/cards#builtinicons).
+        # com/chat/format-messages#builtinicons).
         # Corresponds to the JSON property `knownIcon`
         # @return [String]
         attr_accessor :known_icon
@@ -2251,9 +2245,9 @@ module Google
       
         # Text that appears at the top of a section. Supports simple HTML formatted text.
         # For more information about formatting text, see [Formatting text in Google
-        # Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#
-        # card-formatting) and [Formatting text in Google Workspace Add-ons](https://
-        # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+        # Chat apps](https://developers.google.com/chat/format-messages#card-formatting)
+        # and [Formatting text in Google Workspace Add-ons](https://developers.google.
+        # com/apps-script/add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `header`
         # @return [String]
         attr_accessor :header
@@ -2640,10 +2634,9 @@ module Google
       # A paragraph of text that supports formatting. For an example in Google Chat
       # apps, see [Text paragraph](https://developers.google.com/chat/ui/widgets/text-
       # paragraph). For more information about formatting text, see [Formatting text
-      # in Google Chat apps](https://developers.google.com/chat/api/guides/message-
-      # formats/cards##card-formatting) and [Formatting text in Google Workspace Add-
-      # ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#
-      # text_formatting).
+      # in Google Chat apps](https://developers.google.com/chat/format-messages#card-
+      # formatting) and [Formatting text in Google Workspace Add-ons](https://
+      # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
       class GoogleAppsCardV1TextParagraph
         include Google::Apis::Core::Hashable
       
@@ -2773,10 +2766,9 @@ module Google
         # A paragraph of text that supports formatting. For an example in Google Chat
         # apps, see [Text paragraph](https://developers.google.com/chat/ui/widgets/text-
         # paragraph). For more information about formatting text, see [Formatting text
-        # in Google Chat apps](https://developers.google.com/chat/api/guides/message-
-        # formats/cards##card-formatting) and [Formatting text in Google Workspace Add-
-        # ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#
-        # text_formatting).
+        # in Google Chat apps](https://developers.google.com/chat/format-messages#card-
+        # formatting) and [Formatting text in Google Workspace Add-ons](https://
+        # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `textParagraph`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
         attr_accessor :text_paragraph
@@ -2861,10 +2853,9 @@ module Google
         # A paragraph of text that supports formatting. For an example in Google Chat
         # apps, see [Text paragraph](https://developers.google.com/chat/ui/widgets/text-
         # paragraph). For more information about formatting text, see [Formatting text
-        # in Google Chat apps](https://developers.google.com/chat/api/guides/message-
-        # formats/cards##card-formatting) and [Formatting text in Google Workspace Add-
-        # ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#
-        # text_formatting).
+        # in Google Chat apps](https://developers.google.com/chat/format-messages#card-
+        # formatting) and [Formatting text in Google Workspace Add-ons](https://
+        # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `textParagraph`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
         attr_accessor :text_paragraph
@@ -3029,9 +3020,9 @@ module Google
       
         # The text of the bottom label. Formatted text supported. For more information
         # about formatting text, see [Formatting text in Google Chat apps](https://
-        # developers.google.com/chat/api/guides/message-formats/cards#
-        # card_text_formatting) and [Formatting text in Google Workspace Add-ons](https:/
-        # /developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+        # developers.google.com/chat/format-messages#card-formatting) and [Formatting
+        # text in Google Workspace Add-ons](https://developers.google.com/apps-script/
+        # add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `bottomLabel`
         # @return [String]
         attr_accessor :bottom_label
@@ -3043,9 +3034,9 @@ module Google
       
         # The text of the content. Formatted text supported and always required. For
         # more information about formatting text, see [Formatting text in Google Chat
-        # apps](https://developers.google.com/chat/api/guides/message-formats/cards#
-        # card_text_formatting) and [Formatting text in Google Workspace Add-ons](https:/
-        # /developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+        # apps](https://developers.google.com/chat/format-messages#card-formatting) and [
+        # Formatting text in Google Workspace Add-ons](https://developers.google.com/
+        # apps-script/add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -3074,9 +3065,9 @@ module Google
       
         # The text of the top label. Formatted text supported. For more information
         # about formatting text, see [Formatting text in Google Chat apps](https://
-        # developers.google.com/chat/api/guides/message-formats/cards#
-        # card_text_formatting) and [Formatting text in Google Workspace Add-ons](https:/
-        # /developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+        # developers.google.com/chat/format-messages#card-formatting) and [Formatting
+        # text in Google Workspace Add-ons](https://developers.google.com/apps-script/
+        # add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `topLabel`
         # @return [String]
         attr_accessor :top_label
@@ -3267,8 +3258,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. User's role within a Chat space, which determines their permitted
-        # actions in the space.
+        # Optional. User's role within a Chat space, which determines their permitted
+        # actions in the space. [Developer Preview](https://developers.google.com/
+        # workspace/preview): This field can only be used as input in `UpdateMembership`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -3388,6 +3380,22 @@ module Google
         # @return [String]
         attr_accessor :fallback_text
       
+        # Output only. Contains the message `text` with markups added to communicate
+        # formatting. This field might not capture all formatting visible in the UI, but
+        # includes the following: * [Markup syntax](https://developers.google.com/chat/
+        # format-messages) for bold, italic, strikethrough, monospace, and monospace
+        # block. * [User mentions](https://developers.google.com/chat/format-messages#
+        # messages-@mention) using the format ``. * Custom hyperlinks using the format `<
+        # `url`|`rendered_text`>` where the first string is the URL and the second is
+        # the rendered text—for example, ``. * Custom emoji using the format `:`
+        # emoji_name`:`—for example, `:smile:`. This doesn't apply to Unicode emoji,
+        # such as `U+1F600` for a grinning face emoji. For more information, see [View
+        # text formatting sent in a message](https://developers.google.com/chat/format-
+        # messages#view_text_formatting_sent_in_a_message)
+        # Corresponds to the JSON property `formattedText`
+        # @return [String]
+        attr_accessor :formatted_text
+      
         # Output only. The time at which the message was last edited by a user. If the
         # message has never been edited, this field is empty.
         # Corresponds to the JSON property `lastUpdateTime`
@@ -3435,9 +3443,9 @@ module Google
         # Plain-text body of the message. The first link to an image, video, or web page
         # generates a [preview chip](https://developers.google.com/chat/how-tos/preview-
         # links). You can also [@mention a Google Chat user](https://developers.google.
-        # com/chat/api/guides/message-formats/text#messages-@mention), or everyone in
-        # the space. To learn about creating text messages, see [Create a text message](
-        # https://developers.google.com/chat/api/guides/message-formats/text).
+        # com/chat/format-messages#messages-@mention), or everyone in the space. To
+        # learn about creating text messages, see [Send a text message](https://
+        # developers.google.com/chat/api/guides/v1/messages/create#create-text-messages).
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -3480,6 +3488,7 @@ module Google
           @deletion_metadata = args[:deletion_metadata] if args.key?(:deletion_metadata)
           @emoji_reaction_summaries = args[:emoji_reaction_summaries] if args.key?(:emoji_reaction_summaries)
           @fallback_text = args[:fallback_text] if args.key?(:fallback_text)
+          @formatted_text = args[:formatted_text] if args.key?(:formatted_text)
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @matched_url = args[:matched_url] if args.key?(:matched_url)
           @name = args[:name] if args.key?(:name)
@@ -3609,9 +3618,9 @@ module Google
       
         # The header of the section. Formatted text is supported. For more information
         # about formatting text, see [Formatting text in Google Chat apps](https://
-        # developers.google.com/chat/api/guides/message-formats/cards#
-        # card_text_formatting) and [Formatting text in Google Workspace Add-ons](https:/
-        # /developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+        # developers.google.com/chat/format-messages#card-formatting) and [Formatting
+        # text in Google Workspace Add-ons](https://developers.google.com/apps-script/
+        # add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `header`
         # @return [String]
         attr_accessor :header
@@ -3989,9 +3998,9 @@ module Google
       
       # A paragraph of text. Formatted text supported. For more information about
       # formatting text, see [Formatting text in Google Chat apps](https://developers.
-      # google.com/chat/api/guides/message-formats/cards#card_text_formatting) and [
-      # Formatting text in Google Workspace Add-ons](https://developers.google.com/
-      # apps-script/add-ons/concepts/widgets#text_formatting).
+      # google.com/chat/format-messages#card-formatting) and [Formatting text in
+      # Google Workspace Add-ons](https://developers.google.com/apps-script/add-ons/
+      # concepts/widgets#text_formatting).
       class TextParagraph
         include Google::Apis::Core::Hashable
       
@@ -4250,9 +4259,9 @@ module Google
       
         # A paragraph of text. Formatted text supported. For more information about
         # formatting text, see [Formatting text in Google Chat apps](https://developers.
-        # google.com/chat/api/guides/message-formats/cards#card_text_formatting) and [
-        # Formatting text in Google Workspace Add-ons](https://developers.google.com/
-        # apps-script/add-ons/concepts/widgets#text_formatting).
+        # google.com/chat/format-messages#card-formatting) and [Formatting text in
+        # Google Workspace Add-ons](https://developers.google.com/apps-script/add-ons/
+        # concepts/widgets#text_formatting).
         # Corresponds to the JSON property `textParagraph`
         # @return [Google::Apis::ChatV1::TextParagraph]
         attr_accessor :text_paragraph
