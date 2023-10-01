@@ -14308,6 +14308,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bgp_always_compare_med, as: 'bgpAlwaysCompareMed'
           property :bgp_best_path_selection_mode, as: 'bgpBestPathSelectionMode'
+          property :bgp_inter_region_cost, as: 'bgpInterRegionCost'
           property :routing_mode, as: 'routingMode'
         end
       end
@@ -18257,6 +18258,7 @@ module Google
           property :name, as: 'name'
           collection :nat_subnets, as: 'natSubnets'
           property :producer_forwarding_rule, as: 'producerForwardingRule'
+          property :propagated_connection_limit, as: 'propagatedConnectionLimit'
           property :psc_service_attachment_id, as: 'pscServiceAttachmentId', class: Google::Apis::ComputeAlpha::Uint128, decorator: Google::Apis::ComputeAlpha::Uint128::Representation
       
           property :reconcile_connections, as: 'reconcileConnections'
@@ -19008,6 +19010,7 @@ module Google
       class StoragePool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_provisioning_type, as: 'capacityProvisioningType'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
@@ -19015,6 +19018,7 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :performance_provisioning_type, as: 'performanceProvisioningType'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeAlpha::StoragePoolResourceStatus, decorator: Google::Apis::ComputeAlpha::StoragePoolResourceStatus::Representation
