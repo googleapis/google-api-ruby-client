@@ -114,6 +114,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -133,7 +134,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_accelerator_type_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_accelerator_type_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/acceleratorTypes', options)
           command.response_representation = Google::Apis::ComputeV1::AcceleratorTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::AcceleratorTypeAggregatedList
@@ -144,6 +145,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -343,6 +345,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -362,7 +365,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_addresses(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_addresses(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/addresses', options)
           command.response_representation = Google::Apis::ComputeV1::AddressAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::AddressAggregatedList
@@ -373,6 +376,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -779,6 +783,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -798,7 +803,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_autoscalers(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_autoscalers(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/autoscalers', options)
           command.response_representation = Google::Apis::ComputeV1::AutoscalerAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::AutoscalerAggregatedList
@@ -809,6 +814,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1746,6 +1752,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1765,7 +1772,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_backend_service_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_backend_service_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/backendServices', options)
           command.response_representation = Google::Apis::ComputeV1::BackendServiceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::BackendServiceAggregatedList
@@ -1776,6 +1783,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2443,6 +2451,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2462,7 +2471,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_disk_types(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_disk_types(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/diskTypes', options)
           command.response_representation = Google::Apis::ComputeV1::DiskTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::DiskTypeAggregatedList
@@ -2473,6 +2482,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2725,6 +2735,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2744,7 +2755,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_disk(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_disk(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/disks', options)
           command.response_representation = Google::Apis::ComputeV1::DiskAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::DiskAggregatedList
@@ -2755,6 +2766,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -5121,6 +5133,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5140,7 +5153,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_forwarding_rules(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_forwarding_rules(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/forwardingRules', options)
           command.response_representation = Google::Apis::ComputeV1::ForwardingRuleAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::ForwardingRuleAggregatedList
@@ -5151,6 +5164,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -6707,6 +6721,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6726,7 +6741,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_global_operation(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_global_operation(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/operations', options)
           command.response_representation = Google::Apis::ComputeV1::OperationAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::OperationAggregatedList
@@ -6737,6 +6752,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7442,6 +7458,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7461,7 +7478,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_health_check_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_health_check_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/healthChecks', options)
           command.response_representation = Google::Apis::ComputeV1::HealthChecksAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::HealthChecksAggregatedList
@@ -7472,6 +7489,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9142,6 +9160,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9161,7 +9180,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_instance_group_managers(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_instance_group_managers(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/instanceGroupManagers', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceGroupManagerAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceGroupManagerAggregatedList
@@ -9172,6 +9191,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -10459,6 +10479,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10478,7 +10499,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_instance_groups(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_instance_groups(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/instanceGroups', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceGroupAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceGroupAggregatedList
@@ -10489,6 +10510,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -11005,6 +11027,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11024,7 +11047,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_instance_template_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_instance_template_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/instanceTemplates', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceTemplateAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceTemplateAggregatedList
@@ -11035,6 +11058,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -11559,6 +11583,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11578,7 +11603,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_instances(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_instances(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/instances', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceAggregatedList
@@ -11589,6 +11614,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14039,6 +14065,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14058,7 +14085,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_interconnect_attachment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_interconnect_attachment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/interconnectAttachments', options)
           command.response_representation = Google::Apis::ComputeV1::InterconnectAttachmentAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::InterconnectAttachmentAggregatedList
@@ -14069,6 +14096,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14786,6 +14814,42 @@ module Google
           command = make_simple_command(:get, 'projects/{project}/global/interconnects/{interconnect}/getDiagnostics', options)
           command.response_representation = Google::Apis::ComputeV1::InterconnectsGetDiagnosticsResponse::Representation
           command.response_class = Google::Apis::ComputeV1::InterconnectsGetDiagnosticsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['interconnect'] = interconnect unless interconnect.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the interconnectMacsecConfig for the specified Interconnect.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] interconnect
+        #   Name of the interconnect resource to query.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::InterconnectsGetMacsecConfigResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::InterconnectsGetMacsecConfigResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_interconnect_macsec_config(project, interconnect, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/interconnects/{interconnect}/getMacsecConfig', options)
+          command.response_representation = Google::Apis::ComputeV1::InterconnectsGetMacsecConfigResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::InterconnectsGetMacsecConfigResponse
           command.params['project'] = project unless project.nil?
           command.params['interconnect'] = interconnect unless interconnect.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -15863,6 +15927,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15882,7 +15947,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_machine_types(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_machine_types(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/machineTypes', options)
           command.response_representation = Google::Apis::ComputeV1::MachineTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::MachineTypeAggregatedList
@@ -15893,6 +15958,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -16092,6 +16158,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16111,7 +16178,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_network_attachment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_network_attachment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/networkAttachments', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkAttachmentAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkAttachmentAggregatedList
@@ -16122,6 +16189,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -16552,6 +16620,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16571,7 +16640,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_network_edge_security_service_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_network_edge_security_service_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/networkEdgeSecurityServices', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkEdgeSecurityServiceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkEdgeSecurityServiceAggregatedList
@@ -16582,6 +16651,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -16850,6 +16920,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16869,7 +16940,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_network_endpoint_group_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_network_endpoint_group_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/networkEndpointGroups', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList
@@ -16880,6 +16951,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -18885,6 +18957,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18904,7 +18977,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_node_group_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_node_group_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/nodeGroups', options)
           command.response_representation = Google::Apis::ComputeV1::NodeGroupAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NodeGroupAggregatedList
@@ -18915,6 +18988,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -19656,6 +19730,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19675,7 +19750,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_node_template_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_node_template_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/nodeTemplates', options)
           command.response_representation = Google::Apis::ComputeV1::NodeTemplateAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NodeTemplateAggregatedList
@@ -19686,6 +19761,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -20113,6 +20189,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20132,7 +20209,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_node_type_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_node_type_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/nodeTypes', options)
           command.response_representation = Google::Apis::ComputeV1::NodeTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NodeTypeAggregatedList
@@ -20143,6 +20220,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -20341,6 +20419,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20360,7 +20439,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_packet_mirroring_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_packet_mirroring_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/packetMirrorings', options)
           command.response_representation = Google::Apis::ComputeV1::PacketMirroringAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::PacketMirroringAggregatedList
@@ -20371,6 +20450,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -21726,6 +21806,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -21745,7 +21826,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_public_delegated_prefix_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_public_delegated_prefix_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/publicDelegatedPrefixes', options)
           command.response_representation = Google::Apis::ComputeV1::PublicDelegatedPrefixAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::PublicDelegatedPrefixAggregatedList
@@ -21756,6 +21837,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -22977,6 +23059,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22996,7 +23079,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_region_commitment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_region_commitment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/commitments', options)
           command.response_representation = Google::Apis::ComputeV1::CommitmentAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::CommitmentAggregatedList
@@ -23007,6 +23090,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -26695,6 +26779,61 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Attach a list of network endpoints to the specified network endpoint group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region where you want to create the network endpoint group. It
+        #   should comply with RFC1035.
+        # @param [String] network_endpoint_group
+        #   The name of the network endpoint group where you are attaching network
+        #   endpoints to. It should comply with RFC1035.
+        # @param [Google::Apis::ComputeV1::RegionNetworkEndpointGroupsAttachEndpointsRequest] region_network_endpoint_groups_attach_endpoints_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def attach_region_network_endpoint_group_network_endpoints(project, region, network_endpoint_group, region_network_endpoint_groups_attach_endpoints_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}/attachNetworkEndpoints', options)
+          command.request_representation = Google::Apis::ComputeV1::RegionNetworkEndpointGroupsAttachEndpointsRequest::Representation
+          command.request_object = region_network_endpoint_groups_attach_endpoints_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['networkEndpointGroup'] = network_endpoint_group unless network_endpoint_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified network endpoint group. Note that the NEG cannot be
         # deleted if it is configured as a backend of a backend service.
         # @param [String] project
@@ -26736,6 +26875,62 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region_network_endpoint_group(project, region, network_endpoint_group, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:delete, 'projects/{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['networkEndpointGroup'] = network_endpoint_group unless network_endpoint_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Detach the network endpoint from the specified network endpoint group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region where the network endpoint group is located. It should
+        #   comply with RFC1035.
+        # @param [String] network_endpoint_group
+        #   The name of the network endpoint group you are detaching network endpoints
+        #   from. It should comply with RFC1035.
+        # @param [Google::Apis::ComputeV1::RegionNetworkEndpointGroupsDetachEndpointsRequest] region_network_endpoint_groups_detach_endpoints_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
+        #   MixerMutationRequestBuilder
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def detach_region_network_endpoint_group_network_endpoints(project, region, network_endpoint_group, region_network_endpoint_groups_detach_endpoints_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}/detachNetworkEndpoints', options)
+          command.request_representation = Google::Apis::ComputeV1::RegionNetworkEndpointGroupsDetachEndpointsRequest::Representation
+          command.request_object = region_network_endpoint_groups_detach_endpoints_request_object
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -26923,6 +27118,103 @@ module Google
           command.response_class = Google::Apis::ComputeV1::NetworkEndpointGroupList
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the network endpoints in the specified network endpoint group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region where the network endpoint group is located. It should
+        #   comply with RFC1035.
+        # @param [String] network_endpoint_group
+        #   The name of the network endpoint group from which you want to generate a list
+        #   of included network endpoints. It should comply with RFC1035.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. Most
+        #   Compute resources support two types of filter expressions: expressions that
+        #   support regular expressions and expressions that follow API improvement
+        #   proposal AIP-160. These two types of filter expressions cannot be mixed in one
+        #   request. If you want to use AIP-160, your expression must specify the field
+        #   name, an operator, and the value that you want to use for filtering. The value
+        #   must be a string, a number, or a boolean. The operator must be either `=`, `!=`
+        #   , `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute
+        #   Engine instances, you can exclude instances named `example-instance` by
+        #   specifying `name != example-instance`. The `:*` comparison can be used to test
+        #   whether a key has been defined. For example, to find all objects with `owner`
+        #   label use: ``` labels.owner:* ``` You can also filter nested fields. For
+        #   example, you could specify `scheduling.automaticRestart = false` to include
+        #   instances only if they are not scheduled for automatic restarts. You can use
+        #   filtering on nested fields to filter based on resource labels. To filter on
+        #   multiple expressions, provide each separate expression within parentheses. For
+        #   example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel
+        #   Skylake") ``` By default, each expression is an `AND` expression. However, you
+        #   can include `AND` and `OR` expressions explicitly. For example: ``` (
+        #   cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (
+        #   scheduling.automaticRestart = true) ``` If you want to use a regular
+        #   expression, use the `eq` (equal) or `ne` (not equal) operator against a single
+        #   un-parenthesized expression with or without quotes or against multiple
+        #   parenthesized expressions. Examples: `fieldname eq unquoted literal` `
+        #   fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(
+        #   fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
+        #   interpreted as a regular expression using Google RE2 library syntax. The
+        #   literal value must match the entire field. For example, to filter for
+        #   instances that do not end with name "instance", you would use `name ne .*
+        #   instance`. You cannot combine constraints on multiple fields using regular
+        #   expressions.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name. You can also sort results in
+        #   descending order based on the creation timestamp using `orderBy="
+        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+        #   field in reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
+        # @param [Boolean] return_partial_success
+        #   Opt-in for partial success behavior which provides partial results in case of
+        #   failure. The default value is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_region_network_endpoint_group_network_endpoints(project, region, network_endpoint_group, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}/listNetworkEndpoints', options)
+          command.response_representation = Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints::Representation
+          command.response_class = Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['networkEndpointGroup'] = network_endpoint_group unless network_endpoint_group.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
@@ -28252,6 +28544,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Inserts a rule into a security policy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] security_policy
+        #   Name of the security policy to update.
+        # @param [Google::Apis::ComputeV1::SecurityPolicyRule] security_policy_rule_object
+        # @param [Boolean] validate_only
+        #   If true, the request will not be committed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_region_security_policy_rule(project, region, security_policy, security_policy_rule_object = nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/addRule', options)
+          command.request_representation = Google::Apis::ComputeV1::SecurityPolicyRule::Representation
+          command.request_object = security_policy_rule_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified policy.
         # @param [String] project
         #   Project ID for this request.
@@ -28335,6 +28672,48 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a rule at the specified priority.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] security_policy
+        #   Name of the security policy to which the queried rule belongs.
+        # @param [Fixnum] priority
+        #   The priority of the rule to get from the security policy.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::SecurityPolicyRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::SecurityPolicyRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_region_security_policy_rule(project, region, security_policy, priority: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/getRule', options)
+          command.response_representation = Google::Apis::ComputeV1::SecurityPolicyRule::Representation
+          command.response_class = Google::Apis::ComputeV1::SecurityPolicyRule
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['priority'] = priority unless priority.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -28538,6 +28917,97 @@ module Google
           command.params['region'] = region unless region.nil?
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Patches a rule at the specified priority. To clear fields in the rule, leave
+        # the fields empty and specify them in the updateMask.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] security_policy
+        #   Name of the security policy to update.
+        # @param [Google::Apis::ComputeV1::SecurityPolicyRule] security_policy_rule_object
+        # @param [Fixnum] priority
+        #   The priority of the rule to patch.
+        # @param [Boolean] validate_only
+        #   If true, the request will not be committed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_region_security_policy_rule(project, region, security_policy, security_policy_rule_object = nil, priority: nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/patchRule', options)
+          command.request_representation = Google::Apis::ComputeV1::SecurityPolicyRule::Representation
+          command.request_object = security_policy_rule_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['priority'] = priority unless priority.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a rule at the specified priority.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] security_policy
+        #   Name of the security policy to update.
+        # @param [Fixnum] priority
+        #   The priority of the rule to remove from the security policy.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_region_security_policy_rule(project, region, security_policy, priority: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/removeRule', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['priority'] = priority unless priority.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -30625,6 +31095,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -30644,7 +31115,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_reservation_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_reservation_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/reservations', options)
           command.response_representation = Google::Apis::ComputeV1::ReservationAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::ReservationAggregatedList
@@ -30655,6 +31126,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -31195,6 +31667,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -31214,7 +31687,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_resource_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_resource_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/resourcePolicies', options)
           command.response_representation = Google::Apis::ComputeV1::ResourcePolicyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::ResourcePolicyAggregatedList
@@ -31225,6 +31698,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -31708,6 +32182,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -31727,7 +32202,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_router_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_router_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/routers', options)
           command.response_representation = Google::Apis::ComputeV1::RouterAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::RouterAggregatedList
@@ -31738,6 +32213,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -32638,6 +33114,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -32657,7 +33134,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_security_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_security_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/securityPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::SecurityPoliciesAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::SecurityPoliciesAggregatedList
@@ -32668,6 +33145,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -33266,6 +33744,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -33285,7 +33764,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_service_attachment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_service_attachment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/serviceAttachments', options)
           command.response_representation = Google::Apis::ComputeV1::ServiceAttachmentAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::ServiceAttachmentAggregatedList
@@ -33296,6 +33775,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -34166,6 +34646,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -34185,7 +34666,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_ssl_certificate_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_ssl_certificate_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/sslCertificates', options)
           command.response_representation = Google::Apis::ComputeV1::SslCertificateAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::SslCertificateAggregatedList
@@ -34196,6 +34677,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -34485,6 +34967,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -34504,7 +34987,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_ssl_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_ssl_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/sslPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::SslPoliciesAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::SslPoliciesAggregatedList
@@ -34515,6 +34998,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -34945,6 +35429,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -34964,7 +35449,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_subnetwork_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_subnetwork_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/subnetworks', options)
           command.response_representation = Google::Apis::ComputeV1::SubnetworkAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::SubnetworkAggregatedList
@@ -34975,6 +35460,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -35936,6 +36422,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -35955,7 +36442,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_target_http_proxy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_target_http_proxy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/targetHttpProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetHttpProxyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetHttpProxyAggregatedList
@@ -35966,6 +36453,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -36357,6 +36845,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -36376,7 +36865,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_target_https_proxy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_target_https_proxy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/targetHttpsProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetHttpsProxyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetHttpsProxyAggregatedList
@@ -36387,6 +36876,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -36983,6 +37473,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -37002,7 +37493,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_target_instance(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_target_instance(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/targetInstances', options)
           command.response_representation = Google::Apis::ComputeV1::TargetInstanceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetInstanceAggregatedList
@@ -37013,6 +37504,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -37474,6 +37966,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -37493,7 +37986,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_target_pools(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_target_pools(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/targetPools', options)
           command.response_representation = Google::Apis::ComputeV1::TargetPoolAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetPoolAggregatedList
@@ -37504,6 +37997,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -38540,6 +39034,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -38559,7 +39054,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_target_tcp_proxy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_target_tcp_proxy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/targetTcpProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetTcpProxyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetTcpProxyAggregatedList
@@ -38570,6 +39065,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -38958,6 +39454,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -38977,7 +39474,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_target_vpn_gateways(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_target_vpn_gateways(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/targetVpnGateways', options)
           command.response_representation = Google::Apis::ComputeV1::TargetVpnGatewayAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetVpnGatewayAggregatedList
@@ -38988,6 +39485,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -39343,6 +39841,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -39362,7 +39861,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_url_map_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_url_map_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/urlMaps', options)
           command.response_representation = Google::Apis::ComputeV1::UrlMapsAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::UrlMapsAggregatedList
@@ -39373,6 +39872,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -39854,6 +40354,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -39873,7 +40374,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_vpn_gateway_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_vpn_gateway_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/vpnGateways', options)
           command.response_representation = Google::Apis::ComputeV1::VpnGatewayAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::VpnGatewayAggregatedList
@@ -39884,6 +40385,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -40318,6 +40820,7 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [Fixnum] service_project_number
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -40337,7 +40840,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_vpn_tunnel(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_vpn_tunnel(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/vpnTunnels', options)
           command.response_representation = Google::Apis::ComputeV1::VpnTunnelAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::VpnTunnelAggregatedList
@@ -40348,6 +40851,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

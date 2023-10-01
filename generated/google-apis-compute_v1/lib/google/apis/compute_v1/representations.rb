@@ -2260,6 +2260,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectDiagnosticsMacsecStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2303,6 +2309,30 @@ module Google
       end
       
       class InterconnectLocationRegionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectMacsec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectMacsecConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectMacsecConfigPreSharedKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectMacsecPreSharedKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2357,6 +2387,12 @@ module Google
       end
       
       class InterconnectsGetDiagnosticsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectsGetMacsecConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3894,6 +3930,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionNetworkEndpointGroupsAttachEndpointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionNetworkEndpointGroupsDetachEndpointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -10083,6 +10131,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin_enabled, as: 'adminEnabled'
+          collection :available_features, as: 'availableFeatures'
           collection :circuit_infos, as: 'circuitInfos', class: Google::Apis::ComputeV1::InterconnectCircuitInfo, decorator: Google::Apis::ComputeV1::InterconnectCircuitInfo::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
@@ -10100,12 +10149,16 @@ module Google
           hash :labels, as: 'labels'
           property :link_type, as: 'linkType'
           property :location, as: 'location'
+          property :macsec, as: 'macsec', class: Google::Apis::ComputeV1::InterconnectMacsec, decorator: Google::Apis::ComputeV1::InterconnectMacsec::Representation
+      
+          property :macsec_enabled, as: 'macsecEnabled'
           property :name, as: 'name'
           property :noc_contact_email, as: 'nocContactEmail'
           property :operational_status, as: 'operationalStatus'
           property :peer_ip_address, as: 'peerIpAddress'
           property :provisioned_link_count, as: 'provisionedLinkCount'
           property :remote_location, as: 'remoteLocation'
+          collection :requested_features, as: 'requestedFeatures'
           property :requested_link_count, as: 'requestedLinkCount'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
@@ -10344,11 +10397,21 @@ module Google
           property :google_demarc, as: 'googleDemarc'
           property :lacp_status, as: 'lacpStatus', class: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkLacpStatus, decorator: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkLacpStatus::Representation
       
+          property :macsec, as: 'macsec', class: Google::Apis::ComputeV1::InterconnectDiagnosticsMacsecStatus, decorator: Google::Apis::ComputeV1::InterconnectDiagnosticsMacsecStatus::Representation
+      
           property :operational_status, as: 'operationalStatus'
           property :receiving_optical_power, as: 'receivingOpticalPower', class: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkOpticalPower, decorator: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkOpticalPower::Representation
       
           property :transmitting_optical_power, as: 'transmittingOpticalPower', class: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkOpticalPower, decorator: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkOpticalPower::Representation
       
+        end
+      end
+      
+      class InterconnectDiagnosticsMacsecStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ckn, as: 'ckn'
+          property :operational, as: 'operational'
         end
       end
       
@@ -10389,6 +10452,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
           property :availability_zone, as: 'availabilityZone'
+          collection :available_features, as: 'availableFeatures'
+          collection :available_link_types, as: 'availableLinkTypes'
           property :city, as: 'city'
           property :continent, as: 'continent'
           property :creation_timestamp, as: 'creationTimestamp'
@@ -10445,6 +10510,41 @@ module Google
           property :expected_rtt_ms, :numeric_string => true, as: 'expectedRttMs'
           property :location_presence, as: 'locationPresence'
           property :region, as: 'region'
+        end
+      end
+      
+      class InterconnectMacsec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fail_open, as: 'failOpen'
+          collection :pre_shared_keys, as: 'preSharedKeys', class: Google::Apis::ComputeV1::InterconnectMacsecPreSharedKey, decorator: Google::Apis::ComputeV1::InterconnectMacsecPreSharedKey::Representation
+      
+        end
+      end
+      
+      class InterconnectMacsecConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :pre_shared_keys, as: 'preSharedKeys', class: Google::Apis::ComputeV1::InterconnectMacsecConfigPreSharedKey, decorator: Google::Apis::ComputeV1::InterconnectMacsecConfigPreSharedKey::Representation
+      
+        end
+      end
+      
+      class InterconnectMacsecConfigPreSharedKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cak, as: 'cak'
+          property :ckn, as: 'ckn'
+          property :name, as: 'name'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class InterconnectMacsecPreSharedKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -10552,6 +10652,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :result, as: 'result', class: Google::Apis::ComputeV1::InterconnectDiagnostics, decorator: Google::Apis::ComputeV1::InterconnectDiagnostics::Representation
+      
+        end
+      end
+      
+      class InterconnectsGetMacsecConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :result, as: 'result', class: Google::Apis::ComputeV1::InterconnectMacsecConfig, decorator: Google::Apis::ComputeV1::InterconnectMacsecConfig::Representation
       
         end
       end
@@ -13341,6 +13450,22 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class RegionNetworkEndpointGroupsAttachEndpointsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::ComputeV1::NetworkEndpoint, decorator: Google::Apis::ComputeV1::NetworkEndpoint::Representation
+      
+        end
+      end
+      
+      class RegionNetworkEndpointGroupsDetachEndpointsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::ComputeV1::NetworkEndpoint, decorator: Google::Apis::ComputeV1::NetworkEndpoint::Representation
+      
         end
       end
       

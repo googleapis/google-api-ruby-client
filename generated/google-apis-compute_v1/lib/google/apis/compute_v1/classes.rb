@@ -3402,11 +3402,11 @@ module Google
         # applicable to either: - A regional backend service with the service_protocol
         # set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to
         # INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme
-        # set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field
-        # is not set to MAGLEV or RING_HASH, session affinity settings will not take
-        # effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service
-        # is referenced by a URL map that is bound to target gRPC proxy that has
-        # validateForProxyless field set to true.
+        # set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If
+        # sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH,
+        # session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH
+        # are supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `localityLbPolicy`
         # @return [String]
         attr_accessor :locality_lb_policy
@@ -10563,19 +10563,22 @@ module Google
         end
       end
       
-      # Represents a Health Check resource. Google Compute Engine has two Health Check
-      # resources: * [Global](/compute/docs/reference/rest/v1/healthChecks) * [
-      # Regional](/compute/docs/reference/rest/v1/regionHealthChecks) Internal HTTP(S)
-      # load balancers must use regional health checks (`compute.v1.regionHealthChecks`
-      # ). Traffic Director must use global health checks (`compute.v1.healthChecks`).
-      # Internal TCP/UDP load balancers can use either regional or global health
-      # checks (`compute.v1.regionHealthChecks` or `compute.v1.healthChecks`).
-      # External HTTP(S), TCP proxy, and SSL proxy load balancers as well as managed
-      # instance group auto-healing must use global health checks (`compute.v1.
-      # healthChecks`). Backend service-based network load balancers must use regional
-      # health checks (`compute.v1.regionHealthChecks`). Target pool-based network
-      # load balancers must use legacy HTTP health checks (`compute.v1.
-      # httpHealthChecks`). For more information, see Health checks overview.
+      # Represents a health check resource. Google Compute Engine has two health check
+      # resources: * [Regional](/compute/docs/reference/rest/v1/regionHealthChecks) * [
+      # Global](/compute/docs/reference/rest/v1/healthChecks) These health check
+      # resources can be used for load balancing and for autohealing VMs in a managed
+      # instance group (MIG). **Load balancing** The following load balancer can use
+      # either regional or global health check: * Internal TCP/UDP load balancer The
+      # following load balancers require regional health check: * Internal HTTP(S)
+      # load balancer * Backend service-based network load balancer Traffic Director
+      # and the following load balancers require global health check: * External HTTP(
+      # S) load balancer * TCP proxy load balancer * SSL proxy load balancer The
+      # following load balancer require [legacy HTTP health checks](/compute/docs/
+      # reference/rest/v1/httpHealthChecks): * Target pool-based network load balancer
+      # **Autohealing in MIGs** The health checks that you use for autohealing VMs in
+      # a MIG can be either regional or global. For more information, see Set up an
+      # application health check and autohealing. For more information, see Health
+      # checks overview.
       class HealthCheck
         include Google::Apis::Core::Hashable
       
@@ -16328,9 +16331,15 @@ module Google
         end
       end
       
-      # Represents an Instance Template resource. You can use instance templates to
-      # create VM instances and managed instance groups. For more information, read
-      # Instance Templates.
+      # Represents an Instance Template resource. Google Compute Engine has two
+      # Instance Template resources: * [Global](/compute/docs/reference/rest/v1/
+      # instanceTemplates) * [Regional](/compute/docs/reference/rest/v1/
+      # regionInstanceTemplates) You can reuse a global instance template in different
+      # regions whereas you can use a regional instance template in a specified region
+      # only. If you want to reduce cross-region dependency or achieve data residency,
+      # use a regional instance template. To create VMs, managed instance groups, and
+      # reservations, you can use either global or regional instance templates. For
+      # more information, read Instance Templates.
       class InstanceTemplate
         include Google::Apis::Core::Hashable
       
@@ -17223,6 +17232,15 @@ module Google
         attr_accessor :admin_enabled
         alias_method :admin_enabled?, :admin_enabled
       
+        # [Output only] List of features available for this Interconnect connection,
+        # which can take one of the following values: - MACSEC If present then the
+        # Interconnect connection is provisioned on MACsec capable hardware ports. If
+        # not present then the Interconnect connection is provisioned on non-MACsec
+        # capable ports and MACsec isn't supported and enabling MACsec fails.
+        # Corresponds to the JSON property `availableFeatures`
+        # @return [Array<String>]
+        attr_accessor :available_features
+      
         # [Output Only] A list of CircuitInfo objects, that describe the individual
         # circuits in this LAG.
         # Corresponds to the JSON property `circuitInfos`
@@ -17323,6 +17341,20 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # Configuration information for enabling Media Access Control security (MACsec)
+        # on this Cloud Interconnect connection between Google and your on-premises
+        # router.
+        # Corresponds to the JSON property `macsec`
+        # @return [Google::Apis::ComputeV1::InterconnectMacsec]
+        attr_accessor :macsec
+      
+        # Enable or disable MACsec on this Interconnect connection. MACsec enablement
+        # fails if the MACsec object is not specified.
+        # Corresponds to the JSON property `macsecEnabled`
+        # @return [Boolean]
+        attr_accessor :macsec_enabled
+        alias_method :macsec_enabled?, :macsec_enabled
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -17371,6 +17403,16 @@ module Google
         # @return [String]
         attr_accessor :remote_location
       
+        # Optional. List of features requested for this Interconnect connection, which
+        # can take one of the following values: - MACSEC If specified then the
+        # connection is created on MACsec capable hardware ports. If not specified, the
+        # default value is false, which allocates non-MACsec capable ports first if
+        # available. This parameter can be provided only with Interconnect INSERT. It
+        # isn't valid for Interconnect PATCH.
+        # Corresponds to the JSON property `requestedFeatures`
+        # @return [Array<String>]
+        attr_accessor :requested_features
+      
         # Target number of physical links in the link bundle, as requested by the
         # customer.
         # Corresponds to the JSON property `requestedLinkCount`
@@ -17406,6 +17448,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
+          @available_features = args[:available_features] if args.key?(:available_features)
           @circuit_infos = args[:circuit_infos] if args.key?(:circuit_infos)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @customer_name = args[:customer_name] if args.key?(:customer_name)
@@ -17421,12 +17464,15 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @link_type = args[:link_type] if args.key?(:link_type)
           @location = args[:location] if args.key?(:location)
+          @macsec = args[:macsec] if args.key?(:macsec)
+          @macsec_enabled = args[:macsec_enabled] if args.key?(:macsec_enabled)
           @name = args[:name] if args.key?(:name)
           @noc_contact_email = args[:noc_contact_email] if args.key?(:noc_contact_email)
           @operational_status = args[:operational_status] if args.key?(:operational_status)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
           @provisioned_link_count = args[:provisioned_link_count] if args.key?(:provisioned_link_count)
           @remote_location = args[:remote_location] if args.key?(:remote_location)
+          @requested_features = args[:requested_features] if args.key?(:requested_features)
           @requested_link_count = args[:requested_link_count] if args.key?(:requested_link_count)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -18464,6 +18510,11 @@ module Google
         # @return [Google::Apis::ComputeV1::InterconnectDiagnosticsLinkLacpStatus]
         attr_accessor :lacp_status
       
+        # Describes the status of MACsec encryption on the link.
+        # Corresponds to the JSON property `macsec`
+        # @return [Google::Apis::ComputeV1::InterconnectDiagnosticsMacsecStatus]
+        attr_accessor :macsec
+      
         # The operational status of the link.
         # Corresponds to the JSON property `operationalStatus`
         # @return [String]
@@ -18491,9 +18542,37 @@ module Google
           @circuit_id = args[:circuit_id] if args.key?(:circuit_id)
           @google_demarc = args[:google_demarc] if args.key?(:google_demarc)
           @lacp_status = args[:lacp_status] if args.key?(:lacp_status)
+          @macsec = args[:macsec] if args.key?(:macsec)
           @operational_status = args[:operational_status] if args.key?(:operational_status)
           @receiving_optical_power = args[:receiving_optical_power] if args.key?(:receiving_optical_power)
           @transmitting_optical_power = args[:transmitting_optical_power] if args.key?(:transmitting_optical_power)
+        end
+      end
+      
+      # Describes the status of MACsec encryption on the link.
+      class InterconnectDiagnosticsMacsecStatus
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the Connectivity Association Key Name (CKN) currently being used if
+        # MACsec is operational.
+        # Corresponds to the JSON property `ckn`
+        # @return [String]
+        attr_accessor :ckn
+      
+        # Indicates whether or not MACsec is operational on this link.
+        # Corresponds to the JSON property `operational`
+        # @return [Boolean]
+        attr_accessor :operational
+        alias_method :operational?, :operational
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ckn = args[:ckn] if args.key?(:ckn)
+          @operational = args[:operational] if args.key?(:operational)
         end
       end
       
@@ -18635,6 +18714,19 @@ module Google
         # @return [String]
         attr_accessor :availability_zone
       
+        # [Output only] List of features available at this InterconnectLocation, which
+        # can take one of the following values: - MACSEC
+        # Corresponds to the JSON property `availableFeatures`
+        # @return [Array<String>]
+        attr_accessor :available_features
+      
+        # [Output only] List of link types available at this InterconnectLocation, which
+        # can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR -
+        # LINK_TYPE_ETHERNET_100G_LR
+        # Corresponds to the JSON property `availableLinkTypes`
+        # @return [Array<String>]
+        attr_accessor :available_link_types
+      
         # [Output Only] Metropolitan area designator that indicates which city an
         # interconnect is located. For example: "Chicago, IL", "Amsterdam, Netherlands".
         # Corresponds to the JSON property `city`
@@ -18725,6 +18817,8 @@ module Google
         def update!(**args)
           @address = args[:address] if args.key?(:address)
           @availability_zone = args[:availability_zone] if args.key?(:availability_zone)
+          @available_features = args[:available_features] if args.key?(:available_features)
+          @available_link_types = args[:available_link_types] if args.key?(:available_link_types)
           @city = args[:city] if args.key?(:city)
           @continent = args[:continent] if args.key?(:continent)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -18890,6 +18984,138 @@ module Google
           @expected_rtt_ms = args[:expected_rtt_ms] if args.key?(:expected_rtt_ms)
           @location_presence = args[:location_presence] if args.key?(:location_presence)
           @region = args[:region] if args.key?(:region)
+        end
+      end
+      
+      # Configuration information for enabling Media Access Control security (MACsec)
+      # on this Cloud Interconnect connection between Google and your on-premises
+      # router.
+      class InterconnectMacsec
+        include Google::Apis::Core::Hashable
+      
+        # If set to true, the Interconnect connection is configured with a should-secure
+        # MACsec security policy, that allows the Google router to fallback to cleartext
+        # traffic if the MKA session cannot be established. By default, the Interconnect
+        # connection is configured with a must-secure security policy that drops all
+        # traffic if the MKA session cannot be established with your router.
+        # Corresponds to the JSON property `failOpen`
+        # @return [Boolean]
+        attr_accessor :fail_open
+        alias_method :fail_open?, :fail_open
+      
+        # Required. A keychain placeholder describing a set of named key objects along
+        # with their start times. A MACsec CKN/CAK is generated for each key in the key
+        # chain. Google router automatically picks the key with the most recent
+        # startTime when establishing or re-establishing a MACsec secure link.
+        # Corresponds to the JSON property `preSharedKeys`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectMacsecPreSharedKey>]
+        attr_accessor :pre_shared_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fail_open = args[:fail_open] if args.key?(:fail_open)
+          @pre_shared_keys = args[:pre_shared_keys] if args.key?(:pre_shared_keys)
+        end
+      end
+      
+      # MACsec configuration information for the Interconnect connection. Contains the
+      # generated Connectivity Association Key Name (CKN) and the key (CAK) for this
+      # Interconnect connection.
+      class InterconnectMacsecConfig
+        include Google::Apis::Core::Hashable
+      
+        # A keychain placeholder describing a set of named key objects along with their
+        # start times. A MACsec CKN/CAK is generated for each key in the key chain.
+        # Google router automatically picks the key with the most recent startTime when
+        # establishing or re-establishing a MACsec secure link.
+        # Corresponds to the JSON property `preSharedKeys`
+        # @return [Array<Google::Apis::ComputeV1::InterconnectMacsecConfigPreSharedKey>]
+        attr_accessor :pre_shared_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pre_shared_keys = args[:pre_shared_keys] if args.key?(:pre_shared_keys)
+        end
+      end
+      
+      # Describes a pre-shared key used to setup MACsec in static connectivity
+      # association key (CAK) mode.
+      class InterconnectMacsecConfigPreSharedKey
+        include Google::Apis::Core::Hashable
+      
+        # An auto-generated Connectivity Association Key (CAK) for this key.
+        # Corresponds to the JSON property `cak`
+        # @return [String]
+        attr_accessor :cak
+      
+        # An auto-generated Connectivity Association Key Name (CKN) for this key.
+        # Corresponds to the JSON property `ckn`
+        # @return [String]
+        attr_accessor :ckn
+      
+        # User provided name for this pre-shared key.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # User provided timestamp on or after which this key is valid.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cak = args[:cak] if args.key?(:cak)
+          @ckn = args[:ckn] if args.key?(:ckn)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Describes a pre-shared key used to setup MACsec in static connectivity
+      # association key (CAK) mode.
+      class InterconnectMacsecPreSharedKey
+        include Google::Apis::Core::Hashable
+      
+        # Required. A name for this pre-shared key. The name must be 1-63 characters
+        # long, and comply with RFC1035. Specifically, the name must be 1-63 characters
+        # long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means
+        # the first character must be a lowercase letter, and all following characters
+        # must be a dash, lowercase letter, or digit, except the last character, which
+        # cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A RFC3339 timestamp on or after which the key is valid. startTime can be in
+        # the future. If the keychain has a single key, startTime can be omitted. If the
+        # keychain has multiple keys, startTime is mandatory for each key. The start
+        # times of keys must be in increasing order. The start times of two consecutive
+        # keys must be at least 6 hours apart.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -19350,6 +19576,33 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # Response for the InterconnectsGetMacsecConfigRequest.
+      class InterconnectsGetMacsecConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # end_interface: MixerGetResponseWithEtagBuilder
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # MACsec configuration information for the Interconnect connection. Contains the
+        # generated Connectivity Association Key Name (CKN) and the key (CAK) for this
+        # Interconnect connection.
+        # Corresponds to the JSON property `result`
+        # @return [Google::Apis::ComputeV1::InterconnectMacsecConfig]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
           @result = args[:result] if args.key?(:result)
         end
       end
@@ -30106,6 +30359,44 @@ module Google
       end
       
       # 
+      class RegionNetworkEndpointGroupsAttachEndpointsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The list of network endpoints to be attached.
+        # Corresponds to the JSON property `networkEndpoints`
+        # @return [Array<Google::Apis::ComputeV1::NetworkEndpoint>]
+        attr_accessor :network_endpoints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_endpoints = args[:network_endpoints] if args.key?(:network_endpoints)
+        end
+      end
+      
+      # 
+      class RegionNetworkEndpointGroupsDetachEndpointsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The list of network endpoints to be detached.
+        # Corresponds to the JSON property `networkEndpoints`
+        # @return [Array<Google::Apis::ComputeV1::NetworkEndpoint>]
+        attr_accessor :network_endpoints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_endpoints = args[:network_endpoints] if args.key?(:network_endpoints)
+        end
+      end
+      
+      # 
       class RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse
         include Google::Apis::Core::Hashable
       
@@ -35878,7 +36169,7 @@ module Google
         # affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an
         # ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the
         # reject list. For newly created service attachment, this boolean defaults to
-        # true.
+        # false.
         # Corresponds to the JSON property `reconcileConnections`
         # @return [Boolean]
         attr_accessor :reconcile_connections
