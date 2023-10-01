@@ -301,7 +301,7 @@ module Google
         # @param [Google::Apis::BaremetalsolutionV2::Instance] instance_object
         # @param [String] update_mask
         #   The list of fields to update. The currently supported fields are: `labels` `
-        #   hyperthreading_enabled` `os_image`
+        #   hyperthreading_enabled` `os_image` `ssh_keys`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -878,9 +878,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get details of a single OS image.
+        # @param [String] name
+        #   Required. Name of the OS image.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::OsImage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::OsImage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_os_image(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::BaremetalsolutionV2::OsImage::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::OsImage
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves the list of OS images which are currently approved.
         # @param [String] parent
-        #   Required. Parent value for ListProvisioningQuotasRequest.
+        #   Required. Parent value for ListOSImagesRequest.
         # @param [Fixnum] page_size
         #   Requested page size. The server might return fewer items than requested. If
         #   unspecified, server will pick an appropriate default. Notice that page_size
