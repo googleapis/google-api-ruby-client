@@ -1063,8 +1063,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a Table resource. Returns an empty policy
-        # if the resource exists but does not have a policy set.
+        # Gets the access control policy for a Table or Backup resource. Returns an
+        # empty policy if the resource exists but does not have a policy set.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. See [Resource
         #   names](https://cloud.google.com/apis/design/resource_names) for the
@@ -1218,8 +1218,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on a Table resource. Replaces any existing
-        # policy.
+        # Sets the access control policy on a Table or Backup resource. Replaces any
+        # existing policy.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. See [Resource
         #   names](https://cloud.google.com/apis/design/resource_names) for the
@@ -1254,7 +1254,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that the caller has on the specified table resource.
+        # Returns permissions that the caller has on the specified Table or Backup
+        # resource.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. See [
         #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
@@ -1556,8 +1557,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a Table resource. Returns an empty policy
-        # if the resource exists but does not have a policy set.
+        # Gets the access control policy for a Table or Backup resource. Returns an
+        # empty policy if the resource exists but does not have a policy set.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. See [Resource
         #   names](https://cloud.google.com/apis/design/resource_names) for the
@@ -1757,8 +1758,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on a Table resource. Replaces any existing
-        # policy.
+        # Sets the access control policy on a Table or Backup resource. Replaces any
+        # existing policy.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. See [Resource
         #   names](https://cloud.google.com/apis/design/resource_names) for the
@@ -1793,7 +1794,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that the caller has on the specified table resource.
+        # Returns permissions that the caller has on the specified Table or Backup
+        # resource.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. See [
         #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
