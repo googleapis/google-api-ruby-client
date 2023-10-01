@@ -1104,6 +1104,143 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the SiteSearchEngineService.RecrawlUris
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field.
+      class GoogleCloudDiscoveryengineV1alphaRecrawlUrisMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Unique URIs in the request that don't match any TargetSite in the DataStore,
+        # only match TargetSites that haven't been fully indexed, or match a TargetSite
+        # with type EXCLUDE.
+        # Corresponds to the JSON property `invalidUris`
+        # @return [Array<String>]
+        attr_accessor :invalid_uris
+      
+        # Total number of URIs that have yet to be crawled.
+        # Corresponds to the JSON property `pendingCount`
+        # @return [Fixnum]
+        attr_accessor :pending_count
+      
+        # Total number of URIs that were rejected due to insufficient indexing resources.
+        # Corresponds to the JSON property `quotaExceededCount`
+        # @return [Fixnum]
+        attr_accessor :quota_exceeded_count
+      
+        # Total number of URIs that have been crawled so far.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Total number of unique URIs in the request that are not in invalid_uris.
+        # Corresponds to the JSON property `validUrisCount`
+        # @return [Fixnum]
+        attr_accessor :valid_uris_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @invalid_uris = args[:invalid_uris] if args.key?(:invalid_uris)
+          @pending_count = args[:pending_count] if args.key?(:pending_count)
+          @quota_exceeded_count = args[:quota_exceeded_count] if args.key?(:quota_exceeded_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @valid_uris_count = args[:valid_uris_count] if args.key?(:valid_uris_count)
+        end
+      end
+      
+      # Response message for SiteSearchEngineService.RecrawlUris method.
+      class GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponse
+        include Google::Apis::Core::Hashable
+      
+        # URIs that were not crawled before the LRO terminated.
+        # Corresponds to the JSON property `failedUris`
+        # @return [Array<String>]
+        attr_accessor :failed_uris
+      
+        # Details for a sample of up to 10 `failed_uris`.
+        # Corresponds to the JSON property `failureSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo>]
+        attr_accessor :failure_samples
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_uris = args[:failed_uris] if args.key?(:failed_uris)
+          @failure_samples = args[:failure_samples] if args.key?(:failure_samples)
+        end
+      end
+      
+      # Details about why a particular URI failed to be crawled. Each FailureInfo
+      # contains one FailureReason per CorpusType.
+      class GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo
+        include Google::Apis::Core::Hashable
+      
+        # List of failure reasons by corpus type (e.g. desktop, mobile).
+        # Corresponds to the JSON property `failureReasons`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason>]
+        attr_accessor :failure_reasons
+      
+        # URI that failed to be crawled.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_reasons = args[:failure_reasons] if args.key?(:failure_reasons)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Details about why crawling failed for a particular CorpusType, e.g. DESKTOP
+      # and MOBILE crawling may fail for different reasons.
+      class GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason
+        include Google::Apis::Core::Hashable
+      
+        # DESKTOP, MOBILE, or CORPUS_TYPE_UNSPECIFIED.
+        # Corresponds to the JSON property `corpusType`
+        # @return [String]
+        attr_accessor :corpus_type
+      
+        # Reason why the URI was not crawled.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @corpus_type = args[:corpus_type] if args.key?(:corpus_type)
+          @error_message = args[:error_message] if args.key?(:error_message)
+        end
+      end
+      
       # Defines the structure and layout of a type of document data.
       class GoogleCloudDiscoveryengineV1alphaSchema
         include Google::Apis::Core::Hashable

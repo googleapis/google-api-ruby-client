@@ -208,6 +208,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaRecrawlUrisMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -988,6 +1012,45 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :purge_count, :numeric_string => true, as: 'purgeCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaRecrawlUrisMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          collection :invalid_uris, as: 'invalidUris'
+          property :pending_count, as: 'pendingCount'
+          property :quota_exceeded_count, as: 'quotaExceededCount'
+          property :success_count, as: 'successCount'
+          property :update_time, as: 'updateTime'
+          property :valid_uris_count, as: 'validUrisCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :failed_uris, as: 'failedUris'
+          collection :failure_samples, as: 'failureSamples', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :failure_reasons, as: 'failureReasons', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason::Representation
+      
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :corpus_type, as: 'corpusType'
+          property :error_message, as: 'errorMessage'
         end
       end
       

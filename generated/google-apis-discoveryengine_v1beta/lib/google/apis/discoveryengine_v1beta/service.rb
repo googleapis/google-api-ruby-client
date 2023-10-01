@@ -70,7 +70,7 @@ module Google
         #   imported search events. * `document-completable` - Using suggestions taken
         #   directly from user-imported document fields marked as completable. Default
         #   values: * `document` is the default model for regular dataStores. * `search-
-        #   history` is the default model for IndustryVertical.SITE_SEARCH dataStores.
+        #   history` is the default model for site search dataStores.
         # @param [String] user_pseudo_id
         #   A unique identifier for tracking visitors. For example, this could be
         #   implemented with an HTTP cookie, which should be able to uniquely identify a
@@ -1582,7 +1582,7 @@ module Google
         #   imported search events. * `document-completable` - Using suggestions taken
         #   directly from user-imported document fields marked as completable. Default
         #   values: * `document` is the default model for regular dataStores. * `search-
-        #   history` is the default model for IndustryVertical.SITE_SEARCH dataStores.
+        #   history` is the default model for site search dataStores.
         # @param [String] user_pseudo_id
         #   A unique identifier for tracking visitors. For example, this could be
         #   implemented with an HTTP cookie, which should be able to uniquely identify a
