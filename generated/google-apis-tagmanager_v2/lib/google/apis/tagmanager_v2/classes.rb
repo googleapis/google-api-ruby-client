@@ -1035,6 +1035,14 @@ module Google
       class Entity
         include Google::Apis::Core::Hashable
       
+        # Built-in variables are a special category of variables that are pre-created
+        # and non-customizable. They provide common functionality like accessing
+        # properties of the gtm data layer, monitoring clicks, or accessing elements of
+        # a page URL.
+        # Corresponds to the JSON property `builtInVariable`
+        # @return [Google::Apis::TagmanagerV2::BuiltInVariable]
+        attr_accessor :built_in_variable
+      
         # Represents how the entity has been changed in the workspace.
         # Corresponds to the JSON property `changeStatus`
         # @return [String]
@@ -1045,10 +1053,20 @@ module Google
         # @return [Google::Apis::TagmanagerV2::Client]
         attr_accessor :client
       
+        # Represents a Google Tag Manager Custom Template's contents.
+        # Corresponds to the JSON property `customTemplate`
+        # @return [Google::Apis::TagmanagerV2::CustomTemplate]
+        attr_accessor :custom_template
+      
         # Represents a Google Tag Manager Folder.
         # Corresponds to the JSON property `folder`
         # @return [Google::Apis::TagmanagerV2::Folder]
         attr_accessor :folder
+      
+        # Represents a Google tag configuration.
+        # Corresponds to the JSON property `gtagConfig`
+        # @return [Google::Apis::TagmanagerV2::GtagConfig]
+        attr_accessor :gtag_config
       
         # Represents a Google Tag Manager Tag.
         # Corresponds to the JSON property `tag`
@@ -1070,19 +1088,28 @@ module Google
         # @return [Google::Apis::TagmanagerV2::Variable]
         attr_accessor :variable
       
+        # Represents a Google Tag Manager Zone's contents.
+        # Corresponds to the JSON property `zone`
+        # @return [Google::Apis::TagmanagerV2::Zone]
+        attr_accessor :zone
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @built_in_variable = args[:built_in_variable] if args.key?(:built_in_variable)
           @change_status = args[:change_status] if args.key?(:change_status)
           @client = args[:client] if args.key?(:client)
+          @custom_template = args[:custom_template] if args.key?(:custom_template)
           @folder = args[:folder] if args.key?(:folder)
+          @gtag_config = args[:gtag_config] if args.key?(:gtag_config)
           @tag = args[:tag] if args.key?(:tag)
           @transformation = args[:transformation] if args.key?(:transformation)
           @trigger = args[:trigger] if args.key?(:trigger)
           @variable = args[:variable] if args.key?(:variable)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       

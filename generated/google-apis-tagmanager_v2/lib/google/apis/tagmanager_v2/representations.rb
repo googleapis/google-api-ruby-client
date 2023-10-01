@@ -681,10 +681,16 @@ module Google
       class Entity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :built_in_variable, as: 'builtInVariable', class: Google::Apis::TagmanagerV2::BuiltInVariable, decorator: Google::Apis::TagmanagerV2::BuiltInVariable::Representation
+      
           property :change_status, as: 'changeStatus'
           property :client, as: 'client', class: Google::Apis::TagmanagerV2::Client, decorator: Google::Apis::TagmanagerV2::Client::Representation
       
+          property :custom_template, as: 'customTemplate', class: Google::Apis::TagmanagerV2::CustomTemplate, decorator: Google::Apis::TagmanagerV2::CustomTemplate::Representation
+      
           property :folder, as: 'folder', class: Google::Apis::TagmanagerV2::Folder, decorator: Google::Apis::TagmanagerV2::Folder::Representation
+      
+          property :gtag_config, as: 'gtagConfig', class: Google::Apis::TagmanagerV2::GtagConfig, decorator: Google::Apis::TagmanagerV2::GtagConfig::Representation
       
           property :tag, as: 'tag', class: Google::Apis::TagmanagerV2::Tag, decorator: Google::Apis::TagmanagerV2::Tag::Representation
       
@@ -693,6 +699,8 @@ module Google
           property :trigger, as: 'trigger', class: Google::Apis::TagmanagerV2::Trigger, decorator: Google::Apis::TagmanagerV2::Trigger::Representation
       
           property :variable, as: 'variable', class: Google::Apis::TagmanagerV2::Variable, decorator: Google::Apis::TagmanagerV2::Variable::Representation
+      
+          property :zone, as: 'zone', class: Google::Apis::TagmanagerV2::Zone, decorator: Google::Apis::TagmanagerV2::Zone::Representation
       
         end
       end
