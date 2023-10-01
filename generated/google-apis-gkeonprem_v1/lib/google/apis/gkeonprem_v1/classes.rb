@@ -3433,11 +3433,6 @@ module Google
         # @return [String]
         attr_accessor :current_version
       
-        # Local name of the dependency.
-        # Corresponds to the JSON property `localName`
-        # @return [String]
-        attr_accessor :local_name
-      
         # Membership names are formatted as `projects//locations//memberships/`.
         # Corresponds to the JSON property `membership`
         # @return [String]
@@ -3461,7 +3456,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @current_version = args[:current_version] if args.key?(:current_version)
-          @local_name = args[:local_name] if args.key?(:local_name)
           @membership = args[:membership] if args.key?(:membership)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @target_version = args[:target_version] if args.key?(:target_version)
