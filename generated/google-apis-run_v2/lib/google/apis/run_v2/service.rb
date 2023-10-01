@@ -402,9 +402,9 @@ module Google
         
         # Cancels an Execution.
         # @param [String] name
-        #   Required. The name of the Execution to cancel. Format: projects/`project`/
-        #   locations/`location`/jobs/`job`/executions/`execution`, where `project` can be
-        #   project id or number.
+        #   Required. The name of the Execution to cancel. Format: `projects/`project`/
+        #   locations/`location`/jobs/`job`/executions/`execution``, where ``project`` can
+        #   be project id or number.
         # @param [Google::Apis::RunV2::GoogleCloudRunV2CancelExecutionRequest] google_cloud_run_v2_cancel_execution_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -437,9 +437,9 @@ module Google
         
         # Deletes an Execution.
         # @param [String] name
-        #   Required. The name of the Execution to delete. Format: projects/`project`/
-        #   locations/`location`/jobs/`job`/executions/`execution`, where `project` can be
-        #   project id or number.
+        #   Required. The name of the Execution to delete. Format: `projects/`project`/
+        #   locations/`location`/jobs/`job`/executions/`execution``, where ``project`` can
+        #   be project id or number.
         # @param [String] etag
         #   A system-generated fingerprint for this version of the resource. This may be
         #   used to detect modification conflict during updates.
@@ -477,9 +477,9 @@ module Google
         
         # Gets information about an Execution.
         # @param [String] name
-        #   Required. The full name of the Execution. Format: projects/`project`/locations/
-        #   `location`/jobs/`job`/executions/`execution`, where `project` can be project
-        #   id or number.
+        #   Required. The full name of the Execution. Format: `projects/`project`/
+        #   locations/`location`/jobs/`job`/executions/`execution``, where ``project`` can
+        #   be project id or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -510,9 +510,9 @@ module Google
         # Lists Executions from a Job.
         # @param [String] parent
         #   Required. The Execution from which the Executions should be listed. To list
-        #   all Executions across Jobs, use "-" instead of Job name. Format: projects/`
-        #   project`/locations/`location`/jobs/`job`, where `project` can be project id or
-        #   number.
+        #   all Executions across Jobs, use "-" instead of Job name. Format: `projects/`
+        #   project`/locations/`location`/jobs/`job``, where ``project`` can be project id
+        #   or number.
         # @param [Fixnum] page_size
         #   Maximum number of Executions to return in this call.
         # @param [String] page_token

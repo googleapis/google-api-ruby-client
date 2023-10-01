@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2ContainerOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2ContainerPort
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +155,12 @@ module Google
       end
       
       class GoogleCloudRunV2NetworkInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2Overrides
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -407,6 +419,17 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2ContainerOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args'
+          property :clear_args, as: 'clearArgs'
+          collection :env, as: 'env', class: Google::Apis::RunV2::GoogleCloudRunV2EnvVar, decorator: Google::Apis::RunV2::GoogleCloudRunV2EnvVar::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudRunV2ContainerPort
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -612,6 +635,16 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2Overrides
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :container_overrides, as: 'containerOverrides', class: Google::Apis::RunV2::GoogleCloudRunV2ContainerOverride, decorator: Google::Apis::RunV2::GoogleCloudRunV2ContainerOverride::Representation
+      
+          property :task_count, as: 'taskCount'
+          property :timeout, as: 'timeout'
+        end
+      end
+      
       class GoogleCloudRunV2Probe
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -712,6 +745,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
+          property :overrides, as: 'overrides', class: Google::Apis::RunV2::GoogleCloudRunV2Overrides, decorator: Google::Apis::RunV2::GoogleCloudRunV2Overrides::Representation
+      
           property :validate_only, as: 'validateOnly'
         end
       end
