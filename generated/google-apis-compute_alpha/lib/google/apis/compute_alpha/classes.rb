@@ -3771,11 +3771,11 @@ module Google
         # applicable to either: - A regional backend service with the service_protocol
         # set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to
         # INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme
-        # set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field
-        # is not set to MAGLEV or RING_HASH, session affinity settings will not take
-        # effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service
-        # is referenced by a URL map that is bound to target gRPC proxy that has
-        # validateForProxyless field set to true.
+        # set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If
+        # sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH,
+        # session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH
+        # are supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `localityLbPolicy`
         # @return [String]
         attr_accessor :locality_lb_policy
@@ -11232,9 +11232,9 @@ module Google
         attr_accessor :auto_created_reservations_duration
       
         # Setting for enabling or disabling automatic deletion for auto-created
-        # reservation. If omitted or set to true, auto-created reservations will be
-        # deleted at Future Reservation's end time (default) or at user's defined
-        # timestamp if any of the [auto_created_reservations_delete_time,
+        # reservation. If set to true, auto-created reservations will be deleted at
+        # Future Reservation's end time (default) or at user's defined timestamp if any
+        # of the [auto_created_reservations_delete_time,
         # auto_created_reservations_duration] values is specified. For keeping auto-
         # created reservation indefinitely, this value should be set to false.
         # Corresponds to the JSON property `autoDeleteAutoCreatedReservations`
@@ -12653,19 +12653,22 @@ module Google
         end
       end
       
-      # Represents a Health Check resource. Google Compute Engine has two Health Check
-      # resources: * [Global](/compute/docs/reference/rest/alpha/healthChecks) * [
-      # Regional](/compute/docs/reference/rest/alpha/regionHealthChecks) Internal HTTP(
-      # S) load balancers must use regional health checks (`compute.v1.
-      # regionHealthChecks`). Traffic Director must use global health checks (`compute.
-      # v1.healthChecks`). Internal TCP/UDP load balancers can use either regional or
-      # global health checks (`compute.v1.regionHealthChecks` or `compute.v1.
-      # healthChecks`). External HTTP(S), TCP proxy, and SSL proxy load balancers as
-      # well as managed instance group auto-healing must use global health checks (`
-      # compute.v1.healthChecks`). Backend service-based network load balancers must
-      # use regional health checks (`compute.v1.regionHealthChecks`). Target pool-
-      # based network load balancers must use legacy HTTP health checks (`compute.v1.
-      # httpHealthChecks`). For more information, see Health checks overview.
+      # Represents a health check resource. Google Compute Engine has two health check
+      # resources: * [Regional](/compute/docs/reference/rest/alpha/regionHealthChecks)
+      # * [Global](/compute/docs/reference/rest/alpha/healthChecks) These health check
+      # resources can be used for load balancing and for autohealing VMs in a managed
+      # instance group (MIG). **Load balancing** The following load balancer can use
+      # either regional or global health check: * Internal TCP/UDP load balancer The
+      # following load balancers require regional health check: * Internal HTTP(S)
+      # load balancer * Backend service-based network load balancer Traffic Director
+      # and the following load balancers require global health check: * External HTTP(
+      # S) load balancer * TCP proxy load balancer * SSL proxy load balancer The
+      # following load balancer require [legacy HTTP health checks](/compute/docs/
+      # reference/rest/v1/httpHealthChecks): * Target pool-based network load balancer
+      # **Autohealing in MIGs** The health checks that you use for autohealing VMs in
+      # a MIG can be either regional or global. For more information, see Set up an
+      # application health check and autohealing. For more information, see Health
+      # checks overview.
       class HealthCheck
         include Google::Apis::Core::Hashable
       
@@ -19869,9 +19872,15 @@ module Google
         end
       end
       
-      # Represents an Instance Template resource. You can use instance templates to
-      # create VM instances and managed instance groups. For more information, read
-      # Instance Templates.
+      # Represents an Instance Template resource. Google Compute Engine has two
+      # Instance Template resources: * [Global](/compute/docs/reference/rest/alpha/
+      # instanceTemplates) * [Regional](/compute/docs/reference/rest/alpha/
+      # regionInstanceTemplates) You can reuse a global instance template in different
+      # regions whereas you can use a regional instance template in a specified region
+      # only. If you want to reduce cross-region dependency or achieve data residency,
+      # use a regional instance template. To create VMs, managed instance groups, and
+      # reservations, you can use either global or regional instance templates. For
+      # more information, read Instance Templates.
       class InstanceTemplate
         include Google::Apis::Core::Hashable
       
@@ -21425,9 +21434,9 @@ module Google
       
         # [Output only] List of features available for this Interconnect connection,
         # which can take one of the following values: - MACSEC If present then the
-        # interconnect was created on MACsec capable hardware ports. If not present then
-        # the interconnect is provisioned on non-MACsec capable ports and MACsec
-        # enablement will fail.
+        # Interconnect connection is provisioned on MACsec capable hardware ports. If
+        # not present then the Interconnect connection is provisioned on non-MACsec
+        # capable ports and MACsec isn't supported and enabling MACsec fails.
         # Corresponds to the JSON property `availableFeatures`
         # @return [Array<String>]
         attr_accessor :available_features
@@ -21533,7 +21542,8 @@ module Google
         attr_accessor :location
       
         # Configuration information for enabling Media Access Control security (MACsec)
-        # on this Interconnect connection between Google and your on-premises router.
+        # on this Cloud Interconnect connection between Google and your on-premises
+        # router.
         # Corresponds to the JSON property `macsec`
         # @return [Google::Apis::ComputeAlpha::InterconnectMacsec]
         attr_accessor :macsec
@@ -21595,10 +21605,10 @@ module Google
       
         # Optional. List of features requested for this Interconnect connection, which
         # can take one of the following values: - MACSEC If specified then the
-        # interconnect will be created on MACsec capable hardware ports. If not
-        # specified, the default value is false, which will allocate non-MACsec capable
-        # ports first if available. This parameter can only be provided during
-        # interconnect INSERT and cannot be changed using interconnect PATCH.
+        # connection is created on MACsec capable hardware ports. If not specified, the
+        # default value is false, which allocates non-MACsec capable ports first if
+        # available. This parameter can be provided only with Interconnect INSERT. It
+        # isn't valid for Interconnect PATCH.
         # Corresponds to the JSON property `requestedFeatures`
         # @return [Array<String>]
         attr_accessor :requested_features
@@ -23196,7 +23206,8 @@ module Google
       end
       
       # Configuration information for enabling Media Access Control security (MACsec)
-      # on this Interconnect connection between Google and your on-premises router.
+      # on this Cloud Interconnect connection between Google and your on-premises
+      # router.
       class InterconnectMacsec
         include Google::Apis::Core::Hashable
       
@@ -23211,8 +23222,8 @@ module Google
         alias_method :fail_open?, :fail_open
       
         # Required. A keychain placeholder describing a set of named key objects along
-        # with their start times. A MACsec CKN/CAK will be generated for each key in the
-        # key chain. Google router will automatically pick the key with the most recent
+        # with their start times. A MACsec CKN/CAK is generated for each key in the key
+        # chain. Google router automatically picks the key with the most recent
         # startTime when establishing or re-establishing a MACsec secure link.
         # Corresponds to the JSON property `preSharedKeys`
         # @return [Array<Google::Apis::ComputeAlpha::InterconnectMacsecPreSharedKey>]
@@ -28837,6 +28848,13 @@ module Google
         # @return [String]
         attr_accessor :bgp_best_path_selection_mode
       
+        # Allows to define a preferred approach for handling inter-region cost in the
+        # selection process when using the STANDARD BGP best path selection algorithm.
+        # Can be DEFAULT or ADD_COST_TO_MED.
+        # Corresponds to the JSON property `bgpInterRegionCost`
+        # @return [String]
+        attr_accessor :bgp_inter_region_cost
+      
         # The network-wide routing mode to use. If set to REGIONAL, this network's Cloud
         # Routers will only advertise routes with subnets of this network in the same
         # region as the router. If set to GLOBAL, this network's Cloud Routers will
@@ -28853,6 +28871,7 @@ module Google
         def update!(**args)
           @bgp_always_compare_med = args[:bgp_always_compare_med] if args.key?(:bgp_always_compare_med)
           @bgp_best_path_selection_mode = args[:bgp_best_path_selection_mode] if args.key?(:bgp_best_path_selection_mode)
+          @bgp_inter_region_cost = args[:bgp_inter_region_cost] if args.key?(:bgp_inter_region_cost)
           @routing_mode = args[:routing_mode] if args.key?(:routing_mode)
         end
       end
@@ -44197,6 +44216,13 @@ module Google
         # @return [String]
         attr_accessor :producer_forwarding_rule
       
+        # The number of VPCs to which this endpoint is allowed to be propagated per
+        # accept list resource (project or network). For ACCEPT_AUTOMATIC service
+        # attachment, this limit is default to per project.
+        # Corresponds to the JSON property `propagatedConnectionLimit`
+        # @return [Fixnum]
+        attr_accessor :propagated_connection_limit
+      
         # [Output Only] An 128-bit global unique ID of the PSC service attachment.
         # Corresponds to the JSON property `pscServiceAttachmentId`
         # @return [Google::Apis::ComputeAlpha::Uint128]
@@ -44210,7 +44236,7 @@ module Google
         # affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an
         # ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the
         # reject list. For newly created service attachment, this boolean defaults to
-        # true.
+        # false.
         # Corresponds to the JSON property `reconcileConnections`
         # @return [Boolean]
         attr_accessor :reconcile_connections
@@ -44262,6 +44288,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nat_subnets = args[:nat_subnets] if args.key?(:nat_subnets)
           @producer_forwarding_rule = args[:producer_forwarding_rule] if args.key?(:producer_forwarding_rule)
+          @propagated_connection_limit = args[:propagated_connection_limit] if args.key?(:propagated_connection_limit)
           @psc_service_attachment_id = args[:psc_service_attachment_id] if args.key?(:psc_service_attachment_id)
           @reconcile_connections = args[:reconcile_connections] if args.key?(:reconcile_connections)
           @region = args[:region] if args.key?(:region)
@@ -47065,6 +47092,11 @@ module Google
       class StoragePool
         include Google::Apis::Core::Hashable
       
+        # Provisioning type of the byte capacity of the pool.
+        # Corresponds to the JSON property `capacityProvisioningType`
+        # @return [String]
+        attr_accessor :capacity_provisioning_type
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -47115,6 +47147,12 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Provisioning type of the performance-related parameters of the pool, such as
+        # throughput and IOPS.
+        # Corresponds to the JSON property `performanceProvisioningType`
+        # @return [String]
+        attr_accessor :performance_provisioning_type
       
         # Provsioned IOPS of the storage pool.
         # Corresponds to the JSON property `provisionedIops`
@@ -47177,6 +47215,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @capacity_provisioning_type = args[:capacity_provisioning_type] if args.key?(:capacity_provisioning_type)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
@@ -47184,6 +47223,7 @@ module Google
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @performance_provisioning_type = args[:performance_provisioning_type] if args.key?(:performance_provisioning_type)
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
           @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
@@ -53090,7 +53130,6 @@ module Google
         attr_accessor :maintenance_status
       
         # Represents a window of time using two timestamps: `earliest` and `latest`.
-        # This timestamp values are in RFC3339 text format.
         # Corresponds to the JSON property `startTimeWindow`
         # @return [Google::Apis::ComputeAlpha::UpcomingMaintenanceTimeWindow]
         attr_accessor :start_time_window
@@ -53137,7 +53176,6 @@ module Google
       end
       
       # Represents a window of time using two timestamps: `earliest` and `latest`.
-      # This timestamp values are in RFC3339 text format.
       class UpcomingMaintenanceTimeWindow
         include Google::Apis::Core::Hashable
       
