@@ -1622,10 +1622,11 @@ module Google
       class Proto2FileDescriptorProto
         include Google::Apis::Core::Hashable
       
-        # The edition of the proto file.
-        # Corresponds to the JSON property `editionEnum`
+        # BEGIN GOOGLE-INTERNAL TODO(b/297898292) Deprecate and remove this field in
+        # favor of enums. END GOOGLE-INTERNAL
+        # Corresponds to the JSON property `editionDeprecated`
         # @return [String]
-        attr_accessor :edition_enum
+        attr_accessor :edition_deprecated
       
         # 
         # Corresponds to the JSON property `enumType`
@@ -1659,7 +1660,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @edition_enum = args[:edition_enum] if args.key?(:edition_enum)
+          @edition_deprecated = args[:edition_deprecated] if args.key?(:edition_deprecated)
           @enum_type = args[:enum_type] if args.key?(:enum_type)
           @message_type = args[:message_type] if args.key?(:message_type)
           @name = args[:name] if args.key?(:name)

@@ -807,7 +807,7 @@ module Google
       class Proto2FileDescriptorProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :edition_enum, as: 'editionEnum'
+          property :edition_deprecated, as: 'editionDeprecated'
           collection :enum_type, as: 'enumType', class: Google::Apis::ChromepolicyV1::Proto2EnumDescriptorProto, decorator: Google::Apis::ChromepolicyV1::Proto2EnumDescriptorProto::Representation
       
           collection :message_type, as: 'messageType', class: Google::Apis::ChromepolicyV1::Proto2DescriptorProto, decorator: Google::Apis::ChromepolicyV1::Proto2DescriptorProto::Representation
