@@ -1410,8 +1410,7 @@ module Google
         # contained within one of the listed Kubernetes Namespace in the Backup. If this
         # field is not provided, no namespace filtering will be performed (all resources
         # in all Namespaces, including all cluster-scoped resources, will be candidates
-        # for transformation). To mix cluster-scoped and namespaced resources in the
-        # same rule, use an empty string ("") as one of the target namespaces.
+        # for transformation).
         # Corresponds to the JSON property `namespaces`
         # @return [Array<String>]
         attr_accessor :namespaces
