@@ -3256,6 +3256,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lookup for a single DataRedactionSettings.
+        # @param [String] name
+        #   Required. The name of the settings to lookup. Format: properties/`property`/
+        #   dataStreams/`data_stream`/dataRedactionSettings Example: "properties/1000/
+        #   dataStreams/2000/dataRedactionSettings"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRedactionSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRedactionSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_property_data_stream_data_redaction_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRedactionSettings::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRedactionSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the enhanced measurement settings for this data stream. Note that the
         # stream must enable enhanced measurement for these settings to take effect.
         # @param [String] name
@@ -3396,6 +3428,46 @@ module Google
           command.request_object = google_analytics_admin_v1alpha_data_stream_object
           command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStream::Representation
           command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStream
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a DataRedactionSettings on a property.
+        # @param [String] name
+        #   Output only. Name of this Data Redaction Settings resource. Format: properties/
+        #   `property_id`/dataStreams/`data_stream`/dataRedactionSettings Example: "
+        #   properties/1000/dataStreams/2000/dataRedactionSettings"
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRedactionSettings] google_analytics_admin_v1alpha_data_redaction_settings_object
+        # @param [String] update_mask
+        #   Required. The list of fields to be updated. Field names must be in snake case (
+        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
+        #   entire entity, use one path with the string "*" to match all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRedactionSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRedactionSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_property_data_stream_data_redaction_settings(name, google_analytics_admin_v1alpha_data_redaction_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRedactionSettings::Representation
+          command.request_object = google_analytics_admin_v1alpha_data_redaction_settings_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRedactionSettings::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRedactionSettings
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3898,9 +3970,9 @@ module Google
         # Lists SKAdNetworkConversionValueSchema on a stream. Properties can have at
         # most one SKAdNetworkConversionValueSchema.
         # @param [String] parent
-        #   Required. Format: properties/`property_id`/dataStreams/`dataStream`/
-        #   sKAdNetworkConversionValueSchema Example: properties/1234/dataStreams/5678/
-        #   sKAdNetworkConversionValueSchema
+        #   Required. The DataStream resource to list schemas for. Format: properties/`
+        #   property_id`/dataStreams/`dataStream` Example: properties/1234/dataStreams/
+        #   5678
         # @param [Fixnum] page_size
         #   The maximum number of resources to return. The service may return fewer than
         #   this value, even if there are additional pages. If unspecified, at most 50

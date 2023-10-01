@@ -514,6 +514,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaDataRedactionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaDataRetentionSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1574,6 +1580,8 @@ module Google
       
           property :custom_metric, as: 'customMetric', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric::Representation
       
+          property :data_redaction_settings, as: 'dataRedactionSettings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRedactionSettings, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRedactionSettings::Representation
+      
           property :data_retention_settings, as: 'dataRetentionSettings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRetentionSettings, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRetentionSettings::Representation
       
           property :data_stream, as: 'dataStream', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStream, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStream::Representation
@@ -1766,6 +1774,16 @@ module Google
           property :parameter_name, as: 'parameterName'
           collection :restricted_metric_type, as: 'restrictedMetricType'
           property :scope, as: 'scope'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaDataRedactionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_redaction_enabled, as: 'emailRedactionEnabled'
+          property :name, as: 'name'
+          collection :query_parameter_keys, as: 'queryParameterKeys'
+          property :query_parameter_redaction_enabled, as: 'queryParameterRedactionEnabled'
         end
       end
       
