@@ -122,6 +122,247 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a Redis cluster based on the specified properties. The creation is
+        # executed asynchronously and callers may check the returned operation to track
+        # its progress. Once the operation is completed the Redis cluster will be fully
+        # functional. The completed longrunning.Operation will contain the new cluster
+        # object in the response field. The returned operation is automatically deleted
+        # after a few hours, so there is no need to call DeleteOperation.
+        # @param [String] parent
+        #   Required. The resource name of the cluster location using the form: `projects/`
+        #   project_id`/locations/`location_id`` where `location_id` refers to a GCP
+        #   region.
+        # @param [Google::Apis::RedisV1::Cluster] cluster_object
+        # @param [String] cluster_id
+        #   Required. The logical name of the Redis cluster in the customer project with
+        #   the following restrictions: * Must contain only lowercase letters, numbers,
+        #   and hyphens. * Must start with a letter. * Must be between 1-63 characters. *
+        #   Must end with a number or a letter. * Must be unique within the customer
+        #   project / location
+        # @param [String] request_id
+        #   Idempotent request UUID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_cluster(parent, cluster_object = nil, cluster_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/clusters', options)
+          command.request_representation = Google::Apis::RedisV1::Cluster::Representation
+          command.request_object = cluster_object
+          command.response_representation = Google::Apis::RedisV1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['clusterId'] = cluster_id unless cluster_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a specific Redis cluster. Cluster stops serving and data is deleted.
+        # @param [String] name
+        #   Required. Redis cluster resource name using the form: `projects/`project_id`/
+        #   locations/`location_id`/clusters/`cluster_id`` where `location_id` refers to a
+        #   GCP region.
+        # @param [String] request_id
+        #   Idempotent request UUID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_cluster(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RedisV1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the details of a specific Redis cluster.
+        # @param [String] name
+        #   Required. Redis cluster resource name using the form: `projects/`project_id`/
+        #   locations/`location_id`/clusters/`cluster_id`` where `location_id` refers to a
+        #   GCP region.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::Cluster] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::Cluster]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_cluster(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RedisV1::Cluster::Representation
+          command.response_class = Google::Apis::RedisV1::Cluster
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the details of certificate authority information for Redis cluster.
+        # @param [String] name
+        #   Required. Redis cluster certificate authority resource name using the form: `
+        #   projects/`project_id`/locations/`location_id`/clusters/`cluster_id`/
+        #   certificateAuthority` where `location_id` refers to a GCP region.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::CertificateAuthority] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::CertificateAuthority]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_cluster_certificate_authority(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/certificateAuthority', options)
+          command.response_representation = Google::Apis::RedisV1::CertificateAuthority::Representation
+          command.response_class = Google::Apis::RedisV1::CertificateAuthority
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all Redis clusters owned by a project in either the specified location (
+        # region) or all locations. The location should have the following format: * `
+        # projects/`project_id`/locations/`location_id`` If `location_id` is specified
+        # as `-` (wildcard), then all regions available to the project are queried, and
+        # the results are aggregated.
+        # @param [String] parent
+        #   Required. The resource name of the cluster location using the form: `projects/`
+        #   project_id`/locations/`location_id`` where `location_id` refers to a GCP
+        #   region.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return. If not specified, a default value of
+        #   1000 will be used by the service. Regardless of the page_size value, the
+        #   response may include a partial list and a caller should only rely on response'
+        #   s `next_page_token` to determine if there are more clusters left to be queried.
+        # @param [String] page_token
+        #   The `next_page_token` value returned from a previous ListClusters request, if
+        #   any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::ListClustersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::ListClustersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_clusters(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/clusters', options)
+          command.response_representation = Google::Apis::RedisV1::ListClustersResponse::Representation
+          command.response_class = Google::Apis::RedisV1::ListClustersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the metadata and configuration of a specific Redis cluster. Completed
+        # longrunning.Operation will contain the new cluster object in the response
+        # field. The returned operation is automatically deleted after a few hours, so
+        # there is no need to call DeleteOperation.
+        # @param [String] name
+        #   Required. Unique name of the resource in this scope including project and
+        #   location using the form: `projects/`project_id`/locations/`location_id`/
+        #   clusters/`cluster_id``
+        # @param [Google::Apis::RedisV1::Cluster] cluster_object
+        # @param [String] request_id
+        #   Idempotent request UUID.
+        # @param [String] update_mask
+        #   Required. Mask of fields to update. At least one path must be supplied in this
+        #   field. The elements of the repeated paths field may only include these fields
+        #   from Cluster: * `size_gb` * `replica_count`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_cluster(name, cluster_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::RedisV1::Cluster::Representation
+          command.request_object = cluster_object
+          command.response_representation = Google::Apis::RedisV1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Redis instance based on the specified tier and memory size. By
         # default, the instance is accessible from the project's [default network](https:
         # //cloud.google.com/vpc/docs/vpc). The creation is executed asynchronously and
