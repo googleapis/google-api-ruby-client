@@ -266,6 +266,45 @@ module Google
         end
       end
       
+      # Per-container override specification.
+      class GoogleCloudRunV2ContainerOverride
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Arguments to the entrypoint. Will replace existing args for override.
+        # Corresponds to the JSON property `args`
+        # @return [Array<String>]
+        attr_accessor :args
+      
+        # Optional. True if the intention is to clear out existing args list.
+        # Corresponds to the JSON property `clearArgs`
+        # @return [Boolean]
+        attr_accessor :clear_args
+        alias_method :clear_args?, :clear_args
+      
+        # List of environment variables to set in the container. Will be merged with
+        # existing env for override.
+        # Corresponds to the JSON property `env`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2EnvVar>]
+        attr_accessor :env
+      
+        # The name of the container specified as a DNS_LABEL.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @clear_args = args[:clear_args] if args.key?(:clear_args)
+          @env = args[:env] if args.key?(:env)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # ContainerPort represents a network port in a single container.
       class GoogleCloudRunV2ContainerPort
         include Google::Apis::Core::Hashable
@@ -1158,6 +1197,40 @@ module Google
         end
       end
       
+      # RunJob Overrides that contains Execution fields to be overridden.
+      class GoogleCloudRunV2Overrides
+        include Google::Apis::Core::Hashable
+      
+        # Per container override specification.
+        # Corresponds to the JSON property `containerOverrides`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2ContainerOverride>]
+        attr_accessor :container_overrides
+      
+        # Optional. The desired number of tasks the execution should run. Will replace
+        # existing task_count value.
+        # Corresponds to the JSON property `taskCount`
+        # @return [Fixnum]
+        attr_accessor :task_count
+      
+        # Duration in seconds the task may be active before the system will actively try
+        # to mark it failed and kill associated containers. Will replace existing
+        # timeout_seconds value.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_overrides = args[:container_overrides] if args.key?(:container_overrides)
+          @task_count = args[:task_count] if args.key?(:task_count)
+          @timeout = args[:timeout] if args.key?(:timeout)
+        end
+      end
+      
       # Probe describes a health check to be performed against a container to
       # determine whether it is alive or ready to receive traffic.
       class GoogleCloudRunV2Probe
@@ -1631,6 +1704,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # RunJob Overrides that contains Execution fields to be overridden.
+        # Corresponds to the JSON property `overrides`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2Overrides]
+        attr_accessor :overrides
+      
         # Indicates that the request should be validated without actually deleting any
         # resources.
         # Corresponds to the JSON property `validateOnly`
@@ -1645,6 +1723,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @etag = args[:etag] if args.key?(:etag)
+          @overrides = args[:overrides] if args.key?(:overrides)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
