@@ -54,7 +54,7 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::ImageConfig]
         attr_accessor :clean_image_tag
       
-        # Inspect text and transform sensitive text. Configurable using `TextConfig`.
+        # Inspect text and transform sensitive text. Configurable using TextConfig.
         # Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/
         # output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT,
         # DA, DT, AS
@@ -1009,7 +1009,7 @@ module Google
         end
       end
       
-      # Inspect text and transform sensitive text. Configurable using `TextConfig`.
+      # Inspect text and transform sensitive text. Configurable using TextConfig.
       # Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/
       # output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT,
       # DA, DT, AS
@@ -1647,9 +1647,9 @@ module Google
         # Ensures in-flight data remains in the region of origin during de-
         # identification. Using this option results in a significant reduction of
         # throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME`
-        # infoTypes. If the deprecated `DicomConfig` or `FhirConfig` are used, then `
-        # LOCATION` must be excluded within `TextConfig`, and must also be excluded
-        # within `ImageConfig` if image redaction is required.
+        # infoTypes. If the deprecated DicomConfig or FhirConfig are used, then `
+        # LOCATION` must be excluded within TextConfig, and must also be excluded within
+        # ImageConfig if image redaction is required.
         # Corresponds to the JSON property `useRegionalDataProcessing`
         # @return [Boolean]
         attr_accessor :use_regional_data_processing
@@ -2831,8 +2831,8 @@ module Google
         # healthcare.fhirResources.update permission on the destination store to your
         # project's **Cloud Healthcare Service Agent** [service account](https://cloud.
         # google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#
-        # the_cloud_healthcare_service_agent). The destination store must set `
-        # enable_update_create` to true. The destination store must use FHIR version R4.
+        # the_cloud_healthcare_service_agent). The destination store must set
+        # enableUpdateCreate to true. The destination store must use FHIR version R4.
         # Writing these resources will consume FHIR operations quota from the project
         # containing the source data. De-identify operation metadata is only generated
         # for DICOM de-identification operations.
