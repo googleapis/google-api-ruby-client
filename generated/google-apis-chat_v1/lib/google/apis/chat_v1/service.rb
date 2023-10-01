@@ -268,8 +268,7 @@ module Google
         # (https://developers.google.com/chat/api/guides/auth). Fully supports [service
         # account authentication](https://developers.google.com/chat/api/guides/auth/
         # service-accounts) and [user authentication](https://developers.google.com/chat/
-        # api/guides/auth/users). [User authentication](https://developers.google.com/
-        # chat/api/guides/auth/users).
+        # api/guides/auth/users).
         # @param [String] name
         #   Required. Resource name of the space, in the form "spaces/*". Format: `spaces/`
         #   space``
