@@ -286,12 +286,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudContactcenterinsightsV1ExportIssueModelResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudContactcenterinsightsV1FaqAnswerData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,12 +299,6 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1HoldData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1ImportIssueModelResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -533,6 +521,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1SmartReplyData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1SpeechConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -808,12 +802,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -827,12 +815,6 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1HoldData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -977,6 +959,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1SmartReplyData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1SpeechConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1519,12 +1507,6 @@ module Google
         end
       end
       
-      class GoogleCloudContactcenterinsightsV1ExportIssueModelResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class GoogleCloudContactcenterinsightsV1FaqAnswerData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1546,12 +1528,6 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1HoldData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1ImportIssueModelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1884,6 +1860,8 @@ module Google
           hash :pubsub_notification_settings, as: 'pubsubNotificationSettings'
           property :redaction_config, as: 'redactionConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig::Representation
       
+          property :speech_config, as: 'speechConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
@@ -1921,6 +1899,13 @@ module Google
           hash :metadata, as: 'metadata'
           property :query_record, as: 'queryRecord'
           property :reply, as: 'reply'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1SpeechConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :speech_recognizer, as: 'speechRecognizer'
         end
       end
       
@@ -1968,6 +1953,8 @@ module Google
           property :conversation_id, as: 'conversationId'
           property :parent, as: 'parent'
           property :redaction_config, as: 'redactionConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig::Representation
+      
+          property :speech_config, as: 'speechConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig::Representation
       
         end
       end
@@ -2418,12 +2405,6 @@ module Google
         end
       end
       
-      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2445,12 +2426,6 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1HoldData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -2689,6 +2664,13 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1SpeechConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :speech_recognizer, as: 'speechRecognizer'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2733,6 +2715,8 @@ module Google
           property :conversation_id, as: 'conversationId'
           property :parent, as: 'parent'
           property :redaction_config, as: 'redactionConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RedactionConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RedactionConfig::Representation
+      
+          property :speech_config, as: 'speechConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SpeechConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SpeechConfig::Representation
       
         end
       end

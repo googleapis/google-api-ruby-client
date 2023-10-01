@@ -1696,19 +1696,6 @@ module Google
         end
       end
       
-      # Response from export issue model
-      class GoogleCloudContactcenterinsightsV1ExportIssueModelResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Agent Assist frequently-asked-question answer data.
       class GoogleCloudContactcenterinsightsV1FaqAnswerData
         include Google::Apis::Core::Hashable
@@ -1791,19 +1778,6 @@ module Google
       
       # The data for a hold annotation.
       class GoogleCloudContactcenterinsightsV1HoldData
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Response from import issue model
-      class GoogleCloudContactcenterinsightsV1ImportIssueModelResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -2884,6 +2858,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig]
         attr_accessor :redaction_config
       
+        # Speech-to-Text configuration.
+        # Corresponds to the JSON property `speechConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig]
+        attr_accessor :speech_config
+      
         # Output only. The time at which the settings were last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -2902,6 +2881,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @pubsub_notification_settings = args[:pubsub_notification_settings] if args.key?(:pubsub_notification_settings)
           @redaction_config = args[:redaction_config] if args.key?(:redaction_config)
+          @speech_config = args[:speech_config] if args.key?(:speech_config)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -3031,6 +3011,26 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @query_record = args[:query_record] if args.key?(:query_record)
           @reply = args[:reply] if args.key?(:reply)
+        end
+      end
+      
+      # Speech-to-Text configuration.
+      class GoogleCloudContactcenterinsightsV1SpeechConfig
+        include Google::Apis::Core::Hashable
+      
+        # The fully-qualified Speech Recognizer resource name. Format: `projects/`
+        # project_id`/locations/`location`/recognizer/`recognizer``
+        # Corresponds to the JSON property `speechRecognizer`
+        # @return [String]
+        attr_accessor :speech_recognizer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speech_recognizer = args[:speech_recognizer] if args.key?(:speech_recognizer)
         end
       end
       
@@ -3168,6 +3168,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig]
         attr_accessor :redaction_config
       
+        # Speech-to-Text configuration.
+        # Corresponds to the JSON property `speechConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig]
+        attr_accessor :speech_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3178,6 +3183,7 @@ module Google
           @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
           @parent = args[:parent] if args.key?(:parent)
           @redaction_config = args[:redaction_config] if args.key?(:redaction_config)
+          @speech_config = args[:speech_config] if args.key?(:speech_config)
         end
       end
       
@@ -4741,19 +4747,6 @@ module Google
         end
       end
       
-      # Response from export issue model
-      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Agent Assist frequently-asked-question answer data.
       class GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData
         include Google::Apis::Core::Hashable
@@ -4836,19 +4829,6 @@ module Google
       
       # The data for a hold annotation.
       class GoogleCloudContactcenterinsightsV1alpha1HoldData
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Response from import issue model
-      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -5618,6 +5598,26 @@ module Google
         end
       end
       
+      # Speech-to-Text configuration.
+      class GoogleCloudContactcenterinsightsV1alpha1SpeechConfig
+        include Google::Apis::Core::Hashable
+      
+        # The fully-qualified Speech Recognizer resource name. Format: `projects/`
+        # project_id`/locations/`location`/recognizer/`recognizer``
+        # Corresponds to the JSON property `speechRecognizer`
+        # @return [String]
+        attr_accessor :speech_recognizer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speech_recognizer = args[:speech_recognizer] if args.key?(:speech_recognizer)
+        end
+      end
+      
       # Metadata for undeploying an issue model.
       class GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata
         include Google::Apis::Core::Hashable
@@ -5752,6 +5752,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RedactionConfig]
         attr_accessor :redaction_config
       
+        # Speech-to-Text configuration.
+        # Corresponds to the JSON property `speechConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SpeechConfig]
+        attr_accessor :speech_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5762,6 +5767,7 @@ module Google
           @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
           @parent = args[:parent] if args.key?(:parent)
           @redaction_config = args[:redaction_config] if args.key?(:redaction_config)
+          @speech_config = args[:speech_config] if args.key?(:speech_config)
         end
       end
       
