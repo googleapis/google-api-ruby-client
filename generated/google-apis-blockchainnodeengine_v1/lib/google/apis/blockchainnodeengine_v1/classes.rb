@@ -172,6 +172,16 @@ module Google
         attr_accessor :api_enable_debug
         alias_method :api_enable_debug?, :api_enable_debug
       
+        # An Ethereum address which the beacon client will send fee rewards to if no
+        # recipient is configured in the validator client. See https://lighthouse-book.
+        # sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/
+        # docs/execution-node/fee-recipient for examples of how this is used. Note that
+        # while this is often described as "suggested", as we run the execution node we
+        # can trust the execution node, and therefore this is considered enforced.
+        # Corresponds to the JSON property `beaconFeeRecipient`
+        # @return [String]
+        attr_accessor :beacon_fee_recipient
+      
         # Immutable. The consensus client.
         # Corresponds to the JSON property `consensusClient`
         # @return [String]
@@ -207,6 +217,7 @@ module Google
           @additional_endpoints = args[:additional_endpoints] if args.key?(:additional_endpoints)
           @api_enable_admin = args[:api_enable_admin] if args.key?(:api_enable_admin)
           @api_enable_debug = args[:api_enable_debug] if args.key?(:api_enable_debug)
+          @beacon_fee_recipient = args[:beacon_fee_recipient] if args.key?(:beacon_fee_recipient)
           @consensus_client = args[:consensus_client] if args.key?(:consensus_client)
           @execution_client = args[:execution_client] if args.key?(:execution_client)
           @geth_details = args[:geth_details] if args.key?(:geth_details)
