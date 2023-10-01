@@ -122,9 +122,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Accepts a proposal to attach a Network Connectivity Center spoke to the hub.
+        # Accepts a proposal to attach a Network Connectivity Center spoke to a hub.
         # @param [String] name
-        #   Required. The name of the hub.
+        #   Required. The name of the hub into which to accept the spoke.
         # @param [Google::Apis::NetworkconnectivityV1::AcceptHubSpokeRequest] accept_hub_spoke_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -163,10 +163,10 @@ module Google
         #   Required. A unique identifier for the hub.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server guarantees that a request
-        #   doesn't result in creation of duplicate commitments for at least 60 minutes.
-        #   For example, consider a situation where you make an initial request and the
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that a request doesn't
+        #   result in creation of duplicate commitments for at least 60 minutes. For
+        #   example, consider a situation where you make an initial request and the
         #   request times out. If you make the request again with the same request ID, the
         #   server can check to see whether the original operation was received. If it was,
         #   the server ignores the second request. This behavior prevents clients from
@@ -209,10 +209,10 @@ module Google
         #   Required. The name of the hub to delete.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server guarantees that a request
-        #   doesn't result in creation of duplicate commitments for at least 60 minutes.
-        #   For example, consider a situation where you make an initial request and the
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that a request doesn't
+        #   result in creation of duplicate commitments for at least 60 minutes. For
+        #   example, consider a situation where you make an initial request and the
         #   request times out. If you make the request again with the same request ID, the
         #   server can check to see whether the original operation was received. If it was,
         #   the server ignores the second request. This behavior prevents clients from
@@ -427,10 +427,10 @@ module Google
         # @param [Google::Apis::NetworkconnectivityV1::Hub] hub_object
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server guarantees that a request
-        #   doesn't result in creation of duplicate commitments for at least 60 minutes.
-        #   For example, consider a situation where you make an initial request and the
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that a request doesn't
+        #   result in creation of duplicate commitments for at least 60 minutes. For
+        #   example, consider a situation where you make an initial request and the
         #   request times out. If you make the request again with the same request ID, the
         #   server can check to see whether the original operation was received. If it was,
         #   the server ignores the second request. This behavior prevents clients from
@@ -474,12 +474,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Rejects a Network Connectivity Center spoke from being attached to the hub. If
+        # Rejects a Network Connectivity Center spoke from being attached to a hub. If
         # the spoke was previously in the `ACTIVE` state, it transitions to the `
         # INACTIVE` state and is no longer able to connect to other spokes that are
         # attached to the hub.
         # @param [String] name
-        #   Required. The name of the hub.
+        #   Required. The name of the hub from which to reject the spoke.
         # @param [Google::Apis::NetworkconnectivityV1::RejectHubSpokeRequest] reject_hub_spoke_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -923,12 +923,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new PolicyBasedRoute in a given project and location.
+        # Creates a new policy-based route in a given project and location.
         # @param [String] parent
         #   Required. The parent resource's name of the PolicyBasedRoute.
         # @param [Google::Apis::NetworkconnectivityV1::PolicyBasedRoute] policy_based_route_object
         # @param [String] policy_based_route_id
-        #   Required. Unique id for the Policy Based Route to create.
+        #   Required. Unique id for the policy-based route to create.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -971,9 +971,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single PolicyBasedRoute.
+        # Deletes a single policy-based route.
         # @param [String] name
-        #   Required. Name of the PolicyBasedRoute resource to delete.
+        #   Required. Name of the policy-based route resource to delete.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -1013,7 +1013,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single PolicyBasedRoute.
+        # Gets details of a single policy-based route.
         # @param [String] name
         #   Required. Name of the PolicyBasedRoute resource to get.
         # @param [String] fields
@@ -1088,7 +1088,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists PolicyBasedRoutes in a given project and location.
+        # Lists policy-based routes in a given project and location.
         # @param [String] parent
         #   Required. The parent resource's name.
         # @param [String] filter
@@ -2757,10 +2757,10 @@ module Google
         # @param [Google::Apis::NetworkconnectivityV1::Spoke] spoke_object
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server guarantees that a request
-        #   doesn't result in creation of duplicate commitments for at least 60 minutes.
-        #   For example, consider a situation where you make an initial request and the
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that a request doesn't
+        #   result in creation of duplicate commitments for at least 60 minutes. For
+        #   example, consider a situation where you make an initial request and the
         #   request times out. If you make the request again with the same request ID, the
         #   server can check to see whether the original operation was received. If it was,
         #   the server ignores the second request. This behavior prevents clients from
@@ -2805,10 +2805,10 @@ module Google
         #   Required. The name of the spoke to delete.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server guarantees that a request
-        #   doesn't result in creation of duplicate commitments for at least 60 minutes.
-        #   For example, consider a situation where you make an initial request and the
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that a request doesn't
+        #   result in creation of duplicate commitments for at least 60 minutes. For
+        #   example, consider a situation where you make an initial request and the
         #   request times out. If you make the request again with the same request ID, the
         #   server can check to see whether the original operation was received. If it was,
         #   the server ignores the second request. This behavior prevents clients from
@@ -2969,10 +2969,10 @@ module Google
         # @param [Google::Apis::NetworkconnectivityV1::Spoke] spoke_object
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server guarantees that a request
-        #   doesn't result in creation of duplicate commitments for at least 60 minutes.
-        #   For example, consider a situation where you make an initial request and the
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that a request doesn't
+        #   result in creation of duplicate commitments for at least 60 minutes. For
+        #   example, consider a situation where you make an initial request and the
         #   request times out. If you make the request again with the same request ID, the
         #   server can check to see whether the original operation was received. If it was,
         #   the server ignores the second request. This behavior prevents clients from
