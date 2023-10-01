@@ -1318,6 +1318,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3DocumentMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3DocumentOutputConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1745,6 +1751,18 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3ImportProcessorVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ListDocumentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ListDocumentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4272,6 +4290,18 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3DocumentMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_type, as: 'datasetType'
+          property :display_name, as: 'displayName'
+          property :document_id, as: 'documentId', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentId, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentId::Representation
+      
+          property :labeling_state, as: 'labelingState'
+          property :page_count, as: 'pageCount'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3DocumentOutputConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5030,6 +5060,27 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :processor_version, as: 'processorVersion'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ListDocumentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :return_total_size, as: 'returnTotalSize'
+          property :skip, as: 'skip'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ListDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :document_metadata, as: 'documentMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentMetadata::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
         end
       end
       
