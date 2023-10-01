@@ -6771,7 +6771,7 @@ module Google
       end
       
       # A singleton resource under a Processor which configures a collection of
-      # documents. Next Id: 8.
+      # documents.
       class GoogleCloudDocumentaiV1beta3Dataset
         include Google::Apis::Core::Hashable
       
