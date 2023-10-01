@@ -1,5 +1,9 @@
 # Release history for google-apis-apigeeregistry_v1
 
+### v0.16.0 (2023-10-01)
+
+* Regenerated from discovery document revision 20230928
+
 ### v0.15.0 (2023-08-13)
 
 * Regenerated from discovery document revision 20230802
