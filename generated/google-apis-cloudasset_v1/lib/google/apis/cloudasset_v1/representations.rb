@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EffectiveTagDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -778,6 +784,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Tag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TemporalAsset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1073,6 +1085,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :full_resource_name, as: 'fullResourceName'
           collection :policies, as: 'policies', class: Google::Apis::CloudassetV1::PolicyInfo, decorator: Google::Apis::CloudassetV1::PolicyInfo::Representation
+      
+        end
+      end
+      
+      class EffectiveTagDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attached_resource, as: 'attachedResource'
+          collection :effective_tags, as: 'effectiveTags', class: Google::Apis::CloudassetV1::Tag, decorator: Google::Apis::CloudassetV1::Tag::Representation
       
         end
       end
@@ -2063,6 +2084,8 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          collection :effective_tags, as: 'effectiveTags', class: Google::Apis::CloudassetV1::EffectiveTagDetails, decorator: Google::Apis::CloudassetV1::EffectiveTagDetails::Representation
+      
           collection :folders, as: 'folders'
           property :kms_key, as: 'kmsKey'
           collection :kms_keys, as: 'kmsKeys'
@@ -2081,6 +2104,8 @@ module Google
           collection :tag_keys, as: 'tagKeys'
           collection :tag_value_ids, as: 'tagValueIds'
           collection :tag_values, as: 'tagValues'
+          collection :tags, as: 'tags', class: Google::Apis::CloudassetV1::Tag, decorator: Google::Apis::CloudassetV1::Tag::Representation
+      
           property :update_time, as: 'updateTime'
           collection :versioned_resources, as: 'versionedResources', class: Google::Apis::CloudassetV1::VersionedResource, decorator: Google::Apis::CloudassetV1::VersionedResource::Representation
       
@@ -2176,6 +2201,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :fields, as: 'fields', class: Google::Apis::CloudassetV1::TableFieldSchema, decorator: Google::Apis::CloudassetV1::TableFieldSchema::Representation
       
+        end
+      end
+      
+      class Tag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tag_key, as: 'tagKey'
+          property :tag_value, as: 'tagValue'
+          property :tag_value_id, as: 'tagValueId'
         end
       end
       
