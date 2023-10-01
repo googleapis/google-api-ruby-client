@@ -6734,7 +6734,7 @@ module Google
       end
       
       # A singleton resource under a Processor which configures a collection of
-      # documents. Next Id: 8.
+      # documents.
       class GoogleCloudDocumentaiV1beta3Dataset
         include Google::Apis::Core::Hashable
       
@@ -7406,6 +7406,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @doc_id = args[:doc_id] if args.key?(:doc_id)
+        end
+      end
+      
+      # Metadata about a document.
+      class GoogleCloudDocumentaiV1beta3DocumentMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Type of the dataset split to which the document belongs.
+        # Corresponds to the JSON property `datasetType`
+        # @return [String]
+        attr_accessor :dataset_type
+      
+        # The display name of the document.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Document Identifier.
+        # Corresponds to the JSON property `documentId`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentId]
+        attr_accessor :document_id
+      
+        # Labelling state of the document.
+        # Corresponds to the JSON property `labelingState`
+        # @return [String]
+        attr_accessor :labeling_state
+      
+        # Number of pages in the document.
+        # Corresponds to the JSON property `pageCount`
+        # @return [Fixnum]
+        attr_accessor :page_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_type = args[:dataset_type] if args.key?(:dataset_type)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @document_id = args[:document_id] if args.key?(:document_id)
+          @labeling_state = args[:labeling_state] if args.key?(:labeling_state)
+          @page_count = args[:page_count] if args.key?(:page_count)
         end
       end
       
@@ -10031,6 +10074,102 @@ module Google
         end
       end
       
+      # 
+      class GoogleCloudDocumentaiV1beta3ListDocumentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Query to filter the documents based on https://google.aip.dev/160. ##
+        # Currently support query strings are: `SplitType=DATASET_SPLIT_TEST|
+        # DATASET_SPLIT_TRAIN|DATASET_SPLIT_UNASSIGNED` - `LabelingState=
+        # DOCUMENT_LABELED|DOCUMENT_UNLABELED|DOCUMENT_AUTO_LABELED` - `DisplayName=\"
+        # file_name.pdf\"` - `EntityType=abc/def` - `TagName=\"auto-labeling-running\"|\"
+        # sampled\"` Note: - Only `AND`, `=` and `!=` are supported. e.g. `DisplayName=
+        # file_name AND EntityType!=abc` IS supported. - Wildcard `*` is supported only
+        # in `DisplayName` filter - No duplicate filter keys are allowed, e.g. `
+        # EntityType=a AND EntityType=b` is NOT supported. - String match is case
+        # sensitive (for filter `DisplayName` & `EntityType`).
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The maximum number of documents to return. The service may return fewer than
+        # this value. If unspecified, at most 20 documents will be returned. The maximum
+        # value is 100; values above 100 will be coerced to 100.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # A page token, received from a previous `ListDocuments` call. Provide this to
+        # retrieve the subsequent page. When paginating, all other parameters provided
+        # to `ListDocuments` must match the call that provided the page token.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Optional. Controls if the ListDocuments request requires a total size of
+        # matched documents. See ListDocumentsResponse.total_size. Enabling this flag
+        # may adversely impact performance. Defaults to false.
+        # Corresponds to the JSON property `returnTotalSize`
+        # @return [Boolean]
+        attr_accessor :return_total_size
+        alias_method :return_total_size?, :return_total_size
+      
+        # Optional. Number of results to skip beginning from the `page_token` if
+        # provided. https://google.aip.dev/158#skipping-results. It must be a non-
+        # negative integer. Negative values wil be rejected. Note that this is not the
+        # number of pages to skip. If this value causes the cursor to move past the end
+        # of results, `ListDocumentsResponse.document_metadata` and `
+        # ListDocumentsResponse.next_page_token` will be empty.
+        # Corresponds to the JSON property `skip`
+        # @return [Fixnum]
+        attr_accessor :skip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @return_total_size = args[:return_total_size] if args.key?(:return_total_size)
+          @skip = args[:skip] if args.key?(:skip)
+        end
+      end
+      
+      # 
+      class GoogleCloudDocumentaiV1beta3ListDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Document metadata corresponding to the listed documents.
+        # Corresponds to the JSON property `documentMetadata`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentMetadata>]
+        attr_accessor :document_metadata
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Total count of documents queried.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_metadata = args[:document_metadata] if args.key?(:document_metadata)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
       # The response from `ListEvaluations`.
       class GoogleCloudDocumentaiV1beta3ListEvaluationsResponse
         include Google::Apis::Core::Hashable
@@ -10179,7 +10318,7 @@ module Google
         alias_method :compute_style_info?, :compute_style_info
       
         # Turn off character box detector in OCR engine. Character box detection is
-        # enabled by default in OCR 2.0+ processors.
+        # enabled by default in OCR 2.0 (and later) processors.
         # Corresponds to the JSON property `disableCharacterBoxesDetection`
         # @return [Boolean]
         attr_accessor :disable_character_boxes_detection
@@ -10273,8 +10412,8 @@ module Google
         attr_accessor :enable_math_ocr
         alias_method :enable_math_ocr?, :enable_math_ocr
       
-        # Turn on selection mark detector in OCR engine. Only available in OCR 2.0+
-        # processors.
+        # Turn on selection mark detector in OCR engine. Only available in OCR 2.0 (and
+        # later) processors.
         # Corresponds to the JSON property `enableSelectionMarkDetection`
         # @return [Boolean]
         attr_accessor :enable_selection_mark_detection
@@ -10301,8 +10440,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :from_end
       
-        # Only process certain pages from the start, process all if the document has
-        # less pages.
+        # Only process certain pages from the start. Process all if the document has
+        # fewer pages.
         # Corresponds to the JSON property `fromStart`
         # @return [Fixnum]
         attr_accessor :from_start
