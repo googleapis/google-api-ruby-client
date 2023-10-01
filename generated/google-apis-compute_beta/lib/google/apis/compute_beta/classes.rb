@@ -3604,11 +3604,11 @@ module Google
         # applicable to either: - A regional backend service with the service_protocol
         # set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to
         # INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme
-        # set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field
-        # is not set to MAGLEV or RING_HASH, session affinity settings will not take
-        # effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service
-        # is referenced by a URL map that is bound to target gRPC proxy that has
-        # validateForProxyless field set to true.
+        # set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If
+        # sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH,
+        # session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH
+        # are supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `localityLbPolicy`
         # @return [String]
         attr_accessor :locality_lb_policy
@@ -10547,9 +10547,9 @@ module Google
         attr_accessor :auto_created_reservations_duration
       
         # Setting for enabling or disabling automatic deletion for auto-created
-        # reservation. If omitted or set to true, auto-created reservations will be
-        # deleted at Future Reservation's end time (default) or at user's defined
-        # timestamp if any of the [auto_created_reservations_delete_time,
+        # reservation. If set to true, auto-created reservations will be deleted at
+        # Future Reservation's end time (default) or at user's defined timestamp if any
+        # of the [auto_created_reservations_delete_time,
         # auto_created_reservations_duration] values is specified. For keeping auto-
         # created reservation indefinitely, this value should be set to false.
         # Corresponds to the JSON property `autoDeleteAutoCreatedReservations`
@@ -11897,19 +11897,22 @@ module Google
         end
       end
       
-      # Represents a Health Check resource. Google Compute Engine has two Health Check
-      # resources: * [Global](/compute/docs/reference/rest/beta/healthChecks) * [
-      # Regional](/compute/docs/reference/rest/beta/regionHealthChecks) Internal HTTP(
-      # S) load balancers must use regional health checks (`compute.v1.
-      # regionHealthChecks`). Traffic Director must use global health checks (`compute.
-      # v1.healthChecks`). Internal TCP/UDP load balancers can use either regional or
-      # global health checks (`compute.v1.regionHealthChecks` or `compute.v1.
-      # healthChecks`). External HTTP(S), TCP proxy, and SSL proxy load balancers as
-      # well as managed instance group auto-healing must use global health checks (`
-      # compute.v1.healthChecks`). Backend service-based network load balancers must
-      # use regional health checks (`compute.v1.regionHealthChecks`). Target pool-
-      # based network load balancers must use legacy HTTP health checks (`compute.v1.
-      # httpHealthChecks`). For more information, see Health checks overview.
+      # Represents a health check resource. Google Compute Engine has two health check
+      # resources: * [Regional](/compute/docs/reference/rest/beta/regionHealthChecks) *
+      # [Global](/compute/docs/reference/rest/beta/healthChecks) These health check
+      # resources can be used for load balancing and for autohealing VMs in a managed
+      # instance group (MIG). **Load balancing** The following load balancer can use
+      # either regional or global health check: * Internal TCP/UDP load balancer The
+      # following load balancers require regional health check: * Internal HTTP(S)
+      # load balancer * Backend service-based network load balancer Traffic Director
+      # and the following load balancers require global health check: * External HTTP(
+      # S) load balancer * TCP proxy load balancer * SSL proxy load balancer The
+      # following load balancer require [legacy HTTP health checks](/compute/docs/
+      # reference/rest/v1/httpHealthChecks): * Target pool-based network load balancer
+      # **Autohealing in MIGs** The health checks that you use for autohealing VMs in
+      # a MIG can be either regional or global. For more information, see Set up an
+      # application health check and autohealing. For more information, see Health
+      # checks overview.
       class HealthCheck
         include Google::Apis::Core::Hashable
       
@@ -15736,6 +15739,11 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # Standby policy for stopped and suspended instances.
+        # Corresponds to the JSON property `standbyPolicy`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerStandbyPolicy]
+        attr_accessor :standby_policy
+      
         # Stateful configuration for this Instanced Group Manager
         # Corresponds to the JSON property `statefulPolicy`
         # @return [Google::Apis::ComputeBeta::StatefulPolicy]
@@ -15759,6 +15767,22 @@ module Google
         # Corresponds to the JSON property `targetSize`
         # @return [Fixnum]
         attr_accessor :target_size
+      
+        # The target number of stopped instances for this managed instance group. This
+        # number changes when you: - Stop instance using the stopInstances method or
+        # start instances using the startInstances method. - Manually change the
+        # targetStoppedSize using the update method.
+        # Corresponds to the JSON property `targetStoppedSize`
+        # @return [Fixnum]
+        attr_accessor :target_stopped_size
+      
+        # The target number of suspended instances for this managed instance group. This
+        # number changes when you: - Suspend instance using the suspendInstances method
+        # or resume instances using the resumeInstances method. - Manually change the
+        # targetSuspendedSize using the update method.
+        # Corresponds to the JSON property `targetSuspendedSize`
+        # @return [Fixnum]
+        attr_accessor :target_suspended_size
       
         # The update policy for this managed instance group.
         # Corresponds to the JSON property `updatePolicy`
@@ -15809,10 +15833,13 @@ module Google
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @standby_policy = args[:standby_policy] if args.key?(:standby_policy)
           @stateful_policy = args[:stateful_policy] if args.key?(:stateful_policy)
           @status = args[:status] if args.key?(:status)
           @target_pools = args[:target_pools] if args.key?(:target_pools)
           @target_size = args[:target_size] if args.key?(:target_size)
+          @target_stopped_size = args[:target_stopped_size] if args.key?(:target_stopped_size)
+          @target_suspended_size = args[:target_suspended_size] if args.key?(:target_suspended_size)
           @update_policy = args[:update_policy] if args.key?(:update_policy)
           @versions = args[:versions] if args.key?(:versions)
           @zone = args[:zone] if args.key?(:zone)
@@ -16642,6 +16669,31 @@ module Google
       end
       
       # 
+      class InstanceGroupManagerStandbyPolicy
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `initialDelaySec`
+        # @return [Fixnum]
+        attr_accessor :initial_delay_sec
+      
+        # Defines behaviour of using instances from standby pool to resize MIG.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @initial_delay_sec = args[:initial_delay_sec] if args.key?(:initial_delay_sec)
+          @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # 
       class InstanceGroupManagerStatus
         include Google::Apis::Core::Hashable
       
@@ -17314,6 +17366,26 @@ module Google
       end
       
       # 
+      class InstanceGroupManagersResumeInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The URLs of one or more instances to resume. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # 
       class InstanceGroupManagersScopedList
         include Google::Apis::Core::Hashable
       
@@ -17477,6 +17549,82 @@ module Google
         def update!(**args)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @target_pools = args[:target_pools] if args.key?(:target_pools)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagersStartInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The URLs of one or more instances to start. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagersStopInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # If this flag is set to true, the Instance Group Manager will proceed to stop
+        # the instances, skipping initialization on them.
+        # Corresponds to the JSON property `forceStop`
+        # @return [Boolean]
+        attr_accessor :force_stop
+        alias_method :force_stop?, :force_stop
+      
+        # The URLs of one or more instances to stop. This can be a full URL or a partial
+        # URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force_stop = args[:force_stop] if args.key?(:force_stop)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagersSuspendInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # If this flag is set to true, the Instance Group Manager will proceed to
+        # suspend the instances, skipping initialization on them.
+        # Corresponds to the JSON property `forceSuspend`
+        # @return [Boolean]
+        attr_accessor :force_suspend
+        alias_method :force_suspend?, :force_suspend
+      
+        # The URLs of one or more instances to suspend. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force_suspend = args[:force_suspend] if args.key?(:force_suspend)
+          @instances = args[:instances] if args.key?(:instances)
         end
       end
       
@@ -18491,9 +18639,15 @@ module Google
         end
       end
       
-      # Represents an Instance Template resource. You can use instance templates to
-      # create VM instances and managed instance groups. For more information, read
-      # Instance Templates.
+      # Represents an Instance Template resource. Google Compute Engine has two
+      # Instance Template resources: * [Global](/compute/docs/reference/rest/beta/
+      # instanceTemplates) * [Regional](/compute/docs/reference/rest/beta/
+      # regionInstanceTemplates) You can reuse a global instance template in different
+      # regions whereas you can use a regional instance template in a specified region
+      # only. If you want to reduce cross-region dependency or achieve data residency,
+      # use a regional instance template. To create VMs, managed instance groups, and
+      # reservations, you can use either global or regional instance templates. For
+      # more information, read Instance Templates.
       class InstanceTemplate
         include Google::Apis::Core::Hashable
       
@@ -19956,9 +20110,9 @@ module Google
       
         # [Output only] List of features available for this Interconnect connection,
         # which can take one of the following values: - MACSEC If present then the
-        # interconnect was created on MACsec capable hardware ports. If not present then
-        # the interconnect is provisioned on non-MACsec capable ports and MACsec
-        # enablement will fail.
+        # Interconnect connection is provisioned on MACsec capable hardware ports. If
+        # not present then the Interconnect connection is provisioned on non-MACsec
+        # capable ports and MACsec isn't supported and enabling MACsec fails.
         # Corresponds to the JSON property `availableFeatures`
         # @return [Array<String>]
         attr_accessor :available_features
@@ -20064,7 +20218,8 @@ module Google
         attr_accessor :location
       
         # Configuration information for enabling Media Access Control security (MACsec)
-        # on this Interconnect connection between Google and your on-premises router.
+        # on this Cloud Interconnect connection between Google and your on-premises
+        # router.
         # Corresponds to the JSON property `macsec`
         # @return [Google::Apis::ComputeBeta::InterconnectMacsec]
         attr_accessor :macsec
@@ -20126,10 +20281,10 @@ module Google
       
         # Optional. List of features requested for this Interconnect connection, which
         # can take one of the following values: - MACSEC If specified then the
-        # interconnect will be created on MACsec capable hardware ports. If not
-        # specified, the default value is false, which will allocate non-MACsec capable
-        # ports first if available. This parameter can only be provided during
-        # interconnect INSERT and cannot be changed using interconnect PATCH.
+        # connection is created on MACsec capable hardware ports. If not specified, the
+        # default value is false, which allocates non-MACsec capable ports first if
+        # available. This parameter can be provided only with Interconnect INSERT. It
+        # isn't valid for Interconnect PATCH.
         # Corresponds to the JSON property `requestedFeatures`
         # @return [Array<String>]
         attr_accessor :requested_features
@@ -21709,7 +21864,8 @@ module Google
       end
       
       # Configuration information for enabling Media Access Control security (MACsec)
-      # on this Interconnect connection between Google and your on-premises router.
+      # on this Cloud Interconnect connection between Google and your on-premises
+      # router.
       class InterconnectMacsec
         include Google::Apis::Core::Hashable
       
@@ -21724,8 +21880,8 @@ module Google
         alias_method :fail_open?, :fail_open
       
         # Required. A keychain placeholder describing a set of named key objects along
-        # with their start times. A MACsec CKN/CAK will be generated for each key in the
-        # key chain. Google router will automatically pick the key with the most recent
+        # with their start times. A MACsec CKN/CAK is generated for each key in the key
+        # chain. Google router automatically picks the key with the most recent
         # startTime when establishing or re-establishing a MACsec secure link.
         # Corresponds to the JSON property `preSharedKeys`
         # @return [Array<Google::Apis::ComputeBeta::InterconnectMacsecPreSharedKey>]
@@ -23722,6 +23878,12 @@ module Google
         # @return [String]
         attr_accessor :instance
       
+        # [Output Only] The overrides to instance properties resulting from
+        # InstanceFlexibilityPolicy.
+        # Corresponds to the JSON property `instanceFlexibilityOverride`
+        # @return [Google::Apis::ComputeBeta::ManagedInstanceInstanceFlexibilityOverride]
+        attr_accessor :instance_flexibility_override
+      
         # [Output Only] Health state of the instance per health-check.
         # Corresponds to the JSON property `instanceHealth`
         # @return [Array<Google::Apis::ComputeBeta::ManagedInstanceInstanceHealth>]
@@ -23770,6 +23932,7 @@ module Google
           @current_action = args[:current_action] if args.key?(:current_action)
           @id = args[:id] if args.key?(:id)
           @instance = args[:instance] if args.key?(:instance)
+          @instance_flexibility_override = args[:instance_flexibility_override] if args.key?(:instance_flexibility_override)
           @instance_health = args[:instance_health] if args.key?(:instance_health)
           @instance_status = args[:instance_status] if args.key?(:instance_status)
           @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
@@ -23797,6 +23960,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @revision = args[:revision] if args.key?(:revision)
+        end
+      end
+      
+      # 
+      class ManagedInstanceInstanceFlexibilityOverride
+        include Google::Apis::Core::Hashable
+      
+        # The machine type to be used for this instance.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
         end
       end
       
@@ -26878,6 +27060,12 @@ module Google
         # @return [String]
         attr_accessor :location_hint
       
+        # Specifies the frequency of planned maintenance events. The accepted values are:
+        # `AS_NEEDED` and `RECURRENT`.
+        # Corresponds to the JSON property `maintenanceInterval`
+        # @return [String]
+        attr_accessor :maintenance_interval
+      
         # Specifies how to handle instances when a node in the group undergoes
         # maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or
         # MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information,
@@ -26947,6 +27135,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
+          @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @name = args[:name] if args.key?(:name)
@@ -27335,6 +27524,11 @@ module Google
         # @return [Google::Apis::ComputeBeta::InstanceConsumptionInfo]
         attr_accessor :total_resources
       
+        # Upcoming Maintenance notification information.
+        # Corresponds to the JSON property `upcomingMaintenance`
+        # @return [Google::Apis::ComputeBeta::UpcomingMaintenance]
+        attr_accessor :upcoming_maintenance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -27354,6 +27548,7 @@ module Google
           @server_id = args[:server_id] if args.key?(:server_id)
           @status = args[:status] if args.key?(:status)
           @total_resources = args[:total_resources] if args.key?(:total_resources)
+          @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
         end
       end
       
@@ -27510,6 +27705,31 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class NodeGroupsPerformMaintenanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # [Required] List of nodes affected by the call.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<String>]
+        attr_accessor :nodes
+      
+        # The start time of the schedule. The timestamp is an RFC3339 string.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nodes = args[:nodes] if args.key?(:nodes)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -33043,6 +33263,26 @@ module Google
       end
       
       # 
+      class RegionInstanceGroupManagersResumeInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The URLs of one or more instances to resume. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # 
       class RegionInstanceGroupManagersSetAutoHealingRequest
         include Google::Apis::Core::Hashable
       
@@ -33108,6 +33348,82 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instance_template = args[:instance_template] if args.key?(:instance_template)
+        end
+      end
+      
+      # 
+      class RegionInstanceGroupManagersStartInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The URLs of one or more instances to start. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # 
+      class RegionInstanceGroupManagersStopInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # If this flag is set to true, the Instance Group Manager will proceed to stop
+        # the instances, skipping initialization on them.
+        # Corresponds to the JSON property `forceStop`
+        # @return [Boolean]
+        attr_accessor :force_stop
+        alias_method :force_stop?, :force_stop
+      
+        # The URLs of one or more instances to stop. This can be a full URL or a partial
+        # URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force_stop = args[:force_stop] if args.key?(:force_stop)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # 
+      class RegionInstanceGroupManagersSuspendInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # If this flag is set to true, the Instance Group Manager will proceed to
+        # suspend the instances, skipping initialization on them.
+        # Corresponds to the JSON property `forceSuspend`
+        # @return [Boolean]
+        attr_accessor :force_suspend
+        alias_method :force_suspend?, :force_suspend
+      
+        # The URLs of one or more instances to suspend. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force_suspend = args[:force_suspend] if args.key?(:force_suspend)
+          @instances = args[:instances] if args.key?(:instances)
         end
       end
       
@@ -39664,7 +39980,7 @@ module Google
         # affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an
         # ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the
         # reject list. For newly created service attachment, this boolean defaults to
-        # true.
+        # false.
         # Corresponds to the JSON property `reconcileConnections`
         # @return [Boolean]
         attr_accessor :reconcile_connections
@@ -46915,6 +47231,59 @@ module Google
         def update!(**args)
           @high = args[:high] if args.key?(:high)
           @low = args[:low] if args.key?(:low)
+        end
+      end
+      
+      # Upcoming Maintenance notification information.
+      class UpcomingMaintenance
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if the maintenance can be customer triggered.
+        # Corresponds to the JSON property `canReschedule`
+        # @return [Boolean]
+        attr_accessor :can_reschedule
+        alias_method :can_reschedule?, :can_reschedule
+      
+        # The latest time for the planned maintenance window to start. This timestamp
+        # value is in RFC3339 text format.
+        # Corresponds to the JSON property `latestWindowStartTime`
+        # @return [String]
+        attr_accessor :latest_window_start_time
+      
+        # 
+        # Corresponds to the JSON property `maintenanceStatus`
+        # @return [String]
+        attr_accessor :maintenance_status
+      
+        # Defines the type of maintenance.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The time by which the maintenance disruption will be completed. This timestamp
+        # value is in RFC3339 text format.
+        # Corresponds to the JSON property `windowEndTime`
+        # @return [String]
+        attr_accessor :window_end_time
+      
+        # The current start time of the maintenance window. This timestamp value is in
+        # RFC3339 text format.
+        # Corresponds to the JSON property `windowStartTime`
+        # @return [String]
+        attr_accessor :window_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
+          @latest_window_start_time = args[:latest_window_start_time] if args.key?(:latest_window_start_time)
+          @maintenance_status = args[:maintenance_status] if args.key?(:maintenance_status)
+          @type = args[:type] if args.key?(:type)
+          @window_end_time = args[:window_end_time] if args.key?(:window_end_time)
+          @window_start_time = args[:window_start_time] if args.key?(:window_start_time)
         end
       end
       
