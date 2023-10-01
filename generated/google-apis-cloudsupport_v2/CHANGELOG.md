@@ -1,8 +1,8 @@
 # Release history for google-apis-cloudsupport_v2
 
-### v0.5.0 (2023-09-24)
+### v0.5.0 (2023-10-01)
 
-* Regenerated from discovery document revision 20230920
+* Regenerated from discovery document revision 20230926
 
 ### v0.4.0 (2023-09-10)
 
