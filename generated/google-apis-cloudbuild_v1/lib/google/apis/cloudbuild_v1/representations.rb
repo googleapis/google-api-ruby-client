@@ -784,6 +784,7 @@ module Google
           property :host_uri, as: 'hostUri'
           property :name, as: 'name'
           property :peered_network, as: 'peeredNetwork'
+          property :peered_network_ip_range, as: 'peeredNetworkIpRange'
           property :secrets, as: 'secrets', class: Google::Apis::CloudbuildV1::BitbucketServerSecrets, decorator: Google::Apis::CloudbuildV1::BitbucketServerSecrets::Representation
       
           property :ssl_ca, as: 'sslCa'
@@ -1664,6 +1665,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
+      
+          property :resolved_connected_repository, as: 'resolvedConnectedRepository', class: Google::Apis::CloudbuildV1::ConnectedRepository, decorator: Google::Apis::CloudbuildV1::ConnectedRepository::Representation
+      
+          property :resolved_git_source, as: 'resolvedGitSource', class: Google::Apis::CloudbuildV1::GitSource, decorator: Google::Apis::CloudbuildV1::GitSource::Representation
       
           property :resolved_repo_source, as: 'resolvedRepoSource', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
       

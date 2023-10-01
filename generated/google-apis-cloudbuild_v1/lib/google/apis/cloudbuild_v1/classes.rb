@@ -422,6 +422,17 @@ module Google
         # @return [String]
         attr_accessor :peered_network
       
+        # Immutable. IP range within the peered network. This is specified in CIDR
+        # notation with a slash and the subnet prefix size. You can optionally specify
+        # an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would
+        # specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16`
+        # would specify a prefix size of 16 bits, with an automatically determined IP
+        # within the peered VPC. If unspecified, a value of `/24` will be used. The
+        # field only has an effect if peered_network is set.
+        # Corresponds to the JSON property `peeredNetworkIpRange`
+        # @return [String]
+        attr_accessor :peered_network_ip_range
+      
         # BitbucketServerSecrets represents the secrets in Secret Manager for a
         # Bitbucket Server.
         # Corresponds to the JSON property `secrets`
@@ -457,6 +468,7 @@ module Google
           @host_uri = args[:host_uri] if args.key?(:host_uri)
           @name = args[:name] if args.key?(:name)
           @peered_network = args[:peered_network] if args.key?(:peered_network)
+          @peered_network_ip_range = args[:peered_network_ip_range] if args.key?(:peered_network_ip_range)
           @secrets = args[:secrets] if args.key?(:secrets)
           @ssl_ca = args[:ssl_ca] if args.key?(:ssl_ca)
           @username = args[:username] if args.key?(:username)
@@ -3834,6 +3846,16 @@ module Google
         # @return [Hash<String,Google::Apis::CloudbuildV1::FileHashes>]
         attr_accessor :file_hashes
       
+        # Location of the source in a 2nd-gen Google Cloud Build repository resource.
+        # Corresponds to the JSON property `resolvedConnectedRepository`
+        # @return [Google::Apis::CloudbuildV1::ConnectedRepository]
+        attr_accessor :resolved_connected_repository
+      
+        # Location of the source in any accessible Git repository.
+        # Corresponds to the JSON property `resolvedGitSource`
+        # @return [Google::Apis::CloudbuildV1::GitSource]
+        attr_accessor :resolved_git_source
+      
         # Location of the source in a Google Cloud Source Repository.
         # Corresponds to the JSON property `resolvedRepoSource`
         # @return [Google::Apis::CloudbuildV1::RepoSource]
@@ -3858,6 +3880,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
+          @resolved_connected_repository = args[:resolved_connected_repository] if args.key?(:resolved_connected_repository)
+          @resolved_git_source = args[:resolved_git_source] if args.key?(:resolved_git_source)
           @resolved_repo_source = args[:resolved_repo_source] if args.key?(:resolved_repo_source)
           @resolved_storage_source = args[:resolved_storage_source] if args.key?(:resolved_storage_source)
           @resolved_storage_source_manifest = args[:resolved_storage_source_manifest] if args.key?(:resolved_storage_source_manifest)
