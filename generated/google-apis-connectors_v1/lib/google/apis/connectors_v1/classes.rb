@@ -843,6 +843,11 @@ module Google
       class ConnectorInfraConfig
         include Google::Apis::Core::Hashable
       
+        # The window used for ratelimiting runtime requests to connections.
+        # Corresponds to the JSON property `connectionRatelimitWindowSeconds`
+        # @return [Fixnum]
+        attr_accessor :connection_ratelimit_window_seconds
+      
         # Autoscaling config for connector deployment system metrics.
         # Corresponds to the JSON property `hpaConfig`
         # @return [Google::Apis::ConnectorsV1::HpaConfig]
@@ -879,6 +884,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @connection_ratelimit_window_seconds = args[:connection_ratelimit_window_seconds] if args.key?(:connection_ratelimit_window_seconds)
           @hpa_config = args[:hpa_config] if args.key?(:hpa_config)
           @internalclient_ratelimit_threshold = args[:internalclient_ratelimit_threshold] if args.key?(:internalclient_ratelimit_threshold)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
@@ -1020,6 +1026,11 @@ module Google
       class ConnectorVersionInfraConfig
         include Google::Apis::Core::Hashable
       
+        # Output only. The window used for ratelimiting runtime requests to connections.
+        # Corresponds to the JSON property `connectionRatelimitWindowSeconds`
+        # @return [Fixnum]
+        attr_accessor :connection_ratelimit_window_seconds
+      
         # Autoscaling config for connector deployment system metrics.
         # Corresponds to the JSON property `hpaConfig`
         # @return [Google::Apis::ConnectorsV1::HpaConfig]
@@ -1057,6 +1068,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @connection_ratelimit_window_seconds = args[:connection_ratelimit_window_seconds] if args.key?(:connection_ratelimit_window_seconds)
           @hpa_config = args[:hpa_config] if args.key?(:hpa_config)
           @internalclient_ratelimit_threshold = args[:internalclient_ratelimit_threshold] if args.key?(:internalclient_ratelimit_threshold)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
