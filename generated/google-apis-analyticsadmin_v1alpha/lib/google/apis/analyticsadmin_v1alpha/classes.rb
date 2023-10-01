@@ -1941,6 +1941,11 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric]
         attr_accessor :custom_metric
       
+        # Settings for client-side data redaction. Singleton resource under a Web Stream.
+        # Corresponds to the JSON property `dataRedactionSettings`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRedactionSettings]
+        attr_accessor :data_redaction_settings
+      
         # Settings values for data retention. This is a singleton resource.
         # Corresponds to the JSON property `dataRetentionSettings`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRetentionSettings]
@@ -2035,6 +2040,7 @@ module Google
           @conversion_event = args[:conversion_event] if args.key?(:conversion_event)
           @custom_dimension = args[:custom_dimension] if args.key?(:custom_dimension)
           @custom_metric = args[:custom_metric] if args.key?(:custom_metric)
+          @data_redaction_settings = args[:data_redaction_settings] if args.key?(:data_redaction_settings)
           @data_retention_settings = args[:data_retention_settings] if args.key?(:data_retention_settings)
           @data_stream = args[:data_stream] if args.key?(:data_stream)
           @display_video360_advertiser_link = args[:display_video360_advertiser_link] if args.key?(:display_video360_advertiser_link)
@@ -2658,6 +2664,54 @@ module Google
           @parameter_name = args[:parameter_name] if args.key?(:parameter_name)
           @restricted_metric_type = args[:restricted_metric_type] if args.key?(:restricted_metric_type)
           @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # Settings for client-side data redaction. Singleton resource under a Web Stream.
+      class GoogleAnalyticsAdminV1alphaDataRedactionSettings
+        include Google::Apis::Core::Hashable
+      
+        # If enabled, any event parameter or user property values that look like an
+        # email will be redacted.
+        # Corresponds to the JSON property `emailRedactionEnabled`
+        # @return [Boolean]
+        attr_accessor :email_redaction_enabled
+        alias_method :email_redaction_enabled?, :email_redaction_enabled
+      
+        # Output only. Name of this Data Redaction Settings resource. Format: properties/
+        # `property_id`/dataStreams/`data_stream`/dataRedactionSettings Example: "
+        # properties/1000/dataStreams/2000/dataRedactionSettings"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The query parameter keys to apply redaction logic to if present in the URL.
+        # Query parameter matching is case-insensitive. Must contain at least one
+        # element if query_parameter_replacement_enabled is true. Keys cannot contain
+        # commas.
+        # Corresponds to the JSON property `queryParameterKeys`
+        # @return [Array<String>]
+        attr_accessor :query_parameter_keys
+      
+        # Query Parameter redaction removes the key and value portions of a query
+        # parameter if it is in the configured set of query parameters. If enabled, URL
+        # query replacement logic will be run for the Stream. Any query parameters
+        # defined in query_parameter_keys will be redacted.
+        # Corresponds to the JSON property `queryParameterRedactionEnabled`
+        # @return [Boolean]
+        attr_accessor :query_parameter_redaction_enabled
+        alias_method :query_parameter_redaction_enabled?, :query_parameter_redaction_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email_redaction_enabled = args[:email_redaction_enabled] if args.key?(:email_redaction_enabled)
+          @name = args[:name] if args.key?(:name)
+          @query_parameter_keys = args[:query_parameter_keys] if args.key?(:query_parameter_keys)
+          @query_parameter_redaction_enabled = args[:query_parameter_redaction_enabled] if args.key?(:query_parameter_redaction_enabled)
         end
       end
       
