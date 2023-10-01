@@ -730,6 +730,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartupConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StateHistory
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1402,6 +1408,8 @@ module Google
           property :min_num_instances, as: 'minNumInstances'
           property :num_instances, as: 'numInstances'
           property :preemptibility, as: 'preemptibility'
+          property :startup_config, as: 'startupConfig', class: Google::Apis::DataprocV1::StartupConfig, decorator: Google::Apis::DataprocV1::StartupConfig::Representation
+      
         end
       end
       
@@ -2169,6 +2177,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :graceful_decommission_timeout, as: 'gracefulDecommissionTimeout'
+          property :remove_only_idle_workers, as: 'removeOnlyIdleWorkers'
           property :scale_down_factor, as: 'scaleDownFactor'
           property :scale_down_min_worker_fraction, as: 'scaleDownMinWorkerFraction'
           property :scale_up_factor, as: 'scaleUpFactor'
@@ -2181,6 +2190,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_uuid, as: 'clusterUuid'
           property :request_id, as: 'requestId'
+        end
+      end
+      
+      class StartupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :required_registration_fraction, as: 'requiredRegistrationFraction'
         end
       end
       

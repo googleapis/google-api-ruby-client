@@ -2303,6 +2303,12 @@ module Google
         # @return [String]
         attr_accessor :preemptibility
       
+        # Configuration to handle the startup of instances during cluster create and
+        # update process.
+        # Corresponds to the JSON property `startupConfig`
+        # @return [Google::Apis::DataprocV1::StartupConfig]
+        attr_accessor :startup_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2322,6 +2328,7 @@ module Google
           @min_num_instances = args[:min_num_instances] if args.key?(:min_num_instances)
           @num_instances = args[:num_instances] if args.key?(:num_instances)
           @preemptibility = args[:preemptibility] if args.key?(:preemptibility)
+          @startup_config = args[:startup_config] if args.key?(:startup_config)
         end
       end
       
@@ -5341,6 +5348,12 @@ module Google
         # @return [String]
         attr_accessor :graceful_decommission_timeout
       
+        # Optional. Remove only idle workers when scaling down cluster
+        # Corresponds to the JSON property `removeOnlyIdleWorkers`
+        # @return [Boolean]
+        attr_accessor :remove_only_idle_workers
+        alias_method :remove_only_idle_workers?, :remove_only_idle_workers
+      
         # Required. Fraction of required executors to remove from Spark Serverless
         # clusters. A scale-down factor of 1.0 will result in scaling down so that there
         # are no more executors for the Spark Job.(more aggressive scaling). A scale-
@@ -5384,6 +5397,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @graceful_decommission_timeout = args[:graceful_decommission_timeout] if args.key?(:graceful_decommission_timeout)
+          @remove_only_idle_workers = args[:remove_only_idle_workers] if args.key?(:remove_only_idle_workers)
           @scale_down_factor = args[:scale_down_factor] if args.key?(:scale_down_factor)
           @scale_down_min_worker_fraction = args[:scale_down_min_worker_fraction] if args.key?(:scale_down_min_worker_fraction)
           @scale_up_factor = args[:scale_up_factor] if args.key?(:scale_up_factor)
@@ -5422,6 +5436,31 @@ module Google
         def update!(**args)
           @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
           @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Configuration to handle the startup of instances during cluster create and
+      # update process.
+      class StartupConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The config setting to enable cluster creation/ updation to be
+        # successful only after required_registration_fraction of instances are up and
+        # running. This configuration is applicable to only secondary workers for now.
+        # The cluster will fail if required_registration_fraction of instances are not
+        # available. This will include instance creation, agent registration, and
+        # service registration (if enabled).
+        # Corresponds to the JSON property `requiredRegistrationFraction`
+        # @return [Float]
+        attr_accessor :required_registration_fraction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @required_registration_fraction = args[:required_registration_fraction] if args.key?(:required_registration_fraction)
         end
       end
       
