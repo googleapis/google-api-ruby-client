@@ -1889,7 +1889,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_version, as: 'currentVersion'
-          property :local_name, as: 'localName'
           property :membership, as: 'membership'
           property :resource_name, as: 'resourceName'
           property :target_version, as: 'targetVersion'
