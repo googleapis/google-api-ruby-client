@@ -4549,7 +4549,7 @@ module Google
         alias_method :compute_style_info?, :compute_style_info
       
         # Turn off character box detector in OCR engine. Character box detection is
-        # enabled by default in OCR 2.0+ processors.
+        # enabled by default in OCR 2.0 (and later) processors.
         # Corresponds to the JSON property `disableCharacterBoxesDetection`
         # @return [Boolean]
         attr_accessor :disable_character_boxes_detection
@@ -4643,8 +4643,8 @@ module Google
         attr_accessor :enable_math_ocr
         alias_method :enable_math_ocr?, :enable_math_ocr
       
-        # Turn on selection mark detector in OCR engine. Only available in OCR 2.0+
-        # processors.
+        # Turn on selection mark detector in OCR engine. Only available in OCR 2.0 (and
+        # later) processors.
         # Corresponds to the JSON property `enableSelectionMarkDetection`
         # @return [Boolean]
         attr_accessor :enable_selection_mark_detection
@@ -4671,8 +4671,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :from_end
       
-        # Only process certain pages from the start, process all if the document has
-        # less pages.
+        # Only process certain pages from the start. Process all if the document has
+        # fewer pages.
         # Corresponds to the JSON property `fromStart`
         # @return [Fixnum]
         attr_accessor :from_start
@@ -10025,7 +10025,7 @@ module Google
       end
       
       # A singleton resource under a Processor which configures a collection of
-      # documents. Next Id: 8.
+      # documents.
       class GoogleCloudDocumentaiV1beta3Dataset
         include Google::Apis::Core::Hashable
       
