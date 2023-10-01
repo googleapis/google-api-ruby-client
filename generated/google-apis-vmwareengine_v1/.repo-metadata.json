@@ -1,0 +1,7 @@
+{
+    "api_id": "vmwareengine:v1",
+    "name_pretty": "VMware Engine API",
+    "distribution_name": "google-apis-vmwareengine_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
