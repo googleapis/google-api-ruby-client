@@ -771,6 +771,7 @@ module Google
       class ConnectorInfraConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_ratelimit_window_seconds, :numeric_string => true, as: 'connectionRatelimitWindowSeconds'
           property :hpa_config, as: 'hpaConfig', class: Google::Apis::ConnectorsV1::HpaConfig, decorator: Google::Apis::ConnectorsV1::HpaConfig::Representation
       
           property :internalclient_ratelimit_threshold, :numeric_string => true, as: 'internalclientRatelimitThreshold'
@@ -819,6 +820,7 @@ module Google
       class ConnectorVersionInfraConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_ratelimit_window_seconds, :numeric_string => true, as: 'connectionRatelimitWindowSeconds'
           property :hpa_config, as: 'hpaConfig', class: Google::Apis::ConnectorsV1::HpaConfig, decorator: Google::Apis::ConnectorsV1::HpaConfig::Representation
       
           property :internalclient_ratelimit_threshold, :numeric_string => true, as: 'internalclientRatelimitThreshold'
