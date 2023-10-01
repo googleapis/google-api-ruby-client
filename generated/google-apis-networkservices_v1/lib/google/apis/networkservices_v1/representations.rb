@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GrpcRouteStatefulSessionAffinityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpRoute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +251,12 @@ module Google
       end
       
       class HttpRouteRouteRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteStatefulSessionAffinityPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -643,6 +655,8 @@ module Google
       
           property :retry_policy, as: 'retryPolicy', class: Google::Apis::NetworkservicesV1::GrpcRouteRetryPolicy, decorator: Google::Apis::NetworkservicesV1::GrpcRouteRetryPolicy::Representation
       
+          property :stateful_session_affinity, as: 'statefulSessionAffinity', class: Google::Apis::NetworkservicesV1::GrpcRouteStatefulSessionAffinityPolicy, decorator: Google::Apis::NetworkservicesV1::GrpcRouteStatefulSessionAffinityPolicy::Representation
+      
           property :timeout, as: 'timeout'
         end
       end
@@ -664,6 +678,13 @@ module Google
       
           collection :matches, as: 'matches', class: Google::Apis::NetworkservicesV1::GrpcRouteRouteMatch, decorator: Google::Apis::NetworkservicesV1::GrpcRouteRouteMatch::Representation
       
+        end
+      end
+      
+      class GrpcRouteStatefulSessionAffinityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cookie_ttl, as: 'cookieTtl'
         end
       end
       
@@ -823,6 +844,8 @@ module Google
       
           property :retry_policy, as: 'retryPolicy', class: Google::Apis::NetworkservicesV1::HttpRouteRetryPolicy, decorator: Google::Apis::NetworkservicesV1::HttpRouteRetryPolicy::Representation
       
+          property :stateful_session_affinity, as: 'statefulSessionAffinity', class: Google::Apis::NetworkservicesV1::HttpRouteStatefulSessionAffinityPolicy, decorator: Google::Apis::NetworkservicesV1::HttpRouteStatefulSessionAffinityPolicy::Representation
+      
           property :timeout, as: 'timeout'
           property :url_rewrite, as: 'urlRewrite', class: Google::Apis::NetworkservicesV1::HttpRouteUrlRewrite, decorator: Google::Apis::NetworkservicesV1::HttpRouteUrlRewrite::Representation
       
@@ -850,6 +873,13 @@ module Google
       
           collection :matches, as: 'matches', class: Google::Apis::NetworkservicesV1::HttpRouteRouteMatch, decorator: Google::Apis::NetworkservicesV1::HttpRouteRouteMatch::Representation
       
+        end
+      end
+      
+      class HttpRouteStatefulSessionAffinityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cookie_ttl, as: 'cookieTtl'
         end
       end
       
