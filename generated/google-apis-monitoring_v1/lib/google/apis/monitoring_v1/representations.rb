@@ -926,6 +926,7 @@ module Google
           property :font_size, as: 'fontSize'
           property :horizontal_alignment, as: 'horizontalAlignment'
           property :padding, as: 'padding'
+          property :pointer_location, as: 'pointerLocation'
           property :text_color, as: 'textColor'
           property :vertical_alignment, as: 'verticalAlignment'
         end

@@ -2036,6 +2036,11 @@ module Google
         # @return [String]
         attr_accessor :padding
       
+        # The pointer location for this widget (also sometimes called a "tail")
+        # Corresponds to the JSON property `pointerLocation`
+        # @return [String]
+        attr_accessor :pointer_location
+      
         # The text color as a hex string. "#RRGGBB" or "#RGB"
         # Corresponds to the JSON property `textColor`
         # @return [String]
@@ -2056,6 +2061,7 @@ module Google
           @font_size = args[:font_size] if args.key?(:font_size)
           @horizontal_alignment = args[:horizontal_alignment] if args.key?(:horizontal_alignment)
           @padding = args[:padding] if args.key?(:padding)
+          @pointer_location = args[:pointer_location] if args.key?(:pointer_location)
           @text_color = args[:text_color] if args.key?(:text_color)
           @vertical_alignment = args[:vertical_alignment] if args.key?(:vertical_alignment)
         end
