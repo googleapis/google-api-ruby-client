@@ -1918,6 +1918,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerStandbyPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2038,6 +2044,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagersResumeInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagersScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2069,6 +2081,24 @@ module Google
       end
       
       class InstanceGroupManagersSetTargetPoolsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersStartInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersStopInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersSuspendInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2956,6 +2986,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedInstanceInstanceFlexibilityOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedInstanceInstanceHealth
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3468,6 +3504,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeGroupsPerformMaintenanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4270,6 +4312,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionInstanceGroupManagersResumeInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionInstanceGroupManagersSetAutoHealingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4283,6 +4331,24 @@ module Google
       end
       
       class RegionInstanceGroupManagersSetTemplateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersStartInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersStopInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersSuspendInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6179,6 +6245,12 @@ module Google
       end
       
       class Uint128
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpcomingMaintenance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10156,12 +10228,16 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :service_account, as: 'serviceAccount'
+          property :standby_policy, as: 'standbyPolicy', class: Google::Apis::ComputeBeta::InstanceGroupManagerStandbyPolicy, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStandbyPolicy::Representation
+      
           property :stateful_policy, as: 'statefulPolicy', class: Google::Apis::ComputeBeta::StatefulPolicy, decorator: Google::Apis::ComputeBeta::StatefulPolicy::Representation
       
           property :status, as: 'status', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatus, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatus::Representation
       
           collection :target_pools, as: 'targetPools'
           property :target_size, as: 'targetSize'
+          property :target_stopped_size, as: 'targetStoppedSize'
+          property :target_suspended_size, as: 'targetSuspendedSize'
           property :update_policy, as: 'updatePolicy', class: Google::Apis::ComputeBeta::InstanceGroupManagerUpdatePolicy, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerUpdatePolicy::Representation
       
           collection :versions, as: 'versions', class: Google::Apis::ComputeBeta::InstanceGroupManagerVersion, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerVersion::Representation
@@ -10385,6 +10461,14 @@ module Google
         end
       end
       
+      class InstanceGroupManagerStandbyPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :initial_delay_sec, as: 'initialDelaySec'
+          property :mode, as: 'mode'
+        end
+      end
+      
       class InstanceGroupManagerStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10567,6 +10651,13 @@ module Google
         end
       end
       
+      class InstanceGroupManagersResumeInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
       class InstanceGroupManagersScopedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10615,6 +10706,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :target_pools, as: 'targetPools'
+        end
+      end
+      
+      class InstanceGroupManagersStartInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class InstanceGroupManagersStopInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_stop, as: 'forceStop'
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class InstanceGroupManagersSuspendInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_suspend, as: 'forceSuspend'
+          collection :instances, as: 'instances'
         end
       end
       
@@ -12220,6 +12334,8 @@ module Google
           property :current_action, as: 'currentAction'
           property :id, :numeric_string => true, as: 'id'
           property :instance, as: 'instance'
+          property :instance_flexibility_override, as: 'instanceFlexibilityOverride', class: Google::Apis::ComputeBeta::ManagedInstanceInstanceFlexibilityOverride, decorator: Google::Apis::ComputeBeta::ManagedInstanceInstanceFlexibilityOverride::Representation
+      
           collection :instance_health, as: 'instanceHealth', class: Google::Apis::ComputeBeta::ManagedInstanceInstanceHealth, decorator: Google::Apis::ComputeBeta::ManagedInstanceInstanceHealth::Representation
       
           property :instance_status, as: 'instanceStatus'
@@ -12239,6 +12355,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :revision, as: 'revision'
+        end
+      end
+      
+      class ManagedInstanceInstanceFlexibilityOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :machine_type, as: 'machineType'
         end
       end
       
@@ -13023,6 +13146,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :location_hint, as: 'locationHint'
+          property :maintenance_interval, as: 'maintenanceInterval'
           property :maintenance_policy, as: 'maintenancePolicy'
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::ComputeBeta::NodeGroupMaintenanceWindow, decorator: Google::Apis::ComputeBeta::NodeGroupMaintenanceWindow::Representation
       
@@ -13142,6 +13266,8 @@ module Google
           property :status, as: 'status'
           property :total_resources, as: 'totalResources', class: Google::Apis::ComputeBeta::InstanceConsumptionInfo, decorator: Google::Apis::ComputeBeta::InstanceConsumptionInfo::Representation
       
+          property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::ComputeBeta::UpcomingMaintenance, decorator: Google::Apis::ComputeBeta::UpcomingMaintenance::Representation
+      
         end
       end
       
@@ -13188,6 +13314,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class NodeGroupsPerformMaintenanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nodes, as: 'nodes'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -14627,6 +14761,13 @@ module Google
         end
       end
       
+      class RegionInstanceGroupManagersResumeInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
       class RegionInstanceGroupManagersSetAutoHealingRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14647,6 +14788,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_template, as: 'instanceTemplate'
+        end
+      end
+      
+      class RegionInstanceGroupManagersStartInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class RegionInstanceGroupManagersStopInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_stop, as: 'forceStop'
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class RegionInstanceGroupManagersSuspendInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_suspend, as: 'forceSuspend'
+          collection :instances, as: 'instances'
         end
       end
       
@@ -18102,6 +18266,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :high, :numeric_string => true, as: 'high'
           property :low, :numeric_string => true, as: 'low'
+        end
+      end
+      
+      class UpcomingMaintenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_reschedule, as: 'canReschedule'
+          property :latest_window_start_time, as: 'latestWindowStartTime'
+          property :maintenance_status, as: 'maintenanceStatus'
+          property :type, as: 'type'
+          property :window_end_time, as: 'windowEndTime'
+          property :window_start_time, as: 'windowStartTime'
         end
       end
       
