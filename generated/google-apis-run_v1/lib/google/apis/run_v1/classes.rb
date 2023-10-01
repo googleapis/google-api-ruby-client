@@ -2136,7 +2136,7 @@ module Google
         # googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/
         # container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`:
         # Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.
-        # com/description`: Service. * `run.googleapis.com/disable-default-uri`: Service.
+        # com/description`: Service. * `run.googleapis.com/disable-default-url`: Service.
         # * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.
         # googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/
         # execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-
@@ -3201,10 +3201,9 @@ module Google
         # @return [String]
         attr_accessor :latest_ready_revision_name
       
-        # Returns the generation last fully processed by the system. This will only
-        # match metadata.generation when reconciliation is complete. Clients polling for
-        # completed reconciliation should poll until observedGeneration = metadata.
-        # generation and the Ready condition's status is True or False.
+        # Returns the generation last seen by the system. Clients polling for completed
+        # reconciliation should poll until observedGeneration = metadata.generation and
+        # the Ready condition's status is True or False.
         # Corresponds to the JSON property `observedGeneration`
         # @return [Fixnum]
         attr_accessor :observed_generation
