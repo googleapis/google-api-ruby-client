@@ -921,8 +921,8 @@ module Google
         # Ensures in-flight data remains in the region of origin during de-
         # identification. Using this option results in a significant reduction of
         # throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME`
-        # infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be
-        # excluded within `ImageConfig` if image redaction is required.
+        # infoTypes. `LOCATION` must be excluded within TextConfig, and must also be
+        # excluded within ImageConfig if image redaction is required.
         # Corresponds to the JSON property `useRegionalDataProcessing`
         # @return [Boolean]
         attr_accessor :use_regional_data_processing
