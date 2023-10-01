@@ -154,10 +154,11 @@ module Google
         end
         
         # Returns all metadata stored about an execution, excluding most data that is
-        # already accessible via other API methods.
+        # already accessible using other API methods.
         # @param [String] name
-        #   Required. Name of the execution to be data exported. Format: projects/`project`
-        #   /locations/`location`/workflows/`workflow`/executions/`execution`
+        #   Required. Name of the execution for which data is to be exported. Format:
+        #   projects/`project`/locations/`location`/workflows/`workflow`/executions/`
+        #   execution`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -281,8 +282,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of active callbacks which belong to the execution with the
-        # given name. The returned callbacks are ordered by callback ID. first).
+        # Returns a list of active callbacks that belong to the execution with the given
+        # name. The returned callbacks are ordered by callback ID.
         # @param [String] parent
         #   Required. Name of the execution for which the callbacks should be listed.
         #   Format: projects/`project`/locations/`location`/workflows/`workflow`/
