@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataQualityDimension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataQualityDimensionResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1429,9 +1435,18 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1DataQualityDimension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDataplexV1DataQualityDimensionResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dimension, as: 'dimension', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimension, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimension::Representation
+      
           property :passed, as: 'passed'
         end
       end

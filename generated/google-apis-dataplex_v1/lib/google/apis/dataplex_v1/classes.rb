@@ -1636,10 +1636,37 @@ module Google
         end
       end
       
+      # A dimension captures data quality intent about a defined subset of the rules
+      # specified.
+      class GoogleCloudDataplexV1DataQualityDimension
+        include Google::Apis::Core::Hashable
+      
+        # The dimension name a rule belongs to. Supported dimensions are "COMPLETENESS",
+        # "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # DataQualityDimensionResult provides a more detailed, per-dimension view of the
       # results.
       class GoogleCloudDataplexV1DataQualityDimensionResult
         include Google::Apis::Core::Hashable
+      
+        # A dimension captures data quality intent about a defined subset of the rules
+        # specified.
+        # Corresponds to the JSON property `dimension`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimension]
+        attr_accessor :dimension
       
         # Whether the dimension passed or failed.
         # Corresponds to the JSON property `passed`
@@ -1653,6 +1680,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dimension = args[:dimension] if args.key?(:dimension)
           @passed = args[:passed] if args.key?(:passed)
         end
       end
