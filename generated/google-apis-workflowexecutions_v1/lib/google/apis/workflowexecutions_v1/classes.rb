@@ -32,7 +32,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :available_payloads
       
-        # Output only. The method accepted by the callback. E.g. GET, POST, PUT.
+        # Output only. The method accepted by the callback. For example: GET, POST, PUT.
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -212,8 +212,8 @@ module Google
       class ExportDataResponse
         include Google::Apis::Core::Hashable
       
-        # The JSON string with customer data and metadata of an execution of the given
-        # name
+        # The JSON string with customer data and metadata for an execution with the
+        # given name
         # Corresponds to the JSON property `data`
         # @return [String]
         attr_accessor :data
