@@ -460,6 +460,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Description of the firewall endpoint. Max length 2048 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Optional. Labels as key value pairs
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -496,6 +501,7 @@ module Google
           @associated_networks = args[:associated_networks] if args.key?(:associated_networks)
           @billing_project_id = args[:billing_project_id] if args.key?(:billing_project_id)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
@@ -1875,8 +1881,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. Name of the SecurityProfile resource. It matches pattern `projects|
-        # organizations/*/locations/`location`/securityProfiles/`security_profile``.
+        # Immutable. Identifier. Name of the SecurityProfile resource. It matches
+        # pattern `projects|organizations/*/locations/`location`/securityProfiles/`
+        # security_profile``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1942,8 +1949,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. Name of the SecurityProfileGroup resource. It matches pattern `
-        # projects|organizations/*/locations/`location`/securityProfileGroups/`
+        # Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches
+        # pattern `projects|organizations/*/locations/`location`/securityProfileGroups/`
         # security_profile_group``.
         # Corresponds to the JSON property `name`
         # @return [String]
