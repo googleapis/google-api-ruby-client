@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SignAndEncryptKeyPairs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SmimeInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -370,6 +376,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email_address, as: 'emailAddress'
           property :primary_key_pair_id, as: 'primaryKeyPairId'
+          property :sign_and_encrypt_key_pairs, as: 'signAndEncryptKeyPairs', class: Google::Apis::GmailV1::SignAndEncryptKeyPairs, decorator: Google::Apis::GmailV1::SignAndEncryptKeyPairs::Representation
+      
         end
       end
       
@@ -785,6 +793,14 @@ module Google
       
           property :treat_as_alias, as: 'treatAsAlias'
           property :verification_status, as: 'verificationStatus'
+        end
+      end
+      
+      class SignAndEncryptKeyPairs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_key_pair_id, as: 'encryptionKeyPairId'
+          property :signing_key_pair_id, as: 'signingKeyPairId'
         end
       end
       

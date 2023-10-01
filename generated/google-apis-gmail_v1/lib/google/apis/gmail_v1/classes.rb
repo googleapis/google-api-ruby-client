@@ -122,6 +122,12 @@ module Google
         # @return [String]
         attr_accessor :primary_key_pair_id
       
+        # The configuration of a CSE identity that uses different key pairs for signing
+        # and encryption.
+        # Corresponds to the JSON property `signAndEncryptKeyPairs`
+        # @return [Google::Apis::GmailV1::SignAndEncryptKeyPairs]
+        attr_accessor :sign_and_encrypt_key_pairs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -130,6 +136,7 @@ module Google
         def update!(**args)
           @email_address = args[:email_address] if args.key?(:email_address)
           @primary_key_pair_id = args[:primary_key_pair_id] if args.key?(:primary_key_pair_id)
+          @sign_and_encrypt_key_pairs = args[:sign_and_encrypt_key_pairs] if args.key?(:sign_and_encrypt_key_pairs)
         end
       end
       
@@ -1590,6 +1597,32 @@ module Google
           @smtp_msa = args[:smtp_msa] if args.key?(:smtp_msa)
           @treat_as_alias = args[:treat_as_alias] if args.key?(:treat_as_alias)
           @verification_status = args[:verification_status] if args.key?(:verification_status)
+        end
+      end
+      
+      # The configuration of a CSE identity that uses different key pairs for signing
+      # and encryption.
+      class SignAndEncryptKeyPairs
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CseKeyPair that encrypts signed outgoing mail.
+        # Corresponds to the JSON property `encryptionKeyPairId`
+        # @return [String]
+        attr_accessor :encryption_key_pair_id
+      
+        # The ID of the CseKeyPair that signs outgoing mail.
+        # Corresponds to the JSON property `signingKeyPairId`
+        # @return [String]
+        attr_accessor :signing_key_pair_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_key_pair_id = args[:encryption_key_pair_id] if args.key?(:encryption_key_pair_id)
+          @signing_key_pair_id = args[:signing_key_pair_id] if args.key?(:signing_key_pair_id)
         end
       end
       

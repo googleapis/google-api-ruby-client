@@ -1,5 +1,9 @@
 # Release history for google-apis-gmail_v1
 
+### v0.33.0 (2023-10-01)
+
+* Regenerated from discovery document revision 20230925
+
 ### v0.32.0 (2023-09-24)
 
 * Regenerated from discovery document revision 20230918
