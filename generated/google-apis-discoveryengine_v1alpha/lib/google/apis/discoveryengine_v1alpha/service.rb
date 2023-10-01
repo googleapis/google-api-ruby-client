@@ -211,7 +211,7 @@ module Google
         #   imported search events. * `document-completable` - Using suggestions taken
         #   directly from user-imported document fields marked as completable. Default
         #   values: * `document` is the default model for regular dataStores. * `search-
-        #   history` is the default model for IndustryVertical.SITE_SEARCH dataStores.
+        #   history` is the default model for site search dataStores.
         # @param [String] user_pseudo_id
         #   A unique identifier for tracking visitors. For example, this could be
         #   implemented with an HTTP cookie, which should be able to uniquely identify a
@@ -1298,6 +1298,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Request on-demand recrawl for a list of URIs.
+        # @param [String] site_search_engine
+        #   Required. Full resource name of the SiteSearchEngine, such as `projects/*/
+        #   locations/*/collections/*/dataStores/*/siteSearchEngine`.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest] google_cloud_discoveryengine_v1alpha_recrawl_uris_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def recrawl_project_location_collection_data_store_site_search_engine_uris(site_search_engine, google_cloud_discoveryengine_v1alpha_recrawl_uris_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+siteSearchEngine}:recrawlUris', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_recrawl_uris_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['siteSearchEngine'] = site_search_engine unless site_search_engine.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -1761,7 +1795,7 @@ module Google
         #   imported search events. * `document-completable` - Using suggestions taken
         #   directly from user-imported document fields marked as completable. Default
         #   values: * `document` is the default model for regular dataStores. * `search-
-        #   history` is the default model for IndustryVertical.SITE_SEARCH dataStores.
+        #   history` is the default model for site search dataStores.
         # @param [String] user_pseudo_id
         #   A unique identifier for tracking visitors. For example, this could be
         #   implemented with an HTTP cookie, which should be able to uniquely identify a
@@ -2772,6 +2806,40 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponse
           command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Request on-demand recrawl for a list of URIs.
+        # @param [String] site_search_engine
+        #   Required. Full resource name of the SiteSearchEngine, such as `projects/*/
+        #   locations/*/collections/*/dataStores/*/siteSearchEngine`.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest] google_cloud_discoveryengine_v1alpha_recrawl_uris_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def recrawl_project_location_data_store_site_search_engine_uris(site_search_engine, google_cloud_discoveryengine_v1alpha_recrawl_uris_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+siteSearchEngine}:recrawlUris', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_recrawl_uris_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['siteSearchEngine'] = site_search_engine unless site_search_engine.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
