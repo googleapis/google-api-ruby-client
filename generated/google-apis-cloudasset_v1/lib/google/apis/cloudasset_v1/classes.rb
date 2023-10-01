@@ -962,6 +962,40 @@ module Google
         end
       end
       
+      # The effective tags and the ancestor resources from which they were inherited.
+      class EffectiveTagDetails
+        include Google::Apis::Core::Hashable
+      
+        # The [full resource name](https://cloud.google.com/asset-inventory/docs/
+        # resource-name-format) of the ancestor from which an effective_tag is inherited,
+        # according to [tag inheritance](https://cloud.google.com/resource-manager/docs/
+        # tags/tags-overview#inheritance).
+        # Corresponds to the JSON property `attachedResource`
+        # @return [String]
+        attr_accessor :attached_resource
+      
+        # The effective tags inherited from the attached_resource. Note that tags with
+        # the same key but different values may attach to resources at a different
+        # hierarchy levels. The lower hierarchy tag value will overwrite the higher
+        # hierarchy tag value of the same tag key. In this case, the tag value at the
+        # higher hierarchy level will be removed. For more information, see [tag
+        # inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#
+        # inheritance).
+        # Corresponds to the JSON property `effectiveTags`
+        # @return [Array<Google::Apis::CloudassetV1::Tag>]
+        attr_accessor :effective_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attached_resource = args[:attached_resource] if args.key?(:attached_resource)
+          @effective_tags = args[:effective_tags] if args.key?(:effective_tags)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -5221,6 +5255,19 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # The effective tags on this resource. All of the tags that are both attached to
+        # and inherited by a resource are collectively called the effective tags. For
+        # more information, see [tag inheritance](https://cloud.google.com/resource-
+        # manager/docs/tags/tags-overview#inheritance). To search against the `
+        # effective_tags`: * Use a field query. Example: - `effectiveTagKeys:"123456789/
+        # env*"` - `effectiveTagKeys="123456789/env"` - `effectiveTagKeys:"env"` - `
+        # effectiveTagValues:"env"` - `effectiveTagValues:"env/prod"` - `
+        # effectiveTagValues:"123456789/env/prod*"` - `effectiveTagValues="123456789/env/
+        # prod"` - `effectiveTagValueIds="tagValues/456"`
+        # Corresponds to the JSON property `effectiveTags`
+        # @return [Array<Google::Apis::CloudassetV1::EffectiveTagDetails>]
+        attr_accessor :effective_tags
+      
         # The folder(s) that this resource belongs to, in the form of folders/`
         # FOLDER_NUMBER`. This field is available when the resource belongs to one or
         # more folders. To search against `folders`: * Use a field query. Example: `
@@ -5368,28 +5415,42 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # TagKey namespaced names, in the format of `ORG_ID`/`TAG_KEY_SHORT_NAME`. To
-        # search against the `tagKeys`: * Use a field query. Example: - `tagKeys:"
-        # 123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` * Use a free
-        # text query. Example: - `env`
+        # This field is only present for the purpose of backward compatibility. Please
+        # use the `tags` field instead. TagKey namespaced names, in the format of `
+        # ORG_ID`/`TAG_KEY_SHORT_NAME`. To search against the `tagKeys`: * Use a field
+        # query. Example: - `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `
+        # tagKeys:"env"` * Use a free text query. Example: - `env`
         # Corresponds to the JSON property `tagKeys`
         # @return [Array<String>]
         attr_accessor :tag_keys
       
-        # TagValue IDs, in the format of tagValues/`TAG_VALUE_ID`. To search against the
-        # `tagValueIds`: * Use a field query. Example: - `tagValueIds="tagValues/456"`
+        # This field is only present for the purpose of backward compatibility. Please
+        # use the `tags` field instead. TagValue IDs, in the format of tagValues/`
+        # TAG_VALUE_ID`. To search against the `tagValueIds`: * Use a field query.
+        # Example: - `tagValueIds="tagValues/456"` * Use a free text query. Example: - `
+        # 456`
         # Corresponds to the JSON property `tagValueIds`
         # @return [Array<String>]
         attr_accessor :tag_value_ids
       
-        # TagValue namespaced names, in the format of `ORG_ID`/`TAG_KEY_SHORT_NAME`/`
-        # TAG_VALUE_SHORT_NAME`. To search against the `tagValues`: * Use a field query.
-        # Example: - `tagValues:"env"` - `tagValues:"env/prod"` - `tagValues:"123456789/
-        # env/prod*"` - `tagValues="123456789/env/prod"` * Use a free text query.
-        # Example: - `prod`
+        # This field is only present for the purpose of backward compatibility. Please
+        # use the `tags` field instead. TagValue namespaced names, in the format of `
+        # ORG_ID`/`TAG_KEY_SHORT_NAME`/`TAG_VALUE_SHORT_NAME`. To search against the `
+        # tagValues`: * Use a field query. Example: - `tagValues:"env"` - `tagValues:"
+        # env/prod"` - `tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/
+        # prod"` * Use a free text query. Example: - `prod`
         # Corresponds to the JSON property `tagValues`
         # @return [Array<String>]
         attr_accessor :tag_values
+      
+        # The tags directly attached to this resource. To search against the `tags`: *
+        # Use a field query. Example: - `tagKeys:"123456789/env*"` - `tagKeys="123456789/
+        # env"` - `tagKeys:"env"` - `tagValues:"env"` - `tagValues:"env/prod"` - `
+        # tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` - `
+        # tagValueIds="tagValues/456"` * Use a free text query. Example: - `env/prod`
+        # Corresponds to the JSON property `tags`
+        # @return [Array<Google::Apis::CloudassetV1::Tag>]
+        attr_accessor :tags
       
         # The last update timestamp of this resource, at which the resource was last
         # modified or deleted. The granularity is in seconds. Timestamp.nanos will
@@ -5423,6 +5484,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @effective_tags = args[:effective_tags] if args.key?(:effective_tags)
           @folders = args[:folders] if args.key?(:folders)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @kms_keys = args[:kms_keys] if args.key?(:kms_keys)
@@ -5440,6 +5502,7 @@ module Google
           @tag_keys = args[:tag_keys] if args.key?(:tag_keys)
           @tag_value_ids = args[:tag_value_ids] if args.key?(:tag_value_ids)
           @tag_values = args[:tag_values] if args.key?(:tag_values)
+          @tags = args[:tags] if args.key?(:tags)
           @update_time = args[:update_time] if args.key?(:update_time)
           @versioned_resources = args[:versioned_resources] if args.key?(:versioned_resources)
         end
@@ -5770,6 +5833,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
+      # The key and value for a [tag](https://cloud.google.com/resource-manager/docs/
+      # tags/tags-overview),
+      class Tag
+        include Google::Apis::Core::Hashable
+      
+        # TagKey namespaced name, in the format of `ORG_ID`/`TAG_KEY_SHORT_NAME`.
+        # Corresponds to the JSON property `tagKey`
+        # @return [String]
+        attr_accessor :tag_key
+      
+        # TagValue namespaced name, in the format of `ORG_ID`/`TAG_KEY_SHORT_NAME`/`
+        # TAG_VALUE_SHORT_NAME`.
+        # Corresponds to the JSON property `tagValue`
+        # @return [String]
+        attr_accessor :tag_value
+      
+        # TagValue ID, in the format of tagValues/`TAG_VALUE_ID`.
+        # Corresponds to the JSON property `tagValueId`
+        # @return [String]
+        attr_accessor :tag_value_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tag_key = args[:tag_key] if args.key?(:tag_key)
+          @tag_value = args[:tag_value] if args.key?(:tag_value)
+          @tag_value_id = args[:tag_value_id] if args.key?(:tag_value_id)
         end
       end
       
