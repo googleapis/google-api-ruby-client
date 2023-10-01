@@ -27,10 +27,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. A request ID to identify requests. Specify a unique request ID so
-        # that if you must retry your request, the server will know to ignore the
-        # request if it has already been completed. The server guarantees that a request
-        # doesn't result in creation of duplicate commitments for at least 60 minutes.
-        # For example, consider a situation where you make an initial request and the
+        # that if you must retry your request, the server knows to ignore the request if
+        # it has already been completed. The server guarantees that a request doesn't
+        # result in creation of duplicate commitments for at least 60 minutes. For
+        # example, consider a situation where you make an initial request and the
         # request times out. If you make the request again with the same request ID, the
         # server can check to see whether the original operation was received. If it was,
         # the server ignores the second request. This behavior prevents clients from
@@ -85,10 +85,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. A request ID to identify requests. Specify a unique request ID so
-        # that if you must retry your request, the server will know to ignore the
-        # request if it has already been completed. The server guarantees that a request
-        # doesn't result in creation of duplicate commitments for at least 60 minutes.
-        # For example, consider a situation where you make an initial request and the
+        # that if you must retry your request, the server knows to ignore the request if
+        # it has already been completed. The server guarantees that a request doesn't
+        # result in creation of duplicate commitments for at least 60 minutes. For
+        # example, consider a situation where you make an initial request and the
         # request times out. If you make the request again with the same request ID, the
         # server can check to see whether the original operation was received. If it was,
         # the server ignores the second request. This behavior prevents clients from
@@ -472,25 +472,25 @@ module Google
       class Filter
         include Google::Apis::Core::Hashable
       
-        # Optional. The destination IP range of outgoing packets that this policy based
+        # Optional. The destination IP range of outgoing packets that this policy-based
         # route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
         # Corresponds to the JSON property `destRange`
         # @return [String]
         attr_accessor :dest_range
       
-        # Optional. The IP protocol that this policy based route applies to. Valid
+        # Optional. The IP protocol that this policy-based route applies to. Valid
         # values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
         # Corresponds to the JSON property `ipProtocol`
         # @return [String]
         attr_accessor :ip_protocol
       
-        # Required. Internet protocol versions this policy based route applies to. For
+        # Required. Internet protocol versions this policy-based route applies to. For
         # this version, only IPV4 is supported.
         # Corresponds to the JSON property `protocolVersion`
         # @return [String]
         attr_accessor :protocol_version
       
-        # Optional. The source IP range of outgoing packets that this policy based route
+        # Optional. The source IP range of outgoing packets that this policy-based route
         # applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
         # Corresponds to the JSON property `srcRange`
         # @return [String]
@@ -851,11 +851,11 @@ module Google
         end
       end
       
-      # InterconnectAttachment to which this route applies to.
+      # InterconnectAttachment that this route applies to.
       class InterconnectAttachment
         include Google::Apis::Core::Hashable
       
-        # Optional. Cloud region to install this policy based route on interconnect
+        # Optional. Cloud region to install this policy-based route on interconnect
         # attachment. Use `all` to install it on all interconnect attachments.
         # Corresponds to the JSON property `region`
         # @return [String]
@@ -1290,7 +1290,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Policy based routes to be returned.
+        # Policy-based routes to be returned.
         # Corresponds to the JSON property `policyBasedRoutes`
         # @return [Array<Google::Apis::NetworkconnectivityV1::PolicyBasedRoute>]
         attr_accessor :policy_based_routes
@@ -1778,14 +1778,14 @@ module Google
         end
       end
       
-      # Policy Based Routes (PBR) are more powerful routes that allows GCP customers
-      # to route their L4 network traffic based on not just destination IP, but also
-      # source IP, protocol and more. A PBR always take precedence when it conflicts
-      # with other types of routes. Next id: 22
+      # Policy-based routes route L4 network traffic based on not just destination IP
+      # address, but also source IP address, protocol, and more. If a policy-based
+      # route conflicts with other types of routes, the policy-based route always take
+      # precedence.
       class PolicyBasedRoute
         include Google::Apis::Core::Hashable
       
-        # Output only. Time when the PolicyBasedRoute was created.
+        # Output only. Time when the policy-based route was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1801,13 +1801,13 @@ module Google
         # @return [Google::Apis::NetworkconnectivityV1::Filter]
         attr_accessor :filter
       
-        # InterconnectAttachment to which this route applies to.
+        # InterconnectAttachment that this route applies to.
         # Corresponds to the JSON property `interconnectAttachment`
         # @return [Google::Apis::NetworkconnectivityV1::InterconnectAttachment]
         attr_accessor :interconnect_attachment
       
         # Output only. Type of this resource. Always networkconnectivity#
-        # policyBasedRoute for Policy Based Route resources.
+        # policyBasedRoute for policy-based Route resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1823,15 +1823,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Fully-qualified URL of the network that this route applies to. e.g.
-        # projects/my-project/global/networks/my-network.
+        # Required. Fully-qualified URL of the network that this route applies to, for
+        # example: projects/my-project/global/networks/my-network.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Optional. The IP of a global access enabled L4 ILB that should be the next hop
-        # to handle matching packets. For this version, only next_hop_ilb_ip is
-        # supported.
+        # Optional. The IP address of a global-access-enabled L4 ILB that is the next
+        # hop for matching packets. For this version, only nextHopIlbIp is supported.
         # Corresponds to the JSON property `nextHopIlbIp`
         # @return [String]
         attr_accessor :next_hop_ilb_ip
@@ -1842,9 +1841,9 @@ module Google
         # @return [String]
         attr_accessor :next_hop_other_routes
       
-        # Optional. The priority of this policy based route. Priority is used to break
-        # ties in cases where there are more than one matching policy based routes found.
-        # In cases where multiple policy based routes are matched, the one with the
+        # Optional. The priority of this policy-based route. Priority is used to break
+        # ties in cases where there are more than one matching policy-based routes found.
+        # In cases where multiple policy-based routes are matched, the one with the
         # lowest-numbered priority value wins. The default value is 1000. The priority
         # value must be from 1 to 65535, inclusive.
         # Corresponds to the JSON property `priority`
@@ -1856,12 +1855,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Output only. Time when the PolicyBasedRoute was updated.
+        # Output only. Time when the policy-based route was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # VM instances to which this policy based route applies to.
+        # VM instances to which this policy-based route applies to.
         # Corresponds to the JSON property `virtualMachine`
         # @return [Google::Apis::NetworkconnectivityV1::VirtualMachine]
         attr_accessor :virtual_machine
@@ -2033,10 +2032,10 @@ module Google
         attr_accessor :details
       
         # Optional. A request ID to identify requests. Specify a unique request ID so
-        # that if you must retry your request, the server will know to ignore the
-        # request if it has already been completed. The server guarantees that a request
-        # doesn't result in creation of duplicate commitments for at least 60 minutes.
-        # For example, consider a situation where you make an initial request and the
+        # that if you must retry your request, the server knows to ignore the request if
+        # it has already been completed. The server guarantees that a request doesn't
+        # result in creation of duplicate commitments for at least 60 minutes. For
+        # example, consider a situation where you make an initial request and the
         # request times out. If you make the request again with the same request ID, the
         # server can check to see whether the original operation was received. If it was,
         # the server ignores the second request. This behavior prevents clients from
@@ -2098,10 +2097,10 @@ module Google
         attr_accessor :details
       
         # Optional. A request ID to identify requests. Specify a unique request ID so
-        # that if you must retry your request, the server will know to ignore the
-        # request if it has already been completed. The server guarantees that a request
-        # doesn't result in creation of duplicate commitments for at least 60 minutes.
-        # For example, consider a situation where you make an initial request and the
+        # that if you must retry your request, the server knows to ignore the request if
+        # it has already been completed. The server guarantees that a request doesn't
+        # result in creation of duplicate commitments for at least 60 minutes. For
+        # example, consider a situation where you make an initial request and the
         # request times out. If you make the request again with the same request ID, the
         # server can check to see whether the original operation was received. If it was,
         # the server ignores the second request. This behavior prevents clients from
@@ -3021,12 +3020,12 @@ module Google
         end
       end
       
-      # VM instances to which this policy based route applies to.
+      # VM instances to which this policy-based route applies to.
       class VirtualMachine
         include Google::Apis::Core::Hashable
       
-        # Optional. A list of VM instance tags to which this policy based route applies
-        # to. VM instances that have ANY of tags specified here will install this PBR.
+        # Optional. A list of VM instance tags the this policy-based route applies to.
+        # VM instances that have ANY of tags specified here will install this PBR.
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
