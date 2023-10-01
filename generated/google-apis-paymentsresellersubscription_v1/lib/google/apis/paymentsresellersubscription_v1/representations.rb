@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -279,6 +285,16 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :line_item_entitlement_details, as: 'lineItemEntitlementDetails', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails::Representation
+      
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :line_item_index, as: 'lineItemIndex'
+          collection :products, as: 'products'
         end
       end
       

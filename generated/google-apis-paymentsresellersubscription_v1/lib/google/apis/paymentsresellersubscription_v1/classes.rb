@@ -126,12 +126,47 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The line items to be entitled. If unspecified, all line items will
+        # be entitled.
+        # Corresponds to the JSON property `lineItemEntitlementDetails`
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails>]
+        attr_accessor :line_item_entitlement_details
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @line_item_entitlement_details = args[:line_item_entitlement_details] if args.key?(:line_item_entitlement_details)
+        end
+      end
+      
+      # The details of the line item to be entitled.
+      class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. The index of the line item to be entitled.
+        # Corresponds to the JSON property `lineItemIndex`
+        # @return [Fixnum]
+        attr_accessor :line_item_index
+      
+        # Optional. Only applicable if the line item corresponds to a hard bundle.
+        # Product resource names that identify the bundle elements to be entitled in the
+        # line item. If unspecified, all bundle elements will be entitled. The format is
+        # 'partners/`partner_id`/products/`product_id`'.
+        # Corresponds to the JSON property `products`
+        # @return [Array<String>]
+        attr_accessor :products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_item_index = args[:line_item_index] if args.key?(:line_item_index)
+          @products = args[:products] if args.key?(:products)
         end
       end
       
