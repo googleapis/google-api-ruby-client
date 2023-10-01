@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1AnalyticsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ApiCategory
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -443,6 +449,18 @@ module Google
       end
       
       class GoogleCloudApigeeV1DimensionMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1DisableSecurityActionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1EnableSecurityActionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -838,6 +856,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListSecurityActionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListSecurityIncidentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1192,6 +1216,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1RuntimeAddonsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1RuntimeAnalyticsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1RuntimeApiSecurityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1RuntimeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1259,6 +1301,48 @@ module Google
       end
       
       class GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityActionAllow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityActionConditionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityActionDeny
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityActionFlag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityActionHttpHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityActionsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1337,6 +1421,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1Session
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SetAddonEnablementRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1633,6 +1723,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advanced_api_ops_config, as: 'advancedApiOpsConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdvancedApiOpsConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdvancedApiOpsConfig::Representation
       
+          property :analytics_config, as: 'analyticsConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AnalyticsConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AnalyticsConfig::Representation
+      
           property :api_security_config, as: 'apiSecurityConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiSecurityConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiSecurityConfig::Representation
       
           property :connectors_platform_config, as: 'connectorsPlatformConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ConnectorsPlatformConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ConnectorsPlatformConfig::Representation
@@ -1675,6 +1767,16 @@ module Google
           property :location, as: 'location'
           property :name, as: 'name'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudApigeeV1AnalyticsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :expire_time_millis, :numeric_string => true, as: 'expireTimeMillis'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -2417,6 +2519,18 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1DisableSecurityActionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApigeeV1EnableSecurityActionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudApigeeV1EndpointAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2470,6 +2584,8 @@ module Google
       class GoogleCloudApigeeV1EnvironmentConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :addons_config, as: 'addonsConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeAddonsConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeAddonsConfig::Representation
+      
           property :arc_config_location, as: 'arcConfigLocation'
           property :create_time, as: 'createTime'
           collection :data_collectors, as: 'dataCollectors', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollectorConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollectorConfig::Representation
@@ -3058,6 +3174,15 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListSecurityActionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_actions, as: 'securityActions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAction, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAction::Representation
+      
+        end
+      end
+      
       class GoogleCloudApigeeV1ListSecurityIncidentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3270,6 +3395,7 @@ module Google
           property :runtime_database_encryption_key_name, as: 'runtimeDatabaseEncryptionKeyName'
           property :runtime_type, as: 'runtimeType'
           property :state, as: 'state'
+          property :subscription_plan, as: 'subscriptionPlan'
           property :subscription_type, as: 'subscriptionType'
           property :type, as: 'type'
         end
@@ -3681,6 +3807,34 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1RuntimeAddonsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analytics_config, as: 'analyticsConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeAnalyticsConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeAnalyticsConfig::Representation
+      
+          property :api_security_config, as: 'apiSecurityConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeApiSecurityConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeApiSecurityConfig::Representation
+      
+          property :name, as: 'name'
+          property :revision_id, as: 'revisionId'
+          property :uid, as: 'uid'
+        end
+      end
+      
+      class GoogleCloudApigeeV1RuntimeAnalyticsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_pipeline_enabled, as: 'billingPipelineEnabled'
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class GoogleCloudApigeeV1RuntimeApiSecurityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class GoogleCloudApigeeV1RuntimeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3805,6 +3959,73 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :documentation_link, as: 'documentationLink'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow, as: 'allow', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionAllow, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionAllow::Representation
+      
+          property :condition_config, as: 'conditionConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionConditionConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionConditionConfig::Representation
+      
+          property :create_time, as: 'createTime'
+          property :deny, as: 'deny', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionDeny, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionDeny::Representation
+      
+          property :description, as: 'description'
+          property :expire_time, as: 'expireTime'
+          property :flag, as: 'flag', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionFlag, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionFlag::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :ttl, as: 'ttl'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityActionAllow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityActionConditionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bot_reasons, as: 'botReasons'
+          collection :ip_address_ranges, as: 'ipAddressRanges'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityActionDeny
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :response_code, as: 'responseCode'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityActionFlag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :headers, as: 'headers', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionHttpHeader, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionHttpHeader::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityActionHttpHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityActionsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -3963,6 +4184,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :timestamp_ms, :numeric_string => true, as: 'timestampMs'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SetAddonEnablementRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analytics_enabled, as: 'analyticsEnabled'
+          property :api_security_enabled, as: 'apiSecurityEnabled'
         end
       end
       

@@ -284,6 +284,11 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdvancedApiOpsConfig]
         attr_accessor :advanced_api_ops_config
       
+        # Configuration for the Analytics add-on.
+        # Corresponds to the JSON property `analyticsConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AnalyticsConfig]
+        attr_accessor :analytics_config
+      
         # Configurations of the API Security add-on.
         # Corresponds to the JSON property `apiSecurityConfig`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiSecurityConfig]
@@ -311,6 +316,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_api_ops_config = args[:advanced_api_ops_config] if args.key?(:advanced_api_ops_config)
+          @analytics_config = args[:analytics_config] if args.key?(:analytics_config)
           @api_security_config = args[:api_security_config] if args.key?(:api_security_config)
           @connectors_platform_config = args[:connectors_platform_config] if args.key?(:connectors_platform_config)
           @integration_config = args[:integration_config] if args.key?(:integration_config)
@@ -419,6 +425,45 @@ module Google
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Configuration for the Analytics add-on.
+      class GoogleCloudApigeeV1AnalyticsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Analytics add-on is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Output only. Time at which the Analytics add-on expires in milliseconds since
+        # epoch. If unspecified, the add-on will never expire.
+        # Corresponds to the JSON property `expireTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :expire_time_millis
+      
+        # Output only. The state of the Analytics add-on.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The latest update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @expire_time_millis = args[:expire_time_millis] if args.key?(:expire_time_millis)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -3505,6 +3550,32 @@ module Google
         end
       end
       
+      # Message to disable an enabled SecurityAction.
+      class GoogleCloudApigeeV1DisableSecurityActionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message to enable a disabled SecurityAction.
+      class GoogleCloudApigeeV1EnableSecurityActionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Apigee endpoint attachment. For more information, see [Southbound networking
       # patterns] (https://cloud.google.com/apigee/docs/api-platform/architecture/
       # southbound-networking-patterns-endpoints).
@@ -3729,6 +3800,12 @@ module Google
       class GoogleCloudApigeeV1EnvironmentConfig
         include Google::Apis::Core::Hashable
       
+        # RuntimeAddonsConfig defines the runtime configurations for add-ons in an
+        # environment.
+        # Corresponds to the JSON property `addonsConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeAddonsConfig]
+        attr_accessor :addons_config
+      
         # The location for the config blob of API Runtime Control, aka Envoy Adapter,
         # for op-based authentication as a URI, e.g. a Cloud Storage URI. This is only
         # used by Envoy-based gateways.
@@ -3858,6 +3935,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @addons_config = args[:addons_config] if args.key?(:addons_config)
           @arc_config_location = args[:arc_config_location] if args.key?(:arc_config_location)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_collectors = args[:data_collectors] if args.key?(:data_collectors)
@@ -5700,6 +5778,32 @@ module Google
         end
       end
       
+      # Contains a list of SecurityActions in response to a ListSecurityActionRequest.
+      class GoogleCloudApigeeV1ListSecurityActionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The SecurityActions for the specified environment.
+        # Corresponds to the JSON property `securityActions`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAction>]
+        attr_accessor :security_actions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @security_actions = args[:security_actions] if args.key?(:security_actions)
+        end
+      end
+      
       # Response for ListSecurityIncidents.
       class GoogleCloudApigeeV1ListSecurityIncidentsResponse
         include Google::Apis::Core::Hashable
@@ -6483,6 +6587,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. Subscription plan that the customer has purchased. Output only.
+        # Corresponds to the JSON property `subscriptionPlan`
+        # @return [String]
+        attr_accessor :subscription_plan
+      
         # Output only. DEPRECATED: This will eventually be replaced by BillingType.
         # Subscription type of the Apigee organization. Valid values include trial (free,
         # limited, and for evaluation purposes only) or paid (full subscription has
@@ -6528,6 +6637,7 @@ module Google
           @runtime_database_encryption_key_name = args[:runtime_database_encryption_key_name] if args.key?(:runtime_database_encryption_key_name)
           @runtime_type = args[:runtime_type] if args.key?(:runtime_type)
           @state = args[:state] if args.key?(:state)
+          @subscription_plan = args[:subscription_plan] if args.key?(:subscription_plan)
           @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
           @type = args[:type] if args.key?(:type)
         end
@@ -8053,6 +8163,100 @@ module Google
         end
       end
       
+      # RuntimeAddonsConfig defines the runtime configurations for add-ons in an
+      # environment.
+      class GoogleCloudApigeeV1RuntimeAddonsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Runtime configuration for the Analytics add-on.
+        # Corresponds to the JSON property `analyticsConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeAnalyticsConfig]
+        attr_accessor :analytics_config
+      
+        # Runtime configuration for the API Security add-on.
+        # Corresponds to the JSON property `apiSecurityConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeApiSecurityConfig]
+        attr_accessor :api_security_config
+      
+        # Name of the addons config in the format: `organizations/`org`/environments/`
+        # env`/addonsConfig`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Revision number used by the runtime to detect config changes.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # UID is to detect if config is recreated after deletion. The add-on config will
+        # only be deleted when the environment itself gets deleted, thus it will always
+        # be the same as the UID of EnvironmentConfig.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analytics_config = args[:analytics_config] if args.key?(:analytics_config)
+          @api_security_config = args[:api_security_config] if args.key?(:api_security_config)
+          @name = args[:name] if args.key?(:name)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # Runtime configuration for the Analytics add-on.
+      class GoogleCloudApigeeV1RuntimeAnalyticsConfig
+        include Google::Apis::Core::Hashable
+      
+        # If Runtime should send billing data to AX or not.
+        # Corresponds to the JSON property `billingPipelineEnabled`
+        # @return [Boolean]
+        attr_accessor :billing_pipeline_enabled
+        alias_method :billing_pipeline_enabled?, :billing_pipeline_enabled
+      
+        # If the Analytics is enabled or not.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_pipeline_enabled = args[:billing_pipeline_enabled] if args.key?(:billing_pipeline_enabled)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Runtime configuration for the API Security add-on.
+      class GoogleCloudApigeeV1RuntimeApiSecurityConfig
+        include Google::Apis::Core::Hashable
+      
+        # If the API Security is enabled or not.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # Runtime configuration for the organization. Response for GetRuntimeConfig.
       class GoogleCloudApigeeV1RuntimeConfig
         include Google::Apis::Core::Hashable
@@ -8503,6 +8707,247 @@ module Google
         end
       end
       
+      # A SecurityAction is rule that can be enforced at an environment level. The
+      # result is one of: - A denied API call - An explicitly allowed API call - A
+      # flagged API call (HTTP headers added before the target receives it) At least
+      # one condition is required to create a SecurityAction.
+      class GoogleCloudApigeeV1SecurityAction
+        include Google::Apis::Core::Hashable
+      
+        # Message that should be set in case of an Allow Action. This does not have any
+        # fields.
+        # Corresponds to the JSON property `allow`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionAllow]
+        attr_accessor :allow
+      
+        # The following are a list of conditions. A valid SecurityAction must contain at
+        # least one condition. Within a condition, each element is ORed. Across
+        # conditions elements are ANDed. For example if a SecurityAction has the
+        # following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then
+        # this is interpreted as: enforce the action if the incoming request has ((
+        # api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2"))
+        # Corresponds to the JSON property `conditionConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionConditionConfig]
+        attr_accessor :condition_config
+      
+        # Output only. The create time for this SecurityAction.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Message that should be set in case of a Deny Action.
+        # Corresponds to the JSON property `deny`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionDeny]
+        attr_accessor :deny
+      
+        # Optional. An optional user provided description of the SecurityAction.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The expiration for this SecurityAction.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # The message that should be set in the case of a Flag action.
+        # Corresponds to the JSON property `flag`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionFlag]
+        attr_accessor :flag
+      
+        # Immutable. This field is ignored during creation as per AIP-133. Please set
+        # the `security_action_id` field in the CreateSecurityActionRequest when
+        # creating a new SecurityAction. Format: organizations/`org`/environments/`env`/
+        # securityActions/`security_action`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Only an ENABLED SecurityAction is enforced. An ENABLED
+        # SecurityAction past its expiration time will not be enforced.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Input only. The TTL for this SecurityAction.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        # Output only. The update time for this SecurityAction. This reflects when this
+        # SecurityAction changed states.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow = args[:allow] if args.key?(:allow)
+          @condition_config = args[:condition_config] if args.key?(:condition_config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @deny = args[:deny] if args.key?(:deny)
+          @description = args[:description] if args.key?(:description)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @flag = args[:flag] if args.key?(:flag)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @ttl = args[:ttl] if args.key?(:ttl)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message that should be set in case of an Allow Action. This does not have any
+      # fields.
+      class GoogleCloudApigeeV1SecurityActionAllow
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The following are a list of conditions. A valid SecurityAction must contain at
+      # least one condition. Within a condition, each element is ORed. Across
+      # conditions elements are ANDed. For example if a SecurityAction has the
+      # following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then
+      # this is interpreted as: enforce the action if the incoming request has ((
+      # api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2"))
+      class GoogleCloudApigeeV1SecurityActionConditionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor,
+        # Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced
+        # Anomaly Detection and Advanced API Scraper.
+        # Corresponds to the JSON property `botReasons`
+        # @return [Array<String>]
+        attr_accessor :bot_reasons
+      
+        # Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited
+        # to 100 per action.
+        # Corresponds to the JSON property `ipAddressRanges`
+        # @return [Array<String>]
+        attr_accessor :ip_address_ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bot_reasons = args[:bot_reasons] if args.key?(:bot_reasons)
+          @ip_address_ranges = args[:ip_address_ranges] if args.key?(:ip_address_ranges)
+        end
+      end
+      
+      # Message that should be set in case of a Deny Action.
+      class GoogleCloudApigeeV1SecurityActionDeny
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The HTTP response code if the Action = DENY.
+        # Corresponds to the JSON property `responseCode`
+        # @return [Fixnum]
+        attr_accessor :response_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @response_code = args[:response_code] if args.key?(:response_code)
+        end
+      end
+      
+      # The message that should be set in the case of a Flag action.
+      class GoogleCloudApigeeV1SecurityActionFlag
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of HTTP headers to be sent to the target in case of a FLAG
+        # SecurityAction. Limit 5 headers per SecurityAction. At least one is mandatory.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionHttpHeader>]
+        attr_accessor :headers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
+        end
+      end
+      
+      # An HTTP header.
+      class GoogleCloudApigeeV1SecurityActionHttpHeader
+        include Google::Apis::Core::Hashable
+      
+        # The header name to be sent to the target.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The header value to be sent to the target.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # SecurityActionsConfig reflects the current state of the SecurityActions
+      # feature. This is a singleton resource: https://google.aip.dev/156
+      class GoogleCloudApigeeV1SecurityActionsConfig
+        include Google::Apis::Core::Hashable
+      
+        # The flag that controls whether this feature is enabled. This is `unset` by
+        # default. When this flag is `false`, even if individual rules are enabled, no
+        # SecurityActions will be enforced.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # This is a singleton resource, the name will always be set by SecurityActions
+        # and any user input will be ignored. The name is always: `organizations/`org`/
+        # environments/`env`/security_actions_config`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The update time for configuration.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Represents an SecurityIncident resource.
       class GoogleCloudApigeeV1SecurityIncident
         include Google::Apis::Core::Hashable
@@ -8687,8 +9132,7 @@ module Google
         # @return [String]
         attr_accessor :attach_time
       
-        # Immutable. Name of the profile-environment association resource. Format:
-        # organizations/`org`/securityProfiles/`profile`/environments/`env`
+        # Immutable. Name of the environment that the profile is attached to.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -9150,6 +9594,33 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @timestamp_ms = args[:timestamp_ms] if args.key?(:timestamp_ms)
+        end
+      end
+      
+      # Request for SetAddonEnablement.
+      class GoogleCloudApigeeV1SetAddonEnablementRequest
+        include Google::Apis::Core::Hashable
+      
+        # If the Analytics should be enabled in the environment.
+        # Corresponds to the JSON property `analyticsEnabled`
+        # @return [Boolean]
+        attr_accessor :analytics_enabled
+        alias_method :analytics_enabled?, :analytics_enabled
+      
+        # If the API Security should be enabled in the environment.
+        # Corresponds to the JSON property `apiSecurityEnabled`
+        # @return [Boolean]
+        attr_accessor :api_security_enabled
+        alias_method :api_security_enabled?, :api_security_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analytics_enabled = args[:analytics_enabled] if args.key?(:analytics_enabled)
+          @api_security_enabled = args[:api_security_enabled] if args.key?(:api_security_enabled)
         end
       end
       
