@@ -1764,6 +1764,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :generation
       
+        # This is the time (in the future) when the soft-deleted object will no longer
+        # be restorable. It is equal to the soft delete time plus the current soft
+        # delete retention duration of the bucket.
+        # Corresponds to the JSON property `hardDeleteTime`
+        # @return [DateTime]
+        attr_accessor :hard_delete_time
+      
         # The ID of the object, including the bucket name, object name, and generation
         # number.
         # Corresponds to the JSON property `id`
@@ -1840,6 +1847,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :size
       
+        # The time at which the object became soft-deleted in RFC 3339 format.
+        # Corresponds to the JSON property `softDeleteTime`
+        # @return [DateTime]
+        attr_accessor :soft_delete_time
+      
         # Storage class of the object.
         # Corresponds to the JSON property `storageClass`
         # @return [String]
@@ -1860,8 +1872,8 @@ module Google
         # @return [DateTime]
         attr_accessor :time_created
       
-        # The deletion time of the object in RFC 3339 format. Will be returned if and
-        # only if this version of the object has been deleted.
+        # The time at which the object became noncurrent in RFC 3339 format. Will be
+        # returned if and only if this version of the object has been deleted.
         # Corresponds to the JSON property `timeDeleted`
         # @return [DateTime]
         attr_accessor :time_deleted
@@ -1901,6 +1913,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @event_based_hold = args[:event_based_hold] if args.key?(:event_based_hold)
           @generation = args[:generation] if args.key?(:generation)
+          @hard_delete_time = args[:hard_delete_time] if args.key?(:hard_delete_time)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
@@ -1914,6 +1927,7 @@ module Google
           @retention_expiration_time = args[:retention_expiration_time] if args.key?(:retention_expiration_time)
           @self_link = args[:self_link] if args.key?(:self_link)
           @size = args[:size] if args.key?(:size)
+          @soft_delete_time = args[:soft_delete_time] if args.key?(:soft_delete_time)
           @storage_class = args[:storage_class] if args.key?(:storage_class)
           @temporary_hold = args[:temporary_hold] if args.key?(:temporary_hold)
           @time_created = args[:time_created] if args.key?(:time_created)

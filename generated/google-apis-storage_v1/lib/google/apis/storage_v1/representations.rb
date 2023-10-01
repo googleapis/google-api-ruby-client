@@ -784,6 +784,8 @@ module Google
           property :etag, as: 'etag'
           property :event_based_hold, as: 'eventBasedHold'
           property :generation, :numeric_string => true, as: 'generation'
+          property :hard_delete_time, as: 'hardDeleteTime', type: DateTime
+      
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :kms_key_name, as: 'kmsKeyName'
@@ -800,6 +802,8 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :size, :numeric_string => true, as: 'size'
+          property :soft_delete_time, as: 'softDeleteTime', type: DateTime
+      
           property :storage_class, as: 'storageClass'
           property :temporary_hold, as: 'temporaryHold'
           property :time_created, as: 'timeCreated', type: DateTime
