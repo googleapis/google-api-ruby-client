@@ -471,6 +471,7 @@ module Google
           collection :associated_networks, as: 'associatedNetworks'
           property :billing_project_id, as: 'billingProjectId'
           property :create_time, as: 'createTime'
+          property :description, as: 'description'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'

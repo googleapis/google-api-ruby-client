@@ -919,8 +919,8 @@ module Google
         
         # Updates the parameters of a single SecurityProfileGroup.
         # @param [String] name
-        #   Immutable. Name of the SecurityProfileGroup resource. It matches pattern `
-        #   projects|organizations/*/locations/`location`/securityProfileGroups/`
+        #   Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches
+        #   pattern `projects|organizations/*/locations/`location`/securityProfileGroups/`
         #   security_profile_group``.
         # @param [Google::Apis::NetworksecurityV1beta1::SecurityProfileGroup] security_profile_group_object
         # @param [String] update_mask
@@ -1107,8 +1107,9 @@ module Google
         
         # Updates the parameters of a single SecurityProfile.
         # @param [String] name
-        #   Immutable. Name of the SecurityProfile resource. It matches pattern `projects|
-        #   organizations/*/locations/`location`/securityProfiles/`security_profile``.
+        #   Immutable. Identifier. Name of the SecurityProfile resource. It matches
+        #   pattern `projects|organizations/*/locations/`location`/securityProfiles/`
+        #   security_profile``.
         # @param [Google::Apis::NetworksecurityV1beta1::SecurityProfile] security_profile_object
         # @param [String] update_mask
         #   Required. Field mask is used to specify the fields to be overwritten in the
