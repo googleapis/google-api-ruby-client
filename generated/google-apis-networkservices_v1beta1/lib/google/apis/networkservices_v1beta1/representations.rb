@@ -70,6 +70,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExtensionChain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtensionChainExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtensionChainMatchCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Gateway
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +155,12 @@ module Google
       end
       
       class GrpcRouteRouteRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrpcRouteStatefulSessionAffinityPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -238,7 +262,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpRouteStatefulSessionAffinityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpRouteUrlRewrite
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LbRouteExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LbTrafficExtension
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -263,6 +305,18 @@ module Google
       end
       
       class ListHttpRoutesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListLbRouteExtensionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListLbTrafficExtensionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -542,6 +596,37 @@ module Google
         end
       end
       
+      class ExtensionChain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :extensions, as: 'extensions', class: Google::Apis::NetworkservicesV1beta1::ExtensionChainExtension, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionChainExtension::Representation
+      
+          property :match_condition, as: 'matchCondition', class: Google::Apis::NetworkservicesV1beta1::ExtensionChainMatchCondition, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionChainMatchCondition::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class ExtensionChainExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authority, as: 'authority'
+          property :fail_open, as: 'failOpen'
+          collection :forward_headers, as: 'forwardHeaders'
+          property :name, as: 'name'
+          property :service, as: 'service'
+          collection :supported_events, as: 'supportedEvents'
+          property :timeout, as: 'timeout'
+        end
+      end
+      
+      class ExtensionChainMatchCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cel_expression, as: 'celExpression'
+        end
+      end
+      
       class Gateway
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -650,6 +735,8 @@ module Google
       
           property :retry_policy, as: 'retryPolicy', class: Google::Apis::NetworkservicesV1beta1::GrpcRouteRetryPolicy, decorator: Google::Apis::NetworkservicesV1beta1::GrpcRouteRetryPolicy::Representation
       
+          property :stateful_session_affinity, as: 'statefulSessionAffinity', class: Google::Apis::NetworkservicesV1beta1::GrpcRouteStatefulSessionAffinityPolicy, decorator: Google::Apis::NetworkservicesV1beta1::GrpcRouteStatefulSessionAffinityPolicy::Representation
+      
           property :timeout, as: 'timeout'
         end
       end
@@ -671,6 +758,13 @@ module Google
       
           collection :matches, as: 'matches', class: Google::Apis::NetworkservicesV1beta1::GrpcRouteRouteMatch, decorator: Google::Apis::NetworkservicesV1beta1::GrpcRouteRouteMatch::Representation
       
+        end
+      end
+      
+      class GrpcRouteStatefulSessionAffinityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cookie_ttl, as: 'cookieTtl'
         end
       end
       
@@ -830,6 +924,8 @@ module Google
       
           property :retry_policy, as: 'retryPolicy', class: Google::Apis::NetworkservicesV1beta1::HttpRouteRetryPolicy, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteRetryPolicy::Representation
       
+          property :stateful_session_affinity, as: 'statefulSessionAffinity', class: Google::Apis::NetworkservicesV1beta1::HttpRouteStatefulSessionAffinityPolicy, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteStatefulSessionAffinityPolicy::Representation
+      
           property :timeout, as: 'timeout'
           property :url_rewrite, as: 'urlRewrite', class: Google::Apis::NetworkservicesV1beta1::HttpRouteUrlRewrite, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteUrlRewrite::Representation
       
@@ -860,11 +956,48 @@ module Google
         end
       end
       
+      class HttpRouteStatefulSessionAffinityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cookie_ttl, as: 'cookieTtl'
+        end
+      end
+      
       class HttpRouteUrlRewrite
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :host_rewrite, as: 'hostRewrite'
           property :path_prefix_rewrite, as: 'pathPrefixRewrite'
+        end
+      end
+      
+      class LbRouteExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :extension_chains, as: 'extensionChains', class: Google::Apis::NetworkservicesV1beta1::ExtensionChain, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionChain::Representation
+      
+          collection :forwarding_rules, as: 'forwardingRules'
+          hash :labels, as: 'labels'
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class LbTrafficExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :extension_chains, as: 'extensionChains', class: Google::Apis::NetworkservicesV1beta1::ExtensionChain, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionChain::Representation
+      
+          collection :forwarding_rules, as: 'forwardingRules'
+          hash :labels, as: 'labels'
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -902,6 +1035,26 @@ module Google
           collection :http_routes, as: 'httpRoutes', class: Google::Apis::NetworkservicesV1beta1::HttpRoute, decorator: Google::Apis::NetworkservicesV1beta1::HttpRoute::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListLbRouteExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :lb_route_extensions, as: 'lbRouteExtensions', class: Google::Apis::NetworkservicesV1beta1::LbRouteExtension, decorator: Google::Apis::NetworkservicesV1beta1::LbRouteExtension::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListLbTrafficExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :lb_traffic_extensions, as: 'lbTrafficExtensions', class: Google::Apis::NetworkservicesV1beta1::LbTrafficExtension, decorator: Google::Apis::NetworkservicesV1beta1::LbTrafficExtension::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
