@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1PlaceAccessibilityOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleMapsPlacesV1PlaceAddressComponent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +173,8 @@ module Google
       class GoogleMapsPlacesV1Place
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accessibility_options, as: 'accessibilityOptions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAccessibilityOptions, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAccessibilityOptions::Representation
+      
           collection :address_components, as: 'addressComponents', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAddressComponent, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAddressComponent::Representation
       
           property :adr_format_address, as: 'adrFormatAddress'
@@ -219,6 +227,13 @@ module Google
           property :viewport, as: 'viewport', class: Google::Apis::PlacesV1::GoogleGeoTypeViewport, decorator: Google::Apis::PlacesV1::GoogleGeoTypeViewport::Representation
       
           property :website_uri, as: 'websiteUri'
+        end
+      end
+      
+      class GoogleMapsPlacesV1PlaceAccessibilityOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :wheelchair_accessible_entrance, as: 'wheelchairAccessibleEntrance'
         end
       end
       

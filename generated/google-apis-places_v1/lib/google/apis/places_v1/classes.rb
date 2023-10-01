@@ -131,6 +131,11 @@ module Google
       class GoogleMapsPlacesV1Place
         include Google::Apis::Core::Hashable
       
+        # Information about the accessibility options a place offers.
+        # Corresponds to the JSON property `accessibilityOptions`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAccessibilityOptions]
+        attr_accessor :accessibility_options
+      
         # Output only. Repeated components for each locality level.
         # Corresponds to the JSON property `addressComponents`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAddressComponent>]
@@ -392,6 +397,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accessibility_options = args[:accessibility_options] if args.key?(:accessibility_options)
           @address_components = args[:address_components] if args.key?(:address_components)
           @adr_format_address = args[:adr_format_address] if args.key?(:adr_format_address)
           @attributions = args[:attributions] if args.key?(:attributions)
@@ -432,6 +438,26 @@ module Google
           @utc_offset_minutes = args[:utc_offset_minutes] if args.key?(:utc_offset_minutes)
           @viewport = args[:viewport] if args.key?(:viewport)
           @website_uri = args[:website_uri] if args.key?(:website_uri)
+        end
+      end
+      
+      # Information about the accessibility options a place offers.
+      class GoogleMapsPlacesV1PlaceAccessibilityOptions
+        include Google::Apis::Core::Hashable
+      
+        # Places has wheelchair accessible entrance.
+        # Corresponds to the JSON property `wheelchairAccessibleEntrance`
+        # @return [Boolean]
+        attr_accessor :wheelchair_accessible_entrance
+        alias_method :wheelchair_accessible_entrance?, :wheelchair_accessible_entrance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @wheelchair_accessible_entrance = args[:wheelchair_accessible_entrance] if args.key?(:wheelchair_accessible_entrance)
         end
       end
       
