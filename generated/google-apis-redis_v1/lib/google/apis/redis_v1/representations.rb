@@ -22,6 +22,30 @@ module Google
   module Apis
     module RedisV1
       
+      class CertChain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CertificateAuthority
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Cluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiscoveryEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListClustersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -130,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedCertificateAuthority
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +173,12 @@ module Google
       end
       
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PscConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReconciliationOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +215,12 @@ module Google
       end
       
       class RescheduleMaintenanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StateInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -184,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpgradeInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -194,6 +260,54 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CertChain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :certificates, as: 'certificates'
+        end
+      end
+      
+      class CertificateAuthority
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :managed_server_ca, as: 'managedServerCa', class: Google::Apis::RedisV1::ManagedCertificateAuthority, decorator: Google::Apis::RedisV1::ManagedCertificateAuthority::Representation
+      
+        end
+      end
+      
+      class Cluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_mode, as: 'authorizationMode'
+          property :create_time, as: 'createTime'
+          collection :discovery_endpoints, as: 'discoveryEndpoints', class: Google::Apis::RedisV1::DiscoveryEndpoint, decorator: Google::Apis::RedisV1::DiscoveryEndpoint::Representation
+      
+          property :name, as: 'name'
+          collection :psc_configs, as: 'pscConfigs', class: Google::Apis::RedisV1::PscConfig, decorator: Google::Apis::RedisV1::PscConfig::Representation
+      
+          collection :psc_connections, as: 'pscConnections', class: Google::Apis::RedisV1::PscConnection, decorator: Google::Apis::RedisV1::PscConnection::Representation
+      
+          property :replica_count, as: 'replicaCount'
+          property :shard_count, as: 'shardCount'
+          property :size_gb, as: 'sizeGb'
+          property :state, as: 'state'
+          property :state_info, as: 'stateInfo', class: Google::Apis::RedisV1::StateInfo, decorator: Google::Apis::RedisV1::StateInfo::Representation
+      
+          property :transit_encryption_mode, as: 'transitEncryptionMode'
+          property :uid, as: 'uid'
+        end
+      end
+      
+      class DiscoveryEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :port, as: 'port'
+          property :psc_config, as: 'pscConfig', class: Google::Apis::RedisV1::PscConfig, decorator: Google::Apis::RedisV1::PscConfig::Representation
+      
+        end
       end
       
       class Empty
@@ -327,6 +441,16 @@ module Google
         end
       end
       
+      class ListClustersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :clusters, as: 'clusters', class: Google::Apis::RedisV1::Cluster, decorator: Google::Apis::RedisV1::Cluster::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListInstancesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -387,6 +511,14 @@ module Google
         end
       end
       
+      class ManagedCertificateAuthority
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ca_certs, as: 'caCerts', class: Google::Apis::RedisV1::CertChain, decorator: Google::Apis::RedisV1::CertChain::Representation
+      
+        end
+      end
+      
       class NodeInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -404,6 +536,19 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
         end
       end
       
@@ -425,6 +570,24 @@ module Google
         end
       end
       
+      class PscConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+        end
+      end
+      
+      class PscConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :forwarding_rule, as: 'forwardingRule'
+          property :network, as: 'network'
+          property :project_id, as: 'projectId'
+          property :psc_connection_id, as: 'pscConnectionId'
+        end
+      end
+      
       class ReconciliationOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -438,6 +601,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :reschedule_type, as: 'rescheduleType'
           property :schedule_time, as: 'scheduleTime'
+        end
+      end
+      
+      class StateInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :update_info, as: 'updateInfo', class: Google::Apis::RedisV1::UpdateInfo, decorator: Google::Apis::RedisV1::UpdateInfo::Representation
+      
         end
       end
       
@@ -468,6 +639,14 @@ module Google
           property :expire_time, as: 'expireTime'
           property :serial_number, as: 'serialNumber'
           property :sha1_fingerprint, as: 'sha1Fingerprint'
+        end
+      end
+      
+      class UpdateInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_replica_count, as: 'targetReplicaCount'
+          property :target_shard_count, as: 'targetShardCount'
         end
       end
       

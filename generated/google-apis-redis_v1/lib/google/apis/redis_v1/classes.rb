@@ -22,6 +22,177 @@ module Google
   module Apis
     module RedisV1
       
+      # 
+      class CertChain
+        include Google::Apis::Core::Hashable
+      
+        # The certificates that form the CA chain, from leaf to root order.
+        # Corresponds to the JSON property `certificates`
+        # @return [Array<String>]
+        attr_accessor :certificates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificates = args[:certificates] if args.key?(:certificates)
+        end
+      end
+      
+      # Redis cluster certificate authority
+      class CertificateAuthority
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `managedServerCa`
+        # @return [Google::Apis::RedisV1::ManagedCertificateAuthority]
+        attr_accessor :managed_server_ca
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @managed_server_ca = args[:managed_server_ca] if args.key?(:managed_server_ca)
+        end
+      end
+      
+      # A cluster instance.
+      class Cluster
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The authorization mode of the Redis cluster. If not provided, auth
+        # feature is disabled for the cluster.
+        # Corresponds to the JSON property `authorizationMode`
+        # @return [String]
+        attr_accessor :authorization_mode
+      
+        # Output only. The timestamp associated with the cluster creation request.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Endpoints created on each given network, for Redis clients to
+        # connect to the cluster. Currently only one discovery endpoint is supported.
+        # Corresponds to the JSON property `discoveryEndpoints`
+        # @return [Array<Google::Apis::RedisV1::DiscoveryEndpoint>]
+        attr_accessor :discovery_endpoints
+      
+        # Required. Unique name of the resource in this scope including project and
+        # location using the form: `projects/`project_id`/locations/`location_id`/
+        # clusters/`cluster_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Each PscConfig configures the consumer network where IPs will be
+        # designated to the cluster for client access through Private Service Connect
+        # Automation. Currently, only one PscConfig is supported.
+        # Corresponds to the JSON property `pscConfigs`
+        # @return [Array<Google::Apis::RedisV1::PscConfig>]
+        attr_accessor :psc_configs
+      
+        # Output only. PSC connections for discovery of the cluster topology and
+        # accessing the cluster.
+        # Corresponds to the JSON property `pscConnections`
+        # @return [Array<Google::Apis::RedisV1::PscConnection>]
+        attr_accessor :psc_connections
+      
+        # Optional. The number of replica nodes per shard.
+        # Corresponds to the JSON property `replicaCount`
+        # @return [Fixnum]
+        attr_accessor :replica_count
+      
+        # Required. Number of shards for the Redis cluster.
+        # Corresponds to the JSON property `shardCount`
+        # @return [Fixnum]
+        attr_accessor :shard_count
+      
+        # Output only. Redis memory size in GB for the entire cluster.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        # Output only. The current state of this cluster. Can be CREATING, READY,
+        # UPDATING, DELETING and SUSPENDED
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Represents additional information about the state of the cluster.
+        # Corresponds to the JSON property `stateInfo`
+        # @return [Google::Apis::RedisV1::StateInfo]
+        attr_accessor :state_info
+      
+        # Optional. The in-transit encryption for the Redis cluster. If not provided,
+        # encryption is disabled for the cluster.
+        # Corresponds to the JSON property `transitEncryptionMode`
+        # @return [String]
+        attr_accessor :transit_encryption_mode
+      
+        # Output only. System assigned, unique identifier for the cluster.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization_mode = args[:authorization_mode] if args.key?(:authorization_mode)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @discovery_endpoints = args[:discovery_endpoints] if args.key?(:discovery_endpoints)
+          @name = args[:name] if args.key?(:name)
+          @psc_configs = args[:psc_configs] if args.key?(:psc_configs)
+          @psc_connections = args[:psc_connections] if args.key?(:psc_connections)
+          @replica_count = args[:replica_count] if args.key?(:replica_count)
+          @shard_count = args[:shard_count] if args.key?(:shard_count)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @state = args[:state] if args.key?(:state)
+          @state_info = args[:state_info] if args.key?(:state_info)
+          @transit_encryption_mode = args[:transit_encryption_mode] if args.key?(:transit_encryption_mode)
+          @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # Endpoints on each network, for Redis clients to connect to the cluster.
+      class DiscoveryEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Address of the exposed Redis endpoint used by clients to connect
+        # to the service. The address could be either IP or hostname.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # Output only. The port number of the exposed Redis endpoint.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Output only. Customer configuration for where the endpoint is created and
+        # accessed from.
+        # Corresponds to the JSON property `pscConfig`
+        # @return [Google::Apis::RedisV1::PscConfig]
+        attr_accessor :psc_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @port = args[:port] if args.key?(:port)
+          @psc_config = args[:psc_config] if args.key?(:psc_config)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -547,6 +718,45 @@ module Google
         end
       end
       
+      # Response for ListClusters.
+      class ListClustersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of Redis clusters in the project in the specified location, or across
+        # all locations. If the `location_id` in the parent field of the request is "-",
+        # all regions available to the project are queried, and the results aggregated.
+        # If in such an aggregated query a location is unavailable, a placeholder Redis
+        # entry is included in the response with the `name` field set to a value of the
+        # form `projects/`project_id`/locations/`location_id`/clusters/`- and the `
+        # status` field set to ERROR and `status_message` field set to "location not
+        # available for ListClusters".
+        # Corresponds to the JSON property `clusters`
+        # @return [Array<Google::Apis::RedisV1::Cluster>]
+        attr_accessor :clusters
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clusters = args[:clusters] if args.key?(:clusters)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response for ListInstances.
       class ListInstancesResponse
         include Google::Apis::Core::Hashable
@@ -767,6 +977,25 @@ module Google
         end
       end
       
+      # 
+      class ManagedCertificateAuthority
+        include Google::Apis::Core::Hashable
+      
+        # The PEM encoded CA certificate chains for redis managed server authentication
+        # Corresponds to the JSON property `caCerts`
+        # @return [Array<Google::Apis::RedisV1::CertChain>]
+        attr_accessor :ca_certs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_certs = args[:ca_certs] if args.key?(:ca_certs)
+        end
+      end
+      
       # Node specific properties.
       class NodeInfo
         include Google::Apis::Core::Hashable
@@ -858,6 +1087,65 @@ module Google
         end
       end
       
+      # Pre-defined metadata fields.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifies whether the user has requested cancellation of the
+        # operation. Operations that have successfully been cancelled have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `requestedCancellation`
+        # @return [Boolean]
+        attr_accessor :requested_cancellation
+        alias_method :requested_cancellation?, :requested_cancellation
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
       # The output content
       class OutputConfig
         include Google::Apis::Core::Hashable
@@ -922,6 +1210,74 @@ module Google
         end
       end
       
+      # 
+      class PscConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The network where the IP address of the discovery endpoint will be
+        # reserved, in the form of projects/`network_project`/global/networks/`
+        # network_id`.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+        end
+      end
+      
+      # Details of consumer resources in a PSC connection.
+      class PscConnection
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The IP allocated on the consumer network for the PSC forwarding
+        # rule.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # Output only. The URI of the consumer side forwarding rule. Example: projects/`
+        # projectNumOrId`/regions/us-east1/forwardingRules/`resourceId`.
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        # The consumer network where the IP address resides, in the form of projects/`
+        # project_id`/global/networks/`network_id`.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. The consumer project_id where the forwarding rule is created from.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Output only. The PSC connection id of the forwarding rule connected to the
+        # service attachment.
+        # Corresponds to the JSON property `pscConnectionId`
+        # @return [String]
+        attr_accessor :psc_connection_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @network = args[:network] if args.key?(:network)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
+        end
+      end
+      
       # Operation metadata returned by the CLH during resource state reconciliation.
       class ReconciliationOperationMetadata
         include Google::Apis::Core::Hashable
@@ -973,6 +1329,25 @@ module Google
         def update!(**args)
           @reschedule_type = args[:reschedule_type] if args.key?(:reschedule_type)
           @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
+        end
+      end
+      
+      # Represents additional information about the state of the cluster.
+      class StateInfo
+        include Google::Apis::Core::Hashable
+      
+        # Represents information about an updating cluster.
+        # Corresponds to the JSON property `updateInfo`
+        # @return [Google::Apis::RedisV1::UpdateInfo]
+        attr_accessor :update_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_info = args[:update_info] if args.key?(:update_info)
         end
       end
       
@@ -1098,6 +1473,31 @@ module Google
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
           @sha1_fingerprint = args[:sha1_fingerprint] if args.key?(:sha1_fingerprint)
+        end
+      end
+      
+      # Represents information about an updating cluster.
+      class UpdateInfo
+        include Google::Apis::Core::Hashable
+      
+        # Target number of replica nodes per shard.
+        # Corresponds to the JSON property `targetReplicaCount`
+        # @return [Fixnum]
+        attr_accessor :target_replica_count
+      
+        # Target number of shards for redis cluster
+        # Corresponds to the JSON property `targetShardCount`
+        # @return [Fixnum]
+        attr_accessor :target_shard_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_replica_count = args[:target_replica_count] if args.key?(:target_replica_count)
+          @target_shard_count = args[:target_shard_count] if args.key?(:target_shard_count)
         end
       end
       
