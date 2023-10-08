@@ -22,12 +22,6 @@ module Google
   module Apis
     module ChromepolicyV1
       
-      class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleChromePolicyVersionsV1AdditionalTargetKeyName
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,6 +137,12 @@ module Google
       end
       
       class GoogleChromePolicyVersionsV1NumericRangeConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1PolicyApiLifecycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,17 +328,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :deprecated_in_favor_of, as: 'deprecatedInFavorOf'
-          property :description, as: 'description'
-          property :end_support, as: 'endSupport', class: Google::Apis::ChromepolicyV1::GoogleTypeDate, decorator: Google::Apis::ChromepolicyV1::GoogleTypeDate::Representation
-      
-          property :policy_api_lifecycle_stage, as: 'policyApiLifecycleStage'
-        end
-      end
-      
       class GoogleChromePolicyVersionsV1AdditionalTargetKeyName
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -522,6 +511,18 @@ module Google
         end
       end
       
+      class GoogleChromePolicyVersionsV1PolicyApiLifecycle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deprecated_in_favor_of, as: 'deprecatedInFavorOf'
+          property :description, as: 'description'
+          property :end_support, as: 'endSupport', class: Google::Apis::ChromepolicyV1::GoogleTypeDate, decorator: Google::Apis::ChromepolicyV1::GoogleTypeDate::Representation
+      
+          property :policy_api_lifecycle_stage, as: 'policyApiLifecycleStage'
+          collection :scheduled_to_deprecate_policies, as: 'scheduledToDeprecatePolicies'
+        end
+      end
+      
       class GoogleChromePolicyVersionsV1PolicyModificationError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -564,7 +565,7 @@ module Google
           property :name, as: 'name'
           collection :notices, as: 'notices', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription::Representation
       
-          property :policy_api_lifecycle, as: 'policyApiLifecycle', class: Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle, decorator: Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle::Representation
+          property :policy_api_lifecycle, as: 'policyApiLifecycle', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyApiLifecycle, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyApiLifecycle::Representation
       
           property :policy_description, as: 'policyDescription'
           property :schema_name, as: 'schemaName'
