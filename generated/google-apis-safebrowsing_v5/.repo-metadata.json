@@ -1,0 +1,7 @@
+{
+    "api_id": "safebrowsing:v5",
+    "name_pretty": "Safe Browsing API",
+    "distribution_name": "google-apis-safebrowsing_v5",
+    "language": "ruby",
+    "library_type": "REST"
+}
