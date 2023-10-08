@@ -1871,7 +1871,8 @@ module Google
         # PartitionQuery request returns partition cursors A and B, running the
         # following three queries will return the entire result set of the original
         # query: * query, end_at A * query, start_at A, end_at B * query, start_at B An
-        # empty result may indicate that the query has too few results to be partitioned.
+        # empty result may indicate that the query has too few results to be partitioned,
+        # or that the query is not yet supported for partitioning.
         # Corresponds to the JSON property `partitions`
         # @return [Array<Google::Apis::FirestoreV1beta1::Cursor>]
         attr_accessor :partitions
