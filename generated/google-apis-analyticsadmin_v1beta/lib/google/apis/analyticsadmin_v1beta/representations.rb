@@ -949,6 +949,8 @@ module Google
       
           collection :dimensions, as: 'dimensions', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessDimension, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessDimension::Representation
       
+          property :expand_groups, as: 'expandGroups'
+          property :include_all_users, as: 'includeAllUsers'
           property :limit, :numeric_string => true, as: 'limit'
           property :metric_filter, as: 'metricFilter', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpression, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpression::Representation
       
