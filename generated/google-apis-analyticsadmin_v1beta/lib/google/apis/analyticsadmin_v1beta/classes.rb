@@ -1790,8 +1790,7 @@ module Google
       
         # Immutable. The property type for this Property resource. When creating a
         # property, if the type is "PROPERTY_TYPE_UNSPECIFIED", then "ORDINARY_PROPERTY"
-        # will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY" types cannot yet be
-        # created with the Google Analytics Admin API.
+        # will be implied.
         # Corresponds to the JSON property `propertyType`
         # @return [String]
         attr_accessor :property_type
@@ -1946,6 +1945,25 @@ module Google
         # @return [Array<Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessDimension>]
         attr_accessor :dimensions
       
+        # Optional. Decides whether to return the users within user groups. This field
+        # works only when include_all_users is set to true. If true, it will return all
+        # users with access to the specified property or account. If false, only the
+        # users with direct access will be returned.
+        # Corresponds to the JSON property `expandGroups`
+        # @return [Boolean]
+        attr_accessor :expand_groups
+        alias_method :expand_groups?, :expand_groups
+      
+        # Optional. Determines whether to include users who have never made an API call
+        # in the response. If true, all users with access to the specified property or
+        # account are included in the response, regardless of whether they have made an
+        # API call or not. If false, only the users who have made an API call will be
+        # included.
+        # Corresponds to the JSON property `includeAllUsers`
+        # @return [Boolean]
+        attr_accessor :include_all_users
+        alias_method :include_all_users?, :include_all_users
+      
         # The number of rows to return. If unspecified, 10,000 rows are returned. The
         # API returns a maximum of 100,000 rows per request, no matter how many you ask
         # for. `limit` must be positive. The API may return fewer rows than the
@@ -2011,6 +2029,8 @@ module Google
           @date_ranges = args[:date_ranges] if args.key?(:date_ranges)
           @dimension_filter = args[:dimension_filter] if args.key?(:dimension_filter)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @expand_groups = args[:expand_groups] if args.key?(:expand_groups)
+          @include_all_users = args[:include_all_users] if args.key?(:include_all_users)
           @limit = args[:limit] if args.key?(:limit)
           @metric_filter = args[:metric_filter] if args.key?(:metric_filter)
           @metrics = args[:metrics] if args.key?(:metrics)
