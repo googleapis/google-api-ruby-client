@@ -6662,11 +6662,6 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1::Detail>]
         attr_accessor :details
       
-        # Occurrence-specific extra details about the vulnerability.
-        # Corresponds to the JSON property `extraDetails`
-        # @return [String]
-        attr_accessor :extra_details
-      
         # The note provider assigned severity of this vulnerability.
         # Corresponds to the JSON property `severity`
         # @return [String]
@@ -6698,7 +6693,6 @@ module Google
           @cvss_v3 = args[:cvss_v3] if args.key?(:cvss_v3)
           @cvss_version = args[:cvss_version] if args.key?(:cvss_version)
           @details = args[:details] if args.key?(:details)
-          @extra_details = args[:extra_details] if args.key?(:extra_details)
           @severity = args[:severity] if args.key?(:severity)
           @source_update_time = args[:source_update_time] if args.key?(:source_update_time)
           @windows_details = args[:windows_details] if args.key?(:windows_details)
@@ -6747,6 +6741,11 @@ module Google
         # Corresponds to the JSON property `effectiveSeverity`
         # @return [String]
         attr_accessor :effective_severity
+      
+        # Occurrence-specific extra details about the vulnerability.
+        # Corresponds to the JSON property `extraDetails`
+        # @return [String]
+        attr_accessor :extra_details
       
         # Output only. Whether at least one of the affected packages has a fix available.
         # Corresponds to the JSON property `fixAvailable`
@@ -6803,6 +6802,7 @@ module Google
           @cvss_version = args[:cvss_version] if args.key?(:cvss_version)
           @cvssv3 = args[:cvssv3] if args.key?(:cvssv3)
           @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
+          @extra_details = args[:extra_details] if args.key?(:extra_details)
           @fix_available = args[:fix_available] if args.key?(:fix_available)
           @long_description = args[:long_description] if args.key?(:long_description)
           @package_issue = args[:package_issue] if args.key?(:package_issue)
