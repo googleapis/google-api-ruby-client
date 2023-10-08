@@ -1574,6 +1574,7 @@ module Google
           property :cvssv3, as: 'cvssv3', class: Google::Apis::OndemandscanningV1::Cvss, decorator: Google::Apis::OndemandscanningV1::Cvss::Representation
       
           property :effective_severity, as: 'effectiveSeverity'
+          property :extra_details, as: 'extraDetails'
           property :fix_available, as: 'fixAvailable'
           property :long_description, as: 'longDescription'
           collection :package_issue, as: 'packageIssue', class: Google::Apis::OndemandscanningV1::PackageIssue, decorator: Google::Apis::OndemandscanningV1::PackageIssue::Representation
