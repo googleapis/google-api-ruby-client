@@ -628,6 +628,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1707,6 +1713,8 @@ module Google
           property :corrected_query, as: 'correctedQuery'
           collection :facets, as: 'facets', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseFacet, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseFacet::Representation
       
+          collection :geo_search_debug_info, as: 'geoSearchDebugInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfo::Representation
+      
           property :guided_search_result, as: 'guidedSearchResult', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResult, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResult::Representation
       
           property :next_page_token, as: 'nextPageToken'
@@ -1738,6 +1746,14 @@ module Google
           property :interval, as: 'interval', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaInterval, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaInterval::Representation
       
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+          property :original_address_query, as: 'originalAddressQuery'
         end
       end
       
