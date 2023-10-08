@@ -1967,7 +1967,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # User-friendly display name. Maximum length is 63 characters.
+        # Optional. User-friendly display name. Maximum length is 256 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
