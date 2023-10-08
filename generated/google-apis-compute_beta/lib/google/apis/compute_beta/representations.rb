@@ -7454,6 +7454,7 @@ module Google
           property :iap, as: 'iap', class: Google::Apis::ComputeBeta::BackendServiceIap, decorator: Google::Apis::ComputeBeta::BackendServiceIap::Representation
       
           property :id, :numeric_string => true, as: 'id'
+          property :ip_address_selection_policy, as: 'ipAddressSelectionPolicy'
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           collection :locality_lb_policies, as: 'localityLbPolicies', class: Google::Apis::ComputeBeta::BackendServiceLocalityLoadBalancingPolicyConfig, decorator: Google::Apis::ComputeBeta::BackendServiceLocalityLoadBalancingPolicyConfig::Representation
