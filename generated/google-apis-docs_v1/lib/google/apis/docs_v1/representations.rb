@@ -1235,6 +1235,7 @@ module Google
           property :even_page_header_id, as: 'evenPageHeaderId'
           property :first_page_footer_id, as: 'firstPageFooterId'
           property :first_page_header_id, as: 'firstPageHeaderId'
+          property :flip_page_orientation, as: 'flipPageOrientation'
           property :margin_bottom, as: 'marginBottom', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
       
           property :margin_footer, as: 'marginFooter', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
@@ -1267,6 +1268,7 @@ module Google
           property :even_page_header_id_suggested, as: 'evenPageHeaderIdSuggested'
           property :first_page_footer_id_suggested, as: 'firstPageFooterIdSuggested'
           property :first_page_header_id_suggested, as: 'firstPageHeaderIdSuggested'
+          property :flip_page_orientation_suggested, as: 'flipPageOrientationSuggested'
           property :margin_bottom_suggested, as: 'marginBottomSuggested'
           property :margin_footer_suggested, as: 'marginFooterSuggested'
           property :margin_header_suggested, as: 'marginHeaderSuggested'
@@ -2190,6 +2192,7 @@ module Google
           property :even_page_header_id, as: 'evenPageHeaderId'
           property :first_page_footer_id, as: 'firstPageFooterId'
           property :first_page_header_id, as: 'firstPageHeaderId'
+          property :flip_page_orientation, as: 'flipPageOrientation'
           property :margin_bottom, as: 'marginBottom', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
       
           property :margin_footer, as: 'marginFooter', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation

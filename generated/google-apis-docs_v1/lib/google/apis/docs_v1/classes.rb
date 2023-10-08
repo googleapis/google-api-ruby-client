@@ -1041,6 +1041,13 @@ module Google
         # @return [String]
         attr_accessor :first_page_header_id
       
+        # Optional. Indicates whether to flip the dimensions of the page_size, which
+        # allows changing the page orientation between portrait and landscape.
+        # Corresponds to the JSON property `flipPageOrientation`
+        # @return [Boolean]
+        attr_accessor :flip_page_orientation
+        alias_method :flip_page_orientation?, :flip_page_orientation
+      
         # A magnitude in a single direction in the specified units.
         # Corresponds to the JSON property `marginBottom`
         # @return [Google::Apis::DocsV1::Dimension]
@@ -1115,6 +1122,7 @@ module Google
           @even_page_header_id = args[:even_page_header_id] if args.key?(:even_page_header_id)
           @first_page_footer_id = args[:first_page_footer_id] if args.key?(:first_page_footer_id)
           @first_page_header_id = args[:first_page_header_id] if args.key?(:first_page_header_id)
+          @flip_page_orientation = args[:flip_page_orientation] if args.key?(:flip_page_orientation)
           @margin_bottom = args[:margin_bottom] if args.key?(:margin_bottom)
           @margin_footer = args[:margin_footer] if args.key?(:margin_footer)
           @margin_header = args[:margin_header] if args.key?(:margin_header)
@@ -1177,6 +1185,12 @@ module Google
         # @return [Boolean]
         attr_accessor :first_page_header_id_suggested
         alias_method :first_page_header_id_suggested?, :first_page_header_id_suggested
+      
+        # Optional. Indicates if there was a suggested change to flip_page_orientation.
+        # Corresponds to the JSON property `flipPageOrientationSuggested`
+        # @return [Boolean]
+        attr_accessor :flip_page_orientation_suggested
+        alias_method :flip_page_orientation_suggested?, :flip_page_orientation_suggested
       
         # Indicates if there was a suggested change to margin_bottom.
         # Corresponds to the JSON property `marginBottomSuggested`
@@ -1258,6 +1272,7 @@ module Google
           @even_page_header_id_suggested = args[:even_page_header_id_suggested] if args.key?(:even_page_header_id_suggested)
           @first_page_footer_id_suggested = args[:first_page_footer_id_suggested] if args.key?(:first_page_footer_id_suggested)
           @first_page_header_id_suggested = args[:first_page_header_id_suggested] if args.key?(:first_page_header_id_suggested)
+          @flip_page_orientation_suggested = args[:flip_page_orientation_suggested] if args.key?(:flip_page_orientation_suggested)
           @margin_bottom_suggested = args[:margin_bottom_suggested] if args.key?(:margin_bottom_suggested)
           @margin_footer_suggested = args[:margin_footer_suggested] if args.key?(:margin_footer_suggested)
           @margin_header_suggested = args[:margin_header_suggested] if args.key?(:margin_header_suggested)
@@ -4558,6 +4573,16 @@ module Google
         # @return [String]
         attr_accessor :first_page_header_id
       
+        # Optional. Indicates whether to flip the dimensions of DocumentStyle's
+        # page_size for this section, which allows changing the page orientation between
+        # portrait and landscape. If unset, the value inherits from DocumentStyle's
+        # flip_page_orientation. When updating this property, setting a concrete value
+        # is required. Unsetting this property results in a 400 bad request error.
+        # Corresponds to the JSON property `flipPageOrientation`
+        # @return [Boolean]
+        attr_accessor :flip_page_orientation
+        alias_method :flip_page_orientation?, :flip_page_orientation
+      
         # A magnitude in a single direction in the specified units.
         # Corresponds to the JSON property `marginBottom`
         # @return [Google::Apis::DocsV1::Dimension]
@@ -4628,6 +4653,7 @@ module Google
           @even_page_header_id = args[:even_page_header_id] if args.key?(:even_page_header_id)
           @first_page_footer_id = args[:first_page_footer_id] if args.key?(:first_page_footer_id)
           @first_page_header_id = args[:first_page_header_id] if args.key?(:first_page_header_id)
+          @flip_page_orientation = args[:flip_page_orientation] if args.key?(:flip_page_orientation)
           @margin_bottom = args[:margin_bottom] if args.key?(:margin_bottom)
           @margin_footer = args[:margin_footer] if args.key?(:margin_footer)
           @margin_header = args[:margin_header] if args.key?(:margin_header)
