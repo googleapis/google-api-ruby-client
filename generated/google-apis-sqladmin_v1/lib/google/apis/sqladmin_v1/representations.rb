@@ -847,6 +847,7 @@ module Google
       
           property :state, as: 'state'
           collection :suspension_reason, as: 'suspensionReason'
+          property :write_endpoint, as: 'writeEndpoint'
         end
         
         class FailoverReplica
@@ -1214,6 +1215,7 @@ module Google
           property :psc_config, as: 'pscConfig', class: Google::Apis::SqladminV1::PscConfig, decorator: Google::Apis::SqladminV1::PscConfig::Representation
       
           property :require_ssl, as: 'requireSsl'
+          property :ssl_mode, as: 'sslMode'
         end
       end
       
@@ -1366,6 +1368,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :complexity, as: 'complexity'
+          property :disallow_compromised_credentials, as: 'disallowCompromisedCredentials'
           property :disallow_username_substring, as: 'disallowUsernameSubstring'
           property :enable_password_policy, as: 'enablePasswordPolicy'
           property :min_length, as: 'minLength'
@@ -1392,6 +1395,7 @@ module Google
       class ReplicaConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cascadable_replica, as: 'cascadableReplica'
           property :failover_target, as: 'failoverTarget'
           property :kind, as: 'kind'
           property :mysql_replica_configuration, as: 'mysqlReplicaConfiguration', class: Google::Apis::SqladminV1::MySqlReplicaConfiguration, decorator: Google::Apis::SqladminV1::MySqlReplicaConfiguration::Representation
