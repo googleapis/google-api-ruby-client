@@ -2370,6 +2370,8 @@ module Google
         #   contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-
         #   ). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33
         #   characters.
+        # @param [String] parent_operation_id
+        #   Optional. operation id of the parent operation sending the create request
         # @param [String] request_id
         #   Optional. A unique ID used to identify the request. If the server receives two
         #   CreateNodeGroupRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
@@ -2397,7 +2399,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_region_cluster_node_group(parent, node_group_object = nil, node_group_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_region_cluster_node_group(parent, node_group_object = nil, node_group_id: nil, parent_operation_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/nodeGroups', options)
           command.request_representation = Google::Apis::DataprocV1::NodeGroup::Representation
           command.request_object = node_group_object
@@ -2405,6 +2407,7 @@ module Google
           command.response_class = Google::Apis::DataprocV1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['nodeGroupId'] = node_group_id unless node_group_id.nil?
+          command.query['parentOperationId'] = parent_operation_id unless parent_operation_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

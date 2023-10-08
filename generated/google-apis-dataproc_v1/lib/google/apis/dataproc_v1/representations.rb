@@ -1960,6 +1960,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :graceful_decommission_timeout, as: 'gracefulDecommissionTimeout'
+          property :parent_operation_id, as: 'parentOperationId'
           property :request_id, as: 'requestId'
           property :size, as: 'size'
         end

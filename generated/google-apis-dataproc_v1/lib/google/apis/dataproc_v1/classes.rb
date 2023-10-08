@@ -4450,6 +4450,11 @@ module Google
         # @return [String]
         attr_accessor :graceful_decommission_timeout
       
+        # Optional. operation id of the parent operation sending the resize request
+        # Corresponds to the JSON property `parentOperationId`
+        # @return [String]
+        attr_accessor :parent_operation_id
+      
         # Optional. A unique ID used to identify the request. If the server receives two
         # ResizeNodeGroupRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
         # google.cloud.dataproc.v1#google.cloud.dataproc.v1.ResizeNodeGroupRequests)
@@ -4477,6 +4482,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @graceful_decommission_timeout = args[:graceful_decommission_timeout] if args.key?(:graceful_decommission_timeout)
+          @parent_operation_id = args[:parent_operation_id] if args.key?(:parent_operation_id)
           @request_id = args[:request_id] if args.key?(:request_id)
           @size = args[:size] if args.key?(:size)
         end
