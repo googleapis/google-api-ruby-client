@@ -2953,6 +2953,7 @@ module Google
       
           property :cvss_version, as: 'cvssVersion'
           property :effective_severity, as: 'effectiveSeverity'
+          property :extra_details, as: 'extraDetails'
           collection :package_issue, as: 'packageIssue', class: Google::Apis::ContaineranalysisV1alpha1::PackageIssue, decorator: Google::Apis::ContaineranalysisV1alpha1::PackageIssue::Representation
       
           property :severity, as: 'severity'
