@@ -906,7 +906,7 @@ module Google
       class EnvVar
         include Google::Apis::Core::Hashable
       
-        # Required. Name of the environment variable. Must be a C_IDENTIFIER.
+        # Required. Name of the environment variable.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
