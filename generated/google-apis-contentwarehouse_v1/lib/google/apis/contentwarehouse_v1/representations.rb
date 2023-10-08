@@ -8116,6 +8116,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KnowledgeAnswersIntentQueryConceptSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KnowledgeAnswersIntentQueryCoreference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -21308,6 +21314,7 @@ module Google
           property :is_sage_disabled_intent, as: 'isSageDisabledIntent'
           property :is_sage_in_nage_intent, as: 'isSageInNageIntent'
           property :is_sage_intent, as: 'isSageIntent'
+          property :is_score_based_intent, as: 'isScoreBasedIntent'
           property :is_tvm_intent, as: 'isTvmIntent'
           property :is_valid_smarthome_intent, as: 'isValidSmarthomeIntent'
           property :is_video_intent, as: 'isVideoIntent'
@@ -27650,6 +27657,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :document, as: 'document', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1Document, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1Document::Representation
       
+          collection :matched_token_page_indices, as: 'matchedTokenPageIndices'
           property :qa_result, as: 'qaResult', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1QaResult, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1QaResult::Representation
       
           property :search_text_snippet, as: 'searchTextSnippet'
@@ -33106,6 +33114,13 @@ module Google
         end
       end
       
+      class KnowledgeAnswersIntentQueryConceptSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_epoch_id, as: 'dataEpochId'
+        end
+      end
+      
       class KnowledgeAnswersIntentQueryCoreference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -33164,6 +33179,8 @@ module Google
           collection :attribute_signals, as: 'attributeSignals', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryAttributeSignal, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryAttributeSignal::Representation
       
           property :concept_entity_mid, as: 'conceptEntityMid'
+          property :concept_signals, as: 'conceptSignals', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryConceptSignals, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryConceptSignals::Representation
+      
           property :confidence_level, as: 'confidenceLevel'
           collection :deduped_funcalls, as: 'dedupedFuncalls', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryFunctionCall, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryFunctionCall::Representation
       
@@ -40395,6 +40412,7 @@ module Google
           property :query_match, as: 'queryMatch'
           property :query_match_fraction, as: 'queryMatchFraction'
           property :query_relevance, as: 'queryRelevance'
+          property :source_generated_title, as: 'sourceGeneratedTitle'
           property :source_geometry, as: 'sourceGeometry'
           property :source_heading_tag, as: 'sourceHeadingTag'
           property :source_local_title, as: 'sourceLocalTitle'
@@ -42060,16 +42078,8 @@ module Google
       class RepositoryWebrefFprintModifierProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :capitalization, as: 'capitalization'
-          property :enclosing, as: 'enclosing'
           property :language, as: 'language'
           property :namespace_type, as: 'namespaceType'
-          property :punctuation, as: 'punctuation'
-          property :sentence, as: 'sentence'
-          property :source_type, as: 'sourceType'
-          property :stemming, as: 'stemming'
-          property :style, as: 'style'
-          property :token_type, as: 'tokenType'
         end
       end
       
