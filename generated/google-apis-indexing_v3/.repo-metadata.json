@@ -1,6 +1,6 @@
 {
     "api_id": "indexing:v3",
-    "name_pretty": "Indexing API",
+    "name_pretty": "Web Search Indexing API",
     "distribution_name": "google-apis-indexing_v3",
     "language": "ruby",
     "library_type": "REST"

@@ -20,9 +20,9 @@ require 'google/apis/errors'
 module Google
   module Apis
     module IndexingV3
-      # Indexing API
+      # Web Search Indexing API
       #
-      # Notifies Google when your web pages change.
+      # Notifies Google Web Search when your web pages change.
       #
       # @example
       #    require 'google/apis/indexing_v3'

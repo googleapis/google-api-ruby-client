@@ -1,5 +1,9 @@
 # Release history for google-apis-indexing_v3
 
+### v0.14.0 (2023-10-08)
+
+* Regenerated from discovery document revision 20230927
+
 ### v0.13.0 (2023-02-19)
 
 * Regenerated using generator version 0.12.0

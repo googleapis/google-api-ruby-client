@@ -19,13 +19,13 @@ require 'google/apis/indexing_v3/gem_version.rb'
 
 module Google
   module Apis
-    # Indexing API
+    # Web Search Indexing API
     #
-    # Notifies Google when your web pages change.
+    # Notifies Google Web Search when your web pages change.
     #
     # @see https://developers.google.com/search/apis/indexing-api/
     module IndexingV3
-      # Version of the Indexing API this client connects to.
+      # Version of the Web Search Indexing API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V3'
 
