@@ -108,6 +108,27 @@ module Google
         end
       end
       
+      # ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
+      class ApplianceCluster
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Self-link of the Google Cloud resource for the Appliance Cluster.
+        # For example: //transferappliance.googleapis.com/projects/my-project/locations/
+        # us-west1-a/appliances/my-appliance
+        # Corresponds to the JSON property `resourceLink`
+        # @return [String]
+        attr_accessor :resource_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_link = args[:resource_link] if args.key?(:resource_link)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -176,6 +197,60 @@ module Google
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
           @log_type = args[:log_type] if args.key?(:log_type)
+        end
+      end
+      
+      # Authority encodes how Google will recognize identities from this Membership.
+      # See the workload identity documentation for more details: https://cloud.google.
+      # com/kubernetes-engine/docs/how-to/workload-identity
+      class Authority
+        include Google::Apis::Core::Hashable
+      
+        # Output only. An identity provider that reflects the `issuer` in the workload
+        # identity pool.
+        # Corresponds to the JSON property `identityProvider`
+        # @return [String]
+        attr_accessor :identity_provider
+      
+        # Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://
+        # ` and be a valid URL with length <2000 characters, it must use `location`
+        # rather than `zone` for GKE clusters. If set, then Google will allow valid OIDC
+        # tokens from this issuer to authenticate within the workload_identity_pool.
+        # OIDC discovery will be performed on this URI to validate tokens from the
+        # issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be
+        # directly modified; it must be cleared (and Workload Identity disabled) before
+        # using a new issuer (and re-enabling Workload Identity).
+        # Corresponds to the JSON property `issuer`
+        # @return [String]
+        attr_accessor :issuer
+      
+        # Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517).
+        # When this field is set, OIDC discovery will NOT be performed on `issuer`, and
+        # instead OIDC tokens will be validated using this field.
+        # Corresponds to the JSON property `oidcJwks`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :oidc_jwks
+      
+        # Output only. The name of the workload identity pool in which `issuer` will be
+        # recognized. There is a single Workload Identity Pool per Hub that is shared
+        # between all Memberships that belong to that Hub. For a Hub hosted in `
+        # PROJECT_ID`, the workload pool format is ``PROJECT_ID`.hub.id.goog`, although
+        # this is subject to change in newer versions of this API.
+        # Corresponds to the JSON property `workloadIdentityPool`
+        # @return [String]
+        attr_accessor :workload_identity_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity_provider = args[:identity_provider] if args.key?(:identity_provider)
+          @issuer = args[:issuer] if args.key?(:issuer)
+          @oidc_jwks = args[:oidc_jwks] if args.key?(:oidc_jwks)
+          @workload_identity_pool = args[:workload_identity_pool] if args.key?(:workload_identity_pool)
         end
       end
       
@@ -1430,6 +1505,54 @@ module Google
         end
       end
       
+      # ConnectAgentResource represents a Kubernetes resource manifest for Connect
+      # Agent deployment.
+      class ConnectAgentResource
+        include Google::Apis::Core::Hashable
+      
+        # YAML manifest of the resource.
+        # Corresponds to the JSON property `manifest`
+        # @return [String]
+        attr_accessor :manifest
+      
+        # TypeMeta is the type information needed for content unmarshalling of
+        # Kubernetes resources in the manifest.
+        # Corresponds to the JSON property `type`
+        # @return [Google::Apis::GkehubV1beta::TypeMeta]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @manifest = args[:manifest] if args.key?(:manifest)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # EdgeCluster contains information specific to Google Edge Clusters.
+      class EdgeCluster
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For
+        # example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-
+        # a/clusters/my-cluster
+        # Corresponds to the JSON property `resourceLink`
+        # @return [String]
+        attr_accessor :resource_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_link = args[:resource_link] if args.key?(:resource_link)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1975,6 +2098,27 @@ module Google
         end
       end
       
+      # GenerateConnectManifestResponse contains manifest information for installing/
+      # upgrading a Connect agent.
+      class GenerateConnectManifestResponse
+        include Google::Apis::Core::Hashable
+      
+        # The ordered list of Kubernetes resources that need to be applied to the
+        # cluster for GKE Connect agent installation/upgrade.
+        # Corresponds to the JSON property `manifest`
+        # @return [Array<Google::Apis::GkehubV1beta::ConnectAgentResource>]
+        attr_accessor :manifest
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @manifest = args[:manifest] if args.key?(:manifest)
+        end
+      end
+      
       # Response for GenerateRBACRoleBindingYAML.
       class GenerateMembershipRbacRoleBindingYamlResponse
         include Google::Apis::Core::Hashable
@@ -1991,6 +2135,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @role_bindings_yaml = args[:role_bindings_yaml] if args.key?(:role_bindings_yaml)
+        end
+      end
+      
+      # GkeCluster contains information specific to GKE clusters.
+      class GkeCluster
+        include Google::Apis::Core::Hashable
+      
+        # Output only. If cluster_missing is set then it denotes that the GKE cluster no
+        # longer exists in the GKE Control Plane.
+        # Corresponds to the JSON property `clusterMissing`
+        # @return [Boolean]
+        attr_accessor :cluster_missing
+        alias_method :cluster_missing?, :cluster_missing
+      
+        # Immutable. Self-link of the Google Cloud resource for the GKE cluster. For
+        # example: //container.googleapis.com/projects/my-project/locations/us-west1-a/
+        # clusters/my-cluster Zonal clusters are also supported.
+        # Corresponds to the JSON property `resourceLink`
+        # @return [String]
+        attr_accessor :resource_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_missing = args[:cluster_missing] if args.key?(:cluster_missing)
+          @resource_link = args[:resource_link] if args.key?(:resource_link)
         end
       end
       
@@ -2304,6 +2477,117 @@ module Google
         end
       end
       
+      # KubernetesMetadata provides informational metadata for Memberships
+      # representing Kubernetes clusters.
+      class KubernetesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Kubernetes API server version string as reported by `/version`.
+        # Corresponds to the JSON property `kubernetesApiServerVersion`
+        # @return [String]
+        attr_accessor :kubernetes_api_server_version
+      
+        # Output only. The total memory capacity as reported by the sum of all
+        # Kubernetes nodes resources, defined in MB.
+        # Corresponds to the JSON property `memoryMb`
+        # @return [Fixnum]
+        attr_accessor :memory_mb
+      
+        # Output only. Node count as reported by Kubernetes nodes resources.
+        # Corresponds to the JSON property `nodeCount`
+        # @return [Fixnum]
+        attr_accessor :node_count
+      
+        # Output only. Node providerID as reported by the first node in the list of
+        # nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-
+        # node clusters (like GKE-on-GCP), the node_count will be zero and the
+        # node_provider_id will be empty.
+        # Corresponds to the JSON property `nodeProviderId`
+        # @return [String]
+        attr_accessor :node_provider_id
+      
+        # Output only. The time at which these details were last updated. This
+        # update_time is different from the Membership-level update_time since
+        # EndpointDetails are updated internally for API consumers.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. vCPU count as reported by Kubernetes nodes resources.
+        # Corresponds to the JSON property `vcpuCount`
+        # @return [Fixnum]
+        attr_accessor :vcpu_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kubernetes_api_server_version = args[:kubernetes_api_server_version] if args.key?(:kubernetes_api_server_version)
+          @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
+          @node_count = args[:node_count] if args.key?(:node_count)
+          @node_provider_id = args[:node_provider_id] if args.key?(:node_provider_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @vcpu_count = args[:vcpu_count] if args.key?(:vcpu_count)
+        end
+      end
+      
+      # KubernetesResource contains the YAML manifests and configuration for
+      # Membership Kubernetes resources in the cluster. After CreateMembership or
+      # UpdateMembership, these resources should be re-applied in the cluster.
+      class KubernetesResource
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The Kubernetes resources for installing the GKE Connect agent
+        # This field is only populated in the Membership returned from a successful long-
+        # running operation from CreateMembership or UpdateMembership. It is not
+        # populated during normal GetMembership or ListMemberships requests. To get the
+        # resource manifest after the initial registration, the caller should make a
+        # UpdateMembership call with an empty field mask.
+        # Corresponds to the JSON property `connectResources`
+        # @return [Array<Google::Apis::GkehubV1beta::ResourceManifest>]
+        attr_accessor :connect_resources
+      
+        # Input only. The YAML representation of the Membership CR. This field is
+        # ignored for GKE clusters where Hub can read the CR directly. Callers should
+        # provide the CR that is currently present in the cluster during
+        # CreateMembership or UpdateMembership, or leave this field empty if none exists.
+        # The CR manifest is used to validate the cluster has not been registered with
+        # another Membership.
+        # Corresponds to the JSON property `membershipCrManifest`
+        # @return [String]
+        attr_accessor :membership_cr_manifest
+      
+        # Output only. Additional Kubernetes resources that need to be applied to the
+        # cluster after Membership creation, and after every update. This field is only
+        # populated in the Membership returned from a successful long-running operation
+        # from CreateMembership or UpdateMembership. It is not populated during normal
+        # GetMembership or ListMemberships requests. To get the resource manifest after
+        # the initial registration, the caller should make a UpdateMembership call with
+        # an empty field mask.
+        # Corresponds to the JSON property `membershipResources`
+        # @return [Array<Google::Apis::GkehubV1beta::ResourceManifest>]
+        attr_accessor :membership_resources
+      
+        # ResourceOptions represent options for Kubernetes resource generation.
+        # Corresponds to the JSON property `resourceOptions`
+        # @return [Google::Apis::GkehubV1beta::ResourceOptions]
+        attr_accessor :resource_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connect_resources = args[:connect_resources] if args.key?(:connect_resources)
+          @membership_cr_manifest = args[:membership_cr_manifest] if args.key?(:membership_cr_manifest)
+          @membership_resources = args[:membership_resources] if args.key?(:membership_resources)
+          @resource_options = args[:resource_options] if args.key?(:resource_options)
+        end
+      end
+      
       # Response message for the `GkeHub.ListFeatures` method.
       class ListFeaturesResponse
         include Google::Apis::Core::Hashable
@@ -2433,6 +2717,39 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @rbacrolebindings = args[:rbacrolebindings] if args.key?(:rbacrolebindings)
+        end
+      end
+      
+      # Response message for the `GkeHub.ListMemberships` method.
+      class ListMembershipsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of resources from the `ListMemberships`
+        # method. The value of an empty string means that there are no more resources to
+        # return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of matching Memberships.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::GkehubV1beta::Membership>]
+        attr_accessor :resources
+      
+        # List of locations that could not be reached while fetching this list.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2640,6 +2957,116 @@ module Google
         end
       end
       
+      # Membership contains information about a member cluster.
+      class Membership
+        include Google::Apis::Core::Hashable
+      
+        # Authority encodes how Google will recognize identities from this Membership.
+        # See the workload identity documentation for more details: https://cloud.google.
+        # com/kubernetes-engine/docs/how-to/workload-identity
+        # Corresponds to the JSON property `authority`
+        # @return [Google::Apis::GkehubV1beta::Authority]
+        attr_accessor :authority
+      
+        # Output only. When the Membership was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. When the Membership was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Output only. Description of this membership, limited to 63 characters. Must
+        # match the regex: `a-zA-Z0-9*` This field is present for legacy purposes.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # MembershipEndpoint contains information needed to contact a Kubernetes API,
+        # endpoint and any additional Kubernetes metadata.
+        # Corresponds to the JSON property `endpoint`
+        # @return [Google::Apis::GkehubV1beta::MembershipEndpoint]
+        attr_accessor :endpoint
+      
+        # Optional. An externally-generated and managed ID for this Membership. This ID
+        # may be modified after creation, but this is not recommended. The ID must match
+        # the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster,
+        # this value should be set to the UID of the `kube-system` namespace object.
+        # Corresponds to the JSON property `externalId`
+        # @return [String]
+        attr_accessor :external_id
+      
+        # Optional. Labels for this membership.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. For clusters using Connect, the timestamp of the most recent
+        # connection established with Google Cloud. This time is updated every several
+        # minutes, not continuously. For clusters that do not use GKE Connect, or that
+        # have never connected successfully, this field will be unset.
+        # Corresponds to the JSON property `lastConnectionTime`
+        # @return [String]
+        attr_accessor :last_connection_time
+      
+        # This field informs Fleet-based applications/services/UIs with the necessary
+        # information for where each underlying Cluster reports its metrics.
+        # Corresponds to the JSON property `monitoringConfig`
+        # @return [Google::Apis::GkehubV1beta::MonitoringConfig]
+        attr_accessor :monitoring_config
+      
+        # Output only. The full, unique name of this Membership resource in the format `
+        # projects/*/locations/*/memberships/`membership_id``, set during creation. `
+        # membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63
+        # characters in length 2. It must consist of lower case alphanumeric characters
+        # or `-` 3. It must start and end with an alphanumeric character Which can be
+        # expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length
+        # of 63 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # MembershipState describes the state of a Membership resource.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1beta::MembershipState]
+        attr_accessor :state
+      
+        # Output only. Google-generated UUID for this resource. This is unique across
+        # all Membership resources. If a Membership resource is deleted and another
+        # resource with the same name is created, it gets a different unique_id.
+        # Corresponds to the JSON property `uniqueId`
+        # @return [String]
+        attr_accessor :unique_id
+      
+        # Output only. When the Membership was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authority = args[:authority] if args.key?(:authority)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @description = args[:description] if args.key?(:description)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @external_id = args[:external_id] if args.key?(:external_id)
+          @labels = args[:labels] if args.key?(:labels)
+          @last_connection_time = args[:last_connection_time] if args.key?(:last_connection_time)
+          @monitoring_config = args[:monitoring_config] if args.key?(:monitoring_config)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @unique_id = args[:unique_id] if args.key?(:unique_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # MembershipBinding is a subresource of a Membership, representing what Fleet
       # Scopes (or other, future Fleet resources) a Membership is bound to.
       class MembershipBinding
@@ -2721,6 +3148,73 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code = args[:code] if args.key?(:code)
+        end
+      end
+      
+      # MembershipEndpoint contains information needed to contact a Kubernetes API,
+      # endpoint and any additional Kubernetes metadata.
+      class MembershipEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
+        # Corresponds to the JSON property `applianceCluster`
+        # @return [Google::Apis::GkehubV1beta::ApplianceCluster]
+        attr_accessor :appliance_cluster
+      
+        # EdgeCluster contains information specific to Google Edge Clusters.
+        # Corresponds to the JSON property `edgeCluster`
+        # @return [Google::Apis::GkehubV1beta::EdgeCluster]
+        attr_accessor :edge_cluster
+      
+        # GkeCluster contains information specific to GKE clusters.
+        # Corresponds to the JSON property `gkeCluster`
+        # @return [Google::Apis::GkehubV1beta::GkeCluster]
+        attr_accessor :gke_cluster
+      
+        # Output only. Whether the lifecycle of this membership is managed by a google
+        # cluster platform service.
+        # Corresponds to the JSON property `googleManaged`
+        # @return [Boolean]
+        attr_accessor :google_managed
+        alias_method :google_managed?, :google_managed
+      
+        # KubernetesMetadata provides informational metadata for Memberships
+        # representing Kubernetes clusters.
+        # Corresponds to the JSON property `kubernetesMetadata`
+        # @return [Google::Apis::GkehubV1beta::KubernetesMetadata]
+        attr_accessor :kubernetes_metadata
+      
+        # KubernetesResource contains the YAML manifests and configuration for
+        # Membership Kubernetes resources in the cluster. After CreateMembership or
+        # UpdateMembership, these resources should be re-applied in the cluster.
+        # Corresponds to the JSON property `kubernetesResource`
+        # @return [Google::Apis::GkehubV1beta::KubernetesResource]
+        attr_accessor :kubernetes_resource
+      
+        # MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+        # Corresponds to the JSON property `multiCloudCluster`
+        # @return [Google::Apis::GkehubV1beta::MultiCloudCluster]
+        attr_accessor :multi_cloud_cluster
+      
+        # OnPremCluster contains information specific to GKE On-Prem clusters.
+        # Corresponds to the JSON property `onPremCluster`
+        # @return [Google::Apis::GkehubV1beta::OnPremCluster]
+        attr_accessor :on_prem_cluster
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @appliance_cluster = args[:appliance_cluster] if args.key?(:appliance_cluster)
+          @edge_cluster = args[:edge_cluster] if args.key?(:edge_cluster)
+          @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
+          @google_managed = args[:google_managed] if args.key?(:google_managed)
+          @kubernetes_metadata = args[:kubernetes_metadata] if args.key?(:kubernetes_metadata)
+          @kubernetes_resource = args[:kubernetes_resource] if args.key?(:kubernetes_resource)
+          @multi_cloud_cluster = args[:multi_cloud_cluster] if args.key?(:multi_cloud_cluster)
+          @on_prem_cluster = args[:on_prem_cluster] if args.key?(:on_prem_cluster)
         end
       end
       
@@ -2880,6 +3374,25 @@ module Google
         end
       end
       
+      # MembershipState describes the state of a Membership resource.
+      class MembershipState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current state of the Membership resource.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+        end
+      end
+      
       # **Metering**: Per-Membership Feature State.
       class MeteringMembershipState
         include Google::Apis::Core::Hashable
@@ -2904,6 +3417,90 @@ module Google
         def update!(**args)
           @last_measurement_time = args[:last_measurement_time] if args.key?(:last_measurement_time)
           @precise_last_measured_cluster_vcpu_capacity = args[:precise_last_measured_cluster_vcpu_capacity] if args.key?(:precise_last_measured_cluster_vcpu_capacity)
+        end
+      end
+      
+      # This field informs Fleet-based applications/services/UIs with the necessary
+      # information for where each underlying Cluster reports its metrics.
+      class MonitoringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Cluster name used to report metrics. For Anthos on VMWare/Baremetal,
+        # it would be in format `memberClusters/cluster_name`; And for Anthos on
+        # MultiCloud, it would be in format ``azureClusters, awsClusters`/cluster_name`.
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        # Immutable. Cluster hash, this is a unique string generated by google code,
+        # which does not contain any PII, which we can use to reference the cluster.
+        # This is expected to be created by the monitoring stack and persisted into the
+        # Cluster object as well as to GKE-Hub.
+        # Corresponds to the JSON property `clusterHash`
+        # @return [String]
+        attr_accessor :cluster_hash
+      
+        # Kubernetes system metrics, if available, are written to this prefix. This
+        # defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos
+        # eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but
+        # will migration to be under kubernetes.io/anthos
+        # Corresponds to the JSON property `kubernetesMetricsPrefix`
+        # @return [String]
+        attr_accessor :kubernetes_metrics_prefix
+      
+        # Immutable. Location used to report Metrics
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Immutable. Project used to report Metrics
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @cluster_hash = args[:cluster_hash] if args.key?(:cluster_hash)
+          @kubernetes_metrics_prefix = args[:kubernetes_metrics_prefix] if args.key?(:kubernetes_metrics_prefix)
+          @location = args[:location] if args.key?(:location)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+      class MultiCloudCluster
+        include Google::Apis::Core::Hashable
+      
+        # Output only. If cluster_missing is set then it denotes that API(gkemulticloud.
+        # googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
+        # Corresponds to the JSON property `clusterMissing`
+        # @return [Boolean]
+        attr_accessor :cluster_missing
+        alias_method :cluster_missing?, :cluster_missing
+      
+        # Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud
+        # cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/
+        # locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/
+        # projects/my-project/locations/us-west1-a/azureClusters/my-cluster //
+        # gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/
+        # attachedClusters/my-cluster
+        # Corresponds to the JSON property `resourceLink`
+        # @return [String]
+        attr_accessor :resource_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_missing = args[:cluster_missing] if args.key?(:cluster_missing)
+          @resource_link = args[:resource_link] if args.key?(:resource_link)
         end
       end
       
@@ -3025,6 +3622,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code = args[:code] if args.key?(:code)
+        end
+      end
+      
+      # OnPremCluster contains information specific to GKE On-Prem clusters.
+      class OnPremCluster
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Whether the cluster is an admin cluster.
+        # Corresponds to the JSON property `adminCluster`
+        # @return [Boolean]
+        attr_accessor :admin_cluster
+        alias_method :admin_cluster?, :admin_cluster
+      
+        # Output only. If cluster_missing is set then it denotes that API(gkeonprem.
+        # googleapis.com) resource for this GKE On-Prem cluster no longer exists.
+        # Corresponds to the JSON property `clusterMissing`
+        # @return [Boolean]
+        attr_accessor :cluster_missing
+        alias_method :cluster_missing?, :cluster_missing
+      
+        # Immutable. The on prem cluster's type.
+        # Corresponds to the JSON property `clusterType`
+        # @return [String]
+        attr_accessor :cluster_type
+      
+        # Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster.
+        # For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-
+        # a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/
+        # locations/us-west1-a/bareMetalClusters/my-cluster
+        # Corresponds to the JSON property `resourceLink`
+        # @return [String]
+        attr_accessor :resource_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_cluster = args[:admin_cluster] if args.key?(:admin_cluster)
+          @cluster_missing = args[:cluster_missing] if args.key?(:cluster_missing)
+          @cluster_type = args[:cluster_type] if args.key?(:cluster_type)
+          @resource_link = args[:resource_link] if args.key?(:resource_link)
         end
       end
       
@@ -3785,6 +4425,73 @@ module Google
         end
       end
       
+      # ResourceManifest represents a single Kubernetes resource to be applied to the
+      # cluster.
+      class ResourceManifest
+        include Google::Apis::Core::Hashable
+      
+        # Whether the resource provided in the manifest is `cluster_scoped`. If unset,
+        # the manifest is assumed to be namespace scoped. This field is used for REST
+        # mapping when applying the resource in a cluster.
+        # Corresponds to the JSON property `clusterScoped`
+        # @return [Boolean]
+        attr_accessor :cluster_scoped
+        alias_method :cluster_scoped?, :cluster_scoped
+      
+        # YAML manifest of the resource.
+        # Corresponds to the JSON property `manifest`
+        # @return [String]
+        attr_accessor :manifest
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_scoped = args[:cluster_scoped] if args.key?(:cluster_scoped)
+          @manifest = args[:manifest] if args.key?(:manifest)
+        end
+      end
+      
+      # ResourceOptions represent options for Kubernetes resource generation.
+      class ResourceOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Connect agent version to use for connect_resources. Defaults to
+        # the latest GKE Connect version. The version must be a currently supported
+        # version, obsolete versions will be rejected.
+        # Corresponds to the JSON property `connectVersion`
+        # @return [String]
+        attr_accessor :connect_version
+      
+        # Optional. Major version of the Kubernetes cluster. This is only used to
+        # determine which version to use for the CustomResourceDefinition resources, `
+        # apiextensions/v1beta1` or`apiextensions/v1`.
+        # Corresponds to the JSON property `k8sVersion`
+        # @return [String]
+        attr_accessor :k8s_version
+      
+        # Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for
+        # CustomResourceDefinition resources. This option should be set for clusters
+        # with Kubernetes apiserver versions <1.16.
+        # Corresponds to the JSON property `v1beta1Crd`
+        # @return [Boolean]
+        attr_accessor :v1beta1_crd
+        alias_method :v1beta1_crd?, :v1beta1_crd
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connect_version = args[:connect_version] if args.key?(:connect_version)
+          @k8s_version = args[:k8s_version] if args.key?(:k8s_version)
+          @v1beta1_crd = args[:v1beta1_crd] if args.key?(:v1beta1_crd)
+        end
+      end
+      
       # Role is the type for Kubernetes roles
       class Role
         include Google::Apis::Core::Hashable
@@ -4167,6 +4874,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # TypeMeta is the type information needed for content unmarshalling of
+      # Kubernetes resources in the manifest.
+      class TypeMeta
+        include Google::Apis::Core::Hashable
+      
+        # APIVersion of the resource (e.g. v1).
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Kind of the resource (e.g. Deployment).
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
     end
