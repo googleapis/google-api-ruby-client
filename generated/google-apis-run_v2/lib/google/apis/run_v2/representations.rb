@@ -805,7 +805,6 @@ module Google
       
           collection :traffic_statuses, as: 'trafficStatuses', class: Google::Apis::RunV2::GoogleCloudRunV2TrafficTargetStatus, decorator: Google::Apis::RunV2::GoogleCloudRunV2TrafficTargetStatus::Representation
       
-          property :traffic_tags_cleanup_threshold, :numeric_string => true, as: 'trafficTagsCleanupThreshold'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :uri, as: 'uri'
