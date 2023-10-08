@@ -2052,6 +2052,7 @@ module Google
       
           property :cvss_version, as: 'cvssVersion'
           property :effective_severity, as: 'effectiveSeverity'
+          property :extra_details, as: 'extraDetails'
           property :long_description, as: 'longDescription'
           collection :package_issue, as: 'packageIssue', class: Google::Apis::ContaineranalysisV1beta1::PackageIssue, decorator: Google::Apis::ContaineranalysisV1beta1::PackageIssue::Representation
       
@@ -2718,7 +2719,6 @@ module Google
           collection :cwe, as: 'cwe'
           collection :details, as: 'details', class: Google::Apis::ContaineranalysisV1beta1::Detail, decorator: Google::Apis::ContaineranalysisV1beta1::Detail::Representation
       
-          property :extra_details, as: 'extraDetails'
           property :severity, as: 'severity'
           property :source_update_time, as: 'sourceUpdateTime'
           collection :windows_details, as: 'windowsDetails', class: Google::Apis::ContaineranalysisV1beta1::WindowsDetail, decorator: Google::Apis::ContaineranalysisV1beta1::WindowsDetail::Representation
