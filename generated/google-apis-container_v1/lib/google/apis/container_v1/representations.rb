@@ -664,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ParentProductConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PlacementPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1295,6 +1301,8 @@ module Google
       
           property :notification_config, as: 'notificationConfig', class: Google::Apis::ContainerV1::NotificationConfig, decorator: Google::Apis::ContainerV1::NotificationConfig::Representation
       
+          property :parent_product_config, as: 'parentProductConfig', class: Google::Apis::ContainerV1::ParentProductConfig, decorator: Google::Apis::ContainerV1::ParentProductConfig::Representation
+      
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ContainerV1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1::PrivateClusterConfig::Representation
       
           property :release_channel, as: 'releaseChannel', class: Google::Apis::ContainerV1::ReleaseChannel, decorator: Google::Apis::ContainerV1::ReleaseChannel::Representation
@@ -1404,6 +1412,8 @@ module Google
       
           property :desired_node_version, as: 'desiredNodeVersion'
           property :desired_notification_config, as: 'desiredNotificationConfig', class: Google::Apis::ContainerV1::NotificationConfig, decorator: Google::Apis::ContainerV1::NotificationConfig::Representation
+      
+          property :desired_parent_product_config, as: 'desiredParentProductConfig', class: Google::Apis::ContainerV1::ParentProductConfig, decorator: Google::Apis::ContainerV1::ParentProductConfig::Representation
       
           property :desired_private_cluster_config, as: 'desiredPrivateClusterConfig', class: Google::Apis::ContainerV1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1::PrivateClusterConfig::Representation
       
@@ -2245,6 +2255,14 @@ module Google
           collection :stages, as: 'stages', class: Google::Apis::ContainerV1::OperationProgress, decorator: Google::Apis::ContainerV1::OperationProgress::Representation
       
           property :status, as: 'status'
+        end
+      end
+      
+      class ParentProductConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          property :product_name, as: 'productName'
         end
       end
       
