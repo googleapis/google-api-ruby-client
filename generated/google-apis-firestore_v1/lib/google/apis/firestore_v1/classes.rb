@@ -1373,8 +1373,10 @@ module Google
         attr_accessor :output_uri_prefix
       
         # The timestamp that corresponds to the version of the database to be exported.
-        # The timestamp must be rounded to the minute, in the past, and not older than 1
-        # hour. If specified, then the exported documents will represent a consistent
+        # The timestamp must be rounded to the minute, in the past, and not older than 5
+        # days. Please choose a reasonable timestamp based on prior knowledge on how
+        # long exports take as data at provided snapshot timestamp can expire during
+        # export. If specified, then the exported documents will represent a consistent
         # view of the database at the provided time. Otherwise, there are no guarantees
         # about the consistency of the exported documents.
         # Corresponds to the JSON property `snapshotTime`
@@ -1533,6 +1535,20 @@ module Google
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @ttl_config_delta = args[:ttl_config_delta] if args.key?(:ttl_config_delta)
+        end
+      end
+      
+      # An index that stores vectors in a flat data structure, and supports exhaustive
+      # search.
+      class GoogleFirestoreAdminV1FlatIndex
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1793,6 +1809,11 @@ module Google
         # @return [String]
         attr_accessor :order
       
+        # The index configuration to support vector search operations
+        # Corresponds to the JSON property `vectorConfig`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1VectorConfig]
+        attr_accessor :vector_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1802,6 +1823,7 @@ module Google
           @array_config = args[:array_config] if args.key?(:array_config)
           @field_path = args[:field_path] if args.key?(:field_path)
           @order = args[:order] if args.key?(:order)
+          @vector_config = args[:vector_config] if args.key?(:vector_config)
         end
       end
       
@@ -2073,8 +2095,8 @@ module Google
       class GoogleFirestoreAdminV1RestoreDatabaseRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Backup to restore from. Must be from the same project as the parent.
-        # Format is: `projects/`project_id`/locations/`location`/backups/`backup``
+        # Backup to restore from. Must be from the same project as the parent. Format is:
+        # `projects/`project_id`/locations/`location`/backups/`backup``
         # Corresponds to the JSON property `backup`
         # @return [String]
         attr_accessor :backup
@@ -2185,6 +2207,34 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The index configuration to support vector search operations
+      class GoogleFirestoreAdminV1VectorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The vector dimension this configuration applies to. The resulting
+        # index will only include vectors of this dimension, and can be used for vector
+        # search with the same dimension.
+        # Corresponds to the JSON property `dimension`
+        # @return [Fixnum]
+        attr_accessor :dimension
+      
+        # An index that stores vectors in a flat data structure, and supports exhaustive
+        # search.
+        # Corresponds to the JSON property `flat`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1FlatIndex]
+        attr_accessor :flat
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension = args[:dimension] if args.key?(:dimension)
+          @flat = args[:flat] if args.key?(:flat)
         end
       end
       
@@ -2704,7 +2754,8 @@ module Google
         # PartitionQuery request returns partition cursors A and B, running the
         # following three queries will return the entire result set of the original
         # query: * query, end_at A * query, start_at A, end_at B * query, start_at B An
-        # empty result may indicate that the query has too few results to be partitioned.
+        # empty result may indicate that the query has too few results to be partitioned,
+        # or that the query is not yet supported for partitioning.
         # Corresponds to the JSON property `partitions`
         # @return [Array<Google::Apis::FirestoreV1::Cursor>]
         attr_accessor :partitions
