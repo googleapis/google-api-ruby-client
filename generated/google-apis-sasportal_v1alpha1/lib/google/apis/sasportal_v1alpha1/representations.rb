@@ -673,6 +673,7 @@ module Google
       class SasPortalSetupSasAnalyticsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_id, as: 'userId'
         end
       end
       
