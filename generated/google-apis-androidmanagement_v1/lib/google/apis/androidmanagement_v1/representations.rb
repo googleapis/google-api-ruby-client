@@ -1211,6 +1211,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :airplane_mode_state, as: 'airplaneModeState'
+          property :cellular_two_g_state, as: 'cellularTwoGState'
+          property :ultra_wideband_state, as: 'ultraWidebandState'
           property :wifi_state, as: 'wifiState'
         end
       end
@@ -1992,6 +1994,7 @@ module Google
           property :qr_code, as: 'qrCode'
           property :signin_enrollment_token, as: 'signinEnrollmentToken'
           property :signin_url, as: 'signinUrl'
+          property :token_tag, as: 'tokenTag'
         end
       end
       
