@@ -1,0 +1,13 @@
+--hide-void-return
+--no-private
+--verbose
+--title=google-apis-safebrowsing_v5
+--markup-provider=redcarpet
+--markup=markdown
+--main OVERVIEW.md
+lib/google/apis/safebrowsing_v5/*.rb
+lib/google/apis/safebrowsing_v5.rb
+-
+OVERVIEW.md
+CHANGELOG.md
+LICENSE.md
