@@ -1372,8 +1372,8 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::PackageNameList]
         attr_accessor :exemptions_to_show_work_contacts_in_personal_profile
       
-        # Whether contacts stored in the work profile can be shown in personal profile
-        # contact searches and incoming calls.
+        # Whether personal apps can access contacts stored in the work profile.See also
+        # exemptions_to_show_work_contacts_in_personal_profile.
         # Corresponds to the JSON property `showWorkContactsInPersonalProfile`
         # @return [String]
         attr_accessor :show_work_contacts_in_personal_profile
@@ -1773,6 +1773,17 @@ module Google
         # @return [String]
         attr_accessor :airplane_mode_state
       
+        # Controls whether cellular 2G setting can be toggled by the user or not.
+        # Corresponds to the JSON property `cellularTwoGState`
+        # @return [String]
+        attr_accessor :cellular_two_g_state
+      
+        # Controls the state of the ultra wideband setting and whether the user can
+        # toggle it on or off.
+        # Corresponds to the JSON property `ultraWidebandState`
+        # @return [String]
+        attr_accessor :ultra_wideband_state
+      
         # Controls current state of Wi-Fi and if user can change its state.
         # Corresponds to the JSON property `wifiState`
         # @return [String]
@@ -1785,6 +1796,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @airplane_mode_state = args[:airplane_mode_state] if args.key?(:airplane_mode_state)
+          @cellular_two_g_state = args[:cellular_two_g_state] if args.key?(:cellular_two_g_state)
+          @ultra_wideband_state = args[:ultra_wideband_state] if args.key?(:ultra_wideband_state)
           @wifi_state = args[:wifi_state] if args.key?(:wifi_state)
         end
       end
@@ -4893,7 +4906,22 @@ module Google
         end
       end
       
-      # A resource containing sign in details for an enterprise.
+      # A resource containing sign in details for an enterprise. Use enterprises to
+      # manage SigninDetails for a given enterprise. For an enterprise, we can have
+      # any number of SigninDetails that is uniquely identified by combination of the
+      # following three fields (signin_url, allow_personal_usage, token_tag). One
+      # cannot create two SigninDetails with the same (signin_url,
+      # allow_personal_usage, token_tag). (token_tag is an optional field) Patch: The
+      # operation updates the current list of SigninDetails with the new list of
+      # SigninDetails. If the stored SigninDetail configuration is passed, it returns
+      # the same signin_enrollment_token and qr_code. If we pass multiple identical
+      # SigninDetail configurations that are not stored, it will store the first one
+      # amongst those SigninDetail configurations and if the configuration already
+      # exists we cannot request it more than once in a particular patch API call,
+      # otherwise it will give a duplicate key error and the whole operation will fail.
+      # If we remove certain SigninDetail configuration from the request then it will
+      # get removed from the storage. And then we can request for another
+      # signin_enrollment_token and qr_code for the same SigninDetail configuration.
       class SigninDetail
         include Google::Apis::Core::Hashable
       
@@ -4931,6 +4959,11 @@ module Google
         # @return [String]
         attr_accessor :signin_url
       
+        # An EMM-specified tag to distinguish between instances of SigninDetail.
+        # Corresponds to the JSON property `tokenTag`
+        # @return [String]
+        attr_accessor :token_tag
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4941,6 +4974,7 @@ module Google
           @qr_code = args[:qr_code] if args.key?(:qr_code)
           @signin_enrollment_token = args[:signin_enrollment_token] if args.key?(:signin_enrollment_token)
           @signin_url = args[:signin_url] if args.key?(:signin_url)
+          @token_tag = args[:token_tag] if args.key?(:token_tag)
         end
       end
       
