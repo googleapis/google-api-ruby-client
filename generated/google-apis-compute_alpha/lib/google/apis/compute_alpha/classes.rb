@@ -2955,7 +2955,7 @@ module Google
       
         # The time zone to use when interpreting the schedule. The value of this field
         # must be a time zone name from the tz database: https://en.wikipedia.org/wiki/
-        # Tz_database. This field is assigned a default value of “UTC” if left empty.
+        # Tz_database. This field is assigned a default value of "UTC" if left empty.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -25698,6 +25698,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::PreservedState]
         attr_accessor :preserved_state_from_policy
       
+        # [Output Only] Instance properties selected for this instance resulting from
+        # InstanceFlexibilityPolicy.
+        # Corresponds to the JSON property `propertiesFromFlexibilityPolicy`
+        # @return [Google::Apis::ComputeAlpha::ManagedInstancePropertiesFromFlexibilityPolicy]
+        attr_accessor :properties_from_flexibility_policy
+      
         # [Output Only] Tag describing the version.
         # Corresponds to the JSON property `tag`
         # @return [String]
@@ -25733,6 +25739,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @preserved_state_from_config = args[:preserved_state_from_config] if args.key?(:preserved_state_from_config)
           @preserved_state_from_policy = args[:preserved_state_from_policy] if args.key?(:preserved_state_from_policy)
+          @properties_from_flexibility_policy = args[:properties_from_flexibility_policy] if args.key?(:properties_from_flexibility_policy)
           @tag = args[:tag] if args.key?(:tag)
           @target_status = args[:target_status] if args.key?(:target_status)
           @version = args[:version] if args.key?(:version)
@@ -25944,6 +25951,25 @@ module Google
               end
             end
           end
+        end
+      end
+      
+      # 
+      class ManagedInstancePropertiesFromFlexibilityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The machine type to be used for this instance.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
         end
       end
       
@@ -49560,14 +49586,14 @@ module Google
       # Represents a Target HTTP Proxy resource. Google Compute Engine has two Target
       # HTTP Proxy resources: * [Global](/compute/docs/reference/rest/alpha/
       # targetHttpProxies) * [Regional](/compute/docs/reference/rest/alpha/
-      # regionTargetHttpProxies) A target HTTP proxy is a component of GCP HTTP load
-      # balancers. * targetHttpProxies are used by global external Application Load
-      # Balancers, classic Application Load Balancers, cross-region internal
-      # Application Load Balancers, and Traffic Director. * regionTargetHttpProxies
-      # are used by regional internal Application Load Balancers and regional external
-      # Application Load Balancers. Forwarding rules reference a target HTTP proxy,
-      # and the target proxy then references a URL map. For more information, read
-      # Using Target Proxies and Forwarding rule concepts.
+      # regionTargetHttpProxies) A target HTTP proxy is a component of Google Cloud
+      # HTTP load balancers. * targetHttpProxies are used by global external
+      # Application Load Balancers, classic Application Load Balancers, cross-region
+      # internal Application Load Balancers, and Traffic Director. *
+      # regionTargetHttpProxies are used by regional internal Application Load
+      # Balancers and regional external Application Load Balancers. Forwarding rules
+      # reference a target HTTP proxy, and the target proxy then references a URL map.
+      # For more information, read Using Target Proxies and Forwarding rule concepts.
       class TargetHttpProxy
         include Google::Apis::Core::Hashable
       

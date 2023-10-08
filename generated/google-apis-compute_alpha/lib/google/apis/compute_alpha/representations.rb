@@ -3232,6 +3232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedInstancePropertiesFromFlexibilityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedInstanceVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -13529,6 +13535,8 @@ module Google
       
           property :preserved_state_from_policy, as: 'preservedStateFromPolicy', class: Google::Apis::ComputeAlpha::PreservedState, decorator: Google::Apis::ComputeAlpha::PreservedState::Representation
       
+          property :properties_from_flexibility_policy, as: 'propertiesFromFlexibilityPolicy', class: Google::Apis::ComputeAlpha::ManagedInstancePropertiesFromFlexibilityPolicy, decorator: Google::Apis::ComputeAlpha::ManagedInstancePropertiesFromFlexibilityPolicy::Representation
+      
           property :tag, as: 'tag'
           property :target_status, as: 'targetStatus'
           property :version, as: 'version', class: Google::Apis::ComputeAlpha::ManagedInstanceVersion, decorator: Google::Apis::ComputeAlpha::ManagedInstanceVersion::Representation
@@ -13598,6 +13606,13 @@ module Google
               end
             end
           end
+        end
+      end
+      
+      class ManagedInstancePropertiesFromFlexibilityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :machine_type, as: 'machineType'
         end
       end
       
