@@ -379,6 +379,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :machine_type, as: 'machineType'
+          property :zone, as: 'zone'
         end
       end
       
@@ -787,6 +788,7 @@ module Google
       class StorageConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
         end
       end
       
