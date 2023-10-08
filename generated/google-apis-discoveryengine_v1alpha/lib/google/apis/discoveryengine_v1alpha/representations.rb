@@ -574,6 +574,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseGeoSearchDebugInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1714,6 +1720,8 @@ module Google
           property :corrected_query, as: 'correctedQuery'
           collection :facets, as: 'facets', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseFacet, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseFacet::Representation
       
+          collection :geo_search_debug_info, as: 'geoSearchDebugInfo', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseGeoSearchDebugInfo, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseGeoSearchDebugInfo::Representation
+      
           property :guided_search_result, as: 'guidedSearchResult', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResult, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResult::Representation
       
           property :next_page_token, as: 'nextPageToken'
@@ -1745,6 +1753,14 @@ module Google
           property :interval, as: 'interval', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaInterval, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaInterval::Representation
       
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseGeoSearchDebugInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+          property :original_address_query, as: 'originalAddressQuery'
         end
       end
       
@@ -1962,6 +1978,7 @@ module Google
       
           property :llm_enabled, as: 'llmEnabled'
           property :name, as: 'name'
+          property :result_display_type, as: 'resultDisplayType'
           property :solution_type, as: 'solutionType'
           property :update_time, as: 'updateTime'
         end

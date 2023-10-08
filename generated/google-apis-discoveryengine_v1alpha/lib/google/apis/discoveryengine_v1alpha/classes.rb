@@ -3521,6 +3521,11 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseFacet>]
         attr_accessor :facets
       
+        # 
+        # Corresponds to the JSON property `geoSearchDebugInfo`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseGeoSearchDebugInfo>]
+        attr_accessor :geo_search_debug_info
+      
         # Guided search result. The guided search helps user to refine the search
         # results and narrow down to the real needs from a broaded search results.
         # Corresponds to the JSON property `guidedSearchResult`
@@ -3573,6 +3578,7 @@ module Google
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
           @corrected_query = args[:corrected_query] if args.key?(:corrected_query)
           @facets = args[:facets] if args.key?(:facets)
+          @geo_search_debug_info = args[:geo_search_debug_info] if args.key?(:geo_search_debug_info)
           @guided_search_result = args[:guided_search_result] if args.key?(:guided_search_result)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @query_expansion_info = args[:query_expansion_info] if args.key?(:query_expansion_info)
@@ -3644,6 +3650,32 @@ module Google
           @count = args[:count] if args.key?(:count)
           @interval = args[:interval] if args.key?(:interval)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Debug information specifically related to forward geocoding issues arising
+      # from Geolocation Search.
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseGeoSearchDebugInfo
+        include Google::Apis::Core::Hashable
+      
+        # The error produced.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # The address from which forward geocoding ingestion produced issues.
+        # Corresponds to the JSON property `originalAddressQuery`
+        # @return [String]
+        attr_accessor :original_address_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @original_address_query = args[:original_address_query] if args.key?(:original_address_query)
         end
       end
       
@@ -4486,6 +4518,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The type of snippet to display in UCS widget. -
+        # RESULT_DISPLAY_TYPE_UNSPECIFIED for existing users. - SNIPPET for new non-
+        # enterprise search users. - EXTRACTIVE_ANSWER for new enterprise search users.
+        # Corresponds to the JSON property `resultDisplayType`
+        # @return [String]
+        attr_accessor :result_display_type
+      
         # Required. Immutable. Specifies the solution type that this WidgetConfig can be
         # used for.
         # Corresponds to the JSON property `solutionType`
@@ -4521,6 +4560,7 @@ module Google
           @fields_ui_components_map = args[:fields_ui_components_map] if args.key?(:fields_ui_components_map)
           @llm_enabled = args[:llm_enabled] if args.key?(:llm_enabled)
           @name = args[:name] if args.key?(:name)
+          @result_display_type = args[:result_display_type] if args.key?(:result_display_type)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
