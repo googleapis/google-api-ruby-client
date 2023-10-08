@@ -414,6 +414,37 @@ module Google
         end
       end
       
+      # CMEK, or Customer Managed Encryption Keys, enables GCP products to put control
+      # over encryption and key management in their customer’s hands.
+      class CmekConfig
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of the Cloud KMS key, of the form `projects/PROJECT_ID/locations/
+        # LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/KEY_ID`, that will be used to
+        # encrypt the Queues & Tasks in the region. Setting this as blank will turn off
+        # CMEK encryption.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Output only. The config resource name which includes the project and location
+        # and must end in 'cmekConfig', in the format projects/PROJECT_ID/locations/
+        # LOCATION_ID/cmekConfig`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Request message for CreateTask.
       class CreateTaskRequest
         include Google::Apis::Core::Hashable

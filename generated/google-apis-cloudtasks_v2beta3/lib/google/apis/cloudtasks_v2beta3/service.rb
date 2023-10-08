@@ -79,6 +79,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the CMEK config. Gets the Customer Managed Encryption Key configured with
+        # the Cloud Tasks lcoation. By default there is no kms_key configured.
+        # @param [String] name
+        #   Required. The config resource name. For example: projects/PROJECT_ID/locations/
+        #   LOCATION_ID/cmekConfig`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudtasksV2beta3::CmekConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudtasksV2beta3::CmekConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_cmek_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta3/{+name}', options)
+          command.response_representation = Google::Apis::CloudtasksV2beta3::CmekConfig::Representation
+          command.response_class = Google::Apis::CloudtasksV2beta3::CmekConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists information about the supported locations for this service.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
@@ -117,6 +149,46 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key
+        # assotiated with the Cloud Tasks location (Creates if the key does not already
+        # exist). All new tasks created in the location will be encrypted at-rest with
+        # the KMS-key provided in the config.
+        # @param [String] projects_id
+        # @param [String] locations_id
+        # @param [Google::Apis::CloudtasksV2beta3::CmekConfig] cmek_config_object
+        # @param [String] update_mask
+        #   List of fields to be updated in this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudtasksV2beta3::CmekConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudtasksV2beta3::CmekConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_cmek_config(projects_id, locations_id, cmek_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2beta3/projects/{projectsId}/locations/{locationsId}/cmekConfig', options)
+          command.request_representation = Google::Apis::CloudtasksV2beta3::CmekConfig::Representation
+          command.request_object = cmek_config_object
+          command.response_representation = Google::Apis::CloudtasksV2beta3::CmekConfig::Representation
+          command.response_class = Google::Apis::CloudtasksV2beta3::CmekConfig
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

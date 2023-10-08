@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CmekConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateTaskRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -338,6 +344,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :task, as: 'task', class: Google::Apis::CloudtasksV2beta3::Task, decorator: Google::Apis::CloudtasksV2beta3::Task::Representation
       
+        end
+      end
+      
+      class CmekConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key, as: 'kmsKey'
+          property :name, as: 'name'
         end
       end
       
