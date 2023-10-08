@@ -473,10 +473,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
-          property :cancel_requested, as: 'cancelRequested'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
-          property :status_detail, as: 'statusDetail'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
         end
