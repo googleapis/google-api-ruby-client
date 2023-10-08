@@ -1418,103 +1418,6 @@ module Google
         end
       end
       
-      # Read-only resource used to summarize a principal's effective roles.
-      class GoogleAnalyticsAdminV1alphaAuditUserLink
-        include Google::Apis::Core::Hashable
-      
-        # Roles directly assigned to this user for this entity. Format: predefinedRoles/
-        # viewer Excludes roles that are inherited from an account (if this is for a
-        # property), group, or organization admin role.
-        # Corresponds to the JSON property `directRoles`
-        # @return [Array<String>]
-        attr_accessor :direct_roles
-      
-        # Union of all permissions a user has at this account or property (includes
-        # direct permissions, group-inherited permissions, etc.). Format:
-        # predefinedRoles/viewer
-        # Corresponds to the JSON property `effectiveRoles`
-        # @return [Array<String>]
-        attr_accessor :effective_roles
-      
-        # Email address of the linked user
-        # Corresponds to the JSON property `emailAddress`
-        # @return [String]
-        attr_accessor :email_address
-      
-        # Example format: properties/1234/userLinks/5678
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @direct_roles = args[:direct_roles] if args.key?(:direct_roles)
-          @effective_roles = args[:effective_roles] if args.key?(:effective_roles)
-          @email_address = args[:email_address] if args.key?(:email_address)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Request message for AuditUserLinks RPC.
-      class GoogleAnalyticsAdminV1alphaAuditUserLinksRequest
-        include Google::Apis::Core::Hashable
-      
-        # The maximum number of user links to return. The service may return fewer than
-        # this value. If unspecified, at most 1000 user links will be returned. The
-        # maximum value is 5000; values above 5000 will be coerced to 5000.
-        # Corresponds to the JSON property `pageSize`
-        # @return [Fixnum]
-        attr_accessor :page_size
-      
-        # A page token, received from a previous `AuditUserLinks` call. Provide this to
-        # retrieve the subsequent page. When paginating, all other parameters provided
-        # to `AuditUserLinks` must match the call that provided the page token.
-        # Corresponds to the JSON property `pageToken`
-        # @return [String]
-        attr_accessor :page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @page_size = args[:page_size] if args.key?(:page_size)
-          @page_token = args[:page_token] if args.key?(:page_token)
-        end
-      end
-      
-      # Response message for AuditUserLinks RPC.
-      class GoogleAnalyticsAdminV1alphaAuditUserLinksResponse
-        include Google::Apis::Core::Hashable
-      
-        # A token, which can be sent as `page_token` to retrieve the next page. If this
-        # field is omitted, there are no subsequent pages.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # List of AuditUserLinks. These will be ordered stably, but in an arbitrary
-        # order.
-        # Corresponds to the JSON property `userLinks`
-        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAuditUserLink>]
-        attr_accessor :user_links
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @user_links = args[:user_links] if args.key?(:user_links)
-        end
-      end
-      
       # Request message for BatchCreateAccessBindings RPC.
       class GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest
         include Google::Apis::Core::Hashable
@@ -1554,54 +1457,6 @@ module Google
         end
       end
       
-      # Request message for BatchCreateUserLinks RPC.
-      class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. If set, then email the new users notifying them that they've been
-        # granted permissions to the resource. Regardless of whether this is set or not,
-        # notify_new_user field inside each individual request is ignored.
-        # Corresponds to the JSON property `notifyNewUsers`
-        # @return [Boolean]
-        attr_accessor :notify_new_users
-        alias_method :notify_new_users?, :notify_new_users
-      
-        # Required. The requests specifying the user links to create. A maximum of 1000
-        # user links can be created in a batch.
-        # Corresponds to the JSON property `requests`
-        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateUserLinkRequest>]
-        attr_accessor :requests
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @notify_new_users = args[:notify_new_users] if args.key?(:notify_new_users)
-          @requests = args[:requests] if args.key?(:requests)
-        end
-      end
-      
-      # Response message for BatchCreateUserLinks RPC.
-      class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse
-        include Google::Apis::Core::Hashable
-      
-        # The user links created.
-        # Corresponds to the JSON property `userLinks`
-        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink>]
-        attr_accessor :user_links
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @user_links = args[:user_links] if args.key?(:user_links)
-        end
-      end
-      
       # Request message for BatchDeleteAccessBindings RPC.
       class GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest
         include Google::Apis::Core::Hashable
@@ -1610,26 +1465,6 @@ module Google
         # 1000 access bindings can be deleted in a batch.
         # Corresponds to the JSON property `requests`
         # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest>]
-        attr_accessor :requests
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @requests = args[:requests] if args.key?(:requests)
-        end
-      end
-      
-      # Request message for BatchDeleteUserLinks RPC.
-      class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The requests specifying the user links to update. A maximum of 1000
-        # user links can be updated in a batch.
-        # Corresponds to the JSON property `requests`
-        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest>]
         attr_accessor :requests
       
         def initialize(**args)
@@ -1658,25 +1493,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_bindings = args[:access_bindings] if args.key?(:access_bindings)
-        end
-      end
-      
-      # Response message for BatchGetUserLinks RPC.
-      class GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse
-        include Google::Apis::Core::Hashable
-      
-        # The requested user links.
-        # Corresponds to the JSON property `userLinks`
-        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink>]
-        attr_accessor :user_links
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @user_links = args[:user_links] if args.key?(:user_links)
         end
       end
       
@@ -1716,45 +1532,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_bindings = args[:access_bindings] if args.key?(:access_bindings)
-        end
-      end
-      
-      # Request message for BatchUpdateUserLinks RPC.
-      class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The requests specifying the user links to update. A maximum of 1000
-        # user links can be updated in a batch.
-        # Corresponds to the JSON property `requests`
-        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest>]
-        attr_accessor :requests
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @requests = args[:requests] if args.key?(:requests)
-        end
-      end
-      
-      # Response message for BatchUpdateUserLinks RPC.
-      class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse
-        include Google::Apis::Core::Hashable
-      
-        # The user links updated.
-        # Corresponds to the JSON property `userLinks`
-        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink>]
-        attr_accessor :user_links
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @user_links = args[:user_links] if args.key?(:user_links)
         end
       end
       
@@ -2502,32 +2279,20 @@ module Google
         end
       end
       
-      # Request message for CreateUserLink RPC. Users can have multiple email
-      # addresses associated with their Google account, and one of these email
-      # addresses is the "primary" email address. Any of the email addresses
-      # associated with a Google account may be used for a new UserLink, but the
-      # returned UserLink will always contain the "primary" email address. As a result,
-      # the input and output email address for this request may differ.
-      class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest
+      # Request message for CreateRollupProperty RPC.
+      class GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. If set, then email the new user notifying them that they've been
-        # granted permissions to the resource.
-        # Corresponds to the JSON property `notifyNewUser`
-        # @return [Boolean]
-        attr_accessor :notify_new_user
-        alias_method :notify_new_user?, :notify_new_user
+        # A resource message representing a Google Analytics GA4 property.
+        # Corresponds to the JSON property `rollupProperty`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
+        attr_accessor :rollup_property
       
-        # Required. Example format: accounts/1234
-        # Corresponds to the JSON property `parent`
-        # @return [String]
-        attr_accessor :parent
-      
-        # A resource message representing a user's permissions on an Account or Property
-        # resource.
-        # Corresponds to the JSON property `userLink`
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink]
-        attr_accessor :user_link
+        # Optional. The resource names of properties that will be sources to the created
+        # roll-up property.
+        # Corresponds to the JSON property `sourceProperties`
+        # @return [Array<String>]
+        attr_accessor :source_properties
       
         def initialize(**args)
            update!(**args)
@@ -2535,9 +2300,90 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @notify_new_user = args[:notify_new_user] if args.key?(:notify_new_user)
+          @rollup_property = args[:rollup_property] if args.key?(:rollup_property)
+          @source_properties = args[:source_properties] if args.key?(:source_properties)
+        end
+      end
+      
+      # Response message for CreateRollupProperty RPC.
+      class GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse
+        include Google::Apis::Core::Hashable
+      
+        # A resource message representing a Google Analytics GA4 property.
+        # Corresponds to the JSON property `rollupProperty`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
+        attr_accessor :rollup_property
+      
+        # The created roll-up property source links.
+        # Corresponds to the JSON property `rollupPropertySourceLinks`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRollupPropertySourceLink>]
+        attr_accessor :rollup_property_source_links
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rollup_property = args[:rollup_property] if args.key?(:rollup_property)
+          @rollup_property_source_links = args[:rollup_property_source_links] if args.key?(:rollup_property_source_links)
+        end
+      end
+      
+      # Request message for CreateSubproperty RPC.
+      class GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ordinary property for which to create a subproperty. Format:
+        # properties/property_id Example: properties/123
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # A resource message representing a Google Analytics GA4 property.
+        # Corresponds to the JSON property `subproperty`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
+        attr_accessor :subproperty
+      
+        # A resource message representing a GA4 Subproperty event filter.
+        # Corresponds to the JSON property `subpropertyEventFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter]
+        attr_accessor :subproperty_event_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @parent = args[:parent] if args.key?(:parent)
-          @user_link = args[:user_link] if args.key?(:user_link)
+          @subproperty = args[:subproperty] if args.key?(:subproperty)
+          @subproperty_event_filter = args[:subproperty_event_filter] if args.key?(:subproperty_event_filter)
+        end
+      end
+      
+      # Response message for CreateSubproperty RPC.
+      class GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse
+        include Google::Apis::Core::Hashable
+      
+        # A resource message representing a Google Analytics GA4 property.
+        # Corresponds to the JSON property `subproperty`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
+        attr_accessor :subproperty
+      
+        # A resource message representing a GA4 Subproperty event filter.
+        # Corresponds to the JSON property `subpropertyEventFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter]
+        attr_accessor :subproperty_event_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subproperty = args[:subproperty] if args.key?(:subproperty)
+          @subproperty_event_filter = args[:subproperty_event_filter] if args.key?(:subproperty_event_filter)
         end
       end
       
@@ -3004,25 +2850,6 @@ module Google
         def update!(**args)
           @property = args[:property] if args.key?(:property)
           @tag_id = args[:tag_id] if args.key?(:tag_id)
-        end
-      end
-      
-      # Request message for DeleteUserLink RPC.
-      class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. Example format: accounts/1234/userLinks/5678
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -4395,6 +4222,32 @@ module Google
         end
       end
       
+      # Response message for ListRollupPropertySourceLinks RPC.
+      class GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of RollupPropertySourceLinks.
+        # Corresponds to the JSON property `rollupPropertySourceLinks`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRollupPropertySourceLink>]
+        attr_accessor :rollup_property_source_links
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rollup_property_source_links = args[:rollup_property_source_links] if args.key?(:rollup_property_source_links)
+        end
+      end
+      
       # Response message for ListSKAdNetworkConversionValueSchemas RPC
       class GoogleAnalyticsAdminV1alphaListSkAdNetworkConversionValueSchemasResponse
         include Google::Apis::Core::Hashable
@@ -4449,8 +4302,8 @@ module Google
         end
       end
       
-      # Response message for ListUserLinks RPC.
-      class GoogleAnalyticsAdminV1alphaListUserLinksResponse
+      # Response message for ListSubpropertyEventFilter RPC.
+      class GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse
         include Google::Apis::Core::Hashable
       
         # A token, which can be sent as `page_token` to retrieve the next page. If this
@@ -4459,10 +4312,10 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of UserLinks. These will be ordered stably, but in an arbitrary order.
-        # Corresponds to the JSON property `userLinks`
-        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink>]
-        attr_accessor :user_links
+        # List of subproperty event filters.
+        # Corresponds to the JSON property `subpropertyEventFilters`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter>]
+        attr_accessor :subproperty_event_filters
       
         def initialize(**args)
            update!(**args)
@@ -4471,7 +4324,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @user_links = args[:user_links] if args.key?(:user_links)
+          @subproperty_event_filters = args[:subproperty_event_filters] if args.key?(:subproperty_event_filters)
         end
       end
       
@@ -4706,8 +4559,7 @@ module Google
       
         # Immutable. The property type for this Property resource. When creating a
         # property, if the type is "PROPERTY_TYPE_UNSPECIFIED", then "ORDINARY_PROPERTY"
-        # will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY" types cannot yet be
-        # created with the Google Analytics Admin API.
+        # will be implied.
         # Corresponds to the JSON property `propertyType`
         # @return [String]
         attr_accessor :property_type
@@ -4838,6 +4690,35 @@ module Google
         end
       end
       
+      # A link that references a source property under the parent rollup property.
+      class GoogleAnalyticsAdminV1alphaRollupPropertySourceLink
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Resource name of this RollupPropertySourceLink. Format: '
+        # properties/`property_id`/rollupPropertySourceLinks/`
+        # rollup_property_source_link`' Format: 'properties/123/
+        # rollupPropertySourceLinks/456'
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. Resource name of the source property. Format: properties/`
+        # property_id` Example: "properties/789"
+        # Corresponds to the JSON property `sourceProperty`
+        # @return [String]
+        attr_accessor :source_property
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @source_property = args[:source_property] if args.key?(:source_property)
+        end
+      end
+      
       # The request for a Data Access Record Report.
       class GoogleAnalyticsAdminV1alphaRunAccessReportRequest
         include Google::Apis::Core::Hashable
@@ -4861,6 +4742,25 @@ module Google
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessDimension>]
         attr_accessor :dimensions
+      
+        # Optional. Decides whether to return the users within user groups. This field
+        # works only when include_all_users is set to true. If true, it will return all
+        # users with access to the specified property or account. If false, only the
+        # users with direct access will be returned.
+        # Corresponds to the JSON property `expandGroups`
+        # @return [Boolean]
+        attr_accessor :expand_groups
+        alias_method :expand_groups?, :expand_groups
+      
+        # Optional. Determines whether to include users who have never made an API call
+        # in the response. If true, all users with access to the specified property or
+        # account are included in the response, regardless of whether they have made an
+        # API call or not. If false, only the users who have made an API call will be
+        # included.
+        # Corresponds to the JSON property `includeAllUsers`
+        # @return [Boolean]
+        attr_accessor :include_all_users
+        alias_method :include_all_users?, :include_all_users
       
         # The number of rows to return. If unspecified, 10,000 rows are returned. The
         # API returns a maximum of 100,000 rows per request, no matter how many you ask
@@ -4927,6 +4827,8 @@ module Google
           @date_ranges = args[:date_ranges] if args.key?(:date_ranges)
           @dimension_filter = args[:dimension_filter] if args.key?(:dimension_filter)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @expand_groups = args[:expand_groups] if args.key?(:expand_groups)
+          @include_all_users = args[:include_all_users] if args.key?(:include_all_users)
           @limit = args[:limit] if args.key?(:limit)
           @metric_filter = args[:metric_filter] if args.key?(:metric_filter)
           @metrics = args[:metrics] if args.key?(:metrics)
@@ -5251,6 +5153,183 @@ module Google
         end
       end
       
+      # A resource message representing a GA4 Subproperty event filter.
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilter
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Resource name of the Subproperty that uses this filter.
+        # Corresponds to the JSON property `applyToProperty`
+        # @return [String]
+        attr_accessor :apply_to_property
+      
+        # Required. Unordered list. Filter clauses that define the
+        # SubpropertyEventFilter. All clauses are AND'ed together to determine what data
+        # is sent to the subproperty.
+        # Corresponds to the JSON property `filterClauses`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause>]
+        attr_accessor :filter_clauses
+      
+        # Output only. Format: properties/`ordinary_property_id`/subpropertyEventFilters/
+        # `sub_property_event_filter` Example: properties/1234/subpropertyEventFilters/
+        # 5678
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apply_to_property = args[:apply_to_property] if args.key?(:apply_to_property)
+          @filter_clauses = args[:filter_clauses] if args.key?(:filter_clauses)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A clause for defining a filter. A filter may be inclusive (events satisfying
+      # the filter clause are included in the subproperty's data) or exclusive (events
+      # satisfying the filter clause are excluded from the subproperty's data).
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type for the filter clause.
+        # Corresponds to the JSON property `filterClauseType`
+        # @return [String]
+        attr_accessor :filter_clause_type
+      
+        # A logical expression of Subproperty event filters.
+        # Corresponds to the JSON property `filterExpression`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression]
+        attr_accessor :filter_expression
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter_clause_type = args[:filter_clause_type] if args.key?(:filter_clause_type)
+          @filter_expression = args[:filter_expression] if args.key?(:filter_expression)
+        end
+      end
+      
+      # A specific filter expression
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition
+        include Google::Apis::Core::Hashable
+      
+        # Required. The field that is being filtered.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # A filter for null values.
+        # Corresponds to the JSON property `nullFilter`
+        # @return [Boolean]
+        attr_accessor :null_filter
+        alias_method :null_filter?, :null_filter
+      
+        # A filter for a string-type dimension that matches a particular pattern.
+        # Corresponds to the JSON property `stringFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter]
+        attr_accessor :string_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @null_filter = args[:null_filter] if args.key?(:null_filter)
+          @string_filter = args[:string_filter] if args.key?(:string_filter)
+        end
+      end
+      
+      # A filter for a string-type dimension that matches a particular pattern.
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, the string value is case sensitive. If false, the match is
+        # case-insensitive.
+        # Corresponds to the JSON property `caseSensitive`
+        # @return [Boolean]
+        attr_accessor :case_sensitive
+        alias_method :case_sensitive?, :case_sensitive
+      
+        # Required. The match type for the string filter.
+        # Corresponds to the JSON property `matchType`
+        # @return [String]
+        attr_accessor :match_type
+      
+        # Required. The string value used for the matching.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @case_sensitive = args[:case_sensitive] if args.key?(:case_sensitive)
+          @match_type = args[:match_type] if args.key?(:match_type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A logical expression of Subproperty event filters.
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression
+        include Google::Apis::Core::Hashable
+      
+        # A specific filter expression
+        # Corresponds to the JSON property `filterCondition`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition]
+        attr_accessor :filter_condition
+      
+        # A logical expression of Subproperty event filters.
+        # Corresponds to the JSON property `notExpression`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression]
+        attr_accessor :not_expression
+      
+        # A list of Subproperty event filter expressions.
+        # Corresponds to the JSON property `orGroup`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList]
+        attr_accessor :or_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter_condition = args[:filter_condition] if args.key?(:filter_condition)
+          @not_expression = args[:not_expression] if args.key?(:not_expression)
+          @or_group = args[:or_group] if args.key?(:or_group)
+        end
+      end
+      
+      # A list of Subproperty event filter expressions.
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList
+        include Google::Apis::Core::Hashable
+      
+        # Required. Unordered list. A list of Subproperty event filter expressions
+        # Corresponds to the JSON property `filterExpressions`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression>]
+        attr_accessor :filter_expressions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter_expressions = args[:filter_expressions] if args.key?(:filter_expressions)
+        end
+      end
+      
       # Request message for UpdateAccessBinding RPC.
       class GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest
         include Google::Apis::Core::Hashable
@@ -5267,63 +5346,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_binding = args[:access_binding] if args.key?(:access_binding)
-        end
-      end
-      
-      # Request message for UpdateUserLink RPC.
-      class GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest
-        include Google::Apis::Core::Hashable
-      
-        # A resource message representing a user's permissions on an Account or Property
-        # resource.
-        # Corresponds to the JSON property `userLink`
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink]
-        attr_accessor :user_link
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @user_link = args[:user_link] if args.key?(:user_link)
-        end
-      end
-      
-      # A resource message representing a user's permissions on an Account or Property
-      # resource.
-      class GoogleAnalyticsAdminV1alphaUserLink
-        include Google::Apis::Core::Hashable
-      
-        # Roles directly assigned to this user for this account or property. Valid
-        # values: predefinedRoles/viewer predefinedRoles/analyst predefinedRoles/editor
-        # predefinedRoles/admin predefinedRoles/no-cost-data predefinedRoles/no-revenue-
-        # data Excludes roles that are inherited from a higher-level entity, group, or
-        # organization admin role. A UserLink that is updated to have an empty list of
-        # direct_roles will be deleted.
-        # Corresponds to the JSON property `directRoles`
-        # @return [Array<String>]
-        attr_accessor :direct_roles
-      
-        # Immutable. Email address of the user to link
-        # Corresponds to the JSON property `emailAddress`
-        # @return [String]
-        attr_accessor :email_address
-      
-        # Output only. Example format: properties/1234/userLinks/5678
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @direct_roles = args[:direct_roles] if args.key?(:direct_roles)
-          @email_address = args[:email_address] if args.key?(:email_address)
-          @name = args[:name] if args.key?(:name)
         end
       end
       

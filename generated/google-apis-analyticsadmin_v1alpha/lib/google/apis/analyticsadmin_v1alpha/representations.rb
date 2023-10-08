@@ -304,24 +304,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAnalyticsAdminV1alphaAuditUserLink
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaAuditUserLinksRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaAuditUserLinksResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -334,37 +316,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -377,18 +335,6 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -496,7 +442,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest
+      class GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -563,12 +527,6 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -820,6 +778,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaListSkAdNetworkConversionValueSchemasResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -832,7 +796,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAnalyticsAdminV1alphaListUserLinksResponse
+      class GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -892,6 +856,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaRollupPropertySourceLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaRunAccessReportRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -940,19 +910,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaUserLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1402,33 +1396,6 @@ module Google
         end
       end
       
-      class GoogleAnalyticsAdminV1alphaAuditUserLink
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :direct_roles, as: 'directRoles'
-          collection :effective_roles, as: 'effectiveRoles'
-          property :email_address, as: 'emailAddress'
-          property :name, as: 'name'
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaAuditUserLinksRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :page_size, as: 'pageSize'
-          property :page_token, as: 'pageToken'
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaAuditUserLinksResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :user_links, as: 'userLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAuditUserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAuditUserLink::Representation
-      
-        end
-      end
-      
       class GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1445,23 +1412,6 @@ module Google
         end
       end
       
-      class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :notify_new_users, as: 'notifyNewUsers'
-          collection :requests, as: 'requests', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateUserLinkRequest, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateUserLinkRequest::Representation
-      
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :user_links, as: 'userLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink::Representation
-      
-        end
-      end
-      
       class GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1470,26 +1420,10 @@ module Google
         end
       end
       
-      class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :requests, as: 'requests', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest::Representation
-      
-        end
-      end
-      
       class GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access_bindings, as: 'accessBindings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding::Representation
-      
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :user_links, as: 'userLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink::Representation
       
         end
       end
@@ -1506,22 +1440,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access_bindings, as: 'accessBindings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding::Representation
-      
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :requests, as: 'requests', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest::Representation
-      
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :user_links, as: 'userLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink::Representation
       
         end
       end
@@ -1742,12 +1660,42 @@ module Google
         end
       end
       
-      class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest
+      class GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :notify_new_user, as: 'notifyNewUser'
+          property :rollup_property, as: 'rollupProperty', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
+      
+          collection :source_properties, as: 'sourceProperties'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rollup_property, as: 'rollupProperty', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
+      
+          collection :rollup_property_source_links, as: 'rollupPropertySourceLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRollupPropertySourceLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRollupPropertySourceLink::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :parent, as: 'parent'
-          property :user_link, as: 'userLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink::Representation
+          property :subproperty, as: 'subproperty', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
+      
+          property :subproperty_event_filter, as: 'subpropertyEventFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subproperty, as: 'subproperty', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
+      
+          property :subproperty_event_filter, as: 'subpropertyEventFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter::Representation
       
         end
       end
@@ -1862,13 +1810,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :property, as: 'property'
           property :tag_id, as: 'tagId'
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
         end
       end
       
@@ -2266,6 +2207,15 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rollup_property_source_links, as: 'rollupPropertySourceLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRollupPropertySourceLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRollupPropertySourceLink::Representation
+      
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaListSkAdNetworkConversionValueSchemasResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2284,11 +2234,11 @@ module Google
         end
       end
       
-      class GoogleAnalyticsAdminV1alphaListUserLinksResponse
+      class GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
-          collection :user_links, as: 'userLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink::Representation
+          collection :subproperty_event_filters, as: 'subpropertyEventFilters', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter::Representation
       
         end
       end
@@ -2382,6 +2332,14 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaRollupPropertySourceLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :source_property, as: 'sourceProperty'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaRunAccessReportRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2391,6 +2349,8 @@ module Google
       
           collection :dimensions, as: 'dimensions', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessDimension, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessDimension::Representation
       
+          property :expand_groups, as: 'expandGroups'
+          property :include_all_users, as: 'includeAllUsers'
           property :limit, :numeric_string => true, as: 'limit'
           property :metric_filter, as: 'metricFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessFilterExpression::Representation
       
@@ -2483,28 +2443,69 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_to_property, as: 'applyToProperty'
+          collection :filter_clauses, as: 'filterClauses', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter_clause_type, as: 'filterClauseType'
+          property :filter_expression, as: 'filterExpression', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_name, as: 'fieldName'
+          property :null_filter, as: 'nullFilter'
+          property :string_filter, as: 'stringFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :case_sensitive, as: 'caseSensitive'
+          property :match_type, as: 'matchType'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter_condition, as: 'filterCondition', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition::Representation
+      
+          property :not_expression, as: 'notExpression', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression::Representation
+      
+          property :or_group, as: 'orGroup', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :filter_expressions, as: 'filterExpressions', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression::Representation
+      
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_binding, as: 'accessBinding', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding::Representation
       
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :user_link, as: 'userLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink::Representation
-      
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaUserLink
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :direct_roles, as: 'directRoles'
-          property :email_address, as: 'emailAddress'
-          property :name, as: 'name'
         end
       end
       
