@@ -1191,6 +1191,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::Kubernetes]
         attr_accessor :kubernetes
       
+        # The load balancers associated with the finding.
+        # Corresponds to the JSON property `loadBalancers`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::LoadBalancer>]
+        attr_accessor :load_balancers
+      
         # MITRE ATT&CK tactics and techniques related to this finding. See: https://
         # attack.mitre.org
         # Corresponds to the JSON property `mitreAttack`
@@ -1272,6 +1277,14 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::SecurityMarks]
         attr_accessor :security_marks
       
+        # Represents a posture that is deployed on Google Cloud by the Security Command
+        # Center Posture Management service. A posture contains one or more policy sets.
+        # A policy set is a group of policies that enforce a set of security rules on
+        # Google Cloud.
+        # Corresponds to the JSON property `securityPosture`
+        # @return [Google::Apis::SecuritycenterV1beta2::SecurityPosture]
+        attr_accessor :security_posture
+      
         # The severity of the finding. This field is managed by the source that writes
         # the finding.
         # Corresponds to the JSON property `severity`
@@ -1325,6 +1338,7 @@ module Google
           @indicator = args[:indicator] if args.key?(:indicator)
           @kernel_rootkit = args[:kernel_rootkit] if args.key?(:kernel_rootkit)
           @kubernetes = args[:kubernetes] if args.key?(:kubernetes)
+          @load_balancers = args[:load_balancers] if args.key?(:load_balancers)
           @mitre_attack = args[:mitre_attack] if args.key?(:mitre_attack)
           @module_name = args[:module_name] if args.key?(:module_name)
           @mute = args[:mute] if args.key?(:mute)
@@ -1337,6 +1351,7 @@ module Google
           @processes = args[:processes] if args.key?(:processes)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @security_marks = args[:security_marks] if args.key?(:security_marks)
+          @security_posture = args[:security_posture] if args.key?(:security_posture)
           @severity = args[:severity] if args.key?(:severity)
           @source_properties = args[:source_properties] if args.key?(:source_properties)
           @state = args[:state] if args.key?(:state)
@@ -2639,6 +2654,11 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1beta2::Node>]
         attr_accessor :nodes
       
+        # Kubernetes objects related to the finding.
+        # Corresponds to the JSON property `objects`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::Object>]
+        attr_accessor :objects
+      
         # Kubernetes [Pods](https://cloud.google.com/kubernetes-engine/docs/concepts/pod)
         # associated with the finding. This field contains Pod records for each
         # container that is owned by a Pod.
@@ -2663,6 +2683,7 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @nodes = args[:nodes] if args.key?(:nodes)
+          @objects = args[:objects] if args.key?(:objects)
           @pods = args[:pods] if args.key?(:pods)
           @roles = args[:roles] if args.key?(:roles)
         end
@@ -2694,6 +2715,25 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Contains information related to the load balancer associated with the finding.
+      class LoadBalancer
+        include Google::Apis::Core::Hashable
+      
+        # The name of the load balancer associated with the finding.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -2817,22 +2857,33 @@ module Google
         end
       end
       
-      # Resource capturing onboarding information for a given CRM resource.
-      class OnboardingState
+      # Kubernetes object related to the finding, uniquely identified by GKNN. Used if
+      # the object Kind is not one of Pod, Node, NodePool, Binding, or AccessReview.
+      class Object
         include Google::Apis::Core::Hashable
       
-        # The resource name of the OnboardingState. Format: organizations/`organization`/
-        # onboardingState Format: folders/`folder`/onboardingState Format: projects/`
-        # project`/onboardingState
+        # Kubernetes object group, such as "policy.k8s.io/v1".
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        # Kubernetes object kind, such as “Namespace”.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Kubernetes object name. For details see https://kubernetes.io/docs/concepts/
+        # overview/working-with-objects/names/.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Describes the level a given organization, folder, or project is onboarded with
-        # SCC. If the resource wasn't onboarded, NOT_FOUND would have been thrown.
-        # Corresponds to the JSON property `onboardingLevel`
+        # Kubernetes object namespace. Must be a valid DNS label. Named "ns" to avoid
+        # collision with C++ namespace keyword. For details see https://kubernetes.io/
+        # docs/tasks/administer-cluster/namespaces/.
+        # Corresponds to the JSON property `ns`
         # @return [String]
-        attr_accessor :onboarding_level
+        attr_accessor :ns
       
         def initialize(**args)
            update!(**args)
@@ -2840,8 +2891,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @group = args[:group] if args.key?(:group)
+          @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
-          @onboarding_level = args[:onboarding_level] if args.key?(:onboarding_level)
+          @ns = args[:ns] if args.key?(:ns)
         end
       end
       
@@ -3223,6 +3276,56 @@ module Google
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @marks = args[:marks] if args.key?(:marks)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents a posture that is deployed on Google Cloud by the Security Command
+      # Center Posture Management service. A posture contains one or more policy sets.
+      # A policy set is a group of policies that enforce a set of security rules on
+      # Google Cloud.
+      class SecurityPosture
+        include Google::Apis::Core::Hashable
+      
+        # The name of the policy that has been updated, for example, `projects/`
+        # project_id`/policies/`constraint_name``.
+        # Corresponds to the JSON property `changedPolicy`
+        # @return [String]
+        attr_accessor :changed_policy
+      
+        # Name of the posture, for example, `organizations/`org_id`/locations/`location`/
+        # postures/`posture_name``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The name of the posture deployment, for example, `projects/`project_id`/
+        # posturedeployments/`posture_deployment_id``.
+        # Corresponds to the JSON property `postureDeployment`
+        # @return [String]
+        attr_accessor :posture_deployment
+      
+        # The project, folder, or organization on which the posture is deployed, for
+        # example, `projects/`project_id``.
+        # Corresponds to the JSON property `postureDeploymentResource`
+        # @return [String]
+        attr_accessor :posture_deployment_resource
+      
+        # The version of the posture, for example, `c7cfa2a8`.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @changed_policy = args[:changed_policy] if args.key?(:changed_policy)
+          @name = args[:name] if args.key?(:name)
+          @posture_deployment = args[:posture_deployment] if args.key?(:posture_deployment)
+          @posture_deployment_resource = args[:posture_deployment_resource] if args.key?(:posture_deployment_resource)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
         end
       end
       

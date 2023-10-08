@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoadBalancer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MemoryHashSignature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -364,7 +370,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OnboardingState
+      class Object
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -419,6 +425,12 @@ module Google
       end
       
       class SecurityMarks
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPosture
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -754,6 +766,8 @@ module Google
       
           property :kubernetes, as: 'kubernetes', class: Google::Apis::SecuritycenterV1beta2::Kubernetes, decorator: Google::Apis::SecuritycenterV1beta2::Kubernetes::Representation
       
+          collection :load_balancers, as: 'loadBalancers', class: Google::Apis::SecuritycenterV1beta2::LoadBalancer, decorator: Google::Apis::SecuritycenterV1beta2::LoadBalancer::Representation
+      
           property :mitre_attack, as: 'mitreAttack', class: Google::Apis::SecuritycenterV1beta2::MitreAttack, decorator: Google::Apis::SecuritycenterV1beta2::MitreAttack::Representation
       
           property :module_name, as: 'moduleName'
@@ -768,6 +782,8 @@ module Google
       
           property :resource_name, as: 'resourceName'
           property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1beta2::SecurityMarks, decorator: Google::Apis::SecuritycenterV1beta2::SecurityMarks::Representation
+      
+          property :security_posture, as: 'securityPosture', class: Google::Apis::SecuritycenterV1beta2::SecurityPosture, decorator: Google::Apis::SecuritycenterV1beta2::SecurityPosture::Representation
       
           property :severity, as: 'severity'
           hash :source_properties, as: 'sourceProperties'
@@ -1083,6 +1099,8 @@ module Google
       
           collection :nodes, as: 'nodes', class: Google::Apis::SecuritycenterV1beta2::Node, decorator: Google::Apis::SecuritycenterV1beta2::Node::Representation
       
+          collection :objects, as: 'objects', class: Google::Apis::SecuritycenterV1beta2::Object, decorator: Google::Apis::SecuritycenterV1beta2::Object::Representation
+      
           collection :pods, as: 'pods', class: Google::Apis::SecuritycenterV1beta2::Pod, decorator: Google::Apis::SecuritycenterV1beta2::Pod::Representation
       
           collection :roles, as: 'roles', class: Google::Apis::SecuritycenterV1beta2::Role, decorator: Google::Apis::SecuritycenterV1beta2::Role::Representation
@@ -1095,6 +1113,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :value, as: 'value'
+        end
+      end
+      
+      class LoadBalancer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -1134,11 +1159,13 @@ module Google
         end
       end
       
-      class OnboardingState
+      class Object
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :group, as: 'group'
+          property :kind, as: 'kind'
           property :name, as: 'name'
-          property :onboarding_level, as: 'onboardingLevel'
+          property :ns, as: 'ns'
         end
       end
       
@@ -1240,6 +1267,17 @@ module Google
           property :canonical_name, as: 'canonicalName'
           hash :marks, as: 'marks'
           property :name, as: 'name'
+        end
+      end
+      
+      class SecurityPosture
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :changed_policy, as: 'changedPolicy'
+          property :name, as: 'name'
+          property :posture_deployment, as: 'postureDeployment'
+          property :posture_deployment_resource, as: 'postureDeploymentResource'
+          property :revision_id, as: 'revisionId'
         end
       end
       

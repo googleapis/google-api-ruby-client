@@ -126,38 +126,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve the OnboardingState of a resource.
-        # @param [String] name
-        #   Required. The name of the OnboardingState to retrieve. Formats: *
-        #   organizations/`organization`/onboardingState * folders/`folder`/
-        #   onboardingState * projects/`project`/onboardingState
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SecuritycenterV1beta2::OnboardingState] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SecuritycenterV1beta2::OnboardingState]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_folder_onboarding_state(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta2/{+name}', options)
-          command.response_representation = Google::Apis::SecuritycenterV1beta2::OnboardingState::Representation
-          command.response_class = Google::Apis::SecuritycenterV1beta2::OnboardingState
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Get the RapidVulnerabilityDetectionSettings resource. In the returned settings
         # response, a missing field only indicates that it was not explicitly set, so no
         # assumption should be made about these fields. In other words,
@@ -879,38 +847,6 @@ module Google
           command = make_simple_command(:get, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieve the OnboardingState of a resource.
-        # @param [String] name
-        #   Required. The name of the OnboardingState to retrieve. Formats: *
-        #   organizations/`organization`/onboardingState * folders/`folder`/
-        #   onboardingState * projects/`project`/onboardingState
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SecuritycenterV1beta2::OnboardingState] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SecuritycenterV1beta2::OnboardingState]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_onboarding_state(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta2/{+name}', options)
-          command.response_representation = Google::Apis::SecuritycenterV1beta2::OnboardingState::Representation
-          command.response_class = Google::Apis::SecuritycenterV1beta2::OnboardingState
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1669,38 +1605,6 @@ module Google
           command = make_simple_command(:get, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieve the OnboardingState of a resource.
-        # @param [String] name
-        #   Required. The name of the OnboardingState to retrieve. Formats: *
-        #   organizations/`organization`/onboardingState * folders/`folder`/
-        #   onboardingState * projects/`project`/onboardingState
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SecuritycenterV1beta2::OnboardingState] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SecuritycenterV1beta2::OnboardingState]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_onboarding_state(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta2/{+name}', options)
-          command.response_representation = Google::Apis::SecuritycenterV1beta2::OnboardingState::Representation
-          command.response_class = Google::Apis::SecuritycenterV1beta2::OnboardingState
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
