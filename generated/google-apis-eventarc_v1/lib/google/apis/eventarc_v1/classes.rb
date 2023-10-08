@@ -818,16 +818,6 @@ module Google
       class HttpEndpoint
         include Google::Apis::Core::Hashable
       
-        # Optional. Forwards DNS requests to the VPC specified by network config to
-        # resolve the HTTP endpoint. Default to false. If set to true, Eventarc will
-        # create a peering zone to the consumer VPC and forward DNS requests. See: https:
-        # //cloud.google.com/dns/docs/zones/zones-overview#peering_zones Enable this if
-        # the URI uses an internal DNS name or a private Cloud DNS zone.
-        # Corresponds to the JSON property `forwardDnsRequests`
-        # @return [Boolean]
-        attr_accessor :forward_dns_requests
-        alias_method :forward_dns_requests?, :forward_dns_requests
-      
         # Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string.
         # Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`
         # . Only HTTP and HTTPS protocols are supported. The host can be either a static
@@ -843,7 +833,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @forward_dns_requests = args[:forward_dns_requests] if args.key?(:forward_dns_requests)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
