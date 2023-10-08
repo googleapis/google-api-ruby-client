@@ -2624,7 +2624,7 @@ module Google
       
         # The time zone to use when interpreting the schedule. The value of this field
         # must be a time zone name from the tz database: https://en.wikipedia.org/wiki/
-        # Tz_database. This field is assigned a default value of “UTC” if left empty.
+        # Tz_database. This field is assigned a default value of "UTC" if left empty.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -3539,6 +3539,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_sec
       
+        # 
+        # Corresponds to the JSON property `usedBy`
+        # @return [Array<Google::Apis::ComputeV1::BackendServiceUsedBy>]
+        attr_accessor :used_by
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3585,6 +3590,7 @@ module Google
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @subsetting = args[:subsetting] if args.key?(:subsetting)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
+          @used_by = args[:used_by] if args.key?(:used_by)
         end
       end
       
@@ -4233,6 +4239,124 @@ module Google
         end
       end
       
+      # Contains a list of usable BackendService resources.
+      class BackendServiceListUsable
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of BackendService resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::BackendService>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#usableBackendServiceList for
+        # lists of usable backend services.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::BackendServiceListUsable::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::BackendServiceListUsable::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # Container for either a built-in LB policy supported by gRPC or Envoy or a
       # custom one implemented by the end user.
       class BackendServiceLocalityLoadBalancingPolicyConfig
@@ -4381,6 +4505,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
+        end
+      end
+      
+      # 
+      class BackendServiceUsedBy
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reference = args[:reference] if args.key?(:reference)
         end
       end
       
@@ -39735,14 +39878,14 @@ module Google
       # Represents a Target HTTP Proxy resource. Google Compute Engine has two Target
       # HTTP Proxy resources: * [Global](/compute/docs/reference/rest/v1/
       # targetHttpProxies) * [Regional](/compute/docs/reference/rest/v1/
-      # regionTargetHttpProxies) A target HTTP proxy is a component of GCP HTTP load
-      # balancers. * targetHttpProxies are used by global external Application Load
-      # Balancers, classic Application Load Balancers, cross-region internal
-      # Application Load Balancers, and Traffic Director. * regionTargetHttpProxies
-      # are used by regional internal Application Load Balancers and regional external
-      # Application Load Balancers. Forwarding rules reference a target HTTP proxy,
-      # and the target proxy then references a URL map. For more information, read
-      # Using Target Proxies and Forwarding rule concepts.
+      # regionTargetHttpProxies) A target HTTP proxy is a component of Google Cloud
+      # HTTP load balancers. * targetHttpProxies are used by global external
+      # Application Load Balancers, classic Application Load Balancers, cross-region
+      # internal Application Load Balancers, and Traffic Director. *
+      # regionTargetHttpProxies are used by regional internal Application Load
+      # Balancers and regional external Application Load Balancers. Forwarding rules
+      # reference a target HTTP proxy, and the target proxy then references a URL map.
+      # For more information, read Using Target Proxies and Forwarding rule concepts.
       class TargetHttpProxy
         include Google::Apis::Core::Hashable
       
