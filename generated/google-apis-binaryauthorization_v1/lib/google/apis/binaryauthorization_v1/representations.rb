@@ -425,6 +425,7 @@ module Google
       class PkixPublicKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_id, as: 'keyId'
           property :public_key_pem, as: 'publicKeyPem'
           property :signature_algorithm, as: 'signatureAlgorithm'
         end
