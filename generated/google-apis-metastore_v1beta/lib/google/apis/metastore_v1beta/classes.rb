@@ -1061,6 +1061,13 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
+        # The metadata for the multi-region that includes the constituent regions. The
+        # metadata is only populated if the region is multi-region. For single region,
+        # it will be empty.
+        # Corresponds to the JSON property `multiRegionMetadata`
+        # @return [Google::Apis::MetastoreV1beta::MultiRegionMetadata]
+        attr_accessor :multi_region_metadata
+      
         # The versions of Hive Metastore that can be used when creating a new metastore
         # service in this location. The server guarantees that exactly one
         # HiveMetastoreVersion in the list will set is_default.
@@ -1074,6 +1081,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @multi_region_metadata = args[:multi_region_metadata] if args.key?(:multi_region_metadata)
           @supported_hive_metastore_versions = args[:supported_hive_metastore_versions] if args.key?(:supported_hive_metastore_versions)
         end
       end
@@ -1299,6 +1307,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The metadata for the multi-region that includes the constituent regions. The
+      # metadata is only populated if the region is multi-region. For single region,
+      # it will be empty.
+      class MultiRegionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The regions constituting the multi-region.
+        # Corresponds to the JSON property `constituentRegions`
+        # @return [Array<String>]
+        attr_accessor :constituent_regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constituent_regions = args[:constituent_regions] if args.key?(:constituent_regions)
         end
       end
       
