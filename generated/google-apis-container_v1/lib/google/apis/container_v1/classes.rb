@@ -1177,6 +1177,13 @@ module Google
         # @return [Google::Apis::ContainerV1::NotificationConfig]
         attr_accessor :notification_config
       
+        # ParentProductConfig is the configuration of the parent product of the cluster.
+        # This field is used by Google internal products that are built on top of a GKE
+        # cluster and take the ownership of the cluster.
+        # Corresponds to the JSON property `parentProductConfig`
+        # @return [Google::Apis::ContainerV1::ParentProductConfig]
+        attr_accessor :parent_product_config
+      
         # Configuration options for private clusters.
         # Corresponds to the JSON property `privateClusterConfig`
         # @return [Google::Apis::ContainerV1::PrivateClusterConfig]
@@ -1325,6 +1332,7 @@ module Google
           @node_pool_defaults = args[:node_pool_defaults] if args.key?(:node_pool_defaults)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
+          @parent_product_config = args[:parent_product_config] if args.key?(:parent_product_config)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @release_channel = args[:release_channel] if args.key?(:release_channel)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
@@ -1644,6 +1652,13 @@ module Google
         # @return [Google::Apis::ContainerV1::NotificationConfig]
         attr_accessor :desired_notification_config
       
+        # ParentProductConfig is the configuration of the parent product of the cluster.
+        # This field is used by Google internal products that are built on top of a GKE
+        # cluster and take the ownership of the cluster.
+        # Corresponds to the JSON property `desiredParentProductConfig`
+        # @return [Google::Apis::ContainerV1::ParentProductConfig]
+        attr_accessor :desired_parent_product_config
+      
         # Configuration options for private clusters.
         # Corresponds to the JSON property `desiredPrivateClusterConfig`
         # @return [Google::Apis::ContainerV1::PrivateClusterConfig]
@@ -1762,6 +1777,7 @@ module Google
           @desired_node_pool_logging_config = args[:desired_node_pool_logging_config] if args.key?(:desired_node_pool_logging_config)
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
           @desired_notification_config = args[:desired_notification_config] if args.key?(:desired_notification_config)
+          @desired_parent_product_config = args[:desired_parent_product_config] if args.key?(:desired_parent_product_config)
           @desired_private_cluster_config = args[:desired_private_cluster_config] if args.key?(:desired_private_cluster_config)
           @desired_private_ipv6_google_access = args[:desired_private_ipv6_google_access] if args.key?(:desired_private_ipv6_google_access)
           @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
@@ -2157,15 +2173,22 @@ module Google
       end
       
       # EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral
-      # storage using Local SSD.
+      # storage using Local SSDs.
       class EphemeralStorageLocalSsdConfig
         include Google::Apis::Core::Hashable
       
-        # Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces.
-        # Each local SSD is 375 GB in size. If zero, it means to disable using local
-        # SSDs as ephemeral storage. The limit for this value is dependent upon the
-        # maximum number of disks available on a machine per zone. See: https://cloud.
-        # google.com/compute/docs/disks/local-ssd for more information.
+        # Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A
+        # zero (or unset) value has different meanings depending on machine type being
+        # used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds,
+        # zero (or unset) means to disable using local SSDs as ephemeral storage. The
+        # limit for this value is dependent upon the maximum number of disk available on
+        # a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd
+        # for more information. 2. For Gen3 machines which dictate a specific number of
+        # local ssds, zero (or unset) means to use the default number of local ssds that
+        # goes with that machine type. For example, for a c3-standard-8-lssd machine, 2
+        # local ssds would be provisioned. For c3-standard-8 (which doesn't support
+        # local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/
+        # disks/local-ssd#choose_number_local_ssds for more info.
         # Corresponds to the JSON property `localSsdCount`
         # @return [Fixnum]
         attr_accessor :local_ssd_count
@@ -3088,15 +3111,22 @@ module Google
       end
       
       # LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe
-      # SSD.
+      # SSDs
       class LocalNvmeSsdBlockConfig
         include Google::Apis::Core::Hashable
       
-        # The number of raw-block local NVMe SSD disks to be attached to the node. Each
-        # local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD
-        # disks to be attached to the node. The limit for this value is dependent upon
-        # the maximum number of disks available on a machine per zone. See: https://
-        # cloud.google.com/compute/docs/disks/local-ssd for more information.
+        # Number of local NVMe SSDs to use. The limit for this value is dependent upon
+        # the maximum number of disk available on a machine per zone. See: https://cloud.
+        # google.com/compute/docs/disks/local-ssd for more information. A zero (or unset)
+        # value has different meanings depending on machine type being used: 1. For pre-
+        # Gen3 machines, which support flexible numbers of local ssds, zero (or unset)
+        # means to disable using local SSDs as ephemeral storage. 2. For Gen3 machines
+        # which dictate a specific number of local ssds, zero (or unset) means to use
+        # the default number of local ssds that goes with that machine type. For example,
+        # for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-
+        # standard-8 (which doesn't support local ssds), 0 will be provisioned. See
+        # https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds
+        # for more info.
         # Corresponds to the JSON property `localSsdCount`
         # @return [Fixnum]
         attr_accessor :local_ssd_count
@@ -3773,7 +3803,7 @@ module Google
         attr_accessor :disk_type
       
         # EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral
-        # storage using Local SSD.
+        # storage using Local SSDs.
         # Corresponds to the JSON property `ephemeralStorageLocalSsdConfig`
         # @return [Google::Apis::ContainerV1::EphemeralStorageLocalSsdConfig]
         attr_accessor :ephemeral_storage_local_ssd_config
@@ -3823,7 +3853,7 @@ module Google
         attr_accessor :linux_node_config
       
         # LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe
-        # SSD.
+        # SSDs
         # Corresponds to the JSON property `localNvmeSsdBlockConfig`
         # @return [Google::Apis::ContainerV1::LocalNvmeSsdBlockConfig]
         attr_accessor :local_nvme_ssd_block_config
@@ -4806,6 +4836,33 @@ module Google
           @name = args[:name] if args.key?(:name)
           @stages = args[:stages] if args.key?(:stages)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # ParentProductConfig is the configuration of the parent product of the cluster.
+      # This field is used by Google internal products that are built on top of a GKE
+      # cluster and take the ownership of the cluster.
+      class ParentProductConfig
+        include Google::Apis::Core::Hashable
+      
+        # Labels contain the configuration of the parent product.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Name of the parent product associated with the cluster.
+        # Corresponds to the JSON property `productName`
+        # @return [String]
+        attr_accessor :product_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @product_name = args[:product_name] if args.key?(:product_name)
         end
       end
       
