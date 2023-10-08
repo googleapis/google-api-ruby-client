@@ -724,6 +724,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ParentProductConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PlacementPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1429,6 +1435,8 @@ module Google
       
           property :notification_config, as: 'notificationConfig', class: Google::Apis::ContainerV1beta1::NotificationConfig, decorator: Google::Apis::ContainerV1beta1::NotificationConfig::Representation
       
+          property :parent_product_config, as: 'parentProductConfig', class: Google::Apis::ContainerV1beta1::ParentProductConfig, decorator: Google::Apis::ContainerV1beta1::ParentProductConfig::Representation
+      
           property :pod_security_policy_config, as: 'podSecurityPolicyConfig', class: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig, decorator: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig::Representation
       
           property :private_cluster, as: 'privateCluster'
@@ -1531,6 +1539,7 @@ module Google
           property :desired_identity_service_config, as: 'desiredIdentityServiceConfig', class: Google::Apis::ContainerV1beta1::IdentityServiceConfig, decorator: Google::Apis::ContainerV1beta1::IdentityServiceConfig::Representation
       
           property :desired_image_type, as: 'desiredImageType'
+          property :desired_in_transit_encryption_config, as: 'desiredInTransitEncryptionConfig'
           property :desired_intra_node_visibility_config, as: 'desiredIntraNodeVisibilityConfig', class: Google::Apis::ContainerV1beta1::IntraNodeVisibilityConfig, decorator: Google::Apis::ContainerV1beta1::IntraNodeVisibilityConfig::Representation
       
           property :desired_k8s_beta_apis, as: 'desiredK8sBetaApis', class: Google::Apis::ContainerV1beta1::K8sBetaApiConfig, decorator: Google::Apis::ContainerV1beta1::K8sBetaApiConfig::Representation
@@ -1562,6 +1571,8 @@ module Google
       
           property :desired_node_version, as: 'desiredNodeVersion'
           property :desired_notification_config, as: 'desiredNotificationConfig', class: Google::Apis::ContainerV1beta1::NotificationConfig, decorator: Google::Apis::ContainerV1beta1::NotificationConfig::Representation
+      
+          property :desired_parent_product_config, as: 'desiredParentProductConfig', class: Google::Apis::ContainerV1beta1::ParentProductConfig, decorator: Google::Apis::ContainerV1beta1::ParentProductConfig::Representation
       
           property :desired_pod_security_policy_config, as: 'desiredPodSecurityPolicyConfig', class: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig, decorator: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig::Representation
       
@@ -2181,6 +2192,7 @@ module Google
           property :enable_multi_networking, as: 'enableMultiNetworking'
           property :gateway_api_config, as: 'gatewayApiConfig', class: Google::Apis::ContainerV1beta1::GatewayApiConfig, decorator: Google::Apis::ContainerV1beta1::GatewayApiConfig::Representation
       
+          property :in_transit_encryption_config, as: 'inTransitEncryptionConfig'
           property :network, as: 'network'
           property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ContainerV1beta1::ClusterNetworkPerformanceConfig, decorator: Google::Apis::ContainerV1beta1::ClusterNetworkPerformanceConfig::Representation
       
@@ -2484,6 +2496,14 @@ module Google
           collection :stages, as: 'stages', class: Google::Apis::ContainerV1beta1::OperationProgress, decorator: Google::Apis::ContainerV1beta1::OperationProgress::Representation
       
           property :status, as: 'status'
+        end
+      end
+      
+      class ParentProductConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          property :product_name, as: 'productName'
         end
       end
       
