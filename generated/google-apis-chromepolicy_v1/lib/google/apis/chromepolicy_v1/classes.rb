@@ -22,52 +22,6 @@ module Google
   module Apis
     module ChromepolicyV1
       
-      # 
-      class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle
-        include Google::Apis::Core::Hashable
-      
-        # In the event that this policy was deprecated in favor of another policy, the
-        # fully qualified namespace(s) of the new policies as they will show in
-        # PolicyAPI.
-        # Corresponds to the JSON property `deprecatedInFavorOf`
-        # @return [Array<String>]
-        attr_accessor :deprecated_in_favor_of
-      
-        # Description about current life cycle.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values. * A month
-        # and day, with a zero year (for example, an anniversary). * A year on its own,
-        # with a zero month and a zero day. * A year and month, with a zero day (for
-        # example, a credit card expiration date). Related types: * google.type.
-        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
-        # Corresponds to the JSON property `endSupport`
-        # @return [Google::Apis::ChromepolicyV1::GoogleTypeDate]
-        attr_accessor :end_support
-      
-        # Indicate current life cycle stage of the policy API.
-        # Corresponds to the JSON property `policyApiLifecycleStage`
-        # @return [String]
-        attr_accessor :policy_api_lifecycle_stage
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @deprecated_in_favor_of = args[:deprecated_in_favor_of] if args.key?(:deprecated_in_favor_of)
-          @description = args[:description] if args.key?(:description)
-          @end_support = args[:end_support] if args.key?(:end_support)
-          @policy_api_lifecycle_stage = args[:policy_api_lifecycle_stage] if args.key?(:policy_api_lifecycle_stage)
-        end
-      end
-      
       # Additional key names that will be used to identify the target of the policy
       # value.
       class GoogleChromePolicyVersionsV1AdditionalTargetKeyName
@@ -640,6 +594,61 @@ module Google
         end
       end
       
+      # Lifecycle information.
+      class GoogleChromePolicyVersionsV1PolicyApiLifecycle
+        include Google::Apis::Core::Hashable
+      
+        # In the event that this policy was deprecated in favor of another policy, the
+        # fully qualified namespace(s) of the new policies as they will show in
+        # PolicyAPI. Could only be set if policy_api_lifecycle_stage is API_DEPRECATED.
+        # Corresponds to the JSON property `deprecatedInFavorOf`
+        # @return [Array<String>]
+        attr_accessor :deprecated_in_favor_of
+      
+        # Description about current life cycle.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `endSupport`
+        # @return [Google::Apis::ChromepolicyV1::GoogleTypeDate]
+        attr_accessor :end_support
+      
+        # Indicates current life cycle stage of the policy API.
+        # Corresponds to the JSON property `policyApiLifecycleStage`
+        # @return [String]
+        attr_accessor :policy_api_lifecycle_stage
+      
+        # Corresponding to deprecated_in_favor_of, the fully qualified namespace(s) of
+        # the old policies that will be deprecated because of introduction of this
+        # policy. This field should not be manually set but will be set and exposed
+        # through PolicyAPI automatically.
+        # Corresponds to the JSON property `scheduledToDeprecatePolicies`
+        # @return [Array<String>]
+        attr_accessor :scheduled_to_deprecate_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deprecated_in_favor_of = args[:deprecated_in_favor_of] if args.key?(:deprecated_in_favor_of)
+          @description = args[:description] if args.key?(:description)
+          @end_support = args[:end_support] if args.key?(:end_support)
+          @policy_api_lifecycle_stage = args[:policy_api_lifecycle_stage] if args.key?(:policy_api_lifecycle_stage)
+          @scheduled_to_deprecate_policies = args[:scheduled_to_deprecate_policies] if args.key?(:scheduled_to_deprecate_policies)
+        end
+      end
+      
       # Error information for a modification request of a specific policy on a
       # specific target.
       class GoogleChromePolicyVersionsV1PolicyModificationError
@@ -770,9 +779,9 @@ module Google
         # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription>]
         attr_accessor :notices
       
-        # Output only. Current lifecycle information.
+        # Lifecycle information.
         # Corresponds to the JSON property `policyApiLifecycle`
-        # @return [Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle]
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyApiLifecycle]
         attr_accessor :policy_api_lifecycle
       
         # Output only. Description about the policy schema for user consumption.
