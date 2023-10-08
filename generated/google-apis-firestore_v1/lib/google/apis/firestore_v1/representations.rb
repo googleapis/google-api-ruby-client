@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1FlatIndex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1ImportDocumentsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +395,12 @@ module Google
       end
       
       class GoogleFirestoreAdminV1UpdateDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1VectorConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1046,6 +1058,12 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1FlatIndex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleFirestoreAdminV1ImportDocumentsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1109,6 +1127,8 @@ module Google
           property :array_config, as: 'arrayConfig'
           property :field_path, as: 'fieldPath'
           property :order, as: 'order'
+          property :vector_config, as: 'vectorConfig', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1VectorConfig, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1VectorConfig::Representation
+      
         end
       end
       
@@ -1230,6 +1250,15 @@ module Google
       class GoogleFirestoreAdminV1UpdateDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1VectorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dimension, as: 'dimension'
+          property :flat, as: 'flat', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1FlatIndex, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1FlatIndex::Representation
+      
         end
       end
       
