@@ -2086,6 +2086,185 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a version from a Dataset.
+        # @param [String] parent
+        #   Required. The name of the Dataset resource. Format: `projects/`project`/
+        #   locations/`location`/datasets/`dataset``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion] google_cloud_aiplatform_v1_dataset_version_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_dataset_dataset_version(parent, google_cloud_aiplatform_v1_dataset_version_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/datasetVersions', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion::Representation
+          command.request_object = google_cloud_aiplatform_v1_dataset_version_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Dataset version.
+        # @param [String] name
+        #   Required. The resource name of the Dataset version to delete. Format: `
+        #   projects/`project`/locations/`location`/datasets/`dataset`/datasetVersions/`
+        #   dataset_version``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_dataset_dataset_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Dataset version.
+        # @param [String] name
+        #   Required. The resource name of the Dataset version to delete. Format: `
+        #   projects/`project`/locations/`location`/datasets/`dataset`/datasetVersions/`
+        #   dataset_version``
+        # @param [String] read_mask
+        #   Mask specifying which fields to read.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset_dataset_version(name, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion
+          command.params['name'] = name unless name.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists DatasetVersions in a Dataset.
+        # @param [String] parent
+        #   Required. The resource name of the Dataset to list DatasetVersions from.
+        #   Format: `projects/`project`/locations/`location`/datasets/`dataset``
+        # @param [String] filter
+        #   Optional. The standard list filter.
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields to order by, sorted in ascending
+        #   order. Use "desc" after a field name for descending.
+        # @param [Fixnum] page_size
+        #   Optional. The standard list page size.
+        # @param [String] page_token
+        #   Optional. The standard list page token.
+        # @param [String] read_mask
+        #   Optional. Mask specifying which fields to read.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDatasetVersionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDatasetVersionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_dataset_dataset_versions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/datasetVersions', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDatasetVersionsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDatasetVersionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Restores a dataset version.
+        # @param [String] name
+        #   Required. The name of the DatasetVersion resource. Format: `projects/`project`/
+        #   locations/`location`/datasets/`dataset`/datasetVersions/`dataset_version``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restore_project_location_dataset_dataset_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:restore', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
@@ -4414,15 +4593,12 @@ module Google
         
         # Creates a new Feature in a given EntityType.
         # @param [String] parent
-        #   Required. The resource name of the EntityType to create a Feature. Format: `
-        #   projects/`project`/locations/`location`/featurestores/`featurestore`/
-        #   entityTypes/`entity_type``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Feature] google_cloud_aiplatform_v1_feature_object
         # @param [String] feature_id
         #   Required. The ID to use for the Feature, which will become the final component
         #   of the Feature's resource name. This value may be up to 128 characters, and
         #   valid characters are `[a-z0-9_]`. The first character cannot be a number. The
-        #   value must be unique within an EntityType .
+        #   value must be unique within an EntityType/FeatureGroup.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4457,7 +4633,8 @@ module Google
         # @param [String] name
         #   Required. The name of the Features to be deleted. Format: `projects/`project`/
         #   locations/`location`/featurestores/`featurestore`/entityTypes/`entity_type`/
-        #   features/`feature``
+        #   features/`feature`` `projects/`project`/locations/`location`/featureGroups/`
+        #   feature_group`/features/`feature``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4488,7 +4665,8 @@ module Google
         # Gets details of a single Feature.
         # @param [String] name
         #   Required. The name of the Feature resource. Format: `projects/`project`/
-        #   locations/`location`/featurestores/`featurestore`/entityTypes/`entity_type``
+        #   locations/`location`/featurestores/`featurestore`/entityTypes/`entity_type`` `
+        #   projects/`project`/locations/`location`/featureGroups/`feature_group``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4520,7 +4698,8 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the Location to list Features. Format: `
         #   projects/`project`/locations/`location`/featurestores/`featurestore`/
-        #   entityTypes/`entity_type``
+        #   entityTypes/`entity_type`` `projects/`project`/locations/`location`/
+        #   featureGroups/`feature_group``
         # @param [String] filter
         #   Lists the Features that match the filter expression. The following filters are
         #   supported: * `value_type`: Supports = and != comparisons. * `create_time`:
@@ -10025,9 +10204,10 @@ module Google
         #   NotebookRuntimeTemplate's resource name. * `display_name` supports = and != * `
         #   labels` supports general map functions that is: * `labels.key=value` - key:
         #   value equality * `labels.key:* or labels:key - key existence * A key including
-        #   a space must be quoted. `labels."a key"`. Some examples: * `
+        #   a space must be quoted. `labels."a key"`. * `notebookRuntimeType` supports =
+        #   and !=. notebookRuntimeType enum: [USER_DEFINED, ONE_CLICK]. Some examples: * `
         #   notebookRuntimeTemplate=notebookRuntimeTemplate123` * `displayName="
-        #   myDisplayName"` * `labels.myKey="myValue"`
+        #   myDisplayName"` * `labels.myKey="myValue"` * `notebookRuntimeType=USER_DEFINED`
         # @param [String] order_by
         #   Optional. A comma-separated list of fields to order by, sorted in ascending
         #   order. Use "desc" after a field name for descending. Supported fields: * `
@@ -10270,11 +10450,13 @@ module Google
         #   UI only: `uiState` supports = and !=. uiState enum: [
         #   UI_RESOURCE_STATE_UNSPECIFIED, UI_RESOURCE_STATE_BEING_CREATED,
         #   UI_RESOURCE_STATE_ACTIVE, UI_RESOURCE_STATE_BEING_DELETED,
-        #   UI_RESOURCE_STATE_CREATION_FAILED]. Some examples: * `notebookRuntime="
-        #   notebookRuntime123"` * `displayName="myDisplayName"` and `displayName=~"
-        #   myDisplayNameRegex"` * `notebookRuntimeTemplate="notebookRuntimeTemplate321"` *
-        #   `healthState=HEALTHY` * `runtimeState=RUNNING` * `runtimeUser="test@google.
-        #   com"` * `uiState=UI_RESOURCE_STATE_BEING_DELETED`
+        #   UI_RESOURCE_STATE_CREATION_FAILED]. * `notebookRuntimeType` supports = and !=.
+        #   notebookRuntimeType enum: [USER_DEFINED, ONE_CLICK]. Some examples: * `
+        #   notebookRuntime="notebookRuntime123"` * `displayName="myDisplayName"` and `
+        #   displayName=~"myDisplayNameRegex"` * `notebookRuntimeTemplate="
+        #   notebookRuntimeTemplate321"` * `healthState=HEALTHY` * `runtimeState=RUNNING` *
+        #   `runtimeUser="test@google.com"` * `uiState=UI_RESOURCE_STATE_BEING_DELETED` *
+        #   `notebookRuntimeType=USER_DEFINED`
         # @param [String] order_by
         #   Optional. A comma-separated list of fields to order by, sorted in ascending
         #   order. Use "desc" after a field name for descending. Supported fields: * `
