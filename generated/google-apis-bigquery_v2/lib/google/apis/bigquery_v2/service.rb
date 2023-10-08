@@ -99,6 +99,10 @@ module Google
         #   Project ID of the requested dataset
         # @param [String] dataset_id
         #   Dataset ID of the requested dataset
+        # @param [String] dataset_view
+        #   Specifies the view that determines which dataset information is returned. By
+        #   default, metadata and ACL information are returned. Allowed values: METADATA,
+        #   ACL, FULL.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -118,12 +122,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_dataset(project_id, dataset_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_dataset(project_id, dataset_id, dataset_view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{projectId}/datasets/{datasetId}', options)
           command.response_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.response_class = Google::Apis::BigqueryV2::Dataset
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.query['datasetView'] = dataset_view unless dataset_view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

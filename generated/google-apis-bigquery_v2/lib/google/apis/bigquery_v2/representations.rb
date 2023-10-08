@@ -1109,6 +1109,7 @@ module Google
           property :argument_kind, as: 'argumentKind'
           property :data_type, as: 'dataType', class: Google::Apis::BigqueryV2::StandardSqlDataType, decorator: Google::Apis::BigqueryV2::StandardSqlDataType::Representation
       
+          property :is_aggregate, as: 'isAggregate'
           property :mode, as: 'mode'
           property :name, as: 'name'
         end
@@ -1457,7 +1458,7 @@ module Google
           property :allow_quoted_newlines, as: 'allowQuotedNewlines'
           property :encoding, as: 'encoding'
           property :field_delimiter, as: 'fieldDelimiter'
-          property :null_marker, as: 'null_marker'
+          property :null_marker, as: 'nullMarker'
           property :preserve_ascii_control_characters, as: 'preserveAsciiControlCharacters'
           property :quote, as: 'quote'
           property :skip_leading_rows, :numeric_string => true, as: 'skipLeadingRows'
@@ -2006,6 +2007,7 @@ module Google
       
           property :etag, as: 'etag'
           property :id, as: 'id'
+          property :job_creation_reason, as: 'jobCreationReason'
           property :job_reference, as: 'jobReference', class: Google::Apis::BigqueryV2::JobReference, decorator: Google::Apis::BigqueryV2::JobReference::Representation
       
           property :kind, as: 'kind'
@@ -2609,6 +2611,7 @@ module Google
           property :default_dataset, as: 'defaultDataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
       
           property :dry_run, as: 'dryRun'
+          property :job_creation_mode, as: 'jobCreationMode'
           property :kind, as: 'kind'
           hash :labels, as: 'labels'
           property :location, as: 'location'
@@ -2635,6 +2638,7 @@ module Google
           collection :errors, as: 'errors', class: Google::Apis::BigqueryV2::ErrorProto, decorator: Google::Apis::BigqueryV2::ErrorProto::Representation
       
           property :job_complete, as: 'jobComplete'
+          property :job_creation_reason, as: 'jobCreationReason'
           property :job_reference, as: 'jobReference', class: Google::Apis::BigqueryV2::JobReference, decorator: Google::Apis::BigqueryV2::JobReference::Representation
       
           property :kind, as: 'kind'
@@ -2989,6 +2993,7 @@ module Google
           property :range_partitioning, as: 'rangePartitioning', class: Google::Apis::BigqueryV2::RangePartitioning, decorator: Google::Apis::BigqueryV2::RangePartitioning::Representation
       
           property :require_partition_filter, as: 'requirePartitionFilter'
+          hash :resource_tags, as: 'resourceTags'
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :self_link, as: 'selfLink'
