@@ -107,6 +107,15 @@ module Google
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :data_type
       
+        # Optional. Whether the argument is an aggregate function parameter. Must be
+        # Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION,
+        # if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL;
+        # Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL.
+        # Corresponds to the JSON property `isAggregate`
+        # @return [Boolean]
+        attr_accessor :is_aggregate
+        alias_method :is_aggregate?, :is_aggregate
+      
         # Optional. Specifies whether the argument is input or output. Can be set for
         # procedures only.
         # Corresponds to the JSON property `mode`
@@ -127,6 +136,7 @@ module Google
         def update!(**args)
           @argument_kind = args[:argument_kind] if args.key?(:argument_kind)
           @data_type = args[:data_type] if args.key?(:data_type)
+          @is_aggregate = args[:is_aggregate] if args.key?(:is_aggregate)
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
         end
@@ -1494,7 +1504,7 @@ module Google
       
         # [Optional] An custom string that will represent a NULL value in CSV import
         # data.
-        # Corresponds to the JSON property `null_marker`
+        # Corresponds to the JSON property `nullMarker`
         # @return [String]
         attr_accessor :null_marker
       
@@ -3644,6 +3654,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # [Output-only] If set, it provides the reason why a Job was created. If not set,
+        # it should be treated as the default: REQUESTED. This feature is not yet
+        # available. Jobs will always be created.
+        # Corresponds to the JSON property `jobCreationReason`
+        # @return [Object]
+        attr_accessor :job_creation_reason
+      
         # [Optional] Reference describing the unique-per-user name of the job.
         # Corresponds to the JSON property `jobReference`
         # @return [Google::Apis::BigqueryV2::JobReference]
@@ -3685,6 +3702,7 @@ module Google
           @configuration = args[:configuration] if args.key?(:configuration)
           @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
+          @job_creation_reason = args[:job_creation_reason] if args.key?(:job_creation_reason)
           @job_reference = args[:job_reference] if args.key?(:job_reference)
           @kind = args[:kind] if args.key?(:kind)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -4859,8 +4877,8 @@ module Google
         # @return [String]
         attr_accessor :ddl_operation_performed
       
-        # [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP
-        # SCHEMA queries.
+        # [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP/
+        # UNDROP SCHEMA queries.
         # Corresponds to the JSON property `ddlTargetDataset`
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :ddl_target_dataset
@@ -5248,7 +5266,7 @@ module Google
         end
       end
       
-      # 
+      # Response format for a single page when listing BigQuery ML models.
       class ListModelsResponse
         include Google::Apis::Core::Hashable
       
@@ -5274,7 +5292,7 @@ module Google
         end
       end
       
-      # 
+      # Describes the format of a single result page when listing routines.
       class ListRoutinesResponse
         include Google::Apis::Core::Hashable
       
@@ -6158,6 +6176,13 @@ module Google
         attr_accessor :dry_run
         alias_method :dry_run?, :dry_run
       
+        # Optional. If not set, jobs are always required. If set, the query request will
+        # follow the behavior described JobCreationMode. This feature is not yet
+        # available. Jobs will always be created.
+        # Corresponds to the JSON property `jobCreationMode`
+        # @return [String]
+        attr_accessor :job_creation_mode
+      
         # The resource type of the request.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -6280,6 +6305,7 @@ module Google
           @create_session = args[:create_session] if args.key?(:create_session)
           @default_dataset = args[:default_dataset] if args.key?(:default_dataset)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
+          @job_creation_mode = args[:job_creation_mode] if args.key?(:job_creation_mode)
           @kind = args[:kind] if args.key?(:kind)
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
@@ -6326,6 +6352,16 @@ module Google
         # @return [Boolean]
         attr_accessor :job_complete
         alias_method :job_complete?, :job_complete
+      
+        # Optional. Only relevant when a job_reference is present in the response. If
+        # job_reference is not present it will always be unset. When job_reference is
+        # present, this field should be interpreted as follows: If set, it will provide
+        # the reason of why a Job was created. If not set, it should be treated as the
+        # default: REQUESTED. This feature is not yet available. Jobs will always be
+        # created.
+        # Corresponds to the JSON property `jobCreationReason`
+        # @return [Object]
+        attr_accessor :job_creation_reason
       
         # Reference to the Job that was created to run the query. This field will be
         # present even if the original request timed out, in which case GetQueryResults
@@ -6391,6 +6427,7 @@ module Google
           @dml_stats = args[:dml_stats] if args.key?(:dml_stats)
           @errors = args[:errors] if args.key?(:errors)
           @job_complete = args[:job_complete] if args.key?(:job_complete)
+          @job_creation_reason = args[:job_creation_reason] if args.key?(:job_creation_reason)
           @job_reference = args[:job_reference] if args.key?(:job_reference)
           @kind = args[:kind] if args.key?(:kind)
           @num_dml_affected_rows = args[:num_dml_affected_rows] if args.key?(:num_dml_affected_rows)
@@ -6708,8 +6745,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :creation_time
       
-        # Optional. Data governance specific option, if the value is DATA_MASKING, the
-        # function will be validated as masking functions.
+        # Optional. If set to `DATA_MASKING`, the function is validated and made
+        # available as a masking function. For more information, see [Create custom
+        # masking routines](https://cloud.google.com/bigquery/docs/user-defined-
+        # functions#custom-mask).
         # Corresponds to the JSON property `dataGovernanceType`
         # @return [String]
         attr_accessor :data_governance_type
@@ -7382,7 +7421,7 @@ module Google
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :range_element_type
       
-        # The fields of this struct, in order, if type_kind = "STRUCT".
+        # The representation of a SQL STRUCT type.
         # Corresponds to the JSON property `structType`
         # @return [Google::Apis::BigqueryV2::StandardSqlStructType]
         attr_accessor :struct_type
@@ -7436,11 +7475,11 @@ module Google
         end
       end
       
-      # 
+      # The representation of a SQL STRUCT type.
       class StandardSqlStructType
         include Google::Apis::Core::Hashable
       
-        # 
+        # Fields within the struct.
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::BigqueryV2::StandardSqlField>]
         attr_accessor :fields
@@ -7739,6 +7778,16 @@ module Google
         attr_accessor :require_partition_filter
         alias_method :require_partition_filter?, :require_partition_filter
       
+        # [Optional] The tags associated with this table. Tag keys are globally unique.
+        # See additional information on [tags](https://cloud.google.com/iam/docs/tags-
+        # access-control#definitions). An object containing a list of "key": value pairs.
+        # The key is the namespaced friendly name of the tag key, e.g. "12345/
+        # environment" where 12345 is parent id. The value is the friendly short name of
+        # the tag value, e.g. "production".
+        # Corresponds to the JSON property `resourceTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_tags
+      
         # [Optional] Describes the schema of this table.
         # Corresponds to the JSON property `schema`
         # @return [Google::Apis::BigqueryV2::TableSchema]
@@ -7832,6 +7881,7 @@ module Google
           @num_total_physical_bytes = args[:num_total_physical_bytes] if args.key?(:num_total_physical_bytes)
           @range_partitioning = args[:range_partitioning] if args.key?(:range_partitioning)
           @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
+          @resource_tags = args[:resource_tags] if args.key?(:resource_tags)
           @schema = args[:schema] if args.key?(:schema)
           @self_link = args[:self_link] if args.key?(:self_link)
           @snapshot_definition = args[:snapshot_definition] if args.key?(:snapshot_definition)
