@@ -1911,6 +1911,14 @@ module Google
         # @return [Google::Apis::BatchV1::Container]
         attr_accessor :container
       
+        # Optional. DisplayName is an optional field that can be provided by the caller.
+        # If provided, it will be used in logs and other outputs to identify the script,
+        # making it easier for users to understand the logs. If not provided the index
+        # of the runnable will be used for outputs.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # An Environment describes a collection of environment variables to set when
         # executing Tasks.
         # Corresponds to the JSON property `environment`
@@ -1949,6 +1957,7 @@ module Google
           @background = args[:background] if args.key?(:background)
           @barrier = args[:barrier] if args.key?(:barrier)
           @container = args[:container] if args.key?(:container)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @environment = args[:environment] if args.key?(:environment)
           @ignore_exit_status = args[:ignore_exit_status] if args.key?(:ignore_exit_status)
           @labels = args[:labels] if args.key?(:labels)
