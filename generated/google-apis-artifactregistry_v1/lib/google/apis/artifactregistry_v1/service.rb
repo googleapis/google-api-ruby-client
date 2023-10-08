@@ -295,7 +295,7 @@ module Google
         #   Required. The name of the parent resource where the repository will be created.
         # @param [Google::Apis::ArtifactregistryV1::Repository] repository_object
         # @param [String] repository_id
-        #   The repository id to use for this repository.
+        #   Required. The repository id to use for this repository.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
