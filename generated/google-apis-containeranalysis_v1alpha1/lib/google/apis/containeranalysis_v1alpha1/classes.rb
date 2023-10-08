@@ -7383,6 +7383,11 @@ module Google
         # @return [String]
         attr_accessor :effective_severity
       
+        # Occurrence-specific extra details about the vulnerability.
+        # Corresponds to the JSON property `extraDetails`
+        # @return [String]
+        attr_accessor :extra_details
+      
         # The set of affected locations and their fixes (if available) within the
         # associated resource.
         # Corresponds to the JSON property `packageIssue`
@@ -7418,6 +7423,7 @@ module Google
           @cvss_v3 = args[:cvss_v3] if args.key?(:cvss_v3)
           @cvss_version = args[:cvss_version] if args.key?(:cvss_version)
           @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
+          @extra_details = args[:extra_details] if args.key?(:extra_details)
           @package_issue = args[:package_issue] if args.key?(:package_issue)
           @severity = args[:severity] if args.key?(:severity)
           @type = args[:type] if args.key?(:type)
