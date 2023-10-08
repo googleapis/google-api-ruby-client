@@ -22,10 +22,8 @@ module Google
   module Apis
     module PlayintegrityV1
       
-      # Contains a signal helping apps differentiating between likely genuine users
-      # and likely non-genuine traffic (such as accounts being used for fraud,
-      # accounts used by automated traffic, or accounts used in device farms) based on
-      # the presence and volume of Play store activity.
+      # (Restricted Access) Contains a signal helping apps differentiating between
+      # likely genuine and likely non-genuine user traffic.
       class AccountActivity
         include Google::Apis::Core::Hashable
       
@@ -49,10 +47,8 @@ module Google
       class AccountDetails
         include Google::Apis::Core::Hashable
       
-        # Contains a signal helping apps differentiating between likely genuine users
-        # and likely non-genuine traffic (such as accounts being used for fraud,
-        # accounts used by automated traffic, or accounts used in device farms) based on
-        # the presence and volume of Play store activity.
+        # (Restricted Access) Contains a signal helping apps differentiating between
+        # likely genuine and likely non-genuine user traffic.
         # Corresponds to the JSON property `accountActivity`
         # @return [Google::Apis::PlayintegrityV1::AccountActivity]
         attr_accessor :account_activity
@@ -305,8 +301,7 @@ module Google
         end
       end
       
-      # Contains details of remediation guidance that the user can perform. See go/pia-
-      # interstitials-dd
+      # Contains details of remediation guidance that the user can perform.
       class UserRemediationDetails
         include Google::Apis::Core::Hashable
       
