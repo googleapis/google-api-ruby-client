@@ -371,8 +371,7 @@ module Google
       class GoogleCloudRunV2EnvVar
         include Google::Apis::Core::Hashable
       
-        # Required. Name of the environment variable. Must be a C_IDENTIFIER, and must
-        # not exceed 32768 characters.
+        # Required. Name of the environment variable. Must not exceed 32768 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2017,13 +2016,6 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2TrafficTargetStatus>]
         attr_accessor :traffic_statuses
       
-        # Optional. Override the traffic tag threshold limit. Garbage collection will
-        # start cleaning up non-serving tagged traffic targets based on creation item.
-        # The default value is 2000.
-        # Corresponds to the JSON property `trafficTagsCleanupThreshold`
-        # @return [Fixnum]
-        attr_accessor :traffic_tags_cleanup_threshold
-      
         # Output only. Server assigned unique identifier for the trigger. The value is a
         # UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         # Corresponds to the JSON property `uid`
@@ -2073,7 +2065,6 @@ module Google
           @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
           @traffic = args[:traffic] if args.key?(:traffic)
           @traffic_statuses = args[:traffic_statuses] if args.key?(:traffic_statuses)
-          @traffic_tags_cleanup_threshold = args[:traffic_tags_cleanup_threshold] if args.key?(:traffic_tags_cleanup_threshold)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @uri = args[:uri] if args.key?(:uri)
