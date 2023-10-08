@@ -190,6 +190,15 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Optional. The Compute Engine zone where the Airflow database is created. If
+        # zone is provided, it must be in the region selected for the environment. If
+        # zone is not provided, a zone is automatically selected. The zone can only be
+        # set during environment creation. Supported for Cloud Composer environments in
+        # versions composer-2.*.*-airflow-*.*.*.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
         def initialize(**args)
            update!(**args)
         end
@@ -197,6 +206,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -1870,12 +1880,19 @@ module Google
       class StorageConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The name of the Cloud Storage bucket used by the environment. No `gs:
+        # //` prefix.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
         end
       end
       
