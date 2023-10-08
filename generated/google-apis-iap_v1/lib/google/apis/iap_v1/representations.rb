@@ -441,6 +441,7 @@ module Google
       class Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :expected_next_state, as: 'expectedNextState'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :service, as: 'service'

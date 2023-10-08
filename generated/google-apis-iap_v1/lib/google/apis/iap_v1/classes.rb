@@ -932,6 +932,21 @@ module Google
       class Resource
         include Google::Apis::Core::Hashable
       
+        # The proto or JSON formatted expected next state of the resource, wrapped in a
+        # google.protobuf.Any proto, against which the policy rules are evaluated.
+        # Services not integrated with custom org policy can omit this field. Services
+        # integrated with custom org policy must populate this field for all requests
+        # where the API call changes the state of the resource. Custom org policy
+        # backend uses these attributes to enforce custom org policies. When a proto is
+        # wrapped, it is generally the One Platform API proto. When a JSON string is
+        # wrapped, use `google.protobuf.StringValue` for the inner value. It is
+        # sufficient to pass just the max set of attributes that are allowed for use in
+        # custom constraints; other attributes can be omitted. See go/custom-constraints-
+        # org-policy-integration-guide for additional details.
+        # Corresponds to the JSON property `expectedNextState`
+        # @return [Hash<String,Object>]
+        attr_accessor :expected_next_state
+      
         # The service defined labels of the resource on which the conditions will be
         # evaluated. The semantics - including the key names - are vague to IAM. If the
         # effective condition has a reference to a `resource.labels[foo]` construct, IAM
@@ -986,6 +1001,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @expected_next_state = args[:expected_next_state] if args.key?(:expected_next_state)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @service = args[:service] if args.key?(:service)
