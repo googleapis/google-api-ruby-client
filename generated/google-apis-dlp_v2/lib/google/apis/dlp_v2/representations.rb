@@ -2165,6 +2165,7 @@ module Google
           property :inspect_details, as: 'inspectDetails', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectDataSourceDetails, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectDataSourceDetails::Representation
       
           property :job_trigger_name, as: 'jobTriggerName'
+          property :last_modified, as: 'lastModified'
           property :name, as: 'name'
           property :risk_details, as: 'riskDetails', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails::Representation
       

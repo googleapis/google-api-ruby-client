@@ -2678,6 +2678,11 @@ module Google
         # @return [String]
         attr_accessor :job_trigger_name
       
+        # Time when the job was last modified by the system.
+        # Corresponds to the JSON property `lastModified`
+        # @return [String]
+        attr_accessor :last_modified
+      
         # The server-assigned name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2715,6 +2720,7 @@ module Google
           @errors = args[:errors] if args.key?(:errors)
           @inspect_details = args[:inspect_details] if args.key?(:inspect_details)
           @job_trigger_name = args[:job_trigger_name] if args.key?(:job_trigger_name)
+          @last_modified = args[:last_modified] if args.key?(:last_modified)
           @name = args[:name] if args.key?(:name)
           @risk_details = args[:risk_details] if args.key?(:risk_details)
           @start_time = args[:start_time] if args.key?(:start_time)
