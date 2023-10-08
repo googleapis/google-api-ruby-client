@@ -875,6 +875,7 @@ module Google
       
           property :container, as: 'container', class: Google::Apis::BatchV1::Container, decorator: Google::Apis::BatchV1::Container::Representation
       
+          property :display_name, as: 'displayName'
           property :environment, as: 'environment', class: Google::Apis::BatchV1::Environment, decorator: Google::Apis::BatchV1::Environment::Representation
       
           property :ignore_exit_status, as: 'ignoreExitStatus'
