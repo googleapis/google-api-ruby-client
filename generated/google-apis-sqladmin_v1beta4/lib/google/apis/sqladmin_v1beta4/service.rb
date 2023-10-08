@@ -679,7 +679,7 @@ module Google
         # @param [String] project
         #   Project ID of the project that contains the instance to be exported.
         # @param [String] instance
-        #   Cloud SQL instance ID. This does not include the project ID.
+        #   The Cloud SQL instance ID. This doesn't include the project ID.
         # @param [Google::Apis::SqladminV1beta4::ExportInstancesRequest] export_instances_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -984,6 +984,10 @@ module Google
         #   ID of the project that contains the read replica.
         # @param [String] instance
         #   Cloud SQL read replica instance name.
+        # @param [Boolean] failover
+        #   Set to true if the promote operation should attempt to re-add the original
+        #   primary as a replica when it comes back online. Otherwise, if this value is
+        #   false or not set, the original primary will be a standalone instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1001,12 +1005,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def promote_instance_replica(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def promote_instance_replica(project, instance, failover: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/promoteReplica', options)
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['failover'] = failover unless failover.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1250,6 +1255,44 @@ module Google
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Switches over from the primary instance to a replica instance.
+        # @param [String] project
+        #   ID of the project that contains the replica.
+        # @param [String] instance
+        #   Cloud SQL read replica instance name.
+        # @param [String] db_timeout
+        #   Optional. (MySQL only) Cloud SQL instance operations timeout, which is a sum
+        #   of all database operations. Default value is 10 minutes and can be modified to
+        #   a maximum value of 24 hours.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def switchover_instance(project, instance, db_timeout: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/switchover', options)
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['dbTimeout'] = db_timeout unless db_timeout.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
