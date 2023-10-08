@@ -2424,6 +2424,44 @@ module Google
         end
       end
       
+      # Details of operations that perform create FeatureGroup.
+      class GoogleCloudAiplatformV1beta1CreateFeatureGroupOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
+      # Details of operations that perform create FeatureOnlineStore.
+      class GoogleCloudAiplatformV1beta1CreateFeatureOnlineStoreOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
       # Details of operations that perform create Feature.
       class GoogleCloudAiplatformV1beta1CreateFeatureOperationMetadata
         include Google::Apis::Core::Hashable
@@ -2443,7 +2481,8 @@ module Google
         end
       end
       
-      # Request message for FeaturestoreService.CreateFeature.
+      # Request message for FeaturestoreService.CreateFeature. Request message for
+      # FeatureRegistryService.CreateFeature.
       class GoogleCloudAiplatformV1beta1CreateFeatureRequest
         include Google::Apis::Core::Hashable
       
@@ -2457,14 +2496,12 @@ module Google
         # Required. The ID to use for the Feature, which will become the final component
         # of the Feature's resource name. This value may be up to 128 characters, and
         # valid characters are `[a-z0-9_]`. The first character cannot be a number. The
-        # value must be unique within an EntityType .
+        # value must be unique within an EntityType/FeatureGroup.
         # Corresponds to the JSON property `featureId`
         # @return [String]
         attr_accessor :feature_id
       
-        # Required. The resource name of the EntityType to create a Feature. Format: `
-        # projects/`project`/locations/`location`/featurestores/`featurestore`/
-        # entityTypes/`entity_type``
+        # 
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -2478,6 +2515,25 @@ module Google
           @feature = args[:feature] if args.key?(:feature)
           @feature_id = args[:feature_id] if args.key?(:feature_id)
           @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # Details of operations that perform create FeatureView.
+      class GoogleCloudAiplatformV1beta1CreateFeatureViewOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
       
@@ -2633,6 +2689,25 @@ module Google
           @parent = args[:parent] if args.key?(:parent)
           @pipeline_job = args[:pipeline_job] if args.key?(:pipeline_job)
           @pipeline_job_id = args[:pipeline_job_id] if args.key?(:pipeline_job_id)
+        end
+      end
+      
+      # Details of operations that perform create FeatureGroup.
+      class GoogleCloudAiplatformV1beta1CreateRegistryFeatureOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
       
@@ -3390,6 +3465,50 @@ module Google
           @metadata_schema_uri = args[:metadata_schema_uri] if args.key?(:metadata_schema_uri)
           @name = args[:name] if args.key?(:name)
           @saved_queries = args[:saved_queries] if args.key?(:saved_queries)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Describes the dataset version.
+      class GoogleCloudAiplatformV1beta1DatasetVersion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the associated BigQuery dataset.
+        # Corresponds to the JSON property `bigQueryDatasetName`
+        # @return [String]
+        attr_accessor :big_query_dataset_name
+      
+        # Output only. Timestamp when this DatasetVersion was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Used to perform consistent read-modify-write updates. If not set, a blind "
+        # overwrite" update happens.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The resource name of the DatasetVersion.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Timestamp when this DatasetVersion was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @big_query_dataset_name = args[:big_query_dataset_name] if args.key?(:big_query_dataset_name)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -5666,6 +5785,15 @@ module Google
         # @return [String]
         attr_accessor :annotations_filter
       
+        # Assigns input data to training, validation, and test sets based on the given
+        # filters, data pieces not matched by any filter are ignored. Currently only
+        # supported for Datasets containing DataItems. If any of the filters in this
+        # message are to match nothing, then they can be set as '-' (the minus sign).
+        # Supported only for unstructured Datasets.
+        # Corresponds to the JSON property `filterSplit`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExportFilterSplit]
+        attr_accessor :filter_split
+      
         # Assigns the input data to training, validation, and test sets as per the given
         # fractions. Any of `training_fraction`, `validation_fraction` and `
         # test_fraction` may optionally be provided, they must sum to up to 1. If the
@@ -5688,6 +5816,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations_filter = args[:annotations_filter] if args.key?(:annotations_filter)
+          @filter_split = args[:filter_split] if args.key?(:filter_split)
           @fraction_split = args[:fraction_split] if args.key?(:fraction_split)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
         end
@@ -5947,6 +6076,53 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Assigns input data to training, validation, and test sets based on the given
+      # filters, data pieces not matched by any filter are ignored. Currently only
+      # supported for Datasets containing DataItems. If any of the filters in this
+      # message are to match nothing, then they can be set as '-' (the minus sign).
+      # Supported only for unstructured Datasets.
+      class GoogleCloudAiplatformV1beta1ExportFilterSplit
+        include Google::Apis::Core::Hashable
+      
+        # Required. A filter on DataItems of the Dataset. DataItems that match this
+        # filter are used to test the Model. A filter with same syntax as the one used
+        # in DatasetService.ListDataItems may be used. If a single DataItem is matched
+        # by more than one of the FilterSplit filters, then it is assigned to the first
+        # set that applies to it in the training, validation, test order.
+        # Corresponds to the JSON property `testFilter`
+        # @return [String]
+        attr_accessor :test_filter
+      
+        # Required. A filter on DataItems of the Dataset. DataItems that match this
+        # filter are used to train the Model. A filter with same syntax as the one used
+        # in DatasetService.ListDataItems may be used. If a single DataItem is matched
+        # by more than one of the FilterSplit filters, then it is assigned to the first
+        # set that applies to it in the training, validation, test order.
+        # Corresponds to the JSON property `trainingFilter`
+        # @return [String]
+        attr_accessor :training_filter
+      
+        # Required. A filter on DataItems of the Dataset. DataItems that match this
+        # filter are used to validate the Model. A filter with same syntax as the one
+        # used in DatasetService.ListDataItems may be used. If a single DataItem is
+        # matched by more than one of the FilterSplit filters, then it is assigned to
+        # the first set that applies to it in the training, validation, test order.
+        # Corresponds to the JSON property `validationFilter`
+        # @return [String]
+        attr_accessor :validation_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @test_filter = args[:test_filter] if args.key?(:test_filter)
+          @training_filter = args[:training_filter] if args.key?(:training_filter)
+          @validation_filter = args[:validation_filter] if args.key?(:validation_filter)
         end
       end
       
@@ -6274,6 +6450,95 @@ module Google
         end
       end
       
+      # Vertex AI Feature Group.
+      class GoogleCloudAiplatformV1beta1FeatureGroup
+        include Google::Apis::Core::Hashable
+      
+        # Input source type for BigQuery Tables and Views.
+        # Corresponds to the JSON property `bigQuery`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureGroupBigQuery]
+        attr_accessor :big_query
+      
+        # Output only. Timestamp when this FeatureGroup was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of the FeatureGroup.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Used to perform consistent read-modify-write updates. If not set, a
+        # blind "overwrite" update happens.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. The labels with user-defined metadata to organize your FeatureGroup.
+        # Label keys and values can be no longer than 64 characters (Unicode codepoints),
+        # can only contain lowercase letters, numeric characters, underscores and
+        # dashes. International characters are allowed. See https://goo.gl/xmQnxf for
+        # more information on and examples of labels. No more than 64 user labels can be
+        # associated with one FeatureGroup(System labels are excluded)." System reserved
+        # label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Name of the FeatureGroup. Format: `projects/`project`/locations/`
+        # location`/featureGroups/`featureGroup``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Timestamp when this FeatureGroup was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @big_query = args[:big_query] if args.key?(:big_query)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Input source type for BigQuery Tables and Views.
+      class GoogleCloudAiplatformV1beta1FeatureGroupBigQuery
+        include Google::Apis::Core::Hashable
+      
+        # The BigQuery location for the input content.
+        # Corresponds to the JSON property `bigQuerySource`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BigQuerySource]
+        attr_accessor :big_query_source
+      
+        # Optional. Columns to construct entity_id / row keys. Currently only supports 1
+        # entity_id_column. If not provided defaults to `entity_id`.
+        # Corresponds to the JSON property `entityIdColumns`
+        # @return [Array<String>]
+        attr_accessor :entity_id_columns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @big_query_source = args[:big_query_source] if args.key?(:big_query_source)
+          @entity_id_columns = args[:entity_id_columns] if args.key?(:entity_id_columns)
+        end
+      end
+      
       # A list of historical SnapshotAnalysis or ImportFeaturesAnalysis stats
       # requested by user, sorted by FeatureStatsAnomaly.start_time descending.
       class GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomaly
@@ -6354,6 +6619,184 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @sigma = args[:sigma] if args.key?(:sigma)
+        end
+      end
+      
+      # Vertex AI Feature Online Store provides a centralized repository for serving
+      # ML features and embedding indexes at low latency. The Feature Online Store is
+      # a top-level container.
+      class GoogleCloudAiplatformV1beta1FeatureOnlineStore
+        include Google::Apis::Core::Hashable
+      
+        # Contains settings for the Cloud Bigtable instance that will be created to
+        # serve featureValues for all FeatureViews under this FeatureOnlineStore.
+        # Corresponds to the JSON property `bigtable`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable]
+        attr_accessor :bigtable
+      
+        # Output only. Timestamp when this FeatureOnlineStore was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The dedicated serving endpoint for this FeatureOnlineStore.
+        # Corresponds to the JSON property `dedicatedServingEndpoint`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint]
+        attr_accessor :dedicated_serving_endpoint
+      
+        # Contains settings for embedding management.
+        # Corresponds to the JSON property `embeddingManagement`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement]
+        attr_accessor :embedding_management
+      
+        # Optional. Used to perform consistent read-modify-write updates. If not set, a
+        # blind "overwrite" update happens.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. The labels with user-defined metadata to organize your
+        # FeatureOnlineStore. Label keys and values can be no longer than 64 characters (
+        # Unicode codepoints), can only contain lowercase letters, numeric characters,
+        # underscores and dashes. International characters are allowed. See https://goo.
+        # gl/xmQnxf for more information on and examples of labels. No more than 64 user
+        # labels can be associated with one FeatureOnlineStore(System labels are
+        # excluded)." System reserved label keys are prefixed with "aiplatform.
+        # googleapis.com/" and are immutable.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Name of the FeatureOnlineStore. Format: `projects/`project`/
+        # locations/`location`/featureOnlineStores/`featureOnlineStore``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. State of the featureOnlineStore.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Timestamp when this FeatureOnlineStore was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigtable = args[:bigtable] if args.key?(:bigtable)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @dedicated_serving_endpoint = args[:dedicated_serving_endpoint] if args.key?(:dedicated_serving_endpoint)
+          @embedding_management = args[:embedding_management] if args.key?(:embedding_management)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # 
+      class GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable
+        include Google::Apis::Core::Hashable
+      
+        # Required. Autoscaling config applied to Bigtable Instance.
+        # Corresponds to the JSON property `autoScaling`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling]
+        attr_accessor :auto_scaling
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_scaling = args[:auto_scaling] if args.key?(:auto_scaling)
+        end
+      end
+      
+      # 
+      class GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A percentage of the cluster's CPU capacity. Can be from 10% to 80%.
+        # When a cluster's CPU utilization exceeds the target that you have set,
+        # Bigtable immediately adds nodes to the cluster. When CPU utilization is
+        # substantially lower than the target, Bigtable removes nodes. If not set will
+        # default to 50%.
+        # Corresponds to the JSON property `cpuUtilizationTarget`
+        # @return [Fixnum]
+        attr_accessor :cpu_utilization_target
+      
+        # Required. The maximum number of nodes to scale up to. Must be greater than or
+        # equal to min_node_count, and less than or equal to 10 times of 'min_node_count'
+        # .
+        # Corresponds to the JSON property `maxNodeCount`
+        # @return [Fixnum]
+        attr_accessor :max_node_count
+      
+        # Required. The minimum number of nodes to scale down to. Must be greater than
+        # or equal to 1.
+        # Corresponds to the JSON property `minNodeCount`
+        # @return [Fixnum]
+        attr_accessor :min_node_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu_utilization_target = args[:cpu_utilization_target] if args.key?(:cpu_utilization_target)
+          @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
+          @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+        end
+      end
+      
+      # The dedicated serving endpoint for this FeatureOnlineStore.
+      class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # Output only. This field will be populated with the domain name to use for this
+        # FeatureOnlineStore
+        # Corresponds to the JSON property `publicEndpointDomainName`
+        # @return [String]
+        attr_accessor :public_endpoint_domain_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_endpoint_domain_name = args[:public_endpoint_domain_name] if args.key?(:public_endpoint_domain_name)
+        end
+      end
+      
+      # Contains settings for embedding management.
+      class GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Immutable. Whether to enable embedding management in this
+        # FeatureOnlineStore. It's immutable after creation to ensure the
+        # FeatureOnlineStore availability.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -6604,6 +7047,329 @@ module Google
         # Update properties of this object
         def update!(**args)
           @generate_time = args[:generate_time] if args.key?(:generate_time)
+        end
+      end
+      
+      # FeatureView is representation of values that the FeatureOnlineStore will serve
+      # based on its syncConfig.
+      class GoogleCloudAiplatformV1beta1FeatureView
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Configures how data is supposed to be extracted from a BigQuery
+        # source to be loaded onto the FeatureOnlineStore.
+        # Corresponds to the JSON property `bigQuerySource`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource]
+        attr_accessor :big_query_source
+      
+        # Output only. Timestamp when this FeatureView was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Used to perform consistent read-modify-write updates. If not set, a
+        # blind "overwrite" update happens.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # A Feature Registry source for features that need to be synced to Online Store.
+        # Corresponds to the JSON property `featureRegistrySource`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource]
+        attr_accessor :feature_registry_source
+      
+        # Optional. The labels with user-defined metadata to organize your FeatureViews.
+        # Label keys and values can be no longer than 64 characters (Unicode codepoints),
+        # can only contain lowercase letters, numeric characters, underscores and
+        # dashes. International characters are allowed. See https://goo.gl/xmQnxf for
+        # more information on and examples of labels. No more than 64 user labels can be
+        # associated with one FeatureOnlineStore(System labels are excluded)." System
+        # reserved label keys are prefixed with "aiplatform.googleapis.com/" and are
+        # immutable.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Name of the FeatureView. Format: `projects/`project`/locations/`
+        # location`/featureOnlineStores/`feature_online_store`/featureViews/`
+        # feature_view``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configures when data is to be synced/updated for this FeatureView. At the end
+        # of the sync the latest featureValues for each entityId of this FeatureView are
+        # made ready for online serving.
+        # Corresponds to the JSON property `syncConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewSyncConfig]
+        attr_accessor :sync_config
+      
+        # Output only. Timestamp when this FeatureView was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Configuration for vector search.
+        # Corresponds to the JSON property `vectorSearchConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig]
+        attr_accessor :vector_search_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @big_query_source = args[:big_query_source] if args.key?(:big_query_source)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @feature_registry_source = args[:feature_registry_source] if args.key?(:feature_registry_source)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @sync_config = args[:sync_config] if args.key?(:sync_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @vector_search_config = args[:vector_search_config] if args.key?(:vector_search_config)
+        end
+      end
+      
+      # 
+      class GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Columns to construct entity_id / row keys. Start by supporting 1
+        # only.
+        # Corresponds to the JSON property `entityIdColumns`
+        # @return [Array<String>]
+        attr_accessor :entity_id_columns
+      
+        # Required. The Bigquery View URI that will be materialized on each sync trigger
+        # based on FeatureView.SyncConfig.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_id_columns = args[:entity_id_columns] if args.key?(:entity_id_columns)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # A Feature Registry source for features that need to be synced to Online Store.
+      class GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of features that need to be synced to Online Store.
+        # Corresponds to the JSON property `featureGroups`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup>]
+        attr_accessor :feature_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feature_groups = args[:feature_groups] if args.key?(:feature_groups)
+        end
+      end
+      
+      # Features belonging to a single feature group that will be synced to Online
+      # Store.
+      class GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup
+        include Google::Apis::Core::Hashable
+      
+        # Required. Identifier of the feature group.
+        # Corresponds to the JSON property `featureGroupId`
+        # @return [String]
+        attr_accessor :feature_group_id
+      
+        # Required. Identifiers of features under the feature group.
+        # Corresponds to the JSON property `featureIds`
+        # @return [Array<String>]
+        attr_accessor :feature_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feature_group_id = args[:feature_group_id] if args.key?(:feature_group_id)
+          @feature_ids = args[:feature_ids] if args.key?(:feature_ids)
+        end
+      end
+      
+      # FeatureViewSync is a representation of sync operation which copies data from
+      # data source to Feature View in Online Store.
+      class GoogleCloudAiplatformV1beta1FeatureViewSync
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when this FeatureViewSync is created. Creation of a
+        # FeatureViewSync means that the job is pending / waiting for sufficient
+        # resources but may not have started the actual data transfer yet.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `finalStatus`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleRpcStatus]
+        attr_accessor :final_status
+      
+        # Output only. Name of the FeatureViewSync. Format: `projects/`project`/
+        # locations/`location`/featureOnlineStores/`feature_online_store`/featureViews/`
+        # feature_view`/featureViewSyncs/`feature_view_sync``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `runTime`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleTypeInterval]
+        attr_accessor :run_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @final_status = args[:final_status] if args.key?(:final_status)
+          @name = args[:name] if args.key?(:name)
+          @run_time = args[:run_time] if args.key?(:run_time)
+        end
+      end
+      
+      # 
+      class GoogleCloudAiplatformV1beta1FeatureViewSyncConfig
+        include Google::Apis::Core::Hashable
+      
+        # Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+        # To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "
+        # CRON_TZ=$`IANA_TIME_ZONE`" or "TZ=$`IANA_TIME_ZONE`". The $`IANA_TIME_ZONE`
+        # may only be a valid string from IANA time zone database. For example, "CRON_TZ=
+        # America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        # Corresponds to the JSON property `cron`
+        # @return [String]
+        attr_accessor :cron
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cron = args[:cron] if args.key?(:cron)
+        end
+      end
+      
+      # Configuration for vector search.
+      class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Configuration options for using brute force search, which simply
+        # implements the standard linear search in the database for each query. It is
+        # primarily meant for benchmarking and to generate the ground truth for
+        # approximate search.
+        # Corresponds to the JSON property `bruteForceConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfig]
+        attr_accessor :brute_force_config
+      
+        # Optional. Column of crowding. This column contains crowding attribute which is
+        # a constraint on a neighbor list produced by nearest neighbor search requiring
+        # that no more than some value k' of the k neighbors returned have the same
+        # value of crowding_attribute.
+        # Corresponds to the JSON property `crowdingColumn`
+        # @return [String]
+        attr_accessor :crowding_column
+      
+        # Optional. The distance measure used in nearest neighbor search.
+        # Corresponds to the JSON property `distanceMeasureType`
+        # @return [String]
+        attr_accessor :distance_measure_type
+      
+        # Optional. Column of embedding. This column contains the source data to create
+        # index for vector search. embedding_column must be set when using vector search.
+        # Corresponds to the JSON property `embeddingColumn`
+        # @return [String]
+        attr_accessor :embedding_column
+      
+        # Optional. The number of dimensions of the input embedding.
+        # Corresponds to the JSON property `embeddingDimension`
+        # @return [Fixnum]
+        attr_accessor :embedding_dimension
+      
+        # Optional. Columns of features that're used to filter vector search results.
+        # Corresponds to the JSON property `filterColumns`
+        # @return [Array<String>]
+        attr_accessor :filter_columns
+      
+        # Optional. Configuration options for the tree-AH algorithm (Shallow tree +
+        # Asymmetric Hashing). Please refer to this paper for more details: https://
+        # arxiv.org/abs/1908.10396
+        # Corresponds to the JSON property `treeAhConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAhConfig]
+        attr_accessor :tree_ah_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @brute_force_config = args[:brute_force_config] if args.key?(:brute_force_config)
+          @crowding_column = args[:crowding_column] if args.key?(:crowding_column)
+          @distance_measure_type = args[:distance_measure_type] if args.key?(:distance_measure_type)
+          @embedding_column = args[:embedding_column] if args.key?(:embedding_column)
+          @embedding_dimension = args[:embedding_dimension] if args.key?(:embedding_dimension)
+          @filter_columns = args[:filter_columns] if args.key?(:filter_columns)
+          @tree_ah_config = args[:tree_ah_config] if args.key?(:tree_ah_config)
+        end
+      end
+      
+      # 
+      class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # 
+      class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAhConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Number of embeddings on each leaf node. The default value is 1000 if
+        # not set.
+        # Corresponds to the JSON property `leafNodeEmbeddingCount`
+        # @return [Fixnum]
+        attr_accessor :leaf_node_embedding_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @leaf_node_embedding_count = args[:leaf_node_embedding_count] if args.key?(:leaf_node_embedding_count)
         end
       end
       
@@ -6905,6 +7671,104 @@ module Google
           @cpu_utilization_target = args[:cpu_utilization_target] if args.key?(:cpu_utilization_target)
           @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
           @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+        end
+      end
+      
+      # Request message for FeatureOnlineStoreService.FetchFeatureValues. All the
+      # features under the requested feature view will be returned.
+      class GoogleCloudAiplatformV1beta1FetchFeatureValuesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specify response data format. If not set, KeyValue format will be used.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # Simple ID. The whole string will be used as is to identify Entity to fetch
+        # feature values for.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @format = args[:format] if args.key?(:format)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Response message for FeatureOnlineStoreService.FetchFeatureValues
+      class GoogleCloudAiplatformV1beta1FetchFeatureValuesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Response structure in the format of key (feature name) and (feature) value
+        # pair.
+        # Corresponds to the JSON property `keyValues`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FetchFeatureValuesResponseFeatureNameValuePairList]
+        attr_accessor :key_values
+      
+        # Feature values in proto Struct format.
+        # Corresponds to the JSON property `protoStruct`
+        # @return [Hash<String,Object>]
+        attr_accessor :proto_struct
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_values = args[:key_values] if args.key?(:key_values)
+          @proto_struct = args[:proto_struct] if args.key?(:proto_struct)
+        end
+      end
+      
+      # Response structure in the format of key (feature name) and (feature) value
+      # pair.
+      class GoogleCloudAiplatformV1beta1FetchFeatureValuesResponseFeatureNameValuePairList
+        include Google::Apis::Core::Hashable
+      
+        # List of feature names and values.
+        # Corresponds to the JSON property `features`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair>]
+        attr_accessor :features
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @features = args[:features] if args.key?(:features)
+        end
+      end
+      
+      # Feature name & value pair.
+      class GoogleCloudAiplatformV1beta1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair
+        include Google::Apis::Core::Hashable
+      
+        # Feature short name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Value for a feature.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -7289,6 +8153,26 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @partial_failures = args[:partial_failures] if args.key?(:partial_failures)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Contains information about the source of the models generated from Generative
+      # AI Studio.
+      class GoogleCloudAiplatformV1beta1GenieSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The public base model URI.
+        # Corresponds to the JSON property `baseModelUri`
+        # @return [String]
+        attr_accessor :base_model_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_model_uri = args[:base_model_uri] if args.key?(:base_model_uri)
         end
       end
       
@@ -8619,6 +9503,31 @@ module Google
         end
       end
       
+      # Response message for DatasetService.ListDatasetVersions.
+      class GoogleCloudAiplatformV1beta1ListDatasetVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of DatasetVersions that matches the specified filter in the request.
+        # Corresponds to the JSON property `datasetVersions`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetVersion>]
+        attr_accessor :dataset_versions
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_versions = args[:dataset_versions] if args.key?(:dataset_versions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for DatasetService.ListDatasets.
       class GoogleCloudAiplatformV1beta1ListDatasetsResponse
         include Google::Apis::Core::Hashable
@@ -8748,7 +9657,114 @@ module Google
         end
       end
       
-      # Response message for FeaturestoreService.ListFeatures.
+      # Response message for FeatureRegistryService.ListFeatureGroups.
+      class GoogleCloudAiplatformV1beta1ListFeatureGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The FeatureGroups matching the request.
+        # Corresponds to the JSON property `featureGroups`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureGroup>]
+        attr_accessor :feature_groups
+      
+        # A token, which can be sent as ListFeatureGroupsRequest.page_token to retrieve
+        # the next page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feature_groups = args[:feature_groups] if args.key?(:feature_groups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for FeatureOnlineStoreAdminService.ListFeatureOnlineStores.
+      class GoogleCloudAiplatformV1beta1ListFeatureOnlineStoresResponse
+        include Google::Apis::Core::Hashable
+      
+        # The FeatureOnlineStores matching the request.
+        # Corresponds to the JSON property `featureOnlineStores`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureOnlineStore>]
+        attr_accessor :feature_online_stores
+      
+        # A token, which can be sent as ListFeatureOnlineStoresRequest.page_token to
+        # retrieve the next page. If this field is omitted, there are no subsequent
+        # pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feature_online_stores = args[:feature_online_stores] if args.key?(:feature_online_stores)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for FeatureOnlineStoreAdminService.ListFeatureViewSyncs.
+      class GoogleCloudAiplatformV1beta1ListFeatureViewSyncsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The FeatureViewSyncs matching the request.
+        # Corresponds to the JSON property `featureViewSyncs`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewSync>]
+        attr_accessor :feature_view_syncs
+      
+        # A token, which can be sent as ListFeatureViewSyncsRequest.page_token to
+        # retrieve the next page. If this field is omitted, there are no subsequent
+        # pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feature_view_syncs = args[:feature_view_syncs] if args.key?(:feature_view_syncs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for FeatureOnlineStoreAdminService.ListFeatureViews.
+      class GoogleCloudAiplatformV1beta1ListFeatureViewsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The FeatureViews matching the request.
+        # Corresponds to the JSON property `featureViews`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureView>]
+        attr_accessor :feature_views
+      
+        # A token, which can be sent as ListFeatureViewsRequest.page_token to retrieve
+        # the next page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feature_views = args[:feature_views] if args.key?(:feature_views)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for FeaturestoreService.ListFeatures. Response message for
+      # FeatureRegistryService.ListFeatures.
       class GoogleCloudAiplatformV1beta1ListFeaturesResponse
         include Google::Apis::Core::Hashable
       
@@ -9251,6 +10267,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @pipeline_jobs = args[:pipeline_jobs] if args.key?(:pipeline_jobs)
+        end
+      end
+      
+      # Response message for ModelGardenService.ListPublisherModels.
+      class GoogleCloudAiplatformV1beta1ListPublisherModelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve next page of results. Pass to ListPublisherModels.
+        # page_token to obtain that page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of PublisherModels in the requested page.
+        # Corresponds to the JSON property `publisherModels`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModel>]
+        attr_accessor :publisher_models
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @publisher_models = args[:publisher_models] if args.key?(:publisher_models)
         end
       end
       
@@ -10273,6 +11315,12 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExplanationSpec]
         attr_accessor :explanation_spec
       
+        # Used to specify the source of the Model Garden model or Genie models. Only
+        # present for models created or tuned from Model Garden and Genie.
+        # Corresponds to the JSON property `generatedModelSource`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelGeneratedModelSource]
+        attr_accessor :generated_model_source
+      
         # The labels with user-defined metadata to organize your Models. Label keys and
         # values can be no longer than 64 characters (Unicode codepoints), can only
         # contain lowercase letters, numeric characters, underscores and dashes.
@@ -10446,6 +11494,7 @@ module Google
           @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @etag = args[:etag] if args.key?(:etag)
           @explanation_spec = args[:explanation_spec] if args.key?(:explanation_spec)
+          @generated_model_source = args[:generated_model_source] if args.key?(:generated_model_source)
           @labels = args[:labels] if args.key?(:labels)
           @metadata = args[:metadata] if args.key?(:metadata)
           @metadata_artifact = args[:metadata_artifact] if args.key?(:metadata_artifact)
@@ -11364,6 +12413,54 @@ module Google
         def update!(**args)
           @exportable_contents = args[:exportable_contents] if args.key?(:exportable_contents)
           @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Contains information about the source of the models generated from Model
+      # Garden.
+      class GoogleCloudAiplatformV1beta1ModelGardenSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The model garden source model resource name.
+        # Corresponds to the JSON property `publicModelName`
+        # @return [String]
+        attr_accessor :public_model_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_model_name = args[:public_model_name] if args.key?(:public_model_name)
+        end
+      end
+      
+      # Used to specify the source of the Model Garden model or Genie models. Only
+      # present for models created or tuned from Model Garden and Genie.
+      class GoogleCloudAiplatformV1beta1ModelGeneratedModelSource
+        include Google::Apis::Core::Hashable
+      
+        # Contains information about the source of the models generated from Generative
+        # AI Studio.
+        # Corresponds to the JSON property `genieSource`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenieSource]
+        attr_accessor :genie_source
+      
+        # Contains information about the source of the models generated from Model
+        # Garden.
+        # Corresponds to the JSON property `modelGardenSource`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelGardenSource]
+        attr_accessor :model_garden_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @genie_source = args[:genie_source] if args.key?(:genie_source)
+          @model_garden_source = args[:model_garden_source] if args.key?(:model_garden_source)
         end
       end
       
@@ -12329,6 +13426,145 @@ module Google
         end
       end
       
+      # A query to find a number of similar entities.
+      class GoogleCloudAiplatformV1beta1NearestNeighborQuery
+        include Google::Apis::Core::Hashable
+      
+        # The embedding vector.
+        # Corresponds to the JSON property `embedding`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NearestNeighborQueryEmbedding]
+        attr_accessor :embedding
+      
+        # Optional. The entity id whose similar entities should be searched for. If
+        # embedding is set, search will use embedding instead of entity_id.
+        # Corresponds to the JSON property `entityId`
+        # @return [String]
+        attr_accessor :entity_id
+      
+        # Optional. The number of similar entities to be retrieved from feature view for
+        # each query.
+        # Corresponds to the JSON property `neighborCount`
+        # @return [Fixnum]
+        attr_accessor :neighbor_count
+      
+        # Parameters that can be overrided in each query to tune query latency and
+        # recall.
+        # Corresponds to the JSON property `parameters`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NearestNeighborQueryParameters]
+        attr_accessor :parameters
+      
+        # Optional. Crowding is a constraint on a neighbor list produced by nearest
+        # neighbor search requiring that no more than
+        # sper_crowding_attribute_neighbor_count of the k neighbors returned have the
+        # same value of crowding_attribute. It's used for improving result diversity.
+        # Corresponds to the JSON property `perCrowdingAttributeNeighborCount`
+        # @return [Fixnum]
+        attr_accessor :per_crowding_attribute_neighbor_count
+      
+        # Optional. The list of string filters.
+        # Corresponds to the JSON property `stringFilters`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NearestNeighborQueryStringFilter>]
+        attr_accessor :string_filters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @embedding = args[:embedding] if args.key?(:embedding)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+          @neighbor_count = args[:neighbor_count] if args.key?(:neighbor_count)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @per_crowding_attribute_neighbor_count = args[:per_crowding_attribute_neighbor_count] if args.key?(:per_crowding_attribute_neighbor_count)
+          @string_filters = args[:string_filters] if args.key?(:string_filters)
+        end
+      end
+      
+      # The embedding vector.
+      class GoogleCloudAiplatformV1beta1NearestNeighborQueryEmbedding
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Individual value in the embedding.
+        # Corresponds to the JSON property `value`
+        # @return [Array<Float>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Parameters that can be overrided in each query to tune query latency and
+      # recall.
+      class GoogleCloudAiplatformV1beta1NearestNeighborQueryParameters
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of neighbors to find via approximate search before exact
+        # reordering is performed; if set, this value must be > neighbor_count.
+        # Corresponds to the JSON property `approximateNeighborCandidates`
+        # @return [Fixnum]
+        attr_accessor :approximate_neighbor_candidates
+      
+        # Optional. The fraction of the number of leaves to search, set at query time
+        # allows user to tune search performance. This value increase result in both
+        # search accuracy and latency increase. The value should be between 0.0 and 1.0.
+        # Corresponds to the JSON property `leafNodesSearchFraction`
+        # @return [Float]
+        attr_accessor :leaf_nodes_search_fraction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approximate_neighbor_candidates = args[:approximate_neighbor_candidates] if args.key?(:approximate_neighbor_candidates)
+          @leaf_nodes_search_fraction = args[:leaf_nodes_search_fraction] if args.key?(:leaf_nodes_search_fraction)
+        end
+      end
+      
+      # String filter is used to search a subset of the entities by using boolean
+      # rules. For example: if a query specifies string filter with 'name = color,
+      # allow_tokens = `red, blue`, deny_tokens = `purple`',' then that query will
+      # match entities that are red or blue, but if those points are also purple, then
+      # they will be excluded even if they are red/blue. Only string filter is
+      # supported for now, numeric filter will be supported in the near future.
+      class GoogleCloudAiplatformV1beta1NearestNeighborQueryStringFilter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The allowed tokens.
+        # Corresponds to the JSON property `allowTokens`
+        # @return [Array<String>]
+        attr_accessor :allow_tokens
+      
+        # Optional. The denied tokens.
+        # Corresponds to the JSON property `denyTokens`
+        # @return [Array<String>]
+        attr_accessor :deny_tokens
+      
+        # Required. Column names in BigQuery that used as filters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_tokens = args[:allow_tokens] if args.key?(:allow_tokens)
+          @deny_tokens = args[:deny_tokens] if args.key?(:deny_tokens)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Runtime operation metadata with regard to Matching Engine Index.
       class GoogleCloudAiplatformV1beta1NearestNeighborSearchOperationMetadata
         include Google::Apis::Core::Hashable
@@ -12438,6 +13674,56 @@ module Google
           @error_type = args[:error_type] if args.key?(:error_type)
           @raw_record = args[:raw_record] if args.key?(:raw_record)
           @source_gcs_uri = args[:source_gcs_uri] if args.key?(:source_gcs_uri)
+        end
+      end
+      
+      # Nearest neighbors for one query.
+      class GoogleCloudAiplatformV1beta1NearestNeighbors
+        include Google::Apis::Core::Hashable
+      
+        # All its neighbors.
+        # Corresponds to the JSON property `neighbors`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NearestNeighborsNeighbor>]
+        attr_accessor :neighbors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @neighbors = args[:neighbors] if args.key?(:neighbors)
+        end
+      end
+      
+      # A neighbor of the query vector.
+      class GoogleCloudAiplatformV1beta1NearestNeighborsNeighbor
+        include Google::Apis::Core::Hashable
+      
+        # The distance between the neighbor and the query vector.
+        # Corresponds to the JSON property `distance`
+        # @return [Float]
+        attr_accessor :distance
+      
+        # The id of the similar entity.
+        # Corresponds to the JSON property `entityId`
+        # @return [String]
+        attr_accessor :entity_id
+      
+        # Response message for FeatureOnlineStoreService.FetchFeatureValues
+        # Corresponds to the JSON property `entityKeyValues`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FetchFeatureValuesResponse]
+        attr_accessor :entity_key_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distance = args[:distance] if args.key?(:distance)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+          @entity_key_values = args[:entity_key_values] if args.key?(:entity_key_values)
         end
       end
       
@@ -12637,14 +13923,14 @@ module Google
         # keys and values can be no longer than 64 characters (Unicode codepoints), can
         # only contain lowercase letters, numeric characters, underscores and dashes.
         # International characters are allowed. No more than 64 user labels can be
-        # associated with one Dataset (System labels are excluded). See https://goo.gl/
-        # xmQnxf for more information and examples of labels. System reserved label keys
-        # are prefixed with "aiplatform.googleapis.com/" and are immutable. Following
-        # system labels exist for NotebookRuntime: * "aiplatform.googleapis.com/
-        # notebook_runtime_gce_instance_id": output only, its value is the Compute
+        # associated with one NotebookRuntime (System labels are excluded). See https://
+        # goo.gl/xmQnxf for more information and examples of labels. System reserved
+        # label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+        # Following system labels exist for NotebookRuntime: * "aiplatform.googleapis.
+        # com/notebook_runtime_gce_instance_id": output only, its value is the Compute
         # Engine instance id. * "aiplatform.googleapis.com/
-        # colab_enterprise_entry_service": its value is either "BigQuery" or "Vertex";
-        # if absent, it should be "Vertex". This is to describe the entry service,
+        # colab_enterprise_entry_service": its value is either "bigquery" or "vertex";
+        # if absent, it should be "vertex". This is to describe the entry service,
         # either BigQuery or Vertex.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -12659,6 +13945,11 @@ module Google
         # Corresponds to the JSON property `notebookRuntimeTemplateRef`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookRuntimeTemplateRef]
         attr_accessor :notebook_runtime_template_ref
+      
+        # Output only. The type of the notebook runtime.
+        # Corresponds to the JSON property `notebookRuntimeType`
+        # @return [String]
+        attr_accessor :notebook_runtime_type
       
         # Output only. The proxy endpoint used to access the NotebookRuntime.
         # Corresponds to the JSON property `proxyUri`
@@ -12704,6 +13995,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @notebook_runtime_template_ref = args[:notebook_runtime_template_ref] if args.key?(:notebook_runtime_template_ref)
+          @notebook_runtime_type = args[:notebook_runtime_type] if args.key?(:notebook_runtime_type)
           @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)
           @runtime_state = args[:runtime_state] if args.key?(:runtime_state)
           @runtime_user = args[:runtime_user] if args.key?(:runtime_user)
@@ -12787,6 +14079,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NetworkSpec]
         attr_accessor :network_spec
       
+        # Optional. Immutable. The type of the notebook runtime template.
+        # Corresponds to the JSON property `notebookRuntimeType`
+        # @return [String]
+        attr_accessor :notebook_runtime_type
+      
         # The service account that the runtime workload runs as. You can use any service
         # account within the same project, but you must have the service account user
         # permission to use the instance. If not specified, the [Compute Engine default
@@ -12820,6 +14117,7 @@ module Google
           @machine_spec = args[:machine_spec] if args.key?(:machine_spec)
           @name = args[:name] if args.key?(:name)
           @network_spec = args[:network_spec] if args.key?(:network_spec)
+          @notebook_runtime_type = args[:notebook_runtime_type] if args.key?(:notebook_runtime_type)
           @service_account = args[:service_account] if args.key?(:service_account)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -12953,16 +14251,16 @@ module Google
         # in `12345`, and `network` is a network name. To specify this field, you must
         # have already [configured VPC Network Peering for Vertex AI](https://cloud.
         # google.com/vertex-ai/docs/general/vpc-peering). If this field is left
-        # unspecified, the resources is not peered with any network.
+        # unspecified, the resources aren't peered with any network.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Optional. A list of names for the reserved ip ranges under the VPC network
+        # Optional. A list of names for the reserved IP ranges under the VPC network
         # that can be used for this persistent resource. If set, we will deploy the
-        # persistent resource within the provided ip ranges. Otherwise, the persistent
-        # resource will be deployed to any ip ranges under the provided VPC network.
-        # Example: ['vertex-ai-ip-range'].
+        # persistent resource within the provided IP ranges. Otherwise, the persistent
+        # resource is deployed to any IP ranges under the provided VPC network. Example:
+        # ['vertex-ai-ip-range'].
         # Corresponds to the JSON property `reservedIpRanges`
         # @return [Array<String>]
         attr_accessor :reserved_ip_ranges
@@ -12977,9 +14275,9 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ResourceRuntime]
         attr_accessor :resource_runtime
       
-        # Configure runtime on a PersistentResource instance, including but may not
-        # limited to: * Service accounts used to run the workloads; * Whether make it a
-        # dedicated Ray Cluster;
+        # Configuration for the runtime on a PersistentResource instance, including but
+        # not limited to: * Service accounts used to run the workloads. * Whether to
+        # make it a dedicated Ray Cluster.
         # Corresponds to the JSON property `resourceRuntimeSpec`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ResourceRuntimeSpec]
         attr_accessor :resource_runtime_spec
@@ -13145,7 +14443,9 @@ module Google
         attr_accessor :template_metadata
       
         # A template uri from where the PipelineJob.pipeline_spec, if empty, will be
-        # downloaded.
+        # downloaded. Currently, only uri from Vertex Template Registry & Gallery is
+        # supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/
+        # create-pipeline-template.
         # Corresponds to the JSON property `templateUri`
         # @return [String]
         attr_accessor :template_uri
@@ -14602,22 +15902,22 @@ module Google
       
         # Optional. This will be used to indicate which resource pool will serve as the
         # Ray head node(the first node within that pool). Will use the machine from the
-        # first workerpool as the head node by default if this field is not set.
+        # first workerpool as the head node by default if this field isn't set.
         # Corresponds to the JSON property `headNodeResourcePoolId`
         # @return [String]
         attr_accessor :head_node_resource_pool_id
       
-        # Optional. Default image for user to choose a preferred ML framework(e.g.
-        # tensorflow or Pytorch) by choosing from Vertex prebuild images(https://cloud.
-        # google.com/vertex-ai/docs/training/pre-built-containers). Either this or the
-        # resource_pool_images is required. Use this field if you need all the resource
-        # pools to have the same Ray image, Otherwise, use the `@code
+        # Optional. Default image for user to choose a preferred ML framework (for
+        # example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt images](
+        # https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). Either
+        # this or the resource_pool_images is required. Use this field if you need all
+        # the resource pools to have the same Ray image. Otherwise, use the `@code
         # resource_pool_images` field.
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
       
-        # Optional. Required if image_uri is not set. A map of resource_pool_id to
+        # Optional. Required if image_uri isn't set. A map of resource_pool_id to
         # prebuild Ray image if user need to use different images for different head/
         # worker pools. This map needs to cover all the resource pool ids. Example: ` "
         # ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "
@@ -15020,6 +16320,45 @@ module Google
         end
       end
       
+      # Request message for NotebookInternalService.ReportExecutionEvent.
+      class GoogleCloudAiplatformV1beta1ReportExecutionEventRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of the event.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # Required. The VM identity token (a JWT) for authenticating the VM. https://
+        # cloud.google.com/compute/docs/instances/verifying-instance-identity
+        # Corresponds to the JSON property `vmToken`
+        # @return [String]
+        attr_accessor :vm_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @vm_token = args[:vm_token] if args.key?(:vm_token)
+        end
+      end
+      
+      # Response message for NotebookInternalService.ReportExecutionEvent.
+      class GoogleCloudAiplatformV1beta1ReportExecutionEventResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # LINT.IfChange(report_event_message_types) Request message for
       # NotebookInternalService.ReportRuntimeEvent.
       class GoogleCloudAiplatformV1beta1ReportRuntimeEventRequest
@@ -15073,8 +16412,8 @@ module Google
         end
       end
       
-      # Represents the spec a group of resources of same type, e.g. machine, disk and
-      # accelerators, in a PersistentResource.
+      # Represents the spec of a group of resources of the same type, for example
+      # machine type, disk, and accelerators, in a PersistentResource.
       class GoogleCloudAiplatformV1beta1ResourcePool
         include Google::Apis::Core::Hashable
       
@@ -15088,8 +16427,8 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DiskSpec]
         attr_accessor :disk_spec
       
-        # Immutable. The unique ID in a PersistentResource to refer the this resource
-        # pool. User can specify it if need to use it, otherwise we will generate it
+        # Immutable. The unique ID in a PersistentResource for referring to this
+        # resource pool. User can specify it if necessary. Otherwise, it's generated
         # automatically.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -15183,9 +16522,9 @@ module Google
         end
       end
       
-      # Configure runtime on a PersistentResource instance, including but may not
-      # limited to: * Service accounts used to run the workloads; * Whether make it a
-      # dedicated Ray Cluster;
+      # Configuration for the runtime on a PersistentResource instance, including but
+      # not limited to: * Service accounts used to run the workloads. * Whether to
+      # make it a dedicated Ray Cluster.
       class GoogleCloudAiplatformV1beta1ResourceRuntimeSpec
         include Google::Apis::Core::Hashable
       
@@ -21803,14 +23142,62 @@ module Google
         end
       end
       
+      # The request message for FeatureOnlineStoreService.SearchNearestEntities.
+      class GoogleCloudAiplatformV1beta1SearchNearestEntitiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # A query to find a number of similar entities.
+        # Corresponds to the JSON property `query`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NearestNeighborQuery]
+        attr_accessor :query
+      
+        # Optional. If set to true, the full entities (including all vector values and
+        # metadata) of the nearest neighbors are returned; otherwise only entity id of
+        # the nearest neighbors will be returned. Note that returning full entities will
+        # significantly increase the latency and cost of the query.
+        # Corresponds to the JSON property `returnFullEntity`
+        # @return [Boolean]
+        attr_accessor :return_full_entity
+        alias_method :return_full_entity?, :return_full_entity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query = args[:query] if args.key?(:query)
+          @return_full_entity = args[:return_full_entity] if args.key?(:return_full_entity)
+        end
+      end
+      
+      # Response message for FeatureOnlineStoreService.SearchNearestEntities
+      class GoogleCloudAiplatformV1beta1SearchNearestEntitiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Nearest neighbors for one query.
+        # Corresponds to the JSON property `nearestNeighbors`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NearestNeighbors]
+        attr_accessor :nearest_neighbors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nearest_neighbors = args[:nearest_neighbors] if args.key?(:nearest_neighbors)
+        end
+      end
+      
       # Configuration for the use of custom service account to run the workloads.
       class GoogleCloudAiplatformV1beta1ServiceAccountSpec
         include Google::Apis::Core::Hashable
       
         # Required. If true, custom user-managed service account is enforced to run any
-        # workloads (e.g. Vertex Jobs) on the resource; Otherwise, will always use [
+        # workloads (for example, Vertex Jobs) on the resource. Otherwise, uses the [
         # Vertex AI Custom Code Service Agent](https://cloud.google.com/vertex-ai/docs/
-        # general/access-control#service-agents)
+        # general/access-control#service-agents).
         # Corresponds to the JSON property `enableCustomServiceAccount`
         # @return [Boolean]
         attr_accessor :enable_custom_service_account
@@ -21818,11 +23205,11 @@ module Google
       
         # Optional. Default service account that this PersistentResource's workloads run
         # as. The workloads include: * Any runtime specified via `ResourceRuntimeSpec`
-        # on creation time, e.g. Ray; * Jobs submitted to PersistentResource, if no
-        # other service account specified in the job specs. Only works when custom
+        # on creation time, for example, Ray. * Jobs submitted to PersistentResource, if
+        # no other service account specified in the job specs. Only works when custom
         # service account is enabled and users have the `iam.serviceAccounts.actAs`
-        # permission on this service account. Required if any containers specified in `
-        # ResourceRuntimeSpec`.
+        # permission on this service account. Required if any containers are specified
+        # in `ResourceRuntimeSpec`.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -22975,6 +24362,40 @@ module Google
           @start_time = args[:start_time] if args.key?(:start_time)
           @study_state = args[:study_state] if args.key?(:study_state)
           @trials = args[:trials] if args.key?(:trials)
+        end
+      end
+      
+      # Request message for FeatureOnlineStoreAdminService.SyncFeatureView.
+      class GoogleCloudAiplatformV1beta1SyncFeatureViewRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Respose message for FeatureOnlineStoreAdminService.SyncFeatureView.
+      class GoogleCloudAiplatformV1beta1SyncFeatureViewResponse
+        include Google::Apis::Core::Hashable
+      
+        # Format: `projects/`project`/locations/`location`/featureOnlineStores/`
+        # feature_online_store`/featureViews/`feature_view`/featureViewSyncs/`
+        # feature_view_sync``
+        # Corresponds to the JSON property `featureViewSync`
+        # @return [String]
+        attr_accessor :feature_view_sync
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feature_view_sync = args[:feature_view_sync] if args.key?(:feature_view_sync)
         end
       end
       
@@ -24241,6 +25662,82 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Details of operations that perform update FeatureGroup.
+      class GoogleCloudAiplatformV1beta1UpdateFeatureGroupOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
+      # Details of operations that perform update FeatureOnlineStore.
+      class GoogleCloudAiplatformV1beta1UpdateFeatureOnlineStoreOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
+      # Details of operations that perform update Feature.
+      class GoogleCloudAiplatformV1beta1UpdateFeatureOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
+      # Details of operations that perform update FeatureView.
+      class GoogleCloudAiplatformV1beta1UpdateFeatureViewOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
       
