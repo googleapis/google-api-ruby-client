@@ -422,7 +422,6 @@ module Google
       class HttpEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :forward_dns_requests, as: 'forwardDnsRequests'
           property :uri, as: 'uri'
         end
       end
