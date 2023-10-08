@@ -472,6 +472,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceListUsable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceLocalityLoadBalancingPolicyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -497,6 +515,12 @@ module Google
       end
       
       class BackendServiceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceUsedBy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6856,6 +6880,8 @@ module Google
           property :subsetting, as: 'subsetting', class: Google::Apis::ComputeV1::Subsetting, decorator: Google::Apis::ComputeV1::Subsetting::Representation
       
           property :timeout_sec, as: 'timeoutSec'
+          collection :used_by, as: 'usedBy', class: Google::Apis::ComputeV1::BackendServiceUsedBy, decorator: Google::Apis::ComputeV1::BackendServiceUsedBy::Representation
+      
         end
       end
       
@@ -6999,6 +7025,38 @@ module Google
         end
       end
       
+      class BackendServiceListUsable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::BackendService, decorator: Google::Apis::ComputeV1::BackendService::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::BackendServiceListUsable::Warning, decorator: Google::Apis::ComputeV1::BackendServiceListUsable::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::BackendServiceListUsable::Warning::Datum, decorator: Google::Apis::ComputeV1::BackendServiceListUsable::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class BackendServiceLocalityLoadBalancingPolicyConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7038,6 +7096,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_service, as: 'backendService'
+        end
+      end
+      
+      class BackendServiceUsedBy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reference, as: 'reference'
         end
       end
       
