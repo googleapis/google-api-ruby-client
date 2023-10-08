@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MultiRegionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -579,6 +585,8 @@ module Google
       class LocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :multi_region_metadata, as: 'multiRegionMetadata', class: Google::Apis::MetastoreV1::MultiRegionMetadata, decorator: Google::Apis::MetastoreV1::MultiRegionMetadata::Representation
+      
           collection :supported_hive_metastore_versions, as: 'supportedHiveMetastoreVersions', class: Google::Apis::MetastoreV1::HiveMetastoreVersion, decorator: Google::Apis::MetastoreV1::HiveMetastoreVersion::Representation
       
         end
@@ -639,6 +647,13 @@ module Google
       class MoveTableToDatabaseResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class MultiRegionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :constituent_regions, as: 'constituentRegions'
         end
       end
       
