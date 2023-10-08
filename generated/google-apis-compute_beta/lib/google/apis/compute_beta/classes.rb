@@ -2815,7 +2815,7 @@ module Google
       
         # The time zone to use when interpreting the schedule. The value of this field
         # must be a time zone name from the tz database: https://en.wikipedia.org/wiki/
-        # Tz_database. This field is assigned a default value of “UTC” if left empty.
+        # Tz_database. This field is assigned a default value of "UTC" if left empty.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -3561,6 +3561,27 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # Specifies preference of traffic to the backend (from the proxy and from the
+        # client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send
+        # IPv4 traffic to the backends of the Backend Service (Instance Group, Managed
+        # Instance Group, Network Endpoint Group) regardless of traffic from the client
+        # to the proxy. Only IPv4 health-checks are used to check the health of the
+        # backends. This is the default setting. - PREFER_IPV6: Prioritize the
+        # connection to the endpoints IPv6 address over its IPv4 address (provided there
+        # is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the
+        # backends of the Backend Service (Instance Group, Managed Instance Group,
+        # Network Endpoint Group) regardless of traffic from the client to the proxy.
+        # Only IPv6 health-checks are used to check the health of the backends. This
+        # field is applicable to either: - Advanced Global External HTTPS Load Balancing
+        # (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load
+        # Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), -
+        # Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED)
+        # , - Traffic Director with Envoy proxies and proxyless gRPC (load balancing
+        # scheme INTERNAL_SELF_MANAGED).
+        # Corresponds to the JSON property `ipAddressSelectionPolicy`
+        # @return [String]
+        attr_accessor :ip_address_selection_policy
+      
         # [Output Only] Type of resource. Always compute#backendService for backend
         # services.
         # Corresponds to the JSON property `kind`
@@ -3778,6 +3799,7 @@ module Google
           @health_checks = args[:health_checks] if args.key?(:health_checks)
           @iap = args[:iap] if args.key?(:iap)
           @id = args[:id] if args.key?(:id)
+          @ip_address_selection_policy = args[:ip_address_selection_policy] if args.key?(:ip_address_selection_policy)
           @kind = args[:kind] if args.key?(:kind)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @locality_lb_policies = args[:locality_lb_policies] if args.key?(:locality_lb_policies)
@@ -43880,14 +43902,14 @@ module Google
       # Represents a Target HTTP Proxy resource. Google Compute Engine has two Target
       # HTTP Proxy resources: * [Global](/compute/docs/reference/rest/beta/
       # targetHttpProxies) * [Regional](/compute/docs/reference/rest/beta/
-      # regionTargetHttpProxies) A target HTTP proxy is a component of GCP HTTP load
-      # balancers. * targetHttpProxies are used by global external Application Load
-      # Balancers, classic Application Load Balancers, cross-region internal
-      # Application Load Balancers, and Traffic Director. * regionTargetHttpProxies
-      # are used by regional internal Application Load Balancers and regional external
-      # Application Load Balancers. Forwarding rules reference a target HTTP proxy,
-      # and the target proxy then references a URL map. For more information, read
-      # Using Target Proxies and Forwarding rule concepts.
+      # regionTargetHttpProxies) A target HTTP proxy is a component of Google Cloud
+      # HTTP load balancers. * targetHttpProxies are used by global external
+      # Application Load Balancers, classic Application Load Balancers, cross-region
+      # internal Application Load Balancers, and Traffic Director. *
+      # regionTargetHttpProxies are used by regional internal Application Load
+      # Balancers and regional external Application Load Balancers. Forwarding rules
+      # reference a target HTTP proxy, and the target proxy then references a URL map.
+      # For more information, read Using Target Proxies and Forwarding rule concepts.
       class TargetHttpProxy
         include Google::Apis::Core::Hashable
       
