@@ -2288,7 +2288,8 @@ module Google
         end
       end
       
-      # Request message for FeaturestoreService.CreateFeature.
+      # Request message for FeaturestoreService.CreateFeature. Request message for
+      # FeatureRegistryService.CreateFeature.
       class GoogleCloudAiplatformV1CreateFeatureRequest
         include Google::Apis::Core::Hashable
       
@@ -2302,14 +2303,12 @@ module Google
         # Required. The ID to use for the Feature, which will become the final component
         # of the Feature's resource name. This value may be up to 128 characters, and
         # valid characters are `[a-z0-9_]`. The first character cannot be a number. The
-        # value must be unique within an EntityType .
+        # value must be unique within an EntityType/FeatureGroup.
         # Corresponds to the JSON property `featureId`
         # @return [String]
         attr_accessor :feature_id
       
-        # Required. The resource name of the EntityType to create a Feature. Format: `
-        # projects/`project`/locations/`location`/featurestores/`featurestore`/
-        # entityTypes/`entity_type``
+        # 
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -3187,6 +3186,50 @@ module Google
           @metadata_schema_uri = args[:metadata_schema_uri] if args.key?(:metadata_schema_uri)
           @name = args[:name] if args.key?(:name)
           @saved_queries = args[:saved_queries] if args.key?(:saved_queries)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Describes the dataset version.
+      class GoogleCloudAiplatformV1DatasetVersion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the associated BigQuery dataset.
+        # Corresponds to the JSON property `bigQueryDatasetName`
+        # @return [String]
+        attr_accessor :big_query_dataset_name
+      
+        # Output only. Timestamp when this DatasetVersion was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Used to perform consistent read-modify-write updates. If not set, a blind "
+        # overwrite" update happens.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The resource name of the DatasetVersion.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Timestamp when this DatasetVersion was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @big_query_dataset_name = args[:big_query_dataset_name] if args.key?(:big_query_dataset_name)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -5389,6 +5432,15 @@ module Google
         # @return [String]
         attr_accessor :annotations_filter
       
+        # Assigns input data to training, validation, and test sets based on the given
+        # filters, data pieces not matched by any filter are ignored. Currently only
+        # supported for Datasets containing DataItems. If any of the filters in this
+        # message are to match nothing, then they can be set as '-' (the minus sign).
+        # Supported only for unstructured Datasets.
+        # Corresponds to the JSON property `filterSplit`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExportFilterSplit]
+        attr_accessor :filter_split
+      
         # Assigns the input data to training, validation, and test sets as per the given
         # fractions. Any of `training_fraction`, `validation_fraction` and `
         # test_fraction` may optionally be provided, they must sum to up to 1. If the
@@ -5411,6 +5463,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations_filter = args[:annotations_filter] if args.key?(:annotations_filter)
+          @filter_split = args[:filter_split] if args.key?(:filter_split)
           @fraction_split = args[:fraction_split] if args.key?(:fraction_split)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
         end
@@ -5613,6 +5666,53 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Assigns input data to training, validation, and test sets based on the given
+      # filters, data pieces not matched by any filter are ignored. Currently only
+      # supported for Datasets containing DataItems. If any of the filters in this
+      # message are to match nothing, then they can be set as '-' (the minus sign).
+      # Supported only for unstructured Datasets.
+      class GoogleCloudAiplatformV1ExportFilterSplit
+        include Google::Apis::Core::Hashable
+      
+        # Required. A filter on DataItems of the Dataset. DataItems that match this
+        # filter are used to test the Model. A filter with same syntax as the one used
+        # in DatasetService.ListDataItems may be used. If a single DataItem is matched
+        # by more than one of the FilterSplit filters, then it is assigned to the first
+        # set that applies to it in the training, validation, test order.
+        # Corresponds to the JSON property `testFilter`
+        # @return [String]
+        attr_accessor :test_filter
+      
+        # Required. A filter on DataItems of the Dataset. DataItems that match this
+        # filter are used to train the Model. A filter with same syntax as the one used
+        # in DatasetService.ListDataItems may be used. If a single DataItem is matched
+        # by more than one of the FilterSplit filters, then it is assigned to the first
+        # set that applies to it in the training, validation, test order.
+        # Corresponds to the JSON property `trainingFilter`
+        # @return [String]
+        attr_accessor :training_filter
+      
+        # Required. A filter on DataItems of the Dataset. DataItems that match this
+        # filter are used to validate the Model. A filter with same syntax as the one
+        # used in DatasetService.ListDataItems may be used. If a single DataItem is
+        # matched by more than one of the FilterSplit filters, then it is assigned to
+        # the first set that applies to it in the training, validation, test order.
+        # Corresponds to the JSON property `validationFilter`
+        # @return [String]
+        attr_accessor :validation_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @test_filter = args[:test_filter] if args.key?(:test_filter)
+          @training_filter = args[:training_filter] if args.key?(:training_filter)
+          @validation_filter = args[:validation_filter] if args.key?(:validation_filter)
         end
       end
       
@@ -8184,6 +8284,31 @@ module Google
         end
       end
       
+      # Response message for DatasetService.ListDatasetVersions.
+      class GoogleCloudAiplatformV1ListDatasetVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of DatasetVersions that matches the specified filter in the request.
+        # Corresponds to the JSON property `datasetVersions`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion>]
+        attr_accessor :dataset_versions
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_versions = args[:dataset_versions] if args.key?(:dataset_versions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for DatasetService.ListDatasets.
       class GoogleCloudAiplatformV1ListDatasetsResponse
         include Google::Apis::Core::Hashable
@@ -8287,7 +8412,8 @@ module Google
         end
       end
       
-      # Response message for FeaturestoreService.ListFeatures.
+      # Response message for FeaturestoreService.ListFeatures. Response message for
+      # FeatureRegistryService.ListFeatures.
       class GoogleCloudAiplatformV1ListFeaturesResponse
         include Google::Apis::Core::Hashable
       
@@ -10896,6 +11022,12 @@ module Google
         attr_accessor :enable_logging
         alias_method :enable_logging?, :enable_logging
       
+        # Resource names of the NotificationChannels to send alert. Must be of the
+        # format `projects//notificationChannels/`
+        # Corresponds to the JSON property `notificationChannels`
+        # @return [Array<String>]
+        attr_accessor :notification_channels
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10904,6 +11036,7 @@ module Google
         def update!(**args)
           @email_alert_config = args[:email_alert_config] if args.key?(:email_alert_config)
           @enable_logging = args[:enable_logging] if args.key?(:enable_logging)
+          @notification_channels = args[:notification_channels] if args.key?(:notification_channels)
         end
       end
       
@@ -12099,14 +12232,14 @@ module Google
         # keys and values can be no longer than 64 characters (Unicode codepoints), can
         # only contain lowercase letters, numeric characters, underscores and dashes.
         # International characters are allowed. No more than 64 user labels can be
-        # associated with one Dataset (System labels are excluded). See https://goo.gl/
-        # xmQnxf for more information and examples of labels. System reserved label keys
-        # are prefixed with "aiplatform.googleapis.com/" and are immutable. Following
-        # system labels exist for NotebookRuntime: * "aiplatform.googleapis.com/
-        # notebook_runtime_gce_instance_id": output only, its value is the Compute
+        # associated with one NotebookRuntime (System labels are excluded). See https://
+        # goo.gl/xmQnxf for more information and examples of labels. System reserved
+        # label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+        # Following system labels exist for NotebookRuntime: * "aiplatform.googleapis.
+        # com/notebook_runtime_gce_instance_id": output only, its value is the Compute
         # Engine instance id. * "aiplatform.googleapis.com/
-        # colab_enterprise_entry_service": its value is either "BigQuery" or "Vertex";
-        # if absent, it should be "Vertex". This is to describe the entry service,
+        # colab_enterprise_entry_service": its value is either "bigquery" or "vertex";
+        # if absent, it should be "vertex". This is to describe the entry service,
         # either BigQuery or Vertex.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -12121,6 +12254,11 @@ module Google
         # Corresponds to the JSON property `notebookRuntimeTemplateRef`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookRuntimeTemplateRef]
         attr_accessor :notebook_runtime_template_ref
+      
+        # Output only. The type of the notebook runtime.
+        # Corresponds to the JSON property `notebookRuntimeType`
+        # @return [String]
+        attr_accessor :notebook_runtime_type
       
         # Output only. The proxy endpoint used to access the NotebookRuntime.
         # Corresponds to the JSON property `proxyUri`
@@ -12166,6 +12304,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @notebook_runtime_template_ref = args[:notebook_runtime_template_ref] if args.key?(:notebook_runtime_template_ref)
+          @notebook_runtime_type = args[:notebook_runtime_type] if args.key?(:notebook_runtime_type)
           @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)
           @runtime_state = args[:runtime_state] if args.key?(:runtime_state)
           @runtime_user = args[:runtime_user] if args.key?(:runtime_user)
@@ -12249,6 +12388,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NetworkSpec]
         attr_accessor :network_spec
       
+        # Optional. Immutable. The type of the notebook runtime template.
+        # Corresponds to the JSON property `notebookRuntimeType`
+        # @return [String]
+        attr_accessor :notebook_runtime_type
+      
         # The service account that the runtime workload runs as. You can use any service
         # account within the same project, but you must have the service account user
         # permission to use the instance. If not specified, the [Compute Engine default
@@ -12282,6 +12426,7 @@ module Google
           @machine_spec = args[:machine_spec] if args.key?(:machine_spec)
           @name = args[:name] if args.key?(:name)
           @network_spec = args[:network_spec] if args.key?(:network_spec)
+          @notebook_runtime_type = args[:notebook_runtime_type] if args.key?(:notebook_runtime_type)
           @service_account = args[:service_account] if args.key?(:service_account)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -12482,7 +12627,9 @@ module Google
         attr_accessor :template_metadata
       
         # A template uri from where the PipelineJob.pipeline_spec, if empty, will be
-        # downloaded.
+        # downloaded. Currently, only uri from Vertex Template Registry & Gallery is
+        # supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/
+        # create-pipeline-template.
         # Corresponds to the JSON property `templateUri`
         # @return [String]
         attr_accessor :template_uri
@@ -16374,6 +16521,50 @@ module Google
         end
       end
       
+      # The configuration for grounding checking.
+      class GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfig
+        include Google::Apis::Core::Hashable
+      
+        # The sources for the grounding checking.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfigSourceEntry>]
+        attr_accessor :sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # Single source entry for the grounding checking.
+      class GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfigSourceEntry
+        include Google::Apis::Core::Hashable
+      
+        # The uri of the Enterprise Search data source.
+        # Corresponds to the JSON property `enterpriseDatastore`
+        # @return [String]
+        attr_accessor :enterprise_datastore
+      
+        # The type of the grounding checking source.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enterprise_datastore = args[:enterprise_datastore] if args.key?(:enterprise_datastore)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Prediction model parameters for Image Classification.
       class GoogleCloudAiplatformV1SchemaPredictParamsImageClassificationPredictionParams
         include Google::Apis::Core::Hashable
@@ -17393,10 +17584,20 @@ module Google
       class GoogleCloudAiplatformV1SchemaTextPromptDatasetMetadata
         include Google::Apis::Core::Hashable
       
+        # Number of candidates.
+        # Corresponds to the JSON property `candidateCount`
+        # @return [Fixnum]
+        attr_accessor :candidate_count
+      
         # The Google Cloud Storage URI that stores the prompt data.
         # Corresponds to the JSON property `gcsUri`
         # @return [String]
         attr_accessor :gcs_uri
+      
+        # The configuration for grounding checking.
+        # Corresponds to the JSON property `groundingConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfig]
+        attr_accessor :grounding_config
       
         # Value of the maximum number of tokens generated set when the dataset was saved.
         # Corresponds to the JSON property `maxOutputTokens`
@@ -17407,6 +17608,11 @@ module Google
         # Corresponds to the JSON property `promptType`
         # @return [String]
         attr_accessor :prompt_type
+      
+        # Customized stop sequences.
+        # Corresponds to the JSON property `stopSequences`
+        # @return [Array<String>]
+        attr_accessor :stop_sequences
       
         # Temperature value used for sampling set when the dataset was saved. This value
         # is used to tune the degree of randomness.
@@ -17438,9 +17644,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @candidate_count = args[:candidate_count] if args.key?(:candidate_count)
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @grounding_config = args[:grounding_config] if args.key?(:grounding_config)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
           @prompt_type = args[:prompt_type] if args.key?(:prompt_type)
+          @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
           @text = args[:text] if args.key?(:text)
           @top_k = args[:top_k] if args.key?(:top_k)
