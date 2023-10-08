@@ -2009,7 +2009,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # User-friendly display name. Maximum length is 63 characters.
+        # Optional. User-friendly display name. Maximum length is 256 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3385,7 +3385,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # VirtualMachinePreferences enables you to create sets of assumptions, for
+        # VirtualMachinePreferences enables you to create sets of preferences, for
         # example, a geographical location and pricing track, for your migrated virtual
         # machines. The set of preferences influence recommendations for migrating
         # virtual machine assets.
@@ -3851,7 +3851,7 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryMachineFinding]
         attr_accessor :machine_finding
       
-        # VirtualMachinePreferences enables you to create sets of assumptions, for
+        # VirtualMachinePreferences enables you to create sets of preferences, for
         # example, a geographical location and pricing track, for your migrated virtual
         # machines. The set of preferences influence recommendations for migrating
         # virtual machine assets.
@@ -5096,7 +5096,7 @@ module Google
         end
       end
       
-      # VirtualMachinePreferences enables you to create sets of assumptions, for
+      # VirtualMachinePreferences enables you to create sets of preferences, for
       # example, a geographical location and pricing track, for your migrated virtual
       # machines. The set of preferences influence recommendations for migrating
       # virtual machine assets.
