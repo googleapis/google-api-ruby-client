@@ -4510,6 +4510,12 @@ module Google
         attr_accessor :llm_enabled
         alias_method :llm_enabled?, :llm_enabled
       
+        # Output only. Whether the customer accepted data use terms.
+        # Corresponds to the JSON property `minimumDataTermAccepted`
+        # @return [Boolean]
+        attr_accessor :minimum_data_term_accepted
+        alias_method :minimum_data_term_accepted?, :minimum_data_term_accepted
+      
         # Immutable. The full resource name of the widget config. Format: `projects/`
         # project`/locations/`location`/collections/`collection_id`/dataStores/`
         # data_store_id`/widgetConfigs/`widget_config_id``. This field must be a UTF-8
@@ -4559,6 +4565,7 @@ module Google
           @facet_field = args[:facet_field] if args.key?(:facet_field)
           @fields_ui_components_map = args[:fields_ui_components_map] if args.key?(:fields_ui_components_map)
           @llm_enabled = args[:llm_enabled] if args.key?(:llm_enabled)
+          @minimum_data_term_accepted = args[:minimum_data_term_accepted] if args.key?(:minimum_data_term_accepted)
           @name = args[:name] if args.key?(:name)
           @result_display_type = args[:result_display_type] if args.key?(:result_display_type)
           @solution_type = args[:solution_type] if args.key?(:solution_type)

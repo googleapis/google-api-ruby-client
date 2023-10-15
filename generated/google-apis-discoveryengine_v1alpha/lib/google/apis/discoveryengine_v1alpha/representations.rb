@@ -1977,6 +1977,7 @@ module Google
           hash :fields_ui_components_map, as: 'fieldsUiComponentsMap', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigUiComponentField, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigUiComponentField::Representation
       
           property :llm_enabled, as: 'llmEnabled'
+          property :minimum_data_term_accepted, as: 'minimumDataTermAccepted'
           property :name, as: 'name'
           property :result_display_type, as: 'resultDisplayType'
           property :solution_type, as: 'solutionType'
