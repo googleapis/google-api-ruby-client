@@ -23923,7 +23923,7 @@ module Google
         # @return [Google::Apis::ComputeBeta::ManagedInstanceLastAttempt]
         attr_accessor :last_attempt
       
-        # [Output Only] The name of the instance. The name will always exist even if the
+        # [Output Only] The name of the instance. The name always exists even if the
         # instance has not yet been created.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -24831,6 +24831,13 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # The IPv6 address assigned to the producer instance network interface. This is
+        # only assigned when the stack types of both the instance network interface and
+        # the consumer subnet are IPv4_IPv6.
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
         # The project id or number of the interface to which the IP was assigned.
         # Corresponds to the JSON property `projectIdOrNum`
         # @return [String]
@@ -24852,6 +24859,12 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
+        # [Output Only] The CIDR range of the subnet from which the IPv4 internal IP was
+        # allocated from.
+        # Corresponds to the JSON property `subnetworkCidrRange`
+        # @return [String]
+        attr_accessor :subnetwork_cidr_range
+      
         def initialize(**args)
            update!(**args)
         end
@@ -24859,10 +24872,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @project_id_or_num = args[:project_id_or_num] if args.key?(:project_id_or_num)
           @secondary_ip_cidr_ranges = args[:secondary_ip_cidr_ranges] if args.key?(:secondary_ip_cidr_ranges)
           @status = args[:status] if args.key?(:status)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @subnetwork_cidr_range = args[:subnetwork_cidr_range] if args.key?(:subnetwork_cidr_range)
         end
       end
       
