@@ -689,6 +689,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Migrates an existing User-Managed Notebook to Workbench Instances.
+        # @param [String] name
+        #   Required. Format: `projects/`project_id`/locations/`location`/instances/`
+        #   instance_id``
+        # @param [Google::Apis::NotebooksV1::MigrateInstanceRequest] migrate_instance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def migrate_instance(name, migrate_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:migrate', options)
+          command.request_representation = Google::Apis::NotebooksV1::MigrateInstanceRequest::Representation
+          command.request_object = migrate_instance_request_object
+          command.response_representation = Google::Apis::NotebooksV1::Operation::Representation
+          command.response_class = Google::Apis::NotebooksV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Registers an existing legacy notebook instance to the Notebooks API server.
         # Legacy instances are instances created with the legacy Compute Engine calls.
         # They are not manageable by the Notebooks API out of the box. This call makes
@@ -1647,6 +1681,40 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Migrate an existing Runtime to a new Workbench Instance.
+        # @param [String] name
+        #   Required. Format: `projects/`project_id`/locations/`location`/runtimes/`
+        #   runtime_id``
+        # @param [Google::Apis::NotebooksV1::MigrateRuntimeRequest] migrate_runtime_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def migrate_runtime(name, migrate_runtime_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:migrate', options)
+          command.request_representation = Google::Apis::NotebooksV1::MigrateRuntimeRequest::Representation
+          command.request_object = migrate_runtime_request_object
+          command.response_representation = Google::Apis::NotebooksV1::Operation::Representation
+          command.response_class = Google::Apis::NotebooksV1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
