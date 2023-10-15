@@ -1459,8 +1459,8 @@ module Google
         # for example: "google-managed-services-default". If set, the instance IPs for
         # this cluster will be created in the allocated range. The range name must
         # comply with RFC 1035. Specifically, the name must be 1-63 characters long and
-        # match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?. Field name is
-        # intended to be consistent with CloudSQL.
+        # match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is
+        # intended to be consistent with Cloud SQL.
         # Corresponds to the JSON property `allocatedIpRange`
         # @return [String]
         attr_accessor :allocated_ip_range
@@ -2216,7 +2216,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The last time at which the event described by this signal took place
+        # Required. The last time at which the event described by this signal took place
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
@@ -2228,7 +2228,8 @@ module Google
         # @return [String]
         attr_accessor :external_uri
       
-        # The name of the signal, ex: PUBLIC_SQL_INSTANCE, SQL_LOG_ERROR_VERBOSITY etc.
+        # Required. The name of the signal, ex: PUBLIC_SQL_INSTANCE,
+        # SQL_LOG_ERROR_VERBOSITY etc.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2245,22 +2246,28 @@ module Google
         # @return [String]
         attr_accessor :resource_container
       
-        # Database resource name associated with the signal. Resource name to follow
-        # CAIS resource_name format as noted here go/condor-common-datamodel
+        # Required. Database resource name associated with the signal. Resource name to
+        # follow CAIS resource_name format as noted here go/condor-common-datamodel
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
       
-        # The class of the signal, such as if it's a THREAT or VULNERABILITY.
+        # Required. The class of the signal, such as if it's a THREAT or VULNERABILITY.
         # Corresponds to the JSON property `signalClass`
         # @return [String]
         attr_accessor :signal_class
       
-        # Unique identifier for the signal. This is an unique id which would be
-        # mainatined by partner to identify a signal.
+        # Required. Unique identifier for the signal. This is an unique id which would
+        # be mainatined by partner to identify a signal.
         # Corresponds to the JSON property `signalId`
         # @return [String]
         attr_accessor :signal_id
+      
+        # Required. Type of signal, for example, `AVAILABLE_IN_MULTIPLE_ZONES`, `
+        # LOGGING_MOST_ERRORS`, etc.
+        # Corresponds to the JSON property `signalType`
+        # @return [String]
+        attr_accessor :signal_type
       
         # 
         # Corresponds to the JSON property `state`
@@ -2284,6 +2291,7 @@ module Google
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @signal_class = args[:signal_class] if args.key?(:signal_class)
           @signal_id = args[:signal_id] if args.key?(:signal_id)
+          @signal_type = args[:signal_type] if args.key?(:signal_type)
           @state = args[:state] if args.key?(:state)
         end
       end
