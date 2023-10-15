@@ -1965,8 +1965,8 @@ module Google
         end
       end
       
-      # A resource value config is a mapping configuration of user's tag values to
-      # resource values. Used by the attack path simulation.
+      # A resource value config (RVC) is a mapping configuration of user's resources
+      # to resource values. Used in Attack path simulations.
       class GoogleCloudSecuritycenterV1ResourceValueConfig
         include Google::Apis::Core::Hashable
       
