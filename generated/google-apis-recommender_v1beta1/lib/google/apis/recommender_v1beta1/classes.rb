@@ -31,6 +31,11 @@ module Google
         # @return [Google::Apis::RecommenderV1beta1::GoogleTypeMoney]
         attr_accessor :cost
       
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `costInLocalCurrency`
+        # @return [Google::Apis::RecommenderV1beta1::GoogleTypeMoney]
+        attr_accessor :cost_in_local_currency
+      
         # Duration for which this cost applies.
         # Corresponds to the JSON property `duration`
         # @return [String]
@@ -43,6 +48,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cost = args[:cost] if args.key?(:cost)
+          @cost_in_local_currency = args[:cost_in_local_currency] if args.key?(:cost_in_local_currency)
           @duration = args[:duration] if args.key?(:duration)
         end
       end
@@ -754,6 +760,11 @@ module Google
         # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommendationStateInfo]
         attr_accessor :state_info
       
+        # Fully qualified resource names that this recommendation is targeting.
+        # Corresponds to the JSON property `targetResources`
+        # @return [Array<String>]
+        attr_accessor :target_resources
+      
         # Corresponds to a mutually exclusive group ID within a recommender. A non-empty
         # ID indicates that the recommendation belongs to a mutually exclusive group.
         # This means that only one recommendation within the group is suggested to be
@@ -779,6 +790,7 @@ module Google
           @priority = args[:priority] if args.key?(:priority)
           @recommender_subtype = args[:recommender_subtype] if args.key?(:recommender_subtype)
           @state_info = args[:state_info] if args.key?(:state_info)
+          @target_resources = args[:target_resources] if args.key?(:target_resources)
           @xor_group_id = args[:xor_group_id] if args.key?(:xor_group_id)
         end
       end
