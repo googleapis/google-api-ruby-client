@@ -564,9 +564,9 @@ module Google
         attr_accessor :source_image
       
         # Optional. Name of the snapshot to use as the source for the disk. Must be
-        # empty if source_image is set. Updating source_snapshot will update content in
-        # the ephemeral directory after the workstation is restarted. This field is
-        # mutable.
+        # empty if source_image is set. Must be empty if read_only is false. Updating
+        # source_snapshot will update content in the ephemeral directory after the
+        # workstation is restarted. This field is mutable.
         # Corresponds to the JSON property `sourceSnapshot`
         # @return [String]
         attr_accessor :source_snapshot
@@ -1509,7 +1509,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Full name of this workstation.
+        # Identifier. Full name of this workstation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1626,7 +1626,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Full name of this workstation cluster.
+        # Identifier. Full name of this workstation cluster.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1792,7 +1792,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Full name of this workstation configuration.
+        # Identifier. Full name of this workstation configuration.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

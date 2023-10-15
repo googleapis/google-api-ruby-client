@@ -344,7 +344,7 @@ module Google
         
         # Updates an existing workstation cluster.
         # @param [String] name
-        #   Full name of this workstation cluster.
+        #   Identifier. Full name of this workstation cluster.
         # @param [Google::Apis::WorkstationsV1beta::WorkstationCluster] workstation_cluster_object
         # @param [Boolean] allow_missing
         #   Optional. If set, and the workstation cluster is not found, a new workstation
@@ -620,7 +620,7 @@ module Google
         
         # Updates an existing workstation configuration.
         # @param [String] name
-        #   Full name of this workstation configuration.
+        #   Identifier. Full name of this workstation configuration.
         # @param [Google::Apis::WorkstationsV1beta::WorkstationConfig] workstation_config_object
         # @param [Boolean] allow_missing
         #   Optional. If set and the workstation configuration is not found, a new
@@ -1003,7 +1003,7 @@ module Google
         
         # Updates an existing workstation.
         # @param [String] name
-        #   Full name of this workstation.
+        #   Identifier. Full name of this workstation.
         # @param [Google::Apis::WorkstationsV1beta::Workstation] workstation_object
         # @param [Boolean] allow_missing
         #   Optional. If set and the workstation configuration is not found, a new
