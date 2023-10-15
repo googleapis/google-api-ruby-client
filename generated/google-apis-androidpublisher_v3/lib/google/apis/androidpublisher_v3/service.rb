@@ -2928,8 +2928,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Refunds a user's subscription or in-app purchase order. Orders older than 1
-        # year cannot be refunded.
+        # Refunds a user's subscription or in-app purchase order. Orders older than 3
+        # years cannot be refunded.
         # @param [String] package_name
         #   The package name of the application for which this subscription or in-app item
         #   was purchased (for example, 'com.some.thing').
