@@ -270,9 +270,7 @@ module Google
       class AdvertiserBillingConfig
         include Google::Apis::Core::Hashable
       
-        # The ID of a billing profile assigned to the advertiser. This field will
-        # default to the default billing profile ID of the advertiser's parent partner
-        # if a value is not provided.
+        # The ID of a billing profile assigned to the advertiser.
         # Corresponds to the JSON property `billingProfileId`
         # @return [Fixnum]
         attr_accessor :billing_profile_id
@@ -461,11 +459,11 @@ module Google
       class AgeRangeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # The age range of an audience. We only support targeting a continuous age range
-        # of an audience. Thus, the age range represented in this field can be 1)
-        # targeted solely, or, 2) part of a larger continuous age range. The reach of a
-        # continuous age range targeting can be expanded by also targeting an audience
-        # of an unknown age. Output only in v1. Required in v2.
+        # Required. The age range of an audience. We only support targeting a continuous
+        # age range of an audience. Thus, the age range represented in this field can be
+        # 1) targeted solely, or, 2) part of a larger continuous age range. The reach of
+        # a continuous age range targeting can be expanded by also targeting an audience
+        # of an unknown age.
         # Corresponds to the JSON property `ageRange`
         # @return [String]
         attr_accessor :age_range
@@ -691,8 +689,6 @@ module Google
       end
       
       # An assignment between a location list and a relevant targeting option.
-      # Currently, geo region targeting options are the only supported option for
-      # assignment.
       class AssignedLocation
         include Google::Apis::Core::Hashable
       
@@ -708,9 +704,6 @@ module Google
         attr_accessor :name
       
         # Required. The ID of the targeting option assigned to the location list.
-        # Assigned locations can only be modified in TARGETING_LOCATION_TYPE_REGIONAL
-        # location lists. When creating or deleting assigned locations, this value must
-        # be of type TARGETING_TYPE_GEO_REGION.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -1332,7 +1325,7 @@ module Google
       class AudioContentTypeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # The audio content type. Output only in v1. Required in v2.
+        # Required. The audio content type.
         # Corresponds to the JSON property `audioContentType`
         # @return [String]
         attr_accessor :audio_content_type
@@ -1783,13 +1776,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The assigned locations to create in bulk, specified as a list of
-        # AssignedLocations.
+        # AssignedLocation resources.
         # Corresponds to the JSON property `createdAssignedLocations`
         # @return [Array<Google::Apis::DisplayvideoV2::AssignedLocation>]
         attr_accessor :created_assigned_locations
       
         # The IDs of the assigned locations to delete in bulk, specified as a list of
-        # assigned_location_ids.
+        # assignedLocationId values.
         # Corresponds to the JSON property `deletedAssignedLocations`
         # @return [Array<Fixnum>]
         attr_accessor :deleted_assigned_locations
@@ -1805,7 +1798,7 @@ module Google
         end
       end
       
-      # Response message for AssignedLocationService.BulkEditAssignedLocations.
+      # 
       class BulkEditAssignedLocationsResponse
         include Google::Apis::Core::Hashable
       
@@ -2147,9 +2140,8 @@ module Google
         # A token identifying the next page of results. This value should be specified
         # as the pageToken in a subsequent call to `
         # BulkListAdGroupAssignedTargetingOptions` to fetch the next page of results.
-        # This token will be absent if there are no more
-        # youtube_ad_group_assigned_targeting_options or
-        # ad_group_assigned_targeting_options to return.
+        # This token will be absent if there are no more AdGroupAssignedTargetingOption
+        # resources to return.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2679,7 +2671,7 @@ module Google
         # @return [String]
         attr_accessor :campaign_goal_type
       
-        # Settings that control the performance goal of a campaign or insertion order.
+        # Settings that control the performance goal of a campaign.
         # Corresponds to the JSON property `performanceGoal`
         # @return [Google::Apis::DisplayvideoV2::PerformanceGoal]
         attr_accessor :performance_goal
@@ -3328,8 +3320,7 @@ module Google
         # @return [String]
         attr_accessor :ad_type
       
-        # The content instream position for video or audio ads. Output only in v1.
-        # Required in v2.
+        # Required. The content instream position for video or audio ads.
         # Corresponds to the JSON property `contentInstreamPosition`
         # @return [String]
         attr_accessor :content_instream_position
@@ -3384,7 +3375,7 @@ module Google
         # @return [String]
         attr_accessor :ad_type
       
-        # The content outstream position. Output only in v1. Required in v2.
+        # Required. The content outstream position.
         # Corresponds to the JSON property `contentOutstreamPosition`
         # @return [String]
         attr_accessor :content_outstream_position
@@ -4235,7 +4226,7 @@ module Google
         attr_accessor :custom_bidding_script_id
       
         # Output only. Error details of a rejected custom bidding script. This field
-        # will only be populated when Script.state is REJECTED.
+        # will only be populated when state is REJECTED.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::DisplayvideoV2::ScriptError>]
         attr_accessor :errors
@@ -4614,7 +4605,7 @@ module Google
       class DeviceTypeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # The display name of the device type. Output only in v1. Required in v2.
+        # Required. The display name of the device type.
         # Corresponds to the JSON property `deviceType`
         # @return [String]
         attr_accessor :device_type
@@ -5189,7 +5180,7 @@ module Google
       class EnvironmentAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # The serving environment. Output only in v1. Required in v2.
+        # Required. The serving environment.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
@@ -5754,7 +5745,7 @@ module Google
       class GenderAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # The gender of the audience. Output only in v1. Required in v2.
+        # Required. The gender of the audience.
         # Corresponds to the JSON property `gender`
         # @return [String]
         attr_accessor :gender
@@ -6174,7 +6165,7 @@ module Google
       class HouseholdIncomeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # The household income of the audience. Output only in v1. Required in v2.
+        # Required. The household income of the audience.
         # Corresponds to the JSON property `householdIncome`
         # @return [String]
         attr_accessor :household_income
@@ -6408,7 +6399,7 @@ module Google
         # @return [Array<Google::Apis::DisplayvideoV2::PartnerCost>]
         attr_accessor :partner_costs
       
-        # Settings that control the performance goal of a campaign or insertion order.
+        # Settings that control the performance goal of a campaign.
         # Corresponds to the JSON property `performanceGoal`
         # @return [Google::Apis::DisplayvideoV2::PerformanceGoal]
         attr_accessor :performance_goal
@@ -8934,7 +8925,7 @@ module Google
       class NativeContentPositionAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # The content position. Output only in v1. Required in v2.
+        # Required. The content position.
         # Corresponds to the JSON property `contentPosition`
         # @return [String]
         attr_accessor :content_position
@@ -9164,8 +9155,7 @@ module Google
       class OmidAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # The type of Open Measurement enabled inventory. Output only in v1. Required in
-        # v2.
+        # Required. The type of Open Measurement enabled inventory.
         # Corresponds to the JSON property `omid`
         # @return [String]
         attr_accessor :omid
@@ -9406,7 +9396,7 @@ module Google
       
         # Required. The time period in which the pacing budget will be spent. When
         # automatic budget allocation is enabled at the insertion order via
-        # auto_budget_allocation, this field is output only and defaults to `
+        # automationType, this field is output only and defaults to `
         # PACING_PERIOD_FLIGHT`.
         # Corresponds to the JSON property `pacingPeriod`
         # @return [String]
@@ -9470,7 +9460,7 @@ module Google
       class ParentalStatusAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # The parental status of the audience. Output only in v1. Required in v2.
+        # Required. The parental status of the audience.
         # Corresponds to the JSON property `parentalStatus`
         # @return [String]
         attr_accessor :parental_status
@@ -9729,7 +9719,7 @@ module Google
         end
       end
       
-      # Settings that control the performance goal of a campaign or insertion order.
+      # Settings that control the performance goal of a campaign.
       class PerformanceGoal
         include Google::Apis::Core::Hashable
       
@@ -11699,7 +11689,7 @@ module Google
       class VideoPlayerSizeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # The video player size. Output only in v1. Required in v2.
+        # Required. The video player size.
         # Corresponds to the JSON property `videoPlayerSize`
         # @return [String]
         attr_accessor :video_player_size
@@ -11741,7 +11731,7 @@ module Google
       class ViewabilityAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # The predicted viewability percentage. Output only in v1. Required in v2.
+        # Required. The predicted viewability percentage.
         # Corresponds to the JSON property `viewability`
         # @return [String]
         attr_accessor :viewability
@@ -11964,8 +11954,8 @@ module Google
         end
       end
       
-      # Wrapper object associating an assigned_targeting_option resource and the
-      # youtube ad group it is assigned to.
+      # Wrapper object associating an AssignedTargetingOption resource and the youtube
+      # ad group it is assigned to.
       class YoutubeAdGroupAssignedTargetingOption
         include Google::Apis::Core::Hashable
       
@@ -11995,12 +11985,12 @@ module Google
       class YoutubeAndPartnersBiddingStrategy
         include Google::Apis::Core::Hashable
       
-        # Output only. Source of the effective targetCpa value for AdGroup.
+        # Output only. Source of the effective target CPA value for ad group.
         # Corresponds to the JSON property `adGroupEffectiveTargetCpaSource`
         # @return [String]
         attr_accessor :ad_group_effective_target_cpa_source
       
-        # Output only. The effective targetCpa for AdGroup, in micros of advertiser's
+        # Output only. The effective target CPA for ad group, in micros of advertiser's
         # currency.
         # Corresponds to the JSON property `adGroupEffectiveTargetCpaValue`
         # @return [Fixnum]

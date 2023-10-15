@@ -2977,9 +2977,8 @@ module Google
         
         # Bulk edits multiple assignments between locations and a single location list.
         # The operation will delete the assigned locations provided in
-        # BulkEditAssignedLocationsRequest.deleted_assigned_locations and then create
-        # the assigned locations provided in BulkEditAssignedLocationsRequest.
-        # created_assigned_locations.
+        # deletedAssignedLocations and then create the assigned locations provided in
+        # createdAssignedLocations.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the DV360 advertiser to which the location list belongs.
         # @param [Fixnum] location_list_id
@@ -4095,7 +4094,7 @@ module Google
         end
         
         # Lists assigned targeting options for multiple YouTube ad groups across
-        # targeting types. Inherieted assigned targeting options are not included.
+        # targeting types. Inherited assigned targeting options are not included.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the line items belongs to.
         # @param [String] filter
@@ -4111,11 +4110,10 @@ module Google
         #   than 500 characters. Reference our [filter `LIST` requests](/display-video/api/
         #   guides/how-tos/filters) guide for more information.
         # @param [String] order_by
-        #   Optional. Field by which to sort the list. Acceptable values are: * `
-        #   youtubeAdGroupId` (acceptable in v2) * `adGroupId` (acceptable in v3) * `
-        #   assignedTargetingOption.targetingType` The default sorting order is ascending.
-        #   To specify descending order for a field, a suffix "desc" should be added to
-        #   the field name. Example: `targetingType desc`.
+        #   Optional. Field by which to sort the list. Acceptable values are: * `adGroupId`
+        #   (default) * `assignedTargetingOption.targetingType` The default sorting order
+        #   is ascending. To specify descending order for a field, a suffix "desc" should
+        #   be added to the field name. Example: `targetingType desc`.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. The size must be an integer between `1` and `
         #   5000`. If unspecified, the default is `5000`. Returns error code `
