@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AggregationThresholdPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Argument
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -526,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JobCreationReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class JobList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -677,6 +689,12 @@ module Google
       end
       
       class PrincipalComponentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrivacyPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1100,6 +1118,14 @@ module Google
           property :recall, as: 'recall'
           property :roc_auc, as: 'rocAuc'
           property :threshold, as: 'threshold'
+        end
+      end
+      
+      class AggregationThresholdPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :privacy_unit_columns, as: 'privacyUnitColumns'
+          property :threshold, :numeric_string => true, as: 'threshold'
         end
       end
       
@@ -2174,6 +2200,13 @@ module Google
         end
       end
       
+      class JobCreationReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+        end
+      end
+      
       class JobList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2527,6 +2560,14 @@ module Google
         end
       end
       
+      class PrivacyPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_threshold_policy, as: 'aggregationThresholdPolicy', class: Google::Apis::BigqueryV2::AggregationThresholdPolicy, decorator: Google::Apis::BigqueryV2::AggregationThresholdPolicy::Representation
+      
+        end
+      end
+      
       class ProjectList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2644,6 +2685,7 @@ module Google
           property :kind, as: 'kind'
           property :num_dml_affected_rows, :numeric_string => true, as: 'numDmlAffectedRows'
           property :page_token, as: 'pageToken'
+          property :query_id, as: 'queryId'
           collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::TableRow, decorator: Google::Apis::BigqueryV2::TableRow::Representation
       
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
@@ -2750,6 +2792,7 @@ module Google
           property :routine_reference, as: 'routineReference', class: Google::Apis::BigqueryV2::RoutineReference, decorator: Google::Apis::BigqueryV2::RoutineReference::Representation
       
           property :routine_type, as: 'routineType'
+          property :security_mode, as: 'securityMode'
           property :spark_options, as: 'sparkOptions', class: Google::Apis::BigqueryV2::SparkOptions, decorator: Google::Apis::BigqueryV2::SparkOptions::Representation
       
           property :strict_mode, as: 'strictMode'
@@ -2862,8 +2905,8 @@ module Google
       class SparkLoggingInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :project_id, as: 'project_id'
-          property :resource_type, as: 'resource_type'
+          property :project_id, as: 'projectId'
+          property :resource_type, as: 'resourceType'
         end
       end
       

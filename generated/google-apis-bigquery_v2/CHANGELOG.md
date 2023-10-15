@@ -1,8 +1,8 @@
 # Release history for google-apis-bigquery_v2
 
-### v0.60.0 (2023-10-08)
+### v0.60.0 (2023-10-15)
 
-* Regenerated from discovery document revision 20230925
+* Regenerated from discovery document revision 20231008
 
 ### v0.59.0 (2023-08-27)
 
