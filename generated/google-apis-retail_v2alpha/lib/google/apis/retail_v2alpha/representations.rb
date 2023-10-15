@@ -634,6 +634,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaLoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaLoggingConfigLogGenerationRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaLoggingConfigServiceLogGenerationRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaMerchantCenterAccountLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2326,6 +2344,34 @@ module Google
           property :place_id, as: 'placeId'
           property :price_info, as: 'priceInfo', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPriceInfo, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPriceInfo::Representation
       
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaLoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_log_generation_rule, as: 'defaultLogGenerationRule', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLoggingConfigLogGenerationRule, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLoggingConfigLogGenerationRule::Representation
+      
+          property :name, as: 'name'
+          collection :service_log_generation_rules, as: 'serviceLogGenerationRules', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLoggingConfigServiceLogGenerationRule, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLoggingConfigServiceLogGenerationRule::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaLoggingConfigLogGenerationRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :info_log_sample_rate, as: 'infoLogSampleRate'
+          property :logging_level, as: 'loggingLevel'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaLoggingConfigServiceLogGenerationRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_generation_rule, as: 'logGenerationRule', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLoggingConfigLogGenerationRule, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLoggingConfigLogGenerationRule::Representation
+      
+          property :service_name, as: 'serviceName'
         end
       end
       
