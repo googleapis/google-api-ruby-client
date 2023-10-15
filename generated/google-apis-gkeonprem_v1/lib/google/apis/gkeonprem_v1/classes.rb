@@ -75,7 +75,7 @@ module Google
         end
       end
       
-      # ## Resource that represents a bare metal admin cluster.
+      # Resource that represents a bare metal admin cluster. LINT.IfChange
       class BareMetalAdminCluster
         include Google::Apis::Core::Hashable
       
@@ -862,7 +862,7 @@ module Google
         end
       end
       
-      # Resource that represents a bare metal user cluster.
+      # Resource that represents a bare metal user cluster. LINT.IfChange
       class BareMetalCluster
         include Google::Apis::Core::Hashable
       
@@ -3755,6 +3755,12 @@ module Google
         # @return [Google::Apis::GkeonpremV1::VmwarePlatformConfig]
         attr_accessor :platform_config
       
+        # VmwareAdminPreparedSecretsConfig represents configuration for admin cluster
+        # prepared secrets.
+        # Corresponds to the JSON property `preparedSecrets`
+        # @return [Google::Apis::GkeonpremV1::VmwareAdminPreparedSecretsConfig]
+        attr_accessor :prepared_secrets
+      
         # Output only. If set, there are currently changes in flight to the VMware admin
         # cluster.
         # Corresponds to the JSON property `reconciling`
@@ -3813,6 +3819,7 @@ module Google
           @network_config = args[:network_config] if args.key?(:network_config)
           @on_prem_version = args[:on_prem_version] if args.key?(:on_prem_version)
           @platform_config = args[:platform_config] if args.key?(:platform_config)
+          @prepared_secrets = args[:prepared_secrets] if args.key?(:prepared_secrets)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
@@ -4090,6 +4097,27 @@ module Google
           @service_address_cidr_blocks = args[:service_address_cidr_blocks] if args.key?(:service_address_cidr_blocks)
           @static_ip_config = args[:static_ip_config] if args.key?(:static_ip_config)
           @vcenter_network = args[:vcenter_network] if args.key?(:vcenter_network)
+        end
+      end
+      
+      # VmwareAdminPreparedSecretsConfig represents configuration for admin cluster
+      # prepared secrets.
+      class VmwareAdminPreparedSecretsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether prepared secrets is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
