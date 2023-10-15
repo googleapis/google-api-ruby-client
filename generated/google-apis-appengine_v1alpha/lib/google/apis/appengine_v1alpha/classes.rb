@@ -165,6 +165,49 @@ module Google
         end
       end
       
+      # ContainerState contains the externally-visible container state that is used to
+      # communicate the state and reasoning for that state to the CLH. This data is
+      # not persisted by CCFE, but is instead derived from CCFE's internal
+      # representation of the container state.
+      class ContainerState
+        include Google::Apis::Core::Hashable
+      
+        # Containers transition between and within states based on reasons sent from
+        # various systems. CCFE will provide the CLH with reasons for the current state
+        # per system.The current systems that CCFE supports are: Service Management (
+        # Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud
+        # Billing API)
+        # Corresponds to the JSON property `currentReasons`
+        # @return [Google::Apis::AppengineV1alpha::Reasons]
+        attr_accessor :current_reasons
+      
+        # Containers transition between and within states based on reasons sent from
+        # various systems. CCFE will provide the CLH with reasons for the current state
+        # per system.The current systems that CCFE supports are: Service Management (
+        # Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud
+        # Billing API)
+        # Corresponds to the JSON property `previousReasons`
+        # @return [Google::Apis::AppengineV1alpha::Reasons]
+        attr_accessor :previous_reasons
+      
+        # The current state of the container. This state is the culmination of all of
+        # the opinions from external systems that CCFE knows about of the container.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_reasons = args[:current_reasons] if args.key?(:current_reasons)
+          @previous_reasons = args[:previous_reasons] if args.key?(:previous_reasons)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Metadata for the given google.longrunning.Operation during a google.appengine.
       # v1.CreateVersionRequest.
       class CreateVersionMetadataV1
@@ -832,12 +875,12 @@ module Google
         # @return [Google::Apis::AppengineV1alpha::ProjectsMetadata]
         attr_accessor :project_metadata
       
-        # ProjectState contains the externally-visible project state that is used to
+        # ContainerState contains the externally-visible container state that is used to
         # communicate the state and reasoning for that state to the CLH. This data is
         # not persisted by CCFE, but is instead derived from CCFE's internal
-        # representation of the project state.
+        # representation of the container state.
         # Corresponds to the JSON property `state`
-        # @return [Google::Apis::AppengineV1alpha::ProjectState]
+        # @return [Google::Apis::AppengineV1alpha::ContainerState]
         attr_accessor :state
       
         def initialize(**args)
@@ -849,49 +892,6 @@ module Google
           @event_id = args[:event_id] if args.key?(:event_id)
           @phase = args[:phase] if args.key?(:phase)
           @project_metadata = args[:project_metadata] if args.key?(:project_metadata)
-          @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # ProjectState contains the externally-visible project state that is used to
-      # communicate the state and reasoning for that state to the CLH. This data is
-      # not persisted by CCFE, but is instead derived from CCFE's internal
-      # representation of the project state.
-      class ProjectState
-        include Google::Apis::Core::Hashable
-      
-        # Projects transition between and within states based on reasons sent from
-        # various systems. CCFE will provide the CLH with reasons for the current state
-        # per system.The current systems that CCFE supports are: Service Management (
-        # Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud
-        # Billing API)
-        # Corresponds to the JSON property `currentReasons`
-        # @return [Google::Apis::AppengineV1alpha::Reasons]
-        attr_accessor :current_reasons
-      
-        # Projects transition between and within states based on reasons sent from
-        # various systems. CCFE will provide the CLH with reasons for the current state
-        # per system.The current systems that CCFE supports are: Service Management (
-        # Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud
-        # Billing API)
-        # Corresponds to the JSON property `previousReasons`
-        # @return [Google::Apis::AppengineV1alpha::Reasons]
-        attr_accessor :previous_reasons
-      
-        # The current state of the project. This state is the culmination of all of the
-        # opinions from external systems that CCFE knows about of the project.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @current_reasons = args[:current_reasons] if args.key?(:current_reasons)
-          @previous_reasons = args[:previous_reasons] if args.key?(:previous_reasons)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -962,7 +962,7 @@ module Google
         end
       end
       
-      # Projects transition between and within states based on reasons sent from
+      # Containers transition between and within states based on reasons sent from
       # various systems. CCFE will provide the CLH with reasons for the current state
       # per system.The current systems that CCFE supports are: Service Management (
       # Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud
