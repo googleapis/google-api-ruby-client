@@ -5944,6 +5944,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SnapshotAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SnapshotList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -5976,6 +5994,24 @@ module Google
       
       class SnapshotSettingsStorageLocationSettingsStorageLocationPreference
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -11347,6 +11383,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :instance_selection_lists, as: 'instanceSelectionLists', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection::Representation
       
+          hash :instance_selections, as: 'instanceSelections', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection::Representation
+      
         end
       end
       
@@ -11417,6 +11455,8 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :queuing_policy, as: 'queuingPolicy', class: Google::Apis::ComputeAlpha::QueuingPolicy, decorator: Google::Apis::ComputeAlpha::QueuingPolicy::Representation
+      
+          property :requested_run_duration, as: 'requestedRunDuration', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
       
           property :resize_by, as: 'resizeBy'
           property :self_link, as: 'selfLink'
@@ -13807,6 +13847,7 @@ module Google
           collection :secondary_ip_cidr_ranges, as: 'secondaryIpCidrRanges'
           property :status, as: 'status'
           property :subnetwork, as: 'subnetwork'
+          property :subnetwork_cidr_range, as: 'subnetworkCidrRange'
         end
       end
       
@@ -15629,6 +15670,7 @@ module Google
       class PublicAdvertisedPrefix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :byoip_api_version, as: 'byoipApiVersion'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :dns_verification_ip, as: 'dnsVerificationIp'
@@ -15694,6 +15736,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allocatable_prefix_length, as: 'allocatablePrefixLength'
+          property :byoip_api_version, as: 'byoipApiVersion'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -18596,6 +18639,40 @@ module Google
         end
       end
       
+      class SnapshotAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeAlpha::SnapshotsScopedList, decorator: Google::Apis::ComputeAlpha::SnapshotsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::SnapshotAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::SnapshotAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::SnapshotAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::SnapshotAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class SnapshotList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -18649,6 +18726,34 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class SnapshotsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :snapshots, as: 'snapshots', class: Google::Apis::ComputeAlpha::Snapshot, decorator: Google::Apis::ComputeAlpha::Snapshot::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::SnapshotsScopedList::Warning, decorator: Google::Apis::ComputeAlpha::SnapshotsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::SnapshotsScopedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::SnapshotsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
