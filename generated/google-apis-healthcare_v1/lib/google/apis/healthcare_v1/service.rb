@@ -2085,6 +2085,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets metrics associated with the DICOM store.
+        # @param [String] name
+        #   The resource name of the DICOM store to get metrics for.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::DicomStoreMetrics] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::DicomStoreMetrics]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset_dicom_store_dicom_store_metrics(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:getDICOMStoreMetrics', options)
+          command.response_representation = Google::Apis::HealthcareV1::DicomStoreMetrics::Representation
+          command.response_class = Google::Apis::HealthcareV1::DicomStoreMetrics
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -2514,6 +2544,70 @@ module Google
           command.response_representation = Google::Apis::HealthcareV1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::HealthcareV1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # GetStudyMetrics returns metrics for a study.
+        # @param [String] study
+        #   The study resource path. For example, `projects/`project_id`/locations/`
+        #   location_id`/datasets/`dataset_id`/dicomStores/`dicom_store_id`/dicomWeb/
+        #   studies/`study_uid``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::StudyMetrics] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::StudyMetrics]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset_dicom_store_dicom_web_study_study_metrics(study, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+study}:getStudyMetrics', options)
+          command.response_representation = Google::Apis::HealthcareV1::StudyMetrics::Representation
+          command.response_class = Google::Apis::HealthcareV1::StudyMetrics
+          command.params['study'] = study unless study.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # GetSeriesMetrics returns metrics for a series.
+        # @param [String] series
+        #   The series resource path. For example, `projects/`project_id`/locations/`
+        #   location_id`/datasets/`dataset_id`/dicomStores/`dicom_store_id`/dicomWeb/
+        #   studies/`study_uid`/series/`series_uid``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::SeriesMetrics] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::SeriesMetrics]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset_dicom_store_dicom_web_study_series_series_metrics(series, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+series}:getSeriesMetrics', options)
+          command.response_representation = Google::Apis::HealthcareV1::SeriesMetrics::Representation
+          command.response_class = Google::Apis::HealthcareV1::SeriesMetrics
+          command.params['series'] = series unless series.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4837,6 +4931,38 @@ module Google
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1::Hl7V2Store::Representation
           command.response_class = Google::Apis::HealthcareV1::Hl7V2Store
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets metrics asssociated with the HL7v2 store.
+        # @param [String] name
+        #   The resource name of the HL7v2 store to get metrics for, in the format `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   hl7V2Stores/`hl7v2_store_id``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Hl7V2StoreMetrics] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Hl7V2StoreMetrics]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset_hl7_v2_store_hl7v2_store_metrics(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:getHL7v2StoreMetrics', options)
+          command.response_representation = Google::Apis::HealthcareV1::Hl7V2StoreMetrics::Representation
+          command.response_class = Google::Apis::HealthcareV1::Hl7V2StoreMetrics
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
