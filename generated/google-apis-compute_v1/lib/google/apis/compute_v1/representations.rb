@@ -11111,6 +11111,7 @@ module Google
           property :instance_status, as: 'instanceStatus'
           property :last_attempt, as: 'lastAttempt', class: Google::Apis::ComputeV1::ManagedInstanceLastAttempt, decorator: Google::Apis::ComputeV1::ManagedInstanceLastAttempt::Representation
       
+          property :name, as: 'name'
           property :preserved_state_from_config, as: 'preservedStateFromConfig', class: Google::Apis::ComputeV1::PreservedState, decorator: Google::Apis::ComputeV1::PreservedState::Representation
       
           property :preserved_state_from_policy, as: 'preservedStateFromPolicy', class: Google::Apis::ComputeV1::PreservedState, decorator: Google::Apis::ComputeV1::PreservedState::Representation
@@ -11330,10 +11331,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_address, as: 'ipAddress'
+          property :ipv6_address, as: 'ipv6Address'
           property :project_id_or_num, as: 'projectIdOrNum'
           collection :secondary_ip_cidr_ranges, as: 'secondaryIpCidrRanges'
           property :status, as: 'status'
           property :subnetwork, as: 'subnetwork'
+          property :subnetwork_cidr_range, as: 'subnetworkCidrRange'
         end
       end
       
