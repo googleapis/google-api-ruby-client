@@ -898,8 +898,8 @@ module Google
         # @return [String]
         attr_accessor :resource_group
       
-        # Optional. Kind of a Kubernetes resource, e.g. "CustomResourceDefinition", "
-        # StorageClass", etc.
+        # Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase)
+        # and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
         # Corresponds to the JSON property `resourceKind`
         # @return [String]
         attr_accessor :resource_kind
@@ -1428,7 +1428,7 @@ module Google
       end
       
       # Represents both a request to Restore some portion of a Backup into a target
-      # GKE cluster and a record of the restore operation itself. Next id: 18
+      # GKE cluster and a record of the restore operation itself. Next id: 19
       class Restore
         include Google::Apis::Core::Hashable
       
