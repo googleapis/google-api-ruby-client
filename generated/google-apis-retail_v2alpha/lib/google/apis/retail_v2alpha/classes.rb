@@ -3249,6 +3249,98 @@ module Google
         end
       end
       
+      # Project level logging config to control what level of log will be generated
+      # and written to Cloud Logging.
+      class GoogleCloudRetailV2alphaLoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # The logging configurations for services supporting log generation.
+        # Corresponds to the JSON property `defaultLogGenerationRule`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLoggingConfigLogGenerationRule]
+        attr_accessor :default_log_generation_rule
+      
+        # Required. Immutable. The name of the LoggingConfig singleton resource. Format:
+        # projects/*/loggingConfig
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Controls logging configurations more granularly for each supported service.
+        # This overrides the default_log_generation_rule for the services specified. For
+        # those not mentioned, they will fallback to the default log generation rule.
+        # Corresponds to the JSON property `serviceLogGenerationRules`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLoggingConfigServiceLogGenerationRule>]
+        attr_accessor :service_log_generation_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_log_generation_rule = args[:default_log_generation_rule] if args.key?(:default_log_generation_rule)
+          @name = args[:name] if args.key?(:name)
+          @service_log_generation_rules = args[:service_log_generation_rules] if args.key?(:service_log_generation_rules)
+        end
+      end
+      
+      # The logging configurations for services supporting log generation.
+      class GoogleCloudRetailV2alphaLoggingConfigLogGenerationRule
+        include Google::Apis::Core::Hashable
+      
+        # The log sample rate for INFO level log entries. You can use this to reduce the
+        # number of entries generated for INFO level logs. DO NOT set this field if the
+        # logging_level is not LoggingLevel.LOG_ALL. Otherwise, an INVALID_ARGUMENT
+        # error is returned. Sample rate for INFO logs defaults to 1 when unset (
+        # generate and send all INFO logs to Cloud Logging). Its value must be greater
+        # than 0 and less than or equal to 1.
+        # Corresponds to the JSON property `infoLogSampleRate`
+        # @return [Float]
+        attr_accessor :info_log_sample_rate
+      
+        # The logging level. By default it is set to `LOG_WARNINGS_AND_ABOVE`.
+        # Corresponds to the JSON property `loggingLevel`
+        # @return [String]
+        attr_accessor :logging_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @info_log_sample_rate = args[:info_log_sample_rate] if args.key?(:info_log_sample_rate)
+          @logging_level = args[:logging_level] if args.key?(:logging_level)
+        end
+      end
+      
+      # The granular logging configurations for supported services.
+      class GoogleCloudRetailV2alphaLoggingConfigServiceLogGenerationRule
+        include Google::Apis::Core::Hashable
+      
+        # The logging configurations for services supporting log generation.
+        # Corresponds to the JSON property `logGenerationRule`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLoggingConfigLogGenerationRule]
+        attr_accessor :log_generation_rule
+      
+        # Required. Supported service names: "CatalogService", "CompletionService", "
+        # ControlService", "MerchantCenterStreaming", "ModelService", "PredictionService"
+        # , "ProductService", "ServingConfigService", "UserEventService",
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_generation_rule = args[:log_generation_rule] if args.key?(:log_generation_rule)
+          @service_name = args[:service_name] if args.key?(:service_name)
+        end
+      end
+      
       # Represents a link between a Merchant Center account and a branch. After a link
       # is established, products from the linked Merchant Center account are streamed
       # to the linked branch.
