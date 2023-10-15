@@ -2711,6 +2711,13 @@ module Google
         # @return [Array<Google::Apis::RunV1::GoogleCloudRunV1Condition>]
         attr_accessor :conditions
       
+        # Output only. The desired number of instances running this revision. For Cloud
+        # Run, this only includes instances provisioned using the minScale annotation.
+        # It does not include instances created by autoscaling.
+        # Corresponds to the JSON property `desiredReplicas`
+        # @return [Fixnum]
+        attr_accessor :desired_replicas
+      
         # ImageDigest holds the resolved digest for the image specified within .Spec.
         # Container.Image. The digest is resolved during the creation of Revision. This
         # field holds the digest value regardless of whether a tag or digest was
@@ -2745,6 +2752,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @conditions = args[:conditions] if args.key?(:conditions)
+          @desired_replicas = args[:desired_replicas] if args.key?(:desired_replicas)
           @image_digest = args[:image_digest] if args.key?(:image_digest)
           @log_url = args[:log_url] if args.key?(:log_url)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
