@@ -301,7 +301,7 @@ module Google
         # @param [Google::Apis::BaremetalsolutionV2::Instance] instance_object
         # @param [String] update_mask
         #   The list of fields to update. The currently supported fields are: `labels` `
-        #   hyperthreading_enabled` `os_image` `ssh_keys`
+        #   hyperthreading_enabled` `os_image` `ssh_keys` `kms_key_version`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
