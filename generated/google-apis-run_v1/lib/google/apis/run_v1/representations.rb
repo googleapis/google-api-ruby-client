@@ -1235,6 +1235,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :conditions, as: 'conditions', class: Google::Apis::RunV1::GoogleCloudRunV1Condition, decorator: Google::Apis::RunV1::GoogleCloudRunV1Condition::Representation
       
+          property :desired_replicas, as: 'desiredReplicas'
           property :image_digest, as: 'imageDigest'
           property :log_url, as: 'logUrl'
           property :observed_generation, as: 'observedGeneration'
