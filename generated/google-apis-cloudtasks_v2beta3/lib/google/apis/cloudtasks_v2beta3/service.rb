@@ -158,8 +158,10 @@ module Google
         # assotiated with the Cloud Tasks location (Creates if the key does not already
         # exist). All new tasks created in the location will be encrypted at-rest with
         # the KMS-key provided in the config.
-        # @param [String] projects_id
-        # @param [String] locations_id
+        # @param [String] name
+        #   Output only. The config resource name which includes the project and location
+        #   and must end in 'cmekConfig', in the format projects/PROJECT_ID/locations/
+        #   LOCATION_ID/cmekConfig`
         # @param [Google::Apis::CloudtasksV2beta3::CmekConfig] cmek_config_object
         # @param [String] update_mask
         #   List of fields to be updated in this request.
@@ -180,14 +182,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_location_cmek_config(projects_id, locations_id, cmek_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v2beta3/projects/{projectsId}/locations/{locationsId}/cmekConfig', options)
+        def update_project_location_cmek_config(name, cmek_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2beta3/{+name}', options)
           command.request_representation = Google::Apis::CloudtasksV2beta3::CmekConfig::Representation
           command.request_object = cmek_config_object
           command.response_representation = Google::Apis::CloudtasksV2beta3::CmekConfig::Representation
           command.response_class = Google::Apis::CloudtasksV2beta3::CmekConfig
-          command.params['projectsId'] = projects_id unless projects_id.nil?
-          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
