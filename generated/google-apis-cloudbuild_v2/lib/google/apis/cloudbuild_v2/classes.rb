@@ -259,7 +259,7 @@ module Google
         end
       end
       
-      # A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Server or
+      # A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center or
       # GitLab.
       class Connection
         include Google::Apis::Core::Hashable
@@ -1469,7 +1469,7 @@ module Google
         # @return [Google::Apis::CloudbuildV2::PipelineRef]
         attr_accessor :pipeline_ref
       
-        # Status of the PipelineRun.
+        # Pipelinerun status the user can provide. Used for cancellation.
         # Corresponds to the JSON property `pipelineRunStatus`
         # @return [String]
         attr_accessor :pipeline_run_status
