@@ -26,7 +26,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment
         include Google::Apis::Core::Hashable
       
-        # Labels for this request.
+        # Output only. Labels for this request.
         # Corresponds to the JSON property `labels`
         # @return [Array<String>]
         attr_accessor :labels
@@ -45,13 +45,13 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo
         include Google::Apis::Core::Hashable
       
-        # Endpoints that can be used for identity verification.
+        # Optional. Endpoints that can be used for identity verification.
         # Corresponds to the JSON property `endpoints`
         # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo>]
         attr_accessor :endpoints
       
-        # Language code preference for the verification message, set as a IETF BCP 47
-        # language code.
+        # Optional. Language code preference for the verification message, set as a IETF
+        # BCP 47 language code.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -84,20 +84,20 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
         include Google::Apis::Core::Hashable
       
-        # If set to true, allowed_package_names are not enforced.
+        # Optional. If set to true, allowed_package_names are not enforced.
         # Corresponds to the JSON property `allowAllPackageNames`
         # @return [Boolean]
         attr_accessor :allow_all_package_names
         alias_method :allow_all_package_names?, :allow_all_package_names
       
-        # Android package names of apps allowed to use the key. Example: 'com.
+        # Optional. Android package names of apps allowed to use the key. Example: 'com.
         # companyname.appname'
         # Corresponds to the JSON property `allowedPackageNames`
         # @return [Array<String>]
         attr_accessor :allowed_package_names
       
-        # Set to true for keys that are used in an Android application that is available
-        # for download in app stores in addition to the Google Play Store.
+        # Optional. Set to true for keys that are used in an Android application that is
+        # available for download in app stores in addition to the Google Play Store.
         # Corresponds to the JSON property `supportNonGoogleAppStoreDistribution`
         # @return [Boolean]
         attr_accessor :support_non_google_app_store_distribution
@@ -241,8 +241,8 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudSignals]
         attr_accessor :fraud_signals
       
-        # Output only. The resource name for the Assessment in the format "projects/`
-        # project`/assessments/`assessment`".
+        # Output only. The resource name for the Assessment in the format `projects/`
+        # project`/assessments/`assessment``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -400,7 +400,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :headers
       
-        # Optional. Optional JA3 fingerprint for SSL clients.
+        # Optional. JA3 fingerprint for SSL clients.
         # Corresponds to the JSON property `ja3`
         # @return [String]
         attr_accessor :ja3
@@ -423,7 +423,6 @@ module Google
         attr_accessor :token
       
         # Transaction data associated with a payment protected by reCAPTCHA Enterprise.
-        # All fields are optional.
         # Corresponds to the JSON property `transactionData`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionData]
         attr_accessor :transaction_data
@@ -562,12 +561,12 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction
         include Google::Apis::Core::Hashable
       
-        # The header key to set in the request to the backend server.
+        # Optional. The header key to set in the request to the backend server.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
       
-        # The header value to set in the request to the backend server.
+        # Optional. The header value to set in the request to the backend server.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -588,8 +587,8 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction
         include Google::Apis::Core::Hashable
       
-        # The address to redirect to. The target is a relative path in the current host.
-        # Example: "/blog/404.html".
+        # Optional. The address to redirect to. The target is a relative path in the
+        # current host. Example: "/blog/404.html".
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
@@ -609,42 +608,42 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1FirewallPolicy
         include Google::Apis::Core::Hashable
       
-        # The actions that the caller should take regarding user access. There should be
-        # at most one terminal action. A terminal action is any action that forces a
-        # response, such as AllowAction, BlockAction or SubstituteAction. Zero or more
-        # non-terminal actions such as SetHeader might be specified. A single policy can
-        # contain up to 16 actions.
+        # Optional. The actions that the caller should take regarding user access. There
+        # should be at most one terminal action. A terminal action is any action that
+        # forces a response, such as `AllowAction`, `BlockAction` or `SubstituteAction`.
+        # Zero or more non-terminal actions such as `SetHeader` might be specified. A
+        # single policy can contain up to 16 actions.
         # Corresponds to the JSON property `actions`
         # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallAction>]
         attr_accessor :actions
       
-        # A CEL (Common Expression Language) conditional expression that specifies if
-        # this policy applies to an incoming user request. If this condition evaluates
-        # to true and the requested path matched the path pattern, the associated
-        # actions should be executed by the caller. The condition string is checked for
-        # CEL syntax correctness on creation. For more information, see the [CEL spec](
-        # https://github.com/google/cel-spec) and its [language definition](https://
-        # github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a max
-        # length of 500 characters.
+        # Optional. A CEL (Common Expression Language) conditional expression that
+        # specifies if this policy applies to an incoming user request. If this
+        # condition evaluates to true and the requested path matched the path pattern,
+        # the associated actions should be executed by the caller. The condition string
+        # is checked for CEL syntax correctness on creation. For more information, see
+        # the [CEL spec](https://github.com/google/cel-spec) and its [language
+        # definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A
+        # condition has a max length of 500 characters.
         # Corresponds to the JSON property `condition`
         # @return [String]
         attr_accessor :condition
       
-        # A description of what this policy aims to achieve, for convenience purposes.
-        # The description can at most include 256 UTF-8 characters.
+        # Optional. A description of what this policy aims to achieve, for convenience
+        # purposes. The description can at most include 256 UTF-8 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # The resource name for the FirewallPolicy in the format "projects/`project`/
-        # firewallpolicies/`firewallpolicy`".
+        # The resource name for the FirewallPolicy in the format `projects/`project`/
+        # firewallpolicies/`firewallpolicy``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The path for which this policy applies, specified as a glob pattern. For more
-        # information on glob, see the [manual page](https://man7.org/linux/man-pages/
-        # man7/glob.7.html). A path has a max length of 200 characters.
+        # Optional. The path for which this policy applies, specified as a glob pattern.
+        # For more information on glob, see the [manual page](https://man7.org/linux/man-
+        # pages/man7/glob.7.html). A path has a max length of 200 characters.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
@@ -715,8 +714,9 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict]
         attr_accessor :stolen_instrument_verdict
       
-        # Probability of this transaction being fraudulent. Summarizes the combined risk
-        # of attack vectors below. Values are from 0.0 (lowest) to 1.0 (highest).
+        # Output only. Probability of this transaction being fraudulent. Summarizes the
+        # combined risk of attack vectors below. Values are from 0.0 (lowest) to 1.0 (
+        # highest).
         # Corresponds to the JSON property `transactionRisk`
         # @return [Float]
         attr_accessor :transaction_risk
@@ -738,8 +738,8 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict
         include Google::Apis::Core::Hashable
       
-        # Probability of this transaction attempt being executed in a behaviorally
-        # trustworthy way. Values are from 0.0 (lowest) to 1.0 (highest).
+        # Output only. Probability of this transaction attempt being executed in a
+        # behaviorally trustworthy way. Values are from 0.0 (lowest) to 1.0 (highest).
         # Corresponds to the JSON property `trust`
         # @return [Float]
         attr_accessor :trust_prop
@@ -759,8 +759,8 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict
         include Google::Apis::Core::Hashable
       
-        # Probability of this transaction attempt being part of a card testing attack.
-        # Values are from 0.0 (lowest) to 1.0 (highest).
+        # Output only. Probability of this transaction attempt being part of a card
+        # testing attack. Values are from 0.0 (lowest) to 1.0 (highest).
         # Corresponds to the JSON property `risk`
         # @return [Float]
         attr_accessor :risk
@@ -780,8 +780,8 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict
         include Google::Apis::Core::Hashable
       
-        # Probability of this transaction being executed with a stolen instrument.
-        # Values are from 0.0 (lowest) to 1.0 (highest).
+        # Output only. Probability of this transaction being executed with a stolen
+        # instrument. Values are from 0.0 (lowest) to 1.0 (highest).
         # Corresponds to the JSON property `risk`
         # @return [Float]
         attr_accessor :risk
@@ -872,14 +872,14 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1IosKeySettings
         include Google::Apis::Core::Hashable
       
-        # If set to true, allowed_bundle_ids are not enforced.
+        # Optional. If set to true, allowed_bundle_ids are not enforced.
         # Corresponds to the JSON property `allowAllBundleIds`
         # @return [Boolean]
         attr_accessor :allow_all_bundle_ids
         alias_method :allow_all_bundle_ids?, :allow_all_bundle_ids
       
-        # iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.
-        # productname.appname'
+        # Optional. iOS bundle ids of apps allowed to use the key. Example: 'com.
+        # companyname.productname.appname'
         # Corresponds to the JSON property `allowedBundleIds`
         # @return [Array<String>]
         attr_accessor :allowed_bundle_ids
@@ -916,7 +916,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Human-readable display name of this key. Modifiable by user.
+        # Required. Human-readable display name of this key. Modifiable by user.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -926,12 +926,13 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1IosKeySettings]
         attr_accessor :ios_settings
       
-        # See Creating and managing labels.
+        # Optional. See [Creating and managing labels] (https://cloud.google.com/
+        # recaptcha-enterprise/docs/labels).
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The resource name for the Key in the format "projects/`project`/keys/`key`".
+        # The resource name for the Key in the format `projects/`project`/keys/`key``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1084,8 +1085,8 @@ module Google
         # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>]
         attr_accessor :challenge_metrics
       
-        # Output only. The name of the metrics, in the format "projects/`project`/keys/`
-        # key`/metrics".
+        # Output only. The name of the metrics, in the format `projects/`project`/keys/`
+        # key`/metrics`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1160,7 +1161,7 @@ module Google
         # @return [String]
         attr_accessor :encrypted_user_credentials_hash
       
-        # Optional. Exactly 26-bit prefix of the SHA-256 hash of the canonicalized
+        # Required. Exactly 26-bit prefix of the SHA-256 hash of the canonicalized
         # username. It is used to look up password leaks associated with that hash
         # prefix.
         # Corresponds to the JSON property `lookupHashPrefix`
@@ -1264,19 +1265,19 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1RiskAnalysis
         include Google::Apis::Core::Hashable
       
-        # Extended verdict reasons to be used for experimentation only. The set of
-        # possible reasons is subject to change.
+        # Output only. Extended verdict reasons to be used for experimentation only. The
+        # set of possible reasons is subject to change.
         # Corresponds to the JSON property `extendedVerdictReasons`
         # @return [Array<String>]
         attr_accessor :extended_verdict_reasons
       
-        # Reasons contributing to the risk analysis verdict.
+        # Output only. Reasons contributing to the risk analysis verdict.
         # Corresponds to the JSON property `reasons`
         # @return [Array<String>]
         attr_accessor :reasons
       
-        # Legitimate event score from 0.0 to 1.0. (1.0 means very likely legitimate
-        # traffic while 0.0 means very likely non-legitimate traffic).
+        # Output only. Legitimate event score from 0.0 to 1.0. (1.0 means very likely
+        # legitimate traffic while 0.0 means very likely non-legitimate traffic).
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -1410,15 +1411,15 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1TestingOptions
         include Google::Apis::Core::Hashable
       
-        # For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests
-        # for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge
-        # if CHALLENGE.
+        # Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge
+        # requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable
+        # challenge if CHALLENGE.
         # Corresponds to the JSON property `testingChallenge`
         # @return [String]
         attr_accessor :testing_challenge
       
-        # All assessments for this Key will return this score. Must be between 0 (likely
-        # not legitimate) and 1 (likely legitimate) inclusive.
+        # Optional. All assessments for this Key will return this score. Must be between
+        # 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
         # Corresponds to the JSON property `testingScore`
         # @return [Float]
         attr_accessor :testing_score
@@ -1438,41 +1439,44 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1TokenProperties
         include Google::Apis::Core::Hashable
       
-        # Action name provided at token generation.
+        # Output only. Action name provided at token generation.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
       
-        # The name of the Android package with which the token was generated (Android
-        # keys only).
+        # Output only. The name of the Android package with which the token was
+        # generated (Android keys only).
         # Corresponds to the JSON property `androidPackageName`
         # @return [String]
         attr_accessor :android_package_name
       
-        # The timestamp corresponding to the generation of the token.
+        # Output only. The timestamp corresponding to the generation of the token.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # The hostname of the page on which the token was generated (Web keys only).
+        # Output only. The hostname of the page on which the token was generated (Web
+        # keys only).
         # Corresponds to the JSON property `hostname`
         # @return [String]
         attr_accessor :hostname
       
-        # Reason associated with the response when valid = false.
+        # Output only. Reason associated with the response when valid = false.
         # Corresponds to the JSON property `invalidReason`
         # @return [String]
         attr_accessor :invalid_reason
       
-        # The ID of the iOS bundle with which the token was generated (iOS keys only).
+        # Output only. The ID of the iOS bundle with which the token was generated (iOS
+        # keys only).
         # Corresponds to the JSON property `iosBundleId`
         # @return [String]
         attr_accessor :ios_bundle_id
       
-        # Whether the provided user response token is valid. When valid = false, the
-        # reason could be specified in invalid_reason or it could also be due to a user
-        # failing to solve a challenge or a sitekey mismatch (i.e the sitekey used to
-        # generate the token was different than the one specified in the assessment).
+        # Output only. Whether the provided user response token is valid. When valid =
+        # false, the reason could be specified in invalid_reason or it could also be due
+        # to a user failing to solve a challenge or a sitekey mismatch (i.e the sitekey
+        # used to generate the token was different than the one specified in the
+        # assessment).
         # Corresponds to the JSON property `valid`
         # @return [Boolean]
         attr_accessor :valid
@@ -1495,7 +1499,6 @@ module Google
       end
       
       # Transaction data associated with a payment protected by reCAPTCHA Enterprise.
-      # All fields are optional.
       class GoogleCloudRecaptchaenterpriseV1TransactionData
         include Google::Apis::Core::Hashable
       
@@ -1504,17 +1507,18 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataAddress]
         attr_accessor :billing_address
       
-        # The Bank Identification Number - generally the first 6 or 8 digits of the card.
+        # Optional. The Bank Identification Number - generally the first 6 or 8 digits
+        # of the card.
         # Corresponds to the JSON property `cardBin`
         # @return [String]
         attr_accessor :card_bin
       
-        # The last four digits of the card.
+        # Optional. The last four digits of the card.
         # Corresponds to the JSON property `cardLastFour`
         # @return [String]
         attr_accessor :card_last_four
       
-        # The currency code in ISO-4217 format.
+        # Optional. The currency code in ISO-4217 format.
         # Corresponds to the JSON property `currencyCode`
         # @return [String]
         attr_accessor :currency_code
@@ -1524,20 +1528,20 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo]
         attr_accessor :gateway_info
       
-        # Items purchased in this transaction.
+        # Optional. Items purchased in this transaction.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataItem>]
         attr_accessor :items
       
-        # Information about the user or users fulfilling the transaction.
+        # Optional. Information about the user or users fulfilling the transaction.
         # Corresponds to the JSON property `merchants`
         # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataUser>]
         attr_accessor :merchants
       
-        # The payment method for the transaction. The allowed values are: * credit-card *
-        # debit-card * gift-card * processor-`name` (If a third-party is used, for
-        # example, processor-paypal) * custom-`name` (If an alternative method is used,
-        # for example, custom-crypto)
+        # Optional. The payment method for the transaction. The allowed values are: *
+        # credit-card * debit-card * gift-card * processor-`name` (If a third-party is
+        # used, for example, processor-paypal) * custom-`name` (If an alternative method
+        # is used, for example, custom-crypto)
         # Corresponds to the JSON property `paymentMethod`
         # @return [String]
         attr_accessor :payment_method
@@ -1547,7 +1551,8 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataAddress]
         attr_accessor :shipping_address
       
-        # The value of shipping in the specified currency. 0 for free or no shipping.
+        # Optional. The value of shipping in the specified currency. 0 for free or no
+        # shipping.
         # Corresponds to the JSON property `shippingValue`
         # @return [Float]
         attr_accessor :shipping_value
@@ -1565,7 +1570,7 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataUser]
         attr_accessor :user
       
-        # The decimal value of the transaction in the specified currency.
+        # Optional. The decimal value of the transaction in the specified currency.
         # Corresponds to the JSON property `value`
         # @return [Float]
         attr_accessor :value
@@ -1596,34 +1601,35 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1TransactionDataAddress
         include Google::Apis::Core::Hashable
       
-        # The first lines of the address. The first line generally contains the street
-        # name and number, and further lines may include information such as an
-        # apartment number.
+        # Optional. The first lines of the address. The first line generally contains
+        # the street name and number, and further lines may include information such as
+        # an apartment number.
         # Corresponds to the JSON property `address`
         # @return [Array<String>]
         attr_accessor :address
       
-        # The state, province, or otherwise administrative area of the address.
+        # Optional. The state, province, or otherwise administrative area of the address.
         # Corresponds to the JSON property `administrativeArea`
         # @return [String]
         attr_accessor :administrative_area
       
-        # The town/city of the address.
+        # Optional. The town/city of the address.
         # Corresponds to the JSON property `locality`
         # @return [String]
         attr_accessor :locality
       
-        # The postal or ZIP code of the address.
+        # Optional. The postal or ZIP code of the address.
         # Corresponds to the JSON property `postalCode`
         # @return [String]
         attr_accessor :postal_code
       
-        # The recipient name, potentially including information such as "care of".
+        # Optional. The recipient name, potentially including information such as "care
+        # of".
         # Corresponds to the JSON property `recipient`
         # @return [String]
         attr_accessor :recipient
       
-        # The CLDR country/region of the address.
+        # Optional. The CLDR country/region of the address.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
         attr_accessor :region_code
@@ -1647,24 +1653,24 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo
         include Google::Apis::Core::Hashable
       
-        # AVS response code from the gateway (available only when reCAPTCHA Enterprise
-        # is called after authorization).
+        # Optional. AVS response code from the gateway (available only when reCAPTCHA
+        # Enterprise is called after authorization).
         # Corresponds to the JSON property `avsResponseCode`
         # @return [String]
         attr_accessor :avs_response_code
       
-        # CVV response code from the gateway (available only when reCAPTCHA Enterprise
-        # is called after authorization).
+        # Optional. CVV response code from the gateway (available only when reCAPTCHA
+        # Enterprise is called after authorization).
         # Corresponds to the JSON property `cvvResponseCode`
         # @return [String]
         attr_accessor :cvv_response_code
       
-        # Gateway response code describing the state of the transaction.
+        # Optional. Gateway response code describing the state of the transaction.
         # Corresponds to the JSON property `gatewayResponseCode`
         # @return [String]
         attr_accessor :gateway_response_code
       
-        # Name of the gateway service (for example, stripe, square, paypal).
+        # Optional. Name of the gateway service (for example, stripe, square, paypal).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1686,24 +1692,24 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1TransactionDataItem
         include Google::Apis::Core::Hashable
       
-        # When a merchant is specified, its corresponding account_id. Necessary to
-        # populate marketplace-style transactions.
+        # Optional. When a merchant is specified, its corresponding account_id.
+        # Necessary to populate marketplace-style transactions.
         # Corresponds to the JSON property `merchantAccountId`
         # @return [String]
         attr_accessor :merchant_account_id
       
-        # The full name of the item.
+        # Optional. The full name of the item.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The quantity of this item that is being purchased.
+        # Optional. The quantity of this item that is being purchased.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # The value per item that the user is paying, in the transaction currency, after
-        # discounts.
+        # Optional. The value per item that the user is paying, in the transaction
+        # currency, after discounts.
         # Corresponds to the JSON property `value`
         # @return [Float]
         attr_accessor :value
@@ -1725,37 +1731,37 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1TransactionDataUser
         include Google::Apis::Core::Hashable
       
-        # Unique account identifier for this user. If using account defender, this
-        # should match the hashed_account_id field. Otherwise, a unique and persistent
-        # identifier for this account.
+        # Optional. Unique account identifier for this user. If using account defender,
+        # this should match the hashed_account_id field. Otherwise, a unique and
+        # persistent identifier for this account.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
       
-        # The epoch milliseconds of the user's account creation.
+        # Optional. The epoch milliseconds of the user's account creation.
         # Corresponds to the JSON property `creationMs`
         # @return [Fixnum]
         attr_accessor :creation_ms
       
-        # The email address of the user.
+        # Optional. The email address of the user.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
       
-        # Whether the email has been verified to be accessible by the user (OTP or
-        # similar).
+        # Optional. Whether the email has been verified to be accessible by the user (
+        # OTP or similar).
         # Corresponds to the JSON property `emailVerified`
         # @return [Boolean]
         attr_accessor :email_verified
         alias_method :email_verified?, :email_verified
       
-        # The phone number of the user, with country code.
+        # Optional. The phone number of the user, with country code.
         # Corresponds to the JSON property `phoneNumber`
         # @return [String]
         attr_accessor :phone_number
       
-        # Whether the phone number has been verified to be accessible by the user (OTP
-        # or similar).
+        # Optional. Whether the phone number has been verified to be accessible by the
+        # user (OTP or similar).
         # Corresponds to the JSON property `phoneVerified`
         # @return [Boolean]
         attr_accessor :phone_verified
@@ -1847,30 +1853,30 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1WebKeySettings
         include Google::Apis::Core::Hashable
       
-        # If set to true, it means allowed_domains will not be enforced.
+        # Optional. If set to true, it means allowed_domains will not be enforced.
         # Corresponds to the JSON property `allowAllDomains`
         # @return [Boolean]
         attr_accessor :allow_all_domains
         alias_method :allow_all_domains?, :allow_all_domains
       
-        # If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites.
-        # This is supported only for the SCORE integration type.
+        # Optional. If set to true, the key can be used on AMP (Accelerated Mobile Pages)
+        # websites. This is supported only for the SCORE integration type.
         # Corresponds to the JSON property `allowAmpTraffic`
         # @return [Boolean]
         attr_accessor :allow_amp_traffic
         alias_method :allow_amp_traffic?, :allow_amp_traffic
       
-        # Domains or subdomains of websites allowed to use the key. All subdomains of an
-        # allowed domain are automatically allowed. A valid domain requires a host and
-        # must not include any path, port, query or fragment. Examples: 'example.com' or
-        # 'subdomain.example.com'
+        # Optional. Domains or subdomains of websites allowed to use the key. All
+        # subdomains of an allowed domain are automatically allowed. A valid domain
+        # requires a host and must not include any path, port, query or fragment.
+        # Examples: 'example.com' or 'subdomain.example.com'
         # Corresponds to the JSON property `allowedDomains`
         # @return [Array<String>]
         attr_accessor :allowed_domains
       
-        # Settings for the frequency and difficulty at which this key triggers captcha
-        # challenges. This should only be specified for IntegrationTypes CHECKBOX and
-        # INVISIBLE.
+        # Optional. Settings for the frequency and difficulty at which this key triggers
+        # captcha challenges. This should only be specified for IntegrationTypes
+        # CHECKBOX and INVISIBLE.
         # Corresponds to the JSON property `challengeSecurityPreference`
         # @return [String]
         attr_accessor :challenge_security_preference
