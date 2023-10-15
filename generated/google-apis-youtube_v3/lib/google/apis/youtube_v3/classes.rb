@@ -5805,6 +5805,146 @@ module Google
         end
       end
       
+      # 
+      class PlaylistImage
+        include Google::Apis::Core::Hashable
+      
+        # Identifies this resource (playlist id and image type).
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # playlistImages".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A *playlistImage* resource identifies another resource, such as a image, that
+        # is associated with a playlist. In addition, the playlistImage resource
+        # contains details about the included resource that pertain specifically to how
+        # that resource is used in that playlist. YouTube uses playlists to identify
+        # special collections of videos for a channel, such as: - uploaded videos -
+        # favorite videos - positively rated (liked) videos - watch history To be more
+        # specific, these lists are associated with a channel, which is a collection of
+        # a person, group, or company's videos, playlists, and other YouTube information.
+        # You can retrieve the playlist IDs for each of these lists from the channel
+        # resource for a given channel. You can then use the playlistImages.list method
+        # to retrieve image data for any of those playlists. You can also add or remove
+        # images from those lists by calling the playlistImages.insert and
+        # playlistImages.delete methods.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::PlaylistImageSnippet]
+        attr_accessor :snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
+        end
+      end
+      
+      # 
+      class PlaylistImageListResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::PlaylistImage>]
+        attr_accessor :items
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # playlistImageListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
+        # Corresponds to the JSON property `pageInfo`
+        # @return [Google::Apis::YoutubeV3::PageInfo]
+        attr_accessor :page_info
+      
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
+        # Corresponds to the JSON property `prevPageToken`
+        # @return [String]
+        attr_accessor :prev_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
+        end
+      end
+      
+      # A *playlistImage* resource identifies another resource, such as a image, that
+      # is associated with a playlist. In addition, the playlistImage resource
+      # contains details about the included resource that pertain specifically to how
+      # that resource is used in that playlist. YouTube uses playlists to identify
+      # special collections of videos for a channel, such as: - uploaded videos -
+      # favorite videos - positively rated (liked) videos - watch history To be more
+      # specific, these lists are associated with a channel, which is a collection of
+      # a person, group, or company's videos, playlists, and other YouTube information.
+      # You can retrieve the playlist IDs for each of these lists from the channel
+      # resource for a given channel. You can then use the playlistImages.list method
+      # to retrieve image data for any of those playlists. You can also add or remove
+      # images from those lists by calling the playlistImages.insert and
+      # playlistImages.delete methods.
+      class PlaylistImageSnippet
+        include Google::Apis::Core::Hashable
+      
+        # The image height.
+        # Corresponds to the JSON property `height`
+        # @return [Fixnum]
+        attr_accessor :height
+      
+        # The Playlist ID of the playlist this image is associated with.
+        # Corresponds to the JSON property `playlistId`
+        # @return [String]
+        attr_accessor :playlist_id
+      
+        # The image type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The image width.
+        # Corresponds to the JSON property `width`
+        # @return [Fixnum]
+        attr_accessor :width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @height = args[:height] if args.key?(:height)
+          @playlist_id = args[:playlist_id] if args.key?(:playlist_id)
+          @type = args[:type] if args.key?(:type)
+          @width = args[:width] if args.key?(:width)
+        end
+      end
+      
       # A *playlistItem* resource identifies another resource, such as a video, that
       # is included in a playlist. In addition, the playlistItem resource contains
       # details about the included resource that pertain specifically to how that

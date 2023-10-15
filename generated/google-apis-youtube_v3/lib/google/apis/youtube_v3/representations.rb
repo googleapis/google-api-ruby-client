@@ -748,6 +748,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PlaylistImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlaylistImageListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlaylistImageSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PlaylistItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2674,6 +2692,39 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :item_count, as: 'itemCount'
+        end
+      end
+      
+      class PlaylistImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::PlaylistImageSnippet, decorator: Google::Apis::YoutubeV3::PlaylistImageSnippet::Representation
+      
+        end
+      end
+      
+      class PlaylistImageListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::YoutubeV3::PlaylistImage, decorator: Google::Apis::YoutubeV3::PlaylistImage::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :page_info, as: 'pageInfo', class: Google::Apis::YoutubeV3::PageInfo, decorator: Google::Apis::YoutubeV3::PageInfo::Representation
+      
+          property :prev_page_token, as: 'prevPageToken'
+        end
+      end
+      
+      class PlaylistImageSnippet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :height, as: 'height'
+          property :playlist_id, as: 'playlistId'
+          property :type, as: 'type'
+          property :width, as: 'width'
         end
       end
       

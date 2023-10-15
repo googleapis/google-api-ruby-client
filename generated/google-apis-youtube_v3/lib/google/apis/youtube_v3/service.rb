@@ -2297,6 +2297,223 @@ module Google
         
         # Deletes a resource.
         # @param [String] id
+        #   Id to identify this image. This is returned from by the List method.
+        # @param [String] on_behalf_of_content_owner
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_playlist_image(id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'youtube/v3/playlistImages', options)
+          command.query['id'] = id unless id.nil?
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts a new resource into this collection.
+        # @param [Google::Apis::YoutubeV3::PlaylistImage] playlist_image_object
+        # @param [String] on_behalf_of_content_owner
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
+        # @param [String] on_behalf_of_content_owner_channel
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
+        #   parameter is intended for YouTube content partners that own and manage many
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
+        # @param [Array<String>, String] part
+        #   The *part* parameter specifies the properties that the API response will
+        #   include.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::PlaylistImage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::PlaylistImage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_playlist_image(playlist_image_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'youtube/v3/playlistImages', options)
+          command.request_representation = Google::Apis::YoutubeV3::PlaylistImage::Representation
+          command.request_object = playlist_image_object
+          command.response_representation = Google::Apis::YoutubeV3::PlaylistImage::Representation
+          command.response_class = Google::Apis::YoutubeV3::PlaylistImage
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['onBehalfOfContentOwnerChannel'] = on_behalf_of_content_owner_channel unless on_behalf_of_content_owner_channel.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of resources, possibly filtered.
+        # @param [Fixnum] max_results
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
+        # @param [String] on_behalf_of_content_owner
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
+        # @param [String] on_behalf_of_content_owner_channel
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
+        #   parameter is intended for YouTube content partners that own and manage many
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
+        # @param [String] page_token
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
+        # @param [String] parent
+        #   Return PlaylistImages for this playlist id.
+        # @param [Array<String>, String] part
+        #   The *part* parameter specifies a comma-separated list of one or more
+        #   playlistImage resource properties that the API response will include. If the
+        #   parameter identifies a property that contains child properties, the child
+        #   properties will be included in the response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::PlaylistImageListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::PlaylistImageListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_playlist_images(max_results: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, page_token: nil, parent: nil, part: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'youtube/v3/playlistImages', options)
+          command.response_representation = Google::Apis::YoutubeV3::PlaylistImageListResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::PlaylistImageListResponse
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['onBehalfOfContentOwnerChannel'] = on_behalf_of_content_owner_channel unless on_behalf_of_content_owner_channel.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing resource.
+        # @param [Google::Apis::YoutubeV3::PlaylistImage] playlist_image_object
+        # @param [String] on_behalf_of_content_owner
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
+        # @param [Array<String>, String] part
+        #   The *part* parameter specifies the properties that the API response will
+        #   include.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::PlaylistImage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::PlaylistImage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_playlist_image(playlist_image_object = nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'youtube/v3/playlistImages', options)
+          command.request_representation = Google::Apis::YoutubeV3::PlaylistImage::Representation
+          command.request_object = playlist_image_object
+          command.response_representation = Google::Apis::YoutubeV3::PlaylistImage::Representation
+          command.response_class = Google::Apis::YoutubeV3::PlaylistImage
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a resource.
+        # @param [String] id
         # @param [String] on_behalf_of_content_owner
         #   *Note:* This parameter is intended exclusively for YouTube content partners.
         #   The *onBehalfOfContentOwner* parameter indicates that the request's
@@ -2782,8 +2999,6 @@ module Google
         #   Textual search terms to match.
         # @param [String] region_code
         #   Display the content as seen by viewers in this country.
-        # @param [String] related_to_video_id
-        #   Search related to a resource.
         # @param [String] relevance_language
         #   Return results relevant to this language.
         # @param [String] safe_search
@@ -2829,7 +3044,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_searches(part, channel_id: nil, channel_type: nil, event_type: nil, for_content_owner: nil, for_developer: nil, for_mine: nil, location: nil, location_radius: nil, max_results: nil, on_behalf_of_content_owner: nil, order: nil, page_token: nil, published_after: nil, published_before: nil, q: nil, region_code: nil, related_to_video_id: nil, relevance_language: nil, safe_search: nil, topic_id: nil, type: nil, video_caption: nil, video_category_id: nil, video_definition: nil, video_dimension: nil, video_duration: nil, video_embeddable: nil, video_license: nil, video_paid_product_placement: nil, video_syndicated: nil, video_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_searches(part, channel_id: nil, channel_type: nil, event_type: nil, for_content_owner: nil, for_developer: nil, for_mine: nil, location: nil, location_radius: nil, max_results: nil, on_behalf_of_content_owner: nil, order: nil, page_token: nil, published_after: nil, published_before: nil, q: nil, region_code: nil, relevance_language: nil, safe_search: nil, topic_id: nil, type: nil, video_caption: nil, video_category_id: nil, video_definition: nil, video_dimension: nil, video_duration: nil, video_embeddable: nil, video_license: nil, video_paid_product_placement: nil, video_syndicated: nil, video_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'youtube/v3/search', options)
           command.response_representation = Google::Apis::YoutubeV3::SearchListsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::SearchListsResponse
@@ -2850,7 +3065,6 @@ module Google
           command.query['publishedBefore'] = published_before unless published_before.nil?
           command.query['q'] = q unless q.nil?
           command.query['regionCode'] = region_code unless region_code.nil?
-          command.query['relatedToVideoId'] = related_to_video_id unless related_to_video_id.nil?
           command.query['relevanceLanguage'] = relevance_language unless relevance_language.nil?
           command.query['safeSearch'] = safe_search unless safe_search.nil?
           command.query['topicId'] = topic_id unless topic_id.nil?
