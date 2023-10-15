@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContainerState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CpuUtilization
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -376,12 +382,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ProjectState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ProjectsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -653,6 +653,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :image, as: 'image'
+        end
+      end
+      
+      class ContainerState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_reasons, as: 'currentReasons', class: Google::Apis::AppengineV1beta::Reasons, decorator: Google::Apis::AppengineV1beta::Reasons::Representation
+      
+          property :previous_reasons, as: 'previousReasons', class: Google::Apis::AppengineV1beta::Reasons, decorator: Google::Apis::AppengineV1beta::Reasons::Representation
+      
+          property :state, as: 'state'
         end
       end
       
@@ -1111,19 +1122,8 @@ module Google
           property :phase, as: 'phase'
           property :project_metadata, as: 'projectMetadata', class: Google::Apis::AppengineV1beta::ProjectsMetadata, decorator: Google::Apis::AppengineV1beta::ProjectsMetadata::Representation
       
-          property :state, as: 'state', class: Google::Apis::AppengineV1beta::ProjectState, decorator: Google::Apis::AppengineV1beta::ProjectState::Representation
+          property :state, as: 'state', class: Google::Apis::AppengineV1beta::ContainerState, decorator: Google::Apis::AppengineV1beta::ContainerState::Representation
       
-        end
-      end
-      
-      class ProjectState
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :current_reasons, as: 'currentReasons', class: Google::Apis::AppengineV1beta::Reasons, decorator: Google::Apis::AppengineV1beta::Reasons::Representation
-      
-          property :previous_reasons, as: 'previousReasons', class: Google::Apis::AppengineV1beta::Reasons, decorator: Google::Apis::AppengineV1beta::Reasons::Representation
-      
-          property :state, as: 'state'
         end
       end
       
