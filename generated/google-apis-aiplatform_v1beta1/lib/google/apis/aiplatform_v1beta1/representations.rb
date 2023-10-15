@@ -1048,12 +1048,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1beta1ExportFilterSplit
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1beta1ExportFractionSplit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6109,8 +6103,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :annotations_filter, as: 'annotationsFilter'
-          property :filter_split, as: 'filterSplit', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExportFilterSplit, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExportFilterSplit::Representation
-      
           property :fraction_split, as: 'fractionSplit', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExportFractionSplit, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExportFractionSplit::Representation
       
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GcsDestination, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GcsDestination::Representation
@@ -6209,15 +6201,6 @@ module Google
       class GoogleCloudAiplatformV1beta1ExportFeatureValuesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1ExportFilterSplit
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :test_filter, as: 'testFilter'
-          property :training_filter, as: 'trainingFilter'
-          property :validation_filter, as: 'validationFilter'
         end
       end
       
@@ -7517,6 +7500,7 @@ module Google
           property :accelerator_count, as: 'acceleratorCount'
           property :accelerator_type, as: 'acceleratorType'
           property :machine_type, as: 'machineType'
+          property :tpu_topology, as: 'tpuTopology'
         end
       end
       

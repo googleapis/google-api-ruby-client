@@ -5785,15 +5785,6 @@ module Google
         # @return [String]
         attr_accessor :annotations_filter
       
-        # Assigns input data to training, validation, and test sets based on the given
-        # filters, data pieces not matched by any filter are ignored. Currently only
-        # supported for Datasets containing DataItems. If any of the filters in this
-        # message are to match nothing, then they can be set as '-' (the minus sign).
-        # Supported only for unstructured Datasets.
-        # Corresponds to the JSON property `filterSplit`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExportFilterSplit]
-        attr_accessor :filter_split
-      
         # Assigns the input data to training, validation, and test sets as per the given
         # fractions. Any of `training_fraction`, `validation_fraction` and `
         # test_fraction` may optionally be provided, they must sum to up to 1. If the
@@ -5816,7 +5807,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations_filter = args[:annotations_filter] if args.key?(:annotations_filter)
-          @filter_split = args[:filter_split] if args.key?(:filter_split)
           @fraction_split = args[:fraction_split] if args.key?(:fraction_split)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
         end
@@ -6076,53 +6066,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Assigns input data to training, validation, and test sets based on the given
-      # filters, data pieces not matched by any filter are ignored. Currently only
-      # supported for Datasets containing DataItems. If any of the filters in this
-      # message are to match nothing, then they can be set as '-' (the minus sign).
-      # Supported only for unstructured Datasets.
-      class GoogleCloudAiplatformV1beta1ExportFilterSplit
-        include Google::Apis::Core::Hashable
-      
-        # Required. A filter on DataItems of the Dataset. DataItems that match this
-        # filter are used to test the Model. A filter with same syntax as the one used
-        # in DatasetService.ListDataItems may be used. If a single DataItem is matched
-        # by more than one of the FilterSplit filters, then it is assigned to the first
-        # set that applies to it in the training, validation, test order.
-        # Corresponds to the JSON property `testFilter`
-        # @return [String]
-        attr_accessor :test_filter
-      
-        # Required. A filter on DataItems of the Dataset. DataItems that match this
-        # filter are used to train the Model. A filter with same syntax as the one used
-        # in DatasetService.ListDataItems may be used. If a single DataItem is matched
-        # by more than one of the FilterSplit filters, then it is assigned to the first
-        # set that applies to it in the training, validation, test order.
-        # Corresponds to the JSON property `trainingFilter`
-        # @return [String]
-        attr_accessor :training_filter
-      
-        # Required. A filter on DataItems of the Dataset. DataItems that match this
-        # filter are used to validate the Model. A filter with same syntax as the one
-        # used in DatasetService.ListDataItems may be used. If a single DataItem is
-        # matched by more than one of the FilterSplit filters, then it is assigned to
-        # the first set that applies to it in the training, validation, test order.
-        # Corresponds to the JSON property `validationFilter`
-        # @return [String]
-        attr_accessor :validation_filter
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @test_filter = args[:test_filter] if args.key?(:test_filter)
-          @training_filter = args[:training_filter] if args.key?(:training_filter)
-          @validation_filter = args[:validation_filter] if args.key?(:validation_filter)
         end
       end
       
@@ -7141,7 +7084,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :entity_id_columns
       
-        # Required. The Bigquery View URI that will be materialized on each sync trigger
+        # Required. The BigQuery view URI that will be materialized on each sync trigger
         # based on FeatureView.SyncConfig.
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -10602,6 +10545,12 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Immutable. The topology of the TPUs. Corresponds to the TPU topologies
+        # available from GKE. (Example: tpu_topology: "2x2x1").
+        # Corresponds to the JSON property `tpuTopology`
+        # @return [String]
+        attr_accessor :tpu_topology
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10611,6 +10560,7 @@ module Google
           @accelerator_count = args[:accelerator_count] if args.key?(:accelerator_count)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @tpu_topology = args[:tpu_topology] if args.key?(:tpu_topology)
         end
       end
       
