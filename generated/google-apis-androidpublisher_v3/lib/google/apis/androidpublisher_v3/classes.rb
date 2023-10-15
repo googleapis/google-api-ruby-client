@@ -3403,11 +3403,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The cutoff time for historical prices that subscribers can remain
-        # paying. Subscribers who are on a price that was created before this cutoff
-        # time will be migrated to the currently-offered price. These subscribers will
-        # receive a notification that they will be paying a different price. Subscribers
-        # who do not agree to the new price will have their subscription ended at the
-        # next renewal.
+        # paying. Subscribers on prices which were available at this cutoff time or
+        # later will stay on their existing price. Subscribers on older prices will be
+        # migrated to the currently-offered price. The migrated subscribers will receive
+        # a notification that they will be paying a different price. Subscribers who do
+        # not agree to the new price will have their subscription ended at the next
+        # renewal.
         # Corresponds to the JSON property `oldestAllowedPriceVersionTime`
         # @return [String]
         attr_accessor :oldest_allowed_price_version_time
@@ -4063,7 +4064,8 @@ module Google
       
         # The renewal time at which the price change will become effective for the user.
         # This is subject to change(to a future time) due to cases where the renewal
-        # time shifts like pause.
+        # time shifts like pause. This field is only populated if the price change has
+        # not taken effect.
         # Corresponds to the JSON property `expectedNewPriceChargeTime`
         # @return [String]
         attr_accessor :expected_new_price_charge_time
