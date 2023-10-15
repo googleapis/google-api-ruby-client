@@ -967,6 +967,7 @@ module Google
           property :resource_name, as: 'resourceName'
           property :signal_class, as: 'signalClass'
           property :signal_id, as: 'signalId'
+          property :signal_type, as: 'signalType'
           property :state, as: 'state'
         end
       end
