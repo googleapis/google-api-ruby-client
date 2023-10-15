@@ -2005,6 +2005,56 @@ module Google
         end
       end
       
+      # DicomStoreMetrics contains metrics describing a DICOM store.
+      class DicomStoreMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Total blob storage bytes for all instances in the store.
+        # Corresponds to the JSON property `blobStorageSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :blob_storage_size_bytes
+      
+        # Number of instances in the store.
+        # Corresponds to the JSON property `instanceCount`
+        # @return [Fixnum]
+        attr_accessor :instance_count
+      
+        # Resource name of the DICOM store, of the form `projects/`project_id`/locations/
+        # `location_id`/datasets/`dataset_id`/dicomStores/`dicom_store_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Number of series in the store.
+        # Corresponds to the JSON property `seriesCount`
+        # @return [Fixnum]
+        attr_accessor :series_count
+      
+        # Total structured storage bytes for all instances in the store.
+        # Corresponds to the JSON property `structuredStorageSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :structured_storage_size_bytes
+      
+        # Number of studies in the store.
+        # Corresponds to the JSON property `studyCount`
+        # @return [Fixnum]
+        attr_accessor :study_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blob_storage_size_bytes = args[:blob_storage_size_bytes] if args.key?(:blob_storage_size_bytes)
+          @instance_count = args[:instance_count] if args.key?(:instance_count)
+          @name = args[:name] if args.key?(:name)
+          @series_count = args[:series_count] if args.key?(:series_count)
+          @structured_storage_size_bytes = args[:structured_storage_size_bytes] if args.key?(:structured_storage_size_bytes)
+          @study_count = args[:study_count] if args.key?(:study_count)
+        end
+      end
+      
       # Specifies the parameters needed for the de-identification of DICOM stores.
       class DicomTagConfig
         include Google::Apis::Core::Hashable
@@ -4070,6 +4120,64 @@ module Google
           @notification_configs = args[:notification_configs] if args.key?(:notification_configs)
           @parser_config = args[:parser_config] if args.key?(:parser_config)
           @reject_duplicate_message = args[:reject_duplicate_message] if args.key?(:reject_duplicate_message)
+        end
+      end
+      
+      # Count of messages and total storage size by type for a given HL7 store.
+      class Hl7V2StoreMetric
+        include Google::Apis::Core::Hashable
+      
+        # The total count of HL7v2 messages in the store for the given message type.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The Hl7v2 message type this metric applies to, such as `ADT` or `ORU`.
+        # Corresponds to the JSON property `messageType`
+        # @return [String]
+        attr_accessor :message_type
+      
+        # The total amount of structured storage used by HL7v2 messages of this message
+        # type in the store.
+        # Corresponds to the JSON property `structuredStorageSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :structured_storage_size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @message_type = args[:message_type] if args.key?(:message_type)
+          @structured_storage_size_bytes = args[:structured_storage_size_bytes] if args.key?(:structured_storage_size_bytes)
+        end
+      end
+      
+      # List of metrics for a given HL7v2 store.
+      class Hl7V2StoreMetrics
+        include Google::Apis::Core::Hashable
+      
+        # List of HL7v2 store metrics by message type.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Hl7V2StoreMetric>]
+        attr_accessor :metrics
+      
+        # The resource name of the HL7v2 store to get metrics for, in the format `
+        # projects/`project_id`/datasets/`dataset_id`/hl7V2Stores/`hl7v2_store_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -6199,6 +6307,45 @@ module Google
         end
       end
       
+      # SeriesMetrics contains metrics describing a DICOM series.
+      class SeriesMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Total blob storage bytes for all instances in the series.
+        # Corresponds to the JSON property `blobStorageSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :blob_storage_size_bytes
+      
+        # Number of instances in the series.
+        # Corresponds to the JSON property `instanceCount`
+        # @return [Fixnum]
+        attr_accessor :instance_count
+      
+        # The series resource path. For example, `projects/`project_id`/locations/`
+        # location_id`/datasets/`dataset_id`/dicomStores/`dicom_store_id`/dicomWeb/
+        # studies/`study_uid`/series/`series_uid``.
+        # Corresponds to the JSON property `series`
+        # @return [String]
+        attr_accessor :series
+      
+        # Total structured storage bytes for all instances in the series.
+        # Corresponds to the JSON property `structuredStorageSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :structured_storage_size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blob_storage_size_bytes = args[:blob_storage_size_bytes] if args.key?(:blob_storage_size_bytes)
+          @instance_count = args[:instance_count] if args.key?(:instance_count)
+          @series = args[:series] if args.key?(:series)
+          @structured_storage_size_bytes = args[:structured_storage_size_bytes] if args.key?(:structured_storage_size_bytes)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -6360,6 +6507,51 @@ module Google
           @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
           @deidentified_store_destination = args[:deidentified_store_destination] if args.key?(:deidentified_store_destination)
           @resource_types = args[:resource_types] if args.key?(:resource_types)
+        end
+      end
+      
+      # StudyMetrics contains metrics describing a DICOM study.
+      class StudyMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Total blob storage bytes for all instances in the study.
+        # Corresponds to the JSON property `blobStorageSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :blob_storage_size_bytes
+      
+        # Number of instances in the study.
+        # Corresponds to the JSON property `instanceCount`
+        # @return [Fixnum]
+        attr_accessor :instance_count
+      
+        # Number of series in the study.
+        # Corresponds to the JSON property `seriesCount`
+        # @return [Fixnum]
+        attr_accessor :series_count
+      
+        # Total structured storage bytes for all instances in the study.
+        # Corresponds to the JSON property `structuredStorageSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :structured_storage_size_bytes
+      
+        # The study resource path. For example, `projects/`project_id`/locations/`
+        # location_id`/datasets/`dataset_id`/dicomStores/`dicom_store_id`/dicomWeb/
+        # studies/`study_uid``.
+        # Corresponds to the JSON property `study`
+        # @return [String]
+        attr_accessor :study
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blob_storage_size_bytes = args[:blob_storage_size_bytes] if args.key?(:blob_storage_size_bytes)
+          @instance_count = args[:instance_count] if args.key?(:instance_count)
+          @series_count = args[:series_count] if args.key?(:series_count)
+          @structured_storage_size_bytes = args[:structured_storage_size_bytes] if args.key?(:structured_storage_size_bytes)
+          @study = args[:study] if args.key?(:study)
         end
       end
       

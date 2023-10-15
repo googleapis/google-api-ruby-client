@@ -376,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DicomStoreMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DicomTagConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -701,6 +707,18 @@ module Google
       end
       
       class Hl7V2Store
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Hl7V2StoreMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Hl7V2StoreMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1138,6 +1156,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SeriesMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1157,6 +1181,12 @@ module Google
       end
       
       class StreamConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StudyMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1786,6 +1816,18 @@ module Google
         end
       end
       
+      class DicomStoreMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blob_storage_size_bytes, :numeric_string => true, as: 'blobStorageSizeBytes'
+          property :instance_count, :numeric_string => true, as: 'instanceCount'
+          property :name, as: 'name'
+          property :series_count, :numeric_string => true, as: 'seriesCount'
+          property :structured_storage_size_bytes, :numeric_string => true, as: 'structuredStorageSizeBytes'
+          property :study_count, :numeric_string => true, as: 'studyCount'
+        end
+      end
+      
       class DicomTagConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2314,6 +2356,24 @@ module Google
           property :parser_config, as: 'parserConfig', class: Google::Apis::HealthcareV1beta1::ParserConfig, decorator: Google::Apis::HealthcareV1beta1::ParserConfig::Representation
       
           property :reject_duplicate_message, as: 'rejectDuplicateMessage'
+        end
+      end
+      
+      class Hl7V2StoreMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :message_type, as: 'messageType'
+          property :structured_storage_size_bytes, :numeric_string => true, as: 'structuredStorageSizeBytes'
+        end
+      end
+      
+      class Hl7V2StoreMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metrics, as: 'metrics', class: Google::Apis::HealthcareV1beta1::Hl7V2StoreMetric, decorator: Google::Apis::HealthcareV1beta1::Hl7V2StoreMetric::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -2943,6 +3003,16 @@ module Google
         end
       end
       
+      class SeriesMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blob_storage_size_bytes, :numeric_string => true, as: 'blobStorageSizeBytes'
+          property :instance_count, :numeric_string => true, as: 'instanceCount'
+          property :series, as: 'series'
+          property :structured_storage_size_bytes, :numeric_string => true, as: 'structuredStorageSizeBytes'
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2980,6 +3050,17 @@ module Google
           property :deidentified_store_destination, as: 'deidentifiedStoreDestination', class: Google::Apis::HealthcareV1beta1::DeidentifiedStoreDestination, decorator: Google::Apis::HealthcareV1beta1::DeidentifiedStoreDestination::Representation
       
           collection :resource_types, as: 'resourceTypes'
+        end
+      end
+      
+      class StudyMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blob_storage_size_bytes, :numeric_string => true, as: 'blobStorageSizeBytes'
+          property :instance_count, :numeric_string => true, as: 'instanceCount'
+          property :series_count, :numeric_string => true, as: 'seriesCount'
+          property :structured_storage_size_bytes, :numeric_string => true, as: 'structuredStorageSizeBytes'
+          property :study, as: 'study'
         end
       end
       
