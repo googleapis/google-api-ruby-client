@@ -848,6 +848,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :connection_ratelimit_window_seconds
       
+        # Indicate whether connector is deployed on GKE/CloudRun
+        # Corresponds to the JSON property `deploymentModel`
+        # @return [String]
+        attr_accessor :deployment_model
+      
         # Autoscaling config for connector deployment system metrics.
         # Corresponds to the JSON property `hpaConfig`
         # @return [Google::Apis::ConnectorsV1::HpaConfig]
@@ -885,6 +890,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connection_ratelimit_window_seconds = args[:connection_ratelimit_window_seconds] if args.key?(:connection_ratelimit_window_seconds)
+          @deployment_model = args[:deployment_model] if args.key?(:deployment_model)
           @hpa_config = args[:hpa_config] if args.key?(:hpa_config)
           @internalclient_ratelimit_threshold = args[:internalclient_ratelimit_threshold] if args.key?(:internalclient_ratelimit_threshold)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
@@ -2757,6 +2763,31 @@ module Google
         end
       end
       
+      # Regional Network Config.
+      class NetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Egress IPs
+        # Corresponds to the JSON property `egressIps`
+        # @return [Array<String>]
+        attr_accessor :egress_ips
+      
+        # Optional. Egress mode for the network.
+        # Corresponds to the JSON property `egressMode`
+        # @return [String]
+        attr_accessor :egress_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @egress_ips = args[:egress_ips] if args.key?(:egress_ips)
+          @egress_mode = args[:egress_mode] if args.key?(:egress_mode)
+        end
+      end
+      
       # Node configuration for the connection.
       class NodeConfig
         include Google::Apis::Core::Hashable
@@ -3201,6 +3232,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Regional Settings details.
+      class RegionalSettings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Resource name of the Connection. Format: projects/`project`/
+        # locations/`location`/regionalSettings
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Regional Network Config.
+        # Corresponds to the JSON property `networkConfig`
+        # @return [Google::Apis::ConnectorsV1::NetworkConfig]
+        attr_accessor :network_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @network_config = args[:network_config] if args.key?(:network_config)
         end
       end
       
