@@ -712,6 +712,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VmwareAdminPreparedSecretsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmwareAdminSeesawConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1978,6 +1984,8 @@ module Google
           property :on_prem_version, as: 'onPremVersion'
           property :platform_config, as: 'platformConfig', class: Google::Apis::GkeonpremV1::VmwarePlatformConfig, decorator: Google::Apis::GkeonpremV1::VmwarePlatformConfig::Representation
       
+          property :prepared_secrets, as: 'preparedSecrets', class: Google::Apis::GkeonpremV1::VmwareAdminPreparedSecretsConfig, decorator: Google::Apis::GkeonpremV1::VmwareAdminPreparedSecretsConfig::Representation
+      
           property :reconciling, as: 'reconciling'
           property :state, as: 'state'
           property :status, as: 'status', class: Google::Apis::GkeonpremV1::ResourceStatus, decorator: Google::Apis::GkeonpremV1::ResourceStatus::Representation
@@ -2062,6 +2070,13 @@ module Google
           property :static_ip_config, as: 'staticIpConfig', class: Google::Apis::GkeonpremV1::VmwareStaticIpConfig, decorator: Google::Apis::GkeonpremV1::VmwareStaticIpConfig::Representation
       
           property :vcenter_network, as: 'vcenterNetwork'
+        end
+      end
+      
+      class VmwareAdminPreparedSecretsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
