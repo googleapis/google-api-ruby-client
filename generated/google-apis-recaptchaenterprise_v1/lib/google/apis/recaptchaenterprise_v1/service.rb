@@ -53,8 +53,8 @@ module Google
         # Annotates a previously created Assessment to provide additional information on
         # whether the event turned out to be authentic or fraudulent.
         # @param [String] name
-        #   Required. The resource name of the Assessment, in the format "projects/`
-        #   project`/assessments/`assessment`".
+        #   Required. The resource name of the Assessment, in the format `projects/`
+        #   project`/assessments/`assessment``.
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest] google_cloud_recaptchaenterprise_v1_annotate_assessment_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -88,7 +88,7 @@ module Google
         # Creates an Assessment of the likelihood an event is legitimate.
         # @param [String] parent
         #   Required. The name of the project in which the assessment will be created, in
-        #   the format "projects/`project`".
+        #   the format `projects/`project``.
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Assessment] google_cloud_recaptchaenterprise_v1_assessment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -123,8 +123,8 @@ module Google
         # Enterprise actions can be executed. A project may have a maximum of 1000
         # policies.
         # @param [String] parent
-        #   Required. The name of the project this policy will apply to, in the format "
-        #   projects/`project`".
+        #   Required. The name of the project this policy will apply to, in the format `
+        #   projects/`project``.
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicy] google_cloud_recaptchaenterprise_v1_firewall_policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -157,8 +157,8 @@ module Google
         
         # Deletes the specified firewall policy.
         # @param [String] name
-        #   Required. The name of the policy to be deleted, in the format "projects/`
-        #   project`/firewallpolicies/`firewallpolicy`".
+        #   Required. The name of the policy to be deleted, in the format `projects/`
+        #   project`/firewallpolicies/`firewallpolicy``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -188,8 +188,8 @@ module Google
         
         # Returns the specified firewall policy.
         # @param [String] name
-        #   Required. The name of the requested policy, in the format "projects/`project`/
-        #   firewallpolicies/`firewallpolicy`".
+        #   Required. The name of the requested policy, in the format `projects/`project`/
+        #   firewallpolicies/`firewallpolicy``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -219,8 +219,8 @@ module Google
         
         # Returns the list of all firewall policies that belong to a project.
         # @param [String] parent
-        #   Required. The name of the project to list the policies for, in the format "
-        #   projects/`project`".
+        #   Required. The name of the project to list the policies for, in the format `
+        #   projects/`project``.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of policies to return. Default is 10. Max limit
         #   is 1000.
@@ -258,8 +258,8 @@ module Google
         
         # Updates the specified firewall policy.
         # @param [String] name
-        #   The resource name for the FirewallPolicy in the format "projects/`project`/
-        #   firewallpolicies/`firewallpolicy`".
+        #   The resource name for the FirewallPolicy in the format `projects/`project`/
+        #   firewallpolicies/`firewallpolicy``.
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicy] google_cloud_recaptchaenterprise_v1_firewall_policy_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields of the policy get updated. If the
@@ -297,7 +297,7 @@ module Google
         # Creates a new reCAPTCHA Enterprise key.
         # @param [String] parent
         #   Required. The name of the project in which the key will be created, in the
-        #   format "projects/`project`".
+        #   format `projects/`project``.
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key] google_cloud_recaptchaenterprise_v1_key_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -330,8 +330,8 @@ module Google
         
         # Deletes the specified key.
         # @param [String] name
-        #   Required. The name of the key to be deleted, in the format "projects/`project`/
-        #   keys/`key`".
+        #   Required. The name of the key to be deleted, in the format `projects/`project`/
+        #   keys/`key``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -361,8 +361,8 @@ module Google
         
         # Returns the specified key.
         # @param [String] name
-        #   Required. The name of the requested key, in the format "projects/`project`/
-        #   keys/`key`".
+        #   Required. The name of the requested key, in the format `projects/`project`/
+        #   keys/`key``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -393,8 +393,8 @@ module Google
         # Get some aggregated metrics for a Key. This data can be used to build
         # dashboards.
         # @param [String] name
-        #   Required. The name of the requested metrics, in the format "projects/`project`/
-        #   keys/`key`/metrics".
+        #   Required. The name of the requested metrics, in the format `projects/`project`/
+        #   keys/`key`/metrics`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -425,7 +425,7 @@ module Google
         # Returns the list of all keys that belong to a project.
         # @param [String] parent
         #   Required. The name of the project that contains the keys that will be listed,
-        #   in the format "projects/`project`".
+        #   in the format `projects/`project``.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of keys to return. Default is 10. Max limit is
         #   1000.
@@ -467,8 +467,8 @@ module Google
         # owners of the reCAPTCHA Key, and your user must have the reCAPTCHA Enterprise
         # Admin IAM role in the destination project.
         # @param [String] name
-        #   Required. The name of the key to be migrated, in the format "projects/`project`
-        #   /keys/`key`".
+        #   Required. The name of the key to be migrated, in the format `projects/`project`
+        #   /keys/`key``.
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest] google_cloud_recaptchaenterprise_v1_migrate_key_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -501,7 +501,7 @@ module Google
         
         # Updates the specified key.
         # @param [String] name
-        #   The resource name for the Key in the format "projects/`project`/keys/`key`".
+        #   The resource name for the Key in the format `projects/`project`/keys/`key``.
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key] google_cloud_recaptchaenterprise_v1_key_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields of the key get updated. If the mask
@@ -540,7 +540,7 @@ module Google
         # legacy secret key only in a 3rd party integration with legacy reCAPTCHA.
         # @param [String] key
         #   Required. The public key name linked to the requested secret key in the format
-        #   "projects/`project`/keys/`key`".
+        #   `projects/`project`/keys/`key``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -571,7 +571,7 @@ module Google
         # Search group memberships related to a given account.
         # @param [String] project
         #   Required. The name of the project to search related account group memberships
-        #   from. Specify the project name in the following format: "projects/`project`".
+        #   from. Specify the project name in the following format: `projects/`project``.
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest] google_cloud_recaptchaenterprise_v1_search_related_account_group_memberships_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -605,7 +605,7 @@ module Google
         # List groups of related accounts.
         # @param [String] parent
         #   Required. The name of the project to list related account groups from, in the
-        #   format "projects/`project`".
+        #   format `projects/`project``.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of groups to return. The service might return
         #   fewer than this value. If unspecified, at most 50 groups are returned. The
