@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2RevisionScalingStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2RevisionTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -697,6 +703,8 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :scaling, as: 'scaling', class: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling, decorator: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling::Representation
       
+          property :scaling_status, as: 'scalingStatus', class: Google::Apis::RunV2::GoogleCloudRunV2RevisionScalingStatus, decorator: Google::Apis::RunV2::GoogleCloudRunV2RevisionScalingStatus::Representation
+      
           property :service, as: 'service'
           property :service_account, as: 'serviceAccount'
           property :session_affinity, as: 'sessionAffinity'
@@ -715,6 +723,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_instance_count, as: 'maxInstanceCount'
           property :min_instance_count, as: 'minInstanceCount'
+        end
+      end
+      
+      class GoogleCloudRunV2RevisionScalingStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :desired_min_instance_count, as: 'desiredMinInstanceCount'
         end
       end
       

@@ -1469,6 +1469,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling]
         attr_accessor :scaling
       
+        # Effective settings for the current revision
+        # Corresponds to the JSON property `scalingStatus`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2RevisionScalingStatus]
+        attr_accessor :scaling_status
+      
         # Output only. The name of the parent service.
         # Corresponds to the JSON property `service`
         # @return [String]
@@ -1542,6 +1547,7 @@ module Google
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scaling = args[:scaling] if args.key?(:scaling)
+          @scaling_status = args[:scaling_status] if args.key?(:scaling_status)
           @service = args[:service] if args.key?(:service)
           @service_account = args[:service_account] if args.key?(:service_account)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
@@ -1575,6 +1581,25 @@ module Google
         def update!(**args)
           @max_instance_count = args[:max_instance_count] if args.key?(:max_instance_count)
           @min_instance_count = args[:min_instance_count] if args.key?(:min_instance_count)
+        end
+      end
+      
+      # Effective settings for the current revision
+      class GoogleCloudRunV2RevisionScalingStatus
+        include Google::Apis::Core::Hashable
+      
+        # The current number of min instances provisioned for this revision.
+        # Corresponds to the JSON property `desiredMinInstanceCount`
+        # @return [Fixnum]
+        attr_accessor :desired_min_instance_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @desired_min_instance_count = args[:desired_min_instance_count] if args.key?(:desired_min_instance_count)
         end
       end
       
