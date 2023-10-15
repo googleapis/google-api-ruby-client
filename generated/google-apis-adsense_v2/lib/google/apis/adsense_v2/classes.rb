@@ -739,6 +739,35 @@ module Google
         end
       end
       
+      # Response definition for the policy issues list rpc. Policy issues are reported
+      # only if the publisher has at least one AFC ad client in READY or GETTING_READY
+      # state. If the publisher has no such AFC ad client, the response will be an
+      # empty list.
+      class ListPolicyIssuesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Continuation token used to page through policy issues. To retrieve the next
+        # page of the results, set the next request's "page_token" value to this.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The policy issues returned in the list response.
+        # Corresponds to the JSON property `policyIssues`
+        # @return [Array<Google::Apis::AdsenseV2::PolicyIssue>]
+        attr_accessor :policy_issues
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @policy_issues = args[:policy_issues] if args.key?(:policy_issues)
+        end
+      end
+      
       # Response definition for the saved reports list rpc.
       class ListSavedReportsResponse
         include Google::Apis::Core::Hashable
@@ -861,6 +890,162 @@ module Google
           @amount = args[:amount] if args.key?(:amount)
           @date = args[:date] if args.key?(:date)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Representation of a policy issue for a single entity (site, site-section, or
+      # page). All issues for a single entity are represented by a single PolicyIssue
+      # resource, though that PolicyIssue can have multiple causes (or "topics") that
+      # can change over time. Policy issues are removed if there are no issues
+      # detected recently or if there's a recent successful appeal for the entity.
+      class PolicyIssue
+        include Google::Apis::Core::Hashable
+      
+        # Required. The most severe action taken on the entity over the past seven days.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Optional. List of ad clients associated with the policy issue (either as the
+        # primary ad client or an associated host/secondary ad client). In the latter
+        # case, this will be an ad client that is not owned by the current account.
+        # Corresponds to the JSON property `adClients`
+        # @return [Array<String>]
+        attr_accessor :ad_clients
+      
+        # Required. Total number of ad requests affected by the policy violations over
+        # the past seven days.
+        # Corresponds to the JSON property `adRequestCount`
+        # @return [Fixnum]
+        attr_accessor :ad_request_count
+      
+        # Required. Type of the entity indicating if the entity is a site, site-section,
+        # or page.
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `firstDetectedDate`
+        # @return [Google::Apis::AdsenseV2::Date]
+        attr_accessor :first_detected_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `lastDetectedDate`
+        # @return [Google::Apis::AdsenseV2::Date]
+        attr_accessor :last_detected_date
+      
+        # Required. Resource name of the entity with policy issues. Format: accounts/`
+        # account`/policyIssues/`policy_issue`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Unordered list. The policy topics that this entity was found to
+        # violate over the past seven days.
+        # Corresponds to the JSON property `policyTopics`
+        # @return [Array<Google::Apis::AdsenseV2::PolicyTopic>]
+        attr_accessor :policy_topics
+      
+        # Required. Hostname/domain of the entity (for example "foo.com" or "www.foo.com"
+        # ). This _should_ be a bare domain/host name without any protocol. This will be
+        # present for all policy issues.
+        # Corresponds to the JSON property `site`
+        # @return [String]
+        attr_accessor :site
+      
+        # Optional. Prefix of the site-section having policy issues (For example "foo.
+        # com/bar-section"). This will be present if the `entity_type` is `SITE_SECTION`
+        # and will be absent for other entity types.
+        # Corresponds to the JSON property `siteSection`
+        # @return [String]
+        attr_accessor :site_section
+      
+        # Optional. URI of the page having policy violations (for example "foo.com/bar"
+        # or "www.foo.com/bar"). This will be present if the `entity_type` is `PAGE` and
+        # will be absent for other entity types.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `warningEscalationDate`
+        # @return [Google::Apis::AdsenseV2::Date]
+        attr_accessor :warning_escalation_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @ad_clients = args[:ad_clients] if args.key?(:ad_clients)
+          @ad_request_count = args[:ad_request_count] if args.key?(:ad_request_count)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @first_detected_date = args[:first_detected_date] if args.key?(:first_detected_date)
+          @last_detected_date = args[:last_detected_date] if args.key?(:last_detected_date)
+          @name = args[:name] if args.key?(:name)
+          @policy_topics = args[:policy_topics] if args.key?(:policy_topics)
+          @site = args[:site] if args.key?(:site)
+          @site_section = args[:site_section] if args.key?(:site_section)
+          @uri = args[:uri] if args.key?(:uri)
+          @warning_escalation_date = args[:warning_escalation_date] if args.key?(:warning_escalation_date)
+        end
+      end
+      
+      # Information about a particular policy topic. A policy topic represents a
+      # single class of policy issue that can impact ad serving for your site. For
+      # example, sexual content or having ads that obscure your content. A single
+      # policy issue can have multiple policy topics for a single entity.
+      class PolicyTopic
+        include Google::Apis::Core::Hashable
+      
+        # Required. Indicates if this is a policy violation or not. When the value is
+        # true, issues that are instances of this topic must be addressed to remain in
+        # compliance with the partner's agreements with Google. A false value indicates
+        # that it's not mandatory to fix the issues but advertising demand might be
+        # restricted.
+        # Corresponds to the JSON property `mustFix`
+        # @return [Boolean]
+        attr_accessor :must_fix
+        alias_method :must_fix?, :must_fix
+      
+        # Required. The policy topic. For example, "sexual-content" or "ads-obscuring-
+        # content"."
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @must_fix = args[:must_fix] if args.key?(:must_fix)
+          @topic = args[:topic] if args.key?(:topic)
         end
       end
       
