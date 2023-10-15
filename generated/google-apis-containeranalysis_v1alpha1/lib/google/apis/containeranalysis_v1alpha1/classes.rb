@@ -2586,6 +2586,11 @@ module Google
         # @return [String]
         attr_accessor :object
       
+        # Optional. Option to specify the tool to fetch the source file for the build.
+        # Corresponds to the JSON property `sourceFetcher`
+        # @return [String]
+        attr_accessor :source_fetcher
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2595,6 +2600,7 @@ module Google
           @bucket = args[:bucket] if args.key?(:bucket)
           @generation = args[:generation] if args.key?(:generation)
           @object = args[:object] if args.key?(:object)
+          @source_fetcher = args[:source_fetcher] if args.key?(:source_fetcher)
         end
       end
       
