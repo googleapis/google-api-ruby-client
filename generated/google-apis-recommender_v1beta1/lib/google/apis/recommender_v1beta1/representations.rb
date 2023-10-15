@@ -213,6 +213,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cost, as: 'cost', class: Google::Apis::RecommenderV1beta1::GoogleTypeMoney, decorator: Google::Apis::RecommenderV1beta1::GoogleTypeMoney::Representation
       
+          property :cost_in_local_currency, as: 'costInLocalCurrency', class: Google::Apis::RecommenderV1beta1::GoogleTypeMoney, decorator: Google::Apis::RecommenderV1beta1::GoogleTypeMoney::Representation
+      
           property :duration, as: 'duration'
         end
       end
@@ -415,6 +417,7 @@ module Google
           property :recommender_subtype, as: 'recommenderSubtype'
           property :state_info, as: 'stateInfo', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommendationStateInfo, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommendationStateInfo::Representation
       
+          collection :target_resources, as: 'targetResources'
           property :xor_group_id, as: 'xorGroupId'
         end
       end
