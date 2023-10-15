@@ -375,8 +375,10 @@ module Google
         # @return [String]
         attr_accessor :challenge
       
-        # Forces a short lived token with a 5 minute TTL. Useful when the client wishes
-        # to self impose stricter TTL requirements for this exchange. Default: false.
+        # Specifies whether this attestation is for use in a *limited use* (`true`) or *
+        # session based* (`false`) context. To enable this attestation to be used with
+        # the *replay protection* feature, set this to `true`. The default value is `
+        # false`.
         # Corresponds to the JSON property `limitedUse`
         # @return [Boolean]
         attr_accessor :limited_use
@@ -419,8 +421,10 @@ module Google
         # @return [String]
         attr_accessor :key_id
       
-        # Forces a short lived token with a 5 minute TTL. Useful when the client wishes
-        # to self impose stricter TTL requirements for this exchange. Default: false.
+        # Specifies whether this attestation is for use in a *limited use* (`true`) or *
+        # session based* (`false`) context. To enable this attestation to be used with
+        # the *replay protection* feature, set this to `true`. The default value is `
+        # false`.
         # Corresponds to the JSON property `limitedUse`
         # @return [Boolean]
         attr_accessor :limited_use
@@ -476,8 +480,10 @@ module Google
         # @return [String]
         attr_accessor :custom_token
       
-        # Forces a short lived token with a 5 minute TTL. Useful when the client wishes
-        # to self impose stricter TTL requirements for this exchange. Default: false.
+        # Specifies whether this attestation is for use in a *limited use* (`true`) or *
+        # session based* (`false`) context. To enable this attestation to be used with
+        # the *replay protection* feature, set this to `true`. The default value is `
+        # false`.
         # Corresponds to the JSON property `limitedUse`
         # @return [Boolean]
         attr_accessor :limited_use
@@ -504,8 +510,10 @@ module Google
         # @return [String]
         attr_accessor :debug_token
       
-        # Forces a short lived token with a 5 minute TTL. Useful when the client wishes
-        # to self impose stricter TTL requirements for this exchange. Default: false.
+        # Specifies whether this attestation is for use in a *limited use* (`true`) or *
+        # session based* (`false`) context. To enable this attestation to be used with
+        # the *replay protection* feature, set this to `true`. The default value is `
+        # false`.
         # Corresponds to the JSON property `limitedUse`
         # @return [Boolean]
         attr_accessor :limited_use
@@ -533,8 +541,10 @@ module Google
         # @return [String]
         attr_accessor :device_token
       
-        # Forces a short lived token with a 5 minute TTL. Useful when the client wishes
-        # to self impose stricter TTL requirements for this exchange. Default: false.
+        # Specifies whether this attestation is for use in a *limited use* (`true`) or *
+        # session based* (`false`) context. To enable this attestation to be used with
+        # the *replay protection* feature, set this to `true`. The default value is `
+        # false`.
         # Corresponds to the JSON property `limitedUse`
         # @return [Boolean]
         attr_accessor :limited_use
@@ -555,8 +565,10 @@ module Google
       class GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest
         include Google::Apis::Core::Hashable
       
-        # Forces a short-lived token with a 5 minute TTL. Useful when the client wishes
-        # to impose stricter TTL requirements for this exchange. Default: false.
+        # Specifies whether this attestation is for use in a *limited use* (`true`) or *
+        # session based* (`false`) context. To enable this attestation to be used with
+        # the *replay protection* feature, set this to `true`. The default value is `
+        # false`.
         # Corresponds to the JSON property `limitedUse`
         # @return [Boolean]
         attr_accessor :limited_use
@@ -584,8 +596,10 @@ module Google
       class GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest
         include Google::Apis::Core::Hashable
       
-        # Forces a short lived token with a 5 minute TTL. Useful when the client wishes
-        # to self impose stricter TTL requirements for this exchange. Default: false.
+        # Specifies whether this attestation is for use in a *limited use* (`true`) or *
+        # session based* (`false`) context. To enable this attestation to be used with
+        # the *replay protection* feature, set this to `true`. The default value is `
+        # false`.
         # Corresponds to the JSON property `limitedUse`
         # @return [Boolean]
         attr_accessor :limited_use
@@ -613,8 +627,10 @@ module Google
       class GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest
         include Google::Apis::Core::Hashable
       
-        # Forces a short lived token with a 5 minute TTL. Useful when the client wishes
-        # to self impose stricter TTL requirements for this exchange. Default: false.
+        # Specifies whether this attestation is for use in a *limited use* (`true`) or *
+        # session based* (`false`) context. To enable this attestation to be used with
+        # the *replay protection* feature, set this to `true`. The default value is `
+        # false`.
         # Corresponds to the JSON property `limitedUse`
         # @return [Boolean]
         attr_accessor :limited_use
