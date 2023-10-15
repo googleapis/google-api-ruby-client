@@ -2794,9 +2794,8 @@ module Google
         
         # Bulk edits multiple assignments between locations and a single location list.
         # The operation will delete the assigned locations provided in
-        # BulkEditAssignedLocationsRequest.deleted_assigned_locations and then create
-        # the assigned locations provided in BulkEditAssignedLocationsRequest.
-        # created_assigned_locations.
+        # deletedAssignedLocations and then create the assigned locations provided in
+        # createdAssignedLocations.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the DV360 advertiser to which the location list belongs.
         # @param [Fixnum] location_list_id
