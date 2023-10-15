@@ -12576,10 +12576,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_address, as: 'ipAddress'
+          property :ipv6_address, as: 'ipv6Address'
           property :project_id_or_num, as: 'projectIdOrNum'
           collection :secondary_ip_cidr_ranges, as: 'secondaryIpCidrRanges'
           property :status, as: 'status'
           property :subnetwork, as: 'subnetwork'
+          property :subnetwork_cidr_range, as: 'subnetworkCidrRange'
         end
       end
       
