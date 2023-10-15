@@ -1490,6 +1490,78 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Makes a recommendation, which requires a contextual user event.
+        # @param [String] serving_config
+        #   Required. Full resource name of the format: `projects/*/locations/global/
+        #   collections/*/dataStores/*/servingConfigs/*` Before you can request
+        #   recommendations from your model, you must create at least one serving config
+        #   for it.
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRecommendRequest] google_cloud_discoveryengine_v1beta_recommend_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRecommendResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRecommendResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def recommend_project_location_collection_engine_serving_config(serving_config, google_cloud_discoveryengine_v1beta_recommend_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+servingConfig}:recommend', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRecommendRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_recommend_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRecommendResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRecommendResponse
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Performs a search.
+        # @param [String] serving_config
+        #   Required. The resource name of the Search serving config, such as `projects/*/
+        #   locations/global/collections/default_collection/dataStores/default_data_store/
+        #   servingConfigs/default_serving_config`. This field is used to identify the
+        #   serving configuration name, set of models used to make the search.
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequest] google_cloud_discoveryengine_v1beta_search_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_collection_engine_serving_configs(serving_config, google_cloud_discoveryengine_v1beta_search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+servingConfig}:search', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_search_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponse
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
