@@ -4252,7 +4252,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GeostoreCityJsonProtoTransformXyzVector
+      class GeostoreCityJsonProtoTransformTranslate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5501,6 +5501,12 @@ module Google
       end
       
       class GoogleAssistantAccessoryV1DeviceState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAssistantAccessoryV1DeviceStateInstalledAppsState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -12311,6 +12317,12 @@ module Google
       end
       
       class RepositoryWebrefMentionRatingsSingleMentionRating
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepositoryWebrefMetaTagIndices
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -21943,7 +21955,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :csai_classification, as: 'csaiClassification'
-          property :csai_regexp_high_confidence_classification, as: 'csaiRegexpHighConfidenceClassification'
           property :debug, as: 'debug'
           property :is_positive, as: 'isPositive'
           property :score, as: 'score'
@@ -23999,12 +24010,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :scale, as: 'scale'
-          property :translate, as: 'translate', class: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoTransformXyzVector, decorator: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoTransformXyzVector::Representation
+          property :translate, as: 'translate', class: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoTransformTranslate, decorator: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoTransformTranslate::Representation
       
         end
       end
       
-      class GeostoreCityJsonProtoTransformXyzVector
+      class GeostoreCityJsonProtoTransformTranslate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :x, as: 'x'
@@ -26653,9 +26664,20 @@ module Google
           property :do_not_disturb, as: 'doNotDisturb'
           property :fitness_activities_state, as: 'fitnessActivitiesState', class: Google::Apis::ContentwarehouseV1::GoogleAssistantEmbeddedV1FitnessActivities, decorator: Google::Apis::ContentwarehouseV1::GoogleAssistantEmbeddedV1FitnessActivities::Representation
       
+          property :installed_apps, as: 'installedApps', class: Google::Apis::ContentwarehouseV1::GoogleAssistantAccessoryV1DeviceStateInstalledAppsState, decorator: Google::Apis::ContentwarehouseV1::GoogleAssistantAccessoryV1DeviceStateInstalledAppsState::Representation
+      
+          property :installed_apps_zlib, :base64 => true, as: 'installedAppsZlib'
           property :timer_state, as: 'timerState', class: Google::Apis::ContentwarehouseV1::GoogleAssistantEmbeddedV1Timers, decorator: Google::Apis::ContentwarehouseV1::GoogleAssistantEmbeddedV1Timers::Representation
       
           collection :unavailable_settings, as: 'unavailableSettings'
+        end
+      end
+      
+      class GoogleAssistantAccessoryV1DeviceStateInstalledAppsState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apps, as: 'apps', class: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesProvider, decorator: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesProvider::Representation
+      
         end
       end
       
@@ -42456,6 +42478,14 @@ module Google
         end
       end
       
+      class RepositoryWebrefMetaTagIndices
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :index, as: 'index'
+          property :meta_name, as: 'metaName'
+        end
+      end
+      
       class RepositoryWebrefNameDebugInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -42904,6 +42934,8 @@ module Google
           property :image_query_index, as: 'imageQueryIndex', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefImageQueryIndices, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefImageQueryIndices::Representation
       
           property :jgn_index, as: 'jgnIndex', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefJuggernautIndices, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefJuggernautIndices::Representation
+      
+          property :meta_tag_index, as: 'metaTagIndex', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefMetaTagIndices, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefMetaTagIndices::Representation
       
           property :query_index, as: 'queryIndex', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefQueryIndices, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefQueryIndices::Representation
       
@@ -45535,6 +45567,7 @@ module Google
           property :cloud_device_data_info, as: 'cloudDeviceDataInfo', class: Google::Apis::ContentwarehouseV1::SocialGraphWireProtoPeopleapiAffinityMetadataCloudDeviceDataInfo, decorator: Google::Apis::ContentwarehouseV1::SocialGraphWireProtoPeopleapiAffinityMetadataCloudDeviceDataInfo::Representation
       
           property :cloud_score, as: 'cloudScore'
+          property :suggestion_confidence, as: 'suggestionConfidence'
         end
       end
       
@@ -45605,6 +45638,7 @@ module Google
           collection :hidden_keys, as: 'hiddenKeys', class: Google::Apis::ContentwarehouseV1::SocialDiscoveryExternalEntityKey, decorator: Google::Apis::ContentwarehouseV1::SocialDiscoveryExternalEntityKey::Representation
       
           property :hide_type, as: 'hideType'
+          property :suggestion_confidence, as: 'suggestionConfidence'
         end
       end
       
