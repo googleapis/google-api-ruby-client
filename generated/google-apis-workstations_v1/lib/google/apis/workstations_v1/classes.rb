@@ -1471,7 +1471,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Full name of this workstation.
+        # Identifier. Full name of this workstation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1587,7 +1587,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Full name of this workstation cluster.
+        # Identifier. Full name of this workstation cluster.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1737,7 +1737,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Full name of this workstation configuration.
+        # Identifier. Full name of this workstation configuration.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
