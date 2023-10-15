@@ -1575,6 +1575,103 @@ module Google
         end
       end
       
+      # A managed folder.
+      class ManagedFolder
+        include Google::Apis::Core::Hashable
+      
+        # The name of the bucket containing this managed folder.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # The creation time of the managed folder in RFC 3339 format.
+        # Corresponds to the JSON property `createTime`
+        # @return [DateTime]
+        attr_accessor :create_time
+      
+        # The ID of the managed folder, including the bucket name and managed folder
+        # name.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The kind of item this is. For managed folders, this is always storage#
+        # managedFolder.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The version of the metadata for this managed folder. Used for preconditions
+        # and for detecting changes in metadata.
+        # Corresponds to the JSON property `metageneration`
+        # @return [Fixnum]
+        attr_accessor :metageneration
+      
+        # The name of the managed folder. Required if not specified by URL parameter.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The link to this managed folder.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # The last update time of the managed folder metadata in RFC 3339 format.
+        # Corresponds to the JSON property `updateTime`
+        # @return [DateTime]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @metageneration = args[:metageneration] if args.key?(:metageneration)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A list of managed folders.
+      class ManagedFolders
+        include Google::Apis::Core::Hashable
+      
+        # The list of items.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::StorageV1::ManagedFolder>]
+        attr_accessor :items
+      
+        # The kind of item this is. For lists of managed folders, this is always storage#
+        # managedFolders.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The continuation token, used to page through large result sets. Provide this
+        # value in a subsequent request to return the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # A subscription to receive Google PubSub notifications.
       class Notification
         include Google::Apis::Core::Hashable
@@ -2207,7 +2304,7 @@ module Google
         end
       end
       
-      # A bucket/object IAM policy.
+      # A bucket/object/managedFolder IAM policy.
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -2230,11 +2327,11 @@ module Google
         attr_accessor :kind
       
         # The ID of the resource to which this policy belongs. Will be of the form
-        # projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/
-        # object for objects. A specific generation may be specified by appending #
-        # generationNumber to the end of the object name, e.g. projects/_/buckets/my-
-        # bucket/objects/data.txt#17. The current generation can be denoted with #0.
-        # This field is ignored on input.
+        # projects/_/buckets/bucket for buckets, projects/_/buckets/bucket/objects/
+        # object for objects, and projects/_/buckets/bucket/managedFolders/managedFolder.
+        # A specific generation may be specified by appending #generationNumber to the
+        # end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17.
+        # The current generation can be denoted with #0. This field is ignored on input.
         # Corresponds to the JSON property `resourceId`
         # @return [String]
         attr_accessor :resource_id
@@ -2413,7 +2510,7 @@ module Google
         end
       end
       
-      # A storage.(buckets|objects).testIamPermissions response.
+      # A storage.(buckets|objects|managedFolders).testIamPermissions response.
       class TestIamPermissionsResponse
         include Google::Apis::Core::Hashable
       
@@ -2423,8 +2520,8 @@ module Google
         attr_accessor :kind
       
         # The permissions held by the caller. Permissions are always of the format
-        # storage.resource.capability, where resource is one of buckets or objects. The
-        # supported permissions are as follows:
+        # storage.resource.capability, where resource is one of buckets, objects, or
+        # managedFolders. The supported permissions are as follows:
         # - storage.buckets.delete — Delete bucket.
         # - storage.buckets.get — Read bucket metadata.
         # - storage.buckets.getIamPolicy — Read bucket IAM policy.
@@ -2439,6 +2536,12 @@ module Google
         # - storage.objects.list — List objects.
         # - storage.objects.setIamPolicy — Update object IAM policy.
         # - storage.objects.update — Update object metadata.
+        # - storage.managedFolders.delete — Delete managed folder.
+        # - storage.managedFolders.get — Read managed folder metadata.
+        # - storage.managedFolders.getIamPolicy — Read managed folder IAM policy.
+        # - storage.managedFolders.create — Create managed folder.
+        # - storage.managedFolders.list — List managed folders.
+        # - storage.managedFolders.setIamPolicy — Update managed folder IAM policy.
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions

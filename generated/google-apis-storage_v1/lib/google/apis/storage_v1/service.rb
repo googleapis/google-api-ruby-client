@@ -1037,6 +1037,300 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Permanently deletes a managed folder.
+        # @param [String] bucket
+        #   Name of the bucket containing the managed folder.
+        # @param [String] managed_folder
+        #   The managed folder name/path.
+        # @param [Fixnum] if_metageneration_match
+        #   If set, only deletes the managed folder if its metageneration matches this
+        #   value.
+        # @param [Fixnum] if_metageneration_not_match
+        #   If set, only deletes the managed folder if its metageneration does not match
+        #   this value.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_managed_folder(bucket, managed_folder, if_metageneration_match: nil, if_metageneration_not_match: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'b/{bucket}/managedFolders/{managedFolder}', options)
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['managedFolder'] = managed_folder unless managed_folder.nil?
+          command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
+          command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns metadata of the specified managed folder.
+        # @param [String] bucket
+        #   Name of the bucket containing the managed folder.
+        # @param [String] managed_folder
+        #   The managed folder name/path.
+        # @param [Fixnum] if_metageneration_match
+        #   Makes the return of the managed folder metadata conditional on whether the
+        #   managed folder's current metageneration matches the given value.
+        # @param [Fixnum] if_metageneration_not_match
+        #   Makes the return of the managed folder metadata conditional on whether the
+        #   managed folder's current metageneration does not match the given value.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::ManagedFolder] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::ManagedFolder]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_managed_folder(bucket, managed_folder, if_metageneration_match: nil, if_metageneration_not_match: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'b/{bucket}/managedFolders/{managedFolder}', options)
+          command.response_representation = Google::Apis::StorageV1::ManagedFolder::Representation
+          command.response_class = Google::Apis::StorageV1::ManagedFolder
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['managedFolder'] = managed_folder unless managed_folder.nil?
+          command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
+          command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns an IAM policy for the specified managed folder.
+        # @param [String] bucket
+        #   Name of the bucket containing the managed folder.
+        # @param [String] managed_folder
+        #   The managed folder name/path.
+        # @param [Fixnum] options_requested_policy_version
+        #   The IAM policy format version to be returned. If the
+        #   optionsRequestedPolicyVersion is for an older version that doesn't support
+        #   part of the requested IAM policy, the request fails.
+        # @param [String] user_project
+        #   The project to be billed for this request. Required for Requester Pays buckets.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_managed_folder_iam_policy(bucket, managed_folder, options_requested_policy_version: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'b/{bucket}/managedFolders/{managedFolder}/iam', options)
+          command.response_representation = Google::Apis::StorageV1::Policy::Representation
+          command.response_class = Google::Apis::StorageV1::Policy
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['managedFolder'] = managed_folder unless managed_folder.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['userProject'] = user_project unless user_project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new managed folder.
+        # @param [String] bucket
+        #   Name of the bucket containing the managed folder.
+        # @param [Google::Apis::StorageV1::ManagedFolder] managed_folder_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::ManagedFolder] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::ManagedFolder]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_managed_folder(bucket, managed_folder_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/managedFolders', options)
+          command.request_representation = Google::Apis::StorageV1::ManagedFolder::Representation
+          command.request_object = managed_folder_object
+          command.response_representation = Google::Apis::StorageV1::ManagedFolder::Representation
+          command.response_class = Google::Apis::StorageV1::ManagedFolder
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists managed folders in the given bucket.
+        # @param [String] bucket
+        #   Name of the bucket containing the managed folder.
+        # @param [Fixnum] page_size
+        #   Maximum number of items return in a single page of responses.
+        # @param [String] page_token
+        #   A previously-returned page token representing part of the larger set of
+        #   results to view.
+        # @param [String] prefix
+        #   The managed folder name/path prefix to filter the output list of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::ManagedFolders] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::ManagedFolders]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_managed_folders(bucket, page_size: nil, page_token: nil, prefix: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'b/{bucket}/managedFolders', options)
+          command.response_representation = Google::Apis::StorageV1::ManagedFolders::Representation
+          command.response_class = Google::Apis::StorageV1::ManagedFolders
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['prefix'] = prefix unless prefix.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an IAM policy for the specified managed folder.
+        # @param [String] bucket
+        #   Name of the bucket containing the managed folder.
+        # @param [String] managed_folder
+        #   The managed folder name/path.
+        # @param [Google::Apis::StorageV1::Policy] policy_object
+        # @param [String] user_project
+        #   The project to be billed for this request. Required for Requester Pays buckets.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_managed_folder_iam_policy(bucket, managed_folder, policy_object = nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:put, 'b/{bucket}/managedFolders/{managedFolder}/iam', options)
+          command.request_representation = Google::Apis::StorageV1::Policy::Representation
+          command.request_object = policy_object
+          command.response_representation = Google::Apis::StorageV1::Policy::Representation
+          command.response_class = Google::Apis::StorageV1::Policy
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['managedFolder'] = managed_folder unless managed_folder.nil?
+          command.query['userProject'] = user_project unless user_project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Tests a set of permissions on the given managed folder to see which, if any,
+        # are held by the caller.
+        # @param [String] bucket
+        #   Name of the bucket containing the managed folder.
+        # @param [String] managed_folder
+        #   The managed folder name/path.
+        # @param [Array<String>, String] permissions
+        #   Permissions to test.
+        # @param [String] user_project
+        #   The project to be billed for this request. Required for Requester Pays buckets.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_managed_folder_iam_permissions(bucket, managed_folder, permissions, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'b/{bucket}/managedFolders/{managedFolder}/iam/testPermissions', options)
+          command.response_representation = Google::Apis::StorageV1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::StorageV1::TestIamPermissionsResponse
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['managedFolder'] = managed_folder unless managed_folder.nil?
+          command.query['permissions'] = permissions unless permissions.nil?
+          command.query['userProject'] = user_project unless user_project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Permanently deletes a notification subscription.
         # @param [String] bucket
         #   The parent bucket of the notification.
@@ -1979,6 +2273,9 @@ module Google
         #   Filter results to objects whose names are lexicographically before endOffset.
         #   If startOffset is also set, the objects listed will have names between
         #   startOffset (inclusive) and endOffset (exclusive).
+        # @param [Boolean] include_folders_as_prefixes
+        #   Only applicable if delimiter is set to '/'. If true, will also include folders
+        #   and managed folders (besides objects) in the returned prefixes.
         # @param [Boolean] include_trailing_delimiter
         #   If true, objects that end in exactly one instance of delimiter will have their
         #   metadata included in items in addition to prefixes.
@@ -2027,13 +2324,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_objects(bucket, delimiter: nil, end_offset: nil, include_trailing_delimiter: nil, match_glob: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, soft_deleted: nil, start_offset: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_objects(bucket, delimiter: nil, end_offset: nil, include_folders_as_prefixes: nil, include_trailing_delimiter: nil, match_glob: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, soft_deleted: nil, start_offset: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'b/{bucket}/o', options)
           command.response_representation = Google::Apis::StorageV1::Objects::Representation
           command.response_class = Google::Apis::StorageV1::Objects
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['delimiter'] = delimiter unless delimiter.nil?
           command.query['endOffset'] = end_offset unless end_offset.nil?
+          command.query['includeFoldersAsPrefixes'] = include_folders_as_prefixes unless include_folders_as_prefixes.nil?
           command.query['includeTrailingDelimiter'] = include_trailing_delimiter unless include_trailing_delimiter.nil?
           command.query['matchGlob'] = match_glob unless match_glob.nil?
           command.query['maxResults'] = max_results unless max_results.nil?

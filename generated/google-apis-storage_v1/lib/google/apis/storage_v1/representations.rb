@@ -238,6 +238,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedFolder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedFolders
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Notification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -734,6 +746,32 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::StorageV1::HmacKeyMetadata, decorator: Google::Apis::StorageV1::HmacKeyMetadata::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ManagedFolder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :create_time, as: 'createTime', type: DateTime
+      
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :metageneration, :numeric_string => true, as: 'metageneration'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :update_time, as: 'updateTime', type: DateTime
+      
+        end
+      end
+      
+      class ManagedFolders
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::StorageV1::ManagedFolder, decorator: Google::Apis::StorageV1::ManagedFolder::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
