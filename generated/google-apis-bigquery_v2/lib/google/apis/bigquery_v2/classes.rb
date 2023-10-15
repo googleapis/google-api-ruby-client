@@ -88,6 +88,35 @@ module Google
         end
       end
       
+      # Represents privacy policy associated with "aggregation threshold" method.
+      class AggregationThresholdPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The privacy unit column(s) associated with this policy. For now,
+        # only one column per data source object (table, view) is allowed as a privacy
+        # unit column. Representing as a repeated field in metadata for extensibility to
+        # multiple columns in future. Duplicates and Repeated struct fields are not
+        # allowed. For nested fields, use dot notation ("outer.inner")
+        # Corresponds to the JSON property `privacyUnitColumns`
+        # @return [Array<String>]
+        attr_accessor :privacy_unit_columns
+      
+        # Optional. The threshold for the "aggregation threshold" policy.
+        # Corresponds to the JSON property `threshold`
+        # @return [Fixnum]
+        attr_accessor :threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @privacy_unit_columns = args[:privacy_unit_columns] if args.key?(:privacy_unit_columns)
+          @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
       # Input/output argument of a function or a stored procedure.
       class Argument
         include Google::Apis::Core::Hashable
@@ -4525,6 +4554,30 @@ module Google
         end
       end
       
+      # Reason about why a Job was created from a [`jobs.query`](https://cloud.google.
+      # com/bigquery/docs/reference/rest/v2/jobs/query) method when used with `
+      # JOB_CREATION_OPTIONAL` Job creation mode. For [`jobs.insert`](https://cloud.
+      # google.com/bigquery/docs/reference/rest/v2/jobs/insert) method calls it will
+      # always be `REQUESTED`. This feature is not yet available. Jobs will always be
+      # created.
+      class JobCreationReason
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Specifies the high level reason why a Job was created.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+        end
+      end
+      
       # 
       class JobList
         include Google::Apis::Core::Hashable
@@ -5904,6 +5957,26 @@ module Google
         end
       end
       
+      # Represents privacy policy that contains the privacy requirements specified by
+      # the data owner. Currently, this is only supported on views.
+      class PrivacyPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Represents privacy policy associated with "aggregation threshold" method.
+        # Corresponds to the JSON property `aggregationThresholdPolicy`
+        # @return [Google::Apis::BigqueryV2::AggregationThresholdPolicy]
+        attr_accessor :aggregation_threshold_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_threshold_policy = args[:aggregation_threshold_policy] if args.key?(:aggregation_threshold_policy)
+        end
+      end
+      
       # 
       class ProjectList
         include Google::Apis::Core::Hashable
@@ -6388,6 +6461,12 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
+        # Query ID for the completed query. This ID will be auto-generated. This field
+        # is not yet available and it is currently not guaranteed to be populated.
+        # Corresponds to the JSON property `queryId`
+        # @return [String]
+        attr_accessor :query_id
+      
         # An object with as many results as can be contained within the maximum
         # permitted reply size. To get any additional rows, you can call GetQueryResults
         # and specify the jobReference returned above.
@@ -6432,6 +6511,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @num_dml_affected_rows = args[:num_dml_affected_rows] if args.key?(:num_dml_affected_rows)
           @page_token = args[:page_token] if args.key?(:page_token)
+          @query_id = args[:query_id] if args.key?(:query_id)
           @rows = args[:rows] if args.key?(:rows)
           @schema = args[:schema] if args.key?(:schema)
           @session_info = args[:session_info] if args.key?(:session_info)
@@ -6830,6 +6910,12 @@ module Google
         # @return [String]
         attr_accessor :routine_type
       
+        # Optional. The security mode of the routine, if defined. If not defined, the
+        # security mode is automatically determined from the routine's configuration.
+        # Corresponds to the JSON property `securityMode`
+        # @return [String]
+        attr_accessor :security_mode
+      
         # Options for a user-defined Spark routine.
         # Corresponds to the JSON property `sparkOptions`
         # @return [Google::Apis::BigqueryV2::SparkOptions]
@@ -6866,6 +6952,7 @@ module Google
           @return_type = args[:return_type] if args.key?(:return_type)
           @routine_reference = args[:routine_reference] if args.key?(:routine_reference)
           @routine_type = args[:routine_type] if args.key?(:routine_type)
+          @security_mode = args[:security_mode] if args.key?(:security_mode)
           @spark_options = args[:spark_options] if args.key?(:spark_options)
           @strict_mode = args[:strict_mode] if args.key?(:strict_mode)
         end
@@ -7244,12 +7331,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # [Output-only] Project ID used for logging
-        # Corresponds to the JSON property `project_id`
+        # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
         # [Output-only] Resource type used for logging
-        # Corresponds to the JSON property `resource_type`
+        # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
       
