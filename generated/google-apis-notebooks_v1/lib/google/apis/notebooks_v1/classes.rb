@@ -1668,6 +1668,80 @@ module Google
         end
       end
       
+      # Request for migrating a User-Managed Notebook to Workbench Instances.
+      class MigrateInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the behavior of post startup script during migration.
+        # Corresponds to the JSON property `postStartupScriptOption`
+        # @return [String]
+        attr_accessor :post_startup_script_option
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @post_startup_script_option = args[:post_startup_script_option] if args.key?(:post_startup_script_option)
+        end
+      end
+      
+      # Request for migrating a Runtime to a Workbench Instance.
+      class MigrateRuntimeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name of the VPC that the new Instance is in. This is required if the
+        # Runtime uses google-managed network. If the Runtime uses customer-owned
+        # network, it will reuse the same VPC, and this field must be empty. Format: `
+        # projects/`project_id`/global/networks/`network_id``
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Optional. Specifies the behavior of post startup script during migration.
+        # Corresponds to the JSON property `postStartupScriptOption`
+        # @return [String]
+        attr_accessor :post_startup_script_option
+      
+        # Optional. Idempotent request UUID.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Optional. The service account to be included in the Compute Engine instance of
+        # the new Workbench Instance when the Runtime uses "single user only" mode for
+        # permission. If not specified, the [Compute Engine default service account](
+        # https://cloud.google.com/compute/docs/access/service-accounts#
+        # default_service_account) is used. When the Runtime uses service account mode
+        # for permission, it will reuse the same service account, and this field must be
+        # empty.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Optional. Name of the subnet that the new Instance is in. This is required if
+        # the Runtime uses google-managed network. If the Runtime uses customer-owned
+        # network, it will reuse the same subnet, and this field must be empty. Format: `
+        # projects/`project_id`/regions/`region`/subnetworks/`subnetwork_id``
+        # Corresponds to the JSON property `subnet`
+        # @return [String]
+        attr_accessor :subnet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+          @post_startup_script_option = args[:post_startup_script_option] if args.key?(:post_startup_script_option)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @subnet = args[:subnet] if args.key?(:subnet)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation

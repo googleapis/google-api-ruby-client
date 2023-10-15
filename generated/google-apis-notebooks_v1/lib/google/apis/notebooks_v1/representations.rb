@@ -220,6 +220,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MigrateInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MigrateRuntimeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -894,6 +906,24 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class MigrateInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :post_startup_script_option, as: 'postStartupScriptOption'
+        end
+      end
+      
+      class MigrateRuntimeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :post_startup_script_option, as: 'postStartupScriptOption'
+          property :request_id, as: 'requestId'
+          property :service_account, as: 'serviceAccount'
+          property :subnet, as: 'subnet'
         end
       end
       
