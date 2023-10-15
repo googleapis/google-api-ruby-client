@@ -1652,6 +1652,7 @@ module Google
           property :bucket, as: 'bucket'
           property :generation, :numeric_string => true, as: 'generation'
           property :object, as: 'object'
+          property :source_fetcher, as: 'sourceFetcher'
         end
       end
       
