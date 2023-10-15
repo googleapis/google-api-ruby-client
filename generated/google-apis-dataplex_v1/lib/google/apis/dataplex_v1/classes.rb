@@ -3593,6 +3593,64 @@ module Google
         end
       end
       
+      # Payload associated with Governance related log events.
+      class GoogleCloudDataplexV1GovernanceEvent
+        include Google::Apis::Core::Hashable
+      
+        # Information about Entity resource that the log event is associated with.
+        # Corresponds to the JSON property `entity`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1GovernanceEventEntity]
+        attr_accessor :entity
+      
+        # The type of the event.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # The log message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity = args[:entity] if args.key?(:entity)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Information about Entity resource that the log event is associated with.
+      class GoogleCloudDataplexV1GovernanceEventEntity
+        include Google::Apis::Core::Hashable
+      
+        # The Entity resource the log event is associated with. Format: projects/`
+        # project_number`/locations/`location_id`/lakes/`lake_id`/zones/`zone_id`/
+        # entities/`entity_id`
+        # Corresponds to the JSON property `entity`
+        # @return [String]
+        attr_accessor :entity
+      
+        # Type of entity.
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity = args[:entity] if args.key?(:entity)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+        end
+      end
+      
       # A job represents an instance of a task.
       class GoogleCloudDataplexV1Job
         include Google::Apis::Core::Hashable

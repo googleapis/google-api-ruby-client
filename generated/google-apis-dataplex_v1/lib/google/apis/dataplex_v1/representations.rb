@@ -556,6 +556,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1GovernanceEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1GovernanceEventEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1Job
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1967,6 +1979,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active, as: 'active'
+        end
+      end
+      
+      class GoogleCloudDataplexV1GovernanceEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity, as: 'entity', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1GovernanceEventEntity, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1GovernanceEventEntity::Representation
+      
+          property :event_type, as: 'eventType'
+          property :message, as: 'message'
+        end
+      end
+      
+      class GoogleCloudDataplexV1GovernanceEventEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity, as: 'entity'
+          property :entity_type, as: 'entityType'
         end
       end
       
