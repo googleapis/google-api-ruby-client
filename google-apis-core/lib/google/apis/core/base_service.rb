@@ -480,6 +480,11 @@ module Google
           client.default_header = { 'User-Agent' => user_agent }
 
           client.debug_dev = logger if client_options.log_http_requests
+
+          # Make HttpClient use system default root CA path
+          # https://github.com/nahi/httpclient/issues/445
+          client.ssl_config.clear_cert_store
+          client.ssl_config.cert_store.set_default_paths
           client
         end
 
