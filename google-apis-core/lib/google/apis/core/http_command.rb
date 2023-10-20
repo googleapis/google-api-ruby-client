@@ -88,7 +88,7 @@ module Google
           self.params = {}
           @opencensus_span = nil
           if OPENCENSUS_AVAILABLE
-            logger.warn  'OpenCensus support is now deprecated.'\ 
+            logger.warn  'OpenCensus support is now deprecated. ' +
                          'Please refer https://github.com/googleapis/google-api-ruby-client#tracing for migrating to use OpenTelemetry.' 
             
           end
