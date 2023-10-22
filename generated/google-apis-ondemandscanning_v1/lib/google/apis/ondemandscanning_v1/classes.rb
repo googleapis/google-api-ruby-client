@@ -2213,6 +2213,15 @@ module Google
         # @return [String]
         attr_accessor :hash_digest
       
+        # The list of licenses found that are related to a given package. Note that
+        # licenses may also be stored on the BinarySourceInfo. If there is no
+        # BinarySourceInfo (because there's no concept of source vs binary), then it
+        # will be stored here, while if there are BinarySourceInfos, it will be stored
+        # there, as one source can have multiple binaries with different licenses.
+        # Corresponds to the JSON property `licenses`
+        # @return [Array<String>]
+        attr_accessor :licenses
+      
         # The maintainer of the package.
         # Corresponds to the JSON property `maintainer`
         # @return [Google::Apis::OndemandscanningV1::Maintainer]
@@ -2273,6 +2282,7 @@ module Google
           @dependency_chain = args[:dependency_chain] if args.key?(:dependency_chain)
           @file_location = args[:file_location] if args.key?(:file_location)
           @hash_digest = args[:hash_digest] if args.key?(:hash_digest)
+          @licenses = args[:licenses] if args.key?(:licenses)
           @maintainer = args[:maintainer] if args.key?(:maintainer)
           @os = args[:os] if args.key?(:os)
           @os_version = args[:os_version] if args.key?(:os_version)
@@ -2429,6 +2439,14 @@ module Google
       class PackageVersion
         include Google::Apis::Core::Hashable
       
+        # The licenses associated with this package. Note that this has to go on the
+        # PackageVersion level, because we can have cases with images with the same
+        # source having different licences. E.g. in Alpine, musl and musl-utils both
+        # have the same origin musl, but have different sets of licenses.
+        # Corresponds to the JSON property `licenses`
+        # @return [Array<String>]
+        attr_accessor :licenses
+      
         # 
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2445,6 +2463,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @version = args[:version] if args.key?(:version)
         end
