@@ -1795,7 +1795,6 @@ module Google
       class GoogleCloudApigeeV1ApiCategoryData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :gcp_resource, as: 'gcpResource'
           property :id, as: 'id'
           property :name, as: 'name'
           property :site_id, as: 'siteId'
