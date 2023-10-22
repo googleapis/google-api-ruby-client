@@ -148,6 +148,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_group_id, :numeric_string => true, as: 'adGroupId'
           property :ad_id, :numeric_string => true, as: 'adId'
+          property :ad_user_data_consent, as: 'adUserDataConsent'
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :agency_id, :numeric_string => true, as: 'agencyId'
           property :attribution_model, as: 'attributionModel'
