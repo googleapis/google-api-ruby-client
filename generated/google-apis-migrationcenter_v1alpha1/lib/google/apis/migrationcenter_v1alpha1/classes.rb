@@ -1168,6 +1168,32 @@ module Google
         end
       end
       
+      # Information about software detected on an asset.
+      class DetectedSoftware
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Software family of the detected software, e.g. Database, SAP
+        # family.
+        # Corresponds to the JSON property `softwareFamily`
+        # @return [String]
+        attr_accessor :software_family
+      
+        # Output only. Software's name.
+        # Corresponds to the JSON property `softwareName`
+        # @return [String]
+        attr_accessor :software_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @software_family = args[:software_family] if args.key?(:software_family)
+          @software_name = args[:software_name] if args.key?(:software_name)
+        end
+      end
+      
       # Single disk entry.
       class DiskEntry
         include Google::Apis::Core::Hashable
@@ -1718,12 +1744,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The description of the resource.
+        # Optional. The description of the group.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # User-friendly display name.
+        # Optional. User-friendly display name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2235,6 +2261,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::MigrationInsight]
         attr_accessor :migration_insight
       
+        # An insight regarding software detected on an asset.
+        # Corresponds to the JSON property `softwareInsight`
+        # @return [Google::Apis::MigrationcenterV1alpha1::SoftwareInsight]
+        attr_accessor :software_insight
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2243,6 +2274,7 @@ module Google
         def update!(**args)
           @generic_insight = args[:generic_insight] if args.key?(:generic_insight)
           @migration_insight = args[:migration_insight] if args.key?(:migration_insight)
+          @software_insight = args[:software_insight] if args.key?(:software_insight)
         end
       end
       
@@ -4493,6 +4525,25 @@ module Google
           @disable_cloud_logging = args[:disable_cloud_logging] if args.key?(:disable_cloud_logging)
           @name = args[:name] if args.key?(:name)
           @preference_set = args[:preference_set] if args.key?(:preference_set)
+        end
+      end
+      
+      # An insight regarding software detected on an asset.
+      class SoftwareInsight
+        include Google::Apis::Core::Hashable
+      
+        # Information about software detected on an asset.
+        # Corresponds to the JSON property `detectedSoftware`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DetectedSoftware]
+        attr_accessor :detected_software
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_software = args[:detected_software] if args.key?(:detected_software)
         end
       end
       
