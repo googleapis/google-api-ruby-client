@@ -2852,7 +2852,8 @@ module Google
         # only paths of length 1 are accepted. In other words, if "dark_blue" merged
         # into "BLUE", then the latter can't merge into "blues" because this would
         # create a path of length 2. The maximum number of instances of MergedFacetValue
-        # per CatalogAttribute is 100.
+        # per CatalogAttribute is 100. This feature is available only for textual custom
+        # attributes.
         # Corresponds to the JSON property `mergedFacetValues`
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue>]
         attr_accessor :merged_facet_values
@@ -2891,7 +2892,7 @@ module Google
       
         # List of facet values to ignore for the following time range. The facet values
         # are the same as the attribute values. There is a limit of 10 values per
-        # instance of IgnoredFacetValues. Each value can have at most 60 characters.
+        # instance of IgnoredFacetValues. Each value can have at most 128 characters.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
@@ -2908,21 +2909,21 @@ module Google
         end
       end
       
-      # Replaces a set of facet values by the same (possibly different) merged facet
-      # value. Each facet value should appear at most once as a value per
-      # CatalogAttribute.
+      # Replaces a set of textual facet values by the same (possibly different) merged
+      # facet value. Each facet value should appear at most once as a value per
+      # CatalogAttribute. This feature is available only for textual custom attributes.
       class GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue
         include Google::Apis::Core::Hashable
       
         # All the previous values are replaced by this merged facet value. This
-        # merged_value must be non-empty and can have up to 60 characters.
+        # merged_value must be non-empty and can have up to 128 characters.
         # Corresponds to the JSON property `mergedValue`
         # @return [String]
         attr_accessor :merged_value
       
         # All the facet values that are replaces by the same merged_value that follows.
         # The maximum number of values per MergedFacetValue is 25. Each value can have
-        # up to 60 characters.
+        # up to 128 characters.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
