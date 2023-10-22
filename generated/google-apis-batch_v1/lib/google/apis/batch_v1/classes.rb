@@ -2171,8 +2171,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Max number of tasks that can run in parallel. Default to min(task_count, 1000).
-        # Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
+        # Max number of tasks that can run in parallel. Default to min(task_count,
+        # parallel tasks per job limit). See: [Job Limits](https://cloud.google.com/
+        # batch/quotas#job_limits). Field parallelism must be 1 if the scheduling_policy
+        # is IN_ORDER.
         # Corresponds to the JSON property `parallelism`
         # @return [Fixnum]
         attr_accessor :parallelism
