@@ -365,6 +365,12 @@ module Google
         # @return [Google::Apis::GkehubV1::ConfigManagementMembershipSpec]
         attr_accessor :configmanagement
       
+        # **Policy Controller**: Configuration for a single cluster. Intended to
+        # parallel the PolicyController CR.
+        # Corresponds to the JSON property `policycontroller`
+        # @return [Google::Apis::GkehubV1::PolicyControllerMembershipSpec]
+        attr_accessor :policycontroller
+      
         def initialize(**args)
            update!(**args)
         end
@@ -372,6 +378,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
+          @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
         end
       end
       
@@ -3011,6 +3018,12 @@ module Google
         # @return [Google::Apis::GkehubV1::Origin]
         attr_accessor :origin
       
+        # **Policy Controller**: Configuration for a single cluster. Intended to
+        # parallel the PolicyController CR.
+        # Corresponds to the JSON property `policycontroller`
+        # @return [Google::Apis::GkehubV1::PolicyControllerMembershipSpec]
+        attr_accessor :policycontroller
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3022,6 +3035,7 @@ module Google
           @identityservice = args[:identityservice] if args.key?(:identityservice)
           @mesh = args[:mesh] if args.key?(:mesh)
           @origin = args[:origin] if args.key?(:origin)
+          @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
         end
       end
       
@@ -3051,6 +3065,11 @@ module Google
         # @return [Google::Apis::GkehubV1::IdentityServiceMembershipState]
         attr_accessor :identityservice
       
+        # **Policy Controller**: State for a single cluster.
+        # Corresponds to the JSON property `policycontroller`
+        # @return [Google::Apis::GkehubV1::PolicyControllerMembershipState]
+        attr_accessor :policycontroller
+      
         # **Service Mesh**: State for a single Membership, as analyzed by the Service
         # Mesh Hub Controller.
         # Corresponds to the JSON property `servicemesh`
@@ -3074,6 +3093,7 @@ module Google
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @identityservice = args[:identityservice] if args.key?(:identityservice)
+          @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
           @servicemesh = args[:servicemesh] if args.key?(:servicemesh)
           @state = args[:state] if args.key?(:state)
         end
@@ -3571,6 +3591,428 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # BundleInstallSpec is the specification configuration for a single managed
+      # bundle.
+      class PolicyControllerBundleInstallSpec
+        include Google::Apis::Core::Hashable
+      
+        # The set of namespaces to be exempted from the bundle.
+        # Corresponds to the JSON property `exemptedNamespaces`
+        # @return [Array<String>]
+        attr_accessor :exempted_namespaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exempted_namespaces = args[:exempted_namespaces] if args.key?(:exempted_namespaces)
+        end
+      end
+      
+      # Configuration for Policy Controller
+      class PolicyControllerHubConfig
+        include Google::Apis::Core::Hashable
+      
+        # Sets the interval for Policy Controller Audit Scans (in seconds). When set to
+        # 0, this disables audit functionality altogether.
+        # Corresponds to the JSON property `auditIntervalSeconds`
+        # @return [Fixnum]
+        attr_accessor :audit_interval_seconds
+      
+        # The maximum number of audit violations to be stored in a constraint. If not
+        # set, the internal default (currently 20) will be used.
+        # Corresponds to the JSON property `constraintViolationLimit`
+        # @return [Fixnum]
+        attr_accessor :constraint_violation_limit
+      
+        # Map of deployment configs to deployments ("admission", "audit", "mutation').
+        # Corresponds to the JSON property `deploymentConfigs`
+        # @return [Hash<String,Google::Apis::GkehubV1::PolicyControllerPolicyControllerDeploymentConfig>]
+        attr_accessor :deployment_configs
+      
+        # The set of namespaces that are excluded from Policy Controller checks.
+        # Namespaces do not need to currently exist on the cluster.
+        # Corresponds to the JSON property `exemptableNamespaces`
+        # @return [Array<String>]
+        attr_accessor :exemptable_namespaces
+      
+        # The install_spec represents the intended state specified by the latest request
+        # that mutated install_spec in the feature spec, not the lifecycle state of the
+        # feature observed by the Hub feature controller that is reported in the feature
+        # state.
+        # Corresponds to the JSON property `installSpec`
+        # @return [String]
+        attr_accessor :install_spec
+      
+        # Logs all denies and dry run failures.
+        # Corresponds to the JSON property `logDeniesEnabled`
+        # @return [Boolean]
+        attr_accessor :log_denies_enabled
+        alias_method :log_denies_enabled?, :log_denies_enabled
+      
+        # MonitoringConfig specifies the backends Policy Controller should export
+        # metrics to. For example, to specify metrics should be exported to Cloud
+        # Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
+        # Corresponds to the JSON property `monitoring`
+        # @return [Google::Apis::GkehubV1::PolicyControllerMonitoringConfig]
+        attr_accessor :monitoring
+      
+        # Enables the ability to mutate resources using Policy Controller.
+        # Corresponds to the JSON property `mutationEnabled`
+        # @return [Boolean]
+        attr_accessor :mutation_enabled
+        alias_method :mutation_enabled?, :mutation_enabled
+      
+        # PolicyContentSpec defines the user's desired content configuration on the
+        # cluster.
+        # Corresponds to the JSON property `policyContent`
+        # @return [Google::Apis::GkehubV1::PolicyControllerPolicyContentSpec]
+        attr_accessor :policy_content
+      
+        # Enables the ability to use Constraint Templates that reference to objects
+        # other than the object currently being evaluated.
+        # Corresponds to the JSON property `referentialRulesEnabled`
+        # @return [Boolean]
+        attr_accessor :referential_rules_enabled
+        alias_method :referential_rules_enabled?, :referential_rules_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audit_interval_seconds = args[:audit_interval_seconds] if args.key?(:audit_interval_seconds)
+          @constraint_violation_limit = args[:constraint_violation_limit] if args.key?(:constraint_violation_limit)
+          @deployment_configs = args[:deployment_configs] if args.key?(:deployment_configs)
+          @exemptable_namespaces = args[:exemptable_namespaces] if args.key?(:exemptable_namespaces)
+          @install_spec = args[:install_spec] if args.key?(:install_spec)
+          @log_denies_enabled = args[:log_denies_enabled] if args.key?(:log_denies_enabled)
+          @monitoring = args[:monitoring] if args.key?(:monitoring)
+          @mutation_enabled = args[:mutation_enabled] if args.key?(:mutation_enabled)
+          @policy_content = args[:policy_content] if args.key?(:policy_content)
+          @referential_rules_enabled = args[:referential_rules_enabled] if args.key?(:referential_rules_enabled)
+        end
+      end
+      
+      # **Policy Controller**: Configuration for a single cluster. Intended to
+      # parallel the PolicyController CR.
+      class PolicyControllerMembershipSpec
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for Policy Controller
+        # Corresponds to the JSON property `policyControllerHubConfig`
+        # @return [Google::Apis::GkehubV1::PolicyControllerHubConfig]
+        attr_accessor :policy_controller_hub_config
+      
+        # Version of Policy Controller installed.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_controller_hub_config = args[:policy_controller_hub_config] if args.key?(:policy_controller_hub_config)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # **Policy Controller**: State for a single cluster.
+      class PolicyControllerMembershipState
+        include Google::Apis::Core::Hashable
+      
+        # Currently these include (also serving as map keys): 1. "admission" 2. "audit"
+        # 3. "mutation"
+        # Corresponds to the JSON property `componentStates`
+        # @return [Hash<String,Google::Apis::GkehubV1::PolicyControllerOnClusterState>]
+        attr_accessor :component_states
+      
+        # The state of the policy controller policy content
+        # Corresponds to the JSON property `policyContentState`
+        # @return [Google::Apis::GkehubV1::PolicyControllerPolicyContentState]
+        attr_accessor :policy_content_state
+      
+        # The overall Policy Controller lifecycle state observed by the Hub Feature
+        # controller.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @component_states = args[:component_states] if args.key?(:component_states)
+          @policy_content_state = args[:policy_content_state] if args.key?(:policy_content_state)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # MonitoringConfig specifies the backends Policy Controller should export
+      # metrics to. For example, to specify metrics should be exported to Cloud
+      # Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
+      class PolicyControllerMonitoringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the list of backends Policy Controller will export to. An empty list
+        # would effectively disable metrics export.
+        # Corresponds to the JSON property `backends`
+        # @return [Array<String>]
+        attr_accessor :backends
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backends = args[:backends] if args.key?(:backends)
+        end
+      end
+      
+      # OnClusterState represents the state of a sub-component of Policy Controller.
+      class PolicyControllerOnClusterState
+        include Google::Apis::Core::Hashable
+      
+        # Surface potential errors or information logs.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # The lifecycle state of this component.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # PolicyContentSpec defines the user's desired content configuration on the
+      # cluster.
+      class PolicyControllerPolicyContentSpec
+        include Google::Apis::Core::Hashable
+      
+        # map of bundle name to BundleInstallSpec. The bundle name maps to the `
+        # bundleName` key in the `policycontroller.gke.io/constraintData` annotation on
+        # a constraint.
+        # Corresponds to the JSON property `bundles`
+        # @return [Hash<String,Google::Apis::GkehubV1::PolicyControllerBundleInstallSpec>]
+        attr_accessor :bundles
+      
+        # The config specifying which default library templates to install.
+        # Corresponds to the JSON property `templateLibrary`
+        # @return [Google::Apis::GkehubV1::PolicyControllerTemplateLibraryConfig]
+        attr_accessor :template_library
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundles = args[:bundles] if args.key?(:bundles)
+          @template_library = args[:template_library] if args.key?(:template_library)
+        end
+      end
+      
+      # The state of the policy controller policy content
+      class PolicyControllerPolicyContentState
+        include Google::Apis::Core::Hashable
+      
+        # The state of the any bundles included in the chosen version of the manifest
+        # Corresponds to the JSON property `bundleStates`
+        # @return [Hash<String,Google::Apis::GkehubV1::PolicyControllerOnClusterState>]
+        attr_accessor :bundle_states
+      
+        # OnClusterState represents the state of a sub-component of Policy Controller.
+        # Corresponds to the JSON property `referentialSyncConfigState`
+        # @return [Google::Apis::GkehubV1::PolicyControllerOnClusterState]
+        attr_accessor :referential_sync_config_state
+      
+        # OnClusterState represents the state of a sub-component of Policy Controller.
+        # Corresponds to the JSON property `templateLibraryState`
+        # @return [Google::Apis::GkehubV1::PolicyControllerOnClusterState]
+        attr_accessor :template_library_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_states = args[:bundle_states] if args.key?(:bundle_states)
+          @referential_sync_config_state = args[:referential_sync_config_state] if args.key?(:referential_sync_config_state)
+          @template_library_state = args[:template_library_state] if args.key?(:template_library_state)
+        end
+      end
+      
+      # Deployment-specific configuration.
+      class PolicyControllerPolicyControllerDeploymentConfig
+        include Google::Apis::Core::Hashable
+      
+        # ResourceRequirements describes the compute resource requirements.
+        # Corresponds to the JSON property `containerResources`
+        # @return [Google::Apis::GkehubV1::PolicyControllerResourceRequirements]
+        attr_accessor :container_resources
+      
+        # Pod affinity configuration.
+        # Corresponds to the JSON property `podAffinity`
+        # @return [String]
+        attr_accessor :pod_affinity
+      
+        # Pod anti-affinity enablement.
+        # Corresponds to the JSON property `podAntiAffinity`
+        # @return [Boolean]
+        attr_accessor :pod_anti_affinity
+        alias_method :pod_anti_affinity?, :pod_anti_affinity
+      
+        # Pod tolerations of node taints.
+        # Corresponds to the JSON property `podTolerations`
+        # @return [Array<Google::Apis::GkehubV1::PolicyControllerToleration>]
+        attr_accessor :pod_tolerations
+      
+        # Pod replica count.
+        # Corresponds to the JSON property `replicaCount`
+        # @return [Fixnum]
+        attr_accessor :replica_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_resources = args[:container_resources] if args.key?(:container_resources)
+          @pod_affinity = args[:pod_affinity] if args.key?(:pod_affinity)
+          @pod_anti_affinity = args[:pod_anti_affinity] if args.key?(:pod_anti_affinity)
+          @pod_tolerations = args[:pod_tolerations] if args.key?(:pod_tolerations)
+          @replica_count = args[:replica_count] if args.key?(:replica_count)
+        end
+      end
+      
+      # ResourceList contains container resource requirements.
+      class PolicyControllerResourceList
+        include Google::Apis::Core::Hashable
+      
+        # CPU requirement expressed in Kubernetes resource units.
+        # Corresponds to the JSON property `cpu`
+        # @return [String]
+        attr_accessor :cpu
+      
+        # Memory requirement expressed in Kubernetes resource units.
+        # Corresponds to the JSON property `memory`
+        # @return [String]
+        attr_accessor :memory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu = args[:cpu] if args.key?(:cpu)
+          @memory = args[:memory] if args.key?(:memory)
+        end
+      end
+      
+      # ResourceRequirements describes the compute resource requirements.
+      class PolicyControllerResourceRequirements
+        include Google::Apis::Core::Hashable
+      
+        # ResourceList contains container resource requirements.
+        # Corresponds to the JSON property `limits`
+        # @return [Google::Apis::GkehubV1::PolicyControllerResourceList]
+        attr_accessor :limits
+      
+        # ResourceList contains container resource requirements.
+        # Corresponds to the JSON property `requests`
+        # @return [Google::Apis::GkehubV1::PolicyControllerResourceList]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @limits = args[:limits] if args.key?(:limits)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # The config specifying which default library templates to install.
+      class PolicyControllerTemplateLibraryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configures the manner in which the template library is installed on the
+        # cluster.
+        # Corresponds to the JSON property `installation`
+        # @return [String]
+        attr_accessor :installation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @installation = args[:installation] if args.key?(:installation)
+        end
+      end
+      
+      # Toleration of a node taint.
+      class PolicyControllerToleration
+        include Google::Apis::Core::Hashable
+      
+        # Matches a taint effect.
+        # Corresponds to the JSON property `effect`
+        # @return [String]
+        attr_accessor :effect
+      
+        # Matches a taint key (not necessarily unique).
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Matches a taint operator.
+        # Corresponds to the JSON property `operator`
+        # @return [String]
+        attr_accessor :operator
+      
+        # Matches a taint value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effect = args[:effect] if args.key?(:effect)
+          @key = args[:key] if args.key?(:key)
+          @operator = args[:operator] if args.key?(:operator)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
