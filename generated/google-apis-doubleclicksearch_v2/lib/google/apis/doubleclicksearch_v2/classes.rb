@@ -94,6 +94,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :ad_id
       
+        # Ad user data consent for this conversion.
+        # Corresponds to the JSON property `adUserDataConsent`
+        # @return [String]
+        attr_accessor :ad_user_data_consent
+      
         # DS advertiser ID.
         # Corresponds to the JSON property `advertiserId`
         # @return [Fixnum]
@@ -285,6 +290,7 @@ module Google
         def update!(**args)
           @ad_group_id = args[:ad_group_id] if args.key?(:ad_group_id)
           @ad_id = args[:ad_id] if args.key?(:ad_id)
+          @ad_user_data_consent = args[:ad_user_data_consent] if args.key?(:ad_user_data_consent)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @agency_id = args[:agency_id] if args.key?(:agency_id)
           @attribution_model = args[:attribution_model] if args.key?(:attribution_model)
