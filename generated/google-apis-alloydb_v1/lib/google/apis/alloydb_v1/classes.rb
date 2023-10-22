@@ -2242,6 +2242,7 @@ module Google
         # Closest parent container of this resource. In GCP, 'container' refers to a
         # Cloud Resource Manager project. It must be resource name of a Cloud Resource
         # Manager project with the format of "provider//", such as "gcp/projects/123".
+        # For GCP provided resources, number should be project number.
         # Corresponds to the JSON property `resourceContainer`
         # @return [String]
         attr_accessor :resource_container
@@ -2405,7 +2406,8 @@ module Google
       
         # Closest parent Cloud Resource Manager container of this resource. It must be
         # resource name of a Cloud Resource Manager project with the format of "provider/
-        # /", such as "gcp/projects/123".
+        # /", such as "gcp/projects/123". For GCP provided resources, number should be
+        # project number.
         # Corresponds to the JSON property `resourceContainer`
         # @return [String]
         attr_accessor :resource_container
