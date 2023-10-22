@@ -626,6 +626,12 @@ module Google
       class CloudRunMetadata
         include Google::Apis::Core::Hashable
       
+        # Output only. The name of the Cloud Run job that is associated with a `Rollout`.
+        # Format is projects/`project`/locations/`location`/jobs/`job_name`.
+        # Corresponds to the JSON property `job`
+        # @return [String]
+        attr_accessor :job
+      
         # Output only. The Cloud Run Revision id associated with a `Rollout`.
         # Corresponds to the JSON property `revision`
         # @return [String]
@@ -648,6 +654,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @job = args[:job] if args.key?(:job)
           @revision = args[:revision] if args.key?(:revision)
           @service = args[:service] if args.key?(:service)
           @service_urls = args[:service_urls] if args.key?(:service_urls)

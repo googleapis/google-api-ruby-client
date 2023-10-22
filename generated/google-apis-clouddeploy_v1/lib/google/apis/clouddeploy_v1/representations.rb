@@ -868,6 +868,7 @@ module Google
       class CloudRunMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :job, as: 'job'
           property :revision, as: 'revision'
           property :service, as: 'service'
           collection :service_urls, as: 'serviceUrls'
