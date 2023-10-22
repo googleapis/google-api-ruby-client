@@ -3888,8 +3888,12 @@ module Google
         attr_accessor :camera_disabled
         alias_method :camera_disabled?, :camera_disabled
       
-        # Controls how long the work profile can stay off. The duration must be at least
-        # 3 days.
+        # Controls how long the work profile can stay off. The minimum duration must be
+        # at least 3 days. Other details are as follows: - If the duration is set to 0,
+        # the feature is turned off. - If the duration is set to any value between 1-2
+        # days, the feature is automatically set to 3 days. *Note:* If you want to avoid
+        # personal profiles being suspended during long periods of off-time, you can
+        # temporarily set a large value for this parameter.
         # Corresponds to the JSON property `maxDaysWithWorkOff`
         # @return [Fixnum]
         attr_accessor :max_days_with_work_off
@@ -4907,21 +4911,21 @@ module Google
       end
       
       # A resource containing sign in details for an enterprise. Use enterprises to
-      # manage SigninDetails for a given enterprise. For an enterprise, we can have
-      # any number of SigninDetails that is uniquely identified by combination of the
+      # manage SigninDetails for a given enterprise.For an enterprise, we can have any
+      # number of SigninDetails that is uniquely identified by combination of the
       # following three fields (signin_url, allow_personal_usage, token_tag). One
       # cannot create two SigninDetails with the same (signin_url,
-      # allow_personal_usage, token_tag). (token_tag is an optional field) Patch: The
+      # allow_personal_usage, token_tag). (token_tag is an optional field).Patch: The
       # operation updates the current list of SigninDetails with the new list of
       # SigninDetails. If the stored SigninDetail configuration is passed, it returns
       # the same signin_enrollment_token and qr_code. If we pass multiple identical
       # SigninDetail configurations that are not stored, it will store the first one
-      # amongst those SigninDetail configurations and if the configuration already
-      # exists we cannot request it more than once in a particular patch API call,
-      # otherwise it will give a duplicate key error and the whole operation will fail.
-      # If we remove certain SigninDetail configuration from the request then it will
-      # get removed from the storage. And then we can request for another
-      # signin_enrollment_token and qr_code for the same SigninDetail configuration.
+      # amongst those SigninDetail configurations. if the configuration already exists
+      # we cannot request it more than once in a particular patch API call, otherwise
+      # it will give a duplicate key error and the whole operation will fail. If we
+      # remove certain SigninDetail configuration from the request then it will get
+      # removed from the storage. We can then request another signin_enrollment_token
+      # and qr_code for the same SigninDetail configuration.
       class SigninDetail
         include Google::Apis::Core::Hashable
       
@@ -4959,7 +4963,7 @@ module Google
         # @return [String]
         attr_accessor :signin_url
       
-        # An EMM-specified tag to distinguish between instances of SigninDetail.
+        # An EMM-specified metadata to distinguish between instances of SigninDetail.
         # Corresponds to the JSON property `tokenTag`
         # @return [String]
         attr_accessor :token_tag
