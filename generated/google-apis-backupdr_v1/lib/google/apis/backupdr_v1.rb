@@ -23,7 +23,7 @@ module Google
     #
     # 
     #
-    # @see https://cloud.google.com/
+    # @see https://cloud.google.com/backup-disaster-recovery
     module BackupdrV1
       # Version of the Backup and DR Service API this client connects to.
       # This is NOT the gem version.
