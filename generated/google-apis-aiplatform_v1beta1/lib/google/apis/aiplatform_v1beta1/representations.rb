@@ -538,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1CreateNotebookExecutionJobOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1CreateNotebookRuntimeTemplateOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5295,6 +5301,15 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1CreateNotebookExecutionJobOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata::Representation
+      
+          property :progress_message, as: 'progressMessage'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1CreateNotebookRuntimeTemplateOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5421,6 +5436,7 @@ module Google
           property :experiment_run, as: 'experimentRun'
           property :network, as: 'network'
           property :persistent_resource_id, as: 'persistentResourceId'
+          property :protected_artifact_location_id, as: 'protectedArtifactLocationId'
           collection :reserved_ip_ranges, as: 'reservedIpRanges'
           property :scheduling, as: 'scheduling', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Scheduling, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Scheduling::Representation
       
