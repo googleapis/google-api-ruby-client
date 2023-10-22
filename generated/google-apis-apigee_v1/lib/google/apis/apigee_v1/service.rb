@@ -2017,22 +2017,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an appGroup. This API replaces the existing appGroup details with
+        # Updates an AppGroup. This API replaces the existing AppGroup details with
         # those specified in the request. Include or exclude any existing details that
         # you want to retain or delete, respectively. Note that the state of the
-        # AppGroup should be updated using `action`, and not via AppGroup. **Note**:
-        # OAuth access tokens and Key Management Service (KMS) entities (apps,
-        # developers, and API products) are cached for 180 seconds (current default).
-        # Any custom attributes associated with these entities are cached for at least
-        # 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn`
-        # element on the OAuthV2 policy won't be able to expire an access token in less
-        # than 180 seconds.
+        # AppGroup should be updated using `action`, and not via AppGroup.
         # @param [String] name
         #   Required. Name of the AppGroup. Use the following structure in your request: `
         #   organizations/`org`/appgroups/`app_group_name``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup] google_cloud_apigee_v1_app_group_object
         # @param [String] action
-        #   Activate or de-activate the appGroup by setting the action as `active` or `
+        #   Activate or de-activate the AppGroup by setting the action as `active` or `
         #   inactive`. The `Content-Type` header must be set to `application/octet-stream`,
         #   with empty body.
         # @param [String] fields
@@ -11112,7 +11106,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new category on the portal.
+        # Creates a new API category.
         # @param [String] parent
         #   Required. Name of the portal. Use the following structure in your request: `
         #   organizations/`org`/sites/`site``
@@ -11146,7 +11140,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a category from the portal.
+        # Deletes an API category.
         # @param [String] name
         #   Required. Name of the category. Use the following structure in your request: `
         #   organizations/`org`/sites/`site`/apicategories/`apicategory``
@@ -11177,7 +11171,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a category on the portal.
+        # Gets an API category.
         # @param [String] name
         #   Required. Name of the category. Use the following structure in your request: `
         #   organizations/`org`/sites/`site`/apicategories/`apicategory``
@@ -11208,7 +11202,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the categories on the portal.
+        # Returns the API categories associated with a portal.
         # @param [String] parent
         #   Required. Name of the portal. Use the following structure in your request: `
         #   organizations/`org`/sites/`site``
@@ -11239,7 +11233,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a category on the portal.
+        # Updates an API category.
         # @param [String] name
         #   Required. Name of the category. Use the following structure in your request: `
         #   organizations/`org`/sites/`site`/apicategories/`apicategory``

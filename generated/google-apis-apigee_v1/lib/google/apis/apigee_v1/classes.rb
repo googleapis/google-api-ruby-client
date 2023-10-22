@@ -467,16 +467,18 @@ module Google
         end
       end
       
-      # the Api category resource wrapped with response status, error_code etc.
+      # The API category resource wrapped with response status, error_code, etc.
       class GoogleCloudApigeeV1ApiCategory
         include Google::Apis::Core::Hashable
       
-        # the Api category resource.
+        # `ApiCategoryData` represents an API category. Catalog items can be tagged with
+        # API categories; users viewing the API catalog in the portal will have the
+        # option to browse the catalog by category.
         # Corresponds to the JSON property `data`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData]
         attr_accessor :data
       
-        # ID that can be used to find errors in the log files.
+        # Unique error code for the request, if any.
         # Corresponds to the JSON property `errorCode`
         # @return [String]
         attr_accessor :error_code
@@ -486,7 +488,7 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # ID that can be used to find request details in the log files.
+        # Unique ID of the request.
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -510,14 +512,11 @@ module Google
         end
       end
       
-      # the Api category resource.
+      # `ApiCategoryData` represents an API category. Catalog items can be tagged with
+      # API categories; users viewing the API catalog in the portal will have the
+      # option to browse the catalog by category.
       class GoogleCloudApigeeV1ApiCategoryData
         include Google::Apis::Core::Hashable
-      
-        # GCP name of api category resource.
-        # Corresponds to the JSON property `gcpResource`
-        # @return [String]
-        attr_accessor :gcp_resource
       
         # ID of the category (a UUID).
         # Corresponds to the JSON property `id`
@@ -545,7 +544,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @gcp_resource = args[:gcp_resource] if args.key?(:gcp_resource)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @site_id = args[:site_id] if args.key?(:site_id)
@@ -2723,12 +2721,12 @@ module Google
       class GoogleCloudApigeeV1DeleteResponse
         include Google::Apis::Core::Hashable
       
-        # ID that can be used to find errors in the log files.
+        # Unique error code for the request, if any.
         # Corresponds to the JSON property `errorCode`
         # @return [String]
         attr_accessor :error_code
       
-        # GCP name of deleted resource.
+        # Google Cloud name of deleted resource.
         # Corresponds to the JSON property `gcpResource`
         # @return [String]
         attr_accessor :gcp_resource
@@ -2738,7 +2736,7 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # ID that can be used to find request details in the log files.
+        # Unique ID of the request.
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -5101,16 +5099,16 @@ module Google
         end
       end
       
-      # the response for ListApiCategoriesRequest.
+      # The response for `ListApiCategoriesRequest`.
       class GoogleCloudApigeeV1ListApiCategoriesResponse
         include Google::Apis::Core::Hashable
       
-        # Details of categories.
+        # Details of the categories.
         # Corresponds to the JSON property `data`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData>]
         attr_accessor :data
       
-        # ID that can be used to find errors in the log files.
+        # Unique error code for the request, if any.
         # Corresponds to the JSON property `errorCode`
         # @return [String]
         attr_accessor :error_code
@@ -5120,7 +5118,7 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # ID that can be used to find request details in the log files.
+        # Unique ID of the request.
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
