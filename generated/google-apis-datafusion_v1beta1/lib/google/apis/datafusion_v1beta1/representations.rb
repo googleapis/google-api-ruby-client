@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrivateServiceConnectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RemoveIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +347,7 @@ module Google
       
           hash :options, as: 'options'
           property :p4_service_account, as: 'p4ServiceAccount'
+          property :patch_revision, as: 'patchRevision'
           property :private_instance, as: 'privateInstance'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
@@ -351,6 +358,7 @@ module Google
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
           property :version, as: 'version'
+          property :workforce_identity_service_endpoint, as: 'workforceIdentityServiceEndpoint'
           property :zone, as: 'zone'
         end
       end
@@ -433,8 +441,11 @@ module Google
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_type, as: 'connectionType'
           property :ip_allocation, as: 'ipAllocation'
           property :network, as: 'network'
+          property :private_service_connect_config, as: 'privateServiceConnectConfig', class: Google::Apis::DatafusionV1beta1::PrivateServiceConnectConfig, decorator: Google::Apis::DatafusionV1beta1::PrivateServiceConnectConfig::Representation
+      
         end
       end
       
@@ -473,6 +484,15 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PrivateServiceConnectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_unreachable_cidr_block, as: 'effectiveUnreachableCidrBlock'
+          property :network_attachment, as: 'networkAttachment'
+          property :unreachable_cidr_block, as: 'unreachableCidrBlock'
         end
       end
       

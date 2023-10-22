@@ -387,22 +387,22 @@ module Google
         # evaluates to `true`. A condition can add constraints based on attributes of
         # the request, the resource, or both. To learn which resources support
         # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
         # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
         # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
         # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-        # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-        # a description of IAM and its features, see the [IAM documentation](https://
-        # cloud.google.com/iam/docs/).
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::DatafusionV1beta1::Policy]
         attr_accessor :policy
@@ -551,6 +551,11 @@ module Google
         # @return [String]
         attr_accessor :p4_service_account
       
+        # Optional. Current patch revision of the Data Fusion.
+        # Corresponds to the JSON property `patchRevision`
+        # @return [String]
+        attr_accessor :patch_revision
+      
         # Specifies whether the Data Fusion instance should be private. If set to true,
         # all Data Fusion nodes will have private IP addresses and will not be able to
         # access the public internet.
@@ -607,6 +612,12 @@ module Google
         # @return [String]
         attr_accessor :version
       
+        # Output only. Endpoint on which the Data Fusion UI is accessible to third-party
+        # users.
+        # Corresponds to the JSON property `workforceIdentityServiceEndpoint`
+        # @return [String]
+        attr_accessor :workforce_identity_service_endpoint
+      
         # Name of the zone in which the Data Fusion instance will be created. Only
         # DEVELOPER instances use this field.
         # Corresponds to the JSON property `zone`
@@ -639,6 +650,7 @@ module Google
           @network_config = args[:network_config] if args.key?(:network_config)
           @options = args[:options] if args.key?(:options)
           @p4_service_account = args[:p4_service_account] if args.key?(:p4_service_account)
+          @patch_revision = args[:patch_revision] if args.key?(:patch_revision)
           @private_instance = args[:private_instance] if args.key?(:private_instance)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -649,6 +661,7 @@ module Google
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version = args[:version] if args.key?(:version)
+          @workforce_identity_service_endpoint = args[:workforce_identity_service_endpoint] if args.key?(:workforce_identity_service_endpoint)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -895,20 +908,37 @@ module Google
       class NetworkConfig
         include Google::Apis::Core::Hashable
       
-        # The IP range in CIDR notation to use for the managed Data Fusion instance
-        # nodes. This range must not overlap with any other ranges used in the Data
-        # Fusion instance network.
+        # Optional. Type of connection for establishing private IP connectivity between
+        # the Data Fusion customer project VPC and the corresponding tenant project from
+        # a predefined list of available connection modes. If this field is unspecified
+        # for a private instance, VPC peering is used.
+        # Corresponds to the JSON property `connectionType`
+        # @return [String]
+        attr_accessor :connection_type
+      
+        # Optional. The IP range in CIDR notation to use for the managed Data Fusion
+        # instance nodes. This range must not overlap with any other ranges used in the
+        # Data Fusion instance network. This is required only when using connection type
+        # VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
         # Corresponds to the JSON property `ipAllocation`
         # @return [String]
         attr_accessor :ip_allocation
       
-        # Name of the network in the customer project with which the Tenant Project will
-        # be peered for executing pipelines. In case of shared VPC where the network
+        # Optional. Name of the network in the customer project with which the Tenant
+        # Project will be peered for executing pipelines. This is required only when
+        # using connection type VPC peering. In case of shared VPC where the network
         # resides in another host project the network should specified in the form of
-        # projects/`host-project-id`/global/networks/`network`
+        # projects/`project-id`/global/networks/`network`. This is only required for
+        # connectivity type VPC_PEERING.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
+      
+        # Configuration for using Private Service Connect to establish connectivity
+        # between the Data Fusion consumer project and the corresponding tenant project.
+        # Corresponds to the JSON property `privateServiceConnectConfig`
+        # @return [Google::Apis::DatafusionV1beta1::PrivateServiceConnectConfig]
+        attr_accessor :private_service_connect_config
       
         def initialize(**args)
            update!(**args)
@@ -916,8 +946,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @connection_type = args[:connection_type] if args.key?(:connection_type)
           @ip_allocation = args[:ip_allocation] if args.key?(:ip_allocation)
           @network = args[:network] if args.key?(:network)
+          @private_service_connect_config = args[:private_service_connect_config] if args.key?(:private_service_connect_config)
         end
       end
       
@@ -958,13 +990,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -1060,22 +1092,22 @@ module Google
       # evaluates to `true`. A condition can add constraints based on attributes of
       # the request, the resource, or both. To learn which resources support
       # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
       # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
       # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
       # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
       # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
       # ], "condition": ` "title": "expirable access", "description": "Does not grant
       # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-      # bindings: - members: - user:mike@example.com - group:admins@example.com -
-      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-      # access description: Does not grant access after Sep 2020 expression: request.
-      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-      # a description of IAM and its features, see the [IAM documentation](https://
-      # cloud.google.com/iam/docs/).
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+      # title: expirable access description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -1144,6 +1176,49 @@ module Google
         end
       end
       
+      # Configuration for using Private Service Connect to establish connectivity
+      # between the Data Fusion consumer project and the corresponding tenant project.
+      class PrivateServiceConnectConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The CIDR block to which the CDF instance can't route traffic to
+        # in the consumer project VPC. The size of this block is /25. The format of this
+        # field is governed by RFC 4632. Example: 240.0.0.0/25
+        # Corresponds to the JSON property `effectiveUnreachableCidrBlock`
+        # @return [String]
+        attr_accessor :effective_unreachable_cidr_block
+      
+        # Required. The reference to the network attachment used to establish private
+        # connectivity. It will be of the form projects/`project-id`/regions/`region`/
+        # networkAttachments/`network-attachment-id`.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        # Optional. Input only. The CIDR block to which the CDF instance can't route
+        # traffic to in the consumer project VPC. The size of this block should be at
+        # least /25. This range should not overlap with the primary address range of any
+        # subnetwork used by the network attachment. This range can be used for other
+        # purposes in the consumer VPC as long as there is no requirement for CDF to
+        # reach destinations using these addresses. If this value is not provided, the
+        # server chooses a non RFC 1918 address range. The format of this field is
+        # governed by RFC 4632. Example: 192.168.0.0/25
+        # Corresponds to the JSON property `unreachableCidrBlock`
+        # @return [String]
+        attr_accessor :unreachable_cidr_block
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_unreachable_cidr_block = args[:effective_unreachable_cidr_block] if args.key?(:effective_unreachable_cidr_block)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
+          @unreachable_cidr_block = args[:unreachable_cidr_block] if args.key?(:unreachable_cidr_block)
+        end
+      end
+      
       # Request message for RemoveIamPolicy method.
       class RemoveIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -1198,22 +1273,22 @@ module Google
         # evaluates to `true`. A condition can add constraints based on attributes of
         # the request, the resource, or both. To learn which resources support
         # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
         # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
         # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
         # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-        # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-        # a description of IAM and its features, see the [IAM documentation](https://
-        # cloud.google.com/iam/docs/).
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::DatafusionV1beta1::Policy]
         attr_accessor :policy
