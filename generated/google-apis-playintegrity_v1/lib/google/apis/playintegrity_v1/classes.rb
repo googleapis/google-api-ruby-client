@@ -305,7 +305,7 @@ module Google
       class UserRemediationDetails
         include Google::Apis::Core::Hashable
       
-        # Description of the user remediation action. Required.
+        # Description of the user remediation action.
         # Corresponds to the JSON property `remediation`
         # @return [String]
         attr_accessor :remediation
