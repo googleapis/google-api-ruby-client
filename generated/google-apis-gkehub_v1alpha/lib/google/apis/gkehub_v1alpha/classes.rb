@@ -950,6 +950,12 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::IdentityServiceMembershipSpec]
         attr_accessor :identityservice
       
+        # **Policy Controller**: Configuration for a single cluster. Intended to
+        # parallel the PolicyController CR.
+        # Corresponds to the JSON property `policycontroller`
+        # @return [Google::Apis::GkehubV1alpha::PolicyControllerMembershipSpec]
+        attr_accessor :policycontroller
+      
         def initialize(**args)
            update!(**args)
         end
@@ -958,6 +964,7 @@ module Google
         def update!(**args)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
           @identityservice = args[:identityservice] if args.key?(:identityservice)
+          @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
         end
       end
       
