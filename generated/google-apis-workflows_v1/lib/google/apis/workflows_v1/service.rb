@@ -345,7 +345,9 @@ module Google
         #   Required. Project and location from which the workflows should be listed.
         #   Format: projects/`project`/locations/`location`
         # @param [String] filter
-        #   Filter to restrict results to specific workflows.
+        #   Filter to restrict results to specific workflows. For details, see AIP-160.
+        #   For example, if you are using the Google APIs Explorer: `state="SUCCEEDED"` or
+        #   `createTime>"2023-08-01" AND state="FAILED"`
         # @param [String] order_by
         #   Comma-separated list of fields that specify the order of the results. Default
         #   sorting order for a field is ascending. To specify descending order for a
