@@ -1,0 +1,7 @@
+{
+    "api_id": "alloydb:v1beta",
+    "name_pretty": "AlloyDB API",
+    "distribution_name": "google-apis-alloydb_v1beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
