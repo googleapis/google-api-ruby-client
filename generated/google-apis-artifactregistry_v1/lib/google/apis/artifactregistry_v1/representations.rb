@@ -520,7 +520,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpstreamCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpstreamPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UsernamePasswordCredentials
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1096,6 +1108,8 @@ module Google
       
           property :python_repository, as: 'pythonRepository', class: Google::Apis::ArtifactregistryV1::PythonRepository, decorator: Google::Apis::ArtifactregistryV1::PythonRepository::Representation
       
+          property :upstream_credentials, as: 'upstreamCredentials', class: Google::Apis::ArtifactregistryV1::UpstreamCredentials, decorator: Google::Apis::ArtifactregistryV1::UpstreamCredentials::Representation
+      
           property :yum_repository, as: 'yumRepository', class: Google::Apis::ArtifactregistryV1::YumRepository, decorator: Google::Apis::ArtifactregistryV1::YumRepository::Representation
       
         end
@@ -1293,12 +1307,28 @@ module Google
         end
       end
       
+      class UpstreamCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :username_password_credentials, as: 'usernamePasswordCredentials', class: Google::Apis::ArtifactregistryV1::UsernamePasswordCredentials, decorator: Google::Apis::ArtifactregistryV1::UsernamePasswordCredentials::Representation
+      
+        end
+      end
+      
       class UpstreamPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :priority, as: 'priority'
           property :repository, as: 'repository'
+        end
+      end
+      
+      class UsernamePasswordCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :username, as: 'username'
         end
       end
       
