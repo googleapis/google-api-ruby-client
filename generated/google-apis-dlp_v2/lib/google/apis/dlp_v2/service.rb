@@ -761,6 +761,188 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a config for Discovery to scan and profile storage.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value is as follows: `
+        #   projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent`
+        #   string specifies a parent project with the identifier `example-project`, and
+        #   specifies the `europe-west3` location for processing data: parent=projects/
+        #   example-project/locations/europe-west3
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDiscoveryConfigRequest] google_privacy_dlp_v2_create_discovery_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_discovery_config(parent, google_privacy_dlp_v2_create_discovery_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/discoveryConfigs', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDiscoveryConfigRequest::Representation
+          command.request_object = google_privacy_dlp_v2_create_discovery_config_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Discovery configuration.
+        # @param [String] name
+        #   Required. Resource name of the project and the config, for example `projects/
+        #   dlp-test-project/discoveryConfigs/53234423`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_discovery_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Discovery configuration.
+        # @param [String] name
+        #   Required. Resource name of the project and the configuration, for example `
+        #   projects/dlp-test-project/discoveryConfigs/53234423`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_discovery_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Discovery configurations.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value is as follows: `
+        #   projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent`
+        #   string specifies a parent project with the identifier `example-project`, and
+        #   specifies the `europe-west3` location for processing data: parent=projects/
+        #   example-project/locations/europe-west3
+        # @param [String] order_by
+        #   Comma separated list of config fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc,update_time,
+        #   create_time desc` Supported fields are: - `last_run_time`: corresponds to the
+        #   last time the DiscoveryConfig ran. - `name`: corresponds to the
+        #   DiscoveryConfig's name. - `status`: corresponds to DiscoveryConfig's status.
+        # @param [Fixnum] page_size
+        #   Size of the page, can be limited by a server.
+        # @param [String] page_token
+        #   Page token to continue retrieval. Comes from previous call to
+        #   ListDiscoveryConfigs. `order_by` field must not change for subsequent calls.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ListDiscoveryConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ListDiscoveryConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_discovery_configs(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/discoveryConfigs', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDiscoveryConfigsResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDiscoveryConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a Discovery configuration.
+        # @param [String] name
+        #   Required. Resource name of the project and the configuration, for example `
+        #   projects/dlp-test-project/discoveryConfigs/53234423`.
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDiscoveryConfigRequest] google_privacy_dlp_v2_update_discovery_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_location_discovery_config(name, google_privacy_dlp_v2_update_discovery_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDiscoveryConfigRequest::Representation
+          command.request_object = google_privacy_dlp_v2_update_discovery_config_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists DlpJobs that match the specified filter in the request. See https://
         # cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/
         # docs/compute-risk-analysis to learn more.
@@ -3081,6 +3263,188 @@ module Google
           command.request_object = google_privacy_dlp_v2_update_deidentify_template_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a config for Discovery to scan and profile storage.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value is as follows: `
+        #   projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent`
+        #   string specifies a parent project with the identifier `example-project`, and
+        #   specifies the `europe-west3` location for processing data: parent=projects/
+        #   example-project/locations/europe-west3
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDiscoveryConfigRequest] google_privacy_dlp_v2_create_discovery_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_discovery_config(parent, google_privacy_dlp_v2_create_discovery_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/discoveryConfigs', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDiscoveryConfigRequest::Representation
+          command.request_object = google_privacy_dlp_v2_create_discovery_config_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Discovery configuration.
+        # @param [String] name
+        #   Required. Resource name of the project and the config, for example `projects/
+        #   dlp-test-project/discoveryConfigs/53234423`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_discovery_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Discovery configuration.
+        # @param [String] name
+        #   Required. Resource name of the project and the configuration, for example `
+        #   projects/dlp-test-project/discoveryConfigs/53234423`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_discovery_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Discovery configurations.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value is as follows: `
+        #   projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent`
+        #   string specifies a parent project with the identifier `example-project`, and
+        #   specifies the `europe-west3` location for processing data: parent=projects/
+        #   example-project/locations/europe-west3
+        # @param [String] order_by
+        #   Comma separated list of config fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc,update_time,
+        #   create_time desc` Supported fields are: - `last_run_time`: corresponds to the
+        #   last time the DiscoveryConfig ran. - `name`: corresponds to the
+        #   DiscoveryConfig's name. - `status`: corresponds to DiscoveryConfig's status.
+        # @param [Fixnum] page_size
+        #   Size of the page, can be limited by a server.
+        # @param [String] page_token
+        #   Page token to continue retrieval. Comes from previous call to
+        #   ListDiscoveryConfigs. `order_by` field must not change for subsequent calls.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ListDiscoveryConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ListDiscoveryConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_discovery_configs(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/discoveryConfigs', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDiscoveryConfigsResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDiscoveryConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a Discovery configuration.
+        # @param [String] name
+        #   Required. Resource name of the project and the configuration, for example `
+        #   projects/dlp-test-project/discoveryConfigs/53234423`.
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDiscoveryConfigRequest] google_privacy_dlp_v2_update_discovery_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_discovery_config(name, google_privacy_dlp_v2_update_discovery_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDiscoveryConfigRequest::Representation
+          command.request_object = google_privacy_dlp_v2_update_discovery_config_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

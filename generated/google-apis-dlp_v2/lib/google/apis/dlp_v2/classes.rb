@@ -160,6 +160,21 @@ module Google
         end
       end
       
+      # Catch-all for all other tables not specified by other filters. Should always
+      # be last, except for single-table configurations, which will only have a
+      # TableReference target.
+      class GooglePrivacyDlpV2AllOtherBigQueryTables
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Apply to all text.
       class GooglePrivacyDlpV2AllText
         include Google::Apis::Core::Hashable
@@ -279,6 +294,50 @@ module Google
           @quasi_ids = args[:quasi_ids] if args.key?(:quasi_ids)
           @relative_frequency = args[:relative_frequency] if args.key?(:relative_frequency)
           @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # Target used to match against for Discovery with BigQuery tables
+      class GooglePrivacyDlpV2BigQueryDiscoveryTarget
+        include Google::Apis::Core::Hashable
+      
+        # What must take place for a profile to be updated and how frequently it should
+        # occur. New tables are scanned as quickly as possible depending on system
+        # capacity.
+        # Corresponds to the JSON property `cadence`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryGenerationCadence]
+        attr_accessor :cadence
+      
+        # Requirements that must be true before a table is scanned in Discovery for the
+        # first time. There is an AND relationship between the top-level attributes.
+        # Corresponds to the JSON property `conditions`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryBigQueryConditions]
+        attr_accessor :conditions
+      
+        # Do nothing.
+        # Corresponds to the JSON property `disabled`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Disabled]
+        attr_accessor :disabled
+      
+        # Determines what tables will have profiles generated within an organization or
+        # project. Includes the ability to filter by regular expression patterns on
+        # project ID, dataset ID, and table ID. Also lets you set minimum conditions
+        # that must be met before Cloud DLP scans a table (like a minimum row count or a
+        # minimum table age).
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryBigQueryFilter]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cadence = args[:cadence] if args.key?(:cadence)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @filter = args[:filter] if args.key?(:filter)
         end
       end
       
@@ -412,6 +471,61 @@ module Google
         end
       end
       
+      # A pattern to match against one or more tables, datasets, or projects that
+      # contain BigQuery tables. At least one pattern must be specified. Regular
+      # expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a
+      # guide can be found under the google/re2 repository on GitHub.
+      class GooglePrivacyDlpV2BigQueryRegex
+        include Google::Apis::Core::Hashable
+      
+        # If unset, this property matches all datasets.
+        # Corresponds to the JSON property `datasetIdRegex`
+        # @return [String]
+        attr_accessor :dataset_id_regex
+      
+        # For organizations, if unset, will match all projects. Has no effect for data
+        # profile configurations created within a project.
+        # Corresponds to the JSON property `projectIdRegex`
+        # @return [String]
+        attr_accessor :project_id_regex
+      
+        # If unset, this property matches all tables.
+        # Corresponds to the JSON property `tableIdRegex`
+        # @return [String]
+        attr_accessor :table_id_regex
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id_regex = args[:dataset_id_regex] if args.key?(:dataset_id_regex)
+          @project_id_regex = args[:project_id_regex] if args.key?(:project_id_regex)
+          @table_id_regex = args[:table_id_regex] if args.key?(:table_id_regex)
+        end
+      end
+      
+      # A collection of regular expressions to determine what tables to match against.
+      class GooglePrivacyDlpV2BigQueryRegexes
+        include Google::Apis::Core::Hashable
+      
+        # A single BigQuery regular expression pattern to match against one or more
+        # tables, datasets, or projects that contain BigQuery tables.
+        # Corresponds to the JSON property `patterns`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryRegex>]
+        attr_accessor :patterns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @patterns = args[:patterns] if args.key?(:patterns)
+        end
+      end
+      
       # Message defining the location of a BigQuery table. A table is uniquely
       # identified by its project_id, dataset_id, and table_name. Within a query a
       # table is often referenced with a string in the format of: `:.` or `..`.
@@ -443,6 +557,44 @@ module Google
           @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
           @project_id = args[:project_id] if args.key?(:project_id)
           @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
+      # Specifies a collection of BigQuery tables. Used for Discovery.
+      class GooglePrivacyDlpV2BigQueryTableCollection
+        include Google::Apis::Core::Hashable
+      
+        # A collection of regular expressions to determine what tables to match against.
+        # Corresponds to the JSON property `includeRegexes`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryRegexes]
+        attr_accessor :include_regexes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_regexes = args[:include_regexes] if args.key?(:include_regexes)
+        end
+      end
+      
+      # The types of bigquery tables supported by Cloud DLP.
+      class GooglePrivacyDlpV2BigQueryTableTypes
+        include Google::Apis::Core::Hashable
+      
+        # A set of bigquery table types.
+        # Corresponds to the JSON property `types`
+        # @return [Array<String>]
+        attr_accessor :types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @types = args[:types] if args.key?(:types)
         end
       end
       
@@ -1356,6 +1508,37 @@ module Google
           @deidentify_template = args[:deidentify_template] if args.key?(:deidentify_template)
           @location_id = args[:location_id] if args.key?(:location_id)
           @template_id = args[:template_id] if args.key?(:template_id)
+        end
+      end
+      
+      # Request message for CreateDiscoveryConfig.
+      class GooglePrivacyDlpV2CreateDiscoveryConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # The config id can contain uppercase and lowercase letters, numbers, and
+        # hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The
+        # maximum length is 100 characters. Can be empty to allow the system to generate
+        # one.
+        # Corresponds to the JSON property `configId`
+        # @return [String]
+        attr_accessor :config_id
+      
+        # Configuration for Discovery to scan resources for profile generation. Only one
+        # Discovery configuration may exist per organization, folder, or project. The
+        # generated data profiles are retained according to the [data retention policy] (
+        # https://cloud.google.com/dlp/docs/data-profiles#retention).
+        # Corresponds to the JSON property `discoveryConfig`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig]
+        attr_accessor :discovery_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config_id = args[:config_id] if args.key?(:config_id)
+          @discovery_config = args[:discovery_config] if args.key?(:discovery_config)
         end
       end
       
@@ -2640,6 +2823,312 @@ module Google
         def update!(**args)
           @cloud_storage_path = args[:cloud_storage_path] if args.key?(:cloud_storage_path)
           @word_list = args[:word_list] if args.key?(:word_list)
+        end
+      end
+      
+      # Do nothing.
+      class GooglePrivacyDlpV2Disabled
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Requirements that must be true before a table is scanned in Discovery for the
+      # first time. There is an AND relationship between the top-level attributes.
+      class GooglePrivacyDlpV2DiscoveryBigQueryConditions
+        include Google::Apis::Core::Hashable
+      
+        # BigQuery table must have been created after this date. Used to avoid
+        # backfilling.
+        # Corresponds to the JSON property `createdAfter`
+        # @return [String]
+        attr_accessor :created_after
+      
+        # There is an OR relationship between these attributes. They are used to
+        # determine if a table should be scanned or not in Discovery.
+        # Corresponds to the JSON property `orConditions`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2OrConditions]
+        attr_accessor :or_conditions
+      
+        # Restrict Discovery to categories of table types.
+        # Corresponds to the JSON property `typeCollection`
+        # @return [String]
+        attr_accessor :type_collection
+      
+        # The types of bigquery tables supported by Cloud DLP.
+        # Corresponds to the JSON property `types`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTableTypes]
+        attr_accessor :types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_after = args[:created_after] if args.key?(:created_after)
+          @or_conditions = args[:or_conditions] if args.key?(:or_conditions)
+          @type_collection = args[:type_collection] if args.key?(:type_collection)
+          @types = args[:types] if args.key?(:types)
+        end
+      end
+      
+      # Determines what tables will have profiles generated within an organization or
+      # project. Includes the ability to filter by regular expression patterns on
+      # project ID, dataset ID, and table ID. Also lets you set minimum conditions
+      # that must be met before Cloud DLP scans a table (like a minimum row count or a
+      # minimum table age).
+      class GooglePrivacyDlpV2DiscoveryBigQueryFilter
+        include Google::Apis::Core::Hashable
+      
+        # Catch-all for all other tables not specified by other filters. Should always
+        # be last, except for single-table configurations, which will only have a
+        # TableReference target.
+        # Corresponds to the JSON property `otherTables`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherBigQueryTables]
+        attr_accessor :other_tables
+      
+        # Specifies a collection of BigQuery tables. Used for Discovery.
+        # Corresponds to the JSON property `tables`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTableCollection]
+        attr_accessor :tables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @other_tables = args[:other_tables] if args.key?(:other_tables)
+          @tables = args[:tables] if args.key?(:tables)
+        end
+      end
+      
+      # Configuration for Discovery to scan resources for profile generation. Only one
+      # Discovery configuration may exist per organization, folder, or project. The
+      # generated data profiles are retained according to the [data retention policy] (
+      # https://cloud.google.com/dlp/docs/data-profiles#retention).
+      class GooglePrivacyDlpV2DiscoveryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Actions to execute at the completion of scanning.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileAction>]
+        attr_accessor :actions
+      
+        # Output only. The creation timestamp of a DiscoveryConfig.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Display name (max 100 chars)
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. A stream of errors encountered when the config was activated.
+        # Repeated errors may result in the config automatically being paused. Output
+        # only field. Will return the last 100 errors. Whenever the config is modified
+        # this list will be cleared.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Error>]
+        attr_accessor :errors
+      
+        # Detection logic for profile generation. Not all template features are used by
+        # Discovery. FindingLimits, include_quote and exclude_info_types have no impact
+        # on Discovery. Multiple templates may be provided if there is data in multiple
+        # regions. At most one template must be specified per-region (including "global")
+        # . Each region is scanned using the applicable template. If no region-specific
+        # template is specified, but a "global" template is specified, it will be copied
+        # to that region and used instead. If no global or region-specific template is
+        # provided for a region with data, that region's data will not be scanned. For
+        # more information, see https://cloud.google.com/dlp/docs/data-profiles#
+        # data_residency.
+        # Corresponds to the JSON property `inspectTemplates`
+        # @return [Array<String>]
+        attr_accessor :inspect_templates
+      
+        # Output only. The timestamp of the last time this config was executed.
+        # Corresponds to the JSON property `lastRunTime`
+        # @return [String]
+        attr_accessor :last_run_time
+      
+        # Unique resource name for the DiscoveryConfig, assigned by the service when the
+        # DiscoveryConfig is created, for example `projects/dlp-test-project/locations/
+        # global/discoveryConfigs/53234423`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Project and scan location information. Only set when the parent is an org.
+        # Corresponds to the JSON property `orgConfig`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2OrgConfig]
+        attr_accessor :org_config
+      
+        # Required. A status for this configuration.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Target to match against for determining what to scan and how frequently.
+        # Corresponds to the JSON property `targets`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryTarget>]
+        attr_accessor :targets
+      
+        # Output only. The last update timestamp of a DiscoveryConfig.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @errors = args[:errors] if args.key?(:errors)
+          @inspect_templates = args[:inspect_templates] if args.key?(:inspect_templates)
+          @last_run_time = args[:last_run_time] if args.key?(:last_run_time)
+          @name = args[:name] if args.key?(:name)
+          @org_config = args[:org_config] if args.key?(:org_config)
+          @status = args[:status] if args.key?(:status)
+          @targets = args[:targets] if args.key?(:targets)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # What must take place for a profile to be updated and how frequently it should
+      # occur. New tables are scanned as quickly as possible depending on system
+      # capacity.
+      class GooglePrivacyDlpV2DiscoveryGenerationCadence
+        include Google::Apis::Core::Hashable
+      
+        # The cadence at which to update data profiles when a schema is modified.
+        # Corresponds to the JSON property `schemaModifiedCadence`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoverySchemaModifiedCadence]
+        attr_accessor :schema_modified_cadence
+      
+        # The cadence at which to update data profiles when a table is modified.
+        # Corresponds to the JSON property `tableModifiedCadence`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryTableModifiedCadence]
+        attr_accessor :table_modified_cadence
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema_modified_cadence = args[:schema_modified_cadence] if args.key?(:schema_modified_cadence)
+          @table_modified_cadence = args[:table_modified_cadence] if args.key?(:table_modified_cadence)
+        end
+      end
+      
+      # The cadence at which to update data profiles when a schema is modified.
+      class GooglePrivacyDlpV2DiscoverySchemaModifiedCadence
+        include Google::Apis::Core::Hashable
+      
+        # How frequently profiles may be updated when schemas are modified. Defaults to
+        # monthly.
+        # Corresponds to the JSON property `frequency`
+        # @return [String]
+        attr_accessor :frequency
+      
+        # The type of events to consider when deciding if the table's schema has been
+        # modified and should have the profile updated. Defaults to NEW_COLUMNS.
+        # Corresponds to the JSON property `types`
+        # @return [Array<String>]
+        attr_accessor :types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frequency = args[:frequency] if args.key?(:frequency)
+          @types = args[:types] if args.key?(:types)
+        end
+      end
+      
+      # The location to begin a Discovery scan. Denotes an organization ID or folder
+      # ID within an organization.
+      class GooglePrivacyDlpV2DiscoveryStartingLocation
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the Folder within an organization to scan.
+        # Corresponds to the JSON property `folderId`
+        # @return [Fixnum]
+        attr_accessor :folder_id
+      
+        # The ID of an organization to scan.
+        # Corresponds to the JSON property `organizationId`
+        # @return [Fixnum]
+        attr_accessor :organization_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folder_id = args[:folder_id] if args.key?(:folder_id)
+          @organization_id = args[:organization_id] if args.key?(:organization_id)
+        end
+      end
+      
+      # The cadence at which to update data profiles when a table is modified.
+      class GooglePrivacyDlpV2DiscoveryTableModifiedCadence
+        include Google::Apis::Core::Hashable
+      
+        # How frequently data profiles can be updated when tables are modified. Defaults
+        # to never.
+        # Corresponds to the JSON property `frequency`
+        # @return [String]
+        attr_accessor :frequency
+      
+        # The type of events to consider when deciding if the table has been modified
+        # and should have the profile updated. Defaults to MODIFIED_TIMESTAMP.
+        # Corresponds to the JSON property `types`
+        # @return [Array<String>]
+        attr_accessor :types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frequency = args[:frequency] if args.key?(:frequency)
+          @types = args[:types] if args.key?(:types)
+        end
+      end
+      
+      # Target used to match against for Discovery.
+      class GooglePrivacyDlpV2DiscoveryTarget
+        include Google::Apis::Core::Hashable
+      
+        # Target used to match against for Discovery with BigQuery tables
+        # Corresponds to the JSON property `bigQueryTarget`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryDiscoveryTarget]
+        attr_accessor :big_query_target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @big_query_target = args[:big_query_target] if args.key?(:big_query_target)
         end
       end
       
@@ -4986,6 +5475,32 @@ module Google
         end
       end
       
+      # Response message for ListDiscoveryConfigs.
+      class GooglePrivacyDlpV2ListDiscoveryConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of configs, up to page_size in ListDiscoveryConfigsRequest.
+        # Corresponds to the JSON property `discoveryConfigs`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig>]
+        attr_accessor :discovery_configs
+      
+        # If the next page is available then the next page token to be used in following
+        # ListDiscoveryConfigs request.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovery_configs = args[:discovery_configs] if args.key?(:discovery_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for listing DLP jobs.
       class GooglePrivacyDlpV2ListDlpJobsResponse
         include Google::Apis::Core::Hashable
@@ -5242,6 +5757,62 @@ module Google
           @max_value = args[:max_value] if args.key?(:max_value)
           @min_value = args[:min_value] if args.key?(:min_value)
           @quantile_values = args[:quantile_values] if args.key?(:quantile_values)
+        end
+      end
+      
+      # There is an OR relationship between these attributes. They are used to
+      # determine if a table should be scanned or not in Discovery.
+      class GooglePrivacyDlpV2OrConditions
+        include Google::Apis::Core::Hashable
+      
+        # Minimum age a table must have before Cloud DLP can profile it. Value must be 1
+        # hour or greater.
+        # Corresponds to the JSON property `minAge`
+        # @return [String]
+        attr_accessor :min_age
+      
+        # Minimum number of rows that should be present before Cloud DLP profiles a
+        # table
+        # Corresponds to the JSON property `minRowCount`
+        # @return [Fixnum]
+        attr_accessor :min_row_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min_age = args[:min_age] if args.key?(:min_age)
+          @min_row_count = args[:min_row_count] if args.key?(:min_row_count)
+        end
+      end
+      
+      # Project and scan location information. Only set when the parent is an org.
+      class GooglePrivacyDlpV2OrgConfig
+        include Google::Apis::Core::Hashable
+      
+        # The location to begin a Discovery scan. Denotes an organization ID or folder
+        # ID within an organization.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryStartingLocation]
+        attr_accessor :location
+      
+        # The project that will run the scan. The DLP service account that exists within
+        # this project must have access to all resources that are profiled, and the
+        # Cloud DLP API must be enabled.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       
@@ -7801,6 +8372,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deidentify_template = args[:deidentify_template] if args.key?(:deidentify_template)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Request message for UpdateDiscoveryConfig.
+      class GooglePrivacyDlpV2UpdateDiscoveryConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for Discovery to scan resources for profile generation. Only one
+        # Discovery configuration may exist per organization, folder, or project. The
+        # generated data profiles are retained according to the [data retention policy] (
+        # https://cloud.google.com/dlp/docs/data-profiles#retention).
+        # Corresponds to the JSON property `discoveryConfig`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig]
+        attr_accessor :discovery_config
+      
+        # Mask to control which fields get updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovery_config = args[:discovery_config] if args.key?(:discovery_config)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end

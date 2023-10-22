@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2AllOtherBigQueryTables
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2AllText
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +65,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2AuxiliaryTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2BigQueryDiscoveryTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -82,7 +94,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2BigQueryRegex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2BigQueryRegexes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2BigQueryTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2BigQueryTableCollection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2BigQueryTableTypes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,6 +251,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2CreateDiscoveryConfigRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -419,6 +461,60 @@ module Google
       end
       
       class GooglePrivacyDlpV2Dictionary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2Disabled
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryBigQueryConditions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryBigQueryFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryGenerationCadence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoverySchemaModifiedCadence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryStartingLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryTableModifiedCadence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -832,6 +928,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2ListDiscoveryConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2ListDlpJobsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -887,6 +989,18 @@ module Google
       end
       
       class GooglePrivacyDlpV2NumericalStatsResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2OrConditions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2OrgConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1354,6 +1468,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2UpdateDiscoveryConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2UpdateInspectTemplateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1460,6 +1580,12 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2AllOtherBigQueryTables
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GooglePrivacyDlpV2AllText
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1502,6 +1628,20 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2BigQueryDiscoveryTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cadence, as: 'cadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryGenerationCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryGenerationCadence::Representation
+      
+          property :conditions, as: 'conditions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryBigQueryConditions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryBigQueryConditions::Representation
+      
+          property :disabled, as: 'disabled', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Disabled, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Disabled::Representation
+      
+          property :filter, as: 'filter', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryBigQueryFilter, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryBigQueryFilter::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2BigQueryField
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1538,12 +1678,44 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2BigQueryRegex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id_regex, as: 'datasetIdRegex'
+          property :project_id_regex, as: 'projectIdRegex'
+          property :table_id_regex, as: 'tableIdRegex'
+        end
+      end
+      
+      class GooglePrivacyDlpV2BigQueryRegexes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :patterns, as: 'patterns', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryRegex, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryRegex::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2BigQueryTable
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset_id, as: 'datasetId'
           property :project_id, as: 'projectId'
           property :table_id, as: 'tableId'
+        end
+      end
+      
+      class GooglePrivacyDlpV2BigQueryTableCollection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_regexes, as: 'includeRegexes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryRegexes, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryRegexes::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2BigQueryTableTypes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :types, as: 'types'
         end
       end
       
@@ -1781,6 +1953,15 @@ module Google
       
           property :location_id, as: 'locationId'
           property :template_id, as: 'templateId'
+        end
+      end
+      
+      class GooglePrivacyDlpV2CreateDiscoveryConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config_id, as: 'configId'
+          property :discovery_config, as: 'discoveryConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig::Representation
+      
         end
       end
       
@@ -2149,6 +2330,97 @@ module Google
           property :cloud_storage_path, as: 'cloudStoragePath', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStoragePath, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStoragePath::Representation
       
           property :word_list, as: 'wordList', class: Google::Apis::DlpV2::GooglePrivacyDlpV2WordList, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2WordList::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2Disabled
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryBigQueryConditions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_after, as: 'createdAfter'
+          property :or_conditions, as: 'orConditions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2OrConditions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2OrConditions::Representation
+      
+          property :type_collection, as: 'typeCollection'
+          property :types, as: 'types', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTableTypes, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTableTypes::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryBigQueryFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :other_tables, as: 'otherTables', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherBigQueryTables, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherBigQueryTables::Representation
+      
+          property :tables, as: 'tables', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTableCollection, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTableCollection::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileAction, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileAction::Representation
+      
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          collection :errors, as: 'errors', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Error, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Error::Representation
+      
+          collection :inspect_templates, as: 'inspectTemplates'
+          property :last_run_time, as: 'lastRunTime'
+          property :name, as: 'name'
+          property :org_config, as: 'orgConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2OrgConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2OrgConfig::Representation
+      
+          property :status, as: 'status'
+          collection :targets, as: 'targets', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryTarget::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryGenerationCadence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema_modified_cadence, as: 'schemaModifiedCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoverySchemaModifiedCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoverySchemaModifiedCadence::Representation
+      
+          property :table_modified_cadence, as: 'tableModifiedCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryTableModifiedCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryTableModifiedCadence::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoverySchemaModifiedCadence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :frequency, as: 'frequency'
+          collection :types, as: 'types'
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryStartingLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :folder_id, :numeric_string => true, as: 'folderId'
+          property :organization_id, :numeric_string => true, as: 'organizationId'
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryTableModifiedCadence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :frequency, as: 'frequency'
+          collection :types, as: 'types'
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :big_query_target, as: 'bigQueryTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryDiscoveryTarget::Representation
       
         end
       end
@@ -2853,6 +3125,15 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2ListDiscoveryConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :discovery_configs, as: 'discoveryConfigs', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GooglePrivacyDlpV2ListDlpJobsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2943,6 +3224,23 @@ module Google
       
           collection :quantile_values, as: 'quantileValues', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Value, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Value::Representation
       
+        end
+      end
+      
+      class GooglePrivacyDlpV2OrConditions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_age, as: 'minAge'
+          property :min_row_count, as: 'minRowCount'
+        end
+      end
+      
+      class GooglePrivacyDlpV2OrgConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryStartingLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryStartingLocation::Representation
+      
+          property :project_id, as: 'projectId'
         end
       end
       
@@ -3722,6 +4020,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deidentify_template, as: 'deidentifyTemplate', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GooglePrivacyDlpV2UpdateDiscoveryConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :discovery_config, as: 'discoveryConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig::Representation
       
           property :update_mask, as: 'updateMask'
         end
