@@ -4814,6 +4814,7 @@ module Google
           property :experiment, as: 'experiment'
           property :experiment_run, as: 'experimentRun'
           property :network, as: 'network'
+          property :protected_artifact_location_id, as: 'protectedArtifactLocationId'
           collection :reserved_ip_ranges, as: 'reservedIpRanges'
           property :scheduling, as: 'scheduling', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Scheduling, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Scheduling::Representation
       
