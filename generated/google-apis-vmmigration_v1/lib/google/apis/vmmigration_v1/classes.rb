@@ -3439,7 +3439,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The target project ID (number) or project name.
+        # Required. The target project ID (number) or project name.
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
