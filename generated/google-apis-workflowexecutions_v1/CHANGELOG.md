@@ -1,5 +1,9 @@
 # Release history for google-apis-workflowexecutions_v1
 
+### v0.29.0 (2023-10-22)
+
+* Regenerated from discovery document revision 20231016
+
 ### v0.28.0 (2023-10-01)
 
 * Regenerated from discovery document revision 20230912
