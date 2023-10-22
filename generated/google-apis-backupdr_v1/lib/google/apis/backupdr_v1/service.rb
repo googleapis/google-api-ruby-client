@@ -30,7 +30,7 @@ module Google
       #    Backupdr = Google::Apis::BackupdrV1 # Alias the module
       #    service = Backupdr::BackupdrService.new
       #
-      # @see https://cloud.google.com/
+      # @see https://cloud.google.com/backup-disaster-recovery
       class BackupdrService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
