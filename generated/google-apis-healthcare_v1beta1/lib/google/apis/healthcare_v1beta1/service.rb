@@ -4545,6 +4545,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Rolls back resources from the FHIR store to the specified time. This method
+        # returns an Operation that can be used to track the status of the rollback by
+        # calling GetOperation. Immediate fatal errors appear in the error field, errors
+        # are also logged to Cloud Logging (see [Viewing error logs in Cloud Logging](
+        # https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when
+        # the operation finishes, a detailed response of type
+        # RollbackFhirResourcesResponse is returned in the response field. The metadata
+        # field type for this operation is OperationMetadata.
+        # @param [String] name
+        #   Required. The name of the FHIR store to rollback, in the format of "projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id` /fhirStores/`
+        #   fhir_store_id`".
+        # @param [Google::Apis::HealthcareV1beta1::RollbackFhirResourcesRequest] rollback_fhir_resources_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rollback_fhir_store_fhir_resources(name, rollback_fhir_resources_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:rollback', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::RollbackFhirResourcesRequest::Representation
+          command.request_object = rollback_fhir_resources_request_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
@@ -5705,10 +5747,26 @@ module Google
         # 50,000 might not be fully searchable as the server might trim its generated
         # search index in those cases. Note: FHIR resources are indexed asynchronously,
         # so there might be a slight delay between the time a resource is created or
-        # changes and when the change is reflected in search results. For samples and
-        # detailed information, see [Searching for FHIR resources](https://cloud.google.
-        # com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search features](
-        # https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
+        # changed, and the time when the change reflects in search results. The only
+        # exception is resource identifier data, which is indexed synchronously as a
+        # special index. As a result, searching using resource identifier is not subject
+        # to indexing delay. To use the special synchronous index, the search term for
+        # identifier should be in the pattern `identifier=[system]|[value]` or `
+        # identifier=[value]`, and any of the following search result parameters can be
+        # used: * `_count` * `_include` * `_revinclude` * `_summary` * `_elements` If
+        # your query contains any other search parameters, the standard asynchronous
+        # index will be used instead. Note that searching against the special index is
+        # optimized for resolving a small number of matches. The search isn't optimized
+        # if your identifier search criteria matches a large number (i.e. more than 2,
+        # 000) of resources. For a search query that will match a large number of
+        # resources, you can avoiding using the special synchronous index by including
+        # an additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if
+        # you want to keep the default sorting order. Note: The special synchronous
+        # identifier index are currently disabled for DocumentReference and
+        # DocumentManifest searches. For samples and detailed information, see [
+        # Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/
+        # fhir-search) and [Advanced FHIR search features](https://cloud.google.com/
+        # healthcare/docs/how-tos/fhir-advanced-search).
         # @param [String] parent
         #   Name of the FHIR store to retrieve resources from.
         # @param [Google::Apis::HealthcareV1beta1::SearchResourcesRequest] search_resources_request_object
@@ -5783,10 +5841,26 @@ module Google
         # 50,000 might not be fully searchable as the server might trim its generated
         # search index in those cases. Note: FHIR resources are indexed asynchronously,
         # so there might be a slight delay between the time a resource is created or
-        # changes and when the change is reflected in search results. For samples and
-        # detailed information, see [Searching for FHIR resources](https://cloud.google.
-        # com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search features](
-        # https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
+        # changed, and the time when the change reflects in search results. The only
+        # exception is resource identifier data, which is indexed synchronously as a
+        # special index. As a result, searching using resource identifier is not subject
+        # to indexing delay. To use the special synchronous index, the search term for
+        # identifier should be in the pattern `identifier=[system]|[value]` or `
+        # identifier=[value]`, and any of the following search result parameters can be
+        # used: * `_count` * `_include` * `_revinclude` * `_summary` * `_elements` If
+        # your query contains any other search parameters, the standard asynchronous
+        # index will be used instead. Note that searching against the special index is
+        # optimized for resolving a small number of matches. The search isn't optimized
+        # if your identifier search criteria matches a large number (i.e. more than 2,
+        # 000) of resources. For a search query that will match a large number of
+        # resources, you can avoiding using the special synchronous index by including
+        # an additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if
+        # you want to keep the default sorting order. Note: The special synchronous
+        # identifier index are currently disabled for DocumentReference and
+        # DocumentManifest searches. For samples and detailed information, see [
+        # Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/
+        # fhir-search) and [Advanced FHIR search features](https://cloud.google.com/
+        # healthcare/docs/how-tos/fhir-advanced-search).
         # @param [String] parent
         #   Name of the FHIR store to retrieve resources from.
         # @param [String] resource_type

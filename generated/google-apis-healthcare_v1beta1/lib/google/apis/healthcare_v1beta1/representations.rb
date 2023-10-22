@@ -1096,6 +1096,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RollbackFhirResourceFilteringFields
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackFhirResourcesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackFhirResourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SchemaConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2908,6 +2926,36 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consent_artifact, as: 'consentArtifact'
+        end
+      end
+      
+      class RollbackFhirResourceFilteringFields
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata_filter, as: 'metadataFilter'
+          collection :operation_ids, as: 'operationIds'
+        end
+      end
+      
+      class RollbackFhirResourcesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_type, as: 'changeType'
+          property :exclude_rollbacks, as: 'excludeRollbacks'
+          property :filtering_fields, as: 'filteringFields', class: Google::Apis::HealthcareV1beta1::RollbackFhirResourceFilteringFields, decorator: Google::Apis::HealthcareV1beta1::RollbackFhirResourceFilteringFields::Representation
+      
+          property :force, as: 'force'
+          property :input_gcs_object, as: 'inputGcsObject'
+          property :result_gcs_bucket, as: 'resultGcsBucket'
+          property :rollback_time, as: 'rollbackTime'
+          collection :type, as: 'type'
+        end
+      end
+      
+      class RollbackFhirResourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fhir_store, as: 'fhirStore'
         end
       end
       
