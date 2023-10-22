@@ -736,6 +736,14 @@ module Google
         # @return [String]
         attr_accessor :provisioned_resources_parent
       
+        # Output only. Indicates whether resource monitoring is enabled for workload or
+        # not. It is true when Resource feed is subscribed to AWM topic and AWM Service
+        # Agent Role is binded to AW Service Account for resource Assured workload.
+        # Corresponds to the JSON property `resourceMonitoringEnabled`
+        # @return [Boolean]
+        attr_accessor :resource_monitoring_enabled
+        alias_method :resource_monitoring_enabled?, :resource_monitoring_enabled
+      
         # Input only. Resource properties that are used to customize workload resources.
         # These properties (such as custom project id) will be used to create workload
         # resources if possible. This field is optional.
@@ -787,6 +795,7 @@ module Google
           @partner = args[:partner] if args.key?(:partner)
           @partner_permissions = args[:partner_permissions] if args.key?(:partner_permissions)
           @provisioned_resources_parent = args[:provisioned_resources_parent] if args.key?(:provisioned_resources_parent)
+          @resource_monitoring_enabled = args[:resource_monitoring_enabled] if args.key?(:resource_monitoring_enabled)
           @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
           @resources = args[:resources] if args.key?(:resources)
           @saa_enrollment_response = args[:saa_enrollment_response] if args.key?(:saa_enrollment_response)
