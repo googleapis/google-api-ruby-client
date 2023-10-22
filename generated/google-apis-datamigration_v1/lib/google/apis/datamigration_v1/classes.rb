@@ -1236,7 +1236,7 @@ module Google
         # @return [String]
         attr_accessor :engine
       
-        # Required. Engine named version, for example 12.c.1.
+        # Required. Engine version, for example "12.c.1".
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
