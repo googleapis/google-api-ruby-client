@@ -1221,7 +1221,7 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # Localized string in the language corresponding to `language_code' below.
+        # Localized string in the language corresponding to language_code below.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
