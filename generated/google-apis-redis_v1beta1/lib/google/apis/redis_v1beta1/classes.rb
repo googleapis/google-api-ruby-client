@@ -50,6 +50,13 @@ module Google
         # @return [Google::Apis::RedisV1beta1::ManagedCertificateAuthority]
         attr_accessor :managed_server_ca
       
+        # Identifier. Unique name of the resource in this scope including project,
+        # location and cluster using the form: `projects/`project`/locations/`location`/
+        # clusters/`cluster`/certificateAuthority`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -57,6 +64,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @managed_server_ca = args[:managed_server_ca] if args.key?(:managed_server_ca)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

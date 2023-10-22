@@ -274,6 +274,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :managed_server_ca, as: 'managedServerCa', class: Google::Apis::RedisV1beta1::ManagedCertificateAuthority, decorator: Google::Apis::RedisV1beta1::ManagedCertificateAuthority::Representation
       
+          property :name, as: 'name'
         end
       end
       
