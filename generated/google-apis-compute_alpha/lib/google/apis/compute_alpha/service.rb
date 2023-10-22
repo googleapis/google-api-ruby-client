@@ -17991,7 +17991,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the interconnectDiagnostics for the specified Interconnect.
+        # Returns the interconnectDiagnostics for the specified Interconnect. In the
+        # event of a global outage, do not use this API to make decisions about where to
+        # redirect your network traffic. Unlike a VLAN attachment, which is regional, a
+        # Cloud Interconnect connection is a global resource. A global outage can
+        # prevent this API from functioning properly.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] interconnect
