@@ -136,8 +136,7 @@ module Google
         # @return [String]
         attr_accessor :hashed_account_id
       
-        # Optional. Optional reasons for the annotation that will be assigned to the
-        # Event.
+        # Optional. Reasons for the annotation that are assigned to the event.
         # Corresponds to the JSON property `reasons`
         # @return [Array<String>]
         attr_accessor :reasons
