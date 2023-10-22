@@ -2247,6 +2247,7 @@ module Google
       class Settings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_cloud_logging, as: 'disableCloudLogging'
           property :name, as: 'name'
           property :preference_set, as: 'preferenceSet'
         end
