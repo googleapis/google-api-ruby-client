@@ -1410,6 +1410,16 @@ module Google
       class LogEntry
         include Google::Apis::Core::Hashable
       
+        # Output only. The Cloud Error Reporting (https://cloud.google.com/error-
+        # reporting) error groups associated with this LogEntry. Cloud Error Reporting
+        # sets the values for this field during error group creation.For more
+        # information, see View error details( http://cloud/error-reporting/docs/viewing-
+        # errors#view_error_details)This field isn't available during log routing (https:
+        # //cloud.google.com/logging/docs/routing/overview)
+        # Corresponds to the JSON property `errorGroups`
+        # @return [Array<Google::Apis::LoggingV2::LogErrorGroup>]
+        attr_accessor :error_groups
+      
         # A common proto for logging HTTP requests. Only contains semantics defined by
         # the HTTP specification. Product-specific logging information MUST be defined
         # in a separate message.
@@ -1595,6 +1605,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @error_groups = args[:error_groups] if args.key?(:error_groups)
           @http_request = args[:http_request] if args.key?(:http_request)
           @insert_id = args[:insert_id] if args.key?(:insert_id)
           @json_payload = args[:json_payload] if args.key?(:json_payload)
@@ -1694,6 +1705,31 @@ module Google
           @file = args[:file] if args.key?(:file)
           @function = args[:function] if args.key?(:function)
           @line = args[:line] if args.key?(:line)
+        end
+      end
+      
+      # Contains metadata that associates the LogEntry to Cloud Error Reporting error
+      # groups.
+      class LogErrorGroup
+        include Google::Apis::Core::Hashable
+      
+        # The id is a unique identifier for a particular error group; it is the last
+        # part of the error group resource name: /projects//errors/. Example:
+        # COShysOX0r_51QE The id is derived from key parts of the error-log content and
+        # is treated as Service Data. For information about how Service Data is handled,
+        # see Google Cloud Privacy Notice (https://cloud.google.com/terms/cloud-privacy-
+        # notice).
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
         end
       end
       

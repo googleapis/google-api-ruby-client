@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogErrorGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LogExclusion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -758,6 +764,8 @@ module Google
       class LogEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_groups, as: 'errorGroups', class: Google::Apis::LoggingV2::LogErrorGroup, decorator: Google::Apis::LoggingV2::LogErrorGroup::Representation
+      
           property :http_request, as: 'httpRequest', class: Google::Apis::LoggingV2::HttpRequest, decorator: Google::Apis::LoggingV2::HttpRequest::Representation
       
           property :insert_id, as: 'insertId'
@@ -801,6 +809,13 @@ module Google
           property :file, as: 'file'
           property :function, as: 'function'
           property :line, :numeric_string => true, as: 'line'
+        end
+      end
+      
+      class LogErrorGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
         end
       end
       
