@@ -1368,7 +1368,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :complexity, as: 'complexity'
-          property :disallow_compromised_credentials, as: 'disallowCompromisedCredentials'
           property :disallow_username_substring, as: 'disallowUsernameSubstring'
           property :enable_password_policy, as: 'enablePasswordPolicy'
           property :min_length, as: 'minLength'
