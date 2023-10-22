@@ -1784,14 +1784,17 @@ module Google
           attr_accessor :recovery_only
           alias_method :recovery_only?, :recovery_only
         
-          # Optional. StopAt keyword for transaction log import, Applies to Cloud SQL for
-          # SQL Server only
+          # Optional. The timestamp when the import should stop. This timestamp is in the [
+          # RFC 3339](https://tools.ietf.org/html/rfc3339) format (for example, `2023-10-
+          # 01T16:19:00.094`). This field is equivalent to the STOPAT keyword and applies
+          # to Cloud SQL for SQL Server only.
           # Corresponds to the JSON property `stopAt`
           # @return [String]
           attr_accessor :stop_at
         
-          # Optional. StopAtMark keyword for transaction log import, Applies to Cloud SQL
-          # for SQL Server only
+          # Optional. The marked transaction where the import should stop. This field is
+          # equivalent to the STOPATMARK keyword and applies to Cloud SQL for SQL Server
+          # only.
           # Corresponds to the JSON property `stopAtMark`
           # @return [String]
           attr_accessor :stop_at_mark
@@ -2279,33 +2282,31 @@ module Google
         # @return [Google::Apis::SqladminV1::PscConfig]
         attr_accessor :psc_config
       
-        # LINT.IfChange(require_ssl_deprecate) Whether SSL/TLS connections over IP are
-        # enforced or not. If set to false, allow both non-SSL/non-TLS and SSL/TLS
-        # connections. For SSL/TLS connections, the client certificate will not be
-        # verified. If set to true, only allow connections encrypted with SSL/TLS and
-        # with valid client certificates. If you want to enforce SSL/TLS without
-        # enforcing the requirement for valid client certificates, use the `ssl_mode`
-        # flag instead of the legacy `require_ssl` flag. LINT.ThenChange(//depot/google3/
-        # java/com/google/storage/speckle/boss/admin/actions/InstanceUpdateAction.java:
-        # update_api_temp_fix)
+        # Whether SSL/TLS connections over IP are enforced. If set to false, then allow
+        # both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the
+        # client certificate won't be verified. If set to true, then only allow
+        # connections encrypted with SSL/TLS and with valid client certificates. If you
+        # want to enforce SSL/TLS without enforcing the requirement for valid client
+        # certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl`
+        # flag.
         # Corresponds to the JSON property `requireSsl`
         # @return [Boolean]
         attr_accessor :require_ssl
         alias_method :require_ssl?, :require_ssl
       
-        # Specify how SSL/TLS will be enforced in database connections. This flag is
-        # only supported for PostgreSQL. Use the legacy `require_ssl` flag for enforcing
-        # SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, it is recommended to use
-        # the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the
-        # conflict between those flags in PostgreSQL, only the following value pairs are
-        # valid: ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED, require_ssl=false; ssl_mode=
-        # ENCRYPTED_ONLY, require_ssl=false; ssl_mode=
-        # TRUSTED_CLIENT_CERTIFICATE_REQUIRED, require_ssl=true; Note that the value of `
-        # ssl_mode` gets priority over the value of the legacy `require_ssl`. For
-        # example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `
+        # Specify how SSL/TLS is enforced in database connections. This flag is
+        # supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing
+        # SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag
+        # instead of the legacy `require_ssl` flag. To avoid the conflict between those
+        # flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=
+        # ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=
+        # ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=
+        # TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the
+        # value of `ssl_mode` gets priority over the value of the legacy `require_ssl`.
+        # For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `
         # ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `
         # require_ssl=false` means "both non-SSL and SSL connections are allowed". The
-        # database will respect `ssl_mode` in this case and only accept SSL connections.
+        # database respects `ssl_mode` in this case and only accepts SSL connections.
         # Corresponds to the JSON property `sslMode`
         # @return [String]
         attr_accessor :ssl_mode
@@ -2919,13 +2920,6 @@ module Google
         # @return [String]
         attr_accessor :complexity
       
-        # Disallow credentials that have been previously compromised by a public data
-        # breach.
-        # Corresponds to the JSON property `disallowCompromisedCredentials`
-        # @return [Boolean]
-        attr_accessor :disallow_compromised_credentials
-        alias_method :disallow_compromised_credentials?, :disallow_compromised_credentials
-      
         # Disallow username as a part of the password.
         # Corresponds to the JSON property `disallowUsernameSubstring`
         # @return [Boolean]
@@ -2961,7 +2955,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @complexity = args[:complexity] if args.key?(:complexity)
-          @disallow_compromised_credentials = args[:disallow_compromised_credentials] if args.key?(:disallow_compromised_credentials)
           @disallow_username_substring = args[:disallow_username_substring] if args.key?(:disallow_username_substring)
           @enable_password_policy = args[:enable_password_policy] if args.key?(:enable_password_policy)
           @min_length = args[:min_length] if args.key?(:min_length)
