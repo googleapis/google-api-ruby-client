@@ -136,28 +136,38 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAccessibilityOptions]
         attr_accessor :accessibility_options
       
-        # Output only. Repeated components for each locality level.
+        # Repeated components for each locality level. Note the following facts about
+        # the address_components[] array: - The array of address components may contain
+        # more components than the formatted_address. - The array does not necessarily
+        # include all the political entities that contain an address, apart from those
+        # included in the formatted_address. To retrieve all the political entities that
+        # contain a specific address, you should use reverse geocoding, passing the
+        # latitude/longitude of the address as a parameter to the request. - The format
+        # of the response is not guaranteed to remain the same between requests. In
+        # particular, the number of address_components varies based on the address
+        # requested and can change over time for the same address. A component can
+        # change position in the array. The type of the component can change. A
+        # particular component may be missing in a later response.
         # Corresponds to the JSON property `addressComponents`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAddressComponent>]
         attr_accessor :address_components
       
-        # Output only. The place's address in adr microformat: http://microformats.org/
-        # wiki/adr.
+        # The place's address in adr microformat: http://microformats.org/wiki/adr.
         # Corresponds to the JSON property `adrFormatAddress`
         # @return [String]
         attr_accessor :adr_format_address
       
-        # Output only. A set of data provider that must be shown with this result.
+        # A set of data provider that must be shown with this result.
         # Corresponds to the JSON property `attributions`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAttribution>]
         attr_accessor :attributions
       
-        # Output only. The business status for the place.
+        # The business status for the place.
         # Corresponds to the JSON property `businessStatus`
         # @return [String]
         attr_accessor :business_status
       
-        # Output only. Specifies if the business supports curbside pickup.
+        # Specifies if the business supports curbside pickup.
         # Corresponds to the JSON property `curbsidePickup`
         # @return [Boolean]
         attr_accessor :curbside_pickup
@@ -168,26 +178,25 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours]
         attr_accessor :current_opening_hours
       
-        # Output only. Contains an array of entries for the next seven days including
-        # information about secondary hours of a business. Secondary hours are different
-        # from a business's main hours. For example, a restaurant can specify drive
-        # through hours or delivery hours as its secondary hours. This field populates
-        # the type subfield, which draws from a predefined list of opening hours types (
-        # such as DRIVE_THROUGH, PICKUP, or TAKEOUT) based on the types of the place.
-        # This field includes the special_days subfield of all hours, set for dates that
-        # have exceptional hours.
+        # Contains an array of entries for the next seven days including information
+        # about secondary hours of a business. Secondary hours are different from a
+        # business's main hours. For example, a restaurant can specify drive through
+        # hours or delivery hours as its secondary hours. This field populates the type
+        # subfield, which draws from a predefined list of opening hours types (such as
+        # DRIVE_THROUGH, PICKUP, or TAKEOUT) based on the types of the place. This field
+        # includes the special_days subfield of all hours, set for dates that have
+        # exceptional hours.
         # Corresponds to the JSON property `currentSecondaryOpeningHours`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours>]
         attr_accessor :current_secondary_opening_hours
       
-        # Output only. Specifies if the business supports delivery.
+        # Specifies if the business supports delivery.
         # Corresponds to the JSON property `delivery`
         # @return [Boolean]
         attr_accessor :delivery
         alias_method :delivery?, :delivery
       
-        # Output only. Specifies if the business supports indoor or outdoor seating
-        # options.
+        # Specifies if the business supports indoor or outdoor seating options.
         # Corresponds to the JSON property `dineIn`
         # @return [Boolean]
         attr_accessor :dine_in
@@ -203,34 +212,33 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
         attr_accessor :editorial_summary
       
-        # Output only. A full, human-readable address for this place.
+        # A full, human-readable address for this place.
         # Corresponds to the JSON property `formattedAddress`
         # @return [String]
         attr_accessor :formatted_address
       
-        # Output only. A URL providing more information about this place.
+        # A URL providing more information about this place.
         # Corresponds to the JSON property `googleMapsUri`
         # @return [String]
         attr_accessor :google_maps_uri
       
-        # Output only. Background color for icon_mask in hex format, e.g. #909CE1.
+        # Background color for icon_mask in hex format, e.g. #909CE1.
         # Corresponds to the JSON property `iconBackgroundColor`
         # @return [String]
         attr_accessor :icon_background_color
       
-        # Output only. A truncated URL to an v2 icon mask. User can access different
-        # icon type by appending type suffix to the end (eg, ".svg" or ".png").
+        # A truncated URL to an v2 icon mask. User can access different icon type by
+        # appending type suffix to the end (eg, ".svg" or ".png").
         # Corresponds to the JSON property `iconMaskBaseUri`
         # @return [String]
         attr_accessor :icon_mask_base_uri
       
-        # Output only. The unique identifier of a place.
+        # The unique identifier of a place.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Output only. A human-readable phone number for the place, in international
-        # format.
+        # A human-readable phone number for the place, in international format.
         # Corresponds to the JSON property `internationalPhoneNumber`
         # @return [String]
         attr_accessor :international_phone_number
@@ -243,13 +251,13 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeLatLng]
         attr_accessor :location
       
-        # Output only. An ID representing this place which may be used to look up this
-        # place again (a.k.a. the API "resource" name: places/).
+        # An ID representing this place which may be used to look up this place again (a.
+        # k.a. the API "resource" name: places/place_id).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. A human-readable phone number for the place, in national format.
+        # A human-readable phone number for the place, in national format.
         # Corresponds to the JSON property `nationalPhoneNumber`
         # @return [String]
         attr_accessor :national_phone_number
@@ -261,12 +269,12 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePlusCode]
         attr_accessor :plus_code
       
-        # Output only. Price level of the place.
+        # Price level of the place.
         # Corresponds to the JSON property `priceLevel`
         # @return [String]
         attr_accessor :price_level
       
-        # Output only. A rating between 1.0 and 5.0, based on user reviews of this place.
+        # A rating between 1.0 and 5.0, based on user reviews of this place.
         # Corresponds to the JSON property `rating`
         # @return [Float]
         attr_accessor :rating
@@ -276,89 +284,90 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours]
         attr_accessor :regular_opening_hours
       
-        # Output only. Contains an array of entries for information about regular
-        # secondary hours of a business. Secondary hours are different from a business's
-        # main hours. For example, a restaurant can specify drive through hours or
-        # delivery hours as its secondary hours. This field populates the type subfield,
-        # which draws from a predefined list of opening hours types (such as
-        # DRIVE_THROUGH, PICKUP, or TAKEOUT) based on the types of the place.
+        # Contains an array of entries for information about regular secondary hours of
+        # a business. Secondary hours are different from a business's main hours. For
+        # example, a restaurant can specify drive through hours or delivery hours as its
+        # secondary hours. This field populates the type subfield, which draws from a
+        # predefined list of opening hours types (such as DRIVE_THROUGH, PICKUP, or
+        # TAKEOUT) based on the types of the place.
         # Corresponds to the JSON property `regularSecondaryOpeningHours`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours>]
         attr_accessor :regular_secondary_opening_hours
       
-        # Output only. Specifies if the place supports reservations.
+        # Specifies if the place supports reservations.
         # Corresponds to the JSON property `reservable`
         # @return [Boolean]
         attr_accessor :reservable
         alias_method :reservable?, :reservable
       
-        # Output only. List of reviews about this place.
+        # List of reviews about this place.
         # Corresponds to the JSON property `reviews`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Review>]
         attr_accessor :reviews
       
-        # Output only. Specifies if the place serves beer.
+        # Specifies if the place serves beer.
         # Corresponds to the JSON property `servesBeer`
         # @return [Boolean]
         attr_accessor :serves_beer
         alias_method :serves_beer?, :serves_beer
       
-        # Output only. Specifies if the place serves breakfast.
+        # Specifies if the place serves breakfast.
         # Corresponds to the JSON property `servesBreakfast`
         # @return [Boolean]
         attr_accessor :serves_breakfast
         alias_method :serves_breakfast?, :serves_breakfast
       
-        # Output only. Specifies if the place serves brunch.
+        # Specifies if the place serves brunch.
         # Corresponds to the JSON property `servesBrunch`
         # @return [Boolean]
         attr_accessor :serves_brunch
         alias_method :serves_brunch?, :serves_brunch
       
-        # Output only. Specifies if the place serves dinner.
+        # Specifies if the place serves dinner.
         # Corresponds to the JSON property `servesDinner`
         # @return [Boolean]
         attr_accessor :serves_dinner
         alias_method :serves_dinner?, :serves_dinner
       
-        # Output only. Specifies if the place serves lunch.
+        # Specifies if the place serves lunch.
         # Corresponds to the JSON property `servesLunch`
         # @return [Boolean]
         attr_accessor :serves_lunch
         alias_method :serves_lunch?, :serves_lunch
       
-        # Output only. Specifies if the place serves vegetarian food.
+        # Specifies if the place serves vegetarian food.
         # Corresponds to the JSON property `servesVegetarianFood`
         # @return [Boolean]
         attr_accessor :serves_vegetarian_food
         alias_method :serves_vegetarian_food?, :serves_vegetarian_food
       
-        # Output only. Specifies if the place serves wine.
+        # Specifies if the place serves wine.
         # Corresponds to the JSON property `servesWine`
         # @return [Boolean]
         attr_accessor :serves_wine
         alias_method :serves_wine?, :serves_wine
       
-        # Output only. Specifies if the business supports takeout.
+        # Specifies if the business supports takeout.
         # Corresponds to the JSON property `takeout`
         # @return [Boolean]
         attr_accessor :takeout
         alias_method :takeout?, :takeout
       
-        # Output only. A set of type tags for this result. For example, "political" and "
-        # locality".
+        # A set of type tags for this result. For example, "political" and "locality".
+        # See: https://developers.google.com/maps/documentation/places/web-service/place-
+        # types
         # Corresponds to the JSON property `types`
         # @return [Array<String>]
         attr_accessor :types
       
-        # Output only. The total number of reviews (with or without text) for this place.
+        # The total number of reviews (with or without text) for this place.
         # Corresponds to the JSON property `userRatingCount`
         # @return [Fixnum]
         attr_accessor :user_rating_count
       
-        # Output only. Number of minutes this place's timezone is currently offset from
-        # UTC. This is expressed in minutes to support timezones that are offset by
-        # fractions of an hour, e.g. X hours and 15 minutes.
+        # Number of minutes this place's timezone is currently offset from UTC. This is
+        # expressed in minutes to support timezones that are offset by fractions of an
+        # hour, e.g. X hours and 15 minutes.
         # Corresponds to the JSON property `utcOffsetMinutes`
         # @return [Fixnum]
         attr_accessor :utc_offset_minutes
@@ -383,10 +392,9 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleGeoTypeViewport]
         attr_accessor :viewport
       
-        # Output only. The authoritative website for this place, e.g. a business'
-        # homepage. Note that for places that are part of a chain (e.g. an IKEA store),
-        # this will usually be the website for the individual store, not the overall
-        # chain.
+        # The authoritative website for this place, e.g. a business' homepage. Note that
+        # for places that are part of a chain (e.g. an IKEA store), this will usually be
+        # the website for the individual store, not the overall chain.
         # Corresponds to the JSON property `websiteUri`
         # @return [String]
         attr_accessor :website_uri
@@ -466,26 +474,26 @@ module Google
       class GoogleMapsPlacesV1PlaceAddressComponent
         include Google::Apis::Core::Hashable
       
-        # Output only. The language used to format this components, in CLDR notation.
+        # The language used to format this components, in CLDR notation.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
       
-        # Output only. The full text description or name of the address component. For
-        # example, an address component for the country Australia may have a long_name
-        # of "Australia".
+        # The full text description or name of the address component. For example, an
+        # address component for the country Australia may have a long_name of "Australia"
+        # .
         # Corresponds to the JSON property `longText`
         # @return [String]
         attr_accessor :long_text
       
-        # Output only. An abbreviated textual name for the address component, if
-        # available. For example, an address component for the country of Australia may
-        # have a short_name of "AU".
+        # An abbreviated textual name for the address component, if available. For
+        # example, an address component for the country of Australia may have a
+        # short_name of "AU".
         # Corresponds to the JSON property `shortText`
         # @return [String]
         attr_accessor :short_text
       
-        # Output only. An array indicating the type(s) of the address component.
+        # An array indicating the type(s) of the address component.
         # Corresponds to the JSON property `types`
         # @return [Array<String>]
         attr_accessor :types
@@ -507,12 +515,12 @@ module Google
       class GoogleMapsPlacesV1PlaceAttribution
         include Google::Apis::Core::Hashable
       
-        # Output only. Name of the Place's data provider.
+        # Name of the Place's data provider.
         # Corresponds to the JSON property `provider`
         # @return [String]
         attr_accessor :provider
       
-        # Output only. URI to the Place's data provider.
+        # URI to the Place's data provider.
         # Corresponds to the JSON property `providerUri`
         # @return [String]
         attr_accessor :provider_uri
@@ -532,38 +540,37 @@ module Google
       class GoogleMapsPlacesV1PlaceOpeningHours
         include Google::Apis::Core::Hashable
       
-        # Output only. Is this place open right now? Always present unless we lack time-
-        # of-day or timezone data for these opening hours.
+        # Is this place open right now? Always present unless we lack time-of-day or
+        # timezone data for these opening hours.
         # Corresponds to the JSON property `openNow`
         # @return [Boolean]
         attr_accessor :open_now
         alias_method :open_now?, :open_now
       
-        # Output only. The periods that this place is open during the week. The periods
-        # are in chronological order, starting with Sunday in the place-local timezone.
-        # An empty (but not absent) value indicates a place that is never open, e.g.
+        # The periods that this place is open during the week. The periods are in
+        # chronological order, starting with Sunday in the place-local timezone. An
+        # empty (but not absent) value indicates a place that is never open, e.g.
         # because it is closed temporarily for renovations.
         # Corresponds to the JSON property `periods`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHoursPeriod>]
         attr_accessor :periods
       
-        # Output only. A type string used to identify the type of secondary hours.
+        # A type string used to identify the type of secondary hours.
         # Corresponds to the JSON property `secondaryHoursType`
         # @return [String]
         attr_accessor :secondary_hours_type
       
-        # Output only. Structured information for special days that fall within the
-        # period that the returned opening hours cover. Special days are days that could
-        # impact the business hours of a place, e.g. Christmas day. Set for
-        # current_opening_hours and current_secondary_opening_hours if there are
-        # exceptional hours.
+        # Structured information for special days that fall within the period that the
+        # returned opening hours cover. Special days are days that could impact the
+        # business hours of a place, e.g. Christmas day. Set for current_opening_hours
+        # and current_secondary_opening_hours if there are exceptional hours.
         # Corresponds to the JSON property `specialDays`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay>]
         attr_accessor :special_days
       
-        # Output only. Localized strings describing the opening hours of this place, one
-        # string for each day of the week. Will be empty if the hours are unknown or
-        # could not be converted to localized text. Example: "Sun: 18:00–06:00"
+        # Localized strings describing the opening hours of this place, one string for
+        # each day of the week. Will be empty if the hours are unknown or could not be
+        # converted to localized text. Example: "Sun: 18:00–06:00"
         # Corresponds to the JSON property `weekdayDescriptions`
         # @return [Array<String>]
         attr_accessor :weekday_descriptions
@@ -623,26 +630,26 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeDate]
         attr_accessor :date
       
-        # Output only. A day of the week, as an integer in the range 0-6. 0 is Sunday, 1
-        # is Monday, etc.
+        # A day of the week, as an integer in the range 0-6. 0 is Sunday, 1 is Monday,
+        # etc.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # Output only. The hour in 2 digits. Ranges from 00 to 23.
+        # The hour in 2 digits. Ranges from 00 to 23.
         # Corresponds to the JSON property `hour`
         # @return [Fixnum]
         attr_accessor :hour
       
-        # Output only. The minute in 2 digits. Ranges from 00 to 59.
+        # The minute in 2 digits. Ranges from 00 to 59.
         # Corresponds to the JSON property `minute`
         # @return [Fixnum]
         attr_accessor :minute
       
-        # Output only. Whether or not this endpoint was truncated. Truncation occurs
-        # when the real hours are outside the times we are willing to return hours
-        # between, so we truncate the hours back to these boundaries. This ensures that
-        # at most 24 * 7 hours from midnight of the day of the request are returned.
+        # Whether or not this endpoint was truncated. Truncation occurs when the real
+        # hours are outside the times we are willing to return hours between, so we
+        # truncate the hours back to these boundaries. This ensures that at most 24 * 7
+        # hours from midnight of the day of the request are returned.
         # Corresponds to the JSON property `truncated`
         # @return [Boolean]
         attr_accessor :truncated
@@ -696,15 +703,15 @@ module Google
       class GoogleMapsPlacesV1PlacePlusCode
         include Google::Apis::Core::Hashable
       
-        # Output only. Place's compound code, such as "33GV+HQ, Ramberg, Norway",
-        # containing the suffix of the global code and replacing the prefix with a
-        # formatted name of a reference entity.
+        # Place's compound code, such as "33GV+HQ, Ramberg, Norway", containing the
+        # suffix of the global code and replacing the prefix with a formatted name of a
+        # reference entity.
         # Corresponds to the JSON property `compoundCode`
         # @return [String]
         attr_accessor :compound_code
       
-        # Output only. Place's global (full) code, such as "9FWM33GV+HQ", representing
-        # an 1/8000 by 1/8000 degree area (~14 by 14 meters).
+        # Place's global (full) code, such as "9FWM33GV+HQ", representing an 1/8000 by 1/
+        # 8000 degree area (~14 by 14 meters).
         # Corresponds to the JSON property `globalCode`
         # @return [String]
         attr_accessor :global_code
@@ -776,7 +783,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The requested place type. Full list of types supported: https://developers.
-        # google.com/places/supported_types. Only support one included type.
+        # google.com/maps/documentation/places/web-service/place-types. Only support one
+        # included type.
         # Corresponds to the JSON property `includedType`
         # @return [String]
         attr_accessor :included_type
@@ -819,8 +827,7 @@ module Google
         # @return [Float]
         attr_accessor :min_rating
       
-        # Used to restrict the search to places that are open at a specific time.
-        # open_now marks if a business is currently open.
+        # Used to restrict the search to places that are currently open.
         # Corresponds to the JSON property `openNow`
         # @return [Boolean]
         attr_accessor :open_now
@@ -1056,7 +1063,7 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # Localized string in the language corresponding to `language_code' below.
+        # Localized string in the language corresponding to language_code below.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
