@@ -346,12 +346,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1175,21 +1169,12 @@ module Google
           property :encryption_info, as: 'encryptionInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo::Representation
       
           property :name, as: 'name'
-          property :proxy_protocol_config, as: 'proxyProtocolConfig', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig::Representation
-      
           property :proxy_uri, as: 'proxyUri'
           property :routing_info, as: 'routingInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo::Representation
       
           property :transport_info, as: 'transportInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo::Representation
       
           property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :metadata, as: 'metadata'
         end
       end
       

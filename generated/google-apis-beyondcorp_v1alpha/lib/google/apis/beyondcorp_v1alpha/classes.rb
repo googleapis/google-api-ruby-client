@@ -2096,7 +2096,7 @@ module Google
         end
       end
       
-      # Proxy Configuration of a Tenant.
+      # Proxy Configuration of a PartnerTenant.
       class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig
         include Google::Apis::Core::Hashable
       
@@ -2120,11 +2120,6 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
-        # The protocol data that specifies how to communicate with Partner's Proxy.
-        # Corresponds to the JSON property `proxyProtocolConfig`
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig]
-        attr_accessor :proxy_protocol_config
       
         # Required. The URI of the proxy server.
         # Corresponds to the JSON property `proxyUri`
@@ -2156,31 +2151,10 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @name = args[:name] if args.key?(:name)
-          @proxy_protocol_config = args[:proxy_protocol_config] if args.key?(:proxy_protocol_config)
           @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)
           @routing_info = args[:routing_info] if args.key?(:routing_info)
           @transport_info = args[:transport_info] if args.key?(:transport_info)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # The protocol data that specifies how to communicate with Partner's Proxy.
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Untyped property bag to be sent back to the proxy using client
-        # specific mechanism.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,String>]
-        attr_accessor :metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       

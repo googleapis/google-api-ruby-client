@@ -270,7 +270,8 @@ module Google
         #   PartnerTenant resource by the update. The fields specified in the update_mask
         #   are relative to the resource, not the full request. A field will be
         #   overwritten if it is in the mask. If the user does not provide a mask then all
-        #   fields will be overwritten.
+        #   fields will be overwritten. Mutable fields: display_name, partner_metadata,
+        #   group_information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -707,8 +708,9 @@ module Google
         # PartnerTenant. Can only be called by on onboarded Beyondcorp Enterprise
         # partner.
         # @param [String] parent
-        #   Required. The resource name of the Tenant using the form: `organizations/`
-        #   organization_id`/locations/global/tenants/`tenant_id``
+        #   Required. The resource name of the parent PartnerTenant using the form: `
+        #   organizations/`organization_id`/locations/global/partnerTenants/`
+        #   partner_tenant_id``
         # @param [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig] google_cloud_beyondcorp_partnerservices_v1alpha_proxy_config_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -796,8 +798,8 @@ module Google
         # Gets details of a single ProxyConfig.
         # @param [String] name
         #   Required. The resource name of the ProxyConfig using the form: `organizations/`
-        #   organization_id`/locations/global/tenants/`tenant_id`/proxyConfigs/`
-        #   proxy_config_id``
+        #   organization_id`/locations/global/partnerTenants/`partner_tenant_id`/
+        #   proxyConfigs/`proxy_config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
