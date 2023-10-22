@@ -1202,6 +1202,7 @@ module Google
           collection :file_location, as: 'fileLocation', class: Google::Apis::OndemandscanningV1beta1::FileLocation, decorator: Google::Apis::OndemandscanningV1beta1::FileLocation::Representation
       
           property :hash_digest, as: 'hashDigest'
+          collection :licenses, as: 'licenses'
           property :maintainer, as: 'maintainer', class: Google::Apis::OndemandscanningV1beta1::Maintainer, decorator: Google::Apis::OndemandscanningV1beta1::Maintainer::Representation
       
           property :os, as: 'os'
@@ -1254,6 +1255,7 @@ module Google
       class PackageVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :version, as: 'version'
         end
