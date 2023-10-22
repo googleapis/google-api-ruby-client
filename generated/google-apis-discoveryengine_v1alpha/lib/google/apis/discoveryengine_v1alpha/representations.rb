@@ -136,12 +136,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDiscoveryengineV1alphaBigQuerySource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -998,14 +992,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :token, as: 'token'
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :target_sites, as: 'targetSites', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaTargetSite, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaTargetSite::Representation
-      
         end
       end
       
