@@ -669,6 +669,47 @@ module Google
         end
       end
       
+      # A widget that displays a list of error groups.
+      class ErrorReportingPanel
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the Google Cloud Platform project. Written as projects/`
+        # projectID` or projects/`projectNumber`, where `projectID` and `projectNumber`
+        # can be found in the Google Cloud console (https://support.google.com/cloud/
+        # answer/6158840).Examples: projects/my-project-123, projects/5551234.
+        # Corresponds to the JSON property `projectNames`
+        # @return [Array<String>]
+        attr_accessor :project_names
+      
+        # An identifier of the service, such as the name of the executable, job, or
+        # Google App Engine service name. This field is expected to have a low number of
+        # values that are relatively stable over time, as opposed to version, which can
+        # be changed whenever new code is deployed.Contains the service name for error
+        # reports extracted from Google App Engine logs or default if the App Engine
+        # default service is used.
+        # Corresponds to the JSON property `services`
+        # @return [Array<String>]
+        attr_accessor :services
+      
+        # Represents the source code version that the developer provided, which could
+        # represent a version label or a Git SHA-1 hash, for example. For App Engine
+        # standard environment, the version is set to the version of the app.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<String>]
+        attr_accessor :versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_names = args[:project_names] if args.key?(:project_names)
+          @services = args[:services] if args.key?(:services)
+          @versions = args[:versions] if args.key?(:versions)
+        end
+      end
+      
       # A single field of a message type.
       class Field
         include Google::Apis::Core::Hashable
@@ -1352,19 +1393,6 @@ module Google
         attr_accessor :show_labels
         alias_method :show_labels?, :show_labels
       
-        # Optional. Indicates whether or not donut chart should show the total in the
-        # middle
-        # Corresponds to the JSON property `showTotal`
-        # @return [Boolean]
-        attr_accessor :show_total
-        alias_method :show_total?, :show_total
-      
-        # Optional. If slices's values are smaller than this value, they will be
-        # combined into other category
-        # Corresponds to the JSON property `sliceAggregatedThreshold`
-        # @return [Float]
-        attr_accessor :slice_aggregated_threshold
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1374,8 +1402,6 @@ module Google
           @chart_type = args[:chart_type] if args.key?(:chart_type)
           @data_sets = args[:data_sets] if args.key?(:data_sets)
           @show_labels = args[:show_labels] if args.key?(:show_labels)
-          @show_total = args[:show_total] if args.key?(:show_total)
-          @slice_aggregated_threshold = args[:slice_aggregated_threshold] if args.key?(:slice_aggregated_threshold)
         end
       end
       
@@ -2508,6 +2534,17 @@ module Google
         # @return [Google::Apis::MonitoringV1::CollapsibleGroup]
         attr_accessor :collapsible_group
       
+        # A widget that displays a list of error groups.
+        # Corresponds to the JSON property `errorReportingPanel`
+        # @return [Google::Apis::MonitoringV1::ErrorReportingPanel]
+        attr_accessor :error_reporting_panel
+      
+        # Optional. The widget id. Ids may be made up of alphanumerics, dashes and
+        # underscores. Widget ids are optional.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # A widget that displays a list of incidents
         # Corresponds to the JSON property `incidentList`
         # @return [Google::Apis::MonitoringV1::IncidentList]
@@ -2558,6 +2595,8 @@ module Google
           @alert_chart = args[:alert_chart] if args.key?(:alert_chart)
           @blank = args[:blank] if args.key?(:blank)
           @collapsible_group = args[:collapsible_group] if args.key?(:collapsible_group)
+          @error_reporting_panel = args[:error_reporting_panel] if args.key?(:error_reporting_panel)
+          @id = args[:id] if args.key?(:id)
           @incident_list = args[:incident_list] if args.key?(:incident_list)
           @logs_panel = args[:logs_panel] if args.key?(:logs_panel)
           @pie_chart = args[:pie_chart] if args.key?(:pie_chart)

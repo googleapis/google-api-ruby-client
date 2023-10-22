@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ErrorReportingPanel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Field
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -566,6 +572,15 @@ module Google
         end
       end
       
+      class ErrorReportingPanel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :project_names, as: 'projectNames'
+          collection :services, as: 'services'
+          collection :versions, as: 'versions'
+        end
+      end
+      
       class Field
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -748,8 +763,6 @@ module Google
           collection :data_sets, as: 'dataSets', class: Google::Apis::MonitoringV1::PieChartDataSet, decorator: Google::Apis::MonitoringV1::PieChartDataSet::Representation
       
           property :show_labels, as: 'showLabels'
-          property :show_total, as: 'showTotal'
-          property :slice_aggregated_threshold, as: 'sliceAggregatedThreshold'
         end
       end
       
@@ -1038,6 +1051,9 @@ module Google
       
           property :collapsible_group, as: 'collapsibleGroup', class: Google::Apis::MonitoringV1::CollapsibleGroup, decorator: Google::Apis::MonitoringV1::CollapsibleGroup::Representation
       
+          property :error_reporting_panel, as: 'errorReportingPanel', class: Google::Apis::MonitoringV1::ErrorReportingPanel, decorator: Google::Apis::MonitoringV1::ErrorReportingPanel::Representation
+      
+          property :id, as: 'id'
           property :incident_list, as: 'incidentList', class: Google::Apis::MonitoringV1::IncidentList, decorator: Google::Apis::MonitoringV1::IncidentList::Representation
       
           property :logs_panel, as: 'logsPanel', class: Google::Apis::MonitoringV1::LogsPanel, decorator: Google::Apis::MonitoringV1::LogsPanel::Representation
