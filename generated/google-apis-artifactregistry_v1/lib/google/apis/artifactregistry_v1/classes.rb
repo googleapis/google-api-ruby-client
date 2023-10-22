@@ -1928,6 +1928,11 @@ module Google
         # @return [Google::Apis::ArtifactregistryV1::PythonRepository]
         attr_accessor :python_repository
       
+        # The credentials to access the remote repository.
+        # Corresponds to the JSON property `upstreamCredentials`
+        # @return [Google::Apis::ArtifactregistryV1::UpstreamCredentials]
+        attr_accessor :upstream_credentials
+      
         # Configuration for a Yum remote repository.
         # Corresponds to the JSON property `yumRepository`
         # @return [Google::Apis::ArtifactregistryV1::YumRepository]
@@ -1945,6 +1950,7 @@ module Google
           @maven_repository = args[:maven_repository] if args.key?(:maven_repository)
           @npm_repository = args[:npm_repository] if args.key?(:npm_repository)
           @python_repository = args[:python_repository] if args.key?(:python_repository)
+          @upstream_credentials = args[:upstream_credentials] if args.key?(:upstream_credentials)
           @yum_repository = args[:yum_repository] if args.key?(:yum_repository)
         end
       end
@@ -2532,6 +2538,25 @@ module Google
         end
       end
       
+      # The credentials to access the remote repository.
+      class UpstreamCredentials
+        include Google::Apis::Core::Hashable
+      
+        # Username and password credentials.
+        # Corresponds to the JSON property `usernamePasswordCredentials`
+        # @return [Google::Apis::ArtifactregistryV1::UsernamePasswordCredentials]
+        attr_accessor :username_password_credentials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @username_password_credentials = args[:username_password_credentials] if args.key?(:username_password_credentials)
+        end
+      end
+      
       # Artifact policy configuration for the repository contents.
       class UpstreamPolicy
         include Google::Apis::Core::Hashable
@@ -2561,6 +2586,33 @@ module Google
           @id = args[:id] if args.key?(:id)
           @priority = args[:priority] if args.key?(:priority)
           @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
+      # Username and password credentials.
+      class UsernamePasswordCredentials
+        include Google::Apis::Core::Hashable
+      
+        # The Secret Manager key version that holds the password to access the remote
+        # repository. Must be in the format of `projects/`project`/secrets/`secret`/
+        # versions/`version``.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # The username to access the remote repository.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
