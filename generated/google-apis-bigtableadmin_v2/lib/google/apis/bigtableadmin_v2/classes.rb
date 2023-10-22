@@ -57,12 +57,24 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # This field has been deprecated in favor of `standard_isolation.priority`. If
+        # you set this field, `standard_isolation.priority` will be set instead. The
+        # priority of requests sent using this app profile.
+        # Corresponds to the JSON property `priority`
+        # @return [String]
+        attr_accessor :priority
+      
         # Unconditionally routes all read/write requests to a specific cluster. This
         # option preserves read-your-writes consistency but does not improve
         # availability.
         # Corresponds to the JSON property `singleClusterRouting`
         # @return [Google::Apis::BigtableadminV2::SingleClusterRouting]
         attr_accessor :single_cluster_routing
+      
+        # Standard options for isolating this app profile's traffic from other use cases.
+        # Corresponds to the JSON property `standardIsolation`
+        # @return [Google::Apis::BigtableadminV2::StandardIsolation]
+        attr_accessor :standard_isolation
       
         def initialize(**args)
            update!(**args)
@@ -74,7 +86,9 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @multi_cluster_routing_use_any = args[:multi_cluster_routing_use_any] if args.key?(:multi_cluster_routing_use_any)
           @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
           @single_cluster_routing = args[:single_cluster_routing] if args.key?(:single_cluster_routing)
+          @standard_isolation = args[:standard_isolation] if args.key?(:standard_isolation)
         end
       end
       
@@ -1749,12 +1763,6 @@ module Google
       class ModifyColumnFamiliesRequest
         include Google::Apis::Core::Hashable
       
-        # If true, ignore safety checks when modifying the column families.
-        # Corresponds to the JSON property `ignoreWarnings`
-        # @return [Boolean]
-        attr_accessor :ignore_warnings
-        alias_method :ignore_warnings?, :ignore_warnings
-      
         # Required. Modifications to be atomically applied to the specified table's
         # families. Entries are applied in order, meaning that earlier modifications can
         # be masked by later ones (in the case of repeated updates to the same family,
@@ -1769,7 +1777,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ignore_warnings = args[:ignore_warnings] if args.key?(:ignore_warnings)
           @modifications = args[:modifications] if args.key?(:modifications)
         end
       end
@@ -2304,6 +2311,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @key = args[:key] if args.key?(:key)
+        end
+      end
+      
+      # Standard options for isolating this app profile's traffic from other use cases.
+      class StandardIsolation
+        include Google::Apis::Core::Hashable
+      
+        # The priority of requests sent using this app profile.
+        # Corresponds to the JSON property `priority`
+        # @return [String]
+        attr_accessor :priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @priority = args[:priority] if args.key?(:priority)
         end
       end
       

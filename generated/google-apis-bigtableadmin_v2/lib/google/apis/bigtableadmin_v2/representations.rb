@@ -400,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StandardIsolation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -486,7 +492,10 @@ module Google
           property :multi_cluster_routing_use_any, as: 'multiClusterRoutingUseAny', class: Google::Apis::BigtableadminV2::MultiClusterRoutingUseAny, decorator: Google::Apis::BigtableadminV2::MultiClusterRoutingUseAny::Representation
       
           property :name, as: 'name'
+          property :priority, as: 'priority'
           property :single_cluster_routing, as: 'singleClusterRouting', class: Google::Apis::BigtableadminV2::SingleClusterRouting, decorator: Google::Apis::BigtableadminV2::SingleClusterRouting::Representation
+      
+          property :standard_isolation, as: 'standardIsolation', class: Google::Apis::BigtableadminV2::StandardIsolation, decorator: Google::Apis::BigtableadminV2::StandardIsolation::Representation
       
         end
       end
@@ -944,7 +953,6 @@ module Google
       class ModifyColumnFamiliesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ignore_warnings, as: 'ignoreWarnings'
           collection :modifications, as: 'modifications', class: Google::Apis::BigtableadminV2::Modification, decorator: Google::Apis::BigtableadminV2::Modification::Representation
       
         end
@@ -1078,6 +1086,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, :base64 => true, as: 'key'
+        end
+      end
+      
+      class StandardIsolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :priority, as: 'priority'
         end
       end
       
