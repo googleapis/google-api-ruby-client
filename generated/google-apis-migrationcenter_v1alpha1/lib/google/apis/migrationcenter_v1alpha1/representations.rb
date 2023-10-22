@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DetectedSoftware
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiskEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -838,6 +844,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SoftwareInsight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SoleTenancyPreferences
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1315,6 +1327,14 @@ module Google
         end
       end
       
+      class DetectedSoftware
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :software_family, as: 'softwareFamily'
+          property :software_name, as: 'softwareName'
+        end
+      end
+      
       class DiskEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1645,6 +1665,8 @@ module Google
           property :generic_insight, as: 'genericInsight', class: Google::Apis::MigrationcenterV1alpha1::GenericInsight, decorator: Google::Apis::MigrationcenterV1alpha1::GenericInsight::Representation
       
           property :migration_insight, as: 'migrationInsight', class: Google::Apis::MigrationcenterV1alpha1::MigrationInsight, decorator: Google::Apis::MigrationcenterV1alpha1::MigrationInsight::Representation
+      
+          property :software_insight, as: 'softwareInsight', class: Google::Apis::MigrationcenterV1alpha1::SoftwareInsight, decorator: Google::Apis::MigrationcenterV1alpha1::SoftwareInsight::Representation
       
         end
       end
@@ -2328,6 +2350,14 @@ module Google
           property :disable_cloud_logging, as: 'disableCloudLogging'
           property :name, as: 'name'
           property :preference_set, as: 'preferenceSet'
+        end
+      end
+      
+      class SoftwareInsight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detected_software, as: 'detectedSoftware', class: Google::Apis::MigrationcenterV1alpha1::DetectedSoftware, decorator: Google::Apis::MigrationcenterV1alpha1::DetectedSoftware::Representation
+      
         end
       end
       
