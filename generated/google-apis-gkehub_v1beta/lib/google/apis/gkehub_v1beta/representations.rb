@@ -952,6 +952,8 @@ module Google
       
           property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1beta::IdentityServiceMembershipSpec, decorator: Google::Apis::GkehubV1beta::IdentityServiceMembershipSpec::Representation
       
+          property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV1beta::PolicyControllerMembershipSpec, decorator: Google::Apis::GkehubV1beta::PolicyControllerMembershipSpec::Representation
+      
         end
       end
       
