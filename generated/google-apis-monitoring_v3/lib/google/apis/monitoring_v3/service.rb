@@ -2375,7 +2375,8 @@ module Google
         # @param [Google::Apis::MonitoringV3::ServiceLevelObjective] service_level_objective_object
         # @param [String] service_level_objective_id
         #   Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective.
-        #   If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+        #   If omitted, an id will be generated instead. Must match the pattern ^[a-zA-Z0-
+        #   9-_:.]+$
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
