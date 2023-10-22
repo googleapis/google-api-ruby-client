@@ -6084,6 +6084,11 @@ module Google
       class ConfidentialInstanceConfig
         include Google::Apis::Core::Hashable
       
+        # Defines the type of technology used by the confidential instance.
+        # Corresponds to the JSON property `confidentialInstanceType`
+        # @return [String]
+        attr_accessor :confidential_instance_type
+      
         # Defines whether the instance should have confidential compute enabled.
         # Corresponds to the JSON property `enableConfidentialCompute`
         # @return [Boolean]
@@ -6096,6 +6101,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @confidential_instance_type = args[:confidential_instance_type] if args.key?(:confidential_instance_type)
           @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
         end
       end
@@ -16397,6 +16403,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The number of instances to be created by this resize request. The group's
+        # target size will be increased by this number.
+        # Corresponds to the JSON property `resizeBy`
+        # @return [Fixnum]
+        attr_accessor :resize_by
+      
         # [Output Only] The URL for this resize request. The server defines this URL.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -16435,6 +16447,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @resize_by = args[:resize_by] if args.key?(:resize_by)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @state = args[:state] if args.key?(:state)

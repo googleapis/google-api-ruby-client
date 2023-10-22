@@ -8020,6 +8020,7 @@ module Google
       class ConfidentialInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidential_instance_type, as: 'confidentialInstanceType'
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
         end
       end
@@ -10380,6 +10381,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :resize_by, as: 'resizeBy'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :state, as: 'state'
