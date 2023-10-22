@@ -897,7 +897,7 @@ module Google
         # @return [String]
         attr_accessor :method_prop
       
-        # How IAP determines the effective policy in cases of hierarchial policies.
+        # How IAP determines the effective policy in cases of hierarchical policies.
         # Policies are merged from higher in the hierarchy to lower in the hierarchy.
         # Corresponds to the JSON property `policyType`
         # @return [String]
