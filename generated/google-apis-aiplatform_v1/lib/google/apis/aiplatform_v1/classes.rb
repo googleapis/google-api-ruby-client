@@ -2293,9 +2293,8 @@ module Google
       class GoogleCloudAiplatformV1CreateFeatureRequest
         include Google::Apis::Core::Hashable
       
-        # Feature Metadata information that describes an attribute of an entity type.
-        # For example, apple is an entity type, and color is a feature that describes
-        # apple.
+        # Feature Metadata information. For example, color is a feature that describes
+        # an apple.
         # Corresponds to the JSON property `feature`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Feature]
         attr_accessor :feature
@@ -2308,7 +2307,11 @@ module Google
         # @return [String]
         attr_accessor :feature_id
       
-        # 
+        # Required. The resource name of the EntityType or FeatureGroup to create a
+        # Feature. Format for entity_type as parent: `projects/`project`/locations/`
+        # location`/featurestores/`featurestore`/entityTypes/`entity_type`` Format for
+        # feature_group as parent: `projects/`project`/locations/`location`/
+        # featureGroups/`feature_group``
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -2770,6 +2773,14 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # The ID of the location to store protected artifacts. e.g. us-central1.
+        # Populate only when the location is different than CustomJob location. For
+        # unprotected artifacts, the value of this field is ignored. List of supported
+        # locations: https://cloud.google.com/vertex-ai/docs/general/locations
+        # Corresponds to the JSON property `protectedArtifactLocationId`
+        # @return [String]
+        attr_accessor :protected_artifact_location_id
+      
         # Optional. A list of names for the reserved ip ranges under the VPC network
         # that can be used for this job. If set, we will deploy the job within the
         # provided ip ranges. Otherwise, the job will be deployed to any ip ranges under
@@ -2817,6 +2828,7 @@ module Google
           @experiment = args[:experiment] if args.key?(:experiment)
           @experiment_run = args[:experiment_run] if args.key?(:experiment_run)
           @network = args[:network] if args.key?(:network)
+          @protected_artifact_location_id = args[:protected_artifact_location_id] if args.key?(:protected_artifact_location_id)
           @reserved_ip_ranges = args[:reserved_ip_ranges] if args.key?(:reserved_ip_ranges)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -5884,13 +5896,13 @@ module Google
         end
       end
       
-      # Feature Metadata information that describes an attribute of an entity type.
-      # For example, apple is an entity type, and color is a feature that describes
-      # apple.
+      # Feature Metadata information. For example, color is a feature that describes
+      # an apple.
       class GoogleCloudAiplatformV1Feature
         include Google::Apis::Core::Hashable
       
-        # Output only. Timestamp when this EntityType was created.
+        # Output only. Only applicable for Vertex AI Feature Store (Legacy). Timestamp
+        # when this EntityType was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -5900,10 +5912,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. If not set, use the monitoring_config defined for the EntityType
-        # this Feature belongs to. Only Features with type (Feature.ValueType) BOOL,
-        # STRING, DOUBLE or INT64 can enable monitoring. If set to true, all types of
-        # data monitoring are disabled despite the config on EntityType.
+        # Optional. Only applicable for Vertex AI Feature Store (Legacy). If not set,
+        # use the monitoring_config defined for the EntityType this Feature belongs to.
+        # Only Features with type (Feature.ValueType) BOOL, STRING, DOUBLE or INT64 can
+        # enable monitoring. If set to true, all types of data monitoring are disabled
+        # despite the config on EntityType.
         # Corresponds to the JSON property `disableMonitoring`
         # @return [Boolean]
         attr_accessor :disable_monitoring
@@ -5926,28 +5939,31 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The list of historical stats and anomalies with specified
-        # objectives.
+        # Output only. Only applicable for Vertex AI Feature Store (Legacy). The list of
+        # historical stats and anomalies with specified objectives.
         # Corresponds to the JSON property `monitoringStatsAnomalies`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly>]
         attr_accessor :monitoring_stats_anomalies
       
         # Immutable. Name of the Feature. Format: `projects/`project`/locations/`
         # location`/featurestores/`featurestore`/entityTypes/`entity_type`/features/`
-        # feature`` The last part feature is assigned by the client. The feature can be
-        # up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-
-        # z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will
-        # be unique given an entity type.
+        # feature`` `projects/`project`/locations/`location`/featureGroups/`
+        # feature_group`/features/`feature`` The last part feature is assigned by the
+        # client. The feature can be up to 64 characters long and can consist only of
+        # ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting
+        # with a letter. The value will be unique given an entity type.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. Timestamp when this EntityType was most recently updated.
+        # Output only. Only applicable for Vertex AI Feature Store (Legacy). Timestamp
+        # when this EntityType was most recently updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # Immutable. Type of Feature value.
+        # Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of
+        # Feature value.
         # Corresponds to the JSON property `valueType`
         # @return [String]
         attr_accessor :value_type
