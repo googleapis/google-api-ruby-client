@@ -5178,6 +5178,7 @@ module Google
           property :channel, as: 'channel'
           property :current_page, as: 'currentPage'
           property :disable_webhook, as: 'disableWebhook'
+          hash :end_user_metadata, as: 'endUserMetadata'
           collection :flow_versions, as: 'flowVersions'
           property :geo_location, as: 'geoLocation', class: Google::Apis::DialogflowV3beta1::GoogleTypeLatLng, decorator: Google::Apis::DialogflowV3beta1::GoogleTypeLatLng::Representation
       
