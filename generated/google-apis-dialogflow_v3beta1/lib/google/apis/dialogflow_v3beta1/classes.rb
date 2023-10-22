@@ -8292,6 +8292,16 @@ module Google
         attr_accessor :disable_webhook
         alias_method :disable_webhook?, :disable_webhook
       
+        # Optional. Information about the end-user to improve the relevance and accuracy
+        # of generative answers. This will be interpreted and used by a language model,
+        # so, for good results, the data should be self-descriptive, and in a simple
+        # structure. Example: ```json ` "subscription plan": "Business Premium Plus", "
+        # devices owned": [ `"model": "Google Pixel 7"`, `"model": "Google Pixel Tablet"`
+        # ] ` ```
+        # Corresponds to the JSON property `endUserMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :end_user_metadata
+      
         # A list of flow versions to override for the request. Format: `projects//
         # locations//agents//flows//versions/`. If version 1 of flow X is included in
         # this list, the traffic of flow X will go through version 1 regardless of the
@@ -8377,6 +8387,7 @@ module Google
           @channel = args[:channel] if args.key?(:channel)
           @current_page = args[:current_page] if args.key?(:current_page)
           @disable_webhook = args[:disable_webhook] if args.key?(:disable_webhook)
+          @end_user_metadata = args[:end_user_metadata] if args.key?(:end_user_metadata)
           @flow_versions = args[:flow_versions] if args.key?(:flow_versions)
           @geo_location = args[:geo_location] if args.key?(:geo_location)
           @parameters = args[:parameters] if args.key?(:parameters)
