@@ -300,6 +300,25 @@ module Google
         end
       end
       
+      # Configuration options for a custom domain.
+      class DomainConfig
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Domain used by Workstations for HTTP ingress.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+        end
+      end
+      
       # An ephemeral directory which won't persist across workstation sessions. It is
       # freshly created on every workstation start operation.
       class EphemeralDirectory
@@ -1612,6 +1631,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Configuration options for a custom domain.
+        # Corresponds to the JSON property `domainConfig`
+        # @return [Google::Apis::WorkstationsV1beta::DomainConfig]
+        attr_accessor :domain_config
+      
         # Optional. Checksum computed by the server. May be sent on update and delete
         # requests to make sure that the client has an up-to-date value before
         # proceeding.
@@ -1679,6 +1703,7 @@ module Google
           @degraded = args[:degraded] if args.key?(:degraded)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @domain_config = args[:domain_config] if args.key?(:domain_config)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
