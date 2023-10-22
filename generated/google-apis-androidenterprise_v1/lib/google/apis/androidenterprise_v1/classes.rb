@@ -1895,12 +1895,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A longer description of the Permissions resource, giving more details of what
-        # it affects.
+        # it affects. This field may be absent.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # The name of the permission.
+        # The name of the permission. This field may be absent.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
