@@ -745,6 +745,7 @@ module Google
           property :vlan_id, as: 'vlanId'
           property :vrf, as: 'vrf', class: Google::Apis::BaremetalsolutionV2::Vrf, decorator: Google::Apis::BaremetalsolutionV2::Vrf::Representation
       
+          property :vrf_attachment, as: 'vrfAttachment'
         end
       end
       

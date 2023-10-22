@@ -1201,6 +1201,12 @@ module Google
         # @return [Google::Apis::BaremetalsolutionV2::Vrf]
         attr_accessor :vrf
       
+        # Optional. The name of a pre-existing Vrf that the network should be attached
+        # to. Format is `vrfs/`vrf``.
+        # Corresponds to the JSON property `vrfAttachment`
+        # @return [String]
+        attr_accessor :vrf_attachment
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1223,6 +1229,7 @@ module Google
           @type = args[:type] if args.key?(:type)
           @vlan_id = args[:vlan_id] if args.key?(:vlan_id)
           @vrf = args[:vrf] if args.key?(:vrf)
+          @vrf_attachment = args[:vrf_attachment] if args.key?(:vrf_attachment)
         end
       end
       
