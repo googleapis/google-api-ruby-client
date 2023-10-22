@@ -4797,6 +4797,11 @@ module Google
         
         # Creates a new Feature in a given FeatureGroup.
         # @param [String] parent
+        #   Required. The resource name of the EntityType or FeatureGroup to create a
+        #   Feature. Format for entity_type as parent: `projects/`project`/locations/`
+        #   location`/featurestores/`featurestore`/entityTypes/`entity_type`` Format for
+        #   feature_group as parent: `projects/`project`/locations/`location`/
+        #   featureGroups/`feature_group``
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Feature] google_cloud_aiplatform_v1beta1_feature_object
         # @param [String] feature_id
         #   Required. The ID to use for the Feature, which will become the final component
@@ -4868,9 +4873,10 @@ module Google
         
         # Gets details of a single Feature.
         # @param [String] name
-        #   Required. The name of the Feature resource. Format: `projects/`project`/
-        #   locations/`location`/featurestores/`featurestore`/entityTypes/`entity_type`` `
-        #   projects/`project`/locations/`location`/featureGroups/`feature_group``
+        #   Required. The name of the Feature resource. Format for entity_type as parent: `
+        #   projects/`project`/locations/`location`/featurestores/`featurestore`/
+        #   entityTypes/`entity_type`` Format for feature_group as parent: `projects/`
+        #   project`/locations/`location`/featureGroups/`feature_group``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4900,10 +4906,10 @@ module Google
         
         # Lists Features in a given FeatureGroup.
         # @param [String] parent
-        #   Required. The resource name of the Location to list Features. Format: `
-        #   projects/`project`/locations/`location`/featurestores/`featurestore`/
-        #   entityTypes/`entity_type`` `projects/`project`/locations/`location`/
-        #   featureGroups/`feature_group``
+        #   Required. The resource name of the Location to list Features. Format for
+        #   entity_type as parent: `projects/`project`/locations/`location`/featurestores/`
+        #   featurestore`/entityTypes/`entity_type`` Format for feature_group as parent: `
+        #   projects/`project`/locations/`location`/featureGroups/`feature_group``
         # @param [String] filter
         #   Lists the Features that match the filter expression. The following filters are
         #   supported: * `value_type`: Supports = and != comparisons. * `create_time`:
@@ -4917,9 +4923,10 @@ module Google
         #   Features having both (active: yes) and (env: prod) labels. * `labels.env: *` --
         #   > Any Feature which has a label with 'env' as the key.
         # @param [Fixnum] latest_stats_count
-        #   If set, return the most recent ListFeaturesRequest.latest_stats_count of stats
-        #   for each Feature in response. Valid value is [0, 10]. If number of stats
-        #   exists < ListFeaturesRequest.latest_stats_count, return all existing stats.
+        #   Only applicable for Vertex AI Feature Store (Legacy). If set, return the most
+        #   recent ListFeaturesRequest.latest_stats_count of stats for each Feature in
+        #   response. Valid value is [0, 10]. If number of stats exists <
+        #   ListFeaturesRequest.latest_stats_count, return all existing stats.
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `feature_id` * `
@@ -4930,10 +4937,11 @@ module Google
         #   this value. If unspecified, at most 1000 Features will be returned. The
         #   maximum value is 1000; any value greater than 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous FeaturestoreService.ListFeatures call.
-        #   Provide this to retrieve the subsequent page. When paginating, all other
-        #   parameters provided to FeaturestoreService.ListFeatures must match the call
-        #   that provided the page token.
+        #   A page token, received from a previous FeaturestoreService.ListFeatures call
+        #   or FeatureRegistryService.ListFeatures call. Provide this to retrieve the
+        #   subsequent page. When paginating, all other parameters provided to
+        #   FeaturestoreService.ListFeatures or or FeatureRegistryService.ListFeatures
+        #   must match the call that provided the page token.
         # @param [String] read_mask
         #   Mask specifying which fields to read.
         # @param [String] fields
@@ -4973,10 +4981,11 @@ module Google
         # @param [String] name
         #   Immutable. Name of the Feature. Format: `projects/`project`/locations/`
         #   location`/featurestores/`featurestore`/entityTypes/`entity_type`/features/`
-        #   feature`` The last part feature is assigned by the client. The feature can be
-        #   up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-
-        #   z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will
-        #   be unique given an entity type.
+        #   feature`` `projects/`project`/locations/`location`/featureGroups/`
+        #   feature_group`/features/`feature`` The last part feature is assigned by the
+        #   client. The feature can be up to 64 characters long and can consist only of
+        #   ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting
+        #   with a letter. The value will be unique given an entity type.
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Feature] google_cloud_aiplatform_v1beta1_feature_object
         # @param [String] update_mask
         #   Field mask is used to specify the fields to be overwritten in the Features
@@ -4985,7 +4994,7 @@ module Google
         #   the mask. If the user does not provide a mask then only the non-empty fields
         #   present in the request will be overwritten. Set the update_mask to `*` to
         #   override all fields. Updatable fields: * `description` * `labels` * `
-        #   disable_monitoring`
+        #   disable_monitoring` (Not supported for FeatureRegistry Feature)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7268,6 +7277,11 @@ module Google
         
         # Creates a new Feature in a given EntityType.
         # @param [String] parent
+        #   Required. The resource name of the EntityType or FeatureGroup to create a
+        #   Feature. Format for entity_type as parent: `projects/`project`/locations/`
+        #   location`/featurestores/`featurestore`/entityTypes/`entity_type`` Format for
+        #   feature_group as parent: `projects/`project`/locations/`location`/
+        #   featureGroups/`feature_group``
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Feature] google_cloud_aiplatform_v1beta1_feature_object
         # @param [String] feature_id
         #   Required. The ID to use for the Feature, which will become the final component
@@ -7339,9 +7353,10 @@ module Google
         
         # Gets details of a single Feature.
         # @param [String] name
-        #   Required. The name of the Feature resource. Format: `projects/`project`/
-        #   locations/`location`/featurestores/`featurestore`/entityTypes/`entity_type`` `
-        #   projects/`project`/locations/`location`/featureGroups/`feature_group``
+        #   Required. The name of the Feature resource. Format for entity_type as parent: `
+        #   projects/`project`/locations/`location`/featurestores/`featurestore`/
+        #   entityTypes/`entity_type`` Format for feature_group as parent: `projects/`
+        #   project`/locations/`location`/featureGroups/`feature_group``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7371,10 +7386,10 @@ module Google
         
         # Lists Features in a given EntityType.
         # @param [String] parent
-        #   Required. The resource name of the Location to list Features. Format: `
-        #   projects/`project`/locations/`location`/featurestores/`featurestore`/
-        #   entityTypes/`entity_type`` `projects/`project`/locations/`location`/
-        #   featureGroups/`feature_group``
+        #   Required. The resource name of the Location to list Features. Format for
+        #   entity_type as parent: `projects/`project`/locations/`location`/featurestores/`
+        #   featurestore`/entityTypes/`entity_type`` Format for feature_group as parent: `
+        #   projects/`project`/locations/`location`/featureGroups/`feature_group``
         # @param [String] filter
         #   Lists the Features that match the filter expression. The following filters are
         #   supported: * `value_type`: Supports = and != comparisons. * `create_time`:
@@ -7388,9 +7403,10 @@ module Google
         #   Features having both (active: yes) and (env: prod) labels. * `labels.env: *` --
         #   > Any Feature which has a label with 'env' as the key.
         # @param [Fixnum] latest_stats_count
-        #   If set, return the most recent ListFeaturesRequest.latest_stats_count of stats
-        #   for each Feature in response. Valid value is [0, 10]. If number of stats
-        #   exists < ListFeaturesRequest.latest_stats_count, return all existing stats.
+        #   Only applicable for Vertex AI Feature Store (Legacy). If set, return the most
+        #   recent ListFeaturesRequest.latest_stats_count of stats for each Feature in
+        #   response. Valid value is [0, 10]. If number of stats exists <
+        #   ListFeaturesRequest.latest_stats_count, return all existing stats.
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `feature_id` * `
@@ -7401,10 +7417,11 @@ module Google
         #   this value. If unspecified, at most 1000 Features will be returned. The
         #   maximum value is 1000; any value greater than 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous FeaturestoreService.ListFeatures call.
-        #   Provide this to retrieve the subsequent page. When paginating, all other
-        #   parameters provided to FeaturestoreService.ListFeatures must match the call
-        #   that provided the page token.
+        #   A page token, received from a previous FeaturestoreService.ListFeatures call
+        #   or FeatureRegistryService.ListFeatures call. Provide this to retrieve the
+        #   subsequent page. When paginating, all other parameters provided to
+        #   FeaturestoreService.ListFeatures or or FeatureRegistryService.ListFeatures
+        #   must match the call that provided the page token.
         # @param [String] read_mask
         #   Mask specifying which fields to read.
         # @param [String] fields
@@ -7444,10 +7461,11 @@ module Google
         # @param [String] name
         #   Immutable. Name of the Feature. Format: `projects/`project`/locations/`
         #   location`/featurestores/`featurestore`/entityTypes/`entity_type`/features/`
-        #   feature`` The last part feature is assigned by the client. The feature can be
-        #   up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-
-        #   z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will
-        #   be unique given an entity type.
+        #   feature`` `projects/`project`/locations/`location`/featureGroups/`
+        #   feature_group`/features/`feature`` The last part feature is assigned by the
+        #   client. The feature can be up to 64 characters long and can consist only of
+        #   ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting
+        #   with a letter. The value will be unique given an entity type.
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Feature] google_cloud_aiplatform_v1beta1_feature_object
         # @param [String] update_mask
         #   Field mask is used to specify the fields to be overwritten in the Features
@@ -7456,7 +7474,7 @@ module Google
         #   the mask. If the user does not provide a mask then only the non-empty fields
         #   present in the request will be overwritten. Set the update_mask to `*` to
         #   override all fields. Updatable fields: * `description` * `labels` * `
-        #   disable_monitoring`
+        #   disable_monitoring` (Not supported for FeatureRegistry Feature)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
