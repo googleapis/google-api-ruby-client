@@ -2513,42 +2513,41 @@ module Google
         attr_accessor :end_time
       
         # Restricts messages exported to those matching a filter, only applicable to
-        # PubsubDestination and GcsDestination. The following syntax is available: * A
-        # string field value can be written as text inside quotation marks, for example `
-        # "query text"`. The only valid relational operation for text fields is equality
-        # (`=`), where text is searched within the field, rather than having the field
-        # be equal to the text. For example, `"Comment = great"` returns messages with `
-        # great` in the comment field. * A number field value can be written as an
-        # integer, a decimal, or an exponential. The valid relational operators for
-        # number fields are the equality operator (`=`), along with the less than/
-        # greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no
-        # inequality (`!=`) operator. You can prepend the `NOT` operator to an
-        # expression to negate it. * A date field value must be written in the `yyyy-mm-
-        # dd` format. Fields with date and time use the RFC3339 time format. Leading
-        # zeros are required for one-digit months and days. The valid relational
-        # operators for date fields are the equality operator (`=`) , along with the
-        # less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no
-        # inequality (`!=`) operator. You can prepend the `NOT` operator to an
-        # expression to negate it. * Multiple field query expressions can be combined in
-        # one query by adding `AND` or `OR` operators between the expressions. If a
-        # boolean operator appears within a quoted string, it is not treated as special,
-        # and is just another part of the character string to be matched. You can
-        # prepend the `NOT` operator to an expression to negate it. The following fields
-        # and functions are available for filtering: * `message_type`, from the MSH-9.1
-        # field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`,
-        # the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the
-        # MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the
-        # timestamp when the message was sent, using the RFC3339 time format for
-        # comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:
-        # 00:00-05:00"`. * `create_time`, the timestamp when the message was created in
-        # the HL7v2 store. Use the RFC3339 time format for comparisons. For example, `
-        # create_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center
-        # that the message came from, from the MSH-4 segment. For example, `
-        # send_facility = "ABC"`. Note: The filter will be applied to every message in
-        # the HL7v2 store whose `send_time` lies in the range defined by the `start_time`
-        # and the `end_time`. Even if the filter only matches a small set of messages,
-        # the export operation can still take a long time to finish when a lot of
-        # messages are between the specified `start_time` and `end_time` range.
+        # PubsubDestination. The following syntax is available: * A string field value
+        # can be written as text inside quotation marks, for example `"query text"`. The
+        # only valid relational operation for text fields is equality (`=`), where text
+        # is searched within the field, rather than having the field be equal to the
+        # text. For example, `"Comment = great"` returns messages with `great` in the
+        # comment field. * A number field value can be written as an integer, a decimal,
+        # or an exponential. The valid relational operators for number fields are the
+        # equality operator (`=`), along with the less than/greater than operators (`<`,
+        # `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can
+        # prepend the `NOT` operator to an expression to negate it. * A date field value
+        # must be written in the `yyyy-mm-dd` format. Fields with date and time use the
+        # RFC3339 time format. Leading zeros are required for one-digit months and days.
+        # The valid relational operators for date fields are the equality operator (`=`)
+        # , along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note
+        # that there is no inequality (`!=`) operator. You can prepend the `NOT`
+        # operator to an expression to negate it. * Multiple field query expressions can
+        # be combined in one query by adding `AND` or `OR` operators between the
+        # expressions. If a boolean operator appears within a quoted string, it is not
+        # treated as special, and is just another part of the character string to be
+        # matched. You can prepend the `NOT` operator to an expression to negate it. The
+        # following fields and functions are available for filtering: * `message_type`,
+        # from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date`
+        # or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's
+        # time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `
+        # send_time`, the timestamp when the message was sent, using the RFC3339 time
+        # format for comparisons, from the MSH-7 segment. For example, `send_time < "
+        # 2017-01-02T00:00:00-05:00"`. * `create_time`, the timestamp when the message
+        # was created in the HL7v2 store. Use the RFC3339 time format for comparisons.
+        # For example, `create_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`,
+        # the care center that the message came from, from the MSH-4 segment. For
+        # example, `send_facility = "ABC"`. Note: The filter will be applied to every
+        # message in the HL7v2 store whose `send_time` lies in the range defined by the `
+        # start_time` and the `end_time`. Even if the filter only matches a small set of
+        # messages, the export operation can still take a long time to finish when a lot
+        # of messages are between the specified `start_time` and `end_time` range.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -5977,6 +5976,121 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consent_artifact = args[:consent_artifact] if args.key?(:consent_artifact)
+        end
+      end
+      
+      # Filters to select resources that need to be rolled back.
+      class RollbackFhirResourceFilteringFields
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A string to use for filtering resource metadata. Complies with AIP-
+        # 160 except without the has operator. Additionally, supports 2 functions:
+        # hastag("system") = "code" for tag filtering and extension_ts_value("uri") =
+        # timestamp for filtering extensions with timestamp, which is given as a unix
+        # timestamp. extension_ts_url can be used with >, <, <=, >=, != comparisons as
+        # well.
+        # Corresponds to the JSON property `metadataFilter`
+        # @return [String]
+        attr_accessor :metadata_filter
+      
+        # Optional. A list of operation IDs to roll back. Only changes made by these
+        # operations will be rolled back.
+        # Corresponds to the JSON property `operationIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :operation_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata_filter = args[:metadata_filter] if args.key?(:metadata_filter)
+          @operation_ids = args[:operation_ids] if args.key?(:operation_ids)
+        end
+      end
+      
+      # Request to roll back resources.
+      class RollbackFhirResourcesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. CREATE/UPDATE/DELETE/ALL for reverting all txns of a certain type.
+        # Corresponds to the JSON property `changeType`
+        # @return [String]
+        attr_accessor :change_type
+      
+        # Optional. Specifies whether to exclude earlier rollbacks.
+        # Corresponds to the JSON property `excludeRollbacks`
+        # @return [Boolean]
+        attr_accessor :exclude_rollbacks
+        alias_method :exclude_rollbacks?, :exclude_rollbacks
+      
+        # Filters to select resources that need to be rolled back.
+        # Corresponds to the JSON property `filteringFields`
+        # @return [Google::Apis::HealthcareV1beta1::RollbackFhirResourceFilteringFields]
+        attr_accessor :filtering_fields
+      
+        # Optional. When enabled, changes will be reverted without explicit confirmation
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # Optional. Cloud Storage object containing list of `resourceType`/`resourceId`
+        # lines, identifying resources to be reverted
+        # Corresponds to the JSON property `inputGcsObject`
+        # @return [String]
+        attr_accessor :input_gcs_object
+      
+        # Required. Bucket to deposit result
+        # Corresponds to the JSON property `resultGcsBucket`
+        # @return [String]
+        attr_accessor :result_gcs_bucket
+      
+        # Required. Time point to rollback to.
+        # Corresponds to the JSON property `rollbackTime`
+        # @return [String]
+        attr_accessor :rollback_time
+      
+        # Optional. If specified, revert only resources of these types
+        # Corresponds to the JSON property `type`
+        # @return [Array<String>]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @change_type = args[:change_type] if args.key?(:change_type)
+          @exclude_rollbacks = args[:exclude_rollbacks] if args.key?(:exclude_rollbacks)
+          @filtering_fields = args[:filtering_fields] if args.key?(:filtering_fields)
+          @force = args[:force] if args.key?(:force)
+          @input_gcs_object = args[:input_gcs_object] if args.key?(:input_gcs_object)
+          @result_gcs_bucket = args[:result_gcs_bucket] if args.key?(:result_gcs_bucket)
+          @rollback_time = args[:rollback_time] if args.key?(:rollback_time)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Final response of rollback FIHR resources request.
+      class RollbackFhirResourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The name of the FHIR store to rollback, in the format of "projects/`project_id`
+        # /locations/`location_id`/datasets/`dataset_id` /fhirStores/`fhir_store_id`".
+        # Corresponds to the JSON property `fhirStore`
+        # @return [String]
+        attr_accessor :fhir_store
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fhir_store = args[:fhir_store] if args.key?(:fhir_store)
         end
       end
       
