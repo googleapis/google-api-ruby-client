@@ -295,6 +295,7 @@ module Google
       
           hash :options, as: 'options'
           property :p4_service_account, as: 'p4ServiceAccount'
+          property :patch_revision, as: 'patchRevision'
           property :private_instance, as: 'privateInstance'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
@@ -305,6 +306,7 @@ module Google
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
           property :version, as: 'version'
+          property :workforce_identity_service_endpoint, as: 'workforceIdentityServiceEndpoint'
           property :zone, as: 'zone'
         end
       end
