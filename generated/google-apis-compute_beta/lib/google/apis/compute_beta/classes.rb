@@ -3561,23 +3561,23 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Specifies preference of traffic to the backend (from the proxy and from the
-        # client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send
-        # IPv4 traffic to the backends of the Backend Service (Instance Group, Managed
-        # Instance Group, Network Endpoint Group) regardless of traffic from the client
-        # to the proxy. Only IPv4 health-checks are used to check the health of the
-        # backends. This is the default setting. - PREFER_IPV6: Prioritize the
-        # connection to the endpoints IPv6 address over its IPv4 address (provided there
-        # is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the
-        # backends of the Backend Service (Instance Group, Managed Instance Group,
-        # Network Endpoint Group) regardless of traffic from the client to the proxy.
-        # Only IPv6 health-checks are used to check the health of the backends. This
-        # field is applicable to either: - Advanced Global External HTTPS Load Balancing
-        # (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load
-        # Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), -
-        # Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED)
-        # , - Traffic Director with Envoy proxies and proxyless gRPC (load balancing
-        # scheme INTERNAL_SELF_MANAGED).
+        # Specifies a preference for traffic sent from the proxy to the backend (or from
+        # the client to the backend for proxyless gRPC). The possible values are: -
+        # IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (
+        # Instance Group, Managed Instance Group, Network Endpoint Group), regardless of
+        # traffic from the client to the proxy. Only IPv4 health checks are used to
+        # check the health of the backends. This is the default setting. - PREFER_IPV6:
+        # Prioritize the connection to the endpoint's IPv6 address over its IPv4 address
+        # (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6
+        # traffic to the backends of the backend service (Instance Group, Managed
+        # Instance Group, Network Endpoint Group), regardless of traffic from the client
+        # to the proxy. Only IPv6 health checks are used to check the health of the
+        # backends. This field is applicable to either: - Advanced Global External HTTPS
+        # Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External
+        # HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme
+        # INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing
+        # scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless
+        # gRPC (load balancing scheme INTERNAL_SELF_MANAGED).
         # Corresponds to the JSON property `ipAddressSelectionPolicy`
         # @return [String]
         attr_accessor :ip_address_selection_policy
@@ -31315,6 +31315,11 @@ module Google
       class PublicAdvertisedPrefix
         include Google::Apis::Core::Hashable
       
+        # [Output Only] The version of BYOIP API.
+        # Corresponds to the JSON property `byoipApiVersion`
+        # @return [String]
+        attr_accessor :byoip_api_version
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -31370,6 +31375,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Specifies how child public delegated prefix will be scoped. It could be one of
+        # following values: - `REGIONAL`: The public delegated prefix is regional only.
+        # The provisioning will take a few minutes. - `GLOBAL`: The public delegated
+        # prefix is global only. The provisioning will take ~4 weeks. - `
+        # GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1
+        # legacy prefix. This is output only value and no longer supported in BYOIP V2.
+        # Corresponds to the JSON property `pdpScope`
+        # @return [String]
+        attr_accessor :pdp_scope
+      
         # [Output Only] The list of public delegated prefixes that exist for this public
         # advertised prefix.
         # Corresponds to the JSON property `publicDelegatedPrefixs`
@@ -31403,6 +31418,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @byoip_api_version = args[:byoip_api_version] if args.key?(:byoip_api_version)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @dns_verification_ip = args[:dns_verification_ip] if args.key?(:dns_verification_ip)
@@ -31411,6 +31427,7 @@ module Google
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @pdp_scope = args[:pdp_scope] if args.key?(:pdp_scope)
           @public_delegated_prefixs = args[:public_delegated_prefixs] if args.key?(:public_delegated_prefixs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @shared_secret = args[:shared_secret] if args.key?(:shared_secret)
@@ -31590,6 +31607,11 @@ module Google
       class PublicDelegatedPrefix
         include Google::Apis::Core::Hashable
       
+        # [Output Only] The version of BYOIP API.
+        # Corresponds to the JSON property `byoipApiVersion`
+        # @return [String]
+        attr_accessor :byoip_api_version
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -31687,6 +31709,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @byoip_api_version = args[:byoip_api_version] if args.key?(:byoip_api_version)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
@@ -41063,6 +41086,11 @@ module Google
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_disk_encryption_key
       
+        # The source disk whose recovery checkpoint will be used to create this snapshot.
+        # Corresponds to the JSON property `sourceDiskForRecoveryCheckpoint`
+        # @return [String]
+        attr_accessor :source_disk_for_recovery_checkpoint
+      
         # [Output Only] The ID value of the disk used to create this snapshot. This
         # value may be used to determine whether the snapshot was taken from the current
         # or a previous instance of a given disk name.
@@ -41167,6 +41195,7 @@ module Google
           @snapshot_type = args[:snapshot_type] if args.key?(:snapshot_type)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
           @source_disk_encryption_key = args[:source_disk_encryption_key] if args.key?(:source_disk_encryption_key)
+          @source_disk_for_recovery_checkpoint = args[:source_disk_for_recovery_checkpoint] if args.key?(:source_disk_for_recovery_checkpoint)
           @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
           @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
           @source_instant_snapshot_encryption_key = args[:source_instant_snapshot_encryption_key] if args.key?(:source_instant_snapshot_encryption_key)
