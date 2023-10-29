@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataCatalogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseDump
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +209,12 @@ module Google
       end
       
       class MetadataImport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetadataIntegration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -416,6 +428,13 @@ module Google
         end
       end
       
+      class DataCatalogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class DatabaseDump
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -625,6 +644,14 @@ module Google
         end
       end
       
+      class MetadataIntegration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_catalog_config, as: 'dataCatalogConfig', class: Google::Apis::MetastoreV1::DataCatalogConfig, decorator: Google::Apis::MetastoreV1::DataCatalogConfig::Representation
+      
+        end
+      end
+      
       class MetadataManagementActivity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -765,6 +792,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::MetastoreV1::MaintenanceWindow, decorator: Google::Apis::MetastoreV1::MaintenanceWindow::Representation
+      
+          property :metadata_integration, as: 'metadataIntegration', class: Google::Apis::MetastoreV1::MetadataIntegration, decorator: Google::Apis::MetastoreV1::MetadataIntegration::Representation
       
           property :metadata_management_activity, as: 'metadataManagementActivity', class: Google::Apis::MetastoreV1::MetadataManagementActivity, decorator: Google::Apis::MetastoreV1::MetadataManagementActivity::Representation
       

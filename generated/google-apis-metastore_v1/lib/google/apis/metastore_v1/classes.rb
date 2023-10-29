@@ -379,6 +379,29 @@ module Google
         end
       end
       
+      # Specifies how metastore metadata should be integrated with the Data Catalog
+      # service.
+      class DataCatalogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Defines whether the metastore metadata should be synced to Data
+        # Catalog. The default value is to disable syncing metastore metadata to Data
+        # Catalog.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # A specification of the location of and metadata about a database dump from a
       # relational database management system.
       class DatabaseDump
@@ -1149,6 +1172,26 @@ module Google
         end
       end
       
+      # Specifies how metastore metadata should be integrated with external services.
+      class MetadataIntegration
+        include Google::Apis::Core::Hashable
+      
+        # Specifies how metastore metadata should be integrated with the Data Catalog
+        # service.
+        # Corresponds to the JSON property `dataCatalogConfig`
+        # @return [Google::Apis::MetastoreV1::DataCatalogConfig]
+        attr_accessor :data_catalog_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_catalog_config = args[:data_catalog_config] if args.key?(:data_catalog_config)
+        end
+      end
+      
       # The metadata management activities of the metastore service.
       class MetadataManagementActivity
         include Google::Apis::Core::Hashable
@@ -1702,6 +1745,11 @@ module Google
         # @return [Google::Apis::MetastoreV1::MaintenanceWindow]
         attr_accessor :maintenance_window
       
+        # Specifies how metastore metadata should be integrated with external services.
+        # Corresponds to the JSON property `metadataIntegration`
+        # @return [Google::Apis::MetastoreV1::MetadataIntegration]
+        attr_accessor :metadata_integration
+      
         # The metadata management activities of the metastore service.
         # Corresponds to the JSON property `metadataManagementActivity`
         # @return [Google::Apis::MetastoreV1::MetadataManagementActivity]
@@ -1787,6 +1835,7 @@ module Google
           @hive_metastore_config = args[:hive_metastore_config] if args.key?(:hive_metastore_config)
           @labels = args[:labels] if args.key?(:labels)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
+          @metadata_integration = args[:metadata_integration] if args.key?(:metadata_integration)
           @metadata_management_activity = args[:metadata_management_activity] if args.key?(:metadata_management_activity)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
