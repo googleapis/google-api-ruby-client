@@ -1126,6 +1126,8 @@ module Google
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           property :failed_analyses_count, as: 'failedAnalysesCount'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
           property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest::Representation
       
           property :total_requested_analyses_count, as: 'totalRequestedAnalysesCount'
@@ -2072,6 +2074,8 @@ module Google
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           property :failed_analyses_count, as: 'failedAnalysesCount'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
           property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest::Representation
       
           property :total_requested_analyses_count, as: 'totalRequestedAnalysesCount'

@@ -402,6 +402,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :failed_analyses_count
       
+        # Output only. Partial errors during ingest operation that might cause the
+        # operation output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
         # The request to analyze conversations in bulk.
         # Corresponds to the JSON property `request`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest]
@@ -423,6 +429,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @failed_analyses_count = args[:failed_analyses_count] if args.key?(:failed_analyses_count)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
           @request = args[:request] if args.key?(:request)
           @total_requested_analyses_count = args[:total_requested_analyses_count] if args.key?(:total_requested_analyses_count)
         end
@@ -732,7 +739,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The conversation source, which is a combination of transcript and audio.
+        # The conversation source, which is a combination of transcript, audio, and
+        # metadata.
         # Corresponds to the JSON property `dataSource`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSource]
         attr_accessor :data_source
@@ -878,7 +886,8 @@ module Google
         end
       end
       
-      # The conversation source, which is a combination of transcript and audio.
+      # The conversation source, which is a combination of transcript, audio, and
+      # metadata.
       class GoogleCloudContactcenterinsightsV1ConversationDataSource
         include Google::Apis::Core::Hashable
       
@@ -3611,6 +3620,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :failed_analyses_count
       
+        # Output only. Partial errors during ingest operation that might cause the
+        # operation output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
         # The request to analyze conversations in bulk.
         # Corresponds to the JSON property `request`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest]
@@ -3632,6 +3647,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @failed_analyses_count = args[:failed_analyses_count] if args.key?(:failed_analyses_count)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
           @request = args[:request] if args.key?(:request)
           @total_requested_analyses_count = args[:total_requested_analyses_count] if args.key?(:total_requested_analyses_count)
         end
@@ -3803,7 +3819,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The conversation source, which is a combination of transcript and audio.
+        # The conversation source, which is a combination of transcript, audio, and
+        # metadata.
         # Corresponds to the JSON property `dataSource`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource]
         attr_accessor :data_source
@@ -3949,7 +3966,8 @@ module Google
         end
       end
       
-      # The conversation source, which is a combination of transcript and audio.
+      # The conversation source, which is a combination of transcript, audio, and
+      # metadata.
       class GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource
         include Google::Apis::Core::Hashable
       
