@@ -376,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrgPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Pod
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -776,6 +782,8 @@ module Google
           property :mute_update_time, as: 'muteUpdateTime'
           property :name, as: 'name'
           property :next_steps, as: 'nextSteps'
+          collection :org_policies, as: 'orgPolicies', class: Google::Apis::SecuritycenterV1beta2::OrgPolicy, decorator: Google::Apis::SecuritycenterV1beta2::OrgPolicy::Representation
+      
           property :parent, as: 'parent'
           property :parent_display_name, as: 'parentDisplayName'
           collection :processes, as: 'processes', class: Google::Apis::SecuritycenterV1beta2::Process, decorator: Google::Apis::SecuritycenterV1beta2::Process::Representation
@@ -1166,6 +1174,13 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :ns, as: 'ns'
+        end
+      end
+      
+      class OrgPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
