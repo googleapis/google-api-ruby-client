@@ -322,6 +322,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1UserId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1UserInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1WafSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -376,6 +388,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
           property :annotation, as: 'annotation'
           property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
           collection :reasons, as: 'reasons'
@@ -459,6 +472,8 @@ module Google
           property :transaction_data, as: 'transactionData', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionData, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionData::Representation
       
           property :user_agent, as: 'userAgent'
+          property :user_info, as: 'userInfo', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1UserInfo, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1UserInfo::Representation
+      
           property :user_ip_address, as: 'userIpAddress'
           property :waf_token_assessment, as: 'wafTokenAssessment'
         end
@@ -852,6 +867,25 @@ module Google
           property :event_type, as: 'eventType'
           property :reason, as: 'reason'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1UserId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :phone_number, as: 'phoneNumber'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1UserInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :create_account_time, as: 'createAccountTime'
+          collection :user_ids, as: 'userIds', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1UserId, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1UserId::Representation
+      
         end
       end
       
