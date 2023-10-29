@@ -1865,6 +1865,13 @@ module Google
         # @return [Array<Google::Apis::BatchV1::AgentTask>]
         attr_accessor :tasks
       
+        # If true, the cloud logging for batch agent will use batch.googleapis.com/Job
+        # as monitored resource for Batch job related logging.
+        # Corresponds to the JSON property `useBatchMonitoredResource`
+        # @return [Boolean]
+        attr_accessor :use_batch_monitored_resource
+        alias_method :use_batch_monitored_resource?, :use_batch_monitored_resource
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1874,6 +1881,7 @@ module Google
           @default_report_interval = args[:default_report_interval] if args.key?(:default_report_interval)
           @min_report_interval = args[:min_report_interval] if args.key?(:min_report_interval)
           @tasks = args[:tasks] if args.key?(:tasks)
+          @use_batch_monitored_resource = args[:use_batch_monitored_resource] if args.key?(:use_batch_monitored_resource)
         end
       end
       
