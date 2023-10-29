@@ -1430,6 +1430,11 @@ module Google
         # @return [String]
         attr_accessor :event_type_id
       
+        # JMS message denotes the source of the event
+        # Corresponds to the JSON property `jms`
+        # @return [Google::Apis::ConnectorsV1::Jms]
+        attr_accessor :jms
+      
         # Required. Resource name of the EventSubscription. Format: projects/`project`/
         # locations/`location`/connections/`connection`/eventSubscriptions/`
         # event_subscription`
@@ -1466,6 +1471,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @destinations = args[:destinations] if args.key?(:destinations)
           @event_type_id = args[:event_type_id] if args.key?(:event_type_id)
+          @jms = args[:jms] if args.key?(:jms)
           @name = args[:name] if args.key?(:name)
           @status = args[:status] if args.key?(:status)
           @subscriber = args[:subscriber] if args.key?(:subscriber)
@@ -1693,6 +1699,11 @@ module Google
         attr_accessor :enrichment_supported
         alias_method :enrichment_supported?, :enrichment_supported
       
+        # The type of the event listener for a specific connector.
+        # Corresponds to the JSON property `eventListenerType`
+        # @return [String]
+        attr_accessor :event_listener_type
+      
         # Is Eventing Supported.
         # Corresponds to the JSON property `isEventingSupported`
         # @return [Boolean]
@@ -1717,6 +1728,7 @@ module Google
           @auto_registration_supported = args[:auto_registration_supported] if args.key?(:auto_registration_supported)
           @encryption_key_template = args[:encryption_key_template] if args.key?(:encryption_key_template)
           @enrichment_supported = args[:enrichment_supported] if args.key?(:enrichment_supported)
+          @event_listener_type = args[:event_listener_type] if args.key?(:event_listener_type)
           @is_eventing_supported = args[:is_eventing_supported] if args.key?(:is_eventing_supported)
           @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
         end
@@ -2153,6 +2165,31 @@ module Google
           @json_schema = args[:json_schema] if args.key?(:json_schema)
           @nullable = args[:nullable] if args.key?(:nullable)
           @parameter = args[:parameter] if args.key?(:parameter)
+        end
+      end
+      
+      # JMS message denotes the source of the event
+      class Jms
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name of the JMS source. i.e. queueName or topicName
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Type of the JMS Source. i.e. Queue or Topic
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
