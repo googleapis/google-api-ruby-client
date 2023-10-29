@@ -162,6 +162,7 @@ module Google
       
           property :name, as: 'name'
           property :request_time, as: 'requestTime'
+          property :requested_duration, as: 'requestedDuration'
           property :requested_expiration, as: 'requestedExpiration'
           property :requested_locations, as: 'requestedLocations', class: Google::Apis::AccessapprovalV1::AccessLocations, decorator: Google::Apis::AccessapprovalV1::AccessLocations::Representation
       
