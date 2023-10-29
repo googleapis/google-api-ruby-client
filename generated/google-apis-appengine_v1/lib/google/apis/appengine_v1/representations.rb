@@ -1253,6 +1253,7 @@ module Google
       
           property :flexible_runtime_settings, as: 'flexibleRuntimeSettings', class: Google::Apis::AppengineV1::FlexibleRuntimeSettings, decorator: Google::Apis::AppengineV1::FlexibleRuntimeSettings::Representation
       
+          hash :generated_customer_metadata, as: 'generatedCustomerMetadata'
           collection :handlers, as: 'handlers', class: Google::Apis::AppengineV1::UrlMap, decorator: Google::Apis::AppengineV1::UrlMap::Representation
       
           property :health_check, as: 'healthCheck', class: Google::Apis::AppengineV1::HealthCheck, decorator: Google::Apis::AppengineV1::HealthCheck::Representation
