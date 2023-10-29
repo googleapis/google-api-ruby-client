@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Encryption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FetchInventoryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -817,6 +823,8 @@ module Google
           property :device_name, as: 'deviceName'
           property :disk_name, as: 'diskName'
           property :disk_type, as: 'diskType'
+          property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1alpha1::Encryption, decorator: Google::Apis::VmmigrationV1alpha1::Encryption::Representation
+      
           property :image, as: 'image', class: Google::Apis::VmmigrationV1alpha1::DiskImageDefaults, decorator: Google::Apis::VmmigrationV1alpha1::DiskImageDefaults::Representation
       
         end
@@ -922,6 +930,8 @@ module Google
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1alpha1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1alpha1::ComputeScheduling::Representation
       
           property :disk_type, as: 'diskType'
+          property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1alpha1::Encryption, decorator: Google::Apis::VmmigrationV1alpha1::Encryption::Representation
+      
           property :hostname, as: 'hostname'
           hash :labels, as: 'labels'
           property :license_type, as: 'licenseType'
@@ -949,6 +959,8 @@ module Google
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1alpha1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1alpha1::ComputeScheduling::Representation
       
           property :disk_type, as: 'diskType'
+          property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1alpha1::Encryption, decorator: Google::Apis::VmmigrationV1alpha1::Encryption::Representation
+      
           property :hostname, as: 'hostname'
           hash :labels, as: 'labels'
           property :license_type, as: 'licenseType'
@@ -1102,6 +1114,8 @@ module Google
       
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1alpha1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1alpha1::ComputeScheduling::Representation
       
+          property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1alpha1::Encryption, decorator: Google::Apis::VmmigrationV1alpha1::Encryption::Representation
+      
           property :hostname, as: 'hostname'
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
@@ -1126,6 +1140,13 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Encryption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key, as: 'kmsKey'
         end
       end
       
@@ -1456,6 +1477,8 @@ module Google
           hash :additional_labels, as: 'additionalLabels'
           property :disk_name, as: 'diskName'
           property :disk_type, as: 'diskType'
+          property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1alpha1::Encryption, decorator: Google::Apis::VmmigrationV1alpha1::Encryption::Representation
+      
           property :source_disk_number, as: 'sourceDiskNumber'
           property :vm_attachment_details, as: 'vmAttachmentDetails', class: Google::Apis::VmmigrationV1alpha1::VmAttachmentDetails, decorator: Google::Apis::VmmigrationV1alpha1::VmAttachmentDetails::Representation
       
@@ -1556,6 +1579,8 @@ module Google
       
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1alpha1::Encryption, decorator: Google::Apis::VmmigrationV1alpha1::Encryption::Representation
+      
           property :error, as: 'error', class: Google::Apis::VmmigrationV1alpha1::Status, decorator: Google::Apis::VmmigrationV1alpha1::Status::Representation
       
           hash :labels, as: 'labels'
