@@ -1241,6 +1241,11 @@ module Google
         # @return [String]
         attr_accessor :next_steps
       
+        # Contains information about the org policies associated with the finding.
+        # Corresponds to the JSON property `orgPolicies`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::OrgPolicy>]
+        attr_accessor :org_policies
+      
         # The relative resource name of the source the finding belongs to. See: https://
         # cloud.google.com/apis/design/resource_names#relative_resource_name This field
         # is immutable after creation time. For example: "organizations/`organization_id`
@@ -1346,6 +1351,7 @@ module Google
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
           @name = args[:name] if args.key?(:name)
           @next_steps = args[:next_steps] if args.key?(:next_steps)
+          @org_policies = args[:org_policies] if args.key?(:org_policies)
           @parent = args[:parent] if args.key?(:parent)
           @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
           @processes = args[:processes] if args.key?(:processes)
@@ -1780,7 +1786,10 @@ module Google
       
         # This field will be ignored if provided on config creation. Format "
         # organizations/`organization`/muteConfigs/`mute_config`" "folders/`folder`/
-        # muteConfigs/`mute_config`" "projects/`project`/muteConfigs/`mute_config`"
+        # muteConfigs/`mute_config`" "projects/`project`/muteConfigs/`mute_config`" "
+        # organizations/`organization`/locations/global/muteConfigs/`mute_config`" "
+        # folders/`folder`/locations/global/muteConfigs/`mute_config`" "projects/`
+        # project`/locations/global/muteConfigs/`mute_config`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2898,6 +2907,26 @@ module Google
         end
       end
       
+      # Contains information about the org policies associated with the finding.
+      class OrgPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the org policy. Example: "organizations/`organization_id`/
+        # policies/`constraint_name`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # A Kubernetes Pod.
       class Pod
         include Google::Apis::Core::Hashable
@@ -3138,7 +3167,7 @@ module Google
         end
       end
       
-      # Resource capturing the settings for Security Center.
+      # Resource capturing the settings for Security Center. Next ID: 12
       class SecurityCenterSettings
         include Google::Apis::Core::Hashable
       
