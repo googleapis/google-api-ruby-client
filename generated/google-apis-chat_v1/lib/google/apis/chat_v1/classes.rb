@@ -494,15 +494,15 @@ module Google
         end
       end
       
-      # Chat apps only. For a `SelectionInput` widget that uses a multi-select menu, a
-      # data source from Google Chat. For example, a list of Google Chat spaces of
-      # which the user is a member. [Developer Preview](https://developers.google.com/
-      # workspace/preview).
+      # Chat apps only. For a `SelectionInput` widget that uses a multiselect menu, a
+      # data source from Google Chat. The data source populates selection items for
+      # the multiselect menu. For example, a user can select Google Chat spaces that
+      # they're a member of.
       class ChatClientDataSourceMarkup
         include Google::Apis::Core::Hashable
       
-        # A data source representing a Google Chat space. Format: spaces/`space` [
-        # Developer Preview](https://developers.google.com/workspace/preview).
+        # A data source that populates Google Chat spaces as selection items for a
+        # multiselect menu. Only populates spaces that the user is a member of.
         # Corresponds to the JSON property `spaceDataSource`
         # @return [Google::Apis::ChatV1::SpaceDataSource]
         attr_accessor :space_data_source
@@ -2194,25 +2194,21 @@ module Google
         end
       end
       
-      # Chat apps only. For a `SelectionInput` widget that uses a multi-select menu,
-      # the data from a [Google Workspace host application](https://developers.google.
-      # com/chat/api/reference/rest/v1/HostApp). Used to populate the items in the
-      # multi-select menu. [Developer Preview](https://developers.google.com/workspace/
-      # preview).
+      # Chat apps only. For a `SelectionInput` widget that uses a multiselect menu, a
+      # data source from Google Workspace. Used to populate items in a multiselect
+      # menu.
       class GoogleAppsCardV1PlatformDataSource
         include Google::Apis::Core::Hashable
       
-        # For a `SelectionInput` widget that uses a multi-select menu, a data source
-        # shared by all Google Workspace host applications, such as users in a Google
-        # Workspace organization. [Developer Preview](https://developers.google.com/
-        # workspace/preview).
+        # A data source shared by all Google Workspace applications, such as users in a
+        # Google Workspace organization.
         # Corresponds to the JSON property `commonDataSource`
         # @return [String]
         attr_accessor :common_data_source
       
-        # Chat apps only. For a `SelectionInput` widget that uses a multi-select menu, a
-        # data source from a Google Workspace host application. [Developer Preview](
-        # https://developers.google.com/workspace/preview).
+        # Chat apps only. For a `SelectionInput` widget that uses a multiselect menu, a
+        # data source from a Google Workspace application. The data source populates
+        # selection items for the multiselect menu.
         # Corresponds to the JSON property `hostAppDataSource`
         # @return [Google::Apis::ChatV1::HostAppDataSourceMarkup]
         attr_accessor :host_app_data_source
@@ -2312,18 +2308,16 @@ module Google
         # @return [String]
         attr_accessor :label
       
-        # For multi-select menus, the maximum number of items that a user can select.
-        # Minimum value is 1 item. If unspecified, set to 3 items. [Developer Preview](
-        # https://developers.google.com/workspace/preview).
+        # For multiselect menus, the maximum number of items that a user can select.
+        # Minimum value is 1 item. If unspecified, defaults to 3 items.
         # Corresponds to the JSON property `multiSelectMaxSelectedItems`
         # @return [Fixnum]
         attr_accessor :multi_select_max_selected_items
       
-        # For multi-select menus, the number of text characters that a user inputs
-        # before the Chat app queries autocomplete and displays suggested items on the
-        # card. If unspecified, set to 0 characters for static data sources and 3
-        # characters for external data sources. [Developer Preview](https://developers.
-        # google.com/workspace/preview).
+        # For multiselect menus, the number of text characters that a user inputs before
+        # the Chat app queries autocomplete and displays suggested items in the menu. If
+        # unspecified, defaults to 0 characters for static data sources and 3 characters
+        # for external data sources.
         # Corresponds to the JSON property `multiSelectMinQueryLength`
         # @return [Fixnum]
         attr_accessor :multi_select_min_query_length
@@ -2342,11 +2336,9 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :on_change_action
       
-        # Chat apps only. For a `SelectionInput` widget that uses a multi-select menu,
-        # the data from a [Google Workspace host application](https://developers.google.
-        # com/chat/api/reference/rest/v1/HostApp). Used to populate the items in the
-        # multi-select menu. [Developer Preview](https://developers.google.com/workspace/
-        # preview).
+        # Chat apps only. For a `SelectionInput` widget that uses a multiselect menu, a
+        # data source from Google Workspace. Used to populate items in a multiselect
+        # menu.
         # Corresponds to the JSON property `platformDataSource`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1PlatformDataSource]
         attr_accessor :platform_data_source
@@ -2382,9 +2374,8 @@ module Google
       class GoogleAppsCardV1SelectionItem
         include Google::Apis::Core::Hashable
       
-        # For multi-select menus, a text description or label that's displayed below the
-        # item's `text` field. [Developer Preview](https://developers.google.com/
-        # workspace/preview).
+        # For multiselect menus, a text description or label that's displayed below the
+        # item's `text` field.
         # Corresponds to the JSON property `bottomText`
         # @return [String]
         attr_accessor :bottom_text
@@ -2397,10 +2388,9 @@ module Google
         attr_accessor :selected
         alias_method :selected?, :selected
       
-        # For multi-select menus, the URL for the icon displayed next to the item's `
-        # text` field. Supports PNG and JPEG files. Must be an `HTTPS` URL. For example,
-        # `https://developers.google.com/chat/images/quickstart-app-avatar.png`. [
-        # Developer Preview](https://developers.google.com/workspace/preview).
+        # For multiselect menus, the URL for the icon displayed next to the item's `text`
+        # field. Supports PNG and JPEG files. Must be an `HTTPS` URL. For example, `
+        # https://developers.google.com/chat/images/quickstart-app-avatar.png`.
         # Corresponds to the JSON property `startIconUri`
         # @return [String]
         attr_accessor :start_icon_uri
@@ -2876,16 +2866,16 @@ module Google
         end
       end
       
-      # Chat apps only. For a `SelectionInput` widget that uses a multi-select menu, a
-      # data source from a Google Workspace host application. [Developer Preview](
-      # https://developers.google.com/workspace/preview).
+      # Chat apps only. For a `SelectionInput` widget that uses a multiselect menu, a
+      # data source from a Google Workspace application. The data source populates
+      # selection items for the multiselect menu.
       class HostAppDataSourceMarkup
         include Google::Apis::Core::Hashable
       
-        # Chat apps only. For a `SelectionInput` widget that uses a multi-select menu, a
-        # data source from Google Chat. For example, a list of Google Chat spaces of
-        # which the user is a member. [Developer Preview](https://developers.google.com/
-        # workspace/preview).
+        # Chat apps only. For a `SelectionInput` widget that uses a multiselect menu, a
+        # data source from Google Chat. The data source populates selection items for
+        # the multiselect menu. For example, a user can select Google Chat spaces that
+        # they're a member of.
         # Corresponds to the JSON property `chatDataSource`
         # @return [Google::Apis::ChatV1::ChatClientDataSourceMarkup]
         attr_accessor :chat_data_source
@@ -3860,14 +3850,13 @@ module Google
         end
       end
       
-      # A data source representing a Google Chat space. Format: spaces/`space` [
-      # Developer Preview](https://developers.google.com/workspace/preview).
+      # A data source that populates Google Chat spaces as selection items for a
+      # multiselect menu. Only populates spaces that the user is a member of.
       class SpaceDataSource
         include Google::Apis::Core::Hashable
       
-        # When `true`, uses the card's Google Chat space as the default selection. The
-        # default value is `false`. [Developer Preview](https://developers.google.com/
-        # workspace/preview).
+        # If set to `true`, the multiselect menu selects the current Google Chat space
+        # as an item by default.
         # Corresponds to the JSON property `defaultToCurrentSpace`
         # @return [Boolean]
         attr_accessor :default_to_current_space
