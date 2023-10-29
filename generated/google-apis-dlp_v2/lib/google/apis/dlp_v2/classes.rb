@@ -297,7 +297,7 @@ module Google
         end
       end
       
-      # Target used to match against for Discovery with BigQuery tables
+      # Target used to match against for discovery with BigQuery tables
       class GooglePrivacyDlpV2BigQueryDiscoveryTarget
         include Google::Apis::Core::Hashable
       
@@ -308,22 +308,23 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryGenerationCadence]
         attr_accessor :cadence
       
-        # Requirements that must be true before a table is scanned in Discovery for the
+        # Requirements that must be true before a table is scanned in discovery for the
         # first time. There is an AND relationship between the top-level attributes.
+        # Additionally, minimum conditions with an OR relationship that must be met
+        # before Cloud DLP scans a table can be set (like a minimum row count or a
+        # minimum table age).
         # Corresponds to the JSON property `conditions`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryBigQueryConditions]
         attr_accessor :conditions
       
-        # Do nothing.
+        # Do not profile the tables.
         # Corresponds to the JSON property `disabled`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Disabled]
         attr_accessor :disabled
       
         # Determines what tables will have profiles generated within an organization or
         # project. Includes the ability to filter by regular expression patterns on
-        # project ID, dataset ID, and table ID. Also lets you set minimum conditions
-        # that must be met before Cloud DLP scans a table (like a minimum row count or a
-        # minimum table age).
+        # project ID, dataset ID, and table ID.
         # Corresponds to the JSON property `filter`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryBigQueryFilter]
         attr_accessor :filter
@@ -579,11 +580,11 @@ module Google
         end
       end
       
-      # The types of bigquery tables supported by Cloud DLP.
+      # The types of BigQuery tables supported by Cloud DLP.
       class GooglePrivacyDlpV2BigQueryTableTypes
         include Google::Apis::Core::Hashable
       
-        # A set of bigquery table types.
+        # A set of BigQuery table types.
         # Corresponds to the JSON property `types`
         # @return [Array<String>]
         attr_accessor :types
@@ -1515,7 +1516,7 @@ module Google
       class GooglePrivacyDlpV2CreateDiscoveryConfigRequest
         include Google::Apis::Core::Hashable
       
-        # The config id can contain uppercase and lowercase letters, numbers, and
+        # The config ID can contain uppercase and lowercase letters, numbers, and
         # hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The
         # maximum length is 100 characters. Can be empty to allow the system to generate
         # one.
@@ -1523,8 +1524,8 @@ module Google
         # @return [String]
         attr_accessor :config_id
       
-        # Configuration for Discovery to scan resources for profile generation. Only one
-        # Discovery configuration may exist per organization, folder, or project. The
+        # Configuration for discovery to scan resources for profile generation. Only one
+        # discovery configuration may exist per organization, folder, or project. The
         # generated data profiles are retained according to the [data retention policy] (
         # https://cloud.google.com/dlp/docs/data-profiles#retention).
         # Corresponds to the JSON property `discoveryConfig`
@@ -2065,7 +2066,7 @@ module Google
         # be copied to that region and used instead. If no global or region-specific
         # template is provided for a region with data, that region's data will not be
         # scanned. For more information, see https://cloud.google.com/dlp/docs/data-
-        # profiles#data_residency.
+        # profiles#data-residency.
         # Corresponds to the JSON property `inspectTemplates`
         # @return [Array<String>]
         attr_accessor :inspect_templates
@@ -2826,7 +2827,7 @@ module Google
         end
       end
       
-      # Do nothing.
+      # Do not profile the tables.
       class GooglePrivacyDlpV2Disabled
         include Google::Apis::Core::Hashable
       
@@ -2839,8 +2840,11 @@ module Google
         end
       end
       
-      # Requirements that must be true before a table is scanned in Discovery for the
+      # Requirements that must be true before a table is scanned in discovery for the
       # first time. There is an AND relationship between the top-level attributes.
+      # Additionally, minimum conditions with an OR relationship that must be met
+      # before Cloud DLP scans a table can be set (like a minimum row count or a
+      # minimum table age).
       class GooglePrivacyDlpV2DiscoveryBigQueryConditions
         include Google::Apis::Core::Hashable
       
@@ -2856,12 +2860,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2OrConditions]
         attr_accessor :or_conditions
       
-        # Restrict Discovery to categories of table types.
+        # Restrict discovery to categories of table types.
         # Corresponds to the JSON property `typeCollection`
         # @return [String]
         attr_accessor :type_collection
       
-        # The types of bigquery tables supported by Cloud DLP.
+        # The types of BigQuery tables supported by Cloud DLP.
         # Corresponds to the JSON property `types`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTableTypes]
         attr_accessor :types
@@ -2881,9 +2885,7 @@ module Google
       
       # Determines what tables will have profiles generated within an organization or
       # project. Includes the ability to filter by regular expression patterns on
-      # project ID, dataset ID, and table ID. Also lets you set minimum conditions
-      # that must be met before Cloud DLP scans a table (like a minimum row count or a
-      # minimum table age).
+      # project ID, dataset ID, and table ID.
       class GooglePrivacyDlpV2DiscoveryBigQueryFilter
         include Google::Apis::Core::Hashable
       
@@ -2910,8 +2912,8 @@ module Google
         end
       end
       
-      # Configuration for Discovery to scan resources for profile generation. Only one
-      # Discovery configuration may exist per organization, folder, or project. The
+      # Configuration for discovery to scan resources for profile generation. Only one
+      # discovery configuration may exist per organization, folder, or project. The
       # generated data profiles are retained according to the [data retention policy] (
       # https://cloud.google.com/dlp/docs/data-profiles#retention).
       class GooglePrivacyDlpV2DiscoveryConfig
@@ -2948,8 +2950,8 @@ module Google
         # template is specified, but a "global" template is specified, it will be copied
         # to that region and used instead. If no global or region-specific template is
         # provided for a region with data, that region's data will not be scanned. For
-        # more information, see https://cloud.google.com/dlp/docs/data-profiles#
-        # data_residency.
+        # more information, see https://cloud.google.com/dlp/docs/data-profiles#data-
+        # residency.
         # Corresponds to the JSON property `inspectTemplates`
         # @return [Array<String>]
         attr_accessor :inspect_templates
@@ -3060,7 +3062,7 @@ module Google
         end
       end
       
-      # The location to begin a Discovery scan. Denotes an organization ID or folder
+      # The location to begin a discovery scan. Denotes an organization ID or folder
       # ID within an organization.
       class GooglePrivacyDlpV2DiscoveryStartingLocation
         include Google::Apis::Core::Hashable
@@ -3117,7 +3119,7 @@ module Google
       class GooglePrivacyDlpV2DiscoveryTarget
         include Google::Apis::Core::Hashable
       
-        # Target used to match against for Discovery with BigQuery tables
+        # Target used to match against for discovery with BigQuery tables
         # Corresponds to the JSON property `bigQueryTarget`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryDiscoveryTarget]
         attr_accessor :big_query_target
@@ -5458,8 +5460,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate>]
         attr_accessor :deidentify_templates
       
-        # If the next page is available then the next page token to be used in following
-        # ListDeidentifyTemplates request.
+        # If the next page is available then the next page token to be used in the
+        # following ListDeidentifyTemplates request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5484,8 +5486,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig>]
         attr_accessor :discovery_configs
       
-        # If the next page is available then the next page token to be used in following
-        # ListDiscoveryConfigs request.
+        # If the next page is available then the next page token to be used in the
+        # following ListDiscoveryConfigs request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5554,8 +5556,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate>]
         attr_accessor :inspect_templates
       
-        # If the next page is available then the next page token to be used in following
-        # ListInspectTemplates request.
+        # If the next page is available then the next page token to be used in the
+        # following ListInspectTemplates request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5580,8 +5582,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger>]
         attr_accessor :job_triggers
       
-        # If the next page is available then the next page token to be used in following
-        # ListJobTriggers request.
+        # If the next page is available then the next page token to be used in the
+        # following ListJobTriggers request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5601,8 +5603,8 @@ module Google
       class GooglePrivacyDlpV2ListStoredInfoTypesResponse
         include Google::Apis::Core::Hashable
       
-        # If the next page is available then the next page token to be used in following
-        # ListStoredInfoTypes request.
+        # If the next page is available then the next page token to be used in the
+        # following ListStoredInfoTypes request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5792,7 +5794,7 @@ module Google
       class GooglePrivacyDlpV2OrgConfig
         include Google::Apis::Core::Hashable
       
-        # The location to begin a Discovery scan. Denotes an organization ID or folder
+        # The location to begin a discovery scan. Denotes an organization ID or folder
         # ID within an organization.
         # Corresponds to the JSON property `location`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryStartingLocation]
@@ -8380,8 +8382,8 @@ module Google
       class GooglePrivacyDlpV2UpdateDiscoveryConfigRequest
         include Google::Apis::Core::Hashable
       
-        # Configuration for Discovery to scan resources for profile generation. Only one
-        # Discovery configuration may exist per organization, folder, or project. The
+        # Configuration for discovery to scan resources for profile generation. Only one
+        # discovery configuration may exist per organization, folder, or project. The
         # generated data profiles are retained according to the [data retention policy] (
         # https://cloud.google.com/dlp/docs/data-profiles#retention).
         # Corresponds to the JSON property `discoveryConfig`
