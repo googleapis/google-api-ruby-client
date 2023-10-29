@@ -2294,6 +2294,13 @@ module Google
         # @return [Google::Apis::DataflowV1b3::RuntimeUpdatableParams]
         attr_accessor :runtime_updatable_params
       
+        # Output only. Reserved for future use. This field is set only in responses from
+        # the server; it is ignored if it is set in any requests.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
         # Reserved for future use. This field is set only in responses from the server;
         # it is ignored if it is set in any requests.
         # Corresponds to the JSON property `satisfiesPzs`
@@ -2371,6 +2378,7 @@ module Google
           @replaced_by_job_id = args[:replaced_by_job_id] if args.key?(:replaced_by_job_id)
           @requested_state = args[:requested_state] if args.key?(:requested_state)
           @runtime_updatable_params = args[:runtime_updatable_params] if args.key?(:runtime_updatable_params)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @stage_states = args[:stage_states] if args.key?(:stage_states)
           @start_time = args[:start_time] if args.key?(:start_time)
