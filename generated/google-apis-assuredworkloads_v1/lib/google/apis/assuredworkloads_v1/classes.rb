@@ -662,7 +662,7 @@ module Google
         # Output only. Urls for services which are compliant for this Assured Workload,
         # but which are currently disallowed by the ResourceUsageRestriction org policy.
         # Invoke RestrictAllowedResources endpoint to allow your project developers to
-        # use these services in their environment."
+        # use these services in their environment.
         # Corresponds to the JSON property `compliantButDisallowedServices`
         # @return [Array<String>]
         attr_accessor :compliant_but_disallowed_services
