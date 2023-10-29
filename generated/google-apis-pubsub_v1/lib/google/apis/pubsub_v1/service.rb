@@ -90,7 +90,7 @@ module Google
         # @param [Google::Apis::PubsubV1::Schema] schema_object
         # @param [String] schema_id
         #   The ID to use for the schema, which will become the final component of the
-        #   schema's resource name. See https://cloud.google.com/pubsub/docs/admin#
+        #   schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#
         #   resource_names for resource name constraints.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -542,15 +542,17 @@ module Google
         # returned. See also the `Snapshot.expire_time` field. If the name is not
         # provided in the request, the server will assign a random name for this
         # snapshot on the same project as the subscription, conforming to the [resource
-        # name format] (https://cloud.google.com/pubsub/docs/admin#resource_names). The
-        # generated name is populated in the returned Snapshot object. Note that for
-        # REST API requests, you must specify a name in the request.
+        # name format] (https://cloud.google.com/pubsub/docs/pubsub-basics#
+        # resource_names). The generated name is populated in the returned Snapshot
+        # object. Note that for REST API requests, you must specify a name in the
+        # request.
         # @param [String] name
         #   Required. User-provided name for this snapshot. If the name is not provided in
         #   the request, the server will assign a random name for this snapshot on the
         #   same project as the subscription. Note that for REST API requests, you must
         #   specify a name. See the [resource name rules](https://cloud.google.com/pubsub/
-        #   docs/admin#resource_names). Format is `projects/`project`/snapshots/`snap``.
+        #   docs/pubsub-basics#resource_names). Format is `projects/`project`/snapshots/`
+        #   snap``.
         # @param [Google::Apis::PubsubV1::CreateSnapshotRequest] create_snapshot_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -892,14 +894,14 @@ module Google
         end
         
         # Creates a subscription to a given topic. See the [resource name rules] (https:/
-        # /cloud.google.com/pubsub/docs/admin#resource_names). If the subscription
-        # already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't
-        # exist, returns `NOT_FOUND`. If the name is not provided in the request, the
-        # server will assign a random name for this subscription on the same project as
-        # the topic, conforming to the [resource name format] (https://cloud.google.com/
-        # pubsub/docs/admin#resource_names). The generated name is populated in the
-        # returned Subscription object. Note that for REST API requests, you must
-        # specify a name in the request.
+        # /cloud.google.com/pubsub/docs/pubsub-basics#resource_names). If the
+        # subscription already exists, returns `ALREADY_EXISTS`. If the corresponding
+        # topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the
+        # request, the server will assign a random name for this subscription on the
+        # same project as the topic, conforming to the [resource name format] (https://
+        # cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The generated name
+        # is populated in the returned Subscription object. Note that for REST API
+        # requests, you must specify a name in the request.
         # @param [String] name
         #   Required. The name of the subscription. It must have the format `"projects/`
         #   project`/subscriptions/`subscription`"`. ``subscription`` must start with a
@@ -1386,7 +1388,7 @@ module Google
         end
         
         # Creates the given topic with the given name. See the [resource name rules] (
-        # https://cloud.google.com/pubsub/docs/admin#resource_names).
+        # https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
         # @param [String] name
         #   Required. The name of the topic. It must have the format `"projects/`project`/
         #   topics/`topic`"`. ``topic`` must start with a letter, and contain only letters
