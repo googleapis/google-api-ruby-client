@@ -1961,8 +1961,8 @@ module Google
         attr_accessor :extension_chains
       
         # Required. A list of references to the forwarding rules to which this service
-        # extension is attach to. At least one forwarding rule is required. There can be
-        # only one `LbRouteExtension` resource per forwarding rule.
+        # extension is attached to. At least one forwarding rule is required. There can
+        # be only one `LbRouteExtension` resource per forwarding rule.
         # Corresponds to the JSON property `forwardingRules`
         # @return [Array<String>]
         attr_accessor :forwarding_rules
@@ -1976,7 +1976,9 @@ module Google
       
         # Required. All backend services and forwarding rules referenced by this
         # extension must share the same load balancing scheme. Supported values: `
-        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [
+        # Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-
+        # service).
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -2037,8 +2039,8 @@ module Google
         attr_accessor :extension_chains
       
         # Required. A list of references to the forwarding rules to which this service
-        # extension is attach to. At least one forwarding rule is required. There can be
-        # only one `LBTrafficExtension` resource per forwarding rule.
+        # extension is attached to. At least one forwarding rule is required. There can
+        # be only one `LBTrafficExtension` resource per forwarding rule.
         # Corresponds to the JSON property `forwardingRules`
         # @return [Array<String>]
         attr_accessor :forwarding_rules
