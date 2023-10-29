@@ -863,6 +863,7 @@ module Google
           property :min_report_interval, as: 'minReportInterval'
           collection :tasks, as: 'tasks', class: Google::Apis::BatchV1::AgentTask, decorator: Google::Apis::BatchV1::AgentTask::Representation
       
+          property :use_batch_monitored_resource, as: 'useBatchMonitoredResource'
         end
       end
       
