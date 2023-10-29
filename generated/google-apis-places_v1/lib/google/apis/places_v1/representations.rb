@@ -40,6 +40,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1EvChargeOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1EvChargeOptionsConnectorAggregation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1FuelOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1FuelOptionsFuelPrice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1Photo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1PhotoMedia
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleMapsPlacesV1Place
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -88,13 +124,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1PlaceParkingOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1PlacePaymentOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleMapsPlacesV1PlacePlusCode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1PlaceSubDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleMapsPlacesV1Review
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1SearchNearbyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1SearchNearbyResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleTypeMoney
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleGeoTypeViewport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -170,6 +248,64 @@ module Google
         end
       end
       
+      class GoogleMapsPlacesV1EvChargeOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connector_aggregation, as: 'connectorAggregation', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1EvChargeOptionsConnectorAggregation, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1EvChargeOptionsConnectorAggregation::Representation
+      
+          property :connector_count, as: 'connectorCount'
+        end
+      end
+      
+      class GoogleMapsPlacesV1EvChargeOptionsConnectorAggregation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_last_update_time, as: 'availabilityLastUpdateTime'
+          property :available_count, as: 'availableCount'
+          property :count, as: 'count'
+          property :max_charge_rate_kw, as: 'maxChargeRateKw'
+          property :out_of_service_count, as: 'outOfServiceCount'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleMapsPlacesV1FuelOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fuel_prices, as: 'fuelPrices', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1FuelOptionsFuelPrice, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1FuelOptionsFuelPrice::Representation
+      
+        end
+      end
+      
+      class GoogleMapsPlacesV1FuelOptionsFuelPrice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :price, as: 'price', class: Google::Apis::PlacesV1::GoogleTypeMoney, decorator: Google::Apis::PlacesV1::GoogleTypeMoney::Representation
+      
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleMapsPlacesV1Photo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :author_attributions, as: 'authorAttributions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AuthorAttribution, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AuthorAttribution::Representation
+      
+          property :height_px, as: 'heightPx'
+          property :name, as: 'name'
+          property :width_px, as: 'widthPx'
+        end
+      end
+      
+      class GoogleMapsPlacesV1PhotoMedia
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :photo_uri, as: 'photoUri'
+        end
+      end
+      
       class GoogleMapsPlacesV1Place
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -178,6 +314,7 @@ module Google
           collection :address_components, as: 'addressComponents', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAddressComponent, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAddressComponent::Representation
       
           property :adr_format_address, as: 'adrFormatAddress'
+          property :allows_dogs, as: 'allowsDogs'
           collection :attributions, as: 'attributions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAttribution, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAttribution::Representation
       
           property :business_status, as: 'businessStatus'
@@ -192,34 +329,60 @@ module Google
       
           property :editorial_summary, as: 'editorialSummary', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
+          property :ev_charge_options, as: 'evChargeOptions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1EvChargeOptions, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1EvChargeOptions::Representation
+      
           property :formatted_address, as: 'formattedAddress'
+          property :fuel_options, as: 'fuelOptions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1FuelOptions, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1FuelOptions::Representation
+      
+          property :good_for_children, as: 'goodForChildren'
+          property :good_for_groups, as: 'goodForGroups'
+          property :good_for_watching_sports, as: 'goodForWatchingSports'
           property :google_maps_uri, as: 'googleMapsUri'
           property :icon_background_color, as: 'iconBackgroundColor'
           property :icon_mask_base_uri, as: 'iconMaskBaseUri'
           property :id, as: 'id'
           property :international_phone_number, as: 'internationalPhoneNumber'
+          property :live_music, as: 'liveMusic'
           property :location, as: 'location', class: Google::Apis::PlacesV1::GoogleTypeLatLng, decorator: Google::Apis::PlacesV1::GoogleTypeLatLng::Representation
       
+          property :menu_for_children, as: 'menuForChildren'
           property :name, as: 'name'
           property :national_phone_number, as: 'nationalPhoneNumber'
+          property :outdoor_seating, as: 'outdoorSeating'
+          property :parking_options, as: 'parkingOptions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceParkingOptions, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceParkingOptions::Representation
+      
+          property :payment_options, as: 'paymentOptions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePaymentOptions, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePaymentOptions::Representation
+      
+          collection :photos, as: 'photos', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1Photo, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1Photo::Representation
+      
           property :plus_code, as: 'plusCode', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePlusCode, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePlusCode::Representation
       
           property :price_level, as: 'priceLevel'
+          property :primary_type, as: 'primaryType'
+          property :primary_type_display_name, as: 'primaryTypeDisplayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
           property :rating, as: 'rating'
           property :regular_opening_hours, as: 'regularOpeningHours', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours::Representation
       
           collection :regular_secondary_opening_hours, as: 'regularSecondaryOpeningHours', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours::Representation
       
           property :reservable, as: 'reservable'
+          property :restroom, as: 'restroom'
           collection :reviews, as: 'reviews', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1Review, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1Review::Representation
       
           property :serves_beer, as: 'servesBeer'
           property :serves_breakfast, as: 'servesBreakfast'
           property :serves_brunch, as: 'servesBrunch'
+          property :serves_cocktails, as: 'servesCocktails'
+          property :serves_coffee, as: 'servesCoffee'
+          property :serves_dessert, as: 'servesDessert'
           property :serves_dinner, as: 'servesDinner'
           property :serves_lunch, as: 'servesLunch'
           property :serves_vegetarian_food, as: 'servesVegetarianFood'
           property :serves_wine, as: 'servesWine'
+          property :short_formatted_address, as: 'shortFormattedAddress'
+          collection :sub_destinations, as: 'subDestinations', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceSubDestination, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceSubDestination::Representation
+      
           property :takeout, as: 'takeout'
           collection :types, as: 'types'
           property :user_rating_count, as: 'userRatingCount'
@@ -234,6 +397,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :wheelchair_accessible_entrance, as: 'wheelchairAccessibleEntrance'
+          property :wheelchair_accessible_parking, as: 'wheelchairAccessibleParking'
+          property :wheelchair_accessible_restroom, as: 'wheelchairAccessibleRestroom'
+          property :wheelchair_accessible_seating, as: 'wheelchairAccessibleSeating'
         end
       end
       
@@ -298,6 +464,29 @@ module Google
         end
       end
       
+      class GoogleMapsPlacesV1PlaceParkingOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :free_garage_parking, as: 'freeGarageParking'
+          property :free_parking_lot, as: 'freeParkingLot'
+          property :free_street_parking, as: 'freeStreetParking'
+          property :paid_garage_parking, as: 'paidGarageParking'
+          property :paid_parking_lot, as: 'paidParkingLot'
+          property :paid_street_parking, as: 'paidStreetParking'
+          property :valet_parking, as: 'valetParking'
+        end
+      end
+      
+      class GoogleMapsPlacesV1PlacePaymentOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accepts_cash_only, as: 'acceptsCashOnly'
+          property :accepts_credit_cards, as: 'acceptsCreditCards'
+          property :accepts_debit_cards, as: 'acceptsDebitCards'
+          property :accepts_nfc, as: 'acceptsNfc'
+        end
+      end
+      
       class GoogleMapsPlacesV1PlacePlusCode
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -306,17 +495,58 @@ module Google
         end
       end
       
+      class GoogleMapsPlacesV1PlaceSubDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleMapsPlacesV1Review
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :author_attribution, as: 'authorAttribution', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AuthorAttribution, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AuthorAttribution::Representation
       
+          property :name, as: 'name'
           property :original_text, as: 'originalText', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
           property :publish_time, as: 'publishTime'
           property :rating, as: 'rating'
           property :relative_publish_time_description, as: 'relativePublishTimeDescription'
           property :text, as: 'text', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+        end
+      end
+      
+      class GoogleMapsPlacesV1SearchNearbyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_primary_types, as: 'excludedPrimaryTypes'
+          collection :excluded_types, as: 'excludedTypes'
+          collection :included_primary_types, as: 'includedPrimaryTypes'
+          collection :included_types, as: 'includedTypes'
+          property :language_code, as: 'languageCode'
+          property :location_restriction, as: 'locationRestriction', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction::Representation
+      
+          property :max_result_count, as: 'maxResultCount'
+          property :rank_preference, as: 'rankPreference'
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :circle, as: 'circle', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1Circle, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1Circle::Representation
+      
+        end
+      end
+      
+      class GoogleMapsPlacesV1SearchNearbyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :places, as: 'places', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1Place, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1Place::Representation
       
         end
       end
@@ -389,6 +619,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :language_code, as: 'languageCode'
           property :text, as: 'text'
+        end
+      end
+      
+      class GoogleTypeMoney
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
+          property :nanos, as: 'nanos'
+          property :units, :numeric_string => true, as: 'units'
         end
       end
     end
