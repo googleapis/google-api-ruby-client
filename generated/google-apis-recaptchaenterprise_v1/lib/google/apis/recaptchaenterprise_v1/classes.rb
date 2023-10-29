@@ -119,6 +119,13 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. A stable account identifier to apply to the assessment. This is an
+        # alternative to setting `account_id` in `CreateAssessment`, for example when a
+        # stable account identifier is not yet known in the initial request.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
         # Optional. The annotation that will be assigned to the Event. This field can be
         # left empty to provide reasons that apply to an event without concluding
         # whether the event is legitimate or fraudulent.
@@ -126,11 +133,10 @@ module Google
         # @return [String]
         attr_accessor :annotation
       
-        # Optional. Unique stable hashed user identifier to apply to the assessment.
-        # This is an alternative to setting the hashed_account_id in CreateAssessment,
-        # for example when the account identifier is not yet known in the initial
-        # request. It is recommended that the identifier is hashed using hmac-sha256
-        # with stable secret.
+        # Optional. A stable hashed account identifier to apply to the assessment. This
+        # is an alternative to setting `hashed_account_id` in `CreateAssessment`, for
+        # example when a stable account identifier is not yet known in the initial
+        # request.
         # Corresponds to the JSON property `hashedAccountId`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -152,6 +158,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
           @annotation = args[:annotation] if args.key?(:annotation)
           @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
           @reasons = args[:reasons] if args.key?(:reasons)
@@ -387,8 +394,9 @@ module Google
         attr_accessor :firewall_policy_evaluation
         alias_method :firewall_policy_evaluation?, :firewall_policy_evaluation
       
-        # Optional. Unique stable hashed user identifier for the request. The identifier
-        # must be hashed using hmac-sha256 with stable secret.
+        # Optional. Deprecated: use `user_info.account_id` instead. Unique stable hashed
+        # user identifier for the request. The identifier must be hashed using hmac-
+        # sha256 with stable secret.
         # Corresponds to the JSON property `hashedAccountId`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -432,6 +440,11 @@ module Google
         # @return [String]
         attr_accessor :user_agent
       
+        # User information associated with a request protected by reCAPTCHA Enterprise.
+        # Corresponds to the JSON property `userInfo`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1UserInfo]
+        attr_accessor :user_info
+      
         # Optional. The IP address in the request from the user's device related to this
         # event.
         # Corresponds to the JSON property `userIpAddress`
@@ -462,6 +475,7 @@ module Google
           @token = args[:token] if args.key?(:token)
           @transaction_data = args[:transaction_data] if args.key?(:transaction_data)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
+          @user_info = args[:user_info] if args.key?(:user_info)
           @user_ip_address = args[:user_ip_address] if args.key?(:user_ip_address)
           @waf_token_assessment = args[:waf_token_assessment] if args.key?(:waf_token_assessment)
         end
@@ -1820,6 +1834,76 @@ module Google
           @event_type = args[:event_type] if args.key?(:event_type)
           @reason = args[:reason] if args.key?(:reason)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # An identifier associated with a user.
+      class GoogleCloudRecaptchaenterpriseV1UserId
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An email address.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Optional. A phone number. Should use the E.164 format.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # Optional. A unique username, if different from all the other identifiers and `
+        # account_id` that are provided. Can be a unique login handle or display name
+        # for a user.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # User information associated with a request protected by reCAPTCHA Enterprise.
+      class GoogleCloudRecaptchaenterpriseV1UserInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. For logged-in requests or login/registration requests, the unique
+        # account identifier associated with this user. You can use the username if it
+        # is stable (meaning it is the same for every request associated with the same
+        # user), or any stable user ID of your choice. Leave blank for non logged-in
+        # actions or guest checkout.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # Optional. Creation time for this account associated with this user. Leave
+        # blank for non logged-in actions, guest checkout, or when there is no account
+        # associated with the current user.
+        # Corresponds to the JSON property `createAccountTime`
+        # @return [String]
+        attr_accessor :create_account_time
+      
+        # Optional. Identifiers associated with this user or request.
+        # Corresponds to the JSON property `userIds`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1UserId>]
+        attr_accessor :user_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @create_account_time = args[:create_account_time] if args.key?(:create_account_time)
+          @user_ids = args[:user_ids] if args.key?(:user_ids)
         end
       end
       
