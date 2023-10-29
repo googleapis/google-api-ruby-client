@@ -1743,6 +1743,11 @@ module Google
         # @return [String]
         attr_accessor :next_steps
       
+        # Contains information about the org policies associated with the finding.
+        # Corresponds to the JSON property `orgPolicies`
+        # @return [Array<Google::Apis::SecuritycenterV1::OrgPolicy>]
+        attr_accessor :org_policies
+      
         # The relative resource name of the source the finding belongs to. See: https://
         # cloud.google.com/apis/design/resource_names#relative_resource_name This field
         # is immutable after creation time. For example: "organizations/`organization_id`
@@ -1848,6 +1853,7 @@ module Google
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
           @name = args[:name] if args.key?(:name)
           @next_steps = args[:next_steps] if args.key?(:next_steps)
+          @org_policies = args[:org_policies] if args.key?(:org_policies)
           @parent = args[:parent] if args.key?(:parent)
           @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
           @processes = args[:processes] if args.key?(:processes)
@@ -2329,7 +2335,10 @@ module Google
       
         # This field will be ignored if provided on config creation. Format "
         # organizations/`organization`/muteConfigs/`mute_config`" "folders/`folder`/
-        # muteConfigs/`mute_config`" "projects/`project`/muteConfigs/`mute_config`"
+        # muteConfigs/`mute_config`" "projects/`project`/muteConfigs/`mute_config`" "
+        # organizations/`organization`/locations/global/muteConfigs/`mute_config`" "
+        # folders/`folder`/locations/global/muteConfigs/`mute_config`" "projects/`
+        # project`/locations/global/muteConfigs/`mute_config`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4359,6 +4368,26 @@ module Google
         end
       end
       
+      # Contains information about the org policies associated with the finding.
+      class OrgPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the org policy. Example: "organizations/`organization_id`/
+        # policies/`constraint_name`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # User specified settings that are attached to the Security Command Center
       # organization.
       class OrganizationSettings
@@ -5140,6 +5169,157 @@ module Google
         # Update properties of this object
         def update!(**args)
           @mute = args[:mute] if args.key?(:mute)
+        end
+      end
+      
+      # Request message to simulate a CustomConfig against a given test resource.
+      # Maximum size of the request is 4 MB by default.
+      class SimulateSecurityHealthAnalyticsCustomModuleRequest
+        include Google::Apis::Core::Hashable
+      
+        # Defines the properties in a custom module configuration for Security Health
+        # Analytics. Use the custom module configuration to create custom detectors that
+        # generate custom findings for resources that you specify.
+        # Corresponds to the JSON property `customConfig`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomConfig]
+        attr_accessor :custom_config
+      
+        # Manually constructed resource. If the custom module only evaluates against the
+        # resource data, the iam_policy_data field can be omitted, and vice versa.
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::SecuritycenterV1::SimulatedResource]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_config = args[:custom_config] if args.key?(:custom_config)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # Response message for simulating a SecurityHealthAnalyticsCustomModule against
+      # a given resource.
+      class SimulateSecurityHealthAnalyticsCustomModuleResponse
+        include Google::Apis::Core::Hashable
+      
+        # Possible test result.
+        # Corresponds to the JSON property `result`
+        # @return [Google::Apis::SecuritycenterV1::SimulatedResult]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # Manually constructed resource. If the custom module only evaluates against the
+      # resource data, the iam_policy_data field can be omitted, and vice versa.
+      class SimulatedResource
+        include Google::Apis::Core::Hashable
+      
+        # An Identity and Access Management (IAM) policy, which specifies access
+        # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+        # A `binding` binds one or more `members`, or principals, to a single `role`.
+        # Principals can be user accounts, service accounts, Google groups, and domains (
+        # such as G Suite). A `role` is a named list of permissions; each `role` can be
+        # an IAM predefined role or a user-created custom role. For some types of Google
+        # Cloud resources, a `binding` can also specify a `condition`, which is a
+        # logical expression that allows access to a resource only if the expression
+        # evaluates to `true`. A condition can add constraints based on attributes of
+        # the request, the resource, or both. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
+        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
+        # Corresponds to the JSON property `iamPolicyData`
+        # @return [Google::Apis::SecuritycenterV1::Policy]
+        attr_accessor :iam_policy_data
+      
+        # Optional. A representation of the GCP resource. Should match the GCP resource
+        # JSON format.
+        # Corresponds to the JSON property `resourceData`
+        # @return [Hash<String,Object>]
+        attr_accessor :resource_data
+      
+        # Required. The type of the resource, e.g. `compute.googleapis.com/Disk`.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam_policy_data = args[:iam_policy_data] if args.key?(:iam_policy_data)
+          @resource_data = args[:resource_data] if args.key?(:resource_data)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
+      # Possible test result.
+      class SimulatedResult
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::SecuritycenterV1::Status]
+        attr_accessor :error
+      
+        # Security Command Center finding. A finding is a record of assessment data like
+        # security, risk, health, or privacy, that is ingested into Security Command
+        # Center for presentation, notification, analysis, policy testing, and
+        # enforcement. For example, a cross-site scripting (XSS) vulnerability in an App
+        # Engine application is a finding.
+        # Corresponds to the JSON property `finding`
+        # @return [Google::Apis::SecuritycenterV1::Finding]
+        attr_accessor :finding
+      
+        # A generic empty message that you can re-use to avoid defining duplicated empty
+        # messages in your APIs. A typical example is to use it as the request or the
+        # response type of an API method. For instance: service Foo ` rpc Bar(google.
+        # protobuf.Empty) returns (google.protobuf.Empty); `
+        # Corresponds to the JSON property `noViolation`
+        # @return [Google::Apis::SecuritycenterV1::Empty]
+        attr_accessor :no_violation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @finding = args[:finding] if args.key?(:finding)
+          @no_violation = args[:no_violation] if args.key?(:no_violation)
         end
       end
       

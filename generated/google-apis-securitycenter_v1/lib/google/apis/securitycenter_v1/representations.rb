@@ -610,6 +610,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrgPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrganizationSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -719,6 +725,30 @@ module Google
       end
       
       class SetMuteRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SimulateSecurityHealthAnalyticsCustomModuleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SimulateSecurityHealthAnalyticsCustomModuleResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SimulatedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SimulatedResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1224,6 +1254,8 @@ module Google
           property :mute_update_time, as: 'muteUpdateTime'
           property :name, as: 'name'
           property :next_steps, as: 'nextSteps'
+          collection :org_policies, as: 'orgPolicies', class: Google::Apis::SecuritycenterV1::OrgPolicy, decorator: Google::Apis::SecuritycenterV1::OrgPolicy::Representation
+      
           property :parent, as: 'parent'
           property :parent_display_name, as: 'parentDisplayName'
           collection :processes, as: 'processes', class: Google::Apis::SecuritycenterV1::Process, decorator: Google::Apis::SecuritycenterV1::Process::Representation
@@ -1868,6 +1900,13 @@ module Google
         end
       end
       
+      class OrgPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class OrganizationSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2059,6 +2098,46 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mute, as: 'mute'
+        end
+      end
+      
+      class SimulateSecurityHealthAnalyticsCustomModuleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_config, as: 'customConfig', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomConfig, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomConfig::Representation
+      
+          property :resource, as: 'resource', class: Google::Apis::SecuritycenterV1::SimulatedResource, decorator: Google::Apis::SecuritycenterV1::SimulatedResource::Representation
+      
+        end
+      end
+      
+      class SimulateSecurityHealthAnalyticsCustomModuleResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result, as: 'result', class: Google::Apis::SecuritycenterV1::SimulatedResult, decorator: Google::Apis::SecuritycenterV1::SimulatedResult::Representation
+      
+        end
+      end
+      
+      class SimulatedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iam_policy_data, as: 'iamPolicyData', class: Google::Apis::SecuritycenterV1::Policy, decorator: Google::Apis::SecuritycenterV1::Policy::Representation
+      
+          hash :resource_data, as: 'resourceData'
+          property :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class SimulatedResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::SecuritycenterV1::Status, decorator: Google::Apis::SecuritycenterV1::Status::Representation
+      
+          property :finding, as: 'finding', class: Google::Apis::SecuritycenterV1::Finding, decorator: Google::Apis::SecuritycenterV1::Finding::Representation
+      
+          property :no_violation, as: 'noViolation', class: Google::Apis::SecuritycenterV1::Empty, decorator: Google::Apis::SecuritycenterV1::Empty::Representation
+      
         end
       end
       
