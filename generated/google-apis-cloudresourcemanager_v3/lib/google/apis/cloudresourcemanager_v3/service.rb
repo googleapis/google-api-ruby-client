@@ -810,7 +810,8 @@ module Google
         # specified filter. This method returns organizations in an unspecified order.
         # New organizations do not necessarily appear at the end of the results, and may
         # take a small amount of time to appear. Search will only return organizations
-        # on which the user has the permission `resourcemanager.organizations.get`
+        # on which the user has the permission `resourcemanager.organizations.get` or
+        # has super admin privileges.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of organizations to return in the response. The
         #   server can return fewer organizations than requested. If unspecified, server
@@ -1209,7 +1210,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Search for projects that the caller has both `resourcemanager.projects.get`
+        # Search for projects that the caller has the `resourcemanager.projects.get`
         # permission on, and also satisfy the specified query. This method returns
         # projects in an unspecified order. This method is eventually consistent with
         # project mutations; this means that a newly created project may not appear in
