@@ -572,8 +572,7 @@ module Google
         # authentication](https://developers.google.com/chat/api/guides/auth). Fully
         # supports [service account authentication](https://developers.google.com/chat/
         # api/guides/auth/service-accounts) and [user authentication](https://developers.
-        # google.com/chat/api/guides/auth/users). [User authentication](https://
-        # developers.google.com/chat/api/guides/auth/users).
+        # google.com/chat/api/guides/auth/users).
         # @param [String] name
         #   Required. Resource name of the membership to retrieve. To get the app's own
         #   membership, you can optionally use `spaces/`space`/members/app`. Format: `
@@ -619,8 +618,7 @@ module Google
         # Requires [authentication](https://developers.google.com/chat/api/guides/auth).
         # Fully supports [service account authentication](https://developers.google.com/
         # chat/api/guides/auth/service-accounts) and [user authentication](https://
-        # developers.google.com/chat/api/guides/auth/users). [User authentication](https:
-        # //developers.google.com/chat/api/guides/auth/users).
+        # developers.google.com/chat/api/guides/auth/users).
         # @param [String] parent
         #   Required. The resource name of the space for which to fetch a membership list.
         #   Format: spaces/`space`
@@ -760,9 +758,8 @@ module Google
         # https://developers.google.com/chat/api/guides/auth). Fully supports [service
         # account authentication](https://developers.google.com/chat/api/guides/auth/
         # service-accounts) and [user authentication](https://developers.google.com/chat/
-        # api/guides/auth/users). [User authentication](https://developers.google.com/
-        # chat/api/guides/auth/users). Requests authenticated with service accounts can
-        # only delete messages created by the calling Chat app.
+        # api/guides/auth/users). Requests authenticated with service accounts can only
+        # delete messages created by the calling Chat app.
         # @param [String] name
         #   Required. Resource name of the message that you want to delete, in the form `
         #   spaces/*/messages/*` Example: `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.
@@ -806,9 +803,8 @@ module Google
         # authentication](https://developers.google.com/chat/api/guides/auth). Fully
         # supports [service account authentication](https://developers.google.com/chat/
         # api/guides/auth/service-accounts) and [user authentication](https://developers.
-        # google.com/chat/api/guides/auth/users). [User authentication](https://
-        # developers.google.com/chat/api/guides/auth/users). Note: Might return a
-        # message from a blocked member or space.
+        # google.com/chat/api/guides/auth/users). Note: Might return a message from a
+        # blocked member or space.
         # @param [String] name
         #   Required. Resource name of the message to retrieve. Format: `spaces/`space`/
         #   messages/`message`` If the message begins with `client-`, then it has a custom
@@ -926,8 +922,7 @@ module Google
         # messages/update). Requires [authentication](https://developers.google.com/chat/
         # api/guides/auth). Fully supports [service account authentication](https://
         # developers.google.com/chat/api/guides/auth/service-accounts) and [user
-        # authentication](https://developers.google.com/chat/api/guides/auth/users). [
-        # User authentication](https://developers.google.com/chat/api/guides/auth/users).
+        # authentication](https://developers.google.com/chat/api/guides/auth/users).
         # Requests authenticated with service accounts can only update messages created
         # by the calling Chat app.
         # @param [String] name
@@ -983,8 +978,7 @@ module Google
         # messages/update). Requires [authentication](https://developers.google.com/chat/
         # api/guides/auth). Fully supports [service account authentication](https://
         # developers.google.com/chat/api/guides/auth/service-accounts) and [user
-        # authentication](https://developers.google.com/chat/api/guides/auth/users). [
-        # User authentication](https://developers.google.com/chat/api/guides/auth/users).
+        # authentication](https://developers.google.com/chat/api/guides/auth/users).
         # Requests authenticated with service accounts can only update messages created
         # by the calling Chat app.
         # @param [String] name
