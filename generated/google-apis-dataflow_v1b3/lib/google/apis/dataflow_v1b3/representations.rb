@@ -1658,6 +1658,7 @@ module Google
           property :requested_state, as: 'requestedState'
           property :runtime_updatable_params, as: 'runtimeUpdatableParams', class: Google::Apis::DataflowV1b3::RuntimeUpdatableParams, decorator: Google::Apis::DataflowV1b3::RuntimeUpdatableParams::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           collection :stage_states, as: 'stageStates', class: Google::Apis::DataflowV1b3::ExecutionStageState, decorator: Google::Apis::DataflowV1b3::ExecutionStageState::Representation
       
