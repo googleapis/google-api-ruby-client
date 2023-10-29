@@ -5134,6 +5134,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceStatusLastInstanceTerminationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceStatusScheduling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8788,6 +8794,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :end_timestamp, as: 'endTimestamp'
+          collection :existing_reservations, as: 'existingReservations'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :license_resource, as: 'licenseResource', class: Google::Apis::ComputeAlpha::LicenseResourceCommitment, decorator: Google::Apis::ComputeAlpha::LicenseResourceCommitment::Representation
@@ -13999,7 +14006,6 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :ipv6_address, as: 'ipv6Address'
           property :port, as: 'port'
-          property :zone, as: 'zone'
         end
       end
       
@@ -17055,11 +17061,20 @@ module Google
       class ResourceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_instance_termination_details, as: 'lastInstanceTerminationDetails', class: Google::Apis::ComputeAlpha::ResourceStatusLastInstanceTerminationDetails, decorator: Google::Apis::ComputeAlpha::ResourceStatusLastInstanceTerminationDetails::Representation
+      
           property :physical_host, as: 'physicalHost'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::ResourceStatusScheduling, decorator: Google::Apis::ComputeAlpha::ResourceStatusScheduling::Representation
       
           hash :service_integration_statuses, as: 'serviceIntegrationStatuses', class: Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatus, decorator: Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatus::Representation
       
+        end
+      end
+      
+      class ResourceStatusLastInstanceTerminationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :termination_reason, as: 'terminationReason'
         end
       end
       
