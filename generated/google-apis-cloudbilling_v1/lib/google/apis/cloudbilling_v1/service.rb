@@ -62,6 +62,10 @@ module Google
         # This method will return an error if the parent account has not been
         # provisioned for subaccounts.
         # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
+        # @param [String] parent
+        #   Optional. The parent to create a billing account from. Format: - organizations/
+        #   `organization_id` eg organizations/12345678 - billingAccounts/`
+        #   billing_account_id` eg `billingAccounts/012345-567890-ABCDEF`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -79,12 +83,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_billing_account(billing_account_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_billing_account(billing_account_object = nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/billingAccounts', options)
           command.request_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
           command.request_object = billing_account_object
           command.response_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
           command.response_class = Google::Apis::CloudbillingV1::BillingAccount
+          command.query['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -184,6 +189,10 @@ module Google
         #   A token identifying a page of results to return. This should be a `
         #   next_page_token` value returned from a previous `ListBillingAccounts` call. If
         #   unspecified, the first page of results is returned.
+        # @param [String] parent
+        #   Optional. The parent resource to list billing accounts from. Format: -
+        #   organizations/`organization_id` eg organizations/12345678 - billingAccounts/`
+        #   billing_account_id` eg `billingAccounts/012345-567890-ABCDEF`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -201,13 +210,50 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_billing_accounts(filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_billing_accounts(filter: nil, page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/billingAccounts', options)
           command.response_representation = Google::Apis::CloudbillingV1::ListBillingAccountsResponse::Representation
           command.response_class = Google::Apis::CloudbillingV1::ListBillingAccountsResponse
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes which parent organization a billing account belongs to.
+        # @param [String] name
+        #   Required. The resource name of the billing account to move. Must be of the
+        #   form `billingAccounts/`billing_account_id``. The specified billing account
+        #   cannot be a subaccount, since a subaccount always belongs to the same
+        #   organization as its parent account.
+        # @param [Google::Apis::CloudbillingV1::MoveBillingAccountRequest] move_billing_account_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::BillingAccount] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::BillingAccount]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def move_billing_account(name, move_billing_account_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:move', options)
+          command.request_representation = Google::Apis::CloudbillingV1::MoveBillingAccountRequest::Representation
+          command.request_object = move_billing_account_request_object
+          command.response_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
+          command.response_class = Google::Apis::CloudbillingV1::BillingAccount
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -367,6 +413,229 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # This method creates [billing subaccounts](https://cloud.google.com/billing/
+        # docs/concepts#subaccounts). Google Cloud resellers should use the Channel
+        # Services APIs, [accounts.customers.create](https://cloud.google.com/channel/
+        # docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.
+        # entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/
+        # accounts.customers.entitlements/create). When creating a subaccount, the
+        # current authenticated user must have the `billing.accounts.update` IAM
+        # permission on the parent account, which is typically given to billing account [
+        # administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+        # This method will return an error if the parent account has not been
+        # provisioned for subaccounts.
+        # @param [String] parent
+        #   Optional. The parent to create a billing account from. Format: - organizations/
+        #   `organization_id` eg organizations/12345678 - billingAccounts/`
+        #   billing_account_id` eg `billingAccounts/012345-567890-ABCDEF`
+        # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::BillingAccount] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::BillingAccount]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_billing_account_sub_account(parent, billing_account_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/subAccounts', options)
+          command.request_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
+          command.request_object = billing_account_object
+          command.response_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
+          command.response_class = Google::Apis::CloudbillingV1::BillingAccount
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the billing accounts that the current authenticated user has permission
+        # to [view](https://cloud.google.com/billing/docs/how-to/billing-access).
+        # @param [String] parent
+        #   Optional. The parent resource to list billing accounts from. Format: -
+        #   organizations/`organization_id` eg organizations/12345678 - billingAccounts/`
+        #   billing_account_id` eg `billingAccounts/012345-567890-ABCDEF`
+        # @param [String] filter
+        #   Options for how to filter the returned billing accounts. This only supports
+        #   filtering for [subaccounts](https://cloud.google.com/billing/docs/concepts)
+        #   under a single provided parent billing account. (e.g. "master_billing_account=
+        #   billingAccounts/012345-678901-ABCDEF"). Boolean algebra and other fields are
+        #   not currently supported.
+        # @param [Fixnum] page_size
+        #   Requested page size. The maximum page size is 100; this is also the default.
+        # @param [String] page_token
+        #   A token identifying a page of results to return. This should be a `
+        #   next_page_token` value returned from a previous `ListBillingAccounts` call. If
+        #   unspecified, the first page of results is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::ListBillingAccountsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::ListBillingAccountsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_billing_account_sub_accounts(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/subAccounts', options)
+          command.response_representation = Google::Apis::CloudbillingV1::ListBillingAccountsResponse::Representation
+          command.response_class = Google::Apis::CloudbillingV1::ListBillingAccountsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # This method creates [billing subaccounts](https://cloud.google.com/billing/
+        # docs/concepts#subaccounts). Google Cloud resellers should use the Channel
+        # Services APIs, [accounts.customers.create](https://cloud.google.com/channel/
+        # docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.
+        # entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/
+        # accounts.customers.entitlements/create). When creating a subaccount, the
+        # current authenticated user must have the `billing.accounts.update` IAM
+        # permission on the parent account, which is typically given to billing account [
+        # administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+        # This method will return an error if the parent account has not been
+        # provisioned for subaccounts.
+        # @param [String] parent
+        #   Optional. The parent to create a billing account from. Format: - organizations/
+        #   `organization_id` eg organizations/12345678 - billingAccounts/`
+        #   billing_account_id` eg `billingAccounts/012345-567890-ABCDEF`
+        # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::BillingAccount] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::BillingAccount]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_billing_account(parent, billing_account_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/billingAccounts', options)
+          command.request_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
+          command.request_object = billing_account_object
+          command.response_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
+          command.response_class = Google::Apis::CloudbillingV1::BillingAccount
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the billing accounts that the current authenticated user has permission
+        # to [view](https://cloud.google.com/billing/docs/how-to/billing-access).
+        # @param [String] parent
+        #   Optional. The parent resource to list billing accounts from. Format: -
+        #   organizations/`organization_id` eg organizations/12345678 - billingAccounts/`
+        #   billing_account_id` eg `billingAccounts/012345-567890-ABCDEF`
+        # @param [String] filter
+        #   Options for how to filter the returned billing accounts. This only supports
+        #   filtering for [subaccounts](https://cloud.google.com/billing/docs/concepts)
+        #   under a single provided parent billing account. (e.g. "master_billing_account=
+        #   billingAccounts/012345-678901-ABCDEF"). Boolean algebra and other fields are
+        #   not currently supported.
+        # @param [Fixnum] page_size
+        #   Requested page size. The maximum page size is 100; this is also the default.
+        # @param [String] page_token
+        #   A token identifying a page of results to return. This should be a `
+        #   next_page_token` value returned from a previous `ListBillingAccounts` call. If
+        #   unspecified, the first page of results is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::ListBillingAccountsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::ListBillingAccountsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_billing_accounts(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/billingAccounts', options)
+          command.response_representation = Google::Apis::CloudbillingV1::ListBillingAccountsResponse::Representation
+          command.response_class = Google::Apis::CloudbillingV1::ListBillingAccountsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes which parent organization a billing account belongs to.
+        # @param [String] destination_parent
+        #   Required. The resource name of the Organization to reparent the billing
+        #   account under. Must be of the form `organizations/`organization_id``.
+        # @param [String] name
+        #   Required. The resource name of the billing account to move. Must be of the
+        #   form `billingAccounts/`billing_account_id``. The specified billing account
+        #   cannot be a subaccount, since a subaccount always belongs to the same
+        #   organization as its parent account.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::BillingAccount] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::BillingAccount]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def move_organization_billing_account(destination_parent, name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+destinationParent}/{+name}:move', options)
+          command.response_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
+          command.response_class = Google::Apis::CloudbillingV1::BillingAccount
+          command.params['destinationParent'] = destination_parent unless destination_parent.nil?
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

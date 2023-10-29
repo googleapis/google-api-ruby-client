@@ -514,6 +514,26 @@ module Google
         end
       end
       
+      # Request message for `MoveBillingAccount` RPC.
+      class MoveBillingAccountRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the Organization to reparent the billing
+        # account under. Must be of the form `organizations/`organization_id``.
+        # Corresponds to the JSON property `destinationParent`
+        # @return [String]
+        attr_accessor :destination_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
+        end
+      end
+      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members`, or principals, to a single `role`.
