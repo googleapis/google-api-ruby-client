@@ -748,6 +748,11 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # Encryption message describes the details of the applied encryption.
+        # Corresponds to the JSON property `encryption`
+        # @return [Google::Apis::VmmigrationV1::Encryption]
+        attr_accessor :encryption
+      
         # Contains details about the image source used to create the disk.
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::VmmigrationV1::DiskImageDefaults]
@@ -762,6 +767,7 @@ module Google
           @device_name = args[:device_name] if args.key?(:device_name)
           @disk_name = args[:disk_name] if args.key?(:disk_name)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @encryption = args[:encryption] if args.key?(:encryption)
           @image = args[:image] if args.key?(:image)
         end
       end
@@ -1070,6 +1076,11 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # Encryption message describes the details of the applied encryption.
+        # Corresponds to the JSON property `encryption`
+        # @return [Google::Apis::VmmigrationV1::Encryption]
+        attr_accessor :encryption
+      
         # The hostname to assign to the VM.
         # Corresponds to the JSON property `hostname`
         # @return [String]
@@ -1149,6 +1160,7 @@ module Google
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @encryption = args[:encryption] if args.key?(:encryption)
           @hostname = args[:hostname] if args.key?(:hostname)
           @labels = args[:labels] if args.key?(:labels)
           @license_type = args[:license_type] if args.key?(:license_type)
@@ -1195,6 +1207,11 @@ module Google
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
+      
+        # Encryption message describes the details of the applied encryption.
+        # Corresponds to the JSON property `encryption`
+        # @return [Google::Apis::VmmigrationV1::Encryption]
+        attr_accessor :encryption
       
         # The hostname to assign to the VM.
         # Corresponds to the JSON property `hostname`
@@ -1274,6 +1291,7 @@ module Google
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @encryption = args[:encryption] if args.key?(:encryption)
           @hostname = args[:hostname] if args.key?(:hostname)
           @labels = args[:labels] if args.key?(:labels)
           @license_type = args[:license_type] if args.key?(:license_type)
@@ -1753,6 +1771,11 @@ module Google
         # @return [Google::Apis::VmmigrationV1::ComputeScheduling]
         attr_accessor :compute_scheduling
       
+        # Encryption message describes the details of the applied encryption.
+        # Corresponds to the JSON property `encryption`
+        # @return [Google::Apis::VmmigrationV1::Encryption]
+        attr_accessor :encryption
+      
         # Optional. The hostname to assign to the VM.
         # Corresponds to the JSON property `hostname`
         # @return [String]
@@ -1814,6 +1837,7 @@ module Google
           @additional_licenses = args[:additional_licenses] if args.key?(:additional_licenses)
           @boot_disk_defaults = args[:boot_disk_defaults] if args.key?(:boot_disk_defaults)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
+          @encryption = args[:encryption] if args.key?(:encryption)
           @hostname = args[:hostname] if args.key?(:hostname)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
@@ -1859,6 +1883,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Encryption message describes the details of the applied encryption.
+      class Encryption
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the encryption key that is stored in Google Cloud KMS.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
         end
       end
       
@@ -2984,6 +3027,11 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # Encryption message describes the details of the applied encryption.
+        # Corresponds to the JSON property `encryption`
+        # @return [Google::Apis::VmmigrationV1::Encryption]
+        attr_accessor :encryption
+      
         # Required. The ordinal number of the source VM disk.
         # Corresponds to the JSON property `sourceDiskNumber`
         # @return [Fixnum]
@@ -3003,6 +3051,7 @@ module Google
           @additional_labels = args[:additional_labels] if args.key?(:additional_labels)
           @disk_name = args[:disk_name] if args.key?(:disk_name)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @encryption = args[:encryption] if args.key?(:encryption)
           @source_disk_number = args[:source_disk_number] if args.key?(:source_disk_number)
           @vm_attachment_details = args[:vm_attachment_details] if args.key?(:vm_attachment_details)
         end
@@ -3303,6 +3352,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Encryption message describes the details of the applied encryption.
+        # Corresponds to the JSON property `encryption`
+        # @return [Google::Apis::VmmigrationV1::Encryption]
+        attr_accessor :encryption
+      
         # The labels of the source.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -3334,6 +3388,7 @@ module Google
           @azure = args[:azure] if args.key?(:azure)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @encryption = args[:encryption] if args.key?(:encryption)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
