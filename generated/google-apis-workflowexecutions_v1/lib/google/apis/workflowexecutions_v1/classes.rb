@@ -106,6 +106,25 @@ module Google
         end
       end
       
+      # Exception describes why the step entry failed.
+      class Exception
+        include Google::Apis::Core::Hashable
+      
+        # Error message represented as a JSON string.
+        # Corresponds to the JSON property `payload`
+        # @return [String]
+        attr_accessor :payload
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @payload = args[:payload] if args.key?(:payload)
+        end
+      end
+      
       # A running instance of a [Workflow](/workflows/docs/reference/rest/v1/projects.
       # locations.workflows).
       class Execution
@@ -277,6 +296,80 @@ module Google
         def update!(**args)
           @executions = args[:executions] if args.key?(:executions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ExecutionHistory.ListStepEntries.
+      class ListStepEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve next page of results. Pass this value in the
+        # ListStepEntriesRequest.page_token field in the subsequent call to `
+        # ListStepEntries` method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of entries.
+        # Corresponds to the JSON property `stepEntries`
+        # @return [Array<Google::Apis::WorkflowexecutionsV1::StepEntry>]
+        attr_accessor :step_entries
+      
+        # Indicates the total number of StepEntries that matched the request filter. For
+        # running executions, this number shows the number of StepEntries that are
+        # executed thus far.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @step_entries = args[:step_entries] if args.key?(:step_entries)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # NavigationInfo describes what steps if any come before or after this step, or
+      # what steps are parents or children of this step.
+      class NavigationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Step entries that can be reached by "stepping into" e.g. a subworkflow call.
+        # Corresponds to the JSON property `children`
+        # @return [Array<Fixnum>]
+        attr_accessor :children
+      
+        # The index of the next step in the current workflow, if any.
+        # Corresponds to the JSON property `next`
+        # @return [Fixnum]
+        attr_accessor :next
+      
+        # The step entry, if any, that can be reached by "stepping out" of the current
+        # workflow being executed.
+        # Corresponds to the JSON property `parent`
+        # @return [Fixnum]
+        attr_accessor :parent
+      
+        # The index of the previous step in the current workflow, if any.
+        # Corresponds to the JSON property `previous`
+        # @return [Fixnum]
+        attr_accessor :previous
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @children = args[:children] if args.key?(:children)
+          @next = args[:next] if args.key?(:next)
+          @parent = args[:parent] if args.key?(:parent)
+          @previous = args[:previous] if args.key?(:previous)
         end
       end
       
@@ -499,6 +592,124 @@ module Google
         def update!(**args)
           @routine = args[:routine] if args.key?(:routine)
           @step = args[:step] if args.key?(:step)
+        end
+      end
+      
+      # An StepEntry contains debugging information for a step transition in a
+      # workflow execution.
+      class StepEntry
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The creation time of the step entry.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The numeric ID of this step entry, used for navigation.
+        # Corresponds to the JSON property `entryId`
+        # @return [Fixnum]
+        attr_accessor :entry_id
+      
+        # Exception describes why the step entry failed.
+        # Corresponds to the JSON property `exception`
+        # @return [Google::Apis::WorkflowexecutionsV1::Exception]
+        attr_accessor :exception
+      
+        # Output only. The full resource name of the step entry. Each step entry has a
+        # unique entry ID, which is a monotonically increasing counter. Step entry names
+        # have the format: `projects/`project`/locations/`location`/workflows/`workflow`/
+        # executions/`execution`/stepEntries/`step_entry``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # NavigationInfo describes what steps if any come before or after this step, or
+        # what steps are parents or children of this step.
+        # Corresponds to the JSON property `navigationInfo`
+        # @return [Google::Apis::WorkflowexecutionsV1::NavigationInfo]
+        attr_accessor :navigation_info
+      
+        # Output only. The name of the routine this step entry belongs to. A routine
+        # name is the subworkflow name defined in the YAML source code. The top level
+        # routine name is `main`.
+        # Corresponds to the JSON property `routine`
+        # @return [String]
+        attr_accessor :routine
+      
+        # Output only. The state of the step entry.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The name of the step this step entry belongs to.
+        # Corresponds to the JSON property `step`
+        # @return [String]
+        attr_accessor :step
+      
+        # StepEntryMetadata contains metadata information about this step.
+        # Corresponds to the JSON property `stepEntryMetadata`
+        # @return [Google::Apis::WorkflowexecutionsV1::StepEntryMetadata]
+        attr_accessor :step_entry_metadata
+      
+        # Output only. The type of the step this step entry belongs to.
+        # Corresponds to the JSON property `stepType`
+        # @return [String]
+        attr_accessor :step_type
+      
+        # Output only. The most recently updated time of the step entry.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @entry_id = args[:entry_id] if args.key?(:entry_id)
+          @exception = args[:exception] if args.key?(:exception)
+          @name = args[:name] if args.key?(:name)
+          @navigation_info = args[:navigation_info] if args.key?(:navigation_info)
+          @routine = args[:routine] if args.key?(:routine)
+          @state = args[:state] if args.key?(:state)
+          @step = args[:step] if args.key?(:step)
+          @step_entry_metadata = args[:step_entry_metadata] if args.key?(:step_entry_metadata)
+          @step_type = args[:step_type] if args.key?(:step_type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # StepEntryMetadata contains metadata information about this step.
+      class StepEntryMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Progress number represents the current state of the current progress. eg: A
+        # step entry represents the 4th iteration in a progress of PROGRESS_TYPE_FOR.
+        # Corresponds to the JSON property `progressNumber`
+        # @return [Fixnum]
+        attr_accessor :progress_number
+      
+        # Progress type of this step entry.
+        # Corresponds to the JSON property `progressType`
+        # @return [String]
+        attr_accessor :progress_type
+      
+        # Child thread id that this step entry belongs to.
+        # Corresponds to the JSON property `threadId`
+        # @return [String]
+        attr_accessor :thread_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @progress_number = args[:progress_number] if args.key?(:progress_number)
+          @progress_type = args[:progress_type] if args.key?(:progress_type)
+          @thread_id = args[:thread_id] if args.key?(:thread_id)
         end
       end
       
