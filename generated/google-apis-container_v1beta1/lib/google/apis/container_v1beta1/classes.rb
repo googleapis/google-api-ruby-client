@@ -1768,6 +1768,15 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NetworkTags]
         attr_accessor :desired_node_pool_auto_config_network_tags
       
+        # A map of resource manager tag keys and values to be attached to the nodes for
+        # managing Compute Engine firewalls using Network Firewall Policies. Tags must
+        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
+        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
+        # specified. Existing tags will be replaced with new values.
+        # Corresponds to the JSON property `desiredNodePoolAutoConfigResourceManagerTags`
+        # @return [Google::Apis::ContainerV1beta1::ResourceManagerTags]
+        attr_accessor :desired_node_pool_auto_config_resource_manager_tags
+      
         # NodePoolAutoscaling contains information required by cluster autoscaler to
         # adjust the size of the node pool to the current cluster usage.
         # Corresponds to the JSON property `desiredNodePoolAutoscaling`
@@ -1953,6 +1962,7 @@ module Google
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
           @desired_network_performance_config = args[:desired_network_performance_config] if args.key?(:desired_network_performance_config)
           @desired_node_pool_auto_config_network_tags = args[:desired_node_pool_auto_config_network_tags] if args.key?(:desired_node_pool_auto_config_network_tags)
+          @desired_node_pool_auto_config_resource_manager_tags = args[:desired_node_pool_auto_config_resource_manager_tags] if args.key?(:desired_node_pool_auto_config_resource_manager_tags)
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
           @desired_node_pool_logging_config = args[:desired_node_pool_logging_config] if args.key?(:desired_node_pool_logging_config)
@@ -2835,6 +2845,11 @@ module Google
         # @return [String]
         attr_accessor :maintenance_interval
       
+        # Strategy that will trigger maintenance on behalf of the customer.
+        # Corresponds to the JSON property `opportunisticMaintenanceStrategy`
+        # @return [Google::Apis::ContainerV1beta1::OpportunisticMaintenanceStrategy]
+        attr_accessor :opportunistic_maintenance_strategy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2842,6 +2857,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
+          @opportunistic_maintenance_strategy = args[:opportunistic_maintenance_strategy] if args.key?(:opportunistic_maintenance_strategy)
         end
       end
       
@@ -4405,6 +4421,15 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :resource_labels
       
+        # A map of resource manager tag keys and values to be attached to the nodes for
+        # managing Compute Engine firewalls using Network Firewall Policies. Tags must
+        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
+        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
+        # specified. Existing tags will be replaced with new values.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Google::Apis::ContainerV1beta1::ResourceManagerTags]
+        attr_accessor :resource_manager_tags
+      
         # SandboxConfig contains configurations of the sandbox to use for the node.
         # Corresponds to the JSON property `sandboxConfig`
         # @return [Google::Apis::ContainerV1beta1::SandboxConfig]
@@ -4497,6 +4522,7 @@ module Google
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @sandbox_config = args[:sandbox_config] if args.key?(:sandbox_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
@@ -4948,6 +4974,15 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NetworkTags]
         attr_accessor :network_tags
       
+        # A map of resource manager tag keys and values to be attached to the nodes for
+        # managing Compute Engine firewalls using Network Firewall Policies. Tags must
+        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
+        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
+        # specified. Existing tags will be replaced with new values.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Google::Apis::ContainerV1beta1::ResourceManagerTags]
+        attr_accessor :resource_manager_tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4955,6 +4990,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -5298,6 +5334,43 @@ module Google
           @name = args[:name] if args.key?(:name)
           @stages = args[:stages] if args.key?(:stages)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Strategy that will trigger maintenance on behalf of the customer.
+      class OpportunisticMaintenanceStrategy
+        include Google::Apis::Core::Hashable
+      
+        # The window of time that opportunistic maintenance can run. Example: A setting
+        # of 14 days implies that opportunistic maintenance can only be ran in the 2
+        # weeks leading up to the scheduled maintenance date. Setting 28 days allows
+        # opportunistic maintenance to run at any time in the scheduled maintenance
+        # window (all `PERIODIC` maintenance is set 28 days in advance).
+        # Corresponds to the JSON property `maintenanceAvailabilityWindow`
+        # @return [String]
+        attr_accessor :maintenance_availability_window
+      
+        # The minimum nodes required to be available in a pool. Blocks maintenance if it
+        # would cause the number of running nodes to dip below this value.
+        # Corresponds to the JSON property `minNodesPerPool`
+        # @return [Fixnum]
+        attr_accessor :min_nodes_per_pool
+      
+        # The amount of time that a node can remain idle (no customer owned workloads
+        # running), before triggering maintenance.
+        # Corresponds to the JSON property `nodeIdleTimeWindow`
+        # @return [String]
+        attr_accessor :node_idle_time_window
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_availability_window = args[:maintenance_availability_window] if args.key?(:maintenance_availability_window)
+          @min_nodes_per_pool = args[:min_nodes_per_pool] if args.key?(:min_nodes_per_pool)
+          @node_idle_time_window = args[:node_idle_time_window] if args.key?(:node_idle_time_window)
         end
       end
       
@@ -5785,6 +5858,31 @@ module Google
           @maximum = args[:maximum] if args.key?(:maximum)
           @minimum = args[:minimum] if args.key?(:minimum)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
+      # A map of resource manager tag keys and values to be attached to the nodes for
+      # managing Compute Engine firewalls using Network Firewall Policies. Tags must
+      # be according to specifications in https://cloud.google.com/vpc/docs/tags-
+      # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
+      # specified. Existing tags will be replaced with new values.
+      class ResourceManagerTags
+        include Google::Apis::Core::Hashable
+      
+        # Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/`
+        # tag_key_id`=tagValues/`tag_value_id`` 2. ``org_id`/`tag_key_name`=`
+        # tag_value_name`` 3. ``project_id`/`tag_key_name`=`tag_value_name``
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -7297,6 +7395,15 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ResourceLabels]
         attr_accessor :resource_labels
       
+        # A map of resource manager tag keys and values to be attached to the nodes for
+        # managing Compute Engine firewalls using Network Firewall Policies. Tags must
+        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
+        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
+        # specified. Existing tags will be replaced with new values.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Google::Apis::ContainerV1beta1::ResourceManagerTags]
+        attr_accessor :resource_manager_tags
+      
         # Collection of Compute Engine network tags that can be applied to a node's
         # underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/
         # docs/reference/rest/v1/NodeConfig)).
@@ -7378,6 +7485,7 @@ module Google
           @node_version = args[:node_version] if args.key?(:node_version)
           @project_id = args[:project_id] if args.key?(:project_id)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
