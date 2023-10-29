@@ -334,8 +334,8 @@ module Google
         end
       end
       
-      # CMEK, or Customer Managed Encryption Keys, enables GCP products to put control
-      # over encryption and key management in their customer’s hands.
+      # Describes the customer-managed encryption key (CMEK) configuration associated
+      # with a project and location.
       class CmekConfig
         include Google::Apis::Core::Hashable
       
