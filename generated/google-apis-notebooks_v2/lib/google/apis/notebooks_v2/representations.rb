@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContainerImage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +65,12 @@ module Google
       end
       
       class DataDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DefaultValues
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,6 +113,12 @@ module Google
       end
       
       class GceSetup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageRelease
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -214,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SupportedValues
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -294,6 +318,18 @@ module Google
         end
       end
       
+      class Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :available_images, as: 'availableImages', class: Google::Apis::NotebooksV2::ImageRelease, decorator: Google::Apis::NotebooksV2::ImageRelease::Representation
+      
+          property :default_values, as: 'defaultValues', class: Google::Apis::NotebooksV2::DefaultValues, decorator: Google::Apis::NotebooksV2::DefaultValues::Representation
+      
+          property :supported_values, as: 'supportedValues', class: Google::Apis::NotebooksV2::SupportedValues, decorator: Google::Apis::NotebooksV2::SupportedValues::Representation
+      
+        end
+      end
+      
       class ContainerImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -309,6 +345,13 @@ module Google
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           property :kms_key, as: 'kmsKey'
+        end
+      end
+      
+      class DefaultValues
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :machine_type, as: 'machineType'
         end
       end
       
@@ -391,6 +434,14 @@ module Google
           collection :tags, as: 'tags'
           property :vm_image, as: 'vmImage', class: Google::Apis::NotebooksV2::VmImage, decorator: Google::Apis::NotebooksV2::VmImage::Representation
       
+        end
+      end
+      
+      class ImageRelease
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_name, as: 'imageName'
+          property :release_name, as: 'releaseName'
         end
       end
       
@@ -566,6 +617,14 @@ module Google
       class StopInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SupportedValues
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerator_types, as: 'acceleratorTypes'
+          collection :machine_types, as: 'machineTypes'
         end
       end
       
