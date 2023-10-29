@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2ServiceScaling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2TcpSocketAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -812,6 +818,8 @@ module Google
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :scaling, as: 'scaling', class: Google::Apis::RunV2::GoogleCloudRunV2ServiceScaling, decorator: Google::Apis::RunV2::GoogleCloudRunV2ServiceScaling::Representation
+      
           property :template, as: 'template', class: Google::Apis::RunV2::GoogleCloudRunV2RevisionTemplate, decorator: Google::Apis::RunV2::GoogleCloudRunV2RevisionTemplate::Representation
       
           property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
@@ -823,6 +831,13 @@ module Google
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudRunV2ServiceScaling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_instance_count, as: 'minInstanceCount'
         end
       end
       
