@@ -210,6 +210,11 @@ module Google
       class CsePrivateKeyMetadata
         include Google::Apis::Core::Hashable
       
+        # Metadata for hardware keys.
+        # Corresponds to the JSON property `hardwareKeyMetadata`
+        # @return [Google::Apis::GmailV1::HardwareKeyMetadata]
+        attr_accessor :hardware_key_metadata
+      
         # Metadata for private keys managed by an external key access control list
         # service. For details about managing key access, see [Google Workspace CSE API
         # Reference](https://developers.google.com/workspace/cse/reference).
@@ -228,6 +233,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @hardware_key_metadata = args[:hardware_key_metadata] if args.key?(:hardware_key_metadata)
           @kacls_key_metadata = args[:kacls_key_metadata] if args.key?(:kacls_key_metadata)
           @private_key_metadata_id = args[:private_key_metadata_id] if args.key?(:private_key_metadata_id)
         end
@@ -476,6 +482,25 @@ module Google
         def update!(**args)
           @forwarding_email = args[:forwarding_email] if args.key?(:forwarding_email)
           @verification_status = args[:verification_status] if args.key?(:verification_status)
+        end
+      end
+      
+      # Metadata for hardware keys.
+      class HardwareKeyMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Description about the hardware key.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
         end
       end
       
