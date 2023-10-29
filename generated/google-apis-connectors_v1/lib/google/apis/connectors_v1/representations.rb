@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Jms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class JsonSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -946,6 +952,8 @@ module Google
           property :destinations, as: 'destinations', class: Google::Apis::ConnectorsV1::EventSubscriptionDestination, decorator: Google::Apis::ConnectorsV1::EventSubscriptionDestination::Representation
       
           property :event_type_id, as: 'eventTypeId'
+          property :jms, as: 'jms', class: Google::Apis::ConnectorsV1::Jms, decorator: Google::Apis::ConnectorsV1::Jms::Representation
+      
           property :name, as: 'name'
           property :status, as: 'status', class: Google::Apis::ConnectorsV1::EventSubscriptionStatus, decorator: Google::Apis::ConnectorsV1::EventSubscriptionStatus::Representation
       
@@ -1016,6 +1024,7 @@ module Google
           property :encryption_key_template, as: 'encryptionKeyTemplate', class: Google::Apis::ConnectorsV1::ConfigVariableTemplate, decorator: Google::Apis::ConnectorsV1::ConfigVariableTemplate::Representation
       
           property :enrichment_supported, as: 'enrichmentSupported'
+          property :event_listener_type, as: 'eventListenerType'
           property :is_eventing_supported, as: 'isEventingSupported'
           property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfigTemplate, decorator: Google::Apis::ConnectorsV1::DestinationConfigTemplate::Representation
       
@@ -1133,6 +1142,14 @@ module Google
       
           property :nullable, as: 'nullable'
           property :parameter, as: 'parameter'
+        end
+      end
+      
+      class Jms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
