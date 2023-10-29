@@ -742,6 +742,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceManagerTags
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceUsageExportConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1405,6 +1411,8 @@ module Google
       
           property :desired_node_pool_auto_config_network_tags, as: 'desiredNodePoolAutoConfigNetworkTags', class: Google::Apis::ContainerV1::NetworkTags, decorator: Google::Apis::ContainerV1::NetworkTags::Representation
       
+          property :desired_node_pool_auto_config_resource_manager_tags, as: 'desiredNodePoolAutoConfigResourceManagerTags', class: Google::Apis::ContainerV1::ResourceManagerTags, decorator: Google::Apis::ContainerV1::ResourceManagerTags::Representation
+      
           property :desired_node_pool_autoscaling, as: 'desiredNodePoolAutoscaling', class: Google::Apis::ContainerV1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1::NodePoolAutoscaling::Representation
       
           property :desired_node_pool_id, as: 'desiredNodePoolId'
@@ -2048,6 +2056,8 @@ module Google
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ContainerV1::ReservationAffinity, decorator: Google::Apis::ContainerV1::ReservationAffinity::Representation
       
           hash :resource_labels, as: 'resourceLabels'
+          property :resource_manager_tags, as: 'resourceManagerTags', class: Google::Apis::ContainerV1::ResourceManagerTags, decorator: Google::Apis::ContainerV1::ResourceManagerTags::Representation
+      
           property :sandbox_config, as: 'sandboxConfig', class: Google::Apis::ContainerV1::SandboxConfig, decorator: Google::Apis::ContainerV1::SandboxConfig::Representation
       
           property :service_account, as: 'serviceAccount'
@@ -2163,6 +2173,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :network_tags, as: 'networkTags', class: Google::Apis::ContainerV1::NetworkTags, decorator: Google::Apis::ContainerV1::NetworkTags::Representation
+      
+          property :resource_manager_tags, as: 'resourceManagerTags', class: Google::Apis::ContainerV1::ResourceManagerTags, decorator: Google::Apis::ContainerV1::ResourceManagerTags::Representation
       
         end
       end
@@ -2369,6 +2381,13 @@ module Google
           property :maximum, :numeric_string => true, as: 'maximum'
           property :minimum, :numeric_string => true, as: 'minimum'
           property :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class ResourceManagerTags
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :tags, as: 'tags'
         end
       end
       
@@ -2724,6 +2743,8 @@ module Google
           property :node_version, as: 'nodeVersion'
           property :project_id, as: 'projectId'
           property :resource_labels, as: 'resourceLabels', class: Google::Apis::ContainerV1::ResourceLabels, decorator: Google::Apis::ContainerV1::ResourceLabels::Representation
+      
+          property :resource_manager_tags, as: 'resourceManagerTags', class: Google::Apis::ContainerV1::ResourceManagerTags, decorator: Google::Apis::ContainerV1::ResourceManagerTags::Representation
       
           property :tags, as: 'tags', class: Google::Apis::ContainerV1::NetworkTags, decorator: Google::Apis::ContainerV1::NetworkTags::Representation
       

@@ -1618,6 +1618,15 @@ module Google
         # @return [Google::Apis::ContainerV1::NetworkTags]
         attr_accessor :desired_node_pool_auto_config_network_tags
       
+        # A map of resource manager tag keys and values to be attached to the nodes for
+        # managing Compute Engine firewalls using Network Firewall Policies. Tags must
+        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
+        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
+        # specified. Existing tags will be replaced with new values.
+        # Corresponds to the JSON property `desiredNodePoolAutoConfigResourceManagerTags`
+        # @return [Google::Apis::ContainerV1::ResourceManagerTags]
+        attr_accessor :desired_node_pool_auto_config_resource_manager_tags
+      
         # NodePoolAutoscaling contains information required by cluster autoscaler to
         # adjust the size of the node pool to the current cluster usage.
         # Corresponds to the JSON property `desiredNodePoolAutoscaling`
@@ -1772,6 +1781,7 @@ module Google
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
           @desired_network_performance_config = args[:desired_network_performance_config] if args.key?(:desired_network_performance_config)
           @desired_node_pool_auto_config_network_tags = args[:desired_node_pool_auto_config_network_tags] if args.key?(:desired_node_pool_auto_config_network_tags)
+          @desired_node_pool_auto_config_resource_manager_tags = args[:desired_node_pool_auto_config_resource_manager_tags] if args.key?(:desired_node_pool_auto_config_resource_manager_tags)
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
           @desired_node_pool_logging_config = args[:desired_node_pool_logging_config] if args.key?(:desired_node_pool_logging_config)
@@ -3947,6 +3957,15 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :resource_labels
       
+        # A map of resource manager tag keys and values to be attached to the nodes for
+        # managing Compute Engine firewalls using Network Firewall Policies. Tags must
+        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
+        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
+        # specified. Existing tags will be replaced with new values.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Google::Apis::ContainerV1::ResourceManagerTags]
+        attr_accessor :resource_manager_tags
+      
         # SandboxConfig contains configurations of the sandbox to use for the node.
         # Corresponds to the JSON property `sandboxConfig`
         # @return [Google::Apis::ContainerV1::SandboxConfig]
@@ -4036,6 +4055,7 @@ module Google
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @sandbox_config = args[:sandbox_config] if args.key?(:sandbox_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
@@ -4486,6 +4506,15 @@ module Google
         # @return [Google::Apis::ContainerV1::NetworkTags]
         attr_accessor :network_tags
       
+        # A map of resource manager tag keys and values to be attached to the nodes for
+        # managing Compute Engine firewalls using Network Firewall Policies. Tags must
+        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
+        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
+        # specified. Existing tags will be replaced with new values.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Google::Apis::ContainerV1::ResourceManagerTags]
+        attr_accessor :resource_manager_tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4493,6 +4522,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -5247,6 +5277,31 @@ module Google
           @maximum = args[:maximum] if args.key?(:maximum)
           @minimum = args[:minimum] if args.key?(:minimum)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
+      # A map of resource manager tag keys and values to be attached to the nodes for
+      # managing Compute Engine firewalls using Network Firewall Policies. Tags must
+      # be according to specifications in https://cloud.google.com/vpc/docs/tags-
+      # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
+      # specified. Existing tags will be replaced with new values.
+      class ResourceManagerTags
+        include Google::Apis::Core::Hashable
+      
+        # TagKeyValue must be in one of the following formats ([KEY]=[VALUE]) 1. `
+        # tagKeys/`tag_key_id`=tagValues/`tag_value_id`` 2. ``org_id`/`tag_key_name`=`
+        # tag_value_name`` 3. ``project_id`/`tag_key_name`=`tag_value_name``
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -6716,6 +6771,15 @@ module Google
         # @return [Google::Apis::ContainerV1::ResourceLabels]
         attr_accessor :resource_labels
       
+        # A map of resource manager tag keys and values to be attached to the nodes for
+        # managing Compute Engine firewalls using Network Firewall Policies. Tags must
+        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
+        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
+        # specified. Existing tags will be replaced with new values.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Google::Apis::ContainerV1::ResourceManagerTags]
+        attr_accessor :resource_manager_tags
+      
         # Collection of Compute Engine network tags that can be applied to a node's
         # underlying VM instance.
         # Corresponds to the JSON property `tags`
@@ -6810,6 +6874,7 @@ module Google
           @node_version = args[:node_version] if args.key?(:node_version)
           @project_id = args[:project_id] if args.key?(:project_id)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
