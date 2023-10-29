@@ -1,5 +1,9 @@
 # Release history for google-apis-accessapproval_v1
 
+### v0.33.0 (2023-10-29)
+
+* Regenerated from discovery document revision 20231020
+
 ### v0.32.0 (2023-09-24)
 
 * Regenerated from discovery document revision 20230915
