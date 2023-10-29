@@ -988,11 +988,6 @@ module Google
         # @return [Google::Apis::TestingV1::AndroidDevice]
         attr_accessor :android_device
       
-        # A list of Android device configurations in which the test is to be executed.
-        # Corresponds to the JSON property `androidDeviceList`
-        # @return [Google::Apis::TestingV1::AndroidDeviceList]
-        attr_accessor :android_device_list
-      
         # Output only. The time that the Session was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1033,7 +1028,7 @@ module Google
         attr_accessor :state_histories
       
         # Optional. The amount of time that a device will be initially allocated for.
-        # This can eventually be extended with the ExtendDeviceSession RPC. Default: 30
+        # This can eventually be extended with the UpdateDeviceSession RPC. Default: 30
         # minutes.
         # Corresponds to the JSON property `ttl`
         # @return [String]
@@ -1047,7 +1042,6 @@ module Google
         def update!(**args)
           @active_start_time = args[:active_start_time] if args.key?(:active_start_time)
           @android_device = args[:android_device] if args.key?(:android_device)
-          @android_device_list = args[:android_device_list] if args.key?(:android_device_list)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
