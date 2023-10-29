@@ -1925,6 +1925,12 @@ module Google
       class GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse
         include Google::Apis::Core::Hashable
       
+        # A token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
         # The list of PartnerTenant objects.
         # Corresponds to the JSON property `partnerTenants`
         # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant>]
@@ -1936,6 +1942,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @partner_tenants = args[:partner_tenants] if args.key?(:partner_tenants)
         end
       end
@@ -1943,6 +1950,12 @@ module Google
       # Message for response to listing ProxyConfigs.
       class GoogleCloudBeyondcorpPartnerservicesV1alphaListProxyConfigsResponse
         include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
       
         # The list of ProxyConfig objects.
         # Corresponds to the JSON property `proxyConfigs`
@@ -1955,6 +1968,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @proxy_configs = args[:proxy_configs] if args.key?(:proxy_configs)
         end
       end
@@ -2697,7 +2711,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. Number of seats in the subscription.
+        # Optional. Number of seats in the subscription.
         # Corresponds to the JSON property `seatCount`
         # @return [Fixnum]
         attr_accessor :seat_count
