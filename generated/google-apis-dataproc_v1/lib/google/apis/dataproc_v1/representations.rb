@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HadoopJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1325,6 +1331,13 @@ module Google
         end
       end
       
+      class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key, as: 'kmsKey'
+        end
+      end
+      
       class HadoopJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1674,6 +1687,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :templates, as: 'templates', class: Google::Apis::DataprocV1::WorkflowTemplate, decorator: Google::Apis::DataprocV1::WorkflowTemplate::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -2286,6 +2300,8 @@ module Google
       class UsageMetrics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_type, as: 'acceleratorType'
+          property :milli_accelerator_seconds, :numeric_string => true, as: 'milliAcceleratorSeconds'
           property :milli_dcu_seconds, :numeric_string => true, as: 'milliDcuSeconds'
           property :shuffle_storage_gb_seconds, :numeric_string => true, as: 'shuffleStorageGbSeconds'
         end
@@ -2294,6 +2310,8 @@ module Google
       class UsageSnapshot
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_type, as: 'acceleratorType'
+          property :milli_accelerator, :numeric_string => true, as: 'milliAccelerator'
           property :milli_dcu, :numeric_string => true, as: 'milliDcu'
           property :milli_dcu_premium, :numeric_string => true, as: 'milliDcuPremium'
           property :shuffle_storage_gb, :numeric_string => true, as: 'shuffleStorageGb'
@@ -2367,6 +2385,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :dag_timeout, as: 'dagTimeout'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::DataprocV1::GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig, decorator: Google::Apis::DataprocV1::GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig::Representation
+      
           property :id, as: 'id'
           collection :jobs, as: 'jobs', class: Google::Apis::DataprocV1::OrderedJob, decorator: Google::Apis::DataprocV1::OrderedJob::Representation
       
