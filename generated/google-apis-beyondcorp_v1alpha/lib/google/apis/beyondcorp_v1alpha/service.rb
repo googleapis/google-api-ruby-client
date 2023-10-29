@@ -222,6 +222,27 @@ module Google
         # @param [String] parent
         #   Required. The parent organization to which the PartnerTenants belong. Format: `
         #   organizations/`organization_id`/locations/global`
+        # @param [String] filter
+        #   Optional. A filter specifying constraints of a list operation. All fields in
+        #   the PartnerTenant message are supported. For example, the following query will
+        #   return the PartnerTenants with displayName "test-tenant" organizations/$`
+        #   ORG_ID`/locations/$`LOCATION`/partnerTenants?filter=displayName="test-tenant"
+        #   Nested fields are also supported. The follow query will return PartnerTenants
+        #   with internal_tenant_id "1234" organizations/$`ORG_ID`/locations/$`LOCATION`/
+        #   partnerTenants?filter=partnerMetadata.internalTenantId="1234" For more
+        #   information, please refer to https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Optional. Specifies the ordering of results. See [Sorting order](https://cloud.
+        #   google.com/apis/design/design_patterns#sorting_order) for more information.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If not specified, a default
+        #   value of 50 will be used by the service. Regardless of the page_size value,
+        #   the response may include a partial list and a caller should only rely on
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous
+        #   ListPartnerTenantsResponse, if any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -239,11 +260,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_global_partner_tenants(parent, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_location_global_partner_tenants(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+parent}/partnerTenants', options)
           command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse::Representation
           command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -877,6 +902,28 @@ module Google
         #   Required. The parent organization to which the ProxyConfigs belong. Format: `
         #   organizations/`organization_id`/locations/global/partnerTenants/`
         #   partner_tenant_id``
+        # @param [String] filter
+        #   Optional. A filter specifying constraints of a list operation. All fields in
+        #   the ProxyConfig message are supported. For example, the following query will
+        #   return the ProxyConfigs with displayName "test-config" organizations/$`ORG_ID`/
+        #   locations/global/partnerTenants/$`PARTNER_TENANT_ID`/proxyConfigs?filter=
+        #   displayName="test-config" Nested fields are also supported. The follow query
+        #   will return ProxyConfigs with pacUri "example.com/pac.pac" organizations/$`
+        #   ORG_ID`/locations/global/partnerTenants/$`PARTNER_TENANT_ID`/proxyConfigs?
+        #   filter=routingInfo.pacUri="example.com/pac.pac" For more information, please
+        #   refer to https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Optional. Specifies the ordering of results. See [Sorting order](https://cloud.
+        #   google.com/apis/design/design_patterns#sorting_order) for more information.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If not specified, a default
+        #   value of 50 will be used by the service. Regardless of the page_size value,
+        #   the response may include a partial list and a caller should only rely on
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous
+        #   ListProxyConfigsRequest, if any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -894,11 +941,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_global_partner_tenant_proxy_configs(parent, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_location_global_partner_tenant_proxy_configs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+parent}/proxyConfigs', options)
           command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaListProxyConfigsResponse::Representation
           command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaListProxyConfigsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
