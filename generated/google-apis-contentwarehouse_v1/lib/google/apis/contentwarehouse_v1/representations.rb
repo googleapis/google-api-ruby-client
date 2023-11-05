@@ -12442,18 +12442,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RepositoryWebrefPreprocessingUrlSourceInfoNewSchema
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepositoryWebrefPreprocessingUrlSourceInfoOldSchema
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RepositoryWebrefProcessorCounter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -17980,6 +17968,7 @@ module Google
           property :routable_to_provider_cloud, as: 'routableToProviderCloud'
           property :searchable_on_device, as: 'searchableOnDevice'
           property :searchable_on_server, as: 'searchableOnServer'
+          property :supports3p_podcast_playback, as: 'supports3pPodcastPlayback'
           property :supports_screenless_initiation, as: 'supportsScreenlessInitiation'
           property :whitelisted_for_annotation, as: 'whitelistedForAnnotation'
         end
@@ -24398,6 +24387,8 @@ module Google
           collection :address, as: 'address', class: Google::Apis::ContentwarehouseV1::GeostoreAddressProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreAddressProto::Representation
       
           property :anchored_geometry, as: 'anchoredGeometry', class: Google::Apis::ContentwarehouseV1::GeostoreAnchoredGeometryProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreAnchoredGeometryProto::Representation
+      
+          collection :associated_ev_charging_station, as: 'associatedEvChargingStation', class: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto::Representation
       
           collection :attachment, as: 'attachment', class: Google::Apis::ContentwarehouseV1::GeostoreAttachmentsAttachmentProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreAttachmentsAttachmentProto::Representation
       
@@ -42424,7 +42415,6 @@ module Google
           property :matching_text, as: 'matchingText'
           property :name_metadata, as: 'nameMetadata', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefConceptNameMetadata, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefConceptNameMetadata::Representation
       
-          property :non_locational_score, as: 'nonLocationalScore'
           property :per_mention_lightweight_token, as: 'perMentionLightweightToken', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefLightweightTokensPerMentionLightweightToken, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefLightweightTokensPerMentionLightweightToken::Representation
       
           property :personalization_context_outputs, as: 'personalizationContextOutputs', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefPersonalizationContextOutputs, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefPersonalizationContextOutputs::Representation
@@ -42726,26 +42716,8 @@ module Google
       class RepositoryWebrefPreprocessingUrlSourceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :deprecated_old_schema, as: 'deprecatedOldSchema', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingUrlSourceInfoOldSchema, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingUrlSourceInfoOldSchema::Representation
-      
-          property :new_schema, as: 'newSchema', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingUrlSourceInfoNewSchema, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingUrlSourceInfoNewSchema::Representation
-      
           property :original_url, as: 'originalUrl'
           property :source, as: 'source'
-        end
-      end
-      
-      class RepositoryWebrefPreprocessingUrlSourceInfoNewSchema
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :source_property, as: 'sourceProperty'
-        end
-      end
-      
-      class RepositoryWebrefPreprocessingUrlSourceInfoOldSchema
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_official, as: 'isOfficial'
         end
       end
       
