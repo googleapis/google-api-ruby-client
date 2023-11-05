@@ -4393,6 +4393,29 @@ module Google
           @skip_service_control = args[:skip_service_control] if args.key?(:skip_service_control)
         end
       end
+      
+      # Response for the get VPC Service Controls request.
+      class VpcServiceControls
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates whether the VPC Service Controls are enabled or
+        # disabled for the connection. If the consumer called the
+        # EnableVpcServiceControls method, then this is true. If the consumer called
+        # DisableVpcServiceControls, then this is false. The default is false.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
     end
   end
 end
