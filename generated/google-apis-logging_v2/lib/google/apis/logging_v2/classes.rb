@@ -1410,12 +1410,12 @@ module Google
       class LogEntry
         include Google::Apis::Core::Hashable
       
-        # Output only. The Cloud Error Reporting (https://cloud.google.com/error-
-        # reporting) error groups associated with this LogEntry. Cloud Error Reporting
-        # sets the values for this field during error group creation.For more
-        # information, see View error details( http://cloud/error-reporting/docs/viewing-
-        # errors#view_error_details)This field isn't available during log routing (https:
-        # //cloud.google.com/logging/docs/routing/overview)
+        # Output only. The Error Reporting (https://cloud.google.com/error-reporting)
+        # error groups associated with this LogEntry. Error Reporting sets the values
+        # for this field during error group creation.For more information, see View
+        # error details( https://cloud.google.com/error-reporting/docs/viewing-errors#
+        # view_error_details)This field isn't available during log routing (https://
+        # cloud.google.com/logging/docs/routing/overview)
         # Corresponds to the JSON property `errorGroups`
         # @return [Array<Google::Apis::LoggingV2::LogErrorGroup>]
         attr_accessor :error_groups
@@ -1708,8 +1708,7 @@ module Google
         end
       end
       
-      # Contains metadata that associates the LogEntry to Cloud Error Reporting error
-      # groups.
+      # Contains metadata that associates the LogEntry to Error Reporting error groups.
       class LogErrorGroup
         include Google::Apis::Core::Hashable
       
