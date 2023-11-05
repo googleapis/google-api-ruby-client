@@ -123,6 +123,7 @@ module Google
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
           property :name, as: 'name'
+          property :ownership_scope, as: 'ownershipScope'
           collection :threshold_rules, as: 'thresholdRules', class: Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1ThresholdRule, decorator: Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1ThresholdRule::Representation
       
         end
