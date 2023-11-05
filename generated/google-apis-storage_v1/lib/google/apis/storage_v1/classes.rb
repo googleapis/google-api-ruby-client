@@ -22,6 +22,121 @@ module Google
   module Apis
     module StorageV1
       
+      # An Anywhere Cache instance.
+      class AnywhereCache
+        include Google::Apis::Core::Hashable
+      
+        # The cache-level entry admission policy.
+        # Corresponds to the JSON property `admissionPolicy`
+        # @return [String]
+        attr_accessor :admission_policy
+      
+        # The ID of the Anywhere cache instance.
+        # Corresponds to the JSON property `anywhereCacheId`
+        # @return [String]
+        attr_accessor :anywhere_cache_id
+      
+        # The name of the bucket containing this cache instance.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # The creation time of the cache instance in RFC 3339 format.
+        # Corresponds to the JSON property `createTime`
+        # @return [DateTime]
+        attr_accessor :create_time
+      
+        # The ID of the resource, including the project number, bucket name and anywhere
+        # cache ID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The kind of item this is. For Anywhere Cache, this is always storage#
+        # anywhereCache.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # True if the cache instance has an active Update long-running operation.
+        # Corresponds to the JSON property `pendingUpdate`
+        # @return [Boolean]
+        attr_accessor :pending_update
+        alias_method :pending_update?, :pending_update
+      
+        # The link to this cache instance.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # The current state of the cache instance.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The TTL of all cache entries in whole seconds. e.g., "7200s".
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        # The modification time of the cache instance metadata in RFC 3339 format.
+        # Corresponds to the JSON property `updateTime`
+        # @return [DateTime]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admission_policy = args[:admission_policy] if args.key?(:admission_policy)
+          @anywhere_cache_id = args[:anywhere_cache_id] if args.key?(:anywhere_cache_id)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @pending_update = args[:pending_update] if args.key?(:pending_update)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @state = args[:state] if args.key?(:state)
+          @ttl = args[:ttl] if args.key?(:ttl)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A list of Anywhere Caches.
+      class AnywhereCaches
+        include Google::Apis::Core::Hashable
+      
+        # The list of items.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::StorageV1::AnywhereCache>]
+        attr_accessor :items
+      
+        # The kind of item this is. For lists of Anywhere Caches, this is always storage#
+        # anywhereCaches.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The continuation token, used to page through large result sets. Provide this
+        # value in a subsequent request to return the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # A bucket.
       class Bucket
         include Google::Apis::Core::Hashable
@@ -809,7 +924,7 @@ module Google
           # @return [DateTime]
           attr_accessor :effective_time
         
-          # The period of time in seconds, that soft-deleted objects in the bucket will be
+          # The duration in seconds that soft-deleted objects in the bucket will be
           # retained and cannot be permanently deleted.
           # Corresponds to the JSON property `retentionDurationSeconds`
           # @return [Fixnum]
