@@ -563,6 +563,376 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Cancels an AutomationRun. The `state` of the `AutomationRun` after cancelling
+        # is `CANCELLED`. `CancelAutomationRun` can be called on AutomationRun in the
+        # state `IN_PROGRESS` and `PENDING`; AutomationRun in a different state returns
+        # an `FAILED_PRECONDITION` error.
+        # @param [String] name
+        #   Required. Name of the `AutomationRun`. Format is projects/`project`/locations/`
+        #   location`/deliveryPipelines/`delivery_pipeline`/automationRuns/`automation_run`
+        #   .
+        # @param [Google::Apis::ClouddeployV1::CancelAutomationRunRequest] cancel_automation_run_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::CancelAutomationRunResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::CancelAutomationRunResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_automation_run(name, cancel_automation_run_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::ClouddeployV1::CancelAutomationRunRequest::Representation
+          command.request_object = cancel_automation_run_request_object
+          command.response_representation = Google::Apis::ClouddeployV1::CancelAutomationRunResponse::Representation
+          command.response_class = Google::Apis::ClouddeployV1::CancelAutomationRunResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single AutomationRun.
+        # @param [String] name
+        #   Required. Name of the `AutomationRun`. Format must be projects/`project`/
+        #   locations/`location`/deliveryPipelines/`delivery_pipeline`/automationRuns/`
+        #   automation_run`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::AutomationRun] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::AutomationRun]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_delivery_pipeline_automation_run(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ClouddeployV1::AutomationRun::Representation
+          command.response_class = Google::Apis::ClouddeployV1::AutomationRun
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists AutomationRuns in a given project and location.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of automationRuns. Format
+        #   must be projects/`project`/locations/`location`/deliveryPipelines/`
+        #   delivery_pipeline`.
+        # @param [String] filter
+        #   Filter automationRuns to be returned. All fields can be used in the filter.
+        # @param [String] order_by
+        #   Field to sort by.
+        # @param [Fixnum] page_size
+        #   The maximum number of automationRuns to return. The service may return fewer
+        #   than this value. If unspecified, at most 50 automationRuns will be returned.
+        #   The maximum value is 1000; values above 1000 will be set to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListAutomationRuns` call. Provide this
+        #   to retrieve the subsequent page. When paginating, all other provided
+        #   parameters match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::ListAutomationRunsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::ListAutomationRunsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_delivery_pipeline_automation_runs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/automationRuns', options)
+          command.response_representation = Google::Apis::ClouddeployV1::ListAutomationRunsResponse::Representation
+          command.response_class = Google::Apis::ClouddeployV1::ListAutomationRunsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new Automation in a given project and location.
+        # @param [String] parent
+        #   Required. The parent collection in which the `Automation` should be created.
+        #   Format should be projects/`project_id`/locations/`location_name`/
+        #   deliveryPipelines/`pipeline_name`.
+        # @param [Google::Apis::ClouddeployV1::Automation] automation_object
+        # @param [String] automation_id
+        #   Required. ID of the `Automation`.
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. If set to true, the request is validated and the user is provided
+        #   with an expected result, but no actual change is made.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_delivery_pipeline_automation(parent, automation_object = nil, automation_id: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/automations', options)
+          command.request_representation = Google::Apis::ClouddeployV1::Automation::Representation
+          command.request_object = automation_object
+          command.response_representation = Google::Apis::ClouddeployV1::Operation::Representation
+          command.response_class = Google::Apis::ClouddeployV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['automationId'] = automation_id unless automation_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single Automation resource.
+        # @param [String] name
+        #   Required. The name of the `Automation` to delete. Format should be projects/`
+        #   project_id`/locations/`location_name`/deliveryPipelines/`pipeline_name`/
+        #   automations/`automation_name`.
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, then deleting an already deleted or non-existing `
+        #   Automation` will succeed.
+        # @param [String] etag
+        #   Optional. The weak etag of the request. This checksum is computed by the
+        #   server based on the value of other fields, and may be sent on update and
+        #   delete requests to ensure the client has an up-to-date value before proceeding.
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes after the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and verify whether the resource exists,
+        #   but do not actually post it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_delivery_pipeline_automation(name, allow_missing: nil, etag: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ClouddeployV1::Operation::Representation
+          command.response_class = Google::Apis::ClouddeployV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Automation.
+        # @param [String] name
+        #   Required. Name of the `Automation`. Format must be projects/`project_id`/
+        #   locations/`location_name`/deliveryPipelines/`pipeline_name`/automations/`
+        #   automation_name`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::Automation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::Automation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_delivery_pipeline_automation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ClouddeployV1::Automation::Representation
+          command.response_class = Google::Apis::ClouddeployV1::Automation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Automations in a given project and location.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of automations. Format must
+        #   be projects/`project_id`/locations/`location_name`/deliveryPipelines/`
+        #   pipeline_name`.
+        # @param [String] filter
+        #   Filter automations to be returned. All fields can be used in the filter.
+        # @param [String] order_by
+        #   Field to sort by.
+        # @param [Fixnum] page_size
+        #   The maximum number of automations to return. The service may return fewer than
+        #   this value. If unspecified, at most 50 automations will be returned. The
+        #   maximum value is 1000; values above 1000 will be set to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListAutomations` call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other provided parameters
+        #   match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::ListAutomationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::ListAutomationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_delivery_pipeline_automations(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/automations', options)
+          command.response_representation = Google::Apis::ClouddeployV1::ListAutomationsResponse::Representation
+          command.response_class = Google::Apis::ClouddeployV1::ListAutomationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single Automation resource.
+        # @param [String] name
+        #   Output only. Name of the `Automation`. Format is projects/`project`/locations/`
+        #   location`/deliveryPipelines/`delivery_pipeline`/automations/`automation`.
+        # @param [Google::Apis::ClouddeployV1::Automation] automation_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, updating a `Automation` that does not exist will
+        #   result in the creation of a new `Automation`.
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Required. Field mask is used to specify the fields to be overwritten in the `
+        #   Automation` resource by the update. The fields specified in the update_mask
+        #   are relative to the resource, not the full request. A field will be
+        #   overwritten if it is in the mask. If the user does not provide a mask then all
+        #   fields will be overwritten.
+        # @param [Boolean] validate_only
+        #   Optional. If set to true, the request is validated and the user is provided
+        #   with an expected result, but no actual change is made.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_delivery_pipeline_automation(name, automation_object = nil, allow_missing: nil, request_id: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ClouddeployV1::Automation::Representation
+          command.request_object = automation_object
+          command.response_representation = Google::Apis::ClouddeployV1::Operation::Representation
+          command.response_class = Google::Apis::ClouddeployV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Abandons a Release in the Delivery Pipeline.
         # @param [String] name
         #   Required. Name of the Release. Format is projects/`project`/locations/`

@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdvanceRolloutOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdvanceRolloutRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +59,12 @@ module Google
       end
       
       class AdvanceRolloutResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdvanceRolloutRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,7 +100,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Automation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutomationEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutomationResourceSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutomationRolloutMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutomationRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutomationRuleCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutomationRun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -119,6 +167,18 @@ module Google
       end
       
       class CanaryDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelAutomationRunRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelAutomationRunResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -322,6 +382,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAutomationRunsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAutomationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDeliveryPipelinesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -472,6 +544,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PromoteReleaseOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PromoteReleaseRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Release
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -508,6 +592,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RepairMode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepairPhase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepairRolloutOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepairRolloutRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Retry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetryAttempt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RetryJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +635,24 @@ module Google
       end
       
       class RetryJobResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetryPhase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Rollback
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackAttempt
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -545,6 +683,12 @@ module Google
       end
       
       class RolloutNotificationEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutUpdateEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -617,6 +761,12 @@ module Google
       end
       
       class TargetArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetAttribute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -708,6 +858,16 @@ module Google
         end
       end
       
+      class AdvanceRolloutOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_phase, as: 'destinationPhase'
+          property :rollout, as: 'rollout'
+          property :source_phase, as: 'sourcePhase'
+          property :wait, as: 'wait'
+        end
+      end
+      
       class AdvanceRolloutRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -718,6 +878,17 @@ module Google
       class AdvanceRolloutResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AdvanceRolloutRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::ClouddeployV1::AutomationRuleCondition, decorator: Google::Apis::ClouddeployV1::AutomationRuleCondition::Representation
+      
+          property :id, as: 'id'
+          collection :source_phases, as: 'sourcePhases'
+          property :wait, as: 'wait'
         end
       end
       
@@ -758,6 +929,26 @@ module Google
         end
       end
       
+      class Automation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          collection :rules, as: 'rules', class: Google::Apis::ClouddeployV1::AutomationRule, decorator: Google::Apis::ClouddeployV1::AutomationRule::Representation
+      
+          property :selector, as: 'selector', class: Google::Apis::ClouddeployV1::AutomationResourceSelector, decorator: Google::Apis::ClouddeployV1::AutomationResourceSelector::Representation
+      
+          property :service_account, as: 'serviceAccount'
+          property :suspended, as: 'suspended'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class AutomationEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -765,6 +956,69 @@ module Google
           property :message, as: 'message'
           property :pipeline_uid, as: 'pipelineUid'
           property :type, as: 'type'
+        end
+      end
+      
+      class AutomationResourceSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :targets, as: 'targets', class: Google::Apis::ClouddeployV1::TargetAttribute, decorator: Google::Apis::ClouddeployV1::TargetAttribute::Representation
+      
+        end
+      end
+      
+      class AutomationRolloutMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :advance_automation_runs, as: 'advanceAutomationRuns'
+          property :promote_automation_run, as: 'promoteAutomationRun'
+          collection :repair_automation_runs, as: 'repairAutomationRuns'
+        end
+      end
+      
+      class AutomationRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advance_rollout_rule, as: 'advanceRolloutRule', class: Google::Apis::ClouddeployV1::AdvanceRolloutRule, decorator: Google::Apis::ClouddeployV1::AdvanceRolloutRule::Representation
+      
+          property :promote_release_rule, as: 'promoteReleaseRule', class: Google::Apis::ClouddeployV1::PromoteReleaseRule, decorator: Google::Apis::ClouddeployV1::PromoteReleaseRule::Representation
+      
+          property :repair_rollout_rule, as: 'repairRolloutRule', class: Google::Apis::ClouddeployV1::RepairRolloutRule, decorator: Google::Apis::ClouddeployV1::RepairRolloutRule::Representation
+      
+        end
+      end
+      
+      class AutomationRuleCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :targets_present_condition, as: 'targetsPresentCondition', class: Google::Apis::ClouddeployV1::TargetsPresentCondition, decorator: Google::Apis::ClouddeployV1::TargetsPresentCondition::Representation
+      
+        end
+      end
+      
+      class AutomationRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advance_rollout_operation, as: 'advanceRolloutOperation', class: Google::Apis::ClouddeployV1::AdvanceRolloutOperation, decorator: Google::Apis::ClouddeployV1::AdvanceRolloutOperation::Representation
+      
+          property :automation_id, as: 'automationId'
+          property :automation_snapshot, as: 'automationSnapshot', class: Google::Apis::ClouddeployV1::Automation, decorator: Google::Apis::ClouddeployV1::Automation::Representation
+      
+          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
+          property :expire_time, as: 'expireTime'
+          property :name, as: 'name'
+          property :promote_release_operation, as: 'promoteReleaseOperation', class: Google::Apis::ClouddeployV1::PromoteReleaseOperation, decorator: Google::Apis::ClouddeployV1::PromoteReleaseOperation::Representation
+      
+          property :repair_rollout_operation, as: 'repairRolloutOperation', class: Google::Apis::ClouddeployV1::RepairRolloutOperation, decorator: Google::Apis::ClouddeployV1::RepairRolloutOperation::Representation
+      
+          property :rule_id, as: 'ruleId'
+          property :service_account, as: 'serviceAccount'
+          property :state, as: 'state'
+          property :state_description, as: 'stateDescription'
+          property :target_id, as: 'targetId'
+          property :update_time, as: 'updateTime'
+          property :wait_until_time, as: 'waitUntilTime'
         end
       end
       
@@ -820,6 +1074,18 @@ module Google
           property :predeploy, as: 'predeploy', class: Google::Apis::ClouddeployV1::Predeploy, decorator: Google::Apis::ClouddeployV1::Predeploy::Representation
       
           property :verify, as: 'verify'
+        end
+      end
+      
+      class CancelAutomationRunRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CancelAutomationRunResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1151,6 +1417,26 @@ module Google
         end
       end
       
+      class ListAutomationRunsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :automation_runs, as: 'automationRuns', class: Google::Apis::ClouddeployV1::AutomationRun, decorator: Google::Apis::ClouddeployV1::AutomationRun::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListAutomationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :automations, as: 'automations', class: Google::Apis::ClouddeployV1::Automation, decorator: Google::Apis::ClouddeployV1::Automation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListDeliveryPipelinesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1233,6 +1519,8 @@ module Google
       class Metadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :automation, as: 'automation', class: Google::Apis::ClouddeployV1::AutomationRolloutMetadata, decorator: Google::Apis::ClouddeployV1::AutomationRolloutMetadata::Representation
+      
           property :cloud_run, as: 'cloudRun', class: Google::Apis::ClouddeployV1::CloudRunMetadata, decorator: Google::Apis::ClouddeployV1::CloudRunMetadata::Representation
       
         end
@@ -1393,6 +1681,28 @@ module Google
         end
       end
       
+      class PromoteReleaseOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phase, as: 'phase'
+          property :rollout, as: 'rollout'
+          property :target_id, as: 'targetId'
+          property :wait, as: 'wait'
+        end
+      end
+      
+      class PromoteReleaseRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::ClouddeployV1::AutomationRuleCondition, decorator: Google::Apis::ClouddeployV1::AutomationRuleCondition::Representation
+      
+          property :destination_phase, as: 'destinationPhase'
+          property :destination_target_id, as: 'destinationTargetId'
+          property :id, as: 'id'
+          property :wait, as: 'wait'
+        end
+      end
+      
       class Release
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1468,6 +1778,68 @@ module Google
         end
       end
       
+      class RepairMode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retry, as: 'retry', class: Google::Apis::ClouddeployV1::Retry, decorator: Google::Apis::ClouddeployV1::Retry::Representation
+      
+          property :rollback, as: 'rollback', class: Google::Apis::ClouddeployV1::Rollback, decorator: Google::Apis::ClouddeployV1::Rollback::Representation
+      
+        end
+      end
+      
+      class RepairPhase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retry, as: 'retry', class: Google::Apis::ClouddeployV1::RetryPhase, decorator: Google::Apis::ClouddeployV1::RetryPhase::Representation
+      
+          property :rollback, as: 'rollback', class: Google::Apis::ClouddeployV1::RollbackAttempt, decorator: Google::Apis::ClouddeployV1::RollbackAttempt::Representation
+      
+        end
+      end
+      
+      class RepairRolloutOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_repair_mode_index, :numeric_string => true, as: 'currentRepairModeIndex'
+          collection :repair_phases, as: 'repairPhases', class: Google::Apis::ClouddeployV1::RepairPhase, decorator: Google::Apis::ClouddeployV1::RepairPhase::Representation
+      
+          property :rollout, as: 'rollout'
+        end
+      end
+      
+      class RepairRolloutRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::ClouddeployV1::AutomationRuleCondition, decorator: Google::Apis::ClouddeployV1::AutomationRuleCondition::Representation
+      
+          property :id, as: 'id'
+          collection :jobs, as: 'jobs'
+          collection :repair_modes, as: 'repairModes', class: Google::Apis::ClouddeployV1::RepairMode, decorator: Google::Apis::ClouddeployV1::RepairMode::Representation
+      
+          collection :source_phases, as: 'sourcePhases'
+        end
+      end
+      
+      class Retry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attempts, :numeric_string => true, as: 'attempts'
+          property :backoff_mode, as: 'backoffMode'
+          property :wait, as: 'wait'
+        end
+      end
+      
+      class RetryAttempt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attempt, :numeric_string => true, as: 'attempt'
+          property :state, as: 'state'
+          property :state_desc, as: 'stateDesc'
+          property :wait, as: 'wait'
+        end
+      end
+      
       class RetryJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1479,6 +1851,35 @@ module Google
       class RetryJobResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RetryPhase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attempts, as: 'attempts', class: Google::Apis::ClouddeployV1::RetryAttempt, decorator: Google::Apis::ClouddeployV1::RetryAttempt::Representation
+      
+          property :backoff_mode, as: 'backoffMode'
+          property :job_id, as: 'jobId'
+          property :phase_id, as: 'phaseId'
+          property :total_attempts, :numeric_string => true, as: 'totalAttempts'
+        end
+      end
+      
+      class Rollback
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_phase, as: 'destinationPhase'
+        end
+      end
+      
+      class RollbackAttempt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_phase, as: 'destinationPhase'
+          property :rollout_id, as: 'rolloutId'
+          property :state, as: 'state'
+          property :state_desc, as: 'stateDesc'
         end
       end
       
@@ -1549,6 +1950,19 @@ module Google
           property :pipeline_uid, as: 'pipelineUid'
           property :release_uid, as: 'releaseUid'
           property :rollout, as: 'rollout'
+          property :target_id, as: 'targetId'
+          property :type, as: 'type'
+        end
+      end
+      
+      class RolloutUpdateEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :pipeline_uid, as: 'pipelineUid'
+          property :release_uid, as: 'releaseUid'
+          property :rollout, as: 'rollout'
+          property :rollout_update_type, as: 'rolloutUpdateType'
           property :target_id, as: 'targetId'
           property :type, as: 'type'
         end
@@ -1688,6 +2102,14 @@ module Google
           hash :phase_artifacts, as: 'phaseArtifacts', class: Google::Apis::ClouddeployV1::PhaseArtifact, decorator: Google::Apis::ClouddeployV1::PhaseArtifact::Representation
       
           property :skaffold_config_path, as: 'skaffoldConfigPath'
+        end
+      end
+      
+      class TargetAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :labels, as: 'labels'
         end
       end
       

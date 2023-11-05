@@ -89,6 +89,43 @@ module Google
         end
       end
       
+      # Contains the information of an automated advance-rollout operation.
+      class AdvanceRolloutOperation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The phase to which the rollout will be advanced to.
+        # Corresponds to the JSON property `destinationPhase`
+        # @return [String]
+        attr_accessor :destination_phase
+      
+        # Output only. The name of the rollout that initiates the `AutomationRun`.
+        # Corresponds to the JSON property `rollout`
+        # @return [String]
+        attr_accessor :rollout
+      
+        # Output only. The phase of a deployment that initiated the operation.
+        # Corresponds to the JSON property `sourcePhase`
+        # @return [String]
+        attr_accessor :source_phase
+      
+        # Output only. How long the operation will be paused.
+        # Corresponds to the JSON property `wait`
+        # @return [String]
+        attr_accessor :wait
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_phase = args[:destination_phase] if args.key?(:destination_phase)
+          @rollout = args[:rollout] if args.key?(:rollout)
+          @source_phase = args[:source_phase] if args.key?(:source_phase)
+          @wait = args[:wait] if args.key?(:wait)
+        end
+      end
+      
       # The request object used by `AdvanceRollout`.
       class AdvanceRolloutRequest
         include Google::Apis::Core::Hashable
@@ -118,6 +155,49 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The `AdvanceRollout` automation rule will automatically advance a successful
+      # Rollout to the next phase.
+      class AdvanceRolloutRule
+        include Google::Apis::Core::Hashable
+      
+        # `AutomationRuleCondition` contains conditions relevant to an `Automation` rule.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::ClouddeployV1::AutomationRuleCondition]
+        attr_accessor :condition
+      
+        # Required. ID of the rule. This id must be unique in the `Automation` resource
+        # to which this rule belongs. The format is a-z`0,62`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. Proceeds only after phase name matched any one in the list. This
+        # value must consist of lower-case letters, numbers, and hyphens, start with a
+        # letter and end with a letter or a number, and have a max length of 63
+        # characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-
+        # ]`0,61`[a-z0-9])?$`.
+        # Corresponds to the JSON property `sourcePhases`
+        # @return [Array<String>]
+        attr_accessor :source_phases
+      
+        # Optional. How long to wait after a rollout is finished.
+        # Corresponds to the JSON property `wait`
+        # @return [String]
+        attr_accessor :wait
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @id = args[:id] if args.key?(:id)
+          @source_phases = args[:source_phases] if args.key?(:source_phases)
+          @wait = args[:wait] if args.key?(:wait)
         end
       end
       
@@ -246,6 +326,120 @@ module Google
         end
       end
       
+      # An `Automation` resource in the Cloud Deploy API. An `Automation` enables the
+      # automation of manually driven actions for a Delivery Pipeline, which includes
+      # Release promotion amongst Targets, Rollout repair and Rollout deployment
+      # strategy advancement. The intention of Automation is to reduce manual
+      # intervention in the continuous delivery process.
+      class Automation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User annotations. These attributes can only be set and used by the
+        # user, and not by Cloud Deploy. Annotations must meet the following constraints:
+        # * Annotations are key/value pairs. * Valid annotation keys have two segments:
+        # an optional prefix and name, separated by a slash (/). * The name segment is
+        # required and must be 63 characters or less, beginning and ending with an
+        # alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.)
+        # , and alphanumerics between. * The prefix is optional. If specified, the
+        # prefix must be a DNS subdomain: a series of DNS labels separated by dots(.),
+        # not longer than 253 characters in total, followed by a slash (/). See https://
+        # kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-
+        # and-character-set for more details.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. Time at which the automation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of the `Automation`. Max length is 255 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The weak etag of the `Automation` resource. This checksum is
+        # computed by the server based on the value of other fields, and may be sent on
+        # update and delete requests to ensure the client has an up-to-date value before
+        # proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Labels are attributes that can be set and used by both the user and
+        # by Cloud Deploy. Labels must meet the following constraints: * Keys and values
+        # can contain only lowercase letters, numeric characters, underscores, and
+        # dashes. * All characters must use UTF-8 encoding, and international characters
+        # are allowed. * Keys must start with a lowercase letter or international
+        # character. * Each resource is limited to a maximum of 64 labels. Both keys and
+        # values are additionally constrained to be <= 63 characters.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Name of the `Automation`. Format is projects/`project`/locations/`
+        # location`/deliveryPipelines/`delivery_pipeline`/automations/`automation`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. List of Automation rules associated with the Automation resource.
+        # Must have at least one rule and limited to 250 rules per Delivery Pipeline.
+        # Note: the order of the rules here is not the same as the order of execution.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::ClouddeployV1::AutomationRule>]
+        attr_accessor :rules
+      
+        # AutomationResourceSelector contains the information to select the resources to
+        # which an Automation is going to be applied.
+        # Corresponds to the JSON property `selector`
+        # @return [Google::Apis::ClouddeployV1::AutomationResourceSelector]
+        attr_accessor :selector
+      
+        # Required. Email address of the user-managed IAM service account that creates
+        # Cloud Deploy release and rollout resources.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Optional. When Suspended, automation is deactivated from execution.
+        # Corresponds to the JSON property `suspended`
+        # @return [Boolean]
+        attr_accessor :suspended
+        alias_method :suspended?, :suspended
+      
+        # Output only. Unique identifier of the `Automation`.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Time at which the automation was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @rules = args[:rules] if args.key?(:rules)
+          @selector = args[:selector] if args.key?(:selector)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @suspended = args[:suspended] if args.key?(:suspended)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Payload proto for "clouddeploy.googleapis.com/automation" Platform Log event
       # that describes the Automation related events.
       class AutomationEvent
@@ -282,6 +476,238 @@ module Google
           @message = args[:message] if args.key?(:message)
           @pipeline_uid = args[:pipeline_uid] if args.key?(:pipeline_uid)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # AutomationResourceSelector contains the information to select the resources to
+      # which an Automation is going to be applied.
+      class AutomationResourceSelector
+        include Google::Apis::Core::Hashable
+      
+        # Contains attributes about a target.
+        # Corresponds to the JSON property `targets`
+        # @return [Array<Google::Apis::ClouddeployV1::TargetAttribute>]
+        attr_accessor :targets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @targets = args[:targets] if args.key?(:targets)
+        end
+      end
+      
+      # AutomationRolloutMetadata contains Automation-related actions that were
+      # performed on a rollout.
+      class AutomationRolloutMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The IDs of the AutomationRuns initiated by an advance rollout
+        # rule.
+        # Corresponds to the JSON property `advanceAutomationRuns`
+        # @return [Array<String>]
+        attr_accessor :advance_automation_runs
+      
+        # Output only. The ID of the AutomationRun initiated by a promote release rule.
+        # Corresponds to the JSON property `promoteAutomationRun`
+        # @return [String]
+        attr_accessor :promote_automation_run
+      
+        # Output only. The IDs of the AutomationRuns initiated by a repair rollout rule.
+        # Corresponds to the JSON property `repairAutomationRuns`
+        # @return [Array<String>]
+        attr_accessor :repair_automation_runs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advance_automation_runs = args[:advance_automation_runs] if args.key?(:advance_automation_runs)
+          @promote_automation_run = args[:promote_automation_run] if args.key?(:promote_automation_run)
+          @repair_automation_runs = args[:repair_automation_runs] if args.key?(:repair_automation_runs)
+        end
+      end
+      
+      # `AutomationRule` defines the automation activities.
+      class AutomationRule
+        include Google::Apis::Core::Hashable
+      
+        # The `AdvanceRollout` automation rule will automatically advance a successful
+        # Rollout to the next phase.
+        # Corresponds to the JSON property `advanceRolloutRule`
+        # @return [Google::Apis::ClouddeployV1::AdvanceRolloutRule]
+        attr_accessor :advance_rollout_rule
+      
+        # `PromoteRelease` rule will automatically promote a release from the current
+        # target to a specified target.
+        # Corresponds to the JSON property `promoteReleaseRule`
+        # @return [Google::Apis::ClouddeployV1::PromoteReleaseRule]
+        attr_accessor :promote_release_rule
+      
+        # The `RepairRolloutRule` automation rule will automatically repair a failed `
+        # Rollout`.
+        # Corresponds to the JSON property `repairRolloutRule`
+        # @return [Google::Apis::ClouddeployV1::RepairRolloutRule]
+        attr_accessor :repair_rollout_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advance_rollout_rule = args[:advance_rollout_rule] if args.key?(:advance_rollout_rule)
+          @promote_release_rule = args[:promote_release_rule] if args.key?(:promote_release_rule)
+          @repair_rollout_rule = args[:repair_rollout_rule] if args.key?(:repair_rollout_rule)
+        end
+      end
+      
+      # `AutomationRuleCondition` contains conditions relevant to an `Automation` rule.
+      class AutomationRuleCondition
+        include Google::Apis::Core::Hashable
+      
+        # TargetsPresentCondition contains information on any Targets defined in the
+        # Delivery Pipeline that do not actually exist.
+        # Corresponds to the JSON property `targetsPresentCondition`
+        # @return [Google::Apis::ClouddeployV1::TargetsPresentCondition]
+        attr_accessor :targets_present_condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @targets_present_condition = args[:targets_present_condition] if args.key?(:targets_present_condition)
+        end
+      end
+      
+      # An `AutomationRun` resource in the Cloud Deploy API. An `AutomationResource`
+      # represents an automation execution instance of an automation rule.
+      class AutomationRun
+        include Google::Apis::Core::Hashable
+      
+        # Contains the information of an automated advance-rollout operation.
+        # Corresponds to the JSON property `advanceRolloutOperation`
+        # @return [Google::Apis::ClouddeployV1::AdvanceRolloutOperation]
+        attr_accessor :advance_rollout_operation
+      
+        # Output only. The ID of the automation that initiated the operation.
+        # Corresponds to the JSON property `automationId`
+        # @return [String]
+        attr_accessor :automation_id
+      
+        # An `Automation` resource in the Cloud Deploy API. An `Automation` enables the
+        # automation of manually driven actions for a Delivery Pipeline, which includes
+        # Release promotion amongst Targets, Rollout repair and Rollout deployment
+        # strategy advancement. The intention of Automation is to reduce manual
+        # intervention in the continuous delivery process.
+        # Corresponds to the JSON property `automationSnapshot`
+        # @return [Google::Apis::ClouddeployV1::Automation]
+        attr_accessor :automation_snapshot
+      
+        # Output only. Time at which the `AutomationRun` was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The weak etag of the `AutomationRun` resource. This checksum is
+        # computed by the server based on the value of other fields, and may be sent on
+        # update and delete requests to ensure the client has an up-to-date value before
+        # proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. Time the `AutomationRun` will expire. An `AutomationRun` will
+        # expire after 14 days from its creation date.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. Name of the `AutomationRun`. Format is projects/`project`/
+        # locations/`location`/deliveryPipelines/`delivery_pipeline`/automationRuns/`
+        # automation_run`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Contains the information of an automated promote-release operation.
+        # Corresponds to the JSON property `promoteReleaseOperation`
+        # @return [Google::Apis::ClouddeployV1::PromoteReleaseOperation]
+        attr_accessor :promote_release_operation
+      
+        # Contains the information for an automated `repair rollout` operation.
+        # Corresponds to the JSON property `repairRolloutOperation`
+        # @return [Google::Apis::ClouddeployV1::RepairRolloutOperation]
+        attr_accessor :repair_rollout_operation
+      
+        # Output only. The ID of the automation rule that initiated the operation.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
+        # Output only. Email address of the user-managed IAM service account that
+        # performs the operations against Cloud Deploy resources.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Output only. Current state of the `AutomationRun`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Explains the current state of the `AutomationRun`. Present only
+        # an explanation is needed.
+        # Corresponds to the JSON property `stateDescription`
+        # @return [String]
+        attr_accessor :state_description
+      
+        # Output only. The ID of the target that represents the promotion stage that
+        # initiates the `AutomationRun`. The value of this field is the last segment of
+        # a target name.
+        # Corresponds to the JSON property `targetId`
+        # @return [String]
+        attr_accessor :target_id
+      
+        # Output only. Time at which the automationRun was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. Earliest time the `AutomationRun` will attempt to resume. Wait-
+        # time is configured by `wait` in automation rule.
+        # Corresponds to the JSON property `waitUntilTime`
+        # @return [String]
+        attr_accessor :wait_until_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advance_rollout_operation = args[:advance_rollout_operation] if args.key?(:advance_rollout_operation)
+          @automation_id = args[:automation_id] if args.key?(:automation_id)
+          @automation_snapshot = args[:automation_snapshot] if args.key?(:automation_snapshot)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @name = args[:name] if args.key?(:name)
+          @promote_release_operation = args[:promote_release_operation] if args.key?(:promote_release_operation)
+          @repair_rollout_operation = args[:repair_rollout_operation] if args.key?(:repair_rollout_operation)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @state = args[:state] if args.key?(:state)
+          @state_description = args[:state_description] if args.key?(:state_description)
+          @target_id = args[:target_id] if args.key?(:target_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @wait_until_time = args[:wait_until_time] if args.key?(:wait_until_time)
         end
       end
       
@@ -513,6 +939,32 @@ module Google
           @postdeploy = args[:postdeploy] if args.key?(:postdeploy)
           @predeploy = args[:predeploy] if args.key?(:predeploy)
           @verify = args[:verify] if args.key?(:verify)
+        end
+      end
+      
+      # The request object used by `CancelAutomationRun`.
+      class CancelAutomationRunRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response object from `CancelAutomationRun`.
+      class CancelAutomationRunResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1651,6 +2103,70 @@ module Google
         end
       end
       
+      # The response object from `ListAutomationRuns`.
+      class ListAutomationRunsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The `AutomationRuns` objects.
+        # Corresponds to the JSON property `automationRuns`
+        # @return [Array<Google::Apis::ClouddeployV1::AutomationRun>]
+        attr_accessor :automation_runs
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automation_runs = args[:automation_runs] if args.key?(:automation_runs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response object from `ListAutomations`.
+      class ListAutomationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The `Automations` objects.
+        # Corresponds to the JSON property `automations`
+        # @return [Array<Google::Apis::ClouddeployV1::Automation>]
+        attr_accessor :automations
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automations = args[:automations] if args.key?(:automations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response object from `ListDeliveryPipelines`.
       class ListDeliveryPipelinesResponse
         include Google::Apis::Core::Hashable
@@ -1912,6 +2428,12 @@ module Google
       class Metadata
         include Google::Apis::Core::Hashable
       
+        # AutomationRolloutMetadata contains Automation-related actions that were
+        # performed on a rollout.
+        # Corresponds to the JSON property `automation`
+        # @return [Google::Apis::ClouddeployV1::AutomationRolloutMetadata]
+        attr_accessor :automation
+      
         # CloudRunMetadata contains information from a Cloud Run deployment.
         # Corresponds to the JSON property `cloudRun`
         # @return [Google::Apis::ClouddeployV1::CloudRunMetadata]
@@ -1923,6 +2445,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @automation = args[:automation] if args.key?(:automation)
           @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
         end
       end
@@ -2539,6 +3062,97 @@ module Google
         end
       end
       
+      # Contains the information of an automated promote-release operation.
+      class PromoteReleaseOperation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The starting phase of the rollout created by this operation.
+        # Corresponds to the JSON property `phase`
+        # @return [String]
+        attr_accessor :phase
+      
+        # Output only. The name of the rollout that initiates the `AutomationRun`.
+        # Corresponds to the JSON property `rollout`
+        # @return [String]
+        attr_accessor :rollout
+      
+        # Output only. The ID of the target that represents the promotion stage to which
+        # the release will be promoted. The value of this field is the last segment of a
+        # target name.
+        # Corresponds to the JSON property `targetId`
+        # @return [String]
+        attr_accessor :target_id
+      
+        # Output only. How long the operation will be paused.
+        # Corresponds to the JSON property `wait`
+        # @return [String]
+        attr_accessor :wait
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phase = args[:phase] if args.key?(:phase)
+          @rollout = args[:rollout] if args.key?(:rollout)
+          @target_id = args[:target_id] if args.key?(:target_id)
+          @wait = args[:wait] if args.key?(:wait)
+        end
+      end
+      
+      # `PromoteRelease` rule will automatically promote a release from the current
+      # target to a specified target.
+      class PromoteReleaseRule
+        include Google::Apis::Core::Hashable
+      
+        # `AutomationRuleCondition` contains conditions relevant to an `Automation` rule.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::ClouddeployV1::AutomationRuleCondition]
+        attr_accessor :condition
+      
+        # Optional. The starting phase of the rollout created by this operation. Default
+        # to the first phase.
+        # Corresponds to the JSON property `destinationPhase`
+        # @return [String]
+        attr_accessor :destination_phase
+      
+        # Optional. The ID of the stage in the pipeline to which this `Release` is
+        # deploying. If unspecified, default it to the next stage in the promotion flow.
+        # The value of this field could be one of the following: * The last segment of a
+        # target name. It only needs the ID to determine if the target is one of the
+        # stages in the promotion sequence defined in the pipeline. * "@next", the next
+        # target in the promotion sequence.
+        # Corresponds to the JSON property `destinationTargetId`
+        # @return [String]
+        attr_accessor :destination_target_id
+      
+        # Required. ID of the rule. This id must be unique in the `Automation` resource
+        # to which this rule belongs. The format is a-z`0,62`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. How long the release need to be paused until being promoted to the
+        # next target.
+        # Corresponds to the JSON property `wait`
+        # @return [String]
+        attr_accessor :wait
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @destination_phase = args[:destination_phase] if args.key?(:destination_phase)
+          @destination_target_id = args[:destination_target_id] if args.key?(:destination_target_id)
+          @id = args[:id] if args.key?(:id)
+          @wait = args[:wait] if args.key?(:wait)
+        end
+      end
+      
       # A `Release` resource in the Cloud Deploy API. A `Release` defines a specific
       # Skaffold configuration instance that can be deployed.
       class Release
@@ -2827,6 +3441,216 @@ module Google
         end
       end
       
+      # Configuration of the repair action.
+      class RepairMode
+        include Google::Apis::Core::Hashable
+      
+        # Retries the failed job.
+        # Corresponds to the JSON property `retry`
+        # @return [Google::Apis::ClouddeployV1::Retry]
+        attr_accessor :retry
+      
+        # Rolls back a `Rollout`.
+        # Corresponds to the JSON property `rollback`
+        # @return [Google::Apis::ClouddeployV1::Rollback]
+        attr_accessor :rollback
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retry = args[:retry] if args.key?(:retry)
+          @rollback = args[:rollback] if args.key?(:rollback)
+        end
+      end
+      
+      # RepairPhase tracks the repair attempts that have been made for each `
+      # RepairMode` specified in the `Automation` resource.
+      class RepairPhase
+        include Google::Apis::Core::Hashable
+      
+        # RetryPhase contains the retry attempts and the metadata for initiating a new
+        # attempt.
+        # Corresponds to the JSON property `retry`
+        # @return [Google::Apis::ClouddeployV1::RetryPhase]
+        attr_accessor :retry
+      
+        # RollbackAttempt represents an action of rolling back a Cloud Deploy 'Target'.
+        # Corresponds to the JSON property `rollback`
+        # @return [Google::Apis::ClouddeployV1::RollbackAttempt]
+        attr_accessor :rollback
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retry = args[:retry] if args.key?(:retry)
+          @rollback = args[:rollback] if args.key?(:rollback)
+        end
+      end
+      
+      # Contains the information for an automated `repair rollout` operation.
+      class RepairRolloutOperation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The index of the current repair action in the repair sequence.
+        # Corresponds to the JSON property `currentRepairModeIndex`
+        # @return [Fixnum]
+        attr_accessor :current_repair_mode_index
+      
+        # Output only. Records of the repair attempts. Each repair phase may have
+        # multiple retry attempts or single rollback attempt.
+        # Corresponds to the JSON property `repairPhases`
+        # @return [Array<Google::Apis::ClouddeployV1::RepairPhase>]
+        attr_accessor :repair_phases
+      
+        # Output only. The name of the rollout that initiates the `AutomationRun`.
+        # Corresponds to the JSON property `rollout`
+        # @return [String]
+        attr_accessor :rollout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_repair_mode_index = args[:current_repair_mode_index] if args.key?(:current_repair_mode_index)
+          @repair_phases = args[:repair_phases] if args.key?(:repair_phases)
+          @rollout = args[:rollout] if args.key?(:rollout)
+        end
+      end
+      
+      # The `RepairRolloutRule` automation rule will automatically repair a failed `
+      # Rollout`.
+      class RepairRolloutRule
+        include Google::Apis::Core::Hashable
+      
+        # `AutomationRuleCondition` contains conditions relevant to an `Automation` rule.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::ClouddeployV1::AutomationRuleCondition]
+        attr_accessor :condition
+      
+        # Required. ID of the rule. This id must be unique in the `Automation` resource
+        # to which this rule belongs. The format is a-z`0,62`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. Jobs to repair. Proceeds only after job name matched any one in the
+        # list, or for all jobs if unspecified or empty. The phase that includes the job
+        # must match the phase ID specified in `source_phase`. This value must consist
+        # of lower-case letters, numbers, and hyphens, start with a letter and end with
+        # a letter or a number, and have a max length of 63 characters. In other words,
+        # it must match the following regex: `^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$`.
+        # Corresponds to the JSON property `jobs`
+        # @return [Array<String>]
+        attr_accessor :jobs
+      
+        # Required. Defines the types of automatic repair actions for failed jobs.
+        # Corresponds to the JSON property `repairModes`
+        # @return [Array<Google::Apis::ClouddeployV1::RepairMode>]
+        attr_accessor :repair_modes
+      
+        # Optional. Phases within which jobs are subject to automatic repair actions on
+        # failure. Proceeds only after phase name matched any one in the list, or for
+        # all phases if unspecified. This value must consist of lower-case letters,
+        # numbers, and hyphens, start with a letter and end with a letter or a number,
+        # and have a max length of 63 characters. In other words, it must match the
+        # following regex: `^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$`.
+        # Corresponds to the JSON property `sourcePhases`
+        # @return [Array<String>]
+        attr_accessor :source_phases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @id = args[:id] if args.key?(:id)
+          @jobs = args[:jobs] if args.key?(:jobs)
+          @repair_modes = args[:repair_modes] if args.key?(:repair_modes)
+          @source_phases = args[:source_phases] if args.key?(:source_phases)
+        end
+      end
+      
+      # Retries the failed job.
+      class Retry
+        include Google::Apis::Core::Hashable
+      
+        # Required. Total number of retries. Retry will skipped if set to 0; The minimum
+        # value is 1, and the maximum value is 10.
+        # Corresponds to the JSON property `attempts`
+        # @return [Fixnum]
+        attr_accessor :attempts
+      
+        # Optional. The pattern of how wait time will be increased. Default is linear.
+        # Backoff mode will be ignored if `wait` is 0.
+        # Corresponds to the JSON property `backoffMode`
+        # @return [String]
+        attr_accessor :backoff_mode
+      
+        # Optional. How long to wait for the first retry. Default is 0, and the maximum
+        # value is 14d.
+        # Corresponds to the JSON property `wait`
+        # @return [String]
+        attr_accessor :wait
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attempts = args[:attempts] if args.key?(:attempts)
+          @backoff_mode = args[:backoff_mode] if args.key?(:backoff_mode)
+          @wait = args[:wait] if args.key?(:wait)
+        end
+      end
+      
+      # RetryAttempt represents an action of retrying the failed Cloud Deploy job.
+      class RetryAttempt
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The index of this retry attempt.
+        # Corresponds to the JSON property `attempt`
+        # @return [Fixnum]
+        attr_accessor :attempt
+      
+        # Output only. Valid state of this retry action.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Description of the state of the Retry.
+        # Corresponds to the JSON property `stateDesc`
+        # @return [String]
+        attr_accessor :state_desc
+      
+        # Output only. How long the operation will be paused.
+        # Corresponds to the JSON property `wait`
+        # @return [String]
+        attr_accessor :wait
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attempt = args[:attempt] if args.key?(:attempt)
+          @state = args[:state] if args.key?(:state)
+          @state_desc = args[:state_desc] if args.key?(:state_desc)
+          @wait = args[:wait] if args.key?(:wait)
+        end
+      end
+      
       # RetryJobRequest is the request object used by `RetryJob`.
       class RetryJobRequest
         include Google::Apis::Core::Hashable
@@ -2862,6 +3686,108 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # RetryPhase contains the retry attempts and the metadata for initiating a new
+      # attempt.
+      class RetryPhase
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Detail of a retry action.
+        # Corresponds to the JSON property `attempts`
+        # @return [Array<Google::Apis::ClouddeployV1::RetryAttempt>]
+        attr_accessor :attempts
+      
+        # Output only. The pattern of how the wait time of the retry attempt is
+        # calculated.
+        # Corresponds to the JSON property `backoffMode`
+        # @return [String]
+        attr_accessor :backoff_mode
+      
+        # Output only. The job ID for the Job to retry.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        # Output only. The phase ID of the phase that includes the job being retried.
+        # Corresponds to the JSON property `phaseId`
+        # @return [String]
+        attr_accessor :phase_id
+      
+        # Output only. The number of attempts that have been made.
+        # Corresponds to the JSON property `totalAttempts`
+        # @return [Fixnum]
+        attr_accessor :total_attempts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attempts = args[:attempts] if args.key?(:attempts)
+          @backoff_mode = args[:backoff_mode] if args.key?(:backoff_mode)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @phase_id = args[:phase_id] if args.key?(:phase_id)
+          @total_attempts = args[:total_attempts] if args.key?(:total_attempts)
+        end
+      end
+      
+      # Rolls back a `Rollout`.
+      class Rollback
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The starting phase ID for the `Rollout`. If unspecified, the `
+        # Rollout` will start in the stable phase.
+        # Corresponds to the JSON property `destinationPhase`
+        # @return [String]
+        attr_accessor :destination_phase
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_phase = args[:destination_phase] if args.key?(:destination_phase)
+        end
+      end
+      
+      # RollbackAttempt represents an action of rolling back a Cloud Deploy 'Target'.
+      class RollbackAttempt
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The phase to which the rollout will be rolled back to.
+        # Corresponds to the JSON property `destinationPhase`
+        # @return [String]
+        attr_accessor :destination_phase
+      
+        # Output only. ID of the rollback `Rollout` to create.
+        # Corresponds to the JSON property `rolloutId`
+        # @return [String]
+        attr_accessor :rollout_id
+      
+        # Output only. Valid state of this rollback action.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Description of the state of the Rollback.
+        # Corresponds to the JSON property `stateDesc`
+        # @return [String]
+        attr_accessor :state_desc
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_phase = args[:destination_phase] if args.key?(:destination_phase)
+          @rollout_id = args[:rollout_id] if args.key?(:rollout_id)
+          @state = args[:state] if args.key?(:state)
+          @state_desc = args[:state_desc] if args.key?(:state_desc)
         end
       end
       
@@ -3175,6 +4101,62 @@ module Google
           @pipeline_uid = args[:pipeline_uid] if args.key?(:pipeline_uid)
           @release_uid = args[:release_uid] if args.key?(:release_uid)
           @rollout = args[:rollout] if args.key?(:rollout)
+          @target_id = args[:target_id] if args.key?(:target_id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Payload proto for "clouddeploy.googleapis.com/rollout_update" Platform Log
+      # event that describes the rollout update event.
+      class RolloutUpdateEvent
+        include Google::Apis::Core::Hashable
+      
+        # Debug message for when a rollout update event occurs.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Unique identifier of the pipeline.
+        # Corresponds to the JSON property `pipelineUid`
+        # @return [String]
+        attr_accessor :pipeline_uid
+      
+        # Unique identifier of the release.
+        # Corresponds to the JSON property `releaseUid`
+        # @return [String]
+        attr_accessor :release_uid
+      
+        # The name of the rollout.
+        # Corresponds to the JSON property `rollout`
+        # @return [String]
+        attr_accessor :rollout
+      
+        # Output only. The type of the rollout update.
+        # Corresponds to the JSON property `rolloutUpdateType`
+        # @return [String]
+        attr_accessor :rollout_update_type
+      
+        # ID of the target.
+        # Corresponds to the JSON property `targetId`
+        # @return [String]
+        attr_accessor :target_id
+      
+        # Type of this notification, e.g. for a rollout update event.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @pipeline_uid = args[:pipeline_uid] if args.key?(:pipeline_uid)
+          @release_uid = args[:release_uid] if args.key?(:release_uid)
+          @rollout = args[:rollout] if args.key?(:rollout)
+          @rollout_update_type = args[:rollout_update_type] if args.key?(:rollout_update_type)
           @target_id = args[:target_id] if args.key?(:target_id)
           @type = args[:type] if args.key?(:type)
         end
@@ -3700,6 +4682,36 @@ module Google
           @manifest_path = args[:manifest_path] if args.key?(:manifest_path)
           @phase_artifacts = args[:phase_artifacts] if args.key?(:phase_artifacts)
           @skaffold_config_path = args[:skaffold_config_path] if args.key?(:skaffold_config_path)
+        end
+      end
+      
+      # Contains criteria for selecting Targets. Attributes provided must match the
+      # target resource in order for policy restrictions to apply. E.g. if id "prod"
+      # and labels "foo: bar" are given the target resource must match both that id
+      # and have that label in order to be selected.
+      class TargetAttribute
+        include Google::Apis::Core::Hashable
+      
+        # ID of the `Target`. The value of this field could be one of the following: *
+        # The last segment of a target name. It only needs the ID to determine which
+        # target is being referred to * "*", all targets in a location.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Target labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
