@@ -1242,6 +1242,12 @@ module Google
         # @return [String]
         attr_accessor :gce_pd_kms_key_name
       
+        # Optional. The Cloud KMS key name to use for encrypting customer core content
+        # in spanner and cluster PD disk for all instances in the cluster.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1249,6 +1255,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gce_pd_kms_key_name = args[:gce_pd_kms_key_name] if args.key?(:gce_pd_kms_key_name)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
         end
       end
       
@@ -3213,6 +3220,13 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Output only. List of jobs that could not be included in the response.
+        # Attempting to get one of these resources may indicate why it was not included
+        # in the list response.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3221,6 +3235,7 @@ module Google
         def update!(**args)
           @jobs = args[:jobs] if args.key?(:jobs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
