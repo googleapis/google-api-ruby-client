@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnterpriseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EphemeralStorageLocalSsdConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1259,6 +1265,8 @@ module Google
           property :enable_kubernetes_alpha, as: 'enableKubernetesAlpha'
           property :enable_tpu, as: 'enableTpu'
           property :endpoint, as: 'endpoint'
+          property :enterprise_config, as: 'enterpriseConfig', class: Google::Apis::ContainerV1::EnterpriseConfig, decorator: Google::Apis::ContainerV1::EnterpriseConfig::Representation
+      
           property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
           property :fleet, as: 'fleet', class: Google::Apis::ContainerV1::Fleet, decorator: Google::Apis::ContainerV1::Fleet::Representation
@@ -1558,6 +1566,13 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EnterpriseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_tier, as: 'clusterTier'
         end
       end
       
