@@ -27384,6 +27384,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # The name of the zone where the instance hosting the network endpoint is
+        # located (valid only for regional GCE_VM_IP_PORT NEGs). It should comply with
+        # RFC1035. The zone must belong to the region of the Network Endpoint Group.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
         def initialize(**args)
            update!(**args)
         end
@@ -27397,6 +27404,7 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @port = args[:port] if args.key?(:port)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -39260,6 +39268,13 @@ module Google
         # @return [String]
         attr_accessor :next_hop_instance
       
+        # [Output only] Internal fixed region-to-region cost that Google Cloud
+        # calculates based on factors such as network performance, distance, and
+        # available bandwidth between regions.
+        # Corresponds to the JSON property `nextHopInterRegionCost`
+        # @return [Fixnum]
+        attr_accessor :next_hop_inter_region_cost
+      
         # [Output Only] The URL to an InterconnectAttachment which is the next hop for
         # the route. This field will only be populated for the dynamic routes generated
         # by Cloud Router with a linked interconnectAttachment.
@@ -39277,10 +39292,22 @@ module Google
         # @return [String]
         attr_accessor :next_hop_ip
       
+        # [Output Only] Multi-Exit Discriminator, a BGP route metric that indicates the
+        # desirability of a particular route in a network.
+        # Corresponds to the JSON property `nextHopMed`
+        # @return [Fixnum]
+        attr_accessor :next_hop_med
+      
         # The URL of the local network if it should handle matching packets.
         # Corresponds to the JSON property `nextHopNetwork`
         # @return [String]
         attr_accessor :next_hop_network
+      
+        # [Output Only] Indicates the origin of the route. Can be IGP (Interior Gateway
+        # Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+        # Corresponds to the JSON property `nextHopOrigin`
+        # @return [String]
+        attr_accessor :next_hop_origin
       
         # [Output Only] The network peering name that should handle matching packets,
         # which should conform to RFC1035.
@@ -39357,9 +39384,12 @@ module Google
           @next_hop_hub = args[:next_hop_hub] if args.key?(:next_hop_hub)
           @next_hop_ilb = args[:next_hop_ilb] if args.key?(:next_hop_ilb)
           @next_hop_instance = args[:next_hop_instance] if args.key?(:next_hop_instance)
+          @next_hop_inter_region_cost = args[:next_hop_inter_region_cost] if args.key?(:next_hop_inter_region_cost)
           @next_hop_interconnect_attachment = args[:next_hop_interconnect_attachment] if args.key?(:next_hop_interconnect_attachment)
           @next_hop_ip = args[:next_hop_ip] if args.key?(:next_hop_ip)
+          @next_hop_med = args[:next_hop_med] if args.key?(:next_hop_med)
           @next_hop_network = args[:next_hop_network] if args.key?(:next_hop_network)
+          @next_hop_origin = args[:next_hop_origin] if args.key?(:next_hop_origin)
           @next_hop_peering = args[:next_hop_peering] if args.key?(:next_hop_peering)
           @next_hop_vpn_tunnel = args[:next_hop_vpn_tunnel] if args.key?(:next_hop_vpn_tunnel)
           @priority = args[:priority] if args.key?(:priority)
