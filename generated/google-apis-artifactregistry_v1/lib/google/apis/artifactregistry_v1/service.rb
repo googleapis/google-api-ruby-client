@@ -470,8 +470,8 @@ module Google
         
         # Updates a repository.
         # @param [String] name
-        #   The name of the repository, for example: "projects/p1/locations/us-central1/
-        #   repositories/repo1".
+        #   The name of the repository, for example: `projects/p1/locations/us-central1/
+        #   repositories/repo1`.
         # @param [Google::Apis::ArtifactregistryV1::Repository] repository_object
         # @param [String] update_mask
         #   The update mask applies to the resource. For the `FieldMask` definition, see
