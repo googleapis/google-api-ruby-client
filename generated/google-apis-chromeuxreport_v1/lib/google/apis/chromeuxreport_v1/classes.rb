@@ -270,6 +270,11 @@ module Google
       class Metric
         include Google::Apis::Core::Hashable
       
+        # For enum metrics, provides fractions which add up to approximately 1.0.
+        # Corresponds to the JSON property `fractions`
+        # @return [Hash<String,Float>]
+        attr_accessor :fractions
+      
         # The histogram of user experiences for a metric. The histogram will have at
         # least one bin and the densities of all bins will add up to ~1.
         # Corresponds to the JSON property `histogram`
@@ -289,6 +294,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @fractions = args[:fractions] if args.key?(:fractions)
           @histogram = args[:histogram] if args.key?(:histogram)
           @percentiles = args[:percentiles] if args.key?(:percentiles)
         end
