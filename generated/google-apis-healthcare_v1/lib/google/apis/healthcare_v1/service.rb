@@ -2303,9 +2303,8 @@ module Google
         # html#sect_10.6). For details on the implementation of SearchForInstances, see [
         # Search transaction](https://cloud.google.com/healthcare/docs/dicom#
         # search_transaction) in the Cloud Healthcare API conformance statement. For
-        # samples that show how to call SearchForInstances, see [Searching for studies,
-        # series, instances, and frames](https://cloud.google.com/healthcare/docs/how-
-        # tos/dicomweb#searching_for_studies_series_instances_and_frames).
+        # samples that show how to call SearchForInstances, see [Search for DICOM data](
+        # https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -2347,9 +2346,8 @@ module Google
         # For details on the implementation of SearchForSeries, see [Search transaction]
         # (https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the
         # Cloud Healthcare API conformance statement. For samples that show how to call
-        # SearchForSeries, see [Searching for studies, series, instances, and frames](
-        # https://cloud.google.com/healthcare/docs/how-tos/dicomweb#
-        # searching_for_studies_series_instances_and_frames).
+        # SearchForSeries, see [Search for DICOM data](https://cloud.google.com/
+        # healthcare/docs/how-tos/dicomweb#search-dicom).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -2390,9 +2388,8 @@ module Google
         # For details on the implementation of SearchForStudies, see [Search
         # transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
         # in the Cloud Healthcare API conformance statement. For samples that show how
-        # to call SearchForStudies, see [Searching for studies, series, instances, and
-        # frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#
-        # searching_for_studies_series_instances_and_frames).
+        # to call SearchForStudies, see [Search for DICOM data](https://cloud.google.com/
+        # healthcare/docs/how-tos/dicomweb#search-dicom).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -2470,8 +2467,8 @@ module Google
         # implementation of StoreInstances, see [Store transaction](https://cloud.google.
         # com/healthcare/docs/dicom#store_transaction) in the Cloud Healthcare API
         # conformance statement. For samples that show how to call StoreInstances, see [
-        # Storing DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#
-        # storing_dicom_data).
+        # Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#
+        # store-dicom).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -2618,9 +2615,8 @@ module Google
         # method returns an Operation which will be marked successful when the deletion
         # is complete. Warning: Instances cannot be inserted into a study that is being
         # deleted by an operation until the operation completes. For samples that show
-        # how to call DeleteStudy, see [Deleting a study, series, or instance](https://
-        # cloud.google.com/healthcare/docs/how-tos/dicomweb#
-        # deleting_a_study_series_or_instance).
+        # how to call DeleteStudy, see [Delete a study, series, or instance](https://
+        # cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
         # @param [String] parent
         # @param [String] dicom_web_path
         #   The path of the DeleteStudy request. For example, `studies/`study_uid``.
@@ -2658,8 +2654,8 @@ module Google
         # For details on the implementation of RetrieveStudyMetadata, see [Metadata
         # resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
         # in the Cloud Healthcare API conformance statement. For samples that show how
-        # to call RetrieveStudyMetadata, see [Retrieving metadata](https://cloud.google.
-        # com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+        # to call RetrieveStudyMetadata, see [Retrieve metadata](https://cloud.google.
+        # com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -2700,9 +2696,9 @@ module Google
         # part18.html#sect_10.4). For details on the implementation of RetrieveStudy,
         # see [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/
         # dicom#dicom_studyseriesinstances) in the Cloud Healthcare API conformance
-        # statement. For samples that show how to call RetrieveStudy, see [Retrieving
-        # DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#
-        # retrieving_dicom_data).
+        # statement. For samples that show how to call RetrieveStudy, see [Retrieve
+        # DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-
+        # dicom).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -2743,9 +2739,8 @@ module Google
         # html#sect_10.6). For details on the implementation of SearchForInstances, see [
         # Search transaction](https://cloud.google.com/healthcare/docs/dicom#
         # search_transaction) in the Cloud Healthcare API conformance statement. For
-        # samples that show how to call SearchForInstances, see [Searching for studies,
-        # series, instances, and frames](https://cloud.google.com/healthcare/docs/how-
-        # tos/dicomweb#searching_for_studies_series_instances_and_frames).
+        # samples that show how to call SearchForInstances, see [Search for DICOM data](
+        # https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -2787,9 +2782,8 @@ module Google
         # For details on the implementation of SearchForSeries, see [Search transaction]
         # (https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the
         # Cloud Healthcare API conformance statement. For samples that show how to call
-        # SearchForSeries, see [Searching for studies, series, instances, and frames](
-        # https://cloud.google.com/healthcare/docs/how-tos/dicomweb#
-        # searching_for_studies_series_instances_and_frames).
+        # SearchForSeries, see [Search for DICOM data](https://cloud.google.com/
+        # healthcare/docs/how-tos/dicomweb#search-dicom).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -2831,8 +2825,8 @@ module Google
         # implementation of StoreInstances, see [Store transaction](https://cloud.google.
         # com/healthcare/docs/dicom#store_transaction) in the Cloud Healthcare API
         # conformance statement. For samples that show how to call StoreInstances, see [
-        # Storing DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#
-        # storing_dicom_data).
+        # Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#
+        # store-dicom).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -2876,9 +2870,9 @@ module Google
         # transaction. The method returns an Operation which will be marked successful
         # when the deletion is complete. Warning: Instances cannot be inserted into a
         # series that is being deleted by an operation until the operation completes.
-        # For samples that show how to call DeleteSeries, see [Deleting a study, series,
-        # or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#
-        # deleting_a_study_series_or_instance).
+        # For samples that show how to call DeleteSeries, see [Delete a study, series,
+        # or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-
+        # dicom).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -2921,8 +2915,8 @@ module Google
         # RetrieveSeriesMetadata, see [Metadata resources](https://cloud.google.com/
         # healthcare/docs/dicom#metadata_resources) in the Cloud Healthcare API
         # conformance statement. For samples that show how to call
-        # RetrieveSeriesMetadata, see [Retrieving metadata](https://cloud.google.com/
-        # healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+        # RetrieveSeriesMetadata, see [Retrieve metadata](https://cloud.google.com/
+        # healthcare/docs/how-tos/dicomweb#retrieve-metadata).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -2963,9 +2957,9 @@ module Google
         # part18.html#sect_10.4). For details on the implementation of RetrieveSeries,
         # see [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/
         # dicom#dicom_studyseriesinstances) in the Cloud Healthcare API conformance
-        # statement. For samples that show how to call RetrieveSeries, see [Retrieving
-        # DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#
-        # retrieving_dicom_data).
+        # statement. For samples that show how to call RetrieveSeries, see [Retrieve
+        # DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-
+        # dicom).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -3006,9 +3000,8 @@ module Google
         # html#sect_10.6). For details on the implementation of SearchForInstances, see [
         # Search transaction](https://cloud.google.com/healthcare/docs/dicom#
         # search_transaction) in the Cloud Healthcare API conformance statement. For
-        # samples that show how to call SearchForInstances, see [Searching for studies,
-        # series, instances, and frames](https://cloud.google.com/healthcare/docs/how-
-        # tos/dicomweb#searching_for_studies_series_instances_and_frames).
+        # samples that show how to call SearchForInstances, see [Search for DICOM data](
+        # https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -3049,9 +3042,9 @@ module Google
         # and SOP Instance UID. Delete requests are equivalent to the GET requests
         # specified in the Retrieve transaction. Study and series search results can
         # take a few seconds to be updated after an instance is deleted using
-        # DeleteInstance. For samples that show how to call DeleteInstance, see [
-        # Deleting a study, series, or instance](https://cloud.google.com/healthcare/
-        # docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+        # DeleteInstance. For samples that show how to call DeleteInstance, see [Delete
+        # a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/
+        # dicomweb#delete-dicom).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -3094,8 +3087,8 @@ module Google
         # cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances) and [DICOM
         # instances](https://cloud.google.com/healthcare/docs/dicom#dicom_instances) in
         # the Cloud Healthcare API conformance statement. For samples that show how to
-        # call RetrieveInstance, see [Retrieving an instance](https://cloud.google.com/
-        # healthcare/docs/how-tos/dicomweb#retrieving_an_instance).
+        # call RetrieveInstance, see [Retrieve an instance](https://cloud.google.com/
+        # healthcare/docs/how-tos/dicomweb#retrieve-instance).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -3138,8 +3131,8 @@ module Google
         # RetrieveInstanceMetadata, see [Metadata resources](https://cloud.google.com/
         # healthcare/docs/dicom#metadata_resources) in the Cloud Healthcare API
         # conformance statement. For samples that show how to call
-        # RetrieveInstanceMetadata, see [Retrieving metadata](https://cloud.google.com/
-        # healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+        # RetrieveInstanceMetadata, see [Retrieve metadata](https://cloud.google.com/
+        # healthcare/docs/how-tos/dicomweb#retrieve-metadata).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -3182,9 +3175,8 @@ module Google
         # RetrieveRenderedInstance, see [Rendered resources](https://cloud.google.com/
         # healthcare/docs/dicom#rendered_resources) in the Cloud Healthcare API
         # conformance statement. For samples that show how to call
-        # RetrieveRenderedInstance, see [Retrieving consumer image formats](https://
-        # cloud.google.com/healthcare/docs/how-tos/dicomweb#
-        # retrieving_consumer_image_formats).
+        # RetrieveRenderedInstance, see [Retrieve consumer image formats](https://cloud.
+        # google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -3226,8 +3218,8 @@ module Google
         # the implementation of RetrieveFrames, see [DICOM frames](https://cloud.google.
         # com/healthcare/docs/dicom#dicom_frames) in the Cloud Healthcare API
         # conformance statement. For samples that show how to call RetrieveFrames, see [
-        # Retrieving DICOM data](https://cloud.google.com/healthcare/docs/how-tos/
-        # dicomweb#retrieving_dicom_data).
+        # Retrieve DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#
+        # retrieve-dicom).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -3270,8 +3262,8 @@ module Google
         # RetrieveRenderedFrames, see [Rendered resources](https://cloud.google.com/
         # healthcare/docs/dicom#rendered_resources) in the Cloud Healthcare API
         # conformance statement. For samples that show how to call
-        # RetrieveRenderedFrames, see [Retrieving consumer image formats](https://cloud.
-        # google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
+        # RetrieveRenderedFrames, see [Retrieve consumer image formats](https://cloud.
+        # google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -4969,7 +4961,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets metrics asssociated with the HL7v2 store.
+        # Gets metrics associated with the HL7v2 store.
         # @param [String] name
         #   The resource name of the HL7v2 store to get metrics for, in the format `
         #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
