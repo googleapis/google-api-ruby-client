@@ -283,6 +283,7 @@ module Google
       class ClaimDeviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :configuration_id, :numeric_string => true, as: 'configurationId'
           property :customer_id, :numeric_string => true, as: 'customerId'
           property :device_identifier, as: 'deviceIdentifier', class: Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier, decorator: Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier::Representation
       
@@ -624,6 +625,7 @@ module Google
       class PartnerClaim
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :configuration_id, :numeric_string => true, as: 'configurationId'
           property :customer_id, :numeric_string => true, as: 'customerId'
           property :device_identifier, as: 'deviceIdentifier', class: Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier, decorator: Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier::Representation
       
