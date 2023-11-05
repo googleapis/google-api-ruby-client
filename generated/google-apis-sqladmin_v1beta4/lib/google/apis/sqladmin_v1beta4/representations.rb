@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DemoteContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DemoteMasterConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,6 +281,12 @@ module Google
       end
       
       class InstancesDemoteMasterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesDemoteRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -868,6 +880,14 @@ module Google
         end
       end
       
+      class DemoteContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :source_representative_instance_name, as: 'sourceRepresentativeInstanceName'
+        end
+      end
+      
       class DemoteMasterConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1121,6 +1141,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :demote_master_context, as: 'demoteMasterContext', class: Google::Apis::SqladminV1beta4::DemoteMasterContext, decorator: Google::Apis::SqladminV1beta4::DemoteMasterContext::Representation
+      
+        end
+      end
+      
+      class InstancesDemoteRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :demote_context, as: 'demoteContext', class: Google::Apis::SqladminV1beta4::DemoteContext, decorator: Google::Apis::SqladminV1beta4::DemoteContext::Representation
       
         end
       end
