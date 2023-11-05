@@ -117,6 +117,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists all the available runtimes for the application.
+        # @param [String] apps_id
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
+        # @param [String] environment
+        #   Optional. The environment of the Application.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::ListRuntimesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::ListRuntimesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_app_runtimes(apps_id, environment: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/apps/{appsId}:listRuntimes', options)
+          command.response_representation = Google::Apis::AppengineV1::ListRuntimesResponse::Representation
+          command.response_class = Google::Apis::AppengineV1::ListRuntimesResponse
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.query['environment'] = environment unless environment.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the specified Application resource. You can update the following
         # fields: auth_domain - Google authentication domain for controlling user access
         # to the application. default_cookie_expiration - Cookie expiration policy for
