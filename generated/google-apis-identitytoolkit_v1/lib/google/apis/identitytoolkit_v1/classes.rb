@@ -363,7 +363,9 @@ module Google
       
         # The list of sign-in methods that the user has previously used. Each element is
         # one of `password`, `emailLink`, or the provider ID of an IdP. Present only
-        # when a registered email identifier is set in the request.
+        # when a registered email identifier is set in the request. If [email
+        # enumeration protection](https://cloud.google.com/identity-platform/docs/admin/
+        # email-enumeration-protection) is enabled, this method returns an empty list.
         # Corresponds to the JSON property `signinMethods`
         # @return [Array<String>]
         attr_accessor :signin_methods
@@ -1887,7 +1889,10 @@ module Google
         # The user's new email to be updated in the account's attributes. The length of
         # email should be less than 256 characters and in the format of `name@domain.tld`
         # . The email should also match the [RFC 822](https://tools.ietf.org/html/rfc822)
-        # addr-spec production.
+        # addr-spec production. If [email enumeration protection](https://cloud.google.
+        # com/identity-platform/docs/admin/email-enumeration-protection) is enabled, the
+        # email cannot be changed by the user without verifying the email first, but it
+        # can be changed by an administrator.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
