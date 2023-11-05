@@ -1015,6 +1015,11 @@ module Google
         # @return [String]
         attr_accessor :endpoint
       
+        # EnterpriseConfig is the cluster enterprise configuration.
+        # Corresponds to the JSON property `enterpriseConfig`
+        # @return [Google::Apis::ContainerV1beta1::EnterpriseConfig]
+        attr_accessor :enterprise_config
+      
         # This checksum is computed by the server based on the value of cluster fields,
         # and may be sent on update requests to ensure the client has an up-to-date
         # value before proceeding.
@@ -1403,6 +1408,7 @@ module Google
           @enable_kubernetes_alpha = args[:enable_kubernetes_alpha] if args.key?(:enable_kubernetes_alpha)
           @enable_tpu = args[:enable_tpu] if args.key?(:enable_tpu)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @enterprise_config = args[:enterprise_config] if args.key?(:enterprise_config)
           @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @fleet = args[:fleet] if args.key?(:fleet)
@@ -2417,6 +2423,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # EnterpriseConfig is the cluster enterprise configuration.
+      class EnterpriseConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] cluster_tier specifies the premium tier of the
+        # cluster.
+        # Corresponds to the JSON property `clusterTier`
+        # @return [String]
+        attr_accessor :cluster_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_tier = args[:cluster_tier] if args.key?(:cluster_tier)
         end
       end
       
