@@ -1233,40 +1233,6 @@ module Google
         end
       end
       
-      # Configuration for signing in users using passkeys.
-      class GoogleCloudIdentitytoolkitAdminV2PasskeyConfig
-        include Google::Apis::Core::Hashable
-      
-        # Required. The website or app origins associated with the customer's sites or
-        # apps. Only challenges signed from these origins will be allowed to sign in
-        # with passkeys.
-        # Corresponds to the JSON property `expectedOrigins`
-        # @return [Array<String>]
-        attr_accessor :expected_origins
-      
-        # Required. The name of the PasskeyConfig resource.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Required. The relying party ID for the purpose of passkeys verifications. This
-        # cannot be changed once created.
-        # Corresponds to the JSON property `rpId`
-        # @return [String]
-        attr_accessor :rp_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @expected_origins = args[:expected_origins] if args.key?(:expected_origins)
-          @name = args[:name] if args.key?(:name)
-          @rp_id = args[:rp_id] if args.key?(:rp_id)
-        end
-      end
-      
       # The configuration for the password policy on the project.
       class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig
         include Google::Apis::Core::Hashable
