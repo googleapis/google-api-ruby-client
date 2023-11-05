@@ -122,6 +122,50 @@ module Google
         end
       end
       
+      # Contains the usage information of the asset.
+      class GoogleAdsSearchads360V0CommonAssetUsage
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of the asset.
+        # Corresponds to the JSON property `asset`
+        # @return [String]
+        attr_accessor :asset
+      
+        # The served field type of the asset.
+        # Corresponds to the JSON property `servedAssetFieldType`
+        # @return [String]
+        attr_accessor :served_asset_field_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset = args[:asset] if args.key?(:asset)
+          @served_asset_field_type = args[:served_asset_field_type] if args.key?(:served_asset_field_type)
+        end
+      end
+      
+      # An audience criterion.
+      class GoogleAdsSearchads360V0CommonAudienceInfo
+        include Google::Apis::Core::Hashable
+      
+        # The Audience resource name.
+        # Corresponds to the JSON property `audience`
+        # @return [String]
+        attr_accessor :audience
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audience = args[:audience] if args.key?(:audience)
+        end
+      end
+      
       # Business Profile location data synced from the linked Business Profile account.
       class GoogleAdsSearchads360V0CommonBusinessProfileLocation
         include Google::Apis::Core::Hashable
@@ -153,6 +197,25 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @listing_id = args[:listing_id] if args.key?(:listing_id)
           @store_code = args[:store_code] if args.key?(:store_code)
+        end
+      end
+      
+      # A call to action asset.
+      class GoogleAdsSearchads360V0CommonCallToActionAsset
+        include Google::Apis::Core::Hashable
+      
+        # Call to action.
+        # Corresponds to the JSON property `callToAction`
+        # @return [String]
+        attr_accessor :call_to_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @call_to_action = args[:call_to_action] if args.key?(:call_to_action)
         end
       end
       
@@ -247,6 +310,68 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # An Image asset.
+      class GoogleAdsSearchads360V0CommonImageAsset
+        include Google::Apis::Core::Hashable
+      
+        # File size of the image asset in bytes.
+        # Corresponds to the JSON property `fileSize`
+        # @return [Fixnum]
+        attr_accessor :file_size
+      
+        # Metadata for an image at a certain size, either original or resized.
+        # Corresponds to the JSON property `fullSize`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonImageDimension]
+        attr_accessor :full_size
+      
+        # MIME type of the image asset.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_size = args[:file_size] if args.key?(:file_size)
+          @full_size = args[:full_size] if args.key?(:full_size)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # Metadata for an image at a certain size, either original or resized.
+      class GoogleAdsSearchads360V0CommonImageDimension
+        include Google::Apis::Core::Hashable
+      
+        # Height of the image.
+        # Corresponds to the JSON property `heightPixels`
+        # @return [Fixnum]
+        attr_accessor :height_pixels
+      
+        # A URL that returns the image with this height and width.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        # Width of the image.
+        # Corresponds to the JSON property `widthPixels`
+        # @return [Fixnum]
+        attr_accessor :width_pixels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @height_pixels = args[:height_pixels] if args.key?(:height_pixels)
+          @url = args[:url] if args.key?(:url)
+          @width_pixels = args[:width_pixels] if args.key?(:width_pixels)
         end
       end
       
@@ -673,6 +798,150 @@ module Google
         # @return [Float]
         attr_accessor :client_account_conversions_value
       
+        # Client account cross-sell cost of goods sold (COGS) is the total cost of
+        # products sold as a result of advertising a different product. How it works:
+        # You report conversions with cart data for completed purchases on your website.
+        # If the ad that was interacted with before the purchase has an associated
+        # product (see Shopping Ads) then this product is considered the advertised
+        # product. Any product included in the order the customer places is a sold
+        # product. If these products don't match then this is considered cross-sell.
+        # Cross-sell cost of goods sold is the total cost of the products sold that
+        # weren't advertised. Example: Someone clicked on a Shopping ad for a hat then
+        # bought the same hat and a shirt. The hat has a cost of goods sold value of $3,
+        # the shirt has a cost of goods sold value of $5. The cross-sell cost of goods
+        # sold for this order is $5. This metric is only available if you report
+        # conversions with cart data. This metric is a monetary value and returned in
+        # the customer's currency by default. See the metrics_currency parameter at
+        # https://developers.google.com/search-ads/reporting/query/query-structure#
+        # parameters_clause
+        # Corresponds to the JSON property `clientAccountCrossSellCostOfGoodsSoldMicros`
+        # @return [Fixnum]
+        attr_accessor :client_account_cross_sell_cost_of_goods_sold_micros
+      
+        # Client account cross-sell gross profit is the profit you made from products
+        # sold as a result of advertising a different product, minus cost of goods sold (
+        # COGS). How it works: You report conversions with cart data for completed
+        # purchases on your website. If the ad that was interacted with before the
+        # purchase has an associated product (see Shopping Ads) then this product is
+        # considered the advertised product. Any product included in the purchase is a
+        # sold product. If these products don't match then this is considered cross-sell.
+        # Cross-sell gross profit is the revenue you made from cross-sell attributed to
+        # your ads minus the cost of the goods sold. Example: Someone clicked on a
+        # Shopping ad for a hat then bought the same hat and a shirt. The shirt is
+        # priced $20 and has a cost of goods sold value of $5. The cross-sell gross
+        # profit of this order is $15 = $20 - $5. This metric is only available if you
+        # report conversions with cart data. This metric is a monetary value and
+        # returned in the customer's currency by default. See the metrics_currency
+        # parameter at https://developers.google.com/search-ads/reporting/query/query-
+        # structure#parameters_clause
+        # Corresponds to the JSON property `clientAccountCrossSellGrossProfitMicros`
+        # @return [Fixnum]
+        attr_accessor :client_account_cross_sell_gross_profit_micros
+      
+        # Client account cross-sell revenue is the total amount you made from products
+        # sold as a result of advertising a different product. How it works: You report
+        # conversions with cart data for completed purchases on your website. If the ad
+        # that was interacted with before the purchase has an associated product (see
+        # Shopping Ads) then this product is considered the advertised product. Any
+        # product included in the order the customer places is a sold product. If these
+        # products don't match then this is considered cross-sell. Cross-sell revenue is
+        # the total value you made from cross-sell attributed to your ads. Example:
+        # Someone clicked on a Shopping ad for a hat then bought the same hat and a
+        # shirt. The hat is priced $10 and the shirt is priced $20. The cross-sell
+        # revenue of this order is $20. This metric is only available if you report
+        # conversions with cart data. This metric is a monetary value and returned in
+        # the customer's currency by default. See the metrics_currency parameter at
+        # https://developers.google.com/search-ads/reporting/query/query-structure#
+        # parameters_clause
+        # Corresponds to the JSON property `clientAccountCrossSellRevenueMicros`
+        # @return [Fixnum]
+        attr_accessor :client_account_cross_sell_revenue_micros
+      
+        # Client account cross-sell units sold is the total number of products sold as a
+        # result of advertising a different product. How it works: You report
+        # conversions with cart data for completed purchases on your website. If the ad
+        # that was interacted with before the purchase has an associated product (see
+        # Shopping Ads) then this product is considered the advertised product. Any
+        # product included in the order the customer places is a sold product. If these
+        # products don't match then this is considered cross-sell. Cross-sell units sold
+        # is the total number of cross-sold products from all orders attributed to your
+        # ads. Example: Someone clicked on a Shopping ad for a hat then bought the same
+        # hat, a shirt and a jacket. The cross-sell units sold in this order is 2. This
+        # metric is only available if you report conversions with cart data.
+        # Corresponds to the JSON property `clientAccountCrossSellUnitsSold`
+        # @return [Float]
+        attr_accessor :client_account_cross_sell_units_sold
+      
+        # Client account lead cost of goods sold (COGS) is the total cost of products
+        # sold as a result of advertising the same product. How it works: You report
+        # conversions with cart data for completed purchases on your website. If the ad
+        # that was interacted with has an associated product (see Shopping Ads) then
+        # this product is considered the advertised product. Any product included in the
+        # order the customer places is a sold product. If the advertised and sold
+        # products match, then the cost of these goods is counted under lead cost of
+        # goods sold. Example: Someone clicked on a Shopping ad for a hat then bought
+        # the same hat and a shirt. The hat has a cost of goods sold value of $3, the
+        # shirt has a cost of goods sold value of $5. The lead cost of goods sold for
+        # this order is $3. This metric is only available if you report conversions with
+        # cart data. This metric is a monetary value and returned in the customer's
+        # currency by default. See the metrics_currency parameter at https://developers.
+        # google.com/search-ads/reporting/query/query-structure#parameters_clause
+        # Corresponds to the JSON property `clientAccountLeadCostOfGoodsSoldMicros`
+        # @return [Fixnum]
+        attr_accessor :client_account_lead_cost_of_goods_sold_micros
+      
+        # Client account lead gross profit is the profit you made from products sold as
+        # a result of advertising the same product, minus cost of goods sold (COGS). How
+        # it works: You report conversions with cart data for completed purchases on
+        # your website. If the ad that was interacted with before the purchase has an
+        # associated product (see Shopping Ads) then this product is considered the
+        # advertised product. Any product included in the order the customer places is a
+        # sold product. If the advertised and sold products match, then the revenue you
+        # made from these sales minus the cost of goods sold is your lead gross profit.
+        # Example: Someone clicked on a Shopping ad for a hat then bought the same hat
+        # and a shirt. The hat is priced $10 and has a cost of goods sold value of $3.
+        # The lead gross profit of this order is $7 = $10 - $3. This metric is only
+        # available if you report conversions with cart data. This metric is a monetary
+        # value and returned in the customer's currency by default. See the
+        # metrics_currency parameter at https://developers.google.com/search-ads/
+        # reporting/query/query-structure#parameters_clause
+        # Corresponds to the JSON property `clientAccountLeadGrossProfitMicros`
+        # @return [Fixnum]
+        attr_accessor :client_account_lead_gross_profit_micros
+      
+        # Client account lead revenue is the total amount you made from products sold as
+        # a result of advertising the same product. How it works: You report conversions
+        # with cart data for completed purchases on your website. If the ad that was
+        # interacted with before the purchase has an associated product (see Shopping
+        # Ads) then this product is considered the advertised product. Any product
+        # included in the order the customer places is a sold product. If the advertised
+        # and sold products match, then the total value you made from the sales of these
+        # products is shown under lead revenue. Example: Someone clicked on a Shopping
+        # ad for a hat then bought the same hat and a shirt. The hat is priced $10 and
+        # the shirt is priced $20. The lead revenue of this order is $10. This metric is
+        # only available if you report conversions with cart data. This metric is a
+        # monetary value and returned in the customer's currency by default. See the
+        # metrics_currency parameter at https://developers.google.com/search-ads/
+        # reporting/query/query-structure#parameters_clause
+        # Corresponds to the JSON property `clientAccountLeadRevenueMicros`
+        # @return [Fixnum]
+        attr_accessor :client_account_lead_revenue_micros
+      
+        # Client account lead units sold is the total number of products sold as a
+        # result of advertising the same product. How it works: You report conversions
+        # with cart data for completed purchases on your website. If the ad that was
+        # interacted with before the purchase has an associated product (see Shopping
+        # Ads) then this product is considered the advertised product. Any product
+        # included in the order the customer places is a sold product. If the advertised
+        # and sold products match, then the total number of these products sold is shown
+        # under lead units sold. Example: Someone clicked on a Shopping ad for a hat
+        # then bought the same hat, a shirt and a jacket. The lead units sold in this
+        # order is 1. This metric is only available if you report conversions with cart
+        # data.
+        # Corresponds to the JSON property `clientAccountLeadUnitsSold`
+        # @return [Float]
+        attr_accessor :client_account_lead_units_sold
+      
         # The total number of view-through conversions. These happen when a customer
         # sees an image or rich media ad, then later completes a conversion on your site
         # without interacting with (for example, clicking on) another ad.
@@ -791,6 +1060,78 @@ module Google
         # @return [Float]
         attr_accessor :cross_device_conversions_value
       
+        # Cross-sell cost of goods sold (COGS) is the total cost of products sold as a
+        # result of advertising a different product. How it works: You report
+        # conversions with cart data for completed purchases on your website. If the ad
+        # that was interacted with before the purchase has an associated product (see
+        # Shopping Ads) then this product is considered the advertised product. Any
+        # product included in the order the customer places is a sold product. If these
+        # products don't match then this is considered cross-sell. Cross-sell cost of
+        # goods sold is the total cost of the products sold that weren't advertised.
+        # Example: Someone clicked on a Shopping ad for a hat then bought the same hat
+        # and a shirt. The hat has a cost of goods sold value of $3, the shirt has a
+        # cost of goods sold value of $5. The cross-sell cost of goods sold for this
+        # order is $5. This metric is only available if you report conversions with cart
+        # data. This metric is a monetary value and returned in the customer's currency
+        # by default. See the metrics_currency parameter at https://developers.google.
+        # com/search-ads/reporting/query/query-structure#parameters_clause
+        # Corresponds to the JSON property `crossSellCostOfGoodsSoldMicros`
+        # @return [Fixnum]
+        attr_accessor :cross_sell_cost_of_goods_sold_micros
+      
+        # Cross-sell gross profit is the profit you made from products sold as a result
+        # of advertising a different product, minus cost of goods sold (COGS). How it
+        # works: You report conversions with cart data for completed purchases on your
+        # website. If the ad that was interacted with before the purchase has an
+        # associated product (see Shopping Ads) then this product is considered the
+        # advertised product. Any product included in the purchase is a sold product. If
+        # these products don't match then this is considered cross-sell. Cross-sell
+        # gross profit is the revenue you made from cross-sell attributed to your ads
+        # minus the cost of the goods sold. Example: Someone clicked on a Shopping ad
+        # for a hat then bought the same hat and a shirt. The shirt is priced $20 and
+        # has a cost of goods sold value of $5. The cross-sell gross profit of this
+        # order is $15 = $20 - $5. This metric is only available if you report
+        # conversions with cart data. This metric is a monetary value and returned in
+        # the customer's currency by default. See the metrics_currency parameter at
+        # https://developers.google.com/search-ads/reporting/query/query-structure#
+        # parameters_clause
+        # Corresponds to the JSON property `crossSellGrossProfitMicros`
+        # @return [Fixnum]
+        attr_accessor :cross_sell_gross_profit_micros
+      
+        # Cross-sell revenue is the total amount you made from products sold as a result
+        # of advertising a different product. How it works: You report conversions with
+        # cart data for completed purchases on your website. If the ad that was
+        # interacted with before the purchase has an associated product (see Shopping
+        # Ads) then this product is considered the advertised product. Any product
+        # included in the order the customer places is a sold product. If these products
+        # don't match then this is considered cross-sell. Cross-sell revenue is the
+        # total value you made from cross-sell attributed to your ads. Example: Someone
+        # clicked on a Shopping ad for a hat then bought the same hat and a shirt. The
+        # hat is priced $10 and the shirt is priced $20. The cross-sell revenue of this
+        # order is $20. This metric is only available if you report conversions with
+        # cart data. This metric is a monetary value and returned in the customer's
+        # currency by default. See the metrics_currency parameter at https://developers.
+        # google.com/search-ads/reporting/query/query-structure#parameters_clause
+        # Corresponds to the JSON property `crossSellRevenueMicros`
+        # @return [Fixnum]
+        attr_accessor :cross_sell_revenue_micros
+      
+        # Cross-sell units sold is the total number of products sold as a result of
+        # advertising a different product. How it works: You report conversions with
+        # cart data for completed purchases on your website. If the ad that was
+        # interacted with before the purchase has an associated product (see Shopping
+        # Ads) then this product is considered the advertised product. Any product
+        # included in the order the customer places is a sold product. If these products
+        # don't match then this is considered cross-sell. Cross-sell units sold is the
+        # total number of cross-sold products from all orders attributed to your ads.
+        # Example: Someone clicked on a Shopping ad for a hat then bought the same hat,
+        # a shirt and a jacket. The cross-sell units sold in this order is 2. This
+        # metric is only available if you report conversions with cart data.
+        # Corresponds to the JSON property `crossSellUnitsSold`
+        # @return [Float]
+        attr_accessor :cross_sell_units_sold
+      
         # The number of clicks your ad receives (Clicks) divided by the number of times
         # your ad is shown (Impressions).
         # Corresponds to the JSON property `ctr`
@@ -851,6 +1192,75 @@ module Google
         # Corresponds to the JSON property `invalidClicks`
         # @return [Fixnum]
         attr_accessor :invalid_clicks
+      
+        # Lead cost of goods sold (COGS) is the total cost of products sold as a result
+        # of advertising the same product. How it works: You report conversions with
+        # cart data for completed purchases on your website. If the ad that was
+        # interacted with has an associated product (see Shopping Ads) then this product
+        # is considered the advertised product. Any product included in the order the
+        # customer places is a sold product. If the advertised and sold products match,
+        # then the cost of these goods is counted under lead cost of goods sold. Example:
+        # Someone clicked on a Shopping ad for a hat then bought the same hat and a
+        # shirt. The hat has a cost of goods sold value of $3, the shirt has a cost of
+        # goods sold value of $5. The lead cost of goods sold for this order is $3. This
+        # metric is only available if you report conversions with cart data. This metric
+        # is a monetary value and returned in the customer's currency by default. See
+        # the metrics_currency parameter at https://developers.google.com/search-ads/
+        # reporting/query/query-structure#parameters_clause
+        # Corresponds to the JSON property `leadCostOfGoodsSoldMicros`
+        # @return [Fixnum]
+        attr_accessor :lead_cost_of_goods_sold_micros
+      
+        # Lead gross profit is the profit you made from products sold as a result of
+        # advertising the same product, minus cost of goods sold (COGS). How it works:
+        # You report conversions with cart data for completed purchases on your website.
+        # If the ad that was interacted with before the purchase has an associated
+        # product (see Shopping Ads) then this product is considered the advertised
+        # product. Any product included in the order the customer places is a sold
+        # product. If the advertised and sold products match, then the revenue you made
+        # from these sales minus the cost of goods sold is your lead gross profit.
+        # Example: Someone clicked on a Shopping ad for a hat then bought the same hat
+        # and a shirt. The hat is priced $10 and has a cost of goods sold value of $3.
+        # The lead gross profit of this order is $7 = $10 - $3. This metric is only
+        # available if you report conversions with cart data. This metric is a monetary
+        # value and returned in the customer's currency by default. See the
+        # metrics_currency parameter at https://developers.google.com/search-ads/
+        # reporting/query/query-structure#parameters_clause
+        # Corresponds to the JSON property `leadGrossProfitMicros`
+        # @return [Fixnum]
+        attr_accessor :lead_gross_profit_micros
+      
+        # Lead revenue is the total amount you made from products sold as a result of
+        # advertising the same product. How it works: You report conversions with cart
+        # data for completed purchases on your website. If the ad that was interacted
+        # with before the purchase has an associated product (see Shopping Ads) then
+        # this product is considered the advertised product. Any product included in the
+        # order the customer places is a sold product. If the advertised and sold
+        # products match, then the total value you made from the sales of these products
+        # is shown under lead revenue. Example: Someone clicked on a Shopping ad for a
+        # hat then bought the same hat and a shirt. The hat is priced $10 and the shirt
+        # is priced $20. The lead revenue of this order is $10. This metric is only
+        # available if you report conversions with cart data. This metric is a monetary
+        # value and returned in the customer's currency by default. See the
+        # metrics_currency parameter at https://developers.google.com/search-ads/
+        # reporting/query/query-structure#parameters_clause
+        # Corresponds to the JSON property `leadRevenueMicros`
+        # @return [Fixnum]
+        attr_accessor :lead_revenue_micros
+      
+        # Lead units sold is the total number of products sold as a result of
+        # advertising the same product. How it works: You report conversions with cart
+        # data for completed purchases on your website. If the ad that was interacted
+        # with before the purchase has an associated product (see Shopping Ads) then
+        # this product is considered the advertised product. Any product included in the
+        # order the customer places is a sold product. If the advertised and sold
+        # products match, then the total number of these products sold is shown under
+        # lead units sold. Example: Someone clicked on a Shopping ad for a hat then
+        # bought the same hat, a shirt and a jacket. The lead units sold in this order
+        # is 1. This metric is only available if you report conversions with cart data.
+        # Corresponds to the JSON property `leadUnitsSold`
+        # @return [Float]
+        attr_accessor :lead_units_sold
       
         # The percentage of mobile clicks that go to a mobile-friendly page.
         # Corresponds to the JSON property `mobileFriendlyClicksPercentage`
@@ -1012,6 +1422,14 @@ module Google
           @clicks = args[:clicks] if args.key?(:clicks)
           @client_account_conversions = args[:client_account_conversions] if args.key?(:client_account_conversions)
           @client_account_conversions_value = args[:client_account_conversions_value] if args.key?(:client_account_conversions_value)
+          @client_account_cross_sell_cost_of_goods_sold_micros = args[:client_account_cross_sell_cost_of_goods_sold_micros] if args.key?(:client_account_cross_sell_cost_of_goods_sold_micros)
+          @client_account_cross_sell_gross_profit_micros = args[:client_account_cross_sell_gross_profit_micros] if args.key?(:client_account_cross_sell_gross_profit_micros)
+          @client_account_cross_sell_revenue_micros = args[:client_account_cross_sell_revenue_micros] if args.key?(:client_account_cross_sell_revenue_micros)
+          @client_account_cross_sell_units_sold = args[:client_account_cross_sell_units_sold] if args.key?(:client_account_cross_sell_units_sold)
+          @client_account_lead_cost_of_goods_sold_micros = args[:client_account_lead_cost_of_goods_sold_micros] if args.key?(:client_account_lead_cost_of_goods_sold_micros)
+          @client_account_lead_gross_profit_micros = args[:client_account_lead_gross_profit_micros] if args.key?(:client_account_lead_gross_profit_micros)
+          @client_account_lead_revenue_micros = args[:client_account_lead_revenue_micros] if args.key?(:client_account_lead_revenue_micros)
+          @client_account_lead_units_sold = args[:client_account_lead_units_sold] if args.key?(:client_account_lead_units_sold)
           @client_account_view_through_conversions = args[:client_account_view_through_conversions] if args.key?(:client_account_view_through_conversions)
           @content_budget_lost_impression_share = args[:content_budget_lost_impression_share] if args.key?(:content_budget_lost_impression_share)
           @content_impression_share = args[:content_impression_share] if args.key?(:content_impression_share)
@@ -1029,6 +1447,10 @@ module Google
           @cost_per_current_model_attributed_conversion = args[:cost_per_current_model_attributed_conversion] if args.key?(:cost_per_current_model_attributed_conversion)
           @cross_device_conversions = args[:cross_device_conversions] if args.key?(:cross_device_conversions)
           @cross_device_conversions_value = args[:cross_device_conversions_value] if args.key?(:cross_device_conversions_value)
+          @cross_sell_cost_of_goods_sold_micros = args[:cross_sell_cost_of_goods_sold_micros] if args.key?(:cross_sell_cost_of_goods_sold_micros)
+          @cross_sell_gross_profit_micros = args[:cross_sell_gross_profit_micros] if args.key?(:cross_sell_gross_profit_micros)
+          @cross_sell_revenue_micros = args[:cross_sell_revenue_micros] if args.key?(:cross_sell_revenue_micros)
+          @cross_sell_units_sold = args[:cross_sell_units_sold] if args.key?(:cross_sell_units_sold)
           @ctr = args[:ctr] if args.key?(:ctr)
           @historical_creative_quality_score = args[:historical_creative_quality_score] if args.key?(:historical_creative_quality_score)
           @historical_landing_page_quality_score = args[:historical_landing_page_quality_score] if args.key?(:historical_landing_page_quality_score)
@@ -1040,6 +1462,10 @@ module Google
           @interactions = args[:interactions] if args.key?(:interactions)
           @invalid_click_rate = args[:invalid_click_rate] if args.key?(:invalid_click_rate)
           @invalid_clicks = args[:invalid_clicks] if args.key?(:invalid_clicks)
+          @lead_cost_of_goods_sold_micros = args[:lead_cost_of_goods_sold_micros] if args.key?(:lead_cost_of_goods_sold_micros)
+          @lead_gross_profit_micros = args[:lead_gross_profit_micros] if args.key?(:lead_gross_profit_micros)
+          @lead_revenue_micros = args[:lead_revenue_micros] if args.key?(:lead_revenue_micros)
+          @lead_units_sold = args[:lead_units_sold] if args.key?(:lead_units_sold)
           @mobile_friendly_clicks_percentage = args[:mobile_friendly_clicks_percentage] if args.key?(:mobile_friendly_clicks_percentage)
           @search_absolute_top_impression_share = args[:search_absolute_top_impression_share] if args.key?(:search_absolute_top_impression_share)
           @search_budget_lost_absolute_top_impression_share = args[:search_budget_lost_absolute_top_impression_share] if args.key?(:search_budget_lost_absolute_top_impression_share)
@@ -1380,6 +1806,222 @@ module Google
         # @return [String]
         attr_accessor :month
       
+        # Bidding category (level 1) of the product.
+        # Corresponds to the JSON property `productBiddingCategoryLevel1`
+        # @return [String]
+        attr_accessor :product_bidding_category_level1
+      
+        # Bidding category (level 2) of the product.
+        # Corresponds to the JSON property `productBiddingCategoryLevel2`
+        # @return [String]
+        attr_accessor :product_bidding_category_level2
+      
+        # Bidding category (level 3) of the product.
+        # Corresponds to the JSON property `productBiddingCategoryLevel3`
+        # @return [String]
+        attr_accessor :product_bidding_category_level3
+      
+        # Bidding category (level 4) of the product.
+        # Corresponds to the JSON property `productBiddingCategoryLevel4`
+        # @return [String]
+        attr_accessor :product_bidding_category_level4
+      
+        # Bidding category (level 5) of the product.
+        # Corresponds to the JSON property `productBiddingCategoryLevel5`
+        # @return [String]
+        attr_accessor :product_bidding_category_level5
+      
+        # Brand of the product.
+        # Corresponds to the JSON property `productBrand`
+        # @return [String]
+        attr_accessor :product_brand
+      
+        # Channel of the product.
+        # Corresponds to the JSON property `productChannel`
+        # @return [String]
+        attr_accessor :product_channel
+      
+        # Channel exclusivity of the product.
+        # Corresponds to the JSON property `productChannelExclusivity`
+        # @return [String]
+        attr_accessor :product_channel_exclusivity
+      
+        # Condition of the product.
+        # Corresponds to the JSON property `productCondition`
+        # @return [String]
+        attr_accessor :product_condition
+      
+        # Resource name of the geo target constant for the country of sale of the
+        # product.
+        # Corresponds to the JSON property `productCountry`
+        # @return [String]
+        attr_accessor :product_country
+      
+        # Custom attribute 0 of the product.
+        # Corresponds to the JSON property `productCustomAttribute0`
+        # @return [String]
+        attr_accessor :product_custom_attribute0
+      
+        # Custom attribute 1 of the product.
+        # Corresponds to the JSON property `productCustomAttribute1`
+        # @return [String]
+        attr_accessor :product_custom_attribute1
+      
+        # Custom attribute 2 of the product.
+        # Corresponds to the JSON property `productCustomAttribute2`
+        # @return [String]
+        attr_accessor :product_custom_attribute2
+      
+        # Custom attribute 3 of the product.
+        # Corresponds to the JSON property `productCustomAttribute3`
+        # @return [String]
+        attr_accessor :product_custom_attribute3
+      
+        # Custom attribute 4 of the product.
+        # Corresponds to the JSON property `productCustomAttribute4`
+        # @return [String]
+        attr_accessor :product_custom_attribute4
+      
+        # Item ID of the product.
+        # Corresponds to the JSON property `productItemId`
+        # @return [String]
+        attr_accessor :product_item_id
+      
+        # Resource name of the language constant for the language of the product.
+        # Corresponds to the JSON property `productLanguage`
+        # @return [String]
+        attr_accessor :product_language
+      
+        # Bidding category (level 1) of the product sold.
+        # Corresponds to the JSON property `productSoldBiddingCategoryLevel1`
+        # @return [String]
+        attr_accessor :product_sold_bidding_category_level1
+      
+        # Bidding category (level 2) of the product sold.
+        # Corresponds to the JSON property `productSoldBiddingCategoryLevel2`
+        # @return [String]
+        attr_accessor :product_sold_bidding_category_level2
+      
+        # Bidding category (level 3) of the product sold.
+        # Corresponds to the JSON property `productSoldBiddingCategoryLevel3`
+        # @return [String]
+        attr_accessor :product_sold_bidding_category_level3
+      
+        # Bidding category (level 4) of the product sold.
+        # Corresponds to the JSON property `productSoldBiddingCategoryLevel4`
+        # @return [String]
+        attr_accessor :product_sold_bidding_category_level4
+      
+        # Bidding category (level 5) of the product sold.
+        # Corresponds to the JSON property `productSoldBiddingCategoryLevel5`
+        # @return [String]
+        attr_accessor :product_sold_bidding_category_level5
+      
+        # Brand of the product sold.
+        # Corresponds to the JSON property `productSoldBrand`
+        # @return [String]
+        attr_accessor :product_sold_brand
+      
+        # Condition of the product sold.
+        # Corresponds to the JSON property `productSoldCondition`
+        # @return [String]
+        attr_accessor :product_sold_condition
+      
+        # Custom attribute 0 of the product sold.
+        # Corresponds to the JSON property `productSoldCustomAttribute0`
+        # @return [String]
+        attr_accessor :product_sold_custom_attribute0
+      
+        # Custom attribute 1 of the product sold.
+        # Corresponds to the JSON property `productSoldCustomAttribute1`
+        # @return [String]
+        attr_accessor :product_sold_custom_attribute1
+      
+        # Custom attribute 2 of the product sold.
+        # Corresponds to the JSON property `productSoldCustomAttribute2`
+        # @return [String]
+        attr_accessor :product_sold_custom_attribute2
+      
+        # Custom attribute 3 of the product sold.
+        # Corresponds to the JSON property `productSoldCustomAttribute3`
+        # @return [String]
+        attr_accessor :product_sold_custom_attribute3
+      
+        # Custom attribute 4 of the product sold.
+        # Corresponds to the JSON property `productSoldCustomAttribute4`
+        # @return [String]
+        attr_accessor :product_sold_custom_attribute4
+      
+        # Item ID of the product sold.
+        # Corresponds to the JSON property `productSoldItemId`
+        # @return [String]
+        attr_accessor :product_sold_item_id
+      
+        # Title of the product sold.
+        # Corresponds to the JSON property `productSoldTitle`
+        # @return [String]
+        attr_accessor :product_sold_title
+      
+        # Type (level 1) of the product sold.
+        # Corresponds to the JSON property `productSoldTypeL1`
+        # @return [String]
+        attr_accessor :product_sold_type_l1
+      
+        # Type (level 2) of the product sold.
+        # Corresponds to the JSON property `productSoldTypeL2`
+        # @return [String]
+        attr_accessor :product_sold_type_l2
+      
+        # Type (level 3) of the product sold.
+        # Corresponds to the JSON property `productSoldTypeL3`
+        # @return [String]
+        attr_accessor :product_sold_type_l3
+      
+        # Type (level 4) of the product sold.
+        # Corresponds to the JSON property `productSoldTypeL4`
+        # @return [String]
+        attr_accessor :product_sold_type_l4
+      
+        # Type (level 5) of the product sold.
+        # Corresponds to the JSON property `productSoldTypeL5`
+        # @return [String]
+        attr_accessor :product_sold_type_l5
+      
+        # Store ID of the product.
+        # Corresponds to the JSON property `productStoreId`
+        # @return [String]
+        attr_accessor :product_store_id
+      
+        # Title of the product.
+        # Corresponds to the JSON property `productTitle`
+        # @return [String]
+        attr_accessor :product_title
+      
+        # Type (level 1) of the product.
+        # Corresponds to the JSON property `productTypeL1`
+        # @return [String]
+        attr_accessor :product_type_l1
+      
+        # Type (level 2) of the product.
+        # Corresponds to the JSON property `productTypeL2`
+        # @return [String]
+        attr_accessor :product_type_l2
+      
+        # Type (level 3) of the product.
+        # Corresponds to the JSON property `productTypeL3`
+        # @return [String]
+        attr_accessor :product_type_l3
+      
+        # Type (level 4) of the product.
+        # Corresponds to the JSON property `productTypeL4`
+        # @return [String]
+        attr_accessor :product_type_l4
+      
+        # Type (level 5) of the product.
+        # Corresponds to the JSON property `productTypeL5`
+        # @return [String]
+        attr_accessor :product_type_l5
+      
         # Quarter as represented by the date of the first day of a quarter. Uses the
         # calendar year for quarters, for example, the second quarter of 2018 starts on
         # 2018-04-01. Formatted as yyyy-MM-dd.
@@ -1414,6 +2056,49 @@ module Google
           @device = args[:device] if args.key?(:device)
           @keyword = args[:keyword] if args.key?(:keyword)
           @month = args[:month] if args.key?(:month)
+          @product_bidding_category_level1 = args[:product_bidding_category_level1] if args.key?(:product_bidding_category_level1)
+          @product_bidding_category_level2 = args[:product_bidding_category_level2] if args.key?(:product_bidding_category_level2)
+          @product_bidding_category_level3 = args[:product_bidding_category_level3] if args.key?(:product_bidding_category_level3)
+          @product_bidding_category_level4 = args[:product_bidding_category_level4] if args.key?(:product_bidding_category_level4)
+          @product_bidding_category_level5 = args[:product_bidding_category_level5] if args.key?(:product_bidding_category_level5)
+          @product_brand = args[:product_brand] if args.key?(:product_brand)
+          @product_channel = args[:product_channel] if args.key?(:product_channel)
+          @product_channel_exclusivity = args[:product_channel_exclusivity] if args.key?(:product_channel_exclusivity)
+          @product_condition = args[:product_condition] if args.key?(:product_condition)
+          @product_country = args[:product_country] if args.key?(:product_country)
+          @product_custom_attribute0 = args[:product_custom_attribute0] if args.key?(:product_custom_attribute0)
+          @product_custom_attribute1 = args[:product_custom_attribute1] if args.key?(:product_custom_attribute1)
+          @product_custom_attribute2 = args[:product_custom_attribute2] if args.key?(:product_custom_attribute2)
+          @product_custom_attribute3 = args[:product_custom_attribute3] if args.key?(:product_custom_attribute3)
+          @product_custom_attribute4 = args[:product_custom_attribute4] if args.key?(:product_custom_attribute4)
+          @product_item_id = args[:product_item_id] if args.key?(:product_item_id)
+          @product_language = args[:product_language] if args.key?(:product_language)
+          @product_sold_bidding_category_level1 = args[:product_sold_bidding_category_level1] if args.key?(:product_sold_bidding_category_level1)
+          @product_sold_bidding_category_level2 = args[:product_sold_bidding_category_level2] if args.key?(:product_sold_bidding_category_level2)
+          @product_sold_bidding_category_level3 = args[:product_sold_bidding_category_level3] if args.key?(:product_sold_bidding_category_level3)
+          @product_sold_bidding_category_level4 = args[:product_sold_bidding_category_level4] if args.key?(:product_sold_bidding_category_level4)
+          @product_sold_bidding_category_level5 = args[:product_sold_bidding_category_level5] if args.key?(:product_sold_bidding_category_level5)
+          @product_sold_brand = args[:product_sold_brand] if args.key?(:product_sold_brand)
+          @product_sold_condition = args[:product_sold_condition] if args.key?(:product_sold_condition)
+          @product_sold_custom_attribute0 = args[:product_sold_custom_attribute0] if args.key?(:product_sold_custom_attribute0)
+          @product_sold_custom_attribute1 = args[:product_sold_custom_attribute1] if args.key?(:product_sold_custom_attribute1)
+          @product_sold_custom_attribute2 = args[:product_sold_custom_attribute2] if args.key?(:product_sold_custom_attribute2)
+          @product_sold_custom_attribute3 = args[:product_sold_custom_attribute3] if args.key?(:product_sold_custom_attribute3)
+          @product_sold_custom_attribute4 = args[:product_sold_custom_attribute4] if args.key?(:product_sold_custom_attribute4)
+          @product_sold_item_id = args[:product_sold_item_id] if args.key?(:product_sold_item_id)
+          @product_sold_title = args[:product_sold_title] if args.key?(:product_sold_title)
+          @product_sold_type_l1 = args[:product_sold_type_l1] if args.key?(:product_sold_type_l1)
+          @product_sold_type_l2 = args[:product_sold_type_l2] if args.key?(:product_sold_type_l2)
+          @product_sold_type_l3 = args[:product_sold_type_l3] if args.key?(:product_sold_type_l3)
+          @product_sold_type_l4 = args[:product_sold_type_l4] if args.key?(:product_sold_type_l4)
+          @product_sold_type_l5 = args[:product_sold_type_l5] if args.key?(:product_sold_type_l5)
+          @product_store_id = args[:product_store_id] if args.key?(:product_store_id)
+          @product_title = args[:product_title] if args.key?(:product_title)
+          @product_type_l1 = args[:product_type_l1] if args.key?(:product_type_l1)
+          @product_type_l2 = args[:product_type_l2] if args.key?(:product_type_l2)
+          @product_type_l3 = args[:product_type_l3] if args.key?(:product_type_l3)
+          @product_type_l4 = args[:product_type_l4] if args.key?(:product_type_l4)
+          @product_type_l5 = args[:product_type_l5] if args.key?(:product_type_l5)
           @quarter = args[:quarter] if args.key?(:quarter)
           @week = args[:week] if args.key?(:week)
           @year = args[:year] if args.key?(:year)
@@ -1646,6 +2331,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @target_restrictions = args[:target_restrictions] if args.key?(:target_restrictions)
+        end
+      end
+      
+      # A Text asset.
+      class GoogleAdsSearchads360V0CommonTextAsset
+        include Google::Apis::Core::Hashable
+      
+        # Text content of the text asset.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -2089,6 +2793,32 @@ module Google
         end
       end
       
+      # A YouTube asset.
+      class GoogleAdsSearchads360V0CommonYoutubeVideoAsset
+        include Google::Apis::Core::Hashable
+      
+        # YouTube video id. This is the 11 character string value used in the YouTube
+        # video URL.
+        # Corresponds to the JSON property `youtubeVideoId`
+        # @return [String]
+        attr_accessor :youtube_video_id
+      
+        # YouTube video title.
+        # Corresponds to the JSON property `youtubeVideoTitle`
+        # @return [String]
+        attr_accessor :youtube_video_title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @youtube_video_id = args[:youtube_video_id] if args.key?(:youtube_video_id)
+          @youtube_video_title = args[:youtube_video_title] if args.key?(:youtube_video_title)
+        end
+      end
+      
       # A part of a field path.
       class GoogleAdsSearchads360V0ErrorsErrorLocationFieldPathElement
         include Google::Apis::Core::Hashable
@@ -2168,7 +2898,7 @@ module Google
         # @return [String]
         attr_accessor :query_error
       
-        # An error with the amonut of quota remaining.
+        # An error with the amount of quota remaining.
         # Corresponds to the JSON property `quotaError`
         # @return [String]
         attr_accessor :quota_error
@@ -2711,6 +3441,163 @@ module Google
           @always_use_default_value = args[:always_use_default_value] if args.key?(:always_use_default_value)
           @default_currency_code = args[:default_currency_code] if args.key?(:default_currency_code)
           @default_value = args[:default_value] if args.key?(:default_value)
+        end
+      end
+      
+      # One element of a bidding category at a certain level. Top-level categories are
+      # at level 1, their children at level 2, and so on. We currently support up to 5
+      # levels. The user must specify a dimension type that indicates the level of the
+      # category. All cases of the same subdivision must have the same dimension type (
+      # category level).
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBiddingCategory
+        include Google::Apis::Core::Hashable
+      
+        # ID of the product bidding category. This ID is equivalent to the
+        # google_product_category ID as described in this article: https://support.
+        # google.com/merchants/answer/6324436
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Indicates the level of the category in the taxonomy.
+        # Corresponds to the JSON property `level`
+        # @return [String]
+        attr_accessor :level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @level = args[:level] if args.key?(:level)
+        end
+      end
+      
+      # Brand of the product.
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBrand
+        include Google::Apis::Core::Hashable
+      
+        # String value of the product brand.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Locality of a product offer.
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductChannel
+        include Google::Apis::Core::Hashable
+      
+        # Value of the locality.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
+        end
+      end
+      
+      # Condition of a product offer.
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCondition
+        include Google::Apis::Core::Hashable
+      
+        # Value of the condition.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+        end
+      end
+      
+      # Custom attribute of a product offer.
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCustomAttribute
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the index of the custom attribute.
+        # Corresponds to the JSON property `index`
+        # @return [String]
+        attr_accessor :index
+      
+        # String value of the product custom attribute.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @index = args[:index] if args.key?(:index)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Item id of a product offer.
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductItemId
+        include Google::Apis::Core::Hashable
+      
+        # Value of the id.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Type of a product offer.
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductType
+        include Google::Apis::Core::Hashable
+      
+        # Level of the type.
+        # Corresponds to the JSON property `level`
+        # @return [String]
+        attr_accessor :level
+      
+        # Value of the type.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @level = args[:level] if args.key?(:level)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -3455,6 +4342,11 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedCallAsset]
         attr_accessor :call_asset
       
+        # A call to action asset.
+        # Corresponds to the JSON property `callToActionAsset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonCallToActionAsset]
+        attr_accessor :call_to_action_asset
+      
         # A unified callout asset.
         # Corresponds to the JSON property `calloutAsset`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedCalloutAsset]
@@ -3481,6 +4373,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # An Image asset.
+        # Corresponds to the JSON property `imageAsset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonImageAsset]
+        attr_accessor :image_asset
+      
         # Output only. The datetime when this asset was last modified. The datetime is
         # in the customer's time zone and in "yyyy-MM-dd HH:mm:ss.ssssss" format.
         # Corresponds to the JSON property `lastModifiedTime`
@@ -3496,6 +4393,11 @@ module Google
         # Corresponds to the JSON property `mobileAppAsset`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonMobileAppAsset]
         attr_accessor :mobile_app_asset
+      
+        # Optional name of the asset.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
       
         # A Unified Page Feed asset.
         # Corresponds to the JSON property `pageFeedAsset`
@@ -3518,6 +4420,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # A Text asset.
+        # Corresponds to the JSON property `textAsset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTextAsset]
+        attr_accessor :text_asset
+      
         # URL template for constructing a tracking URL.
         # Corresponds to the JSON property `trackingUrlTemplate`
         # @return [String]
@@ -3528,6 +4435,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # A YouTube asset.
+        # Corresponds to the JSON property `youtubeVideoAsset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonYoutubeVideoAsset]
+        attr_accessor :youtube_video_asset
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3535,20 +4447,303 @@ module Google
         # Update properties of this object
         def update!(**args)
           @call_asset = args[:call_asset] if args.key?(:call_asset)
+          @call_to_action_asset = args[:call_to_action_asset] if args.key?(:call_to_action_asset)
           @callout_asset = args[:callout_asset] if args.key?(:callout_asset)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @engine_status = args[:engine_status] if args.key?(:engine_status)
           @final_urls = args[:final_urls] if args.key?(:final_urls)
           @id = args[:id] if args.key?(:id)
+          @image_asset = args[:image_asset] if args.key?(:image_asset)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @location_asset = args[:location_asset] if args.key?(:location_asset)
           @mobile_app_asset = args[:mobile_app_asset] if args.key?(:mobile_app_asset)
+          @name = args[:name] if args.key?(:name)
           @page_feed_asset = args[:page_feed_asset] if args.key?(:page_feed_asset)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @sitelink_asset = args[:sitelink_asset] if args.key?(:sitelink_asset)
           @status = args[:status] if args.key?(:status)
+          @text_asset = args[:text_asset] if args.key?(:text_asset)
           @tracking_url_template = args[:tracking_url_template] if args.key?(:tracking_url_template)
           @type = args[:type] if args.key?(:type)
+          @youtube_video_asset = args[:youtube_video_asset] if args.key?(:youtube_video_asset)
+        end
+      end
+      
+      # An asset group. AssetGroupAsset is used to link an asset to the asset group.
+      # AssetGroupSignal is used to associate a signal to an asset group.
+      class GoogleAdsSearchads360V0ResourcesAssetGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Overall ad strength of this asset group.
+        # Corresponds to the JSON property `adStrength`
+        # @return [String]
+        attr_accessor :ad_strength
+      
+        # Immutable. The campaign with which this asset group is associated. The asset
+        # which is linked to the asset group.
+        # Corresponds to the JSON property `campaign`
+        # @return [String]
+        attr_accessor :campaign
+      
+        # A list of final mobile URLs after all cross domain redirects. In performance
+        # max, by default, the urls are eligible for expansion unless opted out.
+        # Corresponds to the JSON property `finalMobileUrls`
+        # @return [Array<String>]
+        attr_accessor :final_mobile_urls
+      
+        # A list of final URLs after all cross domain redirects. In performance max, by
+        # default, the urls are eligible for expansion unless opted out.
+        # Corresponds to the JSON property `finalUrls`
+        # @return [Array<String>]
+        attr_accessor :final_urls
+      
+        # Output only. The ID of the asset group.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Required. Name of the asset group. Required. It must have a minimum length of
+        # 1 and maximum length of 128. It must be unique under a campaign.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # First part of text that may appear appended to the url displayed in the ad.
+        # Corresponds to the JSON property `path1`
+        # @return [String]
+        attr_accessor :path1
+      
+        # Second part of text that may appear appended to the url displayed in the ad.
+        # This field can only be set when path1 is set.
+        # Corresponds to the JSON property `path2`
+        # @return [String]
+        attr_accessor :path2
+      
+        # Immutable. The resource name of the asset group. Asset group resource names
+        # have the form: `customers/`customer_id`/assetGroups/`asset_group_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # The status of the asset group.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_strength = args[:ad_strength] if args.key?(:ad_strength)
+          @campaign = args[:campaign] if args.key?(:campaign)
+          @final_mobile_urls = args[:final_mobile_urls] if args.key?(:final_mobile_urls)
+          @final_urls = args[:final_urls] if args.key?(:final_urls)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @path1 = args[:path1] if args.key?(:path1)
+          @path2 = args[:path2] if args.key?(:path2)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # AssetGroupAsset is the link between an asset and an asset group. Adding an
+      # AssetGroupAsset links an asset with an asset group.
+      class GoogleAdsSearchads360V0ResourcesAssetGroupAsset
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The asset which this asset group asset is linking.
+        # Corresponds to the JSON property `asset`
+        # @return [String]
+        attr_accessor :asset
+      
+        # Immutable. The asset group which this asset group asset is linking.
+        # Corresponds to the JSON property `assetGroup`
+        # @return [String]
+        attr_accessor :asset_group
+      
+        # The description of the placement of the asset within the asset group. For
+        # example: HEADLINE, YOUTUBE_VIDEO etc
+        # Corresponds to the JSON property `fieldType`
+        # @return [String]
+        attr_accessor :field_type
+      
+        # Immutable. The resource name of the asset group asset. Asset group asset
+        # resource name have the form: `customers/`customer_id`/assetGroupAssets/`
+        # asset_group_id`~`asset_id`~`field_type``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # The status of the link between an asset and asset group.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset = args[:asset] if args.key?(:asset)
+          @asset_group = args[:asset_group] if args.key?(:asset_group)
+          @field_type = args[:field_type] if args.key?(:field_type)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Asset group asset combination data
+      class GoogleAdsSearchads360V0ResourcesAssetGroupAssetCombinationData
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Served assets.
+        # Corresponds to the JSON property `assetCombinationServedAssets`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAssetUsage>]
+        attr_accessor :asset_combination_served_assets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_combination_served_assets = args[:asset_combination_served_assets] if args.key?(:asset_combination_served_assets)
+        end
+      end
+      
+      # AssetGroupListingGroupFilter represents a listing group filter tree node in an
+      # asset group.
+      class GoogleAdsSearchads360V0ResourcesAssetGroupListingGroupFilter
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The asset group which this asset group listing group filter is part
+        # of.
+        # Corresponds to the JSON property `assetGroup`
+        # @return [String]
+        attr_accessor :asset_group
+      
+        # Listing dimensions for the asset group listing group filter.
+        # Corresponds to the JSON property `caseValue`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimension]
+        attr_accessor :case_value
+      
+        # Output only. The ID of the ListingGroupFilter.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Immutable. Resource name of the parent listing group subdivision. Null for the
+        # root listing group filter node.
+        # Corresponds to the JSON property `parentListingGroupFilter`
+        # @return [String]
+        attr_accessor :parent_listing_group_filter
+      
+        # The path defining of dimensions defining a listing group filter.
+        # Corresponds to the JSON property `path`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionPath]
+        attr_accessor :path
+      
+        # Immutable. The resource name of the asset group listing group filter. Asset
+        # group listing group filter resource name have the form: `customers/`
+        # customer_id`/assetGroupListingGroupFilters/`asset_group_id`~`
+        # listing_group_filter_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Immutable. Type of a listing group filter node.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Immutable. The vertical the current node tree represents. All nodes in the
+        # same tree must belong to the same vertical.
+        # Corresponds to the JSON property `vertical`
+        # @return [String]
+        attr_accessor :vertical
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_group = args[:asset_group] if args.key?(:asset_group)
+          @case_value = args[:case_value] if args.key?(:case_value)
+          @id = args[:id] if args.key?(:id)
+          @parent_listing_group_filter = args[:parent_listing_group_filter] if args.key?(:parent_listing_group_filter)
+          @path = args[:path] if args.key?(:path)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @type = args[:type] if args.key?(:type)
+          @vertical = args[:vertical] if args.key?(:vertical)
+        end
+      end
+      
+      # AssetGroupSignal represents a signal in an asset group. The existence of a
+      # signal tells the performance max campaign who's most likely to convert.
+      # Performance Max uses the signal to look for new people with similar or
+      # stronger intent to find conversions across Search, Display, Video, and more.
+      class GoogleAdsSearchads360V0ResourcesAssetGroupSignal
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The asset group which this asset group signal belongs to.
+        # Corresponds to the JSON property `assetGroup`
+        # @return [String]
+        attr_accessor :asset_group
+      
+        # An audience criterion.
+        # Corresponds to the JSON property `audience`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAudienceInfo]
+        attr_accessor :audience
+      
+        # Immutable. The resource name of the asset group signal. Asset group signal
+        # resource name have the form: `customers/`customer_id`/assetGroupSignals/`
+        # asset_group_id`~`signal_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_group = args[:asset_group] if args.key?(:asset_group)
+          @audience = args[:audience] if args.key?(:audience)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # A view on the usage of ad group ad asset combination.
+      class GoogleAdsSearchads360V0ResourcesAssetGroupTopCombinationView
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The top combinations of assets that served together.
+        # Corresponds to the JSON property `assetGroupTopCombinations`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupAssetCombinationData>]
+        attr_accessor :asset_group_top_combinations
+      
+        # Output only. The resource name of the asset group top combination view.
+        # AssetGroup Top Combination view resource names have the form: `"customers/`
+        # customer_id`/assetGroupTopCombinationViews/`asset_group_id`~`
+        # asset_combination_category`"
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_group_top_combinations = args[:asset_group_top_combinations] if args.key?(:asset_group_top_combinations)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       
@@ -3616,6 +4811,47 @@ module Google
           @asset_set = args[:asset_set] if args.key?(:asset_set)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Audience is an effective targeting option that lets you intersect different
+      # segment attributes, such as detailed demographics and affinities, to create
+      # audiences that represent sections of your target segments.
+      class GoogleAdsSearchads360V0ResourcesAudience
+        include Google::Apis::Core::Hashable
+      
+        # Description of this audience.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. ID of the audience.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Required. Name of the audience. It should be unique across all audiences. It
+        # must have a minimum length of 1 and maximum length of 255.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The resource name of the audience. Audience names have the form: `
+        # customers/`customer_id`/audiences/`audience_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       
@@ -4385,6 +5621,204 @@ module Google
           @campaign = args[:campaign] if args.key?(:campaign)
           @label = args[:label] if args.key?(:label)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # Cart data sales view.
+      class GoogleAdsSearchads360V0ResourcesCartDataSalesView
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the Cart data sales view. Cart data sales
+        # view resource names have the form: `customers/`customer_id`/cartDataSalesView`
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # A conversion.
+      class GoogleAdsSearchads360V0ResourcesConversion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Ad ID. A value of 0 indicates that the ad is unattributed.
+        # Corresponds to the JSON property `adId`
+        # @return [Fixnum]
+        attr_accessor :ad_id
+      
+        # Output only. For offline conversions, this is an ID provided by advertisers.
+        # If an advertiser doesn't specify such an ID, Search Ads 360 generates one. For
+        # online conversions, this is equal to the id column or the floodlight_order_id
+        # column depending on the advertiser's Floodlight instructions.
+        # Corresponds to the JSON property `advertiserConversionId`
+        # @return [String]
+        attr_accessor :advertiser_conversion_id
+      
+        # Output only. Asset field type of the conversion event.
+        # Corresponds to the JSON property `assetFieldType`
+        # @return [String]
+        attr_accessor :asset_field_type
+      
+        # Output only. ID of the asset which was interacted with during the conversion
+        # event.
+        # Corresponds to the JSON property `assetId`
+        # @return [Fixnum]
+        attr_accessor :asset_id
+      
+        # Output only. What the conversion is attributed to: Visit or Keyword+Ad.
+        # Corresponds to the JSON property `attributionType`
+        # @return [String]
+        attr_accessor :attribution_type
+      
+        # Output only. A unique string, for the visit that the conversion is attributed
+        # to, that is passed to the landing page as the click id URL parameter.
+        # Corresponds to the JSON property `clickId`
+        # @return [String]
+        attr_accessor :click_id
+      
+        # Output only. The timestamp of the conversion event.
+        # Corresponds to the JSON property `conversionDateTime`
+        # @return [String]
+        attr_accessor :conversion_date_time
+      
+        # Output only. The timestamp of the last time the conversion was modified.
+        # Corresponds to the JSON property `conversionLastModifiedDateTime`
+        # @return [String]
+        attr_accessor :conversion_last_modified_date_time
+      
+        # Output only. The quantity of items recorded by the conversion, as determined
+        # by the qty url parameter. The advertiser is responsible for dynamically
+        # populating the parameter (such as number of items sold in the conversion),
+        # otherwise it defaults to 1.
+        # Corresponds to the JSON property `conversionQuantity`
+        # @return [Fixnum]
+        attr_accessor :conversion_quantity
+      
+        # Output only. The adjusted revenue in micros for the conversion event. This
+        # will always be in the currency of the serving account.
+        # Corresponds to the JSON property `conversionRevenueMicros`
+        # @return [Fixnum]
+        attr_accessor :conversion_revenue_micros
+      
+        # Output only. The timestamp of the visit that the conversion is attributed to.
+        # Corresponds to the JSON property `conversionVisitDateTime`
+        # @return [String]
+        attr_accessor :conversion_visit_date_time
+      
+        # Output only. Search Ads 360 criterion ID. A value of 0 indicates that the
+        # criterion is unattributed.
+        # Corresponds to the JSON property `criterionId`
+        # @return [Fixnum]
+        attr_accessor :criterion_id
+      
+        # Output only. The Floodlight order ID provided by the advertiser for the
+        # conversion.
+        # Corresponds to the JSON property `floodlightOrderId`
+        # @return [String]
+        attr_accessor :floodlight_order_id
+      
+        # Output only. The original, unchanged revenue associated with the Floodlight
+        # event (in the currency of the current report), before Floodlight currency
+        # instruction modifications.
+        # Corresponds to the JSON property `floodlightOriginalRevenue`
+        # @return [Fixnum]
+        attr_accessor :floodlight_original_revenue
+      
+        # Output only. The ID of the conversion
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Output only. The SearchAds360 inventory account ID containing the product that
+        # was clicked on. SearchAds360 generates this ID when you link an inventory
+        # account in SearchAds360.
+        # Corresponds to the JSON property `merchantId`
+        # @return [Fixnum]
+        attr_accessor :merchant_id
+      
+        # Output only. The sales channel of the product that was clicked on: Online or
+        # Local.
+        # Corresponds to the JSON property `productChannel`
+        # @return [String]
+        attr_accessor :product_channel
+      
+        # Output only. The country (ISO-3166-format) registered for the inventory feed
+        # that contains the product clicked on.
+        # Corresponds to the JSON property `productCountryCode`
+        # @return [String]
+        attr_accessor :product_country_code
+      
+        # Output only. The ID of the product clicked on.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Output only. The language (ISO-639-1) that has been set for the Merchant
+        # Center feed containing data about the product.
+        # Corresponds to the JSON property `productLanguageCode`
+        # @return [String]
+        attr_accessor :product_language_code
+      
+        # Output only. The store in the Local Inventory Ad that was clicked on. This
+        # should match the store IDs used in your local products feed.
+        # Corresponds to the JSON property `productStoreId`
+        # @return [String]
+        attr_accessor :product_store_id
+      
+        # Output only. The resource name of the conversion. Conversion resource names
+        # have the form: `customers/`customer_id`/conversions/`ad_group_id`~`
+        # criterion_id`~`ds_conversion_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. The status of the conversion, either ENABLED or REMOVED..
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Output only. The SearchAds360 visit ID that the conversion is attributed to.
+        # Corresponds to the JSON property `visitId`
+        # @return [Fixnum]
+        attr_accessor :visit_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_id = args[:ad_id] if args.key?(:ad_id)
+          @advertiser_conversion_id = args[:advertiser_conversion_id] if args.key?(:advertiser_conversion_id)
+          @asset_field_type = args[:asset_field_type] if args.key?(:asset_field_type)
+          @asset_id = args[:asset_id] if args.key?(:asset_id)
+          @attribution_type = args[:attribution_type] if args.key?(:attribution_type)
+          @click_id = args[:click_id] if args.key?(:click_id)
+          @conversion_date_time = args[:conversion_date_time] if args.key?(:conversion_date_time)
+          @conversion_last_modified_date_time = args[:conversion_last_modified_date_time] if args.key?(:conversion_last_modified_date_time)
+          @conversion_quantity = args[:conversion_quantity] if args.key?(:conversion_quantity)
+          @conversion_revenue_micros = args[:conversion_revenue_micros] if args.key?(:conversion_revenue_micros)
+          @conversion_visit_date_time = args[:conversion_visit_date_time] if args.key?(:conversion_visit_date_time)
+          @criterion_id = args[:criterion_id] if args.key?(:criterion_id)
+          @floodlight_order_id = args[:floodlight_order_id] if args.key?(:floodlight_order_id)
+          @floodlight_original_revenue = args[:floodlight_original_revenue] if args.key?(:floodlight_original_revenue)
+          @id = args[:id] if args.key?(:id)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+          @product_channel = args[:product_channel] if args.key?(:product_channel)
+          @product_country_code = args[:product_country_code] if args.key?(:product_country_code)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @product_language_code = args[:product_language_code] if args.key?(:product_language_code)
+          @product_store_id = args[:product_store_id] if args.key?(:product_store_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
+          @visit_id = args[:visit_id] if args.key?(:visit_id)
         end
       end
       
@@ -5216,6 +6650,131 @@ module Google
         end
       end
       
+      # A language.
+      class GoogleAdsSearchads360V0ResourcesLanguageConstant
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The language code, for example, "en_US", "en_AU", "es", "fr", etc.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Output only. The ID of the language constant.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Output only. The full name of the language in English, for example, "English (
+        # US)", "Spanish", etc.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The resource name of the language constant. Language constant
+        # resource names have the form: `languageConstants/`criterion_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. Whether the language is targetable.
+        # Corresponds to the JSON property `targetable`
+        # @return [Boolean]
+        attr_accessor :targetable
+        alias_method :targetable?, :targetable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @targetable = args[:targetable] if args.key?(:targetable)
+        end
+      end
+      
+      # Listing dimensions for the asset group listing group filter.
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimension
+        include Google::Apis::Core::Hashable
+      
+        # One element of a bidding category at a certain level. Top-level categories are
+        # at level 1, their children at level 2, and so on. We currently support up to 5
+        # levels. The user must specify a dimension type that indicates the level of the
+        # category. All cases of the same subdivision must have the same dimension type (
+        # category level).
+        # Corresponds to the JSON property `productBiddingCategory`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBiddingCategory]
+        attr_accessor :product_bidding_category
+      
+        # Brand of the product.
+        # Corresponds to the JSON property `productBrand`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBrand]
+        attr_accessor :product_brand
+      
+        # Locality of a product offer.
+        # Corresponds to the JSON property `productChannel`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductChannel]
+        attr_accessor :product_channel
+      
+        # Condition of a product offer.
+        # Corresponds to the JSON property `productCondition`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCondition]
+        attr_accessor :product_condition
+      
+        # Custom attribute of a product offer.
+        # Corresponds to the JSON property `productCustomAttribute`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCustomAttribute]
+        attr_accessor :product_custom_attribute
+      
+        # Item id of a product offer.
+        # Corresponds to the JSON property `productItemId`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductItemId]
+        attr_accessor :product_item_id
+      
+        # Type of a product offer.
+        # Corresponds to the JSON property `productType`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductType]
+        attr_accessor :product_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_bidding_category = args[:product_bidding_category] if args.key?(:product_bidding_category)
+          @product_brand = args[:product_brand] if args.key?(:product_brand)
+          @product_channel = args[:product_channel] if args.key?(:product_channel)
+          @product_condition = args[:product_condition] if args.key?(:product_condition)
+          @product_custom_attribute = args[:product_custom_attribute] if args.key?(:product_custom_attribute)
+          @product_item_id = args[:product_item_id] if args.key?(:product_item_id)
+          @product_type = args[:product_type] if args.key?(:product_type)
+        end
+      end
+      
+      # The path defining of dimensions defining a listing group filter.
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionPath
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The complete path of dimensions through the listing group filter
+        # hierarchy (excluding the root node) to this listing group filter.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimension>]
+        attr_accessor :dimensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+        end
+      end
+      
       # A location view summarizes the performance of campaigns by Location criteria.
       class GoogleAdsSearchads360V0ResourcesLocationView
         include Google::Apis::Core::Hashable
@@ -5234,6 +6793,73 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # A Product Bidding Category.
+      class GoogleAdsSearchads360V0ResourcesProductBiddingCategoryConstant
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Two-letter upper-case country code of the product bidding
+        # category.
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        # Output only. ID of the product bidding category. This ID is equivalent to the
+        # google_product_category ID as described in this article: https://support.
+        # google.com/merchants/answer/6324436.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Output only. Language code of the product bidding category.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Output only. Level of the product bidding category.
+        # Corresponds to the JSON property `level`
+        # @return [String]
+        attr_accessor :level
+      
+        # Output only. Display value of the product bidding category localized according
+        # to language_code.
+        # Corresponds to the JSON property `localizedName`
+        # @return [String]
+        attr_accessor :localized_name
+      
+        # Output only. Resource name of the parent product bidding category.
+        # Corresponds to the JSON property `productBiddingCategoryConstantParent`
+        # @return [String]
+        attr_accessor :product_bidding_category_constant_parent
+      
+        # Output only. The resource name of the product bidding category. Product
+        # bidding category resource names have the form: `
+        # productBiddingCategoryConstants/`country_code`~`level`~`id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. Status of the product bidding category.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country_code = args[:country_code] if args.key?(:country_code)
+          @id = args[:id] if args.key?(:id)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @level = args[:level] if args.key?(:level)
+          @localized_name = args[:localized_name] if args.key?(:localized_name)
+          @product_bidding_category_constant_parent = args[:product_bidding_category_constant_parent] if args.key?(:product_bidding_category_constant_parent)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -5374,6 +7000,31 @@ module Google
         end
       end
       
+      # Shopping performance view. Provides Shopping campaign statistics aggregated at
+      # several product dimension levels. Product dimension values from Merchant
+      # Center such as brand, category, custom attributes, product condition and
+      # product type will reflect the state of each dimension as of the date and time
+      # when the corresponding event was recorded.
+      class GoogleAdsSearchads360V0ResourcesShoppingPerformanceView
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the Shopping performance view. Shopping
+        # performance view resource names have the form: `customers/`customer_id`/
+        # shoppingPerformanceView`
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
       # A user list. This is a list of users a customer may target.
       class GoogleAdsSearchads360V0ResourcesUserList
         include Google::Apis::Core::Hashable
@@ -5410,6 +7061,114 @@ module Google
           @name = args[:name] if args.key?(:name)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A visit.
+      class GoogleAdsSearchads360V0ResourcesVisit
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Ad ID. A value of 0 indicates that the ad is unattributed.
+        # Corresponds to the JSON property `adId`
+        # @return [Fixnum]
+        attr_accessor :ad_id
+      
+        # Output only. Asset field type of the visit event.
+        # Corresponds to the JSON property `assetFieldType`
+        # @return [String]
+        attr_accessor :asset_field_type
+      
+        # Output only. ID of the asset which was interacted with during the visit event.
+        # Corresponds to the JSON property `assetId`
+        # @return [Fixnum]
+        attr_accessor :asset_id
+      
+        # Output only. A unique string for each visit that is passed to the landing page
+        # as the click id URL parameter.
+        # Corresponds to the JSON property `clickId`
+        # @return [String]
+        attr_accessor :click_id
+      
+        # Output only. Search Ads 360 keyword ID. A value of 0 indicates that the
+        # keyword is unattributed.
+        # Corresponds to the JSON property `criterionId`
+        # @return [Fixnum]
+        attr_accessor :criterion_id
+      
+        # Output only. The ID of the visit.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Output only. The Search Ads 360 inventory account ID containing the product
+        # that was clicked on. Search Ads 360 generates this ID when you link an
+        # inventory account in Search Ads 360.
+        # Corresponds to the JSON property `merchantId`
+        # @return [Fixnum]
+        attr_accessor :merchant_id
+      
+        # Output only. The sales channel of the product that was clicked on: Online or
+        # Local.
+        # Corresponds to the JSON property `productChannel`
+        # @return [String]
+        attr_accessor :product_channel
+      
+        # Output only. The country (ISO-3166 format) registered for the inventory feed
+        # that contains the product clicked on.
+        # Corresponds to the JSON property `productCountryCode`
+        # @return [String]
+        attr_accessor :product_country_code
+      
+        # Output only. The ID of the product clicked on.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Output only. The language (ISO-639-1) that has been set for the Merchant
+        # Center feed containing data about the product.
+        # Corresponds to the JSON property `productLanguageCode`
+        # @return [String]
+        attr_accessor :product_language_code
+      
+        # Output only. The store in the Local Inventory Ad that was clicked on. This
+        # should match the store IDs used in your local products feed.
+        # Corresponds to the JSON property `productStoreId`
+        # @return [String]
+        attr_accessor :product_store_id
+      
+        # Output only. The resource name of the visit. Visit resource names have the
+        # form: `customers/`customer_id`/visits/`ad_group_id`~`criterion_id`~`
+        # ds_visit_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. The timestamp of the visit event. The timestamp is in the
+        # customer's time zone and in "yyyy-MM-dd HH:mm:ss" format.
+        # Corresponds to the JSON property `visitDateTime`
+        # @return [String]
+        attr_accessor :visit_date_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_id = args[:ad_id] if args.key?(:ad_id)
+          @asset_field_type = args[:asset_field_type] if args.key?(:asset_field_type)
+          @asset_id = args[:asset_id] if args.key?(:asset_id)
+          @click_id = args[:click_id] if args.key?(:click_id)
+          @criterion_id = args[:criterion_id] if args.key?(:criterion_id)
+          @id = args[:id] if args.key?(:id)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+          @product_channel = args[:product_channel] if args.key?(:product_channel)
+          @product_country_code = args[:product_country_code] if args.key?(:product_country_code)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @product_language_code = args[:product_language_code] if args.key?(:product_language_code)
+          @product_store_id = args[:product_store_id] if args.key?(:product_store_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @visit_date_time = args[:visit_date_time] if args.key?(:visit_date_time)
         end
       end
       
@@ -5575,6 +7334,37 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAsset]
         attr_accessor :asset
       
+        # An asset group. AssetGroupAsset is used to link an asset to the asset group.
+        # AssetGroupSignal is used to associate a signal to an asset group.
+        # Corresponds to the JSON property `assetGroup`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroup]
+        attr_accessor :asset_group
+      
+        # AssetGroupAsset is the link between an asset and an asset group. Adding an
+        # AssetGroupAsset links an asset with an asset group.
+        # Corresponds to the JSON property `assetGroupAsset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupAsset]
+        attr_accessor :asset_group_asset
+      
+        # AssetGroupListingGroupFilter represents a listing group filter tree node in an
+        # asset group.
+        # Corresponds to the JSON property `assetGroupListingGroupFilter`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupListingGroupFilter]
+        attr_accessor :asset_group_listing_group_filter
+      
+        # AssetGroupSignal represents a signal in an asset group. The existence of a
+        # signal tells the performance max campaign who's most likely to convert.
+        # Performance Max uses the signal to look for new people with similar or
+        # stronger intent to find conversions across Search, Display, Video, and more.
+        # Corresponds to the JSON property `assetGroupSignal`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupSignal]
+        attr_accessor :asset_group_signal
+      
+        # A view on the usage of ad group ad asset combination.
+        # Corresponds to the JSON property `assetGroupTopCombinationView`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupTopCombinationView]
+        attr_accessor :asset_group_top_combination_view
+      
         # An asset set representing a collection of assets. Use AssetSetAsset to link an
         # asset to the asset set.
         # Corresponds to the JSON property `assetSet`
@@ -5586,6 +7376,13 @@ module Google
         # Corresponds to the JSON property `assetSetAsset`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetSetAsset]
         attr_accessor :asset_set_asset
+      
+        # Audience is an effective targeting option that lets you intersect different
+        # segment attributes, such as detailed demographics and affinities, to create
+        # audiences that represent sections of your target segments.
+        # Corresponds to the JSON property `audience`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAudience]
+        attr_accessor :audience
       
         # A bidding strategy.
         # Corresponds to the JSON property `biddingStrategy`
@@ -5630,6 +7427,16 @@ module Google
         # Corresponds to the JSON property `campaignLabel`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignLabel]
         attr_accessor :campaign_label
+      
+        # Cart data sales view.
+        # Corresponds to the JSON property `cartDataSalesView`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCartDataSalesView]
+        attr_accessor :cart_data_sales_view
+      
+        # A conversion.
+        # Corresponds to the JSON property `conversion`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversion]
+        attr_accessor :conversion
       
         # A conversion action.
         # Corresponds to the JSON property `conversionAction`
@@ -5694,6 +7501,11 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLabel]
         attr_accessor :label
       
+        # A language.
+        # Corresponds to the JSON property `languageConstant`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLanguageConstant]
+        attr_accessor :language_constant
+      
         # A location view summarizes the performance of campaigns by Location criteria.
         # Corresponds to the JSON property `locationView`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLocationView]
@@ -5703,6 +7515,11 @@ module Google
         # Corresponds to the JSON property `metrics`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonMetrics]
         attr_accessor :metrics
+      
+        # A Product Bidding Category.
+        # Corresponds to the JSON property `productBiddingCategoryConstant`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesProductBiddingCategoryConstant]
+        attr_accessor :product_bidding_category_constant
       
         # A product group view.
         # Corresponds to the JSON property `productGroupView`
@@ -5714,10 +7531,24 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSegments]
         attr_accessor :segments
       
+        # Shopping performance view. Provides Shopping campaign statistics aggregated at
+        # several product dimension levels. Product dimension values from Merchant
+        # Center such as brand, category, custom attributes, product condition and
+        # product type will reflect the state of each dimension as of the date and time
+        # when the corresponding event was recorded.
+        # Corresponds to the JSON property `shoppingPerformanceView`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesShoppingPerformanceView]
+        attr_accessor :shopping_performance_view
+      
         # A user list. This is a list of users a customer may target.
         # Corresponds to the JSON property `userList`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesUserList]
         attr_accessor :user_list
+      
+        # A visit.
+        # Corresponds to the JSON property `visit`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesVisit]
+        attr_accessor :visit
       
         # A webpage view.
         # Corresponds to the JSON property `webpageView`
@@ -5742,8 +7573,14 @@ module Google
           @ad_group_label = args[:ad_group_label] if args.key?(:ad_group_label)
           @age_range_view = args[:age_range_view] if args.key?(:age_range_view)
           @asset = args[:asset] if args.key?(:asset)
+          @asset_group = args[:asset_group] if args.key?(:asset_group)
+          @asset_group_asset = args[:asset_group_asset] if args.key?(:asset_group_asset)
+          @asset_group_listing_group_filter = args[:asset_group_listing_group_filter] if args.key?(:asset_group_listing_group_filter)
+          @asset_group_signal = args[:asset_group_signal] if args.key?(:asset_group_signal)
+          @asset_group_top_combination_view = args[:asset_group_top_combination_view] if args.key?(:asset_group_top_combination_view)
           @asset_set = args[:asset_set] if args.key?(:asset_set)
           @asset_set_asset = args[:asset_set_asset] if args.key?(:asset_set_asset)
+          @audience = args[:audience] if args.key?(:audience)
           @bidding_strategy = args[:bidding_strategy] if args.key?(:bidding_strategy)
           @campaign = args[:campaign] if args.key?(:campaign)
           @campaign_asset = args[:campaign_asset] if args.key?(:campaign_asset)
@@ -5752,6 +7589,8 @@ module Google
           @campaign_budget = args[:campaign_budget] if args.key?(:campaign_budget)
           @campaign_criterion = args[:campaign_criterion] if args.key?(:campaign_criterion)
           @campaign_label = args[:campaign_label] if args.key?(:campaign_label)
+          @cart_data_sales_view = args[:cart_data_sales_view] if args.key?(:cart_data_sales_view)
+          @conversion = args[:conversion] if args.key?(:conversion)
           @conversion_action = args[:conversion_action] if args.key?(:conversion_action)
           @custom_columns = args[:custom_columns] if args.key?(:custom_columns)
           @customer = args[:customer] if args.key?(:customer)
@@ -5764,11 +7603,15 @@ module Google
           @geo_target_constant = args[:geo_target_constant] if args.key?(:geo_target_constant)
           @keyword_view = args[:keyword_view] if args.key?(:keyword_view)
           @label = args[:label] if args.key?(:label)
+          @language_constant = args[:language_constant] if args.key?(:language_constant)
           @location_view = args[:location_view] if args.key?(:location_view)
           @metrics = args[:metrics] if args.key?(:metrics)
+          @product_bidding_category_constant = args[:product_bidding_category_constant] if args.key?(:product_bidding_category_constant)
           @product_group_view = args[:product_group_view] if args.key?(:product_group_view)
           @segments = args[:segments] if args.key?(:segments)
+          @shopping_performance_view = args[:shopping_performance_view] if args.key?(:shopping_performance_view)
           @user_list = args[:user_list] if args.key?(:user_list)
+          @visit = args[:visit] if args.key?(:visit)
           @webpage_view = args[:webpage_view] if args.key?(:webpage_view)
         end
       end

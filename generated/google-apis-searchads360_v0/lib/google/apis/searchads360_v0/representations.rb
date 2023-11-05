@@ -40,7 +40,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0CommonAssetUsage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0CommonAudienceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0CommonBusinessProfileLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0CommonCallToActionAsset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -71,6 +89,18 @@ module Google
       end
       
       class GoogleAdsSearchads360V0CommonGenderInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0CommonImageAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0CommonImageDimension
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -250,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0CommonTextAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0CommonTextLabel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +341,12 @@ module Google
       end
       
       class GoogleAdsSearchads360V0CommonWebpageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0CommonYoutubeVideoAsset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,6 +466,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBiddingCategory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBrand
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductChannel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCustomAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductItemId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0ResourcesAd
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -502,6 +586,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0ResourcesAssetGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAssetGroupAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAssetGroupAssetCombinationData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAssetGroupListingGroupFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAssetGroupSignal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAssetGroupTopCombinationView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0ResourcesAssetSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -509,6 +629,12 @@ module Google
       end
       
       class GoogleAdsSearchads360V0ResourcesAssetSetAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAudience
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -557,6 +683,18 @@ module Google
       end
       
       class GoogleAdsSearchads360V0ResourcesCampaignLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesCartDataSalesView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesConversion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -646,7 +784,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0ResourcesLanguageConstant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionPath
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0ResourcesLocationView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesProductBiddingCategoryConstant
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -664,7 +826,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0ResourcesShoppingPerformanceView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0ResourcesUserList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesVisit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -750,12 +924,34 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0CommonAssetUsage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset, as: 'asset'
+          property :served_asset_field_type, as: 'servedAssetFieldType'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0CommonAudienceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience, as: 'audience'
+        end
+      end
+      
       class GoogleAdsSearchads360V0CommonBusinessProfileLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :labels, as: 'labels'
           property :listing_id, :numeric_string => true, as: 'listingId'
           property :store_code, as: 'storeCode'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0CommonCallToActionAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :call_to_action, as: 'callToAction'
         end
       end
       
@@ -790,6 +986,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0CommonImageAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_size, :numeric_string => true, as: 'fileSize'
+          property :full_size, as: 'fullSize', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonImageDimension, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonImageDimension::Representation
+      
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0CommonImageDimension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :height_pixels, :numeric_string => true, as: 'heightPixels'
+          property :url, as: 'url'
+          property :width_pixels, :numeric_string => true, as: 'widthPixels'
         end
       end
       
@@ -902,6 +1117,14 @@ module Google
           property :clicks, :numeric_string => true, as: 'clicks'
           property :client_account_conversions, as: 'clientAccountConversions'
           property :client_account_conversions_value, as: 'clientAccountConversionsValue'
+          property :client_account_cross_sell_cost_of_goods_sold_micros, :numeric_string => true, as: 'clientAccountCrossSellCostOfGoodsSoldMicros'
+          property :client_account_cross_sell_gross_profit_micros, :numeric_string => true, as: 'clientAccountCrossSellGrossProfitMicros'
+          property :client_account_cross_sell_revenue_micros, :numeric_string => true, as: 'clientAccountCrossSellRevenueMicros'
+          property :client_account_cross_sell_units_sold, as: 'clientAccountCrossSellUnitsSold'
+          property :client_account_lead_cost_of_goods_sold_micros, :numeric_string => true, as: 'clientAccountLeadCostOfGoodsSoldMicros'
+          property :client_account_lead_gross_profit_micros, :numeric_string => true, as: 'clientAccountLeadGrossProfitMicros'
+          property :client_account_lead_revenue_micros, :numeric_string => true, as: 'clientAccountLeadRevenueMicros'
+          property :client_account_lead_units_sold, as: 'clientAccountLeadUnitsSold'
           property :client_account_view_through_conversions, :numeric_string => true, as: 'clientAccountViewThroughConversions'
           property :content_budget_lost_impression_share, as: 'contentBudgetLostImpressionShare'
           property :content_impression_share, as: 'contentImpressionShare'
@@ -919,6 +1142,10 @@ module Google
           property :cost_per_current_model_attributed_conversion, as: 'costPerCurrentModelAttributedConversion'
           property :cross_device_conversions, as: 'crossDeviceConversions'
           property :cross_device_conversions_value, as: 'crossDeviceConversionsValue'
+          property :cross_sell_cost_of_goods_sold_micros, :numeric_string => true, as: 'crossSellCostOfGoodsSoldMicros'
+          property :cross_sell_gross_profit_micros, :numeric_string => true, as: 'crossSellGrossProfitMicros'
+          property :cross_sell_revenue_micros, :numeric_string => true, as: 'crossSellRevenueMicros'
+          property :cross_sell_units_sold, as: 'crossSellUnitsSold'
           property :ctr, as: 'ctr'
           property :historical_creative_quality_score, as: 'historicalCreativeQualityScore'
           property :historical_landing_page_quality_score, as: 'historicalLandingPageQualityScore'
@@ -930,6 +1157,10 @@ module Google
           property :interactions, :numeric_string => true, as: 'interactions'
           property :invalid_click_rate, as: 'invalidClickRate'
           property :invalid_clicks, :numeric_string => true, as: 'invalidClicks'
+          property :lead_cost_of_goods_sold_micros, :numeric_string => true, as: 'leadCostOfGoodsSoldMicros'
+          property :lead_gross_profit_micros, :numeric_string => true, as: 'leadGrossProfitMicros'
+          property :lead_revenue_micros, :numeric_string => true, as: 'leadRevenueMicros'
+          property :lead_units_sold, as: 'leadUnitsSold'
           property :mobile_friendly_clicks_percentage, as: 'mobileFriendlyClicksPercentage'
           property :search_absolute_top_impression_share, as: 'searchAbsoluteTopImpressionShare'
           property :search_budget_lost_absolute_top_impression_share, as: 'searchBudgetLostAbsoluteTopImpressionShare'
@@ -1039,6 +1270,49 @@ module Google
           property :keyword, as: 'keyword', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeyword, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeyword::Representation
       
           property :month, as: 'month'
+          property :product_bidding_category_level1, as: 'productBiddingCategoryLevel1'
+          property :product_bidding_category_level2, as: 'productBiddingCategoryLevel2'
+          property :product_bidding_category_level3, as: 'productBiddingCategoryLevel3'
+          property :product_bidding_category_level4, as: 'productBiddingCategoryLevel4'
+          property :product_bidding_category_level5, as: 'productBiddingCategoryLevel5'
+          property :product_brand, as: 'productBrand'
+          property :product_channel, as: 'productChannel'
+          property :product_channel_exclusivity, as: 'productChannelExclusivity'
+          property :product_condition, as: 'productCondition'
+          property :product_country, as: 'productCountry'
+          property :product_custom_attribute0, as: 'productCustomAttribute0'
+          property :product_custom_attribute1, as: 'productCustomAttribute1'
+          property :product_custom_attribute2, as: 'productCustomAttribute2'
+          property :product_custom_attribute3, as: 'productCustomAttribute3'
+          property :product_custom_attribute4, as: 'productCustomAttribute4'
+          property :product_item_id, as: 'productItemId'
+          property :product_language, as: 'productLanguage'
+          property :product_sold_bidding_category_level1, as: 'productSoldBiddingCategoryLevel1'
+          property :product_sold_bidding_category_level2, as: 'productSoldBiddingCategoryLevel2'
+          property :product_sold_bidding_category_level3, as: 'productSoldBiddingCategoryLevel3'
+          property :product_sold_bidding_category_level4, as: 'productSoldBiddingCategoryLevel4'
+          property :product_sold_bidding_category_level5, as: 'productSoldBiddingCategoryLevel5'
+          property :product_sold_brand, as: 'productSoldBrand'
+          property :product_sold_condition, as: 'productSoldCondition'
+          property :product_sold_custom_attribute0, as: 'productSoldCustomAttribute0'
+          property :product_sold_custom_attribute1, as: 'productSoldCustomAttribute1'
+          property :product_sold_custom_attribute2, as: 'productSoldCustomAttribute2'
+          property :product_sold_custom_attribute3, as: 'productSoldCustomAttribute3'
+          property :product_sold_custom_attribute4, as: 'productSoldCustomAttribute4'
+          property :product_sold_item_id, as: 'productSoldItemId'
+          property :product_sold_title, as: 'productSoldTitle'
+          property :product_sold_type_l1, as: 'productSoldTypeL1'
+          property :product_sold_type_l2, as: 'productSoldTypeL2'
+          property :product_sold_type_l3, as: 'productSoldTypeL3'
+          property :product_sold_type_l4, as: 'productSoldTypeL4'
+          property :product_sold_type_l5, as: 'productSoldTypeL5'
+          property :product_store_id, as: 'productStoreId'
+          property :product_title, as: 'productTitle'
+          property :product_type_l1, as: 'productTypeL1'
+          property :product_type_l2, as: 'productTypeL2'
+          property :product_type_l3, as: 'productTypeL3'
+          property :product_type_l4, as: 'productTypeL4'
+          property :product_type_l5, as: 'productTypeL5'
           property :quarter, as: 'quarter'
           property :week, as: 'week'
           property :year, as: 'year'
@@ -1106,6 +1380,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :target_restrictions, as: 'targetRestrictions', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTargetRestriction, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTargetRestriction::Representation
       
+        end
+      end
+      
+      class GoogleAdsSearchads360V0CommonTextAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
         end
       end
       
@@ -1214,6 +1495,14 @@ module Google
       
           property :coverage_percentage, as: 'coveragePercentage'
           property :criterion_name, as: 'criterionName'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0CommonYoutubeVideoAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :youtube_video_id, as: 'youtubeVideoId'
+          property :youtube_video_title, as: 'youtubeVideoTitle'
         end
       end
       
@@ -1394,6 +1683,58 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBiddingCategory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, :numeric_string => true, as: 'id'
+          property :level, as: 'level'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBrand
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductChannel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCustomAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :index, as: 'index'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductItemId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :level, as: 'level'
+          property :value, as: 'value'
+        end
+      end
+      
       class GoogleAdsSearchads360V0ResourcesAd
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1571,25 +1912,104 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :call_asset, as: 'callAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedCallAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedCallAsset::Representation
       
+          property :call_to_action_asset, as: 'callToActionAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonCallToActionAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonCallToActionAsset::Representation
+      
           property :callout_asset, as: 'calloutAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedCalloutAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedCalloutAsset::Representation
       
           property :creation_time, as: 'creationTime'
           property :engine_status, as: 'engineStatus'
           collection :final_urls, as: 'finalUrls'
           property :id, :numeric_string => true, as: 'id'
+          property :image_asset, as: 'imageAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonImageAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonImageAsset::Representation
+      
           property :last_modified_time, as: 'lastModifiedTime'
           property :location_asset, as: 'locationAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedLocationAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedLocationAsset::Representation
       
           property :mobile_app_asset, as: 'mobileAppAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonMobileAppAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonMobileAppAsset::Representation
       
+          property :name, as: 'name'
           property :page_feed_asset, as: 'pageFeedAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedPageFeedAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedPageFeedAsset::Representation
       
           property :resource_name, as: 'resourceName'
           property :sitelink_asset, as: 'sitelinkAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedSitelinkAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedSitelinkAsset::Representation
       
           property :status, as: 'status'
+          property :text_asset, as: 'textAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTextAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTextAsset::Representation
+      
           property :tracking_url_template, as: 'trackingUrlTemplate'
           property :type, as: 'type'
+          property :youtube_video_asset, as: 'youtubeVideoAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonYoutubeVideoAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonYoutubeVideoAsset::Representation
+      
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAssetGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_strength, as: 'adStrength'
+          property :campaign, as: 'campaign'
+          collection :final_mobile_urls, as: 'finalMobileUrls'
+          collection :final_urls, as: 'finalUrls'
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
+          property :path1, as: 'path1'
+          property :path2, as: 'path2'
+          property :resource_name, as: 'resourceName'
+          property :status, as: 'status'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAssetGroupAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset, as: 'asset'
+          property :asset_group, as: 'assetGroup'
+          property :field_type, as: 'fieldType'
+          property :resource_name, as: 'resourceName'
+          property :status, as: 'status'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAssetGroupAssetCombinationData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :asset_combination_served_assets, as: 'assetCombinationServedAssets', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAssetUsage, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAssetUsage::Representation
+      
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAssetGroupListingGroupFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_group, as: 'assetGroup'
+          property :case_value, as: 'caseValue', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimension, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimension::Representation
+      
+          property :id, :numeric_string => true, as: 'id'
+          property :parent_listing_group_filter, as: 'parentListingGroupFilter'
+          property :path, as: 'path', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionPath, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionPath::Representation
+      
+          property :resource_name, as: 'resourceName'
+          property :type, as: 'type'
+          property :vertical, as: 'vertical'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAssetGroupSignal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_group, as: 'assetGroup'
+          property :audience, as: 'audience', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAudienceInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAudienceInfo::Representation
+      
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAssetGroupTopCombinationView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :asset_group_top_combinations, as: 'assetGroupTopCombinations', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupAssetCombinationData, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupAssetCombinationData::Representation
+      
+          property :resource_name, as: 'resourceName'
         end
       end
       
@@ -1608,6 +2028,16 @@ module Google
           property :asset_set, as: 'assetSet'
           property :resource_name, as: 'resourceName'
           property :status, as: 'status'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAudience
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
+          property :resource_name, as: 'resourceName'
         end
       end
       
@@ -1788,6 +2218,43 @@ module Google
           property :campaign, as: 'campaign'
           property :label, as: 'label'
           property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesCartDataSalesView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesConversion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_id, :numeric_string => true, as: 'adId'
+          property :advertiser_conversion_id, as: 'advertiserConversionId'
+          property :asset_field_type, as: 'assetFieldType'
+          property :asset_id, :numeric_string => true, as: 'assetId'
+          property :attribution_type, as: 'attributionType'
+          property :click_id, as: 'clickId'
+          property :conversion_date_time, as: 'conversionDateTime'
+          property :conversion_last_modified_date_time, as: 'conversionLastModifiedDateTime'
+          property :conversion_quantity, :numeric_string => true, as: 'conversionQuantity'
+          property :conversion_revenue_micros, :numeric_string => true, as: 'conversionRevenueMicros'
+          property :conversion_visit_date_time, as: 'conversionVisitDateTime'
+          property :criterion_id, :numeric_string => true, as: 'criterionId'
+          property :floodlight_order_id, as: 'floodlightOrderId'
+          property :floodlight_original_revenue, :numeric_string => true, as: 'floodlightOriginalRevenue'
+          property :id, :numeric_string => true, as: 'id'
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+          property :product_channel, as: 'productChannel'
+          property :product_country_code, as: 'productCountryCode'
+          property :product_id, as: 'productId'
+          property :product_language_code, as: 'productLanguageCode'
+          property :product_store_id, as: 'productStoreId'
+          property :resource_name, as: 'resourceName'
+          property :status, as: 'status'
+          property :visit_id, :numeric_string => true, as: 'visitId'
         end
       end
       
@@ -1973,10 +2440,63 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0ResourcesLanguageConstant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
+          property :resource_name, as: 'resourceName'
+          property :targetable, as: 'targetable'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_bidding_category, as: 'productBiddingCategory', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBiddingCategory, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBiddingCategory::Representation
+      
+          property :product_brand, as: 'productBrand', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBrand, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBrand::Representation
+      
+          property :product_channel, as: 'productChannel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductChannel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductChannel::Representation
+      
+          property :product_condition, as: 'productCondition', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCondition, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCondition::Representation
+      
+          property :product_custom_attribute, as: 'productCustomAttribute', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCustomAttribute, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCustomAttribute::Representation
+      
+          property :product_item_id, as: 'productItemId', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductItemId, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductItemId::Representation
+      
+          property :product_type, as: 'productType', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductType, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductType::Representation
+      
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionPath
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimensions, as: 'dimensions', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimension, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesListingGroupFilterDimension::Representation
+      
+        end
+      end
+      
       class GoogleAdsSearchads360V0ResourcesLocationView
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesProductBiddingCategoryConstant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country_code, as: 'countryCode'
+          property :id, :numeric_string => true, as: 'id'
+          property :language_code, as: 'languageCode'
+          property :level, as: 'level'
+          property :localized_name, as: 'localizedName'
+          property :product_bidding_category_constant_parent, as: 'productBiddingCategoryConstantParent'
+          property :resource_name, as: 'resourceName'
+          property :status, as: 'status'
         end
       end
       
@@ -2007,6 +2527,13 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0ResourcesShoppingPerformanceView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
       class GoogleAdsSearchads360V0ResourcesUserList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2014,6 +2541,26 @@ module Google
           property :name, as: 'name'
           property :resource_name, as: 'resourceName'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesVisit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_id, :numeric_string => true, as: 'adId'
+          property :asset_field_type, as: 'assetFieldType'
+          property :asset_id, :numeric_string => true, as: 'assetId'
+          property :click_id, as: 'clickId'
+          property :criterion_id, :numeric_string => true, as: 'criterionId'
+          property :id, :numeric_string => true, as: 'id'
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+          property :product_channel, as: 'productChannel'
+          property :product_country_code, as: 'productCountryCode'
+          property :product_id, as: 'productId'
+          property :product_language_code, as: 'productLanguageCode'
+          property :product_store_id, as: 'productStoreId'
+          property :resource_name, as: 'resourceName'
+          property :visit_date_time, as: 'visitDateTime'
         end
       end
       
@@ -2075,9 +2622,21 @@ module Google
       
           property :asset, as: 'asset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAsset::Representation
       
+          property :asset_group, as: 'assetGroup', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroup, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroup::Representation
+      
+          property :asset_group_asset, as: 'assetGroupAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupAsset::Representation
+      
+          property :asset_group_listing_group_filter, as: 'assetGroupListingGroupFilter', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupListingGroupFilter, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupListingGroupFilter::Representation
+      
+          property :asset_group_signal, as: 'assetGroupSignal', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupSignal, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupSignal::Representation
+      
+          property :asset_group_top_combination_view, as: 'assetGroupTopCombinationView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupTopCombinationView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetGroupTopCombinationView::Representation
+      
           property :asset_set, as: 'assetSet', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetSet, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetSet::Representation
       
           property :asset_set_asset, as: 'assetSetAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetSetAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetSetAsset::Representation
+      
+          property :audience, as: 'audience', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAudience, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAudience::Representation
       
           property :bidding_strategy, as: 'biddingStrategy', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesBiddingStrategy, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesBiddingStrategy::Representation
       
@@ -2094,6 +2653,10 @@ module Google
           property :campaign_criterion, as: 'campaignCriterion', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignCriterion, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignCriterion::Representation
       
           property :campaign_label, as: 'campaignLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignLabel::Representation
+      
+          property :cart_data_sales_view, as: 'cartDataSalesView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCartDataSalesView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCartDataSalesView::Representation
+      
+          property :conversion, as: 'conversion', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversion, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversion::Representation
       
           property :conversion_action, as: 'conversionAction', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionAction, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionAction::Representation
       
@@ -2119,15 +2682,23 @@ module Google
       
           property :label, as: 'label', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLabel::Representation
       
+          property :language_constant, as: 'languageConstant', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLanguageConstant, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLanguageConstant::Representation
+      
           property :location_view, as: 'locationView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLocationView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLocationView::Representation
       
           property :metrics, as: 'metrics', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonMetrics, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonMetrics::Representation
+      
+          property :product_bidding_category_constant, as: 'productBiddingCategoryConstant', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesProductBiddingCategoryConstant, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesProductBiddingCategoryConstant::Representation
       
           property :product_group_view, as: 'productGroupView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesProductGroupView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesProductGroupView::Representation
       
           property :segments, as: 'segments', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSegments, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSegments::Representation
       
+          property :shopping_performance_view, as: 'shoppingPerformanceView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesShoppingPerformanceView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesShoppingPerformanceView::Representation
+      
           property :user_list, as: 'userList', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesUserList, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesUserList::Representation
+      
+          property :visit, as: 'visit', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesVisit, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesVisit::Representation
       
           property :webpage_view, as: 'webpageView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesWebpageView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesWebpageView::Representation
       
