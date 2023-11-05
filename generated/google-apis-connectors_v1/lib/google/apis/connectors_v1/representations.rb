@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EncryptionKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -907,6 +913,14 @@ module Google
         end
       end
       
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_type, as: 'encryptionType'
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
       class EncryptionKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1041,6 +1055,7 @@ module Google
           property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
           collection :search_tags, as: 'searchTags'
+          property :type, as: 'type'
         end
       end
       
@@ -1449,6 +1464,8 @@ module Google
       class RegionalSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::ConnectorsV1::EncryptionConfig, decorator: Google::Apis::ConnectorsV1::EncryptionConfig::Representation
+      
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::ConnectorsV1::NetworkConfig, decorator: Google::Apis::ConnectorsV1::NetworkConfig::Representation
       
