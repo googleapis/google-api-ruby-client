@@ -22,6 +22,12 @@ module Google
   module Apis
     module IamV1
       
+      class AccessRestrictions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdminAuditData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -352,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -506,6 +518,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessRestrictions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_services, as: 'allowedServices', class: Google::Apis::IamV1::ServiceConfig, decorator: Google::Apis::IamV1::ServiceConfig::Representation
+      
+          property :disable_programmatic_signin, as: 'disableProgrammaticSignin'
+        end
       end
       
       class AdminAuditData
@@ -1010,6 +1031,13 @@ module Google
         end
       end
       
+      class ServiceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1145,6 +1173,8 @@ module Google
       class WorkforcePool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_restrictions, as: 'accessRestrictions', class: Google::Apis::IamV1::AccessRestrictions, decorator: Google::Apis::IamV1::AccessRestrictions::Representation
+      
           property :description, as: 'description'
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
