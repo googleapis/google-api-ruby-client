@@ -1083,6 +1083,8 @@ module Google
         attr_accessor :error_code
       
         # For commands of type RESET_PASSWORD, optionally specifies the new password.
+        # Note: The new password must be at least 6 characters long if it is numeric in
+        # case of Android 14 devices. Else the command will fail with INVALID_VALUE.
         # Corresponds to the JSON property `newPassword`
         # @return [String]
         attr_accessor :new_password
