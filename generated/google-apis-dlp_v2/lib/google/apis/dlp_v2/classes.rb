@@ -1173,7 +1173,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Other types found within this column. List will be un-ordered.
+        # Other types found within this column. List will be unordered.
         # Corresponds to the JSON property `otherMatches`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2OtherInfoTypeSummary>]
         attr_accessor :other_matches
@@ -1205,7 +1205,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # The resource name to the table data profile.
+        # The resource name of the table data profile.
         # Corresponds to the JSON property `tableDataProfile`
         # @return [String]
         attr_accessor :table_data_profile
@@ -1990,8 +1990,8 @@ module Google
         end
       end
       
-      # The schema of data to be saved to the BigQuery when the `DataProfileAction` is
-      # enabled.
+      # The schema of data to be saved to the BigQuery table when the `
+      # DataProfileAction` is enabled.
       class GooglePrivacyDlpV2DataProfileBigQueryRowSchema
         include Google::Apis::Core::Hashable
       
@@ -2519,7 +2519,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyDataSourceStats]
         attr_accessor :deidentify_stats
       
-        # De-id options.
+        # De-identification options.
         # Corresponds to the JSON property `requestedOptions`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RequestedDeidentifyOptions]
         attr_accessor :requested_options
@@ -4450,11 +4450,11 @@ module Google
         # Restricts what info_types to look for. The values must correspond to InfoType
         # values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/
         # docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified
-        # in a request, the system may automatically choose what detectors to run. By
-        # default this may be all types, but may change over time as detectors are
-        # updated. If you need precise control and predictability as to what detectors
-        # are run you should specify specific InfoTypes listed in the reference,
-        # otherwise a default list will be used, which may change over time.
+        # in a request, the system may automatically choose a default list of detectors
+        # to run, which may change over time. If you need precise control and
+        # predictability as to what detectors are run you should specify specific
+        # InfoTypes listed in the reference, otherwise a default list will be used,
+        # which may change over time.
         # Corresponds to the JSON property `infoTypes`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
         attr_accessor :info_types
@@ -5486,8 +5486,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig>]
         attr_accessor :discovery_configs
       
-        # If the next page is available then the next page token to be used in the
-        # following ListDiscoveryConfigs request.
+        # If the next page is available then this value is the next page token to be
+        # used in the following ListDiscoveryConfigs request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5582,8 +5582,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger>]
         attr_accessor :job_triggers
       
-        # If the next page is available then the next page token to be used in the
-        # following ListJobTriggers request.
+        # If the next page is available then this value is the next page token to be
+        # used in the following ListJobTriggers request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6932,7 +6932,7 @@ module Google
         end
       end
       
-      # De-id options.
+      # De-identification options.
       class GooglePrivacyDlpV2RequestedDeidentifyOptions
         include Google::Apis::Core::Hashable
       
