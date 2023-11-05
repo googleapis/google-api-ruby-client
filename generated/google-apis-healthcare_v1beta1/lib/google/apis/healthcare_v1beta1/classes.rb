@@ -834,6 +834,59 @@ module Google
         end
       end
       
+      # BlobStorageInfo contains details about the data stored in Blob Storage for the
+      # referenced resource. Note: Storage class is only valid for DICOM and hence
+      # will only be populated for DICOM resources.
+      class BlobStorageInfo
+        include Google::Apis::Core::Hashable
+      
+        # Size in bytes of data stored in Blob Storage.
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        # The storage class in which the Blob data is stored.
+        # Corresponds to the JSON property `storageClass`
+        # @return [String]
+        attr_accessor :storage_class
+      
+        # The time at which the storage class was updated. This is used to compute early
+        # deletion fees of the resource.
+        # Corresponds to the JSON property `storageClassUpdateTime`
+        # @return [String]
+        attr_accessor :storage_class_update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
+          @storage_class = args[:storage_class] if args.key?(:storage_class)
+          @storage_class_update_time = args[:storage_class_update_time] if args.key?(:storage_class_update_time)
+        end
+      end
+      
+      # Settings for data stored in Blob storage.
+      class BlobStorageSettings
+        include Google::Apis::Core::Hashable
+      
+        # The Storage class in which the Blob data is stored.
+        # Corresponds to the JSON property `blobStorageClass`
+        # @return [String]
+        attr_accessor :blob_storage_class
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blob_storage_class = args[:blob_storage_class] if args.key?(:blob_storage_class)
+        end
+      end
+      
       # A bounding polygon for the detected image annotation.
       class BoundingPoly
         include Google::Apis::Core::Hashable
@@ -4366,6 +4419,11 @@ module Google
       class ImportDicomDataRequest
         include Google::Apis::Core::Hashable
       
+        # Settings for data stored in Blob storage.
+        # Corresponds to the JSON property `blobStorageSettings`
+        # @return [Google::Apis::HealthcareV1beta1::BlobStorageSettings]
+        attr_accessor :blob_storage_settings
+      
         # Specifies the configuration for importing data from Cloud Storage.
         # Corresponds to the JSON property `gcsSource`
         # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomGcsSource]
@@ -4377,6 +4435,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @blob_storage_settings = args[:blob_storage_settings] if args.key?(:blob_storage_settings)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
         end
       end
@@ -5983,12 +6042,12 @@ module Google
       class RollbackFhirResourceFilteringFields
         include Google::Apis::Core::Hashable
       
-        # Optional. A string to use for filtering resource metadata. Complies with AIP-
-        # 160 except without the has operator. Additionally, supports 2 functions:
-        # hastag("system") = "code" for tag filtering and extension_ts_value("uri") =
-        # timestamp for filtering extensions with timestamp, which is given as a unix
-        # timestamp. extension_ts_url can be used with >, <, <=, >=, != comparisons as
-        # well.
+        # Optional. A filter expression that matches data in the `Resource.meta` element.
+        # Supports all filters in [AIP-160](https://google.aip.dev/160) except the "has"
+        # (`:`) operator. Supports the following custom functions: * `tag("") = ""` for
+        # tag filtering. * `extension_value_ts("") = ` for filtering extensions with a
+        # timestamp, where `` is a Unix timestamp. Supports the `>`, `<`, `<=`, `>=`,
+        # and `!=` comparison operators.
         # Corresponds to the JSON property `metadataFilter`
         # @return [String]
         attr_accessor :metadata_filter
@@ -6460,6 +6519,45 @@ module Google
         end
       end
       
+      # Request message for `SetBlobStorageSettings` method.
+      class SetBlobStorageSettingsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Settings for data stored in Blob storage.
+        # Corresponds to the JSON property `blobStorageSettings`
+        # @return [Google::Apis::HealthcareV1beta1::BlobStorageSettings]
+        attr_accessor :blob_storage_settings
+      
+        # Specifies the filter configuration for DICOM resources.
+        # Corresponds to the JSON property `filterConfig`
+        # @return [Google::Apis::HealthcareV1beta1::DicomFilterConfig]
+        attr_accessor :filter_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blob_storage_settings = args[:blob_storage_settings] if args.key?(:blob_storage_settings)
+          @filter_config = args[:filter_config] if args.key?(:filter_config)
+        end
+      end
+      
+      # Returns additional info in regards to a completed set blob storage settings
+      # API.
+      class SetBlobStorageSettingsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -6590,6 +6688,43 @@ module Google
         end
       end
       
+      # StorageInfo encapsulates all the storage info of a resource.
+      class StorageInfo
+        include Google::Apis::Core::Hashable
+      
+        # BlobStorageInfo contains details about the data stored in Blob Storage for the
+        # referenced resource. Note: Storage class is only valid for DICOM and hence
+        # will only be populated for DICOM resources.
+        # Corresponds to the JSON property `blobStorageInfo`
+        # @return [Google::Apis::HealthcareV1beta1::BlobStorageInfo]
+        attr_accessor :blob_storage_info
+      
+        # The resource whose storage info is returned. For example, to specify the
+        # resource path of a DICOM Instance: `projects/`projectid`/datasets/`datasetid`/
+        # dicomStores/`dicom_store_id`/dicomWeb/studi/`study_uid`/series/`series_uid`/
+        # instances/`instance_uid``
+        # Corresponds to the JSON property `referencedResource`
+        # @return [String]
+        attr_accessor :referenced_resource
+      
+        # StructuredStorageInfo contains details about the data stored in Structured
+        # Storage for the referenced resource.
+        # Corresponds to the JSON property `structuredStorageInfo`
+        # @return [Google::Apis::HealthcareV1beta1::StructuredStorageInfo]
+        attr_accessor :structured_storage_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blob_storage_info = args[:blob_storage_info] if args.key?(:blob_storage_info)
+          @referenced_resource = args[:referenced_resource] if args.key?(:referenced_resource)
+          @structured_storage_info = args[:structured_storage_info] if args.key?(:structured_storage_info)
+        end
+      end
+      
       # Contains configuration for streaming FHIR export.
       class StreamConfig
         include Google::Apis::Core::Hashable
@@ -6621,6 +6756,26 @@ module Google
           @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
           @deidentified_store_destination = args[:deidentified_store_destination] if args.key?(:deidentified_store_destination)
           @resource_types = args[:resource_types] if args.key?(:resource_types)
+        end
+      end
+      
+      # StructuredStorageInfo contains details about the data stored in Structured
+      # Storage for the referenced resource.
+      class StructuredStorageInfo
+        include Google::Apis::Core::Hashable
+      
+        # Size in bytes of data stored in structured storage.
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
         end
       end
       

@@ -154,6 +154,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BlobStorageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BlobStorageSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BoundingPoly
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1180,6 +1192,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetBlobStorageSettingsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetBlobStorageSettingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1198,7 +1222,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StreamConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StructuredStorageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1493,6 +1529,22 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class BlobStorageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
+          property :storage_class, as: 'storageClass'
+          property :storage_class_update_time, as: 'storageClassUpdateTime'
+        end
+      end
+      
+      class BlobStorageSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blob_storage_class, as: 'blobStorageClass'
         end
       end
       
@@ -2447,6 +2499,8 @@ module Google
       class ImportDicomDataRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :blob_storage_settings, as: 'blobStorageSettings', class: Google::Apis::HealthcareV1beta1::BlobStorageSettings, decorator: Google::Apis::HealthcareV1beta1::BlobStorageSettings::Representation
+      
           property :gcs_source, as: 'gcsSource', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomGcsSource, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomGcsSource::Representation
       
         end
@@ -3061,6 +3115,22 @@ module Google
         end
       end
       
+      class SetBlobStorageSettingsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blob_storage_settings, as: 'blobStorageSettings', class: Google::Apis::HealthcareV1beta1::BlobStorageSettings, decorator: Google::Apis::HealthcareV1beta1::BlobStorageSettings::Representation
+      
+          property :filter_config, as: 'filterConfig', class: Google::Apis::HealthcareV1beta1::DicomFilterConfig, decorator: Google::Apis::HealthcareV1beta1::DicomFilterConfig::Representation
+      
+        end
+      end
+      
+      class SetBlobStorageSettingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3090,6 +3160,17 @@ module Google
         end
       end
       
+      class StorageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blob_storage_info, as: 'blobStorageInfo', class: Google::Apis::HealthcareV1beta1::BlobStorageInfo, decorator: Google::Apis::HealthcareV1beta1::BlobStorageInfo::Representation
+      
+          property :referenced_resource, as: 'referencedResource'
+          property :structured_storage_info, as: 'structuredStorageInfo', class: Google::Apis::HealthcareV1beta1::StructuredStorageInfo, decorator: Google::Apis::HealthcareV1beta1::StructuredStorageInfo::Representation
+      
+        end
+      end
+      
       class StreamConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3098,6 +3179,13 @@ module Google
           property :deidentified_store_destination, as: 'deidentifiedStoreDestination', class: Google::Apis::HealthcareV1beta1::DeidentifiedStoreDestination, decorator: Google::Apis::HealthcareV1beta1::DeidentifiedStoreDestination::Representation
       
           collection :resource_types, as: 'resourceTypes'
+        end
+      end
+      
+      class StructuredStorageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
         end
       end
       
