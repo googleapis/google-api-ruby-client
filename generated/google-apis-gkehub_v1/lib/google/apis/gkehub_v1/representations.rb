@@ -865,6 +865,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1::ConfigManagementMembershipSpec::Representation
       
+          property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1::IdentityServiceMembershipSpec, decorator: Google::Apis::GkehubV1::IdentityServiceMembershipSpec::Representation
+      
+          property :mesh, as: 'mesh', class: Google::Apis::GkehubV1::ServiceMeshMembershipSpec, decorator: Google::Apis::GkehubV1::ServiceMeshMembershipSpec::Representation
+      
           property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV1::PolicyControllerMembershipSpec, decorator: Google::Apis::GkehubV1::PolicyControllerMembershipSpec::Representation
       
         end
