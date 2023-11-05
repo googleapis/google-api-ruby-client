@@ -80,35 +80,6 @@ module Google
         end
       end
       
-      # The request for HubService.AcceptSpoke.
-      class AcceptSpokeRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. A request ID to identify requests. Specify a unique request ID so
-        # that if you must retry your request, the server knows to ignore the request if
-        # it has already been completed. The server guarantees that a request doesn't
-        # result in creation of duplicate commitments for at least 60 minutes. For
-        # example, consider a situation where you make an initial request and the
-        # request times out. If you make the request again with the same request ID, the
-        # server can check to see whether the original operation was received. If it was,
-        # the server ignores the second request. This behavior prevents clients from
-        # mistakenly creating duplicate commitments. The request ID must be a valid UUID,
-        # with the exception that zero UUID is not supported (00000000-0000-0000-0000-
-        # 000000000000).
-        # Corresponds to the JSON property `requestId`
-        # @return [String]
-        attr_accessor :request_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @request_id = args[:request_id] if args.key?(:request_id)
-        end
-      end
-      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -2083,42 +2054,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @spoke = args[:spoke] if args.key?(:spoke)
-        end
-      end
-      
-      # The request for HubService.RejectSpoke.
-      class RejectSpokeRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Additional information provided by the hub administrator in the `
-        # RejectSpoke` call.
-        # Corresponds to the JSON property `details`
-        # @return [String]
-        attr_accessor :details
-      
-        # Optional. A request ID to identify requests. Specify a unique request ID so
-        # that if you must retry your request, the server knows to ignore the request if
-        # it has already been completed. The server guarantees that a request doesn't
-        # result in creation of duplicate commitments for at least 60 minutes. For
-        # example, consider a situation where you make an initial request and the
-        # request times out. If you make the request again with the same request ID, the
-        # server can check to see whether the original operation was received. If it was,
-        # the server ignores the second request. This behavior prevents clients from
-        # mistakenly creating duplicate commitments. The request ID must be a valid UUID,
-        # with the exception that zero UUID is not supported (00000000-0000-0000-0000-
-        # 000000000000).
-        # Corresponds to the JSON property `requestId`
-        # @return [String]
-        attr_accessor :request_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @details = args[:details] if args.key?(:details)
-          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       
