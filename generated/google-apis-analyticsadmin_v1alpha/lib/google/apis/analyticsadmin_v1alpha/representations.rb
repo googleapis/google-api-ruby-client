@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaConversionValues
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1618,9 +1624,19 @@ module Google
           property :counting_method, as: 'countingMethod'
           property :create_time, as: 'createTime'
           property :custom, as: 'custom'
+          property :default_conversion_value, as: 'defaultConversionValue', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue::Representation
+      
           property :deletable, as: 'deletable'
           property :event_name, as: 'eventName'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
+          property :value, as: 'value'
         end
       end
       
