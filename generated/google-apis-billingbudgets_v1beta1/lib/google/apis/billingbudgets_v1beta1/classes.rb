@@ -134,6 +134,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # 
+        # Corresponds to the JSON property `ownershipScope`
+        # @return [String]
+        attr_accessor :ownership_scope
+      
         # Optional. Rules that trigger alerts (notifications of thresholds being crossed)
         # when spend exceeds the specified percentages of the budget. Optional for `
         # pubsubTopic` notifications. Required if using email notifications.
@@ -153,6 +158,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
+          @ownership_scope = args[:ownership_scope] if args.key?(:ownership_scope)
           @threshold_rules = args[:threshold_rules] if args.key?(:threshold_rules)
         end
       end
