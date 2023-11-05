@@ -100,6 +100,7 @@ module Google
           property :name, as: 'name'
           property :notifications_rule, as: 'notificationsRule', class: Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1NotificationsRule, decorator: Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1NotificationsRule::Representation
       
+          property :ownership_scope, as: 'ownershipScope'
           collection :threshold_rules, as: 'thresholdRules', class: Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1ThresholdRule, decorator: Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1ThresholdRule::Representation
       
         end

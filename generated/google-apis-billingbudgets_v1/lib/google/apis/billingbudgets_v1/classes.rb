@@ -65,6 +65,11 @@ module Google
         # @return [Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1NotificationsRule]
         attr_accessor :notifications_rule
       
+        # 
+        # Corresponds to the JSON property `ownershipScope`
+        # @return [String]
+        attr_accessor :ownership_scope
+      
         # Optional. Rules that trigger alerts (notifications of thresholds being crossed)
         # when spend exceeds the specified percentages of the budget. Optional for `
         # pubsubTopic` notifications. Required if using email notifications.
@@ -84,6 +89,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @notifications_rule = args[:notifications_rule] if args.key?(:notifications_rule)
+          @ownership_scope = args[:ownership_scope] if args.key?(:ownership_scope)
           @threshold_rules = args[:threshold_rules] if args.key?(:threshold_rules)
         end
       end
