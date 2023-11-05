@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentTaskUserAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AgentTimingInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +125,12 @@ module Google
       end
       
       class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudLoggingOption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -507,6 +519,16 @@ module Google
           property :max_run_duration, as: 'maxRunDuration'
           collection :runnables, as: 'runnables', class: Google::Apis::BatchV1::AgentTaskRunnable, decorator: Google::Apis::BatchV1::AgentTaskRunnable::Representation
       
+          property :user_account, as: 'userAccount', class: Google::Apis::BatchV1::AgentTaskUserAccount, decorator: Google::Apis::BatchV1::AgentTaskUserAccount::Representation
+      
+        end
+      end
+      
+      class AgentTaskUserAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gid, :numeric_string => true, as: 'gid'
+          property :uid, :numeric_string => true, as: 'uid'
         end
       end
       
@@ -554,6 +576,12 @@ module Google
       end
       
       class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CloudLoggingOption
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -772,6 +800,8 @@ module Google
       class LogsPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_logging_option, as: 'cloudLoggingOption', class: Google::Apis::BatchV1::CloudLoggingOption, decorator: Google::Apis::BatchV1::CloudLoggingOption::Representation
+      
           property :destination, as: 'destination'
           property :logs_path, as: 'logsPath'
         end
