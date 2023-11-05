@@ -14006,6 +14006,7 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :ipv6_address, as: 'ipv6Address'
           property :port, as: 'port'
+          property :zone, as: 'zone'
         end
       end
       
@@ -17128,9 +17129,12 @@ module Google
           property :next_hop_hub, as: 'nextHopHub'
           property :next_hop_ilb, as: 'nextHopIlb'
           property :next_hop_instance, as: 'nextHopInstance'
+          property :next_hop_inter_region_cost, as: 'nextHopInterRegionCost'
           property :next_hop_interconnect_attachment, as: 'nextHopInterconnectAttachment'
           property :next_hop_ip, as: 'nextHopIp'
+          property :next_hop_med, as: 'nextHopMed'
           property :next_hop_network, as: 'nextHopNetwork'
+          property :next_hop_origin, as: 'nextHopOrigin'
           property :next_hop_peering, as: 'nextHopPeering'
           property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel'
           property :priority, as: 'priority'
