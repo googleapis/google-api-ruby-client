@@ -2768,6 +2768,12 @@ module Google
         # @return [Array<Google::Apis::TestingV1::DeviceFile>]
         attr_accessor :files_to_push
       
+        # Optional. Initial setup APKs to install before the app under test is installed.
+        # Currently capped at 100.
+        # Corresponds to the JSON property `initialSetupApks`
+        # @return [Array<Google::Apis::TestingV1::Apk>]
+        attr_accessor :initial_setup_apks
+      
         # The network traffic profile used for running the test. Available network
         # profiles can be queried by using the NETWORK_CONFIGURATION environment type
         # when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
@@ -2794,6 +2800,7 @@ module Google
           @dont_autogrant_permissions = args[:dont_autogrant_permissions] if args.key?(:dont_autogrant_permissions)
           @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
           @files_to_push = args[:files_to_push] if args.key?(:files_to_push)
+          @initial_setup_apks = args[:initial_setup_apks] if args.key?(:initial_setup_apks)
           @network_profile = args[:network_profile] if args.key?(:network_profile)
           @systrace = args[:systrace] if args.key?(:systrace)
         end

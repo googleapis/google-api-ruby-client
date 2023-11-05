@@ -1323,6 +1323,8 @@ module Google
       
           collection :files_to_push, as: 'filesToPush', class: Google::Apis::TestingV1::DeviceFile, decorator: Google::Apis::TestingV1::DeviceFile::Representation
       
+          collection :initial_setup_apks, as: 'initialSetupApks', class: Google::Apis::TestingV1::Apk, decorator: Google::Apis::TestingV1::Apk::Representation
+      
           property :network_profile, as: 'networkProfile'
           property :systrace, as: 'systrace', class: Google::Apis::TestingV1::SystraceSetup, decorator: Google::Apis::TestingV1::SystraceSetup::Representation
       
