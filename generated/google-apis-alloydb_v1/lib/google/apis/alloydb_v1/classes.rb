@@ -826,6 +826,14 @@ module Google
         # @return [String]
         attr_accessor :request_id
       
+        # Optional. An optional hint to the endpoint to generate a client ceritificate
+        # that can be used by AlloyDB connectors to exchange additional metadata with
+        # the server after TLS handshake.
+        # Corresponds to the JSON property `useMetadataExchange`
+        # @return [Boolean]
+        attr_accessor :use_metadata_exchange
+        alias_method :use_metadata_exchange?, :use_metadata_exchange
+      
         def initialize(**args)
            update!(**args)
         end
@@ -835,6 +843,7 @@ module Google
           @cert_duration = args[:cert_duration] if args.key?(:cert_duration)
           @public_key = args[:public_key] if args.key?(:public_key)
           @request_id = args[:request_id] if args.key?(:request_id)
+          @use_metadata_exchange = args[:use_metadata_exchange] if args.key?(:use_metadata_exchange)
         end
       end
       
