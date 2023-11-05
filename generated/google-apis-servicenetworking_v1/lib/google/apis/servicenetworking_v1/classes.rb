@@ -267,6 +267,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. The url of an Internal Range. Eg: `projects//locations/global/
+        # internalRanges/`. If specified, it means that the subnetwork cidr will be
+        # created using the combination of requested_address/ip_prefix_length. Note that
+        # the subnet cidr has to be within the cidr range of this Internal Range.
+        # Corresponds to the JSON property `internalRange`
+        # @return [String]
+        attr_accessor :internal_range
+      
         # Required. The prefix length of the subnet's IP address range. Use CIDR range
         # notation, such as `29` to provision a subnet with an `x.x.x.x/29` CIDR range.
         # The IP address range is drawn from a pool of available ranges in the service
@@ -371,6 +379,7 @@ module Google
           @consumer = args[:consumer] if args.key?(:consumer)
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @description = args[:description] if args.key?(:description)
+          @internal_range = args[:internal_range] if args.key?(:internal_range)
           @ip_prefix_length = args[:ip_prefix_length] if args.key?(:ip_prefix_length)
           @outside_allocation_public_ip_range = args[:outside_allocation_public_ip_range] if args.key?(:outside_allocation_public_ip_range)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
@@ -5149,6 +5158,29 @@ module Google
           @existing_subnetwork_candidates = args[:existing_subnetwork_candidates] if args.key?(:existing_subnetwork_candidates)
           @is_valid = args[:is_valid] if args.key?(:is_valid)
           @validation_error = args[:validation_error] if args.key?(:validation_error)
+        end
+      end
+      
+      # Response for the get VPC Service Controls request.
+      class VpcServiceControls
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates whether the VPC Service Controls are enabled or
+        # disabled for the connection. If the consumer called the
+        # EnableVpcServiceControls method, then this is true. If the consumer called
+        # DisableVpcServiceControls, then this is false. The default is false.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
     end
