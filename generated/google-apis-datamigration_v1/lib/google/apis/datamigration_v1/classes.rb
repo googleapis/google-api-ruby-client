@@ -3477,6 +3477,12 @@ module Google
       class PostgreSqlConnectionProfile
         include Google::Apis::Core::Hashable
       
+        # Optional. If the destination is an AlloyDB database, use this field to provide
+        # the AlloyDB cluster ID.
+        # Corresponds to the JSON property `alloydbClusterId`
+        # @return [String]
+        attr_accessor :alloydb_cluster_id
+      
         # If the source is a Cloud SQL database, use this field to provide the Cloud SQL
         # instance ID of the source.
         # Corresponds to the JSON property `cloudSqlId`
@@ -3544,6 +3550,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alloydb_cluster_id = args[:alloydb_cluster_id] if args.key?(:alloydb_cluster_id)
           @cloud_sql_id = args[:cloud_sql_id] if args.key?(:cloud_sql_id)
           @host = args[:host] if args.key?(:host)
           @network_architecture = args[:network_architecture] if args.key?(:network_architecture)
