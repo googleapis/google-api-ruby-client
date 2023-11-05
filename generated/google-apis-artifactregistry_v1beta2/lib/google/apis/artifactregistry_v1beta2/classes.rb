@@ -1023,8 +1023,8 @@ module Google
         # @return [Google::Apis::ArtifactregistryV1beta2::MavenRepositoryConfig]
         attr_accessor :maven_config
       
-        # The name of the repository, for example: "projects/p1/locations/us-central1/
-        # repositories/repo1".
+        # The name of the repository, for example: `projects/p1/locations/us-central1/
+        # repositories/repo1`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
