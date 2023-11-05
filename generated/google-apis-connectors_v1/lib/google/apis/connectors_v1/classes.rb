@@ -1276,6 +1276,32 @@ module Google
         end
       end
       
+      # Regional encryption config for CMEK details.
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Encryption type for the region.
+        # Corresponds to the JSON property `encryptionType`
+        # @return [String]
+        attr_accessor :encryption_type
+      
+        # Optional. KMS crypto key. This field accepts identifiers of the form `projects/
+        # `project`/locations/`location`/keyRings/`key_ring`/cryptoKeys/ `crypto_key``
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
       # Encryption Key value.
       class EncryptionKey
         include Google::Apis::Core::Hashable
@@ -1774,6 +1800,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :search_tags
       
+        # Output only. The type of the event listener for a specific connector.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1787,6 +1818,7 @@ module Google
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
           @search_tags = args[:search_tags] if args.key?(:search_tags)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -3276,6 +3308,11 @@ module Google
       class RegionalSettings
         include Google::Apis::Core::Hashable
       
+        # Regional encryption config for CMEK details.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::ConnectorsV1::EncryptionConfig]
+        attr_accessor :encryption_config
+      
         # Output only. Resource name of the Connection. Format: projects/`project`/
         # locations/`location`/regionalSettings
         # Corresponds to the JSON property `name`
@@ -3293,6 +3330,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
         end
