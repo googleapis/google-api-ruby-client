@@ -1043,6 +1043,33 @@ module Google
         end
       end
       
+      # This context is used to demote an existing standalone instance to be a Cloud
+      # SQL read replica for an external database server.
+      class DemoteContext
+        include Google::Apis::Core::Hashable
+      
+        # This is always `sql#demoteContext`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Required. The name of the instance which acts as an on-premises primary
+        # instance in the replication setup.
+        # Corresponds to the JSON property `sourceRepresentativeInstanceName`
+        # @return [String]
+        attr_accessor :source_representative_instance_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @source_representative_instance_name = args[:source_representative_instance_name] if args.key?(:source_representative_instance_name)
+        end
+      end
+      
       # Read-replica configuration for connecting to the on-premises primary instance.
       class DemoteMasterConfiguration
         include Google::Apis::Core::Hashable
@@ -2031,6 +2058,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @demote_master_context = args[:demote_master_context] if args.key?(:demote_master_context)
+        end
+      end
+      
+      # This request is used to demote an existing standalone instance to be a Cloud
+      # SQL read replica for an external database server.
+      class InstancesDemoteRequest
+        include Google::Apis::Core::Hashable
+      
+        # This context is used to demote an existing standalone instance to be a Cloud
+        # SQL read replica for an external database server.
+        # Corresponds to the JSON property `demoteContext`
+        # @return [Google::Apis::SqladminV1beta4::DemoteContext]
+        attr_accessor :demote_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @demote_context = args[:demote_context] if args.key?(:demote_context)
         end
       end
       
