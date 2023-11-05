@@ -1,5 +1,9 @@
 # Release history for google-apis-datastream_v1
 
+### v0.31.0 (2023-11-05)
+
+* Regenerated from discovery document revision 20231025
+
 ### v0.30.0 (2023-09-10)
 
 * Regenerated from discovery document revision 20230902
