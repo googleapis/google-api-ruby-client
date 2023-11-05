@@ -1396,12 +1396,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1beta1GenieSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1beta1HyperparameterTuningJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2069,18 +2063,6 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1ModelExportFormat
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1ModelGardenSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1ModelGeneratedModelSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6794,13 +6776,6 @@ module Google
         end
       end
       
-      class GoogleCloudAiplatformV1beta1GenieSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :base_model_uri, as: 'baseModelUri'
-        end
-      end
-      
       class GoogleCloudAiplatformV1beta1HyperparameterTuningJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7737,8 +7712,6 @@ module Google
           property :etag, as: 'etag'
           property :explanation_spec, as: 'explanationSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExplanationSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExplanationSpec::Representation
       
-          property :generated_model_source, as: 'generatedModelSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelGeneratedModelSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelGeneratedModelSource::Representation
-      
           hash :labels, as: 'labels'
           property :metadata, as: 'metadata'
           property :metadata_artifact, as: 'metadataArtifact'
@@ -7962,23 +7935,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exportable_contents, as: 'exportableContents'
           property :id, as: 'id'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1ModelGardenSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :public_model_name, as: 'publicModelName'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1ModelGeneratedModelSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :genie_source, as: 'genieSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenieSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenieSource::Representation
-      
-          property :model_garden_source, as: 'modelGardenSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelGardenSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelGardenSource::Representation
-      
         end
       end
       

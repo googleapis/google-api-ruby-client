@@ -6624,7 +6624,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The dedicated serving endpoint for this FeatureOnlineStore.
+        # The dedicated serving endpoint for this FeatureOnlineStore. Only need to set
+        # when you choose Optimized storage type or enable EmbeddingManagement.
         # Corresponds to the JSON property `dedicatedServingEndpoint`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint]
         attr_accessor :dedicated_serving_endpoint
@@ -6743,7 +6744,8 @@ module Google
         end
       end
       
-      # The dedicated serving endpoint for this FeatureOnlineStore.
+      # The dedicated serving endpoint for this FeatureOnlineStore. Only need to set
+      # when you choose Optimized storage type or enable EmbeddingManagement.
       class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint
         include Google::Apis::Core::Hashable
       
@@ -8138,26 +8140,6 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @partial_failures = args[:partial_failures] if args.key?(:partial_failures)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Contains information about the source of the models generated from Generative
-      # AI Studio.
-      class GoogleCloudAiplatformV1beta1GenieSource
-        include Google::Apis::Core::Hashable
-      
-        # Required. The public base model URI.
-        # Corresponds to the JSON property `baseModelUri`
-        # @return [String]
-        attr_accessor :base_model_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @base_model_uri = args[:base_model_uri] if args.key?(:base_model_uri)
         end
       end
       
@@ -11307,12 +11289,6 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExplanationSpec]
         attr_accessor :explanation_spec
       
-        # Used to specify the source of the Model Garden model or Genie models. Only
-        # present for models created or tuned from Model Garden and Genie.
-        # Corresponds to the JSON property `generatedModelSource`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelGeneratedModelSource]
-        attr_accessor :generated_model_source
-      
         # The labels with user-defined metadata to organize your Models. Label keys and
         # values can be no longer than 64 characters (Unicode codepoints), can only
         # contain lowercase letters, numeric characters, underscores and dashes.
@@ -11486,7 +11462,6 @@ module Google
           @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @etag = args[:etag] if args.key?(:etag)
           @explanation_spec = args[:explanation_spec] if args.key?(:explanation_spec)
-          @generated_model_source = args[:generated_model_source] if args.key?(:generated_model_source)
           @labels = args[:labels] if args.key?(:labels)
           @metadata = args[:metadata] if args.key?(:metadata)
           @metadata_artifact = args[:metadata_artifact] if args.key?(:metadata_artifact)
@@ -12405,54 +12380,6 @@ module Google
         def update!(**args)
           @exportable_contents = args[:exportable_contents] if args.key?(:exportable_contents)
           @id = args[:id] if args.key?(:id)
-        end
-      end
-      
-      # Contains information about the source of the models generated from Model
-      # Garden.
-      class GoogleCloudAiplatformV1beta1ModelGardenSource
-        include Google::Apis::Core::Hashable
-      
-        # Required. The model garden source model resource name.
-        # Corresponds to the JSON property `publicModelName`
-        # @return [String]
-        attr_accessor :public_model_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @public_model_name = args[:public_model_name] if args.key?(:public_model_name)
-        end
-      end
-      
-      # Used to specify the source of the Model Garden model or Genie models. Only
-      # present for models created or tuned from Model Garden and Genie.
-      class GoogleCloudAiplatformV1beta1ModelGeneratedModelSource
-        include Google::Apis::Core::Hashable
-      
-        # Contains information about the source of the models generated from Generative
-        # AI Studio.
-        # Corresponds to the JSON property `genieSource`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenieSource]
-        attr_accessor :genie_source
-      
-        # Contains information about the source of the models generated from Model
-        # Garden.
-        # Corresponds to the JSON property `modelGardenSource`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelGardenSource]
-        attr_accessor :model_garden_source
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @genie_source = args[:genie_source] if args.key?(:genie_source)
-          @model_garden_source = args[:model_garden_source] if args.key?(:model_garden_source)
         end
       end
       
