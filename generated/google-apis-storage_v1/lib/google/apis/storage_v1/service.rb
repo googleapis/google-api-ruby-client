@@ -53,6 +53,265 @@ module Google
           @batch_path = 'batch/storage/v1'
         end
         
+        # Disables an Anywhere Cache instance.
+        # @param [String] bucket
+        #   Name of the partent bucket
+        # @param [String] anywhere_cache_id
+        #   The ID of requested Anywhere Cache instance.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::AnywhereCache] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::AnywhereCache]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def disable_anywhere_cach(bucket, anywhere_cache_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/anywhereCaches/{anywhereCacheId}/disable', options)
+          command.response_representation = Google::Apis::StorageV1::AnywhereCache::Representation
+          command.response_class = Google::Apis::StorageV1::AnywhereCache
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['anywhereCacheId'] = anywhere_cache_id unless anywhere_cache_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the metadata of an Anywhere Cache instance.
+        # @param [String] bucket
+        #   Name of the partent bucket
+        # @param [String] anywhere_cache_id
+        #   The ID of requested Anywhere Cache instance.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::AnywhereCache] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::AnywhereCache]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_anywhere_cach(bucket, anywhere_cache_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'b/{bucket}/anywhereCaches/{anywhereCacheId}', options)
+          command.response_representation = Google::Apis::StorageV1::AnywhereCache::Representation
+          command.response_class = Google::Apis::StorageV1::AnywhereCache
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['anywhereCacheId'] = anywhere_cache_id unless anywhere_cache_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an Anywhere Cache instance.
+        # @param [String] bucket
+        #   Name of the partent bucket
+        # @param [Google::Apis::StorageV1::AnywhereCache] anywhere_cache_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_anywhere_cach(bucket, anywhere_cache_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/anywhereCaches', options)
+          command.request_representation = Google::Apis::StorageV1::AnywhereCache::Representation
+          command.request_object = anywhere_cache_object
+          command.response_representation = Google::Apis::StorageV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::StorageV1::GoogleLongrunningOperation
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of Anywhere Cache instances of the bucket matching the criteria.
+        # @param [String] bucket
+        #   Name of the partent bucket
+        # @param [Fixnum] page_size
+        #   Maximum number of items return in a single page of responses. Maximum 1000.
+        # @param [String] page_token
+        #   A previously-returned page token representing part of the larger set of
+        #   results to view.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::AnywhereCaches] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::AnywhereCaches]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_anywhere_caches(bucket, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'b/{bucket}/anywhereCache', options)
+          command.response_representation = Google::Apis::StorageV1::AnywhereCaches::Representation
+          command.response_class = Google::Apis::StorageV1::AnywhereCaches
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Pauses an Anywhere Cache instance.
+        # @param [String] bucket
+        #   Name of the partent bucket
+        # @param [String] anywhere_cache_id
+        #   The ID of requested Anywhere Cache instance.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::AnywhereCache] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::AnywhereCache]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def pause_anywhere_cach(bucket, anywhere_cache_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/anywhereCaches/{anywhereCacheId}/pause', options)
+          command.response_representation = Google::Apis::StorageV1::AnywhereCache::Representation
+          command.response_class = Google::Apis::StorageV1::AnywhereCache
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['anywhereCacheId'] = anywhere_cache_id unless anywhere_cache_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resumes a paused or disabled Anywhere Cache instance.
+        # @param [String] bucket
+        #   Name of the partent bucket
+        # @param [String] anywhere_cache_id
+        #   The ID of requested Anywhere Cache instance.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::AnywhereCache] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::AnywhereCache]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resume_anywhere_cach(bucket, anywhere_cache_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/anywhereCaches/{anywhereCacheId}/resume', options)
+          command.response_representation = Google::Apis::StorageV1::AnywhereCache::Representation
+          command.response_class = Google::Apis::StorageV1::AnywhereCache
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['anywhereCacheId'] = anywhere_cache_id unless anywhere_cache_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the config(ttl and admissionPolicy) of an Anywhere Cache instance.
+        # @param [String] bucket
+        #   Name of the partent bucket
+        # @param [String] anywhere_cache_id
+        #   The ID of requested Anywhere Cache instance.
+        # @param [Google::Apis::StorageV1::AnywhereCache] anywhere_cache_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_anywhere_cach(bucket, anywhere_cache_id, anywhere_cache_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'b/{bucket}/anywhereCaches/{anywhereCacheId}', options)
+          command.request_representation = Google::Apis::StorageV1::AnywhereCache::Representation
+          command.request_object = anywhere_cache_object
+          command.response_representation = Google::Apis::StorageV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::StorageV1::GoogleLongrunningOperation
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['anywhereCacheId'] = anywhere_cache_id unless anywhere_cache_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Permanently deletes the ACL entry for the specified entity on the specified
         # bucket.
         # @param [String] bucket
