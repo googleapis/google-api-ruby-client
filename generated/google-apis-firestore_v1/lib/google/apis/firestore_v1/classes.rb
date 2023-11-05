@@ -1940,6 +1940,17 @@ module Google
         # @return [Array<Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Database>]
         attr_accessor :databases
       
+        # In the event that data about individual databases cannot be listed they will
+        # be recorded here. An example entry might be: projects/some_project/locations/
+        # some_location This can happen if the Cloud Region that the Database resides in
+        # is currently unavailable. In this case we can't fetch all the details about
+        # the database. You may be able to get a more detailed error message (or
+        # possibly fetch the resource) by sending a 'Get' request for the resource or a '
+        # List' request for the specific location.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1947,6 +1958,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @databases = args[:databases] if args.key?(:databases)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
