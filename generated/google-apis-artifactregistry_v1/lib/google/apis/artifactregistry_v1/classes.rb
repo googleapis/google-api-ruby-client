@@ -2022,8 +2022,8 @@ module Google
         # @return [String]
         attr_accessor :mode
       
-        # The name of the repository, for example: "projects/p1/locations/us-central1/
-        # repositories/repo1".
+        # The name of the repository, for example: `projects/p1/locations/us-central1/
+        # repositories/repo1`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2571,8 +2571,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :priority
       
-        # A reference to the repository resource, for example: "projects/p1/locations/us-
-        # central1/repositories/repo1".
+        # A reference to the repository resource, for example: `projects/p1/locations/us-
+        # central1/repositories/repo1`.
         # Corresponds to the JSON property `repository`
         # @return [String]
         attr_accessor :repository
