@@ -22,6 +22,35 @@ module Google
   module Apis
     module IamV1
       
+      # Access related restrictions on the workforce pool.
+      class AccessRestrictions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Immutable. Services allowed for web sign-in with the workforce pool.
+        # If not set by default there are no restrictions.
+        # Corresponds to the JSON property `allowedServices`
+        # @return [Array<Google::Apis::IamV1::ServiceConfig>]
+        attr_accessor :allowed_services
+      
+        # Optional. Disable programmatic sign-in by disabling token issue via the
+        # Security Token API endpoint. See [Security Token Service API] (https://cloud.
+        # google.com/iam/docs/reference/sts/rest).
+        # Corresponds to the JSON property `disableProgrammaticSignin`
+        # @return [Boolean]
+        attr_accessor :disable_programmatic_signin
+        alias_method :disable_programmatic_signin?, :disable_programmatic_signin
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_services = args[:allowed_services] if args.key?(:allowed_services)
+          @disable_programmatic_signin = args[:disable_programmatic_signin] if args.key?(:disable_programmatic_signin)
+        end
+      end
+      
       # Audit log information specific to Cloud IAM admin APIs. This message is
       # serialized as an `Any` type in the `ServiceData` message of an `AuditLog`
       # message.
@@ -1980,6 +2009,25 @@ module Google
         end
       end
       
+      # Configuration for a service.
+      class ServiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Domain name of the service. Example: console.cloud.google
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -2394,6 +2442,11 @@ module Google
       class WorkforcePool
         include Google::Apis::Core::Hashable
       
+        # Access related restrictions on the workforce pool.
+        # Corresponds to the JSON property `accessRestrictions`
+        # @return [Google::Apis::IamV1::AccessRestrictions]
+        attr_accessor :access_restrictions
+      
         # A user-specified description of the pool. Cannot exceed 256 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -2451,6 +2504,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_restrictions = args[:access_restrictions] if args.key?(:access_restrictions)
           @description = args[:description] if args.key?(:description)
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
