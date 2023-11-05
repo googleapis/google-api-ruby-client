@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudLoggingEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Compliance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -346,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MemoryHashSignature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -544,6 +556,16 @@ module Google
           property :info_type, as: 'infoType'
           property :info_type_count, :numeric_string => true, as: 'infoTypeCount'
           property :inspect_job, as: 'inspectJob'
+        end
+      end
+      
+      class CloudLoggingEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :insert_id, as: 'insertId'
+          property :log_id, as: 'logId'
+          property :resource_container, as: 'resourceContainer'
+          property :timestamp, as: 'timestamp'
         end
       end
       
@@ -773,6 +795,8 @@ module Google
           property :kubernetes, as: 'kubernetes', class: Google::Apis::SecuritycenterV1beta2::Kubernetes, decorator: Google::Apis::SecuritycenterV1beta2::Kubernetes::Representation
       
           collection :load_balancers, as: 'loadBalancers', class: Google::Apis::SecuritycenterV1beta2::LoadBalancer, decorator: Google::Apis::SecuritycenterV1beta2::LoadBalancer::Representation
+      
+          collection :log_entries, as: 'logEntries', class: Google::Apis::SecuritycenterV1beta2::LogEntry, decorator: Google::Apis::SecuritycenterV1beta2::LogEntry::Representation
       
           property :mitre_attack, as: 'mitreAttack', class: Google::Apis::SecuritycenterV1beta2::MitreAttack, decorator: Google::Apis::SecuritycenterV1beta2::MitreAttack::Representation
       
@@ -1131,6 +1155,14 @@ module Google
         end
       end
       
+      class LogEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_logging_entry, as: 'cloudLoggingEntry', class: Google::Apis::SecuritycenterV1beta2::CloudLoggingEntry, decorator: Google::Apis::SecuritycenterV1beta2::CloudLoggingEntry::Representation
+      
+        end
+      end
+      
       class MemoryHashSignature
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1170,6 +1202,8 @@ module Google
       class Object
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :containers, as: 'containers', class: Google::Apis::SecuritycenterV1beta2::Container, decorator: Google::Apis::SecuritycenterV1beta2::Container::Representation
+      
           property :group, as: 'group'
           property :kind, as: 'kind'
           property :name, as: 'name'
