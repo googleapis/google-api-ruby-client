@@ -16,13 +16,13 @@ module Google
   module Apis
     module GkehubV1beta
       # Version of the google-apis-gkehub_v1beta gem
-      GEM_VERSION = "0.61.0"
+      GEM_VERSION = "0.62.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.12.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20231013"
+      REVISION = "20231030"
     end
   end
 end
