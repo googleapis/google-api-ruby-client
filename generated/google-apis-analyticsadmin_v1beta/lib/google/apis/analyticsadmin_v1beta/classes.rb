@@ -908,6 +908,12 @@ module Google
         attr_accessor :custom
         alias_method :custom?, :custom
       
+        # Defines a default value/currency for a conversion event. Both value and
+        # currency must be provided.
+        # Corresponds to the JSON property `defaultConversionValue`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue]
+        attr_accessor :default_conversion_value
+      
         # Output only. If set, this event can currently be deleted with
         # DeleteConversionEvent.
         # Corresponds to the JSON property `deletable`
@@ -936,9 +942,39 @@ module Google
           @counting_method = args[:counting_method] if args.key?(:counting_method)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom = args[:custom] if args.key?(:custom)
+          @default_conversion_value = args[:default_conversion_value] if args.key?(:default_conversion_value)
           @deletable = args[:deletable] if args.key?(:deletable)
           @event_name = args[:event_name] if args.key?(:event_name)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Defines a default value/currency for a conversion event. Both value and
+      # currency must be provided.
+      class GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue
+        include Google::Apis::Core::Hashable
+      
+        # When a conversion event for this event_name has no set currency, this currency
+        # will be applied as the default. Must be in ISO 4217 currency code format. See
+        # https://en.wikipedia.org/wiki/ISO_4217 for more.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # This value will be used to populate the value for all conversions of the
+        # specified event_name where the event "value" parameter is unset.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
