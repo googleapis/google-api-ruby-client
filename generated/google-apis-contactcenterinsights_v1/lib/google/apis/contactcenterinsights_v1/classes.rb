@@ -402,7 +402,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :failed_analyses_count
       
-        # Output only. Partial errors during ingest operation that might cause the
+        # Output only. Partial errors during bulk analyze operation that might cause the
         # operation output to be incomplete.
         # Corresponds to the JSON property `partialErrors`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
@@ -494,6 +494,98 @@ module Google
         def update!(**args)
           @failed_analysis_count = args[:failed_analysis_count] if args.key?(:failed_analysis_count)
           @successful_analysis_count = args[:successful_analysis_count] if args.key?(:successful_analysis_count)
+        end
+      end
+      
+      # The metadata for a bulk delete conversations operation.
+      class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Partial errors during bulk delete conversations operation that might cause the
+        # operation output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        # The request to delete conversations in bulk.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request to delete conversations in bulk.
+      class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Filter used to select the subset of conversations to analyze.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # If set to true, all of this conversation's analyses will also be deleted.
+        # Otherwise, the request will only succeed if the conversation has no analyses.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # Maximum number of conversations to delete. The default is 1000. It can be
+        # changed by setting the `max_delete_count` field.
+        # Corresponds to the JSON property `maxDeleteCount`
+        # @return [Fixnum]
+        attr_accessor :max_delete_count
+      
+        # Required. The parent resource to create analyses in. Format: projects/`project`
+        # /locations/`location`
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @force = args[:force] if args.key?(:force)
+          @max_delete_count = args[:max_delete_count] if args.key?(:max_delete_count)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # The response for a bulk analyze conversations operation.
+      class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1901,6 +1993,16 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # DLP resources used for redaction while ingesting conversations.
+        # Corresponds to the JSON property `redactionConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig]
+        attr_accessor :redaction_config
+      
+        # Speech-to-Text configuration.
+        # Corresponds to the JSON property `speechConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig]
+        attr_accessor :speech_config
+      
         # Configuration for processing transcript objects.
         # Corresponds to the JSON property `transcriptObjectConfig`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig]
@@ -1915,6 +2017,8 @@ module Google
           @conversation_config = args[:conversation_config] if args.key?(:conversation_config)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @parent = args[:parent] if args.key?(:parent)
+          @redaction_config = args[:redaction_config] if args.key?(:redaction_config)
+          @speech_config = args[:speech_config] if args.key?(:speech_config)
           @transcript_object_config = args[:transcript_object_config] if args.key?(:transcript_object_config)
         end
       end
@@ -1923,11 +2027,25 @@ module Google
       class GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. For audio conversations, this field indicates which of the channels,
+        # 1 or 2, contains the agent. Note that this must be set for audio conversations
+        # to be properly displayed and analyzed.
+        # Corresponds to the JSON property `agentChannel`
+        # @return [Fixnum]
+        attr_accessor :agent_channel
+      
         # An opaque, user-specified string representing the human agent who handled the
         # conversations.
         # Corresponds to the JSON property `agentId`
         # @return [String]
         attr_accessor :agent_id
+      
+        # Optional. For audio conversations, this field indicates which of the channels,
+        # 1 or 2, contains the customer. Note that this must be set for audio
+        # conversations to be properly displayed and analyzed.
+        # Corresponds to the JSON property `customerChannel`
+        # @return [Fixnum]
+        attr_accessor :customer_channel
       
         def initialize(**args)
            update!(**args)
@@ -1935,13 +2053,20 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_channel = args[:agent_channel] if args.key?(:agent_channel)
           @agent_id = args[:agent_id] if args.key?(:agent_id)
+          @customer_channel = args[:customer_channel] if args.key?(:customer_channel)
         end
       end
       
       # Configuration for Cloud Storage bucket sources.
       class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource
         include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the type of the objects in `bucket_uri`.
+        # Corresponds to the JSON property `bucketObjectType`
+        # @return [String]
+        attr_accessor :bucket_object_type
       
         # Required. The Cloud Storage bucket containing source objects.
         # Corresponds to the JSON property `bucketUri`
@@ -1954,6 +2079,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bucket_object_type = args[:bucket_object_type] if args.key?(:bucket_object_type)
           @bucket_uri = args[:bucket_uri] if args.key?(:bucket_uri)
         end
       end
@@ -3620,7 +3746,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :failed_analyses_count
       
-        # Output only. Partial errors during ingest operation that might cause the
+        # Output only. Partial errors during bulk analyze operation that might cause the
         # operation output to be incomplete.
         # Corresponds to the JSON property `partialErrors`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
@@ -3712,6 +3838,98 @@ module Google
         def update!(**args)
           @failed_analysis_count = args[:failed_analysis_count] if args.key?(:failed_analysis_count)
           @successful_analysis_count = args[:successful_analysis_count] if args.key?(:successful_analysis_count)
+        end
+      end
+      
+      # The metadata for a bulk delete conversations operation.
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Partial errors during bulk delete conversations operation that might cause the
+        # operation output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        # The request to delete conversations in bulk.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request to delete conversations in bulk.
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Filter used to select the subset of conversations to analyze.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # If set to true, all of this conversation's analyses will also be deleted.
+        # Otherwise, the request will only succeed if the conversation has no analyses.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # Maximum number of conversations to delete. The default is 1000. It can be
+        # changed by setting the `max_delete_count` field.
+        # Corresponds to the JSON property `maxDeleteCount`
+        # @return [Fixnum]
+        attr_accessor :max_delete_count
+      
+        # Required. The parent resource to create analyses in. Format: projects/`project`
+        # /locations/`location`
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @force = args[:force] if args.key?(:force)
+          @max_delete_count = args[:max_delete_count] if args.key?(:max_delete_count)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # The response for a bulk analyze conversations operation.
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -4961,6 +5179,16 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # DLP resources used for redaction while ingesting conversations.
+        # Corresponds to the JSON property `redactionConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RedactionConfig]
+        attr_accessor :redaction_config
+      
+        # Speech-to-Text configuration.
+        # Corresponds to the JSON property `speechConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SpeechConfig]
+        attr_accessor :speech_config
+      
         # Configuration for processing transcript objects.
         # Corresponds to the JSON property `transcriptObjectConfig`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig]
@@ -4975,6 +5203,8 @@ module Google
           @conversation_config = args[:conversation_config] if args.key?(:conversation_config)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @parent = args[:parent] if args.key?(:parent)
+          @redaction_config = args[:redaction_config] if args.key?(:redaction_config)
+          @speech_config = args[:speech_config] if args.key?(:speech_config)
           @transcript_object_config = args[:transcript_object_config] if args.key?(:transcript_object_config)
         end
       end
@@ -4983,11 +5213,25 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. For audio conversations, this field indicates which of the channels,
+        # 1 or 2, contains the agent. Note that this must be set for audio conversations
+        # to be properly displayed and analyzed.
+        # Corresponds to the JSON property `agentChannel`
+        # @return [Fixnum]
+        attr_accessor :agent_channel
+      
         # An opaque, user-specified string representing the human agent who handled the
         # conversations.
         # Corresponds to the JSON property `agentId`
         # @return [String]
         attr_accessor :agent_id
+      
+        # Optional. For audio conversations, this field indicates which of the channels,
+        # 1 or 2, contains the customer. Note that this must be set for audio
+        # conversations to be properly displayed and analyzed.
+        # Corresponds to the JSON property `customerChannel`
+        # @return [Fixnum]
+        attr_accessor :customer_channel
       
         def initialize(**args)
            update!(**args)
@@ -4995,13 +5239,20 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_channel = args[:agent_channel] if args.key?(:agent_channel)
           @agent_id = args[:agent_id] if args.key?(:agent_id)
+          @customer_channel = args[:customer_channel] if args.key?(:customer_channel)
         end
       end
       
       # Configuration for Cloud Storage bucket sources.
       class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource
         include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the type of the objects in `bucket_uri`.
+        # Corresponds to the JSON property `bucketObjectType`
+        # @return [String]
+        attr_accessor :bucket_object_type
       
         # Required. The Cloud Storage bucket containing source objects.
         # Corresponds to the JSON property `bucketUri`
@@ -5014,6 +5265,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bucket_object_type = args[:bucket_object_type] if args.key?(:bucket_object_type)
           @bucket_uri = args[:bucket_uri] if args.key?(:bucket_uri)
         end
       end
