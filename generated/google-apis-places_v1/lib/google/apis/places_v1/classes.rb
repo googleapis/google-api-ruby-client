@@ -112,7 +112,6 @@ module Google
         attr_accessor :center
       
         # Required. Radius measured in meters. The radius must be within [0.0, 50000.0].
-        # The default radius is 0.0.
         # Corresponds to the JSON property `radius`
         # @return [Float]
         attr_accessor :radius
@@ -306,8 +305,8 @@ module Google
       class GoogleMapsPlacesV1PhotoMedia
         include Google::Apis::Core::Hashable
       
-        # The resource name of a photo in the format: places/place_id/photos/
-        # photo_reference.
+        # The resource name of a photo media in the format: `places/place_id/photos/
+        # photo_reference/media`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
