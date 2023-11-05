@@ -1171,6 +1171,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gce_pd_kms_key_name, as: 'gcePdKmsKeyName'
+          property :kms_key, as: 'kmsKey'
         end
       end
       
@@ -1651,6 +1652,7 @@ module Google
           collection :jobs, as: 'jobs', class: Google::Apis::DataprocV1::Job, decorator: Google::Apis::DataprocV1::Job::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       

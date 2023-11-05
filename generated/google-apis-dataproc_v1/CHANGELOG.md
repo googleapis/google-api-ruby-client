@@ -1,5 +1,9 @@
 # Release history for google-apis-dataproc_v1
 
+### v0.59.0 (2023-11-05)
+
+* Regenerated from discovery document revision 20231028
+
 ### v0.58.0 (2023-10-29)
 
 * Regenerated from discovery document revision 20231019
