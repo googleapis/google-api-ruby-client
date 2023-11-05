@@ -118,7 +118,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudApigeeV1ApiCategoryData
+      class GoogleCloudApigeeV1ApiCategoryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1783,22 +1783,22 @@ module Google
       class GoogleCloudApigeeV1ApiCategory
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :data, as: 'data', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData::Representation
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :site_id, as: 'siteId'
+          property :update_time, :numeric_string => true, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ApiCategoryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory::Representation
       
           property :error_code, as: 'errorCode'
           property :message, as: 'message'
           property :request_id, as: 'requestId'
           property :status, as: 'status'
-        end
-      end
-      
-      class GoogleCloudApigeeV1ApiCategoryData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :name, as: 'name'
-          property :site_id, as: 'siteId'
-          property :update_time, :numeric_string => true, as: 'updateTime'
         end
       end
       
@@ -2931,7 +2931,7 @@ module Google
       class GoogleCloudApigeeV1ListApiCategoriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :data, as: 'data', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData::Representation
+          collection :data, as: 'data', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory::Representation
       
           property :error_code, as: 'errorCode'
           property :message, as: 'message'
