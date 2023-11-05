@@ -596,6 +596,7 @@ module Google
           property :cert_duration, as: 'certDuration'
           property :public_key, as: 'publicKey'
           property :request_id, as: 'requestId'
+          property :use_metadata_exchange, as: 'useMetadataExchange'
         end
       end
       
