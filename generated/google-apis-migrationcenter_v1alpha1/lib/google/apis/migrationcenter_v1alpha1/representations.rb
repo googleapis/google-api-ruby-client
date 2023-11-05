@@ -986,6 +986,7 @@ module Google
           collection :aggregations, as: 'aggregations', class: Google::Apis::MigrationcenterV1alpha1::Aggregation, decorator: Google::Apis::MigrationcenterV1alpha1::Aggregation::Representation
       
           property :filter, as: 'filter'
+          property :show_hidden, as: 'showHidden'
         end
       end
       
@@ -1096,6 +1097,9 @@ module Google
           collection :assigned_groups, as: 'assignedGroups'
           hash :attributes, as: 'attributes'
           property :create_time, as: 'createTime'
+          property :hidden, as: 'hidden'
+          property :hide_reason, as: 'hideReason'
+          property :hide_time, as: 'hideTime'
           property :insight_list, as: 'insightList', class: Google::Apis::MigrationcenterV1alpha1::InsightList, decorator: Google::Apis::MigrationcenterV1alpha1::InsightList::Representation
       
           hash :labels, as: 'labels'
