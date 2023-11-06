@@ -972,7 +972,7 @@ module Google
         end
       end
       
-      # The metadata proto of ResyncDataset method.
+      # The metadata proto of `ResyncDataset` method.
       class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata
         include Google::Apis::Core::Hashable
       
@@ -981,8 +981,8 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
         attr_accessor :common_metadata
       
-        # The list of dataset resync statuses. Not checked when `dataset_documents` is
-        # specified in ResyncRequest.
+        # The list of dataset resync statuses. Not checked when ResyncDatasetRequest.
+        # dataset_documents is specified.
         # Corresponds to the JSON property `datasetResyncStatuses`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus>]
         attr_accessor :dataset_resync_statuses

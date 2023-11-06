@@ -2774,9 +2774,8 @@ module Google
         attr_accessor :network
       
         # The ID of the location to store protected artifacts. e.g. us-central1.
-        # Populate only when the location is different than CustomJob location. For
-        # unprotected artifacts, the value of this field is ignored. List of supported
-        # locations: https://cloud.google.com/vertex-ai/docs/general/locations
+        # Populate only when the location is different than CustomJob location. List of
+        # supported locations: https://cloud.google.com/vertex-ai/docs/general/locations
         # Corresponds to the JSON property `protectedArtifactLocationId`
         # @return [String]
         attr_accessor :protected_artifact_location_id
@@ -21363,7 +21362,7 @@ module Google
         end
       end
       
-      # A message representing a Study.
+      # A message representing a Study. Next id: 12
       class GoogleCloudAiplatformV1Study
         include Google::Apis::Core::Hashable
       
@@ -21476,6 +21475,12 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1StudySpecParameterSpec>]
         attr_accessor :parameters
       
+        # The configuration (stopping conditions) for automated stopping of a Study.
+        # Conditions include trial budgets, time budgets, and convergence detection.
+        # Corresponds to the JSON property `studyStoppingConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1StudySpecStudyStoppingConfig]
+        attr_accessor :study_stopping_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -21490,6 +21495,7 @@ module Google
           @metrics = args[:metrics] if args.key?(:metrics)
           @observation_noise = args[:observation_noise] if args.key?(:observation_noise)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @study_stopping_config = args[:study_stopping_config] if args.key?(:study_stopping_config)
         end
       end
       
@@ -21970,6 +21976,93 @@ module Google
           @default_value = args[:default_value] if args.key?(:default_value)
           @max_value = args[:max_value] if args.key?(:max_value)
           @min_value = args[:min_value] if args.key?(:min_value)
+        end
+      end
+      
+      # The configuration (stopping conditions) for automated stopping of a Study.
+      # Conditions include trial budgets, time budgets, and convergence detection.
+      class GoogleCloudAiplatformV1StudySpecStudyStoppingConfig
+        include Google::Apis::Core::Hashable
+      
+        # If the objective value has not improved for this much time, stop the study.
+        # WARNING: Effective only for single-objective studies.
+        # Corresponds to the JSON property `maxDurationNoProgress`
+        # @return [String]
+        attr_accessor :max_duration_no_progress
+      
+        # If there are more than this many trials, stop the study.
+        # Corresponds to the JSON property `maxNumTrials`
+        # @return [Fixnum]
+        attr_accessor :max_num_trials
+      
+        # If the objective value has not improved for this many consecutive trials, stop
+        # the study. WARNING: Effective only for single-objective studies.
+        # Corresponds to the JSON property `maxNumTrialsNoProgress`
+        # @return [Fixnum]
+        attr_accessor :max_num_trials_no_progress
+      
+        # Time-based Constraint for Study
+        # Corresponds to the JSON property `maximumRuntimeConstraint`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1StudyTimeConstraint]
+        attr_accessor :maximum_runtime_constraint
+      
+        # If there are fewer than this many COMPLETED trials, do not stop the study.
+        # Corresponds to the JSON property `minNumTrials`
+        # @return [Fixnum]
+        attr_accessor :min_num_trials
+      
+        # Time-based Constraint for Study
+        # Corresponds to the JSON property `minimumRuntimeConstraint`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1StudyTimeConstraint]
+        attr_accessor :minimum_runtime_constraint
+      
+        # If true, a Study enters STOPPING_ASAP whenever it would normally enters
+        # STOPPING state. The bottom line is: set to true if you want to interrupt on-
+        # going evaluations of Trials as soon as the study stopping condition is met. (
+        # Please see Study.State documentation for the source of truth).
+        # Corresponds to the JSON property `shouldStopAsap`
+        # @return [Boolean]
+        attr_accessor :should_stop_asap
+        alias_method :should_stop_asap?, :should_stop_asap
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_duration_no_progress = args[:max_duration_no_progress] if args.key?(:max_duration_no_progress)
+          @max_num_trials = args[:max_num_trials] if args.key?(:max_num_trials)
+          @max_num_trials_no_progress = args[:max_num_trials_no_progress] if args.key?(:max_num_trials_no_progress)
+          @maximum_runtime_constraint = args[:maximum_runtime_constraint] if args.key?(:maximum_runtime_constraint)
+          @min_num_trials = args[:min_num_trials] if args.key?(:min_num_trials)
+          @minimum_runtime_constraint = args[:minimum_runtime_constraint] if args.key?(:minimum_runtime_constraint)
+          @should_stop_asap = args[:should_stop_asap] if args.key?(:should_stop_asap)
+        end
+      end
+      
+      # Time-based Constraint for Study
+      class GoogleCloudAiplatformV1StudyTimeConstraint
+        include Google::Apis::Core::Hashable
+      
+        # Compares the wallclock time to this time. Must use UTC timezone.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Counts the wallclock time passed since the creation of this Study.
+        # Corresponds to the JSON property `maxDuration`
+        # @return [String]
+        attr_accessor :max_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
         end
       end
       

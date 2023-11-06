@@ -223,6 +223,37 @@ module Google
         end
       end
       
+      # Response for getting WbI configurations in a location
+      class Config
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of available images to create a WbI.
+        # Corresponds to the JSON property `availableImages`
+        # @return [Array<Google::Apis::NotebooksV2::ImageRelease>]
+        attr_accessor :available_images
+      
+        # DefaultValues represents the default configuration values.
+        # Corresponds to the JSON property `defaultValues`
+        # @return [Google::Apis::NotebooksV2::DefaultValues]
+        attr_accessor :default_values
+      
+        # SupportedValues represents the values supported by the configuration.
+        # Corresponds to the JSON property `supportedValues`
+        # @return [Google::Apis::NotebooksV2::SupportedValues]
+        attr_accessor :supported_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @available_images = args[:available_images] if args.key?(:available_images)
+          @default_values = args[:default_values] if args.key?(:default_values)
+          @supported_values = args[:supported_values] if args.key?(:supported_values)
+        end
+      end
+      
       # Definition of a container image for starting a notebook instance with the
       # environment installed in a container.
       class ContainerImage
@@ -290,6 +321,26 @@ module Google
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
+        end
+      end
+      
+      # DefaultValues represents the default configuration values.
+      class DefaultValues
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The default machine type used by the backend if not provided by
+        # the user.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
         end
       end
       
@@ -613,6 +664,31 @@ module Google
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @tags = args[:tags] if args.key?(:tags)
           @vm_image = args[:vm_image] if args.key?(:vm_image)
+        end
+      end
+      
+      # ConfigImage represents an image release available to create a WbI
+      class ImageRelease
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the image of the form workbench-instances-vYYYYmmdd--
+        # Corresponds to the JSON property `imageName`
+        # @return [String]
+        attr_accessor :image_name
+      
+        # Output only. The release of the image of the form m123
+        # Corresponds to the JSON property `releaseName`
+        # @return [String]
+        attr_accessor :release_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_name = args[:image_name] if args.key?(:image_name)
+          @release_name = args[:release_name] if args.key?(:release_name)
         end
       end
       
@@ -1345,6 +1421,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # SupportedValues represents the values supported by the configuration.
+      class SupportedValues
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The accelerator types supported by WbI.
+        # Corresponds to the JSON property `acceleratorTypes`
+        # @return [Array<String>]
+        attr_accessor :accelerator_types
+      
+        # Output only. The machine types supported by WbI.
+        # Corresponds to the JSON property `machineTypes`
+        # @return [Array<String>]
+        attr_accessor :machine_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_types = args[:accelerator_types] if args.key?(:accelerator_types)
+          @machine_types = args[:machine_types] if args.key?(:machine_types)
         end
       end
       

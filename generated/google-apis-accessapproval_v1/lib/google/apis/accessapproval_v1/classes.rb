@@ -245,8 +245,13 @@ module Google
         # @return [String]
         attr_accessor :request_time
       
-        # The requested expiration for the approval. If the request is approved, access
-        # will be granted from the time of approval until the expiration time.
+        # The requested access duration.
+        # Corresponds to the JSON property `requestedDuration`
+        # @return [String]
+        attr_accessor :requested_duration
+      
+        # The original requested expiration for the approval. Calculated by adding the
+        # requested_duration to the request_time.
         # Corresponds to the JSON property `requestedExpiration`
         # @return [String]
         attr_accessor :requested_expiration
@@ -285,6 +290,7 @@ module Google
           @dismiss = args[:dismiss] if args.key?(:dismiss)
           @name = args[:name] if args.key?(:name)
           @request_time = args[:request_time] if args.key?(:request_time)
+          @requested_duration = args[:requested_duration] if args.key?(:requested_duration)
           @requested_expiration = args[:requested_expiration] if args.key?(:requested_expiration)
           @requested_locations = args[:requested_locations] if args.key?(:requested_locations)
           @requested_reason = args[:requested_reason] if args.key?(:requested_reason)

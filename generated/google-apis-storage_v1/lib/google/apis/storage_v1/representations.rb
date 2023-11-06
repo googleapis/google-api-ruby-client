@@ -22,6 +22,18 @@ module Google
   module Apis
     module StorageV1
       
+      class AnywhereCache
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnywhereCaches
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Bucket
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -338,6 +350,35 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnywhereCache
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admission_policy, as: 'admissionPolicy'
+          property :anywhere_cache_id, as: 'anywhereCacheId'
+          property :bucket, as: 'bucket'
+          property :create_time, as: 'createTime', type: DateTime
+      
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :pending_update, as: 'pendingUpdate'
+          property :self_link, as: 'selfLink'
+          property :state, as: 'state'
+          property :ttl, as: 'ttl'
+          property :update_time, as: 'updateTime', type: DateTime
+      
+        end
+      end
+      
+      class AnywhereCaches
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::StorageV1::AnywhereCache, decorator: Google::Apis::StorageV1::AnywhereCache::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
       
       class Bucket

@@ -616,6 +616,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpcServiceControls
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddDnsRecordSetMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1640,6 +1646,13 @@ module Google
           property :allow_unregistered_calls, as: 'allowUnregisteredCalls'
           property :selector, as: 'selector'
           property :skip_service_control, as: 'skipServiceControl'
+        end
+      end
+      
+      class VpcServiceControls
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
     end

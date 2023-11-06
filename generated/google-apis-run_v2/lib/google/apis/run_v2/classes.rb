@@ -2016,6 +2016,12 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
+        # Scaling settings that apply to the service as a whole rather than the
+        # individual revision.
+        # Corresponds to the JSON property `scaling`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2ServiceScaling]
+        attr_accessor :scaling
+      
         # RevisionTemplate describes the data a revision should have when created from a
         # template.
         # Corresponds to the JSON property `template`
@@ -2086,6 +2092,7 @@ module Google
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @scaling = args[:scaling] if args.key?(:scaling)
           @template = args[:template] if args.key?(:template)
           @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
           @traffic = args[:traffic] if args.key?(:traffic)
@@ -2093,6 +2100,28 @@ module Google
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Scaling settings that apply to the service as a whole rather than the
+      # individual revision.
+      class GoogleCloudRunV2ServiceScaling
+        include Google::Apis::Core::Hashable
+      
+        # total min instances for the service. This number of instances will be divide
+        # among all revisions with specified traffic based on the percent of traffic
+        # they are receiving. (ALPHA)
+        # Corresponds to the JSON property `minInstanceCount`
+        # @return [Fixnum]
+        attr_accessor :min_instance_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min_instance_count = args[:min_instance_count] if args.key?(:min_instance_count)
         end
       end
       

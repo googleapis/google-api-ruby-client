@@ -72,17 +72,17 @@ module Google
       class GoogleMapsPlacesV1AuthorAttribution
         include Google::Apis::Core::Hashable
       
-        # Output only. Name of the author of the Photo or Review.
+        # Name of the author of the Photo or Review.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Profile photo URI of the author of the Photo or Review.
+        # Profile photo URI of the author of the Photo or Review.
         # Corresponds to the JSON property `photoUri`
         # @return [String]
         attr_accessor :photo_uri
       
-        # Output only. URI of the author of the Photo or Review.
+        # URI of the author of the Photo or Review.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -127,6 +127,206 @@ module Google
         end
       end
       
+      # Information about the EV Charge Station hosted in Place. Terminology follows
+      # https://afdc.energy.gov/fuels/electricity_infrastructure.html One port could
+      # charge one car at a time. One port has one or more connectors. One station has
+      # one or more ports.
+      class GoogleMapsPlacesV1EvChargeOptions
+        include Google::Apis::Core::Hashable
+      
+        # A list of EV charging connector aggregations that contain connectors of the
+        # same type and same charge rate.
+        # Corresponds to the JSON property `connectorAggregation`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1EvChargeOptionsConnectorAggregation>]
+        attr_accessor :connector_aggregation
+      
+        # Number of connectors at this station. However, because some ports can have
+        # multiple connectors but only be able to charge one car at a time (e.g.) the
+        # number of connectors may be greater than the total number of cars which can
+        # charge simultaneously.
+        # Corresponds to the JSON property `connectorCount`
+        # @return [Fixnum]
+        attr_accessor :connector_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connector_aggregation = args[:connector_aggregation] if args.key?(:connector_aggregation)
+          @connector_count = args[:connector_count] if args.key?(:connector_count)
+        end
+      end
+      
+      # EV charging information grouped by [type, max_charge_rate_kw]. Shows EV charge
+      # aggregation of connectors that have the same type and max charge rate in kw.
+      class GoogleMapsPlacesV1EvChargeOptionsConnectorAggregation
+        include Google::Apis::Core::Hashable
+      
+        # The timestamp when the connector availability information in this aggregation
+        # was last updated.
+        # Corresponds to the JSON property `availabilityLastUpdateTime`
+        # @return [String]
+        attr_accessor :availability_last_update_time
+      
+        # Number of connectors in this aggregation that are currently available.
+        # Corresponds to the JSON property `availableCount`
+        # @return [Fixnum]
+        attr_accessor :available_count
+      
+        # Number of connectors in this aggregation.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The static max charging rate in kw of each connector in the aggregation.
+        # Corresponds to the JSON property `maxChargeRateKw`
+        # @return [Float]
+        attr_accessor :max_charge_rate_kw
+      
+        # Number of connectors in this aggregation that are currently out of service.
+        # Corresponds to the JSON property `outOfServiceCount`
+        # @return [Fixnum]
+        attr_accessor :out_of_service_count
+      
+        # The connector type of this aggregation.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability_last_update_time = args[:availability_last_update_time] if args.key?(:availability_last_update_time)
+          @available_count = args[:available_count] if args.key?(:available_count)
+          @count = args[:count] if args.key?(:count)
+          @max_charge_rate_kw = args[:max_charge_rate_kw] if args.key?(:max_charge_rate_kw)
+          @out_of_service_count = args[:out_of_service_count] if args.key?(:out_of_service_count)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The most recent information about fuel options in a gas station. This
+      # information is updated regularly.
+      class GoogleMapsPlacesV1FuelOptions
+        include Google::Apis::Core::Hashable
+      
+        # The last known fuel price for each type of fuel this station has. There is one
+        # entry per fuel type this station has. Order is not important.
+        # Corresponds to the JSON property `fuelPrices`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1FuelOptionsFuelPrice>]
+        attr_accessor :fuel_prices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fuel_prices = args[:fuel_prices] if args.key?(:fuel_prices)
+        end
+      end
+      
+      # Fuel price information for a given type.
+      class GoogleMapsPlacesV1FuelOptionsFuelPrice
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::PlacesV1::GoogleTypeMoney]
+        attr_accessor :price
+      
+        # The type of fuel.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The time the fuel price was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @price = args[:price] if args.key?(:price)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Information about a photo of a place.
+      class GoogleMapsPlacesV1Photo
+        include Google::Apis::Core::Hashable
+      
+        # This photo's authors.
+        # Corresponds to the JSON property `authorAttributions`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1AuthorAttribution>]
+        attr_accessor :author_attributions
+      
+        # The maximum available height, in pixels.
+        # Corresponds to the JSON property `heightPx`
+        # @return [Fixnum]
+        attr_accessor :height_px
+      
+        # Identifier. A reference representing this place photo which may be used to
+        # look up this place photo again (a.k.a. the API "resource" name: places/`
+        # place_id`/photos/`photo`).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The maximum available width, in pixels.
+        # Corresponds to the JSON property `widthPx`
+        # @return [Fixnum]
+        attr_accessor :width_px
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @author_attributions = args[:author_attributions] if args.key?(:author_attributions)
+          @height_px = args[:height_px] if args.key?(:height_px)
+          @name = args[:name] if args.key?(:name)
+          @width_px = args[:width_px] if args.key?(:width_px)
+        end
+      end
+      
+      # A photo media from Places API.
+      class GoogleMapsPlacesV1PhotoMedia
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of a photo media in the format: `places/place_id/photos/
+        # photo_reference/media`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A short-lived uri that can be used to render the photo.
+        # Corresponds to the JSON property `photoUri`
+        # @return [String]
+        attr_accessor :photo_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @photo_uri = args[:photo_uri] if args.key?(:photo_uri)
+        end
+      end
+      
       # All the information representing a Place.
       class GoogleMapsPlacesV1Place
         include Google::Apis::Core::Hashable
@@ -156,6 +356,12 @@ module Google
         # Corresponds to the JSON property `adrFormatAddress`
         # @return [String]
         attr_accessor :adr_format_address
+      
+        # Place allows dogs.
+        # Corresponds to the JSON property `allowsDogs`
+        # @return [Boolean]
+        attr_accessor :allows_dogs
+        alias_method :allows_dogs?, :allows_dogs
       
         # A set of data provider that must be shown with this result.
         # Corresponds to the JSON property `attributions`
@@ -212,10 +418,42 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
         attr_accessor :editorial_summary
       
+        # Information about the EV Charge Station hosted in Place. Terminology follows
+        # https://afdc.energy.gov/fuels/electricity_infrastructure.html One port could
+        # charge one car at a time. One port has one or more connectors. One station has
+        # one or more ports.
+        # Corresponds to the JSON property `evChargeOptions`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1EvChargeOptions]
+        attr_accessor :ev_charge_options
+      
         # A full, human-readable address for this place.
         # Corresponds to the JSON property `formattedAddress`
         # @return [String]
         attr_accessor :formatted_address
+      
+        # The most recent information about fuel options in a gas station. This
+        # information is updated regularly.
+        # Corresponds to the JSON property `fuelOptions`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1FuelOptions]
+        attr_accessor :fuel_options
+      
+        # Place is good for children.
+        # Corresponds to the JSON property `goodForChildren`
+        # @return [Boolean]
+        attr_accessor :good_for_children
+        alias_method :good_for_children?, :good_for_children
+      
+        # Place accommodates groups.
+        # Corresponds to the JSON property `goodForGroups`
+        # @return [Boolean]
+        attr_accessor :good_for_groups
+        alias_method :good_for_groups?, :good_for_groups
+      
+        # Place is suitable for watching sports.
+        # Corresponds to the JSON property `goodForWatchingSports`
+        # @return [Boolean]
+        attr_accessor :good_for_watching_sports
+        alias_method :good_for_watching_sports?, :good_for_watching_sports
       
         # A URL providing more information about this place.
         # Corresponds to the JSON property `googleMapsUri`
@@ -227,7 +465,7 @@ module Google
         # @return [String]
         attr_accessor :icon_background_color
       
-        # A truncated URL to an v2 icon mask. User can access different icon type by
+        # A truncated URL to an icon mask. User can access different icon type by
         # appending type suffix to the end (eg, ".svg" or ".png").
         # Corresponds to the JSON property `iconMaskBaseUri`
         # @return [String]
@@ -243,6 +481,12 @@ module Google
         # @return [String]
         attr_accessor :international_phone_number
       
+        # Place provides live music.
+        # Corresponds to the JSON property `liveMusic`
+        # @return [Boolean]
+        attr_accessor :live_music
+        alias_method :live_music?, :live_music
+      
         # An object that represents a latitude/longitude pair. This is expressed as a
         # pair of doubles to represent degrees latitude and degrees longitude. Unless
         # specified otherwise, this object must conform to the WGS84 standard. Values
@@ -250,6 +494,12 @@ module Google
         # Corresponds to the JSON property `location`
         # @return [Google::Apis::PlacesV1::GoogleTypeLatLng]
         attr_accessor :location
+      
+        # Place has a children's menu.
+        # Corresponds to the JSON property `menuForChildren`
+        # @return [Boolean]
+        attr_accessor :menu_for_children
+        alias_method :menu_for_children?, :menu_for_children
       
         # An ID representing this place which may be used to look up this place again (a.
         # k.a. the API "resource" name: places/place_id).
@@ -262,6 +512,28 @@ module Google
         # @return [String]
         attr_accessor :national_phone_number
       
+        # Place provides outdoor seating.
+        # Corresponds to the JSON property `outdoorSeating`
+        # @return [Boolean]
+        attr_accessor :outdoor_seating
+        alias_method :outdoor_seating?, :outdoor_seating
+      
+        # Information about parking options for the place. A parking lot could support
+        # more than one option at the same time.
+        # Corresponds to the JSON property `parkingOptions`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceParkingOptions]
+        attr_accessor :parking_options
+      
+        # Payment options the place accepts.
+        # Corresponds to the JSON property `paymentOptions`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePaymentOptions]
+        attr_accessor :payment_options
+      
+        # Information (including references) about photos of this place.
+        # Corresponds to the JSON property `photos`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Photo>]
+        attr_accessor :photos
+      
         # Plus code (http://plus.codes) is a location reference with two formats: global
         # code defining a 14mx14m (1/8000th of a degree) or smaller rectangle, and
         # compound code, replacing the prefix with a reference location.
@@ -273,6 +545,20 @@ module Google
         # Corresponds to the JSON property `priceLevel`
         # @return [String]
         attr_accessor :price_level
+      
+        # The primary type of the given result. This type must one of the Places API
+        # supported types. For example, "restaurant", "cafe", "airport", etc. A place
+        # can only have a single primary type. For the complete list of possible values,
+        # see Table A and Table B at https://developers.google.com/maps/documentation/
+        # places/web-service/place-types
+        # Corresponds to the JSON property `primaryType`
+        # @return [String]
+        attr_accessor :primary_type
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `primaryTypeDisplayName`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :primary_type_display_name
       
         # A rating between 1.0 and 5.0, based on user reviews of this place.
         # Corresponds to the JSON property `rating`
@@ -300,7 +586,13 @@ module Google
         attr_accessor :reservable
         alias_method :reservable?, :reservable
       
-        # List of reviews about this place.
+        # Place has restroom.
+        # Corresponds to the JSON property `restroom`
+        # @return [Boolean]
+        attr_accessor :restroom
+        alias_method :restroom?, :restroom
+      
+        # List of reviews about this place, sorted by relevance.
         # Corresponds to the JSON property `reviews`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Review>]
         attr_accessor :reviews
@@ -322,6 +614,24 @@ module Google
         # @return [Boolean]
         attr_accessor :serves_brunch
         alias_method :serves_brunch?, :serves_brunch
+      
+        # Place serves cocktails.
+        # Corresponds to the JSON property `servesCocktails`
+        # @return [Boolean]
+        attr_accessor :serves_cocktails
+        alias_method :serves_cocktails?, :serves_cocktails
+      
+        # Place serves coffee.
+        # Corresponds to the JSON property `servesCoffee`
+        # @return [Boolean]
+        attr_accessor :serves_coffee
+        alias_method :serves_coffee?, :serves_coffee
+      
+        # Place serves dessert.
+        # Corresponds to the JSON property `servesDessert`
+        # @return [Boolean]
+        attr_accessor :serves_dessert
+        alias_method :serves_dessert?, :serves_dessert
       
         # Specifies if the place serves dinner.
         # Corresponds to the JSON property `servesDinner`
@@ -347,6 +657,16 @@ module Google
         attr_accessor :serves_wine
         alias_method :serves_wine?, :serves_wine
       
+        # A short, human-readable address for this place.
+        # Corresponds to the JSON property `shortFormattedAddress`
+        # @return [String]
+        attr_accessor :short_formatted_address
+      
+        # A list of sub destinations related to the place.
+        # Corresponds to the JSON property `subDestinations`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceSubDestination>]
+        attr_accessor :sub_destinations
+      
         # Specifies if the business supports takeout.
         # Corresponds to the JSON property `takeout`
         # @return [Boolean]
@@ -354,8 +674,8 @@ module Google
         alias_method :takeout?, :takeout
       
         # A set of type tags for this result. For example, "political" and "locality".
-        # See: https://developers.google.com/maps/documentation/places/web-service/place-
-        # types
+        # For the complete list of possible values, see Table A and Table B at https://
+        # developers.google.com/maps/documentation/places/web-service/place-types
         # Corresponds to the JSON property `types`
         # @return [Array<String>]
         attr_accessor :types
@@ -408,6 +728,7 @@ module Google
           @accessibility_options = args[:accessibility_options] if args.key?(:accessibility_options)
           @address_components = args[:address_components] if args.key?(:address_components)
           @adr_format_address = args[:adr_format_address] if args.key?(:adr_format_address)
+          @allows_dogs = args[:allows_dogs] if args.key?(:allows_dogs)
           @attributions = args[:attributions] if args.key?(:attributions)
           @business_status = args[:business_status] if args.key?(:business_status)
           @curbside_pickup = args[:curbside_pickup] if args.key?(:curbside_pickup)
@@ -417,29 +738,48 @@ module Google
           @dine_in = args[:dine_in] if args.key?(:dine_in)
           @display_name = args[:display_name] if args.key?(:display_name)
           @editorial_summary = args[:editorial_summary] if args.key?(:editorial_summary)
+          @ev_charge_options = args[:ev_charge_options] if args.key?(:ev_charge_options)
           @formatted_address = args[:formatted_address] if args.key?(:formatted_address)
+          @fuel_options = args[:fuel_options] if args.key?(:fuel_options)
+          @good_for_children = args[:good_for_children] if args.key?(:good_for_children)
+          @good_for_groups = args[:good_for_groups] if args.key?(:good_for_groups)
+          @good_for_watching_sports = args[:good_for_watching_sports] if args.key?(:good_for_watching_sports)
           @google_maps_uri = args[:google_maps_uri] if args.key?(:google_maps_uri)
           @icon_background_color = args[:icon_background_color] if args.key?(:icon_background_color)
           @icon_mask_base_uri = args[:icon_mask_base_uri] if args.key?(:icon_mask_base_uri)
           @id = args[:id] if args.key?(:id)
           @international_phone_number = args[:international_phone_number] if args.key?(:international_phone_number)
+          @live_music = args[:live_music] if args.key?(:live_music)
           @location = args[:location] if args.key?(:location)
+          @menu_for_children = args[:menu_for_children] if args.key?(:menu_for_children)
           @name = args[:name] if args.key?(:name)
           @national_phone_number = args[:national_phone_number] if args.key?(:national_phone_number)
+          @outdoor_seating = args[:outdoor_seating] if args.key?(:outdoor_seating)
+          @parking_options = args[:parking_options] if args.key?(:parking_options)
+          @payment_options = args[:payment_options] if args.key?(:payment_options)
+          @photos = args[:photos] if args.key?(:photos)
           @plus_code = args[:plus_code] if args.key?(:plus_code)
           @price_level = args[:price_level] if args.key?(:price_level)
+          @primary_type = args[:primary_type] if args.key?(:primary_type)
+          @primary_type_display_name = args[:primary_type_display_name] if args.key?(:primary_type_display_name)
           @rating = args[:rating] if args.key?(:rating)
           @regular_opening_hours = args[:regular_opening_hours] if args.key?(:regular_opening_hours)
           @regular_secondary_opening_hours = args[:regular_secondary_opening_hours] if args.key?(:regular_secondary_opening_hours)
           @reservable = args[:reservable] if args.key?(:reservable)
+          @restroom = args[:restroom] if args.key?(:restroom)
           @reviews = args[:reviews] if args.key?(:reviews)
           @serves_beer = args[:serves_beer] if args.key?(:serves_beer)
           @serves_breakfast = args[:serves_breakfast] if args.key?(:serves_breakfast)
           @serves_brunch = args[:serves_brunch] if args.key?(:serves_brunch)
+          @serves_cocktails = args[:serves_cocktails] if args.key?(:serves_cocktails)
+          @serves_coffee = args[:serves_coffee] if args.key?(:serves_coffee)
+          @serves_dessert = args[:serves_dessert] if args.key?(:serves_dessert)
           @serves_dinner = args[:serves_dinner] if args.key?(:serves_dinner)
           @serves_lunch = args[:serves_lunch] if args.key?(:serves_lunch)
           @serves_vegetarian_food = args[:serves_vegetarian_food] if args.key?(:serves_vegetarian_food)
           @serves_wine = args[:serves_wine] if args.key?(:serves_wine)
+          @short_formatted_address = args[:short_formatted_address] if args.key?(:short_formatted_address)
+          @sub_destinations = args[:sub_destinations] if args.key?(:sub_destinations)
           @takeout = args[:takeout] if args.key?(:takeout)
           @types = args[:types] if args.key?(:types)
           @user_rating_count = args[:user_rating_count] if args.key?(:user_rating_count)
@@ -459,6 +799,24 @@ module Google
         attr_accessor :wheelchair_accessible_entrance
         alias_method :wheelchair_accessible_entrance?, :wheelchair_accessible_entrance
       
+        # Place offers wheelchair accessible parking.
+        # Corresponds to the JSON property `wheelchairAccessibleParking`
+        # @return [Boolean]
+        attr_accessor :wheelchair_accessible_parking
+        alias_method :wheelchair_accessible_parking?, :wheelchair_accessible_parking
+      
+        # Place has wheelchair accessible restroom.
+        # Corresponds to the JSON property `wheelchairAccessibleRestroom`
+        # @return [Boolean]
+        attr_accessor :wheelchair_accessible_restroom
+        alias_method :wheelchair_accessible_restroom?, :wheelchair_accessible_restroom
+      
+        # Place has wheelchair accessible seating.
+        # Corresponds to the JSON property `wheelchairAccessibleSeating`
+        # @return [Boolean]
+        attr_accessor :wheelchair_accessible_seating
+        alias_method :wheelchair_accessible_seating?, :wheelchair_accessible_seating
+      
         def initialize(**args)
            update!(**args)
         end
@@ -466,6 +824,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @wheelchair_accessible_entrance = args[:wheelchair_accessible_entrance] if args.key?(:wheelchair_accessible_entrance)
+          @wheelchair_accessible_parking = args[:wheelchair_accessible_parking] if args.key?(:wheelchair_accessible_parking)
+          @wheelchair_accessible_restroom = args[:wheelchair_accessible_restroom] if args.key?(:wheelchair_accessible_restroom)
+          @wheelchair_accessible_seating = args[:wheelchair_accessible_seating] if args.key?(:wheelchair_accessible_seating)
         end
       end
       
@@ -697,6 +1058,111 @@ module Google
         end
       end
       
+      # Information about parking options for the place. A parking lot could support
+      # more than one option at the same time.
+      class GoogleMapsPlacesV1PlaceParkingOptions
+        include Google::Apis::Core::Hashable
+      
+        # Place offers free garage parking.
+        # Corresponds to the JSON property `freeGarageParking`
+        # @return [Boolean]
+        attr_accessor :free_garage_parking
+        alias_method :free_garage_parking?, :free_garage_parking
+      
+        # Place offers free parking lots.
+        # Corresponds to the JSON property `freeParkingLot`
+        # @return [Boolean]
+        attr_accessor :free_parking_lot
+        alias_method :free_parking_lot?, :free_parking_lot
+      
+        # Place offers free street parking.
+        # Corresponds to the JSON property `freeStreetParking`
+        # @return [Boolean]
+        attr_accessor :free_street_parking
+        alias_method :free_street_parking?, :free_street_parking
+      
+        # Place offers paid garage parking.
+        # Corresponds to the JSON property `paidGarageParking`
+        # @return [Boolean]
+        attr_accessor :paid_garage_parking
+        alias_method :paid_garage_parking?, :paid_garage_parking
+      
+        # Place offers paid parking lots.
+        # Corresponds to the JSON property `paidParkingLot`
+        # @return [Boolean]
+        attr_accessor :paid_parking_lot
+        alias_method :paid_parking_lot?, :paid_parking_lot
+      
+        # Place offers paid street parking.
+        # Corresponds to the JSON property `paidStreetParking`
+        # @return [Boolean]
+        attr_accessor :paid_street_parking
+        alias_method :paid_street_parking?, :paid_street_parking
+      
+        # Place offers valet parking.
+        # Corresponds to the JSON property `valetParking`
+        # @return [Boolean]
+        attr_accessor :valet_parking
+        alias_method :valet_parking?, :valet_parking
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @free_garage_parking = args[:free_garage_parking] if args.key?(:free_garage_parking)
+          @free_parking_lot = args[:free_parking_lot] if args.key?(:free_parking_lot)
+          @free_street_parking = args[:free_street_parking] if args.key?(:free_street_parking)
+          @paid_garage_parking = args[:paid_garage_parking] if args.key?(:paid_garage_parking)
+          @paid_parking_lot = args[:paid_parking_lot] if args.key?(:paid_parking_lot)
+          @paid_street_parking = args[:paid_street_parking] if args.key?(:paid_street_parking)
+          @valet_parking = args[:valet_parking] if args.key?(:valet_parking)
+        end
+      end
+      
+      # Payment options the place accepts.
+      class GoogleMapsPlacesV1PlacePaymentOptions
+        include Google::Apis::Core::Hashable
+      
+        # Place accepts cash only as payment. Places with this attribute may still
+        # accept other payment methods.
+        # Corresponds to the JSON property `acceptsCashOnly`
+        # @return [Boolean]
+        attr_accessor :accepts_cash_only
+        alias_method :accepts_cash_only?, :accepts_cash_only
+      
+        # Place accepts credit cards as payment.
+        # Corresponds to the JSON property `acceptsCreditCards`
+        # @return [Boolean]
+        attr_accessor :accepts_credit_cards
+        alias_method :accepts_credit_cards?, :accepts_credit_cards
+      
+        # Place accepts debit cards as payment.
+        # Corresponds to the JSON property `acceptsDebitCards`
+        # @return [Boolean]
+        attr_accessor :accepts_debit_cards
+        alias_method :accepts_debit_cards?, :accepts_debit_cards
+      
+        # Place accepts NFC payments.
+        # Corresponds to the JSON property `acceptsNfc`
+        # @return [Boolean]
+        attr_accessor :accepts_nfc
+        alias_method :accepts_nfc?, :accepts_nfc
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accepts_cash_only = args[:accepts_cash_only] if args.key?(:accepts_cash_only)
+          @accepts_credit_cards = args[:accepts_credit_cards] if args.key?(:accepts_credit_cards)
+          @accepts_debit_cards = args[:accepts_debit_cards] if args.key?(:accepts_debit_cards)
+          @accepts_nfc = args[:accepts_nfc] if args.key?(:accepts_nfc)
+        end
+      end
+      
       # Plus code (http://plus.codes) is a location reference with two formats: global
       # code defining a 14mx14m (1/8000th of a degree) or smaller rectangle, and
       # compound code, replacing the prefix with a reference location.
@@ -727,6 +1193,32 @@ module Google
         end
       end
       
+      # Place resource name and id of sub destinations that relate to the place. For
+      # example, different terminals are different destinations of an airport.
+      class GoogleMapsPlacesV1PlaceSubDestination
+        include Google::Apis::Core::Hashable
+      
+        # The place id of the sub destination.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The resource name of the sub destination.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Information about a review of a place.
       class GoogleMapsPlacesV1Review
         include Google::Apis::Core::Hashable
@@ -736,24 +1228,30 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1AuthorAttribution]
         attr_accessor :author_attribution
       
+        # A reference representing this place review which may be used to look up this
+        # place review again (also called the API "resource" name: places/place_id/
+        # reviews/review).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # Localized variant of a text in a particular language.
         # Corresponds to the JSON property `originalText`
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
         attr_accessor :original_text
       
-        # Output only. Timestamp for the review.
+        # Timestamp for the review.
         # Corresponds to the JSON property `publishTime`
         # @return [String]
         attr_accessor :publish_time
       
-        # Output only. A number between 1.0 and 5.0, a.k.a. the number of stars.
+        # A number between 1.0 and 5.0, also called the number of stars.
         # Corresponds to the JSON property `rating`
         # @return [Float]
         attr_accessor :rating
       
-        # Output only. A string of formatted recent time, expressing the review time
-        # relative to the current time in a form appropriate for the language and
-        # country.
+        # A string of formatted recent time, expressing the review time relative to the
+        # current time in a form appropriate for the language and country.
         # Corresponds to the JSON property `relativePublishTimeDescription`
         # @return [String]
         attr_accessor :relative_publish_time_description
@@ -770,11 +1268,166 @@ module Google
         # Update properties of this object
         def update!(**args)
           @author_attribution = args[:author_attribution] if args.key?(:author_attribution)
+          @name = args[:name] if args.key?(:name)
           @original_text = args[:original_text] if args.key?(:original_text)
           @publish_time = args[:publish_time] if args.key?(:publish_time)
           @rating = args[:rating] if args.key?(:rating)
           @relative_publish_time_description = args[:relative_publish_time_description] if args.key?(:relative_publish_time_description)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Request proto for Search Nearby.
+      class GoogleMapsPlacesV1SearchNearbyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Excluded primary Place type (e.g. "restaurant" or "gas_station") from https://
+        # developers.google.com/maps/documentation/places/web-service/place-types. If
+        # there are any conflicting primary types, i.e. a type appears in both
+        # included_primary_types and excluded_primary_types, an INVALID_ARGUMENT error
+        # is returned. If a Place type is specified with multiple type restrictions,
+        # only places that satisfy all of the restrictions are returned. For example, if
+        # we have `included_types = ["restaurant"], excluded_primary_types = ["
+        # restaurant"]`, the returned places provide "restaurant" related services but
+        # do not operate primarily as "restaurants".
+        # Corresponds to the JSON property `excludedPrimaryTypes`
+        # @return [Array<String>]
+        attr_accessor :excluded_primary_types
+      
+        # Excluded Place type (eg, "restaurant" or "gas_station") from https://
+        # developers.google.com/maps/documentation/places/web-service/place-types. If
+        # the client provides both included_types (e.g. restaurant) and excluded_types (
+        # e.g. cafe), then the response should include places that are restaurant but
+        # not cafe. The response includes places that match at least one of the
+        # included_types and none of the excluded_types. If there are any conflicting
+        # types, i.e. a type appears in both included_types and excluded_types, an
+        # INVALID_ARGUMENT error is returned. If a Place type is specified with multiple
+        # type restrictions, only places that satisfy all of the restrictions are
+        # returned. For example, if we have `included_types = ["restaurant"],
+        # excluded_primary_types = ["restaurant"]`, the returned places provide "
+        # restaurant" related services but do not operate primarily as "restaurants".
+        # Corresponds to the JSON property `excludedTypes`
+        # @return [Array<String>]
+        attr_accessor :excluded_types
+      
+        # Included primary Place type (e.g. "restaurant" or "gas_station") from https://
+        # developers.google.com/maps/documentation/places/web-service/place-types. A
+        # place can only have a single primary type from the supported types table
+        # associated with it. If there are any conflicting primary types, i.e. a type
+        # appears in both included_primary_types and excluded_primary_types, an
+        # INVALID_ARGUMENT error is returned. If a Place type is specified with multiple
+        # type restrictions, only places that satisfy all of the restrictions are
+        # returned. For example, if we have `included_types = ["restaurant"],
+        # excluded_primary_types = ["restaurant"]`, the returned places provide "
+        # restaurant" related services but do not operate primarily as "restaurants".
+        # Corresponds to the JSON property `includedPrimaryTypes`
+        # @return [Array<String>]
+        attr_accessor :included_primary_types
+      
+        # Included Place type (eg, "restaurant" or "gas_station") from https://
+        # developers.google.com/maps/documentation/places/web-service/place-types. If
+        # there are any conflicting types, i.e. a type appears in both included_types
+        # and excluded_types, an INVALID_ARGUMENT error is returned. If a Place type is
+        # specified with multiple type restrictions, only places that satisfy all of the
+        # restrictions are returned. For example, if we have `included_types = ["
+        # restaurant"], excluded_primary_types = ["restaurant"]`, the returned places
+        # provide "restaurant" related services but do not operate primarily as "
+        # restaurants".
+        # Corresponds to the JSON property `includedTypes`
+        # @return [Array<String>]
+        attr_accessor :included_types
+      
+        # Place details will be displayed with the preferred language if available. If
+        # the language code is unspecified or unrecognized, place details of any
+        # language may be returned, with a preference for English if such details exist.
+        # Current list of supported languages: https://developers.google.com/maps/faq#
+        # languagesupport.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # The region to search.
+        # Corresponds to the JSON property `locationRestriction`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction]
+        attr_accessor :location_restriction
+      
+        # Maximum number of results to return. It must be between 1 and 20 (default),
+        # inclusively. If the number is unset, it falls back to the upper limit. If the
+        # number is set to negative or exceeds the upper limit, an INVALID_ARGUMENT
+        # error is returned.
+        # Corresponds to the JSON property `maxResultCount`
+        # @return [Fixnum]
+        attr_accessor :max_result_count
+      
+        # How results will be ranked in the response.
+        # Corresponds to the JSON property `rankPreference`
+        # @return [String]
+        attr_accessor :rank_preference
+      
+        # The Unicode country/region code (CLDR) of the location where the request is
+        # coming from. This parameter is used to display the place details, like region-
+        # specific place name, if available. The parameter can affect results based on
+        # applicable law. For more information, see https://www.unicode.org/cldr/charts/
+        # latest/supplemental/territory_language_information.html. Note that 3-digit
+        # region codes are not currently supported.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @excluded_primary_types = args[:excluded_primary_types] if args.key?(:excluded_primary_types)
+          @excluded_types = args[:excluded_types] if args.key?(:excluded_types)
+          @included_primary_types = args[:included_primary_types] if args.key?(:included_primary_types)
+          @included_types = args[:included_types] if args.key?(:included_types)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @location_restriction = args[:location_restriction] if args.key?(:location_restriction)
+          @max_result_count = args[:max_result_count] if args.key?(:max_result_count)
+          @rank_preference = args[:rank_preference] if args.key?(:rank_preference)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # The region to search.
+      class GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction
+        include Google::Apis::Core::Hashable
+      
+        # Circle with a LatLng as center and radius.
+        # Corresponds to the JSON property `circle`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1Circle]
+        attr_accessor :circle
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @circle = args[:circle] if args.key?(:circle)
+        end
+      end
+      
+      # Response proto for Search Nearby.
+      class GoogleMapsPlacesV1SearchNearbyResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of places that meets user's requirements like places types, number of
+        # places and specific location restriction.
+        # Corresponds to the JSON property `places`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Place>]
+        attr_accessor :places
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @places = args[:places] if args.key?(:places)
         end
       end
       
@@ -811,8 +1464,9 @@ module Google
         attr_accessor :location_restriction
       
         # Maximum number of results to return. It must be between 1 and 20, inclusively.
-        # If the number is unset, it falls back to the upper limit. If the number is set
-        # to negative or exceeds the upper limit, an INVALID_ARGUMENT error is returned.
+        # The default is 20. If the number is unset, it falls back to the upper limit.
+        # If the number is set to negative or exceeds the upper limit, an
+        # INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `maxResultCount`
         # @return [Fixnum]
         attr_accessor :max_result_count
@@ -827,7 +1481,8 @@ module Google
         # @return [Float]
         attr_accessor :min_rating
       
-        # Used to restrict the search to places that are currently open.
+        # Used to restrict the search to places that are currently open. The default is
+        # false.
         # Corresponds to the JSON property `openNow`
         # @return [Boolean]
         attr_accessor :open_now
@@ -848,9 +1503,9 @@ module Google
         # The Unicode country/region code (CLDR) of the location where the request is
         # coming from. This parameter is used to display the place details, like region-
         # specific place name, if available. The parameter can affect results based on
-        # applicable law. For more information, see http://www.unicode.org/reports/tr35/#
-        # unicode_region_subtag. Note that 3-digit region codes are not currently
-        # supported.
+        # applicable law. For more information, see https://www.unicode.org/cldr/charts/
+        # latest/supplemental/territory_language_information.html. Note that 3-digit
+        # region codes are not currently supported.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
         attr_accessor :region_code
@@ -1076,6 +1731,42 @@ module Google
         def update!(**args)
           @language_code = args[:language_code] if args.key?(:language_code)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Represents an amount of money with its currency type.
+      class GoogleTypeMoney
+        include Google::Apis::Core::Hashable
+      
+        # The three-letter currency code defined in ISO 4217.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Number of nano (10^-9) units of the amount. The value must be between -999,999,
+        # 999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be
+        # positive or zero. If `units` is zero, `nanos` can be positive, zero, or
+        # negative. If `units` is negative, `nanos` must be negative or zero. For
+        # example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # The whole units of the amount. For example if `currencyCode` is `"USD"`, then
+        # 1 unit is one US dollar.
+        # Corresponds to the JSON property `units`
+        # @return [Fixnum]
+        attr_accessor :units
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @units = args[:units] if args.key?(:units)
         end
       end
     end

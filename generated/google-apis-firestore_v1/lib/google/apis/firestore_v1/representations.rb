@@ -1168,6 +1168,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :databases, as: 'databases', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Database, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Database::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

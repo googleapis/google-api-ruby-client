@@ -973,7 +973,9 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
-        # Custom metadata to apply to this instance.
+        # Custom metadata to apply to this instance. For example, to specify a Cloud
+        # Storage bucket for automatic backup, you can use the `gcs-data-bucket`
+        # metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
         attr_accessor :metadata

@@ -34,12 +34,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AcceptSpokeRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -310,12 +304,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RejectSpokeRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Route
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -443,13 +431,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :spoke, as: 'spoke', class: Google::Apis::NetworkconnectivityV1::Spoke, decorator: Google::Apis::NetworkconnectivityV1::Spoke::Representation
       
-        end
-      end
-      
-      class AcceptSpokeRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :request_id, as: 'requestId'
         end
       end
       
@@ -923,14 +904,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :spoke, as: 'spoke', class: Google::Apis::NetworkconnectivityV1::Spoke, decorator: Google::Apis::NetworkconnectivityV1::Spoke::Representation
       
-        end
-      end
-      
-      class RejectSpokeRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :details, as: 'details'
-          property :request_id, as: 'requestId'
         end
       end
       

@@ -1,5 +1,9 @@
 # Release history for google-apis-metastore_v1alpha
 
+### v0.51.0 (2023-10-29)
+
+* Regenerated from discovery document revision 20231023
+
 ### v0.50.0 (2023-10-15)
 
 * Regenerated from discovery document revision 20231010

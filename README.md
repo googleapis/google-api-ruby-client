@@ -71,6 +71,32 @@ Modern clients are produced by a modern code generator, combined with hand-craft
 
 The documentation for the particular Google service you are working with, may provide guidance regarding the preferred client library to use.
 
+## Tracing
+
+OpenCensus support with gems is now deprecated. Please migrate to using [OpenTelemetry](https://opentelemetry.io/docs/instrumentation/ruby/automatic/) instead. Currently instrumented span data from core gem can be got by enabling Http and HttpClient auto-instrumentation of OpenTelemetry. To enable instrumentation for HTTP and HttpClient, and export it to [Cloud Trace](https://cloud.google.com/trace) configure OpenTelemetry like below,
+
+```ruby
+ gem "opentelemetry-sdk"
+ gem "opentelemetry-exporter-google_cloud_trace"
+ gem "opentelemetry-instrumentation-http"
+ gem "opentelemetry-instrumentation-http_client"
+ 
+ require "opentelemetry-sdk"
+ require "opentelemetry/instrumentation/http_client"
+ require "opentelemetry/instrumentation/http"
+ require "opentelemetry/exporter/google_cloud_trace"
+ OpenTelemetry::SDK.configure do |c|
+   c.service_name = "ServiceName"
+   c.add_span_processor(
+     OpenTelemetry::SDK::Trace::Export::BatchSpanProcessor.new(
+       OpenTelemetry::Exporter::GoogleCloudTrace::SpanExporter.new
+     )
+   )
+   c.use "OpenTelemetry::Instrumentation::Http"
+   c.use "OpenTelemetry::Instrumentation::HttpClient"
+ end
+```
+
 ## Samples
 
 See the [samples](https://github.com/google/google-api-ruby-client/tree/main/samples) for examples on how to use the client library for various

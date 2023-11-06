@@ -5134,6 +5134,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceStatusLastInstanceTerminationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceStatusScheduling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8788,6 +8794,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :end_timestamp, as: 'endTimestamp'
+          collection :existing_reservations, as: 'existingReservations'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :license_resource, as: 'licenseResource', class: Google::Apis::ComputeAlpha::LicenseResourceCommitment, decorator: Google::Apis::ComputeAlpha::LicenseResourceCommitment::Representation
@@ -17055,11 +17062,20 @@ module Google
       class ResourceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_instance_termination_details, as: 'lastInstanceTerminationDetails', class: Google::Apis::ComputeAlpha::ResourceStatusLastInstanceTerminationDetails, decorator: Google::Apis::ComputeAlpha::ResourceStatusLastInstanceTerminationDetails::Representation
+      
           property :physical_host, as: 'physicalHost'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::ResourceStatusScheduling, decorator: Google::Apis::ComputeAlpha::ResourceStatusScheduling::Representation
       
           hash :service_integration_statuses, as: 'serviceIntegrationStatuses', class: Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatus, decorator: Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatus::Representation
       
+        end
+      end
+      
+      class ResourceStatusLastInstanceTerminationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :termination_reason, as: 'terminationReason'
         end
       end
       
@@ -17113,9 +17129,12 @@ module Google
           property :next_hop_hub, as: 'nextHopHub'
           property :next_hop_ilb, as: 'nextHopIlb'
           property :next_hop_instance, as: 'nextHopInstance'
+          property :next_hop_inter_region_cost, as: 'nextHopInterRegionCost'
           property :next_hop_interconnect_attachment, as: 'nextHopInterconnectAttachment'
           property :next_hop_ip, as: 'nextHopIp'
+          property :next_hop_med, as: 'nextHopMed'
           property :next_hop_network, as: 'nextHopNetwork'
+          property :next_hop_origin, as: 'nextHopOrigin'
           property :next_hop_peering, as: 'nextHopPeering'
           property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel'
           property :priority, as: 'priority'

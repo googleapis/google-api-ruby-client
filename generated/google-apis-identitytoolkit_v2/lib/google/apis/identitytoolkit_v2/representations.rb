@@ -238,12 +238,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudIdentitytoolkitAdminV2PasskeyConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -950,15 +944,6 @@ module Google
           property :code, as: 'code'
           property :id_token, as: 'idToken'
           property :token, as: 'token'
-        end
-      end
-      
-      class GoogleCloudIdentitytoolkitAdminV2PasskeyConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :expected_origins, as: 'expectedOrigins'
-          property :name, as: 'name'
-          property :rp_id, as: 'rpId'
         end
       end
       

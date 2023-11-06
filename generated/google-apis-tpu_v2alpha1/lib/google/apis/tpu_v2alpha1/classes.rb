@@ -632,6 +632,31 @@ module Google
         end
       end
       
+      # Response for ListReservations.
+      class ListReservationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The next page token or empty if none.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The listed reservations.
+        # Corresponds to the JSON property `reservations`
+        # @return [Array<Google::Apis::TpuV2alpha1::Reservation>]
+        attr_accessor :reservations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @reservations = args[:reservations] if args.key?(:reservations)
+        end
+      end
+      
       # Response for ListRuntimeVersions.
       class ListRuntimeVersionsResponse
         include Google::Apis::Core::Hashable
@@ -1178,6 +1203,11 @@ module Google
         # @return [Google::Apis::TpuV2alpha1::BestEffort]
         attr_accessor :best_effort
       
+        # Output only. The time when the QueuedResource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Guaranteed tier definition.
         # Corresponds to the JSON property `guaranteed`
         # @return [Google::Apis::TpuV2alpha1::Guaranteed]
@@ -1221,6 +1251,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @best_effort = args[:best_effort] if args.key?(:best_effort)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @guaranteed = args[:guaranteed] if args.key?(:guaranteed)
           @name = args[:name] if args.key?(:name)
           @queueing_policy = args[:queueing_policy] if args.key?(:queueing_policy)
@@ -1349,6 +1380,33 @@ module Google
           @valid_interval = args[:valid_interval] if args.key?(:valid_interval)
           @valid_until_duration = args[:valid_until_duration] if args.key?(:valid_until_duration)
           @valid_until_time = args[:valid_until_time] if args.key?(:valid_until_time)
+        end
+      end
+      
+      # A reservation describes the amount of a resource 'allotted' for a defined
+      # period of time.
+      class Reservation
+        include Google::Apis::Core::Hashable
+      
+        # The reservation name with the format: projects/`projectID`/locations/`location`
+        # /reservations/`reservationID`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `standard`
+        # @return [Google::Apis::TpuV2alpha1::Standard]
+        attr_accessor :standard
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @standard = args[:standard] if args.key?(:standard)
         end
       end
       
@@ -1518,6 +1576,53 @@ module Google
         end
       end
       
+      # 
+      class Standard
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `capacityUnits`
+        # @return [String]
+        attr_accessor :capacity_units
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::TpuV2alpha1::Interval]
+        attr_accessor :interval
+      
+        # The resource type of the reservation.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # The size of the reservation, in the units specified in the 'capacity_units'
+        # field.
+        # Corresponds to the JSON property `size`
+        # @return [Fixnum]
+        attr_accessor :size
+      
+        # 
+        # Corresponds to the JSON property `usage`
+        # @return [Google::Apis::TpuV2alpha1::Usage]
+        attr_accessor :usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capacity_units = args[:capacity_units] if args.key?(:capacity_units)
+          @interval = args[:interval] if args.key?(:interval)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @size = args[:size] if args.key?(:size)
+          @usage = args[:usage] if args.key?(:usage)
+        end
+      end
+      
       # Request for StartNode.
       class StartNodeRequest
         include Google::Apis::Core::Hashable
@@ -1662,6 +1767,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @node_spec = args[:node_spec] if args.key?(:node_spec)
+        end
+      end
+      
+      # 
+      class Usage
+        include Google::Apis::Core::Hashable
+      
+        # The real-time value of usage within the reservation, with the unit specified
+        # in field capacity_units.
+        # Corresponds to the JSON property `total`
+        # @return [Fixnum]
+        attr_accessor :total
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total = args[:total] if args.key?(:total)
         end
       end
     end

@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Exception
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Execution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +65,18 @@ module Google
       end
       
       class ListExecutionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListStepEntriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NavigationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StepEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StepEntryMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TriggerPubsubExecutionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -135,6 +165,13 @@ module Google
           property :payload, as: 'payload'
           property :stack_trace, as: 'stackTrace', class: Google::Apis::WorkflowexecutionsV1::StackTrace, decorator: Google::Apis::WorkflowexecutionsV1::StackTrace::Representation
       
+        end
+      end
+      
+      class Exception
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :payload, as: 'payload'
         end
       end
       
@@ -182,6 +219,26 @@ module Google
           collection :executions, as: 'executions', class: Google::Apis::WorkflowexecutionsV1::Execution, decorator: Google::Apis::WorkflowexecutionsV1::Execution::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListStepEntriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :step_entries, as: 'stepEntries', class: Google::Apis::WorkflowexecutionsV1::StepEntry, decorator: Google::Apis::WorkflowexecutionsV1::StepEntry::Representation
+      
+          property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class NavigationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :children, as: 'children'
+          property :next, :numeric_string => true, as: 'next'
+          property :parent, :numeric_string => true, as: 'parent'
+          property :previous, :numeric_string => true, as: 'previous'
         end
       end
       
@@ -244,6 +301,35 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :routine, as: 'routine'
           property :step, as: 'step'
+        end
+      end
+      
+      class StepEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :entry_id, :numeric_string => true, as: 'entryId'
+          property :exception, as: 'exception', class: Google::Apis::WorkflowexecutionsV1::Exception, decorator: Google::Apis::WorkflowexecutionsV1::Exception::Representation
+      
+          property :name, as: 'name'
+          property :navigation_info, as: 'navigationInfo', class: Google::Apis::WorkflowexecutionsV1::NavigationInfo, decorator: Google::Apis::WorkflowexecutionsV1::NavigationInfo::Representation
+      
+          property :routine, as: 'routine'
+          property :state, as: 'state'
+          property :step, as: 'step'
+          property :step_entry_metadata, as: 'stepEntryMetadata', class: Google::Apis::WorkflowexecutionsV1::StepEntryMetadata, decorator: Google::Apis::WorkflowexecutionsV1::StepEntryMetadata::Representation
+      
+          property :step_type, as: 'stepType'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class StepEntryMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :progress_number, :numeric_string => true, as: 'progressNumber'
+          property :progress_type, as: 'progressType'
+          property :thread_id, as: 'threadId'
         end
       end
       

@@ -115,7 +115,7 @@ module Google
         # @return [String]
         attr_accessor :model
       
-        # Optional. The usage of the synthesized audio to be reported.
+        # Optional. Deprecated. The usage of the synthesized audio to be reported.
         # Corresponds to the JSON property `reportedUsage`
         # @return [String]
         attr_accessor :reported_usage

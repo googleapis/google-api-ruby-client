@@ -318,6 +318,48 @@ module Google
         end
       end
       
+      # Metadata taken from a [Cloud Logging LogEntry](https://cloud.google.com/
+      # logging/docs/reference/v2/rest/v2/LogEntry)
+      class CloudLoggingEntry
+        include Google::Apis::Core::Hashable
+      
+        # A unique identifier for the log entry.
+        # Corresponds to the JSON property `insertId`
+        # @return [String]
+        attr_accessor :insert_id
+      
+        # The type of the log (part of `log_name`. `log_name` is the resource name of
+        # the log to which this log entry belongs). For example: `cloudresourcemanager.
+        # googleapis.com/activity`. Note that this field is not URL-encoded, unlike the `
+        # LOG_ID` field in `LogEntry`.
+        # Corresponds to the JSON property `logId`
+        # @return [String]
+        attr_accessor :log_id
+      
+        # The organization, folder, or project of the monitored resource that produced
+        # this log entry.
+        # Corresponds to the JSON property `resourceContainer`
+        # @return [String]
+        attr_accessor :resource_container
+      
+        # The time the event described by the log entry occurred.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insert_id = args[:insert_id] if args.key?(:insert_id)
+          @log_id = args[:log_id] if args.key?(:log_id)
+          @resource_container = args[:resource_container] if args.key?(:resource_container)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
       # Contains compliance information about a security standard indicating unmet
       # recommendations.
       class Compliance
@@ -1196,6 +1238,11 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1beta2::LoadBalancer>]
         attr_accessor :load_balancers
       
+        # Log entries that are relevant to the finding.
+        # Corresponds to the JSON property `logEntries`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::LogEntry>]
+        attr_accessor :log_entries
+      
         # MITRE ATT&CK tactics and techniques related to this finding. See: https://
         # attack.mitre.org
         # Corresponds to the JSON property `mitreAttack`
@@ -1240,6 +1287,11 @@ module Google
         # Corresponds to the JSON property `nextSteps`
         # @return [String]
         attr_accessor :next_steps
+      
+        # Contains information about the org policies associated with the finding.
+        # Corresponds to the JSON property `orgPolicies`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::OrgPolicy>]
+        attr_accessor :org_policies
       
         # The relative resource name of the source the finding belongs to. See: https://
         # cloud.google.com/apis/design/resource_names#relative_resource_name This field
@@ -1339,6 +1391,7 @@ module Google
           @kernel_rootkit = args[:kernel_rootkit] if args.key?(:kernel_rootkit)
           @kubernetes = args[:kubernetes] if args.key?(:kubernetes)
           @load_balancers = args[:load_balancers] if args.key?(:load_balancers)
+          @log_entries = args[:log_entries] if args.key?(:log_entries)
           @mitre_attack = args[:mitre_attack] if args.key?(:mitre_attack)
           @module_name = args[:module_name] if args.key?(:module_name)
           @mute = args[:mute] if args.key?(:mute)
@@ -1346,6 +1399,7 @@ module Google
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
           @name = args[:name] if args.key?(:name)
           @next_steps = args[:next_steps] if args.key?(:next_steps)
+          @org_policies = args[:org_policies] if args.key?(:org_policies)
           @parent = args[:parent] if args.key?(:parent)
           @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
           @processes = args[:processes] if args.key?(:processes)
@@ -1780,7 +1834,10 @@ module Google
       
         # This field will be ignored if provided on config creation. Format "
         # organizations/`organization`/muteConfigs/`mute_config`" "folders/`folder`/
-        # muteConfigs/`mute_config`" "projects/`project`/muteConfigs/`mute_config`"
+        # muteConfigs/`mute_config`" "projects/`project`/muteConfigs/`mute_config`" "
+        # organizations/`organization`/locations/global/muteConfigs/`mute_config`" "
+        # folders/`folder`/locations/global/muteConfigs/`mute_config`" "projects/`
+        # project`/locations/global/muteConfigs/`mute_config`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2737,6 +2794,26 @@ module Google
         end
       end
       
+      # An individual entry in a log.
+      class LogEntry
+        include Google::Apis::Core::Hashable
+      
+        # Metadata taken from a [Cloud Logging LogEntry](https://cloud.google.com/
+        # logging/docs/reference/v2/rest/v2/LogEntry)
+        # Corresponds to the JSON property `cloudLoggingEntry`
+        # @return [Google::Apis::SecuritycenterV1beta2::CloudLoggingEntry]
+        attr_accessor :cloud_logging_entry
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_logging_entry = args[:cloud_logging_entry] if args.key?(:cloud_logging_entry)
+        end
+      end
+      
       # A signature corresponding to memory page hashes.
       class MemoryHashSignature
         include Google::Apis::Core::Hashable
@@ -2862,6 +2939,11 @@ module Google
       class Object
         include Google::Apis::Core::Hashable
       
+        # Pod containers associated with this finding, if any.
+        # Corresponds to the JSON property `containers`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::Container>]
+        attr_accessor :containers
+      
         # Kubernetes object group, such as "policy.k8s.io/v1".
         # Corresponds to the JSON property `group`
         # @return [String]
@@ -2891,10 +2973,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @containers = args[:containers] if args.key?(:containers)
           @group = args[:group] if args.key?(:group)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @ns = args[:ns] if args.key?(:ns)
+        end
+      end
+      
+      # Contains information about the org policies associated with the finding.
+      class OrgPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the org policy. Example: "organizations/`organization_id`/
+        # policies/`constraint_name`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -3138,7 +3241,7 @@ module Google
         end
       end
       
-      # Resource capturing the settings for Security Center.
+      # Resource capturing the settings for Security Center. Next ID: 12
       class SecurityCenterSettings
         include Google::Apis::Core::Hashable
       

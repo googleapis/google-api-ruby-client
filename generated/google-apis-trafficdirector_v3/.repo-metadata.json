@@ -1,0 +1,7 @@
+{
+    "api_id": "trafficdirector:v3",
+    "name_pretty": "Traffic Director API",
+    "distribution_name": "google-apis-trafficdirector_v3",
+    "language": "ruby",
+    "library_type": "REST"
+}

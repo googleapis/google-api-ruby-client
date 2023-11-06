@@ -1,5 +1,11 @@
 # Release History
 
+### 0.11.2 (2023-10-27)
+
+#### Bug Fixes
+
+* update ssl_config to point to system default root CA path ([#16446](https://github.com/googleapis/google-api-ruby-client/issues/16446)) 
+
 ### 0.11.1 (2023-07-20)
 
 #### Documentation

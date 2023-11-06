@@ -88,6 +88,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -629,6 +647,24 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1126,6 +1162,8 @@ module Google
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           property :failed_analyses_count, as: 'failedAnalysesCount'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
           property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest::Representation
       
           property :total_requested_analyses_count, as: 'totalRequestedAnalysesCount'
@@ -1148,6 +1186,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failed_analysis_count, as: 'failedAnalysisCount'
           property :successful_analysis_count, as: 'successfulAnalysisCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :force, as: 'force'
+          property :max_delete_count, as: 'maxDeleteCount'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1565,6 +1631,10 @@ module Google
           property :gcs_source, as: 'gcsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource::Representation
       
           property :parent, as: 'parent'
+          property :redaction_config, as: 'redactionConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig::Representation
+      
+          property :speech_config, as: 'speechConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig::Representation
+      
           property :transcript_object_config, as: 'transcriptObjectConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig::Representation
       
         end
@@ -1573,13 +1643,16 @@ module Google
       class GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_channel, as: 'agentChannel'
           property :agent_id, as: 'agentId'
+          property :customer_channel, as: 'customerChannel'
         end
       end
       
       class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_object_type, as: 'bucketObjectType'
           property :bucket_uri, as: 'bucketUri'
         end
       end
@@ -2072,6 +2145,8 @@ module Google
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           property :failed_analyses_count, as: 'failedAnalysesCount'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
           property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest::Representation
       
           property :total_requested_analyses_count, as: 'totalRequestedAnalysesCount'
@@ -2094,6 +2169,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failed_analysis_count, as: 'failedAnalysisCount'
           property :successful_analysis_count, as: 'successfulAnalysisCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :force, as: 'force'
+          property :max_delete_count, as: 'maxDeleteCount'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2463,6 +2566,10 @@ module Google
           property :gcs_source, as: 'gcsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource::Representation
       
           property :parent, as: 'parent'
+          property :redaction_config, as: 'redactionConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RedactionConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RedactionConfig::Representation
+      
+          property :speech_config, as: 'speechConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SpeechConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SpeechConfig::Representation
+      
           property :transcript_object_config, as: 'transcriptObjectConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig::Representation
       
         end
@@ -2471,13 +2578,16 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_channel, as: 'agentChannel'
           property :agent_id, as: 'agentId'
+          property :customer_channel, as: 'customerChannel'
         end
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_object_type, as: 'bucketObjectType'
           property :bucket_uri, as: 'bucketUri'
         end
       end

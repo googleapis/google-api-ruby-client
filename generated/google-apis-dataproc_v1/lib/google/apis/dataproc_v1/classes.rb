@@ -1242,6 +1242,12 @@ module Google
         # @return [String]
         attr_accessor :gce_pd_kms_key_name
       
+        # Optional. The Cloud KMS key name to use for encrypting customer core content
+        # in spanner and cluster PD disk for all instances in the cluster.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1249,6 +1255,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gce_pd_kms_key_name = args[:gce_pd_kms_key_name] if args.key?(:gce_pd_kms_key_name)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
         end
       end
       
@@ -1937,6 +1944,25 @@ module Google
           @node_pool = args[:node_pool] if args.key?(:node_pool)
           @node_pool_config = args[:node_pool_config] if args.key?(:node_pool_config)
           @roles = args[:roles] if args.key?(:roles)
+        end
+      end
+      
+      # Encryption settings for the encrypting customer core content. NEXT ID: 2
+      class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Cloud KMS key name to use for encrypting customer core content.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
         end
       end
       
@@ -3194,6 +3220,13 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Output only. List of jobs that could not be included in the response.
+        # Attempting to get one of these resources may indicate why it was not included
+        # in the list response.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3202,6 +3235,7 @@ module Google
         def update!(**args)
           @jobs = args[:jobs] if args.key?(:jobs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3298,6 +3332,13 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::WorkflowTemplate>]
         attr_accessor :templates
       
+        # Output only. List of workflow templates that could not be included in the
+        # response. Attempting to get one of these resources may indicate why it was not
+        # included in the list response.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3306,6 +3347,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @templates = args[:templates] if args.key?(:templates)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -5803,6 +5845,17 @@ module Google
       class UsageMetrics
         include Google::Apis::Core::Hashable
       
+        # Optional. Accelerator type being used, if any
+        # Corresponds to the JSON property `acceleratorType`
+        # @return [String]
+        attr_accessor :accelerator_type
+      
+        # Optional. Accelerator usage in (milliAccelerator x seconds) (see Dataproc
+        # Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        # Corresponds to the JSON property `milliAcceleratorSeconds`
+        # @return [Fixnum]
+        attr_accessor :milli_accelerator_seconds
+      
         # Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see
         # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
         # pricing)).
@@ -5822,6 +5875,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
+          @milli_accelerator_seconds = args[:milli_accelerator_seconds] if args.key?(:milli_accelerator_seconds)
           @milli_dcu_seconds = args[:milli_dcu_seconds] if args.key?(:milli_dcu_seconds)
           @shuffle_storage_gb_seconds = args[:shuffle_storage_gb_seconds] if args.key?(:shuffle_storage_gb_seconds)
         end
@@ -5831,6 +5886,17 @@ module Google
       # specified time.
       class UsageSnapshot
         include Google::Apis::Core::Hashable
+      
+        # Optional. Accelerator type being used, if any
+        # Corresponds to the JSON property `acceleratorType`
+        # @return [String]
+        attr_accessor :accelerator_type
+      
+        # Optional. Milli (one-thousandth) accelerator. (see Dataproc Serverless pricing
+        # (https://cloud.google.com/dataproc-serverless/pricing))
+        # Corresponds to the JSON property `milliAccelerator`
+        # @return [Fixnum]
+        attr_accessor :milli_accelerator
       
         # Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc
         # Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
@@ -5869,6 +5935,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
+          @milli_accelerator = args[:milli_accelerator] if args.key?(:milli_accelerator)
           @milli_dcu = args[:milli_dcu] if args.key?(:milli_dcu)
           @milli_dcu_premium = args[:milli_dcu_premium] if args.key?(:milli_dcu_premium)
           @shuffle_storage_gb = args[:shuffle_storage_gb] if args.key?(:shuffle_storage_gb)
@@ -6126,6 +6194,11 @@ module Google
         # @return [String]
         attr_accessor :dag_timeout
       
+        # Encryption settings for the encrypting customer core content. NEXT ID: 2
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::DataprocV1::GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig]
+        attr_accessor :encryption_config
+      
         # 
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -6194,6 +6267,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @dag_timeout = args[:dag_timeout] if args.key?(:dag_timeout)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @id = args[:id] if args.key?(:id)
           @jobs = args[:jobs] if args.key?(:jobs)
           @labels = args[:labels] if args.key?(:labels)

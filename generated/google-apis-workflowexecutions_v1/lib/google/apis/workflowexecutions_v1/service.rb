@@ -328,6 +328,99 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Gets a step entry.
+        # @param [String] name
+        #   Required. The name of the step entry to retrieve. Format: projects/`project`/
+        #   locations/`location`/workflows/`workflow`/executions/`execution`/stepEntries/`
+        #   step_entry`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkflowexecutionsV1::StepEntry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkflowexecutionsV1::StepEntry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_workflow_execution_step_entry(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::WorkflowexecutionsV1::StepEntry::Representation
+          command.response_class = Google::Apis::WorkflowexecutionsV1::StepEntry
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists step entries for the corresponding workflow execution. Returned entries
+        # are ordered by their create_time.
+        # @param [String] parent
+        #   Required. Name of the workflow execution to list entries for. Format: projects/
+        #   `project`/locations/`location`/workflows/`workflow`/executions/`execution`/
+        #   stepEntries/
+        # @param [String] filter
+        #   Optional. Filters applied to the `[StepEntries.ListStepEntries]` results. The
+        #   following fields are supported for filtering: `entryId`, `createTime`, `
+        #   updateTime`, `routine`, `step`, `stepType`, `state`. For details, see AIP-160.
+        #   For example, if you are using the Google APIs Explorer: `state="SUCCEEDED"` or
+        #   `createTime>"2023-08-01" AND state="FAILED"`
+        # @param [String] order_by
+        #   Optional. Comma-separated list of fields that specify the ordering applied to
+        #   the `[StepEntries.ListStepEntries]` results. By default the ordering is based
+        #   on ascending `entryId`. The following fields are supported for ordering: `
+        #   entryId`, `createTime`, `updateTime`, `routine`, `step`, `stepType`, `state`.
+        #   For details, see AIP-132.
+        # @param [Fixnum] page_size
+        #   Optional. Number of step entries to return per call. The default max is 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListStepEntries` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListStepEntries` must match the call that provided the
+        #   page token.
+        # @param [Fixnum] skip
+        #   Optional. The number of step entries to skip. It can be used with or without a
+        #   pageToken. If used with a pageToken, then it indicates the number of step
+        #   entries to skip starting from the requested page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkflowexecutionsV1::ListStepEntriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkflowexecutionsV1::ListStepEntriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_workflow_execution_step_entries(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, skip: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/stepEntries', options)
+          command.response_representation = Google::Apis::WorkflowexecutionsV1::ListStepEntriesResponse::Representation
+          command.response_class = Google::Apis::WorkflowexecutionsV1::ListStepEntriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['skip'] = skip unless skip.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

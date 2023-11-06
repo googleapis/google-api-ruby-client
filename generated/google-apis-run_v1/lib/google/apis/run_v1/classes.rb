@@ -2141,13 +2141,14 @@ module Google
         # googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/
         # execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-
         # tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/
-        # launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`:
-        # Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`:
-        # Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.
-        # googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/
-        # sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision.
-        # * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.
-        # googleapis.com/vpc-access-egress`: Revision, Execution.
+        # launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service (ALPHA) *
+        # `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.
+        # googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.
+        # com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`:
+        # Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.
+        # com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`:
+        # Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision,
+        # Execution.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations

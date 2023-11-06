@@ -714,6 +714,47 @@ module Google
         end
       end
       
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: A full date, with non-zero year, month, and day values. A month and
+      # day, with a zero year (for example, an anniversary). A year on its own, with a
+      # zero month and a zero day. A year and month, with a zero day (for example, a
+      # credit card expiration date).Related types: google.type.TimeOfDay google.type.
+      # DateTime google.protobuf.Timestamp
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
       # Request message for Instances.DebugInstance.
       class DebugInstanceRequest
         include Google::Apis::Core::Hashable
@@ -1577,6 +1618,31 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Response message for Applications.ListRuntimes.
+      class ListRuntimesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Continuation token for fetching the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The runtimes available to the requested application.
+        # Corresponds to the JSON property `runtimes`
+        # @return [Array<Google::Apis::AppengineV1::Runtime>]
+        attr_accessor :runtimes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @runtimes = args[:runtimes] if args.key?(:runtimes)
         end
       end
       
@@ -2527,6 +2593,82 @@ module Google
         end
       end
       
+      # Runtime versions for App Engine.
+      class Runtime
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: A full date, with non-zero year, month, and day values. A month and
+        # day, with a zero year (for example, an anniversary). A year on its own, with a
+        # zero month and a zero day. A year and month, with a zero day (for example, a
+        # credit card expiration date).Related types: google.type.TimeOfDay google.type.
+        # DateTime google.protobuf.Timestamp
+        # Corresponds to the JSON property `decommissionedDate`
+        # @return [Google::Apis::AppengineV1::Date]
+        attr_accessor :decommissioned_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: A full date, with non-zero year, month, and day values. A month and
+        # day, with a zero year (for example, an anniversary). A year on its own, with a
+        # zero month and a zero day. A year and month, with a zero day (for example, a
+        # credit card expiration date).Related types: google.type.TimeOfDay google.type.
+        # DateTime google.protobuf.Timestamp
+        # Corresponds to the JSON property `deprecationDate`
+        # @return [Google::Apis::AppengineV1::Date]
+        attr_accessor :deprecation_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: A full date, with non-zero year, month, and day values. A month and
+        # day, with a zero year (for example, an anniversary). A year on its own, with a
+        # zero month and a zero day. A year and month, with a zero day (for example, a
+        # credit card expiration date).Related types: google.type.TimeOfDay google.type.
+        # DateTime google.protobuf.Timestamp
+        # Corresponds to the JSON property `endOfSupportDate`
+        # @return [Google::Apis::AppengineV1::Date]
+        attr_accessor :end_of_support_date
+      
+        # The environment of the runtime.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # The name of the runtime, e.g., 'go113', 'nodejs12', etc.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The stage of life this runtime is in, e.g., BETA, GA, etc.
+        # Corresponds to the JSON property `stage`
+        # @return [String]
+        attr_accessor :stage
+      
+        # Warning messages, e.g., a deprecation warning.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<String>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @decommissioned_date = args[:decommissioned_date] if args.key?(:decommissioned_date)
+          @deprecation_date = args[:deprecation_date] if args.key?(:deprecation_date)
+          @end_of_support_date = args[:end_of_support_date] if args.key?(:end_of_support_date)
+          @environment = args[:environment] if args.key?(:environment)
+          @name = args[:name] if args.key?(:name)
+          @stage = args[:stage] if args.key?(:stage)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
       # Executes a script to handle the request that matches the URL pattern.
       class ScriptHandler
         include Google::Apis::Core::Hashable
@@ -3055,6 +3197,13 @@ module Google
         # @return [Google::Apis::AppengineV1::FlexibleRuntimeSettings]
         attr_accessor :flexible_runtime_settings
       
+        # Additional Google Generated Customer Metadata, this field won't be provided by
+        # default and can be requested by setting the IncludeExtraData field in
+        # GetVersionRequest
+        # Corresponds to the JSON property `generatedCustomerMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :generated_customer_metadata
+      
         # An ordered list of URL-matching patterns that should be applied to incoming
         # requests. The first matching URL handles the request and other request
         # handlers are not attempted.Only returned in GET requests if view=FULL is set.
@@ -3225,6 +3374,7 @@ module Google
           @env_variables = args[:env_variables] if args.key?(:env_variables)
           @error_handlers = args[:error_handlers] if args.key?(:error_handlers)
           @flexible_runtime_settings = args[:flexible_runtime_settings] if args.key?(:flexible_runtime_settings)
+          @generated_customer_metadata = args[:generated_customer_metadata] if args.key?(:generated_customer_metadata)
           @handlers = args[:handlers] if args.key?(:handlers)
           @health_check = args[:health_check] if args.key?(:health_check)
           @id = args[:id] if args.key?(:id)

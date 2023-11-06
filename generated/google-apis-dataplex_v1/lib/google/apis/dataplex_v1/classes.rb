@@ -1689,7 +1689,9 @@ module Google
       class GoogleCloudDataplexV1DataQualityResult
         include Google::Apis::Core::Hashable
       
-        # A list of results at the dimension level.
+        # A list of results at the dimension level.A dimension will have a corresponding
+        # DataQualityDimensionResult if and only if there is at least one rule with the '
+        # dimension' field set to it.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult>]
         attr_accessor :dimensions

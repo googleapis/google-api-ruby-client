@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EncryptionKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,6 +281,12 @@ module Google
       end
       
       class InputParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Jms
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -901,6 +913,14 @@ module Google
         end
       end
       
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_type, as: 'encryptionType'
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
       class EncryptionKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -946,6 +966,8 @@ module Google
           property :destinations, as: 'destinations', class: Google::Apis::ConnectorsV1::EventSubscriptionDestination, decorator: Google::Apis::ConnectorsV1::EventSubscriptionDestination::Representation
       
           property :event_type_id, as: 'eventTypeId'
+          property :jms, as: 'jms', class: Google::Apis::ConnectorsV1::Jms, decorator: Google::Apis::ConnectorsV1::Jms::Representation
+      
           property :name, as: 'name'
           property :status, as: 'status', class: Google::Apis::ConnectorsV1::EventSubscriptionStatus, decorator: Google::Apis::ConnectorsV1::EventSubscriptionStatus::Representation
       
@@ -1016,6 +1038,7 @@ module Google
           property :encryption_key_template, as: 'encryptionKeyTemplate', class: Google::Apis::ConnectorsV1::ConfigVariableTemplate, decorator: Google::Apis::ConnectorsV1::ConfigVariableTemplate::Representation
       
           property :enrichment_supported, as: 'enrichmentSupported'
+          property :event_listener_type, as: 'eventListenerType'
           property :is_eventing_supported, as: 'isEventingSupported'
           property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfigTemplate, decorator: Google::Apis::ConnectorsV1::DestinationConfigTemplate::Representation
       
@@ -1032,6 +1055,7 @@ module Google
           property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
           collection :search_tags, as: 'searchTags'
+          property :type, as: 'type'
         end
       end
       
@@ -1133,6 +1157,14 @@ module Google
       
           property :nullable, as: 'nullable'
           property :parameter, as: 'parameter'
+        end
+      end
+      
+      class Jms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
@@ -1432,6 +1464,8 @@ module Google
       class RegionalSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::ConnectorsV1::EncryptionConfig, decorator: Google::Apis::ConnectorsV1::EncryptionConfig::Representation
+      
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::ConnectorsV1::NetworkConfig, decorator: Google::Apis::ConnectorsV1::NetworkConfig::Representation
       

@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DebugInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRuntimesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListServicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +407,12 @@ module Google
       end
       
       class Resources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Runtime
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -657,6 +675,15 @@ module Google
         end
       end
       
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
+        end
+      end
+      
       class DebugInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -889,6 +916,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::AppengineV1::Operation, decorator: Google::Apis::AppengineV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListRuntimesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :runtimes, as: 'runtimes', class: Google::Apis::AppengineV1::Runtime, decorator: Google::Apis::AppengineV1::Runtime::Representation
       
         end
       end
@@ -1129,6 +1165,22 @@ module Google
         end
       end
       
+      class Runtime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :decommissioned_date, as: 'decommissionedDate', class: Google::Apis::AppengineV1::Date, decorator: Google::Apis::AppengineV1::Date::Representation
+      
+          property :deprecation_date, as: 'deprecationDate', class: Google::Apis::AppengineV1::Date, decorator: Google::Apis::AppengineV1::Date::Representation
+      
+          property :end_of_support_date, as: 'endOfSupportDate', class: Google::Apis::AppengineV1::Date, decorator: Google::Apis::AppengineV1::Date::Representation
+      
+          property :environment, as: 'environment'
+          property :name, as: 'name'
+          property :stage, as: 'stage'
+          collection :warnings, as: 'warnings'
+        end
+      end
+      
       class ScriptHandler
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1253,6 +1305,7 @@ module Google
       
           property :flexible_runtime_settings, as: 'flexibleRuntimeSettings', class: Google::Apis::AppengineV1::FlexibleRuntimeSettings, decorator: Google::Apis::AppengineV1::FlexibleRuntimeSettings::Representation
       
+          hash :generated_customer_metadata, as: 'generatedCustomerMetadata'
           collection :handlers, as: 'handlers', class: Google::Apis::AppengineV1::UrlMap, decorator: Google::Apis::AppengineV1::UrlMap::Representation
       
           property :health_check, as: 'healthCheck', class: Google::Apis::AppengineV1::HealthCheck, decorator: Google::Apis::AppengineV1::HealthCheck::Representation

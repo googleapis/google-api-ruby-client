@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudLoggingEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Compliance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -346,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MemoryHashSignature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +383,12 @@ module Google
       end
       
       class Object
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrgPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -538,6 +556,16 @@ module Google
           property :info_type, as: 'infoType'
           property :info_type_count, :numeric_string => true, as: 'infoTypeCount'
           property :inspect_job, as: 'inspectJob'
+        end
+      end
+      
+      class CloudLoggingEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :insert_id, as: 'insertId'
+          property :log_id, as: 'logId'
+          property :resource_container, as: 'resourceContainer'
+          property :timestamp, as: 'timestamp'
         end
       end
       
@@ -768,6 +796,8 @@ module Google
       
           collection :load_balancers, as: 'loadBalancers', class: Google::Apis::SecuritycenterV1beta2::LoadBalancer, decorator: Google::Apis::SecuritycenterV1beta2::LoadBalancer::Representation
       
+          collection :log_entries, as: 'logEntries', class: Google::Apis::SecuritycenterV1beta2::LogEntry, decorator: Google::Apis::SecuritycenterV1beta2::LogEntry::Representation
+      
           property :mitre_attack, as: 'mitreAttack', class: Google::Apis::SecuritycenterV1beta2::MitreAttack, decorator: Google::Apis::SecuritycenterV1beta2::MitreAttack::Representation
       
           property :module_name, as: 'moduleName'
@@ -776,6 +806,8 @@ module Google
           property :mute_update_time, as: 'muteUpdateTime'
           property :name, as: 'name'
           property :next_steps, as: 'nextSteps'
+          collection :org_policies, as: 'orgPolicies', class: Google::Apis::SecuritycenterV1beta2::OrgPolicy, decorator: Google::Apis::SecuritycenterV1beta2::OrgPolicy::Representation
+      
           property :parent, as: 'parent'
           property :parent_display_name, as: 'parentDisplayName'
           collection :processes, as: 'processes', class: Google::Apis::SecuritycenterV1beta2::Process, decorator: Google::Apis::SecuritycenterV1beta2::Process::Representation
@@ -1123,6 +1155,14 @@ module Google
         end
       end
       
+      class LogEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_logging_entry, as: 'cloudLoggingEntry', class: Google::Apis::SecuritycenterV1beta2::CloudLoggingEntry, decorator: Google::Apis::SecuritycenterV1beta2::CloudLoggingEntry::Representation
+      
+        end
+      end
+      
       class MemoryHashSignature
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1162,10 +1202,19 @@ module Google
       class Object
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :containers, as: 'containers', class: Google::Apis::SecuritycenterV1beta2::Container, decorator: Google::Apis::SecuritycenterV1beta2::Container::Representation
+      
           property :group, as: 'group'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :ns, as: 'ns'
+        end
+      end
+      
+      class OrgPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       

@@ -14240,6 +14240,7 @@ module Google
       class PublicAdvertisedPrefix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :byoip_api_version, as: 'byoipApiVersion'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :dns_verification_ip, as: 'dnsVerificationIp'
@@ -14248,6 +14249,7 @@ module Google
           property :ip_cidr_range, as: 'ipCidrRange'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :pdp_scope, as: 'pdpScope'
           collection :public_delegated_prefixs, as: 'publicDelegatedPrefixs', class: Google::Apis::ComputeBeta::PublicAdvertisedPrefixPublicDelegatedPrefix, decorator: Google::Apis::ComputeBeta::PublicAdvertisedPrefixPublicDelegatedPrefix::Representation
       
           property :self_link, as: 'selfLink'
@@ -14302,6 +14304,7 @@ module Google
       class PublicDelegatedPrefix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :byoip_api_version, as: 'byoipApiVersion'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -16728,6 +16731,7 @@ module Google
           property :source_disk, as: 'sourceDisk'
           property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
+          property :source_disk_for_recovery_checkpoint, as: 'sourceDiskForRecoveryCheckpoint'
           property :source_disk_id, as: 'sourceDiskId'
           property :source_instant_snapshot, as: 'sourceInstantSnapshot'
           property :source_instant_snapshot_encryption_key, as: 'sourceInstantSnapshotEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation

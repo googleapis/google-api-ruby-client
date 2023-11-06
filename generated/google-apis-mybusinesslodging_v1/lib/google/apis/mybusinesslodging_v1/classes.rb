@@ -508,7 +508,8 @@ module Google
         end
       end
       
-      # An eco certificate awarded to the hotel.
+      # An eco certificate awarded to the hotel. Deprecated: this message is no longer
+      # populated. All certification data is now provided by BeCause.
       class EcoCertification
         include Google::Apis::Core::Hashable
       
@@ -623,7 +624,8 @@ module Google
         # @return [String]
         attr_accessor :energy_saving_thermostats_exception
       
-        # Output only. Green building design. True if BREEAM-* or LEED-* certified.
+        # Output only. Green building design. True if the property has been awarded a
+        # relevant certification.
         # Corresponds to the JSON property `greenBuildingDesign`
         # @return [Boolean]
         attr_accessor :green_building_design
@@ -3811,7 +3813,9 @@ module Google
         # @return [Google::Apis::MybusinesslodgingV1::EnergyEfficiency]
         attr_accessor :energy_efficiency
       
-        # Sustainability certifications the hotel has been awarded.
+        # Sustainability certifications the hotel has been awarded. Deprecated: this
+        # message is no longer populated. All certification data is now provided by
+        # BeCause.
         # Corresponds to the JSON property `sustainabilityCertifications`
         # @return [Google::Apis::MybusinesslodgingV1::SustainabilityCertifications]
         attr_accessor :sustainability_certifications
@@ -3845,7 +3849,9 @@ module Google
         end
       end
       
-      # Sustainability certifications the hotel has been awarded.
+      # Sustainability certifications the hotel has been awarded. Deprecated: this
+      # message is no longer populated. All certification data is now provided by
+      # BeCause.
       class SustainabilityCertifications
         include Google::Apis::Core::Hashable
       
@@ -3864,14 +3870,12 @@ module Google
         # @return [Array<Google::Apis::MybusinesslodgingV1::EcoCertification>]
         attr_accessor :eco_certifications
       
-        # LEED certification. Deprecated: this field is no longer populated. LEED
-        # certification status is now provided directly by USGBC.
+        # LEED certification.
         # Corresponds to the JSON property `leedCertification`
         # @return [String]
         attr_accessor :leed_certification
       
-        # LEED certification exception. Deprecated: this field is no longer populated.
-        # LEED certification status is now provided directly by USGBC.
+        # LEED certification exception.
         # Corresponds to the JSON property `leedCertificationException`
         # @return [String]
         attr_accessor :leed_certification_exception

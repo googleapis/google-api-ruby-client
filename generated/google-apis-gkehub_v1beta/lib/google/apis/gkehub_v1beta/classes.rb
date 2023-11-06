@@ -430,6 +430,11 @@ module Google
         # @return [Google::Apis::GkehubV1beta::IdentityServiceMembershipSpec]
         attr_accessor :identityservice
       
+        # **Service Mesh**: Spec for a single Membership for the servicemesh feature
+        # Corresponds to the JSON property `mesh`
+        # @return [Google::Apis::GkehubV1beta::ServiceMeshMembershipSpec]
+        attr_accessor :mesh
+      
         # **Policy Controller**: Configuration for a single cluster. Intended to
         # parallel the PolicyController CR.
         # Corresponds to the JSON property `policycontroller`
@@ -444,6 +449,7 @@ module Google
         def update!(**args)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
           @identityservice = args[:identityservice] if args.key?(:identityservice)
+          @mesh = args[:mesh] if args.key?(:mesh)
           @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
         end
       end

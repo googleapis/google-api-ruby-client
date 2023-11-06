@@ -186,6 +186,7 @@ module Google
       class Metric
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :fractions, as: 'fractions'
           collection :histogram, as: 'histogram', class: Google::Apis::ChromeuxreportV1::Bin, decorator: Google::Apis::ChromeuxreportV1::Bin::Representation
       
           property :percentiles, as: 'percentiles', class: Google::Apis::ChromeuxreportV1::Percentiles, decorator: Google::Apis::ChromeuxreportV1::Percentiles::Representation

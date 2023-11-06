@@ -1266,6 +1266,8 @@ module Google
       
           property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1alpha::IdentityServiceMembershipSpec, decorator: Google::Apis::GkehubV1alpha::IdentityServiceMembershipSpec::Representation
       
+          property :mesh, as: 'mesh', class: Google::Apis::GkehubV1alpha::ServiceMeshMembershipSpec, decorator: Google::Apis::GkehubV1alpha::ServiceMeshMembershipSpec::Representation
+      
           property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV1alpha::PolicyControllerMembershipSpec, decorator: Google::Apis::GkehubV1alpha::PolicyControllerMembershipSpec::Representation
       
         end

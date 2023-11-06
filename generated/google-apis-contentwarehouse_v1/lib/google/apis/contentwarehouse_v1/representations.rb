@@ -1624,6 +1624,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssistantApiDateTimeRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssistantApiDeviceCapabilities
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1859,12 +1865,6 @@ module Google
       end
       
       class AssistantApiRecurrence
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AssistantApiRecurrenceDatetimeRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6940,12 +6940,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class HumanSensingFaceAttribute
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class I18nPhonenumbersPhoneNumber
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10846,54 +10840,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PhotosVisionServiceFaceFaceParams
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PhotosVisionServiceFaceFaceParamsBoundingBox
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PhotosVisionServiceFaceFaceParamsExtendedLandmark
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PhotosVisionServiceFaceFaceParamsFaceCropV8
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PhotosVisionServiceFaceFaceParamsLandmarkPosition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PhotosVisionServiceFaceFaceParamsPoseMatrix
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PhotosVisionServiceFaceImageParams
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PhotosVisionServiceFaceVersionedFaceSignature
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PornFlagData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11243,6 +11189,12 @@ module Google
       end
       
       class QualityNavboostCrapsStatsWithWeightsProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QualityNavboostGlueVoterTokenBitmapMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11795,12 +11747,6 @@ module Google
       end
       
       class RegistrationInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ReneFaceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -12496,18 +12442,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RepositoryWebrefPreprocessingUrlSourceInfoNewSchema
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepositoryWebrefPreprocessingUrlSourceInfoOldSchema
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RepositoryWebrefProcessorCounter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -12977,156 +12911,6 @@ module Google
       end
       
       class ResearchScienceSearchVersionClusterInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonAgeClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonChinLengthClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonEyeColorClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonEyeEyebrowDistanceClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonEyeShapeClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonEyeSlantClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonEyeVerticalPositionClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonEyebrowShapeClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonEyebrowThicknessClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonEyebrowWidthClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonFace2CartoonResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonFaceWidthClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonFacialHairClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonGenderClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonGlassesClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonHairColorClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonHairStyleClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonInterEyeDistanceClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonJawShapeClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonLipThicknessClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonMouthVerticalPositionClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonMouthWidthClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonNoseVerticalPositionClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonNoseWidthClassifierResults
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResearchVisionFace2cartoonSkinToneClassifierResults
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -14495,6 +14279,12 @@ module Google
       end
       
       class TrawlerFetchReplyDataRedirects
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrawlerFetchReplyDataWebIoInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -18178,6 +17968,7 @@ module Google
           property :routable_to_provider_cloud, as: 'routableToProviderCloud'
           property :searchable_on_device, as: 'searchableOnDevice'
           property :searchable_on_server, as: 'searchableOnServer'
+          property :supports3p_podcast_playback, as: 'supports3pPodcastPlayback'
           property :supports_screenless_initiation, as: 'supportsScreenlessInitiation'
           property :whitelisted_for_annotation, as: 'whitelistedForAnnotation'
         end
@@ -18949,6 +18740,16 @@ module Google
         end
       end
       
+      class AssistantApiDateTimeRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate', class: Google::Apis::ContentwarehouseV1::AssistantApiDateTime, decorator: Google::Apis::ContentwarehouseV1::AssistantApiDateTime::Representation
+      
+          property :start_date, as: 'startDate', class: Google::Apis::ContentwarehouseV1::AssistantApiDateTime, decorator: Google::Apis::ContentwarehouseV1::AssistantApiDateTime::Representation
+      
+        end
+      end
+      
       class AssistantApiDeviceCapabilities
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -19369,7 +19170,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :begin, as: 'begin', class: Google::Apis::ContentwarehouseV1::AssistantApiDate, decorator: Google::Apis::ContentwarehouseV1::AssistantApiDate::Representation
       
-          collection :blacklisted_ranges, as: 'blacklistedRanges', class: Google::Apis::ContentwarehouseV1::AssistantApiRecurrenceDatetimeRange, decorator: Google::Apis::ContentwarehouseV1::AssistantApiRecurrenceDatetimeRange::Representation
+          collection :blacklisted_ranges, as: 'blacklistedRanges', class: Google::Apis::ContentwarehouseV1::AssistantApiDateTimeRange, decorator: Google::Apis::ContentwarehouseV1::AssistantApiDateTimeRange::Representation
       
           collection :day_of_month, as: 'dayOfMonth'
           collection :day_of_week, as: 'dayOfWeek'
@@ -19379,16 +19180,6 @@ module Google
           collection :month_of_year, as: 'monthOfYear'
           property :num_occurrences, as: 'numOccurrences'
           collection :week_of_month, as: 'weekOfMonth'
-        end
-      end
-      
-      class AssistantApiRecurrenceDatetimeRange
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_date, as: 'endDate', class: Google::Apis::ContentwarehouseV1::AssistantApiDateTime, decorator: Google::Apis::ContentwarehouseV1::AssistantApiDateTime::Representation
-      
-          property :start_date, as: 'startDate', class: Google::Apis::ContentwarehouseV1::AssistantApiDateTime, decorator: Google::Apis::ContentwarehouseV1::AssistantApiDateTime::Representation
-      
         end
       end
       
@@ -21016,6 +20807,7 @@ module Google
           property :is_most_recent_song_album_ambiguous, as: 'isMostRecentSongAlbumAmbiguous'
           property :is_seed_radio, as: 'isSeedRadio'
           property :is_seed_radio_request, as: 'isSeedRadioRequest'
+          property :is_self_reported_svod_provider, as: 'isSelfReportedSvodProvider'
           property :is_youtube_music_seeking, as: 'isYoutubeMusicSeeking'
           property :media_account_type, as: 'mediaAccountType'
           property :media_content_type, as: 'mediaContentType'
@@ -24595,6 +24387,8 @@ module Google
           collection :address, as: 'address', class: Google::Apis::ContentwarehouseV1::GeostoreAddressProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreAddressProto::Representation
       
           property :anchored_geometry, as: 'anchoredGeometry', class: Google::Apis::ContentwarehouseV1::GeostoreAnchoredGeometryProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreAnchoredGeometryProto::Representation
+      
+          collection :associated_ev_charging_station, as: 'associatedEvChargingStation', class: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto::Representation
       
           collection :attachment, as: 'attachment', class: Google::Apis::ContentwarehouseV1::GeostoreAttachmentsAttachmentProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreAttachmentsAttachmentProto::Representation
       
@@ -29554,16 +29348,6 @@ module Google
         end
       end
       
-      class HumanSensingFaceAttribute
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :name, as: 'name'
-          property :type, as: 'type'
-          property :value, as: 'value'
-        end
-      end
-      
       class I18nPhonenumbersPhoneNumber
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -29691,8 +29475,6 @@ module Google
       
           property :expiration_timestamp, :numeric_string => true, as: 'expirationTimestamp'
           property :extended_exif, as: 'extendedExif', class: Google::Apis::ContentwarehouseV1::PhotosImageMetadata, decorator: Google::Apis::ContentwarehouseV1::PhotosImageMetadata::Representation
-      
-          property :face_detection, as: 'faceDetection', class: Google::Apis::ContentwarehouseV1::ReneFaceResponse, decorator: Google::Apis::ContentwarehouseV1::ReneFaceResponse::Representation
       
           property :featured_image_prop, as: 'featuredImageProp', class: Google::Apis::ContentwarehouseV1::ImageMonetizationFeaturedImageProperties, decorator: Google::Apis::ContentwarehouseV1::ImageMonetizationFeaturedImageProperties::Representation
       
@@ -39561,139 +39343,6 @@ module Google
         end
       end
       
-      class PhotosVisionServiceFaceFaceParams
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :age, as: 'age'
-          property :anger_probability, as: 'angerProbability'
-          collection :attribute, as: 'attribute', class: Google::Apis::ContentwarehouseV1::HumanSensingFaceAttribute, decorator: Google::Apis::ContentwarehouseV1::HumanSensingFaceAttribute::Representation
-      
-          property :beard_probability, as: 'beardProbability'
-          property :blurred_probability, as: 'blurredProbability'
-          property :bounding_box, as: 'boundingBox', class: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceFaceParamsBoundingBox, decorator: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceFaceParamsBoundingBox::Representation
-      
-          property :dark_glasses_probability, as: 'darkGlassesProbability'
-          property :detection_confidence, as: 'detectionConfidence'
-          collection :extended_landmarks, as: 'extendedLandmarks', class: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceFaceParamsExtendedLandmark, decorator: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceFaceParamsExtendedLandmark::Representation
-      
-          property :eyes_closed_probability, as: 'eyesClosedProbability'
-          property :face2cartoon_results, as: 'face2cartoonResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonFace2CartoonResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonFace2CartoonResults::Representation
-      
-          property :face_crop_v8, as: 'faceCropV8', class: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceFaceParamsFaceCropV8, decorator: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceFaceParamsFaceCropV8::Representation
-      
-          property :fd_bounding_box, as: 'fdBoundingBox', class: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceFaceParamsBoundingBox, decorator: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceFaceParamsBoundingBox::Representation
-      
-          property :female_probability, as: 'femaleProbability'
-          property :frontal_gaze_probability, as: 'frontalGazeProbability'
-          property :glasses_probability, as: 'glassesProbability'
-          property :headwear_probability, as: 'headwearProbability'
-          property :image_params, as: 'imageParams', class: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceImageParams, decorator: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceImageParams::Representation
-      
-          property :joy_probability, as: 'joyProbability'
-          collection :landmark_positions, as: 'landmarkPositions', class: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceFaceParamsLandmarkPosition, decorator: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceFaceParamsLandmarkPosition::Representation
-      
-          property :landmarking_confidence, as: 'landmarkingConfidence'
-          property :left_eye_closed_probability, as: 'leftEyeClosedProbability'
-          property :long_hair_probability, as: 'longHairProbability'
-          property :mouth_open_probability, as: 'mouthOpenProbability'
-          property :non_human_probability, as: 'nonHumanProbability'
-          property :pan_angle, as: 'panAngle'
-          property :pose_matrix, as: 'poseMatrix', class: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceFaceParamsPoseMatrix, decorator: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceFaceParamsPoseMatrix::Representation
-      
-          property :pretemplate, :base64 => true, as: 'pretemplate'
-          property :quality_score, as: 'qualityScore'
-          property :right_eye_closed_probability, as: 'rightEyeClosedProbability'
-          property :roll_angle, as: 'rollAngle'
-          property :signature, :base64 => true, as: 'signature'
-          property :skin_brightness_probability, as: 'skinBrightnessProbability'
-          property :sorrow_probability, as: 'sorrowProbability'
-          property :surprise_probability, as: 'surpriseProbability'
-          property :tilt_angle, as: 'tiltAngle'
-          property :under_exposed_probability, as: 'underExposedProbability'
-          collection :versioned_signatures, as: 'versionedSignatures', class: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceVersionedFaceSignature, decorator: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceVersionedFaceSignature::Representation
-      
-        end
-      end
-      
-      class PhotosVisionServiceFaceFaceParamsBoundingBox
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :x1, as: 'x1'
-          property :x2, as: 'x2'
-          property :y1, as: 'y1'
-          property :y2, as: 'y2'
-        end
-      end
-      
-      class PhotosVisionServiceFaceFaceParamsExtendedLandmark
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :x, as: 'x'
-          property :x_f, as: 'xF'
-          property :y, as: 'y'
-          property :y_f, as: 'yF'
-          property :z, as: 'z'
-        end
-      end
-      
-      class PhotosVisionServiceFaceFaceParamsFaceCropV8
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :center_x, as: 'centerX'
-          property :center_y, as: 'centerY'
-          property :rotation, as: 'rotation'
-          property :scale, as: 'scale'
-        end
-      end
-      
-      class PhotosVisionServiceFaceFaceParamsLandmarkPosition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :landmark, as: 'landmark'
-          property :x, as: 'x'
-          property :x_f, as: 'xF'
-          property :y, as: 'y'
-          property :y_f, as: 'yF'
-          property :z, as: 'z'
-        end
-      end
-      
-      class PhotosVisionServiceFaceFaceParamsPoseMatrix
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :xx, as: 'xx'
-          property :xy, as: 'xy'
-          property :xz, as: 'xz'
-          property :yx, as: 'yx'
-          property :yy, as: 'yy'
-          property :yz, as: 'yz'
-          property :zx, as: 'zx'
-          property :zy, as: 'zy'
-          property :zz, as: 'zz'
-        end
-      end
-      
-      class PhotosVisionServiceFaceImageParams
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :height, as: 'height'
-          property :width, as: 'width'
-        end
-      end
-      
-      class PhotosVisionServiceFaceVersionedFaceSignature
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :confidence_version, as: 'confidenceVersion'
-          property :converter_version, as: 'converterVersion'
-          property :signature, :base64 => true, as: 'signature'
-          property :signature_source, as: 'signatureSource'
-          property :version, as: 'version'
-        end
-      end
-      
       class PornFlagData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -40453,6 +40102,7 @@ module Google
           property :unsquashed_mobile_signals, as: 'unsquashedMobileSignals', class: Google::Apis::ContentwarehouseV1::QualityNavboostCrapsCrapsClickSignals, decorator: Google::Apis::ContentwarehouseV1::QualityNavboostCrapsCrapsClickSignals::Representation
       
           property :url, as: 'url'
+          property :voter_token_count, as: 'voterTokenCount'
         end
       end
       
@@ -40473,6 +40123,8 @@ module Google
           property :language, as: 'language'
           property :location_id, as: 'locationId'
           property :signals, as: 'signals', class: Google::Apis::ContentwarehouseV1::QualityNavboostCrapsCrapsClickSignals, decorator: Google::Apis::ContentwarehouseV1::QualityNavboostCrapsCrapsClickSignals::Representation
+      
+          property :voter_token_bitmap, as: 'voterTokenBitmap', class: Google::Apis::ContentwarehouseV1::QualityNavboostGlueVoterTokenBitmapMessage, decorator: Google::Apis::ContentwarehouseV1::QualityNavboostGlueVoterTokenBitmapMessage::Representation
       
         end
       end
@@ -40495,6 +40147,14 @@ module Google
           property :var_of_mean, as: 'varOfMean'
           property :variance, as: 'variance'
           property :weighted_n, as: 'weightedN'
+        end
+      end
+      
+      class QualityNavboostGlueVoterTokenBitmapMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sub_range, as: 'subRange'
+          property :voter_token, :numeric_string => true, as: 'voterToken'
         end
       end
       
@@ -40599,6 +40259,7 @@ module Google
           property :site_link_out, as: 'siteLinkOut'
           property :site_pr, as: 'sitePr'
           property :site_quality_stddev, as: 'siteQualityStddev'
+          property :small_personal_site, as: 'smallPersonalSite'
           property :spambrain_lavc_score, as: 'spambrainLavcScore'
           collection :spambrain_lavc_scores, as: 'spambrainLavcScores', class: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal, decorator: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal::Representation
       
@@ -41325,7 +40986,6 @@ module Google
       
           collection :product_browseonomy_ids, as: 'productBrowseonomyIds'
           property :product_cluster_mid, :numeric_string => true, as: 'productClusterMid'
-          property :product_popularity, as: 'productPopularity'
           collection :relevance_embedding, as: 'relevanceEmbedding', class: Google::Apis::ContentwarehouseV1::QualityRankembedMustangMustangRankEmbedInfo, decorator: Google::Apis::ContentwarehouseV1::QualityRankembedMustangMustangRankEmbedInfo::Representation
       
           property :weak_global_product_cluster_id, :numeric_string => true, as: 'weakGlobalProductClusterId'
@@ -41710,14 +41370,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :created_date, as: 'createdDate'
           property :expired_date, as: 'expiredDate'
-        end
-      end
-      
-      class ReneFaceResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :faces, as: 'faces', class: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceFaceParams, decorator: Google::Apis::ContentwarehouseV1::PhotosVisionServiceFaceFaceParams::Representation
-      
         end
       end
       
@@ -42763,7 +42415,6 @@ module Google
           property :matching_text, as: 'matchingText'
           property :name_metadata, as: 'nameMetadata', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefConceptNameMetadata, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefConceptNameMetadata::Representation
       
-          property :non_locational_score, as: 'nonLocationalScore'
           property :per_mention_lightweight_token, as: 'perMentionLightweightToken', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefLightweightTokensPerMentionLightweightToken, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefLightweightTokensPerMentionLightweightToken::Representation
       
           property :personalization_context_outputs, as: 'personalizationContextOutputs', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefPersonalizationContextOutputs, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefPersonalizationContextOutputs::Representation
@@ -42775,8 +42426,6 @@ module Google
       
           property :subsegment_index, as: 'subsegmentIndex', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefSubSegmentIndex, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefSubSegmentIndex::Representation
       
-          property :time_offset_confidence, as: 'timeOffsetConfidence'
-          property :time_offset_ms, as: 'timeOffsetMs'
           property :trusted_name_confidence, as: 'trustedNameConfidence'
         end
       end
@@ -43067,26 +42716,8 @@ module Google
       class RepositoryWebrefPreprocessingUrlSourceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :deprecated_old_schema, as: 'deprecatedOldSchema', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingUrlSourceInfoOldSchema, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingUrlSourceInfoOldSchema::Representation
-      
-          property :new_schema, as: 'newSchema', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingUrlSourceInfoNewSchema, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingUrlSourceInfoNewSchema::Representation
-      
           property :original_url, as: 'originalUrl'
           property :source, as: 'source'
-        end
-      end
-      
-      class RepositoryWebrefPreprocessingUrlSourceInfoNewSchema
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :source_property, as: 'sourceProperty'
-        end
-      end
-      
-      class RepositoryWebrefPreprocessingUrlSourceInfoOldSchema
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_official, as: 'isOfficial'
         end
       end
       
@@ -43289,8 +42920,6 @@ module Google
           property :url, as: 'url'
           property :webref_outlink_infos, as: 'webrefOutlinkInfos', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefWebrefOutlinkInfos, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefWebrefOutlinkInfos::Representation
       
-          property :webref_outlinks_legacy, as: 'webrefOutlinksLegacy', class: Google::Apis::ContentwarehouseV1::Proto2BridgeMessageSet, decorator: Google::Apis::ContentwarehouseV1::Proto2BridgeMessageSet::Representation
-      
         end
       end
       
@@ -43440,8 +43069,6 @@ module Google
           property :document_metadata, as: 'documentMetadata', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefDocumentMetadata, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefDocumentMetadata::Representation
       
           property :extensions, as: 'extensions', class: Google::Apis::ContentwarehouseV1::Proto2BridgeMessageSet, decorator: Google::Apis::ContentwarehouseV1::Proto2BridgeMessageSet::Representation
-      
-          property :outlink_infos, as: 'outlinkInfos', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefWebrefOutlinkInfos, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefWebrefOutlinkInfos::Representation
       
           collection :webref_parsed_content_sentence, as: 'webrefParsedContentSentence'
         end
@@ -44085,252 +43712,6 @@ module Google
           property :index_in_version_cluster, as: 'indexInVersionCluster'
           property :num_versions, as: 'numVersions'
           property :version_cluster_id, :numeric_string => true, as: 'versionClusterId'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonAgeClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :age, as: 'age'
-          property :predicted_age, as: 'predictedAge'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonChinLengthClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :chin_length, as: 'chinLength'
-          property :confidence, as: 'confidence'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonEyeColorClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :color, as: 'color'
-          property :confidence, as: 'confidence'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonEyeEyebrowDistanceClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :eye_eyebrow_distance, as: 'eyeEyebrowDistance'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonEyeShapeClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :shape, as: 'shape'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonEyeSlantClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :eye_slant, as: 'eyeSlant'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonEyeVerticalPositionClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :eye_vertical_position, as: 'eyeVerticalPosition'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonEyebrowShapeClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :eyebrow_shape, as: 'eyebrowShape'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonEyebrowThicknessClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :eyebrow_thickness, as: 'eyebrowThickness'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonEyebrowWidthClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :eyebrow_width, as: 'eyebrowWidth'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonFace2CartoonResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :age_classifier_results, as: 'ageClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonAgeClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonAgeClassifierResults::Representation
-      
-          collection :chin_length_classifier_results, as: 'chinLengthClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonChinLengthClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonChinLengthClassifierResults::Representation
-      
-          collection :eye_color_classifier_results, as: 'eyeColorClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyeColorClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyeColorClassifierResults::Representation
-      
-          collection :eye_eyebrow_distance_classifier_results, as: 'eyeEyebrowDistanceClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyeEyebrowDistanceClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyeEyebrowDistanceClassifierResults::Representation
-      
-          collection :eye_shape_classifier_results, as: 'eyeShapeClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyeShapeClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyeShapeClassifierResults::Representation
-      
-          collection :eye_slant_classifier_results, as: 'eyeSlantClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyeSlantClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyeSlantClassifierResults::Representation
-      
-          collection :eye_vertical_position_classifier_results, as: 'eyeVerticalPositionClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyeVerticalPositionClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyeVerticalPositionClassifierResults::Representation
-      
-          collection :eyebrow_shape_classifier_results, as: 'eyebrowShapeClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyebrowShapeClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyebrowShapeClassifierResults::Representation
-      
-          collection :eyebrow_thickness_classifier_results, as: 'eyebrowThicknessClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyebrowThicknessClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyebrowThicknessClassifierResults::Representation
-      
-          collection :eyebrow_width_classifier_results, as: 'eyebrowWidthClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyebrowWidthClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonEyebrowWidthClassifierResults::Representation
-      
-          collection :face_width_classifier_results, as: 'faceWidthClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonFaceWidthClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonFaceWidthClassifierResults::Representation
-      
-          collection :facial_hair_classifier_results, as: 'facialHairClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonFacialHairClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonFacialHairClassifierResults::Representation
-      
-          collection :gender_classifier_results, as: 'genderClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonGenderClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonGenderClassifierResults::Representation
-      
-          collection :glasses_classifier_results, as: 'glassesClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonGlassesClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonGlassesClassifierResults::Representation
-      
-          collection :hair_color_classifier_results, as: 'hairColorClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonHairColorClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonHairColorClassifierResults::Representation
-      
-          collection :hair_style_classifier_results, as: 'hairStyleClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonHairStyleClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonHairStyleClassifierResults::Representation
-      
-          collection :inter_eye_distance_classifier_results, as: 'interEyeDistanceClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonInterEyeDistanceClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonInterEyeDistanceClassifierResults::Representation
-      
-          collection :jaw_shape_classifier_results, as: 'jawShapeClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonJawShapeClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonJawShapeClassifierResults::Representation
-      
-          collection :lip_thickness_classifier_results, as: 'lipThicknessClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonLipThicknessClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonLipThicknessClassifierResults::Representation
-      
-          collection :mouth_vertical_position_classifier_results, as: 'mouthVerticalPositionClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonMouthVerticalPositionClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonMouthVerticalPositionClassifierResults::Representation
-      
-          collection :mouth_width_classifier_results, as: 'mouthWidthClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonMouthWidthClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonMouthWidthClassifierResults::Representation
-      
-          collection :nose_vertical_position_classifier_results, as: 'noseVerticalPositionClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonNoseVerticalPositionClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonNoseVerticalPositionClassifierResults::Representation
-      
-          collection :nose_width_classifier_results, as: 'noseWidthClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonNoseWidthClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonNoseWidthClassifierResults::Representation
-      
-          collection :skin_tone_classifier_results, as: 'skinToneClassifierResults', class: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonSkinToneClassifierResults, decorator: Google::Apis::ContentwarehouseV1::ResearchVisionFace2cartoonSkinToneClassifierResults::Representation
-      
-        end
-      end
-      
-      class ResearchVisionFace2cartoonFaceWidthClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :face_width, as: 'faceWidth'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonFacialHairClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :facial_hair, as: 'facialHair'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonGenderClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :gender, as: 'gender'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonGlassesClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :glasses_type, as: 'glassesType'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonHairColorClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :hair_color, as: 'hairColor'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonHairStyleClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :hair_style, as: 'hairStyle'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonInterEyeDistanceClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :inter_eye_distance, as: 'interEyeDistance'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonJawShapeClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :jaw_shape, as: 'jawShape'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonLipThicknessClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :lip_thickness, as: 'lipThickness'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonMouthVerticalPositionClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :mouth_vertical_position, as: 'mouthVerticalPosition'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonMouthWidthClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :mouth_width, as: 'mouthWidth'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonNoseVerticalPositionClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :nose_vertical_position, as: 'noseVerticalPosition'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonNoseWidthClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :nose_width, as: 'noseWidth'
-        end
-      end
-      
-      class ResearchVisionFace2cartoonSkinToneClassifierResults
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          property :skin_tone_type, as: 'skinToneType'
         end
       end
       
@@ -46951,6 +46332,8 @@ module Google
           collection :redirects, as: 'redirects', class: Google::Apis::ContentwarehouseV1::TrawlerFetchReplyDataRedirects, decorator: Google::Apis::ContentwarehouseV1::TrawlerFetchReplyDataRedirects::Representation
       
           property :traffic_type, as: 'trafficType'
+          property :webio_info, as: 'webioInfo', class: Google::Apis::ContentwarehouseV1::TrawlerFetchReplyDataWebIoInfo, decorator: Google::Apis::ContentwarehouseV1::TrawlerFetchReplyDataWebIoInfo::Representation
+      
         end
       end
       
@@ -47075,6 +46458,14 @@ module Google
       
           property :target_url, as: 'TargetUrl'
           property :type, as: 'Type'
+        end
+      end
+      
+      class TrawlerFetchReplyDataWebIoInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :webio, as: 'webio'
+          property :webio_percentage_tier, as: 'webioPercentageTier'
         end
       end
       

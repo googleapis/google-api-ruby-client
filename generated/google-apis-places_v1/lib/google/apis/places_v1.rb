@@ -35,6 +35,12 @@ module Google
       # Private Service: https://www.googleapis.com/auth/maps-platform.places
       AUTH_MAPS_PLATFORM_PLACES = 'https://www.googleapis.com/auth/maps-platform.places'
 
+      # Private Service: https://www.googleapis.com/auth/maps-platform.places.details
+      AUTH_MAPS_PLATFORM_PLACES_DETAILS = 'https://www.googleapis.com/auth/maps-platform.places.details'
+
+      # Private Service: https://www.googleapis.com/auth/maps-platform.places.nearbysearch
+      AUTH_MAPS_PLATFORM_PLACES_NEARBYSEARCH = 'https://www.googleapis.com/auth/maps-platform.places.nearbysearch'
+
       # Private Service: https://www.googleapis.com/auth/maps-platform.places.textsearch
       AUTH_MAPS_PLATFORM_PLACES_TEXTSEARCH = 'https://www.googleapis.com/auth/maps-platform.places.textsearch'
     end

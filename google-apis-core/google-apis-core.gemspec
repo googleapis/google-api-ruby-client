@@ -27,5 +27,4 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency "googleauth", ">= 0.16.2", "< 2.a"
   gem.add_runtime_dependency "httpclient", ">= 2.8.1", "< 3.a"
   gem.add_runtime_dependency "rexml"
-  gem.add_runtime_dependency "webrick"
 end

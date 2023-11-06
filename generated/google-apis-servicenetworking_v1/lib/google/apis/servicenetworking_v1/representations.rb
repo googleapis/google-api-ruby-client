@@ -754,6 +754,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpcServiceControls
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddDnsRecordSetMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -827,6 +833,7 @@ module Google
           property :consumer, as: 'consumer'
           property :consumer_network, as: 'consumerNetwork'
           property :description, as: 'description'
+          property :internal_range, as: 'internalRange'
           property :ip_prefix_length, as: 'ipPrefixLength'
           property :outside_allocation_public_ip_range, as: 'outsideAllocationPublicIpRange'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
@@ -1992,6 +1999,13 @@ module Google
       
           property :is_valid, as: 'isValid'
           property :validation_error, as: 'validationError'
+        end
+      end
+      
+      class VpcServiceControls
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
     end

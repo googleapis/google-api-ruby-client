@@ -3078,9 +3078,8 @@ module Google
         attr_accessor :persistent_resource_id
       
         # The ID of the location to store protected artifacts. e.g. us-central1.
-        # Populate only when the location is different than CustomJob location. For
-        # unprotected artifacts, the value of this field is ignored. List of supported
-        # locations: https://cloud.google.com/vertex-ai/docs/general/locations
+        # Populate only when the location is different than CustomJob location. List of
+        # supported locations: https://cloud.google.com/vertex-ai/docs/general/locations
         # Corresponds to the JSON property `protectedArtifactLocationId`
         # @return [String]
         attr_accessor :protected_artifact_location_id
@@ -6625,7 +6624,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The dedicated serving endpoint for this FeatureOnlineStore.
+        # The dedicated serving endpoint for this FeatureOnlineStore. Only need to set
+        # when you choose Optimized storage type or enable EmbeddingManagement.
         # Corresponds to the JSON property `dedicatedServingEndpoint`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint]
         attr_accessor :dedicated_serving_endpoint
@@ -6744,7 +6744,8 @@ module Google
         end
       end
       
-      # The dedicated serving endpoint for this FeatureOnlineStore.
+      # The dedicated serving endpoint for this FeatureOnlineStore. Only need to set
+      # when you choose Optimized storage type or enable EmbeddingManagement.
       class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint
         include Google::Apis::Core::Hashable
       
@@ -8139,26 +8140,6 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @partial_failures = args[:partial_failures] if args.key?(:partial_failures)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Contains information about the source of the models generated from Generative
-      # AI Studio.
-      class GoogleCloudAiplatformV1beta1GenieSource
-        include Google::Apis::Core::Hashable
-      
-        # Required. The public base model URI.
-        # Corresponds to the JSON property `baseModelUri`
-        # @return [String]
-        attr_accessor :base_model_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @base_model_uri = args[:base_model_uri] if args.key?(:base_model_uri)
         end
       end
       
@@ -11308,12 +11289,6 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExplanationSpec]
         attr_accessor :explanation_spec
       
-        # Used to specify the source of the Model Garden model or Genie models. Only
-        # present for models created or tuned from Model Garden and Genie.
-        # Corresponds to the JSON property `generatedModelSource`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelGeneratedModelSource]
-        attr_accessor :generated_model_source
-      
         # The labels with user-defined metadata to organize your Models. Label keys and
         # values can be no longer than 64 characters (Unicode codepoints), can only
         # contain lowercase letters, numeric characters, underscores and dashes.
@@ -11487,7 +11462,6 @@ module Google
           @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @etag = args[:etag] if args.key?(:etag)
           @explanation_spec = args[:explanation_spec] if args.key?(:explanation_spec)
-          @generated_model_source = args[:generated_model_source] if args.key?(:generated_model_source)
           @labels = args[:labels] if args.key?(:labels)
           @metadata = args[:metadata] if args.key?(:metadata)
           @metadata_artifact = args[:metadata_artifact] if args.key?(:metadata_artifact)
@@ -12406,54 +12380,6 @@ module Google
         def update!(**args)
           @exportable_contents = args[:exportable_contents] if args.key?(:exportable_contents)
           @id = args[:id] if args.key?(:id)
-        end
-      end
-      
-      # Contains information about the source of the models generated from Model
-      # Garden.
-      class GoogleCloudAiplatformV1beta1ModelGardenSource
-        include Google::Apis::Core::Hashable
-      
-        # Required. The model garden source model resource name.
-        # Corresponds to the JSON property `publicModelName`
-        # @return [String]
-        attr_accessor :public_model_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @public_model_name = args[:public_model_name] if args.key?(:public_model_name)
-        end
-      end
-      
-      # Used to specify the source of the Model Garden model or Genie models. Only
-      # present for models created or tuned from Model Garden and Genie.
-      class GoogleCloudAiplatformV1beta1ModelGeneratedModelSource
-        include Google::Apis::Core::Hashable
-      
-        # Contains information about the source of the models generated from Generative
-        # AI Studio.
-        # Corresponds to the JSON property `genieSource`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenieSource]
-        attr_accessor :genie_source
-      
-        # Contains information about the source of the models generated from Model
-        # Garden.
-        # Corresponds to the JSON property `modelGardenSource`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelGardenSource]
-        attr_accessor :model_garden_source
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @genie_source = args[:genie_source] if args.key?(:genie_source)
-          @model_garden_source = args[:model_garden_source] if args.key?(:model_garden_source)
         end
       end
       
@@ -23521,7 +23447,7 @@ module Google
         end
       end
       
-      # A message representing a Study.
+      # A message representing a Study. Next id: 12
       class GoogleCloudAiplatformV1beta1Study
         include Google::Apis::Core::Hashable
       
@@ -23639,6 +23565,12 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StudySpecParameterSpec>]
         attr_accessor :parameters
       
+        # The configuration (stopping conditions) for automated stopping of a Study.
+        # Conditions include trial budgets, time budgets, and convergence detection.
+        # Corresponds to the JSON property `studyStoppingConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig]
+        attr_accessor :study_stopping_config
+      
         # This contains flag for manually disabling transfer learning for a study. The
         # names of prior studies being used for transfer learning (if any) are also
         # listed here.
@@ -23661,6 +23593,7 @@ module Google
           @metrics = args[:metrics] if args.key?(:metrics)
           @observation_noise = args[:observation_noise] if args.key?(:observation_noise)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @study_stopping_config = args[:study_stopping_config] if args.key?(:study_stopping_config)
           @transfer_learning_config = args[:transfer_learning_config] if args.key?(:transfer_learning_config)
         end
       end
@@ -24204,6 +24137,68 @@ module Google
         end
       end
       
+      # The configuration (stopping conditions) for automated stopping of a Study.
+      # Conditions include trial budgets, time budgets, and convergence detection.
+      class GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig
+        include Google::Apis::Core::Hashable
+      
+        # If the objective value has not improved for this much time, stop the study.
+        # WARNING: Effective only for single-objective studies.
+        # Corresponds to the JSON property `maxDurationNoProgress`
+        # @return [String]
+        attr_accessor :max_duration_no_progress
+      
+        # If there are more than this many trials, stop the study.
+        # Corresponds to the JSON property `maxNumTrials`
+        # @return [Fixnum]
+        attr_accessor :max_num_trials
+      
+        # If the objective value has not improved for this many consecutive trials, stop
+        # the study. WARNING: Effective only for single-objective studies.
+        # Corresponds to the JSON property `maxNumTrialsNoProgress`
+        # @return [Fixnum]
+        attr_accessor :max_num_trials_no_progress
+      
+        # Time-based Constraint for Study
+        # Corresponds to the JSON property `maximumRuntimeConstraint`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StudyTimeConstraint]
+        attr_accessor :maximum_runtime_constraint
+      
+        # If there are fewer than this many COMPLETED trials, do not stop the study.
+        # Corresponds to the JSON property `minNumTrials`
+        # @return [Fixnum]
+        attr_accessor :min_num_trials
+      
+        # Time-based Constraint for Study
+        # Corresponds to the JSON property `minimumRuntimeConstraint`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StudyTimeConstraint]
+        attr_accessor :minimum_runtime_constraint
+      
+        # If true, a Study enters STOPPING_ASAP whenever it would normally enters
+        # STOPPING state. The bottom line is: set to true if you want to interrupt on-
+        # going evaluations of Trials as soon as the study stopping condition is met. (
+        # Please see Study.State documentation for the source of truth).
+        # Corresponds to the JSON property `shouldStopAsap`
+        # @return [Boolean]
+        attr_accessor :should_stop_asap
+        alias_method :should_stop_asap?, :should_stop_asap
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_duration_no_progress = args[:max_duration_no_progress] if args.key?(:max_duration_no_progress)
+          @max_num_trials = args[:max_num_trials] if args.key?(:max_num_trials)
+          @max_num_trials_no_progress = args[:max_num_trials_no_progress] if args.key?(:max_num_trials_no_progress)
+          @maximum_runtime_constraint = args[:maximum_runtime_constraint] if args.key?(:maximum_runtime_constraint)
+          @min_num_trials = args[:min_num_trials] if args.key?(:min_num_trials)
+          @minimum_runtime_constraint = args[:minimum_runtime_constraint] if args.key?(:minimum_runtime_constraint)
+          @should_stop_asap = args[:should_stop_asap] if args.key?(:should_stop_asap)
+        end
+      end
+      
       # This contains flag for manually disabling transfer learning for a study. The
       # names of prior studies being used for transfer learning (if any) are also
       # listed here.
@@ -24231,6 +24226,31 @@ module Google
         def update!(**args)
           @disable_transfer_learning = args[:disable_transfer_learning] if args.key?(:disable_transfer_learning)
           @prior_study_names = args[:prior_study_names] if args.key?(:prior_study_names)
+        end
+      end
+      
+      # Time-based Constraint for Study
+      class GoogleCloudAiplatformV1beta1StudyTimeConstraint
+        include Google::Apis::Core::Hashable
+      
+        # Compares the wallclock time to this time. Must use UTC timezone.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Counts the wallclock time passed since the creation of this Study.
+        # Corresponds to the JSON property `maxDuration`
+        # @return [String]
+        attr_accessor :max_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
         end
       end
       

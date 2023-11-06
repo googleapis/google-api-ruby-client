@@ -795,8 +795,6 @@ module Google
           property :active_start_time, as: 'activeStartTime'
           property :android_device, as: 'androidDevice', class: Google::Apis::TestingV1::AndroidDevice, decorator: Google::Apis::TestingV1::AndroidDevice::Representation
       
-          property :android_device_list, as: 'androidDeviceList', class: Google::Apis::TestingV1::AndroidDeviceList, decorator: Google::Apis::TestingV1::AndroidDeviceList::Representation
-      
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :expire_time, as: 'expireTime'
@@ -1324,6 +1322,8 @@ module Google
           collection :environment_variables, as: 'environmentVariables', class: Google::Apis::TestingV1::EnvironmentVariable, decorator: Google::Apis::TestingV1::EnvironmentVariable::Representation
       
           collection :files_to_push, as: 'filesToPush', class: Google::Apis::TestingV1::DeviceFile, decorator: Google::Apis::TestingV1::DeviceFile::Representation
+      
+          collection :initial_setup_apks, as: 'initialSetupApks', class: Google::Apis::TestingV1::Apk, decorator: Google::Apis::TestingV1::Apk::Representation
       
           property :network_profile, as: 'networkProfile'
           property :systrace, as: 'systrace', class: Google::Apis::TestingV1::SystraceSetup, decorator: Google::Apis::TestingV1::SystraceSetup::Representation

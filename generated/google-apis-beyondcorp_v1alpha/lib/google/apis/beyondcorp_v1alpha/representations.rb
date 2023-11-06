@@ -1113,6 +1113,7 @@ module Google
       class GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :partner_tenants, as: 'partnerTenants', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant::Representation
       
         end
@@ -1121,6 +1122,7 @@ module Google
       class GoogleCloudBeyondcorpPartnerservicesV1alphaListProxyConfigsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :proxy_configs, as: 'proxyConfigs', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig::Representation
       
         end

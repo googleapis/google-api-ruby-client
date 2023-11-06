@@ -458,6 +458,12 @@ module Google
         # @return [String]
         attr_accessor :consistency_token
       
+        # Checks that all writes before the consistency token was generated is
+        # replicated in every cluster and readable.
+        # Corresponds to the JSON property `standardReadRemoteWrites`
+        # @return [Google::Apis::BigtableadminV2::StandardReadRemoteWrites]
+        attr_accessor :standard_read_remote_writes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -465,6 +471,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consistency_token = args[:consistency_token] if args.key?(:consistency_token)
+          @standard_read_remote_writes = args[:standard_read_remote_writes] if args.key?(:standard_read_remote_writes)
         end
       end
       
@@ -2330,6 +2337,20 @@ module Google
         # Update properties of this object
         def update!(**args)
           @priority = args[:priority] if args.key?(:priority)
+        end
+      end
+      
+      # Checks that all writes before the consistency token was generated is
+      # replicated in every cluster and readable.
+      class StandardReadRemoteWrites
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

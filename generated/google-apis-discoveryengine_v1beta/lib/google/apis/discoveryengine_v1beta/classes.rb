@@ -3150,10 +3150,12 @@ module Google
       
         # Additional search parameters. For public website search only, supported values
         # are: * `user_country_code`: string. Default empty. If set to non-empty,
-        # results are restricted or boosted based on the location provided. * `
+        # results are restricted or boosted based on the location provided. Example:
+        # user_country_code: "au" For available codes see [Country Codes](https://
+        # developers.google.com/custom-search/docs/json_api_reference#countryCodes) * `
         # search_type`: double. Default empty. Enables non-webpage searching depending
         # on the value. The only valid non-default value is 1, which enables image
-        # searching.
+        # searching. Example: search_type: 1
         # Corresponds to the JSON property `params`
         # @return [Hash<String,Object>]
         attr_accessor :params

@@ -972,7 +972,7 @@ module Google
         end
       end
       
-      # The metadata proto of ResyncDataset method.
+      # The metadata proto of `ResyncDataset` method.
       class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata
         include Google::Apis::Core::Hashable
       
@@ -981,8 +981,8 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
         attr_accessor :common_metadata
       
-        # The list of dataset resync statuses. Not checked when `dataset_documents` is
-        # specified in ResyncRequest.
+        # The list of dataset resync statuses. Not checked when ResyncDatasetRequest.
+        # dataset_documents is specified.
         # Corresponds to the JSON property `datasetResyncStatuses`
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus>]
         attr_accessor :dataset_resync_statuses
@@ -7428,7 +7428,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentId]
         attr_accessor :document_id
       
-        # Labelling state of the document.
+        # Labeling state of the document.
         # Corresponds to the JSON property `labelingState`
         # @return [String]
         attr_accessor :labeling_state
@@ -10106,9 +10106,9 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
-        # Optional. Controls if the ListDocuments request requires a total size of
-        # matched documents. See ListDocumentsResponse.total_size. Enabling this flag
-        # may adversely impact performance. Defaults to false.
+        # Optional. Controls if the request requires a total size of matched documents.
+        # See ListDocumentsResponse.total_size. Enabling this flag may adversely impact
+        # performance. Defaults to false.
         # Corresponds to the JSON property `returnTotalSize`
         # @return [Boolean]
         attr_accessor :return_total_size
@@ -10116,10 +10116,10 @@ module Google
       
         # Optional. Number of results to skip beginning from the `page_token` if
         # provided. https://google.aip.dev/158#skipping-results. It must be a non-
-        # negative integer. Negative values wil be rejected. Note that this is not the
+        # negative integer. Negative values will be rejected. Note that this is not the
         # number of pages to skip. If this value causes the cursor to move past the end
-        # of results, `ListDocumentsResponse.document_metadata` and `
-        # ListDocumentsResponse.next_page_token` will be empty.
+        # of results, ListDocumentsResponse.document_metadata and ListDocumentsResponse.
+        # next_page_token will be empty.
         # Corresponds to the JSON property `skip`
         # @return [Fixnum]
         attr_accessor :skip
@@ -10147,8 +10147,8 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentMetadata>]
         attr_accessor :document_metadata
       
-        # A token, which can be sent as `page_token` to retrieve the next page. If this
-        # field is omitted, there are no subsequent pages.
+        # A token, which can be sent as ListDocumentsRequest.page_token to retrieve the
+        # next page. If this field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

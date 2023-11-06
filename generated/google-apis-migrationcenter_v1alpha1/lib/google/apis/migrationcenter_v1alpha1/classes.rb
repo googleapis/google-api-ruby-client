@@ -80,6 +80,13 @@ module Google
         # @return [String]
         attr_accessor :filter
       
+        # Optional. When this value is set to 'true' the response will include all
+        # assets, including those that are hidden.
+        # Corresponds to the JSON property `showHidden`
+        # @return [Boolean]
+        attr_accessor :show_hidden
+        alias_method :show_hidden?, :show_hidden
+      
         def initialize(**args)
            update!(**args)
         end
@@ -88,6 +95,7 @@ module Google
         def update!(**args)
           @aggregations = args[:aggregations] if args.key?(:aggregations)
           @filter = args[:filter] if args.key?(:filter)
+          @show_hidden = args[:show_hidden] if args.key?(:show_hidden)
         end
       end
       
@@ -393,6 +401,22 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Indicates if the asset is hidden.
+        # Corresponds to the JSON property `hidden`
+        # @return [Boolean]
+        attr_accessor :hidden
+        alias_method :hidden?, :hidden
+      
+        # Optional. An optional reason for marking this asset as hidden.
+        # Corresponds to the JSON property `hideReason`
+        # @return [String]
+        attr_accessor :hide_reason
+      
+        # Output only. The timestamp when the asset was marked as hidden.
+        # Corresponds to the JSON property `hideTime`
+        # @return [String]
+        attr_accessor :hide_time
+      
         # Message containing insights list.
         # Corresponds to the JSON property `insightList`
         # @return [Google::Apis::MigrationcenterV1alpha1::InsightList]
@@ -437,6 +461,9 @@ module Google
           @assigned_groups = args[:assigned_groups] if args.key?(:assigned_groups)
           @attributes = args[:attributes] if args.key?(:attributes)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @hidden = args[:hidden] if args.key?(:hidden)
+          @hide_reason = args[:hide_reason] if args.key?(:hide_reason)
+          @hide_time = args[:hide_time] if args.key?(:hide_time)
           @insight_list = args[:insight_list] if args.key?(:insight_list)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)

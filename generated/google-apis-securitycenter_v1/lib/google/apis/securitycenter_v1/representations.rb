@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudLoggingEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Compliance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -568,6 +574,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MemoryHashSignature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -605,6 +617,12 @@ module Google
       end
       
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrgPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -719,6 +737,30 @@ module Google
       end
       
       class SetMuteRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SimulateSecurityHealthAnalyticsCustomModuleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SimulateSecurityHealthAnalyticsCustomModuleResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SimulatedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SimulatedResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -980,6 +1022,16 @@ module Google
         end
       end
       
+      class CloudLoggingEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :insert_id, as: 'insertId'
+          property :log_id, as: 'logId'
+          property :resource_container, as: 'resourceContainer'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
       class Compliance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1216,6 +1268,8 @@ module Google
       
           collection :load_balancers, as: 'loadBalancers', class: Google::Apis::SecuritycenterV1::LoadBalancer, decorator: Google::Apis::SecuritycenterV1::LoadBalancer::Representation
       
+          collection :log_entries, as: 'logEntries', class: Google::Apis::SecuritycenterV1::LogEntry, decorator: Google::Apis::SecuritycenterV1::LogEntry::Representation
+      
           property :mitre_attack, as: 'mitreAttack', class: Google::Apis::SecuritycenterV1::MitreAttack, decorator: Google::Apis::SecuritycenterV1::MitreAttack::Representation
       
           property :module_name, as: 'moduleName'
@@ -1224,6 +1278,8 @@ module Google
           property :mute_update_time, as: 'muteUpdateTime'
           property :name, as: 'name'
           property :next_steps, as: 'nextSteps'
+          collection :org_policies, as: 'orgPolicies', class: Google::Apis::SecuritycenterV1::OrgPolicy, decorator: Google::Apis::SecuritycenterV1::OrgPolicy::Representation
+      
           property :parent, as: 'parent'
           property :parent_display_name, as: 'parentDisplayName'
           collection :processes, as: 'processes', class: Google::Apis::SecuritycenterV1::Process, decorator: Google::Apis::SecuritycenterV1::Process::Representation
@@ -1798,6 +1854,14 @@ module Google
         end
       end
       
+      class LogEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_logging_entry, as: 'cloudLoggingEntry', class: Google::Apis::SecuritycenterV1::CloudLoggingEntry, decorator: Google::Apis::SecuritycenterV1::CloudLoggingEntry::Representation
+      
+        end
+      end
+      
       class MemoryHashSignature
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1849,6 +1913,8 @@ module Google
       class Object
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :containers, as: 'containers', class: Google::Apis::SecuritycenterV1::Container, decorator: Google::Apis::SecuritycenterV1::Container::Representation
+      
           property :group, as: 'group'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -1865,6 +1931,13 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class OrgPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -2059,6 +2132,46 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mute, as: 'mute'
+        end
+      end
+      
+      class SimulateSecurityHealthAnalyticsCustomModuleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_config, as: 'customConfig', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomConfig, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomConfig::Representation
+      
+          property :resource, as: 'resource', class: Google::Apis::SecuritycenterV1::SimulatedResource, decorator: Google::Apis::SecuritycenterV1::SimulatedResource::Representation
+      
+        end
+      end
+      
+      class SimulateSecurityHealthAnalyticsCustomModuleResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result, as: 'result', class: Google::Apis::SecuritycenterV1::SimulatedResult, decorator: Google::Apis::SecuritycenterV1::SimulatedResult::Representation
+      
+        end
+      end
+      
+      class SimulatedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iam_policy_data, as: 'iamPolicyData', class: Google::Apis::SecuritycenterV1::Policy, decorator: Google::Apis::SecuritycenterV1::Policy::Representation
+      
+          hash :resource_data, as: 'resourceData'
+          property :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class SimulatedResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::SecuritycenterV1::Status, decorator: Google::Apis::SecuritycenterV1::Status::Representation
+      
+          property :finding, as: 'finding', class: Google::Apis::SecuritycenterV1::Finding, decorator: Google::Apis::SecuritycenterV1::Finding::Representation
+      
+          property :no_violation, as: 'noViolation', class: Google::Apis::SecuritycenterV1::Empty, decorator: Google::Apis::SecuritycenterV1::Empty::Representation
+      
         end
       end
       

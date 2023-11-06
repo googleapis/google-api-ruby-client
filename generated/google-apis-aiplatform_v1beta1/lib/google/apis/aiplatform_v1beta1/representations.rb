@@ -1396,12 +1396,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1beta1GenieSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1beta1HyperparameterTuningJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2069,18 +2063,6 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1ModelExportFormat
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1ModelGardenSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1ModelGeneratedModelSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4036,7 +4018,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1StudyTimeConstraint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6782,13 +6776,6 @@ module Google
         end
       end
       
-      class GoogleCloudAiplatformV1beta1GenieSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :base_model_uri, as: 'baseModelUri'
-        end
-      end
-      
       class GoogleCloudAiplatformV1beta1HyperparameterTuningJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7725,8 +7712,6 @@ module Google
           property :etag, as: 'etag'
           property :explanation_spec, as: 'explanationSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExplanationSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExplanationSpec::Representation
       
-          property :generated_model_source, as: 'generatedModelSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelGeneratedModelSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelGeneratedModelSource::Representation
-      
           hash :labels, as: 'labels'
           property :metadata, as: 'metadata'
           property :metadata_artifact, as: 'metadataArtifact'
@@ -7950,23 +7935,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exportable_contents, as: 'exportableContents'
           property :id, as: 'id'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1ModelGardenSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :public_model_name, as: 'publicModelName'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1ModelGeneratedModelSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :genie_source, as: 'genieSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenieSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenieSource::Representation
-      
-          property :model_garden_source, as: 'modelGardenSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelGardenSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelGardenSource::Representation
-      
         end
       end
       
@@ -11050,6 +11018,8 @@ module Google
           property :observation_noise, as: 'observationNoise'
           collection :parameters, as: 'parameters', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StudySpecParameterSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StudySpecParameterSpec::Representation
       
+          property :study_stopping_config, as: 'studyStoppingConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig::Representation
+      
           property :transfer_learning_config, as: 'transferLearningConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig::Representation
       
         end
@@ -11197,11 +11167,34 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_duration_no_progress, as: 'maxDurationNoProgress'
+          property :max_num_trials, as: 'maxNumTrials'
+          property :max_num_trials_no_progress, as: 'maxNumTrialsNoProgress'
+          property :maximum_runtime_constraint, as: 'maximumRuntimeConstraint', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StudyTimeConstraint, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StudyTimeConstraint::Representation
+      
+          property :min_num_trials, as: 'minNumTrials'
+          property :minimum_runtime_constraint, as: 'minimumRuntimeConstraint', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StudyTimeConstraint, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StudyTimeConstraint::Representation
+      
+          property :should_stop_asap, as: 'shouldStopAsap'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_transfer_learning, as: 'disableTransferLearning'
           collection :prior_study_names, as: 'priorStudyNames'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1StudyTimeConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :max_duration, as: 'maxDuration'
         end
       end
       

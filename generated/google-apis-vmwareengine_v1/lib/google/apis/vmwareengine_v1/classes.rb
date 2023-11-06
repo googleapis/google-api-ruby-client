@@ -205,6 +205,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Configuration of a stretched cluster.
+        # Corresponds to the JSON property `stretchedClusterConfig`
+        # @return [Google::Apis::VmwareengineV1::StretchedClusterConfig]
+        attr_accessor :stretched_cluster_config
+      
         # Output only. System-generated unique identifier for the resource.
         # Corresponds to the JSON property `uid`
         # @return [String]
@@ -226,6 +231,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @node_type_configs = args[:node_type_configs] if args.key?(:node_type_configs)
           @state = args[:state] if args.key?(:state)
+          @stretched_cluster_config = args[:stretched_cluster_config] if args.key?(:stretched_cluster_config)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -253,6 +259,79 @@ module Google
         def update!(**args)
           @password = args[:password] if args.key?(:password)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # DnsBindPermission resource that contains the accounts having the consumer DNS
+      # bind permission on the corresponding intranet VPC of the consumer project.
+      class DnsBindPermission
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output only. The name of the resource which stores the users/service
+        # accounts having the permission to bind to the corresponding intranet VPC of
+        # the consumer project. DnsBindPermission is a global resource. Resource names
+        # are schemeless URIs that follow the conventions in https://cloud.google.com/
+        # apis/design/resource_names. For example: `projects/my-project/locations/global/
+        # dnsBindPermission`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Users/Service accounts which have access for binding on the
+        # intranet VPC project corresponding to the consumer project.
+        # Corresponds to the JSON property `principals`
+        # @return [Array<Google::Apis::VmwareengineV1::Principal>]
+        attr_accessor :principals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @principals = args[:principals] if args.key?(:principals)
+        end
+      end
+      
+      # DNS forwarding config. This config defines a list of domain to name server
+      # mappings, and is attached to the private cloud for custom domain resolution.
+      class DnsForwarding
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Creation time of this resource.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. List of domain mappings to configure
+        # Corresponds to the JSON property `forwardingRules`
+        # @return [Array<Google::Apis::VmwareengineV1::ForwardingRule>]
+        attr_accessor :forwarding_rules
+      
+        # Output only. The resource name of this DNS profile. Resource names are
+        # schemeless URIs that follow the conventions in https://cloud.google.com/apis/
+        # design/resource_names. For example: `projects/my-project/locations/us-central1-
+        # a/privateClouds/my-cloud/dnsForwarding`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Last update time of this resource.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @forwarding_rules = args[:forwarding_rules] if args.key?(:forwarding_rules)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -323,6 +402,279 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # External access firewall rules for filtering incoming traffic destined to `
+      # ExternalAddress` resources.
+      class ExternalAccessRule
+        include Google::Apis::Core::Hashable
+      
+        # The action that the external access rule performs.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Output only. Creation time of this resource.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # User-provided description for this external access rule.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # If destination ranges are specified, the external access rule applies only to
+        # the traffic that has a destination IP address in these ranges. The specified
+        # IP addresses must have reserved external IP addresses in the scope of the
+        # parent network policy. To match all external IP addresses in the scope of the
+        # parent network policy, specify `0.0.0.0/0`. To match a specific external IP
+        # address, specify it using the `IpRange.external_address` property.
+        # Corresponds to the JSON property `destinationIpRanges`
+        # @return [Array<Google::Apis::VmwareengineV1::IpRange>]
+        attr_accessor :destination_ip_ranges
+      
+        # A list of destination ports to which the external access rule applies. This
+        # field is only applicable for the UDP or TCP protocol. Each entry must be
+        # either an integer or a range. For example: `["22"]`, `["80","443"]`, or `["
+        # 12345-12349"]`. To match all destination ports, specify `["0-65535"]`.
+        # Corresponds to the JSON property `destinationPorts`
+        # @return [Array<String>]
+        attr_accessor :destination_ports
+      
+        # The IP protocol to which the external access rule applies. This value can be
+        # one of the following three protocol strings (not case-sensitive): `tcp`, `udp`,
+        # or `icmp`.
+        # Corresponds to the JSON property `ipProtocol`
+        # @return [String]
+        attr_accessor :ip_protocol
+      
+        # Output only. The resource name of this external access rule. Resource names
+        # are schemeless URIs that follow the conventions in https://cloud.google.com/
+        # apis/design/resource_names. For example: `projects/my-project/locations/us-
+        # central1/networkPolicies/my-policy/externalAccessRules/my-rule`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # External access rule priority, which determines the external access rule to
+        # use when multiple rules apply. If multiple rules have the same priority, their
+        # ordering is non-deterministic. If specific ordering is required, assign unique
+        # priorities to enforce such ordering. The external access rule priority is an
+        # integer from 100 to 4096, both inclusive. Lower integers indicate higher
+        # precedence. For example, a rule with priority `100` has higher precedence than
+        # a rule with priority `101`.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # If source ranges are specified, the external access rule applies only to
+        # traffic that has a source IP address in these ranges. These ranges can either
+        # be expressed in the CIDR format or as an IP address. As only inbound rules are
+        # supported, `ExternalAddress` resources cannot be the source IP addresses of an
+        # external access rule. To match all source addresses, specify `0.0.0.0/0`.
+        # Corresponds to the JSON property `sourceIpRanges`
+        # @return [Array<Google::Apis::VmwareengineV1::IpRange>]
+        attr_accessor :source_ip_ranges
+      
+        # A list of source ports to which the external access rule applies. This field
+        # is only applicable for the UDP or TCP protocol. Each entry must be either an
+        # integer or a range. For example: `["22"]`, `["80","443"]`, or `["12345-12349"]`
+        # . To match all source ports, specify `["0-65535"]`.
+        # Corresponds to the JSON property `sourcePorts`
+        # @return [Array<String>]
+        attr_accessor :source_ports
+      
+        # Output only. The state of the resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. System-generated unique identifier for the resource.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Last update time of this resource.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @destination_ip_ranges = args[:destination_ip_ranges] if args.key?(:destination_ip_ranges)
+          @destination_ports = args[:destination_ports] if args.key?(:destination_ports)
+          @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
+          @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
+          @source_ip_ranges = args[:source_ip_ranges] if args.key?(:source_ip_ranges)
+          @source_ports = args[:source_ports] if args.key?(:source_ports)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents an allocated external IP address and its corresponding internal IP
+      # address in a private cloud.
+      class ExternalAddress
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Creation time of this resource.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # User-provided description for this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The external IP address of a workload VM.
+        # Corresponds to the JSON property `externalIp`
+        # @return [String]
+        attr_accessor :external_ip
+      
+        # The internal IP address of a workload VM.
+        # Corresponds to the JSON property `internalIp`
+        # @return [String]
+        attr_accessor :internal_ip
+      
+        # Output only. The resource name of this external IP address. Resource names are
+        # schemeless URIs that follow the conventions in https://cloud.google.com/apis/
+        # design/resource_names. For example: `projects/my-project/locations/us-central1-
+        # a/privateClouds/my-cloud/externalAddresses/my-address`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. System-generated unique identifier for the resource.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Last update time of this resource.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @external_ip = args[:external_ip] if args.key?(:external_ip)
+          @internal_ip = args[:internal_ip] if args.key?(:internal_ip)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for VmwareEngine.FetchNetworkPolicyExternalAddresses
+      class FetchNetworkPolicyExternalAddressesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of external IP addresses assigned to VMware workload VMs within the
+        # scope of the given network policy.
+        # Corresponds to the JSON property `externalAddresses`
+        # @return [Array<Google::Apis::VmwareengineV1::ExternalAddress>]
+        attr_accessor :external_addresses
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_addresses = args[:external_addresses] if args.key?(:external_addresses)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # A forwarding rule is a mapping of a `domain` to `name_servers`. This mapping
+      # allows VMware Engine to resolve domains for attached private clouds by
+      # forwarding DNS requests for a given domain to the specified nameservers.
+      class ForwardingRule
+        include Google::Apis::Core::Hashable
+      
+        # Required. Domain used to resolve a `name_servers` list.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Required. List of DNS servers to use for domain resolution
+        # Corresponds to the JSON property `nameServers`
+        # @return [Array<String>]
+        attr_accessor :name_servers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @name_servers = args[:name_servers] if args.key?(:name_servers)
+        end
+      end
+      
+      # Request message for VmwareEngine.GrantDnsBindPermission
+      class GrantDnsBindPermissionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Users/Service accounts which have access for DNS binding on the intranet VPC
+        # corresponding to the consumer project.
+        # Corresponds to the JSON property `principal`
+        # @return [Google::Apis::VmwareengineV1::Principal]
+        attr_accessor :principal
+      
+        # Optional. A request ID to identify requests. Specify a unique request ID so
+        # that if you must retry your request, the server will know to ignore the
+        # request if it has already been completed. The server guarantees that a request
+        # doesn't result in creation of duplicate commitments for at least 60 minutes.
+        # For example, consider a situation where you make an initial request and the
+        # request times out. If you make the request again with the same request ID, the
+        # server can check if original operation with the same request ID was received,
+        # and if so, will ignore the second request. This prevents clients from
+        # accidentally creating duplicate commitments. The request ID must be a valid
+        # UUID with the exception that zero UUID is not supported (00000000-0000-0000-
+        # 0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principal = args[:principal] if args.key?(:principal)
+          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       
@@ -412,6 +764,42 @@ module Google
         end
       end
       
+      # An IP range provided in any one of the supported formats.
+      class IpRange
+        include Google::Apis::Core::Hashable
+      
+        # The name of an `ExternalAddress` resource. The external address must have been
+        # reserved in the scope of this external access rule's parent network policy.
+        # Provide the external address name in the form of `projects/`project`/locations/
+        # `location`/privateClouds/`private_cloud`/externalAddresses/`external_address``.
+        # For example: `projects/my-project/locations/us-central1-a/privateClouds/my-
+        # cloud/externalAddresses/my-address`.
+        # Corresponds to the JSON property `externalAddress`
+        # @return [String]
+        attr_accessor :external_address
+      
+        # A single IP address. For example: `10.0.0.5`.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # An IP address range in the CIDR format. For example: `10.0.0.0/24`.
+        # Corresponds to the JSON property `ipAddressRange`
+        # @return [String]
+        attr_accessor :ip_address_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_address = args[:external_address] if args.key?(:external_address)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ip_address_range = args[:ip_address_range] if args.key?(:ip_address_range)
+        end
+      end
+      
       # Response message for VmwareEngine.ListClusters
       class ListClustersResponse
         include Google::Apis::Core::Hashable
@@ -440,6 +828,72 @@ module Google
         # Update properties of this object
         def update!(**args)
           @clusters = args[:clusters] if args.key?(:clusters)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for VmwareEngine.ListExternalAccessRules
+      class ListExternalAccessRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of external access firewall rules.
+        # Corresponds to the JSON property `externalAccessRules`
+        # @return [Array<Google::Apis::VmwareengineV1::ExternalAccessRule>]
+        attr_accessor :external_access_rules
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached when making an aggregated query using
+        # wildcards.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_access_rules = args[:external_access_rules] if args.key?(:external_access_rules)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for VmwareEngine.ListExternalAddresses
+      class ListExternalAddressesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of external IP addresses.
+        # Corresponds to the JSON property `externalAddresses`
+        # @return [Array<Google::Apis::VmwareengineV1::ExternalAddress>]
+        attr_accessor :external_addresses
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached when making an aggregated query using
+        # wildcards.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_addresses = args[:external_addresses] if args.key?(:external_addresses)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
@@ -500,6 +954,104 @@ module Google
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for VmwareEngine.ListLoggingServers
+      class ListLoggingServersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of Logging Servers.
+        # Corresponds to the JSON property `loggingServers`
+        # @return [Array<Google::Apis::VmwareengineV1::LoggingServer>]
+        attr_accessor :logging_servers
+      
+        # A token, which can be send as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached when making an aggregated query using
+        # wildcards.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @logging_servers = args[:logging_servers] if args.key?(:logging_servers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for VmwareEngine.ListManagementDnsZoneBindings
+      class ListManagementDnsZoneBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of management DNS zone bindings.
+        # Corresponds to the JSON property `managementDnsZoneBindings`
+        # @return [Array<Google::Apis::VmwareengineV1::ManagementDnsZoneBinding>]
+        attr_accessor :management_dns_zone_bindings
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached when making an aggregated query using
+        # wildcards.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @management_dns_zone_bindings = args[:management_dns_zone_bindings] if args.key?(:management_dns_zone_bindings)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for VmwareEngine.ListNetworkPeerings
+      class ListNetworkPeeringsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of network peerings.
+        # Corresponds to the JSON property `networkPeerings`
+        # @return [Array<Google::Apis::VmwareengineV1::NetworkPeering>]
+        attr_accessor :network_peerings
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unreachable resources.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_peerings = args[:network_peerings] if args.key?(:network_peerings)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -569,6 +1121,32 @@ module Google
         end
       end
       
+      # Response message for VmwareEngine.ListNodes
+      class ListNodesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The nodes.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<Google::Apis::VmwareengineV1::Node>]
+        attr_accessor :nodes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @nodes = args[:nodes] if args.key?(:nodes)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -591,6 +1169,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Response message for VmwareEngine.ListPeeringRoutes
+      class ListPeeringRoutesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of peering routes.
+        # Corresponds to the JSON property `peeringRoutes`
+        # @return [Array<Google::Apis::VmwareengineV1::PeeringRoute>]
+        attr_accessor :peering_routes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @peering_routes = args[:peering_routes] if args.key?(:peering_routes)
         end
       end
       
@@ -797,6 +1401,93 @@ module Google
         end
       end
       
+      # VmwareEngine specific metadata for the given google.cloud.location.Location.
+      # It is returned as a content of the `google.cloud.location.Location.metadata`
+      # field.
+      class LocationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Capabilities of this location.
+        # Corresponds to the JSON property `capabilities`
+        # @return [Array<String>]
+        attr_accessor :capabilities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capabilities = args[:capabilities] if args.key?(:capabilities)
+        end
+      end
+      
+      # Logging server to receive vCenter or ESXi logs.
+      class LoggingServer
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Creation time of this resource.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Fully-qualified domain name (FQDN) or IP Address of the logging
+        # server.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Output only. The resource name of this logging server. Resource names are
+        # schemeless URIs that follow the conventions in https://cloud.google.com/apis/
+        # design/resource_names. For example: `projects/my-project/locations/us-central1-
+        # a/privateClouds/my-cloud/loggingServers/my-logging-server`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Port number at which the logging server receives logs.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Required. Protocol used by vCenter to send logs to a logging server.
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
+        # Required. The type of component that produces logs that will be forwarded to
+        # this logging server.
+        # Corresponds to the JSON property `sourceType`
+        # @return [String]
+        attr_accessor :source_type
+      
+        # Output only. System-generated unique identifier for the resource.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Last update time of this resource.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @name = args[:name] if args.key?(:name)
+          @port = args[:port] if args.key?(:port)
+          @protocol = args[:protocol] if args.key?(:protocol)
+          @source_type = args[:source_type] if args.key?(:source_type)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Management cluster configuration.
       class ManagementCluster
         include Google::Apis::Core::Hashable
@@ -816,6 +1507,11 @@ module Google
         # @return [Hash<String,Google::Apis::VmwareengineV1::NodeTypeConfig>]
         attr_accessor :node_type_configs
       
+        # Configuration of a stretched cluster.
+        # Corresponds to the JSON property `stretchedClusterConfig`
+        # @return [Google::Apis::VmwareengineV1::StretchedClusterConfig]
+        attr_accessor :stretched_cluster_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -824,6 +1520,81 @@ module Google
         def update!(**args)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @node_type_configs = args[:node_type_configs] if args.key?(:node_type_configs)
+          @stretched_cluster_config = args[:stretched_cluster_config] if args.key?(:stretched_cluster_config)
+        end
+      end
+      
+      # Represents a binding between a network and the management DNS zone. A
+      # management DNS zone is the Cloud DNS cross-project binding zone that VMware
+      # Engine creates for each private cloud. It contains FQDNs and corresponding IP
+      # addresses for the private cloud's ESXi hosts and management VM appliances like
+      # vCenter and NSX Manager.
+      class ManagementDnsZoneBinding
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Creation time of this resource.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # User-provided description for this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The resource name of this binding. Resource names are schemeless
+        # URIs that follow the conventions in https://cloud.google.com/apis/design/
+        # resource_names. For example: `projects/my-project/locations/us-central1-a/
+        # privateClouds/my-cloud/managementDnsZoneBindings/my-management-dns-zone-
+        # binding`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. System-generated unique identifier for the resource.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Last update time of this resource.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Network to bind is a VMware Engine network. Specify the name in the following
+        # form for VMware engine network: `projects/`project`/locations/global/
+        # vmwareEngineNetworks/`vmware_engine_network_id``. ``project`` can either be a
+        # project number or a project ID.
+        # Corresponds to the JSON property `vmwareEngineNetwork`
+        # @return [String]
+        attr_accessor :vmware_engine_network
+      
+        # Network to bind is a standard consumer VPC. Specify the name in the following
+        # form for consumer VPC network: `projects/`project`/global/networks/`network_id`
+        # `. ``project`` can either be a project number or a project ID.
+        # Corresponds to the JSON property `vpcNetwork`
+        # @return [String]
+        attr_accessor :vpc_network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @vmware_engine_network = args[:vmware_engine_network] if args.key?(:vmware_engine_network)
+          @vpc_network = args[:vpc_network] if args.key?(:vpc_network)
         end
       end
       
@@ -831,6 +1602,13 @@ module Google
       # done.
       class NetworkConfig
         include Google::Apis::Core::Hashable
+      
+        # Output only. DNS Server IP of the Private Cloud. All DNS queries can be
+        # forwarded to this address for name resolution of Private Cloud's management
+        # entities like vCenter, NSX-T Manager and ESXi hosts.
+        # Corresponds to the JSON property `dnsServerIp`
+        # @return [String]
+        attr_accessor :dns_server_ip
       
         # Required. Management CIDR used by VMware management appliances.
         # Corresponds to the JSON property `managementCidr`
@@ -869,10 +1647,153 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dns_server_ip = args[:dns_server_ip] if args.key?(:dns_server_ip)
           @management_cidr = args[:management_cidr] if args.key?(:management_cidr)
           @management_ip_address_layout_version = args[:management_ip_address_layout_version] if args.key?(:management_ip_address_layout_version)
           @vmware_engine_network = args[:vmware_engine_network] if args.key?(:vmware_engine_network)
           @vmware_engine_network_canonical = args[:vmware_engine_network_canonical] if args.key?(:vmware_engine_network_canonical)
+        end
+      end
+      
+      # Details of a network peering.
+      class NetworkPeering
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Creation time of this resource.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. User-provided description for this network peering.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. True if full mesh connectivity is created and managed automatically
+        # between peered networks; false otherwise. Currently this field is always true
+        # because Google Compute Engine automatically creates and manages subnetwork
+        # routes between two VPC networks when peering state is 'ACTIVE'.
+        # Corresponds to the JSON property `exchangeSubnetRoutes`
+        # @return [Boolean]
+        attr_accessor :exchange_subnet_routes
+        alias_method :exchange_subnet_routes?, :exchange_subnet_routes
+      
+        # Optional. True if custom routes are exported to the peered network; false
+        # otherwise. The default value is true.
+        # Corresponds to the JSON property `exportCustomRoutes`
+        # @return [Boolean]
+        attr_accessor :export_custom_routes
+        alias_method :export_custom_routes?, :export_custom_routes
+      
+        # Optional. True if all subnet routes with a public IP address range are
+        # exported; false otherwise. The default value is true. IPv4 special-use ranges (
+        # https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to
+        # peers and are not controlled by this field.
+        # Corresponds to the JSON property `exportCustomRoutesWithPublicIp`
+        # @return [Boolean]
+        attr_accessor :export_custom_routes_with_public_ip
+        alias_method :export_custom_routes_with_public_ip?, :export_custom_routes_with_public_ip
+      
+        # Optional. True if custom routes are imported from the peered network; false
+        # otherwise. The default value is true.
+        # Corresponds to the JSON property `importCustomRoutes`
+        # @return [Boolean]
+        attr_accessor :import_custom_routes
+        alias_method :import_custom_routes?, :import_custom_routes
+      
+        # Optional. True if all subnet routes with public IP address range are imported;
+        # false otherwise. The default value is true. IPv4 special-use ranges (https://
+        # en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported to peers and
+        # are not controlled by this field.
+        # Corresponds to the JSON property `importCustomRoutesWithPublicIp`
+        # @return [Boolean]
+        attr_accessor :import_custom_routes_with_public_ip
+        alias_method :import_custom_routes_with_public_ip?, :import_custom_routes_with_public_ip
+      
+        # Output only. The resource name of the network peering. Resource names are
+        # scheme-less URIs that follow the conventions in https://cloud.google.com/apis/
+        # design/resource_names. For example: `projects/my-project/locations/global/
+        # networkPeerings/my-peering`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Maximum transmission unit (MTU) in bytes. The default value is `1500`
+        # . If a value of `0` is provided for this field, VMware Engine uses the default
+        # value instead.
+        # Corresponds to the JSON property `peerMtu`
+        # @return [Fixnum]
+        attr_accessor :peer_mtu
+      
+        # Required. The relative resource name of the network to peer with a standard
+        # VMware Engine network. The provided network can be a consumer VPC network or
+        # another standard VMware Engine network. If the `peer_network_type` is
+        # VMWARE_ENGINE_NETWORK, specify the name in the form: `projects/`project`/
+        # locations/global/vmwareEngineNetworks/`vmware_engine_network_id``. Otherwise
+        # specify the name in the form: `projects/`project`/global/networks/`network_id``
+        # , where ``project`` can either be a project number or a project ID.
+        # Corresponds to the JSON property `peerNetwork`
+        # @return [String]
+        attr_accessor :peer_network
+      
+        # Required. The type of the network to peer with the VMware Engine network.
+        # Corresponds to the JSON property `peerNetworkType`
+        # @return [String]
+        attr_accessor :peer_network_type
+      
+        # Output only. State of the network peering. This field has a value of 'ACTIVE'
+        # when there's a matching configuration in the peer network. New values may be
+        # added to this enum when appropriate.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Output Only. Details about the current state of the network
+        # peering.
+        # Corresponds to the JSON property `stateDetails`
+        # @return [String]
+        attr_accessor :state_details
+      
+        # Output only. System-generated unique identifier for the resource.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Last update time of this resource.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Required. The relative resource name of the VMware Engine network. Specify the
+        # name in the following form: `projects/`project`/locations/`location`/
+        # vmwareEngineNetworks/`vmware_engine_network_id`` where ``project`` can either
+        # be a project number or a project ID.
+        # Corresponds to the JSON property `vmwareEngineNetwork`
+        # @return [String]
+        attr_accessor :vmware_engine_network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @exchange_subnet_routes = args[:exchange_subnet_routes] if args.key?(:exchange_subnet_routes)
+          @export_custom_routes = args[:export_custom_routes] if args.key?(:export_custom_routes)
+          @export_custom_routes_with_public_ip = args[:export_custom_routes_with_public_ip] if args.key?(:export_custom_routes_with_public_ip)
+          @import_custom_routes = args[:import_custom_routes] if args.key?(:import_custom_routes)
+          @import_custom_routes_with_public_ip = args[:import_custom_routes_with_public_ip] if args.key?(:import_custom_routes_with_public_ip)
+          @name = args[:name] if args.key?(:name)
+          @peer_mtu = args[:peer_mtu] if args.key?(:peer_mtu)
+          @peer_network = args[:peer_network] if args.key?(:peer_network)
+          @peer_network_type = args[:peer_network_type] if args.key?(:peer_network_type)
+          @state = args[:state] if args.key?(:state)
+          @state_details = args[:state_details] if args.key?(:state_details)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @vmware_engine_network = args[:vmware_engine_network] if args.key?(:vmware_engine_network)
         end
       end
       
@@ -1003,6 +1924,66 @@ module Google
         end
       end
       
+      # Node in a cluster.
+      class Node
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Customized number of cores
+        # Corresponds to the JSON property `customCoreCount`
+        # @return [Fixnum]
+        attr_accessor :custom_core_count
+      
+        # Output only. Fully qualified domain name of the node.
+        # Corresponds to the JSON property `fqdn`
+        # @return [String]
+        attr_accessor :fqdn
+      
+        # Output only. Internal IP address of the node.
+        # Corresponds to the JSON property `internalIp`
+        # @return [String]
+        attr_accessor :internal_ip
+      
+        # Output only. The resource name of this node. Resource names are schemeless
+        # URIs that follow the conventions in https://cloud.google.com/apis/design/
+        # resource_names. For example: projects/my-project/locations/us-central1-a/
+        # privateClouds/my-cloud/clusters/my-cluster/nodes/my-node
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The canonical identifier of the node type (corresponds to the `
+        # NodeType`). For example: standard-72.
+        # Corresponds to the JSON property `nodeTypeId`
+        # @return [String]
+        attr_accessor :node_type_id
+      
+        # Output only. The state of the appliance.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The version number of the VMware ESXi management component in
+        # this cluster.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_core_count = args[:custom_core_count] if args.key?(:custom_core_count)
+          @fqdn = args[:fqdn] if args.key?(:fqdn)
+          @internal_ip = args[:internal_ip] if args.key?(:internal_ip)
+          @name = args[:name] if args.key?(:name)
+          @node_type_id = args[:node_type_id] if args.key?(:node_type_id)
+          @state = args[:state] if args.key?(:state)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Describes node type.
       class NodeType
         include Google::Apis::Core::Hashable
@@ -1011,6 +1992,11 @@ module Google
         # Corresponds to the JSON property `availableCustomCoreCounts`
         # @return [Array<Fixnum>]
         attr_accessor :available_custom_core_counts
+      
+        # Output only. Capabilities of this node type.
+        # Corresponds to the JSON property `capabilities`
+        # @return [Array<String>]
+        attr_accessor :capabilities
       
         # Output only. The amount of storage available, defined in GB.
         # Corresponds to the JSON property `diskSizeGb`
@@ -1059,6 +2045,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @available_custom_core_counts = args[:available_custom_core_counts] if args.key?(:available_custom_core_counts)
+          @capabilities = args[:capabilities] if args.key?(:capabilities)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @display_name = args[:display_name] if args.key?(:display_name)
           @memory_gb = args[:memory_gb] if args.key?(:memory_gb)
@@ -1407,6 +2394,32 @@ module Google
         end
       end
       
+      # Users/Service accounts which have access for DNS binding on the intranet VPC
+      # corresponding to the consumer project.
+      class Principal
+        include Google::Apis::Core::Hashable
+      
+        # The service account which needs to be granted the permission.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # The user who needs to be granted permission.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
       # Represents a private cloud resource. Private clouds of type `STANDARD` and `
       # TIME_LIMITED` are zonal resources, `STRETCHED` private clouds are regional.
       class PrivateCloud
@@ -1625,6 +2638,35 @@ module Google
         end
       end
       
+      # Request message for VmwareEngine.RepairManagementDnsZoneBindings
+      class RepairManagementDnsZoneBindingRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A request ID to identify requests. Specify a unique request ID so
+        # that if you must retry your request, the server will know to ignore the
+        # request if it has already been completed. The server guarantees that a request
+        # doesn't result in creation of duplicate commitments for at least 60 minutes.
+        # For example, consider a situation where you make an initial request and the
+        # request times out. If you make the request again with the same request ID, the
+        # server can check if the original operation with the same request ID was
+        # received, and if so, will ignore the second request. This prevents clients
+        # from accidentally creating duplicate commitments. The request ID must be a
+        # valid UUID with the exception that zero UUID is not supported (00000000-0000-
+        # 0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
       # Request message for VmwareEngine.ResetNsxCredentials
       class ResetNsxCredentialsRequest
         include Google::Apis::Core::Hashable
@@ -1673,12 +2715,58 @@ module Google
         # @return [String]
         attr_accessor :request_id
       
+        # Optional. The username of the user to be to reset the credentials. The default
+        # value of this field is CloudOwner@gve.local. The provided value should be one
+        # of the following: solution-user-01@gve.local, solution-user-02@gve.local,
+        # solution-user-03@gve.local, solution-user-04@gve.local, solution-user-05@gve.
+        # local, zertoadmin@gve.local.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Request message for VmwareEngine.RevokeDnsBindPermission
+      class RevokeDnsBindPermissionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Users/Service accounts which have access for DNS binding on the intranet VPC
+        # corresponding to the consumer project.
+        # Corresponds to the JSON property `principal`
+        # @return [Google::Apis::VmwareengineV1::Principal]
+        attr_accessor :principal
+      
+        # Optional. A request ID to identify requests. Specify a unique request ID so
+        # that if you must retry your request, the server will know to ignore the
+        # request if it has already been completed. The server guarantees that a request
+        # doesn't result in creation of duplicate commitments for at least 60 minutes.
+        # For example, consider a situation where you make an initial request and the
+        # request times out. If you make the request again with the same request ID, the
+        # server can check if original operation with the same request ID was received,
+        # and if so, will ignore the second request. This prevents clients from
+        # accidentally creating duplicate commitments. The request ID must be a valid
+        # UUID with the exception that zero UUID is not supported (00000000-0000-0000-
+        # 0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principal = args[:principal] if args.key?(:principal)
           @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
@@ -1775,6 +2863,37 @@ module Google
         end
       end
       
+      # Configuration of a stretched cluster.
+      class StretchedClusterConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Zone that will remain operational when connection between the two
+        # zones is lost. Specify the resource name of a zone that belongs to the region
+        # of the private cloud. For example: `projects/`project`/locations/europe-west3-
+        # a` where ``project`` can either be a project number or a project ID.
+        # Corresponds to the JSON property `preferredLocation`
+        # @return [String]
+        attr_accessor :preferred_location
+      
+        # Required. Additional zone for a higher level of availability and load
+        # balancing. Specify the resource name of a zone that belongs to the region of
+        # the private cloud. For example: `projects/`project`/locations/europe-west3-b`
+        # where ``project`` can either be a project number or a project ID.
+        # Corresponds to the JSON property `secondaryLocation`
+        # @return [String]
+        attr_accessor :secondary_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @preferred_location = args[:preferred_location] if args.key?(:preferred_location)
+          @secondary_location = args[:secondary_location] if args.key?(:secondary_location)
+        end
+      end
+      
       # Subnet in a private cloud. Either `management` subnets (such as vMotion) that
       # are read-only, or `userDefined`, which can also be updated.
       class Subnet
@@ -1809,6 +2928,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # Output only. VLAN ID of the VLAN on which the subnet is configured
+        # Corresponds to the JSON property `vlanId`
+        # @return [Fixnum]
+        attr_accessor :vlan_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1820,6 +2944,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
+          @vlan_id = args[:vlan_id] if args.key?(:vlan_id)
         end
       end
       

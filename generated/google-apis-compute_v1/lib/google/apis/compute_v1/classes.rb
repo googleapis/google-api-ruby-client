@@ -28243,6 +28243,11 @@ module Google
       class PublicAdvertisedPrefix
         include Google::Apis::Core::Hashable
       
+        # [Output Only] The version of BYOIP API.
+        # Corresponds to the JSON property `byoipApiVersion`
+        # @return [String]
+        attr_accessor :byoip_api_version
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -28298,6 +28303,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Specifies how child public delegated prefix will be scoped. It could be one of
+        # following values: - `REGIONAL`: The public delegated prefix is regional only.
+        # The provisioning will take a few minutes. - `GLOBAL`: The public delegated
+        # prefix is global only. The provisioning will take ~4 weeks. - `
+        # GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1
+        # legacy prefix. This is output only value and no longer supported in BYOIP V2.
+        # Corresponds to the JSON property `pdpScope`
+        # @return [String]
+        attr_accessor :pdp_scope
+      
         # [Output Only] The list of public delegated prefixes that exist for this public
         # advertised prefix.
         # Corresponds to the JSON property `publicDelegatedPrefixs`
@@ -28331,6 +28346,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @byoip_api_version = args[:byoip_api_version] if args.key?(:byoip_api_version)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @dns_verification_ip = args[:dns_verification_ip] if args.key?(:dns_verification_ip)
@@ -28339,6 +28355,7 @@ module Google
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @pdp_scope = args[:pdp_scope] if args.key?(:pdp_scope)
           @public_delegated_prefixs = args[:public_delegated_prefixs] if args.key?(:public_delegated_prefixs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @shared_secret = args[:shared_secret] if args.key?(:shared_secret)
@@ -28518,6 +28535,11 @@ module Google
       class PublicDelegatedPrefix
         include Google::Apis::Core::Hashable
       
+        # [Output Only] The version of BYOIP API.
+        # Corresponds to the JSON property `byoipApiVersion`
+        # @return [String]
+        attr_accessor :byoip_api_version
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -28615,6 +28637,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @byoip_api_version = args[:byoip_api_version] if args.key?(:byoip_api_version)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
@@ -37187,6 +37210,11 @@ module Google
         # @return [Google::Apis::ComputeV1::CustomerEncryptionKey]
         attr_accessor :source_disk_encryption_key
       
+        # The source disk whose recovery checkpoint will be used to create this snapshot.
+        # Corresponds to the JSON property `sourceDiskForRecoveryCheckpoint`
+        # @return [String]
+        attr_accessor :source_disk_for_recovery_checkpoint
+      
         # [Output Only] The ID value of the disk used to create this snapshot. This
         # value may be used to determine whether the snapshot was taken from the current
         # or a previous instance of a given disk name.
@@ -37258,6 +37286,7 @@ module Google
           @snapshot_type = args[:snapshot_type] if args.key?(:snapshot_type)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
           @source_disk_encryption_key = args[:source_disk_encryption_key] if args.key?(:source_disk_encryption_key)
+          @source_disk_for_recovery_checkpoint = args[:source_disk_for_recovery_checkpoint] if args.key?(:source_disk_for_recovery_checkpoint)
           @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
           @source_snapshot_schedule_policy = args[:source_snapshot_schedule_policy] if args.key?(:source_snapshot_schedule_policy)
           @source_snapshot_schedule_policy_id = args[:source_snapshot_schedule_policy_id] if args.key?(:source_snapshot_schedule_policy_id)
@@ -37382,6 +37411,71 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class SnapshotSettings
+        include Google::Apis::Core::Hashable
+      
+        # Policy of which storage location is going to be resolved, and additional data
+        # that particularizes how the policy is going to be carried out.
+        # Corresponds to the JSON property `storageLocation`
+        # @return [Google::Apis::ComputeV1::SnapshotSettingsStorageLocationSettings]
+        attr_accessor :storage_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @storage_location = args[:storage_location] if args.key?(:storage_location)
+        end
+      end
+      
+      # 
+      class SnapshotSettingsStorageLocationSettings
+        include Google::Apis::Core::Hashable
+      
+        # When the policy is SPECIFIC_LOCATIONS, snapshots will be stored in the
+        # locations listed in this field. Keys are GCS bucket locations.
+        # Corresponds to the JSON property `locations`
+        # @return [Hash<String,Google::Apis::ComputeV1::SnapshotSettingsStorageLocationSettingsStorageLocationPreference>]
+        attr_accessor :locations
+      
+        # The chosen location policy.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # A structure for specifying storage locations.
+      class SnapshotSettingsStorageLocationSettingsStorageLocationPreference
+        include Google::Apis::Core::Hashable
+      
+        # Name of the location. It should be one of the GCS buckets.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

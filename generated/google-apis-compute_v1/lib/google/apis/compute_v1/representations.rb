@@ -4888,6 +4888,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SnapshotSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotSettingsStorageLocationSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotSettingsStorageLocationSettingsStorageLocationPreference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SourceDiskEncryptionKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -12915,6 +12933,7 @@ module Google
       class PublicAdvertisedPrefix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :byoip_api_version, as: 'byoipApiVersion'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :dns_verification_ip, as: 'dnsVerificationIp'
@@ -12923,6 +12942,7 @@ module Google
           property :ip_cidr_range, as: 'ipCidrRange'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :pdp_scope, as: 'pdpScope'
           collection :public_delegated_prefixs, as: 'publicDelegatedPrefixs', class: Google::Apis::ComputeV1::PublicAdvertisedPrefixPublicDelegatedPrefix, decorator: Google::Apis::ComputeV1::PublicAdvertisedPrefixPublicDelegatedPrefix::Representation
       
           property :self_link, as: 'selfLink'
@@ -12977,6 +12997,7 @@ module Google
       class PublicDelegatedPrefix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :byoip_api_version, as: 'byoipApiVersion'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -15199,6 +15220,7 @@ module Google
           property :source_disk, as: 'sourceDisk'
           property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
+          property :source_disk_for_recovery_checkpoint, as: 'sourceDiskForRecoveryCheckpoint'
           property :source_disk_id, as: 'sourceDiskId'
           property :source_snapshot_schedule_policy, as: 'sourceSnapshotSchedulePolicy'
           property :source_snapshot_schedule_policy_id, as: 'sourceSnapshotSchedulePolicyId'
@@ -15238,6 +15260,30 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SnapshotSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :storage_location, as: 'storageLocation', class: Google::Apis::ComputeV1::SnapshotSettingsStorageLocationSettings, decorator: Google::Apis::ComputeV1::SnapshotSettingsStorageLocationSettings::Representation
+      
+        end
+      end
+      
+      class SnapshotSettingsStorageLocationSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :locations, as: 'locations', class: Google::Apis::ComputeV1::SnapshotSettingsStorageLocationSettingsStorageLocationPreference, decorator: Google::Apis::ComputeV1::SnapshotSettingsStorageLocationSettingsStorageLocationPreference::Representation
+      
+          property :policy, as: 'policy'
+        end
+      end
+      
+      class SnapshotSettingsStorageLocationSettingsStorageLocationPreference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       

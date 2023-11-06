@@ -11642,6 +11642,37 @@ module Google
         end
       end
       
+      # A customer-managed encryption key specification that can be applied to all
+      # created resources (e.g. Conversation).
+      class GoogleCloudDialogflowV2EncryptionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of customer-managed encryption key that is used to secure a
+        # resource and its sub-resources. If empty, the resource is secured by the
+        # default Google encryption key. Only the key in the same location as this
+        # resource is allowed to be used for encryption. Format: `projects/`project`/
+        # locations/`location`/keyRings/`keyRing`/cryptoKeys/`key``
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Immutable. The resource name of the encryption key specification resource.
+        # Format: projects/`project`/locations/`location`/encryptionSpec
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Each intent parameter has a type, called the entity type, which dictates
       # exactly how data from an end-user expression is extracted. Dialogflow provides
       # predefined system entities that can match many common types of data. For
@@ -12013,6 +12044,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Metadata for initializing a location-level encryption specification.
+      class GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The request to initialize a location-level encryption specification.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2InitializeEncryptionSpecRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request to initialize a location-level encryption specification.
+      class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest
+        include Google::Apis::Core::Hashable
+      
+        # A customer-managed encryption key specification that can be applied to all
+        # created resources (e.g. Conversation).
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2EncryptionSpec]
+        attr_accessor :encryption_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
         end
       end
       
@@ -14418,6 +14488,37 @@ module Google
         end
       end
       
+      # A customer-managed encryption key specification that can be applied to all
+      # created resources (e.g. Conversation).
+      class GoogleCloudDialogflowV2beta1EncryptionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of customer-managed encryption key that is used to secure a
+        # resource and its sub-resources. If empty, the resource is secured by the
+        # default Google encryption key. Only the key in the same location as this
+        # resource is allowed to be used for encryption. Format: `projects/`project`/
+        # locations/`location`/keyRings/`keyRing`/cryptoKeys/`key``
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Immutable. The resource name of the encryption key specification resource.
+        # Format: projects/`project`/locations/`location`/encryptionSpec
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Each intent parameter has a type, called the entity type, which dictates
       # exactly how data from an end-user expression is extracted. Dialogflow provides
       # predefined system entities that can match many common types of data. For
@@ -14733,6 +14834,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Metadata for initializing a location-level encryption specification.
+      class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The request to initialize a location-level encryption specification.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request to initialize a location-level encryption specification.
+      class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest
+        include Google::Apis::Core::Hashable
+      
+        # A customer-managed encryption key specification that can be applied to all
+        # created resources (e.g. Conversation).
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
         end
       end
       

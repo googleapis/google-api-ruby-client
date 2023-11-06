@@ -637,6 +637,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Demotes an existing standalone instance to be a Cloud SQL read replica for an
+        # external database server.
+        # @param [String] project
+        #   Required. The project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Required. The name of the Cloud SQL instance.
+        # @param [Google::Apis::SqladminV1beta4::InstancesDemoteRequest] instances_demote_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def demote_instance(project, instance, instances_demote_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/demote', options)
+          command.request_representation = Google::Apis::SqladminV1beta4::InstancesDemoteRequest::Representation
+          command.request_object = instances_demote_request_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Demotes the stand-alone instance to be a Cloud SQL read replica for an
         # external database server.
         # @param [String] project

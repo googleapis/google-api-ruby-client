@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListReservationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListRuntimeVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Reservation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResetQueuedResourceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -310,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Standard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartNodeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +365,12 @@ module Google
       end
       
       class Tpu
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Usage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -565,6 +589,15 @@ module Google
         end
       end
       
+      class ListReservationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :reservations, as: 'reservations', class: Google::Apis::TpuV2alpha1::Reservation, decorator: Google::Apis::TpuV2alpha1::Reservation::Representation
+      
+        end
+      end
+      
       class ListRuntimeVersionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -702,6 +735,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :best_effort, as: 'bestEffort', class: Google::Apis::TpuV2alpha1::BestEffort, decorator: Google::Apis::TpuV2alpha1::BestEffort::Representation
       
+          property :create_time, as: 'createTime'
           property :guaranteed, as: 'guaranteed', class: Google::Apis::TpuV2alpha1::Guaranteed, decorator: Google::Apis::TpuV2alpha1::Guaranteed::Representation
       
           property :name, as: 'name'
@@ -750,6 +784,15 @@ module Google
       
           property :valid_until_duration, as: 'validUntilDuration'
           property :valid_until_time, as: 'validUntilTime'
+        end
+      end
+      
+      class Reservation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :standard, as: 'standard', class: Google::Apis::TpuV2alpha1::Standard, decorator: Google::Apis::TpuV2alpha1::Standard::Representation
+      
         end
       end
       
@@ -810,6 +853,19 @@ module Google
         end
       end
       
+      class Standard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_units, as: 'capacityUnits'
+          property :interval, as: 'interval', class: Google::Apis::TpuV2alpha1::Interval, decorator: Google::Apis::TpuV2alpha1::Interval::Representation
+      
+          property :resource_type, as: 'resourceType'
+          property :size, as: 'size'
+          property :usage, as: 'usage', class: Google::Apis::TpuV2alpha1::Usage, decorator: Google::Apis::TpuV2alpha1::Usage::Representation
+      
+        end
+      end
+      
       class StartNodeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -858,6 +914,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :node_spec, as: 'nodeSpec', class: Google::Apis::TpuV2alpha1::NodeSpec, decorator: Google::Apis::TpuV2alpha1::NodeSpec::Representation
       
+        end
+      end
+      
+      class Usage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :total, :numeric_string => true, as: 'total'
         end
       end
     end

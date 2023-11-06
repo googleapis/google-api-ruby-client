@@ -3707,23 +3707,23 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Specifies preference of traffic to the backend (from the proxy and from the
-        # client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send
-        # IPv4 traffic to the backends of the Backend Service (Instance Group, Managed
-        # Instance Group, Network Endpoint Group) regardless of traffic from the client
-        # to the proxy. Only IPv4 health-checks are used to check the health of the
-        # backends. This is the default setting. - PREFER_IPV6: Prioritize the
-        # connection to the endpoints IPv6 address over its IPv4 address (provided there
-        # is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the
-        # backends of the Backend Service (Instance Group, Managed Instance Group,
-        # Network Endpoint Group) regardless of traffic from the client to the proxy.
-        # Only IPv6 health-checks are used to check the health of the backends. This
-        # field is applicable to either: - Advanced Global External HTTPS Load Balancing
-        # (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load
-        # Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), -
-        # Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED)
-        # , - Traffic Director with Envoy proxies and proxyless gRPC (load balancing
-        # scheme INTERNAL_SELF_MANAGED).
+        # Specifies a preference for traffic sent from the proxy to the backend (or from
+        # the client to the backend for proxyless gRPC). The possible values are: -
+        # IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (
+        # Instance Group, Managed Instance Group, Network Endpoint Group), regardless of
+        # traffic from the client to the proxy. Only IPv4 health checks are used to
+        # check the health of the backends. This is the default setting. - PREFER_IPV6:
+        # Prioritize the connection to the endpoint's IPv6 address over its IPv4 address
+        # (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6
+        # traffic to the backends of the backend service (Instance Group, Managed
+        # Instance Group, Network Endpoint Group), regardless of traffic from the client
+        # to the proxy. Only IPv6 health checks are used to check the health of the
+        # backends. This field is applicable to either: - Advanced Global External HTTPS
+        # Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External
+        # HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme
+        # INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing
+        # scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless
+        # gRPC (load balancing scheme INTERNAL_SELF_MANAGED).
         # Corresponds to the JSON property `ipAddressSelectionPolicy`
         # @return [String]
         attr_accessor :ip_address_selection_policy
@@ -6026,6 +6026,15 @@ module Google
         # @return [String]
         attr_accessor :end_timestamp
       
+        # Specifies the already existing reservations to attach to the Commitment. This
+        # field is optional, and it can be a full or partial URL. For example, the
+        # following are valid URLs to an reservation: - https://www.googleapis.com/
+        # compute/v1/projects/project/zones/zone /reservations/reservation - projects/
+        # project/zones/zone/reservations/reservation
+        # Corresponds to the JSON property `existingReservations`
+        # @return [Array<String>]
+        attr_accessor :existing_reservations
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -6136,6 +6145,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @end_timestamp = args[:end_timestamp] if args.key?(:end_timestamp)
+          @existing_reservations = args[:existing_reservations] if args.key?(:existing_reservations)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @license_resource = args[:license_resource] if args.key?(:license_resource)
@@ -38996,6 +39006,12 @@ module Google
       class ResourceStatus
         include Google::Apis::Core::Hashable
       
+        # [Output Only] Contains last termination details why the instance was
+        # terminated.
+        # Corresponds to the JSON property `lastInstanceTerminationDetails`
+        # @return [Google::Apis::ComputeAlpha::ResourceStatusLastInstanceTerminationDetails]
+        attr_accessor :last_instance_termination_details
+      
         # [Output Only] An opaque ID of the host on which the VM is running.
         # Corresponds to the JSON property `physicalHost`
         # @return [String]
@@ -39018,9 +39034,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @last_instance_termination_details = args[:last_instance_termination_details] if args.key?(:last_instance_termination_details)
           @physical_host = args[:physical_host] if args.key?(:physical_host)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_integration_statuses = args[:service_integration_statuses] if args.key?(:service_integration_statuses)
+        end
+      end
+      
+      # 
+      class ResourceStatusLastInstanceTerminationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Reason for termination
+        # Corresponds to the JSON property `terminationReason`
+        # @return [String]
+        attr_accessor :termination_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @termination_reason = args[:termination_reason] if args.key?(:termination_reason)
         end
       end
       
@@ -39232,6 +39268,13 @@ module Google
         # @return [String]
         attr_accessor :next_hop_instance
       
+        # [Output only] Internal fixed region-to-region cost that Google Cloud
+        # calculates based on factors such as network performance, distance, and
+        # available bandwidth between regions.
+        # Corresponds to the JSON property `nextHopInterRegionCost`
+        # @return [Fixnum]
+        attr_accessor :next_hop_inter_region_cost
+      
         # [Output Only] The URL to an InterconnectAttachment which is the next hop for
         # the route. This field will only be populated for the dynamic routes generated
         # by Cloud Router with a linked interconnectAttachment.
@@ -39249,10 +39292,22 @@ module Google
         # @return [String]
         attr_accessor :next_hop_ip
       
+        # [Output Only] Multi-Exit Discriminator, a BGP route metric that indicates the
+        # desirability of a particular route in a network.
+        # Corresponds to the JSON property `nextHopMed`
+        # @return [Fixnum]
+        attr_accessor :next_hop_med
+      
         # The URL of the local network if it should handle matching packets.
         # Corresponds to the JSON property `nextHopNetwork`
         # @return [String]
         attr_accessor :next_hop_network
+      
+        # [Output Only] Indicates the origin of the route. Can be IGP (Interior Gateway
+        # Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+        # Corresponds to the JSON property `nextHopOrigin`
+        # @return [String]
+        attr_accessor :next_hop_origin
       
         # [Output Only] The network peering name that should handle matching packets,
         # which should conform to RFC1035.
@@ -39329,9 +39384,12 @@ module Google
           @next_hop_hub = args[:next_hop_hub] if args.key?(:next_hop_hub)
           @next_hop_ilb = args[:next_hop_ilb] if args.key?(:next_hop_ilb)
           @next_hop_instance = args[:next_hop_instance] if args.key?(:next_hop_instance)
+          @next_hop_inter_region_cost = args[:next_hop_inter_region_cost] if args.key?(:next_hop_inter_region_cost)
           @next_hop_interconnect_attachment = args[:next_hop_interconnect_attachment] if args.key?(:next_hop_interconnect_attachment)
           @next_hop_ip = args[:next_hop_ip] if args.key?(:next_hop_ip)
+          @next_hop_med = args[:next_hop_med] if args.key?(:next_hop_med)
           @next_hop_network = args[:next_hop_network] if args.key?(:next_hop_network)
+          @next_hop_origin = args[:next_hop_origin] if args.key?(:next_hop_origin)
           @next_hop_peering = args[:next_hop_peering] if args.key?(:next_hop_peering)
           @next_hop_vpn_tunnel = args[:next_hop_vpn_tunnel] if args.key?(:next_hop_vpn_tunnel)
           @priority = args[:priority] if args.key?(:priority)

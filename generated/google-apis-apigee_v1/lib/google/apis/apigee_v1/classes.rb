@@ -467,15 +467,56 @@ module Google
         end
       end
       
-      # The API category resource wrapped with response status, error_code, etc.
+      # `ApiCategory` represents an API category. [Catalog items](/apigee/docs/
+      # reference/apis/apigee/rest/v1/organizations.sites.apidocs) can be tagged with
+      # API categories; users viewing the API catalog in the portal will have the
+      # option to browse the catalog by category.
       class GoogleCloudApigeeV1ApiCategory
         include Google::Apis::Core::Hashable
       
-        # `ApiCategoryData` represents an API category. Catalog items can be tagged with
+        # ID of the category (a UUID).
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Name of the category.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Name of the portal.
+        # Corresponds to the JSON property `siteId`
+        # @return [String]
+        attr_accessor :site_id
+      
+        # Time the category was last modified in milliseconds since epoch.
+        # Corresponds to the JSON property `updateTime`
+        # @return [Fixnum]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @site_id = args[:site_id] if args.key?(:site_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The API category resource wrapped with response status, error_code, etc.
+      class GoogleCloudApigeeV1ApiCategoryResponse
+        include Google::Apis::Core::Hashable
+      
+        # `ApiCategory` represents an API category. [Catalog items](/apigee/docs/
+        # reference/apis/apigee/rest/v1/organizations.sites.apidocs) can be tagged with
         # API categories; users viewing the API catalog in the portal will have the
         # option to browse the catalog by category.
         # Corresponds to the JSON property `data`
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData]
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory]
         attr_accessor :data
       
         # Unique error code for the request, if any.
@@ -509,45 +550,6 @@ module Google
           @message = args[:message] if args.key?(:message)
           @request_id = args[:request_id] if args.key?(:request_id)
           @status = args[:status] if args.key?(:status)
-        end
-      end
-      
-      # `ApiCategoryData` represents an API category. Catalog items can be tagged with
-      # API categories; users viewing the API catalog in the portal will have the
-      # option to browse the catalog by category.
-      class GoogleCloudApigeeV1ApiCategoryData
-        include Google::Apis::Core::Hashable
-      
-        # ID of the category (a UUID).
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Name of the category.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Name of the portal.
-        # Corresponds to the JSON property `siteId`
-        # @return [String]
-        attr_accessor :site_id
-      
-        # Time the category was last modified in milliseconds since epoch.
-        # Corresponds to the JSON property `updateTime`
-        # @return [Fixnum]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @id = args[:id] if args.key?(:id)
-          @name = args[:name] if args.key?(:name)
-          @site_id = args[:site_id] if args.key?(:site_id)
-          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -5103,9 +5105,9 @@ module Google
       class GoogleCloudApigeeV1ListApiCategoriesResponse
         include Google::Apis::Core::Hashable
       
-        # Details of the categories.
+        # The API category resources.
         # Corresponds to the JSON property `data`
-        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData>]
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory>]
         attr_accessor :data
       
         # Unique error code for the request, if any.

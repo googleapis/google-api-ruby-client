@@ -21780,6 +21780,53 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Announces the specified PublicAdvertisedPrefix
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] public_advertised_prefix
+        #   The name of the public advertised prefix. It should comply with RFC1035.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def announce_public_advertised_prefix(project, public_advertised_prefix, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/publicAdvertisedPrefixes/{publicAdvertisedPrefix}/announce', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['publicAdvertisedPrefix'] = public_advertised_prefix unless public_advertised_prefix.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified PublicAdvertisedPrefix
         # @param [String] project
         #   Project ID for this request.
@@ -22052,6 +22099,53 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Withdraws the specified PublicAdvertisedPrefix
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] public_advertised_prefix
+        #   The name of the public advertised prefix. It should comply with RFC1035.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def withdraw_public_advertised_prefix(project, public_advertised_prefix, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/publicAdvertisedPrefixes/{publicAdvertisedPrefix}/withdraw', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['publicAdvertisedPrefix'] = public_advertised_prefix unless public_advertised_prefix.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all PublicDelegatedPrefix resources owned by the specific project across
         # all scopes.
         # @param [String] project
@@ -22146,6 +22240,57 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Announces the specified PublicDelegatedPrefix in the given region.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region where the public delegated prefix is located. It should
+        #   comply with RFC1035.
+        # @param [String] public_delegated_prefix
+        #   The name of the public delegated prefix. It should comply with RFC1035.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def announce_public_delegated_prefix(project, region, public_delegated_prefix, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/publicDelegatedPrefixes/{publicDelegatedPrefix}/announce', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['publicDelegatedPrefix'] = public_delegated_prefix unless public_delegated_prefix.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -22427,6 +22572,57 @@ module Google
           command = make_simple_command(:patch, 'projects/{project}/regions/{region}/publicDelegatedPrefixes/{publicDelegatedPrefix}', options)
           command.request_representation = Google::Apis::ComputeV1::PublicDelegatedPrefix::Representation
           command.request_object = public_delegated_prefix_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['publicDelegatedPrefix'] = public_delegated_prefix unless public_delegated_prefix.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Withdraws the specified PublicDelegatedPrefix in the given region.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region where the public delegated prefix is located. It should
+        #   comply with RFC1035.
+        # @param [String] public_delegated_prefix
+        #   The name of the public delegated prefix. It should comply with RFC1035.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def withdraw_public_delegated_prefix(project, region, public_delegated_prefix, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/publicDelegatedPrefixes/{publicDelegatedPrefix}/withdraw', options)
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -34648,6 +34844,89 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get snapshot settings.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::SnapshotSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::SnapshotSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_snapshot_setting(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/snapshotSettings', options)
+          command.response_representation = Google::Apis::ComputeV1::SnapshotSettings::Representation
+          command.response_class = Google::Apis::ComputeV1::SnapshotSettings
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Patch snapshot settings.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [Google::Apis::ComputeV1::SnapshotSettings] snapshot_settings_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   update_mask indicates fields to be updated as part of this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_snapshot_setting(project, snapshot_settings_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'projects/{project}/global/snapshotSettings', options)
+          command.request_representation = Google::Apis::ComputeV1::SnapshotSettings::Representation
+          command.request_object = snapshot_settings_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

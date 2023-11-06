@@ -26,6 +26,12 @@ module Google
       class ClaimDeviceRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The unique identifier of the configuration (internally known as
+        # profile) to set for the section.
+        # Corresponds to the JSON property `configurationId`
+        # @return [Fixnum]
+        attr_accessor :configuration_id
+      
         # The ID of the customer for whom the device is being claimed.
         # Corresponds to the JSON property `customerId`
         # @return [Fixnum]
@@ -59,8 +65,7 @@ module Google
         # @return [String]
         attr_accessor :section_type
       
-        # Optional. Must and can only be set when DeviceProvisioningSectionType is
-        # SECTION_TYPE_SIM_LOCK. The unique identifier of the SimLock profile.
+        # Optional.
         # Corresponds to the JSON property `simlockProfileId`
         # @return [Fixnum]
         attr_accessor :simlock_profile_id
@@ -71,6 +76,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @configuration_id = args[:configuration_id] if args.key?(:configuration_id)
           @customer_id = args[:customer_id] if args.key?(:customer_id)
           @device_identifier = args[:device_identifier] if args.key?(:device_identifier)
           @device_metadata = args[:device_metadata] if args.key?(:device_metadata)
@@ -1269,6 +1275,12 @@ module Google
       class PartnerClaim
         include Google::Apis::Core::Hashable
       
+        # Optional. The unique identifier of the configuration (internally known as
+        # profile) to set for the section.
+        # Corresponds to the JSON property `configurationId`
+        # @return [Fixnum]
+        attr_accessor :configuration_id
+      
         # The ID of the customer for whom the device is being claimed.
         # Corresponds to the JSON property `customerId`
         # @return [Fixnum]
@@ -1302,8 +1314,7 @@ module Google
         # @return [String]
         attr_accessor :section_type
       
-        # Optional. Must and can only be set when DeviceProvisioningSectionType is
-        # SECTION_TYPE_SIM_LOCK. The unique identifier of the SimLock profile.
+        # Optional.
         # Corresponds to the JSON property `simlockProfileId`
         # @return [Fixnum]
         attr_accessor :simlock_profile_id
@@ -1314,6 +1325,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @configuration_id = args[:configuration_id] if args.key?(:configuration_id)
           @customer_id = args[:customer_id] if args.key?(:customer_id)
           @device_identifier = args[:device_identifier] if args.key?(:device_identifier)
           @device_metadata = args[:device_metadata] if args.key?(:device_metadata)
