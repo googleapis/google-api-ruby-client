@@ -14,12 +14,6 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            ruby: "2.5"
-            task: "--include-spec"
-          - os: ubuntu-latest
-            ruby: "2.6"
-            task: "--include-spec"
-          - os: ubuntu-latest
             ruby: "2.7"
             task: "--include-spec --include-yardoc --include-build"
           - os: ubuntu-latest
