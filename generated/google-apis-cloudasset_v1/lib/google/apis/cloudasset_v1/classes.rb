@@ -90,10 +90,10 @@ module Google
         # saved_query_id If both `analysis_query` and `saved_analysis_query` are
         # provided, they will be merged together with the `saved_analysis_query` as base
         # and the `analysis_query` as overrides. For more details of the merge behavior,
-        # please refer to the [MergeFrom](https://developers.google.com/protocol-buffers/
-        # docs/reference/cpp/google.protobuf.message#Message.MergeFrom.details) doc.
-        # Note that you cannot override primitive fields with default value, such as 0
-        # or empty string, etc., because we use proto3, which doesn't support field
+        # refer to the [MergeFrom](https://developers.google.com/protocol-buffers/docs/
+        # reference/cpp/google.protobuf.message#Message.MergeFrom.details) doc. Note
+        # that you cannot override primitive fields with default value, such as 0 or
+        # empty string, etc., because we use proto3, which doesn't support field
         # presence yet.
         # Corresponds to the JSON property `savedAnalysisQuery`
         # @return [String]
@@ -5281,8 +5281,8 @@ module Google
         # projects.locations.keyRings.cryptoKeys) name or [CryptoKeyVersion](https://
         # cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.
         # cryptoKeys.cryptoKeyVersions) name. This field only presents for the purpose
-        # of backward compatibility. Please use the `kms_keys` field to retrieve Cloud
-        # KMS key information. This field is available only when the resource's Protobuf
+        # of backward compatibility. Use the `kms_keys` field to retrieve Cloud KMS key
+        # information. This field is available only when the resource's Protobuf
         # contains it and will only be populated for [these resource types](https://
         # cloud.google.com/asset-inventory/docs/legacy-field-names#
         # resource_types_with_the_to_be_deprecated_kmskey_field) for backward compatible
@@ -5387,13 +5387,9 @@ module Google
         attr_accessor :relationships
       
         # The actual content of Security Command Center security marks associated with
-        # the asset. Note that both staging & prod SecurityMarks are attached on prod
-        # resources. In CAS preprod/prod, both staging & prod SecurityMarks are ingested
-        # and returned in the following `security_marks` map. In that case, the prefix "
-        # staging." will be added to the keys of all the staging marks. To search
-        # against SCC SecurityMarks field: * Use a field query: - query by a given key
-        # value pair. Example: `sccSecurityMarks.foo=bar` - query by a given key's
-        # existence. Example: `sccSecurityMarks.foo:*`
+        # the asset. To search against SCC SecurityMarks field: * Use a field query: -
+        # query by a given key value pair. Example: `sccSecurityMarks.foo=bar` - query
+        # by a given key's existence. Example: `sccSecurityMarks.foo:*`
         # Corresponds to the JSON property `sccSecurityMarks`
         # @return [Hash<String,String>]
         attr_accessor :scc_security_marks
@@ -5415,30 +5411,29 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # This field is only present for the purpose of backward compatibility. Please
-        # use the `tags` field instead. TagKey namespaced names, in the format of `
-        # ORG_ID`/`TAG_KEY_SHORT_NAME`. To search against the `tagKeys`: * Use a field
-        # query. Example: - `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `
-        # tagKeys:"env"` * Use a free text query. Example: - `env`
+        # This field is only present for the purpose of backward compatibility. Use the `
+        # tags` field instead. TagKey namespaced names, in the format of `ORG_ID`/`
+        # TAG_KEY_SHORT_NAME`. To search against the `tagKeys`: * Use a field query.
+        # Example: - `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"
+        # env"` * Use a free text query. Example: - `env`
         # Corresponds to the JSON property `tagKeys`
         # @return [Array<String>]
         attr_accessor :tag_keys
       
-        # This field is only present for the purpose of backward compatibility. Please
-        # use the `tags` field instead. TagValue IDs, in the format of tagValues/`
-        # TAG_VALUE_ID`. To search against the `tagValueIds`: * Use a field query.
-        # Example: - `tagValueIds="tagValues/456"` * Use a free text query. Example: - `
-        # 456`
+        # This field is only present for the purpose of backward compatibility. Use the `
+        # tags` field instead. TagValue IDs, in the format of tagValues/`TAG_VALUE_ID`.
+        # To search against the `tagValueIds`: * Use a field query. Example: - `
+        # tagValueIds="tagValues/456"` * Use a free text query. Example: - `456`
         # Corresponds to the JSON property `tagValueIds`
         # @return [Array<String>]
         attr_accessor :tag_value_ids
       
-        # This field is only present for the purpose of backward compatibility. Please
-        # use the `tags` field instead. TagValue namespaced names, in the format of `
-        # ORG_ID`/`TAG_KEY_SHORT_NAME`/`TAG_VALUE_SHORT_NAME`. To search against the `
-        # tagValues`: * Use a field query. Example: - `tagValues:"env"` - `tagValues:"
-        # env/prod"` - `tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/
-        # prod"` * Use a free text query. Example: - `prod`
+        # This field is only present for the purpose of backward compatibility. Use the `
+        # tags` field instead. TagValue namespaced names, in the format of `ORG_ID`/`
+        # TAG_KEY_SHORT_NAME`/`TAG_VALUE_SHORT_NAME`. To search against the `tagValues`:
+        # * Use a field query. Example: - `tagValues:"env"` - `tagValues:"env/prod"` - `
+        # tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` * Use a
+        # free text query. Example: - `prod`
         # Corresponds to the JSON property `tagValues`
         # @return [Array<String>]
         attr_accessor :tag_values
