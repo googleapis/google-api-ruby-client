@@ -51,6 +51,11 @@ module Google
         # @return [Google::Apis::ManufacturersV1::Capacity]
         attr_accessor :capacity
       
+        # Optional. List of certifications claimed by this product.
+        # Corresponds to the JSON property `certification`
+        # @return [Array<Google::Apis::ManufacturersV1::GoogleShoppingManufacturersV1ProductCertification>]
+        attr_accessor :certification
+      
         # The color of the product. For more information, see https://support.google.com/
         # manufacturers/answer/6124116#color.
         # Corresponds to the JSON property `color`
@@ -277,6 +282,7 @@ module Google
           @age_group = args[:age_group] if args.key?(:age_group)
           @brand = args[:brand] if args.key?(:brand)
           @capacity = args[:capacity] if args.key?(:capacity)
+          @certification = args[:certification] if args.key?(:certification)
           @color = args[:color] if args.key?(:color)
           @count = args[:count] if args.key?(:count)
           @description = args[:description] if args.key?(:description)
@@ -518,6 +524,37 @@ module Google
         def update!(**args)
           @amount = args[:amount] if args.key?(:amount)
           @unit = args[:unit] if args.key?(:unit)
+        end
+      end
+      
+      # Description of a certification.
+      class GoogleShoppingManufacturersV1ProductCertification
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the certification body.
+        # Corresponds to the JSON property `authority`
+        # @return [String]
+        attr_accessor :authority
+      
+        # Required. A unique code to identify the certification.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Required. Name of the certification.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authority = args[:authority] if args.key?(:authority)
+          @code = args[:code] if args.key?(:code)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
