@@ -1612,6 +1612,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssistantApiDataValidateCapabilities
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssistantApiDate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11284,6 +11290,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QualityOrbitOrbitImageIntent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QualityOrbitOrbitImageIntents
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QualityPreviewChosenSnippetInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -18578,6 +18596,7 @@ module Google
           property :mark_as_read_action_available, as: 'markAsReadActionAvailable'
           property :message_length, as: 'messageLength'
           property :message_recipient_type, as: 'messageRecipientType'
+          property :message_word_count, as: 'messageWordCount'
           property :mime_type, as: 'mimeType'
           collection :notification_entries, as: 'notificationEntries', class: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesMessageNotificationNotificationEntry, decorator: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesMessageNotificationNotificationEntry::Representation
       
@@ -18719,6 +18738,13 @@ module Google
         end
       end
       
+      class AssistantApiDataValidateCapabilities
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fallback_to_tethered_device, as: 'fallbackToTetheredDevice'
+        end
+      end
+      
       class AssistantApiDate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -18772,6 +18798,8 @@ module Google
           property :communication_ui_capabilities, as: 'communicationUiCapabilities', class: Google::Apis::ContentwarehouseV1::AssistantApiCommunicationUiCapabilities, decorator: Google::Apis::ContentwarehouseV1::AssistantApiCommunicationUiCapabilities::Representation
       
           property :contact_lookup_capabilities, as: 'contactLookupCapabilities', class: Google::Apis::ContentwarehouseV1::AssistantApiContactLookupCapabilities, decorator: Google::Apis::ContentwarehouseV1::AssistantApiContactLookupCapabilities::Representation
+      
+          property :data_validate_capabilities, as: 'dataValidateCapabilities', class: Google::Apis::ContentwarehouseV1::AssistantApiDataValidateCapabilities, decorator: Google::Apis::ContentwarehouseV1::AssistantApiDataValidateCapabilities::Representation
       
           property :device_id, as: 'deviceId', class: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesDeviceId, decorator: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesDeviceId::Representation
       
@@ -21328,6 +21356,7 @@ module Google
           property :intent_name_auis_score_exp, as: 'intentNameAuisScoreExp'
           property :intent_name_pauis, as: 'intentNamePauis'
           property :intent_type, as: 'intentType'
+          property :is_dummy_intent, as: 'isDummyIntent'
           property :is_feasible, as: 'isFeasible'
           property :is_fully_grounded, as: 'isFullyGrounded'
           property :is_high_confidence_podcast_intent, as: 'isHighConfidencePodcastIntent'
@@ -29533,6 +29562,8 @@ module Google
           collection :ocr_textboxes, as: 'ocrTextboxes', class: Google::Apis::ContentwarehouseV1::OcrPhotoTextBox, decorator: Google::Apis::ContentwarehouseV1::OcrPhotoTextBox::Representation
       
           property :on_page_alternate_url, as: 'onPageAlternateUrl'
+          property :orbit_intents, as: 'orbitIntents', class: Google::Apis::ContentwarehouseV1::QualityOrbitOrbitImageIntents, decorator: Google::Apis::ContentwarehouseV1::QualityOrbitOrbitImageIntents::Representation
+      
           property :packed_full_face_info, as: 'packedFullFaceInfo', class: Google::Apis::ContentwarehouseV1::FaceIndexing, decorator: Google::Apis::ContentwarehouseV1::FaceIndexing::Representation
       
           property :person_attributes, as: 'personAttributes', class: Google::Apis::ContentwarehouseV1::LensDiscoveryStylePersonAttributes, decorator: Google::Apis::ContentwarehouseV1::LensDiscoveryStylePersonAttributes::Representation
@@ -31900,6 +31931,7 @@ module Google
       class IndexingDocjoinerDataVersionVersionInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :consideration_timestamp_micros, :numeric_string => true, as: 'considerationTimestampMicros'
           property :human_readable_version, as: 'humanReadableVersion'
           property :timestamp_micros, :numeric_string => true, as: 'timestampMicros'
         end
@@ -33026,12 +33058,14 @@ module Google
       
           property :shopping_ids, as: 'shoppingIds', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryShoppingIds, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryShoppingIds::Representation
       
+          property :source, as: 'source'
           collection :support_transfer_rules, as: 'supportTransferRules', class: Google::Apis::ContentwarehouseV1::LogsSemanticInterpretationIntentQuerySupportTransferRule, decorator: Google::Apis::ContentwarehouseV1::LogsSemanticInterpretationIntentQuerySupportTransferRule::Representation
       
           property :support_transfer_signals, as: 'supportTransferSignals', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQuerySupportTransferSignals, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQuerySupportTransferSignals::Representation
       
           property :ungrounded_value_type, as: 'ungroundedValueType', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersValueType, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersValueType::Representation
       
+          property :value_source, as: 'valueSource'
           property :webref_entities_index, as: 'webrefEntitiesIndex'
           property :webref_list_source, as: 'webrefListSource'
         end
@@ -34192,6 +34226,8 @@ module Google
           property :timezone_type, as: 'timezoneType', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersTimeZoneType, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersTimeZoneType::Representation
       
           property :tracking_number_type, as: 'trackingNumberType', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersTrackingNumberType, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersTrackingNumberType::Representation
+      
+          collection :view_specific_number_types, as: 'viewSpecificNumberTypes', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersNumberType, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersNumberType::Representation
       
         end
       end
@@ -40259,6 +40295,8 @@ module Google
           property :site_link_out, as: 'siteLinkOut'
           property :site_pr, as: 'sitePr'
           property :site_quality_stddev, as: 'siteQualityStddev'
+          collection :site_quality_stddevs, as: 'siteQualityStddevs', class: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal, decorator: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal::Representation
+      
           property :small_personal_site, as: 'smallPersonalSite'
           property :spambrain_lavc_score, as: 'spambrainLavcScore'
           collection :spambrain_lavc_scores, as: 'spambrainLavcScores', class: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal, decorator: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal::Representation
@@ -40360,6 +40398,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :intents, as: 'intents'
           collection :scores, as: 'scores'
+        end
+      end
+      
+      class QualityOrbitOrbitImageIntent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_intent, as: 'imageIntent'
+          collection :missing_inputs, as: 'missingInputs'
+          property :score, as: 'score'
+          property :trigger, as: 'trigger'
+        end
+      end
+      
+      class QualityOrbitOrbitImageIntents
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :intents, as: 'intents', class: Google::Apis::ContentwarehouseV1::QualityOrbitOrbitImageIntent, decorator: Google::Apis::ContentwarehouseV1::QualityOrbitOrbitImageIntent::Representation
+      
+          property :is_partial, as: 'isPartial'
+          property :version, as: 'version'
         end
       end
       
@@ -41340,6 +41398,7 @@ module Google
       
           property :timing_info, as: 'timingInfo', class: Google::Apis::ContentwarehouseV1::QualityWebanswersVideoYouTubeCaptionTimingInfoAnnotations, decorator: Google::Apis::ContentwarehouseV1::QualityWebanswersVideoYouTubeCaptionTimingInfoAnnotations::Representation
       
+          property :transcript_source, as: 'transcriptSource'
           property :webref_entities, as: 'webrefEntities', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefWebrefEntities, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefWebrefEntities::Representation
       
         end
@@ -43611,6 +43670,7 @@ module Google
           collection :license, as: 'license', class: Google::Apis::ContentwarehouseV1::ResearchScienceSearchLicense, decorator: Google::Apis::ContentwarehouseV1::ResearchScienceSearchLicense::Representation
       
           collection :license_deprecated, as: 'licenseDeprecated'
+          property :location_reconciled_for_name, as: 'locationReconciledForName'
           collection :measurement_technique, as: 'measurementTechnique'
           collection :mentioned_urls, as: 'mentionedUrls'
           property :metadata_type, as: 'metadataType'
