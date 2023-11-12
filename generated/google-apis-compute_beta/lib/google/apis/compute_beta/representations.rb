@@ -3022,6 +3022,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedInstancePropertiesFromFlexibilityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedInstanceVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10381,6 +10387,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :requested_run_duration, as: 'requestedRunDuration', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
+      
           property :resize_by, as: 'resizeBy'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -12349,6 +12357,8 @@ module Google
       
           property :preserved_state_from_policy, as: 'preservedStateFromPolicy', class: Google::Apis::ComputeBeta::PreservedState, decorator: Google::Apis::ComputeBeta::PreservedState::Representation
       
+          property :properties_from_flexibility_policy, as: 'propertiesFromFlexibilityPolicy', class: Google::Apis::ComputeBeta::ManagedInstancePropertiesFromFlexibilityPolicy, decorator: Google::Apis::ComputeBeta::ManagedInstancePropertiesFromFlexibilityPolicy::Representation
+      
           property :version, as: 'version', class: Google::Apis::ComputeBeta::ManagedInstanceVersion, decorator: Google::Apis::ComputeBeta::ManagedInstanceVersion::Representation
       
         end
@@ -12414,6 +12424,13 @@ module Google
               end
             end
           end
+        end
+      end
+      
+      class ManagedInstancePropertiesFromFlexibilityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :machine_type, as: 'machineType'
         end
       end
       
@@ -15390,6 +15407,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :physical_host, as: 'physicalHost'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeBeta::ResourceStatusScheduling, decorator: Google::Apis::ComputeBeta::ResourceStatusScheduling::Representation
+      
+          property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::ComputeBeta::UpcomingMaintenance, decorator: Google::Apis::ComputeBeta::UpcomingMaintenance::Representation
       
         end
       end

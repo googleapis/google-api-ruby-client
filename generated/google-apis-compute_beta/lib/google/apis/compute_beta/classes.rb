@@ -9816,13 +9816,17 @@ module Google
         # @return [String]
         attr_accessor :ip_protocol
       
-        # This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By
-        # internal TCP/UDP load balancers, backend service-based network load balancers,
-        # and internal and external protocol forwarding. Set this field to true to allow
-        # packets addressed to any port or packets lacking destination port information (
-        # for example, UDP fragments after the first fragment) to be forwarded to the
-        # backends configured with this forwarding rule. The ports, port_range, and
-        # allPorts fields are mutually exclusive.
+        # The ports, portRange, and allPorts fields are mutually exclusive. Only packets
+        # addressed to ports in the specified range will be forwarded to the backends
+        # configured with this forwarding rule. The allPorts field has the following
+        # limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP,
+        # SCTP, or L3_DEFAULT. - It's applicable only to the following products:
+        # internal passthrough Network Load Balancers, backend service-based external
+        # passthrough Network Load Balancers, and internal and external protocol
+        # forwarding. - Set this field to true to allow packets addressed to any port or
+        # packets lacking destination port information (for example, UDP fragments after
+        # the first fragment) to be forwarded to the backends configured with this
+        # forwarding rule. The L3_DEFAULT protocol requires allPorts be set to true.
         # Corresponds to the JSON property `allPorts`
         # @return [Boolean]
         attr_accessor :all_ports
@@ -10009,35 +10013,38 @@ module Google
         attr_accessor :no_automate_dns_zone
         alias_method :no_automate_dns_zone?, :no_automate_dns_zone
       
-        # This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By
-        # backend service-based network load balancers, target pool-based network load
-        # balancers, internal proxy load balancers, external proxy load balancers,
-        # Traffic Director, external protocol forwarding, and Classic VPN. Some products
-        # have restrictions on what ports can be used. See port specifications for
-        # details. Only packets addressed to ports in the specified range will be
-        # forwarded to the backends configured with this forwarding rule. The ports,
-        # port_range, and allPorts fields are mutually exclusive. For external
-        # forwarding rules, two or more forwarding rules cannot use the same [IPAddress,
-        # IPProtocol] pair, and cannot have overlapping portRanges. For internal
-        # forwarding rules within the same VPC network, two or more forwarding rules
-        # cannot use the same [IPAddress, IPProtocol] pair, and cannot have overlapping
-        # portRanges. @pattern: \\d+(?:-\\d+)?
+        # The ports, portRange, and allPorts fields are mutually exclusive. Only packets
+        # addressed to ports in the specified range will be forwarded to the backends
+        # configured with this forwarding rule. The portRange field has the following
+        # limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP, or
+        # SCTP, and - It's applicable only to the following products: external
+        # passthrough Network Load Balancers, internal and external proxy Network Load
+        # Balancers, internal and external Application Load Balancers, external protocol
+        # forwarding, and Classic VPN. - Some products have restrictions on what ports
+        # can be used. See port specifications for details. For external forwarding
+        # rules, two or more forwarding rules cannot use the same [IPAddress, IPProtocol]
+        # pair, and cannot have overlapping portRanges. For internal forwarding rules
+        # within the same VPC network, two or more forwarding rules cannot use the same [
+        # IPAddress, IPProtocol] pair, and cannot have overlapping portRanges. @pattern:
+        # \\d+(?:-\\d+)?
         # Corresponds to the JSON property `portRange`
         # @return [String]
         attr_accessor :port_range
       
-        # This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By
-        # internal TCP/UDP load balancers, backend service-based network load balancers,
-        # and internal protocol forwarding. You can specify a list of up to five ports
-        # by number, separated by commas. The ports can be contiguous or discontiguous.
-        # Only packets addressed to these ports will be forwarded to the backends
-        # configured with this forwarding rule. For external forwarding rules, two or
-        # more forwarding rules cannot use the same [IPAddress, IPProtocol] pair, and
-        # cannot share any values defined in ports. For internal forwarding rules within
-        # the same VPC network, two or more forwarding rules cannot use the same [
-        # IPAddress, IPProtocol] pair, and cannot share any values defined in ports. The
-        # ports, port_range, and allPorts fields are mutually exclusive. @pattern: \\d+(?
-        # :-\\d+)?
+        # The ports, portRange, and allPorts fields are mutually exclusive. Only packets
+        # addressed to ports in the specified range will be forwarded to the backends
+        # configured with this forwarding rule. The ports field has the following
+        # limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP, or
+        # SCTP, and - It's applicable only to the following products: internal
+        # passthrough Network Load Balancers, backend service-based external passthrough
+        # Network Load Balancers, and internal protocol forwarding. - You can specify a
+        # list of up to five ports by number, separated by commas. The ports can be
+        # contiguous or discontiguous. For external forwarding rules, two or more
+        # forwarding rules cannot use the same [IPAddress, IPProtocol] pair if they
+        # share at least one port number. For internal forwarding rules within the same
+        # VPC network, two or more forwarding rules cannot use the same [IPAddress,
+        # IPProtocol] pair if they share at least one port number. @pattern: \\d+(?:-\\d+
+        # )?
         # Corresponds to the JSON property `ports`
         # @return [Array<String>]
         attr_accessor :ports
@@ -16403,6 +16410,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `requestedRunDuration`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :requested_run_duration
+      
         # The number of instances to be created by this resize request. The group's
         # target size will be increased by this number.
         # Corresponds to the JSON property `resizeBy`
@@ -16447,6 +16462,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @requested_run_duration = args[:requested_run_duration] if args.key?(:requested_run_duration)
           @resize_by = args[:resize_by] if args.key?(:resize_by)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -23952,6 +23968,12 @@ module Google
         # @return [Google::Apis::ComputeBeta::PreservedState]
         attr_accessor :preserved_state_from_policy
       
+        # [Output Only] Instance properties selected for this instance resulting from
+        # InstanceFlexibilityPolicy.
+        # Corresponds to the JSON property `propertiesFromFlexibilityPolicy`
+        # @return [Google::Apis::ComputeBeta::ManagedInstancePropertiesFromFlexibilityPolicy]
+        attr_accessor :properties_from_flexibility_policy
+      
         # [Output Only] Intended version of this instance.
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::ComputeBeta::ManagedInstanceVersion]
@@ -23974,6 +23996,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @preserved_state_from_config = args[:preserved_state_from_config] if args.key?(:preserved_state_from_config)
           @preserved_state_from_policy = args[:preserved_state_from_policy] if args.key?(:preserved_state_from_policy)
+          @properties_from_flexibility_policy = args[:properties_from_flexibility_policy] if args.key?(:properties_from_flexibility_policy)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -24169,6 +24192,25 @@ module Google
               end
             end
           end
+        end
+      end
+      
+      # 
+      class ManagedInstancePropertiesFromFlexibilityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The machine type to be used for this instance.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
         end
       end
       
@@ -31111,7 +31153,7 @@ module Google
         attr_accessor :kind
       
         # [Output Only] The Cloud Armor Managed Protection (CAMP) tier for this project.
-        # It can be one of the following values: CA_STANDARD, CAMP_PLUS_MONTHLY. If this
+        # It can be one of the following values: CA_STANDARD, CAMP_PLUS_PAYGO. If this
         # field is not specified, it is assumed to be CA_STANDARD.
         # Corresponds to the JSON property `managedProtectionTier`
         # @return [String]
@@ -35563,6 +35605,11 @@ module Google
         # @return [Google::Apis::ComputeBeta::ResourceStatusScheduling]
         attr_accessor :scheduling
       
+        # Upcoming Maintenance notification information.
+        # Corresponds to the JSON property `upcomingMaintenance`
+        # @return [Google::Apis::ComputeBeta::UpcomingMaintenance]
+        attr_accessor :upcoming_maintenance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -35571,6 +35618,7 @@ module Google
         def update!(**args)
           @physical_host = args[:physical_host] if args.key?(:physical_host)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
+          @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
         end
       end
       
