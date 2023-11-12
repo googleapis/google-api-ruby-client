@@ -3722,7 +3722,7 @@ module Google
         attr_accessor :filter_action
       
         # Force returns an attribute/facet in the request around a certain position or
-        # above. * Rule Condition: - Must specify non-empty Condition.query_terms (for
+        # above. * Rule Condition: Must specify non-empty Condition.query_terms (for
         # search only) or Condition.page_categories (for browse only), but can't specify
         # both. * Action Inputs: attribute name, position * Action Result: Will force
         # return a facet key around a certain position or above if the condition is
@@ -3751,14 +3751,14 @@ module Google
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2RuleOnewaySynonymsAction]
         attr_accessor :oneway_synonyms_action
       
-        # Redirects a shopper to a specific page. * Rule Condition: - Must specify
+        # Redirects a shopper to a specific page. * Rule Condition: Must specify
         # Condition.query_terms. * Action Input: Request Query * Action Result:
         # Redirects shopper to provided uri.
         # Corresponds to the JSON property `redirectAction`
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2RuleRedirectAction]
         attr_accessor :redirect_action
       
-        # Removes an attribute/facet in the request if is present. * Rule Condition: -
+        # Removes an attribute/facet in the request if is present. * Rule Condition:
         # Must specify non-empty Condition.query_terms (for search only) or Condition.
         # page_categories (for browse only), but can't specify both. * Action Input:
         # attribute name * Action Result: Will remove the attribute (as a facet) from
@@ -3907,7 +3907,7 @@ module Google
       end
       
       # Force returns an attribute/facet in the request around a certain position or
-      # above. * Rule Condition: - Must specify non-empty Condition.query_terms (for
+      # above. * Rule Condition: Must specify non-empty Condition.query_terms (for
       # search only) or Condition.page_categories (for browse only), but can't specify
       # both. * Action Inputs: attribute name, position * Action Result: Will force
       # return a facet key around a certain position or above if the condition is
@@ -4021,7 +4021,7 @@ module Google
         end
       end
       
-      # Redirects a shopper to a specific page. * Rule Condition: - Must specify
+      # Redirects a shopper to a specific page. * Rule Condition: Must specify
       # Condition.query_terms. * Action Input: Request Query * Action Result:
       # Redirects shopper to provided uri.
       class GoogleCloudRetailV2RuleRedirectAction
@@ -4042,7 +4042,7 @@ module Google
         end
       end
       
-      # Removes an attribute/facet in the request if is present. * Rule Condition: -
+      # Removes an attribute/facet in the request if is present. * Rule Condition:
       # Must specify non-empty Condition.query_terms (for search only) or Condition.
       # page_categories (for browse only), but can't specify both. * Action Input:
       # attribute name * Action Result: Will remove the attribute (as a facet) from
