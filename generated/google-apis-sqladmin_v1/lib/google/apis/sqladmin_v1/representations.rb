@@ -857,6 +857,7 @@ module Google
           property :service_account_email_address, as: 'serviceAccountEmailAddress'
           property :settings, as: 'settings', class: Google::Apis::SqladminV1::Settings, decorator: Google::Apis::SqladminV1::Settings::Representation
       
+          property :sql_network_architecture, as: 'sqlNetworkArchitecture'
           property :state, as: 'state'
           collection :suspension_reason, as: 'suspensionReason'
           property :write_endpoint, as: 'writeEndpoint'
@@ -1320,6 +1321,8 @@ module Google
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_warning, as: 'apiWarning', class: Google::Apis::SqladminV1::ApiWarning, decorator: Google::Apis::SqladminV1::ApiWarning::Representation
+      
           property :backup_context, as: 'backupContext', class: Google::Apis::SqladminV1::BackupContext, decorator: Google::Apis::SqladminV1::BackupContext::Representation
       
           property :end_time, as: 'endTime'
@@ -1396,6 +1399,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :complexity, as: 'complexity'
+          property :disallow_compromised_credentials, as: 'disallowCompromisedCredentials'
           property :disallow_username_substring, as: 'disallowUsernameSubstring'
           property :enable_password_policy, as: 'enablePasswordPolicy'
           property :min_length, as: 'minLength'
