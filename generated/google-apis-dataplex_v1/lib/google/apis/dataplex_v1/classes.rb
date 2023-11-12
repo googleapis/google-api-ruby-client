@@ -2642,12 +2642,26 @@ module Google
       class GoogleCloudDataplexV1DataScanEventDataQualityResult
         include Google::Apis::Core::Hashable
       
+        # The score of each column scanned in the data scan job. The key of the map is
+        # the name of the column. The value is the data quality score for the column.The
+        # score ranges between 0, 100 (up to two decimal points).
+        # Corresponds to the JSON property `columnScore`
+        # @return [Hash<String,Float>]
+        attr_accessor :column_score
+      
         # The result of each dimension for data quality result. The key of the map is
         # the name of the dimension. The value is the bool value depicting whether the
         # dimension result was pass or not.
         # Corresponds to the JSON property `dimensionPassed`
         # @return [Hash<String,Boolean>]
         attr_accessor :dimension_passed
+      
+        # The score of each dimension for data quality result. The key of the map is the
+        # name of the dimension. The value is the data quality score for the dimension.
+        # The score ranges between 0, 100 (up to two decimal points).
+        # Corresponds to the JSON property `dimensionScore`
+        # @return [Hash<String,Float>]
+        attr_accessor :dimension_score
       
         # Whether the data quality result was pass or not.
         # Corresponds to the JSON property `passed`
@@ -2660,15 +2674,24 @@ module Google
         # @return [Fixnum]
         attr_accessor :row_count
       
+        # The table-level data quality score for the data scan job.The data quality
+        # score ranges between 0, 100 (up to two decimal points).
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @column_score = args[:column_score] if args.key?(:column_score)
           @dimension_passed = args[:dimension_passed] if args.key?(:dimension_passed)
+          @dimension_score = args[:dimension_score] if args.key?(:dimension_score)
           @passed = args[:passed] if args.key?(:passed)
           @row_count = args[:row_count] if args.key?(:row_count)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
