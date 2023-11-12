@@ -540,6 +540,7 @@ module Google
       end
       
       # Response for iSDK to execute strong match flow for post-install attribution.
+      # Information of the resolved FDL link.
       class GetIosPostInstallAttributionResponse
         include Google::Apis::Core::Hashable
       
