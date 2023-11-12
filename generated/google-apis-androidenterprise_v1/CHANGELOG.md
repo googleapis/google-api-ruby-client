@@ -1,5 +1,9 @@
 # Release history for google-apis-androidenterprise_v1
 
+### v0.26.0 (2023-11-12)
+
+* Regenerated from discovery document revision 20231107
+
 ### v0.25.0 (2023-10-22)
 
 * Regenerated from discovery document revision 20231018

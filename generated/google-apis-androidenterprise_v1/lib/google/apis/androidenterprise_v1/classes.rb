@@ -602,7 +602,8 @@ module Google
         # @return [Array<Google::Apis::AndroidenterpriseV1::AutoInstallConstraint>]
         attr_accessor :auto_install_constraint
       
-        # The auto-install mode. If unset defaults to "doNotAutoInstall".
+        # The auto-install mode. If unset, defaults to "doNotAutoInstall". An app is
+        # automatically installed regardless of a set maintenance window.
         # Corresponds to the JSON property `autoInstallMode`
         # @return [String]
         attr_accessor :auto_install_mode
