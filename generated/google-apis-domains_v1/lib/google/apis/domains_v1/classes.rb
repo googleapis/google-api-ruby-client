@@ -431,6 +431,8 @@ module Google
         # @return [Array<Google::Apis::DomainsV1::GlueRecord>]
         attr_accessor :glue_records
       
+        # Deprecated: For more information, see [Cloud Domains feature deprecation](
+        # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
         # Configuration for using the free DNS zone provided by Google Domains as a `
         # Registration`'s `dns_provider`. You cannot configure the DNS zone itself using
         # the API. To configure the DNS zone, go to [Google Domains](https://domains.
@@ -521,6 +523,8 @@ module Google
         end
       end
       
+      # Deprecated: For more information, see [Cloud Domains feature deprecation](
+      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
       # Request for the `ExportRegistration` method.
       class ExportRegistrationRequest
         include Google::Apis::Core::Hashable
@@ -627,6 +631,8 @@ module Google
         end
       end
       
+      # Deprecated: For more information, see [Cloud Domains feature deprecation](
+      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
       # Configuration for using the free DNS zone provided by Google Domains as a `
       # Registration`'s `dns_provider`. You cannot configure the DNS zone itself using
       # the API. To configure the DNS zone, go to [Google Domains](https://domains.
@@ -667,6 +673,8 @@ module Google
         end
       end
       
+      # Deprecated: For more information, see [Cloud Domains feature deprecation](
+      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
       # Request for the `ImportDomain` method.
       class ImportDomainRequest
         include Google::Apis::Core::Hashable
@@ -820,7 +828,28 @@ module Google
       class ManagementSettings
         include Google::Apis::Core::Hashable
       
-        # Output only. The renewal method for this `Registration`.
+        # Optional. The desired renewal method for this `Registration`. The actual `
+        # renewal_method` is automatically updated to reflect this choice. If unset or
+        # equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to
+        # `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource
+        # creation and can only be updated when the `Registration` resource has state `
+        # ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `
+        # AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED`
+        # in case of e.g. problems with the Billing Account or reported domain abuse.
+        # In such cases check the `issues` field on the `Registration`. After the
+        # problem is resolved the `renewal_method` will be automatically updated to `
+        # preferred_renewal_method` in a few hours.
+        # Corresponds to the JSON property `preferredRenewalMethod`
+        # @return [String]
+        attr_accessor :preferred_renewal_method
+      
+        # Output only. The actual renewal method for this `Registration`. When `
+        # preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `
+        # renewal_method` can be equal to `RENEWAL_DISABLED` in case of e.g. problems
+        # with the Billing Account or reported domain abuse. In such cases check the `
+        # issues` field on the `Registration`. After the problem is resolved the `
+        # renewal_method` will be automatically updated to `preferred_renewal_method` in
+        # a few hours.
         # Corresponds to the JSON property `renewalMethod`
         # @return [String]
         attr_accessor :renewal_method
@@ -836,6 +865,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @preferred_renewal_method = args[:preferred_renewal_method] if args.key?(:preferred_renewal_method)
           @renewal_method = args[:renewal_method] if args.key?(:renewal_method)
           @transfer_lock_state = args[:transfer_lock_state] if args.key?(:transfer_lock_state)
         end
@@ -1239,12 +1269,16 @@ module Google
         # options. After choosing a name, call `RetrieveRegisterParameters` to ensure
         # availability and obtain information like pricing, which is needed to build a
         # call to `RegisterDomain`. Another way to create a new `Registration` is to
-        # transfer an existing domain from another registrar. First, go to the current
+        # transfer an existing domain from another registrar (Deprecated: For more
+        # information, see [Cloud Domains feature deprecation](https://cloud.google.com/
+        # domains/docs/deprecations/feature-deprecations)). First, go to the current
         # registrar to unlock the domain for transfer and retrieve the domain's transfer
         # authorization code. Then call `RetrieveTransferParameters` to confirm that the
         # domain is unlocked and to get values needed to build a call to `TransferDomain`
         # . Finally, you can create a new `Registration` by importing an existing domain
-        # managed with [Google Domains](https://domains.google/). First, call `
+        # managed with [Google Domains](https://domains.google/) (Deprecated: For more
+        # information, see [Cloud Domains feature deprecation](https://cloud.google.com/
+        # domains/docs/deprecations/feature-deprecations)). First, call `
         # RetrieveImportableDomains` to list domains to which the calling user has
         # sufficient access. Then call `ImportDomain` on any domain names you want to
         # use with Cloud Domains.
@@ -1331,12 +1365,16 @@ module Google
       # options. After choosing a name, call `RetrieveRegisterParameters` to ensure
       # availability and obtain information like pricing, which is needed to build a
       # call to `RegisterDomain`. Another way to create a new `Registration` is to
-      # transfer an existing domain from another registrar. First, go to the current
+      # transfer an existing domain from another registrar (Deprecated: For more
+      # information, see [Cloud Domains feature deprecation](https://cloud.google.com/
+      # domains/docs/deprecations/feature-deprecations)). First, go to the current
       # registrar to unlock the domain for transfer and retrieve the domain's transfer
       # authorization code. Then call `RetrieveTransferParameters` to confirm that the
       # domain is unlocked and to get values needed to build a call to `TransferDomain`
       # . Finally, you can create a new `Registration` by importing an existing domain
-      # managed with [Google Domains](https://domains.google/). First, call `
+      # managed with [Google Domains](https://domains.google/) (Deprecated: For more
+      # information, see [Cloud Domains feature deprecation](https://cloud.google.com/
+      # domains/docs/deprecations/feature-deprecations)). First, call `
       # RetrieveImportableDomains` to list domains to which the calling user has
       # sufficient access. Then call `ImportDomain` on any domain names you want to
       # use with Cloud Domains.
@@ -1419,7 +1457,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :supported_privacy
       
-        # Output only. The reason the domain transfer failed. Only set for domains in
+        # Output only. Deprecated: For more information, see [Cloud Domains feature
+        # deprecation](https://cloud.google.com/domains/docs/deprecations/feature-
+        # deprecations) The reason the domain transfer failed. Only set for domains in
         # TRANSFER_FAILED state.
         # Corresponds to the JSON property `transferFailureReason`
         # @return [String]
@@ -1461,6 +1501,8 @@ module Google
         end
       end
       
+      # Deprecated: For more information, see [Cloud Domains feature deprecation](
+      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
       # Response for the `RetrieveImportableDomains` method.
       class RetrieveImportableDomainsResponse
         include Google::Apis::Core::Hashable
@@ -1506,10 +1548,14 @@ module Google
         end
       end
       
+      # Deprecated: For more information, see [Cloud Domains feature deprecation](
+      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
       # Response for the `RetrieveTransferParameters` method.
       class RetrieveTransferParametersResponse
         include Google::Apis::Core::Hashable
       
+        # Deprecated: For more information, see [Cloud Domains feature deprecation](
+        # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
         # Parameters required to transfer a domain from another registrar.
         # Corresponds to the JSON property `transferParameters`
         # @return [Google::Apis::DomainsV1::TransferParameters]
@@ -1676,6 +1722,8 @@ module Google
         end
       end
       
+      # Deprecated: For more information, see [Cloud Domains feature deprecation](
+      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
       # Request for the `TransferDomain` method.
       class TransferDomainRequest
         include Google::Apis::Core::Hashable
@@ -1698,12 +1746,16 @@ module Google
         # options. After choosing a name, call `RetrieveRegisterParameters` to ensure
         # availability and obtain information like pricing, which is needed to build a
         # call to `RegisterDomain`. Another way to create a new `Registration` is to
-        # transfer an existing domain from another registrar. First, go to the current
+        # transfer an existing domain from another registrar (Deprecated: For more
+        # information, see [Cloud Domains feature deprecation](https://cloud.google.com/
+        # domains/docs/deprecations/feature-deprecations)). First, go to the current
         # registrar to unlock the domain for transfer and retrieve the domain's transfer
         # authorization code. Then call `RetrieveTransferParameters` to confirm that the
         # domain is unlocked and to get values needed to build a call to `TransferDomain`
         # . Finally, you can create a new `Registration` by importing an existing domain
-        # managed with [Google Domains](https://domains.google/). First, call `
+        # managed with [Google Domains](https://domains.google/) (Deprecated: For more
+        # information, see [Cloud Domains feature deprecation](https://cloud.google.com/
+        # domains/docs/deprecations/feature-deprecations)). First, call `
         # RetrieveImportableDomains` to list domains to which the calling user has
         # sufficient access. Then call `ImportDomain` on any domain names you want to
         # use with Cloud Domains.
@@ -1736,6 +1788,8 @@ module Google
         end
       end
       
+      # Deprecated: For more information, see [Cloud Domains feature deprecation](
+      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
       # Parameters required to transfer a domain from another registrar.
       class TransferParameters
         include Google::Apis::Core::Hashable

@@ -487,6 +487,7 @@ module Google
       class ManagementSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :preferred_renewal_method, as: 'preferredRenewalMethod'
           property :renewal_method, as: 'renewalMethod'
           property :transfer_lock_state, as: 'transferLockState'
         end
