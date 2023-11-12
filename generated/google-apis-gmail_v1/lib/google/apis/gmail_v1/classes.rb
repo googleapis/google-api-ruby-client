@@ -1070,6 +1070,11 @@ module Google
         # @return [Array<Google::Apis::GmailV1::Label>]
         attr_accessor :labels
       
+        # 
+        # Corresponds to the JSON property `productId`
+        # @return [Fixnum]
+        attr_accessor :product_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1077,6 +1082,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
+          @product_id = args[:product_id] if args.key?(:product_id)
         end
       end
       

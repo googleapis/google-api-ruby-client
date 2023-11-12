@@ -653,6 +653,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :labels, as: 'labels', class: Google::Apis::GmailV1::Label, decorator: Google::Apis::GmailV1::Label::Representation
       
+          property :product_id, as: 'productId'
         end
       end
       
