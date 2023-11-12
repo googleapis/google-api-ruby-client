@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleShoppingManufacturersV1ProductCertification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Grocery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -144,6 +150,8 @@ module Google
           property :age_group, as: 'ageGroup'
           property :brand, as: 'brand'
           property :capacity, as: 'capacity', class: Google::Apis::ManufacturersV1::Capacity, decorator: Google::Apis::ManufacturersV1::Capacity::Representation
+      
+          collection :certification, as: 'certification', class: Google::Apis::ManufacturersV1::GoogleShoppingManufacturersV1ProductCertification, decorator: Google::Apis::ManufacturersV1::GoogleShoppingManufacturersV1ProductCertification::Representation
       
           property :color, as: 'color'
           property :count, as: 'count', class: Google::Apis::ManufacturersV1::Count, decorator: Google::Apis::ManufacturersV1::Count::Representation
@@ -249,6 +257,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :amount, as: 'amount'
           property :unit, as: 'unit'
+        end
+      end
+      
+      class GoogleShoppingManufacturersV1ProductCertification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authority, as: 'authority'
+          property :code, as: 'code'
+          property :name, as: 'name'
         end
       end
       
