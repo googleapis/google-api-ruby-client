@@ -299,14 +299,15 @@ module Google
         # Deletes a `Registration` resource. This method works on any `Registration`
         # resource using [Subscription or Commitment billing](/domains/pricing#billing-
         # models), provided that the resource was created at least 1 day in the past.
-        # For `Registration` resources using [Monthly billing](/domains/pricing#billing-
-        # models), this method works if: * `state` is `EXPORTED` with `expire_time` in
-        # the past * `state` is `REGISTRATION_FAILED` * `state` is `TRANSFER_FAILED`
         # When an active registration is successfully deleted, you can continue to use
         # the domain in [Google Domains](https://domains.google/) until it expires. The
         # calling user becomes the domain's sole owner in Google Domains, and
         # permissions for the domain are subsequently managed there. The domain does not
         # renew automatically unless the new owner sets up billing in Google Domains.
+        # After January 2024 you will only be able to delete `Registration` resources
+        # when `state` is one of: `EXPORTED`, `EXPIRED`,`REGISTRATION_FAILED` or `
+        # TRANSFER_FAILED`. See [Cloud Domains feature deprecation](https://cloud.google.
+        # com/domains/docs/deprecations/feature-deprecations) for more details.
         # @param [String] name
         #   Required. The name of the `Registration` to delete, in the format `projects/*/
         #   locations/*/registrations/*`.
@@ -337,6 +338,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deprecated: For more information, see [Cloud Domains feature deprecation](
+        # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
         # Exports a `Registration` resource, such that it is no longer managed by Cloud
         # Domains. When an active domain is successfully exported, you can continue to
         # use the domain in [Google Domains](https://domains.google/) until it expires.
@@ -452,6 +455,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deprecated: For more information, see [Cloud Domains feature deprecation](
+        # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
         # Imports a domain name from [Google Domains](https://domains.google/) for use
         # in Cloud Domains. To transfer a domain from another registrar, use the `
         # TransferDomain` method instead. Since individual users can own domains in
@@ -694,7 +699,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists domain names from [Google Domains](https://domains.google/) that can be
+        # Deprecated: For more information, see [Cloud Domains feature deprecation](
+        # https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Lists
+        # domain names from [Google Domains](https://domains.google/) that can be
         # imported to Cloud Domains using the `ImportDomain` method. Since individual
         # users can own domains in Google Domains, the list of domains returned depends
         # on the individual user making the call. Domains already managed by Cloud
@@ -770,8 +777,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets parameters needed to transfer a domain name from another registrar to
-        # Cloud Domains. For domains already managed by [Google Domains](https://domains.
+        # Deprecated: For more information, see [Cloud Domains feature deprecation](
+        # https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Gets
+        # parameters needed to transfer a domain name from another registrar to Cloud
+        # Domains. For domains already managed by [Google Domains](https://domains.
         # google/), use `ImportDomain` instead. Use the returned values to call `
         # TransferDomain`.
         # @param [String] location
@@ -919,6 +928,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deprecated: For more information, see [Cloud Domains feature deprecation](
+        # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
         # Transfers a domain name from another registrar to Cloud Domains. For domains
         # already managed by [Google Domains](https://domains.google/), use `
         # ImportDomain` instead. Before calling this method, go to the domain's current
