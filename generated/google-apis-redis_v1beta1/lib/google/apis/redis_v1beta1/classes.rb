@@ -625,6 +625,14 @@ module Google
         # @return [String]
         attr_accessor :reserved_ip_range
       
+        # Optional. Output only. Reserved for future use. Zone Separation compliance
+        # state of the instance. Field name and documentation is obfuscated according to
+        # go/zs-resource-status.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Optional. Additional IP range for node placement. Required when enabling read
         # replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR
         # range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be
@@ -700,6 +708,7 @@ module Google
           @redis_version = args[:redis_version] if args.key?(:redis_version)
           @replica_count = args[:replica_count] if args.key?(:replica_count)
           @reserved_ip_range = args[:reserved_ip_range] if args.key?(:reserved_ip_range)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @secondary_ip_range = args[:secondary_ip_range] if args.key?(:secondary_ip_range)
           @server_ca_certs = args[:server_ca_certs] if args.key?(:server_ca_certs)
           @state = args[:state] if args.key?(:state)
