@@ -1762,6 +1762,16 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
+        # Optional. Disables support for plain TCP connections in the workstation. By
+        # default the service supports TCP connections via a websocket relay. Setting
+        # this option to true disables that relay, which prevents the usage of services
+        # that require plain tcp connections, such as ssh. When enabled, all
+        # communication must occur over https or wss.
+        # Corresponds to the JSON property `disableTcpConnections`
+        # @return [Boolean]
+        attr_accessor :disable_tcp_connections
+        alias_method :disable_tcp_connections?, :disable_tcp_connections
+      
         # Optional. Human-readable name for this workstation configuration.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -1895,6 +1905,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @degraded = args[:degraded] if args.key?(:degraded)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @disable_tcp_connections = args[:disable_tcp_connections] if args.key?(:disable_tcp_connections)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_audit_agent = args[:enable_audit_agent] if args.key?(:enable_audit_agent)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
