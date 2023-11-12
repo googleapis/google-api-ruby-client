@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DemoteDestinationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DescribeConversionWorkspaceRevisionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1124,6 +1130,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :engine, as: 'engine'
           property :provider, as: 'provider'
+        end
+      end
+      
+      class DemoteDestinationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

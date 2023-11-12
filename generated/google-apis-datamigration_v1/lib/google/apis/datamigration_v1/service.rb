@@ -1434,6 +1434,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Demotes the destination database to become a read replica of the source. This
+        # is applicable for the following migrations: 1. MySQL to Cloud SQL (for MySQL)
+        # 2. PostgreSQL to Cloud SQL (for PostgreSQL) 3. PostgreSQL to AlloyDB.
+        # @param [String] name
+        #   Name of the migration job resource to demote its destination.
+        # @param [Google::Apis::DatamigrationV1::DemoteDestinationRequest] demote_destination_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def demote_migration_job_destination(name, demote_destination_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:demoteDestination', options)
+          command.request_representation = Google::Apis::DatamigrationV1::DemoteDestinationRequest::Representation
+          command.request_object = demote_destination_request_object
+          command.response_representation = Google::Apis::DatamigrationV1::Operation::Representation
+          command.response_class = Google::Apis::DatamigrationV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generate a SSH configuration script to configure the reverse SSH connectivity.
         # @param [String] migration_job
         #   Name of the migration job resource to generate the SSH script.

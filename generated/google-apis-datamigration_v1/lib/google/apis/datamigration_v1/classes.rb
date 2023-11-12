@@ -1428,6 +1428,19 @@ module Google
         end
       end
       
+      # Request message for 'DemoteDestination' request.
+      class DemoteDestinationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Response message for 'DescribeConversionWorkspaceRevisions' request.
       class DescribeConversionWorkspaceRevisionsResponse
         include Google::Apis::Core::Hashable
