@@ -3083,7 +3083,7 @@ module Google
       class ListMembershipsResponse
         include Google::Apis::Core::Hashable
       
-        # List of memberships in the requested (or first) page.
+        # Unordered list. List of memberships in the requested (or first) page.
         # Corresponds to the JSON property `memberships`
         # @return [Array<Google::Apis::ChatV1::Membership>]
         attr_accessor :memberships
