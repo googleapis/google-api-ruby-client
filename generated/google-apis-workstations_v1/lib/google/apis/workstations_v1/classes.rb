@@ -1453,6 +1453,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Environment variables passed to the workstation container's
+        # entrypoint.
+        # Corresponds to the JSON property `env`
+        # @return [Hash<String,String>]
+        attr_accessor :env
+      
         # Optional. Checksum computed by the server. May be sent on update and delete
         # requests to make sure that the client has an up-to-date value before
         # proceeding.
@@ -1518,6 +1524,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @env = args[:env] if args.key?(:env)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
           @labels = args[:labels] if args.key?(:labels)
