@@ -9327,13 +9327,17 @@ module Google
         # @return [String]
         attr_accessor :ip_protocol
       
-        # This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By
-        # internal TCP/UDP load balancers, backend service-based network load balancers,
-        # and internal and external protocol forwarding. Set this field to true to allow
-        # packets addressed to any port or packets lacking destination port information (
-        # for example, UDP fragments after the first fragment) to be forwarded to the
-        # backends configured with this forwarding rule. The ports, port_range, and
-        # allPorts fields are mutually exclusive.
+        # The ports, portRange, and allPorts fields are mutually exclusive. Only packets
+        # addressed to ports in the specified range will be forwarded to the backends
+        # configured with this forwarding rule. The allPorts field has the following
+        # limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP,
+        # SCTP, or L3_DEFAULT. - It's applicable only to the following products:
+        # internal passthrough Network Load Balancers, backend service-based external
+        # passthrough Network Load Balancers, and internal and external protocol
+        # forwarding. - Set this field to true to allow packets addressed to any port or
+        # packets lacking destination port information (for example, UDP fragments after
+        # the first fragment) to be forwarded to the backends configured with this
+        # forwarding rule. The L3_DEFAULT protocol requires allPorts be set to true.
         # Corresponds to the JSON property `allPorts`
         # @return [Boolean]
         attr_accessor :all_ports
@@ -9510,35 +9514,38 @@ module Google
         attr_accessor :no_automate_dns_zone
         alias_method :no_automate_dns_zone?, :no_automate_dns_zone
       
-        # This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By
-        # backend service-based network load balancers, target pool-based network load
-        # balancers, internal proxy load balancers, external proxy load balancers,
-        # Traffic Director, external protocol forwarding, and Classic VPN. Some products
-        # have restrictions on what ports can be used. See port specifications for
-        # details. Only packets addressed to ports in the specified range will be
-        # forwarded to the backends configured with this forwarding rule. The ports,
-        # port_range, and allPorts fields are mutually exclusive. For external
-        # forwarding rules, two or more forwarding rules cannot use the same [IPAddress,
-        # IPProtocol] pair, and cannot have overlapping portRanges. For internal
-        # forwarding rules within the same VPC network, two or more forwarding rules
-        # cannot use the same [IPAddress, IPProtocol] pair, and cannot have overlapping
-        # portRanges. @pattern: \\d+(?:-\\d+)?
+        # The ports, portRange, and allPorts fields are mutually exclusive. Only packets
+        # addressed to ports in the specified range will be forwarded to the backends
+        # configured with this forwarding rule. The portRange field has the following
+        # limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP, or
+        # SCTP, and - It's applicable only to the following products: external
+        # passthrough Network Load Balancers, internal and external proxy Network Load
+        # Balancers, internal and external Application Load Balancers, external protocol
+        # forwarding, and Classic VPN. - Some products have restrictions on what ports
+        # can be used. See port specifications for details. For external forwarding
+        # rules, two or more forwarding rules cannot use the same [IPAddress, IPProtocol]
+        # pair, and cannot have overlapping portRanges. For internal forwarding rules
+        # within the same VPC network, two or more forwarding rules cannot use the same [
+        # IPAddress, IPProtocol] pair, and cannot have overlapping portRanges. @pattern:
+        # \\d+(?:-\\d+)?
         # Corresponds to the JSON property `portRange`
         # @return [String]
         attr_accessor :port_range
       
-        # This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By
-        # internal TCP/UDP load balancers, backend service-based network load balancers,
-        # and internal protocol forwarding. You can specify a list of up to five ports
-        # by number, separated by commas. The ports can be contiguous or discontiguous.
-        # Only packets addressed to these ports will be forwarded to the backends
-        # configured with this forwarding rule. For external forwarding rules, two or
-        # more forwarding rules cannot use the same [IPAddress, IPProtocol] pair, and
-        # cannot share any values defined in ports. For internal forwarding rules within
-        # the same VPC network, two or more forwarding rules cannot use the same [
-        # IPAddress, IPProtocol] pair, and cannot share any values defined in ports. The
-        # ports, port_range, and allPorts fields are mutually exclusive. @pattern: \\d+(?
-        # :-\\d+)?
+        # The ports, portRange, and allPorts fields are mutually exclusive. Only packets
+        # addressed to ports in the specified range will be forwarded to the backends
+        # configured with this forwarding rule. The ports field has the following
+        # limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP, or
+        # SCTP, and - It's applicable only to the following products: internal
+        # passthrough Network Load Balancers, backend service-based external passthrough
+        # Network Load Balancers, and internal protocol forwarding. - You can specify a
+        # list of up to five ports by number, separated by commas. The ports can be
+        # contiguous or discontiguous. For external forwarding rules, two or more
+        # forwarding rules cannot use the same [IPAddress, IPProtocol] pair if they
+        # share at least one port number. For internal forwarding rules within the same
+        # VPC network, two or more forwarding rules cannot use the same [IPAddress,
+        # IPProtocol] pair if they share at least one port number. @pattern: \\d+(?:-\\d+
+        # )?
         # Corresponds to the JSON property `ports`
         # @return [Array<String>]
         attr_accessor :ports
@@ -32269,6 +32276,11 @@ module Google
         # @return [String]
         attr_accessor :physical_host
       
+        # Upcoming Maintenance notification information.
+        # Corresponds to the JSON property `upcomingMaintenance`
+        # @return [Google::Apis::ComputeV1::UpcomingMaintenance]
+        attr_accessor :upcoming_maintenance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -32276,6 +32288,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @physical_host = args[:physical_host] if args.key?(:physical_host)
+          @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
         end
       end
       
@@ -33605,6 +33618,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :tcp_transitory_idle_timeout_sec
       
+        # Indicates whether this NAT is used for public or private IP translation. If
+        # unspecified, it defaults to PUBLIC.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         # Corresponds to the JSON property `udpIdleTimeoutSec`
         # @return [Fixnum]
@@ -33634,6 +33653,7 @@ module Google
           @tcp_established_idle_timeout_sec = args[:tcp_established_idle_timeout_sec] if args.key?(:tcp_established_idle_timeout_sec)
           @tcp_time_wait_timeout_sec = args[:tcp_time_wait_timeout_sec] if args.key?(:tcp_time_wait_timeout_sec)
           @tcp_transitory_idle_timeout_sec = args[:tcp_transitory_idle_timeout_sec] if args.key?(:tcp_transitory_idle_timeout_sec)
+          @type = args[:type] if args.key?(:type)
           @udp_idle_timeout_sec = args[:udp_idle_timeout_sec] if args.key?(:udp_idle_timeout_sec)
         end
       end
@@ -33725,12 +33745,27 @@ module Google
         # @return [Array<String>]
         attr_accessor :source_nat_active_ips
       
+        # A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+        # These subnetworks must have purpose set to PRIVATE_NAT. This field is used for
+        # private NAT.
+        # Corresponds to the JSON property `sourceNatActiveRanges`
+        # @return [Array<String>]
+        attr_accessor :source_nat_active_ranges
+      
         # A list of URLs of the IP resources to be drained. These IPs must be valid
         # static external IPs that have been assigned to the NAT. These IPs should be
         # used for updating/patching a NAT rule only. This field is used for public NAT.
         # Corresponds to the JSON property `sourceNatDrainIps`
         # @return [Array<String>]
         attr_accessor :source_nat_drain_ips
+      
+        # A list of URLs of subnetworks representing source ranges to be drained. This
+        # is only supported on patch/update, and these subnetworks must have previously
+        # been used as active ranges in this NAT Rule. This field is used for private
+        # NAT.
+        # Corresponds to the JSON property `sourceNatDrainRanges`
+        # @return [Array<String>]
+        attr_accessor :source_nat_drain_ranges
       
         def initialize(**args)
            update!(**args)
@@ -33739,7 +33774,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @source_nat_active_ips = args[:source_nat_active_ips] if args.key?(:source_nat_active_ips)
+          @source_nat_active_ranges = args[:source_nat_active_ranges] if args.key?(:source_nat_active_ranges)
           @source_nat_drain_ips = args[:source_nat_drain_ips] if args.key?(:source_nat_drain_ips)
+          @source_nat_drain_ranges = args[:source_nat_drain_ranges] if args.key?(:source_nat_drain_ranges)
         end
       end
       
@@ -35220,6 +35257,12 @@ module Google
         # @return [String]
         attr_accessor :log_level
       
+        # An optional list of case-insensitive request header names to use for resolving
+        # the callers client IP address.
+        # Corresponds to the JSON property `userIpRequestHeaders`
+        # @return [Array<String>]
+        attr_accessor :user_ip_request_headers
+      
         def initialize(**args)
            update!(**args)
         end
@@ -35229,6 +35272,7 @@ module Google
           @json_custom_config = args[:json_custom_config] if args.key?(:json_custom_config)
           @json_parsing = args[:json_parsing] if args.key?(:json_parsing)
           @log_level = args[:log_level] if args.key?(:log_level)
+          @user_ip_request_headers = args[:user_ip_request_headers] if args.key?(:user_ip_request_headers)
         end
       end
       
@@ -37112,6 +37156,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :download_bytes
       
+        # [Output Only] A list of features to enable on the guest operating system.
+        # Applicable only for bootable images. Read Enabling guest operating system
+        # features to see a list of available options.
+        # Corresponds to the JSON property `guestOsFeatures`
+        # @return [Array<Google::Apis::ComputeV1::GuestOsFeature>]
+        attr_accessor :guest_os_features
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -37272,6 +37323,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @download_bytes = args[:download_bytes] if args.key?(:download_bytes)
+          @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
@@ -43231,6 +43283,59 @@ module Google
         def update!(**args)
           @high = args[:high] if args.key?(:high)
           @low = args[:low] if args.key?(:low)
+        end
+      end
+      
+      # Upcoming Maintenance notification information.
+      class UpcomingMaintenance
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if the maintenance can be customer triggered.
+        # Corresponds to the JSON property `canReschedule`
+        # @return [Boolean]
+        attr_accessor :can_reschedule
+        alias_method :can_reschedule?, :can_reschedule
+      
+        # The latest time for the planned maintenance window to start. This timestamp
+        # value is in RFC3339 text format.
+        # Corresponds to the JSON property `latestWindowStartTime`
+        # @return [String]
+        attr_accessor :latest_window_start_time
+      
+        # 
+        # Corresponds to the JSON property `maintenanceStatus`
+        # @return [String]
+        attr_accessor :maintenance_status
+      
+        # Defines the type of maintenance.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The time by which the maintenance disruption will be completed. This timestamp
+        # value is in RFC3339 text format.
+        # Corresponds to the JSON property `windowEndTime`
+        # @return [String]
+        attr_accessor :window_end_time
+      
+        # The current start time of the maintenance window. This timestamp value is in
+        # RFC3339 text format.
+        # Corresponds to the JSON property `windowStartTime`
+        # @return [String]
+        attr_accessor :window_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
+          @latest_window_start_time = args[:latest_window_start_time] if args.key?(:latest_window_start_time)
+          @maintenance_status = args[:maintenance_status] if args.key?(:maintenance_status)
+          @type = args[:type] if args.key?(:type)
+          @window_end_time = args[:window_end_time] if args.key?(:window_end_time)
+          @window_start_time = args[:window_start_time] if args.key?(:window_start_time)
         end
       end
       

@@ -5722,6 +5722,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpcomingMaintenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UrlMap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -14020,6 +14026,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :physical_host, as: 'physicalHost'
+          property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::ComputeV1::UpcomingMaintenance, decorator: Google::Apis::ComputeV1::UpcomingMaintenance::Representation
+      
         end
       end
       
@@ -14312,6 +14320,7 @@ module Google
           property :tcp_established_idle_timeout_sec, as: 'tcpEstablishedIdleTimeoutSec'
           property :tcp_time_wait_timeout_sec, as: 'tcpTimeWaitTimeoutSec'
           property :tcp_transitory_idle_timeout_sec, as: 'tcpTransitoryIdleTimeoutSec'
+          property :type, as: 'type'
           property :udp_idle_timeout_sec, as: 'udpIdleTimeoutSec'
         end
       end
@@ -14339,7 +14348,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :source_nat_active_ips, as: 'sourceNatActiveIps'
+          collection :source_nat_active_ranges, as: 'sourceNatActiveRanges'
           collection :source_nat_drain_ips, as: 'sourceNatDrainIps'
+          collection :source_nat_drain_ranges, as: 'sourceNatDrainRanges'
         end
       end
       
@@ -14712,6 +14723,7 @@ module Google
       
           property :json_parsing, as: 'jsonParsing'
           property :log_level, as: 'logLevel'
+          collection :user_ip_request_headers, as: 'userIpRequestHeaders'
         end
       end
       
@@ -15204,6 +15216,8 @@ module Google
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :download_bytes, :numeric_string => true, as: 'downloadBytes'
+          collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeV1::GuestOsFeature, decorator: Google::Apis::ComputeV1::GuestOsFeature::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
@@ -16730,6 +16744,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :high, :numeric_string => true, as: 'high'
           property :low, :numeric_string => true, as: 'low'
+        end
+      end
+      
+      class UpcomingMaintenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_reschedule, as: 'canReschedule'
+          property :latest_window_start_time, as: 'latestWindowStartTime'
+          property :maintenance_status, as: 'maintenanceStatus'
+          property :type, as: 'type'
+          property :window_end_time, as: 'windowEndTime'
+          property :window_start_time, as: 'windowStartTime'
         end
       end
       
