@@ -672,6 +672,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_persistence_regions
       
+        # Optional. If true, `allowed_persistence_regions` is also used to enforce in-
+        # transit guarantees for messages. That is, Pub/Sub will fail Publish operations
+        # on this topic and subscribe operations on any subscription attached to this
+        # topic in any region that is not in `allowed_persistence_regions`.
+        # Corresponds to the JSON property `enforceInTransit`
+        # @return [Boolean]
+        attr_accessor :enforce_in_transit
+        alias_method :enforce_in_transit?, :enforce_in_transit
+      
         def initialize(**args)
            update!(**args)
         end
@@ -679,6 +688,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_persistence_regions = args[:allowed_persistence_regions] if args.key?(:allowed_persistence_regions)
+          @enforce_in_transit = args[:enforce_in_transit] if args.key?(:enforce_in_transit)
         end
       end
       
