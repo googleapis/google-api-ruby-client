@@ -878,6 +878,27 @@ module Google
         end
       end
       
+      # Request message for PipelineService.BatchDeletePipelineJobs.
+      class GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The names of the PipelineJobs to delete. A maximum of 32
+        # PipelineJobs can be deleted in a batch. Format: `projects/`project`/locations/`
+        # location`/pipelineJobs/`pipelineJob``
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
+        end
+      end
+      
       # Request message for ModelService.BatchImportEvaluatedAnnotations
       class GoogleCloudAiplatformV1beta1BatchImportEvaluatedAnnotationsRequest
         include Google::Apis::Core::Hashable
@@ -1970,6 +1991,48 @@ module Google
           @incomplete_count = args[:incomplete_count] if args.key?(:incomplete_count)
           @successful_count = args[:successful_count] if args.key?(:successful_count)
           @successful_forecast_point_count = args[:successful_forecast_point_count] if args.key?(:successful_forecast_point_count)
+        end
+      end
+      
+      # Request message for ComputeTokens RPC call.
+      class GoogleCloudAiplatformV1beta1ComputeTokensRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The instances that are the input to token computing API call. Schema
+        # is identical to the prediction schema of the text model, even for the non-text
+        # models, like chat models, or Codey models.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Object>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # Response message for ComputeTokens RPC call.
+      class GoogleCloudAiplatformV1beta1ComputeTokensResponse
+        include Google::Apis::Core::Hashable
+      
+        # Lists of tokens info from the input. A ComputeTokensRequest could have
+        # multiple instances with a prompt in each instance. We also need to return
+        # lists of tokens info for the request with multiple instances.
+        # Corresponds to the JSON property `tokensInfo`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TokensInfo>]
+        attr_accessor :tokens_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tokens_info = args[:tokens_info] if args.key?(:tokens_info)
         end
       end
       
@@ -5210,6 +5273,15 @@ module Google
       class GoogleCloudAiplatformV1beta1ExplainRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. This field is the same as the one above, but supports multiple
+        # explanations to occur in parallel. The key can be any string. Each override
+        # will be run against the model, then its explanations will be grouped together.
+        # Note - these explanations are run **In Addition** to the default Explanation
+        # in the deployed model.
+        # Corresponds to the JSON property `concurrentExplanationSpecOverride`
+        # @return [Hash<String,Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExplanationSpecOverride>]
+        attr_accessor :concurrent_explanation_spec_override
+      
         # If specified, this ExplainRequest will be served by the chosen DeployedModel,
         # overriding Endpoint.traffic_split.
         # Corresponds to the JSON property `deployedModelId`
@@ -5244,6 +5316,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @concurrent_explanation_spec_override = args[:concurrent_explanation_spec_override] if args.key?(:concurrent_explanation_spec_override)
           @deployed_model_id = args[:deployed_model_id] if args.key?(:deployed_model_id)
           @explanation_spec_override = args[:explanation_spec_override] if args.key?(:explanation_spec_override)
           @instances = args[:instances] if args.key?(:instances)
@@ -5254,6 +5327,12 @@ module Google
       # Response message for PredictionService.Explain.
       class GoogleCloudAiplatformV1beta1ExplainResponse
         include Google::Apis::Core::Hashable
+      
+        # This field stores the results of the explanations run in parallel with The
+        # default explanation strategy/method.
+        # Corresponds to the JSON property `concurrentExplanations`
+        # @return [Hash<String,Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExplainResponseConcurrentExplanation>]
+        attr_accessor :concurrent_explanations
       
         # ID of the Endpoint's DeployedModel that served this explanation.
         # Corresponds to the JSON property `deployedModelId`
@@ -5278,9 +5357,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @concurrent_explanations = args[:concurrent_explanations] if args.key?(:concurrent_explanations)
           @deployed_model_id = args[:deployed_model_id] if args.key?(:deployed_model_id)
           @explanations = args[:explanations] if args.key?(:explanations)
           @predictions = args[:predictions] if args.key?(:predictions)
+        end
+      end
+      
+      # This message is a wrapper grouping Concurrent Explanations.
+      class GoogleCloudAiplatformV1beta1ExplainResponseConcurrentExplanation
+        include Google::Apis::Core::Hashable
+      
+        # The explanations of the Model's PredictResponse.predictions. It has the same
+        # number of elements as instances to be explained.
+        # Corresponds to the JSON property `explanations`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Explanation>]
+        attr_accessor :explanations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @explanations = args[:explanations] if args.key?(:explanations)
         end
       end
       
@@ -6415,6 +6515,13 @@ module Google
         # @return [String]
         attr_accessor :value_type
       
+        # Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/
+        # View columnn hosting data for this version. If no value is provided, will use
+        # feature_id.
+        # Corresponds to the JSON property `versionColumnName`
+        # @return [String]
+        attr_accessor :version_column_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6432,6 +6539,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @value_type = args[:value_type] if args.key?(:value_type)
+          @version_column_name = args[:version_column_name] if args.key?(:version_column_name)
         end
       end
       
@@ -6625,7 +6733,8 @@ module Google
         attr_accessor :create_time
       
         # The dedicated serving endpoint for this FeatureOnlineStore. Only need to set
-        # when you choose Optimized storage type or enable EmbeddingManagement.
+        # when you choose Optimized storage type or enable EmbeddingManagement. Will use
+        # public endpoint by default.
         # Corresponds to the JSON property `dedicatedServingEndpoint`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint]
         attr_accessor :dedicated_serving_endpoint
@@ -6659,6 +6768,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optimized storage type to replace lightning
+        # Corresponds to the JSON property `optimized`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimized]
+        attr_accessor :optimized
+      
         # Output only. State of the featureOnlineStore.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -6682,6 +6796,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @optimized = args[:optimized] if args.key?(:optimized)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -6745,9 +6860,15 @@ module Google
       end
       
       # The dedicated serving endpoint for this FeatureOnlineStore. Only need to set
-      # when you choose Optimized storage type or enable EmbeddingManagement.
+      # when you choose Optimized storage type or enable EmbeddingManagement. Will use
+      # public endpoint by default.
       class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint
         include Google::Apis::Core::Hashable
+      
+        # Represents configuration for private service connect.
+        # Corresponds to the JSON property `privateServiceConnectConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig]
+        attr_accessor :private_service_connect_config
       
         # Output only. This field will be populated with the domain name to use for this
         # FeatureOnlineStore
@@ -6755,13 +6876,21 @@ module Google
         # @return [String]
         attr_accessor :public_endpoint_domain_name
       
+        # Output only. The name of the service attachment resource. Populated if private
+        # service connect is enabled and after FeatureViewSync is created.
+        # Corresponds to the JSON property `serviceAttachment`
+        # @return [String]
+        attr_accessor :service_attachment
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @private_service_connect_config = args[:private_service_connect_config] if args.key?(:private_service_connect_config)
           @public_endpoint_domain_name = args[:public_endpoint_domain_name] if args.key?(:public_endpoint_domain_name)
+          @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
         end
       end
       
@@ -6784,6 +6913,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Optimized storage type to replace lightning
+      class GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimized
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -8787,6 +8929,13 @@ module Google
       
         # Optional. List of Restrict of the datapoint, used to perform "restricted
         # searches" where boolean rule are used to filter the subset of the database
+        # eligible for matching. This uses numeric comparisons.
+        # Corresponds to the JSON property `numericRestricts`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1IndexDatapointNumericRestriction>]
+        attr_accessor :numeric_restricts
+      
+        # Optional. List of Restrict of the datapoint, used to perform "restricted
+        # searches" where boolean rule are used to filter the subset of the database
         # eligible for matching. This uses categorical tokens. See: https://cloud.google.
         # com/vertex-ai/docs/matching-engine/filtering
         # Corresponds to the JSON property `restricts`
@@ -8802,6 +8951,7 @@ module Google
           @crowding_tag = args[:crowding_tag] if args.key?(:crowding_tag)
           @datapoint_id = args[:datapoint_id] if args.key?(:datapoint_id)
           @feature_vector = args[:feature_vector] if args.key?(:feature_vector)
+          @numeric_restricts = args[:numeric_restricts] if args.key?(:numeric_restricts)
           @restricts = args[:restricts] if args.key?(:restricts)
         end
       end
@@ -8828,6 +8978,50 @@ module Google
         # Update properties of this object
         def update!(**args)
           @crowding_attribute = args[:crowding_attribute] if args.key?(:crowding_attribute)
+        end
+      end
+      
+      # This field allows restricts to be based on numeric comparisons rather than
+      # categorical tokens.
+      class GoogleCloudAiplatformV1beta1IndexDatapointNumericRestriction
+        include Google::Apis::Core::Hashable
+      
+        # The namespace of this restriction. e.g.: cost.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        # This MUST be specified for queries and must NOT be specified for datapoints.
+        # Corresponds to the JSON property `op`
+        # @return [String]
+        attr_accessor :op
+      
+        # Represents 64 bit float.
+        # Corresponds to the JSON property `valueDouble`
+        # @return [Float]
+        attr_accessor :value_double
+      
+        # Represents 32 bit float.
+        # Corresponds to the JSON property `valueFloat`
+        # @return [Float]
+        attr_accessor :value_float
+      
+        # Represents 64 bit integer.
+        # Corresponds to the JSON property `valueInt`
+        # @return [Fixnum]
+        attr_accessor :value_int
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @namespace = args[:namespace] if args.key?(:namespace)
+          @op = args[:op] if args.key?(:op)
+          @value_double = args[:value_double] if args.key?(:value_double)
+          @value_float = args[:value_float] if args.key?(:value_float)
+          @value_int = args[:value_int] if args.key?(:value_int)
         end
       end
       
@@ -16248,6 +16442,16 @@ module Google
         # @return [String]
         attr_accessor :event_type
       
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleRpcStatus]
+        attr_accessor :status
+      
         # Required. The VM identity token (a JWT) for authenticating the VM. https://
         # cloud.google.com/compute/docs/instances/verifying-instance-identity
         # Corresponds to the JSON property `vmToken`
@@ -16261,6 +16465,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @event_type = args[:event_type] if args.key?(:event_type)
+          @status = args[:status] if args.key?(:status)
           @vm_token = args[:vm_token] if args.key?(:vm_token)
         end
       end
@@ -23447,7 +23652,7 @@ module Google
         end
       end
       
-      # A message representing a Study. Next id: 12
+      # A message representing a Study.
       class GoogleCloudAiplatformV1beta1Study
         include Google::Apis::Core::Hashable
       
@@ -25099,6 +25304,31 @@ module Google
           @test_fraction = args[:test_fraction] if args.key?(:test_fraction)
           @training_fraction = args[:training_fraction] if args.key?(:training_fraction)
           @validation_fraction = args[:validation_fraction] if args.key?(:validation_fraction)
+        end
+      end
+      
+      # Tokens info with a list of tokens and the corresponding list of token ids.
+      class GoogleCloudAiplatformV1beta1TokensInfo
+        include Google::Apis::Core::Hashable
+      
+        # A list of token ids from the input.
+        # Corresponds to the JSON property `tokenIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :token_ids
+      
+        # A list of tokens from the input.
+        # Corresponds to the JSON property `tokens`
+        # @return [Array<String>]
+        attr_accessor :tokens
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @token_ids = args[:token_ids] if args.key?(:token_ids)
+          @tokens = args[:tokens] if args.key?(:tokens)
         end
       end
       

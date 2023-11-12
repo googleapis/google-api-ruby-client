@@ -3256,6 +3256,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Return a list of tokens based on the input text.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to get lists of tokens and token
+        #   ids.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensRequest] google_cloud_aiplatform_v1beta1_compute_tokens_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def compute_project_location_endpoint_tokens(endpoint, google_cloud_aiplatform_v1beta1_compute_tokens_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+endpoint}:computeTokens', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_compute_tokens_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Perform a token counting.
         # @param [String] endpoint
         #   Required. The name of the Endpoint requested to perform token counting. Format:
@@ -14220,6 +14254,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Batch deletes PipelineJobs The Operation is atomic. If it fails, none of the
+        # PipelineJobs are deleted. If it succeeds, all of the PipelineJobs are deleted.
+        # @param [String] parent
+        #   Required. The name of the PipelineJobs' parent resource. Format: `projects/`
+        #   project`/locations/`location``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsRequest] google_cloud_aiplatform_v1beta1_batch_delete_pipeline_jobs_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_pipeline_job_delete(parent, google_cloud_aiplatform_v1beta1_batch_delete_pipeline_jobs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/pipelineJobs:batchDelete', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_batch_delete_pipeline_jobs_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Cancels a PipelineJob. Starts asynchronous cancellation on the PipelineJob.
         # The server makes a best effort to cancel the pipeline, but success is not
         # guaranteed. Clients can use PipelineService.GetPipelineJob or other methods to
@@ -14614,6 +14683,40 @@ module Google
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['timeout'] = timeout unless timeout.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Return a list of tokens based on the input text.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to get lists of tokens and token
+        #   ids.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensRequest] google_cloud_aiplatform_v1beta1_compute_tokens_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def compute_project_location_publisher_model_tokens(endpoint, google_cloud_aiplatform_v1beta1_compute_tokens_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+endpoint}:computeTokens', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_compute_tokens_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse
+          command.params['endpoint'] = endpoint unless endpoint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
