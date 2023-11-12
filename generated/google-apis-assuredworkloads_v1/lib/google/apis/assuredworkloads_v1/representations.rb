@@ -211,6 +211,7 @@ module Google
       class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acknowledge_type, as: 'acknowledgeType'
           property :comment, as: 'comment'
           property :non_compliant_org_policy, as: 'nonCompliantOrgPolicy'
         end
@@ -325,6 +326,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acknowledged, as: 'acknowledged'
           property :acknowledgement_time, as: 'acknowledgementTime'
+          property :associated_org_policy_violation_id, as: 'associatedOrgPolicyViolationId'
           property :audit_log_link, as: 'auditLogLink'
           property :begin_time, as: 'beginTime'
           property :category, as: 'category'
@@ -335,11 +337,15 @@ module Google
           property :name, as: 'name'
           property :non_compliant_org_policy, as: 'nonCompliantOrgPolicy'
           property :org_policy_constraint, as: 'orgPolicyConstraint'
+          property :parent_project_number, as: 'parentProjectNumber'
           property :remediation, as: 'remediation', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ViolationRemediation, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ViolationRemediation::Representation
       
           property :resolve_time, as: 'resolveTime'
+          property :resource_name, as: 'resourceName'
+          property :resource_type, as: 'resourceType'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+          property :violation_type, as: 'violationType'
         end
       end
       
@@ -427,7 +433,9 @@ module Google
       class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acknowledged_resource_violation_count, as: 'acknowledgedResourceViolationCount'
           property :acknowledged_violation_count, as: 'acknowledgedViolationCount'
+          property :active_resource_violation_count, as: 'activeResourceViolationCount'
           property :active_violation_count, as: 'activeViolationCount'
         end
       end

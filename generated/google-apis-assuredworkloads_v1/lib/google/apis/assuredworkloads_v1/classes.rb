@@ -26,6 +26,11 @@ module Google
       class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Acknowledge type of specified violation.
+        # Corresponds to the JSON property `acknowledgeType`
+        # @return [String]
+        attr_accessor :acknowledge_type
+      
         # Required. Business justification explaining the need for violation
         # acknowledgement
         # Corresponds to the JSON property `comment`
@@ -47,6 +52,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acknowledge_type = args[:acknowledge_type] if args.key?(:acknowledge_type)
           @comment = args[:comment] if args.key?(:comment)
           @non_compliant_org_policy = args[:non_compliant_org_policy] if args.key?(:non_compliant_org_policy)
         end
@@ -380,6 +386,12 @@ module Google
         # @return [String]
         attr_accessor :acknowledgement_time
       
+        # Optional. Output only. Violation Id of the org-policy violation due to which
+        # the resource violation is caused. Empty for org-policy violations.
+        # Corresponds to the JSON property `associatedOrgPolicyViolationId`
+        # @return [String]
+        attr_accessor :associated_org_policy_violation_id
+      
         # Output only. Immutable. Audit Log Link for violated resource Format: https://
         # console.cloud.google.com/logs/query;query=`logName``protoPayload.resourceName``
         # timeRange``folder`
@@ -438,6 +450,12 @@ module Google
         # @return [String]
         attr_accessor :org_policy_constraint
       
+        # Optional. Output only. Parent project number where resource is present. Empty
+        # for org-policy violations.
+        # Corresponds to the JSON property `parentProjectNumber`
+        # @return [String]
+        attr_accessor :parent_project_number
+      
         # Represents remediation guidance to resolve compliance violation for
         # AssuredWorkload
         # Corresponds to the JSON property `remediation`
@@ -450,6 +468,18 @@ module Google
         # @return [String]
         attr_accessor :resolve_time
       
+        # Optional. Output only. Name of the resource like //storage.googleapis.com/
+        # myprojectxyz-testbucket. Empty for org-policy violations.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Optional. Output only. Type of the resource like compute.googleapis.com/Disk,
+        # etc. Empty for org-policy violations.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
         # Output only. State of the violation
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -460,6 +490,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. Type of the violation
+        # Corresponds to the JSON property `violationType`
+        # @return [String]
+        attr_accessor :violation_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -468,6 +503,7 @@ module Google
         def update!(**args)
           @acknowledged = args[:acknowledged] if args.key?(:acknowledged)
           @acknowledgement_time = args[:acknowledgement_time] if args.key?(:acknowledgement_time)
+          @associated_org_policy_violation_id = args[:associated_org_policy_violation_id] if args.key?(:associated_org_policy_violation_id)
           @audit_log_link = args[:audit_log_link] if args.key?(:audit_log_link)
           @begin_time = args[:begin_time] if args.key?(:begin_time)
           @category = args[:category] if args.key?(:category)
@@ -477,10 +513,14 @@ module Google
           @name = args[:name] if args.key?(:name)
           @non_compliant_org_policy = args[:non_compliant_org_policy] if args.key?(:non_compliant_org_policy)
           @org_policy_constraint = args[:org_policy_constraint] if args.key?(:org_policy_constraint)
+          @parent_project_number = args[:parent_project_number] if args.key?(:parent_project_number)
           @remediation = args[:remediation] if args.key?(:remediation)
           @resolve_time = args[:resolve_time] if args.key?(:resolve_time)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @violation_type = args[:violation_type] if args.key?(:violation_type)
         end
       end
       
@@ -807,10 +847,20 @@ module Google
       class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus
         include Google::Apis::Core::Hashable
       
+        # Number of current resource violations which are not acknowledged.
+        # Corresponds to the JSON property `acknowledgedResourceViolationCount`
+        # @return [Fixnum]
+        attr_accessor :acknowledged_resource_violation_count
+      
         # Number of current orgPolicy violations which are acknowledged.
         # Corresponds to the JSON property `acknowledgedViolationCount`
         # @return [Fixnum]
         attr_accessor :acknowledged_violation_count
+      
+        # Number of current resource violations which are acknowledged.
+        # Corresponds to the JSON property `activeResourceViolationCount`
+        # @return [Fixnum]
+        attr_accessor :active_resource_violation_count
       
         # Number of current orgPolicy violations which are not acknowledged.
         # Corresponds to the JSON property `activeViolationCount`
@@ -823,7 +873,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acknowledged_resource_violation_count = args[:acknowledged_resource_violation_count] if args.key?(:acknowledged_resource_violation_count)
           @acknowledged_violation_count = args[:acknowledged_violation_count] if args.key?(:acknowledged_violation_count)
+          @active_resource_violation_count = args[:active_resource_violation_count] if args.key?(:active_resource_violation_count)
           @active_violation_count = args[:active_violation_count] if args.key?(:active_violation_count)
         end
       end
