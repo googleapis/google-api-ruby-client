@@ -70,6 +70,36 @@ module Google
         end
       end
       
+      # Contains signals about others apps on the device which could be used to access
+      # or control the requesting app.
+      class AppAccessRiskVerdict
+        include Google::Apis::Core::Hashable
+      
+        # Required. App access risk verdict related to apps that are not installed by
+        # Google Play, and are not preloaded on the system image by the device
+        # manufacturer.
+        # Corresponds to the JSON property `otherApps`
+        # @return [String]
+        attr_accessor :other_apps
+      
+        # Required. App access risk verdict related to apps that are not installed by
+        # the Google Play Store, and are not preloaded on the system image by the device
+        # manufacturer.
+        # Corresponds to the JSON property `playOrSystemApps`
+        # @return [String]
+        attr_accessor :play_or_system_apps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @other_apps = args[:other_apps] if args.key?(:other_apps)
+          @play_or_system_apps = args[:play_or_system_apps] if args.key?(:play_or_system_apps)
+        end
+      end
+      
       # Contains the application integrity information.
       class AppIntegrity
         include Google::Apis::Core::Hashable
@@ -168,16 +198,21 @@ module Google
         end
       end
       
-      # Contains guidance details about the Integrity API response, providing
-      # additional context to the integrity verdicts.
-      class GuidanceDetails
+      # Contains information about the environment Play Integrity API runs in, e.g.
+      # Play Protect verdict.
+      class EnvironmentDetails
         include Google::Apis::Core::Hashable
       
-        # This shows when there is an issue with at least one of the integrity verdicts,
-        # which can be remedied by the user and provides additional details.
-        # Corresponds to the JSON property `userRemediationDetails`
-        # @return [Array<Google::Apis::PlayintegrityV1::UserRemediationDetails>]
-        attr_accessor :user_remediation_details
+        # Contains signals about others apps on the device which could be used to access
+        # or control the requesting app.
+        # Corresponds to the JSON property `appAccessRiskVerdict`
+        # @return [Google::Apis::PlayintegrityV1::AppAccessRiskVerdict]
+        attr_accessor :app_access_risk_verdict
+      
+        # The evaluation of Play Protect verdict.
+        # Corresponds to the JSON property `playProtectVerdict`
+        # @return [String]
+        attr_accessor :play_protect_verdict
       
         def initialize(**args)
            update!(**args)
@@ -185,7 +220,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @user_remediation_details = args[:user_remediation_details] if args.key?(:user_remediation_details)
+          @app_access_risk_verdict = args[:app_access_risk_verdict] if args.key?(:app_access_risk_verdict)
+          @play_protect_verdict = args[:play_protect_verdict] if args.key?(:play_protect_verdict)
         end
       end
       
@@ -270,11 +306,11 @@ module Google
         # @return [Google::Apis::PlayintegrityV1::DeviceIntegrity]
         attr_accessor :device_integrity
       
-        # Contains guidance details about the Integrity API response, providing
-        # additional context to the integrity verdicts.
-        # Corresponds to the JSON property `guidanceDetails`
-        # @return [Google::Apis::PlayintegrityV1::GuidanceDetails]
-        attr_accessor :guidance_details
+        # Contains information about the environment Play Integrity API runs in, e.g.
+        # Play Protect verdict.
+        # Corresponds to the JSON property `environmentDetails`
+        # @return [Google::Apis::PlayintegrityV1::EnvironmentDetails]
+        attr_accessor :environment_details
       
         # Contains the integrity request information.
         # Corresponds to the JSON property `requestDetails`
@@ -295,28 +331,9 @@ module Google
           @account_details = args[:account_details] if args.key?(:account_details)
           @app_integrity = args[:app_integrity] if args.key?(:app_integrity)
           @device_integrity = args[:device_integrity] if args.key?(:device_integrity)
-          @guidance_details = args[:guidance_details] if args.key?(:guidance_details)
+          @environment_details = args[:environment_details] if args.key?(:environment_details)
           @request_details = args[:request_details] if args.key?(:request_details)
           @testing_details = args[:testing_details] if args.key?(:testing_details)
-        end
-      end
-      
-      # Contains details of remediation guidance that the user can perform.
-      class UserRemediationDetails
-        include Google::Apis::Core::Hashable
-      
-        # Description of the user remediation action.
-        # Corresponds to the JSON property `remediation`
-        # @return [String]
-        attr_accessor :remediation
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @remediation = args[:remediation] if args.key?(:remediation)
         end
       end
     end
