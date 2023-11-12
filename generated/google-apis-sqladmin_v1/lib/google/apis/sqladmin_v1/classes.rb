@@ -924,6 +924,11 @@ module Google
         # @return [Google::Apis::SqladminV1::Settings]
         attr_accessor :settings
       
+        # 
+        # Corresponds to the JSON property `sqlNetworkArchitecture`
+        # @return [String]
+        attr_accessor :sql_network_architecture
+      
         # The current serving state of the Cloud SQL instance.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -982,6 +987,7 @@ module Google
           @server_ca_cert = args[:server_ca_cert] if args.key?(:server_ca_cert)
           @service_account_email_address = args[:service_account_email_address] if args.key?(:service_account_email_address)
           @settings = args[:settings] if args.key?(:settings)
+          @sql_network_architecture = args[:sql_network_architecture] if args.key?(:sql_network_architecture)
           @state = args[:state] if args.key?(:state)
           @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
           @write_endpoint = args[:write_endpoint] if args.key?(:write_endpoint)
@@ -2674,6 +2680,11 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
+        # An Admin API warning message.
+        # Corresponds to the JSON property `apiWarning`
+        # @return [Google::Apis::SqladminV1::ApiWarning]
+        attr_accessor :api_warning
+      
         # Backup context.
         # Corresponds to the JSON property `backupContext`
         # @return [Google::Apis::SqladminV1::BackupContext]
@@ -2767,6 +2778,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_warning = args[:api_warning] if args.key?(:api_warning)
           @backup_context = args[:backup_context] if args.key?(:backup_context)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
@@ -2968,6 +2980,13 @@ module Google
         # @return [String]
         attr_accessor :complexity
       
+        # Disallow credentials that have been previously compromised by a public data
+        # breach.
+        # Corresponds to the JSON property `disallowCompromisedCredentials`
+        # @return [Boolean]
+        attr_accessor :disallow_compromised_credentials
+        alias_method :disallow_compromised_credentials?, :disallow_compromised_credentials
+      
         # Disallow username as a part of the password.
         # Corresponds to the JSON property `disallowUsernameSubstring`
         # @return [Boolean]
@@ -3003,6 +3022,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @complexity = args[:complexity] if args.key?(:complexity)
+          @disallow_compromised_credentials = args[:disallow_compromised_credentials] if args.key?(:disallow_compromised_credentials)
           @disallow_username_substring = args[:disallow_username_substring] if args.key?(:disallow_username_substring)
           @enable_password_policy = args[:enable_password_policy] if args.key?(:enable_password_policy)
           @min_length = args[:min_length] if args.key?(:min_length)
