@@ -1767,6 +1767,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message'
           property :release, as: 'release'
+          property :release_render_state, as: 'releaseRenderState'
         end
       end
       
