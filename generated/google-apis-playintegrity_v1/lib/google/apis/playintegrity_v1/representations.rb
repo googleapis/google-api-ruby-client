@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppAccessRiskVerdict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppIntegrity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,7 +64,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GuidanceDetails
+      class EnvironmentDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -82,12 +88,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UserRemediationDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AccountActivity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -101,6 +101,14 @@ module Google
           property :account_activity, as: 'accountActivity', class: Google::Apis::PlayintegrityV1::AccountActivity, decorator: Google::Apis::PlayintegrityV1::AccountActivity::Representation
       
           property :app_licensing_verdict, as: 'appLicensingVerdict'
+        end
+      end
+      
+      class AppAccessRiskVerdict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :other_apps, as: 'otherApps'
+          property :play_or_system_apps, as: 'playOrSystemApps'
         end
       end
       
@@ -136,11 +144,12 @@ module Google
         end
       end
       
-      class GuidanceDetails
+      class EnvironmentDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :user_remediation_details, as: 'userRemediationDetails', class: Google::Apis::PlayintegrityV1::UserRemediationDetails, decorator: Google::Apis::PlayintegrityV1::UserRemediationDetails::Representation
+          property :app_access_risk_verdict, as: 'appAccessRiskVerdict', class: Google::Apis::PlayintegrityV1::AppAccessRiskVerdict, decorator: Google::Apis::PlayintegrityV1::AppAccessRiskVerdict::Representation
       
+          property :play_protect_verdict, as: 'playProtectVerdict'
         end
       end
       
@@ -170,19 +179,12 @@ module Google
       
           property :device_integrity, as: 'deviceIntegrity', class: Google::Apis::PlayintegrityV1::DeviceIntegrity, decorator: Google::Apis::PlayintegrityV1::DeviceIntegrity::Representation
       
-          property :guidance_details, as: 'guidanceDetails', class: Google::Apis::PlayintegrityV1::GuidanceDetails, decorator: Google::Apis::PlayintegrityV1::GuidanceDetails::Representation
+          property :environment_details, as: 'environmentDetails', class: Google::Apis::PlayintegrityV1::EnvironmentDetails, decorator: Google::Apis::PlayintegrityV1::EnvironmentDetails::Representation
       
           property :request_details, as: 'requestDetails', class: Google::Apis::PlayintegrityV1::RequestDetails, decorator: Google::Apis::PlayintegrityV1::RequestDetails::Representation
       
           property :testing_details, as: 'testingDetails', class: Google::Apis::PlayintegrityV1::TestingDetails, decorator: Google::Apis::PlayintegrityV1::TestingDetails::Representation
       
-        end
-      end
-      
-      class UserRemediationDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :remediation, as: 'remediation'
         end
       end
     end
