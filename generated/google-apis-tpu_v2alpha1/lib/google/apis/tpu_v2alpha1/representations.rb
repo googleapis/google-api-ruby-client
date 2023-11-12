@@ -654,6 +654,7 @@ module Google
       
           property :accelerator_type, as: 'acceleratorType'
           property :api_version, as: 'apiVersion'
+          property :autocheckpoint_enabled, as: 'autocheckpointEnabled'
           property :boot_disk_config, as: 'bootDiskConfig', class: Google::Apis::TpuV2alpha1::BootDiskConfig, decorator: Google::Apis::TpuV2alpha1::BootDiskConfig::Representation
       
           property :cidr_block, as: 'cidrBlock'
