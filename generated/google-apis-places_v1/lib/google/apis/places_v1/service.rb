@@ -183,7 +183,7 @@ module Google
         # @param [Boolean] skip_http_redirect
         #   Optional. If set, skip the default HTTP redirect behavior and render a text
         #   format (for example, in JSON format for HTTP use case) response. If not set,
-        #   an HTTP redirect will be issued to redirect the call to the image midea. This
+        #   an HTTP redirect will be issued to redirect the call to the image media. This
         #   option is ignored for non-HTTP requests.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
