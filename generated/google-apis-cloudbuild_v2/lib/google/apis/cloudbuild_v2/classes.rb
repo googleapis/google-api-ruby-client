@@ -220,6 +220,31 @@ module Google
         end
       end
       
+      # Capabilities adds and removes POSIX capabilities from running containers.
+      class Capabilities
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Added capabilities +optional
+        # Corresponds to the JSON property `add`
+        # @return [Array<String>]
+        attr_accessor :add
+      
+        # Optional. Removed capabilities +optional
+        # Corresponds to the JSON property `drop`
+        # @return [Array<String>]
+        attr_accessor :drop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add = args[:add] if args.key?(:add)
+          @drop = args[:drop] if args.key?(:drop)
+        end
+      end
+      
       # ChildStatusReference is used to point to the statuses of individual TaskRuns
       # and Runs within this PipelineRun.
       class ChildStatusReference
@@ -460,6 +485,30 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # ExecAction describes a "run in container" action.
+      class ExecAction
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Command is the command line to execute inside the container, the
+        # working directory for the command is root ('/') in the container's filesystem.
+        # The command is simply exec'd, it is not run inside a shell, so traditional
+        # shell instructions ('|', etc) won't work. To use a shell, you need to
+        # explicitly call out to that shell. Exit status of 0 is treated as live/healthy
+        # and non-zero is unhealthy. +optional
+        # Corresponds to the JSON property `command`
+        # @return [Array<String>]
+        attr_accessor :command
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @command = args[:command] if args.key?(:command)
         end
       end
       
@@ -1811,6 +1860,33 @@ module Google
         end
       end
       
+      # Probe describes a health check to be performed against a container to
+      # determine whether it is alive or ready to receive traffic.
+      class Probe
+        include Google::Apis::Core::Hashable
+      
+        # ExecAction describes a "run in container" action.
+        # Corresponds to the JSON property `exec`
+        # @return [Google::Apis::CloudbuildV2::ExecAction]
+        attr_accessor :exec
+      
+        # Optional. How often (in seconds) to perform the probe. Default to 10 seconds.
+        # Minimum value is 1. +optional
+        # Corresponds to the JSON property `periodSeconds`
+        # @return [Fixnum]
+        attr_accessor :period_seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exec = args[:exec] if args.key?(:exec)
+          @period_seconds = args[:period_seconds] if args.key?(:period_seconds)
+        end
+      end
+      
       # PropertySpec holds information about a property in an object.
       class PropertySpec
         include Google::Apis::Core::Hashable
@@ -1977,11 +2053,56 @@ module Google
       class SecurityContext
         include Google::Apis::Core::Hashable
       
+        # Optional. AllowPrivilegeEscalation controls whether a process can gain more
+        # privileges than its parent process. This bool directly controls if the
+        # no_new_privs flag will be set on the container process.
+        # AllowPrivilegeEscalation is true always when the container is: 1) run as
+        # Privileged 2) has CAP_SYS_ADMIN Note that this field cannot be set when spec.
+        # os.name is windows. +optional
+        # Corresponds to the JSON property `allowPrivilegeEscalation`
+        # @return [Boolean]
+        attr_accessor :allow_privilege_escalation
+        alias_method :allow_privilege_escalation?, :allow_privilege_escalation
+      
+        # Capabilities adds and removes POSIX capabilities from running containers.
+        # Corresponds to the JSON property `capabilities`
+        # @return [Google::Apis::CloudbuildV2::Capabilities]
+        attr_accessor :capabilities
+      
         # Run container in privileged mode.
         # Corresponds to the JSON property `privileged`
         # @return [Boolean]
         attr_accessor :privileged
         alias_method :privileged?, :privileged
+      
+        # Optional. The GID to run the entrypoint of the container process. Uses runtime
+        # default if unset. May also be set in PodSecurityContext. If set in both
+        # SecurityContext and PodSecurityContext, the value specified in SecurityContext
+        # takes precedence. Note that this field cannot be set when spec.os.name is
+        # windows. +optional
+        # Corresponds to the JSON property `runAsGroup`
+        # @return [Fixnum]
+        attr_accessor :run_as_group
+      
+        # Optional. Indicates that the container must run as a non-root user. If true,
+        # the Kubelet will validate the image at runtime to ensure that it does not run
+        # as UID 0 (root) and fail to start the container if it does. If unset or false,
+        # no such validation will be performed. May also be set in PodSecurityContext.
+        # If set in both SecurityContext and PodSecurityContext, the value specified in
+        # SecurityContext takes precedence. +optional
+        # Corresponds to the JSON property `runAsNonRoot`
+        # @return [Boolean]
+        attr_accessor :run_as_non_root
+        alias_method :run_as_non_root?, :run_as_non_root
+      
+        # Optional. The UID to run the entrypoint of the container process. Defaults to
+        # user specified in image metadata if unspecified. May also be set in
+        # PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the
+        # value specified in SecurityContext takes precedence. Note that this field
+        # cannot be set when spec.os.name is windows. +optional
+        # Corresponds to the JSON property `runAsUser`
+        # @return [Fixnum]
+        attr_accessor :run_as_user
       
         def initialize(**args)
            update!(**args)
@@ -1989,7 +2110,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_privilege_escalation = args[:allow_privilege_escalation] if args.key?(:allow_privilege_escalation)
+          @capabilities = args[:capabilities] if args.key?(:capabilities)
           @privileged = args[:privileged] if args.key?(:privileged)
+          @run_as_group = args[:run_as_group] if args.key?(:run_as_group)
+          @run_as_non_root = args[:run_as_non_root] if args.key?(:run_as_non_root)
+          @run_as_user = args[:run_as_user] if args.key?(:run_as_user)
         end
       end
       
@@ -2075,6 +2201,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Probe describes a health check to be performed against a container to
+        # determine whether it is alive or ready to receive traffic.
+        # Corresponds to the JSON property `readinessProbe`
+        # @return [Google::Apis::CloudbuildV2::Probe]
+        attr_accessor :readiness_probe
+      
         # The contents of an executable file to execute.
         # Corresponds to the JSON property `script`
         # @return [String]
@@ -2106,6 +2238,7 @@ module Google
           @env = args[:env] if args.key?(:env)
           @image = args[:image] if args.key?(:image)
           @name = args[:name] if args.key?(:name)
+          @readiness_probe = args[:readiness_probe] if args.key?(:readiness_probe)
           @script = args[:script] if args.key?(:script)
           @security_context = args[:security_context] if args.key?(:security_context)
           @volume_mounts = args[:volume_mounts] if args.key?(:volume_mounts)
@@ -2220,6 +2353,11 @@ module Google
         # @return [String]
         attr_accessor :script
       
+        # Security options the container should be run with.
+        # Corresponds to the JSON property `securityContext`
+        # @return [Google::Apis::CloudbuildV2::SecurityContext]
+        attr_accessor :security_context
+      
         # Time after which the Step times out. Defaults to never.
         # Corresponds to the JSON property `timeout`
         # @return [String]
@@ -2247,9 +2385,30 @@ module Google
           @image = args[:image] if args.key?(:image)
           @name = args[:name] if args.key?(:name)
           @script = args[:script] if args.key?(:script)
+          @security_context = args[:security_context] if args.key?(:security_context)
           @timeout = args[:timeout] if args.key?(:timeout)
           @volume_mounts = args[:volume_mounts] if args.key?(:volume_mounts)
           @working_dir = args[:working_dir] if args.key?(:working_dir)
+        end
+      end
+      
+      # StepTemplate can be used as the basis for all step containers within the Task,
+      # so that the steps inherit settings on the base container.
+      class StepTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of environment variables to set in the Step. Cannot be updated.
+        # Corresponds to the JSON property `env`
+        # @return [Array<Google::Apis::CloudbuildV2::EnvVar>]
+        attr_accessor :env
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @env = args[:env] if args.key?(:env)
         end
       end
       
@@ -2356,6 +2515,12 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV2::Sidecar>]
         attr_accessor :sidecars
       
+        # Optional. StepTemplate can be used as the basis for all step containers within
+        # the Task, so that the steps inherit settings on the base container.
+        # Corresponds to the JSON property `stepTemplate`
+        # @return [Array<Google::Apis::CloudbuildV2::StepTemplate>]
+        attr_accessor :step_template
+      
         # Steps of the task.
         # Corresponds to the JSON property `steps`
         # @return [Array<Google::Apis::CloudbuildV2::Step>]
@@ -2382,6 +2547,7 @@ module Google
           @params = args[:params] if args.key?(:params)
           @results = args[:results] if args.key?(:results)
           @sidecars = args[:sidecars] if args.key?(:sidecars)
+          @step_template = args[:step_template] if args.key?(:step_template)
           @steps = args[:steps] if args.key?(:steps)
           @volumes = args[:volumes] if args.key?(:volumes)
           @workspaces = args[:workspaces] if args.key?(:workspaces)
@@ -2667,6 +2833,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Optional marks a Workspace as not being required in TaskRuns. By
+        # default this field is false and so declared workspaces are required.
+        # Corresponds to the JSON property `optional`
+        # @return [Boolean]
+        attr_accessor :optional
+        alias_method :optional?, :optional
+      
         # ReadOnly dictates whether a mounted volume is writable.
         # Corresponds to the JSON property `readOnly`
         # @return [Boolean]
@@ -2682,6 +2855,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @mount_path = args[:mount_path] if args.key?(:mount_path)
           @name = args[:name] if args.key?(:name)
+          @optional = args[:optional] if args.key?(:optional)
           @read_only = args[:read_only] if args.key?(:read_only)
         end
       end

@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Capabilities
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChildStatusReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +101,12 @@ module Google
       end
       
       class EnvVar
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -286,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Probe
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PropertySpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +359,12 @@ module Google
       end
       
       class Step
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StepTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -479,6 +503,14 @@ module Google
         end
       end
       
+      class Capabilities
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :add, as: 'add'
+          collection :drop, as: 'drop'
+        end
+      end
+      
       class ChildStatusReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -547,6 +579,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :value, as: 'value'
+        end
+      end
+      
+      class ExecAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :command, as: 'command'
         end
       end
       
@@ -899,6 +938,15 @@ module Google
         end
       end
       
+      class Probe
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exec, as: 'exec', class: Google::Apis::CloudbuildV2::ExecAction, decorator: Google::Apis::CloudbuildV2::ExecAction::Representation
+      
+          property :period_seconds, as: 'periodSeconds'
+        end
+      end
+      
       class PropertySpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -943,7 +991,13 @@ module Google
       class SecurityContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_privilege_escalation, as: 'allowPrivilegeEscalation'
+          property :capabilities, as: 'capabilities', class: Google::Apis::CloudbuildV2::Capabilities, decorator: Google::Apis::CloudbuildV2::Capabilities::Representation
+      
           property :privileged, as: 'privileged'
+          property :run_as_group, :numeric_string => true, as: 'runAsGroup'
+          property :run_as_non_root, as: 'runAsNonRoot'
+          property :run_as_user, :numeric_string => true, as: 'runAsUser'
         end
       end
       
@@ -965,6 +1019,8 @@ module Google
       
           property :image, as: 'image'
           property :name, as: 'name'
+          property :readiness_probe, as: 'readinessProbe', class: Google::Apis::CloudbuildV2::Probe, decorator: Google::Apis::CloudbuildV2::Probe::Representation
+      
           property :script, as: 'script'
           property :security_context, as: 'securityContext', class: Google::Apis::CloudbuildV2::SecurityContext, decorator: Google::Apis::CloudbuildV2::SecurityContext::Representation
       
@@ -1003,10 +1059,20 @@ module Google
           property :image, as: 'image'
           property :name, as: 'name'
           property :script, as: 'script'
+          property :security_context, as: 'securityContext', class: Google::Apis::CloudbuildV2::SecurityContext, decorator: Google::Apis::CloudbuildV2::SecurityContext::Representation
+      
           property :timeout, as: 'timeout'
           collection :volume_mounts, as: 'volumeMounts', class: Google::Apis::CloudbuildV2::VolumeMount, decorator: Google::Apis::CloudbuildV2::VolumeMount::Representation
       
           property :working_dir, as: 'workingDir'
+        end
+      end
+      
+      class StepTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :env, as: 'env', class: Google::Apis::CloudbuildV2::EnvVar, decorator: Google::Apis::CloudbuildV2::EnvVar::Representation
+      
         end
       end
       
@@ -1041,6 +1107,8 @@ module Google
           collection :results, as: 'results', class: Google::Apis::CloudbuildV2::TaskResult, decorator: Google::Apis::CloudbuildV2::TaskResult::Representation
       
           collection :sidecars, as: 'sidecars', class: Google::Apis::CloudbuildV2::Sidecar, decorator: Google::Apis::CloudbuildV2::Sidecar::Representation
+      
+          collection :step_template, as: 'stepTemplate', class: Google::Apis::CloudbuildV2::StepTemplate, decorator: Google::Apis::CloudbuildV2::StepTemplate::Representation
       
           collection :steps, as: 'steps', class: Google::Apis::CloudbuildV2::Step, decorator: Google::Apis::CloudbuildV2::Step::Representation
       
@@ -1135,6 +1203,7 @@ module Google
           property :description, as: 'description'
           property :mount_path, as: 'mountPath'
           property :name, as: 'name'
+          property :optional, as: 'optional'
           property :read_only, as: 'readOnly'
         end
       end
