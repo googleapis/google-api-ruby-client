@@ -1545,6 +1545,27 @@ module Google
         end
       end
       
+      # DefaultClusterConfig describes the default cluster configurations to be
+      # applied to all clusters born-in-fleet.
+      class DefaultClusterConfig
+        include Google::Apis::Core::Hashable
+      
+        # SecurityPostureConfig defines the flags needed to enable/disable features for
+        # the Security Posture API.
+        # Corresponds to the JSON property `securityPostureConfig`
+        # @return [Google::Apis::GkehubV1beta::SecurityPostureConfig]
+        attr_accessor :security_posture_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @security_posture_config = args[:security_posture_config] if args.key?(:security_posture_config)
+        end
+      end
+      
       # EdgeCluster contains information specific to Google Edge Clusters.
       class EdgeCluster
         include Google::Apis::Core::Hashable
@@ -1822,6 +1843,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # DefaultClusterConfig describes the default cluster configurations to be
+        # applied to all clusters born-in-fleet.
+        # Corresponds to the JSON property `defaultClusterConfig`
+        # @return [Google::Apis::GkehubV1beta::DefaultClusterConfig]
+        attr_accessor :default_cluster_config
+      
         # Output only. When the Fleet was deleted.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
@@ -1871,6 +1898,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @default_cluster_config = args[:default_cluster_config] if args.key?(:default_cluster_config)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
@@ -4644,6 +4672,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code = args[:code] if args.key?(:code)
+        end
+      end
+      
+      # SecurityPostureConfig defines the flags needed to enable/disable features for
+      # the Security Posture API.
+      class SecurityPostureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Sets which mode to use for Security Posture features.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Sets which mode to use for vulnerability scanning.
+        # Corresponds to the JSON property `vulnerabilityMode`
+        # @return [String]
+        attr_accessor :vulnerability_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+          @vulnerability_mode = args[:vulnerability_mode] if args.key?(:vulnerability_mode)
         end
       end
       

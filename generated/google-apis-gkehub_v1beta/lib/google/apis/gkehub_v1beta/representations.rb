@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DefaultClusterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EdgeCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -778,6 +784,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPostureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceMeshControlPlaneManagement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1270,6 +1282,14 @@ module Google
         end
       end
       
+      class DefaultClusterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :security_posture_config, as: 'securityPostureConfig', class: Google::Apis::GkehubV1beta::SecurityPostureConfig, decorator: Google::Apis::GkehubV1beta::SecurityPostureConfig::Representation
+      
+        end
+      end
+      
       class EdgeCluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1340,6 +1360,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :default_cluster_config, as: 'defaultClusterConfig', class: Google::Apis::GkehubV1beta::DefaultClusterConfig, decorator: Google::Apis::GkehubV1beta::DefaultClusterConfig::Representation
+      
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           hash :labels, as: 'labels'
@@ -2138,6 +2160,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
+        end
+      end
+      
+      class SecurityPostureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+          property :vulnerability_mode, as: 'vulnerabilityMode'
         end
       end
       
