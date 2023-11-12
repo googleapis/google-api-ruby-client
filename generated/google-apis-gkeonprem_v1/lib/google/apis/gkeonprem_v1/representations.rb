@@ -664,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VmwareAdminAuthorizationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmwareAdminCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1955,6 +1961,14 @@ module Google
         end
       end
       
+      class VmwareAdminAuthorizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :viewer_users, as: 'viewerUsers', class: Google::Apis::GkeonpremV1::ClusterUser, decorator: Google::Apis::GkeonpremV1::ClusterUser::Representation
+      
+        end
+      end
+      
       class VmwareAdminCluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1962,6 +1976,8 @@ module Google
       
           hash :annotations, as: 'annotations'
           property :anti_affinity_groups, as: 'antiAffinityGroups', class: Google::Apis::GkeonpremV1::VmwareAagConfig, decorator: Google::Apis::GkeonpremV1::VmwareAagConfig::Representation
+      
+          property :authorization, as: 'authorization', class: Google::Apis::GkeonpremV1::VmwareAdminAuthorizationConfig, decorator: Google::Apis::GkeonpremV1::VmwareAdminAuthorizationConfig::Representation
       
           property :auto_repair_config, as: 'autoRepairConfig', class: Google::Apis::GkeonpremV1::VmwareAutoRepairConfig, decorator: Google::Apis::GkeonpremV1::VmwareAutoRepairConfig::Representation
       

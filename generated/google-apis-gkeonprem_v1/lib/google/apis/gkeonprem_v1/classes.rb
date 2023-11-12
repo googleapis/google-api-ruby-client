@@ -27,10 +27,10 @@ module Google
       class Authorization
         include Google::Apis::Core::Hashable
       
-        # Required. For VMware and bare metal user clusters, users will be granted the
-        # cluster-admin role on the cluster, which provides full administrative access
-        # to the cluster. For bare metal admin clusters, users will be granted the
-        # cluster-view role, which limits users to read-only access.
+        # For VMware and bare metal user clusters, users will be granted the cluster-
+        # admin role on the cluster, which provides full administrative access to the
+        # cluster. For bare metal admin clusters, users will be granted the cluster-view
+        # role, which limits users to read-only access.
         # Corresponds to the JSON property `adminUsers`
         # @return [Array<Google::Apis::GkeonpremV1::ClusterUser>]
         attr_accessor :admin_users
@@ -3637,6 +3637,27 @@ module Google
         end
       end
       
+      # VmwareAdminAuthorizationConfig represents configuration for admin cluster
+      # authorization.
+      class VmwareAdminAuthorizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # For VMware admin clusters, users will be granted the cluster-viewer role on
+        # the cluster.
+        # Corresponds to the JSON property `viewerUsers`
+        # @return [Array<Google::Apis::GkeonpremV1::ClusterUser>]
+        attr_accessor :viewer_users
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @viewer_users = args[:viewer_users] if args.key?(:viewer_users)
+        end
+      end
+      
       # Resource that represents a VMware admin cluster.
       class VmwareAdminCluster
         include Google::Apis::Core::Hashable
@@ -3661,6 +3682,12 @@ module Google
         # Corresponds to the JSON property `antiAffinityGroups`
         # @return [Google::Apis::GkeonpremV1::VmwareAagConfig]
         attr_accessor :anti_affinity_groups
+      
+        # VmwareAdminAuthorizationConfig represents configuration for admin cluster
+        # authorization.
+        # Corresponds to the JSON property `authorization`
+        # @return [Google::Apis::GkeonpremV1::VmwareAdminAuthorizationConfig]
+        attr_accessor :authorization
       
         # Specifies config to enable/disable auto repair. The cluster-health-controller
         # is deployed only if Enabled is true.
@@ -3804,6 +3831,7 @@ module Google
           @addon_node = args[:addon_node] if args.key?(:addon_node)
           @annotations = args[:annotations] if args.key?(:annotations)
           @anti_affinity_groups = args[:anti_affinity_groups] if args.key?(:anti_affinity_groups)
+          @authorization = args[:authorization] if args.key?(:authorization)
           @auto_repair_config = args[:auto_repair_config] if args.key?(:auto_repair_config)
           @bootstrap_cluster_membership = args[:bootstrap_cluster_membership] if args.key?(:bootstrap_cluster_membership)
           @control_plane_node = args[:control_plane_node] if args.key?(:control_plane_node)
