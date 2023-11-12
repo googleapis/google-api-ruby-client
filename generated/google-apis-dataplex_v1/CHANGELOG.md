@@ -1,5 +1,9 @@
 # Release history for google-apis-dataplex_v1
 
+### v0.42.0 (2023-11-12)
+
+* Regenerated from discovery document revision 20231103
+
 ### v0.41.0 (2023-10-29)
 
 * Regenerated from discovery document revision 20231018

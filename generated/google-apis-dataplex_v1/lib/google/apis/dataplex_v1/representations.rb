@@ -1726,9 +1726,12 @@ module Google
       class GoogleCloudDataplexV1DataScanEventDataQualityResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :column_score, as: 'columnScore'
           hash :dimension_passed, as: 'dimensionPassed'
+          hash :dimension_score, as: 'dimensionScore'
           property :passed, as: 'passed'
           property :row_count, :numeric_string => true, as: 'rowCount'
+          property :score, as: 'score'
         end
       end
       
