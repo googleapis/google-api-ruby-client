@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1NetworkBandwidthReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1NetworkDevice
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1025,6 +1031,14 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1NetworkBandwidthReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :download_speed_kbps, :numeric_string => true, as: 'downloadSpeedKbps'
+          property :report_time, as: 'reportTime'
+        end
+      end
+      
       class GoogleChromeManagementV1NetworkDevice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1190,6 +1204,8 @@ module Google
           collection :memory_status_report, as: 'memoryStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1MemoryStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1MemoryStatusReport::Representation
       
           property :name, as: 'name'
+          collection :network_bandwidth_report, as: 'networkBandwidthReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkBandwidthReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkBandwidthReport::Representation
+      
           collection :network_diagnostics_report, as: 'networkDiagnosticsReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkDiagnosticsReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkDiagnosticsReport::Representation
       
           property :network_info, as: 'networkInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkInfo::Representation
@@ -1328,6 +1344,8 @@ module Google
           collection :device_activity_report, as: 'deviceActivityReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceActivityReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceActivityReport::Representation
       
           property :device_id, as: 'deviceId'
+          collection :network_bandwidth_report, as: 'networkBandwidthReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkBandwidthReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkBandwidthReport::Representation
+      
           collection :peripherals_report, as: 'peripheralsReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PeripheralsReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PeripheralsReport::Representation
       
         end

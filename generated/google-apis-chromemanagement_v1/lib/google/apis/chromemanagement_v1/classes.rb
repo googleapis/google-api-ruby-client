@@ -2073,6 +2073,32 @@ module Google
         end
       end
       
+      # Network bandwidth report. * Granular permission needed:
+      # TELEMETRY_API_NETWORK_REPORT
+      class GoogleChromeManagementV1NetworkBandwidthReport
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Download speed in kilobits per second.
+        # Corresponds to the JSON property `downloadSpeedKbps`
+        # @return [Fixnum]
+        attr_accessor :download_speed_kbps
+      
+        # Output only. Timestamp of when the report was collected.
+        # Corresponds to the JSON property `reportTime`
+        # @return [String]
+        attr_accessor :report_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @download_speed_kbps = args[:download_speed_kbps] if args.key?(:download_speed_kbps)
+          @report_time = args[:report_time] if args.key?(:report_time)
+        end
+      end
+      
       # Details about the network device. * This field provides device information,
       # which is static and will not change over time. * Data for this field is
       # controlled via policy: [ReportNetworkDeviceConfiguration](https://
@@ -2744,6 +2770,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Network bandwidth reports collected periodically sorted in a
+        # decreasing order of report_time.
+        # Corresponds to the JSON property `networkBandwidthReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkBandwidthReport>]
+        attr_accessor :network_bandwidth_report
+      
         # Output only. Network diagnostics collected periodically.
         # Corresponds to the JSON property `networkDiagnosticsReport`
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkDiagnosticsReport>]
@@ -2832,6 +2864,7 @@ module Google
           @memory_info = args[:memory_info] if args.key?(:memory_info)
           @memory_status_report = args[:memory_status_report] if args.key?(:memory_status_report)
           @name = args[:name] if args.key?(:name)
+          @network_bandwidth_report = args[:network_bandwidth_report] if args.key?(:network_bandwidth_report)
           @network_diagnostics_report = args[:network_diagnostics_report] if args.key?(:network_diagnostics_report)
           @network_info = args[:network_info] if args.key?(:network_info)
           @network_status_report = args[:network_status_report] if args.key?(:network_status_report)
@@ -3241,6 +3274,12 @@ module Google
         # @return [String]
         attr_accessor :device_id
       
+        # Output only. Network bandwidth reports collected periodically sorted in a
+        # decreasing order of report_time.
+        # Corresponds to the JSON property `networkBandwidthReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkBandwidthReport>]
+        attr_accessor :network_bandwidth_report
+      
         # Output only. Peripherals reports collected periodically sorted in a decreasing
         # order of report_time.
         # Corresponds to the JSON property `peripheralsReport`
@@ -3256,6 +3295,7 @@ module Google
           @audio_status_report = args[:audio_status_report] if args.key?(:audio_status_report)
           @device_activity_report = args[:device_activity_report] if args.key?(:device_activity_report)
           @device_id = args[:device_id] if args.key?(:device_id)
+          @network_bandwidth_report = args[:network_bandwidth_report] if args.key?(:network_bandwidth_report)
           @peripherals_report = args[:peripherals_report] if args.key?(:peripherals_report)
         end
       end
