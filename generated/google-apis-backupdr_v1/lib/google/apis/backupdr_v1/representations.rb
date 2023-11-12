@@ -142,6 +142,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkforceIdentityBasedManagementUri
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkforceIdentityBasedOAuth2ClientId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -246,6 +258,10 @@ module Google
           property :state, as: 'state'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+          property :workforce_identity_based_management_uri, as: 'workforceIdentityBasedManagementUri', class: Google::Apis::BackupdrV1::WorkforceIdentityBasedManagementUri, decorator: Google::Apis::BackupdrV1::WorkforceIdentityBasedManagementUri::Representation
+      
+          property :workforce_identity_based_oauth2_client_id, as: 'workforceIdentityBasedOauth2ClientId', class: Google::Apis::BackupdrV1::WorkforceIdentityBasedOAuth2ClientId, decorator: Google::Apis::BackupdrV1::WorkforceIdentityBasedOAuth2ClientId::Representation
+      
         end
       end
       
@@ -332,6 +348,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class WorkforceIdentityBasedManagementUri
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_party_management_uri, as: 'firstPartyManagementUri'
+          property :third_party_management_uri, as: 'thirdPartyManagementUri'
+        end
+      end
+      
+      class WorkforceIdentityBasedOAuth2ClientId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_party_oauth2_client_id, as: 'firstPartyOauth2ClientId'
+          property :third_party_oauth2_client_id, as: 'thirdPartyOauth2ClientId'
         end
       end
     end
