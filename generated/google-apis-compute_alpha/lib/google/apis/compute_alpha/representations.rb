@@ -5158,6 +5158,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceStatusShutdownDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RolloutPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5459,6 +5465,12 @@ module Google
       end
       
       class Scheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchedulingGracefulShutdown
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -17069,6 +17081,10 @@ module Google
       
           hash :service_integration_statuses, as: 'serviceIntegrationStatuses', class: Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatus, decorator: Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatus::Representation
       
+          property :shutdown_details, as: 'shutdownDetails', class: Google::Apis::ComputeAlpha::ResourceStatusShutdownDetails, decorator: Google::Apis::ComputeAlpha::ResourceStatusShutdownDetails::Representation
+      
+          property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::ComputeAlpha::UpcomingMaintenance, decorator: Google::Apis::ComputeAlpha::UpcomingMaintenance::Representation
+      
         end
       end
       
@@ -17100,6 +17116,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :integration_details, as: 'integrationDetails'
           property :state, as: 'state'
+        end
+      end
+      
+      class ResourceStatusShutdownDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_duration, as: 'maxDuration', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
+          property :request_timestamp, as: 'requestTimestamp'
+          property :stop_state, as: 'stopState'
+          property :target_state, as: 'targetState'
         end
       end
       
@@ -17750,6 +17777,8 @@ module Google
           property :availability_domain, as: 'availabilityDomain'
           property :current_cpus, as: 'currentCpus'
           property :current_memory_mb, :numeric_string => true, as: 'currentMemoryMb'
+          property :graceful_shutdown, as: 'gracefulShutdown', class: Google::Apis::ComputeAlpha::SchedulingGracefulShutdown, decorator: Google::Apis::ComputeAlpha::SchedulingGracefulShutdown::Representation
+      
           property :host_error_timeout_seconds, as: 'hostErrorTimeoutSeconds'
           property :instance_termination_action, as: 'instanceTerminationAction'
           property :latency_tolerant, as: 'latencyTolerant'
@@ -17767,6 +17796,15 @@ module Google
           property :preemptible, as: 'preemptible'
           property :provisioning_model, as: 'provisioningModel'
           property :termination_time, as: 'terminationTime'
+        end
+      end
+      
+      class SchedulingGracefulShutdown
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :max_duration, as: 'maxDuration', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
         end
       end
       

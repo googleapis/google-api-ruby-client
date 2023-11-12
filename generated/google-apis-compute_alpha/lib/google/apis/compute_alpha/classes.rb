@@ -10465,13 +10465,17 @@ module Google
         # @return [String]
         attr_accessor :ip_protocol
       
-        # This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By
-        # internal TCP/UDP load balancers, backend service-based network load balancers,
-        # and internal and external protocol forwarding. Set this field to true to allow
-        # packets addressed to any port or packets lacking destination port information (
-        # for example, UDP fragments after the first fragment) to be forwarded to the
-        # backends configured with this forwarding rule. The ports, port_range, and
-        # allPorts fields are mutually exclusive.
+        # The ports, portRange, and allPorts fields are mutually exclusive. Only packets
+        # addressed to ports in the specified range will be forwarded to the backends
+        # configured with this forwarding rule. The allPorts field has the following
+        # limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP,
+        # SCTP, or L3_DEFAULT. - It's applicable only to the following products:
+        # internal passthrough Network Load Balancers, backend service-based external
+        # passthrough Network Load Balancers, and internal and external protocol
+        # forwarding. - Set this field to true to allow packets addressed to any port or
+        # packets lacking destination port information (for example, UDP fragments after
+        # the first fragment) to be forwarded to the backends configured with this
+        # forwarding rule. The L3_DEFAULT protocol requires allPorts be set to true.
         # Corresponds to the JSON property `allPorts`
         # @return [Boolean]
         attr_accessor :all_ports
@@ -10669,35 +10673,38 @@ module Google
         attr_accessor :no_automate_dns_zone
         alias_method :no_automate_dns_zone?, :no_automate_dns_zone
       
-        # This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By
-        # backend service-based network load balancers, target pool-based network load
-        # balancers, internal proxy load balancers, external proxy load balancers,
-        # Traffic Director, external protocol forwarding, and Classic VPN. Some products
-        # have restrictions on what ports can be used. See port specifications for
-        # details. Only packets addressed to ports in the specified range will be
-        # forwarded to the backends configured with this forwarding rule. The ports,
-        # port_range, and allPorts fields are mutually exclusive. For external
-        # forwarding rules, two or more forwarding rules cannot use the same [IPAddress,
-        # IPProtocol] pair, and cannot have overlapping portRanges. For internal
-        # forwarding rules within the same VPC network, two or more forwarding rules
-        # cannot use the same [IPAddress, IPProtocol] pair, and cannot have overlapping
-        # portRanges. @pattern: \\d+(?:-\\d+)?
+        # The ports, portRange, and allPorts fields are mutually exclusive. Only packets
+        # addressed to ports in the specified range will be forwarded to the backends
+        # configured with this forwarding rule. The portRange field has the following
+        # limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP, or
+        # SCTP, and - It's applicable only to the following products: external
+        # passthrough Network Load Balancers, internal and external proxy Network Load
+        # Balancers, internal and external Application Load Balancers, external protocol
+        # forwarding, and Classic VPN. - Some products have restrictions on what ports
+        # can be used. See port specifications for details. For external forwarding
+        # rules, two or more forwarding rules cannot use the same [IPAddress, IPProtocol]
+        # pair, and cannot have overlapping portRanges. For internal forwarding rules
+        # within the same VPC network, two or more forwarding rules cannot use the same [
+        # IPAddress, IPProtocol] pair, and cannot have overlapping portRanges. @pattern:
+        # \\d+(?:-\\d+)?
         # Corresponds to the JSON property `portRange`
         # @return [String]
         attr_accessor :port_range
       
-        # This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By
-        # internal TCP/UDP load balancers, backend service-based network load balancers,
-        # and internal protocol forwarding. You can specify a list of up to five ports
-        # by number, separated by commas. The ports can be contiguous or discontiguous.
-        # Only packets addressed to these ports will be forwarded to the backends
-        # configured with this forwarding rule. For external forwarding rules, two or
-        # more forwarding rules cannot use the same [IPAddress, IPProtocol] pair, and
-        # cannot share any values defined in ports. For internal forwarding rules within
-        # the same VPC network, two or more forwarding rules cannot use the same [
-        # IPAddress, IPProtocol] pair, and cannot share any values defined in ports. The
-        # ports, port_range, and allPorts fields are mutually exclusive. @pattern: \\d+(?
-        # :-\\d+)?
+        # The ports, portRange, and allPorts fields are mutually exclusive. Only packets
+        # addressed to ports in the specified range will be forwarded to the backends
+        # configured with this forwarding rule. The ports field has the following
+        # limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP, or
+        # SCTP, and - It's applicable only to the following products: internal
+        # passthrough Network Load Balancers, backend service-based external passthrough
+        # Network Load Balancers, and internal protocol forwarding. - You can specify a
+        # list of up to five ports by number, separated by commas. The ports can be
+        # contiguous or discontiguous. For external forwarding rules, two or more
+        # forwarding rules cannot use the same [IPAddress, IPProtocol] pair if they
+        # share at least one port number. For internal forwarding rules within the same
+        # VPC network, two or more forwarding rules cannot use the same [IPAddress,
+        # IPProtocol] pair if they share at least one port number. @pattern: \\d+(?:-\\d+
+        # )?
         # Corresponds to the JSON property `ports`
         # @return [Array<String>]
         attr_accessor :ports
@@ -33685,7 +33692,7 @@ module Google
         attr_accessor :kind
       
         # [Output Only] The Cloud Armor Managed Protection (CAMP) tier for this project.
-        # It can be one of the following values: CA_STANDARD, CAMP_PLUS_MONTHLY. If this
+        # It can be one of the following values: CA_STANDARD, CAMP_PLUS_PAYGO. If this
         # field is not specified, it is assumed to be CA_STANDARD.
         # Corresponds to the JSON property `managedProtectionTier`
         # @return [String]
@@ -39028,6 +39035,17 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatus>]
         attr_accessor :service_integration_statuses
       
+        # Specifies if the instance is in `SHUTTING_DOWN` state or there is a instance
+        # stopping scheduled.
+        # Corresponds to the JSON property `shutdownDetails`
+        # @return [Google::Apis::ComputeAlpha::ResourceStatusShutdownDetails]
+        attr_accessor :shutdown_details
+      
+        # Upcoming Maintenance notification information.
+        # Corresponds to the JSON property `upcomingMaintenance`
+        # @return [Google::Apis::ComputeAlpha::UpcomingMaintenance]
+        attr_accessor :upcoming_maintenance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -39038,6 +39056,8 @@ module Google
           @physical_host = args[:physical_host] if args.key?(:physical_host)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_integration_statuses = args[:service_integration_statuses] if args.key?(:service_integration_statuses)
+          @shutdown_details = args[:shutdown_details] if args.key?(:shutdown_details)
+          @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
         end
       end
       
@@ -39137,6 +39157,48 @@ module Google
         def update!(**args)
           @integration_details = args[:integration_details] if args.key?(:integration_details)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Specifies if the instance is in `SHUTTING_DOWN` state or there is a instance
+      # stopping scheduled.
+      class ResourceStatusShutdownDetails
+        include Google::Apis::Core::Hashable
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `maxDuration`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :max_duration
+      
+        # Past timestamp indicating the beginning of current `stopState` in RFC3339 text
+        # format.
+        # Corresponds to the JSON property `requestTimestamp`
+        # @return [String]
+        attr_accessor :request_timestamp
+      
+        # Current stopping state of the instance.
+        # Corresponds to the JSON property `stopState`
+        # @return [String]
+        attr_accessor :stop_state
+      
+        # Target instance state.
+        # Corresponds to the JSON property `targetState`
+        # @return [String]
+        attr_accessor :target_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
+          @request_timestamp = args[:request_timestamp] if args.key?(:request_timestamp)
+          @stop_state = args[:stop_state] if args.key?(:stop_state)
+          @target_state = args[:target_state] if args.key?(:target_state)
         end
       end
       
@@ -42002,6 +42064,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_memory_mb
       
+        # Configuration for gracefully shutting down the instance.
+        # Corresponds to the JSON property `gracefulShutdown`
+        # @return [Google::Apis::ComputeAlpha::SchedulingGracefulShutdown]
+        attr_accessor :graceful_shutdown
+      
         # Specify the time in seconds for host error detection, the value must be within
         # the range of [90, 330] with the increment of 30, if unset, the default
         # behavior of host error recovery will be used.
@@ -42107,6 +42174,7 @@ module Google
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
           @current_cpus = args[:current_cpus] if args.key?(:current_cpus)
           @current_memory_mb = args[:current_memory_mb] if args.key?(:current_memory_mb)
+          @graceful_shutdown = args[:graceful_shutdown] if args.key?(:graceful_shutdown)
           @host_error_timeout_seconds = args[:host_error_timeout_seconds] if args.key?(:host_error_timeout_seconds)
           @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
           @latency_tolerant = args[:latency_tolerant] if args.key?(:latency_tolerant)
@@ -42121,6 +42189,35 @@ module Google
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
           @termination_time = args[:termination_time] if args.key?(:termination_time)
+        end
+      end
+      
+      # Configuration for gracefully shutting down the instance.
+      class SchedulingGracefulShutdown
+        include Google::Apis::Core::Hashable
+      
+        # Opts-in for graceful shutdown.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `maxDuration`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :max_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
         end
       end
       
