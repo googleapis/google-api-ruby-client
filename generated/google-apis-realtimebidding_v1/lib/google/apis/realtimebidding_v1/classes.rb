@@ -1101,9 +1101,10 @@ module Google
         end
       end
       
-      # Deprecated. This will be removed in October 2023. For more information, see
-      # the release notes: https://developers.google.com/authorized-buyers/apis/
-      # relnotes#real-time-bidding-api Response for a request to get remarketing tag.
+      # This has been sunset as of October 2023, and will return an error response if
+      # called. For more information, see the release notes: https://developers.google.
+      # com/authorized-buyers/apis/relnotes#real-time-bidding-api Response for a
+      # request to get remarketing tag.
       class GetRemarketingTagResponse
         include Google::Apis::Core::Hashable
       
