@@ -1087,10 +1087,14 @@ module Google
         
         # Makes a recommendation, which requires a contextual user event.
         # @param [String] serving_config
-        #   Required. Full resource name of the format: `projects/*/locations/global/
-        #   collections/*/dataStores/*/servingConfigs/*` Before you can request
-        #   recommendations from your model, you must create at least one serving config
-        #   for it.
+        #   Required. Full resource name of a ServingConfig: `projects/*/locations/global/
+        #   collections/*/engines/*/servingConfigs/*`, or `projects/*/locations/global/
+        #   collections/*/dataStores/*/servingConfigs/*` One default serving config is
+        #   created along with your recommendation engine creation. The engine ID will be
+        #   used as the ID of the default serving config. For example, for Engine `
+        #   projects/*/locations/global/collections/*/engines/my-engine`, you can use `
+        #   projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-
+        #   engine` for your Recommend requests.
         # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRecommendRequest] google_cloud_discoveryengine_v1beta_recommend_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1124,9 +1128,11 @@ module Google
         # Performs a search.
         # @param [String] serving_config
         #   Required. The resource name of the Search serving config, such as `projects/*/
-        #   locations/global/collections/default_collection/dataStores/default_data_store/
-        #   servingConfigs/default_serving_config`. This field is used to identify the
-        #   serving configuration name, set of models used to make the search.
+        #   locations/global/collections/default_collection/engines/*/servingConfigs/
+        #   default_serving_config`, or `projects/*/locations/global/collections/
+        #   default_collection/dataStores/default_data_store/servingConfigs/
+        #   default_serving_config`. This field is used to identify the serving
+        #   configuration name, set of models used to make the search.
         # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequest] google_cloud_discoveryengine_v1beta_search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1492,10 +1498,14 @@ module Google
         
         # Makes a recommendation, which requires a contextual user event.
         # @param [String] serving_config
-        #   Required. Full resource name of the format: `projects/*/locations/global/
-        #   collections/*/dataStores/*/servingConfigs/*` Before you can request
-        #   recommendations from your model, you must create at least one serving config
-        #   for it.
+        #   Required. Full resource name of a ServingConfig: `projects/*/locations/global/
+        #   collections/*/engines/*/servingConfigs/*`, or `projects/*/locations/global/
+        #   collections/*/dataStores/*/servingConfigs/*` One default serving config is
+        #   created along with your recommendation engine creation. The engine ID will be
+        #   used as the ID of the default serving config. For example, for Engine `
+        #   projects/*/locations/global/collections/*/engines/my-engine`, you can use `
+        #   projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-
+        #   engine` for your Recommend requests.
         # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRecommendRequest] google_cloud_discoveryengine_v1beta_recommend_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1529,9 +1539,11 @@ module Google
         # Performs a search.
         # @param [String] serving_config
         #   Required. The resource name of the Search serving config, such as `projects/*/
-        #   locations/global/collections/default_collection/dataStores/default_data_store/
-        #   servingConfigs/default_serving_config`. This field is used to identify the
-        #   serving configuration name, set of models used to make the search.
+        #   locations/global/collections/default_collection/engines/*/servingConfigs/
+        #   default_serving_config`, or `projects/*/locations/global/collections/
+        #   default_collection/dataStores/default_data_store/servingConfigs/
+        #   default_serving_config`. This field is used to identify the serving
+        #   configuration name, set of models used to make the search.
         # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequest] google_cloud_discoveryengine_v1beta_search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2600,10 +2612,14 @@ module Google
         
         # Makes a recommendation, which requires a contextual user event.
         # @param [String] serving_config
-        #   Required. Full resource name of the format: `projects/*/locations/global/
-        #   collections/*/dataStores/*/servingConfigs/*` Before you can request
-        #   recommendations from your model, you must create at least one serving config
-        #   for it.
+        #   Required. Full resource name of a ServingConfig: `projects/*/locations/global/
+        #   collections/*/engines/*/servingConfigs/*`, or `projects/*/locations/global/
+        #   collections/*/dataStores/*/servingConfigs/*` One default serving config is
+        #   created along with your recommendation engine creation. The engine ID will be
+        #   used as the ID of the default serving config. For example, for Engine `
+        #   projects/*/locations/global/collections/*/engines/my-engine`, you can use `
+        #   projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-
+        #   engine` for your Recommend requests.
         # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaRecommendRequest] google_cloud_discoveryengine_v1beta_recommend_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2637,9 +2653,11 @@ module Google
         # Performs a search.
         # @param [String] serving_config
         #   Required. The resource name of the Search serving config, such as `projects/*/
-        #   locations/global/collections/default_collection/dataStores/default_data_store/
-        #   servingConfigs/default_serving_config`. This field is used to identify the
-        #   serving configuration name, set of models used to make the search.
+        #   locations/global/collections/default_collection/engines/*/servingConfigs/
+        #   default_serving_config`, or `projects/*/locations/global/collections/
+        #   default_collection/dataStores/default_data_store/servingConfigs/
+        #   default_serving_config`. This field is used to identify the serving
+        #   configuration name, set of models used to make the search.
         # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequest] google_cloud_discoveryengine_v1beta_search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

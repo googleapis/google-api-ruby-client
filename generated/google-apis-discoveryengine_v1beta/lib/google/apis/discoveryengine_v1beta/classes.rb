@@ -622,8 +622,182 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the DataStoreService.CreateDataStore
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field.
+      class GoogleCloudDiscoveryengineV1alphaCreateDataStoreMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the EngineService.CreateEngine operation.
+      # This will be returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaCreateEngineMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Metadata for Create Schema LRO.
       class GoogleCloudDiscoveryengineV1alphaCreateSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # DataStore captures global settings and configs at the DataStore level.
+      class GoogleCloudDiscoveryengineV1alphaDataStore
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The content config of the data store. If this field is unset, the
+        # server behavior defaults to ContentConfig.NO_CONTENT.
+        # Corresponds to the JSON property `contentConfig`
+        # @return [String]
+        attr_accessor :content_config
+      
+        # Output only. Timestamp the DataStore was created at.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The id of the default Schema asscociated to this data store.
+        # Corresponds to the JSON property `defaultSchemaId`
+        # @return [String]
+        attr_accessor :default_schema_id
+      
+        # Required. The data store display name. This field must be a UTF-8 encoded
+        # string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT
+        # error is returned.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Immutable. The industry vertical that the data store registers.
+        # Corresponds to the JSON property `industryVertical`
+        # @return [String]
+        attr_accessor :industry_vertical
+      
+        # Immutable. The full resource name of the data store. Format: `projects/`
+        # project`/locations/`location`/collections/`collection_id`/dataStores/`
+        # data_store_id``. This field must be a UTF-8 encoded string with a length limit
+        # of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The solutions that the data store enrolls. Available solutions for each
+        # industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `
+        # SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is
+        # automatically enrolled. Other solutions cannot be enrolled.
+        # Corresponds to the JSON property `solutionTypes`
+        # @return [Array<String>]
+        attr_accessor :solution_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_config = args[:content_config] if args.key?(:content_config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @name = args[:name] if args.key?(:name)
+          @solution_types = args[:solution_types] if args.key?(:solution_types)
+        end
+      end
+      
+      # Metadata related to the progress of the DataStoreService.DeleteDataStore
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field.
+      class GoogleCloudDiscoveryengineV1alphaDeleteDataStoreMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the EngineService.DeleteEngine operation.
+      # This will be returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaDeleteEngineMetadata
         include Google::Apis::Core::Hashable
       
         # Operation create time.
@@ -671,6 +845,384 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata that describes the training and serving parameters of an Engine.
+      class GoogleCloudDiscoveryengineV1alphaEngine
+        include Google::Apis::Core::Hashable
+      
+        # Configurations for a Chat Engine.
+        # Corresponds to the JSON property `chatEngineConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig]
+        attr_accessor :chat_engine_config
+      
+        # Additional information of a Chat Engine. Fields in this message are output
+        # only.
+        # Corresponds to the JSON property `chatEngineMetadata`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata]
+        attr_accessor :chat_engine_metadata
+      
+        # Common configurations for an Engine.
+        # Corresponds to the JSON property `commonConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineCommonConfig]
+        attr_accessor :common_config
+      
+        # Output only. Timestamp the Recommendation Engine was created at.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
+        # SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at
+        # most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple
+        # DataStores in the same Collection can be associated here. Note that when used
+        # in CreateEngineRequest, one DataStore id must be provided as the system will
+        # use it for necessary intializations.
+        # Corresponds to the JSON property `dataStoreIds`
+        # @return [Array<String>]
+        attr_accessor :data_store_ids
+      
+        # Required. The display name of the engine. Should be human readable. UTF-8
+        # encoded string with limit of 1024 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Additional config specs for a Media Recommendation engine.
+        # Corresponds to the JSON property `mediaRecommendationEngineConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig]
+        attr_accessor :media_recommendation_engine_config
+      
+        # Immutable. The fully qualified resource name of the engine. This field must be
+        # a UTF-8 encoded string with a length limit of 1024 characters. Format: `
+        # projects/`project_number`/locations/`location`/collections/`collection`/
+        # engines/`engine`` engine should be 1-63 characters, and valid characters are /
+        # a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Additional information of a recommendation engine.
+        # Corresponds to the JSON property `recommendationMetadata`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata]
+        attr_accessor :recommendation_metadata
+      
+        # Configurations for a Search Engine.
+        # Corresponds to the JSON property `searchEngineConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig]
+        attr_accessor :search_engine_config
+      
+        # Additional config specs for a `similar-items` engine.
+        # Corresponds to the JSON property `similarDocumentsConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig]
+        attr_accessor :similar_documents_config
+      
+        # Required. The solutions of the engine.
+        # Corresponds to the JSON property `solutionType`
+        # @return [String]
+        attr_accessor :solution_type
+      
+        # Output only. Timestamp the Recommendation Engine was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
+          @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
+          @common_config = args[:common_config] if args.key?(:common_config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
+          @name = args[:name] if args.key?(:name)
+          @recommendation_metadata = args[:recommendation_metadata] if args.key?(:recommendation_metadata)
+          @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
+          @similar_documents_config = args[:similar_documents_config] if args.key?(:similar_documents_config)
+          @solution_type = args[:solution_type] if args.key?(:solution_type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Configurations for a Chat Engine.
+      class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configurations for generating a Dialogflow agent. Note that these
+        # configurations are one-time consumed by and passed to Dialogflow service. It
+        # means they cannot be retrieved using GetEngine or ListEngine API after engine
+        # creation.
+        # Corresponds to the JSON property `agentCreationConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig]
+        attr_accessor :agent_creation_config
+      
+        # The resource name of an exist Dialogflow agent to link to this Chat Engine.
+        # Customers can either provide `agent_creation_config` to create agent or
+        # provide an agent name that links the agent with the Chat engine. Format: `
+        # projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are
+        # one-time consumed by and passed to Dialogflow service. It means they cannot be
+        # retrieved using GetEngine or ListEngine API after engine creation. Please use
+        # Engine.chat_engine_metadata.dialogflow_agent for actual agent association
+        # after Engine is created.
+        # Corresponds to the JSON property `dialogflowAgentToLink`
+        # @return [String]
+        attr_accessor :dialogflow_agent_to_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_creation_config = args[:agent_creation_config] if args.key?(:agent_creation_config)
+          @dialogflow_agent_to_link = args[:dialogflow_agent_to_link] if args.key?(:dialogflow_agent_to_link)
+        end
+      end
+      
+      # Configurations for generating a Dialogflow agent. Note that these
+      # configurations are one-time consumed by and passed to Dialogflow service. It
+      # means they cannot be retrieved using GetEngine or ListEngine API after engine
+      # creation.
+      class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Name of the company, organization or other entity that the agent represents.
+        # Used for knowledge connector LLM prompt and for knowledge search.
+        # Corresponds to the JSON property `business`
+        # @return [String]
+        attr_accessor :business
+      
+        # Required. The default language of the agent as a language tag. See [Language
+        # Support](https://cloud.google.com/dialogflow/docs/reference/language) for a
+        # list of the currently supported language codes.
+        # Corresponds to the JSON property `defaultLanguageCode`
+        # @return [String]
+        attr_accessor :default_language_code
+      
+        # Required. The time zone of the agent from the [time zone database](https://www.
+        # iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business = args[:business] if args.key?(:business)
+          @default_language_code = args[:default_language_code] if args.key?(:default_language_code)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # Additional information of a Chat Engine. Fields in this message are output
+      # only.
+      class GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of a Dialogflow agent, that this Chat Engine refers to.
+        # Format: `projects//locations//agents/`.
+        # Corresponds to the JSON property `dialogflowAgent`
+        # @return [String]
+        attr_accessor :dialogflow_agent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dialogflow_agent = args[:dialogflow_agent] if args.key?(:dialogflow_agent)
+        end
+      end
+      
+      # Common configurations for an Engine.
+      class GoogleCloudDiscoveryengineV1alphaEngineCommonConfig
+        include Google::Apis::Core::Hashable
+      
+        # The name of the company, business or entity that is associated with the engine.
+        # Setting this may help improve LLM related features.
+        # Corresponds to the JSON property `companyName`
+        # @return [String]
+        attr_accessor :company_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @company_name = args[:company_name] if args.key?(:company_name)
+        end
+      end
+      
+      # Additional config specs for a Media Recommendation engine.
+      class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig
+        include Google::Apis::Core::Hashable
+      
+        # The optimization objective e.g. `cvr`. This field together with
+        # optimization_objective describe engine metadata to use to control engine
+        # training and serving. Currently supported values: `ctr`, `cvr`. If not
+        # specified, we choose default based on engine type. Default depends on type of
+        # recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr`
+        # Corresponds to the JSON property `optimizationObjective`
+        # @return [String]
+        attr_accessor :optimization_objective
+      
+        # Custom threshold for `cvr` optimization_objective.
+        # Corresponds to the JSON property `optimizationObjectiveConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig]
+        attr_accessor :optimization_objective_config
+      
+        # The training state that the engine is in (e.g. `TRAINING` or `PAUSED`). Since
+        # part of the cost of running the service is frequency of training - this can be
+        # used to determine when to train engine in order to control cost. If not
+        # specified: the default value for `CreateEngine` method is `TRAINING`. The
+        # default value for `UpdateEngine` method is to keep the state the same as
+        # before.
+        # Corresponds to the JSON property `trainingState`
+        # @return [String]
+        attr_accessor :training_state
+      
+        # Required. The type of engine e.g. `recommended-for-you`. This field together
+        # with optimization_objective describe engine metadata to use to control engine
+        # training and serving. Currently supported values: `recommended-for-you`, `
+        # others-you-may-like`, `more-like-this`, `most-popular-items`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @optimization_objective = args[:optimization_objective] if args.key?(:optimization_objective)
+          @optimization_objective_config = args[:optimization_objective_config] if args.key?(:optimization_objective_config)
+          @training_state = args[:training_state] if args.key?(:training_state)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Custom threshold for `cvr` optimization_objective.
+      class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the field to target. Currently supported values: `watch-
+        # percentage`, `watch-time`.
+        # Corresponds to the JSON property `targetField`
+        # @return [String]
+        attr_accessor :target_field
+      
+        # Required. The threshold to be applied to the target (e.g., 0.5).
+        # Corresponds to the JSON property `targetFieldValueFloat`
+        # @return [Float]
+        attr_accessor :target_field_value_float
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_field = args[:target_field] if args.key?(:target_field)
+          @target_field_value_float = args[:target_field_value_float] if args.key?(:target_field_value_float)
+        end
+      end
+      
+      # Additional information of a recommendation engine.
+      class GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state of data requirements for this engine: `DATA_OK` and `
+        # DATA_ERROR`. Engine cannot be trained if the data is in `DATA_ERROR` state.
+        # Engine can have `DATA_ERROR` state even if serving state is `ACTIVE`: engines
+        # were trained successfully before, but cannot be refreshed because the
+        # underlying engine no longer has sufficient data for training.
+        # Corresponds to the JSON property `dataState`
+        # @return [String]
+        attr_accessor :data_state
+      
+        # Output only. The timestamp when the latest successful tune finished. Only
+        # applicable on Media Recommendation engines.
+        # Corresponds to the JSON property `lastTuneTime`
+        # @return [String]
+        attr_accessor :last_tune_time
+      
+        # Output only. The serving state of the engine: `ACTIVE`, `NOT_ACTIVE`.
+        # Corresponds to the JSON property `servingState`
+        # @return [String]
+        attr_accessor :serving_state
+      
+        # Output only. The latest tune operation id associated with the engine. Only
+        # applicable on Media Recommendation engines. If present, this operation id can
+        # be used to determine if there is an ongoing tune for this engine. To check the
+        # operation status, send the GetOperation request with this operation id in the
+        # engine resource format. If no tuning has happened for this engine, the string
+        # is empty.
+        # Corresponds to the JSON property `tuningOperation`
+        # @return [String]
+        attr_accessor :tuning_operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_state = args[:data_state] if args.key?(:data_state)
+          @last_tune_time = args[:last_tune_time] if args.key?(:last_tune_time)
+          @serving_state = args[:serving_state] if args.key?(:serving_state)
+          @tuning_operation = args[:tuning_operation] if args.key?(:tuning_operation)
+        end
+      end
+      
+      # Configurations for a Search Engine.
+      class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig
+        include Google::Apis::Core::Hashable
+      
+        # The add-on that this search engine enables.
+        # Corresponds to the JSON property `searchAddOns`
+        # @return [Array<String>]
+        attr_accessor :search_add_ons
+      
+        # The search feature tier of this engine. Different tiers might have different
+        # pricing. To learn more, please check the pricing documentation. Defaults to
+        # SearchTier.SEARCH_TIER_STANDARD if not specified.
+        # Corresponds to the JSON property `searchTier`
+        # @return [String]
+        attr_accessor :search_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @search_add_ons = args[:search_add_ons] if args.key?(:search_add_ons)
+          @search_tier = args[:search_tier] if args.key?(:search_tier)
+        end
+      end
+      
+      # Additional config specs for a `similar-items` engine.
+      class GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1386,6 +1938,40 @@ module Google
       
       # 
       class GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata associated with a tune operation.
+      class GoogleCloudDiscoveryengineV1alphaTuneEngineMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the engine that this tune applies to. Format: `
+        # projects/`project_number`/locations/`location_id`/collections/`collection_id`/
+        # engines/`engine_id``
+        # Corresponds to the JSON property `engine`
+        # @return [String]
+        attr_accessor :engine
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @engine = args[:engine] if args.key?(:engine)
+        end
+      end
+      
+      # Response associated with a tune operation.
+      class GoogleCloudDiscoveryengineV1alphaTuneEngineResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
