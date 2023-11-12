@@ -855,7 +855,7 @@ module Google
       
         # Specifies the way to match a ProtobufWkt::Value. Primitive values and
         # ListValue are supported. StructValue is not supported and is always not
-        # matched. [#next-free-field: 7]
+        # matched. [#next-free-field: 8]
         # Corresponds to the JSON property `oneOf`
         # @return [Google::Apis::TrafficdirectorV3::ValueMatcher]
         attr_accessor :one_of
@@ -1080,6 +1080,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Specifies a list of alternatives for the match.
+      class OrMatcher
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `valueMatchers`
+        # @return [Array<Google::Apis::TrafficdirectorV3::ValueMatcher>]
+        attr_accessor :value_matchers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value_matchers = args[:value_matchers] if args.key?(:value_matchers)
         end
       end
       
@@ -1589,7 +1608,7 @@ module Google
       
         # Specifies the way to match a ProtobufWkt::Value. Primitive values and
         # ListValue are supported. StructValue is not supported and is always not
-        # matched. [#next-free-field: 7]
+        # matched. [#next-free-field: 8]
         # Corresponds to the JSON property `value`
         # @return [Google::Apis::TrafficdirectorV3::ValueMatcher]
         attr_accessor :value
@@ -1645,7 +1664,7 @@ module Google
       
       # Specifies the way to match a ProtobufWkt::Value. Primitive values and
       # ListValue are supported. StructValue is not supported and is always not
-      # matched. [#next-free-field: 7]
+      # matched. [#next-free-field: 8]
       class ValueMatcher
         include Google::Apis::Core::Hashable
       
@@ -1671,6 +1690,11 @@ module Google
         # @return [Google::Apis::TrafficdirectorV3::NullMatch]
         attr_accessor :null_match
       
+        # Specifies a list of alternatives for the match.
+        # Corresponds to the JSON property `orMatch`
+        # @return [Google::Apis::TrafficdirectorV3::OrMatcher]
+        attr_accessor :or_match
+      
         # If specified, value match will be performed based on whether the path is
         # referring to a valid primitive value in the metadata. If the path is referring
         # to a non-primitive value, the result is always not matched.
@@ -1694,6 +1718,7 @@ module Google
           @double_match = args[:double_match] if args.key?(:double_match)
           @list_match = args[:list_match] if args.key?(:list_match)
           @null_match = args[:null_match] if args.key?(:null_match)
+          @or_match = args[:or_match] if args.key?(:or_match)
           @present_match = args[:present_match] if args.key?(:present_match)
           @string_match = args[:string_match] if args.key?(:string_match)
         end
