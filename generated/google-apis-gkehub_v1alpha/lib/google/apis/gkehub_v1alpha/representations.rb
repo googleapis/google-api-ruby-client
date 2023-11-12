@@ -370,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DefaultClusterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EdgeCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -718,6 +724,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NamespaceActuationFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NamespaceActuationFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NamespaceActuationMembershipSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NamespaceActuationMembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NamespaceLifecycleState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -881,6 +911,12 @@ module Google
       end
       
       class ScopeLifecycleState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPostureConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1238,6 +1274,8 @@ module Google
       
           property :multiclusteringress, as: 'multiclusteringress', class: Google::Apis::GkehubV1alpha::MultiClusterIngressFeatureSpec, decorator: Google::Apis::GkehubV1alpha::MultiClusterIngressFeatureSpec::Representation
       
+          property :namespaceactuation, as: 'namespaceactuation', class: Google::Apis::GkehubV1alpha::NamespaceActuationFeatureSpec, decorator: Google::Apis::GkehubV1alpha::NamespaceActuationFeatureSpec::Representation
+      
           property :workloadcertificate, as: 'workloadcertificate', class: Google::Apis::GkehubV1alpha::FeatureSpec, decorator: Google::Apis::GkehubV1alpha::FeatureSpec::Representation
       
         end
@@ -1251,6 +1289,8 @@ module Google
           property :clusterupgrade, as: 'clusterupgrade', class: Google::Apis::GkehubV1alpha::ClusterUpgradeFleetState, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeFleetState::Representation
       
           property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1alpha::FleetObservabilityFeatureState, decorator: Google::Apis::GkehubV1alpha::FleetObservabilityFeatureState::Representation
+      
+          property :namespaceactuation, as: 'namespaceactuation', class: Google::Apis::GkehubV1alpha::NamespaceActuationFeatureState, decorator: Google::Apis::GkehubV1alpha::NamespaceActuationFeatureState::Representation
       
           property :servicemesh, as: 'servicemesh', class: Google::Apis::GkehubV1alpha::ServiceMeshFeatureState, decorator: Google::Apis::GkehubV1alpha::ServiceMeshFeatureState::Representation
       
@@ -1584,6 +1624,14 @@ module Google
         end
       end
       
+      class DefaultClusterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :security_posture_config, as: 'securityPostureConfig', class: Google::Apis::GkehubV1alpha::SecurityPostureConfig, decorator: Google::Apis::GkehubV1alpha::SecurityPostureConfig::Representation
+      
+        end
+      end
+      
       class EdgeCluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1663,6 +1711,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :default_cluster_config, as: 'defaultClusterConfig', class: Google::Apis::GkehubV1alpha::DefaultClusterConfig, decorator: Google::Apis::GkehubV1alpha::DefaultClusterConfig::Representation
+      
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           hash :labels, as: 'labels'
@@ -2102,6 +2152,8 @@ module Google
       
           property :mesh, as: 'mesh', class: Google::Apis::GkehubV1alpha::ServiceMeshMembershipSpec, decorator: Google::Apis::GkehubV1alpha::ServiceMeshMembershipSpec::Representation
       
+          property :namespaceactuation, as: 'namespaceactuation', class: Google::Apis::GkehubV1alpha::NamespaceActuationMembershipSpec, decorator: Google::Apis::GkehubV1alpha::NamespaceActuationMembershipSpec::Representation
+      
           property :origin, as: 'origin', class: Google::Apis::GkehubV1alpha::Origin, decorator: Google::Apis::GkehubV1alpha::Origin::Representation
       
           property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV1alpha::PolicyControllerMembershipSpec, decorator: Google::Apis::GkehubV1alpha::PolicyControllerMembershipSpec::Representation
@@ -2125,6 +2177,8 @@ module Google
           property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1alpha::IdentityServiceMembershipState, decorator: Google::Apis::GkehubV1alpha::IdentityServiceMembershipState::Representation
       
           property :metering, as: 'metering', class: Google::Apis::GkehubV1alpha::MeteringMembershipState, decorator: Google::Apis::GkehubV1alpha::MeteringMembershipState::Representation
+      
+          property :namespaceactuation, as: 'namespaceactuation', class: Google::Apis::GkehubV1alpha::NamespaceActuationMembershipState, decorator: Google::Apis::GkehubV1alpha::NamespaceActuationMembershipState::Representation
       
           property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV1alpha::PolicyControllerMembershipState, decorator: Google::Apis::GkehubV1alpha::PolicyControllerMembershipState::Representation
       
@@ -2197,6 +2251,31 @@ module Google
       
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class NamespaceActuationFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actuation_mode, as: 'actuationMode'
+        end
+      end
+      
+      class NamespaceActuationFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class NamespaceActuationMembershipSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class NamespaceActuationMembershipState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2478,6 +2557,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
+        end
+      end
+      
+      class SecurityPostureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+          property :vulnerability_mode, as: 'vulnerabilityMode'
         end
       end
       

@@ -866,6 +866,12 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::MultiClusterIngressFeatureSpec]
         attr_accessor :multiclusteringress
       
+        # An empty spec for actuation feature. This is required since Feature proto
+        # requires a spec.
+        # Corresponds to the JSON property `namespaceactuation`
+        # @return [Google::Apis::GkehubV1alpha::NamespaceActuationFeatureSpec]
+        attr_accessor :namespaceactuation
+      
         # **Workload Certificate**: The Hub-wide input for the WorkloadCertificate
         # feature.
         # Corresponds to the JSON property `workloadcertificate`
@@ -884,6 +890,7 @@ module Google
           @clusterupgrade = args[:clusterupgrade] if args.key?(:clusterupgrade)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @multiclusteringress = args[:multiclusteringress] if args.key?(:multiclusteringress)
+          @namespaceactuation = args[:namespaceactuation] if args.key?(:namespaceactuation)
           @workloadcertificate = args[:workloadcertificate] if args.key?(:workloadcertificate)
         end
       end
@@ -907,6 +914,11 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::FleetObservabilityFeatureState]
         attr_accessor :fleetobservability
       
+        # NamespaceActuation Feature State.
+        # Corresponds to the JSON property `namespaceactuation`
+        # @return [Google::Apis::GkehubV1alpha::NamespaceActuationFeatureState]
+        attr_accessor :namespaceactuation
+      
         # **Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub
         # Controller.
         # Corresponds to the JSON property `servicemesh`
@@ -929,6 +941,7 @@ module Google
           @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
           @clusterupgrade = args[:clusterupgrade] if args.key?(:clusterupgrade)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
+          @namespaceactuation = args[:namespaceactuation] if args.key?(:namespaceactuation)
           @servicemesh = args[:servicemesh] if args.key?(:servicemesh)
           @state = args[:state] if args.key?(:state)
         end
@@ -2065,6 +2078,27 @@ module Google
         end
       end
       
+      # DefaultClusterConfig describes the default cluster configurations to be
+      # applied to all clusters born-in-fleet.
+      class DefaultClusterConfig
+        include Google::Apis::Core::Hashable
+      
+        # SecurityPostureConfig defines the flags needed to enable/disable features for
+        # the Security Posture API.
+        # Corresponds to the JSON property `securityPostureConfig`
+        # @return [Google::Apis::GkehubV1alpha::SecurityPostureConfig]
+        attr_accessor :security_posture_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @security_posture_config = args[:security_posture_config] if args.key?(:security_posture_config)
+        end
+      end
+      
       # EdgeCluster contains information specific to Google Edge Clusters.
       class EdgeCluster
         include Google::Apis::Core::Hashable
@@ -2369,6 +2403,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # DefaultClusterConfig describes the default cluster configurations to be
+        # applied to all clusters born-in-fleet.
+        # Corresponds to the JSON property `defaultClusterConfig`
+        # @return [Google::Apis::GkehubV1alpha::DefaultClusterConfig]
+        attr_accessor :default_cluster_config
+      
         # Output only. When the Fleet was deleted.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
@@ -2418,6 +2458,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @default_cluster_config = args[:default_cluster_config] if args.key?(:default_cluster_config)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
@@ -3850,6 +3891,12 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ServiceMeshMembershipSpec]
         attr_accessor :mesh
       
+        # **Namespace Actuation**: The membership-specific input for NamespaceActuation
+        # feature.
+        # Corresponds to the JSON property `namespaceactuation`
+        # @return [Google::Apis::GkehubV1alpha::NamespaceActuationMembershipSpec]
+        attr_accessor :namespaceactuation
+      
         # Origin defines where this MembershipFeatureSpec originated from.
         # Corresponds to the JSON property `origin`
         # @return [Google::Apis::GkehubV1alpha::Origin]
@@ -3879,6 +3926,7 @@ module Google
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @identityservice = args[:identityservice] if args.key?(:identityservice)
           @mesh = args[:mesh] if args.key?(:mesh)
+          @namespaceactuation = args[:namespaceactuation] if args.key?(:namespaceactuation)
           @origin = args[:origin] if args.key?(:origin)
           @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
           @workloadcertificate = args[:workloadcertificate] if args.key?(:workloadcertificate)
@@ -3921,6 +3969,12 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::MeteringMembershipState]
         attr_accessor :metering
       
+        # **Namespace Actuation**: An empty state left as an example membership-specific
+        # Feature state.
+        # Corresponds to the JSON property `namespaceactuation`
+        # @return [Google::Apis::GkehubV1alpha::NamespaceActuationMembershipState]
+        attr_accessor :namespaceactuation
+      
         # **Policy Controller**: State for a single cluster.
         # Corresponds to the JSON property `policycontroller`
         # @return [Google::Apis::GkehubV1alpha::PolicyControllerMembershipState]
@@ -3951,6 +4005,7 @@ module Google
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @identityservice = args[:identityservice] if args.key?(:identityservice)
           @metering = args[:metering] if args.key?(:metering)
+          @namespaceactuation = args[:namespaceactuation] if args.key?(:namespaceactuation)
           @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
           @servicemesh = args[:servicemesh] if args.key?(:servicemesh)
           @state = args[:state] if args.key?(:state)
@@ -4206,6 +4261,67 @@ module Google
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # An empty spec for actuation feature. This is required since Feature proto
+      # requires a spec.
+      class NamespaceActuationFeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        # actuation_mode controls the behavior of the controller
+        # Corresponds to the JSON property `actuationMode`
+        # @return [String]
+        attr_accessor :actuation_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actuation_mode = args[:actuation_mode] if args.key?(:actuation_mode)
+        end
+      end
+      
+      # NamespaceActuation Feature State.
+      class NamespaceActuationFeatureState
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # **Namespace Actuation**: The membership-specific input for NamespaceActuation
+      # feature.
+      class NamespaceActuationMembershipSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # **Namespace Actuation**: An empty state left as an example membership-specific
+      # Feature state.
+      class NamespaceActuationMembershipState
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -5245,6 +5361,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code = args[:code] if args.key?(:code)
+        end
+      end
+      
+      # SecurityPostureConfig defines the flags needed to enable/disable features for
+      # the Security Posture API.
+      class SecurityPostureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Sets which mode to use for Security Posture features.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Sets which mode to use for vulnerability scanning.
+        # Corresponds to the JSON property `vulnerabilityMode`
+        # @return [String]
+        attr_accessor :vulnerability_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+          @vulnerability_mode = args[:vulnerability_mode] if args.key?(:vulnerability_mode)
         end
       end
       
