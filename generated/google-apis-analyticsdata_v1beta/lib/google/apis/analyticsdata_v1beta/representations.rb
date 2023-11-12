@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SamplingMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SchemaRestrictionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -789,6 +795,8 @@ module Google
           property :currency_code, as: 'currencyCode'
           property :data_loss_from_other_row, as: 'dataLossFromOtherRow'
           property :empty_reason, as: 'emptyReason'
+          collection :sampling_metadatas, as: 'samplingMetadatas', class: Google::Apis::AnalyticsdataV1beta::SamplingMetadata, decorator: Google::Apis::AnalyticsdataV1beta::SamplingMetadata::Representation
+      
           property :schema_restriction_response, as: 'schemaRestrictionResponse', class: Google::Apis::AnalyticsdataV1beta::SchemaRestrictionResponse, decorator: Google::Apis::AnalyticsdataV1beta::SchemaRestrictionResponse::Representation
       
           property :subject_to_thresholding, as: 'subjectToThresholding'
@@ -942,6 +950,14 @@ module Google
       
           collection :totals, as: 'totals', class: Google::Apis::AnalyticsdataV1beta::Row, decorator: Google::Apis::AnalyticsdataV1beta::Row::Representation
       
+        end
+      end
+      
+      class SamplingMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :samples_read_count, :numeric_string => true, as: 'samplesReadCount'
+          property :sampling_space_size, :numeric_string => true, as: 'samplingSpaceSize'
         end
       end
       
