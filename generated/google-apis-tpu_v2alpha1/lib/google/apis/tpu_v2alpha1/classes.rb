@@ -861,6 +861,12 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
+        # Optional. Whether Autocheckpoint is enabled.
+        # Corresponds to the JSON property `autocheckpointEnabled`
+        # @return [Boolean]
+        attr_accessor :autocheckpoint_enabled
+        alias_method :autocheckpoint_enabled?, :autocheckpoint_enabled
+      
         # Boot disk configurations.
         # Corresponds to the JSON property `bootDiskConfig`
         # @return [Google::Apis::TpuV2alpha1::BootDiskConfig]
@@ -992,6 +998,7 @@ module Google
           @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @api_version = args[:api_version] if args.key?(:api_version)
+          @autocheckpoint_enabled = args[:autocheckpoint_enabled] if args.key?(:autocheckpoint_enabled)
           @boot_disk_config = args[:boot_disk_config] if args.key?(:boot_disk_config)
           @cidr_block = args[:cidr_block] if args.key?(:cidr_block)
           @create_time = args[:create_time] if args.key?(:create_time)
