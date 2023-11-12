@@ -295,8 +295,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :capacity_gb
       
-        # The name of the file share (must be 32 characters or less for Enterprise and
-        # High Scale SSD tiers and 16 characters or less for all other tiers).
+        # Required. The name of the file share. Must use 1-16 characters for the basic
+        # service tier and 1-63 characters for all other service tiers. Must use
+        # lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter.
+        # Immutable.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
