@@ -587,6 +587,7 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
+          hash :env, as: 'env'
           property :etag, as: 'etag'
           property :host, as: 'host'
           hash :labels, as: 'labels'
