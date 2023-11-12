@@ -976,12 +976,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deprecated. This will be removed in October 2023. For more information, see
-        # the release notes: https://developers.google.com/authorized-buyers/apis/
-        # relnotes#real-time-bidding-api Gets remarketing tag for a buyer. A remarketing
-        # tag is a piece of JavaScript code that can be placed on a web page. When a
-        # user visits a page containing a remarketing tag, Google adds the user to a
-        # user list.
+        # This has been sunset as of October 2023, and will return an error response if
+        # called. For more information, see the release notes: https://developers.google.
+        # com/authorized-buyers/apis/relnotes#real-time-bidding-api Gets remarketing tag
+        # for a buyer. A remarketing tag is a piece of JavaScript code that can be
+        # placed on a web page. When a user visits a page containing a remarketing tag,
+        # Google adds the user to a user list.
         # @param [String] name
         #   Required. To fetch the remarketing tag for an account, the name must follow
         #   the pattern `buyers/`accountId``, where ``accountId`` represents the ID of the
@@ -1337,12 +1337,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deprecated. This will be removed in October 2023. For more information, see
-        # the release notes: https://developers.google.com/authorized-buyers/apis/
-        # relnotes#real-time-bidding-api Gets remarketing tag for a buyer. A remarketing
-        # tag is a piece of JavaScript code that can be placed on a web page. When a
-        # user visits a page containing a remarketing tag, Google adds the user to a
-        # user list.
+        # This has been sunset as of October 2023, and will return an error response if
+        # called. For more information, see the release notes: https://developers.google.
+        # com/authorized-buyers/apis/relnotes#real-time-bidding-api Gets remarketing tag
+        # for a buyer. A remarketing tag is a piece of JavaScript code that can be
+        # placed on a web page. When a user visits a page containing a remarketing tag,
+        # Google adds the user to a user list.
         # @param [String] name
         #   Required. To fetch the remarketing tag for an account, the name must follow
         #   the pattern `buyers/`accountId``, where ``accountId`` represents the ID of the
