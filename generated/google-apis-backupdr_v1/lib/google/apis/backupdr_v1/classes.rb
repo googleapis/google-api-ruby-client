@@ -452,6 +452,16 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # ManagementURI depending on the Workforce Identity i.e. either 1p or 3p.
+        # Corresponds to the JSON property `workforceIdentityBasedManagementUri`
+        # @return [Google::Apis::BackupdrV1::WorkforceIdentityBasedManagementUri]
+        attr_accessor :workforce_identity_based_management_uri
+      
+        # OAuth Client ID depending on the Workforce Identity i.e. either 1p or 3p,
+        # Corresponds to the JSON property `workforceIdentityBasedOauth2ClientId`
+        # @return [Google::Apis::BackupdrV1::WorkforceIdentityBasedOAuth2ClientId]
+        attr_accessor :workforce_identity_based_oauth2_client_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -469,6 +479,8 @@ module Google
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @workforce_identity_based_management_uri = args[:workforce_identity_based_management_uri] if args.key?(:workforce_identity_based_management_uri)
+          @workforce_identity_based_oauth2_client_id = args[:workforce_identity_based_oauth2_client_id] if args.key?(:workforce_identity_based_oauth2_client_id)
         end
       end
       
@@ -876,6 +888,56 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # ManagementURI depending on the Workforce Identity i.e. either 1p or 3p.
+      class WorkforceIdentityBasedManagementUri
+        include Google::Apis::Core::Hashable
+      
+        # Output only. First party Management URI for Google Identities.
+        # Corresponds to the JSON property `firstPartyManagementUri`
+        # @return [String]
+        attr_accessor :first_party_management_uri
+      
+        # Output only. Third party Management URI for External Identity Providers.
+        # Corresponds to the JSON property `thirdPartyManagementUri`
+        # @return [String]
+        attr_accessor :third_party_management_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @first_party_management_uri = args[:first_party_management_uri] if args.key?(:first_party_management_uri)
+          @third_party_management_uri = args[:third_party_management_uri] if args.key?(:third_party_management_uri)
+        end
+      end
+      
+      # OAuth Client ID depending on the Workforce Identity i.e. either 1p or 3p,
+      class WorkforceIdentityBasedOAuth2ClientId
+        include Google::Apis::Core::Hashable
+      
+        # Output only. First party OAuth Client ID for Google Identities.
+        # Corresponds to the JSON property `firstPartyOauth2ClientId`
+        # @return [String]
+        attr_accessor :first_party_oauth2_client_id
+      
+        # Output only. Third party OAuth Client ID for External Identity Providers.
+        # Corresponds to the JSON property `thirdPartyOauth2ClientId`
+        # @return [String]
+        attr_accessor :third_party_oauth2_client_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @first_party_oauth2_client_id = args[:first_party_oauth2_client_id] if args.key?(:first_party_oauth2_client_id)
+          @third_party_oauth2_client_id = args[:third_party_oauth2_client_id] if args.key?(:third_party_oauth2_client_id)
         end
       end
     end
