@@ -509,6 +509,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_persistence_regions, as: 'allowedPersistenceRegions'
+          property :enforce_in_transit, as: 'enforceInTransit'
         end
       end
       
