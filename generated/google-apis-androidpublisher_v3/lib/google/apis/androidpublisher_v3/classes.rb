@@ -2624,11 +2624,7 @@ module Google
         # @return [Array<Google::Apis::AndroidpublisherV3::RegionalPriceMigrationConfig>]
         attr_accessor :regional_price_migrations
       
-        # The version of the available regions being used for the specified resource. A
-        # string representing the version of available regions being used for the
-        # specified resource. Regional prices for the resource have to be specified
-        # according to the information published in [this article](https://support.
-        # google.com/googleplay/android-developer/answer/10532353).
+        # The version of the available regions being used for the specified resource.
         # Corresponds to the JSON property `regionsVersion`
         # @return [Google::Apis::AndroidpublisherV3::RegionsVersion]
         attr_accessor :regions_version
@@ -3550,15 +3546,18 @@ module Google
         end
       end
       
-      # The version of the available regions being used for the specified resource. A
-      # string representing the version of available regions being used for the
-      # specified resource. Regional prices for the resource have to be specified
-      # according to the information published in [this article](https://support.
-      # google.com/googleplay/android-developer/answer/10532353).
+      # The version of the available regions being used for the specified resource.
       class RegionsVersion
         include Google::Apis::Core::Hashable
       
-        # Required. The latest version is 2022/02.
+        # Required. A string representing the version of available regions being used
+        # for the specified resource. Regional prices for the resource have to be
+        # specified according to the information published in [this article](https://
+        # support.google.com/googleplay/android-developer/answer/10532353). Each time
+        # the supported locations substantially change, the version will be incremented.
+        # Using this field will ensure that creating and updating the resource with an
+        # older region's version and set of regional prices and currencies will succeed
+        # even though a new version is available. The latest version is 2022/02.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
