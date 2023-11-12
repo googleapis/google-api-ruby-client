@@ -1521,6 +1521,16 @@ module Google
         # @return [String]
         attr_accessor :empty_reason
       
+        # If this report results is [sampled](https://support.google.com/analytics/
+        # answer/13331292), this describes the percentage of events used in this report.
+        # One `samplingMetadatas` is populated for each date range. Each `
+        # samplingMetadatas` corresponds to a date range in order that date ranges were
+        # specified in the request. However if the results are not sampled, this field
+        # will not be defined.
+        # Corresponds to the JSON property `samplingMetadatas`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::SamplingMetadata>]
+        attr_accessor :sampling_metadatas
+      
         # The schema restrictions actively enforced in creating this report. To learn
         # more, see [Access and data-restriction management](https://support.google.com/
         # analytics/answer/10851388).
@@ -1533,8 +1543,7 @@ module Google
         # possible for a request to be subject to thresholding thresholding and no data
         # is absent from the report, and this happens when all data is above the
         # thresholds. To learn more, see [Data thresholds](https://support.google.com/
-        # analytics/answer/9383630) and [About Demographics and Interests](https://
-        # support.google.com/analytics/answer/2799357).
+        # analytics/answer/9383630).
         # Corresponds to the JSON property `subjectToThresholding`
         # @return [Boolean]
         attr_accessor :subject_to_thresholding
@@ -1557,6 +1566,7 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @data_loss_from_other_row = args[:data_loss_from_other_row] if args.key?(:data_loss_from_other_row)
           @empty_reason = args[:empty_reason] if args.key?(:empty_reason)
+          @sampling_metadatas = args[:sampling_metadatas] if args.key?(:sampling_metadatas)
           @schema_restriction_response = args[:schema_restriction_response] if args.key?(:schema_restriction_response)
           @subject_to_thresholding = args[:subject_to_thresholding] if args.key?(:subject_to_thresholding)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
@@ -2172,6 +2182,40 @@ module Google
           @row_count = args[:row_count] if args.key?(:row_count)
           @rows = args[:rows] if args.key?(:rows)
           @totals = args[:totals] if args.key?(:totals)
+        end
+      end
+      
+      # If this report results is [sampled](https://support.google.com/analytics/
+      # answer/13331292), this describes the percentage of events used in this report.
+      # Sampling is the practice of analyzing a subset of all data in order to uncover
+      # the meaningful information in the larger data set.
+      class SamplingMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The total number of events read in this sampled report for a date range. This
+        # is the size of the subset this property's data that was analyzed in this
+        # report.
+        # Corresponds to the JSON property `samplesReadCount`
+        # @return [Fixnum]
+        attr_accessor :samples_read_count
+      
+        # The total number of events present in this property's data that could have
+        # been analyzed in this report for a date range. Sampling uncovers the
+        # meaningful information about the larger data set, and this is the size of the
+        # larger data set. To calculate the percentage of available data that was used
+        # in this report, compute `samplesReadCount/samplingSpaceSize`.
+        # Corresponds to the JSON property `samplingSpaceSize`
+        # @return [Fixnum]
+        attr_accessor :sampling_space_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @samples_read_count = args[:samples_read_count] if args.key?(:samples_read_count)
+          @sampling_space_size = args[:sampling_space_size] if args.key?(:sampling_space_size)
         end
       end
       
