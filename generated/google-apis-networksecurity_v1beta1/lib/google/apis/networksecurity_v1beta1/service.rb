@@ -2309,7 +2309,7 @@ module Google
         #   Required. Value for parent.
         # @param [Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociation] firewall_endpoint_association_object
         # @param [String] firewall_endpoint_association_id
-        #   Required. Id of the requesting object. If auto-generating Id server-side,
+        #   Optional. Id of the requesting object. If auto-generating Id server-side,
         #   remove this field and firewall_endpoint_association_id from the
         #   method_signature of Create RPC.
         # @param [String] request_id
