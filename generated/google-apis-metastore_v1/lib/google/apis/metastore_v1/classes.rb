@@ -1569,6 +1569,12 @@ module Google
         # @return [String]
         attr_accessor :backup
       
+        # Optional. A Cloud Storage URI specifying where the backup artifacts are stored,
+        # in the format gs:///.
+        # Corresponds to the JSON property `backupLocation`
+        # @return [String]
+        attr_accessor :backup_location
+      
         # Output only. The restore details containing the revision of the service to be
         # restored to, in format of JSON.
         # Corresponds to the JSON property `details`
@@ -1602,6 +1608,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
+          @backup_location = args[:backup_location] if args.key?(:backup_location)
           @details = args[:details] if args.key?(:details)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
