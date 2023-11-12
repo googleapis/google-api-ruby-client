@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PathSegment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -572,6 +578,14 @@ module Google
         end
       end
       
+      class OrMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :value_matchers, as: 'valueMatchers', class: Google::Apis::TrafficdirectorV3::ValueMatcher, decorator: Google::Apis::TrafficdirectorV3::ValueMatcher::Representation
+      
+        end
+      end
+      
       class PathSegment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -729,6 +743,8 @@ module Google
           property :list_match, as: 'listMatch', class: Google::Apis::TrafficdirectorV3::ListMatcher, decorator: Google::Apis::TrafficdirectorV3::ListMatcher::Representation
       
           property :null_match, as: 'nullMatch', class: Google::Apis::TrafficdirectorV3::NullMatch, decorator: Google::Apis::TrafficdirectorV3::NullMatch::Representation
+      
+          property :or_match, as: 'orMatch', class: Google::Apis::TrafficdirectorV3::OrMatcher, decorator: Google::Apis::TrafficdirectorV3::OrMatcher::Representation
       
           property :present_match, as: 'presentMatch'
           property :string_match, as: 'stringMatch', class: Google::Apis::TrafficdirectorV3::StringMatcher, decorator: Google::Apis::TrafficdirectorV3::StringMatcher::Representation
