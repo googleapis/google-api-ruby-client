@@ -3405,10 +3405,15 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # The name of the `Release`.
+        # The name of the release.
         # Corresponds to the JSON property `release`
         # @return [String]
         attr_accessor :release
+      
+        # The state of the release render.
+        # Corresponds to the JSON property `releaseRenderState`
+        # @return [String]
+        attr_accessor :release_render_state
       
         def initialize(**args)
            update!(**args)
@@ -3418,6 +3423,7 @@ module Google
         def update!(**args)
           @message = args[:message] if args.key?(:message)
           @release = args[:release] if args.key?(:release)
+          @release_render_state = args[:release_render_state] if args.key?(:release_render_state)
         end
       end
       
@@ -4131,7 +4137,7 @@ module Google
         # @return [String]
         attr_accessor :rollout
       
-        # Output only. The type of the rollout update.
+        # The type of the rollout update.
         # Corresponds to the JSON property `rolloutUpdateType`
         # @return [String]
         attr_accessor :rollout_update_type
