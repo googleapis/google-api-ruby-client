@@ -23,7 +23,7 @@ module Google
     module ContentV2_1
       
       # Account data. After the creation of a new account it may take a few minutes
-      # before it is fully operational. The methods delete, insert, and update require
+      # before it's fully operational. The methods delete, insert, and update require
       # the admin role.
       class Account
         include Google::Apis::Core::Hashable
@@ -37,8 +37,8 @@ module Google
         # Linked Ads accounts that are active or pending approval. To create a new link
         # request, add a new link with status `active` to the list. It will remain in a `
         # pending` state until approved or rejected either in the Ads interface or
-        # through the AdWords API. To delete an active link, or to cancel a link request,
-        # remove it from the list.
+        # through the Google Ads API. To delete an active link, or to cancel a link
+        # request, remove it from the list.
         # Corresponds to the JSON property `adsLinks`
         # @return [Array<Google::Apis::ContentV2_1::AccountAdsLink>]
         attr_accessor :ads_links
@@ -60,10 +60,22 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :automatic_label_ids
       
+        # The [business identity attributes](https://support.google.com/merchants/answer/
+        # 10342414) can be used to self-declare attributes that let customers know more
+        # about your business.
+        # Corresponds to the JSON property `businessIdentity`
+        # @return [Google::Apis::ContentV2_1::AccountBusinessIdentity]
+        attr_accessor :business_identity
+      
         # The business information of the account.
         # Corresponds to the JSON property `businessInformation`
         # @return [Google::Apis::ContentV2_1::AccountBusinessInformation]
         attr_accessor :business_information
+      
+        # Settings for conversion tracking.
+        # Corresponds to the JSON property `conversionSettings`
+        # @return [Google::Apis::ContentV2_1::AccountConversionSettings]
+        attr_accessor :conversion_settings
       
         # ID of CSS the account belongs to.
         # Corresponds to the JSON property `cssId`
@@ -76,7 +88,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::AccountGoogleMyBusinessLink]
         attr_accessor :google_my_business_link
       
-        # Required for update. Merchant Center account ID.
+        # Required. 64-bit Merchant Center account ID.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
@@ -133,7 +145,9 @@ module Google
           @adult_content = args[:adult_content] if args.key?(:adult_content)
           @automatic_improvements = args[:automatic_improvements] if args.key?(:automatic_improvements)
           @automatic_label_ids = args[:automatic_label_ids] if args.key?(:automatic_label_ids)
+          @business_identity = args[:business_identity] if args.key?(:business_identity)
           @business_information = args[:business_information] if args.key?(:business_information)
+          @conversion_settings = args[:conversion_settings] if args.key?(:conversion_settings)
           @css_id = args[:css_id] if args.key?(:css_id)
           @google_my_business_link = args[:google_my_business_link] if args.key?(:google_my_business_link)
           @id = args[:id] if args.key?(:id)
@@ -151,20 +165,20 @@ module Google
       class AccountAddress
         include Google::Apis::Core::Hashable
       
-        # CLDR country code (e.g. "US"). All MCA sub-accounts inherit the country of
-        # their parent MCA by default, however the country can be updated for individual
-        # sub-accounts.
+        # CLDR country code (for example, "US"). All MCA sub-accounts inherit the
+        # country of their parent MCA by default, however the country can be updated for
+        # individual sub-accounts.
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
       
         # City, town or commune. May also include dependent localities or sublocalities (
-        # e.g. neighborhoods or suburbs).
+        # for example, neighborhoods or suburbs).
         # Corresponds to the JSON property `locality`
         # @return [String]
         attr_accessor :locality
       
-        # Postal code or ZIP (e.g. "94043").
+        # Postal code or ZIP (for example, "94043").
         # Corresponds to the JSON property `postalCode`
         # @return [String]
         attr_accessor :postal_code
@@ -175,7 +189,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Street-level part of the address.
+        # Street-level part of the address. Use `\n` to add a second line.
         # Corresponds to the JSON property `streetAddress`
         # @return [String]
         attr_accessor :street_address
@@ -276,11 +290,67 @@ module Google
         end
       end
       
+      # The [business identity attributes](https://support.google.com/merchants/answer/
+      # 10342414) can be used to self-declare attributes that let customers know more
+      # about your business.
+      class AccountBusinessIdentity
+        include Google::Apis::Core::Hashable
+      
+        # The account identity type used to specify attributes.
+        # Corresponds to the JSON property `blackOwned`
+        # @return [Google::Apis::ContentV2_1::AccountIdentityType]
+        attr_accessor :black_owned
+      
+        # Required. By setting this field, your business may be included in promotions
+        # for all the selected attributes. If you clear this option, it won't affect
+        # your identification with any of the attributes. For this field to be set, the
+        # merchant must self identify with at least one of the `AccountIdentityType`. If
+        # none are included, the request will be considered invalid.
+        # Corresponds to the JSON property `includeForPromotions`
+        # @return [Boolean]
+        attr_accessor :include_for_promotions
+        alias_method :include_for_promotions?, :include_for_promotions
+      
+        # The account identity type used to specify attributes.
+        # Corresponds to the JSON property `latinoOwned`
+        # @return [Google::Apis::ContentV2_1::AccountIdentityType]
+        attr_accessor :latino_owned
+      
+        # The account identity type used to specify attributes.
+        # Corresponds to the JSON property `smallBusiness`
+        # @return [Google::Apis::ContentV2_1::AccountIdentityType]
+        attr_accessor :small_business
+      
+        # The account identity type used to specify attributes.
+        # Corresponds to the JSON property `veteranOwned`
+        # @return [Google::Apis::ContentV2_1::AccountIdentityType]
+        attr_accessor :veteran_owned
+      
+        # The account identity type used to specify attributes.
+        # Corresponds to the JSON property `womenOwned`
+        # @return [Google::Apis::ContentV2_1::AccountIdentityType]
+        attr_accessor :women_owned
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @black_owned = args[:black_owned] if args.key?(:black_owned)
+          @include_for_promotions = args[:include_for_promotions] if args.key?(:include_for_promotions)
+          @latino_owned = args[:latino_owned] if args.key?(:latino_owned)
+          @small_business = args[:small_business] if args.key?(:small_business)
+          @veteran_owned = args[:veteran_owned] if args.key?(:veteran_owned)
+          @women_owned = args[:women_owned] if args.key?(:women_owned)
+        end
+      end
+      
       # 
       class AccountBusinessInformation
         include Google::Apis::Core::Hashable
       
-        # The address of the business.
+        # The address of the business. Use `\n` to add a second address line.
         # Corresponds to the JSON property `address`
         # @return [Google::Apis::ContentV2_1::AccountAddress]
         attr_accessor :address
@@ -297,9 +367,10 @@ module Google
         # @return [String]
         attr_accessor :korean_business_registration_number
       
-        # The phone number of the business. This can only be updated if a verified phone
-        # number is not already set. To replace a verified phone number use the `
-        # Accounts.requestphoneverification` and `Accounts.verifyphonenumber`.
+        # The phone number of the business in [E.164](https://en.wikipedia.org/wiki/E.
+        # 164) format. This can only be updated if a verified phone number is not
+        # already set. To replace a verified phone number use the `Accounts.
+        # requestphoneverification` and `Accounts.verifyphonenumber`.
         # Corresponds to the JSON property `phoneNumber`
         # @return [String]
         attr_accessor :phone_number
@@ -322,6 +393,28 @@ module Google
           @korean_business_registration_number = args[:korean_business_registration_number] if args.key?(:korean_business_registration_number)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
           @phone_verification_status = args[:phone_verification_status] if args.key?(:phone_verification_status)
+        end
+      end
+      
+      # Settings for conversion tracking.
+      class AccountConversionSettings
+        include Google::Apis::Core::Hashable
+      
+        # When enabled, free listing URLs have a parameter to enable conversion tracking
+        # for products owned by the current merchant account. See [auto-tagging](https://
+        # support.google.com/merchants/answer/11127659).
+        # Corresponds to the JSON property `freeListingsAutoTaggingEnabled`
+        # @return [Boolean]
+        attr_accessor :free_listings_auto_tagging_enabled
+        alias_method :free_listings_auto_tagging_enabled?, :free_listings_auto_tagging_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @free_listings_auto_tagging_enabled = args[:free_listings_auto_tagging_enabled] if args.key?(:free_listings_auto_tagging_enabled)
         end
       end
       
@@ -450,6 +543,28 @@ module Google
         end
       end
       
+      # The account identity type used to specify attributes.
+      class AccountIdentityType
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates that the business identifies itself with a given identity
+        # type. Setting this field does not automatically mean eligibility for
+        # promotions.
+        # Corresponds to the JSON property `selfIdentified`
+        # @return [Boolean]
+        attr_accessor :self_identified
+        alias_method :self_identified?, :self_identified
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @self_identified = args[:self_identified] if args.key?(:self_identified)
+        end
+      end
+      
       # This improvement will attempt to automatically correct submitted images if
       # they don't meet the [image requirements](https://support.google.com/merchants/
       # answer/6324350), for example, removing overlays. If successful, the image will
@@ -503,6 +618,119 @@ module Google
         end
       end
       
+      # An issue affecting specific merchant.
+      class AccountIssue
+        include Google::Apis::Core::Hashable
+      
+        # A list of actionable steps that can be executed to solve the issue. An example
+        # is requesting a re-review or providing arguments when merchant disagrees with
+        # the issue. Actions that are supported in (your) third-party application can be
+        # rendered as buttons and should be available to merchant when they expand the
+        # issue.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::ContentV2_1::Action>]
+        attr_accessor :actions
+      
+        # Overall impact of the issue.
+        # Corresponds to the JSON property `impact`
+        # @return [Google::Apis::ContentV2_1::AccountIssueImpact]
+        attr_accessor :impact
+      
+        # Details of the issue as a pre-rendered HTML. HTML elements contain CSS classes
+        # that can be used to customize the style of the content. Always sanitize the
+        # HTML before embedding it directly to your application. The sanitizer needs to
+        # allow basic HTML tags, such as: `div`, `span`, `p`, `a`, `ul`, `li`, `table`, `
+        # tr`, `td`. For example, you can use [DOMPurify](https://www.npmjs.com/package/
+        # dompurify). CSS classes: * `issue-detail` - top level container for the detail
+        # of the issue * `callout-banners` - section of the `issue-detail` with callout
+        # banners * `callout-banner` - single callout banner, inside `callout-banners` *
+        # `callout-banner-info` - callout with important information (default) * `
+        # callout-banner-warning` - callout with a warning * `callout-banner-error` -
+        # callout informing about an error (most severe) * `issue-content` - section of
+        # the `issue-detail`, contains multiple `content-element` * `content-element` -
+        # content element such as a list, link or paragraph, inside `issue-content` * `
+        # root-causes` - unordered list with items describing root causes of the issue,
+        # inside `issue-content` * `root-causes-intro` - intro text before the `root-
+        # causes` list, inside `issue-content` * `segment` - section of the text, `span`
+        # inside paragraph * `segment-attribute` - section of the text that represents a
+        # product attribute, for example 'image\_link' * `segment-literal` - section of
+        # the text that contains a special value, for example '0-1000 kg' * `segment-
+        # bold` - section of the text that should be rendered as bold * `segment-italic`
+        # - section of the text that should be rendered as italic * `tooltip` - used on
+        # paragraphs that should be rendered with a tooltip. A section of the text in
+        # such a paragraph will have a class `tooltip-text` and is intended to be shown
+        # in a mouse over dialog. If the style is not used, the `tooltip-text` section
+        # would be shown on a new line, after the main part of the text. * `tooltip-text`
+        # - marks a section of the text within a `tooltip`, that is intended to be
+        # shown in a mouse over dialog. * `tooltip-icon` - marks a section of the text
+        # within a `tooltip`, that can be replaced with a tooltip icon, for example '?'
+        # or 'i'. By default, this section contains a `br` tag, that is separating the
+        # main text and the tooltip text when the style is not used. * `tooltip-style-
+        # question` - the tooltip shows helpful information, can use the '?' as an icon.
+        # * `tooltip-style-info` - the tooltip adds additional information fitting to
+        # the context, can use the 'i' as an icon. * `content-moderation` - marks the
+        # paragraph that explains how the issue was identified. * `new-element` -
+        # Present for new elements added to the pre-rendered content in the future. To
+        # make sure that a new content element does not break your style, you can hide
+        # everything with this class.
+        # Corresponds to the JSON property `prerenderedContent`
+        # @return [String]
+        attr_accessor :prerendered_content
+      
+        # Title of the issue.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @impact = args[:impact] if args.key?(:impact)
+          @prerendered_content = args[:prerendered_content] if args.key?(:prerendered_content)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Overall impact of the issue.
+      class AccountIssueImpact
+        include Google::Apis::Core::Hashable
+      
+        # Detailed impact breakdown. Explains the types of restriction the issue has in
+        # different shopping destinations and territory. If present, it should be
+        # rendered to the merchant. Can be shown as a mouse over dropdown or a dialog.
+        # Each breakdown item represents a group of regions with the same impact details.
+        # Corresponds to the JSON property `breakdowns`
+        # @return [Array<Google::Apis::ContentV2_1::Breakdown>]
+        attr_accessor :breakdowns
+      
+        # Optional. Message summarizing the overall impact of the issue. If present, it
+        # should be rendered to the merchant. For example: "Disapproves 90k offers in 25
+        # countries"
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The severity of the issue.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @breakdowns = args[:breakdowns] if args.key?(:breakdowns)
+          @message = args[:message] if args.key?(:message)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
       # Turning on [item updates](https://support.google.com/merchants/answer/3246284)
       # allows Google to automatically update items for you. When item updates are on,
       # Google uses the structured data markup on the website and advanced data
@@ -523,6 +751,14 @@ module Google
         # @return [Boolean]
         attr_accessor :effective_allow_availability_updates
         alias_method :effective_allow_availability_updates?, :effective_allow_availability_updates
+      
+        # Output only. The effective value of allow_condition_updates. If
+        # account_item_updates_settings is present, then this value is the same.
+        # Otherwise, it represents the inherited value of the parent account. Read-only.
+        # Corresponds to the JSON property `effectiveAllowConditionUpdates`
+        # @return [Boolean]
+        attr_accessor :effective_allow_condition_updates
+        alias_method :effective_allow_condition_updates?, :effective_allow_condition_updates
       
         # Output only. The effective value of allow_price_updates. If
         # account_item_updates_settings is present, then this value is the same.
@@ -548,6 +784,7 @@ module Google
         def update!(**args)
           @account_item_updates_settings = args[:account_item_updates_settings] if args.key?(:account_item_updates_settings)
           @effective_allow_availability_updates = args[:effective_allow_availability_updates] if args.key?(:effective_allow_availability_updates)
+          @effective_allow_condition_updates = args[:effective_allow_condition_updates] if args.key?(:effective_allow_condition_updates)
           @effective_allow_price_updates = args[:effective_allow_price_updates] if args.key?(:effective_allow_price_updates)
           @effective_allow_strict_availability_updates = args[:effective_allow_strict_availability_updates] if args.key?(:effective_allow_strict_availability_updates)
         end
@@ -565,6 +802,13 @@ module Google
         # @return [Boolean]
         attr_accessor :allow_availability_updates
         alias_method :allow_availability_updates?, :allow_availability_updates
+      
+        # If condition updates are enabled, Google always updates item condition with
+        # the condition detected from the details of your product.
+        # Corresponds to the JSON property `allowConditionUpdates`
+        # @return [Boolean]
+        attr_accessor :allow_condition_updates
+        alias_method :allow_condition_updates?, :allow_condition_updates
       
         # If price updates are enabled, Google always updates the active price with the
         # crawled information.
@@ -591,6 +835,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_availability_updates = args[:allow_availability_updates] if args.key?(:allow_availability_updates)
+          @allow_condition_updates = args[:allow_condition_updates] if args.key?(:allow_condition_updates)
           @allow_price_updates = args[:allow_price_updates] if args.key?(:allow_price_updates)
           @allow_strict_availability_updates = args[:allow_strict_availability_updates] if args.key?(:allow_strict_availability_updates)
         end
@@ -705,7 +950,7 @@ module Google
         end
       end
       
-      # The status of an account, i.e., information about its products, which is
+      # The status of an account, that is, information about its products, which is
       # computed offline and not returned immediately at insertion time.
       class AccountStatus
         include Google::Apis::Core::Hashable
@@ -973,7 +1218,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Tax rules. Updating the tax rules will enable US taxes (not reversible).
+        # Tax rules. Updating the tax rules will enable "US" taxes (not reversible).
         # Defining no rules is equivalent to not charging tax at all.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ContentV2_1::AccountTaxTaxRule>]
@@ -991,7 +1236,7 @@ module Google
         end
       end
       
-      # Tax calculation rule to apply in a state or province (USA only).
+      # Tax calculation rule to apply in a state or province (US only).
       class AccountTaxTaxRule
         include Google::Apis::Core::Hashable
       
@@ -1071,6 +1316,12 @@ module Google
         attr_accessor :payments_manager
         alias_method :payments_manager?, :payments_manager
       
+        # Whether user is a reporting manager.
+        # Corresponds to the JSON property `reportingManager`
+        # @return [Boolean]
+        attr_accessor :reporting_manager
+        alias_method :reporting_manager?, :reporting_manager
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1082,6 +1333,7 @@ module Google
           @order_manager = args[:order_manager] if args.key?(:order_manager)
           @payments_analyst = args[:payments_analyst] if args.key?(:payments_analyst)
           @payments_manager = args[:payments_manager] if args.key?(:payments_manager)
+          @reporting_manager = args[:reporting_manager] if args.key?(:reporting_manager)
         end
       end
       
@@ -1191,7 +1443,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Account data. After the creation of a new account it may take a few minutes
-        # before it is fully operational. The methods delete, insert, and update require
+        # before it's fully operational. The methods delete, insert, and update require
         # the admin role.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::ContentV2_1::Account]
@@ -1339,7 +1591,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Account data. After the creation of a new account it may take a few minutes
-        # before it is fully operational. The methods delete, insert, and update require
+        # before it's fully operational. The methods delete, insert, and update require
         # the admin role.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::ContentV2_1::Account]
@@ -1644,7 +1896,7 @@ module Google
       class AccountstatusesCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
       
-        # The status of an account, i.e., information about its products, which is
+        # The status of an account, that is, information about its products, which is
         # computed offline and not returned immediately at insertion time.
         # Corresponds to the JSON property `accountStatus`
         # @return [Google::Apis::ContentV2_1::AccountStatus]
@@ -1862,6 +2114,98 @@ module Google
         end
       end
       
+      # An actionable step that can be executed to solve the issue.
+      class Action
+        include Google::Apis::Core::Hashable
+      
+        # Action that is implemented and performed in (your) third-party application.
+        # Represents various functionality that is expected to be available to merchant
+        # and will help them with resolving the issue. The application should point the
+        # merchant to the place, where they can access the corresponding functionality.
+        # If the functionality is not supported, it is recommended to explain the
+        # situation to merchant and provide them with instructions how to solve the
+        # issue.
+        # Corresponds to the JSON property `builtinSimpleAction`
+        # @return [Google::Apis::ContentV2_1::BuiltInSimpleAction]
+        attr_accessor :builtin_simple_action
+      
+        # Label of the action button.
+        # Corresponds to the JSON property `buttonLabel`
+        # @return [String]
+        attr_accessor :button_label
+      
+        # Action that is implemented and performed outside of the third-party
+        # application. It should redirect the merchant to the provided URL of an
+        # external system where they can perform the action. For example to request a
+        # review in the Merchant Center.
+        # Corresponds to the JSON property `externalAction`
+        # @return [Google::Apis::ContentV2_1::ExternalAction]
+        attr_accessor :external_action
+      
+        # Controlling whether the button is active or disabled. The value is 'false'
+        # when the action was already requested or is not available. If the action is
+        # not available then a reason will be present. If (your) third-party application
+        # shows a disabled button for action that is not available, then it should also
+        # show reasons.
+        # Corresponds to the JSON property `isAvailable`
+        # @return [Boolean]
+        attr_accessor :is_available
+        alias_method :is_available?, :is_available
+      
+        # List of reasons why the action is not available. The list of reasons is empty
+        # if the action is available. If there is only one reason, it can be displayed
+        # next to the disabled button. If there are more reasons, all of them should be
+        # displayed, for example in a pop-up dialog.
+        # Corresponds to the JSON property `reasons`
+        # @return [Array<Google::Apis::ContentV2_1::ActionReason>]
+        attr_accessor :reasons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @builtin_simple_action = args[:builtin_simple_action] if args.key?(:builtin_simple_action)
+          @button_label = args[:button_label] if args.key?(:button_label)
+          @external_action = args[:external_action] if args.key?(:external_action)
+          @is_available = args[:is_available] if args.key?(:is_available)
+          @reasons = args[:reasons] if args.key?(:reasons)
+        end
+      end
+      
+      # A single reason why the action is not available.
+      class ActionReason
+        include Google::Apis::Core::Hashable
+      
+        # An actionable step that can be executed to solve the issue.
+        # Corresponds to the JSON property `action`
+        # @return [Google::Apis::ContentV2_1::Action]
+        attr_accessor :action
+      
+        # Detailed explanation of the reason. Should be displayed as a hint if present.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # Messages summarizing the reason, why the action is not available. For example:
+        # "Review requested on Jan 03. Review requests can take a few days to complete."
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @detail = args[:detail] if args.key?(:detail)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # Request message for the ActivateProgram method.
       class ActivateBuyOnGoogleProgramRequest
         include Google::Apis::Core::Hashable
@@ -1886,23 +2230,23 @@ module Google
         attr_accessor :administrative_area
       
         # Required. City, town or commune. May also include dependent localities or
-        # sublocalities (e.g. neighborhoods or suburbs).
+        # sublocalities (for example, neighborhoods or suburbs).
         # Corresponds to the JSON property `city`
         # @return [String]
         attr_accessor :city
       
-        # Required. [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/
-        # common/main/en.xml) (e.g. "US").
+        # Required. [CLDR country code](https://github.com/unicode-org/cldr/blob/latest/
+        # common/main/en.xml) (for example, "US").
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
       
-        # Required. Postal code or ZIP (e.g. "94043").
+        # Required. Postal code or ZIP (for example, "94043").
         # Corresponds to the JSON property `postalCode`
         # @return [String]
         attr_accessor :postal_code
       
-        # Street-level part of the address.
+        # Street-level part of the address. Use `\n` to add a second line.
         # Corresponds to the JSON property `streetAddress`
         # @return [String]
         attr_accessor :street_address
@@ -1918,6 +2262,35 @@ module Google
           @country = args[:country] if args.key?(:country)
           @postal_code = args[:postal_code] if args.key?(:postal_code)
           @street_address = args[:street_address] if args.key?(:street_address)
+        end
+      end
+      
+      # The Alternate Dispute Resolution (ADR) that may be available to merchants in
+      # some regions. If present, the link should be shown on the same page as the
+      # list of issues.
+      class AlternateDisputeResolution
+        include Google::Apis::Core::Hashable
+      
+        # The label for the alternate dispute resolution link.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # The URL pointing to a page, where merchant can request alternative dispute
+        # resolution with an [external body](https://support.google.com/european-union-
+        # digital-services-act-redress-options/answer/13535501).
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label = args[:label] if args.key?(:label)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -1944,6 +2317,295 @@ module Google
         def update!(**args)
           @price_amount = args[:price_amount] if args.key?(:price_amount)
           @tax_amount = args[:tax_amount] if args.key?(:tax_amount)
+        end
+      end
+      
+      # Represents attribution settings for conversion sources receiving pre-
+      # attribution data.
+      class AttributionSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. Lookback windows (in days) used for attribution in this source.
+        # Supported values are 7, 30, 60, 90.
+        # Corresponds to the JSON property `attributionLookbackWindowInDays`
+        # @return [Fixnum]
+        attr_accessor :attribution_lookback_window_in_days
+      
+        # Required. Attribution model.
+        # Corresponds to the JSON property `attributionModel`
+        # @return [String]
+        attr_accessor :attribution_model
+      
+        # Immutable. Unordered list. List of different conversion types a conversion
+        # event can be classified as. A standard "purchase" type will be automatically
+        # created if this list is empty at creation time.
+        # Corresponds to the JSON property `conversionType`
+        # @return [Array<Google::Apis::ContentV2_1::AttributionSettingsConversionType>]
+        attr_accessor :conversion_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution_lookback_window_in_days = args[:attribution_lookback_window_in_days] if args.key?(:attribution_lookback_window_in_days)
+          @attribution_model = args[:attribution_model] if args.key?(:attribution_model)
+          @conversion_type = args[:conversion_type] if args.key?(:conversion_type)
+        end
+      end
+      
+      # Message representing a types of conversion events
+      class AttributionSettingsConversionType
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Option indicating if the type should be included in Merchant
+        # Center reporting.
+        # Corresponds to the JSON property `includeInReporting`
+        # @return [Boolean]
+        attr_accessor :include_in_reporting
+        alias_method :include_in_reporting?, :include_in_reporting
+      
+        # Output only. Conversion event name, as it'll be reported by the client.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_in_reporting = args[:include_in_reporting] if args.key?(:include_in_reporting)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Fields related to the [Best sellers reports](https://support.google.com/
+      # merchants/answer/9488679).
+      class BestSellers
+        include Google::Apis::Core::Hashable
+      
+        # Google product category ID to calculate the ranking for, represented in [
+        # Google's product taxonomy](https://support.google.com/merchants/answer/6324436)
+        # . If a `WHERE` condition on `best_sellers.category_id` is not specified in the
+        # query, rankings for all top-level categories are returned.
+        # Corresponds to the JSON property `categoryId`
+        # @return [Fixnum]
+        attr_accessor :category_id
+      
+        # Country where the ranking is calculated. A `WHERE` condition on `best_sellers.
+        # country_code` is required in the query.
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        # Popularity rank in the previous week or month.
+        # Corresponds to the JSON property `previousRank`
+        # @return [Fixnum]
+        attr_accessor :previous_rank
+      
+        # Estimated demand in relation to the item with the highest popularity rank in
+        # the same category and country in the previous week or month.
+        # Corresponds to the JSON property `previousRelativeDemand`
+        # @return [String]
+        attr_accessor :previous_relative_demand
+      
+        # Popularity on Shopping ads and free listings, in the selected category and
+        # country, based on the estimated number of units sold.
+        # Corresponds to the JSON property `rank`
+        # @return [Fixnum]
+        attr_accessor :rank
+      
+        # Estimated demand in relation to the item with the highest popularity rank in
+        # the same category and country.
+        # Corresponds to the JSON property `relativeDemand`
+        # @return [String]
+        attr_accessor :relative_demand
+      
+        # Change in the estimated demand. Whether it rose, sank or remained flat.
+        # Corresponds to the JSON property `relativeDemandChange`
+        # @return [String]
+        attr_accessor :relative_demand_change
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `reportDate`
+        # @return [Google::Apis::ContentV2_1::Date]
+        attr_accessor :report_date
+      
+        # Granularity of the report. The ranking can be done over a week or a month
+        # timeframe. A `WHERE` condition on `best_sellers.report_granularity` is
+        # required in the query.
+        # Corresponds to the JSON property `reportGranularity`
+        # @return [String]
+        attr_accessor :report_granularity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category_id = args[:category_id] if args.key?(:category_id)
+          @country_code = args[:country_code] if args.key?(:country_code)
+          @previous_rank = args[:previous_rank] if args.key?(:previous_rank)
+          @previous_relative_demand = args[:previous_relative_demand] if args.key?(:previous_relative_demand)
+          @rank = args[:rank] if args.key?(:rank)
+          @relative_demand = args[:relative_demand] if args.key?(:relative_demand)
+          @relative_demand_change = args[:relative_demand_change] if args.key?(:relative_demand_change)
+          @report_date = args[:report_date] if args.key?(:report_date)
+          @report_granularity = args[:report_granularity] if args.key?(:report_granularity)
+        end
+      end
+      
+      # Brand fields. Values are only set for fields requested explicitly in the
+      # request's search query.
+      class Brand
+        include Google::Apis::Core::Hashable
+      
+        # Name of the brand.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A detailed impact breakdown for a group of regions where the impact of the
+      # issue on different shopping destinations is the same.
+      class Breakdown
+        include Google::Apis::Core::Hashable
+      
+        # Human readable, localized description of issue's effect on different targets.
+        # Should be rendered as a list. For example: * "Products not showing in ads" * "
+        # Products not showing organically"
+        # Corresponds to the JSON property `details`
+        # @return [Array<String>]
+        attr_accessor :details
+      
+        # Lists of regions. Should be rendered as a title for this group of details. The
+        # full list should be shown to merchant. If the list is too long, it is
+        # recommended to make it expandable.
+        # Corresponds to the JSON property `regions`
+        # @return [Array<Google::Apis::ContentV2_1::BreakdownRegion>]
+        attr_accessor :regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @regions = args[:regions] if args.key?(:regions)
+        end
+      end
+      
+      # Region with code and localized name.
+      class BreakdownRegion
+        include Google::Apis::Core::Hashable
+      
+        # The [CLDR territory code] (http://www.unicode.org/repos/cldr/tags/latest/
+        # common/main/en.xml)
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # The localized name of the region. For region with code='001' the value is 'All
+        # countries' or the equivalent in other languages.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Action that is implemented and performed in (your) third-party application.
+      # Represents various functionality that is expected to be available to merchant
+      # and will help them with resolving the issue. The application should point the
+      # merchant to the place, where they can access the corresponding functionality.
+      # If the functionality is not supported, it is recommended to explain the
+      # situation to merchant and provide them with instructions how to solve the
+      # issue.
+      class BuiltInSimpleAction
+        include Google::Apis::Core::Hashable
+      
+        # Long text from external source.
+        # Corresponds to the JSON property `additionalContent`
+        # @return [Google::Apis::ContentV2_1::BuiltInSimpleActionAdditionalContent]
+        attr_accessor :additional_content
+      
+        # The attribute that needs to be updated. Present when the type is `
+        # EDIT_ITEM_ATTRIBUTE`. This field contains a code for attribute, represented in
+        # snake_case. You can find a list of product's attributes, with their codes [
+        # here](https://support.google.com/merchants/answer/7052112).
+        # Corresponds to the JSON property `attributeCode`
+        # @return [String]
+        attr_accessor :attribute_code
+      
+        # The type of action that represents a functionality that is expected to be
+        # available in third-party application.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_content = args[:additional_content] if args.key?(:additional_content)
+          @attribute_code = args[:attribute_code] if args.key?(:attribute_code)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Long text from external source.
+      class BuiltInSimpleActionAdditionalContent
+        include Google::Apis::Core::Hashable
+      
+        # Long text organized into paragraphs.
+        # Corresponds to the JSON property `paragraphs`
+        # @return [Array<String>]
+        attr_accessor :paragraphs
+      
+        # Title of the additional content;
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @paragraphs = args[:paragraphs] if args.key?(:paragraphs)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -2083,14 +2745,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Carrier service, such as `"UPS"` or `"Fedex"`. The list of supported carriers
-        # can be retrieved via the `getSupportedCarriers` method. Required.
+        # can be retrieved through the `getSupportedCarriers` method. Required.
         # Corresponds to the JSON property `carrierName`
         # @return [String]
         attr_accessor :carrier_name
       
         # Carrier service, such as `"ground"` or `"2 days"`. The list of supported
-        # services for a carrier can be retrieved via the `getSupportedCarriers` method.
-        # Required.
+        # services for a carrier can be retrieved through the `getSupportedCarriers`
+        # method. Required.
         # Corresponds to the JSON property `carrierService`
         # @return [String]
         attr_accessor :carrier_service
@@ -2138,7 +2800,7 @@ module Google
       class CarriersCarrier
         include Google::Apis::Core::Hashable
       
-        # The CLDR country code of the carrier (e.g., "US"). Always present.
+        # The CLDR country code of the carrier (for example, "US"). Always present.
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
@@ -2149,14 +2811,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :edd_services
       
-        # The name of the carrier (e.g., `"UPS"`). Always present.
+        # The name of the carrier (for example, `"UPS"`). Always present.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # A list of supported services (e.g., `"ground"`) for that carrier. Contains at
-        # least one service. This is the list of valid values for CarrierRate.
-        # carrierService.
+        # A list of supported services (for example, `"ground"`) for that carrier.
+        # Contains at least one service. This is the list of valid values for
+        # CarrierRate.carrierService.
         # Corresponds to the JSON property `services`
         # @return [Array<String>]
         attr_accessor :services
@@ -2171,6 +2833,152 @@ module Google
           @edd_services = args[:edd_services] if args.key?(:edd_services)
           @name = args[:name] if args.key?(:name)
           @services = args[:services] if args.key?(:services)
+        end
+      end
+      
+      # `CheckoutSettings` for a specific merchant ID.
+      class CheckoutSettings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The effective value of enrollment state for a given merchant ID.
+        # If account level settings are present then this value will be a copy of the
+        # account level settings. Otherwise, it will have the value of the parent
+        # account.
+        # Corresponds to the JSON property `effectiveEnrollmentState`
+        # @return [String]
+        attr_accessor :effective_enrollment_state
+      
+        # Output only. The effective value of review state for a given merchant ID. If
+        # account level settings are present then this value will be a copy of the
+        # account level settings. Otherwise, it will have the value of the parent
+        # account.
+        # Corresponds to the JSON property `effectiveReviewState`
+        # @return [String]
+        attr_accessor :effective_review_state
+      
+        # Specifications related to the `Checkout` URL. The `UriTemplate` is of the form
+        # `https://www.mystore.com/checkout?item_id=`id`` where ``id`` will be
+        # automatically replaced with data from the merchant account with this attribute
+        # [offer_id](https://developers.google.com/shopping-content/reference/rest/v2.1/
+        # products#Product.FIELDS.offer_id)
+        # Corresponds to the JSON property `effectiveUriSettings`
+        # @return [Google::Apis::ContentV2_1::UrlSettings]
+        attr_accessor :effective_uri_settings
+      
+        # Output only. Reflects the merchant enrollment state in `Checkout` feature.
+        # Corresponds to the JSON property `enrollmentState`
+        # @return [String]
+        attr_accessor :enrollment_state
+      
+        # Required. The ID of the account.
+        # Corresponds to the JSON property `merchantId`
+        # @return [Fixnum]
+        attr_accessor :merchant_id
+      
+        # Output only. Reflects the merchant review state in `Checkout` feature. This is
+        # set based on the data quality reviews of the URL provided by the merchant. A
+        # merchant with enrollment state as `ENROLLED` can be in the following review
+        # states: `IN_REVIEW`, `APPROVED` or `DISAPPROVED`. A merchant must be in an
+        # enrollment_state of `ENROLLED` before a review can begin for the merchant.
+        # Corresponds to the JSON property `reviewState`
+        # @return [String]
+        attr_accessor :review_state
+      
+        # Specifications related to the `Checkout` URL. The `UriTemplate` is of the form
+        # `https://www.mystore.com/checkout?item_id=`id`` where ``id`` will be
+        # automatically replaced with data from the merchant account with this attribute
+        # [offer_id](https://developers.google.com/shopping-content/reference/rest/v2.1/
+        # products#Product.FIELDS.offer_id)
+        # Corresponds to the JSON property `uriSettings`
+        # @return [Google::Apis::ContentV2_1::UrlSettings]
+        attr_accessor :uri_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_enrollment_state = args[:effective_enrollment_state] if args.key?(:effective_enrollment_state)
+          @effective_review_state = args[:effective_review_state] if args.key?(:effective_review_state)
+          @effective_uri_settings = args[:effective_uri_settings] if args.key?(:effective_uri_settings)
+          @enrollment_state = args[:enrollment_state] if args.key?(:enrollment_state)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+          @review_state = args[:review_state] if args.key?(:review_state)
+          @uri_settings = args[:uri_settings] if args.key?(:uri_settings)
+        end
+      end
+      
+      # Product property for the Cloud Retail API. For example, properties for a TV
+      # product could be "Screen-Resolution" or "Screen-Size".
+      class CloudExportAdditionalProperties
+        include Google::Apis::Core::Hashable
+      
+        # Boolean value of the given property. For example for a TV product, "True" or "
+        # False" if the screen is UHD.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # Float values of the given property. For example for a TV product 1.2345.
+        # Maximum number of specified values for this field is 400. Values are stored in
+        # an arbitrary but consistent order.
+        # Corresponds to the JSON property `floatValue`
+        # @return [Array<Float>]
+        attr_accessor :float_value
+      
+        # Integer values of the given property. For example, 1080 for a screen
+        # resolution of a TV product. Maximum number of specified values for this field
+        # is 400. Values are stored in an arbitrary but consistent order.
+        # Corresponds to the JSON property `intValue`
+        # @return [Array<Fixnum>]
+        attr_accessor :int_value
+      
+        # Maximum float value of the given property. For example for a TV product 100.00.
+        # Corresponds to the JSON property `maxValue`
+        # @return [Float]
+        attr_accessor :max_value
+      
+        # Minimum float value of the given property. For example for a TV product 1.00.
+        # Corresponds to the JSON property `minValue`
+        # @return [Float]
+        attr_accessor :min_value
+      
+        # Name of the given property. For example, "Screen-Resolution" for a TV product.
+        # Maximum string size is 256 characters.
+        # Corresponds to the JSON property `propertyName`
+        # @return [String]
+        attr_accessor :property_name
+      
+        # Text value of the given property. For example, "8K(UHD)" could be a text value
+        # for a TV product. Maximum number of specified values for this field is 400.
+        # Values are stored in an arbitrary but consistent order. Maximum string size is
+        # 256 characters.
+        # Corresponds to the JSON property `textValue`
+        # @return [Array<String>]
+        attr_accessor :text_value
+      
+        # Unit of the given property. For example, "Pixels" for a TV product. Maximum
+        # string size is 256 bytes.
+        # Corresponds to the JSON property `unitCode`
+        # @return [String]
+        attr_accessor :unit_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @float_value = args[:float_value] if args.key?(:float_value)
+          @int_value = args[:int_value] if args.key?(:int_value)
+          @max_value = args[:max_value] if args.key?(:max_value)
+          @min_value = args[:min_value] if args.key?(:min_value)
+          @property_name = args[:property_name] if args.key?(:property_name)
+          @text_value = args[:text_value] if args.key?(:text_value)
+          @unit_code = args[:unit_code] if args.key?(:unit_code)
         end
       end
       
@@ -2330,8 +3138,8 @@ module Google
         attr_accessor :collection_level_issuses
       
         # Date on which the collection has been created in [ISO 8601](http://en.
-        # wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, e.g. "2020-01-
-        # 02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
+        # wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example "2020-
+        # 01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
         # Corresponds to the JSON property `creationDate`
         # @return [String]
         attr_accessor :creation_date
@@ -2347,8 +3155,8 @@ module Google
         attr_accessor :id
       
         # Date on which the collection has been last updated in [ISO 8601](http://en.
-        # wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, e.g. "2020-01-
-        # 02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
+        # wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example "2020-
+        # 01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
         # Corresponds to the JSON property `lastUpdateDate`
         # @return [String]
         attr_accessor :last_update_date
@@ -2371,12 +3179,27 @@ module Google
       class CollectionStatusDestinationStatus
         include Google::Apis::Core::Hashable
       
+        # Country codes (ISO 3166-1 alpha-2) where the collection is approved.
+        # Corresponds to the JSON property `approvedCountries`
+        # @return [Array<String>]
+        attr_accessor :approved_countries
+      
         # The name of the destination
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
       
-        # The status for the specified destination.
+        # Country codes (ISO 3166-1 alpha-2) where the collection is disapproved.
+        # Corresponds to the JSON property `disapprovedCountries`
+        # @return [Array<String>]
+        attr_accessor :disapproved_countries
+      
+        # Country codes (ISO 3166-1 alpha-2) where the collection is pending approval.
+        # Corresponds to the JSON property `pendingCountries`
+        # @return [Array<String>]
+        attr_accessor :pending_countries
+      
+        # The status for the specified destination in the collections target country.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -2387,7 +3210,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @approved_countries = args[:approved_countries] if args.key?(:approved_countries)
           @destination = args[:destination] if args.key?(:destination)
+          @disapproved_countries = args[:disapproved_countries] if args.key?(:disapproved_countries)
+          @pending_countries = args[:pending_countries] if args.key?(:pending_countries)
           @status = args[:status] if args.key?(:status)
         end
       end
@@ -2395,6 +3221,11 @@ module Google
       # Issue associated with the collection.
       class CollectionStatusItemLevelIssue
         include Google::Apis::Core::Hashable
+      
+        # Country codes (ISO 3166-1 alpha-2) where issue applies to the offer.
+        # Corresponds to the JSON property `applicableCountries`
+        # @return [Array<String>]
+        attr_accessor :applicable_countries
       
         # The attribute's name, if the issue is caused by a single attribute.
         # Corresponds to the JSON property `attributeName`
@@ -2442,6 +3273,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @applicable_countries = args[:applicable_countries] if args.key?(:applicable_countries)
           @attribute_name = args[:attribute_name] if args.key?(:attribute_name)
           @code = args[:code] if args.key?(:code)
           @description = args[:description] if args.key?(:description)
@@ -2450,6 +3282,200 @@ module Google
           @documentation = args[:documentation] if args.key?(:documentation)
           @resolution = args[:resolution] if args.key?(:resolution)
           @servability = args[:servability] if args.key?(:servability)
+        end
+      end
+      
+      # Fields related to [competitive visibility reports] (https://support.google.com/
+      # merchants/answer/11366442).
+      class CompetitiveVisibility
+        include Google::Apis::Core::Hashable
+      
+        # [Ads / organic ratio] (https://support.google.com/merchants/answer/11366442#
+        # zippy=%2Cadsfree-ratio) shows how often a merchant receives impressions from
+        # Shopping ads compared to organic traffic. The number is rounded and bucketed.
+        # Available only in `CompetitiveVisibilityTopMerchantView` and `
+        # CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the 'WHERE'
+        # clause.
+        # Corresponds to the JSON property `adsOrganicRatio`
+        # @return [Float]
+        attr_accessor :ads_organic_ratio
+      
+        # Change in visibility based on impressions with respect to the start of the
+        # selected time range (or first day with non-zero impressions) for a combined
+        # set of merchants with highest visibility approximating the market. Available
+        # only in `CompetitiveVisibilityBenchmarkView`. Cannot be filtered on in the '
+        # WHERE' clause.
+        # Corresponds to the JSON property `categoryBenchmarkVisibilityTrend`
+        # @return [Float]
+        attr_accessor :category_benchmark_visibility_trend
+      
+        # Google product category ID to calculate the report for, represented in [Google'
+        # s product taxonomy](https://support.google.com/merchants/answer/6324436).
+        # Required in the `SELECT` clause. A `WHERE` condition on `
+        # competitive_visibility.category_id` is required in the query.
+        # Corresponds to the JSON property `categoryId`
+        # @return [Fixnum]
+        attr_accessor :category_id
+      
+        # The country where impression appeared. Required in the `SELECT` clause. A `
+        # WHERE` condition on `competitive_visibility.country_code` is required in the
+        # query.
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::ContentV2_1::Date]
+        attr_accessor :date
+      
+        # Domain of your competitor or your domain, if 'is_your_domain' is true.
+        # Available only in `CompetitiveVisibilityTopMerchantView` and `
+        # CompetitiveVisibilityCompetitorView`. Required in the `SELECT` clause for `
+        # CompetitiveVisibilityTopMerchantView` and `CompetitiveVisibilityCompetitorView`
+        # . Cannot be filtered on in the 'WHERE' clause.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Higher position rate shows how often a competitor’s offer got placed in a
+        # higher position on the page than your offer. Available only in `
+        # CompetitiveVisibilityTopMerchantView` and `CompetitiveVisibilityCompetitorView`
+        # . Cannot be filtered on in the 'WHERE' clause.
+        # Corresponds to the JSON property `higherPositionRate`
+        # @return [Float]
+        attr_accessor :higher_position_rate
+      
+        # True if this row contains data for your domain. Available only in `
+        # CompetitiveVisibilityTopMerchantView` and `CompetitiveVisibilityCompetitorView`
+        # . Cannot be filtered on in the 'WHERE' clause.
+        # Corresponds to the JSON property `isYourDomain`
+        # @return [Boolean]
+        attr_accessor :is_your_domain
+        alias_method :is_your_domain?, :is_your_domain
+      
+        # Page overlap rate describes how frequently competing retailers’ offers are
+        # shown together with your offers on the same page. Available only in `
+        # CompetitiveVisibilityTopMerchantView` and `CompetitiveVisibilityCompetitorView`
+        # . Cannot be filtered on in the 'WHERE' clause.
+        # Corresponds to the JSON property `pageOverlapRate`
+        # @return [Float]
+        attr_accessor :page_overlap_rate
+      
+        # Position of the domain in the top merchants ranking for the selected keys (`
+        # date`, `category_id`, `country_code`, `listing_type`) based on impressions. 1
+        # is the highest. Available only in `CompetitiveVisibilityTopMerchantView` and `
+        # CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the 'WHERE'
+        # clause.
+        # Corresponds to the JSON property `rank`
+        # @return [Fixnum]
+        attr_accessor :rank
+      
+        # Relative visibility shows how often your competitors’ offers are shown
+        # compared to your offers. In other words, this is the number of displayed
+        # impressions of a competitor retailer divided by the number of your displayed
+        # impressions during a selected time range for a selected product category and
+        # country. Available only in `CompetitiveVisibilityCompetitorView`. Cannot be
+        # filtered on in the 'WHERE' clause.
+        # Corresponds to the JSON property `relativeVisibility`
+        # @return [Float]
+        attr_accessor :relative_visibility
+      
+        # Type of impression listing. Required in the `SELECT` clause. Cannot be
+        # filtered on in the 'WHERE' clause.
+        # Corresponds to the JSON property `trafficSource`
+        # @return [String]
+        attr_accessor :traffic_source
+      
+        # Change in visibility based on impressions for your domain with respect to the
+        # start of the selected time range (or first day with non-zero impressions).
+        # Available only in `CompetitiveVisibilityBenchmarkView`. Cannot be filtered on
+        # in the 'WHERE' clause.
+        # Corresponds to the JSON property `yourDomainVisibilityTrend`
+        # @return [Float]
+        attr_accessor :your_domain_visibility_trend
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ads_organic_ratio = args[:ads_organic_ratio] if args.key?(:ads_organic_ratio)
+          @category_benchmark_visibility_trend = args[:category_benchmark_visibility_trend] if args.key?(:category_benchmark_visibility_trend)
+          @category_id = args[:category_id] if args.key?(:category_id)
+          @country_code = args[:country_code] if args.key?(:country_code)
+          @date = args[:date] if args.key?(:date)
+          @domain = args[:domain] if args.key?(:domain)
+          @higher_position_rate = args[:higher_position_rate] if args.key?(:higher_position_rate)
+          @is_your_domain = args[:is_your_domain] if args.key?(:is_your_domain)
+          @page_overlap_rate = args[:page_overlap_rate] if args.key?(:page_overlap_rate)
+          @rank = args[:rank] if args.key?(:rank)
+          @relative_visibility = args[:relative_visibility] if args.key?(:relative_visibility)
+          @traffic_source = args[:traffic_source] if args.key?(:traffic_source)
+          @your_domain_visibility_trend = args[:your_domain_visibility_trend] if args.key?(:your_domain_visibility_trend)
+        end
+      end
+      
+      # Represents a conversion source owned by a Merchant account. A merchant account
+      # can have up to 200 conversion sources.
+      class ConversionSource
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Generated by the Content API upon creation of a new `
+        # ConversionSource`. Format: [a-z]`4`:.+ The four characters before the colon
+        # represent the type of conversio source. Content after the colon represents the
+        # ID of the conversion source within that type. The ID of two different
+        # conversion sources might be the same across different types. The following
+        # type prefixes are supported: - galk: For GoogleAnalyticsLink sources. - mcdn:
+        # For MerchantCenterDestination sources.
+        # Corresponds to the JSON property `conversionSourceId`
+        # @return [String]
+        attr_accessor :conversion_source_id
+      
+        # Output only. The time when an archived conversion source becomes permanently
+        # deleted and is no longer available to undelete.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # "Google Analytics Link" sources can be used to get conversion data from an
+        # existing Google Analytics property into the linked Merchant Center account.
+        # Corresponds to the JSON property `googleAnalyticsLink`
+        # @return [Google::Apis::ContentV2_1::GoogleAnalyticsLink]
+        attr_accessor :google_analytics_link
+      
+        # "Merchant Center Destination" sources can be used to send conversion events
+        # from a website using a Google tag directly to a Merchant Center account where
+        # the source is created.
+        # Corresponds to the JSON property `merchantCenterDestination`
+        # @return [Google::Apis::ContentV2_1::MerchantCenterDestination]
+        attr_accessor :merchant_center_destination
+      
+        # Output only. Current state of this conversion source. Can't be edited through
+        # the API.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversion_source_id = args[:conversion_source_id] if args.key?(:conversion_source_id)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @google_analytics_link = args[:google_analytics_link] if args.key?(:google_analytics_link)
+          @merchant_center_destination = args[:merchant_center_destination] if args.key?(:merchant_center_destination)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -2505,7 +3531,11 @@ module Google
         end
       end
       
-      # 
+      # A message that represents custom attributes. Exactly one of `value` or `
+      # groupValues` must be provided. Maximum allowed number of characters for each
+      # custom attribute is 10240 (represents sum of characters for name and value).
+      # Maximum 2500 custom attributes can be set per merchant, with total size of 102.
+      # 4kB.
       class CustomAttribute
         include Google::Apis::Core::Hashable
       
@@ -2583,8 +3613,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :minute
       
-        # Timezone identifier for the cutoff time. A list of identifiers can be found in
-        # the AdWords API documentation. E.g. "Europe/Zurich". Required.
+        # Timezone identifier for the cutoff time (for example, "Europe/Zurich"). List
+        # of identifiers. Required.
         # Corresponds to the JSON property `timezone`
         # @return [String]
         attr_accessor :timezone
@@ -2716,7 +3746,8 @@ module Google
         attr_accessor :paused
         alias_method :paused?, :paused
       
-        # Time zone used for schedule. UTC by default. E.g., "America/Los_Angeles".
+        # Time zone used for schedule. UTC by default. For example, "America/Los_Angeles"
+        # .
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -2788,7 +3819,7 @@ module Google
         end
       end
       
-      # The status of a datafeed, i.e., the result of the last retrieval of the
+      # The status of a datafeed, that is, the result of the last retrieval of the
       # datafeed computed asynchronously when the feed processing is finished.
       class DatafeedStatus
         include Google::Apis::Core::Hashable
@@ -2808,6 +3839,11 @@ module Google
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::ContentV2_1::DatafeedStatusError>]
         attr_accessor :errors
+      
+        # The feed label status is reported for.
+        # Corresponds to the JSON property `feedLabel`
+        # @return [String]
+        attr_accessor :feed_label
       
         # The number of items in the feed that were processed.
         # Corresponds to the JSON property `itemsTotal`
@@ -2859,6 +3895,7 @@ module Google
           @country = args[:country] if args.key?(:country)
           @datafeed_id = args[:datafeed_id] if args.key?(:datafeed_id)
           @errors = args[:errors] if args.key?(:errors)
+          @feed_label = args[:feed_label] if args.key?(:feed_label)
           @items_total = args[:items_total] if args.key?(:items_total)
           @items_valid = args[:items_valid] if args.key?(:items_valid)
           @kind = args[:kind] if args.key?(:kind)
@@ -2873,7 +3910,7 @@ module Google
       class DatafeedStatusError
         include Google::Apis::Core::Hashable
       
-        # The code of the error, e.g., "validation/invalid_value".
+        # The code of the error, for example, "validation/invalid_value".
         # Corresponds to the JSON property `code`
         # @return [String]
         attr_accessor :code
@@ -2888,7 +3925,7 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::DatafeedStatusExample>]
         attr_accessor :examples
       
-        # The error message, e.g., "Invalid price".
+        # The error message, for example, "Invalid price".
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -2941,17 +3978,26 @@ module Google
       class DatafeedTarget
         include Google::Apis::Core::Hashable
       
-        # The country where the items in the feed will be included in the search index,
-        # represented as a CLDR territory code.
+        # Deprecated. Use `feedLabel` instead. The country where the items in the feed
+        # will be included in the search index, represented as a CLDR territory code.
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
       
-        # The list of destinations to exclude for this target (corresponds to unchecked
-        # check boxes in Merchant Center).
+        # The list of destinations to exclude for this target (corresponds to cleared
+        # check boxes in Merchant Center). Products that are excluded from all
+        # destinations for more than 7 days are automatically deleted.
         # Corresponds to the JSON property `excludedDestinations`
         # @return [Array<String>]
         attr_accessor :excluded_destinations
+      
+        # Feed label for the DatafeedTarget. Either `country` or `feedLabel` is required.
+        # If both `feedLabel` and `country` is specified, the values must match. Must
+        # be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes
+        # (-).
+        # Corresponds to the JSON property `feedLabel`
+        # @return [String]
+        attr_accessor :feed_label
       
         # The list of destinations to include for this target (corresponds to checked
         # check boxes in Merchant Center). Default destinations are always included
@@ -2966,6 +4012,12 @@ module Google
         # @return [String]
         attr_accessor :language
       
+        # The countries where the items may be displayed. Represented as a CLDR
+        # territory code. Will be ignored for "product inventory" feeds.
+        # Corresponds to the JSON property `targetCountries`
+        # @return [Array<String>]
+        attr_accessor :target_countries
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2974,8 +4026,10 @@ module Google
         def update!(**args)
           @country = args[:country] if args.key?(:country)
           @excluded_destinations = args[:excluded_destinations] if args.key?(:excluded_destinations)
+          @feed_label = args[:feed_label] if args.key?(:feed_label)
           @included_destinations = args[:included_destinations] if args.key?(:included_destinations)
           @language = args[:language] if args.key?(:language)
+          @target_countries = args[:target_countries] if args.key?(:target_countries)
         end
       end
       
@@ -3179,9 +4233,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # The country for which to get the datafeed status. If this parameter is
-        # provided then language must also be provided. Note that for multi-target
-        # datafeeds this parameter is required.
+        # Deprecated. Use `feedLabel` instead. The country to get the datafeed status
+        # for. If this parameter is provided, then `language` must also be provided.
+        # Note that for multi-target datafeeds this parameter is required.
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
@@ -3191,9 +4245,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :datafeed_id
       
-        # The language for which to get the datafeed status. If this parameter is
-        # provided then country must also be provided. Note that for multi-target
-        # datafeeds this parameter is required.
+        # The feed label to get the datafeed status for. If this parameter is provided,
+        # then `language` must also be provided. Note that for multi-target datafeeds
+        # this parameter is required.
+        # Corresponds to the JSON property `feedLabel`
+        # @return [String]
+        attr_accessor :feed_label
+      
+        # The language to get the datafeed status for. If this parameter is provided
+        # then `country` must also be provided. Note that for multi-target datafeeds
+        # this parameter is required.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
@@ -3217,6 +4278,7 @@ module Google
           @batch_id = args[:batch_id] if args.key?(:batch_id)
           @country = args[:country] if args.key?(:country)
           @datafeed_id = args[:datafeed_id] if args.key?(:datafeed_id)
+          @feed_label = args[:feed_label] if args.key?(:feed_label)
           @language = args[:language] if args.key?(:language)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @method_prop = args[:method_prop] if args.key?(:method_prop)
@@ -3258,7 +4320,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # The status of a datafeed, i.e., the result of the last retrieval of the
+        # The status of a datafeed, that is, the result of the last retrieval of the
         # datafeed computed asynchronously when the feed processing is finished.
         # Corresponds to the JSON property `datafeedStatus`
         # @return [Google::Apis::ContentV2_1::DatafeedStatus]
@@ -3316,11 +4378,11 @@ module Google
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
-      # following: * A full date, with non-zero year, month, and day values * A month
-      # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-      # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-      # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-      # DateTime * google.protobuf.Timestamp
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
       class Date
         include Google::Apis::Core::Hashable
       
@@ -3360,9 +4422,9 @@ module Google
       # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
       # calendar day in a particular time zone. * When neither time_zone nor
       # utc_offset is set: a civil time on a calendar day in local time. The date is
-      # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
-      # considered not to have a specific year. month and day must have valid, non-
-      # zero values. This type may also be used to represent a physical time if all
+      # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+      # the DateTime is considered not to have a specific year, month, or day
+      # respectively. This type may also be used to represent a physical time if all
       # the date and time fields are set and either case of the `time_offset` oneof is
       # set. Consider using `Timestamp` message for physical time instead. If your use
       # case also would like to store the user's timezone, that can be done in another
@@ -3371,34 +4433,38 @@ module Google
       class DateTime
         include Google::Apis::Core::Hashable
       
-        # Required. Day of month. Must be from 1 to 31 and valid for the year and month.
+        # Optional. Day of month. Must be from 1 to 31 and valid for the year and month,
+        # or 0 if specifying a datetime without a day.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # Required. Hours of day in 24 hour format. Should be from 0 to 23. An API may
-        # choose to allow the value "24:00:00" for scenarios like business closing time.
+        # Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to
+        # 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios
+        # like business closing time.
         # Corresponds to the JSON property `hours`
         # @return [Fixnum]
         attr_accessor :hours
       
-        # Required. Minutes of hour of day. Must be from 0 to 59.
+        # Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.
         # Corresponds to the JSON property `minutes`
         # @return [Fixnum]
         attr_accessor :minutes
       
-        # Required. Month of year. Must be from 1 to 12.
+        # Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime
+        # without a month.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month
       
-        # Required. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999,
+        # defaults to 0.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # Required. Seconds of minutes of the time. Must normally be from 0 to 59. An
-        # API may allow the value 60 if it allows leap-seconds.
+        # Optional. Seconds of minutes of the time. Must normally be from 0 to 59,
+        # defaults to 0. An API may allow the value 60 if it allows leap-seconds.
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds
@@ -3439,12 +4505,86 @@ module Google
         end
       end
       
+      # A delivery area for the product. Only one of `countryCode` or `postalCodeRange`
+      # must be set.
+      class DeliveryArea
+        include Google::Apis::Core::Hashable
+      
+        # Required. The country that the product can be delivered to. Submit a [unicode
+        # CLDR region](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+        # such as `US` or `CH`.
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        # A range of postal codes that defines the delivery area. Only set `
+        # firstPostalCode` when specifying a single postal code.
+        # Corresponds to the JSON property `postalCodeRange`
+        # @return [Google::Apis::ContentV2_1::DeliveryAreaPostalCodeRange]
+        attr_accessor :postal_code_range
+      
+        # A state, territory, or prefecture. This is supported for the United States,
+        # Australia, and Japan. Provide a subdivision code from the ISO 3166-2 code
+        # tables ([US](https://en.wikipedia.org/wiki/ISO_3166-2:US), [AU](https://en.
+        # wikipedia.org/wiki/ISO_3166-2:AU), or [JP](https://en.wikipedia.org/wiki/
+        # ISO_3166-2:JP)) without country prefix (for example, `"NY"`, `"NSW"`, `"03"`).
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country_code = args[:country_code] if args.key?(:country_code)
+          @postal_code_range = args[:postal_code_range] if args.key?(:postal_code_range)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # A range of postal codes that defines the delivery area. Only set `
+      # firstPostalCode` when specifying a single postal code.
+      class DeliveryAreaPostalCodeRange
+        include Google::Apis::Core::Hashable
+      
+        # Required. A postal code or a pattern of the form prefix* denoting the
+        # inclusive lower bound of the range defining the area. Examples values: `"94108"
+        # `, `"9410*"`, `"9*"`.
+        # Corresponds to the JSON property `firstPostalCode`
+        # @return [String]
+        attr_accessor :first_postal_code
+      
+        # A postal code or a pattern of the form prefix* denoting the inclusive upper
+        # bound of the range defining the area (for example [070* - 078*] results in the
+        # range [07000 - 07899]). It must have the same length as `firstPostalCode`: if `
+        # firstPostalCode` is a postal code then `lastPostalCode` must be a postal code
+        # too; if firstPostalCode is a pattern then `lastPostalCode` must be a pattern
+        # with the same prefix length. Ignored if not set, then the area is defined as
+        # being all the postal codes matching `firstPostalCode`.
+        # Corresponds to the JSON property `lastPostalCode`
+        # @return [String]
+        attr_accessor :last_postal_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @first_postal_code = args[:first_postal_code] if args.key?(:first_postal_code)
+          @last_postal_code = args[:last_postal_code] if args.key?(:last_postal_code)
+        end
+      end
+      
       # 
       class DeliveryTime
         include Google::Apis::Core::Hashable
       
-        # Business days cutoff time definition. If not configured the cutoff time will
-        # be defaulted to 8AM PST.
+        # Business days cutoff time definition. If not configured, the cutoff time will
+        # be defaulted to 8AM PST. If local delivery, use Service.StoreConfig.
+        # CutoffConfig.
         # Corresponds to the JSON property `cutoffTime`
         # @return [Google::Apis::ContentV2_1::CutoffTime]
         attr_accessor :cutoff_time
@@ -3468,7 +4608,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_handling_time_in_days
       
-        # Maximum number of business days that is spent in transit. 0 means same day
+        # Maximum number of business days that are spent in transit. 0 means same day
         # delivery, 1 means next day delivery. Must be greater than or equal to `
         # minTransitTimeInDays`.
         # Corresponds to the JSON property `maxTransitTimeInDays`
@@ -3481,7 +4621,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_handling_time_in_days
       
-        # Minimum number of business days that is spent in transit. 0 means same day
+        # Minimum number of business days that are spent in transit. 0 means same day
         # delivery, 1 means next day delivery. Either ``min,max`TransitTimeInDays` or `
         # transitTimeTable` must be set, but not both.
         # Corresponds to the JSON property `minTransitTimeInDays`
@@ -3524,6 +4664,31 @@ module Google
           @transit_business_day_config = args[:transit_business_day_config] if args.key?(:transit_business_day_config)
           @transit_time_table = args[:transit_time_table] if args.key?(:transit_time_table)
           @warehouse_based_delivery_times = args[:warehouse_based_delivery_times] if args.key?(:warehouse_based_delivery_times)
+        end
+      end
+      
+      # Distance represented by an integer and unit.
+      class Distance
+        include Google::Apis::Core::Hashable
+      
+        # The distance unit. Acceptable values are `None`, `Miles`, and `Kilometers`.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        # The distance represented as a number.
+        # Corresponds to the JSON property `value`
+        # @return [Fixnum]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @unit = args[:unit] if args.key?(:unit)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -3608,20 +4773,23 @@ module Google
         end
       end
       
-      # Response message for GetFreeListingsProgramStatus.
-      class FreeListingsProgramStatus
+      # Action that is implemented and performed outside of the third-party
+      # application. It should redirect the merchant to the provided URL of an
+      # external system where they can perform the action. For example to request a
+      # review in the Merchant Center.
+      class ExternalAction
         include Google::Apis::Core::Hashable
       
-        # Status of the program in each region. Regions with the same status and review
-        # eligibility are grouped together in `regionCodes`.
-        # Corresponds to the JSON property `regionStatuses`
-        # @return [Array<Google::Apis::ContentV2_1::FreeListingsProgramStatusRegionStatus>]
-        attr_accessor :region_statuses
-      
-        # If program is successfully onboarded for at least one region.
-        # Corresponds to the JSON property `state`
+        # The type of external action.
+        # Corresponds to the JSON property `type`
         # @return [String]
-        attr_accessor :state
+        attr_accessor :type
+      
+        # URL to external system, for example Merchant Center, where the merchant can
+        # perform the action.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
       
         def initialize(**args)
            update!(**args)
@@ -3629,8 +4797,34 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Response message for GetFreeListingsProgramStatus.
+      class FreeListingsProgramStatus
+        include Google::Apis::Core::Hashable
+      
+        # State of the program. `ENABLED` if there are offers for at least one region.
+        # Corresponds to the JSON property `globalState`
+        # @return [String]
+        attr_accessor :global_state
+      
+        # Status of the program in each region. Regions with the same status and review
+        # eligibility are grouped together in `regionCodes`.
+        # Corresponds to the JSON property `regionStatuses`
+        # @return [Array<Google::Apis::ContentV2_1::FreeListingsProgramStatusRegionStatus>]
+        attr_accessor :region_statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @global_state = args[:global_state] if args.key?(:global_state)
           @region_statuses = args[:region_statuses] if args.key?(:region_statuses)
-          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -3638,9 +4832,9 @@ module Google
       class FreeListingsProgramStatusRegionStatus
         include Google::Apis::Core::Hashable
       
-        # Date by which `eligibility_status` will go from `WARNING` to `DISAPPROVED`. It
-        # will be present when `eligibility_status` is `WARNING`. Date will be provided
-        # in ISO 8601 format i.e. YYYY-MM-DD
+        # Date by which eligibilityStatus will go from `WARNING` to `DISAPPROVED`. Only
+        # visible when your eligibilityStatus is WARNING. In [ISO 8601](https://en.
+        # wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`.
         # Corresponds to the JSON property `disapprovalDate`
         # @return [String]
         attr_accessor :disapproval_date
@@ -3650,16 +4844,10 @@ module Google
         # @return [String]
         attr_accessor :eligibility_status
       
-        # Eligibility status of the enhanced free listing program.
-        # Corresponds to the JSON property `enhancedEligibilityStatus`
-        # @return [String]
-        attr_accessor :enhanced_eligibility_status
-      
-        # Reason if a program in a given country is not eligible for review. Populated
-        # only if `review_eligibility_status` is `INELIGIBLE`.
-        # Corresponds to the JSON property `ineligibilityReason`
-        # @return [String]
-        attr_accessor :ineligibility_reason
+        # Issues that must be fixed to be eligible for review.
+        # Corresponds to the JSON property `onboardingIssues`
+        # @return [Array<String>]
+        attr_accessor :onboarding_issues
       
         # The two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-
         # 1_alpha-2) codes for all the regions with the same `eligibilityStatus` and `
@@ -3668,14 +4856,30 @@ module Google
         # @return [Array<String>]
         attr_accessor :region_codes
       
-        # If a program in a given country is eligible for review. It will be present
-        # only if eligibility status is `DISAPPROVED`.
+        # If a program is eligible for review in a specific region. Only visible if `
+        # eligibilityStatus` is `DISAPPROVED`.
         # Corresponds to the JSON property `reviewEligibilityStatus`
         # @return [String]
         attr_accessor :review_eligibility_status
       
-        # These issues will be evaluated in review process. Fix all the issues before
-        # requesting the review.
+        # Review ineligibility reason if account is not eligible for review.
+        # Corresponds to the JSON property `reviewIneligibilityReason`
+        # @return [String]
+        attr_accessor :review_ineligibility_reason
+      
+        # Reason a program in a specific region isn’t eligible for review. Only visible
+        # if `reviewEligibilityStatus` is `INELIGIBLE`.
+        # Corresponds to the JSON property `reviewIneligibilityReasonDescription`
+        # @return [String]
+        attr_accessor :review_ineligibility_reason_description
+      
+        # Additional details for review ineligibility reasons.
+        # Corresponds to the JSON property `reviewIneligibilityReasonDetails`
+        # @return [Google::Apis::ContentV2_1::FreeListingsProgramStatusReviewIneligibilityReasonDetails]
+        attr_accessor :review_ineligibility_reason_details
+      
+        # Issues evaluated in the review process. Fix all issues before requesting a
+        # review.
         # Corresponds to the JSON property `reviewIssues`
         # @return [Array<String>]
         attr_accessor :review_issues
@@ -3688,11 +4892,61 @@ module Google
         def update!(**args)
           @disapproval_date = args[:disapproval_date] if args.key?(:disapproval_date)
           @eligibility_status = args[:eligibility_status] if args.key?(:eligibility_status)
-          @enhanced_eligibility_status = args[:enhanced_eligibility_status] if args.key?(:enhanced_eligibility_status)
-          @ineligibility_reason = args[:ineligibility_reason] if args.key?(:ineligibility_reason)
+          @onboarding_issues = args[:onboarding_issues] if args.key?(:onboarding_issues)
           @region_codes = args[:region_codes] if args.key?(:region_codes)
           @review_eligibility_status = args[:review_eligibility_status] if args.key?(:review_eligibility_status)
+          @review_ineligibility_reason = args[:review_ineligibility_reason] if args.key?(:review_ineligibility_reason)
+          @review_ineligibility_reason_description = args[:review_ineligibility_reason_description] if args.key?(:review_ineligibility_reason_description)
+          @review_ineligibility_reason_details = args[:review_ineligibility_reason_details] if args.key?(:review_ineligibility_reason_details)
           @review_issues = args[:review_issues] if args.key?(:review_issues)
+        end
+      end
+      
+      # Additional details for review ineligibility reasons.
+      class FreeListingsProgramStatusReviewIneligibilityReasonDetails
+        include Google::Apis::Core::Hashable
+      
+        # This timestamp represents end of cooldown period for review ineligbility
+        # reason `IN_COOLDOWN_PERIOD`.
+        # Corresponds to the JSON property `cooldownTime`
+        # @return [String]
+        attr_accessor :cooldown_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cooldown_time = args[:cooldown_time] if args.key?(:cooldown_time)
+        end
+      end
+      
+      # Response containing generated recommendations.
+      class GenerateRecommendationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Recommendations generated for a request.
+        # Corresponds to the JSON property `recommendations`
+        # @return [Array<Google::Apis::ContentV2_1::Recommendation>]
+        attr_accessor :recommendations
+      
+        # Output only. Response token is a string created for each `
+        # GenerateRecommendationsResponse`. This token doesn't expire, and is globally
+        # unique. This token must be used when reporting interactions for
+        # recommendations.
+        # Corresponds to the JSON property `responseToken`
+        # @return [String]
+        attr_accessor :response_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recommendations = args[:recommendations] if args.key?(:recommendations)
+          @response_token = args[:response_token] if args.key?(:response_token)
         end
       end
       
@@ -3755,6 +5009,40 @@ module Google
           @listing_count = args[:listing_count] if args.key?(:listing_count)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # "Google Analytics Link" sources can be used to get conversion data from an
+      # existing Google Analytics property into the linked Merchant Center account.
+      class GoogleAnalyticsLink
+        include Google::Apis::Core::Hashable
+      
+        # Represents attribution settings for conversion sources receiving pre-
+        # attribution data.
+        # Corresponds to the JSON property `attributionSettings`
+        # @return [Google::Apis::ContentV2_1::AttributionSettings]
+        attr_accessor :attribution_settings
+      
+        # Required. Immutable. ID of the Google Analytics property the merchant is
+        # linked to.
+        # Corresponds to the JSON property `propertyId`
+        # @return [Fixnum]
+        attr_accessor :property_id
+      
+        # Output only. Name of the Google Analytics property the merchant is linked to.
+        # Corresponds to the JSON property `propertyName`
+        # @return [String]
+        attr_accessor :property_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution_settings = args[:attribution_settings] if args.key?(:attribution_settings)
+          @property_id = args[:property_id] if args.key?(:property_id)
+          @property_name = args[:property_name] if args.key?(:property_name)
         end
       end
       
@@ -3822,8 +5110,8 @@ module Google
       class HolidayCutoff
         include Google::Apis::Core::Hashable
       
-        # Date of the order deadline, in ISO 8601 format. E.g. "2016-11-29" for 29th
-        # November 2016. Required.
+        # Date of the order deadline, in ISO 8601 format. For example, "2016-11-29" for
+        # 29th November 2016. Required.
         # Corresponds to the JSON property `deadlineDate`
         # @return [String]
         attr_accessor :deadline_date
@@ -3835,8 +5123,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :deadline_hour
       
-        # Timezone identifier for the deadline hour. A list of identifiers can be found
-        # in the AdWords API documentation. E.g. "Europe/Zurich". Required.
+        # Timezone identifier for the deadline hour (for example, "Europe/Zurich"). List
+        # of identifiers. Required.
         # Corresponds to the JSON property `deadlineTimezone`
         # @return [String]
         attr_accessor :deadline_timezone
@@ -3847,7 +5135,7 @@ module Google
         attr_accessor :holiday_id
       
         # Date on which the deadline will become visible to consumers in ISO 8601 format.
-        # E.g. "2016-10-31" for 31st October 2016. Required.
+        # For example, "2016-10-31" for 31st October 2016. Required.
         # Corresponds to the JSON property `visibleFromDate`
         # @return [String]
         attr_accessor :visible_from_date
@@ -3870,21 +5158,21 @@ module Google
       class HolidaysHoliday
         include Google::Apis::Core::Hashable
       
-        # The CLDR territory code of the country in which the holiday is available. E.g.
-        # "US", "DE", "GB". A holiday cutoff can only be configured in a shipping
-        # settings service with matching delivery country. Always present.
+        # The CLDR territory code of the country in which the holiday is available. For
+        # example, "US", "DE", "GB". A holiday cutoff can only be configured in a
+        # shipping settings service with matching delivery country. Always present.
         # Corresponds to the JSON property `countryCode`
         # @return [String]
         attr_accessor :country_code
       
-        # Date of the holiday, in ISO 8601 format. E.g. "2016-12-25" for Christmas 2016.
-        # Always present.
+        # Date of the holiday, in ISO 8601 format. For example, "2016-12-25" for
+        # Christmas 2016. Always present.
         # Corresponds to the JSON property `date`
         # @return [String]
         attr_accessor :date
       
-        # Date on which the order has to arrive at the customer's, in ISO 8601 format. E.
-        # g. "2016-12-24" for 24th December 2016. Always present.
+        # Date on which the order has to arrive at the customer's, in ISO 8601 format.
+        # For example, "2016-12-24" for 24th December 2016. Always present.
         # Corresponds to the JSON property `deliveryGuaranteeDate`
         # @return [String]
         attr_accessor :delivery_guarantee_date
@@ -3946,6 +5234,29 @@ module Google
         def update!(**args)
           @inapplicable_count = args[:inapplicable_count] if args.key?(:inapplicable_count)
           @inapplicable_reason = args[:inapplicable_reason] if args.key?(:inapplicable_reason)
+        end
+      end
+      
+      # Request message for the `InsertCheckoutSettings` method.
+      class InsertCheckoutSettingsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specifications related to the `Checkout` URL. The `UriTemplate` is of the form
+        # `https://www.mystore.com/checkout?item_id=`id`` where ``id`` will be
+        # automatically replaced with data from the merchant account with this attribute
+        # [offer_id](https://developers.google.com/shopping-content/reference/rest/v2.1/
+        # products#Product.FIELDS.offer_id)
+        # Corresponds to the JSON property `uriSettings`
+        # @return [Google::Apis::ContentV2_1::UrlSettings]
+        attr_accessor :uri_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri_settings = args[:uri_settings] if args.key?(:uri_settings)
         end
       end
       
@@ -4079,7 +5390,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::LiaAboutPageSettings]
         attr_accessor :about
       
-        # Required. CLDR country code (e.g. "US").
+        # Required. CLDR country code (for example, "US").
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
@@ -4094,6 +5405,11 @@ module Google
         # Corresponds to the JSON property `inventory`
         # @return [Google::Apis::ContentV2_1::LiaInventorySettings]
         attr_accessor :inventory
+      
+        # Omnichannel experience details.
+        # Corresponds to the JSON property `omnichannelExperience`
+        # @return [Google::Apis::ContentV2_1::LiaOmnichannelExperience]
+        attr_accessor :omnichannel_experience
       
         # LIA "On Display To Order" settings.
         # Corresponds to the JSON property `onDisplayToOrder`
@@ -4121,6 +5437,7 @@ module Google
           @country = args[:country] if args.key?(:country)
           @hosted_local_storefront_active = args[:hosted_local_storefront_active] if args.key?(:hosted_local_storefront_active)
           @inventory = args[:inventory] if args.key?(:inventory)
+          @omnichannel_experience = args[:omnichannel_experience] if args.key?(:omnichannel_experience)
           @on_display_to_order = args[:on_display_to_order] if args.key?(:on_display_to_order)
           @pos_data_provider = args[:pos_data_provider] if args.key?(:pos_data_provider)
           @store_pickup_active = args[:store_pickup_active] if args.key?(:store_pickup_active)
@@ -4163,6 +5480,41 @@ module Google
           @inventory_verification_contact_name = args[:inventory_verification_contact_name] if args.key?(:inventory_verification_contact_name)
           @inventory_verification_contact_status = args[:inventory_verification_contact_status] if args.key?(:inventory_verification_contact_status)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Omnichannel experience details.
+      class LiaOmnichannelExperience
+        include Google::Apis::Core::Hashable
+      
+        # The CLDR country code (for example, "US").
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # The Local Store Front (LSF) type for this country. Acceptable values are: - "`
+        # ghlsf`" (Google-Hosted Local Store Front) - "`mhlsfBasic`" (Merchant-Hosted
+        # Local Store Front Basic) - "`mhlsfFull`" (Merchant-Hosted Local Store Front
+        # Full) More details about these types can be found here.
+        # Corresponds to the JSON property `lsfType`
+        # @return [String]
+        attr_accessor :lsf_type
+      
+        # The Pickup types for this country. Acceptable values are: - "`pickupToday`" - "
+        # `pickupLater`"
+        # Corresponds to the JSON property `pickupTypes`
+        # @return [Array<String>]
+        attr_accessor :pickup_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country = args[:country] if args.key?(:country)
+          @lsf_type = args[:lsf_type] if args.key?(:lsf_type)
+          @pickup_types = args[:pickup_types] if args.key?(:pickup_types)
         end
       end
       
@@ -4325,6 +5677,11 @@ module Google
         # @return [String]
         attr_accessor :method_prop
       
+        # Omnichannel experience details.
+        # Corresponds to the JSON property `omnichannelExperience`
+        # @return [Google::Apis::ContentV2_1::LiaOmnichannelExperience]
+        attr_accessor :omnichannel_experience
+      
         # The ID of POS data provider. Required only for SetPosProvider.
         # Corresponds to the JSON property `posDataProviderId`
         # @return [Fixnum]
@@ -4350,6 +5707,7 @@ module Google
           @lia_settings = args[:lia_settings] if args.key?(:lia_settings)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @omnichannel_experience = args[:omnichannel_experience] if args.key?(:omnichannel_experience)
           @pos_data_provider_id = args[:pos_data_provider_id] if args.key?(:pos_data_provider_id)
           @pos_external_account_id = args[:pos_external_account_id] if args.key?(:pos_external_account_id)
         end
@@ -4412,6 +5770,11 @@ module Google
         # @return [Google::Apis::ContentV2_1::LiaSettings]
         attr_accessor :lia_settings
       
+        # Omnichannel experience details.
+        # Corresponds to the JSON property `omnichannelExperience`
+        # @return [Google::Apis::ContentV2_1::LiaOmnichannelExperience]
+        attr_accessor :omnichannel_experience
+      
         # The list of POS data providers.
         # Corresponds to the JSON property `posDataProviders`
         # @return [Array<Google::Apis::ContentV2_1::PosDataProviders>]
@@ -4428,6 +5791,7 @@ module Google
           @gmb_accounts = args[:gmb_accounts] if args.key?(:gmb_accounts)
           @kind = args[:kind] if args.key?(:kind)
           @lia_settings = args[:lia_settings] if args.key?(:lia_settings)
+          @omnichannel_experience = args[:omnichannel_experience] if args.key?(:omnichannel_experience)
           @pos_data_providers = args[:pos_data_providers] if args.key?(:pos_data_providers)
         end
       end
@@ -4752,6 +6116,31 @@ module Google
         end
       end
       
+      # Response message for the ListConversionSources method.
+      class ListConversionSourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of conversion sources.
+        # Corresponds to the JSON property `conversionSources`
+        # @return [Array<Google::Apis::ContentV2_1::ConversionSource>]
+        attr_accessor :conversion_sources
+      
+        # Token to be used to fetch the next results page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversion_sources = args[:conversion_sources] if args.key?(:conversion_sources)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for the `ListCsses` method
       class ListCssesResponse
         include Google::Apis::Core::Hashable
@@ -4775,6 +6164,58 @@ module Google
         def update!(**args)
           @csses = args[:csses] if args.key?(:csses)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for the ListMethodQuotas method.
+      class ListMethodQuotasResponse
+        include Google::Apis::Core::Hashable
+      
+        # The current quota usage and limits per each method.
+        # Corresponds to the JSON property `methodQuotas`
+        # @return [Array<Google::Apis::ContentV2_1::MethodQuota>]
+        attr_accessor :method_quotas
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @method_quotas = args[:method_quotas] if args.key?(:method_quotas)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for Promotions.List method.
+      class ListPromotionResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of all available promotions for the merchant.
+        # Corresponds to the JSON property `promotions`
+        # @return [Array<Google::Apis::ContentV2_1::Promotion>]
+        attr_accessor :promotions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @promotions = args[:promotions] if args.key?(:promotions)
         end
       end
       
@@ -4906,13 +6347,20 @@ module Google
       class LocalInventory
         include Google::Apis::Core::Hashable
       
-        # Availability of the product. For accepted attribute values, see the local
+        # The availability of the product. For accepted attribute values, see the local
         # product inventory feed specification.
         # Corresponds to the JSON property `availability`
         # @return [String]
         attr_accessor :availability
       
-        # In-store product location.
+        # A list of custom (merchant-provided) attributes. Can also be used to submit
+        # any attribute of the feed specification in its generic form, for example, `` "
+        # name": "size type", "value": "regular" ``.
+        # Corresponds to the JSON property `customAttributes`
+        # @return [Array<Google::Apis::ContentV2_1::CustomAttribute>]
+        attr_accessor :custom_attributes
+      
+        # The in-store product location.
         # Corresponds to the JSON property `instoreProductLocation`
         # @return [String]
         attr_accessor :instore_product_location
@@ -4923,31 +6371,32 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Supported pickup method for this offer. Unless the value is "not supported",
-        # this field must be submitted together with `pickupSla`. For accepted attribute
-        # values, see the local product inventory feed specification.
+        # The supported pickup method for this offer. Unless the value is "not supported"
+        # , this field must be submitted together with `pickupSla`. For accepted
+        # attribute values, see the local product inventory feed specification.
         # Corresponds to the JSON property `pickupMethod`
         # @return [String]
         attr_accessor :pickup_method
       
-        # Expected date that an order will be ready for pickup relative to the order
+        # The expected date that an order will be ready for pickup relative to the order
         # date. Must be submitted together with `pickupMethod`. For accepted attribute
         # values, see the local product inventory feed specification.
         # Corresponds to the JSON property `pickupSla`
         # @return [String]
         attr_accessor :pickup_sla
       
-        # Price of the product.
+        # The price of the product.
         # Corresponds to the JSON property `price`
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :price
       
-        # Quantity of the product. Must be nonnegative.
+        # The quantity of the product. Must be nonnegative.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # Sale price of the product. Mandatory if `sale_price_effective_date` is defined.
+        # The sale price of the product. Mandatory if `sale_price_effective_date` is
+        # defined.
         # Corresponds to the JSON property `salePrice`
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :sale_price
@@ -4958,7 +6407,7 @@ module Google
         # @return [String]
         attr_accessor :sale_price_effective_date
       
-        # Required. Store code of this local inventory resource.
+        # Required. The store code of this local inventory resource.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -4970,6 +6419,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @availability = args[:availability] if args.key?(:availability)
+          @custom_attributes = args[:custom_attributes] if args.key?(:custom_attributes)
           @instore_product_location = args[:instore_product_location] if args.key?(:instore_product_location)
           @kind = args[:kind] if args.key?(:kind)
           @pickup_method = args[:pickup_method] if args.key?(:pickup_method)
@@ -5108,7 +6558,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A non-empty list of location IDs. They must all be of the same location type (
-        # e.g., state).
+        # for example, state).
         # Corresponds to the JSON property `locationIds`
         # @return [Array<String>]
         attr_accessor :location_ids
@@ -5153,6 +6603,50 @@ module Google
           @name = args[:name] if args.key?(:name)
           @points_value = args[:points_value] if args.key?(:points_value)
           @ratio = args[:ratio] if args.key?(:ratio)
+        end
+      end
+      
+      # "Merchant Center Destination" sources can be used to send conversion events
+      # from a website using a Google tag directly to a Merchant Center account where
+      # the source is created.
+      class MerchantCenterDestination
+        include Google::Apis::Core::Hashable
+      
+        # Represents attribution settings for conversion sources receiving pre-
+        # attribution data.
+        # Corresponds to the JSON property `attributionSettings`
+        # @return [Google::Apis::ContentV2_1::AttributionSettings]
+        attr_accessor :attribution_settings
+      
+        # Required. Three-letter currency code (ISO 4217). The currency code defines in
+        # which currency the conversions sent to this destination will be reported in
+        # Merchant Center.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Output only. Merchant Center Destination ID.
+        # Corresponds to the JSON property `destinationId`
+        # @return [String]
+        attr_accessor :destination_id
+      
+        # Required. Merchant-specified display name for the destination. This is the
+        # name that identifies the conversion source within the Merchant Center UI.
+        # Limited to 64 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution_settings = args[:attribution_settings] if args.key?(:attribution_settings)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @destination_id = args[:destination_id] if args.key?(:destination_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
         end
       end
       
@@ -5320,23 +6814,59 @@ module Google
         end
       end
       
+      # The quota information per method in the Content API.
+      class MethodQuota
+        include Google::Apis::Core::Hashable
+      
+        # The method name, for example `products.list`. Method name does not contain
+        # version because quota can be shared between different API versions of the same
+        # method.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # The current quota limit per day, meaning the maximum number of calls for the
+        # method.
+        # Corresponds to the JSON property `quotaLimit`
+        # @return [Fixnum]
+        attr_accessor :quota_limit
+      
+        # The current quota usage, meaning the number of calls already made to the
+        # method.
+        # Corresponds to the JSON property `quotaUsage`
+        # @return [Fixnum]
+        attr_accessor :quota_usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @quota_limit = args[:quota_limit] if args.key?(:quota_limit)
+          @quota_usage = args[:quota_usage] if args.key?(:quota_usage)
+        end
+      end
+      
       # Performance metrics. Values are only set for metrics requested explicitly in
       # the request's search query.
       class Metrics
         include Google::Apis::Core::Hashable
       
         # Average order size - the average number of items in an order. **This metric
-        # cannot be segmented by product dimensions.**
+        # cannot be segmented by product dimensions and customer_country_code.**
         # Corresponds to the JSON property `aos`
         # @return [Float]
         attr_accessor :aos
       
-        # Average order value - the average value (total price of items) of all placed
-        # orders. The currency of the returned value is stored in the currency_code
-        # segment. If this metric is selected, 'segments.currency_code' is automatically
-        # added to the SELECT clause in the search query (unless it is explicitly
-        # selected by the user) and the currency_code segment is populated in the
-        # response. **This metric cannot be segmented by product dimensions.**
+        # Average order value in micros (1 millionth of a standard unit, 1 USD = 1000000
+        # micros) - the average value (total price of items) of all placed orders. The
+        # currency of the returned value is stored in the currency_code segment. If this
+        # metric is selected, 'segments.currency_code' is automatically added to the
+        # SELECT clause in the search query (unless it is explicitly selected by the
+        # user) and the currency_code segment is populated in the response. **This
+        # metric cannot be segmented by product dimensions and customer_country_code.**
         # Corresponds to the JSON property `aovMicros`
         # @return [Float]
         attr_accessor :aov_micros
@@ -5346,6 +6876,33 @@ module Google
         # @return [Fixnum]
         attr_accessor :clicks
       
+        # Number of conversions divided by the number of clicks, reported on the
+        # impression date. The metric is currently available only for the
+        # FREE_PRODUCT_LISTING program.
+        # Corresponds to the JSON property `conversionRate`
+        # @return [Float]
+        attr_accessor :conversion_rate
+      
+        # Value of conversions in micros (1 millionth of a standard unit, 1 USD =
+        # 1000000 micros) attributed to the product, reported on the conversion date.
+        # The metric is currently available only for the FREE_PRODUCT_LISTING program.
+        # The currency of the returned value is stored in the currency_code segment. If
+        # this metric is selected, 'segments.currency_code' is automatically added to
+        # the SELECT clause in the search query (unless it is explicitly selected by the
+        # user) and the currency_code segment is populated in the response.
+        # Corresponds to the JSON property `conversionValueMicros`
+        # @return [Fixnum]
+        attr_accessor :conversion_value_micros
+      
+        # Number of conversions attributed to the product, reported on the conversion
+        # date. Depending on the attribution model, a conversion might be distributed
+        # across multiple clicks, where each click gets its own credit assigned. This
+        # metric is a sum of all such credits. The metric is currently available only
+        # for the FREE_PRODUCT_LISTING program.
+        # Corresponds to the JSON property `conversions`
+        # @return [Float]
+        attr_accessor :conversions
+      
         # Click-through rate - the number of clicks merchant's products receive (clicks)
         # divided by the number of times the products are shown (impressions).
         # Corresponds to the JSON property `ctr`
@@ -5354,7 +6911,7 @@ module Google
       
         # Average number of days between an order being placed and the order being fully
         # shipped, reported on the last shipment date. **This metric cannot be segmented
-        # by product dimensions.**
+        # by product dimensions and customer_country_code.**
         # Corresponds to the JSON property `daysToShip`
         # @return [Float]
         attr_accessor :days_to_ship
@@ -5364,42 +6921,48 @@ module Google
         # @return [Fixnum]
         attr_accessor :impressions
       
-        # Average number of days between an item being ordered and the item being
+        # Average number of days between an item being ordered and the item being **This
+        # metric cannot be segmented by customer_country_code.**
         # Corresponds to the JSON property `itemDaysToShip`
         # @return [Float]
         attr_accessor :item_days_to_ship
       
         # Percentage of shipped items in relation to all finalized items (shipped or
         # rejected by the merchant; unshipped items are not taken into account),
-        # reported on the order date. Item fill rate is lowered by merchant rejections.
+        # reported on the order date. Item fill rate is lowered by merchant rejections. *
+        # *This metric cannot be segmented by customer_country_code.**
         # Corresponds to the JSON property `itemFillRate`
         # @return [Float]
         attr_accessor :item_fill_rate
       
-        # Total price of ordered items. Excludes shipping, taxes (US only), and customer
+        # Total price of ordered items in micros (1 millionth of a standard unit, 1 USD =
+        # 1000000 micros). Excludes shipping, taxes (US only), and customer
         # cancellations that happened within 30 minutes of placing the order. The
         # currency of the returned value is stored in the currency_code segment. If this
         # metric is selected, 'segments.currency_code' is automatically added to the
         # SELECT clause in the search query (unless it is explicitly selected by the
-        # user) and the currency_code segment is populated in the response.
+        # user) and the currency_code segment is populated in the response. **This
+        # metric cannot be segmented by customer_country_code.**
         # Corresponds to the JSON property `orderedItemSalesMicros`
         # @return [Fixnum]
         attr_accessor :ordered_item_sales_micros
       
         # Number of ordered items. Excludes customer cancellations that happened within
-        # 30 minutes of placing the order.
+        # 30 minutes of placing the order. **This metric cannot be segmented by
+        # customer_country_code.**
         # Corresponds to the JSON property `orderedItems`
         # @return [Fixnum]
         attr_accessor :ordered_items
       
         # Number of placed orders. Excludes customer cancellations that happened within
         # 30 minutes of placing the order. **This metric cannot be segmented by product
-        # dimensions.**
+        # dimensions and customer_country_code.**
         # Corresponds to the JSON property `orders`
         # @return [Fixnum]
         attr_accessor :orders
       
-        # Number of ordered items canceled by the merchant, reported on the order date.
+        # Number of ordered items canceled by the merchant, reported on the order date. *
+        # *This metric cannot be segmented by customer_country_code.**
         # Corresponds to the JSON property `rejectedItems`
         # @return [Fixnum]
         attr_accessor :rejected_items
@@ -5408,51 +6971,57 @@ module Google
         # reported on the order date. If this metric is selected, 'segments.
         # currency_code' is automatically added to the SELECT clause in the search query
         # (unless it is explicitly selected by the user) and the currency_code segment
-        # is populated in the response.
+        # is populated in the response. **This metric cannot be segmented by
+        # customer_country_code.**
         # Corresponds to the JSON property `returnRate`
         # @return [Float]
         attr_accessor :return_rate
       
         # Number of ordered items sent back for return, reported on the date when the
-        # merchant accepted the return.
+        # merchant accepted the return. **This metric cannot be segmented by
+        # customer_country_code.**
         # Corresponds to the JSON property `returnedItems`
         # @return [Fixnum]
         attr_accessor :returned_items
       
-        # Total price of ordered items sent back for return, reported on the date when
-        # the merchant accepted the return. The currency of the returned value is stored
-        # in the currency_code segment. If this metric is selected, 'segments.
-        # currency_code' is automatically added to the SELECT clause in the search query
-        # (unless it is explicitly selected by the user) and the currency_code segment
-        # is populated in the response.
+        # Total price of ordered items sent back for return in micros (1 millionth of a
+        # standard unit, 1 USD = 1000000 micros), reported on the date when the merchant
+        # accepted the return. The currency of the returned value is stored in the
+        # currency_code segment. If this metric is selected, 'segments.currency_code' is
+        # automatically added to the SELECT clause in the search query (unless it is
+        # explicitly selected by the user) and the currency_code segment is populated in
+        # the response. **This metric cannot be segmented by customer_country_code.**
         # Corresponds to the JSON property `returnsMicros`
         # @return [Fixnum]
         attr_accessor :returns_micros
       
-        # Total price of shipped items, reported on the order date. Excludes shipping
-        # and taxes (US only). The currency of the returned value is stored in the
-        # currency_code segment. If this metric is selected, 'segments.currency_code' is
-        # automatically added to the SELECT clause in the search query (unless it is
-        # explicitly selected by the user) and the currency_code segment is populated in
-        # the response.
+        # Total price of shipped items in micros (1 millionth of a standard unit, 1 USD =
+        # 1000000 micros), reported on the order date. Excludes shipping and taxes (US
+        # only). The currency of the returned value is stored in the currency_code
+        # segment. If this metric is selected, 'segments.currency_code' is automatically
+        # added to the SELECT clause in the search query (unless it is explicitly
+        # selected by the user) and the currency_code segment is populated in the
+        # response. **This metric cannot be segmented by customer_country_code.**
         # Corresponds to the JSON property `shippedItemSalesMicros`
         # @return [Fixnum]
         attr_accessor :shipped_item_sales_micros
       
-        # Number of shipped items, reported on the shipment date.
+        # Number of shipped items, reported on the shipment date. **This metric cannot
+        # be segmented by customer_country_code.**
         # Corresponds to the JSON property `shippedItems`
         # @return [Fixnum]
         attr_accessor :shipped_items
       
         # Number of fully shipped orders, reported on the last shipment date. **This
-        # metric cannot be segmented by product dimensions.**
+        # metric cannot be segmented by product dimensions and customer_country_code.**
         # Corresponds to the JSON property `shippedOrders`
         # @return [Fixnum]
         attr_accessor :shipped_orders
       
         # Number of ordered items not shipped up until the end of the queried day. If a
         # multi-day period is specified in the search query, the returned value is the
-        # average number of unshipped items over the days in the queried period.
+        # average number of unshipped items over the days in the queried period. **This
+        # metric cannot be segmented by customer_country_code.**
         # Corresponds to the JSON property `unshippedItems`
         # @return [Float]
         attr_accessor :unshipped_items
@@ -5460,7 +7029,8 @@ module Google
         # Number of orders not shipped or partially shipped up until the end of the
         # queried day. If a multi-day period is specified in the search query, the
         # returned value is the average number of unshipped orders over the days in the
-        # queried period. **This metric cannot be segmented by product dimensions.**
+        # queried period. **This metric cannot be segmented by product dimensions and
+        # customer_country_code.**
         # Corresponds to the JSON property `unshippedOrders`
         # @return [Float]
         attr_accessor :unshipped_orders
@@ -5474,6 +7044,9 @@ module Google
           @aos = args[:aos] if args.key?(:aos)
           @aov_micros = args[:aov_micros] if args.key?(:aov_micros)
           @clicks = args[:clicks] if args.key?(:clicks)
+          @conversion_rate = args[:conversion_rate] if args.key?(:conversion_rate)
+          @conversion_value_micros = args[:conversion_value_micros] if args.key?(:conversion_value_micros)
+          @conversions = args[:conversions] if args.key?(:conversions)
           @ctr = args[:ctr] if args.key?(:ctr)
           @days_to_ship = args[:days_to_ship] if args.key?(:days_to_ship)
           @impressions = args[:impressions] if args.key?(:impressions)
@@ -5546,15 +7119,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The pre-tax or post-tax price depends on the location of the order. - For
-        # countries (e.g. US) where price attribute excludes tax, this field corresponds
-        # to the pre-tax value. - For coutries (e.g. France) where price attribute
-        # includes tax, this field corresponds to the post-tax value .
+        # countries (for example, "US". where price attribute excludes tax, this field
+        # corresponds to the pre-tax value. - For coutries (for example, "France") where
+        # price attribute includes tax, this field corresponds to the post-tax value .
         # Corresponds to the JSON property `priceAmount`
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :price_amount
       
-        # Tax value, present only for countries where price attribute excludes tax (e.g.
-        # US). No tax is referenced as 0 value with the corresponding `currency`.
+        # Tax value, present only for countries where price attribute excludes tax (for
+        # example, "US". No tax is referenced as 0 value with the corresponding `
+        # currency`.
         # Corresponds to the JSON property `taxAmount`
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :tax_amount
@@ -5764,7 +7338,7 @@ module Google
       class OrderAddress
         include Google::Apis::Core::Hashable
       
-        # CLDR country code (e.g. "US").
+        # CLDR country code (for example, "US").
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
@@ -5783,12 +7357,12 @@ module Google
         alias_method :is_post_office_box?, :is_post_office_box
       
         # City, town or commune. May also include dependent localities or sublocalities (
-        # e.g. neighborhoods or suburbs).
+        # for example, neighborhoods or suburbs).
         # Corresponds to the JSON property `locality`
         # @return [String]
         attr_accessor :locality
       
-        # Postal Code or ZIP (e.g. "94043").
+        # Postal Code or ZIP (for example, "94043").
         # Corresponds to the JSON property `postalCode`
         # @return [String]
         attr_accessor :postal_code
@@ -5804,7 +7378,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Street-level part of the address.
+        # Street-level part of the address. Use `\n` to add a second line.
         # Corresponds to the JSON property `streetAddress`
         # @return [Array<String>]
         attr_accessor :street_address
@@ -5849,7 +7423,7 @@ module Google
       
         # The reason for the cancellation. Orders that are canceled with a noInventory
         # reason will lead to the removal of the product from Buy on Google until you
-        # make an update to that product. This will not affect your Shopping ads.
+        # make an update to that product. This won't affect your Shopping ads.
         # Acceptable values are: - "`autoPostInternal`" - "`
         # autoPostInvalidBillingAddress`" - "`autoPostNoInventory`" - "`
         # autoPostPriceError`" - "`autoPostUndeliverableShippingAddress`" - "`
@@ -6048,8 +7622,8 @@ module Google
         attr_accessor :price
       
         # Product data as seen by customer from the time of the order placement. Note
-        # that certain attributes values (e.g. title or gtin) might be reformatted and
-        # no longer match values submitted via product feed.
+        # that certain attributes values (for example, title or gtin) might be
+        # reformatted and no longer match values submitted through product feed.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::ContentV2_1::OrderLineItemProduct]
         attr_accessor :product
@@ -6238,7 +7812,7 @@ module Google
         # @return [String]
         attr_accessor :shown_image
       
-        # The CLDR territory // code of the target country of the product.
+        # The CLDR territory code of the target country of the product.
         # Corresponds to the JSON property `targetCountry`
         # @return [String]
         attr_accessor :target_country
@@ -6581,8 +8155,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::OrderPromotionItem>]
         attr_accessor :applied_items
       
-        # Promotion end time in ISO 8601 format. Date, time, and offset required, e.g., "
-        # 2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z".
+        # Promotion end time in ISO 8601 format. Date, time, and offset required, for
+        # example, "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z".
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -6611,8 +8185,8 @@ module Google
         # @return [String]
         attr_accessor :short_title
       
-        # Promotion start time in ISO 8601 format. Date, time, and offset required, e.g.,
-        # "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z".
+        # Promotion start time in ISO 8601 format. Date, time, and offset required, for
+        # example, "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z".
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -6933,10 +8507,10 @@ module Google
         # carrier name and tracking URL in emails to customers. For select supported
         # carriers, Google also automatically updates the shipment status based on the
         # provided shipment ID. *Note:* You can also use unsupported carriers, but
-        # emails to customers will not include the carrier name or tracking URL, and
-        # there will be no automatic order status updates. Supported carriers for US are:
-        # - "`ups`" (United Parcel Service) *automatic status updates* - "`usps`" (
-        # United States Postal Service) *automatic status updates* - "`fedex`" (FedEx) *
+        # emails to customers won't include the carrier name or tracking URL, and there
+        # will be no automatic order status updates. Supported carriers for "US" are: - "
+        # `ups`" (United Parcel Service) *automatic status updates* - "`usps`" (United
+        # States Postal Service) *automatic status updates* - "`fedex`" (FedEx) *
         # automatic status updates * - "`dhl`" (DHL eCommerce) *automatic status updates*
         # (US only) - "`ontrac`" (OnTrac) *automatic status updates * - "`dhl express`"
         # (DHL Express) - "`deliv`" (Deliv) - "`dynamex`" (TForce) - "`lasership`" (
@@ -6949,8 +8523,9 @@ module Google
         # " (Best Express) - "`canada post`" (Canada Post) - "`purolator`" (Purolator) -
         # "`canpar`" (Canpar) - "`india post`" (India Post) - "`blue dart`" (Blue Dart) -
         # "`delhivery`" (Delhivery) - "`dtdc`" (DTDC) - "`tpc india`" (TPC India) - "`
-        # lso`" (Lone Star Overnight) - "`tww`" (Team Worldwide) Supported carriers for
-        # FR are: - "`la poste`" (La Poste) *automatic status updates * - "`colissimo`" (
+        # lso`" (Lone Star Overnight) - "`tww`" (Team Worldwide) - "`deliver-it`" (
+        # Deliver-IT) - "`cdl last mile`" (CDL Last Mile) Supported carriers for FR are:
+        # - "`la poste`" (La Poste) *automatic status updates * - "`colissimo`" (
         # Colissimo by La Poste) *automatic status updates* - "`ups`" (United Parcel
         # Service) *automatic status updates * - "`chronopost`" (Chronopost by La Poste)
         # - "`gls`" (General Logistics Systems France) - "`dpd`" (DPD Group by GeoPost) -
@@ -7059,8 +8634,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The phone number of the carrier fulfilling the delivery. The phone number is
-        # formatted as the international notation in ITU-T Recommendation E.123 (e.g., "+
-        # 41 44 668 1800").
+        # formatted as the international notation in ITU-T Recommendation E.123 (for
+        # example, "+41 44 668 1800").
         # Corresponds to the JSON property `carrierPhoneNumber`
         # @return [String]
         attr_accessor :carrier_phone_number
@@ -7123,9 +8698,9 @@ module Google
         # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
         # calendar day in a particular time zone. * When neither time_zone nor
         # utc_offset is set: a civil time on a calendar day in local time. The date is
-        # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
-        # considered not to have a specific year. month and day must have valid, non-
-        # zero values. This type may also be used to represent a physical time if all
+        # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+        # the DateTime is considered not to have a specific year, month, or day
+        # respectively. This type may also be used to represent a physical time if all
         # the date and time fields are set and either case of the `time_offset` oneof is
         # set. Consider using `Timestamp` message for physical time instead. If your use
         # case also would like to store the user's timezone, that can be done in another
@@ -7293,9 +8868,9 @@ module Google
         # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
         # calendar day in a particular time zone. * When neither time_zone nor
         # utc_offset is set: a civil time on a calendar day in local time. The date is
-        # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
-        # considered not to have a specific year. month and day must have valid, non-
-        # zero values. This type may also be used to represent a physical time if all
+        # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+        # the DateTime is considered not to have a specific year, month, or day
+        # respectively. This type may also be used to represent a physical time if all
         # the date and time fields are set and either case of the `time_offset` oneof is
         # set. Consider using `Timestamp` message for physical time instead. If your use
         # case also would like to store the user's timezone, that can be done in another
@@ -7323,9 +8898,9 @@ module Google
         # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
         # calendar day in a particular time zone. * When neither time_zone nor
         # utc_offset is set: a civil time on a calendar day in local time. The date is
-        # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
-        # considered not to have a specific year. month and day must have valid, non-
-        # zero values. This type may also be used to represent a physical time if all
+        # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+        # the DateTime is considered not to have a specific year, month, or day
+        # respectively. This type may also be used to represent a physical time if all
         # the date and time fields are set and either case of the `time_offset` oneof is
         # set. Consider using `Timestamp` message for physical time instead. If your use
         # case also would like to store the user's timezone, that can be done in another
@@ -7341,9 +8916,9 @@ module Google
         # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
         # calendar day in a particular time zone. * When neither time_zone nor
         # utc_offset is set: a civil time on a calendar day in local time. The date is
-        # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
-        # considered not to have a specific year. month and day must have valid, non-
-        # zero values. This type may also be used to represent a physical time if all
+        # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+        # the DateTime is considered not to have a specific year, month, or day
+        # respectively. This type may also be used to represent a physical time if all
         # the date and time fields are set and either case of the `time_offset` oneof is
         # set. Consider using `Timestamp` message for physical time instead. If your use
         # case also would like to store the user's timezone, that can be done in another
@@ -7378,9 +8953,9 @@ module Google
         # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
         # calendar day in a particular time zone. * When neither time_zone nor
         # utc_offset is set: a civil time on a calendar day in local time. The date is
-        # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
-        # considered not to have a specific year. month and day must have valid, non-
-        # zero values. This type may also be used to represent a physical time if all
+        # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+        # the DateTime is considered not to have a specific year, month, or day
+        # respectively. This type may also be used to represent a physical time if all
         # the date and time fields are set and either case of the `time_offset` oneof is
         # set. Consider using `Timestamp` message for physical time instead. If your use
         # case also would like to store the user's timezone, that can be done in another
@@ -7987,7 +9562,7 @@ module Google
       
         # If true, the item will be fully refunded. Allowed only when payment_type is
         # FOP. Merchant can choose this refund option to indicate the full remaining
-        # amount of corresponding object to be refunded to the customer via FOP.
+        # amount of corresponding object to be refunded to the customer through FOP.
         # Corresponds to the JSON property `fullRefund`
         # @return [Boolean]
         attr_accessor :full_refund
@@ -8340,9 +9915,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The CLDR territory code of the country of the test order to create. Affects
-        # the currency and addresses of orders created via `template_name`, or the
-        # addresses of orders created via `test_order`. Acceptable values are: - "`US`" -
-        # "`FR`" Defaults to `US`.
+        # the currency and addresses of orders created through `template_name`, or the
+        # addresses of orders created through `test_order`. Acceptable values are: - "`
+        # US`" - "`FR`" Defaults to "`US`".
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
@@ -8472,15 +10047,15 @@ module Google
       class OrdersCustomBatchRequestEntryRefundItemItem
         include Google::Apis::Core::Hashable
       
-        # The total amount that is refunded. (e.g. refunding $5 each for 2 products
-        # should be done by setting quantity to 2 and amount to 10$) In case of multiple
-        # refunds, this should be the amount you currently want to refund to the
-        # customer.
+        # The total amount that is refunded. (for example, refunding $5 each for 2
+        # products should be done by setting quantity to 2 and amount to 10$) In case of
+        # multiple refunds, this should be the amount you currently want to refund to
+        # the customer.
         # Corresponds to the JSON property `amount`
         # @return [Google::Apis::ContentV2_1::MonetaryAmount]
         attr_accessor :amount
       
-        # If true, the full item will be refunded. If this is true, amount should not be
+        # If true, the full item will be refunded. If this is true, amount shouldn't be
         # provided and will be ignored.
         # Corresponds to the JSON property `fullRefund`
         # @return [Boolean]
@@ -8528,7 +10103,7 @@ module Google
         attr_accessor :amount
       
         # If set to true, all shipping costs for the order will be refunded. If this is
-        # true, amount should not be provided and will be ignored. If set to false,
+        # true, amount shouldn't be provided and will be ignored. If set to false,
         # submit the amount of the partial shipping refund, excluding the shipping tax.
         # The shipping tax is calculated and handled on Google's side.
         # Corresponds to the JSON property `fullRefund`
@@ -8875,7 +10450,7 @@ module Google
         attr_accessor :amount
       
         # If true, the full order will be refunded, including shipping. If this is true,
-        # amount should not be provided and will be ignored.
+        # amount shouldn't be provided and will be ignored.
         # Corresponds to the JSON property `fullRefund`
         # @return [Boolean]
         attr_accessor :full_refund
@@ -9250,8 +10825,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Updated delivery by date, in ISO 8601 format. If not specified only ship by
-        # date is updated. Provided date should be within 1 year timeframe and can not
-        # be a date in the past.
+        # date is updated. Provided date should be within 1 year timeframe and can't be
+        # a date in the past.
         # Corresponds to the JSON property `deliverByDate`
         # @return [String]
         attr_accessor :deliver_by_date
@@ -9274,8 +10849,8 @@ module Google
         attr_accessor :product_id
       
         # Updated ship by date, in ISO 8601 format. If not specified only deliver by
-        # date is updated. Provided date should be within 1 year timeframe and can not
-        # be a date in the past.
+        # date is updated. Provided date should be within 1 year timeframe and can't be
+        # a date in the past.
         # Corresponds to the JSON property `shipByDate`
         # @return [String]
         attr_accessor :ship_by_date
@@ -9523,12 +11098,12 @@ module Google
       class PickupCarrierService
         include Google::Apis::Core::Hashable
       
-        # The name of the pickup carrier (e.g., `"UPS"`). Required.
+        # The name of the pickup carrier (for example, `"UPS"`). Required.
         # Corresponds to the JSON property `carrierName`
         # @return [String]
         attr_accessor :carrier_name
       
-        # The name of the pickup service (e.g., `"Access point"`). Required.
+        # The name of the pickup service (for example, `"Access point"`). Required.
         # Corresponds to the JSON property `serviceName`
         # @return [String]
         attr_accessor :service_name
@@ -9548,17 +11123,17 @@ module Google
       class PickupServicesPickupService
         include Google::Apis::Core::Hashable
       
-        # The name of the carrier (e.g., `"UPS"`). Always present.
+        # The name of the carrier (for example, `"UPS"`). Always present.
         # Corresponds to the JSON property `carrierName`
         # @return [String]
         attr_accessor :carrier_name
       
-        # The CLDR country code of the carrier (e.g., "US"). Always present.
+        # The CLDR country code of the carrier (for example, "US"). Always present.
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
       
-        # The name of the pickup service (e.g., `"Access point"`). Always present.
+        # The name of the pickup service (for example, `"Access point"`). Always present.
         # Corresponds to the JSON property `serviceName`
         # @return [String]
         attr_accessor :service_name
@@ -9813,6 +11388,22 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Optional. Supported pickup method for this offer. Unless the value is "not
+        # supported", this field must be submitted together with `pickupSla`. For
+        # accepted attribute values, see the [local product inventory feed specification]
+        # (https://support.google.com/merchants/answer/3061342).
+        # Corresponds to the JSON property `pickupMethod`
+        # @return [String]
+        attr_accessor :pickup_method
+      
+        # Optional. Expected date that an order will be ready for pickup relative to the
+        # order date. Must be submitted together with `pickupMethod`. For accepted
+        # attribute values, see the [local product inventory feed specification](https://
+        # support.google.com/merchants/answer/3061342).
+        # Corresponds to the JSON property `pickupSla`
+        # @return [String]
+        attr_accessor :pickup_sla
+      
         # Required. The current price of the item.
         # Corresponds to the JSON property `price`
         # @return [Google::Apis::ContentV2_1::Price]
@@ -9824,7 +11415,7 @@ module Google
         attr_accessor :quantity
       
         # Required. The identifier of the merchant's store. Either a `storeCode`
-        # inserted via the API or the code of the store in a Business Profile.
+        # inserted through the API or the code of the store in a Business Profile.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -9849,6 +11440,8 @@ module Google
           @gtin = args[:gtin] if args.key?(:gtin)
           @item_id = args[:item_id] if args.key?(:item_id)
           @kind = args[:kind] if args.key?(:kind)
+          @pickup_method = args[:pickup_method] if args.key?(:pickup_method)
+          @pickup_sla = args[:pickup_sla] if args.key?(:pickup_sla)
           @price = args[:price] if args.key?(:price)
           @quantity = args[:quantity] if args.key?(:quantity)
           @store_code = args[:store_code] if args.key?(:store_code)
@@ -9876,6 +11469,22 @@ module Google
         # @return [String]
         attr_accessor :item_id
       
+        # Optional. Supported pickup method for this offer. Unless the value is "not
+        # supported", this field must be submitted together with `pickupSla`. For
+        # accepted attribute values, see the [local product inventory feed specification]
+        # (https://support.google.com/merchants/answer/3061342).
+        # Corresponds to the JSON property `pickupMethod`
+        # @return [String]
+        attr_accessor :pickup_method
+      
+        # Optional. Expected date that an order will be ready for pickup relative to the
+        # order date. Must be submitted together with `pickupMethod`. For accepted
+        # attribute values, see the [local product inventory feed specification](https://
+        # support.google.com/merchants/answer/3061342).
+        # Corresponds to the JSON property `pickupSla`
+        # @return [String]
+        attr_accessor :pickup_sla
+      
         # Required. The current price of the item.
         # Corresponds to the JSON property `price`
         # @return [Google::Apis::ContentV2_1::Price]
@@ -9887,7 +11496,7 @@ module Google
         attr_accessor :quantity
       
         # Required. The identifier of the merchant's store. Either a `storeCode`
-        # inserted via the API or the code of the store in a Business Profile.
+        # inserted through the API or the code of the store in a Business Profile.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -9911,6 +11520,8 @@ module Google
           @content_language = args[:content_language] if args.key?(:content_language)
           @gtin = args[:gtin] if args.key?(:gtin)
           @item_id = args[:item_id] if args.key?(:item_id)
+          @pickup_method = args[:pickup_method] if args.key?(:pickup_method)
+          @pickup_sla = args[:pickup_sla] if args.key?(:pickup_sla)
           @price = args[:price] if args.key?(:price)
           @quantity = args[:quantity] if args.key?(:quantity)
           @store_code = args[:store_code] if args.key?(:store_code)
@@ -9944,6 +11555,22 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Optional. Supported pickup method for this offer. Unless the value is "not
+        # supported", this field must be submitted together with `pickupSla`. For
+        # accepted attribute values, see the [local product inventory feed specification]
+        # (https://support.google.com/merchants/answer/3061342).
+        # Corresponds to the JSON property `pickupMethod`
+        # @return [String]
+        attr_accessor :pickup_method
+      
+        # Optional. Expected date that an order will be ready for pickup relative to the
+        # order date. Must be submitted together with `pickupMethod`. For accepted
+        # attribute values, see the [local product inventory feed specification](https://
+        # support.google.com/merchants/answer/3061342).
+        # Corresponds to the JSON property `pickupSla`
+        # @return [String]
+        attr_accessor :pickup_sla
+      
         # Required. The current price of the item.
         # Corresponds to the JSON property `price`
         # @return [Google::Apis::ContentV2_1::Price]
@@ -9955,7 +11582,7 @@ module Google
         attr_accessor :quantity
       
         # Required. The identifier of the merchant's store. Either a `storeCode`
-        # inserted via the API or the code of the store in a Business Profile.
+        # inserted through the API or the code of the store in a Business Profile.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -9980,6 +11607,8 @@ module Google
           @gtin = args[:gtin] if args.key?(:gtin)
           @item_id = args[:item_id] if args.key?(:item_id)
           @kind = args[:kind] if args.key?(:kind)
+          @pickup_method = args[:pickup_method] if args.key?(:pickup_method)
+          @pickup_sla = args[:pickup_sla] if args.key?(:pickup_sla)
           @price = args[:price] if args.key?(:price)
           @quantity = args[:quantity] if args.key?(:quantity)
           @store_code = args[:store_code] if args.key?(:store_code)
@@ -10056,7 +11685,7 @@ module Google
         attr_accessor :sale_id
       
         # Required. The identifier of the merchant's store. Either a `storeCode`
-        # inserted via the API or the code of the store in a Business Profile.
+        # inserted through the API or the code of the store in a Business Profile.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -10126,7 +11755,7 @@ module Google
         attr_accessor :sale_id
       
         # Required. The identifier of the merchant's store. Either a `storeCode`
-        # inserted via the API or the code of the store in a Business Profile.
+        # inserted through the API or the code of the store in a Business Profile.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -10201,7 +11830,7 @@ module Google
         attr_accessor :sale_id
       
         # Required. The identifier of the merchant's store. Either a `storeCode`
-        # inserted via the API or the code of the store in a Business Profile.
+        # inserted through the API or the code of the store in a Business Profile.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -10412,8 +12041,120 @@ module Google
         end
       end
       
-      # Required product attributes are primarily defined by the products data
-      # specification. See the Products Data Specification Help Center article for
+      # Price competitiveness fields requested by the merchant in the query. Field
+      # values are only set if the merchant queries `PriceCompetitivenessProductView`.
+      # https://support.google.com/merchants/answer/9626903
+      class PriceCompetitiveness
+        include Google::Apis::Core::Hashable
+      
+        # The price benchmark currency (ISO 4217 code).
+        # Corresponds to the JSON property `benchmarkPriceCurrencyCode`
+        # @return [String]
+        attr_accessor :benchmark_price_currency_code
+      
+        # The latest available price benchmark in micros (1 millionth of a standard unit,
+        # 1 USD = 1000000 micros) for the product's catalog in the benchmark country.
+        # Corresponds to the JSON property `benchmarkPriceMicros`
+        # @return [Fixnum]
+        attr_accessor :benchmark_price_micros
+      
+        # The country of the price benchmark (ISO 3166 code).
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @benchmark_price_currency_code = args[:benchmark_price_currency_code] if args.key?(:benchmark_price_currency_code)
+          @benchmark_price_micros = args[:benchmark_price_micros] if args.key?(:benchmark_price_micros)
+          @country_code = args[:country_code] if args.key?(:country_code)
+        end
+      end
+      
+      # Price insights fields requested by the merchant in the query. Field values are
+      # only set if the merchant queries `PriceInsightsProductView`. https://support.
+      # google.com/merchants/answer/11916926
+      class PriceInsights
+        include Google::Apis::Core::Hashable
+      
+        # The predicted change in clicks as a fraction after introducing the suggested
+        # price compared to current active price. For example, 0.05 is a 5% predicted
+        # increase in clicks.
+        # Corresponds to the JSON property `predictedClicksChangeFraction`
+        # @return [Float]
+        attr_accessor :predicted_clicks_change_fraction
+      
+        # The predicted change in conversions as a fraction after introducing the
+        # suggested price compared to current active price. For example, 0.05 is a 5%
+        # predicted increase in conversions).
+        # Corresponds to the JSON property `predictedConversionsChangeFraction`
+        # @return [Float]
+        attr_accessor :predicted_conversions_change_fraction
+      
+        # *Deprecated*: This field is no longer supported and will start returning 0.
+        # The predicted change in gross profit as a fraction after introducing the
+        # suggested price compared to current active price. For example, 0.05 is a 5%
+        # predicted increase in gross profit.
+        # Corresponds to the JSON property `predictedGrossProfitChangeFraction`
+        # @return [Float]
+        attr_accessor :predicted_gross_profit_change_fraction
+      
+        # The predicted change in impressions as a fraction after introducing the
+        # suggested price compared to current active price. For example, 0.05 is a 5%
+        # predicted increase in impressions.
+        # Corresponds to the JSON property `predictedImpressionsChangeFraction`
+        # @return [Float]
+        attr_accessor :predicted_impressions_change_fraction
+      
+        # *Deprecated*: This field is no longer supported and will start returning USD
+        # for all requests. The predicted monthly gross profit change currency (ISO 4217
+        # code).
+        # Corresponds to the JSON property `predictedMonthlyGrossProfitChangeCurrencyCode`
+        # @return [String]
+        attr_accessor :predicted_monthly_gross_profit_change_currency_code
+      
+        # *Deprecated*: This field is no longer supported and will start returning 0.
+        # The predicted change in gross profit in micros (1 millionth of a standard unit,
+        # 1 USD = 1000000 micros) after introducing the suggested price for a month
+        # compared to current active price.
+        # Corresponds to the JSON property `predictedMonthlyGrossProfitChangeMicros`
+        # @return [Fixnum]
+        attr_accessor :predicted_monthly_gross_profit_change_micros
+      
+        # The suggested price currency (ISO 4217 code).
+        # Corresponds to the JSON property `suggestedPriceCurrencyCode`
+        # @return [String]
+        attr_accessor :suggested_price_currency_code
+      
+        # The latest suggested price in micros (1 millionth of a standard unit, 1 USD =
+        # 1000000 micros) for the product.
+        # Corresponds to the JSON property `suggestedPriceMicros`
+        # @return [Fixnum]
+        attr_accessor :suggested_price_micros
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @predicted_clicks_change_fraction = args[:predicted_clicks_change_fraction] if args.key?(:predicted_clicks_change_fraction)
+          @predicted_conversions_change_fraction = args[:predicted_conversions_change_fraction] if args.key?(:predicted_conversions_change_fraction)
+          @predicted_gross_profit_change_fraction = args[:predicted_gross_profit_change_fraction] if args.key?(:predicted_gross_profit_change_fraction)
+          @predicted_impressions_change_fraction = args[:predicted_impressions_change_fraction] if args.key?(:predicted_impressions_change_fraction)
+          @predicted_monthly_gross_profit_change_currency_code = args[:predicted_monthly_gross_profit_change_currency_code] if args.key?(:predicted_monthly_gross_profit_change_currency_code)
+          @predicted_monthly_gross_profit_change_micros = args[:predicted_monthly_gross_profit_change_micros] if args.key?(:predicted_monthly_gross_profit_change_micros)
+          @suggested_price_currency_code = args[:suggested_price_currency_code] if args.key?(:suggested_price_currency_code)
+          @suggested_price_micros = args[:suggested_price_micros] if args.key?(:suggested_price_micros)
+        end
+      end
+      
+      # Required product attributes are primarily defined by the product data
+      # specification. See the Product Data Specification Help Center article for
       # information. Product data. After inserting, updating, or deleting a product,
       # it may take several minutes before changes take effect.
       class Product
@@ -10478,11 +12219,23 @@ module Google
         # @return [String]
         attr_accessor :canonical_link
       
+        # Product [certification](https://support.google.com/merchants/answer/13528839),
+        # introduced for EU energy efficiency labeling compliance using the [EU EPREL](
+        # https://eprel.ec.europa.eu/screen/home) database.
+        # Corresponds to the JSON property `certifications`
+        # @return [Array<Google::Apis::ContentV2_1::ProductCertification>]
+        attr_accessor :certifications
+      
         # Required. The item's channel (online or local). Acceptable values are: - "`
         # local`" - "`online`"
         # Corresponds to the JSON property `channel`
         # @return [String]
         attr_accessor :channel
+      
+        # Extra fields to export to the Cloud Retail program.
+        # Corresponds to the JSON property `cloudExportAdditionalProperties`
+        # @return [Array<Google::Apis::ContentV2_1::CloudExportAdditionalProperties>]
+        attr_accessor :cloud_export_additional_properties
       
         # Color of the item.
         # Corresponds to the JSON property `color`
@@ -10505,10 +12258,10 @@ module Google
         attr_accessor :cost_of_goods_sold
       
         # A list of custom (merchant-provided) attributes. It can also be used for
-        # submitting any attribute of the feed specification in its generic form (e.g., `
-        # ` "name": "size type", "value": "regular" ``). This is useful for submitting
-        # attributes not explicitly exposed by the API, such as additional attributes
-        # used for Buy on Google (formerly known as Shopping Actions).
+        # submitting any attribute of the feed specification in its generic form (for
+        # example, `` "name": "size type", "value": "regular" ``). This is useful for
+        # submitting attributes not explicitly exposed by the API, such as additional
+        # attributes used for Buy on Google (formerly known as Shopping Actions).
         # Corresponds to the JSON property `customAttributes`
         # @return [Array<Google::Apis::ContentV2_1::CustomAttribute>]
         attr_accessor :custom_attributes
@@ -10543,6 +12296,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # The date time when an offer becomes visible in search results across Google’s
+        # YouTube surfaces, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format.
+        # See [Disclosure date](https://support.google.com/merchants/answer/13034208)
+        # for more information.
+        # Corresponds to the JSON property `disclosureDate`
+        # @return [String]
+        attr_accessor :disclosure_date
+      
         # An identifier for an item for dynamic remarketing campaigns.
         # Corresponds to the JSON property `displayAdsId`
         # @return [String]
@@ -10573,8 +12334,9 @@ module Google
         # @return [String]
         attr_accessor :energy_efficiency_class
       
-        # The list of destinations to exclude for this target (corresponds to unchecked
-        # check boxes in Merchant Center).
+        # The list of destinations to exclude for this target (corresponds to cleared
+        # check boxes in Merchant Center). Products that are excluded from all
+        # destinations for more than 7 days are automatically deleted.
         # Corresponds to the JSON property `excludedDestinations`
         # @return [Array<String>]
         attr_accessor :excluded_destinations
@@ -10586,6 +12348,19 @@ module Google
         # Corresponds to the JSON property `expirationDate`
         # @return [String]
         attr_accessor :expiration_date
+      
+        # Required for multi-seller accounts. Use this attribute if you're a marketplace
+        # uploading products for various sellers to your multi-seller account.
+        # Corresponds to the JSON property `externalSellerId`
+        # @return [String]
+        attr_accessor :external_seller_id
+      
+        # Feed label for the item. Either `targetCountry` or `feedLabel` is required.
+        # Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and
+        # dashes (-).
+        # Corresponds to the JSON property `feedLabel`
+        # @return [String]
+        attr_accessor :feed_label
       
         # Target gender of the item.
         # Corresponds to the JSON property `gender`
@@ -10606,8 +12381,9 @@ module Google
         attr_accessor :gtin
       
         # The REST ID of the product. Content API methods that operate on products take
-        # this as their `productId` parameter. The REST ID for a product is of the form
-        # channel:contentLanguage: targetCountry: offerId.
+        # this as their `productId` parameter. The REST ID for a product has one of the
+        # 2 forms channel:contentLanguage: targetCountry: offerId or channel:
+        # contentLanguage:feedLabel: offerId.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -10654,6 +12430,13 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # Additional URLs of lifestyle images of the item. Used to explicitly identify
+        # images that showcase your item in a real-world context. See the Help Center
+        # article for more information.
+        # Corresponds to the JSON property `lifestyleImageLinks`
+        # @return [Array<String>]
+        attr_accessor :lifestyle_image_links
       
         # URL directly linking to your item's page on your website.
         # Corresponds to the JSON property `link`
@@ -10724,10 +12507,16 @@ module Google
         # @return [String]
         attr_accessor :offer_id
       
-        # The item's pattern (e.g. polka dots).
+        # The item's pattern (for example, polka dots).
         # Corresponds to the JSON property `pattern`
         # @return [String]
         attr_accessor :pattern
+      
+        # Publication of this item should be temporarily paused. Acceptable values are: -
+        # "`ads`"
+        # Corresponds to the JSON property `pause`
+        # @return [String]
+        attr_accessor :pause
       
         # The pick up option for the item. Acceptable values are: - "`buy`" - "`reserve`"
         # - "`ship to store`" - "`not supported`"
@@ -10769,7 +12558,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::ProductDimension]
         attr_accessor :product_length
       
-        # Categories of the item (formatted as in products data specification).
+        # Categories of the item (formatted as in product data specification).
         # Corresponds to the JSON property `productTypes`
         # @return [Array<String>]
         attr_accessor :product_types
@@ -10796,7 +12585,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :sale_price
       
-        # Date range during which the item is on sale (see products data specification ).
+        # Date range during which the item is on sale (see product data specification ).
         # Corresponds to the JSON property `salePriceEffectiveDate`
         # @return [String]
         attr_accessor :sale_price_effective_date
@@ -10862,7 +12651,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :sizes
       
-        # The source of the offer, i.e., how the offer was created. Acceptable values
+        # The source of the offer, that is, how the offer was created. Acceptable values
         # are: - "`api`" - "`crawl`" - "`feed`"
         # Corresponds to the JSON property `source`
         # @return [String]
@@ -10874,7 +12663,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::ProductSubscriptionCost]
         attr_accessor :subscription_cost
       
-        # Required. The CLDR territory code for the item.
+        # Required. The CLDR territory code for the item's country of sale.
         # Corresponds to the JSON property `targetCountry`
         # @return [String]
         attr_accessor :target_country
@@ -10911,6 +12700,11 @@ module Google
         # @return [Google::Apis::ContentV2_1::ProductUnitPricingMeasure]
         attr_accessor :unit_pricing_measure
       
+        # URL of the 3D model of the item to provide more visuals.
+        # Corresponds to the JSON property `virtualModelLink`
+        # @return [String]
+        attr_accessor :virtual_model_link
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10928,7 +12722,9 @@ module Google
           @availability_date = args[:availability_date] if args.key?(:availability_date)
           @brand = args[:brand] if args.key?(:brand)
           @canonical_link = args[:canonical_link] if args.key?(:canonical_link)
+          @certifications = args[:certifications] if args.key?(:certifications)
           @channel = args[:channel] if args.key?(:channel)
+          @cloud_export_additional_properties = args[:cloud_export_additional_properties] if args.key?(:cloud_export_additional_properties)
           @color = args[:color] if args.key?(:color)
           @condition = args[:condition] if args.key?(:condition)
           @content_language = args[:content_language] if args.key?(:content_language)
@@ -10940,6 +12736,7 @@ module Google
           @custom_label3 = args[:custom_label3] if args.key?(:custom_label3)
           @custom_label4 = args[:custom_label4] if args.key?(:custom_label4)
           @description = args[:description] if args.key?(:description)
+          @disclosure_date = args[:disclosure_date] if args.key?(:disclosure_date)
           @display_ads_id = args[:display_ads_id] if args.key?(:display_ads_id)
           @display_ads_link = args[:display_ads_link] if args.key?(:display_ads_link)
           @display_ads_similar_ids = args[:display_ads_similar_ids] if args.key?(:display_ads_similar_ids)
@@ -10948,6 +12745,8 @@ module Google
           @energy_efficiency_class = args[:energy_efficiency_class] if args.key?(:energy_efficiency_class)
           @excluded_destinations = args[:excluded_destinations] if args.key?(:excluded_destinations)
           @expiration_date = args[:expiration_date] if args.key?(:expiration_date)
+          @external_seller_id = args[:external_seller_id] if args.key?(:external_seller_id)
+          @feed_label = args[:feed_label] if args.key?(:feed_label)
           @gender = args[:gender] if args.key?(:gender)
           @google_product_category = args[:google_product_category] if args.key?(:google_product_category)
           @gtin = args[:gtin] if args.key?(:gtin)
@@ -10959,6 +12758,7 @@ module Google
           @is_bundle = args[:is_bundle] if args.key?(:is_bundle)
           @item_group_id = args[:item_group_id] if args.key?(:item_group_id)
           @kind = args[:kind] if args.key?(:kind)
+          @lifestyle_image_links = args[:lifestyle_image_links] if args.key?(:lifestyle_image_links)
           @link = args[:link] if args.key?(:link)
           @link_template = args[:link_template] if args.key?(:link_template)
           @loyalty_points = args[:loyalty_points] if args.key?(:loyalty_points)
@@ -10973,6 +12773,7 @@ module Google
           @multipack = args[:multipack] if args.key?(:multipack)
           @offer_id = args[:offer_id] if args.key?(:offer_id)
           @pattern = args[:pattern] if args.key?(:pattern)
+          @pause = args[:pause] if args.key?(:pause)
           @pickup_method = args[:pickup_method] if args.key?(:pickup_method)
           @pickup_sla = args[:pickup_sla] if args.key?(:pickup_sla)
           @price = args[:price] if args.key?(:price)
@@ -11006,6 +12807,7 @@ module Google
           @transit_time_label = args[:transit_time_label] if args.key?(:transit_time_label)
           @unit_pricing_base_measure = args[:unit_pricing_base_measure] if args.key?(:unit_pricing_base_measure)
           @unit_pricing_measure = args[:unit_pricing_measure] if args.key?(:unit_pricing_measure)
+          @virtual_model_link = args[:virtual_model_link] if args.key?(:virtual_model_link)
         end
       end
       
@@ -11040,6 +12842,227 @@ module Google
         end
       end
       
+      # Product [certification](https://support.google.com/merchants/answer/13528839),
+      # introduced for EU energy efficiency labeling compliance using the [EU EPREL](
+      # https://eprel.ec.europa.eu/screen/home) database.
+      class ProductCertification
+        include Google::Apis::Core::Hashable
+      
+        # The certification authority, for example "European_Commission". Maximum length
+        # is 2000 characters.
+        # Corresponds to the JSON property `certificationAuthority`
+        # @return [String]
+        attr_accessor :certification_authority
+      
+        # The certification code, for eaxample "123456". Maximum length is 2000
+        # characters.
+        # Corresponds to the JSON property `certificationCode`
+        # @return [String]
+        attr_accessor :certification_code
+      
+        # The name of the certification, for example "EPREL". Maximum length is 2000
+        # characters.
+        # Corresponds to the JSON property `certificationName`
+        # @return [String]
+        attr_accessor :certification_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certification_authority = args[:certification_authority] if args.key?(:certification_authority)
+          @certification_code = args[:certification_code] if args.key?(:certification_code)
+          @certification_name = args[:certification_name] if args.key?(:certification_name)
+        end
+      end
+      
+      # Product cluster fields. A product cluster is a grouping for different offers
+      # that represent the same product. Values are only set for fields requested
+      # explicitly in the request's search query.
+      class ProductCluster
+        include Google::Apis::Core::Hashable
+      
+        # Brand of the product cluster.
+        # Corresponds to the JSON property `brand`
+        # @return [String]
+        attr_accessor :brand
+      
+        # Tells if there is at least one product of the brand currently `IN_STOCK` in
+        # your product feed across multiple countries, all products are `OUT_OF_STOCK`
+        # in your product feed, or `NOT_IN_INVENTORY`. The field doesn't take the Best
+        # Sellers report country filter into account.
+        # Corresponds to the JSON property `brandInventoryStatus`
+        # @return [String]
+        attr_accessor :brand_inventory_status
+      
+        # Product category (1st level) of the product cluster, represented in Google's
+        # product taxonomy.
+        # Corresponds to the JSON property `categoryL1`
+        # @return [String]
+        attr_accessor :category_l1
+      
+        # Product category (2nd level) of the product cluster, represented in Google's
+        # product taxonomy.
+        # Corresponds to the JSON property `categoryL2`
+        # @return [String]
+        attr_accessor :category_l2
+      
+        # Product category (3rd level) of the product cluster, represented in Google's
+        # product taxonomy.
+        # Corresponds to the JSON property `categoryL3`
+        # @return [String]
+        attr_accessor :category_l3
+      
+        # Product category (4th level) of the product cluster, represented in Google's
+        # product taxonomy.
+        # Corresponds to the JSON property `categoryL4`
+        # @return [String]
+        attr_accessor :category_l4
+      
+        # Product category (5th level) of the product cluster, represented in Google's
+        # product taxonomy.
+        # Corresponds to the JSON property `categoryL5`
+        # @return [String]
+        attr_accessor :category_l5
+      
+        # Tells whether the product cluster is `IN_STOCK` in your product feed across
+        # multiple countries, `OUT_OF_STOCK` in your product feed, or `NOT_IN_INVENTORY`
+        # at all. The field doesn't take the Best Sellers report country filter into
+        # account.
+        # Corresponds to the JSON property `inventoryStatus`
+        # @return [String]
+        attr_accessor :inventory_status
+      
+        # Title of the product cluster.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # GTINs of example variants of the product cluster.
+        # Corresponds to the JSON property `variantGtins`
+        # @return [Array<String>]
+        attr_accessor :variant_gtins
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @brand = args[:brand] if args.key?(:brand)
+          @brand_inventory_status = args[:brand_inventory_status] if args.key?(:brand_inventory_status)
+          @category_l1 = args[:category_l1] if args.key?(:category_l1)
+          @category_l2 = args[:category_l2] if args.key?(:category_l2)
+          @category_l3 = args[:category_l3] if args.key?(:category_l3)
+          @category_l4 = args[:category_l4] if args.key?(:category_l4)
+          @category_l5 = args[:category_l5] if args.key?(:category_l5)
+          @inventory_status = args[:inventory_status] if args.key?(:inventory_status)
+          @title = args[:title] if args.key?(:title)
+          @variant_gtins = args[:variant_gtins] if args.key?(:variant_gtins)
+        end
+      end
+      
+      # The estimated days to deliver a product after an order is placed. Only
+      # authorized shipping signals partners working with a merchant can use this
+      # resource. Merchants should use the [`products`](https://developers.google.com/
+      # shopping-content/reference/rest/v2.1/products#productshipping) resource
+      # instead.
+      class ProductDeliveryTime
+        include Google::Apis::Core::Hashable
+      
+        # Required. A set of associations between `DeliveryArea` and `DeliveryTime`
+        # entries. The total number of `areaDeliveryTimes` can be at most 100.
+        # Corresponds to the JSON property `areaDeliveryTimes`
+        # @return [Array<Google::Apis::ContentV2_1::ProductDeliveryTimeAreaDeliveryTime>]
+        attr_accessor :area_delivery_times
+      
+        # The Content API ID of the product.
+        # Corresponds to the JSON property `productId`
+        # @return [Google::Apis::ContentV2_1::ProductId]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @area_delivery_times = args[:area_delivery_times] if args.key?(:area_delivery_times)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
+      # A pairing of `DeliveryArea` associated with a `DeliveryTime` for this product.
+      class ProductDeliveryTimeAreaDeliveryTime
+        include Google::Apis::Core::Hashable
+      
+        # A delivery area for the product. Only one of `countryCode` or `postalCodeRange`
+        # must be set.
+        # Corresponds to the JSON property `deliveryArea`
+        # @return [Google::Apis::ContentV2_1::DeliveryArea]
+        attr_accessor :delivery_area
+      
+        # A delivery time for this product.
+        # Corresponds to the JSON property `deliveryTime`
+        # @return [Google::Apis::ContentV2_1::ProductDeliveryTimeAreaDeliveryTimeDeliveryTime]
+        attr_accessor :delivery_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delivery_area = args[:delivery_area] if args.key?(:delivery_area)
+          @delivery_time = args[:delivery_time] if args.key?(:delivery_time)
+        end
+      end
+      
+      # A delivery time for this product.
+      class ProductDeliveryTimeAreaDeliveryTimeDeliveryTime
+        include Google::Apis::Core::Hashable
+      
+        # Required. The maximum number of business days (inclusive) between when an
+        # order is placed and when the product ships. If a product ships in the same day,
+        # set this value to 0.
+        # Corresponds to the JSON property `maxHandlingTimeDays`
+        # @return [Fixnum]
+        attr_accessor :max_handling_time_days
+      
+        # Required. The maximum number of business days (inclusive) between when the
+        # product ships and when the product is delivered.
+        # Corresponds to the JSON property `maxTransitTimeDays`
+        # @return [Fixnum]
+        attr_accessor :max_transit_time_days
+      
+        # Required. The minimum number of business days (inclusive) between when an
+        # order is placed and when the product ships. If a product ships in the same day,
+        # set this value to 0.
+        # Corresponds to the JSON property `minHandlingTimeDays`
+        # @return [Fixnum]
+        attr_accessor :min_handling_time_days
+      
+        # Required. The minimum number of business days (inclusive) between when the
+        # product ships and when the product is delivered.
+        # Corresponds to the JSON property `minTransitTimeDays`
+        # @return [Fixnum]
+        attr_accessor :min_transit_time_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_handling_time_days = args[:max_handling_time_days] if args.key?(:max_handling_time_days)
+          @max_transit_time_days = args[:max_transit_time_days] if args.key?(:max_transit_time_days)
+          @min_handling_time_days = args[:min_handling_time_days] if args.key?(:min_handling_time_days)
+          @min_transit_time_days = args[:min_transit_time_days] if args.key?(:min_transit_time_days)
+        end
+      end
+      
       # 
       class ProductDimension
         include Google::Apis::Core::Hashable
@@ -11063,6 +13086,138 @@ module Google
         def update!(**args)
           @unit = args[:unit] if args.key?(:unit)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # The Content API ID of the product.
+      class ProductId
+        include Google::Apis::Core::Hashable
+      
+        # The Content API ID of the product, in the form `channel:contentLanguage:
+        # targetCountry:offerId`.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
+      # An issue affecting specific product.
+      class ProductIssue
+        include Google::Apis::Core::Hashable
+      
+        # A list of actionable steps that can be executed to solve the issue. An example
+        # is requesting a re-review or providing arguments when merchant disagrees with
+        # the issue. Actions that are supported in (your) third-party application can be
+        # rendered as buttons and should be available to merchant when they expand the
+        # issue.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::ContentV2_1::Action>]
+        attr_accessor :actions
+      
+        # Overall impact of product issue.
+        # Corresponds to the JSON property `impact`
+        # @return [Google::Apis::ContentV2_1::ProductIssueImpact]
+        attr_accessor :impact
+      
+        # Details of the issue as a pre-rendered HTML. HTML elements contain CSS classes
+        # that can be used to customize the style of the content. Always sanitize the
+        # HTML before embedding it directly to your application. The sanitizer needs to
+        # allow basic HTML tags, such as: `div`, `span`, `p`, `a`, `ul`, `li`, `table`, `
+        # tr`, `td`. For example, you can use [DOMPurify](https://www.npmjs.com/package/
+        # dompurify). CSS classes: * `issue-detail` - top level container for the detail
+        # of the issue * `callout-banners` - section of the `issue-detail` with callout
+        # banners * `callout-banner` - single callout banner, inside `callout-banners` *
+        # `callout-banner-info` - callout with important information (default) * `
+        # callout-banner-warning` - callout with a warning * `callout-banner-error` -
+        # callout informing about an error (most severe) * `issue-content` - section of
+        # the `issue-detail`, contains multiple `content-element` * `content-element` -
+        # content element such as a list, link or paragraph, inside `issue-content` * `
+        # root-causes` - unordered list with items describing root causes of the issue,
+        # inside `issue-content` * `root-causes-intro` - intro text before the `root-
+        # causes` list, inside `issue-content` * `segment` - section of the text, `span`
+        # inside paragraph * `segment-attribute` - section of the text that represents a
+        # product attribute, for example 'image\_link' * `segment-literal` - section of
+        # the text that contains a special value, for example '0-1000 kg' * `segment-
+        # bold` - section of the text that should be rendered as bold * `segment-italic`
+        # - section of the text that should be rendered as italic * `tooltip` - used on
+        # paragraphs that should be rendered with a tooltip. A section of the text in
+        # such a paragraph will have a class `tooltip-text` and is intended to be shown
+        # in a mouse over dialog. If the style is not used, the `tooltip-text` section
+        # would be shown on a new line, after the main part of the text. * `tooltip-text`
+        # - marks a section of the text within a `tooltip`, that is intended to be
+        # shown in a mouse over dialog. * `tooltip-icon` - marks a section of the text
+        # within a `tooltip`, that can be replaced with a tooltip icon, for example '?'
+        # or 'i'. By default, this section contains a `br` tag, that is separating the
+        # main text and the tooltip text when the style is not used. * `tooltip-style-
+        # question` - the tooltip shows helpful information, can use the '?' as an icon.
+        # * `tooltip-style-info` - the tooltip adds additional information fitting to
+        # the context, can use the 'i' as an icon. * `content-moderation` - marks the
+        # paragraph that explains how the issue was identified. * `new-element` -
+        # Present for new elements added to the pre-rendered content in the future. To
+        # make sure that a new content element does not break your style, you can hide
+        # everything with this class.
+        # Corresponds to the JSON property `prerenderedContent`
+        # @return [String]
+        attr_accessor :prerendered_content
+      
+        # Title of the issue.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @impact = args[:impact] if args.key?(:impact)
+          @prerendered_content = args[:prerendered_content] if args.key?(:prerendered_content)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Overall impact of product issue.
+      class ProductIssueImpact
+        include Google::Apis::Core::Hashable
+      
+        # Detailed impact breakdown. Explains the types of restriction the issue has in
+        # different shopping destinations and territory. If present, it should be
+        # rendered to the merchant. Can be shown as a mouse over dropdown or a dialog.
+        # Each breakdown item represents a group of regions with the same impact details.
+        # Corresponds to the JSON property `breakdowns`
+        # @return [Array<Google::Apis::ContentV2_1::Breakdown>]
+        attr_accessor :breakdowns
+      
+        # Optional. Message summarizing the overall impact of the issue. If present, it
+        # should be rendered to the merchant. For example: "Limits visibility in France"
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The severity of the issue.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @breakdowns = args[:breakdowns] if args.key?(:breakdowns)
+          @message = args[:message] if args.key?(:message)
+          @severity = args[:severity] if args.key?(:severity)
         end
       end
       
@@ -11113,21 +13268,21 @@ module Google
         attr_accessor :location_group_name
       
         # The numeric ID of a location that the shipping rate applies to as defined in
-        # the AdWords API.
+        # the Google Ads API.
         # Corresponds to the JSON property `locationId`
         # @return [Fixnum]
         attr_accessor :location_id
       
         # Maximum handling time (inclusive) between when the order is received and
         # shipped in business days. 0 means that the order is shipped on the same day as
-        # it is received if it happens before the cut-off time. Both maxHandlingTime and
+        # it's received if it happens before the cut-off time. Both maxHandlingTime and
         # maxTransitTime are required if providing shipping speeds.
         # Corresponds to the JSON property `maxHandlingTime`
         # @return [Fixnum]
         attr_accessor :max_handling_time
       
         # Maximum transit time (inclusive) between when the order has shipped and when
-        # it is delivered in business days. 0 means that the order is delivered on the
+        # it's delivered in business days. 0 means that the order is delivered on the
         # same day as it ships. Both maxHandlingTime and maxTransitTime are required if
         # providing shipping speeds.
         # Corresponds to the JSON property `maxTransitTime`
@@ -11136,17 +13291,17 @@ module Google
       
         # Minimum handling time (inclusive) between when the order is received and
         # shipped in business days. 0 means that the order is shipped on the same day as
-        # it is received if it happens before the cut-off time. minHandlingTime can only
-        # be present together with maxHandlingTime; but it is not required if
+        # it's received if it happens before the cut-off time. minHandlingTime can only
+        # be present together with maxHandlingTime; but it's not required if
         # maxHandlingTime is present.
         # Corresponds to the JSON property `minHandlingTime`
         # @return [Fixnum]
         attr_accessor :min_handling_time
       
         # Minimum transit time (inclusive) between when the order has shipped and when
-        # it is delivered in business days. 0 means that the order is delivered on the
+        # it's delivered in business days. 0 means that the order is delivered on the
         # same day as it ships. minTransitTime can only be present together with
-        # maxTransitTime; but it is not required if maxTransitTime is present.
+        # maxTransitTime; but it's not required if maxTransitTime is present.
         # Corresponds to the JSON property `minTransitTime`
         # @return [Fixnum]
         attr_accessor :min_transit_time
@@ -11243,7 +13398,7 @@ module Google
         end
       end
       
-      # The status of a product, i.e., information about a product computed
+      # The status of a product, that is, information about a product computed
       # asynchronously.
       class ProductStatus
         include Google::Apis::Core::Hashable
@@ -11336,7 +13491,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :pending_countries
       
-        # Destination approval status in `targetCountry` of the offer.
+        # Deprecated. Destination approval status in `targetCountry` of the offer.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -11463,7 +13618,7 @@ module Google
         attr_accessor :country
       
         # The numeric ID of a location that the tax rate applies to as defined in the
-        # AdWords API.
+        # Google Ads API.
         # Corresponds to the JSON property `locationId`
         # @return [Fixnum]
         attr_accessor :location_id
@@ -11556,6 +13711,316 @@ module Google
         end
       end
       
+      # Product fields. Values are only set for fields requested explicitly in the
+      # request's search query.
+      class ProductView
+        include Google::Apis::Core::Hashable
+      
+        # Aggregated destination status.
+        # Corresponds to the JSON property `aggregatedDestinationStatus`
+        # @return [String]
+        attr_accessor :aggregated_destination_status
+      
+        # Availability of the product.
+        # Corresponds to the JSON property `availability`
+        # @return [String]
+        attr_accessor :availability
+      
+        # Brand of the product.
+        # Corresponds to the JSON property `brand`
+        # @return [String]
+        attr_accessor :brand
+      
+        # First level of the product category in [Google's product taxonomy](https://
+        # support.google.com/merchants/answer/6324436).
+        # Corresponds to the JSON property `categoryL1`
+        # @return [String]
+        attr_accessor :category_l1
+      
+        # Second level of the product category in [Google's product taxonomy](https://
+        # support.google.com/merchants/answer/6324436).
+        # Corresponds to the JSON property `categoryL2`
+        # @return [String]
+        attr_accessor :category_l2
+      
+        # Third level of the product category in [Google's product taxonomy](https://
+        # support.google.com/merchants/answer/6324436).
+        # Corresponds to the JSON property `categoryL3`
+        # @return [String]
+        attr_accessor :category_l3
+      
+        # Fourth level of the product category in [Google's product taxonomy](https://
+        # support.google.com/merchants/answer/6324436).
+        # Corresponds to the JSON property `categoryL4`
+        # @return [String]
+        attr_accessor :category_l4
+      
+        # Fifth level of the product category in [Google's product taxonomy](https://
+        # support.google.com/merchants/answer/6324436).
+        # Corresponds to the JSON property `categoryL5`
+        # @return [String]
+        attr_accessor :category_l5
+      
+        # Channel of the product (online versus local).
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
+        # Condition of the product.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # The time the merchant created the product in timestamp seconds.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # Product price currency code (for example, ISO 4217). Absent if product price
+        # is not available.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `expirationDate`
+        # @return [Google::Apis::ContentV2_1::Date]
+        attr_accessor :expiration_date
+      
+        # GTIN of the product.
+        # Corresponds to the JSON property `gtin`
+        # @return [Array<String>]
+        attr_accessor :gtin
+      
+        # The REST ID of the product, in the form of channel:contentLanguage:
+        # targetCountry:offerId. Content API methods that operate on products take this
+        # as their productId parameter. Should always be included in the SELECT clause.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Item group ID provided by the merchant for grouping variants together.
+        # Corresponds to the JSON property `itemGroupId`
+        # @return [String]
+        attr_accessor :item_group_id
+      
+        # List of item issues for the product.
+        # Corresponds to the JSON property `itemIssues`
+        # @return [Array<Google::Apis::ContentV2_1::ProductViewItemIssue>]
+        attr_accessor :item_issues
+      
+        # Language code of the product in BCP 47 format.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Merchant-provided id of the product.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # Product price specified as micros (1 millionth of a standard unit, 1 USD =
+        # 1000000 micros) in the product currency. Absent in case the information about
+        # the price of the product is not available.
+        # Corresponds to the JSON property `priceMicros`
+        # @return [Fixnum]
+        attr_accessor :price_micros
+      
+        # First level of the product type in merchant's own [product taxonomy](https://
+        # support.google.com/merchants/answer/6324436).
+        # Corresponds to the JSON property `productTypeL1`
+        # @return [String]
+        attr_accessor :product_type_l1
+      
+        # Second level of the product type in merchant's own [product taxonomy](https://
+        # support.google.com/merchants/answer/6324436).
+        # Corresponds to the JSON property `productTypeL2`
+        # @return [String]
+        attr_accessor :product_type_l2
+      
+        # Third level of the product type in merchant's own [product taxonomy](https://
+        # support.google.com/merchants/answer/6324436).
+        # Corresponds to the JSON property `productTypeL3`
+        # @return [String]
+        attr_accessor :product_type_l3
+      
+        # Fourth level of the product type in merchant's own [product taxonomy](https://
+        # support.google.com/merchants/answer/6324436).
+        # Corresponds to the JSON property `productTypeL4`
+        # @return [String]
+        attr_accessor :product_type_l4
+      
+        # Fifth level of the product type in merchant's own [product taxonomy](https://
+        # support.google.com/merchants/answer/6324436).
+        # Corresponds to the JSON property `productTypeL5`
+        # @return [String]
+        attr_accessor :product_type_l5
+      
+        # The normalized shipping label specified in the feed
+        # Corresponds to the JSON property `shippingLabel`
+        # @return [String]
+        attr_accessor :shipping_label
+      
+        # Title of the product.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregated_destination_status = args[:aggregated_destination_status] if args.key?(:aggregated_destination_status)
+          @availability = args[:availability] if args.key?(:availability)
+          @brand = args[:brand] if args.key?(:brand)
+          @category_l1 = args[:category_l1] if args.key?(:category_l1)
+          @category_l2 = args[:category_l2] if args.key?(:category_l2)
+          @category_l3 = args[:category_l3] if args.key?(:category_l3)
+          @category_l4 = args[:category_l4] if args.key?(:category_l4)
+          @category_l5 = args[:category_l5] if args.key?(:category_l5)
+          @channel = args[:channel] if args.key?(:channel)
+          @condition = args[:condition] if args.key?(:condition)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @expiration_date = args[:expiration_date] if args.key?(:expiration_date)
+          @gtin = args[:gtin] if args.key?(:gtin)
+          @id = args[:id] if args.key?(:id)
+          @item_group_id = args[:item_group_id] if args.key?(:item_group_id)
+          @item_issues = args[:item_issues] if args.key?(:item_issues)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @price_micros = args[:price_micros] if args.key?(:price_micros)
+          @product_type_l1 = args[:product_type_l1] if args.key?(:product_type_l1)
+          @product_type_l2 = args[:product_type_l2] if args.key?(:product_type_l2)
+          @product_type_l3 = args[:product_type_l3] if args.key?(:product_type_l3)
+          @product_type_l4 = args[:product_type_l4] if args.key?(:product_type_l4)
+          @product_type_l5 = args[:product_type_l5] if args.key?(:product_type_l5)
+          @shipping_label = args[:shipping_label] if args.key?(:shipping_label)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Item issue associated with the product.
+      class ProductViewItemIssue
+        include Google::Apis::Core::Hashable
+      
+        # Type of the item issue.
+        # Corresponds to the JSON property `issueType`
+        # @return [Google::Apis::ContentV2_1::ProductViewItemIssueItemIssueType]
+        attr_accessor :issue_type
+      
+        # Item issue resolution.
+        # Corresponds to the JSON property `resolution`
+        # @return [String]
+        attr_accessor :resolution
+      
+        # Severity of an issue per destination in a region, and aggregated severity.
+        # Corresponds to the JSON property `severity`
+        # @return [Google::Apis::ContentV2_1::ProductViewItemIssueItemIssueSeverity]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issue_type = args[:issue_type] if args.key?(:issue_type)
+          @resolution = args[:resolution] if args.key?(:resolution)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # Issue severity for all affected regions in a destination.
+      class ProductViewItemIssueIssueSeverityPerDestination
+        include Google::Apis::Core::Hashable
+      
+        # List of demoted countries in the destination.
+        # Corresponds to the JSON property `demotedCountries`
+        # @return [Array<String>]
+        attr_accessor :demoted_countries
+      
+        # Issue destination.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # List of disapproved countries in the destination.
+        # Corresponds to the JSON property `disapprovedCountries`
+        # @return [Array<String>]
+        attr_accessor :disapproved_countries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @demoted_countries = args[:demoted_countries] if args.key?(:demoted_countries)
+          @destination = args[:destination] if args.key?(:destination)
+          @disapproved_countries = args[:disapproved_countries] if args.key?(:disapproved_countries)
+        end
+      end
+      
+      # Severity of an issue per destination in a region, and aggregated severity.
+      class ProductViewItemIssueItemIssueSeverity
+        include Google::Apis::Core::Hashable
+      
+        # Severity of an issue aggregated for destination.
+        # Corresponds to the JSON property `aggregatedSeverity`
+        # @return [String]
+        attr_accessor :aggregated_severity
+      
+        # Item issue severity for every destination.
+        # Corresponds to the JSON property `severityPerDestination`
+        # @return [Array<Google::Apis::ContentV2_1::ProductViewItemIssueIssueSeverityPerDestination>]
+        attr_accessor :severity_per_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregated_severity = args[:aggregated_severity] if args.key?(:aggregated_severity)
+          @severity_per_destination = args[:severity_per_destination] if args.key?(:severity_per_destination)
+        end
+      end
+      
+      # Type of the item issue.
+      class ProductViewItemIssueItemIssueType
+        include Google::Apis::Core::Hashable
+      
+        # Canonical attribute name for attribute-specific issues.
+        # Corresponds to the JSON property `canonicalAttribute`
+        # @return [String]
+        attr_accessor :canonical_attribute
+      
+        # Error code of the issue.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canonical_attribute = args[:canonical_attribute] if args.key?(:canonical_attribute)
+          @code = args[:code] if args.key?(:code)
+        end
+      end
+      
       # 
       class ProductWeight
         include Google::Apis::Core::Hashable
@@ -11628,8 +14093,8 @@ module Google
         # @return [String]
         attr_accessor :method_prop
       
-        # Required product attributes are primarily defined by the products data
-        # specification. See the Products Data Specification Help Center article for
+        # Required product attributes are primarily defined by the product data
+        # specification. See the Product Data Specification Help Center article for
         # information. Product data. After inserting, updating, or deleting a product,
         # it may take several minutes before changes take effect.
         # Corresponds to the JSON property `product`
@@ -11644,10 +14109,10 @@ module Google
       
         # The comma-separated list of product attributes to be updated. Example: `"title,
         # salePrice"`. Attributes specified in the update mask without a value specified
-        # in the body will be deleted from the product. Only top-level product
-        # attributes can be updated. If not defined, product attributes with set values
-        # will be updated and other attributes will stay unchanged. Only defined if the
-        # method is `update`.
+        # in the body will be deleted from the product. *You must specify the update
+        # mask to delete attributes.* Only top-level product attributes can be updated.
+        # If not defined, product attributes with set values will be updated and other
+        # attributes will stay unchanged. Only defined if the method is `update`.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -11714,8 +14179,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Required product attributes are primarily defined by the products data
-        # specification. See the Products Data Specification Help Center article for
+        # Required product attributes are primarily defined by the product data
+        # specification. See the Product Data Specification Help Center article for
         # information. Product data. After inserting, updating, or deleting a product,
         # it may take several minutes before changes take effect.
         # Corresponds to the JSON property `product`
@@ -11801,7 +14266,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :destinations
       
-        # 
+        # Deprecated: Setting this field has no effect and attributes are never included.
         # Corresponds to the JSON property `includeAttributes`
         # @return [Boolean]
         attr_accessor :include_attributes
@@ -11883,7 +14348,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The status of a product, i.e., information about a product computed
+        # The status of a product, that is, information about a product computed
         # asynchronously.
         # Corresponds to the JSON property `productStatus`
         # @return [Google::Apis::ContentV2_1::ProductStatus]
@@ -11934,14 +14399,11 @@ module Google
         end
       end
       
-      # The Promotions feature is currently in alpha and is not yet publicly
-      # available via Content API for Shopping. This documentation is provided for
-      # reference only may be subject to change. Represents a promotion. See the
-      # following articles for more details. * [Promotions feed specification](https://
-      # support.google.com/merchants/answer/2906014) * [Local promotions feed
-      # specification](https://support.google.com/merchants/answer/10146130) * [
-      # Promotions on Buy on Google product data specification](https://support.google.
-      # com/merchants/answer/9173673)
+      # Represents a promotion. See the following articles for more details. * [
+      # Promotions feed specification](https://support.google.com/merchants/answer/
+      # 2906014) * [Local promotions feed specification](https://support.google.com/
+      # merchants/answer/10146130) * [Promotions on Buy on Google product data
+      # specification](https://support.google.com/merchants/answer/9173673)
       class Promotion
         include Google::Apis::Core::Hashable
       
@@ -11955,7 +14417,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :brand_exclusion
       
-        # Required. The content language used as part of the unique identifier.
+        # Required. The content language used as part of the unique identifier. `en`
+        # content language is available for all target countries. `fr` content language
+        # is available for `CA` and `FR` target countries. `de` content language is
+        # available for `DE` target country. `nl` content language is available for `NL`
+        # target country. `it` content language is available for `IT` target country. `
+        # pt` content language is available for `BR` target country. `ja` content
+        # language is available for `JP` target country. `ko` content language is
+        # available for `KR` target country.
         # Corresponds to the JSON property `contentLanguage`
         # @return [String]
         attr_accessor :content_language
@@ -11970,7 +14439,7 @@ module Google
         # @return [String]
         attr_accessor :free_gift_description
       
-        # Free gift item id for the promotion.
+        # Free gift item ID for the promotion.
         # Corresponds to the JSON property `freeGiftItemId`
         # @return [String]
         attr_accessor :free_gift_item_id
@@ -11980,7 +14449,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::PriceAmount]
         attr_accessor :free_gift_value
       
-        # Generic redemption code for the promotion. To be used with the above field.
+        # Generic redemption code for the promotion. To be used with the `offerType`
+        # field.
         # Corresponds to the JSON property `genericRedemptionCode`
         # @return [String]
         attr_accessor :generic_redemption_code
@@ -11990,31 +14460,31 @@ module Google
         # @return [Fixnum]
         attr_accessor :get_this_quantity_discounted
       
-        # Required. Output only. The REST promotion id to uniquely identify the
-        # promotion. Content API methods that operate on promotions take this as their
-        # promotionId parameter. The REST ID for a promotion is of the form channel:
-        # contentLanguage:targetCountry:promotionId The channel field will have a value
-        # of "online", "in_store", or "online_in_store".
+        # Required. Output only. The REST promotion ID to uniquely identify the
+        # promotion. Content API methods that operate on promotions take this as their `
+        # promotionId` parameter. The REST ID for a promotion is of the form channel:
+        # contentLanguage:targetCountry:promotionId The `channel` field has a value of `"
+        # online"`, `"in_store"`, or `"online_in_store"`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Product filter by item group id for the promotion.
+        # Product filter by item group ID for the promotion.
         # Corresponds to the JSON property `itemGroupId`
         # @return [Array<String>]
         attr_accessor :item_group_id
       
-        # Product filter by item group id exclusion for the promotion.
+        # Product filter by item group ID exclusion for the promotion.
         # Corresponds to the JSON property `itemGroupIdExclusion`
         # @return [Array<String>]
         attr_accessor :item_group_id_exclusion
       
-        # Product filter by item id for the promotion.
+        # Product filter by item ID for the promotion.
         # Corresponds to the JSON property `itemId`
         # @return [Array<String>]
         attr_accessor :item_id
       
-        # Product filter by item id exclusion for the promotion.
+        # Product filter by item ID exclusion for the promotion.
         # Corresponds to the JSON property `itemIdExclusion`
         # @return [Array<String>]
         attr_accessor :item_id_exclusion
@@ -12029,7 +14499,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::PriceAmount]
         attr_accessor :limit_value
       
-        # Long title for the promotion.
+        # Required. Long title for the promotion.
         # Corresponds to the JSON property `longTitle`
         # @return [String]
         attr_accessor :long_title
@@ -12090,7 +14560,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :promotion_destination_ids
       
-        # String representation of the promotion display dates.
+        # String representation of the promotion display dates. Deprecated. Use `
+        # promotion_display_time_period` instead.
         # Corresponds to the JSON property `promotionDisplayDates`
         # @return [String]
         attr_accessor :promotion_display_dates
@@ -12100,7 +14571,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::TimePeriod]
         attr_accessor :promotion_display_time_period
       
-        # Required. String representation of the promotion effective dates.
+        # String representation of the promotion effective dates. Deprecated. Use `
+        # promotion_effective_time_period` instead.
         # Corresponds to the JSON property `promotionEffectiveDates`
         # @return [String]
         attr_accessor :promotion_effective_dates
@@ -12110,10 +14582,22 @@ module Google
         # @return [Google::Apis::ContentV2_1::TimePeriod]
         attr_accessor :promotion_effective_time_period
       
-        # Required. The user provided promotion id to uniquely identify the promotion.
+        # Required. The user provided promotion ID to uniquely identify the promotion.
         # Corresponds to the JSON property `promotionId`
         # @return [String]
         attr_accessor :promotion_id
+      
+        # The status of the promotion.
+        # Corresponds to the JSON property `promotionStatus`
+        # @return [Google::Apis::ContentV2_1::PromotionPromotionStatus]
+        attr_accessor :promotion_status
+      
+        # URL to the page on the merchant's site where the promotion shows. Local
+        # Inventory ads promotions throw an error if no promo url is included. URL is
+        # used to confirm that the promotion is valid and can be redeemed.
+        # Corresponds to the JSON property `promotionUrl`
+        # @return [String]
+        attr_accessor :promotion_url
       
         # Required. Redemption channel for the promotion. At least one channel is
         # required.
@@ -12121,12 +14605,31 @@ module Google
         # @return [Array<String>]
         attr_accessor :redemption_channel
       
-        # Shipping service names for thse promotion.
+        # Shipping service names for the promotion.
         # Corresponds to the JSON property `shippingServiceNames`
         # @return [Array<String>]
         attr_accessor :shipping_service_names
       
-        # Required. The target country used as part of the unique identifier.
+        # Whether the promotion applies to all stores, or only specified stores. Local
+        # Inventory ads promotions throw an error if no store applicability is included.
+        # An INVALID_ARGUMENT error is thrown if store_applicability is set to
+        # ALL_STORES and store_code or score_code_exclusion is set to a value.
+        # Corresponds to the JSON property `storeApplicability`
+        # @return [String]
+        attr_accessor :store_applicability
+      
+        # Store codes to include for the promotion.
+        # Corresponds to the JSON property `storeCode`
+        # @return [Array<String>]
+        attr_accessor :store_code
+      
+        # Store codes to exclude for the promotion.
+        # Corresponds to the JSON property `storeCodeExclusion`
+        # @return [Array<String>]
+        attr_accessor :store_code_exclusion
+      
+        # Required. The target country used as part of the unique identifier. Can be `AU`
+        # , `CA`, `DE`, `FR`, `GB`, `IN`, `US`, `BR`, `ES`, `NL`, `JP`, `IT` or `KR`.
         # Corresponds to the JSON property `targetCountry`
         # @return [String]
         attr_accessor :target_country
@@ -12170,9 +14673,105 @@ module Google
           @promotion_effective_dates = args[:promotion_effective_dates] if args.key?(:promotion_effective_dates)
           @promotion_effective_time_period = args[:promotion_effective_time_period] if args.key?(:promotion_effective_time_period)
           @promotion_id = args[:promotion_id] if args.key?(:promotion_id)
+          @promotion_status = args[:promotion_status] if args.key?(:promotion_status)
+          @promotion_url = args[:promotion_url] if args.key?(:promotion_url)
           @redemption_channel = args[:redemption_channel] if args.key?(:redemption_channel)
           @shipping_service_names = args[:shipping_service_names] if args.key?(:shipping_service_names)
+          @store_applicability = args[:store_applicability] if args.key?(:store_applicability)
+          @store_code = args[:store_code] if args.key?(:store_code)
+          @store_code_exclusion = args[:store_code_exclusion] if args.key?(:store_code_exclusion)
           @target_country = args[:target_country] if args.key?(:target_country)
+        end
+      end
+      
+      # The status of the promotion.
+      class PromotionPromotionStatus
+        include Google::Apis::Core::Hashable
+      
+        # Date on which the promotion has been created in [ISO 8601](http://en.wikipedia.
+        # org/wiki/ISO_8601) format: Date, time, and offset, for example "2020-01-02T09:
+        # 00:00+01:00" or "2020-01-02T09:00:00Z"
+        # Corresponds to the JSON property `creationDate`
+        # @return [String]
+        attr_accessor :creation_date
+      
+        # The intended destinations for the promotion.
+        # Corresponds to the JSON property `destinationStatuses`
+        # @return [Array<Google::Apis::ContentV2_1::PromotionPromotionStatusDestinationStatus>]
+        attr_accessor :destination_statuses
+      
+        # Date on which the promotion status has been last updated in [ISO 8601](http://
+        # en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example "
+        # 2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
+        # Corresponds to the JSON property `lastUpdateDate`
+        # @return [String]
+        attr_accessor :last_update_date
+      
+        # A list of issues associated with the promotion.
+        # Corresponds to the JSON property `promotionIssue`
+        # @return [Array<Google::Apis::ContentV2_1::PromotionPromotionStatusPromotionIssue>]
+        attr_accessor :promotion_issue
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_date = args[:creation_date] if args.key?(:creation_date)
+          @destination_statuses = args[:destination_statuses] if args.key?(:destination_statuses)
+          @last_update_date = args[:last_update_date] if args.key?(:last_update_date)
+          @promotion_issue = args[:promotion_issue] if args.key?(:promotion_issue)
+        end
+      end
+      
+      # The destination status of the promotion.
+      class PromotionPromotionStatusDestinationStatus
+        include Google::Apis::Core::Hashable
+      
+        # The name of the destination.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # The status for the specified destination.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The issue associated with the promotion.
+      class PromotionPromotionStatusPromotionIssue
+        include Google::Apis::Core::Hashable
+      
+        # Code of the issue.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Explanation of the issue.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @detail = args[:detail] if args.key?(:detail)
         end
       end
       
@@ -12264,6 +14863,198 @@ module Google
           @name = args[:name] if args.key?(:name)
           @single_value = args[:single_value] if args.key?(:single_value)
           @subtables = args[:subtables] if args.key?(:subtables)
+        end
+      end
+      
+      # Recommendations are suggested ways to improve your merchant account's
+      # performance. For example, to engage with a feature, or start using a new
+      # Google product.
+      class Recommendation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. CTAs of this recommendation. Repeated.
+        # Corresponds to the JSON property `additionalCallToAction`
+        # @return [Array<Google::Apis::ContentV2_1::RecommendationCallToAction>]
+        attr_accessor :additional_call_to_action
+      
+        # Output only. List of additional localized descriptions for a recommendation.
+        # Localication uses the `languageCode` field in `GenerateRecommendations`
+        # requests. Not all description types are guaranteed to be present and we
+        # recommend to rely on default description.
+        # Corresponds to the JSON property `additionalDescriptions`
+        # @return [Array<Google::Apis::ContentV2_1::RecommendationDescription>]
+        attr_accessor :additional_descriptions
+      
+        # Output only. Any creatives attached to the recommendation. Repeated.
+        # Corresponds to the JSON property `creative`
+        # @return [Array<Google::Apis::ContentV2_1::RecommendationCreative>]
+        attr_accessor :creative
+      
+        # Call to action (CTA) that explains how a merchant can implement this
+        # recommendation
+        # Corresponds to the JSON property `defaultCallToAction`
+        # @return [Google::Apis::ContentV2_1::RecommendationCallToAction]
+        attr_accessor :default_call_to_action
+      
+        # Optional. Localized recommendation description. The localization the `@link `
+        # GenerateRecommendationsRequest.language_code`` field in `@link `
+        # GenerateRecommendationsRequest`` requests.
+        # Corresponds to the JSON property `defaultDescription`
+        # @return [String]
+        attr_accessor :default_description
+      
+        # Optional. A numerical score of the impact from the recommendation's
+        # description. For example, a recommendation might suggest an upward trend in
+        # sales for a certain product. Higher number means larger impact.
+        # Corresponds to the JSON property `numericalImpact`
+        # @return [Fixnum]
+        attr_accessor :numerical_impact
+      
+        # Optional. Indicates whether a user needs to pay when they complete the user
+        # journey suggested by the recommendation.
+        # Corresponds to the JSON property `paid`
+        # @return [Boolean]
+        attr_accessor :paid
+        alias_method :paid?, :paid
+      
+        # Optional. Localized recommendation name. The localization uses the `@link `
+        # GenerateRecommendationsRequest.language_code`` field in `@link `
+        # GenerateRecommendationsRequest`` requests.
+        # Corresponds to the JSON property `recommendationName`
+        # @return [String]
+        attr_accessor :recommendation_name
+      
+        # Optional. Subtype of the recommendations. Only applicable when multiple
+        # recommendations can be generated per type, and is used as an identifier of
+        # recommendation under the same recommendation type.
+        # Corresponds to the JSON property `subType`
+        # @return [String]
+        attr_accessor :sub_type
+      
+        # Optional. Localized Recommendation Title. Localization uses the `@link `
+        # GenerateRecommendationsRequest.language_code`` field in `@link `
+        # GenerateRecommendationsRequest`` requests.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Output only. Type of the recommendation. List of currently available
+        # recommendation types: - OPPORTUNITY_CREATE_NEW_COLLECTION -
+        # OPPORTUNITY_CREATE_EMAIL_CAMPAIGN
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_call_to_action = args[:additional_call_to_action] if args.key?(:additional_call_to_action)
+          @additional_descriptions = args[:additional_descriptions] if args.key?(:additional_descriptions)
+          @creative = args[:creative] if args.key?(:creative)
+          @default_call_to_action = args[:default_call_to_action] if args.key?(:default_call_to_action)
+          @default_description = args[:default_description] if args.key?(:default_description)
+          @numerical_impact = args[:numerical_impact] if args.key?(:numerical_impact)
+          @paid = args[:paid] if args.key?(:paid)
+          @recommendation_name = args[:recommendation_name] if args.key?(:recommendation_name)
+          @sub_type = args[:sub_type] if args.key?(:sub_type)
+          @title = args[:title] if args.key?(:title)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Call to action (CTA) that explains how a merchant can implement this
+      # recommendation
+      class RecommendationCallToAction
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Intent of the action. This value describes the intent (for
+        # example, `OPEN_CREATE_EMAIL_CAMPAIGN_FLOW`) and can vary from recommendation
+        # to recommendation. This value can change over time for the same recommendation.
+        # Currently available intent values: - OPEN_CREATE_EMAIL_CAMPAIGN_FLOW: Opens a
+        # user journey where they can create a marketing email campaign. (No default URL)
+        # - OPEN_CREATE_COLLECTION_TAB: Opens a user journey where they can [create a
+        # collection](https://support.google.com/merchants/answer/9703228) for their
+        # Merchant account. (No default URL)
+        # Corresponds to the JSON property `intent`
+        # @return [String]
+        attr_accessor :intent
+      
+        # Output only. Localized text of the CTA. Optional.
+        # Corresponds to the JSON property `localizedText`
+        # @return [String]
+        attr_accessor :localized_text
+      
+        # Optional. URL of the CTA. This field will only be set for some recommendations
+        # where there is a suggested landing URL. Otherwise it will be set to an empty
+        # string. We recommend developers to use their own custom landing page according
+        # to the description of the intent field above when this uri field is empty.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent = args[:intent] if args.key?(:intent)
+          @localized_text = args[:localized_text] if args.key?(:localized_text)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Creative is a multimedia attachment to recommendation that can be used on the
+      # frontend.
+      class RecommendationCreative
+        include Google::Apis::Core::Hashable
+      
+        # Type of the creative.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # URL of the creative.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Google-provided description for the recommendation.
+      class RecommendationDescription
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Text of the description.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Output only. Type of the description.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -12641,9 +15432,169 @@ module Google
         end
       end
       
+      # The payload for configuring how the content should be rendered.
+      class RenderAccountIssuesRequestPayload
+        include Google::Apis::Core::Hashable
+      
+        # Optional. How the detailed content should be returned. Default option is to
+        # return the content as a pre-rendered HTML text.
+        # Corresponds to the JSON property `contentOption`
+        # @return [String]
+        attr_accessor :content_option
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_option = args[:content_option] if args.key?(:content_option)
+        end
+      end
+      
+      # Response containing support content and actions for listed account issues.
+      class RenderAccountIssuesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Alternate Dispute Resolution (ADR) that may be available to merchants in
+        # some regions. If present, the link should be shown on the same page as the
+        # list of issues.
+        # Corresponds to the JSON property `alternateDisputeResolution`
+        # @return [Google::Apis::ContentV2_1::AlternateDisputeResolution]
+        attr_accessor :alternate_dispute_resolution
+      
+        # List of account issues for a given account. This list can be shown with
+        # compressed, expandable items. In the compressed form, the title and impact
+        # should be shown for each issue. Once the issue is expanded, the detailed
+        # content and available actions should be rendered.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::ContentV2_1::AccountIssue>]
+        attr_accessor :issues
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternate_dispute_resolution = args[:alternate_dispute_resolution] if args.key?(:alternate_dispute_resolution)
+          @issues = args[:issues] if args.key?(:issues)
+        end
+      end
+      
+      # The payload for configuring how the content should be rendered.
+      class RenderProductIssuesRequestPayload
+        include Google::Apis::Core::Hashable
+      
+        # Optional. How the detailed content should be returned. Default option is to
+        # return the content as a pre-rendered HTML text.
+        # Corresponds to the JSON property `contentOption`
+        # @return [String]
+        attr_accessor :content_option
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_option = args[:content_option] if args.key?(:content_option)
+        end
+      end
+      
+      # Response containing support content and actions for listed product issues.
+      class RenderProductIssuesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Alternate Dispute Resolution (ADR) that may be available to merchants in
+        # some regions. If present, the link should be shown on the same page as the
+        # list of issues.
+        # Corresponds to the JSON property `alternateDisputeResolution`
+        # @return [Google::Apis::ContentV2_1::AlternateDisputeResolution]
+        attr_accessor :alternate_dispute_resolution
+      
+        # List of issues for a given product. This list can be shown with compressed,
+        # expandable items. In the compressed form, the title and impact should be shown
+        # for each issue. Once the issue is expanded, the detailed content and available
+        # actions should be rendered.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::ContentV2_1::ProductIssue>]
+        attr_accessor :issues
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternate_dispute_resolution = args[:alternate_dispute_resolution] if args.key?(:alternate_dispute_resolution)
+          @issues = args[:issues] if args.key?(:issues)
+        end
+      end
+      
+      # Request to report interactions on a recommendation.
+      class ReportInteractionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Type of the interaction that is reported, for example
+        # INTERACTION_CLICK.
+        # Corresponds to the JSON property `interactionType`
+        # @return [String]
+        attr_accessor :interaction_type
+      
+        # Required. Token of the response when recommendation was returned.
+        # Corresponds to the JSON property `responseToken`
+        # @return [String]
+        attr_accessor :response_token
+      
+        # Optional. Subtype of the recommendations this interaction happened on. This
+        # field must be set only to the value that is returned by `@link `
+        # RecommendationsService.GenerateRecommendations`` call.
+        # Corresponds to the JSON property `subtype`
+        # @return [String]
+        attr_accessor :subtype
+      
+        # Required. Type of the recommendations on which this interaction happened. This
+        # field must be set only to the value that is returned by `@link `
+        # GenerateRecommendationsResponse`` call.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interaction_type = args[:interaction_type] if args.key?(:interaction_type)
+          @response_token = args[:response_token] if args.key?(:response_token)
+          @subtype = args[:subtype] if args.key?(:subtype)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Result row returned from the search query.
       class ReportRow
         include Google::Apis::Core::Hashable
+      
+        # Fields related to the [Best sellers reports](https://support.google.com/
+        # merchants/answer/9488679).
+        # Corresponds to the JSON property `bestSellers`
+        # @return [Google::Apis::ContentV2_1::BestSellers]
+        attr_accessor :best_sellers
+      
+        # Brand fields. Values are only set for fields requested explicitly in the
+        # request's search query.
+        # Corresponds to the JSON property `brand`
+        # @return [Google::Apis::ContentV2_1::Brand]
+        attr_accessor :brand
+      
+        # Fields related to [competitive visibility reports] (https://support.google.com/
+        # merchants/answer/11366442).
+        # Corresponds to the JSON property `competitiveVisibility`
+        # @return [Google::Apis::ContentV2_1::CompetitiveVisibility]
+        attr_accessor :competitive_visibility
       
         # Performance metrics. Values are only set for metrics requested explicitly in
         # the request's search query.
@@ -12651,12 +15602,39 @@ module Google
         # @return [Google::Apis::ContentV2_1::Metrics]
         attr_accessor :metrics
       
+        # Price competitiveness fields requested by the merchant in the query. Field
+        # values are only set if the merchant queries `PriceCompetitivenessProductView`.
+        # https://support.google.com/merchants/answer/9626903
+        # Corresponds to the JSON property `priceCompetitiveness`
+        # @return [Google::Apis::ContentV2_1::PriceCompetitiveness]
+        attr_accessor :price_competitiveness
+      
+        # Price insights fields requested by the merchant in the query. Field values are
+        # only set if the merchant queries `PriceInsightsProductView`. https://support.
+        # google.com/merchants/answer/11916926
+        # Corresponds to the JSON property `priceInsights`
+        # @return [Google::Apis::ContentV2_1::PriceInsights]
+        attr_accessor :price_insights
+      
+        # Product cluster fields. A product cluster is a grouping for different offers
+        # that represent the same product. Values are only set for fields requested
+        # explicitly in the request's search query.
+        # Corresponds to the JSON property `productCluster`
+        # @return [Google::Apis::ContentV2_1::ProductCluster]
+        attr_accessor :product_cluster
+      
+        # Product fields. Values are only set for fields requested explicitly in the
+        # request's search query.
+        # Corresponds to the JSON property `productView`
+        # @return [Google::Apis::ContentV2_1::ProductView]
+        attr_accessor :product_view
+      
         # Dimensions according to which metrics are segmented in the response. Values of
-        # product dimensions, e.g., offer id, reflect the state of a product at the time
-        # of the corresponding event, e.g., impression or order. Segment fields cannot
-        # be selected in queries without also selecting at least one metric field.
-        # Values are only set for dimensions requested explicitly in the request's
-        # search query.
+        # product dimensions, such as `offer_id`, reflect the state of a product at the
+        # time of the corresponding event, for example, impression or order. Segment
+        # fields cannot be selected in queries without also selecting at least one
+        # metric field. Values are only set for dimensions requested explicitly in the
+        # request's search query.
         # Corresponds to the JSON property `segments`
         # @return [Google::Apis::ContentV2_1::Segments]
         attr_accessor :segments
@@ -12667,7 +15645,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @best_sellers = args[:best_sellers] if args.key?(:best_sellers)
+          @brand = args[:brand] if args.key?(:brand)
+          @competitive_visibility = args[:competitive_visibility] if args.key?(:competitive_visibility)
           @metrics = args[:metrics] if args.key?(:metrics)
+          @price_competitiveness = args[:price_competitiveness] if args.key?(:price_competitiveness)
+          @price_insights = args[:price_insights] if args.key?(:price_insights)
+          @product_cluster = args[:product_cluster] if args.key?(:product_cluster)
+          @product_view = args[:product_view] if args.key?(:product_view)
           @segments = args[:segments] if args.key?(:segments)
         end
       end
@@ -12695,11 +15680,11 @@ module Google
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-        # DateTime * google.protobuf.Timestamp
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `date`
         # @return [Google::Apis::ContentV2_1::Date]
         attr_accessor :date
@@ -12782,8 +15767,9 @@ module Google
         end
       end
       
-      # Represents a repricing rule. A repricing rule is used by shopping serving to
-      # adjust transactable offer prices if conditions are met. Next ID: 24
+      # *Deprecated*: New merchants can't start using this resource. Represents a
+      # repricing rule. A repricing rule is used by shopping serving to adjust
+      # transactable offer prices if conditions are met.
       class RepricingRule
         include Google::Apis::Core::Hashable
       
@@ -12793,7 +15779,7 @@ module Google
         attr_accessor :cogs_based_rule
       
         # Required. Immutable. [CLDR country code](http://www.unicode.org/repos/cldr/
-        # tags/latest/common/main/en.xml) (e.g. "US").
+        # tags/latest/common/main/en.xml) (for example, "US").
         # Corresponds to the JSON property `countryCode`
         # @return [String]
         attr_accessor :country_code
@@ -12896,7 +15882,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :percentage_delta
       
-        # The price delta against the COGS. E.g. 2 means $2 more of the COGS.
+        # The price delta against the COGS. For example, 2 means $2 more of the COGS.
         # Corresponds to the JSON property `priceDelta`
         # @return [String]
         attr_accessor :price_delta
@@ -13016,7 +16002,7 @@ module Google
         # String attributes, as long as such attribute of an offer is one of the string
         # attribute values, the offer is considered as passing the matcher. The string
         # matcher checks an offer for inclusivity in the string attributes, not equality.
-        # Only literal string matching is supported, no regex.
+        # Only literal string matching is supported, no regular expressions.
         # Corresponds to the JSON property `strAttributes`
         # @return [Array<String>]
         attr_accessor :str_attributes
@@ -13043,11 +16029,11 @@ module Google
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-        # DateTime * google.protobuf.Timestamp
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `date`
         # @return [Google::Apis::ContentV2_1::Date]
         attr_accessor :date
@@ -13396,18 +16382,18 @@ module Google
       class ReturnAddressAddress
         include Google::Apis::Core::Hashable
       
-        # CLDR country code (e.g. "US").
+        # CLDR country code (for example, "US").
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
       
         # City, town or commune. May also include dependent localities or sublocalities (
-        # e.g. neighborhoods or suburbs).
+        # for example, neighborhoods or suburbs).
         # Corresponds to the JSON property `locality`
         # @return [String]
         attr_accessor :locality
       
-        # Postal code or ZIP (e.g. "94043").
+        # Postal code or ZIP (for example, "94043").
         # Corresponds to the JSON property `postalCode`
         # @return [String]
         attr_accessor :postal_code
@@ -14327,11 +17313,11 @@ module Google
       end
       
       # Dimensions according to which metrics are segmented in the response. Values of
-      # product dimensions, e.g., offer id, reflect the state of a product at the time
-      # of the corresponding event, e.g., impression or order. Segment fields cannot
-      # be selected in queries without also selecting at least one metric field.
-      # Values are only set for dimensions requested explicitly in the request's
-      # search query.
+      # product dimensions, such as `offer_id`, reflect the state of a product at the
+      # time of the corresponding event, for example, impression or order. Segment
+      # fields cannot be selected in queries without also selecting at least one
+      # metric field. Values are only set for dimensions requested explicitly in the
+      # request's search query.
       class Segments
         include Google::Apis::Core::Hashable
       
@@ -14375,7 +17361,7 @@ module Google
         # @return [String]
         attr_accessor :category_l5
       
-        # Currency in which price metrics are represented, e.g., if you select `
+        # Currency in which price metrics are represented, for example, if you select `
         # ordered_item_sales_micros`, the returned value will be represented by this
         # currency.
         # Corresponds to the JSON property `currencyCode`
@@ -14407,14 +17393,21 @@ module Google
         # @return [String]
         attr_accessor :custom_label4
       
+        # Code of the country where the customer is located at the time of the event.
+        # Represented in the ISO 3166 format. If the customer country cannot be
+        # determined, a special 'ZZ' code is returned.
+        # Corresponds to the JSON property `customerCountryCode`
+        # @return [String]
+        attr_accessor :customer_country_code
+      
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-        # DateTime * google.protobuf.Timestamp
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `date`
         # @return [Google::Apis::ContentV2_1::Date]
         attr_accessor :date
@@ -14459,7 +17452,7 @@ module Google
         # @return [String]
         attr_accessor :product_type_l5
       
-        # Program to which metrics apply, e.g., Free Product Listing.
+        # Program to which metrics apply, for example, Free Product Listing.
         # Corresponds to the JSON property `program`
         # @return [String]
         attr_accessor :program
@@ -14472,11 +17465,11 @@ module Google
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-        # DateTime * google.protobuf.Timestamp
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `week`
         # @return [Google::Apis::ContentV2_1::Date]
         attr_accessor :week
@@ -14499,6 +17492,7 @@ module Google
           @custom_label2 = args[:custom_label2] if args.key?(:custom_label2)
           @custom_label3 = args[:custom_label3] if args.key?(:custom_label3)
           @custom_label4 = args[:custom_label4] if args.key?(:custom_label4)
+          @customer_country_code = args[:customer_country_code] if args.key?(:customer_country_code)
           @date = args[:date] if args.key?(:date)
           @offer_id = args[:offer_id] if args.key?(:offer_id)
           @product_type_l1 = args[:product_type_l1] if args.key?(:product_type_l1)
@@ -14564,8 +17558,9 @@ module Google
         attr_accessor :name
       
         # The carrier-service pair delivering items to collection points. The list of
-        # supported pickup services can be retrieved via the `getSupportedPickupServices`
-        # method. Required if and only if the service delivery type is `pickup`.
+        # supported pickup services can be retrieved through the `
+        # getSupportedPickupServices` method. Required if and only if the service
+        # delivery type is `pickup`.
         # Corresponds to the JSON property `pickupService`
         # @return [Google::Apis::ContentV2_1::PickupCarrierService]
         attr_accessor :pickup_service
@@ -14578,10 +17573,16 @@ module Google
         attr_accessor :rate_groups
       
         # Type of locations this service ships orders to. Acceptable values are: - "`
-        # delivery`" - "`pickup`"
+        # delivery`" - "`pickup` (deprecated)" - "`local_delivery`" - "`collection_point`
+        # "
         # Corresponds to the JSON property `shipmentType`
         # @return [String]
         attr_accessor :shipment_type
+      
+        # Stores that provide local delivery. Only valid with local delivery fulfillment.
+        # Corresponds to the JSON property `storeConfig`
+        # @return [Google::Apis::ContentV2_1::ServiceStoreConfig]
+        attr_accessor :store_config
       
         def initialize(**args)
            update!(**args)
@@ -14600,6 +17601,113 @@ module Google
           @pickup_service = args[:pickup_service] if args.key?(:pickup_service)
           @rate_groups = args[:rate_groups] if args.key?(:rate_groups)
           @shipment_type = args[:shipment_type] if args.key?(:shipment_type)
+          @store_config = args[:store_config] if args.key?(:store_config)
+        end
+      end
+      
+      # Stores that provide local delivery. Only valid with local delivery fulfillment.
+      class ServiceStoreConfig
+        include Google::Apis::Core::Hashable
+      
+        # Time local delivery ends for the day based on the local timezone of the store.
+        # `local_cutoff_time` and `store_close_offset_hours` are mutually exclusive.
+        # Corresponds to the JSON property `cutoffConfig`
+        # @return [Google::Apis::ContentV2_1::ServiceStoreConfigCutoffConfig]
+        attr_accessor :cutoff_config
+      
+        # Distance represented by an integer and unit.
+        # Corresponds to the JSON property `serviceRadius`
+        # @return [Google::Apis::ContentV2_1::Distance]
+        attr_accessor :service_radius
+      
+        # A list of store codes that provide local delivery. If empty, then `
+        # store_service_type` must be `all_stores`, or an error is thrown. If not empty,
+        # then `store_service_type` must be `selected_stores`, or an error is thrown.
+        # Corresponds to the JSON property `storeCodes`
+        # @return [Array<String>]
+        attr_accessor :store_codes
+      
+        # Indicates whether all stores listed by this merchant provide local delivery or
+        # not. Acceptable values are `all stores` and `selected stores`
+        # Corresponds to the JSON property `storeServiceType`
+        # @return [String]
+        attr_accessor :store_service_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cutoff_config = args[:cutoff_config] if args.key?(:cutoff_config)
+          @service_radius = args[:service_radius] if args.key?(:service_radius)
+          @store_codes = args[:store_codes] if args.key?(:store_codes)
+          @store_service_type = args[:store_service_type] if args.key?(:store_service_type)
+        end
+      end
+      
+      # Time local delivery ends for the day based on the local timezone of the store.
+      # `local_cutoff_time` and `store_close_offset_hours` are mutually exclusive.
+      class ServiceStoreConfigCutoffConfig
+        include Google::Apis::Core::Hashable
+      
+        # Time in hours and minutes in the local timezone when local delivery ends.
+        # Corresponds to the JSON property `localCutoffTime`
+        # @return [Google::Apis::ContentV2_1::ServiceStoreConfigCutoffConfigLocalCutoffTime]
+        attr_accessor :local_cutoff_time
+      
+        # Merchants can opt-out of showing n+1 day local delivery when they have a
+        # shipping service configured to n day local delivery. For example, if the
+        # shipping service defines same-day delivery, and it's past the cut-off, setting
+        # this field to `true` results in the calculated shipping service rate returning
+        # `NO_DELIVERY_POST_CUTOFF`. In the same example, setting this field to `false`
+        # results in the calculated shipping time being one day. This is only for local
+        # delivery.
+        # Corresponds to the JSON property `noDeliveryPostCutoff`
+        # @return [Boolean]
+        attr_accessor :no_delivery_post_cutoff
+        alias_method :no_delivery_post_cutoff?, :no_delivery_post_cutoff
+      
+        # Represents cutoff time as the number of hours before store closing. Mutually
+        # exclusive with other fields (hour and minute).
+        # Corresponds to the JSON property `storeCloseOffsetHours`
+        # @return [Fixnum]
+        attr_accessor :store_close_offset_hours
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @local_cutoff_time = args[:local_cutoff_time] if args.key?(:local_cutoff_time)
+          @no_delivery_post_cutoff = args[:no_delivery_post_cutoff] if args.key?(:no_delivery_post_cutoff)
+          @store_close_offset_hours = args[:store_close_offset_hours] if args.key?(:store_close_offset_hours)
+        end
+      end
+      
+      # Time in hours and minutes in the local timezone when local delivery ends.
+      class ServiceStoreConfigCutoffConfigLocalCutoffTime
+        include Google::Apis::Core::Hashable
+      
+        # Hour local delivery orders must be placed by to process the same day.
+        # Corresponds to the JSON property `hour`
+        # @return [Fixnum]
+        attr_accessor :hour
+      
+        # Minute local delivery orders must be placed by to process the same day.
+        # Corresponds to the JSON property `minute`
+        # @return [Fixnum]
+        attr_accessor :minute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hour = args[:hour] if args.key?(:hour)
+          @minute = args[:minute] if args.key?(:minute)
         end
       end
       
@@ -14648,8 +17756,8 @@ module Google
         # @return [String]
         attr_accessor :transfer_date
       
-        # The list of bank identifiers used for the transfer. e.g. Trace ID for Federal
-        # Automated Clearing House (ACH). This may also be known as the Wire ID.
+        # The list of bank identifiers used for the transfer. For example, Trace ID for
+        # Federal Automated Clearing House (ACH). This may also be known as the Wire ID.
         # Corresponds to the JSON property `transferIds`
         # @return [Array<String>]
         attr_accessor :transfer_ids
@@ -14812,7 +17920,7 @@ module Google
       class SettlementTransactionIdentifiers
         include Google::Apis::Core::Hashable
       
-        # The identifier of the adjustments, if it is available.
+        # The identifier of the adjustments, if it's available.
         # Corresponds to the JSON property `adjustmentId`
         # @return [String]
         attr_accessor :adjustment_id
@@ -15336,16 +18444,16 @@ module Google
       class ShoppingAdsProgramStatus
         include Google::Apis::Core::Hashable
       
+        # State of the program. `ENABLED` if there are offers for at least one region.
+        # Corresponds to the JSON property `globalState`
+        # @return [String]
+        attr_accessor :global_state
+      
         # Status of the program in each region. Regions with the same status and review
         # eligibility are grouped together in `regionCodes`.
         # Corresponds to the JSON property `regionStatuses`
         # @return [Array<Google::Apis::ContentV2_1::ShoppingAdsProgramStatusRegionStatus>]
         attr_accessor :region_statuses
-      
-        # If program is successfully onboarded for at least one region.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
       
         def initialize(**args)
            update!(**args)
@@ -15353,8 +18461,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @global_state = args[:global_state] if args.key?(:global_state)
           @region_statuses = args[:region_statuses] if args.key?(:region_statuses)
-          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -15362,9 +18470,9 @@ module Google
       class ShoppingAdsProgramStatusRegionStatus
         include Google::Apis::Core::Hashable
       
-        # Date by which `eligibility_status` will go from `WARNING` to `DISAPPROVED`. It
-        # will be present when `eligibility_status` is `WARNING`. Date will be provided
-        # in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format i.e. YYYY-MM-DD
+        # Date by which eligibilityStatus will go from `WARNING` to `DISAPPROVED`. Only
+        # visible when your eligibilityStatus is WARNING. In [ISO 8601](https://en.
+        # wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`.
         # Corresponds to the JSON property `disapprovalDate`
         # @return [String]
         attr_accessor :disapproval_date
@@ -15374,11 +18482,10 @@ module Google
         # @return [String]
         attr_accessor :eligibility_status
       
-        # Reason if a program in a given country is not eligible for review. Populated
-        # only if `review_eligibility_status` is `INELIGIBLE`.
-        # Corresponds to the JSON property `ineligibilityReason`
-        # @return [String]
-        attr_accessor :ineligibility_reason
+        # Issues that must be fixed to be eligible for review.
+        # Corresponds to the JSON property `onboardingIssues`
+        # @return [Array<String>]
+        attr_accessor :onboarding_issues
       
         # The two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-
         # 1_alpha-2) codes for all the regions with the same `eligibilityStatus` and `
@@ -15387,14 +18494,30 @@ module Google
         # @return [Array<String>]
         attr_accessor :region_codes
       
-        # If a program in a given country is eligible for review. It will be present
-        # only if eligibility status is `DISAPPROVED`.
+        # If a program is eligible for review in a specific region. Only visible if `
+        # eligibilityStatus` is `DISAPPROVED`.
         # Corresponds to the JSON property `reviewEligibilityStatus`
         # @return [String]
         attr_accessor :review_eligibility_status
       
-        # These issues will be evaluated in review process. Fix all the issues before
-        # requesting the review.
+        # Review ineligibility reason if account is not eligible for review.
+        # Corresponds to the JSON property `reviewIneligibilityReason`
+        # @return [String]
+        attr_accessor :review_ineligibility_reason
+      
+        # Reason a program in a specific region isn’t eligible for review. Only visible
+        # if `reviewEligibilityStatus` is `INELIGIBLE`.
+        # Corresponds to the JSON property `reviewIneligibilityReasonDescription`
+        # @return [String]
+        attr_accessor :review_ineligibility_reason_description
+      
+        # Additional details for review ineligibility reasons.
+        # Corresponds to the JSON property `reviewIneligibilityReasonDetails`
+        # @return [Google::Apis::ContentV2_1::ShoppingAdsProgramStatusReviewIneligibilityReasonDetails]
+        attr_accessor :review_ineligibility_reason_details
+      
+        # Issues evaluated in the review process. Fix all issues before requesting a
+        # review.
         # Corresponds to the JSON property `reviewIssues`
         # @return [Array<String>]
         attr_accessor :review_issues
@@ -15407,10 +18530,33 @@ module Google
         def update!(**args)
           @disapproval_date = args[:disapproval_date] if args.key?(:disapproval_date)
           @eligibility_status = args[:eligibility_status] if args.key?(:eligibility_status)
-          @ineligibility_reason = args[:ineligibility_reason] if args.key?(:ineligibility_reason)
+          @onboarding_issues = args[:onboarding_issues] if args.key?(:onboarding_issues)
           @region_codes = args[:region_codes] if args.key?(:region_codes)
           @review_eligibility_status = args[:review_eligibility_status] if args.key?(:review_eligibility_status)
+          @review_ineligibility_reason = args[:review_ineligibility_reason] if args.key?(:review_ineligibility_reason)
+          @review_ineligibility_reason_description = args[:review_ineligibility_reason_description] if args.key?(:review_ineligibility_reason_description)
+          @review_ineligibility_reason_details = args[:review_ineligibility_reason_details] if args.key?(:review_ineligibility_reason_details)
           @review_issues = args[:review_issues] if args.key?(:review_issues)
+        end
+      end
+      
+      # Additional details for review ineligibility reasons.
+      class ShoppingAdsProgramStatusReviewIneligibilityReasonDetails
+        include Google::Apis::Core::Hashable
+      
+        # This timestamp represents end of cooldown period for review ineligbility
+        # reason `IN_COOLDOWN_PERIOD`.
+        # Corresponds to the JSON property `cooldownTime`
+        # @return [String]
+        attr_accessor :cooldown_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cooldown_time = args[:cooldown_time] if args.key?(:cooldown_time)
         end
       end
       
@@ -15561,7 +18707,7 @@ module Google
       class TestOrderAddress
         include Google::Apis::Core::Hashable
       
-        # CLDR country code (e.g. "US").
+        # CLDR country code (for example, "US").
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
@@ -15580,12 +18726,12 @@ module Google
         alias_method :is_post_office_box?, :is_post_office_box
       
         # City, town or commune. May also include dependent localities or sublocalities (
-        # e.g. neighborhoods or suburbs).
+        # for example, neighborhoods or suburbs).
         # Corresponds to the JSON property `locality`
         # @return [String]
         attr_accessor :locality
       
-        # Postal Code or ZIP (e.g. "94043").
+        # Postal Code or ZIP (for example, "94043").
         # Corresponds to the JSON property `postalCode`
         # @return [String]
         attr_accessor :postal_code
@@ -15601,7 +18747,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Street-level part of the address.
+        # Street-level part of the address. Use `\n` to add a second line.
         # Corresponds to the JSON property `streetAddress`
         # @return [Array<String>]
         attr_accessor :street_address
@@ -15749,7 +18895,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :price
       
-        # Required. The CLDR territory // code of the target country of the product.
+        # Required. The CLDR territory code of the target country of the product.
         # Corresponds to the JSON property `targetCountry`
         # @return [String]
         attr_accessor :target_country
@@ -15979,11 +19125,24 @@ module Google
         end
       end
       
+      # Request message for the UndeleteConversionSource method.
+      class UndeleteConversionSourceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # 
       class UnitInvoice
         include Google::Apis::Core::Hashable
       
-        # Additional charges for a unit, e.g. shipping costs.
+        # Additional charges for a unit, for example, shipping costs.
         # Corresponds to the JSON property `additionalCharges`
         # @return [Array<Google::Apis::ContentV2_1::UnitInvoiceAdditionalCharge>]
         attr_accessor :additional_charges
@@ -16074,6 +19233,37 @@ module Google
         end
       end
       
+      # Specifications related to the `Checkout` URL. The `UriTemplate` is of the form
+      # `https://www.mystore.com/checkout?item_id=`id`` where ``id`` will be
+      # automatically replaced with data from the merchant account with this attribute
+      # [offer_id](https://developers.google.com/shopping-content/reference/rest/v2.1/
+      # products#Product.FIELDS.offer_id)
+      class UrlSettings
+        include Google::Apis::Core::Hashable
+      
+        # URL template when the placeholders are expanded will redirect the buyer to the
+        # cart page on the merchant website with the selected item in cart.
+        # Corresponds to the JSON property `cartUriTemplate`
+        # @return [String]
+        attr_accessor :cart_uri_template
+      
+        # URL template when the placeholders are expanded will redirect the buyer to the
+        # merchant checkout page with the item in the cart.
+        # Corresponds to the JSON property `checkoutUriTemplate`
+        # @return [String]
+        attr_accessor :checkout_uri_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cart_uri_template = args[:cart_uri_template] if args.key?(:cart_uri_template)
+          @checkout_uri_template = args[:checkout_uri_template] if args.key?(:checkout_uri_template)
+        end
+      end
+      
       # The single value of a rate group or the value of a rate group table's cell.
       # Exactly one of `noShipping`, `flatRate`, `pricePercentage`, `carrierRateName`,
       # `subtableName` must be set.
@@ -16098,14 +19288,14 @@ module Google
         attr_accessor :no_shipping
         alias_method :no_shipping?, :no_shipping
       
-        # A percentage of the price represented as a number in decimal notation (e.g., `"
-        # 5.4"`). Can only be set if all other fields are not set.
+        # A percentage of the price represented as a number in decimal notation (for
+        # example, `"5.4"`). Can only be set if all other fields are not set.
         # Corresponds to the JSON property `pricePercentage`
         # @return [String]
         attr_accessor :price_percentage
       
-        # The name of a subtable. Can only be set in table cells (i.e., not for single
-        # values), and only if all other fields are not set.
+        # The name of a subtable. Can only be set in table cells (not for single values),
+        # and only if all other fields are not set.
         # Corresponds to the JSON property `subtableName`
         # @return [String]
         attr_accessor :subtable_name
@@ -16228,13 +19418,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Carrier, such as `"UPS"` or `"Fedex"`. The list of supported
-        # carriers can be retrieved via the `listSupportedCarriers` method.
+        # carriers can be retrieved through the `listSupportedCarriers` method.
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
       
         # Required. Carrier service, such as `"ground"` or `"2 days"`. The list of
-        # supported services for a carrier can be retrieved via the `
+        # supported services for a carrier can be retrieved through the `
         # listSupportedCarriers` method. The name of the service must be in the
         # eddSupportedServices list.
         # Corresponds to the JSON property `carrierService`
@@ -16251,8 +19441,8 @@ module Google
         # @return [String]
         attr_accessor :origin_city
       
-        # Shipping origin's country represented as a [CLDR territory code](http://www.
-        # unicode.org/repos/cldr/tags/latest/common/main/en.xml).
+        # Shipping origin's country represented as a [CLDR territory code](https://
+        # github.com/unicode-org/cldr/blob/latest/common/main/en.xml).
         # Corresponds to the JSON property `originCountry`
         # @return [String]
         attr_accessor :origin_country
