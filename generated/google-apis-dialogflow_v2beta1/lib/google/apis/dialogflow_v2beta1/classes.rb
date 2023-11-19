@@ -155,6 +155,49 @@ module Google
         end
       end
       
+      # Configuration of the barge-in behavior. Barge-in instructs the API to return a
+      # detected utterance at a proper time while the client is playing back the
+      # response audio from a previous request. When the client sees the utterance, it
+      # should stop the playback and immediately get ready for receiving the responses
+      # for the current request. The barge-in handling requires the client to start
+      # streaming audio input as soon as it starts playing back the audio from the
+      # previous response. The playback is modeled into two phases: * No barge-in
+      # phase: which goes first and during which speech detection should not be
+      # carried out. * Barge-in phase: which follows the no barge-in phase and during
+      # which the API starts speech detection and may inform the client that an
+      # utterance has been detected. Note that no-speech event is not expected in this
+      # phase. The client provides this configuration in terms of the durations of
+      # those two phases. The durations are measured in terms of the audio length
+      # fromt the the start of the input audio. The flow goes like below: --> Time
+      # without speech detection | utterance only | utterance or no-speech event | | +-
+      # ------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-
+      # + barge-in +-|-+ normal period +----------- +-------------+ | +------------+ |
+      # +---------------+ No-speech event is a response with END_OF_UTTERANCE without
+      # any transcript following up.
+      class GoogleCloudDialogflowCxV3BargeInConfig
+        include Google::Apis::Core::Hashable
+      
+        # Duration that is not eligible for barge-in at the beginning of the input audio.
+        # Corresponds to the JSON property `noBargeInDuration`
+        # @return [String]
+        attr_accessor :no_barge_in_duration
+      
+        # Total duration for the playback at the beginning of the input audio.
+        # Corresponds to the JSON property `totalDuration`
+        # @return [String]
+        attr_accessor :total_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @no_barge_in_duration = args[:no_barge_in_duration] if args.key?(:no_barge_in_duration)
+          @total_duration = args[:total_duration] if args.key?(:total_duration)
+        end
+      end
+      
       # Metadata returned for the TestCases.BatchRunTestCases long running operation.
       class GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata
         include Google::Apis::Core::Hashable
@@ -1512,6 +1555,29 @@ module Google
         # @return [String]
         attr_accessor :audio_encoding
       
+        # Configuration of the barge-in behavior. Barge-in instructs the API to return a
+        # detected utterance at a proper time while the client is playing back the
+        # response audio from a previous request. When the client sees the utterance, it
+        # should stop the playback and immediately get ready for receiving the responses
+        # for the current request. The barge-in handling requires the client to start
+        # streaming audio input as soon as it starts playing back the audio from the
+        # previous response. The playback is modeled into two phases: * No barge-in
+        # phase: which goes first and during which speech detection should not be
+        # carried out. * Barge-in phase: which follows the no barge-in phase and during
+        # which the API starts speech detection and may inform the client that an
+        # utterance has been detected. Note that no-speech event is not expected in this
+        # phase. The client provides this configuration in terms of the durations of
+        # those two phases. The durations are measured in terms of the audio length
+        # fromt the the start of the input audio. The flow goes like below: --> Time
+        # without speech detection | utterance only | utterance or no-speech event | | +-
+        # ------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-
+        # + barge-in +-|-+ normal period +----------- +-------------+ | +------------+ |
+        # +---------------+ No-speech event is a response with END_OF_UTTERANCE without
+        # any transcript following up.
+        # Corresponds to the JSON property `bargeInConfig`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3BargeInConfig]
+        attr_accessor :barge_in_config
+      
         # Optional. If `true`, Dialogflow returns SpeechWordInfo in
         # StreamingRecognitionResult with information about the recognized speech words,
         # e.g. start and end time offsets. If false or unspecified, Speech doesn't
@@ -1574,6 +1640,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
+          @barge_in_config = args[:barge_in_config] if args.key?(:barge_in_config)
           @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
           @model = args[:model] if args.key?(:model)
           @model_variant = args[:model_variant] if args.key?(:model_variant)
@@ -3673,6 +3740,49 @@ module Google
         end
       end
       
+      # Configuration of the barge-in behavior. Barge-in instructs the API to return a
+      # detected utterance at a proper time while the client is playing back the
+      # response audio from a previous request. When the client sees the utterance, it
+      # should stop the playback and immediately get ready for receiving the responses
+      # for the current request. The barge-in handling requires the client to start
+      # streaming audio input as soon as it starts playing back the audio from the
+      # previous response. The playback is modeled into two phases: * No barge-in
+      # phase: which goes first and during which speech detection should not be
+      # carried out. * Barge-in phase: which follows the no barge-in phase and during
+      # which the API starts speech detection and may inform the client that an
+      # utterance has been detected. Note that no-speech event is not expected in this
+      # phase. The client provides this configuration in terms of the durations of
+      # those two phases. The durations are measured in terms of the audio length
+      # fromt the the start of the input audio. The flow goes like below: --> Time
+      # without speech detection | utterance only | utterance or no-speech event | | +-
+      # ------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-
+      # + barge-in +-|-+ normal period +----------- +-------------+ | +------------+ |
+      # +---------------+ No-speech event is a response with END_OF_UTTERANCE without
+      # any transcript following up.
+      class GoogleCloudDialogflowCxV3beta1BargeInConfig
+        include Google::Apis::Core::Hashable
+      
+        # Duration that is not eligible for barge-in at the beginning of the input audio.
+        # Corresponds to the JSON property `noBargeInDuration`
+        # @return [String]
+        attr_accessor :no_barge_in_duration
+      
+        # Total duration for the playback at the beginning of the input audio.
+        # Corresponds to the JSON property `totalDuration`
+        # @return [String]
+        attr_accessor :total_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @no_barge_in_duration = args[:no_barge_in_duration] if args.key?(:no_barge_in_duration)
+          @total_duration = args[:total_duration] if args.key?(:total_duration)
+        end
+      end
+      
       # Metadata returned for the TestCases.BatchRunTestCases long running operation.
       class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata
         include Google::Apis::Core::Hashable
@@ -5030,6 +5140,29 @@ module Google
         # @return [String]
         attr_accessor :audio_encoding
       
+        # Configuration of the barge-in behavior. Barge-in instructs the API to return a
+        # detected utterance at a proper time while the client is playing back the
+        # response audio from a previous request. When the client sees the utterance, it
+        # should stop the playback and immediately get ready for receiving the responses
+        # for the current request. The barge-in handling requires the client to start
+        # streaming audio input as soon as it starts playing back the audio from the
+        # previous response. The playback is modeled into two phases: * No barge-in
+        # phase: which goes first and during which speech detection should not be
+        # carried out. * Barge-in phase: which follows the no barge-in phase and during
+        # which the API starts speech detection and may inform the client that an
+        # utterance has been detected. Note that no-speech event is not expected in this
+        # phase. The client provides this configuration in terms of the durations of
+        # those two phases. The durations are measured in terms of the audio length
+        # fromt the the start of the input audio. The flow goes like below: --> Time
+        # without speech detection | utterance only | utterance or no-speech event | | +-
+        # ------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-
+        # + barge-in +-|-+ normal period +----------- +-------------+ | +------------+ |
+        # +---------------+ No-speech event is a response with END_OF_UTTERANCE without
+        # any transcript following up.
+        # Corresponds to the JSON property `bargeInConfig`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1BargeInConfig]
+        attr_accessor :barge_in_config
+      
         # Optional. If `true`, Dialogflow returns SpeechWordInfo in
         # StreamingRecognitionResult with information about the recognized speech words,
         # e.g. start and end time offsets. If false or unspecified, Speech doesn't
@@ -5092,6 +5225,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
+          @barge_in_config = args[:barge_in_config] if args.key?(:barge_in_config)
           @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
           @model = args[:model] if args.key?(:model)
           @model_variant = args[:model_variant] if args.key?(:model_variant)
