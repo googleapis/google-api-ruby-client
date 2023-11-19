@@ -1,5 +1,9 @@
 # Release history for google-apis-dataflow_v1b3
 
+### v0.46.0 (2023-11-19)
+
+* Regenerated from discovery document revision 20231112
+
 ### v0.45.0 (2023-10-29)
 
 * Regenerated from discovery document revision 20231021
