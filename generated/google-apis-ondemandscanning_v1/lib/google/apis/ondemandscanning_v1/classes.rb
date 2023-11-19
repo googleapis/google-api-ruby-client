@@ -1831,6 +1831,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1840,14 +1845,21 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # 
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @email = args[:email] if args.key?(:email)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
