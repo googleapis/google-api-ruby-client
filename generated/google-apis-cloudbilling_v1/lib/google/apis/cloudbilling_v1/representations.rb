@@ -199,6 +199,7 @@ module Google
           property :master_billing_account, as: 'masterBillingAccount'
           property :name, as: 'name'
           property :open, as: 'open'
+          property :parent, as: 'parent'
         end
       end
       
