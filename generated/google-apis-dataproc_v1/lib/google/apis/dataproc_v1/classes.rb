@@ -1089,6 +1089,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :jobs
       
+        # Optional. (Optional) The access type to the diagnostic tarball. If not
+        # specified, falls back to default access of the bucket
+        # Corresponds to the JSON property `tarballAccess`
+        # @return [String]
+        attr_accessor :tarball_access
+      
         # Optional. (Optional) The output Cloud Storage directory for the diagnostic
         # tarball. If not specified, a task-specific directory in the cluster's staging
         # bucket will be used.
@@ -1117,6 +1123,7 @@ module Google
           @diagnosis_interval = args[:diagnosis_interval] if args.key?(:diagnosis_interval)
           @job = args[:job] if args.key?(:job)
           @jobs = args[:jobs] if args.key?(:jobs)
+          @tarball_access = args[:tarball_access] if args.key?(:tarball_access)
           @tarball_gcs_dir = args[:tarball_gcs_dir] if args.key?(:tarball_gcs_dir)
           @yarn_application_id = args[:yarn_application_id] if args.key?(:yarn_application_id)
           @yarn_application_ids = args[:yarn_application_ids] if args.key?(:yarn_application_ids)
