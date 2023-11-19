@@ -247,8 +247,8 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudSignals]
         attr_accessor :fraud_signals
       
-        # Output only. The resource name for the Assessment in the format `projects/`
-        # project`/assessments/`assessment``.
+        # Output only. Identifier. The resource name for the Assessment in the format `
+        # projects/`project`/assessments/`assessment``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -648,8 +648,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The resource name for the FirewallPolicy in the format `projects/`project`/
-        # firewallpolicies/`firewallpolicy``.
+        # Identifier. The resource name for the FirewallPolicy in the format `projects/`
+        # project`/firewallpolicies/`firewallpolicy``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -945,7 +945,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The resource name for the Key in the format `projects/`project`/keys/`key``.
+        # Identifier. The resource name for the Key in the format `projects/`project`/
+        # keys/`key``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1098,8 +1099,8 @@ module Google
         # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>]
         attr_accessor :challenge_metrics
       
-        # Output only. The name of the metrics, in the format `projects/`project`/keys/`
-        # key`/metrics`.
+        # Output only. Identifier. The name of the metrics, in the format `projects/`
+        # project`/keys/`key`/metrics`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1207,8 +1208,8 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup
         include Google::Apis::Core::Hashable
       
-        # Required. The resource name for the related account group in the format `
-        # projects/`project`/relatedaccountgroups/`related_account_group``.
+        # Required. Identifier. The resource name for the related account group in the
+        # format `projects/`project`/relatedaccountgroups/`related_account_group``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1235,8 +1236,9 @@ module Google
         # @return [String]
         attr_accessor :hashed_account_id
       
-        # Required. The resource name for this membership in the format `projects/`
-        # project`/relatedaccountgroups/`relatedaccountgroup`/memberships/`membership``.
+        # Required. Identifier. The resource name for this membership in the format `
+        # projects/`project`/relatedaccountgroups/`relatedaccountgroup`/memberships/`
+        # membership``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
