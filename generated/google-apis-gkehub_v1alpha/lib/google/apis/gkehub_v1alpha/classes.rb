@@ -254,6 +254,32 @@ module Google
         end
       end
       
+      # BinaryAuthorizationConfig defines the fleet level configuration of binary
+      # authorization feature.
+      class BinaryAuthorizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Mode of operation for binauthz policy evaluation.
+        # Corresponds to the JSON property `evaluationMode`
+        # @return [String]
+        attr_accessor :evaluation_mode
+      
+        # Optional. Binauthz policies that apply to this cluster.
+        # Corresponds to the JSON property `policyBindings`
+        # @return [Array<Google::Apis::GkehubV1alpha::PolicyBinding>]
+        attr_accessor :policy_bindings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_mode = args[:evaluation_mode] if args.key?(:evaluation_mode)
+          @policy_bindings = args[:policy_bindings] if args.key?(:policy_bindings)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -1106,14 +1132,6 @@ module Google
         # @return [String]
         attr_accessor :source_format
       
-        # Set to true to stop syncing configs for a single cluster when automatic
-        # Feature management is enabled. Default to false. The field will be ignored
-        # when automatic Feature management is disabled.
-        # Corresponds to the JSON property `stopSyncing`
-        # @return [Boolean]
-        attr_accessor :stop_syncing
-        alias_method :stop_syncing?, :stop_syncing
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1127,7 +1145,6 @@ module Google
           @oci = args[:oci] if args.key?(:oci)
           @prevent_drift = args[:prevent_drift] if args.key?(:prevent_drift)
           @source_format = args[:source_format] if args.key?(:source_format)
-          @stop_syncing = args[:stop_syncing] if args.key?(:stop_syncing)
         end
       end
       
@@ -1619,11 +1636,6 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerConfig]
         attr_accessor :hierarchy_controller
       
-        # Enables automatic Feature management.
-        # Corresponds to the JSON property `management`
-        # @return [String]
-        attr_accessor :management
-      
         # Configuration for Policy Controller
         # Corresponds to the JSON property `policyController`
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementPolicyController]
@@ -1644,7 +1656,6 @@ module Google
           @cluster = args[:cluster] if args.key?(:cluster)
           @config_sync = args[:config_sync] if args.key?(:config_sync)
           @hierarchy_controller = args[:hierarchy_controller] if args.key?(:hierarchy_controller)
-          @management = args[:management] if args.key?(:management)
           @policy_controller = args[:policy_controller] if args.key?(:policy_controller)
           @version = args[:version] if args.key?(:version)
         end
@@ -2083,6 +2094,12 @@ module Google
       class DefaultClusterConfig
         include Google::Apis::Core::Hashable
       
+        # BinaryAuthorizationConfig defines the fleet level configuration of binary
+        # authorization feature.
+        # Corresponds to the JSON property `binaryAuthorizationConfig`
+        # @return [Google::Apis::GkehubV1alpha::BinaryAuthorizationConfig]
+        attr_accessor :binary_authorization_config
+      
         # SecurityPostureConfig defines the flags needed to enable/disable features for
         # the Security Posture API.
         # Corresponds to the JSON property `securityPostureConfig`
@@ -2095,6 +2112,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @binary_authorization_config = args[:binary_authorization_config] if args.key?(:binary_authorization_config)
           @security_posture_config = args[:security_posture_config] if args.key?(:security_posture_config)
         end
       end
@@ -3387,32 +3405,6 @@ module Google
         end
       end
       
-      # List of fleet namespaces.
-      class ListNamespacesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of fleet namespaces
-        # Corresponds to the JSON property `namespaces`
-        # @return [Array<Google::Apis::GkehubV1alpha::Namespace>]
-        attr_accessor :namespaces
-      
-        # A token to request the next page of resources from the `ListNamespaces` method.
-        # The value of an empty string means that there are no more resources to return.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @namespaces = args[:namespaces] if args.key?(:namespaces)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -3435,33 +3427,6 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
-        end
-      end
-      
-      # List of RBACRoleBindings.
-      class ListRbacRoleBindingsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A token to request the next page of resources from the `ListRBACRoleBindings`
-        # method. The value of an empty string means that there are no more resources to
-        # return.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The list of RBACRoleBindings
-        # Corresponds to the JSON property `rbacrolebindings`
-        # @return [Array<Google::Apis::GkehubV1alpha::RbacRoleBinding>]
-        attr_accessor :rbacrolebindings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @rbacrolebindings = args[:rbacrolebindings] if args.key?(:rbacrolebindings)
         end
       end
       
@@ -4622,6 +4587,27 @@ module Google
         end
       end
       
+      # Binauthz policy that applies to this cluster.
+      class PolicyBinding
+        include Google::Apis::Core::Hashable
+      
+        # The relative resource name of the binauthz platform policy to audit. GKE
+        # platform policies have the following format: `projects/`project_number`/
+        # platforms/gke/policies/`policy_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # BundleInstallSpec is the specification configuration for a single managed
       # bundle.
       class PolicyControllerBundleInstallSpec
@@ -5069,9 +5055,9 @@ module Google
         attr_accessor :labels
       
         # The resource name for the rbacrolebinding `projects/`project`/locations/`
-        # location`/namespaces/`namespace`/rbacrolebindings/`rbacrolebinding`` or `
-        # projects/`project`/locations/`location`/memberships/`membership`/
-        # rbacrolebindings/`rbacrolebinding``
+        # location`/scopes/`scope`/rbacrolebindings/`rbacrolebinding`` or `projects/`
+        # project`/locations/`location`/memberships/`membership`/rbacrolebindings/`
+        # rbacrolebinding``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

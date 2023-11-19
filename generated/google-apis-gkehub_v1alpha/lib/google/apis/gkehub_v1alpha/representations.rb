@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BinaryAuthorizationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -604,19 +610,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListNamespacesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListRbacRoleBindingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -779,6 +773,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyBinding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1089,6 +1089,15 @@ module Google
         end
       end
       
+      class BinaryAuthorizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :evaluation_mode, as: 'evaluationMode'
+          collection :policy_bindings, as: 'policyBindings', class: Google::Apis::GkehubV1alpha::PolicyBinding, decorator: Google::Apis::GkehubV1alpha::PolicyBinding::Representation
+      
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1348,7 +1357,6 @@ module Google
       
           property :prevent_drift, as: 'preventDrift'
           property :source_format, as: 'sourceFormat'
-          property :stop_syncing, as: 'stopSyncing'
         end
       end
       
@@ -1494,7 +1502,6 @@ module Google
       
           property :hierarchy_controller, as: 'hierarchyController', class: Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerConfig, decorator: Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerConfig::Representation
       
-          property :management, as: 'management'
           property :policy_controller, as: 'policyController', class: Google::Apis::GkehubV1alpha::ConfigManagementPolicyController, decorator: Google::Apis::GkehubV1alpha::ConfigManagementPolicyController::Representation
       
           property :version, as: 'version'
@@ -1627,6 +1634,8 @@ module Google
       class DefaultClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binary_authorization_config, as: 'binaryAuthorizationConfig', class: Google::Apis::GkehubV1alpha::BinaryAuthorizationConfig, decorator: Google::Apis::GkehubV1alpha::BinaryAuthorizationConfig::Representation
+      
           property :security_posture_config, as: 'securityPostureConfig', class: Google::Apis::GkehubV1alpha::SecurityPostureConfig, decorator: Google::Apis::GkehubV1alpha::SecurityPostureConfig::Representation
       
         end
@@ -2006,29 +2015,11 @@ module Google
         end
       end
       
-      class ListNamespacesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :namespaces, as: 'namespaces', class: Google::Apis::GkehubV1alpha::Namespace, decorator: Google::Apis::GkehubV1alpha::Namespace::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::GkehubV1alpha::Operation, decorator: Google::Apis::GkehubV1alpha::Operation::Representation
-      
-        end
-      end
-      
-      class ListRbacRoleBindingsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :rbacrolebindings, as: 'rbacrolebindings', class: Google::Apis::GkehubV1alpha::RbacRoleBinding, decorator: Google::Apis::GkehubV1alpha::RbacRoleBinding::Representation
       
         end
       end
@@ -2337,6 +2328,13 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PolicyBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
