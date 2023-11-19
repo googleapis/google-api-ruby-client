@@ -3569,6 +3569,31 @@ module Google
         end
       end
       
+      # User consent status.
+      class Consent
+        include Google::Apis::Core::Hashable
+      
+        # Represents consent for ad personalization.
+        # Corresponds to the JSON property `adPersonalization`
+        # @return [String]
+        attr_accessor :ad_personalization
+      
+        # Represents consent for ad user data.
+        # Corresponds to the JSON property `adUserData`
+        # @return [String]
+        attr_accessor :ad_user_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_personalization = args[:ad_personalization] if args.key?(:ad_personalization)
+          @ad_user_data = args[:ad_user_data] if args.key?(:ad_user_data)
+        end
+      end
+      
       # Contact information defining a Customer Match audience member.
       class ContactInfo
         include Google::Apis::Core::Hashable
@@ -3632,6 +3657,11 @@ module Google
       class ContactInfoList
         include Google::Apis::Core::Hashable
       
+        # User consent status.
+        # Corresponds to the JSON property `consent`
+        # @return [Google::Apis::DisplayvideoV3::Consent]
+        attr_accessor :consent
+      
         # A list of ContactInfo objects defining Customer Match audience members. The
         # size of members after splitting the contact_infos mustn't be greater than 500,
         # 000.
@@ -3645,6 +3675,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @consent = args[:consent] if args.key?(:consent)
           @contact_infos = args[:contact_infos] if args.key?(:contact_infos)
         end
       end
@@ -9421,6 +9452,11 @@ module Google
       class MobileDeviceIdList
         include Google::Apis::Core::Hashable
       
+        # User consent status.
+        # Corresponds to the JSON property `consent`
+        # @return [Google::Apis::DisplayvideoV3::Consent]
+        attr_accessor :consent
+      
         # A list of mobile device IDs defining Customer Match audience members. The size
         # of mobile_device_ids mustn't be greater than 500,000.
         # Corresponds to the JSON property `mobileDeviceIds`
@@ -9433,6 +9469,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @consent = args[:consent] if args.key?(:consent)
           @mobile_device_ids = args[:mobile_device_ids] if args.key?(:mobile_device_ids)
         end
       end
