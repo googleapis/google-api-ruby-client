@@ -796,6 +796,7 @@ module Google
       class AlloyDbSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_version, as: 'databaseVersion'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::DatamigrationV1::EncryptionConfig, decorator: Google::Apis::DatamigrationV1::EncryptionConfig::Representation
       
           property :initial_user, as: 'initialUser', class: Google::Apis::DatamigrationV1::UserPassword, decorator: Google::Apis::DatamigrationV1::UserPassword::Representation
