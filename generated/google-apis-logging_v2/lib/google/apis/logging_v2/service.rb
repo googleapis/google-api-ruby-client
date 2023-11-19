@@ -1251,6 +1251,183 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the RecentQueries that were created by the user making the request.
+        # @param [String] parent
+        #   Required. The resource to which the listed queries belong. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+        #   projects/my-project/locations/us-central1Note: The location portion of the
+        #   resource must be specified, but supplying the character - in place of
+        #   LOCATION_ID will return all recent queries.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListRecentQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListRecentQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_billing_account_location_recent_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/recentQueries', options)
+          command.response_representation = Google::Apis::LoggingV2::ListRecentQueriesResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListRecentQueriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new SavedQuery for the user making the request.
+        # @param [String] parent
+        #   Required. The parent resource in which to create the saved query: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "
+        #   projects/my-project/locations/global" "organizations/123456789/locations/us-
+        #   central1"
+        # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
+        # @param [String] saved_query_id
+        #   Optional. The ID to use for the saved query, which will become the final
+        #   component of the saved query's resource name.If the saved_query_id is not
+        #   provided, the system will generate an alphanumeric ID.The saved_query_id is
+        #   limited to 100 characters and can include only the following characters: upper
+        #   and lower-case alphanumeric characters, underscores, hyphens, and periods.
+        #   First character has to be alphanumeric.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_billing_account_location_saved_query(parent, saved_query_object = nil, saved_query_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/savedQueries', options)
+          command.request_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.request_object = saved_query_object
+          command.response_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.response_class = Google::Apis::LoggingV2::SavedQuery
+          command.params['parent'] = parent unless parent.nil?
+          command.query['savedQueryId'] = saved_query_id unless saved_query_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing SavedQuery that was created by the user making the request.
+        # @param [String] name
+        #   Required. The full resource name of the saved query to delete. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[
+        #   QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]
+        #   " For example: "projects/my-project/locations/global/savedQueries/my-saved-
+        #   query"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_billing_account_location_saved_query(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the SavedQueries that were created by the user making the request.
+        # @param [String] parent
+        #   Required. The resource to which the listed queries belong. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "
+        #   projects/my-project/locations/us-central1" Note: The locations portion of the
+        #   resource must be specified. To get a list of all saved queries, a wildcard
+        #   character - can be used for LOCATION_ID, for example: "projects/my-project/
+        #   locations/-"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request.Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListSavedQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListSavedQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_billing_account_location_saved_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/savedQueries', options)
+          command.response_representation = Google::Apis::LoggingV2::ListSavedQueriesResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListSavedQueriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes all the log entries in a log for the _Default Log Bucket. The log
         # reappears if it receives new entries. Log entries written shortly before the
         # delete operation might not be deleted. Entries received after the delete
@@ -3217,6 +3394,183 @@ module Google
           command.response_class = Google::Apis::LoggingV2::ListOperationsResponse
           command.params['name'] = name unless name.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the RecentQueries that were created by the user making the request.
+        # @param [String] parent
+        #   Required. The resource to which the listed queries belong. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+        #   projects/my-project/locations/us-central1Note: The location portion of the
+        #   resource must be specified, but supplying the character - in place of
+        #   LOCATION_ID will return all recent queries.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListRecentQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListRecentQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_location_recent_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/recentQueries', options)
+          command.response_representation = Google::Apis::LoggingV2::ListRecentQueriesResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListRecentQueriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new SavedQuery for the user making the request.
+        # @param [String] parent
+        #   Required. The parent resource in which to create the saved query: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "
+        #   projects/my-project/locations/global" "organizations/123456789/locations/us-
+        #   central1"
+        # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
+        # @param [String] saved_query_id
+        #   Optional. The ID to use for the saved query, which will become the final
+        #   component of the saved query's resource name.If the saved_query_id is not
+        #   provided, the system will generate an alphanumeric ID.The saved_query_id is
+        #   limited to 100 characters and can include only the following characters: upper
+        #   and lower-case alphanumeric characters, underscores, hyphens, and periods.
+        #   First character has to be alphanumeric.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_folder_location_saved_query(parent, saved_query_object = nil, saved_query_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/savedQueries', options)
+          command.request_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.request_object = saved_query_object
+          command.response_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.response_class = Google::Apis::LoggingV2::SavedQuery
+          command.params['parent'] = parent unless parent.nil?
+          command.query['savedQueryId'] = saved_query_id unless saved_query_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing SavedQuery that was created by the user making the request.
+        # @param [String] name
+        #   Required. The full resource name of the saved query to delete. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[
+        #   QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]
+        #   " For example: "projects/my-project/locations/global/savedQueries/my-saved-
+        #   query"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_folder_location_saved_query(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the SavedQueries that were created by the user making the request.
+        # @param [String] parent
+        #   Required. The resource to which the listed queries belong. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "
+        #   projects/my-project/locations/us-central1" Note: The locations portion of the
+        #   resource must be specified. To get a list of all saved queries, a wildcard
+        #   character - can be used for LOCATION_ID, for example: "projects/my-project/
+        #   locations/-"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request.Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListSavedQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListSavedQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_location_saved_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/savedQueries', options)
+          command.response_representation = Google::Apis::LoggingV2::ListSavedQueriesResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListSavedQueriesResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -5928,6 +6282,183 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the RecentQueries that were created by the user making the request.
+        # @param [String] parent
+        #   Required. The resource to which the listed queries belong. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+        #   projects/my-project/locations/us-central1Note: The location portion of the
+        #   resource must be specified, but supplying the character - in place of
+        #   LOCATION_ID will return all recent queries.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListRecentQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListRecentQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_recent_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/recentQueries', options)
+          command.response_representation = Google::Apis::LoggingV2::ListRecentQueriesResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListRecentQueriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new SavedQuery for the user making the request.
+        # @param [String] parent
+        #   Required. The parent resource in which to create the saved query: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "
+        #   projects/my-project/locations/global" "organizations/123456789/locations/us-
+        #   central1"
+        # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
+        # @param [String] saved_query_id
+        #   Optional. The ID to use for the saved query, which will become the final
+        #   component of the saved query's resource name.If the saved_query_id is not
+        #   provided, the system will generate an alphanumeric ID.The saved_query_id is
+        #   limited to 100 characters and can include only the following characters: upper
+        #   and lower-case alphanumeric characters, underscores, hyphens, and periods.
+        #   First character has to be alphanumeric.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_saved_query(parent, saved_query_object = nil, saved_query_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/savedQueries', options)
+          command.request_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.request_object = saved_query_object
+          command.response_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.response_class = Google::Apis::LoggingV2::SavedQuery
+          command.params['parent'] = parent unless parent.nil?
+          command.query['savedQueryId'] = saved_query_id unless saved_query_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing SavedQuery that was created by the user making the request.
+        # @param [String] name
+        #   Required. The full resource name of the saved query to delete. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[
+        #   QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]
+        #   " For example: "projects/my-project/locations/global/savedQueries/my-saved-
+        #   query"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_saved_query(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the SavedQueries that were created by the user making the request.
+        # @param [String] parent
+        #   Required. The resource to which the listed queries belong. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "
+        #   projects/my-project/locations/us-central1" Note: The locations portion of the
+        #   resource must be specified. To get a list of all saved queries, a wildcard
+        #   character - can be used for LOCATION_ID, for example: "projects/my-project/
+        #   locations/-"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request.Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListSavedQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListSavedQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_saved_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/savedQueries', options)
+          command.response_representation = Google::Apis::LoggingV2::ListSavedQueriesResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListSavedQueriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes all the log entries in a log for the _Default Log Bucket. The log
         # reappears if it receives new entries. Log entries written shortly before the
         # delete operation might not be deleted. Entries received after the delete
@@ -7521,6 +8052,183 @@ module Google
           command.response_class = Google::Apis::LoggingV2::ListOperationsResponse
           command.params['name'] = name unless name.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the RecentQueries that were created by the user making the request.
+        # @param [String] parent
+        #   Required. The resource to which the listed queries belong. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+        #   projects/my-project/locations/us-central1Note: The location portion of the
+        #   resource must be specified, but supplying the character - in place of
+        #   LOCATION_ID will return all recent queries.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListRecentQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListRecentQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_recent_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/recentQueries', options)
+          command.response_representation = Google::Apis::LoggingV2::ListRecentQueriesResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListRecentQueriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new SavedQuery for the user making the request.
+        # @param [String] parent
+        #   Required. The parent resource in which to create the saved query: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "
+        #   projects/my-project/locations/global" "organizations/123456789/locations/us-
+        #   central1"
+        # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
+        # @param [String] saved_query_id
+        #   Optional. The ID to use for the saved query, which will become the final
+        #   component of the saved query's resource name.If the saved_query_id is not
+        #   provided, the system will generate an alphanumeric ID.The saved_query_id is
+        #   limited to 100 characters and can include only the following characters: upper
+        #   and lower-case alphanumeric characters, underscores, hyphens, and periods.
+        #   First character has to be alphanumeric.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_saved_query(parent, saved_query_object = nil, saved_query_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/savedQueries', options)
+          command.request_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.request_object = saved_query_object
+          command.response_representation = Google::Apis::LoggingV2::SavedQuery::Representation
+          command.response_class = Google::Apis::LoggingV2::SavedQuery
+          command.params['parent'] = parent unless parent.nil?
+          command.query['savedQueryId'] = saved_query_id unless saved_query_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing SavedQuery that was created by the user making the request.
+        # @param [String] name
+        #   Required. The full resource name of the saved query to delete. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "
+        #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[
+        #   QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]
+        #   " For example: "projects/my-project/locations/global/savedQueries/my-saved-
+        #   query"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_saved_query(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the SavedQueries that were created by the user making the request.
+        # @param [String] parent
+        #   Required. The resource to which the listed queries belong. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "
+        #   projects/my-project/locations/us-central1" Note: The locations portion of the
+        #   resource must be specified. To get a list of all saved queries, a wildcard
+        #   character - can be used for LOCATION_ID, for example: "projects/my-project/
+        #   locations/-"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request.Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListSavedQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListSavedQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_saved_queries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/savedQueries', options)
+          command.response_representation = Google::Apis::LoggingV2::ListSavedQueriesResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListSavedQueriesResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
