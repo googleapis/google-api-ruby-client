@@ -4428,6 +4428,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :pod_ipv4_cidr_size
       
+        # QueuedProvisioning defines the queued provisioning used by the node pool.
+        # Corresponds to the JSON property `queuedProvisioning`
+        # @return [Google::Apis::ContainerV1::QueuedProvisioning]
+        attr_accessor :queued_provisioning
+      
         # [Output only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -4512,6 +4517,7 @@ module Google
           @network_config = args[:network_config] if args.key?(:network_config)
           @placement_policy = args[:placement_policy] if args.key?(:placement_policy)
           @pod_ipv4_cidr_size = args[:pod_ipv4_cidr_size] if args.key?(:pod_ipv4_cidr_size)
+          @queued_provisioning = args[:queued_provisioning] if args.key?(:queued_provisioning)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
@@ -5099,6 +5105,27 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @filter = args[:filter] if args.key?(:filter)
           @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
+      # QueuedProvisioning defines the queued provisioning used by the node pool.
+      class QueuedProvisioning
+        include Google::Apis::Core::Hashable
+      
+        # Denotes that this nodepool is QRM specific, meaning nodes can be only obtained
+        # through queuing via the Cluster Autoscaler ProvisioningRequest API.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
