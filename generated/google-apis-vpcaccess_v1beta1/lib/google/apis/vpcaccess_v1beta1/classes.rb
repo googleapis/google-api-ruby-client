@@ -47,9 +47,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_instances
       
-        # Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If
-        # both max-throughput and max-instances are provided, max-instances takes
-        # precedence over max-throughput.
+        # Maximum throughput of the connector in Mbps. Refers to the expected throughput
+        # when using an `e2-micro` machine type. Value must be a multiple of 100 from
+        # 300 through 1000. Must be higher than the value specified by --min-throughput.
+        # If both max-throughput and max-instances are provided, max-instances takes
+        # precedence over max-throughput. The use of `max-throughput` is discouraged in
+        # favor of `max-instances`.
         # Corresponds to the JSON property `maxThroughput`
         # @return [Fixnum]
         attr_accessor :max_throughput
@@ -59,9 +62,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_instances
       
-        # Minimum throughput of the connector in Mbps. Default and min is 200. If both
-        # min-throughput and min-instances are provided, min-instances takes precedence
-        # over min-throughput.
+        # Minimum throughput of the connector in Mbps. Refers to the expected throughput
+        # when using an `e2-micro` machine type. Value must be a multiple of 100 from
+        # 200 through 900. Must be lower than the value specified by --max-throughput.
+        # If both min-throughput and min-instances are provided, min-instances takes
+        # precedence over min-throughput. The use of `min-throughput` is discouraged in
+        # favor of `min-instances`.
         # Corresponds to the JSON property `minThroughput`
         # @return [Fixnum]
         attr_accessor :min_throughput
