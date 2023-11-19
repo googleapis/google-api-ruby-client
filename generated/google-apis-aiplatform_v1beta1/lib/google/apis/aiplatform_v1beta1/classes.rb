@@ -6768,7 +6768,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optimized storage type to replace lightning
+        # Optimized storage type
         # Corresponds to the JSON property `optimized`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimized]
         attr_accessor :optimized
@@ -6916,7 +6916,7 @@ module Google
         end
       end
       
-      # Optimized storage type to replace lightning
+      # Optimized storage type
       class GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimized
         include Google::Apis::Core::Hashable
       
@@ -7284,6 +7284,25 @@ module Google
         def update!(**args)
           @entity_id_columns = args[:entity_id_columns] if args.key?(:entity_id_columns)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Lookup key for a feature view.
+      class GoogleCloudAiplatformV1beta1FeatureViewDataKey
+        include Google::Apis::Core::Hashable
+      
+        # String key to use for lookup.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
         end
       end
       
@@ -7808,7 +7827,19 @@ module Google
       class GoogleCloudAiplatformV1beta1FetchFeatureValuesRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Response data format. If not set, FeatureViewDataFormat.KEY_VALUE
+        # will be used.
+        # Corresponds to the JSON property `dataFormat`
+        # @return [String]
+        attr_accessor :data_format
+      
+        # Lookup key for a feature view.
+        # Corresponds to the JSON property `dataKey`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewDataKey]
+        attr_accessor :data_key
+      
         # Specify response data format. If not set, KeyValue format will be used.
+        # Deprecated. Use FetchFeatureValuesRequest.data_format.
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
@@ -7825,6 +7856,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_format = args[:data_format] if args.key?(:data_format)
+          @data_key = args[:data_key] if args.key?(:data_key)
           @format = args[:format] if args.key?(:format)
           @id = args[:id] if args.key?(:id)
         end
@@ -11747,6 +11780,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :command
       
+        # Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before
+        # exposing.
+        # Corresponds to the JSON property `deploymentTimeout`
+        # @return [String]
+        attr_accessor :deployment_timeout
+      
         # Immutable. List of environment variables to set in the container. After the
         # container starts running, code running in the container can read these
         # environment variables. Additionally, the command and args fields can reference
@@ -11761,6 +11800,12 @@ module Google
         # Corresponds to the JSON property `env`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnvVar>]
         attr_accessor :env
+      
+        # Probe describes a health check to be performed against a container to
+        # determine whether it is alive or ready to receive traffic.
+        # Corresponds to the JSON property `healthProbe`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Probe]
+        attr_accessor :health_probe
       
         # Immutable. HTTP path on the container to send health checks to. Vertex AI
         # intermittently sends GET requests to this path on the container's IP address
@@ -11837,6 +11882,18 @@ module Google
         # @return [String]
         attr_accessor :predict_route
       
+        # Immutable. The amount of the VM memory to reserve as the shared memory for the
+        # model in megabytes. TODO (b/306244185): Revise documentation before exposing.
+        # Corresponds to the JSON property `sharedMemorySizeMb`
+        # @return [Fixnum]
+        attr_accessor :shared_memory_size_mb
+      
+        # Probe describes a health check to be performed against a container to
+        # determine whether it is alive or ready to receive traffic.
+        # Corresponds to the JSON property `startupProbe`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Probe]
+        attr_accessor :startup_probe
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11845,11 +11902,15 @@ module Google
         def update!(**args)
           @args = args[:args] if args.key?(:args)
           @command = args[:command] if args.key?(:command)
+          @deployment_timeout = args[:deployment_timeout] if args.key?(:deployment_timeout)
           @env = args[:env] if args.key?(:env)
+          @health_probe = args[:health_probe] if args.key?(:health_probe)
           @health_route = args[:health_route] if args.key?(:health_route)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
           @ports = args[:ports] if args.key?(:ports)
           @predict_route = args[:predict_route] if args.key?(:predict_route)
+          @shared_memory_size_mb = args[:shared_memory_size_mb] if args.key?(:shared_memory_size_mb)
+          @startup_probe = args[:startup_probe] if args.key?(:startup_probe)
         end
       end
       
@@ -15300,6 +15361,66 @@ module Google
         end
       end
       
+      # Probe describes a health check to be performed against a container to
+      # determine whether it is alive or ready to receive traffic.
+      class GoogleCloudAiplatformV1beta1Probe
+        include Google::Apis::Core::Hashable
+      
+        # ExecAction specifies a command to execute.
+        # Corresponds to the JSON property `exec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeExecAction]
+        attr_accessor :exec
+      
+        # How often (in seconds) to perform the probe. Default to 10 seconds. Minimum
+        # value is 1. Must be less than timeout_seconds. Maps to Kubernetes probe
+        # argument 'periodSeconds'.
+        # Corresponds to the JSON property `periodSeconds`
+        # @return [Fixnum]
+        attr_accessor :period_seconds
+      
+        # Number of seconds after which the probe times out. Defaults to 1 second.
+        # Minimum value is 1. Must be greater or equal to period_seconds. Maps to
+        # Kubernetes probe argument 'timeoutSeconds'.
+        # Corresponds to the JSON property `timeoutSeconds`
+        # @return [Fixnum]
+        attr_accessor :timeout_seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exec = args[:exec] if args.key?(:exec)
+          @period_seconds = args[:period_seconds] if args.key?(:period_seconds)
+          @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
+        end
+      end
+      
+      # ExecAction specifies a command to execute.
+      class GoogleCloudAiplatformV1beta1ProbeExecAction
+        include Google::Apis::Core::Hashable
+      
+        # Command is the command line to execute inside the container, the working
+        # directory for the command is root ('/') in the container's filesystem. The
+        # command is simply exec'd, it is not run inside a shell, so traditional shell
+        # instructions ('|', etc) won't work. To use a shell, you need to explicitly
+        # call out to that shell. Exit status of 0 is treated as live/healthy and non-
+        # zero is unhealthy.
+        # Corresponds to the JSON property `command`
+        # @return [Array<String>]
+        attr_accessor :command
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @command = args[:command] if args.key?(:command)
+        end
+      end
+      
       # A Model Garden Publisher Model.
       class GoogleCloudAiplatformV1beta1PublisherModel
         include Google::Apis::Core::Hashable
@@ -16366,6 +16487,25 @@ module Google
         def update!(**args)
           @username = args[:username] if args.key?(:username)
           @view_count = args[:view_count] if args.key?(:view_count)
+        end
+      end
+      
+      # Details of operations that perform reboot PersistentResource.
+      class GoogleCloudAiplatformV1beta1RebootPersistentResourceOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
       
@@ -26157,10 +26297,11 @@ module Google
       
         # Optional. The user-provided custom service account to use to do the model
         # upload. If empty, [Vertex AI Service Agent](https://cloud.google.com/vertex-ai/
-        # docs/general/access-control#service-agents) will be used. Users uploading the
-        # Model must have the `iam.serviceAccounts.actAs` permission on this service
-        # account. Also, this account must belong to the project specified in the `
-        # parent` field and have all necessary read permissions.
+        # docs/general/access-control#service-agents) will be used to access resources
+        # needed to upload the model. This account must belong to the target project
+        # where the model is uploaded to, i.e., the project specified in the `parent`
+        # field of this request and have necessary read permissions (to Google Cloud
+        # Storage, Artifact Registry, etc.).
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account

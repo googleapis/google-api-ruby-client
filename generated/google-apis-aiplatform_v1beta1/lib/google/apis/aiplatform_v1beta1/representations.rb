@@ -1246,6 +1246,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1FeatureViewDataKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2518,6 +2524,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1Probe
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ProbeExecAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1PublisherModel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2723,6 +2741,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1ReadTensorboardUsageResponsePerUserUsageData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RebootPersistentResourceOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6586,6 +6610,13 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1FeatureViewDataKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6726,6 +6757,9 @@ module Google
       class GoogleCloudAiplatformV1beta1FetchFeatureValuesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_format, as: 'dataFormat'
+          property :data_key, as: 'dataKey', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewDataKey, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewDataKey::Representation
+      
           property :format, as: 'format'
           property :id, as: 'id'
         end
@@ -7844,13 +7878,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :args, as: 'args'
           collection :command, as: 'command'
+          property :deployment_timeout, as: 'deploymentTimeout'
           collection :env, as: 'env', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnvVar, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnvVar::Representation
+      
+          property :health_probe, as: 'healthProbe', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Probe, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Probe::Representation
       
           property :health_route, as: 'healthRoute'
           property :image_uri, as: 'imageUri'
           collection :ports, as: 'ports', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Port, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Port::Representation
       
           property :predict_route, as: 'predictRoute'
+          property :shared_memory_size_mb, :numeric_string => true, as: 'sharedMemorySizeMb'
+          property :startup_probe, as: 'startupProbe', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Probe, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Probe::Representation
+      
         end
       end
       
@@ -8789,6 +8829,23 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1Probe
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exec, as: 'exec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeExecAction, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeExecAction::Representation
+      
+          property :period_seconds, as: 'periodSeconds'
+          property :timeout_seconds, as: 'timeoutSeconds'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ProbeExecAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :command, as: 'command'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1PublisherModel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9122,6 +9179,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :username, as: 'username'
           property :view_count, :numeric_string => true, as: 'viewCount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RebootPersistentResourceOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata::Representation
+      
         end
       end
       
