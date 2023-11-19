@@ -5101,7 +5101,7 @@ module Google
         end
       end
       
-      # The response for `ListApiCategoriesRequest`.
+      # The response for `ListApiCategoriesRequest`. Next ID: 6
       class GoogleCloudApigeeV1ListApiCategoriesResponse
         include Google::Apis::Core::Hashable
       
