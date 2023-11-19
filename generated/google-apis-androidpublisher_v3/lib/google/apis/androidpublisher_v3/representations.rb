@@ -958,6 +958,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TrackConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TrackCountryAvailability
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1573,6 +1579,7 @@ module Google
       class ExternalTransactionAddress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :administrative_area, as: 'administrativeArea'
           property :region_code, as: 'regionCode'
         end
       end
@@ -2072,6 +2079,7 @@ module Google
       
           property :external_transaction_token, as: 'externalTransactionToken'
           property :initial_external_transaction_id, as: 'initialExternalTransactionId'
+          property :migrated_transaction_program, as: 'migratedTransactionProgram'
         end
       end
       
@@ -2580,6 +2588,15 @@ module Google
           collection :releases, as: 'releases', class: Google::Apis::AndroidpublisherV3::TrackRelease, decorator: Google::Apis::AndroidpublisherV3::TrackRelease::Representation
       
           property :track, as: 'track'
+        end
+      end
+      
+      class TrackConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :form_factor, as: 'formFactor'
+          property :track, as: 'track'
+          property :type, as: 'type'
         end
       end
       
