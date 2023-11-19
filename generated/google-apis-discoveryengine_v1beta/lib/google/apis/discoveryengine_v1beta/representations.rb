@@ -1067,6 +1067,7 @@ module Google
           property :create_time, as: 'createTime'
           collection :data_store_ids, as: 'dataStoreIds'
           property :display_name, as: 'displayName'
+          property :industry_vertical, as: 'industryVertical'
           property :media_recommendation_engine_config, as: 'mediaRecommendationEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig::Representation
       
           property :name, as: 'name'
@@ -1803,6 +1804,7 @@ module Google
           property :boost_spec, as: 'boostSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec::Representation
       
           property :branch, as: 'branch'
+          property :canonical_filter, as: 'canonicalFilter'
           property :content_search_spec, as: 'contentSearchSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec::Representation
       
           property :embedding_spec, as: 'embeddingSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec::Representation
