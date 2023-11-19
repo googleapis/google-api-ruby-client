@@ -743,8 +743,7 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::DeviceReport]
         attr_accessor :report
       
-        # Retail brand for the device, if set. See https://developer.android.com/
-        # reference/android/os/Build.html#BRAND
+        # Retail brand for the device, if set. See android.os.Build.BRAND
         # Corresponds to the JSON property `retailBrand`
         # @return [String]
         attr_accessor :retail_brand
@@ -1896,12 +1895,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A longer description of the Permissions resource, giving more details of what
-        # it affects. This field may be absent.
+        # it affects.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # The name of the permission. This field may be absent.
+        # The name of the permission.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1927,12 +1926,13 @@ module Google
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Recommended alternative: autoUpdateMode which is set per app, provides greater
-        # flexibility around update frequency. When autoUpdateMode is set to
-        # AUTO_UPDATE_POSTPONED or AUTO_UPDATE_HIGH_PRIORITY, this field has no effect. "
-        # choiceToTheUser" allows the device's user to configure the app update policy. "
-        # always" enables auto updates. "never" disables auto updates. "wifiOnly"
-        # enables auto updates only when the device is connected to wifi.
+        # Controls when automatic app updates on the device can be applied. Recommended
+        # alternative: autoUpdateMode which is set per app, provides greater flexibility
+        # around update frequency. When autoUpdateMode is set to AUTO_UPDATE_POSTPONED
+        # or AUTO_UPDATE_HIGH_PRIORITY, autoUpdatePolicy has no effect. "choiceToTheUser"
+        # allows the device's user to configure the app update policy. "always" enables
+        # auto updates. "never" disables auto updates. "wifiOnly" enables auto updates
+        # only when the device is connected to wifi.
         # Corresponds to the JSON property `autoUpdatePolicy`
         # @return [String]
         attr_accessor :auto_update_policy
@@ -2285,7 +2285,9 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::AutoInstallPolicy]
         attr_accessor :auto_install_policy
       
-        # The auto-update mode for the product.
+        # The auto-update mode for the product. When autoUpdateMode is used, it always
+        # takes precedence over the user's choice. So when a user makes changes to the
+        # device settings manually, these changes are ignored.
         # Corresponds to the JSON property `autoUpdateMode`
         # @return [String]
         attr_accessor :auto_update_mode
@@ -2293,9 +2295,8 @@ module Google
         # An authentication URL configuration for the authenticator app of an identity
         # provider. This helps to launch the identity provider's authenticator app
         # during the authentication happening in a private app using Android WebView.
-        # Authenticator app should already be the [default handler](https://developer.
-        # android.com/training/app-links/verify-site-associations) for the
-        # authentication url on the device.
+        # Authenticator app should already be the default handler for the authentication
+        # url on the device.
         # Corresponds to the JSON property `enterpriseAuthenticationAppLinkConfigs`
         # @return [Array<Google::Apis::AndroidenterpriseV1::EnterpriseAuthenticationAppLinkConfig>]
         attr_accessor :enterprise_authentication_app_link_configs
