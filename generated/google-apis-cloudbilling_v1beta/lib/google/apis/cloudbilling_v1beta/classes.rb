@@ -768,7 +768,7 @@ module Google
         end
       end
       
-      # Encapsulates the latest price for the given billing account SKU.
+      # Encapsulates the latest price for a billing account SKU.
       class GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice
         include Google::Apis::Core::Hashable
       
@@ -794,7 +794,7 @@ module Google
         # @return [Google::Apis::CloudbillingV1beta::GoogleCloudBillingBillingaccountpricesV1betaRate]
         attr_accessor :rate
       
-        # Type of the price. It can have values: ["unspecified", "rate"].
+        # Type of the price. The possible values are: ["unspecified", "rate"].
         # Corresponds to the JSON property `valueType`
         # @return [String]
         attr_accessor :value_type
@@ -1758,7 +1758,7 @@ module Google
         end
       end
       
-      # Encapsulates the latest price for the given SKU.
+      # Encapsulates the latest price for a SKU.
       class GoogleCloudBillingPricesV1betaPrice
         include Google::Apis::Core::Hashable
       

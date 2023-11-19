@@ -376,13 +376,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest price for the given billing account SKU.
+        # Gets the latest price for SKUs available to your Cloud Billing account.
         # @param [String] name
-        #   Required. Name of the latest billing account price to retrieve. Format:
+        #   Required. Name of the billing account price to retrieve. Format:
         #   billingAccounts/`billing_account`/skus/`sku`/price
         # @param [String] currency_code
-        #   Optional. ISO-4217 currency code for the price. If not specified, currency of
-        #   billing account will be used.
+        #   Optional. ISO-4217 currency code for the price. If not specified, the currency
+        #   of the billing account is used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
