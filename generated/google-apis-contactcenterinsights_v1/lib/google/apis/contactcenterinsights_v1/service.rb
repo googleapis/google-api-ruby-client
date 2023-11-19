@@ -151,8 +151,8 @@ module Google
         
         # Deletes multiple conversations in a single request.
         # @param [String] parent
-        #   Required. The parent resource to create analyses in. Format: projects/`project`
-        #   /locations/`location`
+        #   Required. The parent resource to delete conversations from. Format: projects/`
+        #   project`/locations/`location`
         # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest] google_cloud_contactcenterinsights_v1_bulk_delete_conversations_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
