@@ -346,6 +346,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleApiServiceusageV2alphaConsumerPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2alphaEnableRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2alphaUpdateConsumerPolicyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Http
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1252,6 +1270,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           property :unique_id, as: 'uniqueId'
+        end
+      end
+      
+      class GoogleApiServiceusageV2alphaConsumerPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          collection :enable_rules, as: 'enableRules', class: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2alphaEnableRule, decorator: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2alphaEnableRule::Representation
+      
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleApiServiceusageV2alphaEnableRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :categories, as: 'categories'
+          collection :groups, as: 'groups'
+          collection :services, as: 'services'
+        end
+      end
+      
+      class GoogleApiServiceusageV2alphaUpdateConsumerPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
