@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BinaryAuthorizationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +71,78 @@ module Google
       end
       
       class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterUpgradeFleetSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterUpgradeFleetState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterUpgradeGkeUpgrade
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterUpgradeGkeUpgradeFeatureCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterUpgradeGkeUpgradeFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterUpgradeGkeUpgradeOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterUpgradeGkeUpgradeState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterUpgradeIgnoredMembership
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterUpgradeMembershipGkeUpgradeState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterUpgradeMembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterUpgradePostConditions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterUpgradeUpgradeStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -586,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolicyBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PolicyControllerBundleInstallSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -832,6 +916,15 @@ module Google
         end
       end
       
+      class BinaryAuthorizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :evaluation_mode, as: 'evaluationMode'
+          collection :policy_bindings, as: 'policyBindings', class: Google::Apis::GkehubV1::PolicyBinding, decorator: Google::Apis::GkehubV1::PolicyBinding::Representation
+      
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -848,10 +941,129 @@ module Google
         end
       end
       
+      class ClusterUpgradeFleetSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gke_upgrade_overrides, as: 'gkeUpgradeOverrides', class: Google::Apis::GkehubV1::ClusterUpgradeGkeUpgradeOverride, decorator: Google::Apis::GkehubV1::ClusterUpgradeGkeUpgradeOverride::Representation
+      
+          property :post_conditions, as: 'postConditions', class: Google::Apis::GkehubV1::ClusterUpgradePostConditions, decorator: Google::Apis::GkehubV1::ClusterUpgradePostConditions::Representation
+      
+          collection :upstream_fleets, as: 'upstreamFleets'
+        end
+      end
+      
+      class ClusterUpgradeFleetState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :downstream_fleets, as: 'downstreamFleets'
+          property :gke_state, as: 'gkeState', class: Google::Apis::GkehubV1::ClusterUpgradeGkeUpgradeFeatureState, decorator: Google::Apis::GkehubV1::ClusterUpgradeGkeUpgradeFeatureState::Representation
+      
+          hash :ignored, as: 'ignored', class: Google::Apis::GkehubV1::ClusterUpgradeIgnoredMembership, decorator: Google::Apis::GkehubV1::ClusterUpgradeIgnoredMembership::Representation
+      
+        end
+      end
+      
+      class ClusterUpgradeGkeUpgrade
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :version, as: 'version'
+        end
+      end
+      
+      class ClusterUpgradeGkeUpgradeFeatureCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+          property :status, as: 'status'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ClusterUpgradeGkeUpgradeFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conditions, as: 'conditions', class: Google::Apis::GkehubV1::ClusterUpgradeGkeUpgradeFeatureCondition, decorator: Google::Apis::GkehubV1::ClusterUpgradeGkeUpgradeFeatureCondition::Representation
+      
+          collection :upgrade_state, as: 'upgradeState', class: Google::Apis::GkehubV1::ClusterUpgradeGkeUpgradeState, decorator: Google::Apis::GkehubV1::ClusterUpgradeGkeUpgradeState::Representation
+      
+        end
+      end
+      
+      class ClusterUpgradeGkeUpgradeOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :post_conditions, as: 'postConditions', class: Google::Apis::GkehubV1::ClusterUpgradePostConditions, decorator: Google::Apis::GkehubV1::ClusterUpgradePostConditions::Representation
+      
+          property :upgrade, as: 'upgrade', class: Google::Apis::GkehubV1::ClusterUpgradeGkeUpgrade, decorator: Google::Apis::GkehubV1::ClusterUpgradeGkeUpgrade::Representation
+      
+        end
+      end
+      
+      class ClusterUpgradeGkeUpgradeState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :stats, as: 'stats'
+          property :status, as: 'status', class: Google::Apis::GkehubV1::ClusterUpgradeUpgradeStatus, decorator: Google::Apis::GkehubV1::ClusterUpgradeUpgradeStatus::Representation
+      
+          property :upgrade, as: 'upgrade', class: Google::Apis::GkehubV1::ClusterUpgradeGkeUpgrade, decorator: Google::Apis::GkehubV1::ClusterUpgradeGkeUpgrade::Representation
+      
+        end
+      end
+      
+      class ClusterUpgradeIgnoredMembership
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ignored_time, as: 'ignoredTime'
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class ClusterUpgradeMembershipGkeUpgradeState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status, as: 'status', class: Google::Apis::GkehubV1::ClusterUpgradeUpgradeStatus, decorator: Google::Apis::GkehubV1::ClusterUpgradeUpgradeStatus::Representation
+      
+          property :upgrade, as: 'upgrade', class: Google::Apis::GkehubV1::ClusterUpgradeGkeUpgrade, decorator: Google::Apis::GkehubV1::ClusterUpgradeGkeUpgrade::Representation
+      
+        end
+      end
+      
+      class ClusterUpgradeMembershipState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fleet, as: 'fleet'
+          property :ignored, as: 'ignored', class: Google::Apis::GkehubV1::ClusterUpgradeIgnoredMembership, decorator: Google::Apis::GkehubV1::ClusterUpgradeIgnoredMembership::Representation
+      
+          collection :scopes, as: 'scopes'
+          collection :upgrades, as: 'upgrades', class: Google::Apis::GkehubV1::ClusterUpgradeMembershipGkeUpgradeState, decorator: Google::Apis::GkehubV1::ClusterUpgradeMembershipGkeUpgradeState::Representation
+      
+        end
+      end
+      
+      class ClusterUpgradePostConditions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :soaking, as: 'soaking'
+        end
+      end
+      
+      class ClusterUpgradeUpgradeStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :reason, as: 'reason'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class CommonFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1::AppDevExperienceFeatureSpec, decorator: Google::Apis::GkehubV1::AppDevExperienceFeatureSpec::Representation
+      
+          property :clusterupgrade, as: 'clusterupgrade', class: Google::Apis::GkehubV1::ClusterUpgradeFleetSpec, decorator: Google::Apis::GkehubV1::ClusterUpgradeFleetSpec::Representation
       
           property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1::FleetObservabilityFeatureSpec, decorator: Google::Apis::GkehubV1::FleetObservabilityFeatureSpec::Representation
       
@@ -864,6 +1076,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1::AppDevExperienceFeatureState, decorator: Google::Apis::GkehubV1::AppDevExperienceFeatureState::Representation
+      
+          property :clusterupgrade, as: 'clusterupgrade', class: Google::Apis::GkehubV1::ClusterUpgradeFleetState, decorator: Google::Apis::GkehubV1::ClusterUpgradeFleetState::Representation
       
           property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1::FleetObservabilityFeatureState, decorator: Google::Apis::GkehubV1::FleetObservabilityFeatureState::Representation
       
@@ -898,7 +1112,6 @@ module Google
       
           property :prevent_drift, as: 'preventDrift'
           property :source_format, as: 'sourceFormat'
-          property :stop_syncing, as: 'stopSyncing'
         end
       end
       
@@ -1042,7 +1255,6 @@ module Google
       
           property :hierarchy_controller, as: 'hierarchyController', class: Google::Apis::GkehubV1::ConfigManagementHierarchyControllerConfig, decorator: Google::Apis::GkehubV1::ConfigManagementHierarchyControllerConfig::Representation
       
-          property :management, as: 'management'
           property :policy_controller, as: 'policyController', class: Google::Apis::GkehubV1::ConfigManagementPolicyController, decorator: Google::Apis::GkehubV1::ConfigManagementPolicyController::Representation
       
           property :version, as: 'version'
@@ -1173,6 +1385,8 @@ module Google
       class DefaultClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binary_authorization_config, as: 'binaryAuthorizationConfig', class: Google::Apis::GkehubV1::BinaryAuthorizationConfig, decorator: Google::Apis::GkehubV1::BinaryAuthorizationConfig::Representation
+      
           property :security_posture_config, as: 'securityPostureConfig', class: Google::Apis::GkehubV1::SecurityPostureConfig, decorator: Google::Apis::GkehubV1::SecurityPostureConfig::Representation
       
         end
@@ -1653,6 +1867,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1::AppDevExperienceFeatureState, decorator: Google::Apis::GkehubV1::AppDevExperienceFeatureState::Representation
       
+          property :clusterupgrade, as: 'clusterupgrade', class: Google::Apis::GkehubV1::ClusterUpgradeMembershipState, decorator: Google::Apis::GkehubV1::ClusterUpgradeMembershipState::Representation
+      
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1::ConfigManagementMembershipState, decorator: Google::Apis::GkehubV1::ConfigManagementMembershipState::Representation
       
           property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1::FleetObservabilityMembershipState, decorator: Google::Apis::GkehubV1::FleetObservabilityMembershipState::Representation
@@ -1775,6 +1991,13 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PolicyBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
