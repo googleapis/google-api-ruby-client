@@ -1559,6 +1559,14 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # The industry vertical that the engine registers. The restriction of the Engine
+        # industry vertical is based on DataStore: If unspecified, default to `GENERIC`.
+        # Vertical on Engine has to match vertical of the DataStore liniked to the
+        # engine.
+        # Corresponds to the JSON property `industryVertical`
+        # @return [String]
+        attr_accessor :industry_vertical
+      
         # Additional config specs for a Media Recommendation engine.
         # Corresponds to the JSON property `mediaRecommendationEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig]
@@ -1610,6 +1618,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @name = args[:name] if args.key?(:name)
           @recommendation_metadata = args[:recommendation_metadata] if args.key?(:recommendation_metadata)
@@ -1626,8 +1635,8 @@ module Google
       
         # Configurations for generating a Dialogflow agent. Note that these
         # configurations are one-time consumed by and passed to Dialogflow service. It
-        # means they cannot be retrieved using GetEngine or ListEngine API after engine
-        # creation.
+        # means they cannot be retrieved using EngineService.GetEngine or EngineService.
+        # ListEngines API after engine creation.
         # Corresponds to the JSON property `agentCreationConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig]
         attr_accessor :agent_creation_config
@@ -1637,9 +1646,9 @@ module Google
         # provide an agent name that links the agent with the Chat engine. Format: `
         # projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are
         # one-time consumed by and passed to Dialogflow service. It means they cannot be
-        # retrieved using GetEngine or ListEngine API after engine creation. Please use
-        # Engine.chat_engine_metadata.dialogflow_agent for actual agent association
-        # after Engine is created.
+        # retrieved using EngineService.GetEngine or EngineService.ListEngines API after
+        # engine creation. Please use chat_engine_metadata.dialogflow_agent for actual
+        # agent association after Engine is created.
         # Corresponds to the JSON property `dialogflowAgentToLink`
         # @return [String]
         attr_accessor :dialogflow_agent_to_link
@@ -1657,8 +1666,8 @@ module Google
       
       # Configurations for generating a Dialogflow agent. Note that these
       # configurations are one-time consumed by and passed to Dialogflow service. It
-      # means they cannot be retrieved using GetEngine or ListEngine API after engine
-      # creation.
+      # means they cannot be retrieved using EngineService.GetEngine or EngineService.
+      # ListEngines API after engine creation.
       class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig
         include Google::Apis::Core::Hashable
       
@@ -3420,6 +3429,18 @@ module Google
         # @return [String]
         attr_accessor :branch
       
+        # The default filter that is applied when a user performs a search without
+        # checking any filters on the search page. The filter applied to every search
+        # request when quality improvement such as query expansion is needed. In the
+        # case a query does not have a sufficient amount of results this filter will be
+        # used to determine whether or not to enable the query expansion flow. The
+        # original filter will still be used for the query expanded search. This field
+        # is strongly recommended to achieve high search quality. For more information
+        # about filter syntax, see SearchRequest.filter.
+        # Corresponds to the JSON property `canonicalFilter`
+        # @return [String]
+        attr_accessor :canonical_filter
+      
         # A specification for configuring the behavior of content search.
         # Corresponds to the JSON property `contentSearchSpec`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec]
@@ -3588,6 +3609,7 @@ module Google
         def update!(**args)
           @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
           @branch = args[:branch] if args.key?(:branch)
+          @canonical_filter = args[:canonical_filter] if args.key?(:canonical_filter)
           @content_search_spec = args[:content_search_spec] if args.key?(:content_search_spec)
           @embedding_spec = args[:embedding_spec] if args.key?(:embedding_spec)
           @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
