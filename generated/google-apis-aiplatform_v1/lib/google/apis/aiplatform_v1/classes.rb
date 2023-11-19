@@ -2319,6 +2319,54 @@ module Google
         end
       end
       
+      # Runtime operation information for CreateDeploymentResourcePool method.
+      class GoogleCloudAiplatformV1CreateDeploymentResourcePoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
+      # Request message for CreateDeploymentResourcePool method.
+      class GoogleCloudAiplatformV1CreateDeploymentResourcePoolRequest
+        include Google::Apis::Core::Hashable
+      
+        # A description of resources that can be shared by multiple DeployedModels,
+        # whose underlying specification consists of a DedicatedResources.
+        # Corresponds to the JSON property `deploymentResourcePool`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeploymentResourcePool]
+        attr_accessor :deployment_resource_pool
+      
+        # Required. The ID to use for the DeploymentResourcePool, which will become the
+        # final component of the DeploymentResourcePool's resource name. The maximum
+        # length is 63 characters, and valid characters are `/^[a-z]([a-z0-9-]`0,61`[a-
+        # z0-9])?$/`.
+        # Corresponds to the JSON property `deploymentResourcePoolId`
+        # @return [String]
+        attr_accessor :deployment_resource_pool_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_resource_pool = args[:deployment_resource_pool] if args.key?(:deployment_resource_pool)
+          @deployment_resource_pool_id = args[:deployment_resource_pool_id] if args.key?(:deployment_resource_pool_id)
+        end
+      end
+      
       # Runtime operation information for EndpointService.CreateEndpoint.
       class GoogleCloudAiplatformV1CreateEndpointOperationMetadata
         include Google::Apis::Core::Hashable
@@ -4179,6 +4227,41 @@ module Google
         def update!(**args)
           @deployed_model_id = args[:deployed_model_id] if args.key?(:deployed_model_id)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
+        end
+      end
+      
+      # A description of resources that can be shared by multiple DeployedModels,
+      # whose underlying specification consists of a DedicatedResources.
+      class GoogleCloudAiplatformV1DeploymentResourcePool
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when this DeploymentResourcePool was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A description of resources that are dedicated to a DeployedModel, and that
+        # need a higher degree of manual configuration.
+        # Corresponds to the JSON property `dedicatedResources`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DedicatedResources]
+        attr_accessor :dedicated_resources
+      
+        # Immutable. The resource name of the DeploymentResourcePool. Format: `projects/`
+        # project`/locations/`location`/deploymentResourcePools/`
+        # deployment_resource_pool``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @dedicated_resources = args[:dedicated_resources] if args.key?(:dedicated_resources)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -6805,6 +6888,25 @@ module Google
         end
       end
       
+      # Lookup key for a feature view.
+      class GoogleCloudAiplatformV1FeatureViewDataKey
+        include Google::Apis::Core::Hashable
+      
+        # String key to use for lookup.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+        end
+      end
+      
       # A Feature Registry source for features that need to be synced to Online Store.
       class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource
         include Google::Apis::Core::Hashable
@@ -7220,16 +7322,16 @@ module Google
       class GoogleCloudAiplatformV1FetchFeatureValuesRequest
         include Google::Apis::Core::Hashable
       
-        # Specify response data format. If not set, KeyValue format will be used.
-        # Corresponds to the JSON property `format`
+        # Optional. Response data format. If not set, FeatureViewDataFormat.KEY_VALUE
+        # will be used.
+        # Corresponds to the JSON property `dataFormat`
         # @return [String]
-        attr_accessor :format
+        attr_accessor :data_format
       
-        # Simple ID. The whole string will be used as is to identify Entity to fetch
-        # feature values for.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
+        # Lookup key for a feature view.
+        # Corresponds to the JSON property `dataKey`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewDataKey]
+        attr_accessor :data_key
       
         def initialize(**args)
            update!(**args)
@@ -7237,8 +7339,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @format = args[:format] if args.key?(:format)
-          @id = args[:id] if args.key?(:id)
+          @data_format = args[:data_format] if args.key?(:data_format)
+          @data_key = args[:data_key] if args.key?(:data_key)
         end
       end
       
@@ -9043,6 +9145,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datasets = args[:datasets] if args.key?(:datasets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListDeploymentResourcePools method.
+      class GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The DeploymentResourcePools from the specified location.
+        # Corresponds to the JSON property `deploymentResourcePools`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeploymentResourcePool>]
+        attr_accessor :deployment_resource_pools
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_resource_pools = args[:deployment_resource_pools] if args.key?(:deployment_resource_pools)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -11008,6 +11136,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :command
       
+        # Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before
+        # exposing.
+        # Corresponds to the JSON property `deploymentTimeout`
+        # @return [String]
+        attr_accessor :deployment_timeout
+      
         # Immutable. List of environment variables to set in the container. After the
         # container starts running, code running in the container can read these
         # environment variables. Additionally, the command and args fields can reference
@@ -11022,6 +11156,12 @@ module Google
         # Corresponds to the JSON property `env`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EnvVar>]
         attr_accessor :env
+      
+        # Probe describes a health check to be performed against a container to
+        # determine whether it is alive or ready to receive traffic.
+        # Corresponds to the JSON property `healthProbe`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Probe]
+        attr_accessor :health_probe
       
         # Immutable. HTTP path on the container to send health checks to. Vertex AI
         # intermittently sends GET requests to this path on the container's IP address
@@ -11098,6 +11238,18 @@ module Google
         # @return [String]
         attr_accessor :predict_route
       
+        # Immutable. The amount of the VM memory to reserve as the shared memory for the
+        # model in megabytes. TODO (b/306244185): Revise documentation before exposing.
+        # Corresponds to the JSON property `sharedMemorySizeMb`
+        # @return [Fixnum]
+        attr_accessor :shared_memory_size_mb
+      
+        # Probe describes a health check to be performed against a container to
+        # determine whether it is alive or ready to receive traffic.
+        # Corresponds to the JSON property `startupProbe`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Probe]
+        attr_accessor :startup_probe
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11106,11 +11258,15 @@ module Google
         def update!(**args)
           @args = args[:args] if args.key?(:args)
           @command = args[:command] if args.key?(:command)
+          @deployment_timeout = args[:deployment_timeout] if args.key?(:deployment_timeout)
           @env = args[:env] if args.key?(:env)
+          @health_probe = args[:health_probe] if args.key?(:health_probe)
           @health_route = args[:health_route] if args.key?(:health_route)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
           @ports = args[:ports] if args.key?(:ports)
           @predict_route = args[:predict_route] if args.key?(:predict_route)
+          @shared_memory_size_mb = args[:shared_memory_size_mb] if args.key?(:shared_memory_size_mb)
+          @startup_probe = args[:startup_probe] if args.key?(:startup_probe)
         end
       end
       
@@ -14197,6 +14353,66 @@ module Google
         end
       end
       
+      # Probe describes a health check to be performed against a container to
+      # determine whether it is alive or ready to receive traffic.
+      class GoogleCloudAiplatformV1Probe
+        include Google::Apis::Core::Hashable
+      
+        # ExecAction specifies a command to execute.
+        # Corresponds to the JSON property `exec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeExecAction]
+        attr_accessor :exec
+      
+        # How often (in seconds) to perform the probe. Default to 10 seconds. Minimum
+        # value is 1. Must be less than timeout_seconds. Maps to Kubernetes probe
+        # argument 'periodSeconds'.
+        # Corresponds to the JSON property `periodSeconds`
+        # @return [Fixnum]
+        attr_accessor :period_seconds
+      
+        # Number of seconds after which the probe times out. Defaults to 1 second.
+        # Minimum value is 1. Must be greater or equal to period_seconds. Maps to
+        # Kubernetes probe argument 'timeoutSeconds'.
+        # Corresponds to the JSON property `timeoutSeconds`
+        # @return [Fixnum]
+        attr_accessor :timeout_seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exec = args[:exec] if args.key?(:exec)
+          @period_seconds = args[:period_seconds] if args.key?(:period_seconds)
+          @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
+        end
+      end
+      
+      # ExecAction specifies a command to execute.
+      class GoogleCloudAiplatformV1ProbeExecAction
+        include Google::Apis::Core::Hashable
+      
+        # Command is the command line to execute inside the container, the working
+        # directory for the command is root ('/') in the container's filesystem. The
+        # command is simply exec'd, it is not run inside a shell, so traditional shell
+        # instructions ('|', etc) won't work. To use a shell, you need to explicitly
+        # call out to that shell. Exit status of 0 is treated as live/healthy and non-
+        # zero is unhealthy.
+        # Corresponds to the JSON property `command`
+        # @return [Array<String>]
+        attr_accessor :command
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @command = args[:command] if args.key?(:command)
+        end
+      end
+      
       # A Model Garden Publisher Model.
       class GoogleCloudAiplatformV1PublisherModel
         include Google::Apis::Core::Hashable
@@ -14789,6 +15005,52 @@ module Google
           @executor_image_uri = args[:executor_image_uri] if args.key?(:executor_image_uri)
           @package_uris = args[:package_uris] if args.key?(:package_uris)
           @python_module = args[:python_module] if args.key?(:python_module)
+        end
+      end
+      
+      # Response message for QueryDeployedModels method.
+      class GoogleCloudAiplatformV1QueryDeployedModelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # References to the DeployedModels that share the specified
+        # deploymentResourcePool.
+        # Corresponds to the JSON property `deployedModelRefs`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeployedModelRef>]
+        attr_accessor :deployed_model_refs
+      
+        # DEPRECATED Use deployed_model_refs instead.
+        # Corresponds to the JSON property `deployedModels`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeployedModel>]
+        attr_accessor :deployed_models
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The total number of DeployedModels on this DeploymentResourcePool.
+        # Corresponds to the JSON property `totalDeployedModelCount`
+        # @return [Fixnum]
+        attr_accessor :total_deployed_model_count
+      
+        # The total number of Endpoints that have DeployedModels on this
+        # DeploymentResourcePool.
+        # Corresponds to the JSON property `totalEndpointCount`
+        # @return [Fixnum]
+        attr_accessor :total_endpoint_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployed_model_refs = args[:deployed_model_refs] if args.key?(:deployed_model_refs)
+          @deployed_models = args[:deployed_models] if args.key?(:deployed_models)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_deployed_model_count = args[:total_deployed_model_count] if args.key?(:total_deployed_model_count)
+          @total_endpoint_count = args[:total_endpoint_count] if args.key?(:total_endpoint_count)
         end
       end
       
@@ -17351,6 +17613,12 @@ module Google
       class GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfig
         include Google::Apis::Core::Hashable
       
+        # If set, skip finding claim attributions (i.e not generate grounding citation).
+        # Corresponds to the JSON property `disableAttribution`
+        # @return [Boolean]
+        attr_accessor :disable_attribution
+        alias_method :disable_attribution?, :disable_attribution
+      
         # The sources for the grounding checking.
         # Corresponds to the JSON property `sources`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfigSourceEntry>]
@@ -17362,6 +17630,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disable_attribution = args[:disable_attribution] if args.key?(:disable_attribution)
           @sources = args[:sources] if args.key?(:sources)
         end
       end
@@ -17370,7 +17639,8 @@ module Google
       class GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfigSourceEntry
         include Google::Apis::Core::Hashable
       
-        # The uri of the Enterprise Search data source.
+        # The uri of the Vertex AI Search data source. Deprecated. Use
+        # vertex_ai_search_datastore instead.
         # Corresponds to the JSON property `enterpriseDatastore`
         # @return [String]
         attr_accessor :enterprise_datastore
@@ -17380,6 +17650,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # The uri of the Vertex AI Search data source.
+        # Corresponds to the JSON property `vertexAiSearchDatastore`
+        # @return [String]
+        attr_accessor :vertex_ai_search_datastore
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17388,6 +17663,7 @@ module Google
         def update!(**args)
           @enterprise_datastore = args[:enterprise_datastore] if args.key?(:enterprise_datastore)
           @type = args[:type] if args.key?(:type)
+          @vertex_ai_search_datastore = args[:vertex_ai_search_datastore] if args.key?(:vertex_ai_search_datastore)
         end
       end
       
@@ -24286,6 +24562,25 @@ module Google
         end
       end
       
+      # Runtime operation information for UpdateDeploymentResourcePool method.
+      class GoogleCloudAiplatformV1UpdateDeploymentResourcePoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
       # Runtime operation information for ModelService.UpdateExplanationDataset.
       class GoogleCloudAiplatformV1UpdateExplanationDatasetOperationMetadata
         include Google::Apis::Core::Hashable
@@ -24568,10 +24863,11 @@ module Google
       
         # Optional. The user-provided custom service account to use to do the model
         # upload. If empty, [Vertex AI Service Agent](https://cloud.google.com/vertex-ai/
-        # docs/general/access-control#service-agents) will be used. Users uploading the
-        # Model must have the `iam.serviceAccounts.actAs` permission on this service
-        # account. Also, this account must belong to the project specified in the `
-        # parent` field and have all necessary read permissions.
+        # docs/general/access-control#service-agents) will be used to access resources
+        # needed to upload the model. This account must belong to the target project
+        # where the model is uploaded to, i.e., the project specified in the `parent`
+        # field of this request and have necessary read permissions (to Google Cloud
+        # Storage, Artifact Registry, etc.).
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
