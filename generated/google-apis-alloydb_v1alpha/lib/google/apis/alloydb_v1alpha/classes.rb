@@ -492,6 +492,11 @@ module Google
         # @return [Google::Apis::AlloydbV1alpha::PrimaryConfig]
         attr_accessor :primary_config
       
+        # PscConfig contains PSC related configuration at a cluster level. NEXT ID: 2
+        # Corresponds to the JSON property `pscConfig`
+        # @return [Google::Apis::AlloydbV1alpha::PscConfig]
+        attr_accessor :psc_config
+      
         # Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to
         # true if the current state of Cluster does not match the user's intended state,
         # and the service is actively updating the resource to reconcile them. This can
@@ -561,6 +566,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @network_config = args[:network_config] if args.key?(:network_config)
           @primary_config = args[:primary_config] if args.key?(:primary_config)
+          @psc_config = args[:psc_config] if args.key?(:psc_config)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @secondary_config = args[:secondary_config] if args.key?(:secondary_config)
@@ -1521,7 +1527,7 @@ module Google
         # @return [String]
         attr_accessor :allocated_ip_range
       
-        # Required. The resource link for the VPC network in which cluster resources are
+        # Optional. The resource link for the VPC network in which cluster resources are
         # created and from which they are accessible via Private IP. The network must
         # belong to the same project as the cluster. It is specified in the form: "
         # projects/`project_number`/global/networks/`network_id`". This is required to
@@ -1766,6 +1772,27 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @request_id = args[:request_id] if args.key?(:request_id)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # PscConfig contains PSC related configuration at a cluster level. NEXT ID: 2
+      class PscConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Create an instance that allows connections from Private Service
+        # Connect endpoints to the instance.
+        # Corresponds to the JSON property `pscEnabled`
+        # @return [Boolean]
+        attr_accessor :psc_enabled
+        alias_method :psc_enabled?, :psc_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
         end
       end
       

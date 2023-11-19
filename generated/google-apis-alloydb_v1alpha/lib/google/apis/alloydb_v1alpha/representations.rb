@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QuantityBasedExpiry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -518,6 +524,8 @@ module Google
           property :network_config, as: 'networkConfig', class: Google::Apis::AlloydbV1alpha::NetworkConfig, decorator: Google::Apis::AlloydbV1alpha::NetworkConfig::Representation
       
           property :primary_config, as: 'primaryConfig', class: Google::Apis::AlloydbV1alpha::PrimaryConfig, decorator: Google::Apis::AlloydbV1alpha::PrimaryConfig::Representation
+      
+          property :psc_config, as: 'pscConfig', class: Google::Apis::AlloydbV1alpha::PscConfig, decorator: Google::Apis::AlloydbV1alpha::PscConfig::Representation
       
           property :reconciling, as: 'reconciling'
           property :satisfies_pzs, as: 'satisfiesPzs'
@@ -833,6 +841,13 @@ module Google
           property :etag, as: 'etag'
           property :request_id, as: 'requestId'
           property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class PscConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :psc_enabled, as: 'pscEnabled'
         end
       end
       
