@@ -758,6 +758,7 @@ module Google
       
           property :name, as: 'name'
           collection :notification_channels, as: 'notificationChannels'
+          property :severity, as: 'severity'
           hash :user_labels, as: 'userLabels'
           property :validity, as: 'validity', class: Google::Apis::MonitoringV3::Status, decorator: Google::Apis::MonitoringV3::Status::Representation
       
