@@ -1,0 +1,7 @@
+{
+    "api_id": "looker:v1",
+    "name_pretty": "Looker (Google Cloud core) API",
+    "distribution_name": "google-apis-looker_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
