@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutopilotConversionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutoprovisioningNodePoolDefaults
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -790,6 +796,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueuedProvisioning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RangeInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1233,6 +1245,8 @@ module Google
       class Autopilot
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversion_status, as: 'conversionStatus', class: Google::Apis::ContainerV1beta1::AutopilotConversionStatus, decorator: Google::Apis::ContainerV1beta1::AutopilotConversionStatus::Representation
+      
           property :enabled, as: 'enabled'
           property :workload_policy_config, as: 'workloadPolicyConfig', class: Google::Apis::ContainerV1beta1::WorkloadPolicyConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadPolicyConfig::Representation
       
@@ -1248,6 +1262,13 @@ module Google
           property :incompatibility_type, as: 'incompatibilityType'
           property :last_observation, as: 'lastObservation'
           collection :subjects, as: 'subjects'
+        end
+      end
+      
+      class AutopilotConversionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
         end
       end
       
@@ -2422,6 +2443,8 @@ module Google
           property :placement_policy, as: 'placementPolicy', class: Google::Apis::ContainerV1beta1::PlacementPolicy, decorator: Google::Apis::ContainerV1beta1::PlacementPolicy::Representation
       
           property :pod_ipv4_cidr_size, as: 'podIpv4CidrSize'
+          property :queued_provisioning, as: 'queuedProvisioning', class: Google::Apis::ContainerV1beta1::QueuedProvisioning, decorator: Google::Apis::ContainerV1beta1::QueuedProvisioning::Representation
+      
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
@@ -2619,6 +2642,13 @@ module Google
           property :filter, as: 'filter', class: Google::Apis::ContainerV1beta1::Filter, decorator: Google::Apis::ContainerV1beta1::Filter::Representation
       
           property :topic, as: 'topic'
+        end
+      end
+      
+      class QueuedProvisioning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
