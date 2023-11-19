@@ -2709,6 +2709,187 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a DeploymentResourcePool.
+        # @param [String] parent
+        #   Required. The parent location resource where this DeploymentResourcePool will
+        #   be created. Format: `projects/`project`/locations/`location``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CreateDeploymentResourcePoolRequest] google_cloud_aiplatform_v1_create_deployment_resource_pool_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_deployment_resource_pool(parent, google_cloud_aiplatform_v1_create_deployment_resource_pool_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/deploymentResourcePools', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CreateDeploymentResourcePoolRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_create_deployment_resource_pool_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a DeploymentResourcePool.
+        # @param [String] name
+        #   Required. The name of the DeploymentResourcePool to delete. Format: `projects/`
+        #   project`/locations/`location`/deploymentResourcePools/`
+        #   deployment_resource_pool``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_deployment_resource_pool(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a DeploymentResourcePool.
+        # @param [String] name
+        #   Required. The name of the DeploymentResourcePool to retrieve. Format: `
+        #   projects/`project`/locations/`location`/deploymentResourcePools/`
+        #   deployment_resource_pool``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeploymentResourcePool] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeploymentResourcePool]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_deployment_resource_pool(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeploymentResourcePool::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DeploymentResourcePool
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List DeploymentResourcePools in a location.
+        # @param [String] parent
+        #   Required. The parent Location which owns this collection of
+        #   DeploymentResourcePools. Format: `projects/`project`/locations/`location``
+        # @param [Fixnum] page_size
+        #   The maximum number of DeploymentResourcePools to return. The service may
+        #   return fewer than this value.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListDeploymentResourcePools` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListDeploymentResourcePools` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_deployment_resource_pools(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/deploymentResourcePools', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List DeployedModels that have been deployed on this DeploymentResourcePool.
+        # @param [String] deployment_resource_pool
+        #   Required. The name of the target DeploymentResourcePool to query. Format: `
+        #   projects/`project`/locations/`location`/deploymentResourcePools/`
+        #   deployment_resource_pool``
+        # @param [Fixnum] page_size
+        #   The maximum number of DeployedModels to return. The service may return fewer
+        #   than this value.
+        # @param [String] page_token
+        #   A page token, received from a previous `QueryDeployedModels` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `QueryDeployedModels` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QueryDeployedModelsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QueryDeployedModelsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_project_location_deployment_resource_pool_deployed_models(deployment_resource_pool, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+deploymentResourcePool}:queryDeployedModels', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QueryDeployedModelsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QueryDeployedModelsResponse
+          command.params['deploymentResourcePool'] = deployment_resource_pool unless deployment_resource_pool.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
