@@ -16,13 +16,13 @@ module Google
   module Apis
     module AdmobV1beta
       # Version of the google-apis-admob_v1beta gem
-      GEM_VERSION = "0.26.0"
+      GEM_VERSION = "0.27.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.12.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20230912"
+      REVISION = "20231113"
     end
   end
 end

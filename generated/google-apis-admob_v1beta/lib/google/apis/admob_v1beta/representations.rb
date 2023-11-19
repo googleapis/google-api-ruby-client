@@ -598,12 +598,16 @@ module Google
           collection :control_mediation_lines, as: 'controlMediationLines', class: Google::Apis::AdmobV1beta::MediationAbExperimentExperimentMediationLine, decorator: Google::Apis::AdmobV1beta::MediationAbExperimentExperimentMediationLine::Representation
       
           property :display_name, as: 'displayName'
+          property :end_time, as: 'endTime'
           property :experiment_id, as: 'experimentId'
+          property :mediation_group_id, as: 'mediationGroupId'
           property :name, as: 'name'
+          property :start_time, as: 'startTime'
           property :state, as: 'state'
           collection :treatment_mediation_lines, as: 'treatmentMediationLines', class: Google::Apis::AdmobV1beta::MediationAbExperimentExperimentMediationLine, decorator: Google::Apis::AdmobV1beta::MediationAbExperimentExperimentMediationLine::Representation
       
           property :treatment_traffic_percentage, :numeric_string => true, as: 'treatmentTrafficPercentage'
+          property :variant_leader, as: 'variantLeader'
         end
       end
       
