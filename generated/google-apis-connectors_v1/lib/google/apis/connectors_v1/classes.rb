@@ -1104,6 +1104,150 @@ module Google
         end
       end
       
+      # CustomConnector represents the custom connector defined by the customer as
+      # part of byoc.
+      class CustomConnector
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Created time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Type of the custom connector.
+        # Corresponds to the JSON property `customConnectorType`
+        # @return [String]
+        attr_accessor :custom_connector_type
+      
+        # Optional. Description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Resource labels to represent user-provided metadata. Refer to cloud
+        # documentation on labels for more details. https://cloud.google.com/compute/
+        # docs/labeling-resources
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Launch stage.
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
+        # Optional. Logo of the resource.
+        # Corresponds to the JSON property `logo`
+        # @return [String]
+        attr_accessor :logo
+      
+        # Identifier. Resource name of the CustomConnector. Format: projects/`project`/
+        # locations/`location`/customConnectors/`connector`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Updated time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_connector_type = args[:custom_connector_type] if args.key?(:custom_connector_type)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
+          @logo = args[:logo] if args.key?(:logo)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # CustomConnectorVersion indicates a specific version of a connector.
+      class CustomConnectorVersion
+        include Google::Apis::Core::Hashable
+      
+        # AuthConfig defines details of a authentication type.
+        # Corresponds to the JSON property `authConfig`
+        # @return [Google::Apis::ConnectorsV1::AuthConfig]
+        attr_accessor :auth_config
+      
+        # Output only. Created time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Define the Connectors target endpoint.
+        # Corresponds to the JSON property `destinationConfig`
+        # @return [Google::Apis::ConnectorsV1::DestinationConfig]
+        attr_accessor :destination_config
+      
+        # Optional. Whether to enable backend destination config. This is the backend
+        # server that the connector connects to.
+        # Corresponds to the JSON property `enableBackendDestinationConfig`
+        # @return [Boolean]
+        attr_accessor :enable_backend_destination_config
+        alias_method :enable_backend_destination_config?, :enable_backend_destination_config
+      
+        # Optional. Resource labels to represent user-provided metadata. Refer to cloud
+        # documentation on labels for more details. https://cloud.google.com/compute/
+        # docs/labeling-resources
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Identifier. Resource name of the Version. Format: projects/`
+        # project`/locations/`location`/customConnectors/`custom_connector`/
+        # customConnectorVersions/`custom_connector_version`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Location of the custom connector spec.
+        # Corresponds to the JSON property `specLocation`
+        # @return [String]
+        attr_accessor :spec_location
+      
+        # Required. Type of the customConnector.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. Updated time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_config = args[:auth_config] if args.key?(:auth_config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @destination_config = args[:destination_config] if args.key?(:destination_config)
+          @enable_backend_destination_config = args[:enable_backend_destination_config] if args.key?(:enable_backend_destination_config)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @spec_location = args[:spec_location] if args.key?(:spec_location)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # 
       class Destination
         include Google::Apis::Core::Hashable
@@ -2327,6 +2471,31 @@ module Google
         end
       end
       
+      # Response message for ListActions API
+      class ListActionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # list of actions
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::ConnectorsV1::RuntimeActionSchema>]
+        attr_accessor :actions
+      
+        # token for next page
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ConnectorsService.ListConnections
       class ListConnectionsResponse
         include Google::Apis::Core::Hashable
@@ -2420,6 +2589,68 @@ module Google
         end
       end
       
+      # Response message for Connectors.ListCustomConnectorVersions.
+      class ListCustomConnectorVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of connector versions.
+        # Corresponds to the JSON property `customConnectorVersions`
+        # @return [Array<Google::Apis::ConnectorsV1::CustomConnectorVersion>]
+        attr_accessor :custom_connector_versions
+      
+        # Next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_connector_versions = args[:custom_connector_versions] if args.key?(:custom_connector_versions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for Connectors.ListCustomConnectors.
+      class ListCustomConnectorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of customConnectors.
+        # Corresponds to the JSON property `customConnectors`
+        # @return [Array<Google::Apis::ConnectorsV1::CustomConnector>]
+        attr_accessor :custom_connectors
+      
+        # Next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_connectors = args[:custom_connectors] if args.key?(:custom_connectors)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response message for ConnectorsService.ListEndpointAttachments
       class ListEndpointAttachmentsResponse
         include Google::Apis::Core::Hashable
@@ -2448,6 +2679,31 @@ module Google
           @endpoint_attachments = args[:endpoint_attachments] if args.key?(:endpoint_attachments)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for ListEntityTypes API
+      class ListEntityTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # list of entity types
+        # Corresponds to the JSON property `entityTypes`
+        # @return [Array<Google::Apis::ConnectorsV1::RuntimeEntitySchema>]
+        attr_accessor :entity_types
+      
+        # token for next page
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_types = args[:entity_types] if args.key?(:entity_types)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       

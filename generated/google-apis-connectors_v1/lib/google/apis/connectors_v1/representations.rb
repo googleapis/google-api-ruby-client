@@ -124,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomConnector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomConnectorVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Destination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -304,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListActionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListConnectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,7 +340,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListCustomConnectorVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCustomConnectorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListEndpointAttachmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListEntityTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -865,6 +901,38 @@ module Google
         end
       end
       
+      class CustomConnector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :custom_connector_type, as: 'customConnectorType'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
+          property :launch_stage, as: 'launchStage'
+          property :logo, as: 'logo'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class CustomConnectorVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_config, as: 'authConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
+      
+          property :create_time, as: 'createTime'
+          property :destination_config, as: 'destinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
+      
+          property :enable_backend_destination_config, as: 'enableBackendDestinationConfig'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :spec_location, as: 'specLocation'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class Destination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1194,6 +1262,15 @@ module Google
         end
       end
       
+      class ListActionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions', class: Google::Apis::ConnectorsV1::RuntimeActionSchema, decorator: Google::Apis::ConnectorsV1::RuntimeActionSchema::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListConnectionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1224,6 +1301,26 @@ module Google
         end
       end
       
+      class ListCustomConnectorVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_connector_versions, as: 'customConnectorVersions', class: Google::Apis::ConnectorsV1::CustomConnectorVersion, decorator: Google::Apis::ConnectorsV1::CustomConnectorVersion::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListCustomConnectorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_connectors, as: 'customConnectors', class: Google::Apis::ConnectorsV1::CustomConnector, decorator: Google::Apis::ConnectorsV1::CustomConnector::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListEndpointAttachmentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1231,6 +1328,15 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListEntityTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entity_types, as: 'entityTypes', class: Google::Apis::ConnectorsV1::RuntimeEntitySchema, decorator: Google::Apis::ConnectorsV1::RuntimeEntitySchema::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
