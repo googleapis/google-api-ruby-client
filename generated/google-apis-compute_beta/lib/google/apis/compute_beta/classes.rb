@@ -36367,6 +36367,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :asn
       
+        # Explicitly specifies a range of valid BGP Identifiers for this Router. It is
+        # provided as a link-local IPv4 range (from 169.254.0.0/16), of size at least /
+        # 30, even if the BGP sessions are over IPv6. It must not overlap with any IPv4
+        # BGP session ranges. Other vendors commonly call this "router ID".
+        # Corresponds to the JSON property `identifierRange`
+        # @return [String]
+        attr_accessor :identifier_range
+      
         # The interval in seconds between BGP keepalive messages that are sent to the
         # peer. Hold time is three times the interval at which keepalive messages are
         # sent, and the hold time is the maximum number of seconds allowed to elapse
@@ -36388,6 +36396,7 @@ module Google
           @advertised_groups = args[:advertised_groups] if args.key?(:advertised_groups)
           @advertised_ip_ranges = args[:advertised_ip_ranges] if args.key?(:advertised_ip_ranges)
           @asn = args[:asn] if args.key?(:asn)
+          @identifier_range = args[:identifier_range] if args.key?(:identifier_range)
           @keepalive_interval = args[:keepalive_interval] if args.key?(:keepalive_interval)
         end
       end
@@ -36455,6 +36464,13 @@ module Google
         # @return [String]
         attr_accessor :enable
       
+        # Enable IPv4 traffic over BGP Peer. It is enabled by default if the
+        # peerIpAddress is version 4.
+        # Corresponds to the JSON property `enableIpv4`
+        # @return [Boolean]
+        attr_accessor :enable_ipv4
+        alias_method :enable_ipv4?, :enable_ipv4
+      
         # Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         # Corresponds to the JSON property `enableIpv6`
         # @return [Boolean]
@@ -36471,6 +36487,11 @@ module Google
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # IPv4 address of the interface inside Google Cloud Platform.
+        # Corresponds to the JSON property `ipv4NexthopAddress`
+        # @return [String]
+        attr_accessor :ipv4_nexthop_address
       
         # IPv6 address of the interface inside Google Cloud Platform.
         # Corresponds to the JSON property `ipv6NexthopAddress`
@@ -36516,6 +36537,11 @@ module Google
         # @return [String]
         attr_accessor :peer_ip_address
       
+        # IPv4 address of the BGP interface outside Google Cloud Platform.
+        # Corresponds to the JSON property `peerIpv4NexthopAddress`
+        # @return [String]
+        attr_accessor :peer_ipv4_nexthop_address
+      
         # IPv6 address of the BGP interface outside Google Cloud Platform.
         # Corresponds to the JSON property `peerIpv6NexthopAddress`
         # @return [String]
@@ -36543,15 +36569,18 @@ module Google
           @custom_learned_ip_ranges = args[:custom_learned_ip_ranges] if args.key?(:custom_learned_ip_ranges)
           @custom_learned_route_priority = args[:custom_learned_route_priority] if args.key?(:custom_learned_route_priority)
           @enable = args[:enable] if args.key?(:enable)
+          @enable_ipv4 = args[:enable_ipv4] if args.key?(:enable_ipv4)
           @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv4_nexthop_address = args[:ipv4_nexthop_address] if args.key?(:ipv4_nexthop_address)
           @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
           @management_type = args[:management_type] if args.key?(:management_type)
           @md5_authentication_key_name = args[:md5_authentication_key_name] if args.key?(:md5_authentication_key_name)
           @name = args[:name] if args.key?(:name)
           @peer_asn = args[:peer_asn] if args.key?(:peer_asn)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @peer_ipv4_nexthop_address = args[:peer_ipv4_nexthop_address] if args.key?(:peer_ipv4_nexthop_address)
           @peer_ipv6_nexthop_address = args[:peer_ipv6_nexthop_address] if args.key?(:peer_ipv6_nexthop_address)
           @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
         end
@@ -36641,6 +36670,11 @@ module Google
         # @return [String]
         attr_accessor :ip_range
       
+        # IP version of this interface.
+        # Corresponds to the JSON property `ipVersion`
+        # @return [String]
+        attr_accessor :ip_version
+      
         # URI of the linked Interconnect attachment. It must be in the same region as
         # the router. Each interface can have one linked resource, which can be a VPN
         # tunnel, an Interconnect attachment, or a subnetwork.
@@ -36711,6 +36745,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ip_range = args[:ip_range] if args.key?(:ip_range)
+          @ip_version = args[:ip_version] if args.key?(:ip_version)
           @linked_interconnect_attachment = args[:linked_interconnect_attachment] if args.key?(:linked_interconnect_attachment)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
           @management_type = args[:management_type] if args.key?(:management_type)

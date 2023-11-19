@@ -15591,6 +15591,7 @@ module Google
           collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeBeta::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeBeta::RouterAdvertisedIpRange::Representation
       
           property :asn, as: 'asn'
+          property :identifier_range, as: 'identifierRange'
           property :keepalive_interval, as: 'keepaliveInterval'
         end
       end
@@ -15609,15 +15610,18 @@ module Google
       
           property :custom_learned_route_priority, as: 'customLearnedRoutePriority'
           property :enable, as: 'enable'
+          property :enable_ipv4, as: 'enableIpv4'
           property :enable_ipv6, as: 'enableIpv6'
           property :interface_name, as: 'interfaceName'
           property :ip_address, as: 'ipAddress'
+          property :ipv4_nexthop_address, as: 'ipv4NexthopAddress'
           property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
           property :management_type, as: 'managementType'
           property :md5_authentication_key_name, as: 'md5AuthenticationKeyName'
           property :name, as: 'name'
           property :peer_asn, as: 'peerAsn'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :peer_ipv4_nexthop_address, as: 'peerIpv4NexthopAddress'
           property :peer_ipv6_nexthop_address, as: 'peerIpv6NexthopAddress'
           property :router_appliance_instance, as: 'routerApplianceInstance'
         end
@@ -15644,6 +15648,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_range, as: 'ipRange'
+          property :ip_version, as: 'ipVersion'
           property :linked_interconnect_attachment, as: 'linkedInterconnectAttachment'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :management_type, as: 'managementType'
