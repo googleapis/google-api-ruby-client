@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3BargeInConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -634,6 +640,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -658,7 +670,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1AnswerFeedback
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AnswerFeedbackRatingReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1AudioInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1BargeInConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -683,6 +713,24 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1BoostSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1BoostSpecs
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -965,6 +1013,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1FilterSpecs
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1558,6 +1612,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1SearchConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1SecuritySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1607,6 +1667,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1StopExperimentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1SubmitAnswerFeedbackRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2982,6 +3048,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3BargeInConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :no_barge_in_duration, as: 'noBargeInDuration'
+          property :total_duration, as: 'totalDuration'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3389,6 +3463,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_encoding, as: 'audioEncoding'
+          property :barge_in_config, as: 'bargeInConfig', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3BargeInConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3BargeInConfig::Representation
+      
           property :enable_word_info, as: 'enableWordInfo'
           property :model, as: 'model'
           property :model_variant, as: 'modelVariant'
@@ -3944,6 +4020,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings::Representation
       
+          property :answer_feedback_settings, as: 'answerFeedbackSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings::Representation
+      
           property :avatar_uri, as: 'avatarUri'
           property :default_language_code, as: 'defaultLanguageCode'
           property :description, as: 'description'
@@ -3964,6 +4042,13 @@ module Google
           property :text_to_speech_settings, as: 'textToSpeechSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TextToSpeechSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TextToSpeechSettings::Representation
       
           property :time_zone, as: 'timeZone'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_answer_feedback, as: 'enableAnswerFeedback'
         end
       end
       
@@ -4002,12 +4087,38 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1AnswerFeedback
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_rating, as: 'customRating'
+          property :rating, as: 'rating'
+          property :rating_reason, as: 'ratingReason', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AnswerFeedbackRatingReason, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AnswerFeedbackRatingReason::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AnswerFeedbackRatingReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :feedback, as: 'feedback'
+          collection :reason_labels, as: 'reasonLabels'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1AudioInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio, :base64 => true, as: 'audio'
           property :config, as: 'config', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1InputAudioConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1InputAudioConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1BargeInConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :no_barge_in_duration, as: 'noBargeInDuration'
+          property :total_duration, as: 'totalDuration'
         end
       end
       
@@ -4038,6 +4149,31 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :results, as: 'results', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCaseResult, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCaseResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1BoostSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :condition_boost_specs, as: 'conditionBoostSpecs', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boost, as: 'boost'
+          property :condition, as: 'condition'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1BoostSpecs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_stores, as: 'dataStores'
+          collection :spec, as: 'spec', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BoostSpec, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BoostSpec::Representation
       
         end
       end
@@ -4511,6 +4647,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1FilterSpecs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_stores, as: 'dataStores'
+          property :filter, as: 'filter'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1Flow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4824,6 +4968,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_encoding, as: 'audioEncoding'
+          property :barge_in_config, as: 'bargeInConfig', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BargeInConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BargeInConfig::Representation
+      
           property :enable_word_info, as: 'enableWordInfo'
           property :model, as: 'model'
           property :model_variant, as: 'modelVariant'
@@ -5220,6 +5366,8 @@ module Google
       
           hash :parameters, as: 'parameters'
           hash :payload, as: 'payload'
+          property :search_config, as: 'searchConfig', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SearchConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SearchConfig::Representation
+      
           collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SessionEntityType, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SessionEntityType::Representation
       
           property :session_ttl, as: 'sessionTtl'
@@ -5233,6 +5381,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings::Representation
       
+          property :allow_answer_feedback, as: 'allowAnswerFeedback'
           property :current_page, as: 'currentPage', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Page, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Page::Representation
       
           hash :diagnostic_info, as: 'diagnosticInfo'
@@ -5481,6 +5630,16 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1SearchConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :boost_specs, as: 'boostSpecs', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BoostSpecs, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BoostSpecs::Representation
+      
+          collection :filter_specs, as: 'filterSpecs', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FilterSpecs, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FilterSpecs::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1SecuritySettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5559,6 +5718,16 @@ module Google
       class GoogleCloudDialogflowCxV3beta1StopExperimentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1SubmitAnswerFeedbackRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_feedback, as: 'answerFeedback', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AnswerFeedback, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AnswerFeedback::Representation
+      
+          property :response_id, as: 'responseId'
+          property :update_mask, as: 'updateMask'
         end
       end
       
