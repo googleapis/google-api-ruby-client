@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3BargeInConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -629,6 +635,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1AudioInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1BargeInConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3138,6 +3150,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3BargeInConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :no_barge_in_duration, as: 'noBargeInDuration'
+          property :total_duration, as: 'totalDuration'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3545,6 +3565,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_encoding, as: 'audioEncoding'
+          property :barge_in_config, as: 'bargeInConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3BargeInConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3BargeInConfig::Representation
+      
           property :enable_word_info, as: 'enableWordInfo'
           property :model, as: 'model'
           property :model_variant, as: 'modelVariant'
@@ -4104,6 +4126,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1BargeInConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :no_barge_in_duration, as: 'noBargeInDuration'
+          property :total_duration, as: 'totalDuration'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4511,6 +4541,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_encoding, as: 'audioEncoding'
+          property :barge_in_config, as: 'bargeInConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1BargeInConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1BargeInConfig::Representation
+      
           property :enable_word_info, as: 'enableWordInfo'
           property :model, as: 'model'
           property :model_variant, as: 'modelVariant'
