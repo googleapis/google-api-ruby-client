@@ -533,12 +533,25 @@ module Google
         # @return [String]
         attr_accessor :customer_kms_key_version
       
+        # The hashing algorithm used for signature verification. It will only be present
+        # in the case of Google managed keys.
+        # Corresponds to the JSON property `googleKeyAlgorithm`
+        # @return [String]
+        attr_accessor :google_key_algorithm
+      
         # The public key for the Google default signing, encoded in PEM format. The
         # signature was created using a private key which may be verified using this
         # public key.
         # Corresponds to the JSON property `googlePublicKeyPem`
         # @return [String]
         attr_accessor :google_public_key_pem
+      
+        # The serialized ApprovalRequest message without the approve.signature_info
+        # field. This to allow the customer to verify signatures if they want to.
+        # Corresponds to the JSON property `serializedApprovalRequest`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :serialized_approval_request
       
         # The digital signature.
         # Corresponds to the JSON property `signature`
@@ -553,7 +566,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customer_kms_key_version = args[:customer_kms_key_version] if args.key?(:customer_kms_key_version)
+          @google_key_algorithm = args[:google_key_algorithm] if args.key?(:google_key_algorithm)
           @google_public_key_pem = args[:google_public_key_pem] if args.key?(:google_public_key_pem)
+          @serialized_approval_request = args[:serialized_approval_request] if args.key?(:serialized_approval_request)
           @signature = args[:signature] if args.key?(:signature)
         end
       end

@@ -247,7 +247,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer_kms_key_version, as: 'customerKmsKeyVersion'
+          property :google_key_algorithm, as: 'googleKeyAlgorithm'
           property :google_public_key_pem, as: 'googlePublicKeyPem'
+          property :serialized_approval_request, :base64 => true, as: 'serializedApprovalRequest'
           property :signature, :base64 => true, as: 'signature'
         end
       end
