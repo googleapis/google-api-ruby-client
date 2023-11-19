@@ -26,8 +26,7 @@ module Google
       class ClaimDeviceRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. The unique identifier of the configuration (internally known as
-        # profile) to set for the section.
+        # Optional. The ID of the configuration applied to the device section.
         # Corresponds to the JSON property `configurationId`
         # @return [Fixnum]
         attr_accessor :configuration_id
@@ -65,7 +64,8 @@ module Google
         # @return [String]
         attr_accessor :section_type
       
-        # Optional.
+        # Optional. Must and can only be set when DeviceProvisioningSectionType is
+        # SECTION_TYPE_SIM_LOCK. The unique identifier of the SimLock profile.
         # Corresponds to the JSON property `simlockProfileId`
         # @return [Fixnum]
         attr_accessor :simlock_profile_id
@@ -1275,8 +1275,7 @@ module Google
       class PartnerClaim
         include Google::Apis::Core::Hashable
       
-        # Optional. The unique identifier of the configuration (internally known as
-        # profile) to set for the section.
+        # Optional. The ID of the configuration applied to the device section.
         # Corresponds to the JSON property `configurationId`
         # @return [Fixnum]
         attr_accessor :configuration_id
@@ -1314,7 +1313,8 @@ module Google
         # @return [String]
         attr_accessor :section_type
       
-        # Optional.
+        # Optional. Must and can only be set when DeviceProvisioningSectionType is
+        # SECTION_TYPE_SIM_LOCK. The unique identifier of the SimLock profile.
         # Corresponds to the JSON property `simlockProfileId`
         # @return [Fixnum]
         attr_accessor :simlock_profile_id
