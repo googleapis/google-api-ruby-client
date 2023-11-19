@@ -254,6 +254,32 @@ module Google
         end
       end
       
+      # BinaryAuthorizationConfig defines the fleet level configuration of binary
+      # authorization feature.
+      class BinaryAuthorizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Mode of operation for binauthz policy evaluation.
+        # Corresponds to the JSON property `evaluationMode`
+        # @return [String]
+        attr_accessor :evaluation_mode
+      
+        # Optional. Binauthz policies that apply to this cluster.
+        # Corresponds to the JSON property `policyBindings`
+        # @return [Array<Google::Apis::GkehubV1beta::PolicyBinding>]
+        attr_accessor :policy_bindings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_mode = args[:evaluation_mode] if args.key?(:evaluation_mode)
+          @policy_bindings = args[:policy_bindings] if args.key?(:policy_bindings)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -343,6 +369,370 @@ module Google
         end
       end
       
+      # **ClusterUpgrade**: The configuration for the fleet-level ClusterUpgrade
+      # feature.
+      class ClusterUpgradeFleetSpec
+        include Google::Apis::Core::Hashable
+      
+        # Allow users to override some properties of each GKE upgrade.
+        # Corresponds to the JSON property `gkeUpgradeOverrides`
+        # @return [Array<Google::Apis::GkehubV1beta::ClusterUpgradeGkeUpgradeOverride>]
+        attr_accessor :gke_upgrade_overrides
+      
+        # Post conditional checks after an upgrade has been applied on all eligible
+        # clusters.
+        # Corresponds to the JSON property `postConditions`
+        # @return [Google::Apis::GkehubV1beta::ClusterUpgradePostConditions]
+        attr_accessor :post_conditions
+      
+        # This fleet consumes upgrades that have COMPLETE status code in the upstream
+        # fleets. See UpgradeStatus.Code for code definitions. The fleet name should be
+        # either fleet project number or id. This is defined as repeated for future
+        # proof reasons. Initial implementation will enforce at most one upstream fleet.
+        # Corresponds to the JSON property `upstreamFleets`
+        # @return [Array<String>]
+        attr_accessor :upstream_fleets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gke_upgrade_overrides = args[:gke_upgrade_overrides] if args.key?(:gke_upgrade_overrides)
+          @post_conditions = args[:post_conditions] if args.key?(:post_conditions)
+          @upstream_fleets = args[:upstream_fleets] if args.key?(:upstream_fleets)
+        end
+      end
+      
+      # **ClusterUpgrade**: The state for the fleet-level ClusterUpgrade feature.
+      class ClusterUpgradeFleetState
+        include Google::Apis::Core::Hashable
+      
+        # This fleets whose upstream_fleets contain the current fleet. The fleet name
+        # should be either fleet project number or id.
+        # Corresponds to the JSON property `downstreamFleets`
+        # @return [Array<String>]
+        attr_accessor :downstream_fleets
+      
+        # GKEUpgradeFeatureState contains feature states for GKE clusters in the scope.
+        # Corresponds to the JSON property `gkeState`
+        # @return [Google::Apis::GkehubV1beta::ClusterUpgradeGkeUpgradeFeatureState]
+        attr_accessor :gke_state
+      
+        # A list of memberships ignored by the feature. For example, manually upgraded
+        # clusters can be ignored if they are newer than the default versions of its
+        # release channel. The membership resource is in the format: `projects/`p`/
+        # locations/`l`/membership/`m``.
+        # Corresponds to the JSON property `ignored`
+        # @return [Hash<String,Google::Apis::GkehubV1beta::ClusterUpgradeIgnoredMembership>]
+        attr_accessor :ignored
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @downstream_fleets = args[:downstream_fleets] if args.key?(:downstream_fleets)
+          @gke_state = args[:gke_state] if args.key?(:gke_state)
+          @ignored = args[:ignored] if args.key?(:ignored)
+        end
+      end
+      
+      # GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.
+      class ClusterUpgradeGkeUpgrade
+        include Google::Apis::Core::Hashable
+      
+        # Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade
+        # name. It must not exceet 99 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version.
+        # It must not exceet 99 characters.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # GKEUpgradeFeatureCondition describes the condition of the feature for GKE
+      # clusters at a certain point of time.
+      class ClusterUpgradeGkeUpgradeFeatureCondition
+        include Google::Apis::Core::Hashable
+      
+        # Reason why the feature is in this status.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Status of the condition, one of True, False, Unknown.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Type of the condition, for example, "ready".
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Last timestamp the condition was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
+          @status = args[:status] if args.key?(:status)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # GKEUpgradeFeatureState contains feature states for GKE clusters in the scope.
+      class ClusterUpgradeGkeUpgradeFeatureState
+        include Google::Apis::Core::Hashable
+      
+        # Current conditions of the feature.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::GkehubV1beta::ClusterUpgradeGkeUpgradeFeatureCondition>]
+        attr_accessor :conditions
+      
+        # Upgrade state. It will eventually replace `state`.
+        # Corresponds to the JSON property `upgradeState`
+        # @return [Array<Google::Apis::GkehubV1beta::ClusterUpgradeGkeUpgradeState>]
+        attr_accessor :upgrade_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @upgrade_state = args[:upgrade_state] if args.key?(:upgrade_state)
+        end
+      end
+      
+      # Properties of a GKE upgrade that can be overridden by the user. For example, a
+      # user can skip soaking by overriding the soaking to 0.
+      class ClusterUpgradeGkeUpgradeOverride
+        include Google::Apis::Core::Hashable
+      
+        # Post conditional checks after an upgrade has been applied on all eligible
+        # clusters.
+        # Corresponds to the JSON property `postConditions`
+        # @return [Google::Apis::GkehubV1beta::ClusterUpgradePostConditions]
+        attr_accessor :post_conditions
+      
+        # GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.
+        # Corresponds to the JSON property `upgrade`
+        # @return [Google::Apis::GkehubV1beta::ClusterUpgradeGkeUpgrade]
+        attr_accessor :upgrade
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @post_conditions = args[:post_conditions] if args.key?(:post_conditions)
+          @upgrade = args[:upgrade] if args.key?(:upgrade)
+        end
+      end
+      
+      # GKEUpgradeState is a GKEUpgrade and its state at the scope and fleet level.
+      class ClusterUpgradeGkeUpgradeState
+        include Google::Apis::Core::Hashable
+      
+        # Number of GKE clusters in each status code.
+        # Corresponds to the JSON property `stats`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :stats
+      
+        # UpgradeStatus provides status information for each upgrade.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::GkehubV1beta::ClusterUpgradeUpgradeStatus]
+        attr_accessor :status
+      
+        # GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.
+        # Corresponds to the JSON property `upgrade`
+        # @return [Google::Apis::GkehubV1beta::ClusterUpgradeGkeUpgrade]
+        attr_accessor :upgrade
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stats = args[:stats] if args.key?(:stats)
+          @status = args[:status] if args.key?(:status)
+          @upgrade = args[:upgrade] if args.key?(:upgrade)
+        end
+      end
+      
+      # IgnoredMembership represents a membership ignored by the feature. A membership
+      # can be ignored because it was manually upgraded to a newer version than RC
+      # default.
+      class ClusterUpgradeIgnoredMembership
+        include Google::Apis::Core::Hashable
+      
+        # Time when the membership was first set to ignored.
+        # Corresponds to the JSON property `ignoredTime`
+        # @return [String]
+        attr_accessor :ignored_time
+      
+        # Reason why the membership is ignored.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ignored_time = args[:ignored_time] if args.key?(:ignored_time)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # ScopeGKEUpgradeState is a GKEUpgrade and its state per-membership.
+      class ClusterUpgradeMembershipGkeUpgradeState
+        include Google::Apis::Core::Hashable
+      
+        # UpgradeStatus provides status information for each upgrade.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::GkehubV1beta::ClusterUpgradeUpgradeStatus]
+        attr_accessor :status
+      
+        # GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.
+        # Corresponds to the JSON property `upgrade`
+        # @return [Google::Apis::GkehubV1beta::ClusterUpgradeGkeUpgrade]
+        attr_accessor :upgrade
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
+          @upgrade = args[:upgrade] if args.key?(:upgrade)
+        end
+      end
+      
+      # Per-membership state for this feature.
+      class ClusterUpgradeMembershipState
+        include Google::Apis::Core::Hashable
+      
+        # Project number or id of the fleet. It is set only for Memberships that are
+        # part of fleet-based Rollout Sequencing.
+        # Corresponds to the JSON property `fleet`
+        # @return [String]
+        attr_accessor :fleet
+      
+        # IgnoredMembership represents a membership ignored by the feature. A membership
+        # can be ignored because it was manually upgraded to a newer version than RC
+        # default.
+        # Corresponds to the JSON property `ignored`
+        # @return [Google::Apis::GkehubV1beta::ClusterUpgradeIgnoredMembership]
+        attr_accessor :ignored
+      
+        # Fully qualified scope names that this clusters is bound to which also have
+        # rollout sequencing enabled.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        # Actual upgrade state against desired.
+        # Corresponds to the JSON property `upgrades`
+        # @return [Array<Google::Apis::GkehubV1beta::ClusterUpgradeMembershipGkeUpgradeState>]
+        attr_accessor :upgrades
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fleet = args[:fleet] if args.key?(:fleet)
+          @ignored = args[:ignored] if args.key?(:ignored)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @upgrades = args[:upgrades] if args.key?(:upgrades)
+        end
+      end
+      
+      # Post conditional checks after an upgrade has been applied on all eligible
+      # clusters.
+      class ClusterUpgradePostConditions
+        include Google::Apis::Core::Hashable
+      
+        # Required. Amount of time to "soak" after a rollout has been finished before
+        # marking it COMPLETE. Cannot exceed 30 days. Required.
+        # Corresponds to the JSON property `soaking`
+        # @return [String]
+        attr_accessor :soaking
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @soaking = args[:soaking] if args.key?(:soaking)
+        end
+      end
+      
+      # UpgradeStatus provides status information for each upgrade.
+      class ClusterUpgradeUpgradeStatus
+        include Google::Apis::Core::Hashable
+      
+        # Status code of the upgrade.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Reason for this status.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Last timestamp the status was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @reason = args[:reason] if args.key?(:reason)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # CommonFeatureSpec contains Hub-wide configuration information
       class CommonFeatureSpec
         include Google::Apis::Core::Hashable
@@ -356,6 +746,12 @@ module Google
         # Corresponds to the JSON property `appdevexperience`
         # @return [Google::Apis::GkehubV1beta::AppDevExperienceFeatureSpec]
         attr_accessor :appdevexperience
+      
+        # **ClusterUpgrade**: The configuration for the fleet-level ClusterUpgrade
+        # feature.
+        # Corresponds to the JSON property `clusterupgrade`
+        # @return [Google::Apis::GkehubV1beta::ClusterUpgradeFleetSpec]
+        attr_accessor :clusterupgrade
       
         # **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
         # Corresponds to the JSON property `fleetobservability`
@@ -376,6 +772,7 @@ module Google
         def update!(**args)
           @anthosobservability = args[:anthosobservability] if args.key?(:anthosobservability)
           @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
+          @clusterupgrade = args[:clusterupgrade] if args.key?(:clusterupgrade)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @multiclusteringress = args[:multiclusteringress] if args.key?(:multiclusteringress)
         end
@@ -389,6 +786,11 @@ module Google
         # Corresponds to the JSON property `appdevexperience`
         # @return [Google::Apis::GkehubV1beta::AppDevExperienceFeatureState]
         attr_accessor :appdevexperience
+      
+        # **ClusterUpgrade**: The state for the fleet-level ClusterUpgrade feature.
+        # Corresponds to the JSON property `clusterupgrade`
+        # @return [Google::Apis::GkehubV1beta::ClusterUpgradeFleetState]
+        attr_accessor :clusterupgrade
       
         # **FleetObservability**: Hub-wide Feature for FleetObservability feature. state.
         # Corresponds to the JSON property `fleetobservability`
@@ -409,6 +811,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
+          @clusterupgrade = args[:clusterupgrade] if args.key?(:clusterupgrade)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @state = args[:state] if args.key?(:state)
         end
@@ -573,14 +976,6 @@ module Google
         # @return [String]
         attr_accessor :source_format
       
-        # Set to true to stop syncing configs for a single cluster when automatic
-        # Feature management is enabled. Default to false. The field will be ignored
-        # when automatic Feature management is disabled.
-        # Corresponds to the JSON property `stopSyncing`
-        # @return [Boolean]
-        attr_accessor :stop_syncing
-        alias_method :stop_syncing?, :stop_syncing
-      
         def initialize(**args)
            update!(**args)
         end
@@ -594,7 +989,6 @@ module Google
           @oci = args[:oci] if args.key?(:oci)
           @prevent_drift = args[:prevent_drift] if args.key?(:prevent_drift)
           @source_format = args[:source_format] if args.key?(:source_format)
-          @stop_syncing = args[:stop_syncing] if args.key?(:stop_syncing)
         end
       end
       
@@ -1086,11 +1480,6 @@ module Google
         # @return [Google::Apis::GkehubV1beta::ConfigManagementHierarchyControllerConfig]
         attr_accessor :hierarchy_controller
       
-        # Enables automatic Feature management.
-        # Corresponds to the JSON property `management`
-        # @return [String]
-        attr_accessor :management
-      
         # Configuration for Policy Controller
         # Corresponds to the JSON property `policyController`
         # @return [Google::Apis::GkehubV1beta::ConfigManagementPolicyController]
@@ -1111,7 +1500,6 @@ module Google
           @cluster = args[:cluster] if args.key?(:cluster)
           @config_sync = args[:config_sync] if args.key?(:config_sync)
           @hierarchy_controller = args[:hierarchy_controller] if args.key?(:hierarchy_controller)
-          @management = args[:management] if args.key?(:management)
           @policy_controller = args[:policy_controller] if args.key?(:policy_controller)
           @version = args[:version] if args.key?(:version)
         end
@@ -1550,6 +1938,12 @@ module Google
       class DefaultClusterConfig
         include Google::Apis::Core::Hashable
       
+        # BinaryAuthorizationConfig defines the fleet level configuration of binary
+        # authorization feature.
+        # Corresponds to the JSON property `binaryAuthorizationConfig`
+        # @return [Google::Apis::GkehubV1beta::BinaryAuthorizationConfig]
+        attr_accessor :binary_authorization_config
+      
         # SecurityPostureConfig defines the flags needed to enable/disable features for
         # the Security Posture API.
         # Corresponds to the JSON property `securityPostureConfig`
@@ -1562,6 +1956,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @binary_authorization_config = args[:binary_authorization_config] if args.key?(:binary_authorization_config)
           @security_posture_config = args[:security_posture_config] if args.key?(:security_posture_config)
         end
       end
@@ -2794,32 +3189,6 @@ module Google
         end
       end
       
-      # List of fleet namespaces.
-      class ListNamespacesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of fleet namespaces
-        # Corresponds to the JSON property `namespaces`
-        # @return [Array<Google::Apis::GkehubV1beta::Namespace>]
-        attr_accessor :namespaces
-      
-        # A token to request the next page of resources from the `ListNamespaces` method.
-        # The value of an empty string means that there are no more resources to return.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @namespaces = args[:namespaces] if args.key?(:namespaces)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -2842,33 +3211,6 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
-        end
-      end
-      
-      # List of RBACRoleBindings.
-      class ListRbacRoleBindingsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A token to request the next page of resources from the `ListRBACRoleBindings`
-        # method. The value of an empty string means that there are no more resources to
-        # return.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The list of RBACRoleBindings
-        # Corresponds to the JSON property `rbacrolebindings`
-        # @return [Array<Google::Apis::GkehubV1beta::RbacRoleBinding>]
-        attr_accessor :rbacrolebindings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @rbacrolebindings = args[:rbacrolebindings] if args.key?(:rbacrolebindings)
         end
       end
       
@@ -3336,6 +3678,11 @@ module Google
         # @return [Google::Apis::GkehubV1beta::AppDevExperienceFeatureState]
         attr_accessor :appdevexperience
       
+        # Per-membership state for this feature.
+        # Corresponds to the JSON property `clusterupgrade`
+        # @return [Google::Apis::GkehubV1beta::ClusterUpgradeMembershipState]
+        attr_accessor :clusterupgrade
+      
         # **Anthos Config Management**: State for a single cluster.
         # Corresponds to the JSON property `configmanagement`
         # @return [Google::Apis::GkehubV1beta::ConfigManagementMembershipState]
@@ -3382,6 +3729,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
+          @clusterupgrade = args[:clusterupgrade] if args.key?(:clusterupgrade)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @identityservice = args[:identityservice] if args.key?(:identityservice)
@@ -3946,6 +4294,27 @@ module Google
         end
       end
       
+      # Binauthz policy that applies to this cluster.
+      class PolicyBinding
+        include Google::Apis::Core::Hashable
+      
+        # The relative resource name of the binauthz platform policy to audit. GKE
+        # platform policies have the following format: `projects/`project_number`/
+        # platforms/gke/policies/`policy_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # BundleInstallSpec is the specification configuration for a single managed
       # bundle.
       class PolicyControllerBundleInstallSpec
@@ -4393,9 +4762,9 @@ module Google
         attr_accessor :labels
       
         # The resource name for the rbacrolebinding `projects/`project`/locations/`
-        # location`/namespaces/`namespace`/rbacrolebindings/`rbacrolebinding`` or `
-        # projects/`project`/locations/`location`/memberships/`membership`/
-        # rbacrolebindings/`rbacrolebinding``
+        # location`/scopes/`scope`/rbacrolebindings/`rbacrolebinding`` or `projects/`
+        # project`/locations/`location`/memberships/`membership`/rbacrolebindings/`
+        # rbacrolebinding``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
