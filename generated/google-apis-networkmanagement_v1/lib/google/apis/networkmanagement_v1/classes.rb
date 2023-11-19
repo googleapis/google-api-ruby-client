@@ -1324,7 +1324,9 @@ module Google
         # @return [Array<Google::Apis::NetworkmanagementV1::LoadBalancerBackend>]
         attr_accessor :backends
       
-        # URI of the health check for the load balancer.
+        # URI of the health check for the load balancer. Deprecated and no longer
+        # populated as different load balancer backends might have different health
+        # checks.
         # Corresponds to the JSON property `healthCheckUri`
         # @return [String]
         attr_accessor :health_check_uri
