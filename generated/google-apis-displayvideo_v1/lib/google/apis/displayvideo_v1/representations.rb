@@ -442,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Consent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContactInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2478,6 +2484,14 @@ module Google
         end
       end
       
+      class Consent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_personalization, as: 'adPersonalization'
+          property :ad_user_data, as: 'adUserData'
+        end
+      end
+      
       class ContactInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2493,6 +2507,8 @@ module Google
       class ContactInfoList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :consent, as: 'consent', class: Google::Apis::DisplayvideoV1::Consent, decorator: Google::Apis::DisplayvideoV1::Consent::Representation
+      
           collection :contact_infos, as: 'contactInfos', class: Google::Apis::DisplayvideoV1::ContactInfo, decorator: Google::Apis::DisplayvideoV1::ContactInfo::Representation
       
         end
@@ -3931,6 +3947,8 @@ module Google
       class MobileDeviceIdList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :consent, as: 'consent', class: Google::Apis::DisplayvideoV1::Consent, decorator: Google::Apis::DisplayvideoV1::Consent::Representation
+      
           collection :mobile_device_ids, as: 'mobileDeviceIds'
         end
       end
