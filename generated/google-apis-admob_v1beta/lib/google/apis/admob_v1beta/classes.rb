@@ -1016,11 +1016,23 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. The time at which the experiment was ended or target to end (in
+        # UTC).
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
         # Output only. Unique identifier for the mediation A/B experiment. It is an
         # output only property.
         # Corresponds to the JSON property `experimentId`
         # @return [String]
         attr_accessor :experiment_id
+      
+        # Output only. The mediation group id this experiment belongs to. This can be
+        # used for filtering the experiments in the list experiments API.
+        # Corresponds to the JSON property `mediationGroupId`
+        # @return [String]
+        attr_accessor :mediation_group_id
       
         # Resource name for this experiment. The format is accounts/`publisher_id`/
         # mediationGroups/`mediation_group_id`/mediationAbExperiment/ `
@@ -1029,6 +1041,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. The time at which the experiment was started (in UTC).
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
       
         # Output only. The state of the experiment. It is an output only field.
         # Corresponds to the JSON property `state`
@@ -1049,6 +1066,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :treatment_traffic_percentage
       
+        # Output only. The variant leader for the experiment according to some key
+        # metrics.
+        # Corresponds to the JSON property `variantLeader`
+        # @return [String]
+        attr_accessor :variant_leader
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1057,11 +1080,15 @@ module Google
         def update!(**args)
           @control_mediation_lines = args[:control_mediation_lines] if args.key?(:control_mediation_lines)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @experiment_id = args[:experiment_id] if args.key?(:experiment_id)
+          @mediation_group_id = args[:mediation_group_id] if args.key?(:mediation_group_id)
           @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @treatment_mediation_lines = args[:treatment_mediation_lines] if args.key?(:treatment_mediation_lines)
           @treatment_traffic_percentage = args[:treatment_traffic_percentage] if args.key?(:treatment_traffic_percentage)
+          @variant_leader = args[:variant_leader] if args.key?(:variant_leader)
         end
       end
       
