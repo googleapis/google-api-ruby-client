@@ -1102,6 +1102,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VectorSearchStatistics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ViewDefinition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2766,6 +2772,7 @@ module Google
           property :max_batching_rows, :numeric_string => true, as: 'maxBatchingRows'
           property :remote_model_version, as: 'remoteModelVersion'
           property :remote_service_type, as: 'remoteServiceType'
+          property :speech_recognizer, as: 'speechRecognizer'
         end
       end
       
@@ -3431,6 +3438,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :inline_code, as: 'inlineCode'
           property :resource_uri, as: 'resourceUri'
+        end
+      end
+      
+      class VectorSearchStatistics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :index_unused_reasons, as: 'indexUnusedReasons', class: Google::Apis::BigqueryV2::IndexUnusedReason, decorator: Google::Apis::BigqueryV2::IndexUnusedReason::Representation
+      
+          property :index_usage_mode, as: 'indexUsageMode'
         end
       end
       
