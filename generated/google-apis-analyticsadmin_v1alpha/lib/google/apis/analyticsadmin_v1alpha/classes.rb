@@ -1906,7 +1906,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Required. The grouping rules of channels. Maximum number of rules is 25.
+        # Required. The grouping rules of channels. Maximum number of rules is 50.
         # Corresponds to the JSON property `groupingRule`
         # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGroupingRule>]
         attr_accessor :grouping_rule
