@@ -53,6 +53,13 @@ module Google
       class AlloyDbSettings
         include Google::Apis::Core::Hashable
       
+        # Optional. The database engine major version. This is an optional field. If a
+        # database version is not supplied at cluster creation time, then a default
+        # database version will be used.
+        # Corresponds to the JSON property `databaseVersion`
+        # @return [String]
+        attr_accessor :database_version
+      
         # EncryptionConfig describes the encryption config of a cluster that is
         # encrypted with a CMEK (customer-managed encryption key).
         # Corresponds to the JSON property `encryptionConfig`
@@ -91,6 +98,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database_version = args[:database_version] if args.key?(:database_version)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @initial_user = args[:initial_user] if args.key?(:initial_user)
           @labels = args[:labels] if args.key?(:labels)
