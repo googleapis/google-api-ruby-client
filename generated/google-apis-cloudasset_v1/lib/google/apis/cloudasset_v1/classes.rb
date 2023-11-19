@@ -533,7 +533,7 @@ module Google
         # The type of this attached resource. Example: `osconfig.googleapis.com/
         # Inventory` You can find the supported attached asset types of each resource in
         # this table: `https://cloud.google.com/asset-inventory/docs/supported-asset-
-        # types#searchable_asset_types`
+        # types`
         # Corresponds to the JSON property `assetType`
         # @return [String]
         attr_accessor :asset_type
@@ -5200,13 +5200,13 @@ module Google
         # fields that are returned by the List or Get APIs provided by the corresponding
         # Google Cloud service (e.g., Compute Engine). see [API references and supported
         # searchable attributes](https://cloud.google.com/asset-inventory/docs/supported-
-        # asset-types#searchable_asset_types) to see which fields are included. You can
-        # search values of these fields through free text search. However, you should
-        # not consume the field programically as the field names and values may change
-        # as the Google Cloud service updates to a new incompatible API version. To
-        # search against the `additional_attributes`: * Use a free text query to match
-        # the attributes values. Example: to search `additional_attributes = ` dnsName: "
-        # foobar" ``, you can issue a query `foobar`.
+        # asset-types) to see which fields are included. You can search values of these
+        # fields through free text search. However, you should not consume the field
+        # programically as the field names and values may change as the Google Cloud
+        # service updates to a new incompatible API version. To search against the `
+        # additional_attributes`: * Use a free text query to match the attributes values.
+        # Example: to search `additional_attributes = ` dnsName: "foobar" ``, you can
+        # issue a query `foobar`.
         # Corresponds to the JSON property `additionalAttributes`
         # @return [Hash<String,Object>]
         attr_accessor :additional_attributes
@@ -6020,7 +6020,7 @@ module Google
         # instance as defined by Compute Engine: `https://cloud.google.com/compute/docs/
         # reference/rest/v1/instances`. You can find the resource definition for each
         # supported resource type in this table: `https://cloud.google.com/asset-
-        # inventory/docs/supported-asset-types#searchable_asset_types`
+        # inventory/docs/supported-asset-types`
         # Corresponds to the JSON property `resource`
         # @return [Hash<String,Object>]
         attr_accessor :resource
