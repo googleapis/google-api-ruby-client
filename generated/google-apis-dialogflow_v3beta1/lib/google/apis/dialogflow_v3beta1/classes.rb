@@ -155,6 +155,49 @@ module Google
         end
       end
       
+      # Configuration of the barge-in behavior. Barge-in instructs the API to return a
+      # detected utterance at a proper time while the client is playing back the
+      # response audio from a previous request. When the client sees the utterance, it
+      # should stop the playback and immediately get ready for receiving the responses
+      # for the current request. The barge-in handling requires the client to start
+      # streaming audio input as soon as it starts playing back the audio from the
+      # previous response. The playback is modeled into two phases: * No barge-in
+      # phase: which goes first and during which speech detection should not be
+      # carried out. * Barge-in phase: which follows the no barge-in phase and during
+      # which the API starts speech detection and may inform the client that an
+      # utterance has been detected. Note that no-speech event is not expected in this
+      # phase. The client provides this configuration in terms of the durations of
+      # those two phases. The durations are measured in terms of the audio length
+      # fromt the the start of the input audio. The flow goes like below: --> Time
+      # without speech detection | utterance only | utterance or no-speech event | | +-
+      # ------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-
+      # + barge-in +-|-+ normal period +----------- +-------------+ | +------------+ |
+      # +---------------+ No-speech event is a response with END_OF_UTTERANCE without
+      # any transcript following up.
+      class GoogleCloudDialogflowCxV3BargeInConfig
+        include Google::Apis::Core::Hashable
+      
+        # Duration that is not eligible for barge-in at the beginning of the input audio.
+        # Corresponds to the JSON property `noBargeInDuration`
+        # @return [String]
+        attr_accessor :no_barge_in_duration
+      
+        # Total duration for the playback at the beginning of the input audio.
+        # Corresponds to the JSON property `totalDuration`
+        # @return [String]
+        attr_accessor :total_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @no_barge_in_duration = args[:no_barge_in_duration] if args.key?(:no_barge_in_duration)
+          @total_duration = args[:total_duration] if args.key?(:total_duration)
+        end
+      end
+      
       # Metadata returned for the TestCases.BatchRunTestCases long running operation.
       class GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata
         include Google::Apis::Core::Hashable
@@ -1512,6 +1555,29 @@ module Google
         # @return [String]
         attr_accessor :audio_encoding
       
+        # Configuration of the barge-in behavior. Barge-in instructs the API to return a
+        # detected utterance at a proper time while the client is playing back the
+        # response audio from a previous request. When the client sees the utterance, it
+        # should stop the playback and immediately get ready for receiving the responses
+        # for the current request. The barge-in handling requires the client to start
+        # streaming audio input as soon as it starts playing back the audio from the
+        # previous response. The playback is modeled into two phases: * No barge-in
+        # phase: which goes first and during which speech detection should not be
+        # carried out. * Barge-in phase: which follows the no barge-in phase and during
+        # which the API starts speech detection and may inform the client that an
+        # utterance has been detected. Note that no-speech event is not expected in this
+        # phase. The client provides this configuration in terms of the durations of
+        # those two phases. The durations are measured in terms of the audio length
+        # fromt the the start of the input audio. The flow goes like below: --> Time
+        # without speech detection | utterance only | utterance or no-speech event | | +-
+        # ------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-
+        # + barge-in +-|-+ normal period +----------- +-------------+ | +------------+ |
+        # +---------------+ No-speech event is a response with END_OF_UTTERANCE without
+        # any transcript following up.
+        # Corresponds to the JSON property `bargeInConfig`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3BargeInConfig]
+        attr_accessor :barge_in_config
+      
         # Optional. If `true`, Dialogflow returns SpeechWordInfo in
         # StreamingRecognitionResult with information about the recognized speech words,
         # e.g. start and end time offsets. If false or unspecified, Speech doesn't
@@ -1574,6 +1640,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
+          @barge_in_config = args[:barge_in_config] if args.key?(:barge_in_config)
           @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
           @model = args[:model] if args.key?(:model)
           @model_variant = args[:model_variant] if args.key?(:model_variant)
@@ -3663,6 +3730,11 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings]
         attr_accessor :advanced_settings
       
+        # Settings for answer feedback collection.
+        # Corresponds to the JSON property `answerFeedbackSettings`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings]
+        attr_accessor :answer_feedback_settings
+      
         # The URI of the agent's avatar. Avatars are used throughout the Dialogflow
         # console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/
         # docs/integrations/web-demo) integration.
@@ -3768,6 +3840,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
+          @answer_feedback_settings = args[:answer_feedback_settings] if args.key?(:answer_feedback_settings)
           @avatar_uri = args[:avatar_uri] if args.key?(:avatar_uri)
           @default_language_code = args[:default_language_code] if args.key?(:default_language_code)
           @description = args[:description] if args.key?(:description)
@@ -3784,6 +3857,28 @@ module Google
           @supported_language_codes = args[:supported_language_codes] if args.key?(:supported_language_codes)
           @text_to_speech_settings = args[:text_to_speech_settings] if args.key?(:text_to_speech_settings)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # Settings for answer feedback collection.
+      class GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If enabled, end users will be able to provide answer feedback to
+        # Dialogflow responses. Feature works only if interaction logging is enabled in
+        # the Dialogflow agent.
+        # Corresponds to the JSON property `enableAnswerFeedback`
+        # @return [Boolean]
+        attr_accessor :enable_answer_feedback
+        alias_method :enable_answer_feedback?, :enable_answer_feedback
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_answer_feedback = args[:enable_answer_feedback] if args.key?(:enable_answer_feedback)
         end
       end
       
@@ -3896,6 +3991,67 @@ module Google
         end
       end
       
+      # Stores information about feedback provided by users about a response.
+      class GoogleCloudDialogflowCxV3beta1AnswerFeedback
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Custom rating from the user about the provided answer, with maximum
+        # length of 1024 characters. For example, client could use a customized JSON
+        # object to indicate the rating.
+        # Corresponds to the JSON property `customRating`
+        # @return [String]
+        attr_accessor :custom_rating
+      
+        # Optional. Rating from user for the specific Dialogflow response.
+        # Corresponds to the JSON property `rating`
+        # @return [String]
+        attr_accessor :rating
+      
+        # Stores extra information about why users provided thumbs down rating.
+        # Corresponds to the JSON property `ratingReason`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AnswerFeedbackRatingReason]
+        attr_accessor :rating_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_rating = args[:custom_rating] if args.key?(:custom_rating)
+          @rating = args[:rating] if args.key?(:rating)
+          @rating_reason = args[:rating_reason] if args.key?(:rating_reason)
+        end
+      end
+      
+      # Stores extra information about why users provided thumbs down rating.
+      class GoogleCloudDialogflowCxV3beta1AnswerFeedbackRatingReason
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Additional feedback about the rating. This field can be populated
+        # without choosing a predefined `reason`.
+        # Corresponds to the JSON property `feedback`
+        # @return [String]
+        attr_accessor :feedback
+      
+        # Optional. Custom reason labels for thumbs down rating provided by the user.
+        # The maximum number of labels allowed is 10 and the maximum length of a single
+        # label is 128 characters.
+        # Corresponds to the JSON property `reasonLabels`
+        # @return [Array<String>]
+        attr_accessor :reason_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feedback = args[:feedback] if args.key?(:feedback)
+          @reason_labels = args[:reason_labels] if args.key?(:reason_labels)
+        end
+      end
+      
       # Represents the natural speech audio to be processed.
       class GoogleCloudDialogflowCxV3beta1AudioInput
         include Google::Apis::Core::Hashable
@@ -3924,6 +4080,49 @@ module Google
         def update!(**args)
           @audio = args[:audio] if args.key?(:audio)
           @config = args[:config] if args.key?(:config)
+        end
+      end
+      
+      # Configuration of the barge-in behavior. Barge-in instructs the API to return a
+      # detected utterance at a proper time while the client is playing back the
+      # response audio from a previous request. When the client sees the utterance, it
+      # should stop the playback and immediately get ready for receiving the responses
+      # for the current request. The barge-in handling requires the client to start
+      # streaming audio input as soon as it starts playing back the audio from the
+      # previous response. The playback is modeled into two phases: * No barge-in
+      # phase: which goes first and during which speech detection should not be
+      # carried out. * Barge-in phase: which follows the no barge-in phase and during
+      # which the API starts speech detection and may inform the client that an
+      # utterance has been detected. Note that no-speech event is not expected in this
+      # phase. The client provides this configuration in terms of the durations of
+      # those two phases. The durations are measured in terms of the audio length
+      # fromt the the start of the input audio. The flow goes like below: --> Time
+      # without speech detection | utterance only | utterance or no-speech event | | +-
+      # ------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-
+      # + barge-in +-|-+ normal period +----------- +-------------+ | +------------+ |
+      # +---------------+ No-speech event is a response with END_OF_UTTERANCE without
+      # any transcript following up.
+      class GoogleCloudDialogflowCxV3beta1BargeInConfig
+        include Google::Apis::Core::Hashable
+      
+        # Duration that is not eligible for barge-in at the beginning of the input audio.
+        # Corresponds to the JSON property `noBargeInDuration`
+        # @return [String]
+        attr_accessor :no_barge_in_duration
+      
+        # Total duration for the playback at the beginning of the input audio.
+        # Corresponds to the JSON property `totalDuration`
+        # @return [String]
+        attr_accessor :total_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @no_barge_in_duration = args[:no_barge_in_duration] if args.key?(:no_barge_in_duration)
+          @total_duration = args[:total_duration] if args.key?(:total_duration)
         end
       end
       
@@ -4009,6 +4208,97 @@ module Google
         # Update properties of this object
         def update!(**args)
           @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Boost specification to boost certain documents. A copy of google.cloud.
+      # discoveryengine.v1main.BoostSpec, field documentation is available at https://
+      # cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1alpha/
+      # BoostSpec
+      class GoogleCloudDialogflowCxV3beta1BoostSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Condition boost specifications. If a document matches multiple
+        # conditions in the specifictions, boost scores from these specifications are
+        # all applied and combined in a non-linear way. Maximum number of specifications
+        # is 20.
+        # Corresponds to the JSON property `conditionBoostSpecs`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec>]
+        attr_accessor :condition_boost_specs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition_boost_specs = args[:condition_boost_specs] if args.key?(:condition_boost_specs)
+        end
+      end
+      
+      # Boost applies to documents which match a condition.
+      class GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Strength of the condition boost, which should be in [-1, 1].
+        # Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the
+        # document a big promotion. However, it does not necessarily mean that the
+        # boosted document will be the top result at all times, nor that other documents
+        # will be excluded. Results could still be shown even when none of them matches
+        # the condition. And results that are significantly more relevant to the search
+        # query can still trump your heavily favored but irrelevant documents. Setting
+        # to -1.0 gives the document a big demotion. However, results that are deeply
+        # relevant might still be shown. The document will have an upstream battle to
+        # get a fairly high ranking, but it is not blocked out completely. Setting to 0.
+        # 0 means no boost applied. The boosting condition is ignored.
+        # Corresponds to the JSON property `boost`
+        # @return [Float]
+        attr_accessor :boost
+      
+        # Optional. An expression which specifies a boost condition. The syntax and
+        # supported fields are the same as a filter expression. Examples: * To boost
+        # documents with document ID "doc_1" or "doc_2", and color "Red" or "Blue": * (
+        # id: ANY("doc_1", "doc_2")) AND (color: ANY("Red","Blue"))
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost = args[:boost] if args.key?(:boost)
+          @condition = args[:condition] if args.key?(:condition)
+        end
+      end
+      
+      # Boost specifications for data stores.
+      class GoogleCloudDialogflowCxV3beta1BoostSpecs
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Data Stores where the boosting configuration is applied. The full
+        # names of the referenced data stores. Formats: `projects/`project`/locations/`
+        # location`/collections/`collection`/dataStores/`data_store`` `projects/`project`
+        # /locations/`location`/dataStores/`data_store`
+        # Corresponds to the JSON property `dataStores`
+        # @return [Array<String>]
+        attr_accessor :data_stores
+      
+        # Optional. A list of boosting specifications.
+        # Corresponds to the JSON property `spec`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BoostSpec>]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_stores = args[:data_stores] if args.key?(:data_stores)
+          @spec = args[:spec] if args.key?(:spec)
         end
       end
       
@@ -5712,6 +6002,36 @@ module Google
         end
       end
       
+      # Filter specifications for data stores.
+      class GoogleCloudDialogflowCxV3beta1FilterSpecs
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Data Stores where the boosting configuration is applied. The full
+        # names of the referenced data stores. Formats: `projects/`project`/locations/`
+        # location`/collections/`collection`/dataStores/`data_store`` `projects/`project`
+        # /locations/`location`/dataStores/`data_store`
+        # Corresponds to the JSON property `dataStores`
+        # @return [Array<String>]
+        attr_accessor :data_stores
+      
+        # Optional. The filter expression to be applied. Expression syntax is documented
+        # at https://cloud.google.com/generative-ai-app-builder/docs/filter-search-
+        # metadata#filter-expression-syntax
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_stores = args[:data_stores] if args.key?(:data_stores)
+          @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
       # Flows represents the conversation flows when you build your chatbot agent. A
       # flow consists of many pages connected by the transition routes. Conversations
       # always start with the built-in Start Flow (with an all-0 ID). Transition
@@ -6827,6 +7147,29 @@ module Google
         # @return [String]
         attr_accessor :audio_encoding
       
+        # Configuration of the barge-in behavior. Barge-in instructs the API to return a
+        # detected utterance at a proper time while the client is playing back the
+        # response audio from a previous request. When the client sees the utterance, it
+        # should stop the playback and immediately get ready for receiving the responses
+        # for the current request. The barge-in handling requires the client to start
+        # streaming audio input as soon as it starts playing back the audio from the
+        # previous response. The playback is modeled into two phases: * No barge-in
+        # phase: which goes first and during which speech detection should not be
+        # carried out. * Barge-in phase: which follows the no barge-in phase and during
+        # which the API starts speech detection and may inform the client that an
+        # utterance has been detected. Note that no-speech event is not expected in this
+        # phase. The client provides this configuration in terms of the durations of
+        # those two phases. The durations are measured in terms of the audio length
+        # fromt the the start of the input audio. The flow goes like below: --> Time
+        # without speech detection | utterance only | utterance or no-speech event | | +-
+        # ------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-
+        # + barge-in +-|-+ normal period +----------- +-------------+ | +------------+ |
+        # +---------------+ No-speech event is a response with END_OF_UTTERANCE without
+        # any transcript following up.
+        # Corresponds to the JSON property `bargeInConfig`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BargeInConfig]
+        attr_accessor :barge_in_config
+      
         # Optional. If `true`, Dialogflow returns SpeechWordInfo in
         # StreamingRecognitionResult with information about the recognized speech words,
         # e.g. start and end time offsets. If false or unspecified, Speech doesn't
@@ -6889,6 +7232,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
+          @barge_in_config = args[:barge_in_config] if args.key?(:barge_in_config)
           @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
           @model = args[:model] if args.key?(:model)
           @model_variant = args[:model_variant] if args.key?(:model_variant)
@@ -8344,6 +8688,11 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :payload
       
+        # Search configuration for UCS search queries.
+        # Corresponds to the JSON property `searchConfig`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SearchConfig]
+        attr_accessor :search_config
+      
         # Additional session entity types to replace or extend developer entity types
         # with. The entity synonyms apply to all languages and persist for the session
         # of this query.
@@ -8392,6 +8741,7 @@ module Google
           @geo_location = args[:geo_location] if args.key?(:geo_location)
           @parameters = args[:parameters] if args.key?(:parameters)
           @payload = args[:payload] if args.key?(:payload)
+          @search_config = args[:search_config] if args.key?(:search_config)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
           @session_ttl = args[:session_ttl] if args.key?(:session_ttl)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
@@ -8414,6 +8764,13 @@ module Google
         # Corresponds to the JSON property `advancedSettings`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings]
         attr_accessor :advanced_settings
+      
+        # Indicates whether the Thumbs up/Thumbs down rating controls are need to be
+        # shown for the response in the Dialogflow Messenger widget.
+        # Corresponds to the JSON property `allowAnswerFeedback`
+        # @return [Boolean]
+        attr_accessor :allow_answer_feedback
+        alias_method :allow_answer_feedback?, :allow_answer_feedback
       
         # A Dialogflow CX conversation (session) can be described and visualized as a
         # state machine. The states of a CX session are represented by pages. For each
@@ -8552,6 +8909,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
+          @allow_answer_feedback = args[:allow_answer_feedback] if args.key?(:allow_answer_feedback)
           @current_page = args[:current_page] if args.key?(:current_page)
           @diagnostic_info = args[:diagnostic_info] if args.key?(:diagnostic_info)
           @dtmf = args[:dtmf] if args.key?(:dtmf)
@@ -9294,6 +9652,31 @@ module Google
         end
       end
       
+      # Search configuration for UCS search queries.
+      class GoogleCloudDialogflowCxV3beta1SearchConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Boosting configuration for the datastores.
+        # Corresponds to the JSON property `boostSpecs`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BoostSpecs>]
+        attr_accessor :boost_specs
+      
+        # Optional. Filter configuration for the datastores.
+        # Corresponds to the JSON property `filterSpecs`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FilterSpecs>]
+        attr_accessor :filter_specs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost_specs = args[:boost_specs] if args.key?(:boost_specs)
+          @filter_specs = args[:filter_specs] if args.key?(:filter_specs)
+        end
+      end
+      
       # Represents the settings related to security issues, such as data redaction and
       # data retention. It may take hours for updates on the settings to propagate to
       # all the related components and take effect.
@@ -9611,6 +9994,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The request to set the feedback for a bot answer.
+      class GoogleCloudDialogflowCxV3beta1SubmitAnswerFeedbackRequest
+        include Google::Apis::Core::Hashable
+      
+        # Stores information about feedback provided by users about a response.
+        # Corresponds to the JSON property `answerFeedback`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AnswerFeedback]
+        attr_accessor :answer_feedback
+      
+        # Required. ID of the response to update its feedback. This is the same as
+        # DetectIntentResponse.response_id.
+        # Corresponds to the JSON property `responseId`
+        # @return [String]
+        attr_accessor :response_id
+      
+        # Optional. The mask to control which fields to update. If the mask is not
+        # present, all fields will be updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_feedback = args[:answer_feedback] if args.key?(:answer_feedback)
+          @response_id = args[:response_id] if args.key?(:response_id)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
