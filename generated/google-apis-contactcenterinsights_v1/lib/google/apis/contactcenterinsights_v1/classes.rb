@@ -539,7 +539,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest
         include Google::Apis::Core::Hashable
       
-        # Filter used to select the subset of conversations to analyze.
+        # Filter used to select the subset of conversations to delete.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -551,14 +551,13 @@ module Google
         attr_accessor :force
         alias_method :force?, :force
       
-        # Maximum number of conversations to delete. The default is 1000. It can be
-        # changed by setting the `max_delete_count` field.
+        # Maximum number of conversations to delete.
         # Corresponds to the JSON property `maxDeleteCount`
         # @return [Fixnum]
         attr_accessor :max_delete_count
       
-        # Required. The parent resource to create analyses in. Format: projects/`project`
-        # /locations/`location`
+        # Required. The parent resource to delete conversations from. Format: projects/`
+        # project`/locations/`location`
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -576,7 +575,7 @@ module Google
         end
       end
       
-      # The response for a bulk analyze conversations operation.
+      # The response for a bulk delete conversations operation.
       class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse
         include Google::Apis::Core::Hashable
       
@@ -3883,7 +3882,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest
         include Google::Apis::Core::Hashable
       
-        # Filter used to select the subset of conversations to analyze.
+        # Filter used to select the subset of conversations to delete.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -3895,14 +3894,13 @@ module Google
         attr_accessor :force
         alias_method :force?, :force
       
-        # Maximum number of conversations to delete. The default is 1000. It can be
-        # changed by setting the `max_delete_count` field.
+        # Maximum number of conversations to delete.
         # Corresponds to the JSON property `maxDeleteCount`
         # @return [Fixnum]
         attr_accessor :max_delete_count
       
-        # Required. The parent resource to create analyses in. Format: projects/`project`
-        # /locations/`location`
+        # Required. The parent resource to delete conversations from. Format: projects/`
+        # project`/locations/`location`
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -3920,7 +3918,7 @@ module Google
         end
       end
       
-      # The response for a bulk analyze conversations operation.
+      # The response for a bulk delete conversations operation.
       class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse
         include Google::Apis::Core::Hashable
       
