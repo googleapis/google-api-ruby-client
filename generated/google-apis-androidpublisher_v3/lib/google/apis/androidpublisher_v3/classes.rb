@@ -1628,6 +1628,20 @@ module Google
       class ExternalTransactionAddress
         include Google::Apis::Core::Hashable
       
+        # Optional. Top-level administrative subdivision of the country/region. Only
+        # required for transactions in India. Valid values are "ANDAMAN AND NICOBAR
+        # ISLANDS", "ANDHRA PRADESH", "ARUNACHAL PRADESH", "ASSAM", "BIHAR", "CHANDIGARH"
+        # , "CHHATTISGARH", "DADRA AND NAGAR HAVELI", "DADRA AND NAGAR HAVELI AND DAMAN
+        # AND DIU", "DAMAN AND DIU", "DELHI", "GOA", "GUJARAT", "HARYANA", "HIMACHAL
+        # PRADESH", "JAMMU AND KASHMIR", "JHARKHAND", "KARNATAKA", "KERALA", "LADAKH", "
+        # LAKSHADWEEP", "MADHYA PRADESH", "MAHARASHTRA", "MANIPUR", "MEGHALAYA", "
+        # MIZORAM", "NAGALAND", "ODISHA", "PUDUCHERRY", "PUNJAB", "RAJASTHAN", "SIKKIM",
+        # "TAMIL NADU", "TELANGANA", "TRIPURA", "UTTAR PRADESH", "UTTARAKHAND", and "
+        # WEST BENGAL".
+        # Corresponds to the JSON property `administrativeArea`
+        # @return [String]
+        attr_accessor :administrative_area
+      
         # Required. Two letter region code based on ISO-3166-1 Alpha-2 (UN region codes).
         # Corresponds to the JSON property `regionCode`
         # @return [String]
@@ -1639,6 +1653,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @administrative_area = args[:administrative_area] if args.key?(:administrative_area)
           @region_code = args[:region_code] if args.key?(:region_code)
         end
       end
@@ -3316,6 +3331,12 @@ module Google
         # @return [String]
         attr_accessor :initial_external_transaction_id
       
+        # Input only. Provided during the call to Create. Must only be used when
+        # migrating a subscription from manual monthly reporting to automated reporting.
+        # Corresponds to the JSON property `migratedTransactionProgram`
+        # @return [String]
+        attr_accessor :migrated_transaction_program
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3325,6 +3346,7 @@ module Google
           @external_subscription = args[:external_subscription] if args.key?(:external_subscription)
           @external_transaction_token = args[:external_transaction_token] if args.key?(:external_transaction_token)
           @initial_external_transaction_id = args[:initial_external_transaction_id] if args.key?(:initial_external_transaction_id)
+          @migrated_transaction_program = args[:migrated_transaction_program] if args.key?(:migrated_transaction_program)
         end
       end
       
@@ -5118,6 +5140,43 @@ module Google
         def update!(**args)
           @releases = args[:releases] if args.key?(:releases)
           @track = args[:track] if args.key?(:track)
+        end
+      end
+      
+      # Configurations of the new track.
+      class TrackConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Form factor of the new track. Defaults to the default track.
+        # Corresponds to the JSON property `formFactor`
+        # @return [String]
+        attr_accessor :form_factor
+      
+        # Required. Identifier of the new track. For default tracks, this field consists
+        # of the track alias only. Form factor tracks have a special prefix as an
+        # identifier, for example `wear:production`, `automotive:production`. This
+        # prefix must match the value of the `form_factor` field, if it is not a default
+        # track. [More on track name](https://developers.google.com/android-publisher/
+        # tracks#ff-track-name)
+        # Corresponds to the JSON property `track`
+        # @return [String]
+        attr_accessor :track
+      
+        # Required. Type of the new track. Currently, the only supported value is
+        # closedTesting.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @form_factor = args[:form_factor] if args.key?(:form_factor)
+          @track = args[:track] if args.key?(:track)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
