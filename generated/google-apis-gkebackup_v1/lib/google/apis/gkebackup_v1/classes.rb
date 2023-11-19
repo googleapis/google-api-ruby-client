@@ -1428,7 +1428,7 @@ module Google
       end
       
       # Represents both a request to Restore some portion of a Backup into a target
-      # GKE cluster and a record of the restore operation itself. Next id: 19
+      # GKE cluster and a record of the restore operation itself. Next id: 20
       class Restore
         include Google::Apis::Core::Hashable
       
@@ -1500,7 +1500,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :resources_restored_count
       
-        # Configuration of a restore. Next id: 12
+        # Configuration of a restore. Next id: 13
         # Corresponds to the JSON property `restoreConfig`
         # @return [Google::Apis::GkebackupV1::RestoreConfig]
         attr_accessor :restore_config
@@ -1558,7 +1558,7 @@ module Google
         end
       end
       
-      # Configuration of a restore. Next id: 12
+      # Configuration of a restore. Next id: 13
       class RestoreConfig
         include Google::Apis::Core::Hashable
       
@@ -1717,7 +1717,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Configuration of a restore. Next id: 12
+        # Configuration of a restore. Next id: 13
         # Corresponds to the JSON property `restoreConfig`
         # @return [Google::Apis::GkebackupV1::RestoreConfig]
         attr_accessor :restore_config
