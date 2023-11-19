@@ -57,6 +57,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. When true, the node is only accessible via Private Service Connect;
+        # no public endpoints are exposed. Otherwise, the node is only accessible via
+        # public endpoints. See https://cloud.google.com/vpc/docs/private-service-
+        # connect.
+        # Corresponds to the JSON property `privateServiceConnectEnabled`
+        # @return [Boolean]
+        attr_accessor :private_service_connect_enabled
+        alias_method :private_service_connect_enabled?, :private_service_connect_enabled
+      
         # Output only. A status representing the state of the node.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -79,6 +88,7 @@ module Google
           @ethereum_details = args[:ethereum_details] if args.key?(:ethereum_details)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @private_service_connect_enabled = args[:private_service_connect_enabled] if args.key?(:private_service_connect_enabled)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
