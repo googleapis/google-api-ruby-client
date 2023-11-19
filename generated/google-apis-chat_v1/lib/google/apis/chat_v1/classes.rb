@@ -4163,17 +4163,16 @@ module Google
       
         # Resource name for a Google Chat user. Format: `users/`user``. `users/app` can
         # be used as an alias for the calling app bot user. For human users, ``user`` is
-        # the same user identifier as: - the ``person_id`` for the [Person](https://
-        # developers.google.com/people/api/rest/v1/people) in the People API, where the
-        # Person `resource_name` is `people/`person_id``. For example, `users/123456789`
-        # in Chat API represents the same person as `people/123456789` in People API. -
-        # the `id` for a [user](https://developers.google.com/admin-sdk/directory/
-        # reference/rest/v1/users) in the Admin SDK Directory API. - the user's email
-        # address can be used as an alias for ``user`` in API requests. For example, if
-        # the People API Person `resourceName` for `user@example.com` is `people/
-        # 123456789`, you can use `users/user@example.com` as an alias to reference `
-        # users/123456789`. Only the canonical resource name (for example `users/
-        # 123456789`) will be returned from the API.
+        # the same user identifier as: - the `id` for the [Person](https://developers.
+        # google.com/people/api/rest/v1/people) in the People API. For example, `users/
+        # 123456789` in Chat API represents the same person as the `123456789` Person
+        # profile ID in People API. - the `id` for a [user](https://developers.google.
+        # com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK Directory
+        # API. - the user's email address can be used as an alias for ``user`` in API
+        # requests. For example, if the People API Person profile ID for `user@example.
+        # com` is `123456789`, you can use `users/user@example.com` as an alias to
+        # reference `users/123456789`. Only the canonical resource name (for example `
+        # users/123456789`) will be returned from the API.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
