@@ -718,11 +718,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :antenna_gain
       
-        # As above, but as a DoubleValue.
-        # Corresponds to the JSON property `antennaGainNewField`
-        # @return [Float]
-        attr_accessor :antenna_gain_new_field
-      
         # If an external antenna is used, the antenna model is optionally provided in
         # this field. The string has a maximum length of 128 octets.
         # Corresponds to the JSON property `antennaModel`
@@ -742,11 +737,6 @@ module Google
         # Corresponds to the JSON property `eirpCapability`
         # @return [Fixnum]
         attr_accessor :eirp_capability
-      
-        # As above, but as a DoubleValue.
-        # Corresponds to the JSON property `eirpCapabilityNewField`
-        # @return [Float]
-        attr_accessor :eirp_capability_new_field
       
         # Device antenna height in meters. When the `heightType` parameter value is "AGL"
         # , the antenna height should be given relative to ground level. When the `
@@ -805,11 +795,9 @@ module Google
           @antenna_beamwidth = args[:antenna_beamwidth] if args.key?(:antenna_beamwidth)
           @antenna_downtilt = args[:antenna_downtilt] if args.key?(:antenna_downtilt)
           @antenna_gain = args[:antenna_gain] if args.key?(:antenna_gain)
-          @antenna_gain_new_field = args[:antenna_gain_new_field] if args.key?(:antenna_gain_new_field)
           @antenna_model = args[:antenna_model] if args.key?(:antenna_model)
           @cpe_cbsd_indication = args[:cpe_cbsd_indication] if args.key?(:cpe_cbsd_indication)
           @eirp_capability = args[:eirp_capability] if args.key?(:eirp_capability)
-          @eirp_capability_new_field = args[:eirp_capability_new_field] if args.key?(:eirp_capability_new_field)
           @height = args[:height] if args.key?(:height)
           @height_type = args[:height_type] if args.key?(:height_type)
           @horizontal_accuracy = args[:horizontal_accuracy] if args.key?(:horizontal_accuracy)
