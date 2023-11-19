@@ -258,8 +258,8 @@ module Google
         
         # Updates the specified firewall policy.
         # @param [String] name
-        #   The resource name for the FirewallPolicy in the format `projects/`project`/
-        #   firewallpolicies/`firewallpolicy``.
+        #   Identifier. The resource name for the FirewallPolicy in the format `projects/`
+        #   project`/firewallpolicies/`firewallpolicy``.
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicy] google_cloud_recaptchaenterprise_v1_firewall_policy_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields of the policy get updated. If the
@@ -501,7 +501,8 @@ module Google
         
         # Updates the specified key.
         # @param [String] name
-        #   The resource name for the Key in the format `projects/`project`/keys/`key``.
+        #   Identifier. The resource name for the Key in the format `projects/`project`/
+        #   keys/`key``.
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key] google_cloud_recaptchaenterprise_v1_key_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields of the key get updated. If the mask
