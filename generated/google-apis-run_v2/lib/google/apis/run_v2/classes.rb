@@ -2016,8 +2016,8 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Scaling settings that apply to the service as a whole rather than the
-        # individual revision.
+        # Scaling settings applied at the service level rather than at the revision
+        # level.
         # Corresponds to the JSON property `scaling`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2ServiceScaling]
         attr_accessor :scaling
@@ -2103,14 +2103,14 @@ module Google
         end
       end
       
-      # Scaling settings that apply to the service as a whole rather than the
-      # individual revision.
+      # Scaling settings applied at the service level rather than at the revision
+      # level.
       class GoogleCloudRunV2ServiceScaling
         include Google::Apis::Core::Hashable
       
-        # total min instances for the service. This number of instances will be divide
-        # among all revisions with specified traffic based on the percent of traffic
-        # they are receiving. (ALPHA)
+        # total min instances for the service. This number of instances is divided among
+        # all revisions with specified traffic based on the percent of traffic they are
+        # receiving. (ALPHA)
         # Corresponds to the JSON property `minInstanceCount`
         # @return [Fixnum]
         attr_accessor :min_instance_count
