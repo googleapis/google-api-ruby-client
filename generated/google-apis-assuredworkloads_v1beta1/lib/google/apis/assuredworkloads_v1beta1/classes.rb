@@ -113,7 +113,7 @@ module Google
       
         # Type of the asset being analyzed. Possible values will be among the ones
         # listed [here](https://cloud.google.com/asset-inventory/docs/supported-asset-
-        # types#searchable_asset_types).
+        # types).
         # Corresponds to the JSON property `assetType`
         # @return [String]
         attr_accessor :asset_type
@@ -355,7 +355,7 @@ module Google
         end
       end
       
-      # Workload monitoring Violation. Next Id: 28
+      # Workload monitoring Violation.
       class GoogleCloudAssuredworkloadsV1beta1Violation
         include Google::Apis::Core::Hashable
       
@@ -511,7 +511,7 @@ module Google
         end
       end
       
-      # Violation exception detail. Next Id: 6
+      # Violation exception detail.
       class GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext
         include Google::Apis::Core::Hashable
       

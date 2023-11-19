@@ -133,7 +133,7 @@ module Google
         #   Optional. List of asset types to be analyzed, including and under the source
         #   resource. If empty, all assets are analyzed. The complete list of asset types
         #   is available [here](https://cloud.google.com/asset-inventory/docs/supported-
-        #   asset-types#searchable_asset_types).
+        #   asset-types).
         # @param [Fixnum] page_size
         #   Optional. Page size. If a value is not specified, the default value of 10 is
         #   used.
