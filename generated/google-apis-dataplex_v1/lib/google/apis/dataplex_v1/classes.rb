@@ -1636,6 +1636,34 @@ module Google
         end
       end
       
+      # DataQualityColumnResult provides a more detailed, per-column view of the
+      # results.
+      class GoogleCloudDataplexV1DataQualityColumnResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The column specified in the DataQualityRule.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Output only. The column-level data quality score for this data scan job if and
+        # only if the 'column' field is set.The score ranges between between 0, 100 (up
+        # to two decimal points).
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
       # A dimension captures data quality intent about a defined subset of the rules
       # specified.
       class GoogleCloudDataplexV1DataQualityDimension
@@ -1674,6 +1702,13 @@ module Google
         attr_accessor :passed
         alias_method :passed?, :passed
       
+        # Output only. The dimension-level data quality score for this data scan job if
+        # and only if the 'dimension' field is set.The score ranges between 0, 100 (up
+        # to two decimal points).
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1682,12 +1717,20 @@ module Google
         def update!(**args)
           @dimension = args[:dimension] if args.key?(:dimension)
           @passed = args[:passed] if args.key?(:passed)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
       # The output of a DataQualityScan.
       class GoogleCloudDataplexV1DataQualityResult
         include Google::Apis::Core::Hashable
+      
+        # Output only. A list of results at the column level.A column will have a
+        # corresponding DataQualityColumnResult if and only if there is at least one
+        # rule with the 'column' field set to it.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityColumnResult>]
+        attr_accessor :columns
       
         # A list of results at the dimension level.A dimension will have a corresponding
         # DataQualityDimensionResult if and only if there is at least one rule with the '
@@ -1722,18 +1765,26 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedData]
         attr_accessor :scanned_data
       
+        # Output only. The overall data quality score.The score ranges between 0, 100 (
+        # up to two decimal points).
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @passed = args[:passed] if args.key?(:passed)
           @post_scan_actions_result = args[:post_scan_actions_result] if args.key?(:post_scan_actions_result)
           @row_count = args[:row_count] if args.key?(:row_count)
           @rules = args[:rules] if args.key?(:rules)
           @scanned_data = args[:scanned_data] if args.key?(:scanned_data)
+          @score = args[:score] if args.key?(:score)
         end
       end
       

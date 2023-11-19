@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataQualityColumnResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataQualityDimension
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1447,6 +1453,14 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1DataQualityColumnResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :score, as: 'score'
+        end
+      end
+      
       class GoogleCloudDataplexV1DataQualityDimension
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1460,12 +1474,15 @@ module Google
           property :dimension, as: 'dimension', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimension, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimension::Representation
       
           property :passed, as: 'passed'
+          property :score, as: 'score'
         end
       end
       
       class GoogleCloudDataplexV1DataQualityResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityColumnResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityColumnResult::Representation
+      
           collection :dimensions, as: 'dimensions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult::Representation
       
           property :passed, as: 'passed'
@@ -1476,6 +1493,7 @@ module Google
       
           property :scanned_data, as: 'scannedData', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedData, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedData::Representation
       
+          property :score, as: 'score'
         end
       end
       
