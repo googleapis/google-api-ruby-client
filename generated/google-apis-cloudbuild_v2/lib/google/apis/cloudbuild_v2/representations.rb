@@ -857,6 +857,7 @@ module Google
       
           property :create_time, as: 'createTime'
           property :etag, as: 'etag'
+          property :finally_start_time, as: 'finallyStartTime'
           property :name, as: 'name'
           collection :params, as: 'params', class: Google::Apis::CloudbuildV2::Param, decorator: Google::Apis::CloudbuildV2::Param::Representation
       
@@ -1192,6 +1193,7 @@ module Google
           property :name, as: 'name'
           property :secret, as: 'secret', class: Google::Apis::CloudbuildV2::SecretVolumeSource, decorator: Google::Apis::CloudbuildV2::SecretVolumeSource::Representation
       
+          property :sub_path, as: 'subPath'
           property :volume_claim, as: 'volumeClaim', class: Google::Apis::CloudbuildV2::VolumeClaim, decorator: Google::Apis::CloudbuildV2::VolumeClaim::Representation
       
         end
@@ -1212,6 +1214,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :sub_path, as: 'subPath'
           property :workspace, as: 'workspace'
         end
       end

@@ -1502,6 +1502,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Output only. FinallyStartTime is when all non-finally tasks have been
+        # completed and only finally tasks are being executed. +optional
+        # Corresponds to the JSON property `finallyStartTime`
+        # @return [String]
+        attr_accessor :finally_start_time
+      
         # Output only. The `PipelineRun` name with format `projects/`project`/locations/`
         # location`/pipelineRuns/`pipeline_run``
         # Corresponds to the JSON property `name`
@@ -1593,6 +1599,7 @@ module Google
           @conditions = args[:conditions] if args.key?(:conditions)
           @create_time = args[:create_time] if args.key?(:create_time)
           @etag = args[:etag] if args.key?(:etag)
+          @finally_start_time = args[:finally_start_time] if args.key?(:finally_start_time)
           @name = args[:name] if args.key?(:name)
           @params = args[:params] if args.key?(:params)
           @pipeline_ref = args[:pipeline_ref] if args.key?(:pipeline_ref)
@@ -2797,6 +2804,13 @@ module Google
         # @return [Google::Apis::CloudbuildV2::SecretVolumeSource]
         attr_accessor :secret
       
+        # Optional. SubPath is optionally a directory on the volume which should be used
+        # for this binding (i.e. the volume will be mounted at this sub directory). +
+        # optional
+        # Corresponds to the JSON property `subPath`
+        # @return [String]
+        attr_accessor :sub_path
+      
         # VolumeClaim is a user's request for a volume.
         # Corresponds to the JSON property `volumeClaim`
         # @return [Google::Apis::CloudbuildV2::VolumeClaim]
@@ -2810,6 +2824,7 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @secret = args[:secret] if args.key?(:secret)
+          @sub_path = args[:sub_path] if args.key?(:sub_path)
           @volume_claim = args[:volume_claim] if args.key?(:volume_claim)
         end
       end
@@ -2870,6 +2885,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. SubPath is optionally a directory on the volume which should be used
+        # for this binding (i.e. the volume will be mounted at this sub directory). +
+        # optional
+        # Corresponds to the JSON property `subPath`
+        # @return [String]
+        attr_accessor :sub_path
+      
         # Name of the workspace declared by the pipeline.
         # Corresponds to the JSON property `workspace`
         # @return [String]
@@ -2882,6 +2904,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @sub_path = args[:sub_path] if args.key?(:sub_path)
           @workspace = args[:workspace] if args.key?(:workspace)
         end
       end
