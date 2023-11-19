@@ -445,6 +445,47 @@ module Google
         end
       end
       
+      # Describes the custom _Default sink configuration that is used to override the
+      # built-in _Default sink configuration in newly created resource containers,
+      # such as projects or folders.
+      class DefaultSinkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the set of exclusions to be added to the _Default sink in
+        # newly created resource containers.
+        # Corresponds to the JSON property `exclusions`
+        # @return [Array<Google::Apis::LoggingV2::LogExclusion>]
+        attr_accessor :exclusions
+      
+        # Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/
+        # advanced-queries). The only exported log entries are those that are in the
+        # resource owning the sink and that match the filter.For example:logName="
+        # projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERRORCannot be empty or
+        # unset if mode == OVERWRITE. In order to match all logs, use the following line
+        # as the value of filter and do not use exclusions:logName:*
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Required. Determines the behavior to apply to the built-in _Default sink
+        # inclusion filter.Exclusions are always appended, as built-in _Default sinks
+        # have no exclusions.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclusions = args[:exclusions] if args.key?(:exclusions)
+          @filter = args[:filter] if args.key?(:filter)
+          @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
       # The parameters to DeleteLink.
       class DeleteLinkRequest
         include Google::Apis::Core::Hashable
@@ -1181,6 +1222,86 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # The response from ListRecentQueries.
+      class ListRecentQueriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than appear in this response, then
+        # nextPageToken is included. To get the next set of results, call the same
+        # method again using the value of nextPageToken as pageToken.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of recent queries.
+        # Corresponds to the JSON property `recentQueries`
+        # @return [Array<Google::Apis::LoggingV2::RecentQuery>]
+        attr_accessor :recent_queries
+      
+        # The unreachable resources. Each resource can be either 1) a saved query if a
+        # specific query is unreachable or 2) a location if a specific location is
+        # unreachable. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/recentQueries/[
+        # QUERY_ID]" "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"
+        # projects/my-project/locations/global/recentQueries/12345678" "projects/my-
+        # project/locations/global"If there are unreachable resources, the response will
+        # first return pages that contain recent queries, and then return pages that
+        # contain the unreachable resources.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @recent_queries = args[:recent_queries] if args.key?(:recent_queries)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response from ListSavedQueries.
+      class ListSavedQueriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than appear in this response, then
+        # nextPageToken is included. To get the next set of results, call the same
+        # method again using the value of nextPageToken as pageToken.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of saved queries.
+        # Corresponds to the JSON property `savedQueries`
+        # @return [Array<Google::Apis::LoggingV2::SavedQuery>]
+        attr_accessor :saved_queries
+      
+        # The unreachable resources. It can be either 1) a saved query if a specific
+        # query is unreachable or 2) a location if a specific location is unreachabe. "
+        # projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "
+        # projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example: "projects/my-
+        # project/locations/global/savedQueries/12345678" "projects/my-project/locations/
+        # global" If there are unreachable resources, the response will first return
+        # pages that contain saved queries, and then return pages that contain the
+        # unreachable resources.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @saved_queries = args[:saved_queries] if args.key?(:saved_queries)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2196,6 +2317,48 @@ module Google
         end
       end
       
+      # Describes a Cloud Logging query that can be run in Logs Explorer UI or via the
+      # logging API.In addition to the query itself, additional information may be
+      # stored to capture the display configuration and other UI state used in
+      # association with analysis of query results.
+      class LoggingQuery
+        include Google::Apis::Core::Hashable
+      
+        # An advanced query using the Logging Query Language (https://cloud.google.com/
+        # logging/docs/view/logging-query-language). The maximum length of the filter is
+        # 20000 characters.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Characters will be counted from the end of the string.
+        # Corresponds to the JSON property `summaryFieldEnd`
+        # @return [Fixnum]
+        attr_accessor :summary_field_end
+      
+        # Characters will be counted from the start of the string.
+        # Corresponds to the JSON property `summaryFieldStart`
+        # @return [Fixnum]
+        attr_accessor :summary_field_start
+      
+        # The set of summary fields to display for this saved query.
+        # Corresponds to the JSON property `summaryFields`
+        # @return [Array<Google::Apis::LoggingV2::SummaryField>]
+        attr_accessor :summary_fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @summary_field_end = args[:summary_field_end] if args.key?(:summary_field_end)
+          @summary_field_start = args[:summary_field_start] if args.key?(:summary_field_start)
+          @summary_fields = args[:summary_fields] if args.key?(:summary_fields)
+        end
+      end
+      
       # Defines a metric type and its schema. Once a metric descriptor is created,
       # deleting or altering it stops data collection and makes the metric type's
       # existing data unusable.
@@ -2576,6 +2739,74 @@ module Google
         end
       end
       
+      # Describes an analytics query that can be run in the Log Analytics page of
+      # Google Cloud console.Preview: This is a preview feature and may be subject to
+      # change before final release.
+      class OpsAnalyticsQuery
+        include Google::Apis::Core::Hashable
+      
+        # Required. A logs analytics SQL query, which generally follows BigQuery format.
+        # This is the SQL query that appears in the Log Analytics UI's query editor.
+        # Corresponds to the JSON property `sqlQueryText`
+        # @return [String]
+        attr_accessor :sql_query_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sql_query_text = args[:sql_query_text] if args.key?(:sql_query_text)
+        end
+      end
+      
+      # Describes a recent query executed on the Logs Explorer or Log Analytics page
+      # within the last ~ 30 days.
+      class RecentQuery
+        include Google::Apis::Core::Hashable
+      
+        # The timestamp when this query was last run.
+        # Corresponds to the JSON property `lastRunTime`
+        # @return [String]
+        attr_accessor :last_run_time
+      
+        # Describes a Cloud Logging query that can be run in Logs Explorer UI or via the
+        # logging API.In addition to the query itself, additional information may be
+        # stored to capture the display configuration and other UI state used in
+        # association with analysis of query results.
+        # Corresponds to the JSON property `loggingQuery`
+        # @return [Google::Apis::LoggingV2::LoggingQuery]
+        attr_accessor :logging_query
+      
+        # Output only. Resource name of the recent query.In the format: "projects/[
+        # PROJECT_ID]/locations/[LOCATION_ID]/recentQueries/[QUERY_ID]" For a list of
+        # supported locations, see Supported Regions (https://cloud.google.com/logging/
+        # docs/region-support)The QUERY_ID is a system generated alphanumeric ID.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Describes an analytics query that can be run in the Log Analytics page of
+        # Google Cloud console.Preview: This is a preview feature and may be subject to
+        # change before final release.
+        # Corresponds to the JSON property `opsAnalyticsQuery`
+        # @return [Google::Apis::LoggingV2::OpsAnalyticsQuery]
+        attr_accessor :ops_analytics_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_run_time = args[:last_run_time] if args.key?(:last_run_time)
+          @logging_query = args[:logging_query] if args.key?(:logging_query)
+          @name = args[:name] if args.key?(:name)
+          @ops_analytics_query = args[:ops_analytics_query] if args.key?(:ops_analytics_query)
+        end
+      end
+      
       # Complete log information about a single HTTP request to an App Engine
       # application.
       class RequestLog
@@ -2813,10 +3044,82 @@ module Google
         end
       end
       
+      # Describes a query that has been saved by a user.
+      class SavedQuery
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the saved query was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A human readable description of the saved query.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The user specified title for the SavedQuery.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Describes a Cloud Logging query that can be run in Logs Explorer UI or via the
+        # logging API.In addition to the query itself, additional information may be
+        # stored to capture the display configuration and other UI state used in
+        # association with analysis of query results.
+        # Corresponds to the JSON property `loggingQuery`
+        # @return [Google::Apis::LoggingV2::LoggingQuery]
+        attr_accessor :logging_query
+      
+        # Output only. Resource name of the saved query.In the format: "projects/[
+        # PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of
+        # supported locations, see Supported Regions (https://cloud.google.com/logging/
+        # docs/region-support#bucket-regions)After the saved query is created, the
+        # location cannot be changed.If the user doesn't provide a QUERY_ID, the system
+        # will generate an alphanumeric ID.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Describes an analytics query that can be run in the Log Analytics page of
+        # Google Cloud console.Preview: This is a preview feature and may be subject to
+        # change before final release.
+        # Corresponds to the JSON property `opsAnalyticsQuery`
+        # @return [Google::Apis::LoggingV2::OpsAnalyticsQuery]
+        attr_accessor :ops_analytics_query
+      
+        # Output only. The timestamp when the saved query was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @logging_query = args[:logging_query] if args.key?(:logging_query)
+          @name = args[:name] if args.key?(:name)
+          @ops_analytics_query = args[:ops_analytics_query] if args.key?(:ops_analytics_query)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Describes the settings associated with a project, folder, organization,
       # billing account, or flexible resource.
       class Settings
         include Google::Apis::Core::Hashable
+      
+        # Describes the custom _Default sink configuration that is used to override the
+        # built-in _Default sink configuration in newly created resource containers,
+        # such as projects or folders.
+        # Corresponds to the JSON property `defaultSinkConfig`
+        # @return [Google::Apis::LoggingV2::DefaultSinkConfig]
+        attr_accessor :default_sink_config
       
         # Optional. If set to true, the _Default sink in newly created projects and
         # folders will created in a disabled state. This can be used to automatically
@@ -2855,9 +3158,10 @@ module Google
         # @return [String]
         attr_accessor :kms_service_account_id
       
-        # Output only. The service account for the given container. Sinks use this
-        # service account as their writer_identity if no custom service account is
-        # provided.
+        # Output only. The service account for the given resource container, such as
+        # project or folder. Log sinks use this service account as their writer_identity
+        # if no custom service account is provided in the request when calling the
+        # create sink method.
         # Corresponds to the JSON property `loggingServiceAccountId`
         # @return [String]
         attr_accessor :logging_service_account_id
@@ -2883,6 +3187,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_sink_config = args[:default_sink_config] if args.key?(:default_sink_config)
           @disable_default_sink = args[:disable_default_sink] if args.key?(:disable_default_sink)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @kms_service_account_id = args[:kms_service_account_id] if args.key?(:kms_service_account_id)
@@ -2992,6 +3297,28 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # A field from the LogEntry that is added to the summary line (https://cloud.
+      # google.com/logging/docs/view/logs-explorer-interface#add-summary-fields) for a
+      # query in the Logs Explorer.
+      class SummaryField
+        include Google::Apis::Core::Hashable
+      
+        # The field from the LogEntry to include in the summary line, for example
+        # resource.type or jsonPayload.name.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
         end
       end
       

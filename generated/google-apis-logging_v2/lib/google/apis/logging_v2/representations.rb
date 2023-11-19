@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DefaultSinkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteLinkRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -208,6 +214,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRecentQueriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSavedQueriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSinksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoggingQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MetricDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -334,7 +358,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OpsAnalyticsQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RecentQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RequestLog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SavedQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -359,6 +401,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SummaryField
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -509,6 +557,16 @@ module Google
       
           property :link_id, as: 'linkId'
           property :parent, as: 'parent'
+        end
+      end
+      
+      class DefaultSinkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclusions, as: 'exclusions', class: Google::Apis::LoggingV2::LogExclusion, decorator: Google::Apis::LoggingV2::LogExclusion::Representation
+      
+          property :filter, as: 'filter'
+          property :mode, as: 'mode'
         end
       end
       
@@ -703,6 +761,26 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::LoggingV2::Operation, decorator: Google::Apis::LoggingV2::Operation::Representation
       
+        end
+      end
+      
+      class ListRecentQueriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :recent_queries, as: 'recentQueries', class: Google::Apis::LoggingV2::RecentQuery, decorator: Google::Apis::LoggingV2::RecentQuery::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListSavedQueriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :saved_queries, as: 'savedQueries', class: Google::Apis::LoggingV2::SavedQuery, decorator: Google::Apis::LoggingV2::SavedQuery::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -902,6 +980,17 @@ module Google
         end
       end
       
+      class LoggingQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :summary_field_end, as: 'summaryFieldEnd'
+          property :summary_field_start, as: 'summaryFieldStart'
+          collection :summary_fields, as: 'summaryFields', class: Google::Apis::LoggingV2::SummaryField, decorator: Google::Apis::LoggingV2::SummaryField::Representation
+      
+        end
+      end
+      
       class MetricDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -971,6 +1060,25 @@ module Google
         end
       end
       
+      class OpsAnalyticsQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sql_query_text, as: 'sqlQueryText'
+        end
+      end
+      
+      class RecentQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_run_time, as: 'lastRunTime'
+          property :logging_query, as: 'loggingQuery', class: Google::Apis::LoggingV2::LoggingQuery, decorator: Google::Apis::LoggingV2::LoggingQuery::Representation
+      
+          property :name, as: 'name'
+          property :ops_analytics_query, as: 'opsAnalyticsQuery', class: Google::Apis::LoggingV2::OpsAnalyticsQuery, decorator: Google::Apis::LoggingV2::OpsAnalyticsQuery::Representation
+      
+        end
+      end
+      
       class RequestLog
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1013,9 +1121,26 @@ module Google
         end
       end
       
+      class SavedQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :logging_query, as: 'loggingQuery', class: Google::Apis::LoggingV2::LoggingQuery, decorator: Google::Apis::LoggingV2::LoggingQuery::Representation
+      
+          property :name, as: 'name'
+          property :ops_analytics_query, as: 'opsAnalyticsQuery', class: Google::Apis::LoggingV2::OpsAnalyticsQuery, decorator: Google::Apis::LoggingV2::OpsAnalyticsQuery::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class Settings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_sink_config, as: 'defaultSinkConfig', class: Google::Apis::LoggingV2::DefaultSinkConfig, decorator: Google::Apis::LoggingV2::DefaultSinkConfig::Representation
+      
           property :disable_default_sink, as: 'disableDefaultSink'
           property :kms_key_name, as: 'kmsKeyName'
           property :kms_service_account_id, as: 'kmsServiceAccountId'
@@ -1048,6 +1173,13 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class SummaryField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
         end
       end
       
