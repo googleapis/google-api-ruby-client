@@ -1130,6 +1130,7 @@ module Google
       
           property :job, as: 'job'
           collection :jobs, as: 'jobs'
+          property :tarball_access, as: 'tarballAccess'
           property :tarball_gcs_dir, as: 'tarballGcsDir'
           property :yarn_application_id, as: 'yarnApplicationId'
           collection :yarn_application_ids, as: 'yarnApplicationIds'
