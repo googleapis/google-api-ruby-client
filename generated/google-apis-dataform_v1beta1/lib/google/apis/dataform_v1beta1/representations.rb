@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DirectorySearchResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +179,12 @@ module Google
       end
       
       class FileOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FileSearchResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -413,6 +425,18 @@ module Google
       end
       
       class ScheduledReleaseRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchFilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -693,6 +717,13 @@ module Google
         end
       end
       
+      class DirectorySearchResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -755,6 +786,13 @@ module Google
       
           property :write_file, as: 'writeFile', class: Google::Apis::DataformV1beta1::WriteFile, decorator: Google::Apis::DataformV1beta1::WriteFile::Representation
       
+        end
+      end
+      
+      class FileSearchResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
         end
       end
       
@@ -1145,6 +1183,25 @@ module Google
         end
       end
       
+      class SearchFilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :search_results, as: 'searchResults', class: Google::Apis::DataformV1beta1::SearchResult, decorator: Google::Apis::DataformV1beta1::SearchResult::Representation
+      
+        end
+      end
+      
+      class SearchResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :directory, as: 'directory', class: Google::Apis::DataformV1beta1::DirectorySearchResult, decorator: Google::Apis::DataformV1beta1::DirectorySearchResult::Representation
+      
+          property :file, as: 'file', class: Google::Apis::DataformV1beta1::FileSearchResult, decorator: Google::Apis::DataformV1beta1::FileSearchResult::Representation
+      
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1224,6 +1281,7 @@ module Google
           property :invocation_timing, as: 'invocationTiming', class: Google::Apis::DataformV1beta1::Interval, decorator: Google::Apis::DataformV1beta1::Interval::Representation
       
           property :name, as: 'name'
+          property :resolved_compilation_result, as: 'resolvedCompilationResult'
           property :state, as: 'state'
           property :workflow_config, as: 'workflowConfig'
         end

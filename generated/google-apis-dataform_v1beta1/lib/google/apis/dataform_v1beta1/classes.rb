@@ -675,6 +675,25 @@ module Google
         end
       end
       
+      # Client-facing representation of a directory entry in search results.
+      class DirectorySearchResult
+        include Google::Apis::Core::Hashable
+      
+        # File system path relative to the workspace root.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -876,6 +895,25 @@ module Google
         def update!(**args)
           @delete_file = args[:delete_file] if args.key?(:delete_file)
           @write_file = args[:write_file] if args.key?(:write_file)
+        end
+      end
+      
+      # Client-facing representation of a file entry in search results.
+      class FileSearchResult
+        include Google::Apis::Core::Hashable
+      
+        # File system path relative to the workspace root.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
         end
       end
       
@@ -2278,6 +2316,57 @@ module Google
         end
       end
       
+      # Client-facing representation of a file search response.
+      class SearchFilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A token, which can be sent as `page_token` to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of matched results.
+        # Corresponds to the JSON property `searchResults`
+        # @return [Array<Google::Apis::DataformV1beta1::SearchResult>]
+        attr_accessor :search_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @search_results = args[:search_results] if args.key?(:search_results)
+        end
+      end
+      
+      # Client-facing representation of a search result entry.
+      class SearchResult
+        include Google::Apis::Core::Hashable
+      
+        # Client-facing representation of a directory entry in search results.
+        # Corresponds to the JSON property `directory`
+        # @return [Google::Apis::DataformV1beta1::DirectorySearchResult]
+        attr_accessor :directory
+      
+        # Client-facing representation of a file entry in search results.
+        # Corresponds to the JSON property `file`
+        # @return [Google::Apis::DataformV1beta1::FileSearchResult]
+        attr_accessor :file
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @directory = args[:directory] if args.key?(:directory)
+          @file = args[:file] if args.key?(:file)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -2573,6 +2662,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The resolved compilation result that was used to create this
+        # invocation. Will be in the format `projects/*/locations/*/repositories/*/
+        # compilationResults/*`.
+        # Corresponds to the JSON property `resolvedCompilationResult`
+        # @return [String]
+        attr_accessor :resolved_compilation_result
+      
         # Output only. This workflow invocation's current state.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2594,6 +2690,7 @@ module Google
           @invocation_config = args[:invocation_config] if args.key?(:invocation_config)
           @invocation_timing = args[:invocation_timing] if args.key?(:invocation_timing)
           @name = args[:name] if args.key?(:name)
+          @resolved_compilation_result = args[:resolved_compilation_result] if args.key?(:resolved_compilation_result)
           @state = args[:state] if args.key?(:state)
           @workflow_config = args[:workflow_config] if args.key?(:workflow_config)
         end
