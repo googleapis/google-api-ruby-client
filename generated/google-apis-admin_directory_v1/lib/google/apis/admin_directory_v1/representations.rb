@@ -582,6 +582,12 @@ module Google
       
       class UserEmail
         class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class PublicKeyEncryptionCertificates
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1844,7 +1850,18 @@ module Google
           property :address, as: 'address'
           property :custom_type, as: 'customType'
           property :primary, as: 'primary'
+          property :public_key_encryption_certificates, as: 'public_key_encryption_certificates', class: Google::Apis::AdminDirectoryV1::UserEmail::PublicKeyEncryptionCertificates, decorator: Google::Apis::AdminDirectoryV1::UserEmail::PublicKeyEncryptionCertificates::Representation
+      
           property :type, as: 'type'
+        end
+        
+        class PublicKeyEncryptionCertificates
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :certificate, as: 'certificate'
+            property :is_default, as: 'is_default'
+            property :state, as: 'state'
+          end
         end
       end
       

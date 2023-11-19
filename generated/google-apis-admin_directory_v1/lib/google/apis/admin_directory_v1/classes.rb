@@ -4190,7 +4190,7 @@ module Google
         attr_accessor :deletion_time
       
         # The list of the user's email addresses. The maximum allowed data size for this
-        # field is 10KB.
+        # field is 10KB. This excludes `publicKeyEncryptionCertificates`.
         # Corresponds to the JSON property `emails`
         # @return [Object]
         attr_accessor :emails
@@ -4672,6 +4672,12 @@ module Google
         attr_accessor :primary
         alias_method :primary?, :primary
       
+        # Public Key Encryption Certificates. Current limit: 1 per email address, and 5
+        # per user.
+        # Corresponds to the JSON property `public_key_encryption_certificates`
+        # @return [Google::Apis::AdminDirectoryV1::UserEmail::PublicKeyEncryptionCertificates]
+        attr_accessor :public_key_encryption_certificates
+      
         # Each entry can have a type which indicates standard types of that entry. For
         # example email could be of home, work etc. In addition to the standard type, an
         # entry can have a custom type and can take any value Such types should have the
@@ -4689,7 +4695,43 @@ module Google
           @address = args[:address] if args.key?(:address)
           @custom_type = args[:custom_type] if args.key?(:custom_type)
           @primary = args[:primary] if args.key?(:primary)
+          @public_key_encryption_certificates = args[:public_key_encryption_certificates] if args.key?(:public_key_encryption_certificates)
           @type = args[:type] if args.key?(:type)
+        end
+        
+        # Public Key Encryption Certificates. Current limit: 1 per email address, and 5
+        # per user.
+        class PublicKeyEncryptionCertificates
+          include Google::Apis::Core::Hashable
+        
+          # X.509 encryption certificate in `PEM` format. Must only be an end-entity (leaf)
+          # certificate.
+          # Corresponds to the JSON property `certificate`
+          # @return [String]
+          attr_accessor :certificate
+        
+          # Whether this is the default certificate for the given email address.
+          # Corresponds to the JSON property `is_default`
+          # @return [Boolean]
+          attr_accessor :is_default
+          alias_method :is_default?, :is_default
+        
+          # Denotes the certificate's state in its lifecycle. Possible values are `
+          # not_yet_validated`, `valid`, `invalid`, `expired`, and `revoked`.
+          # Corresponds to the JSON property `state`
+          # @return [String]
+          attr_accessor :state
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @certificate = args[:certificate] if args.key?(:certificate)
+            @is_default = args[:is_default] if args.key?(:is_default)
+            @state = args[:state] if args.key?(:state)
+          end
         end
       end
       
