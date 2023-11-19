@@ -62,12 +62,6 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentId]
         attr_accessor :document_id
       
-        # The gcs_uri of the auto-labeling document, which uniquely identifies a dataset
-        # document.
-        # Corresponds to the JSON property `gcsUri`
-        # @return [String]
-        attr_accessor :gcs_uri
-      
         # The `Status` type defines a logical error model that is suitable for different
         # programming environments, including REST APIs and RPC APIs. It is used by [
         # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -85,7 +79,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @document_id = args[:document_id] if args.key?(:document_id)
-          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
           @status = args[:status] if args.key?(:status)
         end
       end

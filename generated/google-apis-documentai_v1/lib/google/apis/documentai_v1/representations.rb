@@ -1982,7 +1982,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :document_id, as: 'documentId', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentId, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentId::Representation
       
-          property :gcs_uri, as: 'gcsUri'
           property :status, as: 'status', class: Google::Apis::DocumentaiV1::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1::GoogleRpcStatus::Representation
       
         end
