@@ -145,9 +145,8 @@ module Google
         # @param [Array<String>, String] names
         #   Required. The names refer to the [full_resource_names] (https://cloud.google.
         #   com/asset-inventory/docs/resource-name-format) of [searchable asset types](
-        #   https://cloud.google.com/asset-inventory/docs/supported-asset-types#
-        #   searchable_asset_types). A maximum of 20 resources' effective policies can be
-        #   retrieved in a batch.
+        #   https://cloud.google.com/asset-inventory/docs/supported-asset-types). A
+        #   maximum of 20 resources' effective policies can be retrieved in a batch.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -887,7 +886,7 @@ module Google
         # skipDefaultNetworkCreation * compute.requireOsLogin * compute.
         # disableNestedVirtualization This RPC only returns either resources of types
         # supported by [searchable asset types](https://cloud.google.com/asset-inventory/
-        # docs/supported-asset-types#searchable_asset_types), or IAM policies.
+        # docs/supported-asset-types), or IAM policies.
         # @param [String] scope
         #   Required. The organization to scope the request. Only organization policies
         #   within the scope will be analyzed. The output assets will also be limited to
@@ -1178,14 +1177,14 @@ module Google
         #   Optional. A list of asset types that the IAM policies are attached to. If
         #   empty, it will search the IAM policies that are attached to all the [
         #   searchable asset types](https://cloud.google.com/asset-inventory/docs/
-        #   supported-asset-types#searchable_asset_types). Regular expressions are also
-        #   supported. For example: * "compute.googleapis.com.*" snapshots IAM policies
-        #   attached to asset type starts with "compute.googleapis.com". * ".*Instance"
-        #   snapshots IAM policies attached to asset type ends with "Instance". * ".*
-        #   Instance.*" snapshots IAM policies attached to asset type contains "Instance".
-        #   See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular
-        #   expression syntax. If the regular expression does not match any supported
-        #   asset type, an INVALID_ARGUMENT error will be returned.
+        #   supported-asset-types). Regular expressions are also supported. For example: *
+        #   "compute.googleapis.com.*" snapshots IAM policies attached to asset type
+        #   starts with "compute.googleapis.com". * ".*Instance" snapshots IAM policies
+        #   attached to asset type ends with "Instance". * ".*Instance.*" snapshots IAM
+        #   policies attached to asset type contains "Instance". See [RE2](https://github.
+        #   com/google/re2/wiki/Syntax) for all supported regular expression syntax. If
+        #   the regular expression does not match any supported asset type, an
+        #   INVALID_ARGUMENT error will be returned.
         # @param [String] order_by
         #   Optional. A comma-separated list of fields specifying the sorting order of the
         #   results. The default order is ascending. Add " DESC" after the field name to
@@ -1285,14 +1284,14 @@ module Google
         # @param [Array<String>, String] asset_types
         #   Optional. A list of asset types that this request searches for. If empty, it
         #   will search all the [searchable asset types](https://cloud.google.com/asset-
-        #   inventory/docs/supported-asset-types#searchable_asset_types). Regular
-        #   expressions are also supported. For example: * "compute.googleapis.com.*"
-        #   snapshots resources whose asset type starts with "compute.googleapis.com". * ".
-        #   *Instance" snapshots resources whose asset type ends with "Instance". * ".*
-        #   Instance.*" snapshots resources whose asset type contains "Instance". See [RE2]
-        #   (https://github.com/google/re2/wiki/Syntax) for all supported regular
-        #   expression syntax. If the regular expression does not match any supported
-        #   asset type, an INVALID_ARGUMENT error will be returned.
+        #   inventory/docs/supported-asset-types). Regular expressions are also supported.
+        #   For example: * "compute.googleapis.com.*" snapshots resources whose asset type
+        #   starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose
+        #   asset type ends with "Instance". * ".*Instance.*" snapshots resources whose
+        #   asset type contains "Instance". See [RE2](https://github.com/google/re2/wiki/
+        #   Syntax) for all supported regular expression syntax. If the regular expression
+        #   does not match any supported asset type, an INVALID_ARGUMENT error will be
+        #   returned.
         # @param [String] order_by
         #   Optional. A comma-separated list of fields specifying the sorting order of the
         #   results. The default order is ascending. Add " DESC" after the field name to
