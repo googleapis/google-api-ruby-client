@@ -6796,6 +6796,17 @@ module Google
         # @return [String]
         attr_accessor :remote_service_type
       
+        # Output only. The name of the speech recognizer to use for speech recognition.
+        # The expected format is `projects/`project`/locations/`location`/recognizers/`
+        # recognizer``. Customers can specify this field at model creation. If not
+        # specified, a default recognizer `projects/`model project`/locations/global/
+        # recognizers/_` will be used. See more details at [recognizers](https://cloud.
+        # google.com/speech-to-text/v2/docs/reference/rest/v2/projects.locations.
+        # recognizers)
+        # Corresponds to the JSON property `speechRecognizer`
+        # @return [String]
+        attr_accessor :speech_recognizer
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6807,6 +6818,7 @@ module Google
           @max_batching_rows = args[:max_batching_rows] if args.key?(:max_batching_rows)
           @remote_model_version = args[:remote_model_version] if args.key?(:remote_model_version)
           @remote_service_type = args[:remote_service_type] if args.key?(:remote_service_type)
+          @speech_recognizer = args[:speech_recognizer] if args.key?(:speech_recognizer)
         end
       end
       
@@ -9566,6 +9578,33 @@ module Google
         def update!(**args)
           @inline_code = args[:inline_code] if args.key?(:inline_code)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+        end
+      end
+      
+      # Statistics for a vector search query. Populated as part of JobStatistics2.
+      class VectorSearchStatistics
+        include Google::Apis::Core::Hashable
+      
+        # When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains why
+        # indexes were not used in all or part of the vector search query. If `
+        # indexUsageMode` is `FULLY_USED`, this field is not populated.
+        # Corresponds to the JSON property `indexUnusedReasons`
+        # @return [Array<Google::Apis::BigqueryV2::IndexUnusedReason>]
+        attr_accessor :index_unused_reasons
+      
+        # Specifies the index usage mode for the query.
+        # Corresponds to the JSON property `indexUsageMode`
+        # @return [String]
+        attr_accessor :index_usage_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @index_unused_reasons = args[:index_unused_reasons] if args.key?(:index_unused_reasons)
+          @index_usage_mode = args[:index_usage_mode] if args.key?(:index_usage_mode)
         end
       end
       
