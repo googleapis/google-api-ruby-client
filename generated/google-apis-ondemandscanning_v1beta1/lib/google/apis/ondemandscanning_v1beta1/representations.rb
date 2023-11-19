@@ -1105,8 +1105,10 @@ module Google
       class Maintainer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :url, as: 'url'
         end
       end
       
