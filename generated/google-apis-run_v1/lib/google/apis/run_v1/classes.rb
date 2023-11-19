@@ -2712,9 +2712,9 @@ module Google
         # @return [Array<Google::Apis::RunV1::GoogleCloudRunV1Condition>]
         attr_accessor :conditions
       
-        # Output only. The desired number of instances running this revision. For Cloud
-        # Run, this only includes instances provisioned using the minScale annotation.
-        # It does not include instances created by autoscaling.
+        # Output only. The configured number of instances running this revision. For
+        # Cloud Run, this only includes instances provisioned using the minScale
+        # annotation. It does not include instances created by autoscaling.
         # Corresponds to the JSON property `desiredReplicas`
         # @return [Fixnum]
         attr_accessor :desired_replicas
@@ -3864,7 +3864,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Only true is accepted for Secret Volumes. Defaults to true for Secrets Volumes.
+        # Sets the mount to be read-only or read-write. Not used by Cloud Run.
         # Corresponds to the JSON property `readOnly`
         # @return [Boolean]
         attr_accessor :read_only
