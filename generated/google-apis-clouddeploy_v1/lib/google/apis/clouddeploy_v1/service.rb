@@ -155,7 +155,7 @@ module Google
         # Creates a new DeliveryPipeline in a given project and location.
         # @param [String] parent
         #   Required. The parent collection in which the `DeliveryPipeline` should be
-        #   created. Format should be projects/`project_id`/locations/`location_name`.
+        #   created. Format should be `projects/`project_id`/locations/`location_name``.
         # @param [Google::Apis::ClouddeployV1::DeliveryPipeline] delivery_pipeline_object
         # @param [String] delivery_pipeline_id
         #   Required. ID of the `DeliveryPipeline`.
@@ -207,9 +207,9 @@ module Google
         
         # Deletes a single DeliveryPipeline.
         # @param [String] name
-        #   Required. The name of the `DeliveryPipeline` to delete. Format should be
+        #   Required. The name of the `DeliveryPipeline` to delete. Format should be `
         #   projects/`project_id`/locations/`location_name`/deliveryPipelines/`
-        #   pipeline_name`.
+        #   pipeline_name``.
         # @param [Boolean] allow_missing
         #   Optional. If set to true, then deleting an already deleted or non-existing `
         #   DeliveryPipeline` will succeed.
@@ -269,8 +269,8 @@ module Google
         
         # Gets details of a single DeliveryPipeline.
         # @param [String] name
-        #   Required. Name of the `DeliveryPipeline`. Format must be projects/`project_id`/
-        #   locations/`location_name`/deliveryPipelines/`pipeline_name`.
+        #   Required. Name of the `DeliveryPipeline`. Format must be `projects/`project_id`
+        #   /locations/`location_name`/deliveryPipelines/`pipeline_name``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -345,8 +345,8 @@ module Google
         
         # Lists DeliveryPipelines in a given project and location.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of pipelines. Format must be
-        #   projects/`project_id`/locations/`location_name`.
+        #   Required. The parent, which owns this collection of pipelines. Format must be `
+        #   projects/`project_id`/locations/`location_name``.
         # @param [String] filter
         #   Filter pipelines to be returned. See https://google.aip.dev/160 for more
         #   details.
@@ -393,8 +393,8 @@ module Google
         
         # Updates the parameters of a single DeliveryPipeline.
         # @param [String] name
-        #   Optional. Name of the `DeliveryPipeline`. Format is projects/`project`/
-        #   locations/`location`/deliveryPipelines/a-z`0,62`.
+        #   Optional. Name of the `DeliveryPipeline`. Format is `projects/`project`/
+        #   locations/`location`/deliveryPipelines/a-z`0,62``.
         # @param [Google::Apis::ClouddeployV1::DeliveryPipeline] delivery_pipeline_object
         # @param [Boolean] allow_missing
         #   Optional. If set to true, updating a `DeliveryPipeline` that does not exist
@@ -455,8 +455,8 @@ module Google
         # Creates a `Rollout` to roll back the specified target.
         # @param [String] name
         #   Required. The `DeliveryPipeline` for which the rollback `Rollout` should be
-        #   created. Format should be projects/`project_id`/locations/`location_name`/
-        #   deliveryPipelines/`pipeline_name`.
+        #   created. Format should be `projects/`project_id`/locations/`location_name`/
+        #   deliveryPipelines/`pipeline_name``.
         # @param [Google::Apis::ClouddeployV1::RollbackTargetRequest] rollback_target_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -568,9 +568,9 @@ module Google
         # state `IN_PROGRESS` and `PENDING`; AutomationRun in a different state returns
         # an `FAILED_PRECONDITION` error.
         # @param [String] name
-        #   Required. Name of the `AutomationRun`. Format is projects/`project`/locations/`
-        #   location`/deliveryPipelines/`delivery_pipeline`/automationRuns/`automation_run`
-        #   .
+        #   Required. Name of the `AutomationRun`. Format is `projects/`project`/locations/
+        #   `location`/deliveryPipelines/`delivery_pipeline`/automationRuns/`
+        #   automation_run``.
         # @param [Google::Apis::ClouddeployV1::CancelAutomationRunRequest] cancel_automation_run_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -603,9 +603,9 @@ module Google
         
         # Gets details of a single AutomationRun.
         # @param [String] name
-        #   Required. Name of the `AutomationRun`. Format must be projects/`project`/
+        #   Required. Name of the `AutomationRun`. Format must be `projects/`project`/
         #   locations/`location`/deliveryPipelines/`delivery_pipeline`/automationRuns/`
-        #   automation_run`.
+        #   automation_run``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -636,8 +636,8 @@ module Google
         # Lists AutomationRuns in a given project and location.
         # @param [String] parent
         #   Required. The parent, which owns this collection of automationRuns. Format
-        #   must be projects/`project`/locations/`location`/deliveryPipelines/`
-        #   delivery_pipeline`.
+        #   must be `projects/`project`/locations/`location`/deliveryPipelines/`
+        #   delivery_pipeline``.
         # @param [String] filter
         #   Filter automationRuns to be returned. All fields can be used in the filter.
         # @param [String] order_by
@@ -684,8 +684,8 @@ module Google
         # Creates a new Automation in a given project and location.
         # @param [String] parent
         #   Required. The parent collection in which the `Automation` should be created.
-        #   Format should be projects/`project_id`/locations/`location_name`/
-        #   deliveryPipelines/`pipeline_name`.
+        #   Format should be `projects/`project_id`/locations/`location_name`/
+        #   deliveryPipelines/`pipeline_name``.
         # @param [Google::Apis::ClouddeployV1::Automation] automation_object
         # @param [String] automation_id
         #   Required. ID of the `Automation`.
@@ -737,9 +737,9 @@ module Google
         
         # Deletes a single Automation resource.
         # @param [String] name
-        #   Required. The name of the `Automation` to delete. Format should be projects/`
+        #   Required. The name of the `Automation` to delete. Format should be `projects/`
         #   project_id`/locations/`location_name`/deliveryPipelines/`pipeline_name`/
-        #   automations/`automation_name`.
+        #   automations/`automation_name``.
         # @param [Boolean] allow_missing
         #   Optional. If set to true, then deleting an already deleted or non-existing `
         #   Automation` will succeed.
@@ -794,9 +794,9 @@ module Google
         
         # Gets details of a single Automation.
         # @param [String] name
-        #   Required. Name of the `Automation`. Format must be projects/`project_id`/
+        #   Required. Name of the `Automation`. Format must be `projects/`project_id`/
         #   locations/`location_name`/deliveryPipelines/`pipeline_name`/automations/`
-        #   automation_name`.
+        #   automation_name``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -827,8 +827,8 @@ module Google
         # Lists Automations in a given project and location.
         # @param [String] parent
         #   Required. The parent, which owns this collection of automations. Format must
-        #   be projects/`project_id`/locations/`location_name`/deliveryPipelines/`
-        #   pipeline_name`.
+        #   be `projects/`project_id`/locations/`location_name`/deliveryPipelines/`
+        #   pipeline_name``.
         # @param [String] filter
         #   Filter automations to be returned. All fields can be used in the filter.
         # @param [String] order_by
@@ -874,8 +874,8 @@ module Google
         
         # Updates the parameters of a single Automation resource.
         # @param [String] name
-        #   Output only. Name of the `Automation`. Format is projects/`project`/locations/`
-        #   location`/deliveryPipelines/`delivery_pipeline`/automations/`automation`.
+        #   Output only. Name of the `Automation`. Format is `projects/`project`/locations/
+        #   `location`/deliveryPipelines/`delivery_pipeline`/automations/`automation``.
         # @param [Google::Apis::ClouddeployV1::Automation] automation_object
         # @param [Boolean] allow_missing
         #   Optional. If set to true, updating a `Automation` that does not exist will
@@ -935,8 +935,8 @@ module Google
         
         # Abandons a Release in the Delivery Pipeline.
         # @param [String] name
-        #   Required. Name of the Release. Format is projects/`project`/locations/`
-        #   location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`.
+        #   Required. Name of the Release. Format is `projects/`project`/locations/`
+        #   location`/deliveryPipelines/`deliveryPipeline`/releases/`release``.
         # @param [Google::Apis::ClouddeployV1::AbandonReleaseRequest] abandon_release_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -970,8 +970,8 @@ module Google
         # Creates a new Release in a given project and location.
         # @param [String] parent
         #   Required. The parent collection in which the `Release` should be created.
-        #   Format should be projects/`project_id`/locations/`location_name`/
-        #   deliveryPipelines/`pipeline_name`.
+        #   Format should be `projects/`project_id`/locations/`location_name`/
+        #   deliveryPipelines/`pipeline_name``.
         # @param [Google::Apis::ClouddeployV1::Release] release_object
         # @param [String] release_id
         #   Required. ID of the `Release`.
@@ -1023,9 +1023,9 @@ module Google
         
         # Gets details of a single Release.
         # @param [String] name
-        #   Required. Name of the `Release`. Format must be projects/`project_id`/
+        #   Required. Name of the `Release`. Format must be `projects/`project_id`/
         #   locations/`location_name`/deliveryPipelines/`pipeline_name`/releases/`
-        #   release_name`.
+        #   release_name``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1105,9 +1105,9 @@ module Google
         
         # Advances a Rollout in a given project and location.
         # @param [String] name
-        #   Required. Name of the Rollout. Format is projects/`project`/locations/`
-        #   location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`/rollouts/`
-        #   rollout`.
+        #   Required. Name of the Rollout. Format is `projects/`project`/locations/`
+        #   location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/rollouts/`
+        #   rollout``.
         # @param [Google::Apis::ClouddeployV1::AdvanceRolloutRequest] advance_rollout_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1140,9 +1140,9 @@ module Google
         
         # Approves a Rollout.
         # @param [String] name
-        #   Required. Name of the Rollout. Format is projects/`project`/locations/`
-        #   location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`/rollouts/`
-        #   rollout`.
+        #   Required. Name of the Rollout. Format is `projects/`project`/locations/`
+        #   location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/rollouts/`
+        #   rollout``.
         # @param [Google::Apis::ClouddeployV1::ApproveRolloutRequest] approve_rollout_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1175,9 +1175,9 @@ module Google
         
         # Cancels a Rollout in a given project and location.
         # @param [String] name
-        #   Required. Name of the Rollout. Format is projects/`project`/locations/`
-        #   location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`/rollouts/`
-        #   rollout`.
+        #   Required. Name of the Rollout. Format is `projects/`project`/locations/`
+        #   location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/rollouts/`
+        #   rollout``.
         # @param [Google::Apis::ClouddeployV1::CancelRolloutRequest] cancel_rollout_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1211,8 +1211,8 @@ module Google
         # Creates a new Rollout in a given project and location.
         # @param [String] parent
         #   Required. The parent collection in which the `Rollout` should be created.
-        #   Format should be projects/`project_id`/locations/`location_name`/
-        #   deliveryPipelines/`pipeline_name`/releases/`release_name`.
+        #   Format should be `projects/`project_id`/locations/`location_name`/
+        #   deliveryPipelines/`pipeline_name`/releases/`release_name``.
         # @param [Google::Apis::ClouddeployV1::Rollout] rollout_object
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
@@ -1268,9 +1268,9 @@ module Google
         
         # Gets details of a single Rollout.
         # @param [String] name
-        #   Required. Name of the `Rollout`. Format must be projects/`project_id`/
+        #   Required. Name of the `Rollout`. Format must be `projects/`project_id`/
         #   locations/`location_name`/deliveryPipelines/`pipeline_name`/releases/`
-        #   release_name`/rollouts/`rollout_name`.
+        #   release_name`/rollouts/`rollout_name``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1300,9 +1300,9 @@ module Google
         
         # Ignores the specified Job in a Rollout.
         # @param [String] rollout
-        #   Required. Name of the Rollout. Format is projects/`project`/locations/`
-        #   location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`/rollouts/`
-        #   rollout`.
+        #   Required. Name of the Rollout. Format is `projects/`project`/locations/`
+        #   location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/rollouts/`
+        #   rollout``.
         # @param [Google::Apis::ClouddeployV1::IgnoreJobRequest] ignore_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1384,9 +1384,9 @@ module Google
         
         # Retries the specified Job in a Rollout.
         # @param [String] rollout
-        #   Required. Name of the Rollout. Format is projects/`project`/locations/`
-        #   location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`/rollouts/`
-        #   rollout`.
+        #   Required. Name of the Rollout. Format is `projects/`project`/locations/`
+        #   location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/rollouts/`
+        #   rollout``.
         # @param [Google::Apis::ClouddeployV1::RetryJobRequest] retry_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1419,9 +1419,9 @@ module Google
         
         # Gets details of a single JobRun.
         # @param [String] name
-        #   Required. Name of the `JobRun`. Format must be projects/`project_id`/locations/
-        #   `location_name`/deliveryPipelines/`pipeline_name`/releases/`release_name`/
-        #   rollouts/`rollout_name`/jobRuns/`job_run_name`.
+        #   Required. Name of the `JobRun`. Format must be `projects/`project_id`/
+        #   locations/`location_name`/deliveryPipelines/`pipeline_name`/releases/`
+        #   release_name`/rollouts/`rollout_name`/jobRuns/`job_run_name``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1499,9 +1499,9 @@ module Google
         
         # Terminates a Job Run in a given project and location.
         # @param [String] name
-        #   Required. Name of the `JobRun`. Format must be projects/`project`/locations/`
-        #   location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`/rollouts/`
-        #   rollout`/jobRuns/`jobRun`.
+        #   Required. Name of the `JobRun`. Format must be `projects/`project`/locations/`
+        #   location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/rollouts/`
+        #   rollout`/jobRuns/`jobRun``.
         # @param [Google::Apis::ClouddeployV1::TerminateJobRunRequest] terminate_job_run_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1679,7 +1679,7 @@ module Google
         # Creates a new Target in a given project and location.
         # @param [String] parent
         #   Required. The parent collection in which the `Target` should be created.
-        #   Format should be projects/`project_id`/locations/`location_name`.
+        #   Format should be `projects/`project_id`/locations/`location_name``.
         # @param [Google::Apis::ClouddeployV1::Target] target_object
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
@@ -1731,8 +1731,8 @@ module Google
         
         # Deletes a single Target.
         # @param [String] name
-        #   Required. The name of the `Target` to delete. Format should be projects/`
-        #   project_id`/locations/`location_name`/targets/`target_name`.
+        #   Required. The name of the `Target` to delete. Format should be `projects/`
+        #   project_id`/locations/`location_name`/targets/`target_name``.
         # @param [Boolean] allow_missing
         #   Optional. If set to true, then deleting an already deleted or non-existing `
         #   Target` will succeed.
@@ -1787,8 +1787,8 @@ module Google
         
         # Gets details of a single Target.
         # @param [String] name
-        #   Required. Name of the `Target`. Format must be projects/`project_id`/locations/
-        #   `location_name`/targets/`target_name`.
+        #   Required. Name of the `Target`. Format must be `projects/`project_id`/
+        #   locations/`location_name`/targets/`target_name``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1863,8 +1863,8 @@ module Google
         
         # Lists Targets in a given project and location.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of targets. Format must be
-        #   projects/`project_id`/locations/`location_name`.
+        #   Required. The parent, which owns this collection of targets. Format must be `
+        #   projects/`project_id`/locations/`location_name``.
         # @param [String] filter
         #   Optional. Filter targets to be returned. See https://google.aip.dev/160 for
         #   more details.
@@ -1912,8 +1912,8 @@ module Google
         
         # Updates the parameters of a single Target.
         # @param [String] name
-        #   Optional. Name of the `Target`. Format is projects/`project`/locations/`
-        #   location`/targets/a-z`0,62`.
+        #   Optional. Name of the `Target`. Format is `projects/`project`/locations/`
+        #   location`/targets/a-z`0,62``.
         # @param [Google::Apis::ClouddeployV1::Target] target_object
         # @param [Boolean] allow_missing
         #   Optional. If set to true, updating a `Target` that does not exist will result

@@ -66,9 +66,9 @@ module Google
       class AdvanceChildRolloutJobRun
         include Google::Apis::Core::Hashable
       
-        # Output only. Name of the `ChildRollout`. Format is projects/`project`/
-        # locations/`location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`/
-        # rollouts/a-z`0,62`.
+        # Output only. Name of the `ChildRollout`. Format is `projects/`project`/
+        # locations/`location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/
+        # rollouts/a-z`0,62``.
         # Corresponds to the JSON property `rollout`
         # @return [String]
         attr_accessor :rollout
@@ -169,7 +169,7 @@ module Google
         attr_accessor :condition
       
         # Required. ID of the rule. This id must be unique in the `Automation` resource
-        # to which this rule belongs. The format is a-z`0,62`.
+        # to which this rule belongs. The format is `a-z`0,62``.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -337,14 +337,14 @@ module Google
         # Optional. User annotations. These attributes can only be set and used by the
         # user, and not by Cloud Deploy. Annotations must meet the following constraints:
         # * Annotations are key/value pairs. * Valid annotation keys have two segments:
-        # an optional prefix and name, separated by a slash (/). * The name segment is
+        # an optional prefix and name, separated by a slash (`/`). * The name segment is
         # required and must be 63 characters or less, beginning and ending with an
-        # alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.)
-        # , and alphanumerics between. * The prefix is optional. If specified, the
-        # prefix must be a DNS subdomain: a series of DNS labels separated by dots(.),
-        # not longer than 253 characters in total, followed by a slash (/). See https://
-        # kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-
-        # and-character-set for more details.
+        # alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`),
+        # dots (`.`), and alphanumerics between. * The prefix is optional. If specified,
+        # the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.
+        # `), not longer than 253 characters in total, followed by a slash (`/`). See
+        # https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#
+        # syntax-and-character-set for more details.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -378,8 +378,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. Name of the `Automation`. Format is projects/`project`/locations/`
-        # location`/deliveryPipelines/`delivery_pipeline`/automations/`automation`.
+        # Output only. Name of the `Automation`. Format is `projects/`project`/locations/
+        # `location`/deliveryPipelines/`delivery_pipeline`/automations/`automation``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -586,7 +586,7 @@ module Google
         end
       end
       
-      # An `AutomationRun` resource in the Cloud Deploy API. An `AutomationResource`
+      # An `AutomationRun` resource in the Cloud Deploy API. An `AutomationRun`
       # represents an automation execution instance of an automation rule.
       class AutomationRun
         include Google::Apis::Core::Hashable
@@ -629,9 +629,9 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Output only. Name of the `AutomationRun`. Format is projects/`project`/
+        # Output only. Name of the `AutomationRun`. Format is `projects/`project`/
         # locations/`location`/deliveryPipelines/`delivery_pipeline`/automationRuns/`
-        # automation_run`.
+        # automation_run``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1079,7 +1079,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The name of the Cloud Run job that is associated with a `Rollout`.
-        # Format is projects/`project`/locations/`location`/jobs/`job_name`.
+        # Format is `projects/`project`/locations/`location`/jobs/`job_name``.
         # Corresponds to the JSON property `job`
         # @return [String]
         attr_accessor :job
@@ -1090,7 +1090,8 @@ module Google
         attr_accessor :revision
       
         # Output only. The name of the Cloud Run Service that is associated with a `
-        # Rollout`. Format is projects/`project`/locations/`location`/services/`service`.
+        # Rollout`. Format is `projects/`project`/locations/`location`/services/`service`
+        # `.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -1119,7 +1120,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The name of the Cloud Run Service in the rendered manifest.
-        # Format is projects/`project`/locations/`location`/services/`service`.
+        # Format is `projects/`project`/locations/`location`/services/`service``.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -1184,9 +1185,9 @@ module Google
       class CreateChildRolloutJobRun
         include Google::Apis::Core::Hashable
       
-        # Output only. Name of the `ChildRollout`. Format is projects/`project`/
-        # locations/`location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`/
-        # rollouts/a-z`0,62`.
+        # Output only. Name of the `ChildRollout`. Format is `projects/`project`/
+        # locations/`location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/
+        # rollouts/a-z`0,62``.
         # Corresponds to the JSON property `rollout`
         # @return [String]
         attr_accessor :rollout
@@ -1342,8 +1343,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Optional. Name of the `DeliveryPipeline`. Format is projects/`project`/
-        # locations/`location`/deliveryPipelines/a-z`0,62`.
+        # Optional. Name of the `DeliveryPipeline`. Format is `projects/`project`/
+        # locations/`location`/deliveryPipelines/a-z`0,62``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1473,7 +1474,7 @@ module Google
         attr_accessor :artifact
       
         # Output only. The resource name of the Cloud Build `Build` object that is used
-        # to deploy. Format is projects/`project`/locations/`location`/builds/`build`.
+        # to deploy. Format is `projects/`project`/locations/`location`/builds/`build``.
         # Corresponds to the JSON property `build`
         # @return [String]
         attr_accessor :build
@@ -1771,7 +1772,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Information specifying a GKE Cluster. Format is `projects/`project_id`/
-        # locations/`location_id`/clusters/`cluster_id`.
+        # locations/`location_id`/clusters/`cluster_id``.
         # Corresponds to the JSON property `cluster`
         # @return [String]
         attr_accessor :cluster
@@ -1955,9 +1956,9 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
-        # Optional. Name of the `JobRun`. Format is projects/`project`/locations/`
-        # location`/ deliveryPipelines/`deliveryPipeline`/releases/`releases`/rollouts/ `
-        # rollouts`/jobRuns/`uuid`.
+        # Optional. Name of the `JobRun`. Format is `projects/`project`/locations/`
+        # location`/deliveryPipelines/`deliveryPipeline`/releases/`releases`/rollouts/`
+        # rollouts`/jobRuns/`uuid``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2923,8 +2924,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The resource name of the Cloud Build `Build` object that is used
-        # to execute the custom actions associated with the postdeploy Job. Format is
-        # projects/`project`/locations/`location`/builds/`build`.
+        # to execute the custom actions associated with the postdeploy Job. Format is `
+        # projects/`project`/locations/`location`/builds/`build``.
         # Corresponds to the JSON property `build`
         # @return [String]
         attr_accessor :build
@@ -2996,8 +2997,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The resource name of the Cloud Build `Build` object that is used
-        # to execute the custom actions associated with the predeploy Job. Format is
-        # projects/`project`/locations/`location`/builds/`build`.
+        # to execute the custom actions associated with the predeploy Job. Format is `
+        # projects/`project`/locations/`location`/builds/`build``.
         # Corresponds to the JSON property `build`
         # @return [String]
         attr_accessor :build
@@ -3128,7 +3129,7 @@ module Google
         attr_accessor :destination_target_id
       
         # Required. ID of the rule. This id must be unique in the `Automation` resource
-        # to which this rule belongs. The format is a-z`0,62`.
+        # to which this rule belongs. The format is `a-z`0,62``.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -3220,8 +3221,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Optional. Name of the `Release`. Format is projects/`project`/ locations/`
-        # location`/deliveryPipelines/`deliveryPipeline`/ releases/a-z`0,62`.
+        # Optional. Name of the `Release`. Format is `projects/`project`/locations/`
+        # location`/deliveryPipelines/`deliveryPipeline`/releases/a-z`0,62``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3542,7 +3543,7 @@ module Google
         attr_accessor :condition
       
         # Required. ID of the rule. This id must be unique in the `Automation` resource
-        # to which this rule belongs. The format is a-z`0,62`.
+        # to which this rule belongs. The format is `a-z`0,62``.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -3919,9 +3920,9 @@ module Google
         # @return [String]
         attr_accessor :approve_time
       
-        # Output only. Name of the `ControllerRollout`. Format is projects/`project`/
-        # locations/`location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`/
-        # rollouts/a-z`0,62`.
+        # Output only. Name of the `ControllerRollout`. Format is `projects/`project`/
+        # locations/`location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/
+        # rollouts/a-z`0,62``.
         # Corresponds to the JSON property `controllerRollout`
         # @return [String]
         attr_accessor :controller_rollout
@@ -3992,9 +3993,9 @@ module Google
         # @return [Google::Apis::ClouddeployV1::Metadata]
         attr_accessor :metadata
       
-        # Optional. Name of the `Rollout`. Format is projects/`project`/ locations/`
-        # location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`/rollouts/a-
-        # z`0,62`.
+        # Optional. Name of the `Rollout`. Format is `projects/`project`/locations/`
+        # location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/rollouts/a-z`
+        # 0,62``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4594,8 +4595,8 @@ module Google
         # @return [Google::Apis::ClouddeployV1::MultiTarget]
         attr_accessor :multi_target
       
-        # Optional. Name of the `Target`. Format is projects/`project`/locations/`
-        # location`/targets/a-z`0,62`.
+        # Optional. Name of the `Target`. Format is `projects/`project`/locations/`
+        # location`/targets/a-z`0,62``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4805,8 +4806,8 @@ module Google
       class TargetsPresentCondition
         include Google::Apis::Core::Hashable
       
-        # The list of Target names that do not exist. For example, projects/`project_id`/
-        # locations/`location_name`/targets/`target_name`.
+        # The list of Target names that do not exist. For example, `projects/`project_id`
+        # /locations/`location_name`/targets/`target_name``.
         # Corresponds to the JSON property `missingTargets`
         # @return [Array<String>]
         attr_accessor :missing_targets
@@ -4953,7 +4954,7 @@ module Google
         attr_accessor :artifact_uri
       
         # Output only. The resource name of the Cloud Build `Build` object that is used
-        # to verify. Format is projects/`project`/locations/`location`/builds/`build`.
+        # to verify. Format is `projects/`project`/locations/`location`/builds/`build``.
         # Corresponds to the JSON property `build`
         # @return [String]
         attr_accessor :build
