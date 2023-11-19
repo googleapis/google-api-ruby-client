@@ -5060,8 +5060,8 @@ module Google
         # @return [Google::Apis::GkeonpremV1::VmwareStaticIpConfig]
         attr_accessor :static_ip_config
       
-        # Output only. vcenter_network specifies vCenter network name. Inherited from
-        # the admin cluster.
+        # vcenter_network specifies vCenter network name. Inherited from the admin
+        # cluster.
         # Corresponds to the JSON property `vcenterNetwork`
         # @return [String]
         attr_accessor :vcenter_network
