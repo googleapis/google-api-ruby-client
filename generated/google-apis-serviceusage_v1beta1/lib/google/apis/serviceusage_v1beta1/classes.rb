@@ -2453,6 +2453,112 @@ module Google
         end
       end
       
+      # Consumer Policy is a set of rules that define what services or service groups
+      # can be used for a cloud resource hierarchy.
+      class GoogleApiServiceusageV2alphaConsumerPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Annotations is an unstructured key-value map stored with a policy
+        # that may be set by external tools to store and retrieve arbitrary metadata.
+        # They are not queryable and should be preserved when modifying objects. [AIP-
+        # 128](https://google.aip.dev/128#annotations)
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. The time the policy was created. For singleton policies, this is
+        # the first touch of the policy.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Enable rules define usable services, groups, and categories. There can
+        # currently be at most one `EnableRule`. This restriction will be lifted in
+        # later releases.
+        # Corresponds to the JSON property `enableRules`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2alphaEnableRule>]
+        attr_accessor :enable_rules
+      
+        # Output only. An opaque tag indicating the current version of the policy, used
+        # for concurrency control.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The resource name of the policy. Only the `default` policy is
+        # supported: `projects/12345/consumerPolicies/default`, `folders/12345/
+        # consumerPolicies/default`, `organizations/12345/consumerPolicies/default`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time the policy was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @enable_rules = args[:enable_rules] if args.key?(:enable_rules)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The consumer policy rule that defines enabled services, groups, and categories.
+      class GoogleApiServiceusageV2alphaEnableRule
+        include Google::Apis::Core::Hashable
+      
+        # The names of the categories that are enabled. Example: `categories/
+        # googleServices`.
+        # Corresponds to the JSON property `categories`
+        # @return [Array<String>]
+        attr_accessor :categories
+      
+        # The names of the service groups that are enabled. Example: `services/container.
+        # googleapis.com/groups/dependencies`.
+        # Corresponds to the JSON property `groups`
+        # @return [Array<String>]
+        attr_accessor :groups
+      
+        # The names of the services that are enabled. Example: `services/storage.
+        # googleapis.com`.
+        # Corresponds to the JSON property `services`
+        # @return [Array<String>]
+        attr_accessor :services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @categories = args[:categories] if args.key?(:categories)
+          @groups = args[:groups] if args.key?(:groups)
+          @services = args[:services] if args.key?(:services)
+        end
+      end
+      
+      # Metadata for the `UpdateConsumerPolicy` method.
+      class GoogleApiServiceusageV2alphaUpdateConsumerPolicyMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Defines the HTTP configuration for an API service. It contains a list of
       # HttpRule, each specifying the mapping of an RPC method to one or more HTTP
       # REST API methods.
