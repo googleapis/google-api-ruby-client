@@ -1487,7 +1487,7 @@ module Google
         # @return [String]
         attr_accessor :allocated_ip_range
       
-        # Required. The resource link for the VPC network in which cluster resources are
+        # Optional. The resource link for the VPC network in which cluster resources are
         # created and from which they are accessible via Private IP. The network must
         # belong to the same project as the cluster. It is specified in the form: "
         # projects/`project_number`/global/networks/`network_id`". This is required to
