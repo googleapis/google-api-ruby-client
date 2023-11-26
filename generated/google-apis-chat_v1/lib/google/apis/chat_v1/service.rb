@@ -219,12 +219,12 @@ module Google
         # Find a direct message](/chat/api/guides/v1/spaces/find-direct-message). With [
         # user authentication](https://developers.google.com/chat/api/guides/auth/users),
         # returns the direct message space between the specified user and the
-        # authenticated user. With [service account authentication](https://developers.
-        # google.com/chat/api/guides/auth/service-accounts), returns the direct message
-        # space between the specified user and the calling Chat app. Requires [user
+        # authenticated user. With [app authentication](https://developers.google.com/
+        # chat/api/guides/auth/service-accounts), returns the direct message space
+        # between the specified user and the calling Chat app. Requires [user
         # authentication](https://developers.google.com/chat/api/guides/auth/users) or [
-        # service account authentication](https://developers.google.com/chat/api/guides/
-        # auth/service-accounts).
+        # app authentication](https://developers.google.com/chat/api/guides/auth/service-
+        # accounts).
         # @param [String] name
         #   Required. Resource name of the user to find direct message with. Format: `
         #   users/`user``, where ``user`` is either the `id` for the [person](https://
@@ -265,10 +265,10 @@ module Google
         
         # Returns details about a space. For an example, see [Get a space](https://
         # developers.google.com/chat/api/guides/v1/spaces/get). Requires [authentication]
-        # (https://developers.google.com/chat/api/guides/auth). Fully supports [service
-        # account authentication](https://developers.google.com/chat/api/guides/auth/
-        # service-accounts) and [user authentication](https://developers.google.com/chat/
-        # api/guides/auth/users).
+        # (https://developers.google.com/chat/api/guides/auth). Supports [app
+        # authentication](https://developers.google.com/chat/api/guides/auth/service-
+        # accounts) and [user authentication](https://developers.google.com/chat/api/
+        # guides/auth/users).
         # @param [String] name
         #   Required. Resource name of the space, in the form "spaces/*". Format: `spaces/`
         #   space``
@@ -302,12 +302,11 @@ module Google
         # Lists spaces the caller is a member of. Group chats and DMs aren't listed
         # until the first message is sent. For an example, see [List spaces](https://
         # developers.google.com/chat/api/guides/v1/spaces/list). Requires [
-        # authentication](https://developers.google.com/chat/api/guides/auth). Fully
-        # supports [service account authentication](https://developers.google.com/chat/
-        # api/guides/auth/service-accounts) and [user authentication](https://developers.
-        # google.com/chat/api/guides/auth/users). Lists spaces visible to the caller or
-        # authenticated user. Group chats and DMs aren't listed until the first message
-        # is sent.
+        # authentication](https://developers.google.com/chat/api/guides/auth). Supports [
+        # app authentication](https://developers.google.com/chat/api/guides/auth/service-
+        # accounts) and [user authentication](https://developers.google.com/chat/api/
+        # guides/auth/users). Lists spaces visible to the caller or authenticated user.
+        # Group chats and DMs aren't listed until the first message is sent.
         # @param [String] filter
         #   Optional. A query filter. Requires [user authentication](https://developers.
         #   google.com/chat/api/guides/auth/users). You can filter spaces by the space
@@ -317,11 +316,11 @@ module Google
         #   SPACE_TYPE_UNSPECIFIED`). To query for multiple space types, use the `OR`
         #   operator. For example, the following queries are valid: ``` space_type = "
         #   SPACE" spaceType = "GROUP_CHAT" OR spaceType = "DIRECT_MESSAGE" ``` Invalid
-        #   queries are rejected by the server with an `INVALID_ARGUMENT` error. With [
-        #   service account authentication](https://developers.google.com/chat/api/guides/
-        #   auth/service-accounts), this field is ignored and the query always returns all
-        #   spaces. But the Chat API still validates the query syntax with service
-        #   accounts, so invalid queries are still rejected.
+        #   queries are rejected by the server with an `INVALID_ARGUMENT` error. With [app
+        #   authentication](https://developers.google.com/chat/api/guides/auth/service-
+        #   accounts), this field is ignored and the query always returns all spaces. But
+        #   the Chat API still validates the query syntax, so invalid queries are still
+        #   rejected.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of spaces to return. The service might return
         #   fewer than this value. If unspecified, at most 100 spaces are returned. The
@@ -569,10 +568,10 @@ module Google
         
         # Returns details about a membership. For an example, see [Get a membership](
         # https://developers.google.com/chat/api/guides/v1/members/get). Requires [
-        # authentication](https://developers.google.com/chat/api/guides/auth). Fully
-        # supports [service account authentication](https://developers.google.com/chat/
-        # api/guides/auth/service-accounts) and [user authentication](https://developers.
-        # google.com/chat/api/guides/auth/users).
+        # authentication](https://developers.google.com/chat/api/guides/auth). Supports [
+        # app authentication](https://developers.google.com/chat/api/guides/auth/service-
+        # accounts) and [user authentication](https://developers.google.com/chat/api/
+        # guides/auth/users).
         # @param [String] name
         #   Required. Resource name of the membership to retrieve. To get the app's own
         #   membership, you can optionally use `spaces/`space`/members/app`. Format: `
@@ -616,9 +615,9 @@ module Google
         # [User authentication](https://developers.google.com/chat/api/guides/auth/users)
         # lists memberships in spaces that the authenticated user has access to.
         # Requires [authentication](https://developers.google.com/chat/api/guides/auth).
-        # Fully supports [service account authentication](https://developers.google.com/
-        # chat/api/guides/auth/service-accounts) and [user authentication](https://
-        # developers.google.com/chat/api/guides/auth/users).
+        # Supports [app authentication](https://developers.google.com/chat/api/guides/
+        # auth/service-accounts) and [user authentication](https://developers.google.com/
+        # chat/api/guides/auth/users).
         # @param [String] parent
         #   Required. The resource name of the space for which to fetch a membership list.
         #   Format: spaces/`space`
@@ -755,11 +754,11 @@ module Google
         
         # Deletes a message. For an example, see [Delete a message](https://developers.
         # google.com/chat/api/guides/v1/messages/delete). Requires [authentication](
-        # https://developers.google.com/chat/api/guides/auth). Fully supports [service
-        # account authentication](https://developers.google.com/chat/api/guides/auth/
-        # service-accounts) and [user authentication](https://developers.google.com/chat/
-        # api/guides/auth/users). Requests authenticated with service accounts can only
-        # delete messages created by the calling Chat app.
+        # https://developers.google.com/chat/api/guides/auth). Supports [app
+        # authentication](https://developers.google.com/chat/api/guides/auth/service-
+        # accounts) and [user authentication](https://developers.google.com/chat/api/
+        # guides/auth/users). When using app authentication, requests can only delete
+        # messages created by the calling Chat app.
         # @param [String] name
         #   Required. Resource name of the message that you want to delete, in the form `
         #   spaces/*/messages/*` Example: `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.
@@ -768,8 +767,8 @@ module Google
         #   When `true`, deleting a message also deletes its threaded replies. When `false`
         #   , if a message has threaded replies, deletion fails. Only applies when [
         #   authenticating as a user](https://developers.google.com/chat/api/guides/auth/
-        #   users). Has no effect when [authenticating with a service account] (https://
-        #   developers.google.com/chat/api/guides/auth/service-accounts).
+        #   users). Has no effect when [authenticating as a Chat app] (https://developers.
+        #   google.com/chat/api/guides/auth/service-accounts).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -800,11 +799,11 @@ module Google
         
         # Returns details about a message. For an example, see [Read a message](https://
         # developers.google.com/chat/api/guides/v1/messages/get). Requires [
-        # authentication](https://developers.google.com/chat/api/guides/auth). Fully
-        # supports [service account authentication](https://developers.google.com/chat/
-        # api/guides/auth/service-accounts) and [user authentication](https://developers.
-        # google.com/chat/api/guides/auth/users). Note: Might return a message from a
-        # blocked member or space.
+        # authentication](https://developers.google.com/chat/api/guides/auth). Supports [
+        # app authentication](https://developers.google.com/chat/api/guides/auth/service-
+        # accounts) and [user authentication](https://developers.google.com/chat/api/
+        # guides/auth/users). Note: Might return a message from a blocked member or
+        # space.
         # @param [String] name
         #   Required. Resource name of the message to retrieve. Format: `spaces/`space`/
         #   messages/`message`` If the message begins with `client-`, then it has a custom
@@ -920,11 +919,11 @@ module Google
         # uses a `put` request. We recommend using the `patch` method. For an example,
         # see [Update a message](https://developers.google.com/chat/api/guides/v1/
         # messages/update). Requires [authentication](https://developers.google.com/chat/
-        # api/guides/auth). Fully supports [service account authentication](https://
-        # developers.google.com/chat/api/guides/auth/service-accounts) and [user
-        # authentication](https://developers.google.com/chat/api/guides/auth/users).
-        # Requests authenticated with service accounts can only update messages created
-        # by the calling Chat app.
+        # api/guides/auth). Supports [app authentication](https://developers.google.com/
+        # chat/api/guides/auth/service-accounts) and [user authentication](https://
+        # developers.google.com/chat/api/guides/auth/users). When using app
+        # authentication, requests can only update messages created by the calling Chat
+        # app.
         # @param [String] name
         #   Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAAAAAAAA/
         #   messages/BBBBBBBBBBB.BBBBBBBBBBB`
@@ -937,9 +936,8 @@ module Google
         # @param [String] update_mask
         #   Required. The field paths to update. Separate multiple values with commas.
         #   Currently supported field paths: - `text` - `attachment` - `cards` (Requires [
-        #   service account authentication](/chat/api/guides/auth/service-accounts).) - `
-        #   cards_v2` (Requires [service account authentication](/chat/api/guides/auth/
-        #   service-accounts).)
+        #   app authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (
+        #   Requires [app authentication](/chat/api/guides/auth/service-accounts).)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -976,11 +974,11 @@ module Google
         # uses a `put` request. We recommend using the `patch` method. For an example,
         # see [Update a message](https://developers.google.com/chat/api/guides/v1/
         # messages/update). Requires [authentication](https://developers.google.com/chat/
-        # api/guides/auth). Fully supports [service account authentication](https://
-        # developers.google.com/chat/api/guides/auth/service-accounts) and [user
-        # authentication](https://developers.google.com/chat/api/guides/auth/users).
-        # Requests authenticated with service accounts can only update messages created
-        # by the calling Chat app.
+        # api/guides/auth). Supports [app authentication](https://developers.google.com/
+        # chat/api/guides/auth/service-accounts) and [user authentication](https://
+        # developers.google.com/chat/api/guides/auth/users). When using app
+        # authentication, requests can only update messages created by the calling Chat
+        # app.
         # @param [String] name
         #   Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAAAAAAAA/
         #   messages/BBBBBBBBBBB.BBBBBBBBBBB`
@@ -993,9 +991,8 @@ module Google
         # @param [String] update_mask
         #   Required. The field paths to update. Separate multiple values with commas.
         #   Currently supported field paths: - `text` - `attachment` - `cards` (Requires [
-        #   service account authentication](/chat/api/guides/auth/service-accounts).) - `
-        #   cards_v2` (Requires [service account authentication](/chat/api/guides/auth/
-        #   service-accounts).)
+        #   app authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (
+        #   Requires [app authentication](/chat/api/guides/auth/service-accounts).)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1031,8 +1028,8 @@ module Google
         # using the [media API](https://developers.google.com/chat/api/reference/rest/v1/
         # media/download). For an example, see [Get a message attachment](https://
         # developers.google.com/chat/api/guides/v1/media-and-attachments/get). Requires [
-        # service account authentication](https://developers.google.com/chat/api/guides/
-        # auth/service-accounts).
+        # app authentication](https://developers.google.com/chat/api/guides/auth/service-
+        # accounts).
         # @param [String] name
         #   Required. Resource name of the attachment, in the form `spaces/*/messages/*/
         #   attachments/*`.
