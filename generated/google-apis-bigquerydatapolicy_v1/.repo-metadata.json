@@ -1,0 +1,7 @@
+{
+    "api_id": "bigquerydatapolicy:v1",
+    "name_pretty": "BigQuery Data Policy API",
+    "distribution_name": "google-apis-bigquerydatapolicy_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
