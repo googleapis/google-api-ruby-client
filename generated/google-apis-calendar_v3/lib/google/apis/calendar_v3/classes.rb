@@ -1127,6 +1127,11 @@ module Google
         # @return [Google::Apis::CalendarV3::Event::ExtendedProperties]
         attr_accessor :extended_properties
       
+        # Focus Time event data.
+        # Corresponds to the JSON property `focusTimeProperties`
+        # @return [Google::Apis::CalendarV3::EventFocusTimeProperties]
+        attr_accessor :focus_time_properties
+      
         # A gadget that extends this event. Gadgets are deprecated; this structure is
         # instead only used for returning birthday calendar metadata.
         # Corresponds to the JSON property `gadget`
@@ -1228,6 +1233,11 @@ module Google
         # Corresponds to the JSON property `originalStartTime`
         # @return [Google::Apis::CalendarV3::EventDateTime]
         attr_accessor :original_start_time
+      
+        # Out of office event data.
+        # Corresponds to the JSON property `outOfOfficeProperties`
+        # @return [Google::Apis::CalendarV3::EventOutOfOfficeProperties]
+        attr_accessor :out_of_office_properties
       
         # If set to True, Event propagation is disabled. Note that it is not the same
         # thing as Private event properties. Optional. Immutable. The default is False.
@@ -1362,6 +1372,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @event_type = args[:event_type] if args.key?(:event_type)
           @extended_properties = args[:extended_properties] if args.key?(:extended_properties)
+          @focus_time_properties = args[:focus_time_properties] if args.key?(:focus_time_properties)
           @gadget = args[:gadget] if args.key?(:gadget)
           @guests_can_invite_others = args[:guests_can_invite_others] if args.key?(:guests_can_invite_others)
           @guests_can_modify = args[:guests_can_modify] if args.key?(:guests_can_modify)
@@ -1375,6 +1386,7 @@ module Google
           @locked = args[:locked] if args.key?(:locked)
           @organizer = args[:organizer] if args.key?(:organizer)
           @original_start_time = args[:original_start_time] if args.key?(:original_start_time)
+          @out_of_office_properties = args[:out_of_office_properties] if args.key?(:out_of_office_properties)
           @private_copy = args[:private_copy] if args.key?(:private_copy)
           @recurrence = args[:recurrence] if args.key?(:recurrence)
           @recurring_event_id = args[:recurring_event_id] if args.key?(:recurring_event_id)
@@ -1796,6 +1808,77 @@ module Google
           @date = args[:date] if args.key?(:date)
           @date_time = args[:date_time] if args.key?(:date_time)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # 
+      class EventFocusTimeProperties
+        include Google::Apis::Core::Hashable
+      
+        # Whether to decline meeting invitations which overlap Focus Time events. Valid
+        # values are declineNone, meaning that no meeting invitations are declined;
+        # declineAllConflictingInvitations, meaning that all conflicting meeting
+        # invitations that conflict with the event are declined; and
+        # declineOnlyNewConflictingInvitations, meaning that only new conflicting
+        # meeting invitations which arrive while the Focus Time event is present are to
+        # be declined.
+        # Corresponds to the JSON property `autoDeclineMode`
+        # @return [String]
+        attr_accessor :auto_decline_mode
+      
+        # The status to mark the user in Chat and related products. This can be
+        # available or doNotDisturb.
+        # Corresponds to the JSON property `chatStatus`
+        # @return [String]
+        attr_accessor :chat_status
+      
+        # Response message to set if an existing event or new invitation is
+        # automatically declined by Calendar.
+        # Corresponds to the JSON property `declineMessage`
+        # @return [String]
+        attr_accessor :decline_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_decline_mode = args[:auto_decline_mode] if args.key?(:auto_decline_mode)
+          @chat_status = args[:chat_status] if args.key?(:chat_status)
+          @decline_message = args[:decline_message] if args.key?(:decline_message)
+        end
+      end
+      
+      # 
+      class EventOutOfOfficeProperties
+        include Google::Apis::Core::Hashable
+      
+        # Whether to decline meeting invitations which overlap Out of office events.
+        # Valid values are declineNone, meaning that no meeting invitations are declined;
+        # declineAllConflictingInvitations, meaning that all conflicting meeting
+        # invitations that conflict with the event are declined; and
+        # declineOnlyNewConflictingInvitations, meaning that only new conflicting
+        # meeting invitations which arrive while the Out of office event is present are
+        # to be declined.
+        # Corresponds to the JSON property `autoDeclineMode`
+        # @return [String]
+        attr_accessor :auto_decline_mode
+      
+        # Response message to set if an existing event or new invitation is
+        # automatically declined by Calendar.
+        # Corresponds to the JSON property `declineMessage`
+        # @return [String]
+        attr_accessor :decline_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_decline_mode = args[:auto_decline_mode] if args.key?(:auto_decline_mode)
+          @decline_message = args[:decline_message] if args.key?(:decline_message)
         end
       end
       

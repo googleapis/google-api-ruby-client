@@ -1315,8 +1315,21 @@ module Google
         #   events that match all given constraints.
         # @param [String] q
         #   Free text search terms to find events that match these terms in the following
-        #   fields: summary, description, location, attendee's displayName, attendee's
-        #   email. Optional.
+        #   fields:
+        #   - summary
+        #   - description
+        #   - location
+        #   - attendee's displayName
+        #   - attendee's email
+        #   - workingLocationProperties.officeLocation.buildingId
+        #   - workingLocationProperties.officeLocation.deskId
+        #   - workingLocationProperties.officeLocation.label
+        #   - workingLocationProperties.customLocation.label
+        #   These search terms also match predefined keywords against all display title
+        #   translations of working location, out-of-office, and focus-time events. For
+        #   example, searching for "Office" or "Bureau" returns working location events of
+        #   type officeLocation, whereas searching for "Out of office" or "Abwesend"
+        #   returns out-of-office events. Optional.
         # @param [Array<String>, String] shared_extended_property
         #   Extended properties constraint specified as propertyName=value. Matches only
         #   shared properties. This parameter might be repeated multiple times to return
@@ -1425,7 +1438,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Moves an event to another calendar, i.e. changes an event's organizer.
+        # Moves an event to another calendar, i.e. changes an event's organizer. Note
+        # that only default events can be moved; outOfOffice, focusTime and
+        # workingLocation events cannot be moved.
         # @param [String] calendar_id
         #   Calendar identifier of the source calendar where the event currently is on.
         # @param [String] event_id
@@ -1712,8 +1727,21 @@ module Google
         #   events that match all given constraints.
         # @param [String] q
         #   Free text search terms to find events that match these terms in the following
-        #   fields: summary, description, location, attendee's displayName, attendee's
-        #   email. Optional.
+        #   fields:
+        #   - summary
+        #   - description
+        #   - location
+        #   - attendee's displayName
+        #   - attendee's email
+        #   - workingLocationProperties.officeLocation.buildingId
+        #   - workingLocationProperties.officeLocation.deskId
+        #   - workingLocationProperties.officeLocation.label
+        #   - workingLocationProperties.customLocation.label
+        #   These search terms also match predefined keywords against all display title
+        #   translations of working location, out-of-office, and focus-time events. For
+        #   example, searching for "Office" or "Bureau" returns working location events of
+        #   type officeLocation, whereas searching for "Out of office" or "Abwesend"
+        #   returns out-of-office events. Optional.
         # @param [Array<String>, String] shared_extended_property
         #   Extended properties constraint specified as propertyName=value. Matches only
         #   shared properties. This parameter might be repeated multiple times to return
