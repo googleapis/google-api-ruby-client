@@ -1480,6 +1480,7 @@ module Google
       class MethodSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_populated_fields, as: 'autoPopulatedFields'
           property :long_running, as: 'longRunning', class: Google::Apis::ServicenetworkingV1::LongRunning, decorator: Google::Apis::ServicenetworkingV1::LongRunning::Representation
       
           property :selector, as: 'selector'
