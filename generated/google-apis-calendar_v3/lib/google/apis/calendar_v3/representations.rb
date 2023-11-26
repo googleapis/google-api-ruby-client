@@ -208,6 +208,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EventFocusTimeProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventOutOfOfficeProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EventReminder
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -548,6 +560,8 @@ module Google
           property :event_type, as: 'eventType'
           property :extended_properties, as: 'extendedProperties', class: Google::Apis::CalendarV3::Event::ExtendedProperties, decorator: Google::Apis::CalendarV3::Event::ExtendedProperties::Representation
       
+          property :focus_time_properties, as: 'focusTimeProperties', class: Google::Apis::CalendarV3::EventFocusTimeProperties, decorator: Google::Apis::CalendarV3::EventFocusTimeProperties::Representation
+      
           property :gadget, as: 'gadget', class: Google::Apis::CalendarV3::Event::Gadget, decorator: Google::Apis::CalendarV3::Event::Gadget::Representation
       
           property :guests_can_invite_others, as: 'guestsCanInviteOthers'
@@ -563,6 +577,8 @@ module Google
           property :organizer, as: 'organizer', class: Google::Apis::CalendarV3::Event::Organizer, decorator: Google::Apis::CalendarV3::Event::Organizer::Representation
       
           property :original_start_time, as: 'originalStartTime', class: Google::Apis::CalendarV3::EventDateTime, decorator: Google::Apis::CalendarV3::EventDateTime::Representation
+      
+          property :out_of_office_properties, as: 'outOfOfficeProperties', class: Google::Apis::CalendarV3::EventOutOfOfficeProperties, decorator: Google::Apis::CalendarV3::EventOutOfOfficeProperties::Representation
       
           property :private_copy, as: 'privateCopy'
           collection :recurrence, as: 'recurrence'
@@ -679,6 +695,23 @@ module Google
           property :date_time, as: 'dateTime', type: DateTime
       
           property :time_zone, as: 'timeZone'
+        end
+      end
+      
+      class EventFocusTimeProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_decline_mode, as: 'autoDeclineMode'
+          property :chat_status, as: 'chatStatus'
+          property :decline_message, as: 'declineMessage'
+        end
+      end
+      
+      class EventOutOfOfficeProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_decline_mode, as: 'autoDeclineMode'
+          property :decline_message, as: 'declineMessage'
         end
       end
       
