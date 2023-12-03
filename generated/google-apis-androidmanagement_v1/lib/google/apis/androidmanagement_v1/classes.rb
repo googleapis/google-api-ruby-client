@@ -521,8 +521,7 @@ module Google
       
       # Policy for an individual app. Note: Application availability on a given device
       # cannot be changed using this policy if installAppsDisabled is enabled. The
-      # maximum number of applications that you can specify per enterprise policy is 3,
-      # 000.
+      # maximum number of applications that you can specify per policy is 3,000.
       class ApplicationPolicy
         include Google::Apis::Core::Hashable
       
@@ -3982,7 +3981,7 @@ module Google
         # @return [String]
         attr_accessor :app_auto_update_policy
       
-        # Policy applied to apps.
+        # Policy applied to apps. This can have at most 3,000 elements.
         # Corresponds to the JSON property `applications`
         # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationPolicy>]
         attr_accessor :applications
