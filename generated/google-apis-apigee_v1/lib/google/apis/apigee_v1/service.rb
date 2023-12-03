@@ -7943,6 +7943,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # BatchUpdateSecurityIncident updates multiple existing security incidents.
+        # @param [String] parent
+        #   Optional. The parent resource shared by all security incidents being updated.
+        #   If this is set, the parent field in the UpdateSecurityIncidentRequest messages
+        #   must either be empty or match this field.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest] google_cloud_apigee_v1_batch_update_security_incidents_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_organization_environment_security_incident_update(parent, google_cloud_apigee_v1_batch_update_security_incidents_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/securityIncidents:batchUpdate', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest::Representation
+          command.request_object = google_cloud_apigee_v1_batch_update_security_incidents_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # GetSecurityIncident gets the specified security incident. Returns NOT_FOUND if
         # security incident is not present for the specified organization and
         # environment.
@@ -8017,6 +8052,45 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # UpdateSecurityIncidents updates an existing security incident.
+        # @param [String] name
+        #   Immutable. Name of the security incident resource. Format: organizations/`org`/
+        #   environments/`environment`/securityIncidents/`incident` Example: organizations/
+        #   apigee-org/environments/dev/securityIncidents/1234-5678-9101-1111
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident] google_cloud_apigee_v1_security_incident_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update. Allowed fields are: LINT.IfChange(
+        #   allowed_update_fields_comment) - observability LINT.ThenChange()
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_environment_security_incident(name, google_cloud_apigee_v1_security_incident_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident::Representation
+          command.request_object = google_cloud_apigee_v1_security_incident_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
