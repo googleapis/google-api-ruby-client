@@ -625,6 +625,14 @@ module Google
         # @return [String]
         attr_accessor :reserved_ip_range
       
+        # Optional. Output only. Reserved for future use. Zone Isolation compliance
+        # state of the instance. Field name and documentation is obfuscated according to
+        # go/per-resource-zi-bit-semantics.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
         # Optional. Output only. Reserved for future use. Zone Separation compliance
         # state of the instance. Field name and documentation is obfuscated according to
         # go/zs-resource-status.
@@ -708,6 +716,7 @@ module Google
           @redis_version = args[:redis_version] if args.key?(:redis_version)
           @replica_count = args[:replica_count] if args.key?(:replica_count)
           @reserved_ip_range = args[:reserved_ip_range] if args.key?(:reserved_ip_range)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @secondary_ip_range = args[:secondary_ip_range] if args.key?(:secondary_ip_range)
           @server_ca_certs = args[:server_ca_certs] if args.key?(:server_ca_certs)
