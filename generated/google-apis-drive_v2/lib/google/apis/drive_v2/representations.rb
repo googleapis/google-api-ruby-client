@@ -763,6 +763,7 @@ module Google
       
           property :restriction_date, as: 'restrictionDate', type: DateTime
       
+          property :system_restricted, as: 'systemRestricted'
           property :type, as: 'type'
         end
       end
