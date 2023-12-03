@@ -189,7 +189,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_anywhere_caches(bucket, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'b/{bucket}/anywhereCache', options)
+          command = make_simple_command(:get, 'b/{bucket}/anywhereCaches', options)
           command.response_representation = Google::Apis::StorageV1::AnywhereCaches::Representation
           command.response_class = Google::Apis::StorageV1::AnywhereCaches
           command.params['bucket'] = bucket unless bucket.nil?
