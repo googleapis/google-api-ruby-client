@@ -102,8 +102,8 @@ module Google
         end
         
         # To find eligible promotions for the current user. The API requires user
-        # authorization via OAuth. The user is inferred from the authenticated OAuth
-        # credential.
+        # authorization via OAuth. The bare minimum oauth scope `openid` is sufficient,
+        # which will skip the consent screen.
         # @param [String] parent
         #   Required. The parent, the partner that can resell. Format: partners/`partner`
         # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest] google_cloud_payments_reseller_subscription_v1_find_eligible_promotions_request_object

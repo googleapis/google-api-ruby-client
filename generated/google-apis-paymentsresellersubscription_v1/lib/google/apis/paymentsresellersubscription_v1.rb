@@ -28,6 +28,9 @@ module Google
       # Version of the Payments Reseller Subscription API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
+
+      # Associate you with your personal info on Google
+      PENID = 'openid'
     end
   end
 end
