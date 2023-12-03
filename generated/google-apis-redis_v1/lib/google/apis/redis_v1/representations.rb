@@ -424,6 +424,7 @@ module Google
           property :redis_version, as: 'redisVersion'
           property :replica_count, as: 'replicaCount'
           property :reserved_ip_range, as: 'reservedIpRange'
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :secondary_ip_range, as: 'secondaryIpRange'
           collection :server_ca_certs, as: 'serverCaCerts', class: Google::Apis::RedisV1::TlsCertificate, decorator: Google::Apis::RedisV1::TlsCertificate::Representation
