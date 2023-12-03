@@ -229,6 +229,54 @@ module Google
         end
       end
       
+      # Next tag: 7
+      class DataResidencyAugmentedView
+        include Google::Apis::Core::Hashable
+      
+        # Cloud resource to Google owned production object mapping in the form of GURIs.
+        # The GURIs should be available in DG KB storage/cns tables. This is the
+        # preferred way of providing cloud resource mappings. For further details please
+        # read go/cloud-resource-monitoring_sig
+        # Corresponds to the JSON property `crGopoGuris`
+        # @return [Array<String>]
+        attr_accessor :cr_gopo_guris
+      
+        # Cloud resource to Google owned production object mapping in the form of
+        # prefixes. These should be available in DG KB storage/cns tables. The entity
+        # type, which is the part of the string before the first colon in the GURI, must
+        # be completely specified in prefix. For details about GURI please read go/guri.
+        # For further details about the field please read go/cloud-resource-
+        # monitoring_sig.
+        # Corresponds to the JSON property `crGopoPrefixes`
+        # @return [Array<String>]
+        attr_accessor :cr_gopo_prefixes
+      
+        # This message defines service-specific data that certain service teams must
+        # provide as part of the Data Residency Augmented View for a resource. Next ID:
+        # 2
+        # Corresponds to the JSON property `serviceData`
+        # @return [Google::Apis::DatafusionV1::ServiceData]
+        attr_accessor :service_data
+      
+        # The list of project_id's of the tenant projects in the 'google.com' org which
+        # serve the Cloud Resource. See go/drz-mst-sig for more details.
+        # Corresponds to the JSON property `tpIds`
+        # @return [Array<String>]
+        attr_accessor :tp_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cr_gopo_guris = args[:cr_gopo_guris] if args.key?(:cr_gopo_guris)
+          @cr_gopo_prefixes = args[:cr_gopo_prefixes] if args.key?(:cr_gopo_prefixes)
+          @service_data = args[:service_data] if args.key?(:service_data)
+          @tp_ids = args[:tp_ids] if args.key?(:tp_ids)
+        end
+      end
+      
       # DNS peering configuration. These configurations are used to create DNS peering
       # with the customer Cloud DNS.
       class DnsPeering
@@ -401,6 +449,12 @@ module Google
         # Corresponds to the JSON property `cryptoKeyConfig`
         # @return [Google::Apis::DatafusionV1::CryptoKeyConfig]
         attr_accessor :crypto_key_config
+      
+        # Optional. Reserved for future use.
+        # Corresponds to the JSON property `dataplexDataLineageIntegrationEnabled`
+        # @return [Boolean]
+        attr_accessor :dataplex_data_lineage_integration_enabled
+        alias_method :dataplex_data_lineage_integration_enabled?, :dataplex_data_lineage_integration_enabled
       
         # User-managed service account to set on Dataproc when Cloud Data Fusion creates
         # Dataproc to run data processing pipelines. This allows users to have fine-
@@ -578,6 +632,7 @@ module Google
           @available_version = args[:available_version] if args.key?(:available_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @crypto_key_config = args[:crypto_key_config] if args.key?(:crypto_key_config)
+          @dataplex_data_lineage_integration_enabled = args[:dataplex_data_lineage_integration_enabled] if args.key?(:dataplex_data_lineage_integration_enabled)
           @dataproc_service_account = args[:dataproc_service_account] if args.key?(:dataproc_service_account)
           @description = args[:description] if args.key?(:description)
           @disabled_reason = args[:disabled_reason] if args.key?(:disabled_reason)
@@ -799,20 +854,37 @@ module Google
       class NetworkConfig
         include Google::Apis::Core::Hashable
       
-        # The IP range in CIDR notation to use for the managed Data Fusion instance
-        # nodes. This range must not overlap with any other ranges used in the customer
-        # network.
+        # Optional. Type of connection for establishing private IP connectivity between
+        # the Data Fusion customer project VPC and the corresponding tenant project from
+        # a predefined list of available connection modes. If this field is unspecified
+        # for a private instance, VPC peering is used.
+        # Corresponds to the JSON property `connectionType`
+        # @return [String]
+        attr_accessor :connection_type
+      
+        # Optional. The IP range in CIDR notation to use for the managed Data Fusion
+        # instance nodes. This range must not overlap with any other ranges used in the
+        # Data Fusion instance network. This is required only when using connection type
+        # VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
         # Corresponds to the JSON property `ipAllocation`
         # @return [String]
         attr_accessor :ip_allocation
       
-        # Name of the network in the customer project with which the Tenant Project will
-        # be peered for executing pipelines. In case of shared VPC where the network
+        # Optional. Name of the network in the customer project with which the Tenant
+        # Project will be peered for executing pipelines. This is required only when
+        # using connection type VPC peering. In case of shared VPC where the network
         # resides in another host project the network should specified in the form of
-        # projects/`host-project-id`/global/networks/`network`
+        # projects/`host-project-id`/global/networks/`network`. This is only required
+        # for connectivity type VPC_PEERING.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
+      
+        # Configuration for using Private Service Connect to establish connectivity
+        # between the Data Fusion consumer project and the corresponding tenant project.
+        # Corresponds to the JSON property `privateServiceConnectConfig`
+        # @return [Google::Apis::DatafusionV1::PrivateServiceConnectConfig]
+        attr_accessor :private_service_connect_config
       
         def initialize(**args)
            update!(**args)
@@ -820,8 +892,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @connection_type = args[:connection_type] if args.key?(:connection_type)
           @ip_allocation = args[:ip_allocation] if args.key?(:ip_allocation)
           @network = args[:network] if args.key?(:network)
+          @private_service_connect_config = args[:private_service_connect_config] if args.key?(:private_service_connect_config)
         end
       end
       
@@ -953,6 +1027,46 @@ module Google
         end
       end
       
+      # Persistent Disk service-specific Data. Contains information that may not be
+      # appropriate for the generic DRZ Augmented View. This currently includes LSV
+      # Colossus Roots and GCS Buckets.
+      class PersistentDiskData
+        include Google::Apis::Core::Hashable
+      
+        # Path to Colossus root for an LSV. NOTE: Unlike `cr_ti_guris` and `
+        # cr_ti_prefixes`, the field `cfs_roots` below does not need to be a GUri or
+        # GUri prefix. It can simply be any valid CFS or CFS2 Path. The DRZ KR8 SIG has
+        # more details overall, but generally the `cfs_roots` provided here should be
+        # scoped to an individual Persistent Disk. An example for a PD Disk with a disk
+        # ID 3277719120423414466, follows: * `cr_ti_guris` could be ‘/cfs2/pj/pd-cloud-
+        # prod’ as this is a valid GUri present in the DG KB and contains enough
+        # information to perform location monitoring and scope ownership of the
+        # Production Object. * `cfs_roots` would be: ‘/cfs2/pj/pd-cloud-staging/
+        # lsv000001234@/ lsv/projects~773365403387~zones~2700~disks~3277719120423414466 ~
+        # bank-blue-careful-3526-lsv00054DB1B7254BA3/’ as this allows us to enumerate
+        # the files on CFS2 that belong to an individual Disk.
+        # Corresponds to the JSON property `cfsRoots`
+        # @return [Array<String>]
+        attr_accessor :cfs_roots
+      
+        # The GCS Buckets that back this snapshot or image. This is required as `
+        # cr_ti_prefixes` and `cr_ti_guris` only accept TI resources. This should be the
+        # globally unique bucket name.
+        # Corresponds to the JSON property `gcsBucketNames`
+        # @return [Array<String>]
+        attr_accessor :gcs_bucket_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cfs_roots = args[:cfs_roots] if args.key?(:cfs_roots)
+          @gcs_bucket_names = args[:gcs_bucket_names] if args.key?(:gcs_bucket_names)
+        end
+      end
+      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members`, or principals, to a single `role`.
@@ -1048,6 +1162,49 @@ module Google
         end
       end
       
+      # Configuration for using Private Service Connect to establish connectivity
+      # between the Data Fusion consumer project and the corresponding tenant project.
+      class PrivateServiceConnectConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The CIDR block to which the CDF instance can't route traffic to
+        # in the consumer project VPC. The size of this block is /25. The format of this
+        # field is governed by RFC 4632. Example: 240.0.0.0/25
+        # Corresponds to the JSON property `effectiveUnreachableCidrBlock`
+        # @return [String]
+        attr_accessor :effective_unreachable_cidr_block
+      
+        # Required. The reference to the network attachment used to establish private
+        # connectivity. It will be of the form projects/`project-id`/regions/`region`/
+        # networkAttachments/`network-attachment-id`.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        # Optional. Input only. The CIDR block to which the CDF instance can't route
+        # traffic to in the consumer project VPC. The size of this block should be at
+        # least /25. This range should not overlap with the primary address range of any
+        # subnetwork used by the network attachment. This range can be used for other
+        # purposes in the consumer VPC as long as there is no requirement for CDF to
+        # reach destinations using these addresses. If this value is not provided, the
+        # server chooses a non RFC 1918 address range. The format of this field is
+        # governed by RFC 4632. Example: 192.168.0.0/25
+        # Corresponds to the JSON property `unreachableCidrBlock`
+        # @return [String]
+        attr_accessor :unreachable_cidr_block
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_unreachable_cidr_block = args[:effective_unreachable_cidr_block] if args.key?(:effective_unreachable_cidr_block)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
+          @unreachable_cidr_block = args[:unreachable_cidr_block] if args.key?(:unreachable_cidr_block)
+        end
+      end
+      
       # Request message for restarting a Data Fusion instance.
       class RestartInstanceRequest
         include Google::Apis::Core::Hashable
@@ -1058,6 +1215,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # This message defines service-specific data that certain service teams must
+      # provide as part of the Data Residency Augmented View for a resource. Next ID:
+      # 2
+      class ServiceData
+        include Google::Apis::Core::Hashable
+      
+        # Persistent Disk service-specific Data. Contains information that may not be
+        # appropriate for the generic DRZ Augmented View. This currently includes LSV
+        # Colossus Roots and GCS Buckets.
+        # Corresponds to the JSON property `pd`
+        # @return [Google::Apis::DatafusionV1::PersistentDiskData]
+        attr_accessor :pd
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pd = args[:pd] if args.key?(:pd)
         end
       end
       
