@@ -2001,9 +2001,9 @@ module Google
         end
       end
       
-      # Student submission for course work. StudentSubmission items are generated when
-      # a CourseWork item is created. StudentSubmissions that have never been accessed
-      # (i.e. with `state` = NEW) may not have a creation time or update time.
+      # Student submission for course work. `StudentSubmission` items are generated
+      # when a `CourseWork` item is created. Student submissions that have never been
+      # accessed (i.e. with `state` = NEW) may not have a creation time or update time.
       class StudentSubmission
         include Google::Apis::Core::Hashable
       
