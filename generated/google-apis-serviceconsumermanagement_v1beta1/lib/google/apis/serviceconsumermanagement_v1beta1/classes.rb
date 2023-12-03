@@ -1889,6 +1889,15 @@ module Google
       class MethodSettings
         include Google::Apis::Core::Hashable
       
+        # List of top-level fields of the request message, that should be automatically
+        # populated by the client libraries based on their (google.api.field_info).
+        # format. Currently supported format: UUID4. Example of a YAML configuration:
+        # publishing: method_settings: - selector: google.example.v1.ExampleService.
+        # CreateExample auto_populated_fields: - request_id
+        # Corresponds to the JSON property `autoPopulatedFields`
+        # @return [Array<String>]
+        attr_accessor :auto_populated_fields
+      
         # Describes settings to use when generating API methods that use the long-
         # running operation pattern. All default values below are from those used in the
         # client library generators (e.g. [Java](https://github.com/googleapis/gapic-
@@ -1910,6 +1919,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_populated_fields = args[:auto_populated_fields] if args.key?(:auto_populated_fields)
           @long_running = args[:long_running] if args.key?(:long_running)
           @selector = args[:selector] if args.key?(:selector)
         end
@@ -3480,6 +3490,62 @@ module Google
         # Update properties of this object
         def update!(**args)
           @overrides = args[:overrides] if args.key?(:overrides)
+        end
+      end
+      
+      # A property assigned to a consumer of a service.
+      class V1Beta1ConsumerProperty
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The description of the property.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The resource name of this property. An example name would be: `
+        # services/serviceconsumermanagement.googleapis.com/projects/123/properties/
+        # SERVICE_LEVEL` The resource name is intended to be opaque and should not be
+        # parsed for its component strings, since its representation could change in the
+        # future.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # This resource represents a long-running operation that is the result of a
+        # network API call.
+        # Corresponds to the JSON property `propagation`
+        # @return [Google::Apis::ServiceconsumermanagementV1beta1::Operation]
+        attr_accessor :propagation
+      
+        # Output only. The name of the property as it appears in the service
+        # configuration. An example property name would be: `SERVICE_LEVEL`
+        # Corresponds to the JSON property `propertyKey`
+        # @return [String]
+        attr_accessor :property_key
+      
+        # Output only. The type of this property.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Value of this property for the consumer. This field may be empty if the
+        # consumer has not been assigned a value.
+        # Corresponds to the JSON property `value`
+        # @return [Object]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @propagation = args[:propagation] if args.key?(:propagation)
+          @property_key = args[:property_key] if args.key?(:property_key)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
