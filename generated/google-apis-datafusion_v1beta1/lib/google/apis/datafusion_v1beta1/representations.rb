@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataResidencyAugmentedView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DnsPeering
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PersistentDiskData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +197,12 @@ module Google
       end
       
       class RestartInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,6 +292,17 @@ module Google
         end
       end
       
+      class DataResidencyAugmentedView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cr_gopo_guris, as: 'crGopoGuris'
+          collection :cr_gopo_prefixes, as: 'crGopoPrefixes'
+          property :service_data, as: 'serviceData', class: Google::Apis::DatafusionV1beta1::ServiceData, decorator: Google::Apis::DatafusionV1beta1::ServiceData::Representation
+      
+          collection :tp_ids, as: 'tpIds'
+        end
+      end
+      
       class DnsPeering
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -330,6 +359,7 @@ module Google
           property :create_time, as: 'createTime'
           property :crypto_key_config, as: 'cryptoKeyConfig', class: Google::Apis::DatafusionV1beta1::CryptoKeyConfig, decorator: Google::Apis::DatafusionV1beta1::CryptoKeyConfig::Representation
       
+          property :dataplex_data_lineage_integration_enabled, as: 'dataplexDataLineageIntegrationEnabled'
           property :dataproc_service_account, as: 'dataprocServiceAccount'
           property :description, as: 'description'
           collection :disabled_reason, as: 'disabledReason'
@@ -475,6 +505,14 @@ module Google
         end
       end
       
+      class PersistentDiskData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cfs_roots, as: 'cfsRoots'
+          collection :gcs_bucket_names, as: 'gcsBucketNames'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -511,6 +549,14 @@ module Google
       class RestartInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ServiceData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pd, as: 'pd', class: Google::Apis::DatafusionV1beta1::PersistentDiskData, decorator: Google::Apis::DatafusionV1beta1::PersistentDiskData::Representation
+      
         end
       end
       
