@@ -412,6 +412,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListenEventRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListenEventResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -794,6 +806,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :actions, as: 'actions'
           collection :entities, as: 'entities'
+          property :error_message, as: 'errorMessage'
           property :name, as: 'name'
           property :refresh_time, as: 'refreshTime'
           property :state, as: 'state'
@@ -909,7 +922,6 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           hash :labels, as: 'labels'
-          property :launch_stage, as: 'launchStage'
           property :logo, as: 'logo'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
@@ -927,8 +939,8 @@ module Google
           property :enable_backend_destination_config, as: 'enableBackendDestinationConfig'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :service_account, as: 'serviceAccount'
           property :spec_location, as: 'specLocation'
-          property :type, as: 'type'
           property :update_time, as: 'updateTime'
         end
       end
@@ -1084,10 +1096,10 @@ module Google
       
           property :auth_config, as: 'authConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
       
-          property :encryption_key, as: 'encryptionKey', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
-      
           property :enrichment_enabled, as: 'enrichmentEnabled'
           property :events_listener_ingress_endpoint, as: 'eventsListenerIngressEndpoint'
+          property :listener_auth_config, as: 'listenerAuthConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
+      
           property :private_connectivity_enabled, as: 'privateConnectivityEnabled'
           property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
       
@@ -1108,6 +1120,8 @@ module Google
           property :enrichment_supported, as: 'enrichmentSupported'
           property :event_listener_type, as: 'eventListenerType'
           property :is_eventing_supported, as: 'isEventingSupported'
+          collection :listener_auth_config_templates, as: 'listenerAuthConfigTemplates', class: Google::Apis::ConnectorsV1::AuthConfigTemplate, decorator: Google::Apis::ConnectorsV1::AuthConfigTemplate::Representation
+      
           property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfigTemplate, decorator: Google::Apis::ConnectorsV1::DestinationConfigTemplate::Representation
       
         end
@@ -1411,6 +1425,19 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :runtime_entity_schemas, as: 'runtimeEntitySchemas', class: Google::Apis::ConnectorsV1::RuntimeEntitySchema, decorator: Google::Apis::ConnectorsV1::RuntimeEntitySchema::Representation
       
+        end
+      end
+      
+      class ListenEventRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :payload, as: 'payload'
+        end
+      end
+      
+      class ListenEventResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
