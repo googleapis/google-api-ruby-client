@@ -11266,6 +11266,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema]
         attr_accessor :document_schema
       
+        # Options to control foundation model tuning of the processor.
+        # Corresponds to the JSON property `foundationModelTuningOptions`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestFoundationModelTuningOptions]
+        attr_accessor :foundation_model_tuning_options
+      
         # The input data used to train a new ProcessorVersion.
         # Corresponds to the JSON property `inputData`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestInputData]
@@ -11288,6 +11293,7 @@ module Google
           @base_processor_version = args[:base_processor_version] if args.key?(:base_processor_version)
           @custom_document_extraction_options = args[:custom_document_extraction_options] if args.key?(:custom_document_extraction_options)
           @document_schema = args[:document_schema] if args.key?(:document_schema)
+          @foundation_model_tuning_options = args[:foundation_model_tuning_options] if args.key?(:foundation_model_tuning_options)
           @input_data = args[:input_data] if args.key?(:input_data)
           @processor_version = args[:processor_version] if args.key?(:processor_version)
         end
@@ -11310,6 +11316,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @training_method = args[:training_method] if args.key?(:training_method)
+        end
+      end
+      
+      # Options to control foundation model tuning of the processor.
+      class GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestFoundationModelTuningOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The multiplier to apply to the recommended learning rate. Valid
+        # values are between [0.1, 10]. If not provided, recommended learning rate will
+        # be used.
+        # Corresponds to the JSON property `learningRateMultiplier`
+        # @return [Float]
+        attr_accessor :learning_rate_multiplier
+      
+        # Optional. The number of steps to run for model tuning. Valid values are
+        # between [1, 400]. If not provided, recommended steps will be used.
+        # Corresponds to the JSON property `trainSteps`
+        # @return [Fixnum]
+        attr_accessor :train_steps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @learning_rate_multiplier = args[:learning_rate_multiplier] if args.key?(:learning_rate_multiplier)
+          @train_steps = args[:train_steps] if args.key?(:train_steps)
         end
       end
       

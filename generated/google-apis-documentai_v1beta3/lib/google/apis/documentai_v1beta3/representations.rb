@@ -1960,6 +1960,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestFoundationModelTuningOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestInputData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5405,6 +5411,8 @@ module Google
       
           property :document_schema, as: 'documentSchema', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema::Representation
       
+          property :foundation_model_tuning_options, as: 'foundationModelTuningOptions', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestFoundationModelTuningOptions, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestFoundationModelTuningOptions::Representation
+      
           property :input_data, as: 'inputData', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestInputData, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestInputData::Representation
       
           property :processor_version, as: 'processorVersion', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessorVersion, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessorVersion::Representation
@@ -5416,6 +5424,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :training_method, as: 'trainingMethod'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestFoundationModelTuningOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :learning_rate_multiplier, as: 'learningRateMultiplier'
+          property :train_steps, as: 'trainSteps'
         end
       end
       
