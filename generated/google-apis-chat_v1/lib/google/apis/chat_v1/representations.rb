@@ -496,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SelectionItems
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetUpSpaceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -574,6 +580,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdatedWidget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UploadAttachmentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -618,6 +630,8 @@ module Google
           property :dialog_action, as: 'dialogAction', class: Google::Apis::ChatV1::DialogAction, decorator: Google::Apis::ChatV1::DialogAction::Representation
       
           property :type, as: 'type'
+          property :updated_widget, as: 'updatedWidget', class: Google::Apis::ChatV1::UpdatedWidget, decorator: Google::Apis::ChatV1::UpdatedWidget::Representation
+      
           property :url, as: 'url'
         end
       end
@@ -1489,6 +1503,14 @@ module Google
         end
       end
       
+      class SelectionItems
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ChatV1::GoogleAppsCardV1SelectionItem, decorator: Google::Apis::ChatV1::GoogleAppsCardV1SelectionItem::Representation
+      
+        end
+      end
+      
       class SetUpSpaceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1605,6 +1627,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :offset, as: 'offset'
+        end
+      end
+      
+      class UpdatedWidget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :suggestions, as: 'suggestions', class: Google::Apis::ChatV1::SelectionItems, decorator: Google::Apis::ChatV1::SelectionItems::Representation
+      
+          property :widget, as: 'widget'
         end
       end
       
