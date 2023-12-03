@@ -424,6 +424,13 @@ module Google
       class Ruleset
         include Google::Apis::Core::Hashable
       
+        # Immutable. Intended resource to which this Ruleset should be released. May be
+        # left blank to signify the resource associated with the default release.
+        # Expected format: firestore.googleapis.com/projects//databases/
+        # Corresponds to the JSON property `attachmentPoint`
+        # @return [String]
+        attr_accessor :attachment_point
+      
         # Output only. Time the `Ruleset` was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -451,6 +458,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attachment_point = args[:attachment_point] if args.key?(:attachment_point)
           @create_time = args[:create_time] if args.key?(:create_time)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
