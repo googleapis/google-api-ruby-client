@@ -186,6 +186,35 @@ module Google
         end
       end
       
+      # Represents an application associated with a finding.
+      class Application
+        include Google::Apis::Core::Hashable
+      
+        # The base URI that identifies the network location of the application in which
+        # the vulnerability was detected. Examples: http://11.22.33.44, http://foo.com,
+        # http://11.22.33.44:8080
+        # Corresponds to the JSON property `baseUri`
+        # @return [String]
+        attr_accessor :base_uri
+      
+        # The full URI with payload that can be used to reproduce the vulnerability.
+        # Example: http://11.22.33.44/reflected/parameter/attribute/singlequoted/js?p=
+        # aMmYgI6H
+        # Corresponds to the JSON property `fullUri`
+        # @return [String]
+        attr_accessor :full_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_uri = args[:base_uri] if args.key?(:base_uri)
+          @full_uri = args[:full_uri] if args.key?(:full_uri)
+        end
+      end
+      
       # An attack exposure contains the results of an attack path simulation run.
       class AttackExposure
         include Google::Apis::Core::Hashable
@@ -246,6 +275,103 @@ module Google
           @latest_calculation_time = args[:latest_calculation_time] if args.key?(:latest_calculation_time)
           @score = args[:score] if args.key?(:score)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Information related to Google Cloud Backup and DR Service findings.
+      class BackupDisasterRecovery
+        include Google::Apis::Core::Hashable
+      
+        # The name of the Backup and DR appliance that captures, moves, and manages the
+        # lifecycle of backup data. For example, “backup-server-57137”.
+        # Corresponds to the JSON property `appliance`
+        # @return [String]
+        attr_accessor :appliance
+      
+        # The names of Backup and DR applications. An application is a VM, database, or
+        # file system on a managed host monitored by a backup and recovery appliance.
+        # For example, “centos7-01-vol00”, “centos7-01-vol01”, “centos7-01-vol02”.
+        # Corresponds to the JSON property `applications`
+        # @return [Array<String>]
+        attr_accessor :applications
+      
+        # The timestamp at which the Backup and DR backup was created.
+        # Corresponds to the JSON property `backupCreateTime`
+        # @return [String]
+        attr_accessor :backup_create_time
+      
+        # The name of a Backup and DR template which comprises one or more backup
+        # policies. See the [Backup and DR documentation](https://cloud.google.com/
+        # backup-disaster-recovery/docs/concepts/backup-plan#temp) for more information.
+        # For example, “snap-ov”.
+        # Corresponds to the JSON property `backupTemplate`
+        # @return [String]
+        attr_accessor :backup_template
+      
+        # The backup type of the Backup and DR image. For example, “Snapshot”, “Remote
+        # Snapshot”, “OnVault”.
+        # Corresponds to the JSON property `backupType`
+        # @return [String]
+        attr_accessor :backup_type
+      
+        # The name of a Backup and DR host, which is managed by the backup and recovery
+        # appliance and known to the management console. The host can be of type Generic
+        # (for example, Compute Engine, SQL Server, Oracle DB, SMB file system, etc.),
+        # vCenter, or an ESX server. See the [Backup and DR documentation on hosts](
+        # https://cloud.google.com/backup-disaster-recovery/docs/configuration/manage-
+        # hosts-and-their-applications) for more information. For example, “centos7-01”.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # The names of Backup and DR policies that are associated with a template and
+        # that define when to run a backup, how frequently to run a backup, and how long
+        # to retain the backup image. For example, “onvaults”.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<String>]
+        attr_accessor :policies
+      
+        # The names of Backup and DR advanced policy options of a policy applying to an
+        # application. See the [Backup and DR documentation on policy options](https://
+        # cloud.google.com/backup-disaster-recovery/docs/create-plan/policy-settings).
+        # For example, “skipofflineappsincongrp, nounmap”.
+        # Corresponds to the JSON property `policyOptions`
+        # @return [Array<String>]
+        attr_accessor :policy_options
+      
+        # The name of the Backup and DR resource profile that specifies the storage
+        # media for backups of application and VM data. See the [Backup and DR
+        # documentation on profiles](https://cloud.google.com/backup-disaster-recovery/
+        # docs/concepts/backup-plan#profile). For example, “GCP”.
+        # Corresponds to the JSON property `profile`
+        # @return [String]
+        attr_accessor :profile
+      
+        # The name of the Backup and DR storage pool that the backup and recovery
+        # appliance is storing data in. The storage pool could be of type Cloud, Primary,
+        # Snapshot, or OnVault. See the [Backup and DR documentation on storage pools](
+        # https://cloud.google.com/backup-disaster-recovery/docs/concepts/storage-pools).
+        # For example, “DiskPoolOne”.
+        # Corresponds to the JSON property `storagePool`
+        # @return [String]
+        attr_accessor :storage_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @appliance = args[:appliance] if args.key?(:appliance)
+          @applications = args[:applications] if args.key?(:applications)
+          @backup_create_time = args[:backup_create_time] if args.key?(:backup_create_time)
+          @backup_template = args[:backup_template] if args.key?(:backup_template)
+          @backup_type = args[:backup_type] if args.key?(:backup_type)
+          @host = args[:host] if args.key?(:host)
+          @policies = args[:policies] if args.key?(:policies)
+          @policy_options = args[:policy_options] if args.key?(:policy_options)
+          @profile = args[:profile] if args.key?(:profile)
+          @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
         end
       end
       
@@ -1149,10 +1275,20 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::Access]
         attr_accessor :access
       
+        # Represents an application associated with a finding.
+        # Corresponds to the JSON property `application`
+        # @return [Google::Apis::SecuritycenterV1beta2::Application]
+        attr_accessor :application
+      
         # An attack exposure contains the results of an attack path simulation run.
         # Corresponds to the JSON property `attackExposure`
         # @return [Google::Apis::SecuritycenterV1beta2::AttackExposure]
         attr_accessor :attack_exposure
+      
+        # Information related to Google Cloud Backup and DR Service findings.
+        # Corresponds to the JSON property `backupDisasterRecovery`
+        # @return [Google::Apis::SecuritycenterV1beta2::BackupDisasterRecovery]
+        attr_accessor :backup_disaster_recovery
       
         # The canonical name of the finding. It's either "organizations/`organization_id`
         # /sources/`source_id`/findings/`finding_id`", "folders/`folder_id`/sources/`
@@ -1430,7 +1566,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access = args[:access] if args.key?(:access)
+          @application = args[:application] if args.key?(:application)
           @attack_exposure = args[:attack_exposure] if args.key?(:attack_exposure)
+          @backup_disaster_recovery = args[:backup_disaster_recovery] if args.key?(:backup_disaster_recovery)
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @category = args[:category] if args.key?(:category)
           @cloud_dlp_data_profile = args[:cloud_dlp_data_profile] if args.key?(:cloud_dlp_data_profile)
@@ -2750,6 +2888,35 @@ module Google
         end
       end
       
+      # Represents an application associated with a finding.
+      class GoogleCloudSecuritycenterV2Application
+        include Google::Apis::Core::Hashable
+      
+        # The base URI that identifies the network location of the application in which
+        # the vulnerability was detected. Examples: http://11.22.33.44, http://foo.com,
+        # http://11.22.33.44:8080
+        # Corresponds to the JSON property `baseUri`
+        # @return [String]
+        attr_accessor :base_uri
+      
+        # The full URI with payload that could be used to reproduce the vulnerability.
+        # Example: http://11.22.33.44/reflected/parameter/attribute/singlequoted/js?p=
+        # aMmYgI6H
+        # Corresponds to the JSON property `fullUri`
+        # @return [String]
+        attr_accessor :full_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_uri = args[:base_uri] if args.key?(:base_uri)
+          @full_uri = args[:full_uri] if args.key?(:full_uri)
+        end
+      end
+      
       # An attack exposure contains the results of an attack path simulation run.
       class GoogleCloudSecuritycenterV2AttackExposure
         include Google::Apis::Core::Hashable
@@ -2810,6 +2977,103 @@ module Google
           @latest_calculation_time = args[:latest_calculation_time] if args.key?(:latest_calculation_time)
           @score = args[:score] if args.key?(:score)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Information related to Google Cloud Backup and DR Service findings.
+      class GoogleCloudSecuritycenterV2BackupDisasterRecovery
+        include Google::Apis::Core::Hashable
+      
+        # The name of the Backup and DR appliance that captures, moves, and manages the
+        # lifecycle of backup data. For example, “backup-server-57137”.
+        # Corresponds to the JSON property `appliance`
+        # @return [String]
+        attr_accessor :appliance
+      
+        # The names of Backup and DR applications. An application is a VM, database, or
+        # file system on a managed host monitored by a backup and recovery appliance.
+        # For example, “centos7-01-vol00”, “centos7-01-vol01”, “centos7-01-vol02”.
+        # Corresponds to the JSON property `applications`
+        # @return [Array<String>]
+        attr_accessor :applications
+      
+        # The timestamp at which the Backup and DR backup was created.
+        # Corresponds to the JSON property `backupCreateTime`
+        # @return [String]
+        attr_accessor :backup_create_time
+      
+        # The name of a Backup and DR template which comprises one or more backup
+        # policies. See the [Backup and DR documentation](https://cloud.google.com/
+        # backup-disaster-recovery/docs/concepts/backup-plan#temp) for more information.
+        # For example, “snap-ov”.
+        # Corresponds to the JSON property `backupTemplate`
+        # @return [String]
+        attr_accessor :backup_template
+      
+        # The backup type of the Backup and DR image. For example, “Snapshot”, “Remote
+        # Snapshot”, “OnVault”.
+        # Corresponds to the JSON property `backupType`
+        # @return [String]
+        attr_accessor :backup_type
+      
+        # The name of a Backup and DR host, which is managed by the backup and recovery
+        # appliance and known to the management console. The host can be of type Generic
+        # (for example, Compute Engine, SQL Server, Oracle DB, SMB file system, etc.),
+        # vCenter, or an ESX server. See the [Backup and DR documentation on hosts](
+        # https://cloud.google.com/backup-disaster-recovery/docs/configuration/manage-
+        # hosts-and-their-applications) for more information. For example, “centos7-01”.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # The names of Backup and DR policies that are associated with a template and
+        # that define when to run a backup, how frequently to run a backup, and how long
+        # to retain the backup image. For example, “onvaults”.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<String>]
+        attr_accessor :policies
+      
+        # The names of Backup and DR advanced policy options of a policy applying to an
+        # application. See the [Backup and DR documentation on policy options](https://
+        # cloud.google.com/backup-disaster-recovery/docs/create-plan/policy-settings).
+        # For example, “skipofflineappsincongrp, nounmap”.
+        # Corresponds to the JSON property `policyOptions`
+        # @return [Array<String>]
+        attr_accessor :policy_options
+      
+        # The name of the Backup and DR resource profile that specifies the storage
+        # media for backups of application and VM data. See the [Backup and DR
+        # documentation on profiles](https://cloud.google.com/backup-disaster-recovery/
+        # docs/concepts/backup-plan#profile). For example, “GCP”.
+        # Corresponds to the JSON property `profile`
+        # @return [String]
+        attr_accessor :profile
+      
+        # The name of the Backup and DR storage pool that the backup and recovery
+        # appliance is storing data in. The storage pool could be of type Cloud, Primary,
+        # Snapshot, or OnVault. See the [Backup and DR documentation on storage pools](
+        # https://cloud.google.com/backup-disaster-recovery/docs/concepts/storage-pools).
+        # For example, “DiskPoolOne”.
+        # Corresponds to the JSON property `storagePool`
+        # @return [String]
+        attr_accessor :storage_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @appliance = args[:appliance] if args.key?(:appliance)
+          @applications = args[:applications] if args.key?(:applications)
+          @backup_create_time = args[:backup_create_time] if args.key?(:backup_create_time)
+          @backup_template = args[:backup_template] if args.key?(:backup_template)
+          @backup_type = args[:backup_type] if args.key?(:backup_type)
+          @host = args[:host] if args.key?(:host)
+          @policies = args[:policies] if args.key?(:policies)
+          @policy_options = args[:policy_options] if args.key?(:policy_options)
+          @profile = args[:profile] if args.key?(:profile)
+          @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
         end
       end
       
@@ -3633,10 +3897,20 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Access]
         attr_accessor :access
       
+        # Represents an application associated with a finding.
+        # Corresponds to the JSON property `application`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Application]
+        attr_accessor :application
+      
         # An attack exposure contains the results of an attack path simulation run.
         # Corresponds to the JSON property `attackExposure`
         # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AttackExposure]
         attr_accessor :attack_exposure
+      
+        # Information related to Google Cloud Backup and DR Service findings.
+        # Corresponds to the JSON property `backupDisasterRecovery`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2BackupDisasterRecovery]
+        attr_accessor :backup_disaster_recovery
       
         # Output only. The canonical name of the finding. The following list shows some
         # examples: + `organizations/`organization_id`/sources/`source_id`/findings/`
@@ -3928,7 +4202,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access = args[:access] if args.key?(:access)
+          @application = args[:application] if args.key?(:application)
           @attack_exposure = args[:attack_exposure] if args.key?(:attack_exposure)
+          @backup_disaster_recovery = args[:backup_disaster_recovery] if args.key?(:backup_disaster_recovery)
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @category = args[:category] if args.key?(:category)
           @cloud_dlp_data_profile = args[:cloud_dlp_data_profile] if args.key?(:cloud_dlp_data_profile)
