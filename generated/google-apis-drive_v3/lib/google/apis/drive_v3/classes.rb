@@ -621,6 +621,14 @@ module Google
         # @return [DateTime]
         attr_accessor :restriction_time
       
+        # Output only. Whether the content restriction was applied by the system, for
+        # example due to an esignature. Users cannot modify or remove system restricted
+        # content restrictions.
+        # Corresponds to the JSON property `systemRestricted`
+        # @return [Boolean]
+        attr_accessor :system_restricted
+        alias_method :system_restricted?, :system_restricted
+      
         # Output only. The type of the content restriction. Currently the only possible
         # value is `globalContentRestriction`.
         # Corresponds to the JSON property `type`
@@ -638,6 +646,7 @@ module Google
           @reason = args[:reason] if args.key?(:reason)
           @restricting_user = args[:restricting_user] if args.key?(:restricting_user)
           @restriction_time = args[:restriction_time] if args.key?(:restriction_time)
+          @system_restricted = args[:system_restricted] if args.key?(:system_restricted)
           @type = args[:type] if args.key?(:type)
         end
       end

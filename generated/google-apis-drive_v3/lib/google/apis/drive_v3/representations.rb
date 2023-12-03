@@ -480,6 +480,7 @@ module Google
       
           property :restriction_time, as: 'restrictionTime', type: DateTime
       
+          property :system_restricted, as: 'systemRestricted'
           property :type, as: 'type'
         end
       end
