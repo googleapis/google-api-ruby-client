@@ -30,9 +30,6 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
-      # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
       # See and/or control the devices that you selected
       AUTH_SDM_SERVICE = 'https://www.googleapis.com/auth/sdm.service'
     end
