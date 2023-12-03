@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Application
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Asset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +89,12 @@ module Google
       end
       
       class AuditLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupDisasterRecovery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,7 +436,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2Application
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2AttackExposure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2BackupDisasterRecovery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1194,6 +1218,14 @@ module Google
         end
       end
       
+      class Application
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_uri, as: 'baseUri'
+          property :full_uri, as: 'fullUri'
+        end
+      end
+      
       class Asset
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1291,6 +1323,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
           property :log_type, as: 'logType'
+        end
+      end
+      
+      class BackupDisasterRecovery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :appliance, as: 'appliance'
+          collection :applications, as: 'applications'
+          property :backup_create_time, as: 'backupCreateTime'
+          property :backup_template, as: 'backupTemplate'
+          property :backup_type, as: 'backupType'
+          property :host, as: 'host'
+          collection :policies, as: 'policies'
+          collection :policy_options, as: 'policyOptions'
+          property :profile, as: 'profile'
+          property :storage_pool, as: 'storagePool'
         end
       end
       
@@ -1567,7 +1615,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access, as: 'access', class: Google::Apis::SecuritycenterV1::Access, decorator: Google::Apis::SecuritycenterV1::Access::Representation
       
+          property :application, as: 'application', class: Google::Apis::SecuritycenterV1::Application, decorator: Google::Apis::SecuritycenterV1::Application::Representation
+      
           property :attack_exposure, as: 'attackExposure', class: Google::Apis::SecuritycenterV1::AttackExposure, decorator: Google::Apis::SecuritycenterV1::AttackExposure::Representation
+      
+          property :backup_disaster_recovery, as: 'backupDisasterRecovery', class: Google::Apis::SecuritycenterV1::BackupDisasterRecovery, decorator: Google::Apis::SecuritycenterV1::BackupDisasterRecovery::Representation
       
           property :canonical_name, as: 'canonicalName'
           property :category, as: 'category'
@@ -1942,6 +1994,14 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2Application
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_uri, as: 'baseUri'
+          property :full_uri, as: 'fullUri'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2AttackExposure
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1952,6 +2012,22 @@ module Google
           property :latest_calculation_time, as: 'latestCalculationTime'
           property :score, as: 'score'
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2BackupDisasterRecovery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :appliance, as: 'appliance'
+          collection :applications, as: 'applications'
+          property :backup_create_time, as: 'backupCreateTime'
+          property :backup_template, as: 'backupTemplate'
+          property :backup_type, as: 'backupType'
+          property :host, as: 'host'
+          collection :policies, as: 'policies'
+          collection :policy_options, as: 'policyOptions'
+          property :profile, as: 'profile'
+          property :storage_pool, as: 'storagePool'
         end
       end
       
@@ -2164,7 +2240,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access, as: 'access', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Access, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Access::Representation
       
+          property :application, as: 'application', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Application, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Application::Representation
+      
           property :attack_exposure, as: 'attackExposure', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AttackExposure, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AttackExposure::Representation
+      
+          property :backup_disaster_recovery, as: 'backupDisasterRecovery', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2BackupDisasterRecovery, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2BackupDisasterRecovery::Representation
       
           property :canonical_name, as: 'canonicalName'
           property :category, as: 'category'

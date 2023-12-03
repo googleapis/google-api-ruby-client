@@ -1215,8 +1215,9 @@ module Google
         # Simulates a given SecurityHealthAnalyticsCustomModule and Resource.
         # @param [String] parent
         #   Required. The relative resource name of the organization, project, or folder.
-        #   See: https://cloud.google.com/apis/design/resource_names#
-        #   relative_resource_name An example is: "organizations/`organization_id`".
+        #   For more information about relative resource names, see [Relative Resource
+        #   Name](https://cloud.google.com/apis/design/resource_names#
+        #   relative_resource_name) Example: `organizations/`organization_id``
         # @param [Google::Apis::SecuritycenterV1::SimulateSecurityHealthAnalyticsCustomModuleRequest] simulate_security_health_analytics_custom_module_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3526,8 +3527,9 @@ module Google
         # Simulates a given SecurityHealthAnalyticsCustomModule and Resource.
         # @param [String] parent
         #   Required. The relative resource name of the organization, project, or folder.
-        #   See: https://cloud.google.com/apis/design/resource_names#
-        #   relative_resource_name An example is: "organizations/`organization_id`".
+        #   For more information about relative resource names, see [Relative Resource
+        #   Name](https://cloud.google.com/apis/design/resource_names#
+        #   relative_resource_name) Example: `organizations/`organization_id``
         # @param [Google::Apis::SecuritycenterV1::SimulateSecurityHealthAnalyticsCustomModuleRequest] simulate_security_health_analytics_custom_module_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5750,8 +5752,9 @@ module Google
         # Simulates a given SecurityHealthAnalyticsCustomModule and Resource.
         # @param [String] parent
         #   Required. The relative resource name of the organization, project, or folder.
-        #   See: https://cloud.google.com/apis/design/resource_names#
-        #   relative_resource_name An example is: "organizations/`organization_id`".
+        #   For more information about relative resource names, see [Relative Resource
+        #   Name](https://cloud.google.com/apis/design/resource_names#
+        #   relative_resource_name) Example: `organizations/`organization_id``
         # @param [Google::Apis::SecuritycenterV1::SimulateSecurityHealthAnalyticsCustomModuleRequest] simulate_security_health_analytics_custom_module_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
