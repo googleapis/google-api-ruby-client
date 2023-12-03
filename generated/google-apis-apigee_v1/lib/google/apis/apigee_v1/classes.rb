@@ -1696,6 +1696,45 @@ module Google
         end
       end
       
+      # Request for BatchUpdateSecurityIncident.
+      class GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Required. The request message specifying the resources to update. A
+        # maximum of 1000 can be modified in a batch.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1UpdateSecurityIncidentRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response for BatchUpdateSecurityIncident.
+      class GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Updated security incidents
+        # Corresponds to the JSON property `securityIncidents`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident>]
+        attr_accessor :security_incidents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @security_incidents = args[:security_incidents] if args.key?(:security_incidents)
+        end
+      end
+      
       # CanaryEvaluation represents the canary analysis between two versions of the
       # runtime that is serving requests.
       class GoogleCloudApigeeV1CanaryEvaluation
@@ -8975,12 +9014,22 @@ module Google
         # @return [String]
         attr_accessor :last_detected_time
       
+        # Output only. The time when the incident observability was last changed.
+        # Corresponds to the JSON property `lastObservabilityChangeTime`
+        # @return [String]
+        attr_accessor :last_observability_change_time
+      
         # Immutable. Name of the security incident resource. Format: organizations/`org`/
         # environments/`environment`/securityIncidents/`incident` Example: organizations/
         # apigee-org/environments/dev/securityIncidents/1234-5678-9101-1111
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. Indicates if the user archived this incident.
+        # Corresponds to the JSON property `observability`
+        # @return [String]
+        attr_accessor :observability
       
         # Output only. Risk level of the incident.
         # Corresponds to the JSON property `riskLevel`
@@ -9002,7 +9051,9 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @first_detected_time = args[:first_detected_time] if args.key?(:first_detected_time)
           @last_detected_time = args[:last_detected_time] if args.key?(:last_detected_time)
+          @last_observability_change_time = args[:last_observability_change_time] if args.key?(:last_observability_change_time)
           @name = args[:name] if args.key?(:name)
+          @observability = args[:observability] if args.key?(:observability)
           @risk_level = args[:risk_level] if args.key?(:risk_level)
           @traffic_count = args[:traffic_count] if args.key?(:traffic_count)
         end
@@ -9017,7 +9068,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Display name of the security profile.
+        # DEPRECATED: DO NOT USE Display name of the security profile.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -9059,9 +9110,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :revision_id
       
-        # Output only. The time when revision was published. Once published, the
-        # security profile revision cannot be updated further and can be attached to
-        # environments.
+        # Output only. DEPRECATED: DO NOT USE The time when revision was published. Once
+        # published, the security profile revision cannot be updated further and can be
+        # attached to environments.
         # Corresponds to the JSON property `revisionPublishTime`
         # @return [String]
         attr_accessor :revision_publish_time
@@ -9137,7 +9188,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Revision ID of the security profile.
+        # DEPRECATED: DO NOT USE Revision ID of the security profile.
         # Corresponds to the JSON property `securityProfileRevisionId`
         # @return [Fixnum]
         attr_accessor :security_profile_revision_id
@@ -10448,6 +10499,32 @@ module Google
           @message = args[:message] if args.key?(:message)
           @resource = args[:resource] if args.key?(:resource)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Request for UpdateSecurityIncident.
+      class GoogleCloudApigeeV1UpdateSecurityIncidentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents an SecurityIncident resource.
+        # Corresponds to the JSON property `securityIncident`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident]
+        attr_accessor :security_incident
+      
+        # Required. The list of fields to update. Allowed fields are: LINT.IfChange(
+        # allowed_update_fields_comment) - observability LINT.ThenChange()
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @security_incident = args[:security_incident] if args.key?(:security_incident)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
