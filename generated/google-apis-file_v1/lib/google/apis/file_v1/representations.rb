@@ -254,6 +254,7 @@ module Google
           property :kms_key, as: 'kmsKey'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :source_file_share, as: 'sourceFileShare'
           property :source_instance, as: 'sourceInstance'
@@ -430,6 +431,7 @@ module Google
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1::NetworkConfig, decorator: Google::Apis::FileV1::NetworkConfig::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :status_message, as: 'statusMessage'
