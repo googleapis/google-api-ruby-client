@@ -1996,12 +1996,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowV2EncryptionSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowV2EntityType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2063,18 +2057,6 @@ module Google
       end
       
       class GoogleCloudDialogflowV2ImportDocumentsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2440,12 +2422,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowV2beta1EncryptionSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowV2beta1EntityType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2495,18 +2471,6 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1ImportDocumentsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6277,14 +6241,6 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowV2EncryptionSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :kms_key, as: 'kmsKey'
-          property :name, as: 'name'
-        end
-      end
-      
       class GoogleCloudDialogflowV2EntityType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6382,22 +6338,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :warnings, as: 'warnings', class: Google::Apis::DialogflowV3beta1::GoogleRpcStatus, decorator: Google::Apis::DialogflowV3beta1::GoogleRpcStatus::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :request, as: 'request', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2InitializeEncryptionSpecRequest, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2InitializeEncryptionSpecRequest::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2EncryptionSpec, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2EncryptionSpec::Representation
       
         end
       end
@@ -7052,14 +6992,6 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowV2beta1EncryptionSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :kms_key, as: 'kmsKey'
-          property :name, as: 'name'
-        end
-      end
-      
       class GoogleCloudDialogflowV2beta1EntityType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7139,22 +7071,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :warnings, as: 'warnings', class: Google::Apis::DialogflowV3beta1::GoogleRpcStatus, decorator: Google::Apis::DialogflowV3beta1::GoogleRpcStatus::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :request, as: 'request', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1EncryptionSpec, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1EncryptionSpec::Representation
       
         end
       end
