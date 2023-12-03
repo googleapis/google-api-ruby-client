@@ -290,6 +290,7 @@ module Google
       class Ruleset
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_point, as: 'attachmentPoint'
           property :create_time, as: 'createTime'
           property :metadata, as: 'metadata', class: Google::Apis::FirebaserulesV1::Metadata, decorator: Google::Apis::FirebaserulesV1::Metadata::Representation
       
