@@ -448,6 +448,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # ListenEvent listens to the event.
+        # @param [String] resource_path
+        #   Required. Resource path for request.
+        # @param [Google::Apis::ConnectorsV1::ListenEventRequest] listen_event_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::ListenEventResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::ListenEventResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def listen_connection_event(resource_path, listen_event_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resourcePath}:listenEvent', options)
+          command.request_representation = Google::Apis::ConnectorsV1::ListenEventRequest::Representation
+          command.request_object = listen_event_request_object
+          command.response_representation = Google::Apis::ConnectorsV1::ListenEventResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV1::ListenEventResponse
+          command.params['resourcePath'] = resource_path unless resource_path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the parameters of a single Connection.
         # @param [String] name
         #   Output only. Resource name of the Connection. Format: projects/`project`/

@@ -687,6 +687,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :entities
       
+        # Error message for users.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
         # Output only. Resource name. Format: projects/`project`/locations/`location`/
         # connections/`connection`/connectionSchemaMetadata
         # Corresponds to the JSON property `name`
@@ -717,6 +722,7 @@ module Google
         def update!(**args)
           @actions = args[:actions] if args.key?(:actions)
           @entities = args[:entities] if args.key?(:entities)
+          @error_message = args[:error_message] if args.key?(:error_message)
           @name = args[:name] if args.key?(:name)
           @refresh_time = args[:refresh_time] if args.key?(:refresh_time)
           @state = args[:state] if args.key?(:state)
@@ -1136,11 +1142,6 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. Launch stage.
-        # Corresponds to the JSON property `launchStage`
-        # @return [String]
-        attr_accessor :launch_stage
-      
         # Optional. Logo of the resource.
         # Corresponds to the JSON property `logo`
         # @return [String]
@@ -1168,7 +1169,6 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
-          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @logo = args[:logo] if args.key?(:logo)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1215,15 +1215,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Required. Service account needed for runtime plane to access Custom Connector
+        # secrets.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Optional. Location of the custom connector spec.
         # Corresponds to the JSON property `specLocation`
         # @return [String]
         attr_accessor :spec_location
-      
-        # Required. Type of the customConnector.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
       
         # Output only. Updated time.
         # Corresponds to the JSON property `updateTime`
@@ -1242,8 +1243,8 @@ module Google
           @enable_backend_destination_config = args[:enable_backend_destination_config] if args.key?(:enable_backend_destination_config)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @spec_location = args[:spec_location] if args.key?(:spec_location)
-          @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -1786,12 +1787,6 @@ module Google
         # @return [Google::Apis::ConnectorsV1::AuthConfig]
         attr_accessor :auth_config
       
-        # ConfigVariable represents a configuration variable present in a Connection. or
-        # AuthConfig.
-        # Corresponds to the JSON property `encryptionKey`
-        # @return [Google::Apis::ConnectorsV1::ConfigVariable]
-        attr_accessor :encryption_key
-      
         # Enrichment Enabled.
         # Corresponds to the JSON property `enrichmentEnabled`
         # @return [Boolean]
@@ -1803,6 +1798,11 @@ module Google
         # Corresponds to the JSON property `eventsListenerIngressEndpoint`
         # @return [String]
         attr_accessor :events_listener_ingress_endpoint
+      
+        # AuthConfig defines details of a authentication type.
+        # Corresponds to the JSON property `listenerAuthConfig`
+        # @return [Google::Apis::ConnectorsV1::AuthConfig]
+        attr_accessor :listener_auth_config
       
         # Optional. Private Connectivity Enabled.
         # Corresponds to the JSON property `privateConnectivityEnabled`
@@ -1823,9 +1823,9 @@ module Google
         def update!(**args)
           @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
-          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @enrichment_enabled = args[:enrichment_enabled] if args.key?(:enrichment_enabled)
           @events_listener_ingress_endpoint = args[:events_listener_ingress_endpoint] if args.key?(:events_listener_ingress_endpoint)
+          @listener_auth_config = args[:listener_auth_config] if args.key?(:listener_auth_config)
           @private_connectivity_enabled = args[:private_connectivity_enabled] if args.key?(:private_connectivity_enabled)
           @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
         end
@@ -1880,6 +1880,11 @@ module Google
         attr_accessor :is_eventing_supported
         alias_method :is_eventing_supported?, :is_eventing_supported
       
+        # ListenerAuthConfigTemplates represents the auth values for the event listener.
+        # Corresponds to the JSON property `listenerAuthConfigTemplates`
+        # @return [Array<Google::Apis::ConnectorsV1::AuthConfigTemplate>]
+        attr_accessor :listener_auth_config_templates
+      
         # DestinationConfigTemplate defines required destinations supported by the
         # Connector.
         # Corresponds to the JSON property `registrationDestinationConfig`
@@ -1900,6 +1905,7 @@ module Google
           @enrichment_supported = args[:enrichment_supported] if args.key?(:enrichment_supported)
           @event_listener_type = args[:event_listener_type] if args.key?(:event_listener_type)
           @is_eventing_supported = args[:is_eventing_supported] if args.key?(:is_eventing_supported)
+          @listener_auth_config_templates = args[:listener_auth_config_templates] if args.key?(:listener_auth_config_templates)
           @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
         end
       end
@@ -2916,6 +2922,38 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @runtime_entity_schemas = args[:runtime_entity_schemas] if args.key?(:runtime_entity_schemas)
+        end
+      end
+      
+      # Expected request for ListenEvent API.
+      class ListenEventRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Request payload.
+        # Corresponds to the JSON property `payload`
+        # @return [Hash<String,Object>]
+        attr_accessor :payload
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @payload = args[:payload] if args.key?(:payload)
+        end
+      end
+      
+      # Expected response for ListenEvent API.
+      class ListenEventResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
