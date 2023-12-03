@@ -220,6 +220,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1CanaryEvaluation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1546,6 +1558,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1UpdateSecurityIncidentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIamV1AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2047,6 +2065,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :attribute, as: 'attribute', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1UpdateSecurityIncidentRequest, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1UpdateSecurityIncidentRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :security_incidents, as: 'securityIncidents', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident::Representation
       
         end
       end
@@ -4035,7 +4069,9 @@ module Google
           property :display_name, as: 'displayName'
           property :first_detected_time, as: 'firstDetectedTime'
           property :last_detected_time, as: 'lastDetectedTime'
+          property :last_observability_change_time, as: 'lastObservabilityChangeTime'
           property :name, as: 'name'
+          property :observability, as: 'observability'
           property :risk_level, as: 'riskLevel'
           property :traffic_count, :numeric_string => true, as: 'trafficCount'
         end
@@ -4405,6 +4441,15 @@ module Google
           property :message, as: 'message'
           property :resource, as: 'resource'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudApigeeV1UpdateSecurityIncidentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :security_incident, as: 'securityIncident', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
