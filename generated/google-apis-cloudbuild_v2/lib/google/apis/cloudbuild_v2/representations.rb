@@ -1109,7 +1109,7 @@ module Google
       
           collection :sidecars, as: 'sidecars', class: Google::Apis::CloudbuildV2::Sidecar, decorator: Google::Apis::CloudbuildV2::Sidecar::Representation
       
-          collection :step_template, as: 'stepTemplate', class: Google::Apis::CloudbuildV2::StepTemplate, decorator: Google::Apis::CloudbuildV2::StepTemplate::Representation
+          property :step_template, as: 'stepTemplate', class: Google::Apis::CloudbuildV2::StepTemplate, decorator: Google::Apis::CloudbuildV2::StepTemplate::Representation
       
           collection :steps, as: 'steps', class: Google::Apis::CloudbuildV2::Step, decorator: Google::Apis::CloudbuildV2::Step::Representation
       

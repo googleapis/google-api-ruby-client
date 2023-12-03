@@ -2522,10 +2522,10 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV2::Sidecar>]
         attr_accessor :sidecars
       
-        # Optional. StepTemplate can be used as the basis for all step containers within
-        # the Task, so that the steps inherit settings on the base container.
+        # StepTemplate can be used as the basis for all step containers within the Task,
+        # so that the steps inherit settings on the base container.
         # Corresponds to the JSON property `stepTemplate`
-        # @return [Array<Google::Apis::CloudbuildV2::StepTemplate>]
+        # @return [Google::Apis::CloudbuildV2::StepTemplate]
         attr_accessor :step_template
       
         # Steps of the task.
