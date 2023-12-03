@@ -1113,8 +1113,10 @@ module Google
         # Specific type of the event. This cannot be modified after the event is created.
         # Possible values are:
         # - "default" - A regular event or not further specified.
-        # - "outOfOffice" - An out-of-office event.
-        # - "focusTime" - A focus-time event.
+        # - "outOfOffice" - An out-of-office event. An outOfOfficeProperties parameter
+        # must be supplied to make a valid event (even if empty).
+        # - "focusTime" - A focus-time event. A focusTimeProperties parameter must be
+        # supplied to make a valid event (even if empty).
         # - "workingLocation" - A working location event.  Currently, only "default "
         # and "workingLocation" events can be created using the API. Extended support
         # for other event types will be made available in later releases.
@@ -1127,7 +1129,7 @@ module Google
         # @return [Google::Apis::CalendarV3::Event::ExtendedProperties]
         attr_accessor :extended_properties
       
-        # Focus Time event data.
+        # Focus Time event data. Required if eventType is focusTime.
         # Corresponds to the JSON property `focusTimeProperties`
         # @return [Google::Apis::CalendarV3::EventFocusTimeProperties]
         attr_accessor :focus_time_properties
@@ -1234,7 +1236,7 @@ module Google
         # @return [Google::Apis::CalendarV3::EventDateTime]
         attr_accessor :original_start_time
       
-        # Out of office event data.
+        # Out of office event data. Required if eventType is outOfOffice.
         # Corresponds to the JSON property `outOfOfficeProperties`
         # @return [Google::Apis::CalendarV3::EventOutOfOfficeProperties]
         attr_accessor :out_of_office_properties

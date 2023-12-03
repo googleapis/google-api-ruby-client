@@ -1284,13 +1284,8 @@ module Google
         #   - "focusTime"
         #   - "outOfOffice"
         #   - "workingLocation"This parameter can be repeated multiple times to return
-        #   events of different types. Currently, these are the only allowed values for
-        #   this field:
-        #   - ["default", "focusTime", "outOfOffice"]
-        #   - ["default", "focusTime", "outOfOffice", "workingLocation"]
-        #   - ["workingLocation"] The default is ["default", "focusTime", "outOfOffice"].
-        #   Additional combinations of these four event types will be made available in
-        #   later releases.
+        #   events of different types. The default is ["default", "focusTime", "
+        #   outOfOffice"].
         # @param [String] i_cal_uid
         #   Specifies an event ID in the iCalendar format to be provided in the response.
         #   Optional. Use this if you want to search for an event by its iCalendar ID.
@@ -1696,13 +1691,8 @@ module Google
         #   - "focusTime"
         #   - "outOfOffice"
         #   - "workingLocation"This parameter can be repeated multiple times to return
-        #   events of different types. Currently, these are the only allowed values for
-        #   this field:
-        #   - ["default", "focusTime", "outOfOffice"]
-        #   - ["default", "focusTime", "outOfOffice", "workingLocation"]
-        #   - ["workingLocation"] The default is ["default", "focusTime", "outOfOffice"].
-        #   Additional combinations of these four event types will be made available in
-        #   later releases.
+        #   events of different types. The default is ["default", "focusTime", "
+        #   outOfOffice"].
         # @param [String] i_cal_uid
         #   Specifies an event ID in the iCalendar format to be provided in the response.
         #   Optional. Use this if you want to search for an event by its iCalendar ID.
