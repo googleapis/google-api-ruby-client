@@ -65,6 +65,12 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # The response of the updated widget. Used to provide autocomplete options for a
+        # widget.
+        # Corresponds to the JSON property `updatedWidget`
+        # @return [Google::Apis::ChatV1::UpdatedWidget]
+        attr_accessor :updated_widget
+      
         # Input only. URL for users to authenticate or configure. (Only for `
         # REQUEST_CONFIG` response types.)
         # Corresponds to the JSON property `url`
@@ -79,6 +85,7 @@ module Google
         def update!(**args)
           @dialog_action = args[:dialog_action] if args.key?(:dialog_action)
           @type = args[:type] if args.key?(:type)
+          @updated_widget = args[:updated_widget] if args.key?(:updated_widget)
           @url = args[:url] if args.key?(:url)
         end
       end
@@ -3631,6 +3638,25 @@ module Google
         end
       end
       
+      # List of widget autocomplete results.
+      class SelectionItems
+        include Google::Apis::Core::Hashable
+      
+        # An array of the SelectionItem objects.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1SelectionItem>]
+        attr_accessor :items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+        end
+      end
+      
       # 
       class SetUpSpaceRequest
         include Google::Apis::Core::Hashable
@@ -4097,6 +4123,33 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @offset = args[:offset] if args.key?(:offset)
+        end
+      end
+      
+      # The response of the updated widget. Used to provide autocomplete options for a
+      # widget.
+      class UpdatedWidget
+        include Google::Apis::Core::Hashable
+      
+        # List of widget autocomplete results.
+        # Corresponds to the JSON property `suggestions`
+        # @return [Google::Apis::ChatV1::SelectionItems]
+        attr_accessor :suggestions
+      
+        # The ID of the updated widget. The ID must match the one for the widget that
+        # triggered the update request.
+        # Corresponds to the JSON property `widget`
+        # @return [String]
+        attr_accessor :widget
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @suggestions = args[:suggestions] if args.key?(:suggestions)
+          @widget = args[:widget] if args.key?(:widget)
         end
       end
       
