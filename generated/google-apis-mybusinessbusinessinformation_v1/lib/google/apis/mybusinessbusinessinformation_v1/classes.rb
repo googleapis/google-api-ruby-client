@@ -708,6 +708,7 @@ module Google
         attr_accessor :next_page_token
       
         # The approximate number of Locations in the list irrespective of pagination.
+        # This field will only be returned if `filter` is used as a query parameter.
         # Corresponds to the JSON property `totalSize`
         # @return [Fixnum]
         attr_accessor :total_size
