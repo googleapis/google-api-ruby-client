@@ -440,6 +440,7 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :state, as: 'state'
           property :type, as: 'type'
@@ -513,6 +514,7 @@ module Google
           property :primary_config, as: 'primaryConfig', class: Google::Apis::AlloydbV1::PrimaryConfig, decorator: Google::Apis::AlloydbV1::PrimaryConfig::Representation
       
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :secondary_config, as: 'secondaryConfig', class: Google::Apis::AlloydbV1::SecondaryConfig, decorator: Google::Apis::AlloydbV1::SecondaryConfig::Representation
       
           property :ssl_config, as: 'sslConfig', class: Google::Apis::AlloydbV1::SslConfig, decorator: Google::Apis::AlloydbV1::SslConfig::Representation
@@ -673,6 +675,7 @@ module Google
           property :read_pool_config, as: 'readPoolConfig', class: Google::Apis::AlloydbV1::ReadPoolConfig, decorator: Google::Apis::AlloydbV1::ReadPoolConfig::Representation
       
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
