@@ -118,7 +118,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new execution using the latest revision of the given workflow.
+        # Creates a new execution using the latest revision of the given workflow. For
+        # more information, see Execute a workflow.
         # @param [String] parent
         #   Required. Name of the workflow for which an execution should be created.
         #   Format: projects/`project`/locations/`location`/workflows/`workflow` The
