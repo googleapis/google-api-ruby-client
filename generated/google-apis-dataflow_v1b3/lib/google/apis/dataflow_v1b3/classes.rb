@@ -2194,8 +2194,8 @@ module Google
         # The current state of the job. Jobs are created in the `JOB_STATE_STOPPED`
         # state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may
         # asynchronously enter a terminal state. After a job has reached a terminal
-        # state, no further state updates may be made. This field may be mutated by the
-        # Cloud Dataflow service; callers cannot mutate it.
+        # state, no further state updates may be made. This field might be mutated by
+        # the Dataflow service; callers cannot mutate it.
         # Corresponds to the JSON property `currentState`
         # @return [String]
         attr_accessor :current_state
@@ -2216,8 +2216,8 @@ module Google
         # @return [Google::Apis::DataflowV1b3::JobExecutionInfo]
         attr_accessor :execution_info
       
-        # The unique ID of this job. This field is set by the Cloud Dataflow service
-        # when the Job is created, and is immutable for the life of the job.
+        # The unique ID of this job. This field is set by the Dataflow service when the
+        # job is created, and is immutable for the life of the job.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2243,11 +2243,12 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # The user-specified Cloud Dataflow job name. Only one Job with a given name can
-        # exist in a project within one region at any given time. Jobs in different
-        # regions can have the same name. If a caller attempts to create a Job with the
-        # same name as an already-existing Job, the attempt returns the existing Job.
-        # The name must match the regular expression `[a-z]([-a-z0-9]`0,1022`[a-z0-9])?`
+        # The user-specified Dataflow job name. Only one active job with a given name
+        # can exist in a project within one region at any given time. Jobs in different
+        # regions can have the same name. If a caller attempts to create a job with the
+        # same name as an active job that already exists, the attempt returns the
+        # existing job. The name must match the regular expression `[a-z]([-a-z0-9]`0,
+        # 1022`[a-z0-9])?`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2259,7 +2260,7 @@ module Google
         # @return [Google::Apis::DataflowV1b3::PipelineDescription]
         attr_accessor :pipeline_description
       
-        # The ID of the Cloud Platform project that the job belongs to.
+        # The ID of the Google Cloud project that the job belongs to.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -2351,7 +2352,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :transform_name_mapping
       
-        # The type of Cloud Dataflow job.
+        # The type of Dataflow job.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4307,6 +4308,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_num_workers
       
+        # Target worker utilization, compared against the aggregate utilization of the
+        # worker pool by autoscaler, to determine upscaling and downscaling when absent
+        # other constraints such as backlog.
+        # Corresponds to the JSON property `workerUtilizationHint`
+        # @return [Float]
+        attr_accessor :worker_utilization_hint
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4315,6 +4323,7 @@ module Google
         def update!(**args)
           @max_num_workers = args[:max_num_workers] if args.key?(:max_num_workers)
           @min_num_workers = args[:min_num_workers] if args.key?(:min_num_workers)
+          @worker_utilization_hint = args[:worker_utilization_hint] if args.key?(:worker_utilization_hint)
         end
       end
       
@@ -5834,6 +5843,55 @@ module Google
         end
       end
       
+      # Contains per-user worker telemetry used in streaming autoscaling.
+      class StreamingScalingReport
+        include Google::Apis::Core::Hashable
+      
+        # Current acive bundle count.
+        # Corresponds to the JSON property `activeBundleCount`
+        # @return [Fixnum]
+        attr_accessor :active_bundle_count
+      
+        # Current acive thread count.
+        # Corresponds to the JSON property `activeThreadCount`
+        # @return [Fixnum]
+        attr_accessor :active_thread_count
+      
+        # Maximum bundle count limit.
+        # Corresponds to the JSON property `maximumBundleCount`
+        # @return [Fixnum]
+        attr_accessor :maximum_bundle_count
+      
+        # Maximum bytes count limit.
+        # Corresponds to the JSON property `maximumBytesCount`
+        # @return [Fixnum]
+        attr_accessor :maximum_bytes_count
+      
+        # Maximum thread count limit.
+        # Corresponds to the JSON property `maximumThreadCount`
+        # @return [Fixnum]
+        attr_accessor :maximum_thread_count
+      
+        # Current outstanding bytes count.
+        # Corresponds to the JSON property `outstandingBytesCount`
+        # @return [Fixnum]
+        attr_accessor :outstanding_bytes_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_bundle_count = args[:active_bundle_count] if args.key?(:active_bundle_count)
+          @active_thread_count = args[:active_thread_count] if args.key?(:active_thread_count)
+          @maximum_bundle_count = args[:maximum_bundle_count] if args.key?(:maximum_bundle_count)
+          @maximum_bytes_count = args[:maximum_bytes_count] if args.key?(:maximum_bytes_count)
+          @maximum_thread_count = args[:maximum_thread_count] if args.key?(:maximum_thread_count)
+          @outstanding_bytes_count = args[:outstanding_bytes_count] if args.key?(:outstanding_bytes_count)
+        end
+      end
+      
       # A task which initializes part of a streaming Dataflow job.
       class StreamingSetupTask
         include Google::Apis::Core::Hashable
@@ -6826,6 +6884,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Contains per-user worker telemetry used in streaming autoscaling.
+        # Corresponds to the JSON property `streamingScalingReport`
+        # @return [Google::Apis::DataflowV1b3::StreamingScalingReport]
+        attr_accessor :streaming_scaling_report
+      
         # The timestamp of the worker_message.
         # Corresponds to the JSON property `time`
         # @return [String]
@@ -6882,6 +6945,7 @@ module Google
         def update!(**args)
           @data_sampling_report = args[:data_sampling_report] if args.key?(:data_sampling_report)
           @labels = args[:labels] if args.key?(:labels)
+          @streaming_scaling_report = args[:streaming_scaling_report] if args.key?(:streaming_scaling_report)
           @time = args[:time] if args.key?(:time)
           @worker_health_report = args[:worker_health_report] if args.key?(:worker_health_report)
           @worker_lifecycle_event = args[:worker_lifecycle_event] if args.key?(:worker_lifecycle_event)
