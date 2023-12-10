@@ -286,8 +286,8 @@ module Google
       
         # Required. The name of the file share. Must use 1-16 characters for the basic
         # service tier and 1-63 characters for all other service tiers. Must use
-        # lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter.
-        # Immutable.
+        # lowercase letters, numbers, or underscores `[a-z0-9_]`. Must start with a
+        # letter. Immutable.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1408,9 +1408,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The snapshot resource ID, in the format 'my-snapshot', where the
-        # specified ID is the `snapshot_id` of the fully qualified name like projects/`
+        # specified ID is the `snapshot_id` of the fully qualified name like `projects/`
         # project_id`/locations/`location_id`/instances/`instance_id`/snapshots/`
-        # snapshot_id`
+        # snapshot_id``
         # Corresponds to the JSON property `targetSnapshotId`
         # @return [String]
         attr_accessor :target_snapshot_id
