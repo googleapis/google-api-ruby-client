@@ -172,6 +172,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllocationAggregateReservation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AllocationAggregateReservationReservedResourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AllocationAggregateReservationReservedResourceInfoAccelerator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocationResourceStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4654,6 +4672,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyRuleMatcherExprOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyRuleNetworkMatcher
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6416,6 +6446,34 @@ module Google
         end
       end
       
+      class AllocationAggregateReservation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :in_use_resources, as: 'inUseResources', class: Google::Apis::ComputeV1::AllocationAggregateReservationReservedResourceInfo, decorator: Google::Apis::ComputeV1::AllocationAggregateReservationReservedResourceInfo::Representation
+      
+          collection :reserved_resources, as: 'reservedResources', class: Google::Apis::ComputeV1::AllocationAggregateReservationReservedResourceInfo, decorator: Google::Apis::ComputeV1::AllocationAggregateReservationReservedResourceInfo::Representation
+      
+          property :vm_family, as: 'vmFamily'
+          property :workload_type, as: 'workloadType'
+        end
+      end
+      
+      class AllocationAggregateReservationReservedResourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator, as: 'accelerator', class: Google::Apis::ComputeV1::AllocationAggregateReservationReservedResourceInfoAccelerator, decorator: Google::Apis::ComputeV1::AllocationAggregateReservationReservedResourceInfoAccelerator::Representation
+      
+        end
+      end
+      
+      class AllocationAggregateReservationReservedResourceInfoAccelerator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_count, as: 'acceleratorCount'
+          property :accelerator_type, as: 'acceleratorType'
+        end
+      end
+      
       class AllocationResourceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6500,6 +6558,7 @@ module Google
           property :disk_name, as: 'diskName'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
           hash :labels, as: 'labels'
           collection :licenses, as: 'licenses'
           property :on_update_action, as: 'onUpdateAction'
@@ -7519,6 +7578,7 @@ module Google
           property :description, as: 'description'
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeV1::GuestOsFeature, decorator: Google::Apis::ComputeV1::GuestOsFeature::Representation
       
           property :id, :numeric_string => true, as: 'id'
@@ -9052,6 +9112,7 @@ module Google
       
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
           property :family, as: 'family'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeV1::GuestOsFeature, decorator: Google::Apis::ComputeV1::GuestOsFeature::Representation
       
@@ -9198,6 +9259,7 @@ module Google
           collection :resource_policies, as: 'resourcePolicies'
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeV1::ResourceStatus, decorator: Google::Apis::ComputeV1::ResourceStatus::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::Scheduling, decorator: Google::Apis::ComputeV1::Scheduling::Representation
       
@@ -13629,6 +13691,8 @@ module Google
       class Reservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregate_reservation, as: 'aggregateReservation', class: Google::Apis::ComputeV1::AllocationAggregateReservation, decorator: Google::Apis::ComputeV1::AllocationAggregateReservation::Representation
+      
           property :commitment, as: 'commitment'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -14832,6 +14896,8 @@ module Google
       
           property :expr, as: 'expr', class: Google::Apis::ComputeV1::Expr, decorator: Google::Apis::ComputeV1::Expr::Representation
       
+          property :expr_options, as: 'exprOptions', class: Google::Apis::ComputeV1::SecurityPolicyRuleMatcherExprOptions, decorator: Google::Apis::ComputeV1::SecurityPolicyRuleMatcherExprOptions::Representation
+      
           property :versioned_expr, as: 'versionedExpr'
         end
       end
@@ -14840,6 +14906,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :src_ip_ranges, as: 'srcIpRanges'
+        end
+      end
+      
+      class SecurityPolicyRuleMatcherExprOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :recaptcha_options, as: 'recaptchaOptions', class: Google::Apis::ComputeV1::SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions, decorator: Google::Apis::ComputeV1::SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :action_token_site_keys, as: 'actionTokenSiteKeys'
+          collection :session_token_site_keys, as: 'sessionTokenSiteKeys'
         end
       end
       
@@ -15216,6 +15298,7 @@ module Google
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :download_bytes, :numeric_string => true, as: 'downloadBytes'
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeV1::GuestOsFeature, decorator: Google::Apis::ComputeV1::GuestOsFeature::Representation
       
           property :id, :numeric_string => true, as: 'id'
