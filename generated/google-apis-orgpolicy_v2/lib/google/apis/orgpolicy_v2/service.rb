@@ -132,6 +132,10 @@ module Google
         # NOT_FOUND` if the constraint or organization policy does not exist.
         # @param [String] name
         #   Required. Name of the policy to delete. See the policy entry for naming rules.
+        # @param [String] etag
+        #   Optional. The current etag of policy. If an etag is provided and does not
+        #   match the current etag of the policy, deletion will be blocked and an ABORTED
+        #   error will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -149,11 +153,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_folder_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_folder_policy(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::OrgpolicyV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::OrgpolicyV2::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -578,6 +583,10 @@ module Google
         # NOT_FOUND` if the constraint or organization policy does not exist.
         # @param [String] name
         #   Required. Name of the policy to delete. See the policy entry for naming rules.
+        # @param [String] etag
+        #   Optional. The current etag of policy. If an etag is provided and does not
+        #   match the current etag of the policy, deletion will be blocked and an ABORTED
+        #   error will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -595,11 +604,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_organization_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_organization_policy(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::OrgpolicyV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::OrgpolicyV2::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -843,6 +853,10 @@ module Google
         # NOT_FOUND` if the constraint or organization policy does not exist.
         # @param [String] name
         #   Required. Name of the policy to delete. See the policy entry for naming rules.
+        # @param [String] etag
+        #   Optional. The current etag of policy. If an etag is provided and does not
+        #   match the current etag of the policy, deletion will be blocked and an ABORTED
+        #   error will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -860,11 +874,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_policy(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::OrgpolicyV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::OrgpolicyV2::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
