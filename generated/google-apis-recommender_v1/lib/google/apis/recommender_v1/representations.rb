@@ -189,6 +189,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cost, as: 'cost', class: Google::Apis::RecommenderV1::GoogleTypeMoney, decorator: Google::Apis::RecommenderV1::GoogleTypeMoney::Representation
       
+          property :cost_in_local_currency, as: 'costInLocalCurrency', class: Google::Apis::RecommenderV1::GoogleTypeMoney, decorator: Google::Apis::RecommenderV1::GoogleTypeMoney::Representation
+      
           property :duration, as: 'duration'
         end
       end
