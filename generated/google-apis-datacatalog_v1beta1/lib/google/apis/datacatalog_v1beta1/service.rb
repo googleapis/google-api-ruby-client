@@ -1793,7 +1793,7 @@ module Google
         
         # Updates a taxonomy.
         # @param [String] name
-        #   Output only. Resource name of this taxonomy, whose format is: "projects/`
+        #   Identifier. Resource name of this taxonomy, whose format is: "projects/`
         #   project_number`/locations/`location_id`/taxonomies/`id`".
         # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy] google_cloud_datacatalog_v1beta1_taxonomy_object
         # @param [String] update_mask
@@ -2070,7 +2070,7 @@ module Google
         
         # Updates a policy tag.
         # @param [String] name
-        #   Output only. Resource name of this policy tag, whose format is: "projects/`
+        #   Identifier. Resource name of this policy tag, whose format is: "projects/`
         #   project_number`/locations/`location_id`/taxonomies/`taxonomy_id`/policyTags/`
         #   id`".
         # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag] google_cloud_datacatalog_v1beta1_policy_tag_object

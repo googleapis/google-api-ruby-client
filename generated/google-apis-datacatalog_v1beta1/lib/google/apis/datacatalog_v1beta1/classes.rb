@@ -2932,7 +2932,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Resource name of this policy tag, whose format is: "projects/`
+        # Identifier. Resource name of this policy tag, whose format is: "projects/`
         # project_number`/locations/`location_id`/taxonomies/`taxonomy_id`/policyTags/`
         # id`".
         # Corresponds to the JSON property `name`
@@ -3625,7 +3625,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Resource name of this taxonomy, whose format is: "projects/`
+        # Identifier. Resource name of this taxonomy, whose format is: "projects/`
         # project_number`/locations/`location_id`/taxonomies/`id`".
         # Corresponds to the JSON property `name`
         # @return [String]
