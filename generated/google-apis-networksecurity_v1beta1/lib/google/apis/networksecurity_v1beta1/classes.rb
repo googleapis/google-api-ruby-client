@@ -450,6 +450,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :associated_networks
       
+        # Output only. List of FirewallEndpointAssociations that are associated to this
+        # endpoint. An association will only appear in this list after traffic routing
+        # is fully configured.
+        # Corresponds to the JSON property `associations`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociationReference>]
+        attr_accessor :associations
+      
         # Optional. Project to bill on endpoint uptime usage.
         # Corresponds to the JSON property `billingProjectId`
         # @return [String]
@@ -470,7 +477,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. name of resource
+        # Immutable. Identifier. name of resource
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -499,6 +506,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @associated_networks = args[:associated_networks] if args.key?(:associated_networks)
+          @associations = args[:associations] if args.key?(:associations)
           @billing_project_id = args[:billing_project_id] if args.key?(:billing_project_id)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
@@ -529,7 +537,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. name of resource
+        # Immutable. Identifier. name of resource
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -576,6 +584,34 @@ module Google
           @state = args[:state] if args.key?(:state)
           @tls_inspection_policy = args[:tls_inspection_policy] if args.key?(:tls_inspection_policy)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # This is a subset of the FirewallEndpointAssociation message, containing fields
+      # to be used by the consumer.
+      class FirewallEndpointAssociationReference
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the FirewallEndpointAssociation. Format:
+        # projects/`project`/locations/`location`/firewallEndpointAssociations/`id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The VPC network associated. Format: projects/`project`/global/
+        # networks/`name`.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
         end
       end
       

@@ -1,5 +1,9 @@
 # Release history for google-apis-networksecurity_v1beta1
 
+### v0.30.0 (2023-12-10)
+
+* Regenerated from discovery document revision 20231205
+
 ### v0.29.0 (2023-11-12)
 
 * Regenerated from discovery document revision 20231101
