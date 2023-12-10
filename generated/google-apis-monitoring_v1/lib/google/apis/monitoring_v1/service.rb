@@ -336,9 +336,9 @@ module Google
         #   A positive number that is the maximum number of results to return. If
         #   unspecified, a default of 1000 is used.
         # @param [String] page_token
-        #   If this field is not empty then it must contain the nextPageToken value
-        #   returned by a previous call to this method. Using this field causes the method
-        #   to return additional results from the previous method call.
+        #   Optional. If this field is not empty then it must contain the nextPageToken
+        #   value returned by a previous call to this method. Using this field causes the
+        #   method to return additional results from the previous method call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -373,7 +373,7 @@ module Google
         # dashboard. For more information, see Cloud Identity and Access Management (
         # https://cloud.google.com/iam).
         # @param [String] name
-        #   Immutable. The resource name of the dashboard.
+        #   Identifier. The resource name of the dashboard.
         # @param [Google::Apis::MonitoringV1::Dashboard] dashboard_object
         # @param [Boolean] validate_only
         #   If set, validate the request and preview the review, but do not actually save
