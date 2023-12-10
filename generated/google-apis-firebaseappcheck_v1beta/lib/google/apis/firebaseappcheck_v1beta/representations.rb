@@ -82,6 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1betaListServicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1betaResourcePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1betaSafetyNetConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +275,12 @@ module Google
       end
       
       class GoogleFirebaseAppcheckV1betaService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -357,6 +387,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :configs, as: 'configs', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig::Representation
+      
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_policies, as: 'resourcePolicies', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaResourcePolicy, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaResourcePolicy::Representation
       
         end
       end
@@ -528,6 +575,15 @@ module Google
         end
       end
       
+      class GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resource_policies, as: 'resourcePolicies', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaResourcePolicy, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaResourcePolicy::Representation
+      
+        end
+      end
+      
       class GoogleFirebaseAppcheckV1betaListServicesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -594,6 +650,17 @@ module Google
         end
       end
       
+      class GoogleFirebaseAppcheckV1betaResourcePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enforcement_mode, as: 'enforcementMode'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :target_resource, as: 'targetResource'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleFirebaseAppcheckV1betaSafetyNetConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -609,6 +676,15 @@ module Google
           property :etag, as: 'etag'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_policy, as: 'resourcePolicy', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaResourcePolicy, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaResourcePolicy::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
