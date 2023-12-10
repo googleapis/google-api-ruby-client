@@ -22,6 +22,38 @@ module Google
   module Apis
     module ConnectorsV2
       
+      # AccessCredentials includes the OAuth access token, and the other fields
+      # returned along with it.
+      class AccessCredentials
+        include Google::Apis::Core::Hashable
+      
+        # OAuth access token.
+        # Corresponds to the JSON property `accessToken`
+        # @return [String]
+        attr_accessor :access_token
+      
+        # Duration till the access token expires.
+        # Corresponds to the JSON property `expiresIn`
+        # @return [String]
+        attr_accessor :expires_in
+      
+        # OAuth refresh token.
+        # Corresponds to the JSON property `refreshToken`
+        # @return [String]
+        attr_accessor :refresh_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
+          @expires_in = args[:expires_in] if args.key?(:expires_in)
+          @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
+        end
+      end
+      
       # Action message contains metadata information about a single action present in
       # the external system.
       class Action
@@ -75,6 +107,51 @@ module Google
           @name = args[:name] if args.key?(:name)
           @result_json_schema = args[:result_json_schema] if args.key?(:result_json_schema)
           @result_metadata = args[:result_metadata] if args.key?(:result_metadata)
+        end
+      end
+      
+      # Response containing status of the connector for readiness prober.
+      class CheckReadinessResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The status of the connector.
+      class CheckStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        # When the connector is not in ACTIVE state, the description must be populated
+        # to specify the reason why it's not in ACTIVE state.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # State of the connector.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -150,6 +227,40 @@ module Google
           @fields = args[:fields] if args.key?(:fields)
           @json_schema = args[:json_schema] if args.key?(:json_schema)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # ExchangeAuthCodeRequest currently includes no fields.
+      class ExchangeAuthCodeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # ExchangeAuthCodeResponse includes the returned access token and its associated
+      # credentials.
+      class ExchangeAuthCodeResponse
+        include Google::Apis::Core::Hashable
+      
+        # AccessCredentials includes the OAuth access token, and the other fields
+        # returned along with it.
+        # Corresponds to the JSON property `accessCredentials`
+        # @return [Google::Apis::ConnectorsV2::AccessCredentials]
+        attr_accessor :access_credentials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_credentials = args[:access_credentials] if args.key?(:access_credentials)
         end
       end
       
@@ -628,6 +739,40 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # RefreshAccessTokenRequest currently includes no fields.
+      class RefreshAccessTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # RefreshAccessTokenResponse includes the returned access token and its
+      # associated credentials.
+      class RefreshAccessTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # AccessCredentials includes the OAuth access token, and the other fields
+        # returned along with it.
+        # Corresponds to the JSON property `accessCredentials`
+        # @return [Google::Apis::ConnectorsV2::AccessCredentials]
+        attr_accessor :access_credentials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_credentials = args[:access_credentials] if args.key?(:access_credentials)
         end
       end
       

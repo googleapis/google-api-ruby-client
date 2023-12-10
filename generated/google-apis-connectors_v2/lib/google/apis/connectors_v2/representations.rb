@@ -22,7 +22,25 @@ module Google
   module Apis
     module ConnectorsV2
       
+      class AccessCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Action
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckReadinessResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckStatusResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -41,6 +59,18 @@ module Google
       end
       
       class EntityType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExchangeAuthCodeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExchangeAuthCodeResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,6 +154,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RefreshAccessTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RefreshAccessTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResultMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -134,6 +176,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'accessToken'
+          property :expires_in, as: 'expiresIn'
+          property :refresh_token, as: 'refreshToken'
+        end
       end
       
       class Action
@@ -150,6 +201,21 @@ module Google
       
           collection :result_metadata, as: 'resultMetadata', class: Google::Apis::ConnectorsV2::ResultMetadata, decorator: Google::Apis::ConnectorsV2::ResultMetadata::Representation
       
+        end
+      end
+      
+      class CheckReadinessResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status, as: 'status'
+        end
+      end
+      
+      class CheckStatusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :state, as: 'state'
         end
       end
       
@@ -175,6 +241,20 @@ module Google
           property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
       
           property :name, as: 'name'
+        end
+      end
+      
+      class ExchangeAuthCodeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ExchangeAuthCodeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_credentials, as: 'accessCredentials', class: Google::Apis::ConnectorsV2::AccessCredentials, decorator: Google::Apis::ConnectorsV2::AccessCredentials::Representation
+      
         end
       end
       
@@ -309,6 +389,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :type, as: 'type'
+        end
+      end
+      
+      class RefreshAccessTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RefreshAccessTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_credentials, as: 'accessCredentials', class: Google::Apis::ConnectorsV2::AccessCredentials, decorator: Google::Apis::ConnectorsV2::AccessCredentials::Representation
+      
         end
       end
       
