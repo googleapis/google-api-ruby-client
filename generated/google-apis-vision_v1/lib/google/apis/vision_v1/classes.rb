@@ -10119,7 +10119,7 @@ module Google
       class WebDetectionParams
         include Google::Apis::Core::Hashable
       
-        # Whether to include results derived from the geo information in the image.
+        # This field has no effect on results.
         # Corresponds to the JSON property `includeGeoResults`
         # @return [Boolean]
         attr_accessor :include_geo_results
