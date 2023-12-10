@@ -31,6 +31,11 @@ module Google
         # @return [Google::Apis::RecommenderV1::GoogleTypeMoney]
         attr_accessor :cost
       
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `costInLocalCurrency`
+        # @return [Google::Apis::RecommenderV1::GoogleTypeMoney]
+        attr_accessor :cost_in_local_currency
+      
         # Duration for which this cost applies.
         # Corresponds to the JSON property `duration`
         # @return [String]
@@ -43,6 +48,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cost = args[:cost] if args.key?(:cost)
+          @cost_in_local_currency = args[:cost_in_local_currency] if args.key?(:cost_in_local_currency)
           @duration = args[:duration] if args.key?(:duration)
         end
       end
