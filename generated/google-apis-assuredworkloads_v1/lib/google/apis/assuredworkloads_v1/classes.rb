@@ -22,7 +22,7 @@ module Google
   module Apis
     module AssuredworkloadsV1
       
-      # Request for acknowledging the violation Next Id: 5
+      # Request for acknowledging the violation
       class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest
         include Google::Apis::Core::Hashable
       
@@ -165,6 +165,19 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # Response for EnableResourceMonitoring endpoint.
+      class GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
