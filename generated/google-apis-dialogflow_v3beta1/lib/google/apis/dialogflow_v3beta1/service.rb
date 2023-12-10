@@ -2891,6 +2891,199 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a generator in the specified agent.
+        # @param [String] parent
+        #   Required. The agent to create a generator for. Format: `projects//locations//
+        #   agents/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator] google_cloud_dialogflow_cx_v3beta1_generator_object
+        # @param [String] language_code
+        #   The language to create generators for the following fields: * `Generator.
+        #   prompt_text.text` If not specified, the agent's default language is used.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_agent_generator(parent, google_cloud_dialogflow_cx_v3beta1_generator_object = nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+parent}/generators', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_generator_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator
+          command.params['parent'] = parent unless parent.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified generators.
+        # @param [String] name
+        #   Required. The name of the generator to delete. Format: `projects//locations//
+        #   agents//generators/`.
+        # @param [Boolean] force
+        #   This field has no effect for generators not being used. For generators that
+        #   are used by pages/flows/transition route groups: * If `force` is set to false,
+        #   an error will be returned with message indicating the referenced resources. *
+        #   If `force` is set to true, Dialogflow will remove the generator, as well as
+        #   any references to the generator (i.e. Generator) in fulfillments.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_agent_generator(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the specified generator.
+        # @param [String] name
+        #   Required. The name of the generator. Format: `projects//locations//agents//
+        #   generators/`.
+        # @param [String] language_code
+        #   The language to list generators for.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_agent_generator(name, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator
+          command.params['name'] = name unless name.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all generators in the specified agent.
+        # @param [String] parent
+        #   Required. The agent to list all generators for. Format: `projects//locations//
+        #   agents/`.
+        # @param [String] language_code
+        #   The language to list generators for.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return in a single page. By default 100 and at
+        #   most 1000.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListGeneratorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListGeneratorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_agent_generators(parent, language_code: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3beta1/{+parent}/generators', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListGeneratorsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListGeneratorsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update the specified generator.
+        # @param [String] name
+        #   The unique identifier of the generator. Must be set for the Generators.
+        #   UpdateGenerator method. Generators.CreateGenerate populates the name
+        #   automatically. Format: `projects//locations//agents//generators/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator] google_cloud_dialogflow_cx_v3beta1_generator_object
+        # @param [String] language_code
+        #   The language to list generators for.
+        # @param [String] update_mask
+        #   The mask to control which fields get updated. If the mask is not present, all
+        #   fields will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_agent_generator(name, google_cloud_dialogflow_cx_v3beta1_generator_object = nil, language_code: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3beta1/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_generator_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Generator
+          command.params['name'] = name unless name.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates an intent in the specified agent. Note: You should always train a flow
         # prior to sending it queries. See the [training documentation](https://cloud.
         # google.com/dialogflow/cx/docs/concept/training).
