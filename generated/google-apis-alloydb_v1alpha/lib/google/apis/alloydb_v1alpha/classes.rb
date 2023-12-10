@@ -207,6 +207,12 @@ module Google
         alias_method :reconciling?, :reconciling
       
         # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -260,6 +266,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @state = args[:state] if args.key?(:state)
@@ -508,6 +515,12 @@ module Google
         alias_method :reconciling?, :reconciling
       
         # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -568,6 +581,7 @@ module Google
           @primary_config = args[:primary_config] if args.key?(:primary_config)
           @psc_config = args[:psc_config] if args.key?(:psc_config)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @secondary_config = args[:secondary_config] if args.key?(:secondary_config)
           @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
@@ -1196,6 +1210,12 @@ module Google
         alias_method :reconciling?, :reconciling
       
         # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -1253,6 +1273,7 @@ module Google
           @query_insights_config = args[:query_insights_config] if args.key?(:query_insights_config)
           @read_pool_config = args[:read_pool_config] if args.key?(:read_pool_config)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
@@ -2324,8 +2345,8 @@ module Google
       
         # Closest parent container of this resource. In GCP, 'container' refers to a
         # Cloud Resource Manager project. It must be resource name of a Cloud Resource
-        # Manager project with the format of "provider//", such as "gcp/projects/123".
-        # For GCP provided resources, number should be project number.
+        # Manager project with the format of "provider//", such as "projects/123". For
+        # GCP provided resources, number should be project number.
         # Corresponds to the JSON property `resourceContainer`
         # @return [String]
         attr_accessor :resource_container
@@ -2488,9 +2509,8 @@ module Google
         attr_accessor :product
       
         # Closest parent Cloud Resource Manager container of this resource. It must be
-        # resource name of a Cloud Resource Manager project with the format of "provider/
-        # /", such as "gcp/projects/123". For GCP provided resources, number should be
-        # project number.
+        # resource name of a Cloud Resource Manager project with the format of "/", such
+        # as "projects/123". For GCP provided resources, number should be project number.
         # Corresponds to the JSON property `resourceContainer`
         # @return [String]
         attr_accessor :resource_container
