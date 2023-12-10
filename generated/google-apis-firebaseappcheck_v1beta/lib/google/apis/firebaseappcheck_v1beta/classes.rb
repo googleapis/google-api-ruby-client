@@ -257,6 +257,55 @@ module Google
         end
       end
       
+      # Request message for the BatchUpdateResourcePolicies method.
+      class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The request messages specifying the ResourcePolicys to update. A
+        # maximum of 100 objects can be updated in a batch.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest>]
+        attr_accessor :requests
+      
+        # Optional. A comma-separated list of names of fields in the
+        # ResourceConfigurations to update. Example: `enforcement_mode`. If this field
+        # is present, the `update_mask` field in the UpdateResourcePolicyRequest
+        # messages must all match this field, or the entire batch fails and no updates
+        # will be committed.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Response message for the BatchUpdateResourcePolicies method.
+      class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # ResourcePolicy objects after the updates have been applied.
+        # Corresponds to the JSON property `resourcePolicies`
+        # @return [Array<Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaResourcePolicy>]
+        attr_accessor :resource_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
+        end
+      end
+      
       # Request message for the BatchUpdateServices method.
       class GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest
         include Google::Apis::Core::Hashable
@@ -866,6 +915,35 @@ module Google
         end
       end
       
+      # Response message for the ListResourcePolicies method.
+      class GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If the result list is too large to fit in a single response, then a token is
+        # returned. If the string is empty or omitted, then this response is the last
+        # page of results. This token can be used in a subsequent call to
+        # ListResourcePolicies to find the next group of ResourcePolicys. Page tokens
+        # are short-lived and should not be persisted.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The ResourcePolicys retrieved.
+        # Corresponds to the JSON property `resourcePolicies`
+        # @return [Array<Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaResourcePolicy>]
+        attr_accessor :resource_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
+        end
+      end
+      
       # Response message for the ListServices method.
       class GoogleFirebaseAppcheckV1betaListServicesResponse
         include Google::Apis::Core::Hashable
@@ -1146,6 +1224,67 @@ module Google
         end
       end
       
+      # App Check enforcement policy for a specific resource of a Firebase service
+      # supported by App Check. Note that this policy will override the Service level
+      # enforcement mode configuration.
+      class GoogleFirebaseAppcheckV1betaResourcePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Required. The App Check enforcement mode for this resource. This will override
+        # the EnforcementMode setting on the service. For new resources that you are
+        # creating, you should consider setting an override and enable enforcement on
+        # the resource immediately, if there are no outdated clients that can use it.
+        # Corresponds to the JSON property `enforcementMode`
+        # @return [String]
+        attr_accessor :enforcement_mode
+      
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update and delete requests to ensure the client has an up-
+        # to-date value before proceeding. This etag is strongly validated.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. The relative name of the resource configuration object, in the
+        # format: ``` projects/`project_number`/services/`service_id`/resourcePolicies/`
+        # resource_policy_id` ``` Note that the `service_id` element must be a supported
+        # service ID. Currently, the following service IDs are supported: * `oauth2.
+        # googleapis.com` (Google Identity for iOS) `resource_policy_id` is a system-
+        # generated UID used as the resource ID for the policy.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Service specific name of the resource object to which this policy
+        # applies, in the format: * `//oauth2.googleapis.com/projects/`project`/
+        # oauthClients/`oauth_client_id`` (Google Identity for iOS) NOTE that the
+        # resource must belong to the service specified in the `name` and be from the
+        # same project as this policy, but it may or may not exist at the time of
+        # creation of the policy.
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        # Output only. Timestamp when this service configuration object was most
+        # recently updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enforcement_mode = args[:enforcement_mode] if args.key?(:enforcement_mode)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # An app's SafetyNet configuration object. This configuration controls certain
       # properties of the `AppCheckToken` returned by ExchangeSafetyNetToken, such as
       # its ttl. Note that your registered SHA-256 certificate fingerprints are used
@@ -1224,6 +1363,35 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for the UpdateResourcePolicy method as well as an individual
+      # update message for the BatchUpdateResourcePolicies method.
+      class GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # App Check enforcement policy for a specific resource of a Firebase service
+        # supported by App Check. Note that this policy will override the Service level
+        # enforcement mode configuration.
+        # Corresponds to the JSON property `resourcePolicy`
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaResourcePolicy]
+        attr_accessor :resource_policy
+      
+        # Required. A comma-separated list of names of fields in the ResourcePolicy to
+        # update. Example: `enforcement_mode`.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_policy = args[:resource_policy] if args.key?(:resource_policy)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
