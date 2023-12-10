@@ -3430,13 +3430,13 @@ module Google
       class BackendService
         include Google::Apis::Core::Hashable
       
-        # Lifetime of cookies in seconds. This setting is applicable to external and
-        # internal HTTP(S) load balancers and Traffic Director and requires
-        # GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is
-        # non-persistent and lasts only until the end of the browser session (or
-        # equivalent). The maximum allowed value is two weeks (1,209,600). Not supported
-        # when the backend service is referenced by a URL map that is bound to target
-        # gRPC proxy that has validateForProxyless field set to true.
+        # Lifetime of cookies in seconds. This setting is applicable to Application Load
+        # Balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE
+        # session affinity. If set to 0, the cookie is non-persistent and lasts only
+        # until the end of the browser session (or equivalent). The maximum allowed
+        # value is two weeks (1,209,600). Not supported when the backend service is
+        # referenced by a URL map that is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `affinityCookieTtlSec`
         # @return [Fixnum]
         attr_accessor :affinity_cookie_ttl_sec
@@ -3507,23 +3507,23 @@ module Google
         # @return [String]
         attr_accessor :edge_security_policy
       
-        # If true, enables Cloud CDN for the backend service of an external HTTP(S) load
-        # balancer.
+        # If true, enables Cloud CDN for the backend service of a global external
+        # Application Load Balancer.
         # Corresponds to the JSON property `enableCDN`
         # @return [Boolean]
         attr_accessor :enable_cdn
         alias_method :enable_cdn?, :enable_cdn
       
-        # For load balancers that have configurable failover: [Internal TCP/UDP Load
-        # Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-
-        # overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-
-        # balancing/docs/network/networklb-failover-overview). On failover or failback,
-        # this field indicates whether connection draining will be honored. Google Cloud
-        # has a fixed connection draining timeout of 10 minutes. A setting of true
-        # terminates existing TCP connections to the active pool during failover and
-        # failback, immediately draining traffic. A setting of false allows existing TCP
-        # connections to persist, even on VMs no longer in the active pool, for up to
-        # the duration of the connection draining timeout (10 minutes).
+        # For load balancers that have configurable failover: [Internal passthrough
+        # Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/
+        # failover-overview) and [external passthrough Network Load Balancers](https://
+        # cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On
+        # failover or failback, this field indicates whether connection draining will be
+        # honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A
+        # setting of true terminates existing TCP connections to the active pool during
+        # failover and failback, immediately draining traffic. A setting of false allows
+        # existing TCP connections to persist, even on VMs no longer in the active pool,
+        # for up to the duration of the connection draining timeout (10 minutes).
         # Corresponds to the JSON property `failoverPolicy`
         # @return [Google::Apis::ComputeBeta::BackendServiceFailoverPolicy]
         attr_accessor :failover_policy
@@ -3572,12 +3572,13 @@ module Google
         # traffic to the backends of the backend service (Instance Group, Managed
         # Instance Group, Network Endpoint Group), regardless of traffic from the client
         # to the proxy. Only IPv6 health checks are used to check the health of the
-        # backends. This field is applicable to either: - Advanced Global External HTTPS
-        # Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External
-        # HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme
-        # INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing
-        # scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless
-        # gRPC (load balancing scheme INTERNAL_SELF_MANAGED).
+        # backends. This field is applicable to either: - Advanced global external
+        # Application Load Balancer (load balancing scheme EXTERNAL_MANAGED), - Regional
+        # external Application Load Balancer, - Internal proxy Network Load Balancer (
+        # load balancing scheme INTERNAL_MANAGED), - Regional internal Application Load
+        # Balancer (load balancing scheme INTERNAL_MANAGED), - Traffic Director with
+        # Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED).
+        # 
         # Corresponds to the JSON property `ipAddressSelectionPolicy`
         # @return [String]
         attr_accessor :ip_address_selection_policy
@@ -3677,8 +3678,8 @@ module Google
         attr_accessor :outlier_detection
       
         # Deprecated in favor of portName. The TCP port to connect on the backend. The
-        # default value is 80. For Internal TCP/UDP Load Balancing and Network Load
-        # Balancing, omit port.
+        # default value is 80. For internal passthrough Network Load Balancers and
+        # external passthrough Network Load Balancers, omit port.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -3687,8 +3688,8 @@ module Google
         # communication to the backend VMs in that group. The named port must be [
         # defined on each backend instance group](https://cloud.google.com/load-
         # balancing/docs/backend-service#named_ports). This parameter has no meaning if
-        # the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load
-        # Balancing, omit port_name.
+        # the backends are NEGs. For internal passthrough Network Load Balancers and
+        # external passthrough Network Load Balancers, omit port_name.
         # Corresponds to the JSON property `portName`
         # @return [String]
         attr_accessor :port_name
@@ -4179,20 +4180,20 @@ module Google
         # @return [String]
         attr_accessor :connection_persistence_on_unhealthy_backends
       
-        # Enable Strong Session Affinity for Network Load Balancing. This option is not
-        # available publicly.
+        # Enable Strong Session Affinity for external passthrough Network Load Balancers.
+        # This option is not available publicly.
         # Corresponds to the JSON property `enableStrongAffinity`
         # @return [Boolean]
         attr_accessor :enable_strong_affinity
         alias_method :enable_strong_affinity?, :enable_strong_affinity
       
         # Specifies how long to keep a Connection Tracking entry while there is no
-        # matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The
-        # minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set
-        # only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is
-        # CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is
-        # PER_SESSION). For Network Load Balancer the default is 60 seconds. This option
-        # is not available publicly.
+        # matching traffic (in seconds). For internal passthrough Network Load Balancers:
+        # - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can
+        # be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity
+        # is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode
+        # is PER_SESSION). For external passthrough Network Load Balancers the default
+        # is 60 seconds. This option is not available publicly.
         # Corresponds to the JSON property `idleTimeoutSec`
         # @return [Fixnum]
         attr_accessor :idle_timeout_sec
@@ -4223,16 +4224,16 @@ module Google
         end
       end
       
-      # For load balancers that have configurable failover: [Internal TCP/UDP Load
-      # Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-
-      # overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-
-      # balancing/docs/network/networklb-failover-overview). On failover or failback,
-      # this field indicates whether connection draining will be honored. Google Cloud
-      # has a fixed connection draining timeout of 10 minutes. A setting of true
-      # terminates existing TCP connections to the active pool during failover and
-      # failback, immediately draining traffic. A setting of false allows existing TCP
-      # connections to persist, even on VMs no longer in the active pool, for up to
-      # the duration of the connection draining timeout (10 minutes).
+      # For load balancers that have configurable failover: [Internal passthrough
+      # Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/
+      # failover-overview) and [external passthrough Network Load Balancers](https://
+      # cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On
+      # failover or failback, this field indicates whether connection draining will be
+      # honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A
+      # setting of true terminates existing TCP connections to the active pool during
+      # failover and failback, immediately draining traffic. A setting of false allows
+      # existing TCP connections to persist, even on VMs no longer in the active pool,
+      # for up to the duration of the connection draining timeout (10 minutes).
       class BackendServiceFailoverPolicy
         include Google::Apis::Core::Hashable
       
@@ -4246,10 +4247,10 @@ module Google
         # and all backup backend VMs are unhealthy.If set to false, connections are
         # distributed among all primary VMs when all primary and all backup backend VMs
         # are unhealthy. For load balancers that have configurable failover: [Internal
-        # TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/
-        # failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.
-        # com/load-balancing/docs/network/networklb-failover-overview). The default is
-        # false.
+        # passthrough Network Load Balancers](https://cloud.google.com/load-balancing/
+        # docs/internal/failover-overview) and [external passthrough Network Load
+        # Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-
+        # failover-overview). The default is false.
         # Corresponds to the JSON property `dropTrafficIfUnhealthy`
         # @return [Boolean]
         attr_accessor :drop_traffic_if_unhealthy
@@ -9775,10 +9776,10 @@ module Google
       # google.com/compute/docs/reference/rest/beta/globalForwardingRules) * [Regional]
       # (https://cloud.google.com/compute/docs/reference/rest/beta/forwardingRules) A
       # forwarding rule and its corresponding IP address represent the frontend
-      # configuration of a Google Cloud Platform load balancer. Forwarding rules can
-      # also reference target instances and Cloud VPN Classic gateways (
-      # targetVpnGateway). For more information, read Forwarding rule concepts and
-      # Using protocol forwarding.
+      # configuration of a Google Cloud load balancer. Forwarding rules can also
+      # reference target instances and Cloud VPN Classic gateways (targetVpnGateway).
+      # For more information, read Forwarding rule concepts and Using protocol
+      # forwarding.
       class ForwardingRule
         include Google::Apis::Core::Hashable
       
@@ -9834,11 +9835,12 @@ module Google
       
         # This field is used along with the backend_service field for internal load
         # balancing or with the target field for internal TargetInstance. If set to true,
-        # clients can access the Internal TCP/UDP Load Balancer, Internal HTTP(S) and
-        # TCP Proxy Load Balancer from all regions. If false, only allows access from
-        # the local region the load balancer is located at. Note that for
-        # INTERNAL_MANAGED forwarding rules, this field cannot be changed after the
-        # forwarding rule is created.
+        # clients can access the internal passthrough Network Load Balancers, the
+        # regional internal Application Load Balancer, and the regional internal proxy
+        # Network Load Balancer from all regions. If false, only allows access from the
+        # local region the load balancer is located at. Note that for INTERNAL_MANAGED
+        # forwarding rules, this field cannot be changed after the forwarding rule is
+        # created.
         # Corresponds to the JSON property `allowGlobalAccess`
         # @return [Boolean]
         attr_accessor :allow_global_access
@@ -9862,16 +9864,16 @@ module Google
         alias_method :allow_psc_packet_injection?, :allow_psc_packet_injection
       
         # Identifies the backend service to which the forwarding rule sends traffic.
-        # Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must
-        # be omitted for all other load balancer types.
+        # Required for internal and external passthrough Network Load Balancers; must be
+        # omitted for all other load balancer types.
         # Corresponds to the JSON property `backendService`
         # @return [String]
         attr_accessor :backend_service
       
-        # [Output Only] The URL for the corresponding base Forwarding Rule. By base
-        # Forwarding Rule, we mean the Forwarding Rule that has the same IP address,
-        # protocol, and port settings with the current Forwarding Rule, but without
-        # sourceIPRanges specified. Always empty if the current Forwarding Rule does not
+        # [Output Only] The URL for the corresponding base forwarding rule. By base
+        # forwarding rule, we mean the forwarding rule that has the same IP address,
+        # protocol, and port settings with the current forwarding rule, but without
+        # sourceIPRanges specified. Always empty if the current forwarding rule does not
         # have sourceIPRanges specified.
         # Corresponds to the JSON property `baseForwardingRule`
         # @return [String]
@@ -9922,7 +9924,7 @@ module Google
         alias_method :is_mirroring_collector?, :is_mirroring_collector
       
         # [Output Only] Type of the resource. Always compute#forwardingRule for
-        # Forwarding Rule resources.
+        # forwarding rule resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -9984,13 +9986,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # This field is not used for global external load balancing. For Internal TCP/
-        # UDP Load Balancing, this field identifies the network that the load balanced
-        # IP should belong to for this Forwarding Rule. If the subnetwork is specified,
-        # the network of the subnetwork will be used. If neither subnetwork nor this
-        # field is specified, the default network will be used. For Private Service
-        # Connect forwarding rules that forward traffic to Google APIs, a network must
-        # be provided.
+        # This field is not used for global external load balancing. For internal
+        # passthrough Network Load Balancers, this field identifies the network that the
+        # load balanced IP should belong to for this forwarding rule. If the subnetwork
+        # is specified, the network of the subnetwork will be used. If neither
+        # subnetwork nor this field is specified, the default network will be used. For
+        # Private Service Connect forwarding rules that forward traffic to Google APIs,
+        # a network must be provided.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -10049,7 +10051,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :ports
       
-        # [Output Only] The PSC connection id of the PSC Forwarding Rule.
+        # [Output Only] The PSC connection id of the PSC forwarding rule.
         # Corresponds to the JSON property `pscConnectionId`
         # @return [Fixnum]
         attr_accessor :psc_connection_id
@@ -10078,7 +10080,7 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::ForwardingRuleServiceDirectoryRegistration>]
         attr_accessor :service_directory_registrations
       
-        # An optional prefix to the service name for this Forwarding Rule. If specified,
+        # An optional prefix to the service name for this forwarding rule. If specified,
         # the prefix is the first label of the fully qualified service name. The label
         # must be 1-63 characters long, and comply with RFC1035. Specifically, the label
         # must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*
@@ -10090,16 +10092,16 @@ module Google
         # @return [String]
         attr_accessor :service_label
       
-        # [Output Only] The internal fully qualified service name for this Forwarding
-        # Rule. This field is only used for internal load balancing.
+        # [Output Only] The internal fully qualified service name for this forwarding
+        # rule. This field is only used for internal load balancing.
         # Corresponds to the JSON property `serviceName`
         # @return [String]
         attr_accessor :service_name
       
-        # If not empty, this Forwarding Rule will only forward the traffic when the
+        # If not empty, this forwarding rule will only forward the traffic when the
         # source IP address matches one of the IP addresses or CIDR ranges set here.
-        # Note that a Forwarding Rule can only have up to 64 source IP ranges, and this
-        # field can only be used with a regional Forwarding Rule whose scheme is
+        # Note that a forwarding rule can only have up to 64 source IP ranges, and this
+        # field can only be used with a regional forwarding rule whose scheme is
         # EXTERNAL. Each source_ip_range entry should be either an IP address (for
         # example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         # Corresponds to the JSON property `sourceIpRanges`
@@ -10107,10 +10109,11 @@ module Google
         attr_accessor :source_ip_ranges
       
         # This field identifies the subnetwork that the load balanced IP should belong
-        # to for this Forwarding Rule, used in internal load balancing and network load
-        # balancing with IPv6. If the network specified is in auto subnet mode, this
-        # field is optional. However, a subnetwork must be specified if the network is
-        # in custom subnet mode or when creating external forwarding rule with IPv6.
+        # to for this forwarding rule, used with internal load balancers and external
+        # passthrough Network Load Balancers with IPv6. If the network specified is in
+        # auto subnet mode, this field is optional. However, a subnetwork must be
+        # specified if the network is in custom subnet mode or when creating external
+        # forwarding rule with IPv6.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -10435,9 +10438,9 @@ module Google
         end
       end
       
-      # Describes the auto-registration of the Forwarding Rule to Service Directory.
+      # Describes the auto-registration of the forwarding rule to Service Directory.
       # The region and project of the Service Directory resource generated from this
-      # registration will be the same as this Forwarding Rule.
+      # registration will be the same as this forwarding rule.
       class ForwardingRuleServiceDirectoryRegistration
         include Google::Apis::Core::Hashable
       
@@ -10453,7 +10456,7 @@ module Google
       
         # [Optional] Service Directory region to register this global forwarding rule
         # under. Default to "us-central1". Only used for PSC for Google APIs. All PSC
-        # for Google APIs Forwarding Rules on the same network should use the same
+        # for Google APIs forwarding rules on the same network should use the same
         # Service Directory region.
         # Corresponds to the JSON property `serviceDirectoryRegion`
         # @return [String]
@@ -10566,9 +10569,9 @@ module Google
       class FutureReservation
         include Google::Apis::Core::Hashable
       
-        # Future timestamp when the FR auto-created reservations will be deleted by GCE.
-        # Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.
-        # txt">RFC3339 value.
+        # Future timestamp when the FR auto-created reservations will be deleted by
+        # Compute Engine. Format of this field must be a valid href="https://www.ietf.
+        # org/rfc/rfc3339.txt">RFC3339 value.
         # Corresponds to the JSON property `autoCreatedReservationsDeleteTime`
         # @return [String]
         attr_accessor :auto_created_reservations_delete_time
@@ -11307,7 +11310,7 @@ module Google
       
         # Specifies how a port is selected for health checking. Can be one of the
         # following values: USE_FIXED_PORT: Specifies a port number explicitly using the
-        # port field in the health check. Supported by backend services for pass-through
+        # port field in the health check. Supported by backend services for passthrough
         # load balancers and backend services for proxy load balancers. Not supported by
         # target pools. The health check supports all backends supported by the backend
         # service provided the backend can be health checked. For example, GCE_VM_IP
@@ -11315,13 +11318,13 @@ module Google
         # group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an
         # indirect method of specifying the health check port by referring to the
         # backend service. Only supported by backend services for proxy load balancers.
-        # Not supported by target pools. Not supported by backend services for pass-
-        # through load balancers. Supports all backends that can be health checked; for
-        # example, GCE_VM_IP_PORT network endpoint groups and instance group backends.
-        # For GCE_VM_IP_PORT network endpoint group backends, the health check uses the
-        # port number specified for each endpoint in the network endpoint group. For
-        # instance group backends, the health check uses the port number determined by
-        # looking up the backend service's named port in the instance group's list of
+        # Not supported by target pools. Not supported by backend services for
+        # passthrough load balancers. Supports all backends that can be health checked;
+        # for example, GCE_VM_IP_PORT network endpoint groups and instance group
+        # backends. For GCE_VM_IP_PORT network endpoint group backends, the health check
+        # uses the port number specified for each endpoint in the network endpoint group.
+        # For instance group backends, the health check uses the port number determined
+        # by looking up the backend service's named port in the instance group's list of
         # named ports.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
@@ -11712,7 +11715,7 @@ module Google
       
         # Specifies how a port is selected for health checking. Can be one of the
         # following values: USE_FIXED_PORT: Specifies a port number explicitly using the
-        # port field in the health check. Supported by backend services for pass-through
+        # port field in the health check. Supported by backend services for passthrough
         # load balancers and backend services for proxy load balancers. Not supported by
         # target pools. The health check supports all backends supported by the backend
         # service provided the backend can be health checked. For example, GCE_VM_IP
@@ -11720,13 +11723,13 @@ module Google
         # group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an
         # indirect method of specifying the health check port by referring to the
         # backend service. Only supported by backend services for proxy load balancers.
-        # Not supported by target pools. Not supported by backend services for pass-
-        # through load balancers. Supports all backends that can be health checked; for
-        # example, GCE_VM_IP_PORT network endpoint groups and instance group backends.
-        # For GCE_VM_IP_PORT network endpoint group backends, the health check uses the
-        # port number specified for each endpoint in the network endpoint group. For
-        # instance group backends, the health check uses the port number determined by
-        # looking up the backend service's named port in the instance group's list of
+        # Not supported by target pools. Not supported by backend services for
+        # passthrough load balancers. Supports all backends that can be health checked;
+        # for example, GCE_VM_IP_PORT network endpoint groups and instance group
+        # backends. For GCE_VM_IP_PORT network endpoint group backends, the health check
+        # uses the port number specified for each endpoint in the network endpoint group.
+        # For instance group backends, the health check uses the port number determined
+        # by looking up the backend service's named port in the instance group's list of
         # named ports.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
@@ -11794,7 +11797,7 @@ module Google
       
         # Specifies how a port is selected for health checking. Can be one of the
         # following values: USE_FIXED_PORT: Specifies a port number explicitly using the
-        # port field in the health check. Supported by backend services for pass-through
+        # port field in the health check. Supported by backend services for passthrough
         # load balancers and backend services for proxy load balancers. Also supported
         # in legacy HTTP health checks for target pools. The health check supports all
         # backends supported by the backend service provided the backend can be health
@@ -11876,7 +11879,7 @@ module Google
       
         # Specifies how a port is selected for health checking. Can be one of the
         # following values: USE_FIXED_PORT: Specifies a port number explicitly using the
-        # port field in the health check. Supported by backend services for pass-through
+        # port field in the health check. Supported by backend services for passthrough
         # load balancers and backend services for proxy load balancers. Not supported by
         # target pools. The health check supports all backends supported by the backend
         # service provided the backend can be health checked. For example, GCE_VM_IP
@@ -11884,13 +11887,13 @@ module Google
         # group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an
         # indirect method of specifying the health check port by referring to the
         # backend service. Only supported by backend services for proxy load balancers.
-        # Not supported by target pools. Not supported by backend services for pass-
-        # through load balancers. Supports all backends that can be health checked; for
-        # example, GCE_VM_IP_PORT network endpoint groups and instance group backends.
-        # For GCE_VM_IP_PORT network endpoint group backends, the health check uses the
-        # port number specified for each endpoint in the network endpoint group. For
-        # instance group backends, the health check uses the port number determined by
-        # looking up the backend service's named port in the instance group's list of
+        # Not supported by target pools. Not supported by backend services for
+        # passthrough load balancers. Supports all backends that can be health checked;
+        # for example, GCE_VM_IP_PORT network endpoint groups and instance group
+        # backends. For GCE_VM_IP_PORT network endpoint group backends, the health check
+        # uses the port number specified for each endpoint in the network endpoint group.
+        # For instance group backends, the health check uses the port number determined
+        # by looking up the backend service's named port in the instance group's list of
         # named ports.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
@@ -11936,18 +11939,13 @@ module Google
       # resources: * [Regional](/compute/docs/reference/rest/beta/regionHealthChecks) *
       # [Global](/compute/docs/reference/rest/beta/healthChecks) These health check
       # resources can be used for load balancing and for autohealing VMs in a managed
-      # instance group (MIG). **Load balancing** The following load balancer can use
-      # either regional or global health check: * Internal TCP/UDP load balancer The
-      # following load balancers require regional health check: * Internal HTTP(S)
-      # load balancer * Backend service-based network load balancer Traffic Director
-      # and the following load balancers require global health check: * External HTTP(
-      # S) load balancer * TCP proxy load balancer * SSL proxy load balancer The
-      # following load balancer require [legacy HTTP health checks](/compute/docs/
-      # reference/rest/v1/httpHealthChecks): * Target pool-based network load balancer
-      # **Autohealing in MIGs** The health checks that you use for autohealing VMs in
-      # a MIG can be either regional or global. For more information, see Set up an
-      # application health check and autohealing. For more information, see Health
-      # checks overview.
+      # instance group (MIG). **Load balancing** Health check requirements vary
+      # depending on the type of load balancer. For details about the type of health
+      # check supported for each load balancer and corresponding backend type, see
+      # Health checks overview: Load balancer guide. **Autohealing in MIGs** The
+      # health checks that you use for autohealing VMs in a MIG can be either regional
+      # or global. For more information, see Set up an application health check and
+      # autohealing. For more information, see Health checks overview.
       class HealthCheck
         include Google::Apis::Core::Hashable
       
@@ -14939,6 +14937,12 @@ module Google
         attr_accessor :resource_status
       
         # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -15068,6 +15072,7 @@ module Google
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -16180,6 +16185,12 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>]
         attr_accessor :instance_selection_lists
       
+        # Named instance selections configuring properties that the group will use when
+        # creating new VMs.
+        # Corresponds to the JSON property `instanceSelections`
+        # @return [Hash<String,Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>]
+        attr_accessor :instance_selections
+      
         def initialize(**args)
            update!(**args)
         end
@@ -16187,6 +16198,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instance_selection_lists = args[:instance_selection_lists] if args.key?(:instance_selection_lists)
+          @instance_selections = args[:instance_selections] if args.key?(:instance_selections)
         end
       end
       
@@ -16728,7 +16740,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :initial_delay_sec
       
-        # Defines behaviour of using instances from standby pool to resize MIG.
+        # Defines how a MIG resumes or starts VMs from a standby pool when the group
+        # scales out. The default mode is `MANUAL`.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -37727,7 +37740,7 @@ module Google
       
         # Specifies how a port is selected for health checking. Can be one of the
         # following values: USE_FIXED_PORT: Specifies a port number explicitly using the
-        # port field in the health check. Supported by backend services for pass-through
+        # port field in the health check. Supported by backend services for passthrough
         # load balancers and backend services for proxy load balancers. Not supported by
         # target pools. The health check supports all backends supported by the backend
         # service provided the backend can be health checked. For example, GCE_VM_IP
@@ -37735,13 +37748,13 @@ module Google
         # group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an
         # indirect method of specifying the health check port by referring to the
         # backend service. Only supported by backend services for proxy load balancers.
-        # Not supported by target pools. Not supported by backend services for pass-
-        # through load balancers. Supports all backends that can be health checked; for
-        # example, GCE_VM_IP_PORT network endpoint groups and instance group backends.
-        # For GCE_VM_IP_PORT network endpoint group backends, the health check uses the
-        # port number specified for each endpoint in the network endpoint group. For
-        # instance group backends, the health check uses the port number determined by
-        # looking up the backend service's named port in the instance group's list of
+        # Not supported by target pools. Not supported by backend services for
+        # passthrough load balancers. Supports all backends that can be health checked;
+        # for example, GCE_VM_IP_PORT network endpoint groups and instance group
+        # backends. For GCE_VM_IP_PORT network endpoint group backends, the health check
+        # uses the port number specified for each endpoint in the network endpoint group.
+        # For instance group backends, the health check uses the port number determined
+        # by looking up the backend service's named port in the instance group's list of
         # named ports.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
@@ -38758,11 +38771,32 @@ module Google
         # @return [Float]
         attr_accessor :auto_deploy_load_threshold
       
+        # 
+        # Corresponds to the JSON property `detectionAbsoluteQps`
+        # @return [Float]
+        attr_accessor :detection_absolute_qps
+      
+        # 
+        # Corresponds to the JSON property `detectionLoadThreshold`
+        # @return [Float]
+        attr_accessor :detection_load_threshold
+      
+        # 
+        # Corresponds to the JSON property `detectionRelativeToBaselineQps`
+        # @return [Float]
+        attr_accessor :detection_relative_to_baseline_qps
+      
         # The name must be 1-63 characters long, and comply with RFC1035. The name must
         # be unique within the security policy.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Configuration options for enabling Adaptive Protection to operate on specified
+        # granular traffic units.
+        # Corresponds to the JSON property `trafficGranularityConfigs`
+        # @return [Array<Google::Apis::ComputeBeta::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>]
+        attr_accessor :traffic_granularity_configs
       
         def initialize(**args)
            update!(**args)
@@ -38774,7 +38808,46 @@ module Google
           @auto_deploy_expiration_sec = args[:auto_deploy_expiration_sec] if args.key?(:auto_deploy_expiration_sec)
           @auto_deploy_impacted_baseline_threshold = args[:auto_deploy_impacted_baseline_threshold] if args.key?(:auto_deploy_impacted_baseline_threshold)
           @auto_deploy_load_threshold = args[:auto_deploy_load_threshold] if args.key?(:auto_deploy_load_threshold)
+          @detection_absolute_qps = args[:detection_absolute_qps] if args.key?(:detection_absolute_qps)
+          @detection_load_threshold = args[:detection_load_threshold] if args.key?(:detection_load_threshold)
+          @detection_relative_to_baseline_qps = args[:detection_relative_to_baseline_qps] if args.key?(:detection_relative_to_baseline_qps)
           @name = args[:name] if args.key?(:name)
+          @traffic_granularity_configs = args[:traffic_granularity_configs] if args.key?(:traffic_granularity_configs)
+        end
+      end
+      
+      # Configurations to specifc granular traffic units processed by Adaptive
+      # Protection.
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig
+        include Google::Apis::Core::Hashable
+      
+        # If enabled, traffic matching each unique value for the specified type
+        # constitutes a separate traffic unit. It can only be set to true if `value` is
+        # empty.
+        # Corresponds to the JSON property `enableEachUniqueValue`
+        # @return [Boolean]
+        attr_accessor :enable_each_unique_value
+        alias_method :enable_each_unique_value?, :enable_each_unique_value
+      
+        # Type of this configuration.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Requests that match this value constitute a granular traffic unit.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_each_unique_value = args[:enable_each_unique_value] if args.key?(:enable_each_unique_value)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -39662,7 +39735,13 @@ module Google
         # is truncated to the first 128 bytes. - SNI: Server name indication in the TLS
         # session of the HTTPS request. The key value is truncated to the first 128
         # bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The
-        # country/region from which the request originates.
+        # country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3
+        # TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If
+        # not available, the key type defaults to ALL. - USER_IP: The IP address of the
+        # originating client, which is resolved based on "userIpRequestHeaders"
+        # configured with the security policy. If there is no "userIpRequestHeaders"
+        # configuration or an IP address cannot be resolved from it, the key type
+        # defaults to IP.
         # Corresponds to the JSON property `enforceOnKey`
         # @return [String]
         attr_accessor :enforce_on_key
@@ -39751,7 +39830,13 @@ module Google
         # is truncated to the first 128 bytes. - SNI: Server name indication in the TLS
         # session of the HTTPS request. The key value is truncated to the first 128
         # bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The
-        # country/region from which the request originates.
+        # country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3
+        # TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If
+        # not available, the key type defaults to ALL. - USER_IP: The IP address of the
+        # originating client, which is resolved based on "userIpRequestHeaders"
+        # configured with the security policy. If there is no "userIpRequestHeaders"
+        # configuration or an IP address cannot be resolved from it, the key type
+        # defaults to IP.
         # Corresponds to the JSON property `enforceOnKeyType`
         # @return [String]
         attr_accessor :enforce_on_key_type
@@ -42528,9 +42613,10 @@ module Google
         end
       end
       
-      # Represents an SSL Policy resource. Use SSL policies to control the SSL
-      # features, such as versions and cipher suites, offered by an HTTPS or SSL Proxy
-      # load balancer. For more information, read SSL Policy Concepts.
+      # Represents an SSL Policy resource. Use SSL policies to control SSL features,
+      # such as versions and cipher suites, that are offered by Application Load
+      # Balancers and proxy Network Load Balancers. For more information, read SSL
+      # policies overview.
       class SslPolicy
         include Google::Apis::Core::Hashable
       
@@ -43642,7 +43728,7 @@ module Google
       
         # Specifies how a port is selected for health checking. Can be one of the
         # following values: USE_FIXED_PORT: Specifies a port number explicitly using the
-        # port field in the health check. Supported by backend services for pass-through
+        # port field in the health check. Supported by backend services for passthrough
         # load balancers and backend services for proxy load balancers. Not supported by
         # target pools. The health check supports all backends supported by the backend
         # service provided the backend can be health checked. For example, GCE_VM_IP
@@ -43650,13 +43736,13 @@ module Google
         # group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an
         # indirect method of specifying the health check port by referring to the
         # backend service. Only supported by backend services for proxy load balancers.
-        # Not supported by target pools. Not supported by backend services for pass-
-        # through load balancers. Supports all backends that can be health checked; for
-        # example, GCE_VM_IP_PORT network endpoint groups and instance group backends.
-        # For GCE_VM_IP_PORT network endpoint group backends, the health check uses the
-        # port number specified for each endpoint in the network endpoint group. For
-        # instance group backends, the health check uses the port number determined by
-        # looking up the backend service's named port in the instance group's list of
+        # Not supported by target pools. Not supported by backend services for
+        # passthrough load balancers. Supports all backends that can be health checked;
+        # for example, GCE_VM_IP_PORT network endpoint groups and instance group
+        # backends. For GCE_VM_IP_PORT network endpoint group backends, the health check
+        # uses the port number specified for each endpoint in the network endpoint group.
+        # For instance group backends, the health check uses the port number determined
+        # by looking up the backend service's named port in the instance group's list of
         # named ports.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
@@ -45456,10 +45542,10 @@ module Google
         end
       end
       
-      # Represents a Target Pool resource. Target pools are used for network TCP/UDP
-      # load balancing. A target pool references member instances, an associated
-      # legacy HttpHealthCheck resource, and, optionally, a backup target pool. For
-      # more information, read Using target pools.
+      # Represents a Target Pool resource. Target pools are used with external
+      # passthrough Network Load Balancers. A target pool references member instances,
+      # an associated legacy HttpHealthCheck resource, and, optionally, a backup
+      # target pool. For more information, read Using target pools.
       class TargetPool
         include Google::Apis::Core::Hashable
       
@@ -46129,9 +46215,9 @@ module Google
       end
       
       # Represents a Target SSL Proxy resource. A target SSL proxy is a component of a
-      # SSL Proxy load balancer. Global forwarding rules reference a target SSL proxy,
-      # and the target proxy then references an external backend service. For more
-      # information, read Using Target Proxies.
+      # Proxy Network Load Balancer. The forwarding rule references the target SSL
+      # proxy, and the target proxy then references a backend service. For more
+      # information, read Proxy Network Load Balancer overview.
       class TargetSslProxy
         include Google::Apis::Core::Hashable
       
@@ -46476,9 +46562,9 @@ module Google
       end
       
       # Represents a Target TCP Proxy resource. A target TCP proxy is a component of a
-      # TCP Proxy load balancer. Global forwarding rules reference target TCP proxy,
-      # and the target proxy then references an external backend service. For more
-      # information, read TCP Proxy Load Balancing overview.
+      # Proxy Network Load Balancer. The forwarding rule references the target TCP
+      # proxy, and the target proxy then references a backend service. For more
+      # information, read Proxy Network Load Balancer overview.
       class TargetTcpProxy
         include Google::Apis::Core::Hashable
       
