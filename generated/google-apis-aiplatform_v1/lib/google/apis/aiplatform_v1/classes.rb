@@ -1672,6 +1672,32 @@ module Google
         end
       end
       
+      # Content blob.
+      class GoogleCloudAiplatformV1Blob
+        include Google::Apis::Core::Hashable
+      
+        # Required. Data.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Required. Mime type of the data.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
       # Config for blur baseline. When enabled, a linear path from the maximally
       # blurred image to the input image is created. Using a blurred baseline instead
       # of zero (black image) is motivated by the BlurIG approach explained here:
@@ -2055,6 +2081,34 @@ module Google
         end
       end
       
+      # A single turn in a conversation with the model.
+      class GoogleCloudAiplatformV1Content
+        include Google::Apis::Core::Hashable
+      
+        # Required. Ordered parts that make up a message. Parts may have different MIME
+        # types.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Part>]
+        attr_accessor :parts
+      
+        # Optional. The role in a conversation associated with this content. Set it only
+        # if a content represents a turn in a conversations, otherwise no need to set
+        # role. Possible values: user, model.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parts = args[:parts] if args.key?(:parts)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
       # Instance of a general context.
       class GoogleCloudAiplatformV1Context
         include Google::Apis::Core::Hashable
@@ -2239,11 +2293,22 @@ module Google
       class GoogleCloudAiplatformV1CountTokensRequest
         include Google::Apis::Core::Hashable
       
+        # Required. Input content.
+        # Corresponds to the JSON property `contents`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
+        attr_accessor :contents
+      
         # Required. The instances that are the input to token counting call. Schema is
         # identical to the prediction schema of the underlying model.
         # Corresponds to the JSON property `instances`
         # @return [Array<Object>]
         attr_accessor :instances
+      
+        # Required. The name of the publisher model requested to serve the prediction.
+        # Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
       
         def initialize(**args)
            update!(**args)
@@ -2251,7 +2316,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
           @instances = args[:instances] if args.key?(:instances)
+          @model = args[:model] if args.key?(:model)
         end
       end
       
@@ -4076,6 +4143,11 @@ module Google
         # @return [String]
         attr_accessor :deployed_index_id
       
+        # Output only. The display name of the DeployedIndex.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Immutable. A resource name of the IndexEndpoint.
         # Corresponds to the JSON property `indexEndpoint`
         # @return [String]
@@ -4088,6 +4160,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deployed_index_id = args[:deployed_index_id] if args.key?(:deployed_index_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @index_endpoint = args[:index_endpoint] if args.key?(:index_endpoint)
         end
       end
@@ -4184,6 +4257,13 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # The resource name of the shared DeploymentResourcePool to deploy on. Format: `
+        # projects/`project`/locations/`location`/deploymentResourcePools/`
+        # deployment_resource_pool``
+        # Corresponds to the JSON property `sharedResources`
+        # @return [String]
+        attr_accessor :shared_resources
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4202,6 +4282,7 @@ module Google
           @model_version_id = args[:model_version_id] if args.key?(:model_version_id)
           @private_endpoints = args[:private_endpoints] if args.key?(:private_endpoints)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @shared_resources = args[:shared_resources] if args.key?(:shared_resources)
         end
       end
       
@@ -4288,6 +4369,104 @@ module Google
         def update!(**args)
           @destination_field = args[:destination_field] if args.key?(:destination_field)
           @feature_id = args[:feature_id] if args.key?(:feature_id)
+        end
+      end
+      
+      # Request message for PredictionService.DirectPredict.
+      class GoogleCloudAiplatformV1DirectPredictRequest
+        include Google::Apis::Core::Hashable
+      
+        # The prediction input.
+        # Corresponds to the JSON property `inputs`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Tensor>]
+        attr_accessor :inputs
+      
+        # A tensor value type.
+        # Corresponds to the JSON property `parameters`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Tensor]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inputs = args[:inputs] if args.key?(:inputs)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # Response message for PredictionService.DirectPredict.
+      class GoogleCloudAiplatformV1DirectPredictResponse
+        include Google::Apis::Core::Hashable
+      
+        # The prediction output.
+        # Corresponds to the JSON property `outputs`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Tensor>]
+        attr_accessor :outputs
+      
+        # A tensor value type.
+        # Corresponds to the JSON property `parameters`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Tensor]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @outputs = args[:outputs] if args.key?(:outputs)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # Request message for PredictionService.DirectRawPredict.
+      class GoogleCloudAiplatformV1DirectRawPredictRequest
+        include Google::Apis::Core::Hashable
+      
+        # The prediction input.
+        # Corresponds to the JSON property `input`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :input
+      
+        # Fully qualified name of the API method being invoked to perform predictions.
+        # Format: `/namespace.Service/Method/` Example: `/tensorflow.serving.
+        # PredictionService/Predict`
+        # Corresponds to the JSON property `methodName`
+        # @return [String]
+        attr_accessor :method_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input = args[:input] if args.key?(:input)
+          @method_name = args[:method_name] if args.key?(:method_name)
+        end
+      end
+      
+      # Response message for PredictionService.DirectRawPredict.
+      class GoogleCloudAiplatformV1DirectRawPredictResponse
+        include Google::Apis::Core::Hashable
+      
+        # The prediction output.
+        # Corresponds to the JSON property `output`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output = args[:output] if args.key?(:output)
         end
       end
       
@@ -5683,12 +5862,42 @@ module Google
       class GoogleCloudAiplatformV1ExportDataConfig
         include Google::Apis::Core::Hashable
       
+        # Only used for custom training data export use cases. Only applicable to
+        # Datasets that have DataItems and Annotations. Cloud Storage URI that points to
+        # a YAML file describing the annotation schema. The schema is defined as an
+        # OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/
+        # blob/main/versions/3.0.2.md#schemaObject). The schema files that can be used
+        # here are found in gs://google-cloud-aiplatform/schema/dataset/annotation/,
+        # note that the chosen schema must be consistent with metadata of the Dataset
+        # specified by dataset_id. Only Annotations that both match this schema and
+        # belong to DataItems not ignored by the split method are used in respectively
+        # training, validation or test role, depending on the role of the DataItem they
+        # are on. When used in conjunction with annotations_filter, the Annotations used
+        # for training are filtered by both annotations_filter and annotation_schema_uri.
+        # Corresponds to the JSON property `annotationSchemaUri`
+        # @return [String]
+        attr_accessor :annotation_schema_uri
+      
         # An expression for filtering what part of the Dataset is to be exported. Only
         # Annotations that match this filter will be exported. The filter syntax is the
         # same as in ListAnnotations.
         # Corresponds to the JSON property `annotationsFilter`
         # @return [String]
         attr_accessor :annotations_filter
+      
+        # Indicates the usage of the exported files.
+        # Corresponds to the JSON property `exportUse`
+        # @return [String]
+        attr_accessor :export_use
+      
+        # Assigns input data to training, validation, and test sets based on the given
+        # filters, data pieces not matched by any filter are ignored. Currently only
+        # supported for Datasets containing DataItems. If any of the filters in this
+        # message are to match nothing, then they can be set as '-' (the minus sign).
+        # Supported only for unstructured Datasets.
+        # Corresponds to the JSON property `filterSplit`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExportFilterSplit]
+        attr_accessor :filter_split
       
         # Assigns the input data to training, validation, and test sets as per the given
         # fractions. Any of `training_fraction`, `validation_fraction` and `
@@ -5705,15 +5914,31 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination]
         attr_accessor :gcs_destination
       
+        # Only used for custom training data export use cases. Only applicable to
+        # Datasets that have SavedQueries. The ID of a SavedQuery (annotation set) under
+        # the Dataset specified by dataset_id used for filtering Annotations for
+        # training. Only Annotations that are associated with this SavedQuery are used
+        # in respectively training. When used in conjunction with annotations_filter,
+        # the Annotations used for training are filtered by both saved_query_id and
+        # annotations_filter. Only one of saved_query_id and annotation_schema_uri
+        # should be specified as both of them represent the same thing: problem type.
+        # Corresponds to the JSON property `savedQueryId`
+        # @return [String]
+        attr_accessor :saved_query_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @annotation_schema_uri = args[:annotation_schema_uri] if args.key?(:annotation_schema_uri)
           @annotations_filter = args[:annotations_filter] if args.key?(:annotations_filter)
+          @export_use = args[:export_use] if args.key?(:export_use)
+          @filter_split = args[:filter_split] if args.key?(:filter_split)
           @fraction_split = args[:fraction_split] if args.key?(:fraction_split)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @saved_query_id = args[:saved_query_id] if args.key?(:saved_query_id)
         end
       end
       
@@ -5767,7 +5992,14 @@ module Google
       class GoogleCloudAiplatformV1ExportDataResponse
         include Google::Apis::Core::Hashable
       
-        # All of the files that are exported in this export operation.
+        # Stats of data used for train or evaluate the Model.
+        # Corresponds to the JSON property `dataStats`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelDataStats]
+        attr_accessor :data_stats
+      
+        # All of the files that are exported in this export operation. For custom code
+        # training export, only three (training, validation and test) GCS paths in
+        # wildcard format are populated (e.g., gs://.../training-*).
         # Corresponds to the JSON property `exportedFiles`
         # @return [Array<String>]
         attr_accessor :exported_files
@@ -5778,6 +6010,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_stats = args[:data_stats] if args.key?(:data_stats)
           @exported_files = args[:exported_files] if args.key?(:exported_files)
         end
       end
@@ -5914,6 +6147,53 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Assigns input data to training, validation, and test sets based on the given
+      # filters, data pieces not matched by any filter are ignored. Currently only
+      # supported for Datasets containing DataItems. If any of the filters in this
+      # message are to match nothing, then they can be set as '-' (the minus sign).
+      # Supported only for unstructured Datasets.
+      class GoogleCloudAiplatformV1ExportFilterSplit
+        include Google::Apis::Core::Hashable
+      
+        # Required. A filter on DataItems of the Dataset. DataItems that match this
+        # filter are used to test the Model. A filter with same syntax as the one used
+        # in DatasetService.ListDataItems may be used. If a single DataItem is matched
+        # by more than one of the FilterSplit filters, then it is assigned to the first
+        # set that applies to it in the training, validation, test order.
+        # Corresponds to the JSON property `testFilter`
+        # @return [String]
+        attr_accessor :test_filter
+      
+        # Required. A filter on DataItems of the Dataset. DataItems that match this
+        # filter are used to train the Model. A filter with same syntax as the one used
+        # in DatasetService.ListDataItems may be used. If a single DataItem is matched
+        # by more than one of the FilterSplit filters, then it is assigned to the first
+        # set that applies to it in the training, validation, test order.
+        # Corresponds to the JSON property `trainingFilter`
+        # @return [String]
+        attr_accessor :training_filter
+      
+        # Required. A filter on DataItems of the Dataset. DataItems that match this
+        # filter are used to validate the Model. A filter with same syntax as the one
+        # used in DatasetService.ListDataItems may be used. If a single DataItem is
+        # matched by more than one of the FilterSplit filters, then it is assigned to
+        # the first set that applies to it in the training, validation, test order.
+        # Corresponds to the JSON property `validationFilter`
+        # @return [String]
+        attr_accessor :validation_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @test_filter = args[:test_filter] if args.key?(:test_filter)
+          @training_filter = args[:training_filter] if args.key?(:training_filter)
+          @validation_filter = args[:validation_filter] if args.key?(:validation_filter)
         end
       end
       
@@ -6276,7 +6556,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. Name of the FeatureGroup. Format: `projects/`project`/locations/`
+        # Identifier. Name of the FeatureGroup. Format: `projects/`project`/locations/`
         # location`/featureGroups/`featureGroup``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -6447,7 +6727,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. Name of the FeatureOnlineStore. Format: `projects/`project`/
+        # Identifier. Name of the FeatureOnlineStore. Format: `projects/`project`/
         # locations/`location`/featureOnlineStores/`featureOnlineStore``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -6825,16 +7105,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. Name of the FeatureView. Format: `projects/`project`/locations/`
+        # Identifier. Name of the FeatureView. Format: `projects/`project`/locations/`
         # location`/featureOnlineStores/`feature_online_store`/featureViews/`
         # feature_view``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Configures when data is to be synced/updated for this FeatureView. At the end
-        # of the sync the latest featureValues for each entityId of this FeatureView are
-        # made ready for online serving.
+        # Configuration for Sync. Only one option is set.
         # Corresponds to the JSON property `syncConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewSyncConfig]
         attr_accessor :sync_config
@@ -6974,8 +7252,8 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleRpcStatus]
         attr_accessor :final_status
       
-        # Output only. Name of the FeatureViewSync. Format: `projects/`project`/
-        # locations/`location`/featureOnlineStores/`feature_online_store`/featureViews/`
+        # Identifier. Name of the FeatureViewSync. Format: `projects/`project`/locations/
+        # `location`/featureOnlineStores/`feature_online_store`/featureViews/`
         # feature_view`/featureViewSyncs/`feature_view_sync``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -7002,7 +7280,7 @@ module Google
         end
       end
       
-      # 
+      # Configuration for Sync. Only one option is set.
       class GoogleCloudAiplatformV1FeatureViewSyncConfig
         include Google::Apis::Core::Hashable
       
@@ -7415,6 +7693,31 @@ module Google
         end
       end
       
+      # URI based data.
+      class GoogleCloudAiplatformV1FileData
+        include Google::Apis::Core::Hashable
+      
+        # Required. URI.
+        # Corresponds to the JSON property `fileUri`
+        # @return [String]
+        attr_accessor :file_uri
+      
+        # Required. Mime type of the data.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_uri = args[:file_uri] if args.key?(:file_uri)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
       # Assigns input data to training, validation, and test sets based on the given
       # filters, data pieces not matched by any filter are ignored. Currently only
       # supported for Datasets containing DataItems. If any of the filters in this
@@ -7660,6 +7963,63 @@ module Google
           @test_fraction = args[:test_fraction] if args.key?(:test_fraction)
           @training_fraction = args[:training_fraction] if args.key?(:training_fraction)
           @validation_fraction = args[:validation_fraction] if args.key?(:validation_fraction)
+        end
+      end
+      
+      # A predicted [FunctionCall] returned from the model that contains a string
+      # representing the [FunctionDeclaration.name] and a structured JSON object
+      # containing the parameters and their values.
+      class GoogleCloudAiplatformV1FunctionCall
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Required. The function parameters and values in JSON object format.
+        # See [FunctionDeclaration.parameters] for parameter details.
+        # Corresponds to the JSON property `args`
+        # @return [Hash<String,Object>]
+        attr_accessor :args
+      
+        # Required. The name of the function to call. Matches [FunctionDeclaration.name].
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The result output from a [FunctionCall] that contains a string representing
+      # the [FunctionDeclaration.name] and a structured JSON object containing any
+      # output from the function is used as context to the model. This should contain
+      # the result of a [FunctionCall] made based on model prediction.
+      class GoogleCloudAiplatformV1FunctionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the function to call. Matches [FunctionDeclaration.name]
+        # and [FunctionCall.name].
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The function response in JSON object format.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -10832,6 +11192,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Stats of data used for train or evaluate the Model.
+        # Corresponds to the JSON property `dataStats`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelDataStats]
+        attr_accessor :data_stats
+      
         # Output only. The pointers to DeployedModels created from this Model. Note that
         # Model could have been deployed to Endpoints in different Locations.
         # Corresponds to the JSON property `deployedModels`
@@ -11038,6 +11403,7 @@ module Google
           @artifact_uri = args[:artifact_uri] if args.key?(:artifact_uri)
           @container_spec = args[:container_spec] if args.key?(:container_spec)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @data_stats = args[:data_stats] if args.key?(:data_stats)
           @deployed_models = args[:deployed_models] if args.key?(:deployed_models)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -11136,8 +11502,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :command
       
-        # Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before
-        # exposing.
+        # Immutable. Deployment timeout. Limit for deployment timeout is 2 hours.
         # Corresponds to the JSON property `deploymentTimeout`
         # @return [String]
         attr_accessor :deployment_timeout
@@ -11156,6 +11521,16 @@ module Google
         # Corresponds to the JSON property `env`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EnvVar>]
         attr_accessor :env
+      
+        # Immutable. List of ports to expose from the container. Vertex AI sends gRPC
+        # prediction requests that it receives to the first port on this list. Vertex AI
+        # also sends liveness and health checks to this port. If you do not specify this
+        # field, gRPC requests to the container will be disabled. Vertex AI does not use
+        # ports other than the first one listed. This field corresponds to the `ports`
+        # field of the Kubernetes Containers v1 core API.
+        # Corresponds to the JSON property `grpcPorts`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Port>]
+        attr_accessor :grpc_ports
       
         # Probe describes a health check to be performed against a container to
         # determine whether it is alive or ready to receive traffic.
@@ -11239,7 +11614,7 @@ module Google
         attr_accessor :predict_route
       
         # Immutable. The amount of the VM memory to reserve as the shared memory for the
-        # model in megabytes. TODO (b/306244185): Revise documentation before exposing.
+        # model in megabytes.
         # Corresponds to the JSON property `sharedMemorySizeMb`
         # @return [Fixnum]
         attr_accessor :shared_memory_size_mb
@@ -11260,6 +11635,7 @@ module Google
           @command = args[:command] if args.key?(:command)
           @deployment_timeout = args[:deployment_timeout] if args.key?(:deployment_timeout)
           @env = args[:env] if args.key?(:env)
+          @grpc_ports = args[:grpc_ports] if args.key?(:grpc_ports)
           @health_probe = args[:health_probe] if args.key?(:health_probe)
           @health_route = args[:health_route] if args.key?(:health_route)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
@@ -11267,6 +11643,59 @@ module Google
           @predict_route = args[:predict_route] if args.key?(:predict_route)
           @shared_memory_size_mb = args[:shared_memory_size_mb] if args.key?(:shared_memory_size_mb)
           @startup_probe = args[:startup_probe] if args.key?(:startup_probe)
+        end
+      end
+      
+      # Stats of data used for train or evaluate the Model.
+      class GoogleCloudAiplatformV1ModelDataStats
+        include Google::Apis::Core::Hashable
+      
+        # Number of Annotations that are used for evaluating this Model. If the Model is
+        # evaluated multiple times, this will be the number of test Annotations used by
+        # the first evaluation. If the Model is not evaluated, the number is 0.
+        # Corresponds to the JSON property `testAnnotationsCount`
+        # @return [Fixnum]
+        attr_accessor :test_annotations_count
+      
+        # Number of DataItems that were used for evaluating this Model. If the Model is
+        # evaluated multiple times, this will be the number of test DataItems used by
+        # the first evaluation. If the Model is not evaluated, the number is 0.
+        # Corresponds to the JSON property `testDataItemsCount`
+        # @return [Fixnum]
+        attr_accessor :test_data_items_count
+      
+        # Number of Annotations that are used for training this Model.
+        # Corresponds to the JSON property `trainingAnnotationsCount`
+        # @return [Fixnum]
+        attr_accessor :training_annotations_count
+      
+        # Number of DataItems that were used for training this Model.
+        # Corresponds to the JSON property `trainingDataItemsCount`
+        # @return [Fixnum]
+        attr_accessor :training_data_items_count
+      
+        # Number of Annotations that are used for validating this Model during training.
+        # Corresponds to the JSON property `validationAnnotationsCount`
+        # @return [Fixnum]
+        attr_accessor :validation_annotations_count
+      
+        # Number of DataItems that were used for validating this Model during training.
+        # Corresponds to the JSON property `validationDataItemsCount`
+        # @return [Fixnum]
+        attr_accessor :validation_data_items_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @test_annotations_count = args[:test_annotations_count] if args.key?(:test_annotations_count)
+          @test_data_items_count = args[:test_data_items_count] if args.key?(:test_data_items_count)
+          @training_annotations_count = args[:training_annotations_count] if args.key?(:training_annotations_count)
+          @training_data_items_count = args[:training_data_items_count] if args.key?(:training_data_items_count)
+          @validation_annotations_count = args[:validation_annotations_count] if args.key?(:validation_annotations_count)
+          @validation_data_items_count = args[:validation_data_items_count] if args.key?(:validation_data_items_count)
         end
       end
       
@@ -13430,6 +13859,60 @@ module Google
         # Update properties of this object
         def update!(**args)
           @notebook_runtime_template = args[:notebook_runtime_template] if args.key?(:notebook_runtime_template)
+        end
+      end
+      
+      # Content part.
+      class GoogleCloudAiplatformV1Part
+        include Google::Apis::Core::Hashable
+      
+        # URI based data.
+        # Corresponds to the JSON property `fileData`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FileData]
+        attr_accessor :file_data
+      
+        # A predicted [FunctionCall] returned from the model that contains a string
+        # representing the [FunctionDeclaration.name] and a structured JSON object
+        # containing the parameters and their values.
+        # Corresponds to the JSON property `functionCall`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionCall]
+        attr_accessor :function_call
+      
+        # The result output from a [FunctionCall] that contains a string representing
+        # the [FunctionDeclaration.name] and a structured JSON object containing any
+        # output from the function is used as context to the model. This should contain
+        # the result of a [FunctionCall] made based on model prediction.
+        # Corresponds to the JSON property `functionResponse`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionResponse]
+        attr_accessor :function_response
+      
+        # Content blob.
+        # Corresponds to the JSON property `inlineData`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Blob]
+        attr_accessor :inline_data
+      
+        # Optional. Text part (can be code).
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Metadata describes the input video content.
+        # Corresponds to the JSON property `videoMetadata`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VideoMetadata]
+        attr_accessor :video_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_data = args[:file_data] if args.key?(:file_data)
+          @function_call = args[:function_call] if args.key?(:function_call)
+          @function_response = args[:function_response] if args.key?(:function_response)
+          @inline_data = args[:inline_data] if args.key?(:inline_data)
+          @text = args[:text] if args.key?(:text)
+          @video_metadata = args[:video_metadata] if args.key?(:video_metadata)
         end
       end
       
@@ -17645,6 +18128,12 @@ module Google
         # @return [String]
         attr_accessor :enterprise_datastore
       
+        # The grounding text passed inline with the Predict API. It can support up to 1
+        # million token context.
+        # Corresponds to the JSON property `inlineContext`
+        # @return [String]
+        attr_accessor :inline_context
+      
         # The type of the grounding checking source.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -17662,6 +18151,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enterprise_datastore = args[:enterprise_datastore] if args.key?(:enterprise_datastore)
+          @inline_context = args[:inline_context] if args.key?(:inline_context)
           @type = args[:type] if args.key?(:type)
           @vertex_ai_search_datastore = args[:vertex_ai_search_datastore] if args.key?(:vertex_ai_search_datastore)
         end
@@ -18706,6 +19196,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_output_tokens
       
+        # User-created prompt note. Note size limit is 2KB.
+        # Corresponds to the JSON property `note`
+        # @return [String]
+        attr_accessor :note
+      
         # Type of the prompt dataset.
         # Corresponds to the JSON property `promptType`
         # @return [String]
@@ -18750,6 +19245,7 @@ module Google
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
           @grounding_config = args[:grounding_config] if args.key?(:grounding_config)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
+          @note = args[:note] if args.key?(:note)
           @prompt_type = args[:prompt_type] if args.key?(:prompt_type)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
@@ -24819,6 +25315,45 @@ module Google
         end
       end
       
+      # Metadata information for NotebookService.UpgradeNotebookRuntime.
+      class GoogleCloudAiplatformV1UpgradeNotebookRuntimeOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        # A human-readable message that shows the intermediate progress details of
+        # NotebookRuntime.
+        # Corresponds to the JSON property `progressMessage`
+        # @return [String]
+        attr_accessor :progress_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+          @progress_message = args[:progress_message] if args.key?(:progress_message)
+        end
+      end
+      
+      # Request message for NotebookService.UpgradeNotebookRuntime.
+      class GoogleCloudAiplatformV1UpgradeNotebookRuntimeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Details of ModelService.UploadModel operation.
       class GoogleCloudAiplatformV1UploadModelOperationMetadata
         include Google::Apis::Core::Hashable
@@ -25008,6 +25543,31 @@ module Google
           @double_value = args[:double_value] if args.key?(:double_value)
           @int_value = args[:int_value] if args.key?(:int_value)
           @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
+      # Metadata describes the input video content.
+      class GoogleCloudAiplatformV1VideoMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The end offset of the video.
+        # Corresponds to the JSON property `endOffset`
+        # @return [String]
+        attr_accessor :end_offset
+      
+        # Optional. The start offset of the video.
+        # Corresponds to the JSON property `startOffset`
+        # @return [String]
+        attr_accessor :start_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_offset = args[:end_offset] if args.key?(:end_offset)
+          @start_offset = args[:start_offset] if args.key?(:start_offset)
         end
       end
       
