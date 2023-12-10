@@ -11241,8 +11241,7 @@ module Google
         # creating an instance, the currentAction is CREATING. If a previous action
         # failed, the list displays the errors for that failed action. The orderBy query
         # parameter is not supported. The `pageToken` query parameter is supported only
-        # in the alpha and beta API and only if the group's `listManagedInstancesResults`
-        # field is set to `PAGINATED`.
+        # if the group's `listManagedInstancesResults` field is set to `PAGINATED`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -13574,6 +13573,60 @@ module Google
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
           command.query['networkInterface'] = network_interface unless network_interface.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds a network interface to an instance.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   The instance name for this request stored as resource_id. Name should conform
+        #   to RFC1035 or be an unsigned long integer.
+        # @param [Google::Apis::ComputeAlpha::InstancesAddNetworkInterfaceRequest] instances_add_network_interface_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_instance_network_interface(project, zone, instance, instances_add_network_interface_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/instances/{instance}/addNetworkInterface', options)
+          command.request_representation = Google::Apis::ComputeAlpha::InstancesAddNetworkInterfaceRequest::Representation
+          command.request_object = instances_add_network_interface_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -15992,8 +16045,9 @@ module Google
         # @param [String] instance
         #   Name of the instance resource to stop.
         # @param [Boolean] discard_local_ssd
-        #   If true, discard the contents of any attached localSSD partitions. Default
-        #   value is false.
+        #   This property is required if the instance has any attached Local SSD disks. If
+        #   false, Local SSD data will be preserved when the instance is suspended. If
+        #   true, the contents of any attached Local SSD disks will be discarded.
         # @param [Boolean] no_graceful_shutdown
         #   If true, skips Graceful Shutdown.
         # @param [String] request_id
@@ -16055,8 +16109,9 @@ module Google
         # @param [String] instance
         #   Name of the instance resource to suspend.
         # @param [Boolean] discard_local_ssd
-        #   If true, discard the contents of any attached localSSD partitions. Default
-        #   value is false.
+        #   This property is required if the instance has any attached Local SSD disks. If
+        #   false, Local SSD data will be preserved when the instance is suspended. If
+        #   true, the contents of any attached Local SSD disks will be discarded.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -31143,9 +31198,8 @@ module Google
         # Lists the instances in the managed instance group and instances that are
         # scheduled to be created. The list includes any current actions that the group
         # has scheduled for its instances. The orderBy query parameter is not supported.
-        # The `pageToken` query parameter is supported only in the alpha and beta API
-        # and only if the group's `listManagedInstancesResults` field is set to `
-        # PAGINATED`.
+        # The `pageToken` query parameter is supported only if the group's `
+        # listManagedInstancesResults` field is set to `PAGINATED`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -48334,8 +48388,8 @@ module Google
         
         # Sets the SSL policy for TargetSslProxy. The SSL policy specifies the server-
         # side support for SSL features. This affects connections between clients and
-        # the SSL proxy load balancer. They do not affect the connection between the
-        # load balancer and the backends.
+        # the load balancer. They do not affect the connection between the load balancer
+        # and the backends.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_ssl_proxy
