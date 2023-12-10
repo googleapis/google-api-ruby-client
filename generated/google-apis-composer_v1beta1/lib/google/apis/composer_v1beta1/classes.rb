@@ -177,6 +177,46 @@ module Google
         end
       end
       
+      # Configuration for resources used by Airflow DAG processors.
+      class DagProcessorResource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of DAG processors. If not provided or set to 0, a single
+        # DAG processor instance will be created.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Optional. CPU request and limit for a single Airflow DAG processor replica.
+        # Corresponds to the JSON property `cpu`
+        # @return [Float]
+        attr_accessor :cpu
+      
+        # Optional. Memory (GB) request and limit for a single Airflow DAG processor
+        # replica.
+        # Corresponds to the JSON property `memoryGb`
+        # @return [Float]
+        attr_accessor :memory_gb
+      
+        # Optional. Storage (GB) request and limit for a single Airflow DAG processor
+        # replica.
+        # Corresponds to the JSON property `storageGb`
+        # @return [Float]
+        attr_accessor :storage_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @cpu = args[:cpu] if args.key?(:cpu)
+          @memory_gb = args[:memory_gb] if args.key?(:memory_gb)
+          @storage_gb = args[:storage_gb] if args.key?(:storage_gb)
+        end
+      end
+      
       # The configuration of Cloud SQL instance that is used by the Apache Airflow
       # software.
       class DatabaseConfig
@@ -1067,6 +1107,29 @@ module Google
       class NodeConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The IP range in CIDR notation to use internally by Cloud Composer.
+        # IP addresses are not reserved - and the same range can be used by multiple
+        # Cloud Composer environments. In case of overlap, IPs from this range will not
+        # be accessible in the user's VPC network. Cannot be updated. If not specified,
+        # the default value of '100.64.128.0/20' is used. This field is supported for
+        # Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # Corresponds to the JSON property `composerInternalIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :composer_internal_ipv4_cidr_block
+      
+        # Optional. Network Attachment that Cloud Composer environment is connected to,
+        # which provides connectivity with a user's VPC network. Takes precedence over
+        # network and subnetwork settings. If not provided, but network and subnetwork
+        # are defined during environment, it will be provisioned. If not provided and
+        # network and subnetwork are also empty, then connectivity to user's VPC network
+        # is disabled. Network attachment must be provided in format projects/`project`/
+        # regions/`region`/networkAttachments/`networkAttachment`. This field is
+        # supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.
+        # *.* and newer.
+        # Corresponds to the JSON property `composerNetworkAttachment`
+        # @return [String]
+        attr_accessor :composer_network_attachment
+      
         # Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If
         # unspecified, defaults to 100GB. Cannot be updated. This field is supported for
         # Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -1188,6 +1251,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @composer_internal_ipv4_cidr_block = args[:composer_internal_ipv4_cidr_block] if args.key?(:composer_internal_ipv4_cidr_block)
+          @composer_network_attachment = args[:composer_network_attachment] if args.key?(:composer_network_attachment)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @enable_ip_masq_agent = args[:enable_ip_masq_agent] if args.key?(:enable_ip_masq_agent)
           @ip_allocation_policy = args[:ip_allocation_policy] if args.key?(:ip_allocation_policy)
@@ -1459,6 +1524,18 @@ module Google
         # @return [String]
         attr_accessor :cloud_sql_ipv4_cidr_block
       
+        # Optional. If `true`, builds performed during operations that install Python
+        # packages have only private connectivity to Google services (including Artifact
+        # Registry) and VPC network (if either `NodeConfig.network` and `NodeConfig.
+        # subnetwork` fields or `NodeConfig.composer_network_attachment` field are
+        # specified). If `false`, the builds also have access to the internet. This
+        # field is supported for Cloud Composer environments in versions composer-3.*.*-
+        # airflow-*.*.* and newer.
+        # Corresponds to the JSON property `enablePrivateBuildsOnly`
+        # @return [Boolean]
+        attr_accessor :enable_private_builds_only
+        alias_method :enable_private_builds_only?, :enable_private_builds_only
+      
         # Optional. If `true`, a Private IP Cloud Composer environment is created. If
         # this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to
         # true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -1511,6 +1588,7 @@ module Google
           @cloud_composer_network_ipv4_cidr_block = args[:cloud_composer_network_ipv4_cidr_block] if args.key?(:cloud_composer_network_ipv4_cidr_block)
           @cloud_composer_network_ipv4_reserved_range = args[:cloud_composer_network_ipv4_reserved_range] if args.key?(:cloud_composer_network_ipv4_reserved_range)
           @cloud_sql_ipv4_cidr_block = args[:cloud_sql_ipv4_cidr_block] if args.key?(:cloud_sql_ipv4_cidr_block)
+          @enable_private_builds_only = args[:enable_private_builds_only] if args.key?(:enable_private_builds_only)
           @enable_private_environment = args[:enable_private_environment] if args.key?(:enable_private_environment)
           @enable_privately_used_public_ips = args[:enable_privately_used_public_ips] if args.key?(:enable_privately_used_public_ips)
           @networking_config = args[:networking_config] if args.key?(:networking_config)
@@ -1756,6 +1834,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :scheduler_count
       
+        # Optional. Whether or not the web server uses custom plugins. If unspecified,
+        # the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud
+        # Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # Corresponds to the JSON property `webServerPluginsMode`
+        # @return [String]
+        attr_accessor :web_server_plugins_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1769,6 +1854,7 @@ module Google
           @pypi_packages = args[:pypi_packages] if args.key?(:pypi_packages)
           @python_version = args[:python_version] if args.key?(:python_version)
           @scheduler_count = args[:scheduler_count] if args.key?(:scheduler_count)
+          @web_server_plugins_mode = args[:web_server_plugins_mode] if args.key?(:web_server_plugins_mode)
         end
       end
       
@@ -2051,6 +2137,11 @@ module Google
       class WorkloadsConfig
         include Google::Apis::Core::Hashable
       
+        # Configuration for resources used by Airflow DAG processors.
+        # Corresponds to the JSON property `dagProcessor`
+        # @return [Google::Apis::ComposerV1beta1::DagProcessorResource]
+        attr_accessor :dag_processor
+      
         # Configuration for resources used by Airflow schedulers.
         # Corresponds to the JSON property `scheduler`
         # @return [Google::Apis::ComposerV1beta1::SchedulerResource]
@@ -2077,6 +2168,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dag_processor = args[:dag_processor] if args.key?(:dag_processor)
           @scheduler = args[:scheduler] if args.key?(:scheduler)
           @triggerer = args[:triggerer] if args.key?(:triggerer)
           @web_server = args[:web_server] if args.key?(:web_server)
