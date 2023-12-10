@@ -892,6 +892,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StreamingScalingReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StreamingSetupTask
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2200,6 +2206,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_num_workers, as: 'maxNumWorkers'
           property :min_num_workers, as: 'minNumWorkers'
+          property :worker_utilization_hint, as: 'workerUtilizationHint'
         end
       end
       
@@ -2647,6 +2654,18 @@ module Google
         end
       end
       
+      class StreamingScalingReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_bundle_count, as: 'activeBundleCount'
+          property :active_thread_count, as: 'activeThreadCount'
+          property :maximum_bundle_count, as: 'maximumBundleCount'
+          property :maximum_bytes_count, as: 'maximumBytesCount'
+          property :maximum_thread_count, as: 'maximumThreadCount'
+          property :outstanding_bytes_count, as: 'outstandingBytesCount'
+        end
+      end
+      
       class StreamingSetupTask
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2906,6 +2925,8 @@ module Google
           property :data_sampling_report, as: 'dataSamplingReport', class: Google::Apis::DataflowV1b3::DataSamplingReport, decorator: Google::Apis::DataflowV1b3::DataSamplingReport::Representation
       
           hash :labels, as: 'labels'
+          property :streaming_scaling_report, as: 'streamingScalingReport', class: Google::Apis::DataflowV1b3::StreamingScalingReport, decorator: Google::Apis::DataflowV1b3::StreamingScalingReport::Representation
+      
           property :time, as: 'time'
           property :worker_health_report, as: 'workerHealthReport', class: Google::Apis::DataflowV1b3::WorkerHealthReport, decorator: Google::Apis::DataflowV1b3::WorkerHealthReport::Representation
       
