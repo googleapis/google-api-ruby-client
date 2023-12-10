@@ -766,6 +766,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. The workforce pools proxy endpoint that is used to access the
+        # Jupyter notebook.
+        # Corresponds to the JSON property `thirdPartyProxyUrl`
+        # @return [String]
+        attr_accessor :third_party_proxy_url
+      
         # Output only. Instance update time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -794,6 +800,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)
           @state = args[:state] if args.key?(:state)
+          @third_party_proxy_url = args[:third_party_proxy_url] if args.key?(:third_party_proxy_url)
           @update_time = args[:update_time] if args.key?(:update_time)
           @upgrade_history = args[:upgrade_history] if args.key?(:upgrade_history)
         end

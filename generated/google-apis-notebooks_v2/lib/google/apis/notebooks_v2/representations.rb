@@ -461,6 +461,7 @@ module Google
           property :name, as: 'name'
           property :proxy_uri, as: 'proxyUri'
           property :state, as: 'state'
+          property :third_party_proxy_url, as: 'thirdPartyProxyUrl'
           property :update_time, as: 'updateTime'
           collection :upgrade_history, as: 'upgradeHistory', class: Google::Apis::NotebooksV2::UpgradeHistoryEntry, decorator: Google::Apis::NotebooksV2::UpgradeHistoryEntry::Representation
       
