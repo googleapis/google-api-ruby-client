@@ -192,6 +192,7 @@ module Google
       
           property :dry_run_spec, as: 'dryRunSpec', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec::Representation
       
+          property :etag, as: 'etag'
           property :name, as: 'name'
           property :spec, as: 'spec', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec::Representation
       

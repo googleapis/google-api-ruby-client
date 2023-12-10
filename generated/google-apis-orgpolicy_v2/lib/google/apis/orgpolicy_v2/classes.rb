@@ -346,6 +346,14 @@ module Google
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec]
         attr_accessor :dry_run_spec
       
+        # Optional. An opaque tag indicating the current state of the policy, used for
+        # concurrency control. This 'etag' is computed by the server based on the value
+        # of other fields, and may be sent on update and delete requests to ensure the
+        # client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Immutable. The resource name of the policy. Must be one of the following forms,
         # where `constraint_name` is the name of the constraint which this policy
         # configures: * `projects/`project_number`/policies/`constraint_name`` * `
@@ -372,6 +380,7 @@ module Google
         def update!(**args)
           @alternate = args[:alternate] if args.key?(:alternate)
           @dry_run_spec = args[:dry_run_spec] if args.key?(:dry_run_spec)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @spec = args[:spec] if args.key?(:spec)
         end
@@ -382,11 +391,11 @@ module Google
       class GoogleCloudOrgpolicyV2PolicySpec
         include Google::Apis::Core::Hashable
       
-        # An opaque tag indicating the current version of the policy, used for
+        # An opaque tag indicating the current version of the policySpec, used for
         # concurrency control. This field is ignored if used in a `CreatePolicy` request.
-        # When the policy` is returned from either a `GetPolicy` or a `ListPolicies`
-        # request, this `etag` indicates the version of the current policy to use when
-        # executing a read-modify-write loop. When the policy is returned from a `
+        # When the policy is returned from either a `GetPolicy` or a `ListPolicies`
+        # request, this `etag` indicates the version of the current policySpec to use
+        # when executing a read-modify-write loop. When the policy is returned from a `
         # GetEffectivePolicy` request, the `etag` will be unset.
         # Corresponds to the JSON property `etag`
         # @return [String]
