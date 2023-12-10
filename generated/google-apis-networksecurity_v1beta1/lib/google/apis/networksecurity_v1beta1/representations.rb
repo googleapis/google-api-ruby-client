@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallEndpointAssociationReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GatewaySecurityPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -469,6 +475,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :associated_networks, as: 'associatedNetworks'
+          collection :associations, as: 'associations', class: Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociationReference, decorator: Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociationReference::Representation
+      
           property :billing_project_id, as: 'billingProjectId'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
@@ -492,6 +500,14 @@ module Google
           property :state, as: 'state'
           property :tls_inspection_policy, as: 'tlsInspectionPolicy'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class FirewallEndpointAssociationReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :network, as: 'network'
         end
       end
       
