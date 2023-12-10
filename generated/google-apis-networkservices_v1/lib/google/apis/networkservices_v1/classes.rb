@@ -437,7 +437,7 @@ module Google
       # Gateway represents the configuration for a proxy, typically a load balancer.
       # It captures the ip:port over which the services are exposed by the proxy,
       # along with any policy configurations. Routes have reference to to Gateways to
-      # dictate how requests should be routed by this Gateway.
+      # dictate how requests should be routed by this Gateway. Next id: 29
       class Gateway
         include Google::Apis::Core::Hashable
       
@@ -473,6 +473,12 @@ module Google
         # Corresponds to the JSON property `gatewaySecurityPolicy`
         # @return [String]
         attr_accessor :gateway_security_policy
+      
+        # Optional. The IP Version that will be used by this gateway. Valid options are
+        # IPV4 or IPV6. Default is IPV4.
+        # Corresponds to the JSON property `ipVersion`
+        # @return [String]
+        attr_accessor :ip_version
       
         # Optional. Set of label tags associated with the Gateway resource.
         # Corresponds to the JSON property `labels`
@@ -550,6 +556,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @gateway_security_policy = args[:gateway_security_policy] if args.key?(:gateway_security_policy)
+          @ip_version = args[:ip_version] if args.key?(:ip_version)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
