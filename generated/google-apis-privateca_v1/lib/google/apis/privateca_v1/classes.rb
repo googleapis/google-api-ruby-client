@@ -1230,8 +1230,8 @@ module Google
       class FetchCaCertsResponse
         include Google::Apis::Core::Hashable
       
-        # The PEM encoded CA certificate chains of all ACTIVE CertificateAuthority
-        # resources in this CaPool.
+        # The PEM encoded CA certificate chains of all Certificate Authorities in this
+        # CaPool in the ENABLED, DISABLED, or STAGED states.
         # Corresponds to the JSON property `caCerts`
         # @return [Array<Google::Apis::PrivatecaV1::CertChain>]
         attr_accessor :ca_certs
