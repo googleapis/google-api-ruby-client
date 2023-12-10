@@ -419,6 +419,12 @@ module Google
         # @return [String]
         attr_accessor :key
       
+        # Optional. Location Tyep denotes where this value should be sent in BYOC
+        # connections.
+        # Corresponds to the JSON property `locationType`
+        # @return [String]
+        attr_accessor :location_type
+      
         # Flag represents that this `ConfigVariable` must be provided for a connection.
         # Corresponds to the JSON property `required`
         # @return [Boolean]
@@ -468,6 +474,7 @@ module Google
           @enum_options = args[:enum_options] if args.key?(:enum_options)
           @is_advanced = args[:is_advanced] if args.key?(:is_advanced)
           @key = args[:key] if args.key?(:key)
+          @location_type = args[:location_type] if args.key?(:location_type)
           @required = args[:required] if args.key?(:required)
           @required_condition = args[:required_condition] if args.key?(:required_condition)
           @role_grant = args[:role_grant] if args.key?(:role_grant)
@@ -1002,6 +1009,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::SupportedRuntimeFeatures]
         attr_accessor :supported_runtime_features
       
+        # Output only. Unsupported connection types.
+        # Corresponds to the JSON property `unsupportedConnectionTypes`
+        # @return [Array<String>]
+        attr_accessor :unsupported_connection_types
+      
         # Output only. Updated time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1029,6 +1041,7 @@ module Google
           @role_grants = args[:role_grants] if args.key?(:role_grants)
           @ssl_config_template = args[:ssl_config_template] if args.key?(:ssl_config_template)
           @supported_runtime_features = args[:supported_runtime_features] if args.key?(:supported_runtime_features)
+          @unsupported_connection_types = args[:unsupported_connection_types] if args.key?(:unsupported_connection_types)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -1184,18 +1197,25 @@ module Google
         # @return [Google::Apis::ConnectorsV1::AuthConfig]
         attr_accessor :auth_config
       
+        # Optional. Backend variables config templates. This translates to additional
+        # variable templates in connection.
+        # Corresponds to the JSON property `backendVariableTemplates`
+        # @return [Array<Google::Apis::ConnectorsV1::ConfigVariableTemplate>]
+        attr_accessor :backend_variable_templates
+      
         # Output only. Created time.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Define the Connectors target endpoint.
-        # Corresponds to the JSON property `destinationConfig`
-        # @return [Google::Apis::ConnectorsV1::DestinationConfig]
-        attr_accessor :destination_config
+        # Optional. Destination config(s) for accessing connector facade/ proxy. This is
+        # used only when enable_backend_destination_config is true.
+        # Corresponds to the JSON property `destinationConfigs`
+        # @return [Array<Google::Apis::ConnectorsV1::DestinationConfig>]
+        attr_accessor :destination_configs
       
-        # Optional. Whether to enable backend destination config. This is the backend
-        # server that the connector connects to.
+        # Optional. When enabled, the connector will be a facade/ proxy, and connects to
+        # the destination provided during connection creation.
         # Corresponds to the JSON property `enableBackendDestinationConfig`
         # @return [Boolean]
         attr_accessor :enable_backend_destination_config
@@ -1215,8 +1235,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Service account needed for runtime plane to access Custom Connector
-        # secrets.
+        # Required. Service account used by runtime plane to access auth config secrets.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -1238,8 +1257,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
+          @backend_variable_templates = args[:backend_variable_templates] if args.key?(:backend_variable_templates)
           @create_time = args[:create_time] if args.key?(:create_time)
-          @destination_config = args[:destination_config] if args.key?(:destination_config)
+          @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
           @enable_backend_destination_config = args[:enable_backend_destination_config] if args.key?(:enable_backend_destination_config)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
