@@ -1296,9 +1296,8 @@ module Google
         attr_accessor :access_determination_log_config
       
         # Optional. If set to true, when accessing FHIR resources, the consent headers
-        # provided using [SMART-on-FHIR](https://cloud.google.com/healthcare/private/
-        # docs/how-tos/smart-on-fhir) will be verified against consents given by
-        # patients. See the ConsentEnforcementVersion for the supported consent headers.
+        # will be verified against consents given by patients. See the
+        # ConsentEnforcementVersion for the supported consent headers.
         # Corresponds to the JSON property `accessEnforced`
         # @return [Boolean]
         attr_accessor :access_enforced
