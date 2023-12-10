@@ -62,6 +62,46 @@ module Google
         end
       end
       
+      # Request message for DataprocMetastore.AlterTableProperties.
+      class AlterTablePropertiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # A map that describes the desired values to mutate. If update_mask is empty,
+        # the properties will not update. Otherwise, the properties only alters the
+        # value whose associated paths exist in the update mask
+        # Corresponds to the JSON property `properties`
+        # @return [Hash<String,String>]
+        attr_accessor :properties
+      
+        # Required. The name of the table containing the properties you're altering in
+        # the following format.databases/`database_id`/tables/`table_id`
+        # Corresponds to the JSON property `tableName`
+        # @return [String]
+        attr_accessor :table_name
+      
+        # A field mask that specifies the metadata table properties that are overwritten
+        # by the update. Fields specified in the update_mask are relative to the
+        # resource (not to the full request). A field is overwritten if it is in the
+        # mask.For example, given the target properties: properties ` a: 1 b: 2 ` And an
+        # update properties: properties ` a: 2 b: 3 c: 4 ` then if the field mask is:
+        # paths: "properties.b", "properties.c"then the result will be: properties ` a:
+        # 1 b: 3 c: 4 `
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @properties = args[:properties] if args.key?(:properties)
+          @table_name = args[:table_name] if args.key?(:table_name)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs.If there
@@ -1667,12 +1707,6 @@ module Google
         # @return [String]
         attr_accessor :backup
       
-        # Optional. A Cloud Storage URI specifying where the backup artifacts are stored,
-        # in the format gs:///.
-        # Corresponds to the JSON property `backupLocation`
-        # @return [String]
-        attr_accessor :backup_location
-      
         # Output only. The restore details containing the revision of the service to be
         # restored to, in format of JSON.
         # Corresponds to the JSON property `details`
@@ -1706,7 +1740,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
-          @backup_location = args[:backup_location] if args.key?(:backup_location)
           @details = args[:details] if args.key?(:details)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)

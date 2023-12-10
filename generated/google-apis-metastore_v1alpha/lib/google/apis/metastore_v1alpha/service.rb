@@ -653,6 +653,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Alter metadata table properties.
+        # @param [String] service
+        #   Required. The relative resource name of the Dataproc Metastore service that's
+        #   being used to mutate metadata table properties, in the following format:
+        #   projects/`project_id`/locations/`location_id`/services/`service_id`.
+        # @param [Google::Apis::MetastoreV1alpha::AlterTablePropertiesRequest] alter_table_properties_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MetastoreV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MetastoreV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def alter_service_table_properties(service, alter_table_properties_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+service}:alterTableProperties', options)
+          command.request_representation = Google::Apis::MetastoreV1alpha::AlterTablePropertiesRequest::Representation
+          command.request_object = alter_table_properties_request_object
+          command.response_representation = Google::Apis::MetastoreV1alpha::Operation::Representation
+          command.response_class = Google::Apis::MetastoreV1alpha::Operation
+          command.params['service'] = service unless service.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a metastore service in a project and location.
         # @param [String] parent
         #   Required. The relative resource name of the location in which to create a
