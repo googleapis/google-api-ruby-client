@@ -2206,8 +2206,9 @@ module Google
         # @param [String] workspace
         #   Required. The workspace's name.
         # @param [String] filter
-        #   Optional. Optional filter for the returned list in go/filtering format.
-        #   Filtering is only currently supported on the `path` field.
+        #   Optional. Optional filter for the returned list in filtering format. Filtering
+        #   is only currently supported on the `path` field. See https://google.aip.dev/
+        #   160 for details.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of search results to return. The server may return
         #   fewer items than requested. If unspecified, the server will pick an
