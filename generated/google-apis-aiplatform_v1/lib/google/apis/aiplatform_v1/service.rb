@@ -3251,6 +3251,75 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Perform an unary online prediction request for Vertex first-party products and
+        # frameworks.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DirectPredictRequest] google_cloud_aiplatform_v1_direct_predict_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DirectPredictResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DirectPredictResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def direct_project_location_endpoint_predict(endpoint, google_cloud_aiplatform_v1_direct_predict_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+endpoint}:directPredict', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DirectPredictRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_direct_predict_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DirectPredictResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DirectPredictResponse
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Perform an online prediction request through gRPC.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DirectRawPredictRequest] google_cloud_aiplatform_v1_direct_raw_predict_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DirectRawPredictResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DirectRawPredictResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def direct_project_location_endpoint_raw_predict(endpoint, google_cloud_aiplatform_v1_direct_raw_predict_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+endpoint}:directRawPredict', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DirectRawPredictRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_direct_raw_predict_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DirectRawPredictResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DirectRawPredictResponse
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Perform an online explanation. If deployed_model_id is specified, the
         # corresponding DeployModel must have explanation_spec populated. If
         # deployed_model_id is not specified, all DeployedModels must have
@@ -3939,7 +4008,7 @@ module Google
         
         # Updates the parameters of a single FeatureGroup.
         # @param [String] name
-        #   Output only. Name of the FeatureGroup. Format: `projects/`project`/locations/`
+        #   Identifier. Name of the FeatureGroup. Format: `projects/`project`/locations/`
         #   location`/featureGroups/`featureGroup``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureGroup] google_cloud_aiplatform_v1_feature_group_object
         # @param [String] update_mask
@@ -4124,8 +4193,8 @@ module Google
         #   A page token, received from a previous FeaturestoreService.ListFeatures call
         #   or FeatureRegistryService.ListFeatures call. Provide this to retrieve the
         #   subsequent page. When paginating, all other parameters provided to
-        #   FeaturestoreService.ListFeatures or or FeatureRegistryService.ListFeatures
-        #   must match the call that provided the page token.
+        #   FeaturestoreService.ListFeatures or FeatureRegistryService.ListFeatures must
+        #   match the call that provided the page token.
         # @param [String] read_mask
         #   Mask specifying which fields to read.
         # @param [String] fields
@@ -4669,7 +4738,7 @@ module Google
         
         # Updates the parameters of a single FeatureOnlineStore.
         # @param [String] name
-        #   Output only. Name of the FeatureOnlineStore. Format: `projects/`project`/
+        #   Identifier. Name of the FeatureOnlineStore. Format: `projects/`project`/
         #   locations/`location`/featureOnlineStores/`featureOnlineStore``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureOnlineStore] google_cloud_aiplatform_v1_feature_online_store_object
         # @param [String] update_mask
@@ -4915,7 +4984,7 @@ module Google
         
         # Updates the parameters of a single FeatureView.
         # @param [String] name
-        #   Output only. Name of the FeatureView. Format: `projects/`project`/locations/`
+        #   Identifier. Name of the FeatureView. Format: `projects/`project`/locations/`
         #   location`/featureOnlineStores/`feature_online_store`/featureViews/`
         #   feature_view``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureView] google_cloud_aiplatform_v1_feature_view_object
@@ -6579,8 +6648,8 @@ module Google
         #   A page token, received from a previous FeaturestoreService.ListFeatures call
         #   or FeatureRegistryService.ListFeatures call. Provide this to retrieve the
         #   subsequent page. When paginating, all other parameters provided to
-        #   FeaturestoreService.ListFeatures or or FeatureRegistryService.ListFeatures
-        #   must match the call that provided the page token.
+        #   FeaturestoreService.ListFeatures or FeatureRegistryService.ListFeatures must
+        #   match the call that provided the page token.
         # @param [String] read_mask
         #   Mask specifying which fields to read.
         # @param [String] fields
@@ -12382,6 +12451,42 @@ module Google
           command = make_simple_command(:post, 'v1/{+name}:start', options)
           command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1StartNotebookRuntimeRequest::Representation
           command.request_object = google_cloud_aiplatform_v1_start_notebook_runtime_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Upgrades a NotebookRuntime.
+        # @param [String] name
+        #   Required. The name of the NotebookRuntime resource to be upgrade. Instead of
+        #   checking whether the name is in valid NotebookRuntime resource name format,
+        #   directly throw NotFound exception if there is no such NotebookRuntime in
+        #   spanner.
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1UpgradeNotebookRuntimeRequest] google_cloud_aiplatform_v1_upgrade_notebook_runtime_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upgrade_project_location_notebook_runtime(name, google_cloud_aiplatform_v1_upgrade_notebook_runtime_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:upgrade', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1UpgradeNotebookRuntimeRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_upgrade_notebook_runtime_request_object
           command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
