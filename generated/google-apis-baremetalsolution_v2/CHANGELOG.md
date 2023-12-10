@@ -1,5 +1,9 @@
 # Release history for google-apis-baremetalsolution_v2
 
+### v0.43.0 (2023-12-10)
+
+* Regenerated from discovery document revision 20231130
+
 ### v0.42.0 (2023-10-22)
 
 * Regenerated from discovery document revision 20231018
