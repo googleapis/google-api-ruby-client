@@ -1296,17 +1296,19 @@ module Google
       class GoogleCloudRunV2ResourceRequirements
         include Google::Apis::Core::Hashable
       
-        # Determines whether CPU should be throttled or not outside of requests.
+        # Determines whether CPU is only allocated during requests (true by default).
+        # However, if ResourceRequirements is set, the caller must explicitly set this
+        # field to true to preserve the default behavior.
         # Corresponds to the JSON property `cpuIdle`
         # @return [Boolean]
         attr_accessor :cpu_idle
         alias_method :cpu_idle?, :cpu_idle
       
-        # Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for
-        # CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory.
-        # For more information, go to https://cloud.google.com/run/docs/configuring/cpu.
-        # * For supported 'memory' values and syntax, go to https://cloud.google.com/run/
-        # docs/configuring/memory-limits
+        # Only `memory` and `cpu` keys in the map are supported. Notes: * The only
+        # supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at
+        # least 2Gi of memory. For more information, go to https://cloud.google.com/run/
+        # docs/configuring/cpu. * For supported 'memory' values and syntax, go to https:/
+        # /cloud.google.com/run/docs/configuring/memory-limits
         # Corresponds to the JSON property `limits`
         # @return [Hash<String,String>]
         attr_accessor :limits
