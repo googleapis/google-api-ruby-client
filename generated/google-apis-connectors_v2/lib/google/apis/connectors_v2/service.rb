@@ -50,6 +50,102 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Reports readiness status of the connector. Similar logic to GetStatus but
+        # modified for kubernetes health check to understand.
+        # @param [String] name
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV2::CheckReadinessResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV2::CheckReadinessResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def check_project_location_connection_readiness(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}:checkReadiness', options)
+          command.response_representation = Google::Apis::ConnectorsV2::CheckReadinessResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV2::CheckReadinessResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reports the status of the connection. Note that when the connection is in a
+        # state that is not ACTIVE, the implementation of this RPC method must return a
+        # Status with the corresponding State instead of returning a gRPC status code
+        # that is not "OK", which indicates that ConnectionStatus itself, not the
+        # connection, failed.
+        # @param [String] name
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV2::CheckStatusResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV2::CheckStatusResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def check_project_location_connection_status(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}:checkStatus', options)
+          command.response_representation = Google::Apis::ConnectorsV2::CheckStatusResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV2::CheckStatusResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # ExchangeAuthCode exchanges the OAuth authorization code (and other necessary
+        # data) for an access token (and associated credentials).
+        # @param [String] name
+        # @param [Google::Apis::ConnectorsV2::ExchangeAuthCodeRequest] exchange_auth_code_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV2::ExchangeAuthCodeResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV2::ExchangeAuthCodeResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def exchange_connection_auth_code(name, exchange_auth_code_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:exchangeAuthCode', options)
+          command.request_representation = Google::Apis::ConnectorsV2::ExchangeAuthCodeRequest::Representation
+          command.request_object = exchange_auth_code_request_object
+          command.response_representation = Google::Apis::ConnectorsV2::ExchangeAuthCodeResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV2::ExchangeAuthCodeResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Executes a SQL statement specified in the body of the request. An example of
         # this SQL statement in the case of Salesforce connector would be 'select * from
         # Account a, Order o where a.Id = o.AccountId'.
@@ -81,6 +177,39 @@ module Google
           command.response_representation = Google::Apis::ConnectorsV2::ExecuteSqlQueryResponse::Representation
           command.response_class = Google::Apis::ConnectorsV2::ExecuteSqlQueryResponse
           command.params['connection'] = connection unless connection.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # RefreshAccessToken exchanges the OAuth refresh token (and other necessary data)
+        # for a new access token (and new associated credentials).
+        # @param [String] name
+        # @param [Google::Apis::ConnectorsV2::RefreshAccessTokenRequest] refresh_access_token_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV2::RefreshAccessTokenResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV2::RefreshAccessTokenResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def refresh_connection_access_token(name, refresh_access_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:refreshAccessToken', options)
+          command.request_representation = Google::Apis::ConnectorsV2::RefreshAccessTokenRequest::Representation
+          command.request_object = refresh_access_token_request_object
+          command.response_representation = Google::Apis::ConnectorsV2::RefreshAccessTokenResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV2::RefreshAccessTokenResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
