@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutomaticUpdatePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OnDeployUpdatePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -291,6 +303,12 @@ module Google
         end
       end
       
+      class AutomaticUpdatePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -320,6 +338,8 @@ module Google
       class CloudFunction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :automatic_update_policy, as: 'automaticUpdatePolicy', class: Google::Apis::CloudfunctionsV1::AutomaticUpdatePolicy, decorator: Google::Apis::CloudfunctionsV1::AutomaticUpdatePolicy::Representation
+      
           property :available_memory_mb, as: 'availableMemoryMb'
           hash :build_environment_variables, as: 'buildEnvironmentVariables'
           property :build_id, as: 'buildId'
@@ -341,6 +361,8 @@ module Google
           property :min_instances, as: 'minInstances'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :on_deploy_update_policy, as: 'onDeployUpdatePolicy', class: Google::Apis::CloudfunctionsV1::OnDeployUpdatePolicy, decorator: Google::Apis::CloudfunctionsV1::OnDeployUpdatePolicy::Representation
+      
           property :runtime, as: 'runtime'
           collection :secret_environment_variables, as: 'secretEnvironmentVariables', class: Google::Apis::CloudfunctionsV1::SecretEnvVar, decorator: Google::Apis::CloudfunctionsV1::SecretEnvVar::Representation
       
@@ -600,6 +622,13 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class OnDeployUpdatePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :runtime_version, as: 'runtimeVersion'
         end
       end
       
