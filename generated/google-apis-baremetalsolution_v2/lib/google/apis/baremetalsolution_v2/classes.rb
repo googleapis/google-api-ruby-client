@@ -314,6 +314,14 @@ module Google
         attr_accessor :interactive_serial_console_enabled
         alias_method :interactive_serial_console_enabled?, :interactive_serial_console_enabled
       
+        # Optional. Name of the KMS crypto key version used to encrypt the initial
+        # passwords. The key has to have ASYMMETRIC_DECRYPT purpose. Format is `projects/
+        # `project`/locations/`location`/keyRings/`keyring`/cryptoKeys/`key`/
+        # cryptoKeyVersions/`version``.
+        # Corresponds to the JSON property `kmsKeyVersion`
+        # @return [String]
+        attr_accessor :kms_key_version
+      
         # Labels as key value pairs.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -377,6 +385,11 @@ module Google
         # @return [String]
         attr_accessor :pod
       
+        # Optional. List of SSH Keys used during instance provisioning.
+        # Corresponds to the JSON property `sshKeys`
+        # @return [Array<String>]
+        attr_accessor :ssh_keys
+      
         # Output only. The state of the server.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -409,6 +422,7 @@ module Google
           @hyperthreading_enabled = args[:hyperthreading_enabled] if args.key?(:hyperthreading_enabled)
           @id = args[:id] if args.key?(:id)
           @interactive_serial_console_enabled = args[:interactive_serial_console_enabled] if args.key?(:interactive_serial_console_enabled)
+          @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
           @labels = args[:labels] if args.key?(:labels)
           @logical_interfaces = args[:logical_interfaces] if args.key?(:logical_interfaces)
           @login_info = args[:login_info] if args.key?(:login_info)
@@ -419,6 +433,7 @@ module Google
           @networks = args[:networks] if args.key?(:networks)
           @os_image = args[:os_image] if args.key?(:os_image)
           @pod = args[:pod] if args.key?(:pod)
+          @ssh_keys = args[:ssh_keys] if args.key?(:ssh_keys)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
           @volumes = args[:volumes] if args.key?(:volumes)
@@ -458,6 +473,12 @@ module Google
         # Corresponds to the JSON property `instanceType`
         # @return [String]
         attr_accessor :instance_type
+      
+        # Name of the KMS crypto key version used to encrypt the initial passwords. The
+        # key has to have ASYMMETRIC_DECRYPT purpose.
+        # Corresponds to the JSON property `kmsKeyVersion`
+        # @return [String]
+        attr_accessor :kms_key_version
       
         # List of logical interfaces for the instance. The number of logical interfaces
         # will be the same as number of hardware bond/nic on the chosen network template.
@@ -515,6 +536,7 @@ module Google
           @hyperthreading = args[:hyperthreading] if args.key?(:hyperthreading)
           @id = args[:id] if args.key?(:id)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
+          @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
           @logical_interfaces = args[:logical_interfaces] if args.key?(:logical_interfaces)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
@@ -903,6 +925,31 @@ module Google
         end
       end
       
+      # Response for LoadInstanceAuthInfo.
+      class LoadInstanceAuthInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of ssh keys.
+        # Corresponds to the JSON property `sshKeys`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::SshKey>]
+        attr_accessor :ssh_keys
+      
+        # Map of username to the user account info.
+        # Corresponds to the JSON property `userAccounts`
+        # @return [Hash<String,Google::Apis::BaremetalsolutionV2::UserAccount>]
+        attr_accessor :user_accounts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ssh_keys = args[:ssh_keys] if args.key?(:ssh_keys)
+          @user_accounts = args[:user_accounts] if args.key?(:user_accounts)
+        end
+      end
+      
       # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
@@ -1038,7 +1085,7 @@ module Google
         attr_accessor :shareable
         alias_method :shareable?, :shareable
       
-        # The size of this LUN, in gigabytes.
+        # The size of this LUN, in GiB.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
@@ -2256,6 +2303,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @provisioning_config = args[:provisioning_config] if args.key?(:provisioning_config)
+        end
+      end
+      
+      # User account provisioned for the customer.
+      class UserAccount
+        include Google::Apis::Core::Hashable
+      
+        # Encrypted initial password value.
+        # Corresponds to the JSON property `encryptedPassword`
+        # @return [String]
+        attr_accessor :encrypted_password
+      
+        # KMS CryptoKey Version used to encrypt the password.
+        # Corresponds to the JSON property `kmsKeyVersion`
+        # @return [String]
+        attr_accessor :kms_key_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encrypted_password = args[:encrypted_password] if args.key?(:encrypted_password)
+          @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
         end
       end
       

@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoadInstanceAuthInfoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Vrf
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -509,6 +521,7 @@ module Google
           property :hyperthreading_enabled, as: 'hyperthreadingEnabled'
           property :id, as: 'id'
           property :interactive_serial_console_enabled, as: 'interactiveSerialConsoleEnabled'
+          property :kms_key_version, as: 'kmsKeyVersion'
           hash :labels, as: 'labels'
           collection :logical_interfaces, as: 'logicalInterfaces', class: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2LogicalInterface, decorator: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2LogicalInterface::Representation
       
@@ -522,6 +535,7 @@ module Google
       
           property :os_image, as: 'osImage'
           property :pod, as: 'pod'
+          collection :ssh_keys, as: 'sshKeys'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
           collection :volumes, as: 'volumes', class: Google::Apis::BaremetalsolutionV2::Volume, decorator: Google::Apis::BaremetalsolutionV2::Volume::Representation
@@ -539,6 +553,7 @@ module Google
           property :hyperthreading, as: 'hyperthreading'
           property :id, as: 'id'
           property :instance_type, as: 'instanceType'
+          property :kms_key_version, as: 'kmsKeyVersion'
           collection :logical_interfaces, as: 'logicalInterfaces', class: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2LogicalInterface, decorator: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2LogicalInterface::Representation
       
           property :name, as: 'name'
@@ -671,6 +686,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
           collection :volumes, as: 'volumes', class: Google::Apis::BaremetalsolutionV2::Volume, decorator: Google::Apis::BaremetalsolutionV2::Volume::Representation
+      
+        end
+      end
+      
+      class LoadInstanceAuthInfoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ssh_keys, as: 'sshKeys', class: Google::Apis::BaremetalsolutionV2::SshKey, decorator: Google::Apis::BaremetalsolutionV2::SshKey::Representation
+      
+          hash :user_accounts, as: 'userAccounts', class: Google::Apis::BaremetalsolutionV2::UserAccount, decorator: Google::Apis::BaremetalsolutionV2::UserAccount::Representation
       
         end
       end
@@ -1032,6 +1057,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :provisioning_config, as: 'provisioningConfig', class: Google::Apis::BaremetalsolutionV2::ProvisioningConfig, decorator: Google::Apis::BaremetalsolutionV2::ProvisioningConfig::Representation
       
+        end
+      end
+      
+      class UserAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encrypted_password, as: 'encryptedPassword'
+          property :kms_key_version, as: 'kmsKeyVersion'
         end
       end
       
