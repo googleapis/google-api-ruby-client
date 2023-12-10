@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AudienceExport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AudienceListMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAudienceExportsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrderBy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +299,18 @@ module Google
       end
       
       class PropertyQuota
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryAudienceExportRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryAudienceExportResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -352,7 +382,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StringFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1betaAudienceDimension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1betaAudienceDimensionValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1betaAudienceRow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -363,6 +417,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :metric_name, as: 'metricName'
           collection :restricted_metric_types, as: 'restrictedMetricTypes'
+        end
+      end
+      
+      class AudienceExport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience, as: 'audience'
+          property :audience_display_name, as: 'audienceDisplayName'
+          property :begin_creating_time, as: 'beginCreatingTime'
+          property :creation_quota_tokens_charged, as: 'creationQuotaTokensCharged'
+          collection :dimensions, as: 'dimensions', class: Google::Apis::AnalyticsdataV1beta::V1betaAudienceDimension, decorator: Google::Apis::AnalyticsdataV1beta::V1betaAudienceDimension::Representation
+      
+          property :error_message, as: 'errorMessage'
+          property :name, as: 'name'
+          property :percentage_completed, as: 'percentageCompleted'
+          property :row_count, as: 'rowCount'
+          property :state, as: 'state'
         end
       end
       
@@ -612,6 +683,15 @@ module Google
         end
       end
       
+      class ListAudienceExportsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audience_exports, as: 'audienceExports', class: Google::Apis::AnalyticsdataV1beta::AudienceExport, decorator: Google::Apis::AnalyticsdataV1beta::AudienceExport::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class Metadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -704,6 +784,18 @@ module Google
         end
       end
       
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::AnalyticsdataV1beta::Status, decorator: Google::Apis::AnalyticsdataV1beta::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
       class OrderBy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -778,6 +870,25 @@ module Google
       
           property :tokens_per_project_per_hour, as: 'tokensPerProjectPerHour', class: Google::Apis::AnalyticsdataV1beta::QuotaStatus, decorator: Google::Apis::AnalyticsdataV1beta::QuotaStatus::Representation
       
+        end
+      end
+      
+      class QueryAudienceExportRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :limit, :numeric_string => true, as: 'limit'
+          property :offset, :numeric_string => true, as: 'offset'
+        end
+      end
+      
+      class QueryAudienceExportResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience_export, as: 'audienceExport', class: Google::Apis::AnalyticsdataV1beta::AudienceExport, decorator: Google::Apis::AnalyticsdataV1beta::AudienceExport::Representation
+      
+          collection :audience_rows, as: 'audienceRows', class: Google::Apis::AnalyticsdataV1beta::V1betaAudienceRow, decorator: Google::Apis::AnalyticsdataV1beta::V1betaAudienceRow::Representation
+      
+          property :row_count, as: 'rowCount'
         end
       end
       
@@ -969,12 +1080,43 @@ module Google
         end
       end
       
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
       class StringFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :case_sensitive, as: 'caseSensitive'
           property :match_type, as: 'matchType'
           property :value, as: 'value'
+        end
+      end
+      
+      class V1betaAudienceDimension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dimension_name, as: 'dimensionName'
+        end
+      end
+      
+      class V1betaAudienceDimensionValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+        end
+      end
+      
+      class V1betaAudienceRow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimension_values, as: 'dimensionValues', class: Google::Apis::AnalyticsdataV1beta::V1betaAudienceDimensionValue, decorator: Google::Apis::AnalyticsdataV1beta::V1betaAudienceDimensionValue::Representation
+      
         end
       end
     end
