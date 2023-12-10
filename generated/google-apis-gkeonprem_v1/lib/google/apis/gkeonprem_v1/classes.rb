@@ -4261,6 +4261,11 @@ module Google
         # @return [String]
         attr_accessor :resource_pool
       
+        # The name of the vCenter storage policy for the user cluster.
+        # Corresponds to the JSON property `storagePolicyName`
+        # @return [String]
+        attr_accessor :storage_policy_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4275,6 +4280,7 @@ module Google
           @datastore = args[:datastore] if args.key?(:datastore)
           @folder = args[:folder] if args.key?(:folder)
           @resource_pool = args[:resource_pool] if args.key?(:resource_pool)
+          @storage_policy_name = args[:storage_policy_name] if args.key?(:storage_policy_name)
         end
       end
       
@@ -5060,8 +5066,8 @@ module Google
         # @return [Google::Apis::GkeonpremV1::VmwareStaticIpConfig]
         attr_accessor :static_ip_config
       
-        # vcenter_network specifies vCenter network name. Inherited from the admin
-        # cluster.
+        # Output only. vcenter_network specifies vCenter network name. Inherited from
+        # the admin cluster.
         # Corresponds to the JSON property `vcenterNetwork`
         # @return [String]
         attr_accessor :vcenter_network

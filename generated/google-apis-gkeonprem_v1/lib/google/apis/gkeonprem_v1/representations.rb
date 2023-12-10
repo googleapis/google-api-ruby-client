@@ -2120,6 +2120,7 @@ module Google
           property :datastore, as: 'datastore'
           property :folder, as: 'folder'
           property :resource_pool, as: 'resourcePool'
+          property :storage_policy_name, as: 'storagePolicyName'
         end
       end
       
