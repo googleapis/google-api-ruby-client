@@ -199,6 +199,7 @@ module Google
         attr_accessor :messages
       
         # The resource name of the notification. Format: organizations/`organization`/
+        # locations/`location`/notifications/`notification` or projects/`project`/
         # locations/`location`/notifications/`notification`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -260,7 +261,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Output only. The resource name of the settings to retrieve. Format:
+        # Identifier. The resource name of the settings to retrieve. Format:
         # organizations/`organization`/locations/`location`/settings.
         # Corresponds to the JSON property `name`
         # @return [String]
