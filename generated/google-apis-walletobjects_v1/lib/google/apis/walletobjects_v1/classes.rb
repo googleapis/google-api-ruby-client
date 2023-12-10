@@ -4299,7 +4299,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A string representing a JWT of the format described at https://developers.
-        # google.com/pay/passes/reference/s2w-reference#google-pay-api-for-passes-jwt
+        # google.com/wallet/reference/rest/v1/Jwt
         # Corresponds to the JSON property `jwt`
         # @return [String]
         attr_accessor :jwt
