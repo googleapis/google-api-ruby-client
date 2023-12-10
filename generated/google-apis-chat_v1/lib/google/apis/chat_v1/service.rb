@@ -646,6 +646,10 @@ module Google
         #   other parameters provided should match the call that provided the page token.
         #   Passing different values to the other parameters might lead to unexpected
         #   results.
+        # @param [Boolean] show_groups
+        #   Optional. When `true`, also returns memberships associated with a Google Group,
+        #   in addition to other types of memberships. If a filter is set, Google Group
+        #   memberships that don't match the filter criteria aren't returned.
         # @param [Boolean] show_invited
         #   Optional. When `true`, also returns memberships associated with invited
         #   members, in addition to other types of memberships. If a filter is set,
@@ -669,7 +673,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_space_members(parent, filter: nil, page_size: nil, page_token: nil, show_invited: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_space_members(parent, filter: nil, page_size: nil, page_token: nil, show_groups: nil, show_invited: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/members', options)
           command.response_representation = Google::Apis::ChatV1::ListMembershipsResponse::Representation
           command.response_class = Google::Apis::ChatV1::ListMembershipsResponse
@@ -677,6 +681,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showGroups'] = show_groups unless show_groups.nil?
           command.query['showInvited'] = show_invited unless show_invited.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

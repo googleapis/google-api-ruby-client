@@ -388,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Group
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HostAppDataSourceMarkup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1293,6 +1299,13 @@ module Google
         end
       end
       
+      class Group
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class HostAppDataSourceMarkup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1406,6 +1419,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :group_member, as: 'groupMember', class: Google::Apis::ChatV1::Group, decorator: Google::Apis::ChatV1::Group::Representation
+      
           property :member, as: 'member', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
       
           property :name, as: 'name'
