@@ -152,6 +152,258 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new CustomTargetType in a given project and location.
+        # @param [String] parent
+        #   Required. The parent collection in which the `CustomTargetType` should be
+        #   created in. Format should be `projects/`project_id`/locations/`location_name``.
+        # @param [Google::Apis::ClouddeployV1::CustomTargetType] custom_target_type_object
+        # @param [String] custom_target_type_id
+        #   Required. ID of the `CustomTargetType`.
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. If set to true, the request is validated and the user is provided
+        #   with an expected result, but no actual change is made.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_custom_target_type(parent, custom_target_type_object = nil, custom_target_type_id: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/customTargetTypes', options)
+          command.request_representation = Google::Apis::ClouddeployV1::CustomTargetType::Representation
+          command.request_object = custom_target_type_object
+          command.response_representation = Google::Apis::ClouddeployV1::Operation::Representation
+          command.response_class = Google::Apis::ClouddeployV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['customTargetTypeId'] = custom_target_type_id unless custom_target_type_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single CustomTargetType.
+        # @param [String] name
+        #   Required. The name of the `CustomTargetType` to delete. Format must be `
+        #   projects/`project_id`/locations/`location_name`/customTargetTypes/`
+        #   custom_target_type``.
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, then deleting an already deleted or non-existing `
+        #   CustomTargetType` will succeed.
+        # @param [String] etag
+        #   Optional. This checksum is computed by the server based on the value of other
+        #   fields, and may be sent on update and delete requests to ensure the client has
+        #   an up-to-date value before proceeding.
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes after the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. If set to true, the request is validated but no actual change is
+        #   made.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_custom_target_type(name, allow_missing: nil, etag: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ClouddeployV1::Operation::Representation
+          command.response_class = Google::Apis::ClouddeployV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single CustomTargetType.
+        # @param [String] name
+        #   Required. Name of the `CustomTargetType`. Format must be `projects/`project_id`
+        #   /locations/`location_name`/customTargetTypes/`custom_target_type``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::CustomTargetType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::CustomTargetType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_custom_target_type(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ClouddeployV1::CustomTargetType::Representation
+          command.response_class = Google::Apis::ClouddeployV1::CustomTargetType
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists CustomTargetTypes in a given project and location.
+        # @param [String] parent
+        #   Required. The parent that owns this collection of custom target types. Format
+        #   must be `projects/`project_id`/locations/`location_name``.
+        # @param [String] filter
+        #   Optional. Filter custom target types to be returned. See https://google.aip.
+        #   dev/160 for more details.
+        # @param [String] order_by
+        #   Optional. Field to sort by. See https://google.aip.dev/132#ordering for more
+        #   details.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of `CustomTargetType` objects to return. The
+        #   service may return fewer than this value. If unspecified, at most 50 `
+        #   CustomTargetType` objects will be returned. The maximum value is 1000; values
+        #   above 1000 will be set to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListCustomTargetTypes` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   provided parameters match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::ListCustomTargetTypesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::ListCustomTargetTypesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_custom_target_types(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/customTargetTypes', options)
+          command.response_representation = Google::Apis::ClouddeployV1::ListCustomTargetTypesResponse::Representation
+          command.response_class = Google::Apis::ClouddeployV1::ListCustomTargetTypesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a single CustomTargetType.
+        # @param [String] name
+        #   Optional. Name of the `CustomTargetType`. Format is `projects/`project`/
+        #   locations/`location`/customTargetTypes/a-z`0,62``.
+        # @param [Google::Apis::ClouddeployV1::CustomTargetType] custom_target_type_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, updating a `CustomTargetType` that does not exist
+        #   will result in the creation of a new `CustomTargetType`.
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Required. Field mask is used to specify the fields to be overwritten in the `
+        #   CustomTargetType` resource by the update. The fields specified in the
+        #   update_mask are relative to the resource, not the full request. A field will
+        #   be overwritten if it is in the mask. If the user does not provide a mask then
+        #   all fields will be overwritten.
+        # @param [Boolean] validate_only
+        #   Optional. If set to true, the request is validated and the user is provided
+        #   with an expected result, but no actual change is made.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_custom_target_type(name, custom_target_type_object = nil, allow_missing: nil, request_id: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ClouddeployV1::CustomTargetType::Representation
+          command.request_object = custom_target_type_object
+          command.response_representation = Google::Apis::ClouddeployV1::Operation::Representation
+          command.response_class = Google::Apis::ClouddeployV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new DeliveryPipeline in a given project and location.
         # @param [String] parent
         #   Required. The parent collection in which the `DeliveryPipeline` should be
@@ -635,9 +887,9 @@ module Google
         
         # Lists AutomationRuns in a given project and location.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of automationRuns. Format
-        #   must be `projects/`project`/locations/`location`/deliveryPipelines/`
-        #   delivery_pipeline``.
+        #   Required. The parent `Delivery Pipeline`, which owns this collection of
+        #   automationRuns. Format must be `projects/`project`/locations/`location`/
+        #   deliveryPipelines/`delivery_pipeline``.
         # @param [String] filter
         #   Filter automationRuns to be returned. All fields can be used in the filter.
         # @param [String] order_by
@@ -826,9 +1078,9 @@ module Google
         
         # Lists Automations in a given project and location.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of automations. Format must
-        #   be `projects/`project_id`/locations/`location_name`/deliveryPipelines/`
-        #   pipeline_name``.
+        #   Required. The parent `Delivery Pipeline`, which owns this collection of
+        #   automations. Format must be `projects/`project_id`/locations/`location_name`/
+        #   deliveryPipelines/`pipeline_name``.
         # @param [String] filter
         #   Filter automations to be returned. All fields can be used in the filter.
         # @param [String] order_by

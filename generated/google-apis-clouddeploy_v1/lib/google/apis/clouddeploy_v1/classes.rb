@@ -93,7 +93,7 @@ module Google
       class AdvanceRolloutOperation
         include Google::Apis::Core::Hashable
       
-        # Output only. The phase to which the rollout will be advanced to.
+        # Output only. The phase the rollout will be advanced to.
         # Corresponds to the JSON property `destinationPhase`
         # @return [String]
         attr_accessor :destination_phase
@@ -328,7 +328,7 @@ module Google
       
       # An `Automation` resource in the Cloud Deploy API. An `Automation` enables the
       # automation of manually driven actions for a Delivery Pipeline, which includes
-      # Release promotion amongst Targets, Rollout repair and Rollout deployment
+      # Release promotion among Targets, Rollout repair and Rollout deployment
       # strategy advancement. The intention of Automation is to reduce manual
       # intervention in the continuous delivery process.
       class Automation
@@ -570,8 +570,8 @@ module Google
       class AutomationRuleCondition
         include Google::Apis::Core::Hashable
       
-        # TargetsPresentCondition contains information on any Targets defined in the
-        # Delivery Pipeline that do not actually exist.
+        # `TargetsPresentCondition` contains information on any Targets referenced in
+        # the Delivery Pipeline that do not actually exist.
         # Corresponds to the JSON property `targetsPresentCondition`
         # @return [Google::Apis::ClouddeployV1::TargetsPresentCondition]
         attr_accessor :targets_present_condition
@@ -587,7 +587,7 @@ module Google
       end
       
       # An `AutomationRun` resource in the Cloud Deploy API. An `AutomationRun`
-      # represents an automation execution instance of an automation rule.
+      # represents an execution instance of an automation rule.
       class AutomationRun
         include Google::Apis::Core::Hashable
       
@@ -603,7 +603,7 @@ module Google
       
         # An `Automation` resource in the Cloud Deploy API. An `Automation` enables the
         # automation of manually driven actions for a Delivery Pipeline, which includes
-        # Release promotion amongst Targets, Rollout repair and Rollout deployment
+        # Release promotion among Targets, Rollout repair and Rollout deployment
         # strategy advancement. The intention of Automation is to reduce manual
         # intervention in the continuous delivery process.
         # Corresponds to the JSON property `automationSnapshot`
@@ -623,8 +623,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Output only. Time the `AutomationRun` will expire. An `AutomationRun` will
-        # expire after 14 days from its creation date.
+        # Output only. Time the `AutomationRun` expires. An `AutomationRun` expires
+        # after 14 days from its creation date.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
@@ -663,7 +663,7 @@ module Google
         attr_accessor :state
       
         # Output only. Explains the current state of the `AutomationRun`. Present only
-        # an explanation is needed.
+        # when an explanation is needed.
         # Corresponds to the JSON property `stateDescription`
         # @return [String]
         attr_accessor :state_description
@@ -1044,6 +1044,24 @@ module Google
         attr_accessor :automatic_traffic_control
         alias_method :automatic_traffic_control?, :automatic_traffic_control
       
+        # Optional. A list of tags that are added to the canary revision while the
+        # canary deployment is in progress.
+        # Corresponds to the JSON property `canaryRevisionTags`
+        # @return [Array<String>]
+        attr_accessor :canary_revision_tags
+      
+        # Optional. A list of tags that are added to the prior revision while the canary
+        # deployment is in progress.
+        # Corresponds to the JSON property `priorRevisionTags`
+        # @return [Array<String>]
+        attr_accessor :prior_revision_tags
+      
+        # Optional. A list of tags that are added to the final stable revision after the
+        # canary deployment is completed.
+        # Corresponds to the JSON property `stableRevisionTags`
+        # @return [Array<String>]
+        attr_accessor :stable_revision_tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1051,6 +1069,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @automatic_traffic_control = args[:automatic_traffic_control] if args.key?(:automatic_traffic_control)
+          @canary_revision_tags = args[:canary_revision_tags] if args.key?(:canary_revision_tags)
+          @prior_revision_tags = args[:prior_revision_tags] if args.key?(:prior_revision_tags)
+          @stable_revision_tags = args[:stable_revision_tags] if args.key?(:stable_revision_tags)
         end
       end
       
@@ -1225,6 +1246,188 @@ module Google
         # Update properties of this object
         def update!(**args)
           @phase_configs = args[:phase_configs] if args.key?(:phase_configs)
+        end
+      end
+      
+      # CustomMetadata contains information from a user defined operation.
+      class CustomMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Key-value pairs provided by the user defined operation.
+        # Corresponds to the JSON property `values`
+        # @return [Hash<String,String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Information specifying a Custom Target.
+      class CustomTarget
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the CustomTargetType. Format must be `projects/`project`/
+        # locations/`location`/customTargetTypes/`custom_target_type``.
+        # Corresponds to the JSON property `customTargetType`
+        # @return [String]
+        attr_accessor :custom_target_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_target_type = args[:custom_target_type] if args.key?(:custom_target_type)
+        end
+      end
+      
+      # CustomTargetDeployMetadata contains information from a Custom Target deploy
+      # operation.
+      class CustomTargetDeployMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Skip message provided in the results of a custom deploy operation.
+        # Corresponds to the JSON property `skipMessage`
+        # @return [String]
+        attr_accessor :skip_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @skip_message = args[:skip_message] if args.key?(:skip_message)
+        end
+      end
+      
+      # CustomTargetSkaffoldActions represents the `CustomTargetType` configuration
+      # using Skaffold custom actions.
+      class CustomTargetSkaffoldActions
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Skaffold custom action responsible for deploy operations.
+        # Corresponds to the JSON property `deployAction`
+        # @return [String]
+        attr_accessor :deploy_action
+      
+        # Optional. List of Skaffold modules Cloud Deploy will include in the Skaffold
+        # Config as required before performing diagnose.
+        # Corresponds to the JSON property `includeSkaffoldModules`
+        # @return [Array<Google::Apis::ClouddeployV1::SkaffoldModules>]
+        attr_accessor :include_skaffold_modules
+      
+        # Optional. The Skaffold custom action responsible for render operations. If not
+        # provided then Cloud Deploy will perform the render operations via `skaffold
+        # render`.
+        # Corresponds to the JSON property `renderAction`
+        # @return [String]
+        attr_accessor :render_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deploy_action = args[:deploy_action] if args.key?(:deploy_action)
+          @include_skaffold_modules = args[:include_skaffold_modules] if args.key?(:include_skaffold_modules)
+          @render_action = args[:render_action] if args.key?(:render_action)
+        end
+      end
+      
+      # A `CustomTargetType` resource in the Cloud Deploy API. A `CustomTargetType`
+      # defines a type of custom target that can be referenced in a `Target` in order
+      # to facilitate deploying to a runtime that does not have a 1P integration with
+      # Cloud Deploy.
+      class CustomTargetType
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User annotations. These attributes can only be set and used by the
+        # user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for
+        # more details such as format and size limitations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. Time at which the `CustomTargetType` was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # CustomTargetSkaffoldActions represents the `CustomTargetType` configuration
+        # using Skaffold custom actions.
+        # Corresponds to the JSON property `customActions`
+        # @return [Google::Apis::ClouddeployV1::CustomTargetSkaffoldActions]
+        attr_accessor :custom_actions
+      
+        # Output only. Resource id of the `CustomTargetType`.
+        # Corresponds to the JSON property `customTargetTypeId`
+        # @return [String]
+        attr_accessor :custom_target_type_id
+      
+        # Optional. Description of the `CustomTargetType`. Max length is 255 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. This checksum is computed by the server based on the value of other
+        # fields, and may be sent on update and delete requests to ensure the client has
+        # an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Labels are attributes that can be set and used by both the user and
+        # by Cloud Deploy. Labels must meet the following constraints: * Keys and values
+        # can contain only lowercase letters, numeric characters, underscores, and
+        # dashes. * All characters must use UTF-8 encoding, and international characters
+        # are allowed. * Keys must start with a lowercase letter or international
+        # character. * Each resource is limited to a maximum of 64 labels. Both keys and
+        # values are additionally constrained to be <= 128 bytes.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. Name of the `CustomTargetType`. Format is `projects/`project`/
+        # locations/`location`/customTargetTypes/a-z`0,62``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Unique identifier of the `CustomTargetType`.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Most recent time at which the `CustomTargetType` was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_actions = args[:custom_actions] if args.key?(:custom_actions)
+          @custom_target_type_id = args[:custom_target_type_id] if args.key?(:custom_target_type_id)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -1520,6 +1723,17 @@ module Google
         # @return [Google::Apis::ClouddeployV1::CloudRunMetadata]
         attr_accessor :cloud_run
       
+        # CustomMetadata contains information from a user defined operation.
+        # Corresponds to the JSON property `custom`
+        # @return [Google::Apis::ClouddeployV1::CustomMetadata]
+        attr_accessor :custom
+      
+        # CustomTargetDeployMetadata contains information from a Custom Target deploy
+        # operation.
+        # Corresponds to the JSON property `customTarget`
+        # @return [Google::Apis::ClouddeployV1::CustomTargetDeployMetadata]
+        attr_accessor :custom_target
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1527,6 +1741,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
+          @custom = args[:custom] if args.key?(:custom)
+          @custom_target = args[:custom_target] if args.key?(:custom_target)
         end
       end
       
@@ -2140,7 +2356,7 @@ module Google
       class ListAutomationsResponse
         include Google::Apis::Core::Hashable
       
-        # The `Automations` objects.
+        # The `Automation` objects.
         # Corresponds to the JSON property `automations`
         # @return [Array<Google::Apis::ClouddeployV1::Automation>]
         attr_accessor :automations
@@ -2163,6 +2379,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @automations = args[:automations] if args.key?(:automations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response object from `ListCustomTargetTypes.`
+      class ListCustomTargetTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The `CustomTargetType` objects.
+        # Corresponds to the JSON property `customTargetTypes`
+        # @return [Array<Google::Apis::ClouddeployV1::CustomTargetType>]
+        attr_accessor :custom_target_types
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_target_types = args[:custom_target_types] if args.key?(:custom_target_types)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
@@ -2440,6 +2688,11 @@ module Google
         # @return [Google::Apis::ClouddeployV1::CloudRunMetadata]
         attr_accessor :cloud_run
       
+        # CustomMetadata contains information from a user defined operation.
+        # Corresponds to the JSON property `custom`
+        # @return [Google::Apis::ClouddeployV1::CustomMetadata]
+        attr_accessor :custom
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2448,6 +2701,7 @@ module Google
         def update!(**args)
           @automation = args[:automation] if args.key?(:automation)
           @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
+          @custom = args[:custom] if args.key?(:custom)
         end
       end
       
@@ -2732,8 +2986,8 @@ module Google
         # @return [Google::Apis::ClouddeployV1::PipelineReadyCondition]
         attr_accessor :pipeline_ready_condition
       
-        # TargetsPresentCondition contains information on any Targets defined in the
-        # Delivery Pipeline that do not actually exist.
+        # `TargetsPresentCondition` contains information on any Targets referenced in
+        # the Delivery Pipeline that do not actually exist.
         # Corresponds to the JSON property `targetsPresentCondition`
         # @return [Google::Apis::ClouddeployV1::TargetsPresentCondition]
         attr_accessor :targets_present_condition
@@ -3187,6 +3441,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. Snapshot of the custom target types referenced by the targets
+        # taken at release creation time.
+        # Corresponds to the JSON property `customTargetTypeSnapshots`
+        # @return [Array<Google::Apis::ClouddeployV1::CustomTargetType>]
+        attr_accessor :custom_target_type_snapshots
+      
         # A `DeliveryPipeline` resource in the Cloud Deploy API. A `DeliveryPipeline`
         # defines a pipeline through which a Skaffold configuration can progress.
         # Corresponds to the JSON property `deliveryPipelineSnapshot`
@@ -3292,6 +3552,7 @@ module Google
           @build_artifacts = args[:build_artifacts] if args.key?(:build_artifacts)
           @condition = args[:condition] if args.key?(:condition)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_target_type_snapshots = args[:custom_target_type_snapshots] if args.key?(:custom_target_type_snapshots)
           @delivery_pipeline_snapshot = args[:delivery_pipeline_snapshot] if args.key?(:delivery_pipeline_snapshot)
           @deploy_parameters = args[:deploy_parameters] if args.key?(:deploy_parameters)
           @description = args[:description] if args.key?(:description)
@@ -3322,7 +3583,7 @@ module Google
         attr_accessor :release_ready_condition
       
         # SkaffoldSupportedCondition contains information about when support for the
-        # release's version of skaffold ends.
+        # release's version of Skaffold ends.
         # Corresponds to the JSON property `skaffoldSupportedCondition`
         # @return [Google::Apis::ClouddeployV1::SkaffoldSupportedCondition]
         attr_accessor :skaffold_supported_condition
@@ -3438,6 +3699,11 @@ module Google
         # @return [Google::Apis::ClouddeployV1::CloudRunRenderMetadata]
         attr_accessor :cloud_run
       
+        # CustomMetadata contains information from a user defined operation.
+        # Corresponds to the JSON property `custom`
+        # @return [Google::Apis::ClouddeployV1::CustomMetadata]
+        attr_accessor :custom
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3445,6 +3711,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
+          @custom = args[:custom] if args.key?(:custom)
         end
       end
       
@@ -3509,6 +3776,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_repair_mode_index
       
+        # Output only. The job ID for the Job to repair.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        # Output only. The phase ID of the phase that includes the job being repaired.
+        # Corresponds to the JSON property `phaseId`
+        # @return [String]
+        attr_accessor :phase_id
+      
         # Output only. Records of the repair attempts. Each repair phase may have
         # multiple retry attempts or single rollback attempt.
         # Corresponds to the JSON property `repairPhases`
@@ -3527,6 +3804,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @current_repair_mode_index = args[:current_repair_mode_index] if args.key?(:current_repair_mode_index)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @phase_id = args[:phase_id] if args.key?(:phase_id)
           @repair_phases = args[:repair_phases] if args.key?(:repair_phases)
           @rollout = args[:rollout] if args.key?(:rollout)
         end
@@ -3591,7 +3870,7 @@ module Google
       class Retry
         include Google::Apis::Core::Hashable
       
-        # Required. Total number of retries. Retry will skipped if set to 0; The minimum
+        # Required. Total number of retries. Retry is skipped if set to 0; The minimum
         # value is 1, and the maximum value is 10.
         # Corresponds to the JSON property `attempts`
         # @return [Fixnum]
@@ -4303,29 +4582,118 @@ module Google
         end
       end
       
+      # Cloud Storage bucket containing Skaffold Config modules.
+      class SkaffoldGcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Relative path from the source to the Skaffold file.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Required. Cloud Storage source paths to copy recursively. For example,
+        # providing "gs://my-bucket/dir/configs/*" will result in Skaffold copying all
+        # files within the "dir/configs" directory in the bucket "my-bucket".
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # Git repository containing Skaffold Config modules.
+      class SkaffoldGitSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Relative path from the repository root to the Skaffold file.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Optional. Git ref the package should be cloned from.
+        # Corresponds to the JSON property `ref`
+        # @return [String]
+        attr_accessor :ref
+      
+        # Required. Git repository the package should be cloned from.
+        # Corresponds to the JSON property `repo`
+        # @return [String]
+        attr_accessor :repo
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+          @ref = args[:ref] if args.key?(:ref)
+          @repo = args[:repo] if args.key?(:repo)
+        end
+      end
+      
+      # Skaffold Config modules and their remote source.
+      class SkaffoldModules
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Skaffold Config modules to use from the specified source.
+        # Corresponds to the JSON property `configs`
+        # @return [Array<String>]
+        attr_accessor :configs
+      
+        # Git repository containing Skaffold Config modules.
+        # Corresponds to the JSON property `git`
+        # @return [Google::Apis::ClouddeployV1::SkaffoldGitSource]
+        attr_accessor :git
+      
+        # Cloud Storage bucket containing Skaffold Config modules.
+        # Corresponds to the JSON property `googleCloudStorage`
+        # @return [Google::Apis::ClouddeployV1::SkaffoldGcsSource]
+        attr_accessor :google_cloud_storage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configs = args[:configs] if args.key?(:configs)
+          @git = args[:git] if args.key?(:git)
+          @google_cloud_storage = args[:google_cloud_storage] if args.key?(:google_cloud_storage)
+        end
+      end
+      
       # SkaffoldSupportedCondition contains information about when support for the
-      # release's version of skaffold ends.
+      # release's version of Skaffold ends.
       class SkaffoldSupportedCondition
         include Google::Apis::Core::Hashable
       
-        # The time at which this release's version of skaffold will enter maintenance
+        # The time at which this release's version of Skaffold will enter maintenance
         # mode.
         # Corresponds to the JSON property `maintenanceModeTime`
         # @return [String]
         attr_accessor :maintenance_mode_time
       
-        # The skaffold support state for this release's version of skaffold.
+        # The Skaffold support state for this release's version of Skaffold.
         # Corresponds to the JSON property `skaffoldSupportState`
         # @return [String]
         attr_accessor :skaffold_support_state
       
-        # True if the version of skaffold used by this release is supported.
+        # True if the version of Skaffold used by this release is supported.
         # Corresponds to the JSON property `status`
         # @return [Boolean]
         attr_accessor :status
         alias_method :status?, :status
       
-        # The time at which this release's version of skaffold will no longer be
+        # The time at which this release's version of Skaffold will no longer be
         # supported.
         # Corresponds to the JSON property `supportExpirationTime`
         # @return [String]
@@ -4348,7 +4716,7 @@ module Google
       class SkaffoldVersion
         include Google::Apis::Core::Hashable
       
-        # The time at which this version of skaffold will enter maintenance mode.
+        # The time at which this version of Skaffold will enter maintenance mode.
         # Corresponds to the JSON property `maintenanceModeTime`
         # @return [String]
         attr_accessor :maintenance_mode_time
@@ -4365,7 +4733,7 @@ module Google
         # @return [Google::Apis::ClouddeployV1::Date]
         attr_accessor :support_end_date
       
-        # The time at which this version of skaffold will no longer be supported.
+        # The time at which this version of Skaffold will no longer be supported.
         # Corresponds to the JSON property `supportExpirationTime`
         # @return [String]
         attr_accessor :support_expiration_time
@@ -4547,6 +4915,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Information specifying a Custom Target.
+        # Corresponds to the JSON property `customTarget`
+        # @return [Google::Apis::ClouddeployV1::CustomTarget]
+        attr_accessor :custom_target
+      
         # Optional. The deploy parameters to use for this target.
         # Corresponds to the JSON property `deployParameters`
         # @return [Hash<String,String>]
@@ -4636,6 +5009,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @anthos_cluster = args[:anthos_cluster] if args.key?(:anthos_cluster)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_target = args[:custom_target] if args.key?(:custom_target)
           @deploy_parameters = args[:deploy_parameters] if args.key?(:deploy_parameters)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
@@ -4801,8 +5175,8 @@ module Google
         end
       end
       
-      # TargetsPresentCondition contains information on any Targets defined in the
-      # Delivery Pipeline that do not actually exist.
+      # `TargetsPresentCondition` contains information on any Targets referenced in
+      # the Delivery Pipeline that do not actually exist.
       class TargetsPresentCondition
         include Google::Apis::Core::Hashable
       
