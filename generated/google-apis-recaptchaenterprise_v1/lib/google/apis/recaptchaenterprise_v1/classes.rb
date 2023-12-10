@@ -1228,9 +1228,16 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership
         include Google::Apis::Core::Hashable
       
-        # The unique stable hashed user identifier of the member. The identifier
-        # corresponds to a `hashed_account_id` provided in a previous `CreateAssessment`
-        # or `AnnotateAssessment` call.
+        # The unique stable account identifier of the member. The identifier corresponds
+        # to an `account_id` provided in a previous `CreateAssessment` or `
+        # AnnotateAssessment` call.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # Deprecated: use `account_id` instead. The unique stable hashed account
+        # identifier of the member. The identifier corresponds to a `hashed_account_id`
+        # provided in a previous `CreateAssessment` or `AnnotateAssessment` call.
         # Corresponds to the JSON property `hashedAccountId`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1249,6 +1256,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
           @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
           @name = args[:name] if args.key?(:name)
         end
@@ -1360,9 +1368,19 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. The unique stable hashed user identifier used to search connections.
-        # The identifier should correspond to a `hashed_account_id` provided in a
-        # previous `CreateAssessment` or `AnnotateAssessment` call.
+        # Optional. The unique stable account identifier used to search connections. The
+        # identifier should correspond to an `account_id` provided in a previous `
+        # CreateAssessment` or `AnnotateAssessment` call. Either hashed_account_id or
+        # account_id must be set, but not both.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # Optional. Deprecated: use `account_id` instead. The unique stable hashed
+        # account identifier used to search connections. The identifier should
+        # correspond to a `hashed_account_id` provided in a previous `CreateAssessment`
+        # or `AnnotateAssessment` call. Either hashed_account_id or account_id must be
+        # set, but not both.
         # Corresponds to the JSON property `hashedAccountId`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1390,6 +1408,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
           @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)

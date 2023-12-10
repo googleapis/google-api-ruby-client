@@ -714,6 +714,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
           property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
           property :name, as: 'name'
         end
@@ -755,6 +756,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
           property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
