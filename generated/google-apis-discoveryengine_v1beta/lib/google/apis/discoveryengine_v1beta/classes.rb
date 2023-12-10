@@ -622,6 +622,53 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # BatchCreateTargetSite operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSiteMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for SiteSearchEngineService.BatchCreateTargetSites method.
+      class GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse
+        include Google::Apis::Core::Hashable
+      
+        # TargetSites created.
+        # Corresponds to the JSON property `targetSites`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaTargetSite>]
+        attr_accessor :target_sites
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_sites = args[:target_sites] if args.key?(:target_sites)
+        end
+      end
+      
       # Metadata related to the progress of the DataStoreService.CreateDataStore
       # operation. This will be returned by the google.longrunning.Operation.metadata
       # field.
@@ -679,6 +726,34 @@ module Google
       
       # Metadata for Create Schema LRO.
       class GoogleCloudDiscoveryengineV1alphaCreateSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # CreateTargetSite operation. This will be returned by the google.longrunning.
+      # Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaCreateTargetSiteMetadata
         include Google::Apis::Core::Hashable
       
         # Operation create time.
@@ -845,6 +920,116 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # DeleteTargetSite operation. This will be returned by the google.longrunning.
+      # Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaDeleteTargetSiteMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # DisableAdvancedSiteSearch operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for SiteSearchEngineService.DisableAdvancedSiteSearch method.
+      class GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # EnableAdvancedSiteSearch operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for SiteSearchEngineService.EnableAdvancedSiteSearch method.
+      class GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2018,6 +2203,34 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # UpdateTargetSite operation. This will be returned by the google.longrunning.
+      # Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaUpdateTargetSiteMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # BigQuery source import data from.
       class GoogleCloudDiscoveryengineV1betaBigQuerySource
         include Google::Apis::Core::Hashable
@@ -2184,7 +2397,8 @@ module Google
         attr_accessor :messages
       
         # Immutable. Fully qualified name `project/*/locations/global/collections/`
-        # collection`/dataStore/*/conversations/*`
+        # collection`/dataStore/*/conversations/*` or `project/*/locations/global/
+        # collections/`collection`/engines/*/conversations/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4095,6 +4309,11 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Specification of the model.
+        # Corresponds to the JSON property `modelSpec`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec]
+        attr_accessor :model_spec
+      
         # The number of top results to generate the summary from. If the number of
         # results returned is less than `summaryResultCount`, the summary is generated
         # from all of the results. At most five results can be used to generate a
@@ -4113,7 +4332,27 @@ module Google
           @ignore_non_summary_seeking_query = args[:ignore_non_summary_seeking_query] if args.key?(:ignore_non_summary_seeking_query)
           @include_citations = args[:include_citations] if args.key?(:include_citations)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @model_spec = args[:model_spec] if args.key?(:model_spec)
           @summary_result_count = args[:summary_result_count] if args.key?(:summary_result_count)
+        end
+      end
+      
+      # Specification of the model.
+      class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec
+        include Google::Apis::Core::Hashable
+      
+        # The string format of the model version. e.g. stable, latest, etc.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
