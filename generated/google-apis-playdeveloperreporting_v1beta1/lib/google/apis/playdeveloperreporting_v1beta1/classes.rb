@@ -679,6 +679,13 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # Version control system information from BUNDLE-METADATA/version-control-info.
+        # textproto or META-INF/version-control-info.textproto of the app bundle or APK,
+        # respectively.
+        # Corresponds to the JSON property `vcsInformation`
+        # @return [String]
+        attr_accessor :vcs_information
+      
         def initialize(**args)
            update!(**args)
         end
@@ -692,6 +699,7 @@ module Google
           @os_version = args[:os_version] if args.key?(:os_version)
           @report_text = args[:report_text] if args.key?(:report_text)
           @type = args[:type] if args.key?(:type)
+          @vcs_information = args[:vcs_information] if args.key?(:vcs_information)
         end
       end
       
