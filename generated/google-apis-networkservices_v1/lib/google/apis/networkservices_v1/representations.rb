@@ -555,6 +555,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :gateway_security_policy, as: 'gatewaySecurityPolicy'
+          property :ip_version, as: 'ipVersion'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
