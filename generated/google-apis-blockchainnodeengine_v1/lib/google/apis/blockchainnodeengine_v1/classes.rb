@@ -182,6 +182,7 @@ module Google
         attr_accessor :api_enable_debug
         alias_method :api_enable_debug?, :api_enable_debug
       
+        # Deprecated: Use the same field in the ValidatorConfig message as replacement.
         # An Ethereum address which the beacon client will send fee rewards to if no
         # recipient is configured in the validator client. See https://lighthouse-book.
         # sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/
@@ -218,6 +219,12 @@ module Google
         # @return [String]
         attr_accessor :node_type
       
+        # Configuration for validator-related parameters on the beacon client, and for
+        # any GCP-managed validator client.
+        # Corresponds to the JSON property `validatorConfig`
+        # @return [Google::Apis::BlockchainnodeengineV1::ValidatorConfig]
+        attr_accessor :validator_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -233,6 +240,7 @@ module Google
           @geth_details = args[:geth_details] if args.key?(:geth_details)
           @network = args[:network] if args.key?(:network)
           @node_type = args[:node_type] if args.key?(:node_type)
+          @validator_config = args[:validator_config] if args.key?(:validator_config)
         end
       end
       
@@ -591,6 +599,27 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Configuration for validator-related parameters on the beacon client, and for
+      # any GCP-managed validator client.
+      class ValidatorConfig
+        include Google::Apis::Core::Hashable
+      
+        # URLs for MEV-relay services to use for block building. When set, a GCP-managed
+        # MEV-boost service is configured on the beacon client.
+        # Corresponds to the JSON property `mevRelayUrls`
+        # @return [Array<String>]
+        attr_accessor :mev_relay_urls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mev_relay_urls = args[:mev_relay_urls] if args.key?(:mev_relay_urls)
         end
       end
     end

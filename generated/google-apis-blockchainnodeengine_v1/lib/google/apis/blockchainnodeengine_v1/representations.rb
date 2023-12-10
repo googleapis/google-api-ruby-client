@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ValidatorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BlockchainNode
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -166,6 +172,8 @@ module Google
       
           property :network, as: 'network'
           property :node_type, as: 'nodeType'
+          property :validator_config, as: 'validatorConfig', class: Google::Apis::BlockchainnodeengineV1::ValidatorConfig, decorator: Google::Apis::BlockchainnodeengineV1::ValidatorConfig::Representation
+      
         end
       end
       
@@ -261,6 +269,13 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class ValidatorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mev_relay_urls, as: 'mevRelayUrls'
         end
       end
     end
