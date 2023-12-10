@@ -692,12 +692,6 @@ module Google
       class ClusterUpgradeMembershipState
         include Google::Apis::Core::Hashable
       
-        # Project number or id of the fleet. It is set only for Memberships that are
-        # part of fleet-based Rollout Sequencing.
-        # Corresponds to the JSON property `fleet`
-        # @return [String]
-        attr_accessor :fleet
-      
         # IgnoredMembership represents a membership ignored by the feature. A membership
         # can be ignored because it was manually upgraded to a newer version than RC
         # default.
@@ -722,7 +716,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @fleet = args[:fleet] if args.key?(:fleet)
           @ignored = args[:ignored] if args.key?(:ignored)
           @scopes = args[:scopes] if args.key?(:scopes)
           @upgrades = args[:upgrades] if args.key?(:upgrades)
@@ -1107,8 +1100,7 @@ module Google
         # Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is
         # enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.
         # metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the
-        # namespace `config-management-monitoring` should be bound to the GSA. This
-        # field is required when automatic Feature management is enabled.
+        # namespace `config-management-monitoring` should be bound to the GSA.
         # Corresponds to the JSON property `metricsGcpServiceAccountEmail`
         # @return [String]
         attr_accessor :metrics_gcp_service_account_email
