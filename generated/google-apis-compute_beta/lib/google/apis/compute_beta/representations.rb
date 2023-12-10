@@ -5044,6 +5044,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyAdvancedOptionsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10042,6 +10048,7 @@ module Google
           collection :resource_policies, as: 'resourcePolicies'
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeBeta::ResourceStatus, decorator: Google::Apis::ComputeBeta::ResourceStatus::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeBeta::Scheduling, decorator: Google::Apis::ComputeBeta::Scheduling::Representation
       
@@ -10326,6 +10333,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :instance_selection_lists, as: 'instanceSelectionLists', class: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection::Representation
+      
+          hash :instance_selections, as: 'instanceSelections', class: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection::Representation
       
         end
       end
@@ -16139,7 +16148,21 @@ module Google
           property :auto_deploy_expiration_sec, as: 'autoDeployExpirationSec'
           property :auto_deploy_impacted_baseline_threshold, as: 'autoDeployImpactedBaselineThreshold'
           property :auto_deploy_load_threshold, as: 'autoDeployLoadThreshold'
+          property :detection_absolute_qps, as: 'detectionAbsoluteQps'
+          property :detection_load_threshold, as: 'detectionLoadThreshold'
+          property :detection_relative_to_baseline_qps, as: 'detectionRelativeToBaselineQps'
           property :name, as: 'name'
+          collection :traffic_granularity_configs, as: 'trafficGranularityConfigs', class: Google::Apis::ComputeBeta::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig, decorator: Google::Apis::ComputeBeta::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_each_unique_value, as: 'enableEachUniqueValue'
+          property :type, as: 'type'
+          property :value, as: 'value'
         end
       end
       

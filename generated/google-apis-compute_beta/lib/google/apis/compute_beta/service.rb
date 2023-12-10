@@ -11113,8 +11113,7 @@ module Google
         # creating an instance, the currentAction is CREATING. If a previous action
         # failed, the list displays the errors for that failed action. The orderBy query
         # parameter is not supported. The `pageToken` query parameter is supported only
-        # in the alpha and beta API and only if the group's `listManagedInstancesResults`
-        # field is set to `PAGINATED`.
+        # if the group's `listManagedInstancesResults` field is set to `PAGINATED`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -15641,8 +15640,9 @@ module Google
         # @param [String] instance
         #   Name of the instance resource to stop.
         # @param [Boolean] discard_local_ssd
-        #   If true, discard the contents of any attached localSSD partitions. Default
-        #   value is false.
+        #   This property is required if the instance has any attached Local SSD disks. If
+        #   false, Local SSD data will be preserved when the instance is suspended. If
+        #   true, the contents of any attached Local SSD disks will be discarded.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -15701,8 +15701,9 @@ module Google
         # @param [String] instance
         #   Name of the instance resource to suspend.
         # @param [Boolean] discard_local_ssd
-        #   If true, discard the contents of any attached localSSD partitions. Default
-        #   value is false.
+        #   This property is required if the instance has any attached Local SSD disks. If
+        #   false, Local SSD data will be preserved when the instance is suspended. If
+        #   true, the contents of any attached Local SSD disks will be discarded.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -29805,9 +29806,8 @@ module Google
         # Lists the instances in the managed instance group and instances that are
         # scheduled to be created. The list includes any current actions that the group
         # has scheduled for its instances. The orderBy query parameter is not supported.
-        # The `pageToken` query parameter is supported only in the alpha and beta API
-        # and only if the group's `listManagedInstancesResults` field is set to `
-        # PAGINATED`.
+        # The `pageToken` query parameter is supported only if the group's `
+        # listManagedInstancesResults` field is set to `PAGINATED`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -44998,8 +44998,8 @@ module Google
         
         # Sets the SSL policy for TargetSslProxy. The SSL policy specifies the server-
         # side support for SSL features. This affects connections between clients and
-        # the SSL proxy load balancer. They do not affect the connection between the
-        # load balancer and the backends.
+        # the load balancer. They do not affect the connection between the load balancer
+        # and the backends.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_ssl_proxy
