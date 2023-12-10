@@ -412,7 +412,7 @@ module Google
         # @return [Google::Apis::MonitoringV1::MosaicLayout]
         attr_accessor :mosaic_layout
       
-        # Immutable. The resource name of the dashboard.
+        # Identifier. The resource name of the dashboard.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
