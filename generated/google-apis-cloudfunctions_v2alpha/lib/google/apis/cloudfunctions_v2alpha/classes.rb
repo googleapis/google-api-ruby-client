@@ -384,6 +384,15 @@ module Google
         # @return [String]
         attr_accessor :retry_policy
       
+        # Optional. The hostname of the service that 1st Gen function should be observed.
+        # If no string is provided, the default service implementing the API will be
+        # used. For example, `storage.googleapis.com` is the default for all event types
+        # in the `google.storage` namespace. The field is only applicable to 1st Gen
+        # functions.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
         # Optional. The email of the trigger's service account. The service account must
         # have permission to invoke Cloud Run services, the permission is `run.routes.
         # invoke`. If empty, defaults to the Compute Engine default service account: ``
@@ -417,6 +426,7 @@ module Google
           @event_type = args[:event_type] if args.key?(:event_type)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
+          @service = args[:service] if args.key?(:service)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @trigger = args[:trigger] if args.key?(:trigger)
           @trigger_region = args[:trigger_region] if args.key?(:trigger_region)
@@ -1827,9 +1837,9 @@ module Google
         attr_accessor :all_traffic_on_latest_revision
         alias_method :all_traffic_on_latest_revision?, :all_traffic_on_latest_revision
       
-        # [Preview] The number of CPUs used in a single container instance. Default
-        # value is calculated from available memory. Supports the same values as Cloud
-        # Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#
+        # The number of CPUs used in a single container instance. Default value is
+        # calculated from available memory. Supports the same values as Cloud Run, see
+        # https://cloud.google.com/run/docs/reference/rest/v1/Container#
         # resourcerequirements Example: "1" indicates 1 vCPU
         # Corresponds to the JSON property `availableCpu`
         # @return [String]
@@ -1864,8 +1874,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_instance_count
       
-        # [Preview] Sets the maximum number of concurrent requests that each instance
-        # can receive. Defaults to 1.
+        # Sets the maximum number of concurrent requests that each instance can receive.
+        # Defaults to 1.
         # Corresponds to the JSON property `maxInstanceRequestConcurrency`
         # @return [Fixnum]
         attr_accessor :max_instance_request_concurrency
