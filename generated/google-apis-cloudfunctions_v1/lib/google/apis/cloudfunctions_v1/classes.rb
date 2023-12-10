@@ -93,6 +93,20 @@ module Google
         end
       end
       
+      # Security patches are applied automatically to the runtime without requiring
+      # the function to be redeployed.
+      class AutomaticUpdatePolicy
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -225,6 +239,12 @@ module Google
       # to an event. It encapsulate function and triggers configurations.
       class CloudFunction
         include Google::Apis::Core::Hashable
+      
+        # Security patches are applied automatically to the runtime without requiring
+        # the function to be redeployed.
+        # Corresponds to the JSON property `automaticUpdatePolicy`
+        # @return [Google::Apis::CloudfunctionsV1::AutomaticUpdatePolicy]
+        attr_accessor :automatic_update_policy
       
         # The amount of memory in MB available for a function. Defaults to 256MB.
         # Corresponds to the JSON property `availableMemoryMb`
@@ -367,6 +387,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Security patches are only applied when a function is redeployed.
+        # Corresponds to the JSON property `onDeployUpdatePolicy`
+        # @return [Google::Apis::CloudfunctionsV1::OnDeployUpdatePolicy]
+        attr_accessor :on_deploy_update_policy
+      
         # The runtime in which to run the function. Required when deploying a new
         # function, optional when updating an existing function. For a complete list of
         # possible choices, see the [`gcloud` command reference](https://cloud.google.
@@ -462,6 +487,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @automatic_update_policy = args[:automatic_update_policy] if args.key?(:automatic_update_policy)
           @available_memory_mb = args[:available_memory_mb] if args.key?(:available_memory_mb)
           @build_environment_variables = args[:build_environment_variables] if args.key?(:build_environment_variables)
           @build_id = args[:build_id] if args.key?(:build_id)
@@ -481,6 +507,7 @@ module Google
           @min_instances = args[:min_instances] if args.key?(:min_instances)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @on_deploy_update_policy = args[:on_deploy_update_policy] if args.key?(:on_deploy_update_policy)
           @runtime = args[:runtime] if args.key?(:runtime)
           @secret_environment_variables = args[:secret_environment_variables] if args.key?(:secret_environment_variables)
           @secret_volumes = args[:secret_volumes] if args.key?(:secret_volumes)
@@ -1407,6 +1434,26 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Security patches are only applied when a function is redeployed.
+      class OnDeployUpdatePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. contains the runtime version which was used during latest
+        # function deployment.
+        # Corresponds to the JSON property `runtimeVersion`
+        # @return [String]
+        attr_accessor :runtime_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
         end
       end
       
