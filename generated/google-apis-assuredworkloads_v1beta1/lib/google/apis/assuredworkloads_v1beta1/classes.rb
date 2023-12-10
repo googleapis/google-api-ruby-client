@@ -22,7 +22,7 @@ module Google
   module Apis
     module AssuredworkloadsV1beta1
       
-      # Request for acknowledging the violation Next Id: 5
+      # Request for acknowledging the violation
       class GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationRequest
         include Google::Apis::Core::Hashable
       
