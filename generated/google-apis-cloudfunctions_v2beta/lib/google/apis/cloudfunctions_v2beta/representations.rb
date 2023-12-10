@@ -370,6 +370,7 @@ module Google
           property :event_type, as: 'eventType'
           property :pubsub_topic, as: 'pubsubTopic'
           property :retry_policy, as: 'retryPolicy'
+          property :service, as: 'service'
           property :service_account_email, as: 'serviceAccountEmail'
           property :trigger, as: 'trigger'
           property :trigger_region, as: 'triggerRegion'
