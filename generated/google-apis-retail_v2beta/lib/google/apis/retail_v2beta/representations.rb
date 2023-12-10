@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaExportAnalyticsMetricsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaExportErrorsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1736,6 +1742,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enrolled_solution, as: 'enrolledSolution'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaExportAnalyticsMetricsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::RetailV2beta::GoogleRpcStatus, decorator: Google::Apis::RetailV2beta::GoogleRpcStatus::Representation
+      
+          property :errors_config, as: 'errorsConfig', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaExportErrorsConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaExportErrorsConfig::Representation
+      
+          property :output_result, as: 'outputResult', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaOutputResult, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaOutputResult::Representation
+      
         end
       end
       
