@@ -211,6 +211,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Translate text using Adaptive MT.
+        # @param [String] parent
+        #   Required. Location to make a regional call. Format: `projects/`project-number-
+        #   or-id`/locations/`location-id``.
+        # @param [Google::Apis::TranslateV3::AdaptiveMtTranslateRequest] adaptive_mt_translate_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::AdaptiveMtTranslateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::AdaptiveMtTranslateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def adaptive_location_mt_translate(parent, adaptive_mt_translate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}:adaptiveMtTranslate', options)
+          command.request_representation = Google::Apis::TranslateV3::AdaptiveMtTranslateRequest::Representation
+          command.request_object = adaptive_mt_translate_request_object
+          command.response_representation = Google::Apis::TranslateV3::AdaptiveMtTranslateResponse::Representation
+          command.response_class = Google::Apis::TranslateV3::AdaptiveMtTranslateResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Translates a large volume of document in asynchronous batch mode. This
         # function provides real-time output as the inputs are being processed. If
         # caller cancels a request, the partial results (for an input file, it's all or
@@ -563,6 +597,370 @@ module Google
           command.response_representation = Google::Apis::TranslateV3::TranslateTextResponse::Representation
           command.response_class = Google::Apis::TranslateV3::TranslateTextResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an Adaptive MT dataset.
+        # @param [String] parent
+        #   Required. Name of the parent project. In form of `projects/`project-number-or-
+        #   id`/locations/`location-id``
+        # @param [Google::Apis::TranslateV3::AdaptiveMtDataset] adaptive_mt_dataset_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::AdaptiveMtDataset] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::AdaptiveMtDataset]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_adaptive_mt_dataset(parent, adaptive_mt_dataset_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}/adaptiveMtDatasets', options)
+          command.request_representation = Google::Apis::TranslateV3::AdaptiveMtDataset::Representation
+          command.request_object = adaptive_mt_dataset_object
+          command.response_representation = Google::Apis::TranslateV3::AdaptiveMtDataset::Representation
+          command.response_class = Google::Apis::TranslateV3::AdaptiveMtDataset
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an Adaptive MT dataset, including all its entries and associated
+        # metadata.
+        # @param [String] name
+        #   Required. Name of the dataset. In the form of `projects/`project-number-or-id`/
+        #   locations/`location-id`/adaptiveMtDatasets/`adaptive-mt-dataset-id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_adaptive_mt_dataset(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::TranslateV3::Empty::Representation
+          command.response_class = Google::Apis::TranslateV3::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the Adaptive MT dataset.
+        # @param [String] name
+        #   Required. Name of the dataset. In the form of `projects/`project-number-or-id`/
+        #   locations/`location-id`/adaptiveMtDatasets/`adaptive-mt-dataset-id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::AdaptiveMtDataset] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::AdaptiveMtDataset]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_adaptive_mt_dataset(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::TranslateV3::AdaptiveMtDataset::Representation
+          command.response_class = Google::Apis::TranslateV3::AdaptiveMtDataset
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Imports an AdaptiveMtFile and adds all of its sentences into the
+        # AdaptiveMtDataset.
+        # @param [String] parent
+        #   Required. The resource name of the file, in form of `projects/`project-number-
+        #   or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset``
+        # @param [Google::Apis::TranslateV3::ImportAdaptiveMtFileRequest] import_adaptive_mt_file_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::ImportAdaptiveMtFileResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::ImportAdaptiveMtFileResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_adaptive_mt_dataset_adaptive_mt_file(parent, import_adaptive_mt_file_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}:importAdaptiveMtFile', options)
+          command.request_representation = Google::Apis::TranslateV3::ImportAdaptiveMtFileRequest::Representation
+          command.request_object = import_adaptive_mt_file_request_object
+          command.response_representation = Google::Apis::TranslateV3::ImportAdaptiveMtFileResponse::Representation
+          command.response_class = Google::Apis::TranslateV3::ImportAdaptiveMtFileResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all Adaptive MT datasets for which the caller has read permission.
+        # @param [String] parent
+        #   Required. The resource name of the project from which to list the Adaptive MT
+        #   datasets. `projects/`project-number-or-id`/locations/`location-id``
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. Filter is
+        #   not supported yet.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. The server may return fewer results than
+        #   requested. If unspecified, the server picks an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        #   Typically, this is the value of ListAdaptiveMtDatasetsResponse.next_page_token
+        #   returned from the previous call to `ListAdaptiveMtDatasets` method. The first
+        #   page is returned if `page_token`is empty or missing.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::ListAdaptiveMtDatasetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::ListAdaptiveMtDatasetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_adaptive_mt_datasets(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/adaptiveMtDatasets', options)
+          command.response_representation = Google::Apis::TranslateV3::ListAdaptiveMtDatasetsResponse::Representation
+          command.response_class = Google::Apis::TranslateV3::ListAdaptiveMtDatasetsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an AdaptiveMtFile along with its sentences.
+        # @param [String] name
+        #   Required. The resource name of the file to delete, in form of `projects/`
+        #   project-number-or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset`/
+        #   files/`file``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_adaptive_mt_dataset_adaptive_mt_file(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::TranslateV3::Empty::Representation
+          command.response_class = Google::Apis::TranslateV3::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets and AdaptiveMtFile
+        # @param [String] name
+        #   Required. The resource name of the file, in form of `projects/`project-number-
+        #   or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset`/files/`file``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::AdaptiveMtFile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::AdaptiveMtFile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_adaptive_mt_dataset_adaptive_mt_file(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::TranslateV3::AdaptiveMtFile::Representation
+          command.response_class = Google::Apis::TranslateV3::AdaptiveMtFile
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all AdaptiveMtFiles associated to an AdaptiveMtDataset.
+        # @param [String] parent
+        #   Required. The resource name of the project from which to list the Adaptive MT
+        #   files. `projects/`project`/locations/`location`/adaptiveMtDatasets/`dataset``
+        # @param [Fixnum] page_size
+        #   Optional.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        #   Typically, this is the value of ListAdaptiveMtFilesResponse.next_page_token
+        #   returned from the previous call to `ListAdaptiveMtFiles` method. The first
+        #   page is returned if `page_token`is empty or missing.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::ListAdaptiveMtFilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::ListAdaptiveMtFilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_adaptive_mt_dataset_adaptive_mt_files(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/adaptiveMtFiles', options)
+          command.response_representation = Google::Apis::TranslateV3::ListAdaptiveMtFilesResponse::Representation
+          command.response_class = Google::Apis::TranslateV3::ListAdaptiveMtFilesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all AdaptiveMtSentences under a given file/dataset.
+        # @param [String] parent
+        #   Required. The resource name of the project from which to list the Adaptive MT
+        #   files. The following format lists all sentences under a file. `projects/`
+        #   project`/locations/`location`/adaptiveMtDatasets/`dataset`/adaptiveMtFiles/`
+        #   file`` The following format lists all sentences within a dataset. `projects/`
+        #   project`/locations/`location`/adaptiveMtDatasets/`dataset``
+        # @param [Fixnum] page_size
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListAdaptiveMtSentencesRequest.next_page_token returned
+        #   from the previous call to `ListTranslationMemories` method. The first page is
+        #   returned if `page_token` is empty or missing.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::ListAdaptiveMtSentencesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::ListAdaptiveMtSentencesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_adaptive_mt_dataset_adaptive_mt_file_adaptive_mt_sentences(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/adaptiveMtSentences', options)
+          command.response_representation = Google::Apis::TranslateV3::ListAdaptiveMtSentencesResponse::Representation
+          command.response_class = Google::Apis::TranslateV3::ListAdaptiveMtSentencesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all AdaptiveMtSentences under a given file/dataset.
+        # @param [String] parent
+        #   Required. The resource name of the project from which to list the Adaptive MT
+        #   files. The following format lists all sentences under a file. `projects/`
+        #   project`/locations/`location`/adaptiveMtDatasets/`dataset`/adaptiveMtFiles/`
+        #   file`` The following format lists all sentences within a dataset. `projects/`
+        #   project`/locations/`location`/adaptiveMtDatasets/`dataset``
+        # @param [Fixnum] page_size
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListAdaptiveMtSentencesRequest.next_page_token returned
+        #   from the previous call to `ListTranslationMemories` method. The first page is
+        #   returned if `page_token` is empty or missing.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::ListAdaptiveMtSentencesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::ListAdaptiveMtSentencesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_adaptive_mt_dataset_adaptive_mt_sentences(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/adaptiveMtSentences', options)
+          command.response_representation = Google::Apis::TranslateV3::ListAdaptiveMtSentencesResponse::Representation
+          command.response_class = Google::Apis::TranslateV3::ListAdaptiveMtSentencesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

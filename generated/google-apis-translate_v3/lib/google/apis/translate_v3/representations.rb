@@ -22,6 +22,42 @@ module Google
   module Apis
     module TranslateV3
       
+      class AdaptiveMtDataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdaptiveMtFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdaptiveMtSentence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdaptiveMtTranslateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdaptiveMtTranslateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdaptiveMtTranslation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchDocumentInputConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FileInputSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,6 +226,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportAdaptiveMtFileRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportAdaptiveMtFileResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportDataRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +263,24 @@ module Google
       end
       
       class LanguageCodesSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAdaptiveMtDatasetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAdaptiveMtFilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAdaptiveMtSentencesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -362,6 +434,65 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdaptiveMtDataset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :example_count, as: 'exampleCount'
+          property :name, as: 'name'
+          property :source_language_code, as: 'sourceLanguageCode'
+          property :target_language_code, as: 'targetLanguageCode'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AdaptiveMtFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :entry_count, as: 'entryCount'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AdaptiveMtSentence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :source_sentence, as: 'sourceSentence'
+          property :target_sentence, as: 'targetSentence'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AdaptiveMtTranslateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :content, as: 'content'
+          property :dataset, as: 'dataset'
+        end
+      end
+      
+      class AdaptiveMtTranslateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+          collection :translations, as: 'translations', class: Google::Apis::TranslateV3::AdaptiveMtTranslation, decorator: Google::Apis::TranslateV3::AdaptiveMtTranslation::Representation
+      
+        end
+      end
+      
+      class AdaptiveMtTranslation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :translated_text, as: 'translatedText'
+        end
       end
       
       class BatchDocumentInputConfig
@@ -531,6 +662,15 @@ module Google
         end
       end
       
+      class FileInputSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, :base64 => true, as: 'content'
+          property :display_name, as: 'displayName'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
       class GcsDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -622,6 +762,24 @@ module Google
         end
       end
       
+      class ImportAdaptiveMtFileRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_input_source, as: 'fileInputSource', class: Google::Apis::TranslateV3::FileInputSource, decorator: Google::Apis::TranslateV3::FileInputSource::Representation
+      
+          property :gcs_input_source, as: 'gcsInputSource', class: Google::Apis::TranslateV3::GcsInputSource, decorator: Google::Apis::TranslateV3::GcsInputSource::Representation
+      
+        end
+      end
+      
+      class ImportAdaptiveMtFileResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adaptive_mt_file, as: 'adaptiveMtFile', class: Google::Apis::TranslateV3::AdaptiveMtFile, decorator: Google::Apis::TranslateV3::AdaptiveMtFile::Representation
+      
+        end
+      end
+      
       class ImportDataRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -660,6 +818,33 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :language_codes, as: 'languageCodes'
+        end
+      end
+      
+      class ListAdaptiveMtDatasetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :adaptive_mt_datasets, as: 'adaptiveMtDatasets', class: Google::Apis::TranslateV3::AdaptiveMtDataset, decorator: Google::Apis::TranslateV3::AdaptiveMtDataset::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAdaptiveMtFilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :adaptive_mt_files, as: 'adaptiveMtFiles', class: Google::Apis::TranslateV3::AdaptiveMtFile, decorator: Google::Apis::TranslateV3::AdaptiveMtFile::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAdaptiveMtSentencesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :adaptive_mt_sentences, as: 'adaptiveMtSentences', class: Google::Apis::TranslateV3::AdaptiveMtSentence, decorator: Google::Apis::TranslateV3::AdaptiveMtSentence::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
