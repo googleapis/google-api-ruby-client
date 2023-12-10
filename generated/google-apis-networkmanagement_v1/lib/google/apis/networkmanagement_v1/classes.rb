@@ -559,10 +559,25 @@ module Google
         # @return [String]
         attr_accessor :cause
       
+        # Destination IP address of the dropped packet (if relevant).
+        # Corresponds to the JSON property `destinationIp`
+        # @return [String]
+        attr_accessor :destination_ip
+      
+        # Region of the dropped packet (if relevant).
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # URI of the resource that caused the drop.
         # Corresponds to the JSON property `resourceUri`
         # @return [String]
         attr_accessor :resource_uri
+      
+        # Source IP address of the dropped packet (if relevant).
+        # Corresponds to the JSON property `sourceIp`
+        # @return [String]
+        attr_accessor :source_ip
       
         def initialize(**args)
            update!(**args)
@@ -571,7 +586,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cause = args[:cause] if args.key?(:cause)
+          @destination_ip = args[:destination_ip] if args.key?(:destination_ip)
+          @region = args[:region] if args.key?(:region)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @source_ip = args[:source_ip] if args.key?(:source_ip)
         end
       end
       
@@ -661,10 +679,7 @@ module Google
         # @return [String]
         attr_accessor :instance
       
-        # The IP address of the endpoint, which can be an external or internal IP. An
-        # IPv6 address is only allowed when the test's destination is a [global load
-        # balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-
-        # overview).
+        # The IP address of the endpoint, which can be an external or internal IP.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -1305,6 +1320,69 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with the load balancer backend.
+      class LoadBalancerBackendInfo
+        include Google::Apis::Core::Hashable
+      
+        # Display name of the backend. For example, it might be an instance name for the
+        # instance group backends, or an IP address and port for zonal network endpoint
+        # group backends.
+        # Corresponds to the JSON property `backendDisplayName`
+        # @return [String]
+        attr_accessor :backend_display_name
+      
+        # URI of the backend service this backend belongs to (if applicable).
+        # Corresponds to the JSON property `backendServiceUri`
+        # @return [String]
+        attr_accessor :backend_service_uri
+      
+        # Output only. Health check configuration state for the backend. This is a
+        # result of the static firewall analysis (verifying that health check traffic
+        # from required IP ranges to the backend is allowed or not). The backend might
+        # still be unhealthy even if these firewalls are configured. Please refer to the
+        # documentation for more information: https://cloud.google.com/load-balancing/
+        # docs/firewall-rules
+        # Corresponds to the JSON property `healthCheckConfigState`
+        # @return [String]
+        attr_accessor :health_check_config_state
+      
+        # URI of the health check attached to this backend (if applicable).
+        # Corresponds to the JSON property `healthCheckUri`
+        # @return [String]
+        attr_accessor :health_check_uri
+      
+        # URI of the instance group this backend belongs to (if applicable).
+        # Corresponds to the JSON property `instanceGroupUri`
+        # @return [String]
+        attr_accessor :instance_group_uri
+      
+        # URI of the backend instance (if applicable). Populated for instance group
+        # backends, and zonal NEG backends.
+        # Corresponds to the JSON property `instanceUri`
+        # @return [String]
+        attr_accessor :instance_uri
+      
+        # URI of the network endpoint group this backend belongs to (if applicable).
+        # Corresponds to the JSON property `networkEndpointGroupUri`
+        # @return [String]
+        attr_accessor :network_endpoint_group_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_display_name = args[:backend_display_name] if args.key?(:backend_display_name)
+          @backend_service_uri = args[:backend_service_uri] if args.key?(:backend_service_uri)
+          @health_check_config_state = args[:health_check_config_state] if args.key?(:health_check_config_state)
+          @health_check_uri = args[:health_check_uri] if args.key?(:health_check_uri)
+          @instance_group_uri = args[:instance_group_uri] if args.key?(:instance_group_uri)
+          @instance_uri = args[:instance_uri] if args.key?(:instance_uri)
+          @network_endpoint_group_uri = args[:network_endpoint_group_uri] if args.key?(:network_endpoint_group_uri)
+        end
+      end
+      
       # For display only. Metadata associated with a load balancer.
       class LoadBalancerInfo
         include Google::Apis::Core::Hashable
@@ -1394,6 +1472,98 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # For display only. Metadata associated with NAT.
+      class NatInfo
+        include Google::Apis::Core::Hashable
+      
+        # The name of Cloud NAT Gateway. Only valid when type is CLOUD_NAT.
+        # Corresponds to the JSON property `natGatewayName`
+        # @return [String]
+        attr_accessor :nat_gateway_name
+      
+        # URI of the network where NAT translation takes place.
+        # Corresponds to the JSON property `networkUri`
+        # @return [String]
+        attr_accessor :network_uri
+      
+        # Destination IP address after NAT translation.
+        # Corresponds to the JSON property `newDestinationIp`
+        # @return [String]
+        attr_accessor :new_destination_ip
+      
+        # Destination port after NAT translation. Only valid when protocol is TCP or UDP.
+        # Corresponds to the JSON property `newDestinationPort`
+        # @return [Fixnum]
+        attr_accessor :new_destination_port
+      
+        # Source IP address after NAT translation.
+        # Corresponds to the JSON property `newSourceIp`
+        # @return [String]
+        attr_accessor :new_source_ip
+      
+        # Source port after NAT translation. Only valid when protocol is TCP or UDP.
+        # Corresponds to the JSON property `newSourcePort`
+        # @return [Fixnum]
+        attr_accessor :new_source_port
+      
+        # Destination IP address before NAT translation.
+        # Corresponds to the JSON property `oldDestinationIp`
+        # @return [String]
+        attr_accessor :old_destination_ip
+      
+        # Destination port before NAT translation. Only valid when protocol is TCP or
+        # UDP.
+        # Corresponds to the JSON property `oldDestinationPort`
+        # @return [Fixnum]
+        attr_accessor :old_destination_port
+      
+        # Source IP address before NAT translation.
+        # Corresponds to the JSON property `oldSourceIp`
+        # @return [String]
+        attr_accessor :old_source_ip
+      
+        # Source port before NAT translation. Only valid when protocol is TCP or UDP.
+        # Corresponds to the JSON property `oldSourcePort`
+        # @return [Fixnum]
+        attr_accessor :old_source_port
+      
+        # IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
+        # Uri of the Cloud Router. Only valid when type is CLOUD_NAT.
+        # Corresponds to the JSON property `routerUri`
+        # @return [String]
+        attr_accessor :router_uri
+      
+        # Type of NAT.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nat_gateway_name = args[:nat_gateway_name] if args.key?(:nat_gateway_name)
+          @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @new_destination_ip = args[:new_destination_ip] if args.key?(:new_destination_ip)
+          @new_destination_port = args[:new_destination_port] if args.key?(:new_destination_port)
+          @new_source_ip = args[:new_source_ip] if args.key?(:new_source_ip)
+          @new_source_port = args[:new_source_port] if args.key?(:new_source_port)
+          @old_destination_ip = args[:old_destination_ip] if args.key?(:old_destination_ip)
+          @old_destination_port = args[:old_destination_port] if args.key?(:old_destination_port)
+          @old_source_ip = args[:old_source_ip] if args.key?(:old_source_ip)
+          @old_source_port = args[:old_source_port] if args.key?(:old_source_port)
+          @protocol = args[:protocol] if args.key?(:protocol)
+          @router_uri = args[:router_uri] if args.key?(:router_uri)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1714,6 +1884,86 @@ module Google
           @sent_probe_count = args[:sent_probe_count] if args.key?(:sent_probe_count)
           @successful_probe_count = args[:successful_probe_count] if args.key?(:successful_probe_count)
           @verify_time = args[:verify_time] if args.key?(:verify_time)
+        end
+      end
+      
+      # For display only. Metadata associated with ProxyConnection.
+      class ProxyConnectionInfo
+        include Google::Apis::Core::Hashable
+      
+        # URI of the network where connection is proxied.
+        # Corresponds to the JSON property `networkUri`
+        # @return [String]
+        attr_accessor :network_uri
+      
+        # Destination IP address of a new connection.
+        # Corresponds to the JSON property `newDestinationIp`
+        # @return [String]
+        attr_accessor :new_destination_ip
+      
+        # Destination port of a new connection. Only valid when protocol is TCP or UDP.
+        # Corresponds to the JSON property `newDestinationPort`
+        # @return [Fixnum]
+        attr_accessor :new_destination_port
+      
+        # Source IP address of a new connection.
+        # Corresponds to the JSON property `newSourceIp`
+        # @return [String]
+        attr_accessor :new_source_ip
+      
+        # Source port of a new connection. Only valid when protocol is TCP or UDP.
+        # Corresponds to the JSON property `newSourcePort`
+        # @return [Fixnum]
+        attr_accessor :new_source_port
+      
+        # Destination IP address of an original connection
+        # Corresponds to the JSON property `oldDestinationIp`
+        # @return [String]
+        attr_accessor :old_destination_ip
+      
+        # Destination port of an original connection. Only valid when protocol is TCP or
+        # UDP.
+        # Corresponds to the JSON property `oldDestinationPort`
+        # @return [Fixnum]
+        attr_accessor :old_destination_port
+      
+        # Source IP address of an original connection.
+        # Corresponds to the JSON property `oldSourceIp`
+        # @return [String]
+        attr_accessor :old_source_ip
+      
+        # Source port of an original connection. Only valid when protocol is TCP or UDP.
+        # Corresponds to the JSON property `oldSourcePort`
+        # @return [Fixnum]
+        attr_accessor :old_source_port
+      
+        # IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
+        # Uri of proxy subnet.
+        # Corresponds to the JSON property `subnetUri`
+        # @return [String]
+        attr_accessor :subnet_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @new_destination_ip = args[:new_destination_ip] if args.key?(:new_destination_ip)
+          @new_destination_port = args[:new_destination_port] if args.key?(:new_destination_port)
+          @new_source_ip = args[:new_source_ip] if args.key?(:new_source_ip)
+          @new_source_port = args[:new_source_port] if args.key?(:new_source_port)
+          @old_destination_ip = args[:old_destination_ip] if args.key?(:old_destination_ip)
+          @old_destination_port = args[:old_destination_port] if args.key?(:old_destination_port)
+          @old_source_ip = args[:old_source_ip] if args.key?(:old_source_ip)
+          @old_source_port = args[:old_source_port] if args.key?(:old_source_port)
+          @protocol = args[:protocol] if args.key?(:protocol)
+          @subnet_uri = args[:subnet_uri] if args.key?(:subnet_uri)
         end
       end
       
@@ -2076,6 +2326,16 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::LoadBalancerInfo]
         attr_accessor :load_balancer
       
+        # For display only. Metadata associated with the load balancer backend.
+        # Corresponds to the JSON property `loadBalancerBackendInfo`
+        # @return [Google::Apis::NetworkmanagementV1::LoadBalancerBackendInfo]
+        attr_accessor :load_balancer_backend_info
+      
+        # For display only. Metadata associated with NAT.
+        # Corresponds to the JSON property `nat`
+        # @return [Google::Apis::NetworkmanagementV1::NatInfo]
+        attr_accessor :nat
+      
         # For display only. Metadata associated with a Compute Engine network.
         # Corresponds to the JSON property `network`
         # @return [Google::Apis::NetworkmanagementV1::NetworkInfo]
@@ -2085,6 +2345,11 @@ module Google
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
+      
+        # For display only. Metadata associated with ProxyConnection.
+        # Corresponds to the JSON property `proxyConnection`
+        # @return [Google::Apis::NetworkmanagementV1::ProxyConnectionInfo]
+        attr_accessor :proxy_connection
       
         # For display only. Metadata associated with a Compute Engine route.
         # Corresponds to the JSON property `route`
@@ -2134,8 +2399,11 @@ module Google
           @google_service = args[:google_service] if args.key?(:google_service)
           @instance = args[:instance] if args.key?(:instance)
           @load_balancer = args[:load_balancer] if args.key?(:load_balancer)
+          @load_balancer_backend_info = args[:load_balancer_backend_info] if args.key?(:load_balancer_backend_info)
+          @nat = args[:nat] if args.key?(:nat)
           @network = args[:network] if args.key?(:network)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @proxy_connection = args[:proxy_connection] if args.key?(:proxy_connection)
           @route = args[:route] if args.key?(:route)
           @state = args[:state] if args.key?(:state)
           @vpc_connector = args[:vpc_connector] if args.key?(:vpc_connector)
