@@ -269,6 +269,12 @@ module Google
         attr_accessor :enable_metrics
         alias_method :enable_metrics?, :enable_metrics
       
+        # Enable Relay component
+        # Corresponds to the JSON property `enableRelay`
+        # @return [Boolean]
+        attr_accessor :enable_relay
+        alias_method :enable_relay?, :enable_relay
+      
         # Method used to make Relay available
         # Corresponds to the JSON property `relayMode`
         # @return [String]
@@ -281,6 +287,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_metrics = args[:enable_metrics] if args.key?(:enable_metrics)
+          @enable_relay = args[:enable_relay] if args.key?(:enable_relay)
           @relay_mode = args[:relay_mode] if args.key?(:relay_mode)
         end
       end

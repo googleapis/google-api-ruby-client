@@ -1215,6 +1215,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_metrics, as: 'enableMetrics'
+          property :enable_relay, as: 'enableRelay'
           property :relay_mode, as: 'relayMode'
         end
       end
