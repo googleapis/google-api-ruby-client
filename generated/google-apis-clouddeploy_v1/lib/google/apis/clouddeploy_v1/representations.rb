@@ -256,6 +256,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomTargetDeployMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomTargetSkaffoldActions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomTargetType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +419,12 @@ module Google
       end
       
       class ListAutomationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCustomTargetTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -713,6 +749,24 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SkaffoldGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SkaffoldGitSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SkaffoldModules
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1121,6 +1175,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_traffic_control, as: 'automaticTrafficControl'
+          collection :canary_revision_tags, as: 'canaryRevisionTags'
+          collection :prior_revision_tags, as: 'priorRevisionTags'
+          collection :stable_revision_tags, as: 'stableRevisionTags'
         end
       end
       
@@ -1177,6 +1234,54 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :phase_configs, as: 'phaseConfigs', class: Google::Apis::ClouddeployV1::PhaseConfig, decorator: Google::Apis::ClouddeployV1::PhaseConfig::Representation
       
+        end
+      end
+      
+      class CustomMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :values, as: 'values'
+        end
+      end
+      
+      class CustomTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_target_type, as: 'customTargetType'
+        end
+      end
+      
+      class CustomTargetDeployMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :skip_message, as: 'skipMessage'
+        end
+      end
+      
+      class CustomTargetSkaffoldActions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deploy_action, as: 'deployAction'
+          collection :include_skaffold_modules, as: 'includeSkaffoldModules', class: Google::Apis::ClouddeployV1::SkaffoldModules, decorator: Google::Apis::ClouddeployV1::SkaffoldModules::Representation
+      
+          property :render_action, as: 'renderAction'
+        end
+      end
+      
+      class CustomTargetType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :custom_actions, as: 'customActions', class: Google::Apis::ClouddeployV1::CustomTargetSkaffoldActions, decorator: Google::Apis::ClouddeployV1::CustomTargetSkaffoldActions::Representation
+      
+          property :custom_target_type_id, as: 'customTargetTypeId'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1256,6 +1361,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_run, as: 'cloudRun', class: Google::Apis::ClouddeployV1::CloudRunMetadata, decorator: Google::Apis::ClouddeployV1::CloudRunMetadata::Representation
+      
+          property :custom, as: 'custom', class: Google::Apis::ClouddeployV1::CustomMetadata, decorator: Google::Apis::ClouddeployV1::CustomMetadata::Representation
+      
+          property :custom_target, as: 'customTarget', class: Google::Apis::ClouddeployV1::CustomTargetDeployMetadata, decorator: Google::Apis::ClouddeployV1::CustomTargetDeployMetadata::Representation
       
         end
       end
@@ -1437,6 +1546,16 @@ module Google
         end
       end
       
+      class ListCustomTargetTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_target_types, as: 'customTargetTypes', class: Google::Apis::ClouddeployV1::CustomTargetType, decorator: Google::Apis::ClouddeployV1::CustomTargetType::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListDeliveryPipelinesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1522,6 +1641,8 @@ module Google
           property :automation, as: 'automation', class: Google::Apis::ClouddeployV1::AutomationRolloutMetadata, decorator: Google::Apis::ClouddeployV1::AutomationRolloutMetadata::Representation
       
           property :cloud_run, as: 'cloudRun', class: Google::Apis::ClouddeployV1::CloudRunMetadata, decorator: Google::Apis::ClouddeployV1::CloudRunMetadata::Representation
+      
+          property :custom, as: 'custom', class: Google::Apis::ClouddeployV1::CustomMetadata, decorator: Google::Apis::ClouddeployV1::CustomMetadata::Representation
       
         end
       end
@@ -1713,6 +1834,8 @@ module Google
           property :condition, as: 'condition', class: Google::Apis::ClouddeployV1::ReleaseCondition, decorator: Google::Apis::ClouddeployV1::ReleaseCondition::Representation
       
           property :create_time, as: 'createTime'
+          collection :custom_target_type_snapshots, as: 'customTargetTypeSnapshots', class: Google::Apis::ClouddeployV1::CustomTargetType, decorator: Google::Apis::ClouddeployV1::CustomTargetType::Representation
+      
           property :delivery_pipeline_snapshot, as: 'deliveryPipelineSnapshot', class: Google::Apis::ClouddeployV1::DeliveryPipeline, decorator: Google::Apis::ClouddeployV1::DeliveryPipeline::Representation
       
           hash :deploy_parameters, as: 'deployParameters'
@@ -1776,6 +1899,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_run, as: 'cloudRun', class: Google::Apis::ClouddeployV1::CloudRunRenderMetadata, decorator: Google::Apis::ClouddeployV1::CloudRunRenderMetadata::Representation
       
+          property :custom, as: 'custom', class: Google::Apis::ClouddeployV1::CustomMetadata, decorator: Google::Apis::ClouddeployV1::CustomMetadata::Representation
+      
         end
       end
       
@@ -1803,6 +1928,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_repair_mode_index, :numeric_string => true, as: 'currentRepairModeIndex'
+          property :job_id, as: 'jobId'
+          property :phase_id, as: 'phaseId'
           collection :repair_phases, as: 'repairPhases', class: Google::Apis::ClouddeployV1::RepairPhase, decorator: Google::Apis::ClouddeployV1::RepairPhase::Representation
       
           property :rollout, as: 'rollout'
@@ -2005,6 +2132,34 @@ module Google
         end
       end
       
+      class SkaffoldGcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :source, as: 'source'
+        end
+      end
+      
+      class SkaffoldGitSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :ref, as: 'ref'
+          property :repo, as: 'repo'
+        end
+      end
+      
+      class SkaffoldModules
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :configs, as: 'configs'
+          property :git, as: 'git', class: Google::Apis::ClouddeployV1::SkaffoldGitSource, decorator: Google::Apis::ClouddeployV1::SkaffoldGitSource::Representation
+      
+          property :google_cloud_storage, as: 'googleCloudStorage', class: Google::Apis::ClouddeployV1::SkaffoldGcsSource, decorator: Google::Apis::ClouddeployV1::SkaffoldGcsSource::Representation
+      
+        end
+      end
+      
       class SkaffoldSupportedCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2075,6 +2230,8 @@ module Google
           property :anthos_cluster, as: 'anthosCluster', class: Google::Apis::ClouddeployV1::AnthosCluster, decorator: Google::Apis::ClouddeployV1::AnthosCluster::Representation
       
           property :create_time, as: 'createTime'
+          property :custom_target, as: 'customTarget', class: Google::Apis::ClouddeployV1::CustomTarget, decorator: Google::Apis::ClouddeployV1::CustomTarget::Representation
+      
           hash :deploy_parameters, as: 'deployParameters'
           property :description, as: 'description'
           property :etag, as: 'etag'
