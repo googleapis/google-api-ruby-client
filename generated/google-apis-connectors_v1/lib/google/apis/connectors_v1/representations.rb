@@ -746,6 +746,7 @@ module Google
       
           property :is_advanced, as: 'isAdvanced'
           property :key, as: 'key'
+          property :location_type, as: 'locationType'
           property :required, as: 'required'
           property :required_condition, as: 'requiredCondition', class: Google::Apis::ConnectorsV1::LogicalExpression, decorator: Google::Apis::ConnectorsV1::LogicalExpression::Representation
       
@@ -887,6 +888,7 @@ module Google
       
           property :supported_runtime_features, as: 'supportedRuntimeFeatures', class: Google::Apis::ConnectorsV1::SupportedRuntimeFeatures, decorator: Google::Apis::ConnectorsV1::SupportedRuntimeFeatures::Representation
       
+          collection :unsupported_connection_types, as: 'unsupportedConnectionTypes'
           property :update_time, as: 'updateTime'
         end
       end
@@ -933,8 +935,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auth_config, as: 'authConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
       
+          collection :backend_variable_templates, as: 'backendVariableTemplates', class: Google::Apis::ConnectorsV1::ConfigVariableTemplate, decorator: Google::Apis::ConnectorsV1::ConfigVariableTemplate::Representation
+      
           property :create_time, as: 'createTime'
-          property :destination_config, as: 'destinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
+          collection :destination_configs, as: 'destinationConfigs', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
       
           property :enable_backend_destination_config, as: 'enableBackendDestinationConfig'
           hash :labels, as: 'labels'
