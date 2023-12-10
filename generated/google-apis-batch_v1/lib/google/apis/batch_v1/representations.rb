@@ -130,12 +130,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CloudLoggingOption
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ComputeResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -581,12 +575,6 @@ module Google
         end
       end
       
-      class CloudLoggingOption
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class ComputeResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -601,6 +589,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :block_external_network, as: 'blockExternalNetwork'
           collection :commands, as: 'commands'
+          property :enable_image_streaming, as: 'enableImageStreaming'
           property :entrypoint, as: 'entrypoint'
           property :image_uri, as: 'imageUri'
           property :options, as: 'options'
@@ -800,8 +789,6 @@ module Google
       class LogsPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :cloud_logging_option, as: 'cloudLoggingOption', class: Google::Apis::BatchV1::CloudLoggingOption, decorator: Google::Apis::BatchV1::CloudLoggingOption::Representation
-      
           property :destination, as: 'destination'
           property :logs_path, as: 'logsPath'
         end
