@@ -206,6 +206,12 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The size of the backup in bytes.
         # Corresponds to the JSON property `sizeBytes`
         # @return [Fixnum]
@@ -254,6 +260,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
@@ -482,6 +489,12 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Configuration information for the secondary cluster. This should be set if and
         # only if the cluster is of type SECONDARY.
         # Corresponds to the JSON property `secondaryConfig`
@@ -536,6 +549,7 @@ module Google
           @network_config = args[:network_config] if args.key?(:network_config)
           @primary_config = args[:primary_config] if args.key?(:primary_config)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @secondary_config = args[:secondary_config] if args.key?(:secondary_config)
           @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @state = args[:state] if args.key?(:state)
@@ -1162,6 +1176,12 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The current serving state of the instance.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1214,6 +1234,7 @@ module Google
           @query_insights_config = args[:query_insights_config] if args.key?(:query_insights_config)
           @read_pool_config = args[:read_pool_config] if args.key?(:read_pool_config)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
           @update_policy = args[:update_policy] if args.key?(:update_policy)
@@ -2263,8 +2284,8 @@ module Google
       
         # Closest parent container of this resource. In GCP, 'container' refers to a
         # Cloud Resource Manager project. It must be resource name of a Cloud Resource
-        # Manager project with the format of "provider//", such as "gcp/projects/123".
-        # For GCP provided resources, number should be project number.
+        # Manager project with the format of "provider//", such as "projects/123". For
+        # GCP provided resources, number should be project number.
         # Corresponds to the JSON property `resourceContainer`
         # @return [String]
         attr_accessor :resource_container
@@ -2427,9 +2448,8 @@ module Google
         attr_accessor :product
       
         # Closest parent Cloud Resource Manager container of this resource. It must be
-        # resource name of a Cloud Resource Manager project with the format of "provider/
-        # /", such as "gcp/projects/123". For GCP provided resources, number should be
-        # project number.
+        # resource name of a Cloud Resource Manager project with the format of "/", such
+        # as "projects/123". For GCP provided resources, number should be project number.
         # Corresponds to the JSON property `resourceContainer`
         # @return [String]
         attr_accessor :resource_container
