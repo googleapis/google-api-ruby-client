@@ -1,5 +1,9 @@
 # Release history for google-apis-vision_v1
 
+### v0.27.0 (2023-12-10)
+
+* Regenerated from discovery document revision 20231206
+
 ### v0.26.0 (2023-09-17)
 
 * Regenerated from discovery document revision 20230908
