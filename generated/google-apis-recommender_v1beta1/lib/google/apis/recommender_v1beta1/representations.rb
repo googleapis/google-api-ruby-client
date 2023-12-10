@@ -216,6 +216,7 @@ module Google
           property :cost_in_local_currency, as: 'costInLocalCurrency', class: Google::Apis::RecommenderV1beta1::GoogleTypeMoney, decorator: Google::Apis::RecommenderV1beta1::GoogleTypeMoney::Representation
       
           property :duration, as: 'duration'
+          property :pricing_type, as: 'pricingType'
         end
       end
       
