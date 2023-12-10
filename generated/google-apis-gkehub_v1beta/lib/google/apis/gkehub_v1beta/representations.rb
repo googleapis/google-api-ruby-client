@@ -1104,10 +1104,8 @@ module Google
       class ClusterUpgradeMembershipState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :fleet, as: 'fleet'
           property :ignored, as: 'ignored', class: Google::Apis::GkehubV1beta::ClusterUpgradeIgnoredMembership, decorator: Google::Apis::GkehubV1beta::ClusterUpgradeIgnoredMembership::Representation
       
-          collection :scopes, as: 'scopes'
           collection :upgrades, as: 'upgrades', class: Google::Apis::GkehubV1beta::ClusterUpgradeMembershipGkeUpgradeState, decorator: Google::Apis::GkehubV1beta::ClusterUpgradeMembershipGkeUpgradeState::Representation
       
         end
