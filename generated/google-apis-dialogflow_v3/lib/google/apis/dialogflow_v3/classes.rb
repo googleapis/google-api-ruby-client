@@ -510,13 +510,9 @@ module Google
       # which the API starts speech detection and may inform the client that an
       # utterance has been detected. Note that no-speech event is not expected in this
       # phase. The client provides this configuration in terms of the durations of
-      # those two phases. The durations are measured in terms of the audio length
-      # fromt the the start of the input audio. The flow goes like below: --> Time
-      # without speech detection | utterance only | utterance or no-speech event | | +-
-      # ------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-
-      # + barge-in +-|-+ normal period +----------- +-------------+ | +------------+ |
-      # +---------------+ No-speech event is a response with END_OF_UTTERANCE without
-      # any transcript following up.
+      # those two phases. The durations are measured in terms of the audio length from
+      # the the start of the input audio. No-speech event is a response with
+      # END_OF_UTTERANCE without any transcript following up.
       class GoogleCloudDialogflowCxV3BargeInConfig
         include Google::Apis::Core::Hashable
       
@@ -3213,6 +3209,76 @@ module Google
         end
       end
       
+      # Generators contain prompt to be sent to the LLM model to generate text. The
+      # prompt can contain parameters which will be resolved before calling the model.
+      # It can optionally contain banned phrases to ensure the model responses are
+      # safe.
+      class GoogleCloudDialogflowCxV3Generator
+        include Google::Apis::Core::Hashable
+      
+        # Required. The human-readable name of the generator, unique within the agent.
+        # The prompt contains pre-defined parameters such as $conversation, $last-user-
+        # utterance, etc. populated by Dialogflow. It can also contain custom
+        # placeholders which will be resolved during fulfillment.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The unique identifier of the generator. Must be set for the Generators.
+        # UpdateGenerator method. Generators.CreateGenerate populates the name
+        # automatically. Format: `projects//locations//agents//generators/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. List of custom placeholders in the prompt text.
+        # Corresponds to the JSON property `placeholders`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GeneratorPlaceholder>]
+        attr_accessor :placeholders
+      
+        # Text input which can be used for prompt or banned phrases.
+        # Corresponds to the JSON property `promptText`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Phrase]
+        attr_accessor :prompt_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @placeholders = args[:placeholders] if args.key?(:placeholders)
+          @prompt_text = args[:prompt_text] if args.key?(:prompt_text)
+        end
+      end
+      
+      # Represents a custom placeholder in the prompt text.
+      class GoogleCloudDialogflowCxV3GeneratorPlaceholder
+        include Google::Apis::Core::Hashable
+      
+        # Unique ID used to map custom placeholder to parameters in fulfillment.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Custom placeholder value in the prompt text.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Metadata in google::longrunning::Operation for Knowledge operations.
       class GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata
         include Google::Apis::Core::Hashable
@@ -3573,13 +3639,9 @@ module Google
         # which the API starts speech detection and may inform the client that an
         # utterance has been detected. Note that no-speech event is not expected in this
         # phase. The client provides this configuration in terms of the durations of
-        # those two phases. The durations are measured in terms of the audio length
-        # fromt the the start of the input audio. The flow goes like below: --> Time
-        # without speech detection | utterance only | utterance or no-speech event | | +-
-        # ------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-
-        # + barge-in +-|-+ normal period +----------- +-------------+ | +------------+ |
-        # +---------------+ No-speech event is a response with END_OF_UTTERANCE without
-        # any transcript following up.
+        # those two phases. The durations are measured in terms of the audio length from
+        # the the start of the input audio. No-speech event is a response with
+        # END_OF_UTTERANCE without any transcript following up.
         # Corresponds to the JSON property `bargeInConfig`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3BargeInConfig]
         attr_accessor :barge_in_config
@@ -3593,17 +3655,9 @@ module Google
         attr_accessor :enable_word_info
         alias_method :enable_word_info?, :enable_word_info
       
-        # Optional. Which Speech model to select for the given request. Select the model
-        # best suited to your domain to get best results. If a model is not explicitly
-        # specified, then we auto-select a model based on the parameters in the
-        # InputAudioConfig. If enhanced speech model is enabled for the agent and an
-        # enhanced version of the specified model for the language does not exist, then
-        # the speech is recognized using the standard version of the specified model.
-        # Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-
-        # text/docs/basics#select-model) for more details. If you specify a model, the
-        # following models typically have the best performance: - phone_call (best for
-        # Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony)
-        # - command_and_search (best for very short utterances and commands)
+        # Optional. Which Speech model to select for the given request. For more
+        # information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/
+        # concept/speech-models).
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -4195,6 +4249,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @flows = args[:flows] if args.key?(:flows)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for Generators.ListGenerators.
+      class GoogleCloudDialogflowCxV3ListGeneratorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of generators. There will be a maximum number of items returned based
+        # on the page_size field in the request.
+        # Corresponds to the JSON property `generators`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Generator>]
+        attr_accessor :generators
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generators = args[:generators] if args.key?(:generators)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -4955,6 +5036,25 @@ module Google
           @required = args[:required] if args.key?(:required)
           @state = args[:state] if args.key?(:state)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Text input which can be used for prompt or banned phrases.
+      class GoogleCloudDialogflowCxV3Phrase
+        include Google::Apis::Core::Hashable
+      
+        # Required. Text input which can be used for prompt or banned phrases.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -8102,13 +8202,9 @@ module Google
       # which the API starts speech detection and may inform the client that an
       # utterance has been detected. Note that no-speech event is not expected in this
       # phase. The client provides this configuration in terms of the durations of
-      # those two phases. The durations are measured in terms of the audio length
-      # fromt the the start of the input audio. The flow goes like below: --> Time
-      # without speech detection | utterance only | utterance or no-speech event | | +-
-      # ------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-
-      # + barge-in +-|-+ normal period +----------- +-------------+ | +------------+ |
-      # +---------------+ No-speech event is a response with END_OF_UTTERANCE without
-      # any transcript following up.
+      # those two phases. The durations are measured in terms of the audio length from
+      # the the start of the input audio. No-speech event is a response with
+      # END_OF_UTTERANCE without any transcript following up.
       class GoogleCloudDialogflowCxV3beta1BargeInConfig
         include Google::Apis::Core::Hashable
       
@@ -9502,13 +9598,9 @@ module Google
         # which the API starts speech detection and may inform the client that an
         # utterance has been detected. Note that no-speech event is not expected in this
         # phase. The client provides this configuration in terms of the durations of
-        # those two phases. The durations are measured in terms of the audio length
-        # fromt the the start of the input audio. The flow goes like below: --> Time
-        # without speech detection | utterance only | utterance or no-speech event | | +-
-        # ------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-
-        # + barge-in +-|-+ normal period +----------- +-------------+ | +------------+ |
-        # +---------------+ No-speech event is a response with END_OF_UTTERANCE without
-        # any transcript following up.
+        # those two phases. The durations are measured in terms of the audio length from
+        # the the start of the input audio. No-speech event is a response with
+        # END_OF_UTTERANCE without any transcript following up.
         # Corresponds to the JSON property `bargeInConfig`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1BargeInConfig]
         attr_accessor :barge_in_config
@@ -9522,17 +9614,9 @@ module Google
         attr_accessor :enable_word_info
         alias_method :enable_word_info?, :enable_word_info
       
-        # Optional. Which Speech model to select for the given request. Select the model
-        # best suited to your domain to get best results. If a model is not explicitly
-        # specified, then we auto-select a model based on the parameters in the
-        # InputAudioConfig. If enhanced speech model is enabled for the agent and an
-        # enhanced version of the specified model for the language does not exist, then
-        # the speech is recognized using the standard version of the specified model.
-        # Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-
-        # text/docs/basics#select-model) for more details. If you specify a model, the
-        # following models typically have the best performance: - phone_call (best for
-        # Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony)
-        # - command_and_search (best for very short utterances and commands)
+        # Optional. Which Speech model to select for the given request. For more
+        # information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/
+        # concept/speech-models).
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model

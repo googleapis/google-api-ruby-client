@@ -538,6 +538,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3Generator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3GeneratorPlaceholder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -724,6 +736,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3ListGeneratorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3ListIntentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -839,6 +857,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3Phrase
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3841,6 +3865,26 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3Generator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          collection :placeholders, as: 'placeholders', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GeneratorPlaceholder, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GeneratorPlaceholder::Representation
+      
+          property :prompt_text, as: 'promptText', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Phrase, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Phrase::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3GeneratorPlaceholder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4120,6 +4164,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3ListGeneratorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :generators, as: 'generators', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Generator, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Generator::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3ListIntentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4321,6 +4374,13 @@ module Google
           property :required, as: 'required'
           property :state, as: 'state'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3Phrase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
         end
       end
       
