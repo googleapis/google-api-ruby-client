@@ -22,6 +22,224 @@ module Google
   module Apis
     module TranslateV3
       
+      # An Adaptive MT Dataset.
+      class AdaptiveMtDataset
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when this dataset was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The name of the dataset to show in the interface. The name can be up to 32
+        # characters long and can consist only of ASCII Latin letters A-Z and a-z,
+        # underscores (_), and ASCII digits 0-9.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The number of examples in the dataset.
+        # Corresponds to the JSON property `exampleCount`
+        # @return [Fixnum]
+        attr_accessor :example_count
+      
+        # Required. The resource name of the dataset, in form of `projects/`project-
+        # number-or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The BCP-47 language code of the source language.
+        # Corresponds to the JSON property `sourceLanguageCode`
+        # @return [String]
+        attr_accessor :source_language_code
+      
+        # The BCP-47 language code of the target language.
+        # Corresponds to the JSON property `targetLanguageCode`
+        # @return [String]
+        attr_accessor :target_language_code
+      
+        # Output only. Timestamp when this dataset was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @example_count = args[:example_count] if args.key?(:example_count)
+          @name = args[:name] if args.key?(:name)
+          @source_language_code = args[:source_language_code] if args.key?(:source_language_code)
+          @target_language_code = args[:target_language_code] if args.key?(:target_language_code)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # An AdaptiveMtFile.
+      class AdaptiveMtFile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when this file was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The file's display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The number of entries that the file contains.
+        # Corresponds to the JSON property `entryCount`
+        # @return [Fixnum]
+        attr_accessor :entry_count
+      
+        # Required. The resource name of the file, in form of `projects/`project-number-
+        # or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset`/files/`file``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Timestamp when this file was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entry_count = args[:entry_count] if args.key?(:entry_count)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # An AdaptiveMt sentence entry.
+      class AdaptiveMtSentence
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when this sentence was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The resource name of the file, in form of `projects/`project-number-
+        # or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset`/files/`file`/
+        # sentences/`sentence``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The source sentence.
+        # Corresponds to the JSON property `sourceSentence`
+        # @return [String]
+        attr_accessor :source_sentence
+      
+        # Required. The target sentence.
+        # Corresponds to the JSON property `targetSentence`
+        # @return [String]
+        attr_accessor :target_sentence
+      
+        # Output only. Timestamp when this sentence was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @source_sentence = args[:source_sentence] if args.key?(:source_sentence)
+          @target_sentence = args[:target_sentence] if args.key?(:target_sentence)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The request for sending an AdaptiveMt translation query.
+      class AdaptiveMtTranslateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The content of the input in string format. For now only one sentence
+        # per request is supported.
+        # Corresponds to the JSON property `content`
+        # @return [Array<String>]
+        attr_accessor :content
+      
+        # Required. The resource name for the dataset to use for adaptive MT. `projects/`
+        # project`/locations/`location-id`/adaptiveMtDatasets/`dataset``
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @dataset = args[:dataset] if args.key?(:dataset)
+        end
+      end
+      
+      # An AdaptiveMtTranslate response.
+      class AdaptiveMtTranslateResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The translation's language code.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Output only. The translation.
+        # Corresponds to the JSON property `translations`
+        # @return [Array<Google::Apis::TranslateV3::AdaptiveMtTranslation>]
+        attr_accessor :translations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @translations = args[:translations] if args.key?(:translations)
+        end
+      end
+      
+      # An AdaptiveMt translation.
+      class AdaptiveMtTranslation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The translated text.
+        # Corresponds to the JSON property `translatedText`
+        # @return [String]
+        attr_accessor :translated_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @translated_text = args[:translated_text] if args.key?(:translated_text)
+        end
+      end
+      
       # Input configuration for BatchTranslateDocument request.
       class BatchDocumentInputConfig
         include Google::Apis::Core::Hashable
@@ -626,6 +844,38 @@ module Google
         end
       end
       
+      # An inlined file.
+      class FileInputSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The file's byte contents.
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        # Required. The file's display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The file's mime type.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
       # The Google Cloud Storage location for the output content.
       class GcsDestination
         include Google::Apis::Core::Hashable
@@ -901,6 +1151,50 @@ module Google
         end
       end
       
+      # The request for importing an AdaptiveMt file along with its sentences.
+      class ImportAdaptiveMtFileRequest
+        include Google::Apis::Core::Hashable
+      
+        # An inlined file.
+        # Corresponds to the JSON property `fileInputSource`
+        # @return [Google::Apis::TranslateV3::FileInputSource]
+        attr_accessor :file_input_source
+      
+        # The Google Cloud Storage location for the input content.
+        # Corresponds to the JSON property `gcsInputSource`
+        # @return [Google::Apis::TranslateV3::GcsInputSource]
+        attr_accessor :gcs_input_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_input_source = args[:file_input_source] if args.key?(:file_input_source)
+          @gcs_input_source = args[:gcs_input_source] if args.key?(:gcs_input_source)
+        end
+      end
+      
+      # The response for importing an AdaptiveMtFile
+      class ImportAdaptiveMtFileResponse
+        include Google::Apis::Core::Hashable
+      
+        # An AdaptiveMtFile.
+        # Corresponds to the JSON property `adaptiveMtFile`
+        # @return [Google::Apis::TranslateV3::AdaptiveMtFile]
+        attr_accessor :adaptive_mt_file
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adaptive_mt_file = args[:adaptive_mt_file] if args.key?(:adaptive_mt_file)
+        end
+      end
+      
       # Request message for ImportData.
       class ImportDataRequest
         include Google::Apis::Core::Hashable
@@ -1018,6 +1312,85 @@ module Google
         # Update properties of this object
         def update!(**args)
           @language_codes = args[:language_codes] if args.key?(:language_codes)
+        end
+      end
+      
+      # A list of AdaptiveMtDatasets.
+      class ListAdaptiveMtDatasetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A list of Adaptive MT datasets.
+        # Corresponds to the JSON property `adaptiveMtDatasets`
+        # @return [Array<Google::Apis::TranslateV3::AdaptiveMtDataset>]
+        attr_accessor :adaptive_mt_datasets
+      
+        # Optional. A token to retrieve a page of results. Pass this value in the [
+        # ListAdaptiveMtDatasetsRequest.page_token] field in the subsequent call to `
+        # ListAdaptiveMtDatasets` method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adaptive_mt_datasets = args[:adaptive_mt_datasets] if args.key?(:adaptive_mt_datasets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response for listing all AdaptiveMt files under a given dataset.
+      class ListAdaptiveMtFilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The Adaptive MT files.
+        # Corresponds to the JSON property `adaptiveMtFiles`
+        # @return [Array<Google::Apis::TranslateV3::AdaptiveMtFile>]
+        attr_accessor :adaptive_mt_files
+      
+        # Optional. A token to retrieve a page of results. Pass this value in the
+        # ListAdaptiveMtFilesRequest.page_token field in the subsequent call to `
+        # ListAdaptiveMtFiles` method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adaptive_mt_files = args[:adaptive_mt_files] if args.key?(:adaptive_mt_files)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # List AdaptiveMt sentences response.
+      class ListAdaptiveMtSentencesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of AdaptiveMtSentences.
+        # Corresponds to the JSON property `adaptiveMtSentences`
+        # @return [Array<Google::Apis::TranslateV3::AdaptiveMtSentence>]
+        attr_accessor :adaptive_mt_sentences
+      
+        # Optional.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adaptive_mt_sentences = args[:adaptive_mt_sentences] if args.key?(:adaptive_mt_sentences)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
