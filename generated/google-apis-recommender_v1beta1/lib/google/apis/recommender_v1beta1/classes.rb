@@ -41,6 +41,11 @@ module Google
         # @return [String]
         attr_accessor :duration
       
+        # How the cost is calculated.
+        # Corresponds to the JSON property `pricingType`
+        # @return [String]
+        attr_accessor :pricing_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -50,6 +55,7 @@ module Google
           @cost = args[:cost] if args.key?(:cost)
           @cost_in_local_currency = args[:cost_in_local_currency] if args.key?(:cost_in_local_currency)
           @duration = args[:duration] if args.key?(:duration)
+          @pricing_type = args[:pricing_type] if args.key?(:pricing_type)
         end
       end
       
@@ -236,7 +242,7 @@ module Google
       class GoogleCloudRecommenderV1beta1InsightType
         include Google::Apis::Core::Hashable
       
-        # The insight_type’s name in format insightTypes/`insight_type` eg: insightTypes/
+        # The insight_type's name in format insightTypes/`insight_type` eg: insightTypes/
         # google.iam.policy.Insight
         # Corresponds to the JSON property `name`
         # @return [String]
