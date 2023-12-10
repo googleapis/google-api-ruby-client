@@ -440,6 +440,7 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :state, as: 'state'
           property :type, as: 'type'
@@ -507,6 +508,7 @@ module Google
           property :primary_config, as: 'primaryConfig', class: Google::Apis::AlloydbV1beta::PrimaryConfig, decorator: Google::Apis::AlloydbV1beta::PrimaryConfig::Representation
       
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :secondary_config, as: 'secondaryConfig', class: Google::Apis::AlloydbV1beta::SecondaryConfig, decorator: Google::Apis::AlloydbV1beta::SecondaryConfig::Representation
       
           property :ssl_config, as: 'sslConfig', class: Google::Apis::AlloydbV1beta::SslConfig, decorator: Google::Apis::AlloydbV1beta::SslConfig::Representation
@@ -670,6 +672,7 @@ module Google
           property :read_pool_config, as: 'readPoolConfig', class: Google::Apis::AlloydbV1beta::ReadPoolConfig, decorator: Google::Apis::AlloydbV1beta::ReadPoolConfig::Representation
       
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :uid, as: 'uid'
           property :update_policy, as: 'updatePolicy', class: Google::Apis::AlloydbV1beta::UpdatePolicy, decorator: Google::Apis::AlloydbV1beta::UpdatePolicy::Representation
