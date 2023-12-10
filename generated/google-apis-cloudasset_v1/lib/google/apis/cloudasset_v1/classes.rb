@@ -5154,8 +5154,7 @@ module Google
         # more information. For Google Cloud assets, this value is the parent resource
         # defined in the [IAM policy hierarchy](https://cloud.google.com/iam/docs/
         # overview#policy_hierarchy). Example: `//cloudresourcemanager.googleapis.com/
-        # projects/my_project_123` For third-party assets, this field may be set
-        # differently.
+        # projects/my_project_123`
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
