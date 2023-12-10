@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoadBalancerBackendInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LoadBalancerInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +227,12 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NatInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -251,6 +263,12 @@ module Google
       end
       
       class ProbingDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProxyConnectionInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -468,7 +486,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cause, as: 'cause'
+          property :destination_ip, as: 'destinationIp'
+          property :region, as: 'region'
           property :resource_uri, as: 'resourceUri'
+          property :source_ip, as: 'sourceIp'
         end
       end
       
@@ -657,6 +678,19 @@ module Google
         end
       end
       
+      class LoadBalancerBackendInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_display_name, as: 'backendDisplayName'
+          property :backend_service_uri, as: 'backendServiceUri'
+          property :health_check_config_state, as: 'healthCheckConfigState'
+          property :health_check_uri, as: 'healthCheckUri'
+          property :instance_group_uri, as: 'instanceGroupUri'
+          property :instance_uri, as: 'instanceUri'
+          property :network_endpoint_group_uri, as: 'networkEndpointGroupUri'
+        end
+      end
+      
       class LoadBalancerInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -677,6 +711,25 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class NatInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :nat_gateway_name, as: 'natGatewayName'
+          property :network_uri, as: 'networkUri'
+          property :new_destination_ip, as: 'newDestinationIp'
+          property :new_destination_port, as: 'newDestinationPort'
+          property :new_source_ip, as: 'newSourceIp'
+          property :new_source_port, as: 'newSourcePort'
+          property :old_destination_ip, as: 'oldDestinationIp'
+          property :old_destination_port, as: 'oldDestinationPort'
+          property :old_source_ip, as: 'oldSourceIp'
+          property :old_source_port, as: 'oldSourcePort'
+          property :protocol, as: 'protocol'
+          property :router_uri, as: 'routerUri'
+          property :type, as: 'type'
         end
       end
       
@@ -742,6 +795,23 @@ module Google
           property :sent_probe_count, as: 'sentProbeCount'
           property :successful_probe_count, as: 'successfulProbeCount'
           property :verify_time, as: 'verifyTime'
+        end
+      end
+      
+      class ProxyConnectionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_uri, as: 'networkUri'
+          property :new_destination_ip, as: 'newDestinationIp'
+          property :new_destination_port, as: 'newDestinationPort'
+          property :new_source_ip, as: 'newSourceIp'
+          property :new_source_port, as: 'newSourcePort'
+          property :old_destination_ip, as: 'oldDestinationIp'
+          property :old_destination_port, as: 'oldDestinationPort'
+          property :old_source_ip, as: 'oldSourceIp'
+          property :old_source_port, as: 'oldSourcePort'
+          property :protocol, as: 'protocol'
+          property :subnet_uri, as: 'subnetUri'
         end
       end
       
@@ -838,9 +908,15 @@ module Google
       
           property :load_balancer, as: 'loadBalancer', class: Google::Apis::NetworkmanagementV1beta1::LoadBalancerInfo, decorator: Google::Apis::NetworkmanagementV1beta1::LoadBalancerInfo::Representation
       
+          property :load_balancer_backend_info, as: 'loadBalancerBackendInfo', class: Google::Apis::NetworkmanagementV1beta1::LoadBalancerBackendInfo, decorator: Google::Apis::NetworkmanagementV1beta1::LoadBalancerBackendInfo::Representation
+      
+          property :nat, as: 'nat', class: Google::Apis::NetworkmanagementV1beta1::NatInfo, decorator: Google::Apis::NetworkmanagementV1beta1::NatInfo::Representation
+      
           property :network, as: 'network', class: Google::Apis::NetworkmanagementV1beta1::NetworkInfo, decorator: Google::Apis::NetworkmanagementV1beta1::NetworkInfo::Representation
       
           property :project_id, as: 'projectId'
+          property :proxy_connection, as: 'proxyConnection', class: Google::Apis::NetworkmanagementV1beta1::ProxyConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::ProxyConnectionInfo::Representation
+      
           property :route, as: 'route', class: Google::Apis::NetworkmanagementV1beta1::RouteInfo, decorator: Google::Apis::NetworkmanagementV1beta1::RouteInfo::Representation
       
           property :state, as: 'state'
