@@ -345,6 +345,195 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Creates an audience export for later retrieval. This method quickly returns
+        # the audience export's resource name and initiates a long running asynchronous
+        # request to form an audience export. To export the users in an audience export,
+        # first create the audience export through this method and then send the
+        # audience resource name to the `QueryAudienceExport` method. See [Creating an
+        # Audience Export](https://developers.google.com/analytics/devguides/reporting/
+        # data/v1/audience-list-basics) for an introduction to Audience Exports with
+        # examples. An audience export is a snapshot of the users currently in the
+        # audience at the time of audience export creation. Creating audience exports
+        # for one audience on different days will return different results as users
+        # enter and exit the audience. Audiences in Google Analytics 4 allow you to
+        # segment your users in the ways that are important to your business. To learn
+        # more, see https://support.google.com/analytics/answer/9267572. Audience
+        # exports contain the users in each audience. Audience Export APIs have some
+        # methods at alpha and other methods at beta stability. The intention is to
+        # advance methods to beta stability after some feedback and adoption. To give
+        # your feedback on this API, complete the [Google Analytics Audience Export API
+        # Feedback](https://forms.gle/EeA5u5LW6PEggtCEA) form.
+        # @param [String] parent
+        #   Required. The parent resource where this audience export will be created.
+        #   Format: `properties/`property``
+        # @param [Google::Apis::AnalyticsdataV1beta::AudienceExport] audience_export_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsdataV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsdataV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_property_audience_export(parent, audience_export_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}/audienceExports', options)
+          command.request_representation = Google::Apis::AnalyticsdataV1beta::AudienceExport::Representation
+          command.request_object = audience_export_object
+          command.response_representation = Google::Apis::AnalyticsdataV1beta::Operation::Representation
+          command.response_class = Google::Apis::AnalyticsdataV1beta::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets configuration metadata about a specific audience export. This method can
+        # be used to understand an audience export after it has been created. See [
+        # Creating an Audience Export](https://developers.google.com/analytics/devguides/
+        # reporting/data/v1/audience-list-basics) for an introduction to Audience
+        # Exports with examples. Audience Export APIs have some methods at alpha and
+        # other methods at beta stability. The intention is to advance methods to beta
+        # stability after some feedback and adoption. To give your feedback on this API,
+        # complete the [Google Analytics Audience Export API Feedback](https://forms.gle/
+        # EeA5u5LW6PEggtCEA) form.
+        # @param [String] name
+        #   Required. The audience export resource name. Format: `properties/`property`/
+        #   audienceExports/`audience_export``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsdataV1beta::AudienceExport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsdataV1beta::AudienceExport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_property_audience_export(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsdataV1beta::AudienceExport::Representation
+          command.response_class = Google::Apis::AnalyticsdataV1beta::AudienceExport
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all audience exports for a property. This method can be used for you to
+        # find and reuse existing audience exports rather than creating unnecessary new
+        # audience exports. The same audience can have multiple audience exports that
+        # represent the export of users that were in an audience on different days. See [
+        # Creating an Audience Export](https://developers.google.com/analytics/devguides/
+        # reporting/data/v1/audience-list-basics) for an introduction to Audience
+        # Exports with examples. Audience Export APIs have some methods at alpha and
+        # other methods at beta stability. The intention is to advance methods to beta
+        # stability after some feedback and adoption. To give your feedback on this API,
+        # complete the [Google Analytics Audience Export API Feedback](https://forms.gle/
+        # EeA5u5LW6PEggtCEA) form.
+        # @param [String] parent
+        #   Required. All audience exports for this property will be listed in the
+        #   response. Format: `properties/`property``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of audience exports to return. The service may
+        #   return fewer than this value. If unspecified, at most 200 audience exports
+        #   will be returned. The maximum value is 1000 (higher values will be coerced to
+        #   the maximum).
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListAudienceExports` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListAudienceExports` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsdataV1beta::ListAudienceExportsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsdataV1beta::ListAudienceExportsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_property_audience_exports(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/audienceExports', options)
+          command.response_representation = Google::Apis::AnalyticsdataV1beta::ListAudienceExportsResponse::Representation
+          command.response_class = Google::Apis::AnalyticsdataV1beta::ListAudienceExportsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves an audience export of users. After creating an audience, the users
+        # are not immediately available for exporting. First, a request to `
+        # CreateAudienceExport` is necessary to create an audience export of users, and
+        # then second, this method is used to retrieve the users in the audience export.
+        # See [Creating an Audience Export](https://developers.google.com/analytics/
+        # devguides/reporting/data/v1/audience-list-basics) for an introduction to
+        # Audience Exports with examples. Audiences in Google Analytics 4 allow you to
+        # segment your users in the ways that are important to your business. To learn
+        # more, see https://support.google.com/analytics/answer/9267572. Audience Export
+        # APIs have some methods at alpha and other methods at beta stability. The
+        # intention is to advance methods to beta stability after some feedback and
+        # adoption. To give your feedback on this API, complete the [Google Analytics
+        # Audience Export API Feedback](https://forms.gle/EeA5u5LW6PEggtCEA) form.
+        # @param [String] name
+        #   Required. The name of the audience export to retrieve users from. Format: `
+        #   properties/`property`/audienceExports/`audience_export``
+        # @param [Google::Apis::AnalyticsdataV1beta::QueryAudienceExportRequest] query_audience_export_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsdataV1beta::QueryAudienceExportResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsdataV1beta::QueryAudienceExportResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_audience_export(name, query_audience_export_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:query', options)
+          command.request_representation = Google::Apis::AnalyticsdataV1beta::QueryAudienceExportRequest::Representation
+          command.request_object = query_audience_export_request_object
+          command.response_representation = Google::Apis::AnalyticsdataV1beta::QueryAudienceExportResponse::Representation
+          command.response_class = Google::Apis::AnalyticsdataV1beta::QueryAudienceExportResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

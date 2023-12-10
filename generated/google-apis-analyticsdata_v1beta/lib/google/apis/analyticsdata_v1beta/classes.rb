@@ -47,6 +47,92 @@ module Google
         end
       end
       
+      # An audience export is a list of users in an audience at the time of the list's
+      # creation. One audience may have multiple audience exports created for
+      # different days.
+      class AudienceExport
+        include Google::Apis::Core::Hashable
+      
+        # Required. The audience resource name. This resource name identifies the
+        # audience being listed and is shared between the Analytics Data & Admin APIs.
+        # Format: `properties/`property`/audiences/`audience``
+        # Corresponds to the JSON property `audience`
+        # @return [String]
+        attr_accessor :audience
+      
+        # Output only. The descriptive display name for this audience. For example, "
+        # Purchasers".
+        # Corresponds to the JSON property `audienceDisplayName`
+        # @return [String]
+        attr_accessor :audience_display_name
+      
+        # Output only. The time when CreateAudienceExport was called and the
+        # AudienceExport began the `CREATING` state.
+        # Corresponds to the JSON property `beginCreatingTime`
+        # @return [String]
+        attr_accessor :begin_creating_time
+      
+        # Output only. The total quota tokens charged during creation of the
+        # AudienceExport. Because this token count is based on activity from the `
+        # CREATING` state, this tokens charged will be fixed once an AudienceExport
+        # enters the `ACTIVE` or `FAILED` states.
+        # Corresponds to the JSON property `creationQuotaTokensCharged`
+        # @return [Fixnum]
+        attr_accessor :creation_quota_tokens_charged
+      
+        # Required. The dimensions requested and displayed in the query response.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::V1betaAudienceDimension>]
+        attr_accessor :dimensions
+      
+        # Output only. Error message is populated when an audience export fails during
+        # creation. A common reason for such a failure is quota exhaustion.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Output only. Identifier. The audience export resource name assigned during
+        # creation. This resource name identifies this `AudienceExport`. Format: `
+        # properties/`property`/audienceExports/`audience_export``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The percentage completed for this audience export ranging between
+        # 0 to 100.
+        # Corresponds to the JSON property `percentageCompleted`
+        # @return [Float]
+        attr_accessor :percentage_completed
+      
+        # Output only. The total number of rows in the AudienceExport result.
+        # Corresponds to the JSON property `rowCount`
+        # @return [Fixnum]
+        attr_accessor :row_count
+      
+        # Output only. The current state for this AudienceExport.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audience = args[:audience] if args.key?(:audience)
+          @audience_display_name = args[:audience_display_name] if args.key?(:audience_display_name)
+          @begin_creating_time = args[:begin_creating_time] if args.key?(:begin_creating_time)
+          @creation_quota_tokens_charged = args[:creation_quota_tokens_charged] if args.key?(:creation_quota_tokens_charged)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @name = args[:name] if args.key?(:name)
+          @percentage_completed = args[:percentage_completed] if args.key?(:percentage_completed)
+          @row_count = args[:row_count] if args.key?(:row_count)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # This metadata is currently blank.
       class AudienceListMetadata
         include Google::Apis::Core::Hashable
@@ -854,6 +940,32 @@ module Google
         end
       end
       
+      # A list of all audience exports for a property.
+      class ListAudienceExportsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Each audience export for a property.
+        # Corresponds to the JSON property `audienceExports`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::AudienceExport>]
+        attr_accessor :audience_exports
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audience_exports = args[:audience_exports] if args.key?(:audience_exports)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The dimensions, metrics and comparisons currently accepted in reporting
       # methods.
       class Metadata
@@ -1205,6 +1317,68 @@ module Google
         end
       end
       
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class Operation
+        include Google::Apis::Core::Hashable
+      
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::AnalyticsdataV1beta::Status]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
       # Order bys define how rows will be sorted in the response. For example,
       # ordering rows by descending event count is one ordering, and ordering rows by
       # the event name string is a different ordering.
@@ -1457,6 +1631,83 @@ module Google
           @tokens_per_day = args[:tokens_per_day] if args.key?(:tokens_per_day)
           @tokens_per_hour = args[:tokens_per_hour] if args.key?(:tokens_per_hour)
           @tokens_per_project_per_hour = args[:tokens_per_project_per_hour] if args.key?(:tokens_per_project_per_hour)
+        end
+      end
+      
+      # A request to list users in an audience export.
+      class QueryAudienceExportRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of rows to return. If unspecified, 10,000 rows are
+        # returned. The API returns a maximum of 250,000 rows per request, no matter how
+        # many you ask for. `limit` must be positive. The API can also return fewer rows
+        # than the requested `limit`, if there aren't as many dimension values as the `
+        # limit`. To learn more about this pagination parameter, see [Pagination](https:/
+        # /developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination)
+        # .
+        # Corresponds to the JSON property `limit`
+        # @return [Fixnum]
+        attr_accessor :limit
+      
+        # Optional. The row count of the start row. The first row is counted as row 0.
+        # When paging, the first request does not specify offset; or equivalently, sets
+        # offset to 0; the first request returns the first `limit` of rows. The second
+        # request sets offset to the `limit` of the first request; the second request
+        # returns the second `limit` of rows. To learn more about this pagination
+        # parameter, see [Pagination](https://developers.google.com/analytics/devguides/
+        # reporting/data/v1/basics#pagination).
+        # Corresponds to the JSON property `offset`
+        # @return [Fixnum]
+        attr_accessor :offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @limit = args[:limit] if args.key?(:limit)
+          @offset = args[:offset] if args.key?(:offset)
+        end
+      end
+      
+      # A list of users in an audience export.
+      class QueryAudienceExportResponse
+        include Google::Apis::Core::Hashable
+      
+        # An audience export is a list of users in an audience at the time of the list's
+        # creation. One audience may have multiple audience exports created for
+        # different days.
+        # Corresponds to the JSON property `audienceExport`
+        # @return [Google::Apis::AnalyticsdataV1beta::AudienceExport]
+        attr_accessor :audience_export
+      
+        # Rows for each user in an audience export. The number of rows in this response
+        # will be less than or equal to request's page size.
+        # Corresponds to the JSON property `audienceRows`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::V1betaAudienceRow>]
+        attr_accessor :audience_rows
+      
+        # The total number of rows in the AudienceExport result. `rowCount` is
+        # independent of the number of rows returned in the response, the `limit`
+        # request parameter, and the `offset` request parameter. For example if a query
+        # returns 175 rows and includes `limit` of 50 in the API request, the response
+        # will contain `rowCount` of 175 but only 50 rows. To learn more about this
+        # pagination parameter, see [Pagination](https://developers.google.com/analytics/
+        # devguides/reporting/data/v1/basics#pagination).
+        # Corresponds to the JSON property `rowCount`
+        # @return [Fixnum]
+        attr_accessor :row_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audience_export = args[:audience_export] if args.key?(:audience_export)
+          @audience_rows = args[:audience_rows] if args.key?(:audience_rows)
+          @row_count = args[:row_count] if args.key?(:row_count)
         end
       end
       
@@ -2243,6 +2494,45 @@ module Google
         end
       end
       
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # The filter for string
       class StringFilter
         include Google::Apis::Core::Hashable
@@ -2272,6 +2562,67 @@ module Google
           @case_sensitive = args[:case_sensitive] if args.key?(:case_sensitive)
           @match_type = args[:match_type] if args.key?(:match_type)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # An audience dimension is a user attribute. Specific user attributed are
+      # requested and then later returned in the `QueryAudienceExportResponse`.
+      class V1betaAudienceDimension
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The API name of the dimension. See the [API Dimensions](https://
+        # developers.google.com/analytics/devguides/reporting/data/v1/audience-list-api-
+        # schema#dimensions) for the list of dimension names.
+        # Corresponds to the JSON property `dimensionName`
+        # @return [String]
+        attr_accessor :dimension_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_name = args[:dimension_name] if args.key?(:dimension_name)
+        end
+      end
+      
+      # The value of a dimension.
+      class V1betaAudienceDimensionValue
+        include Google::Apis::Core::Hashable
+      
+        # Value as a string if the dimension type is a string.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Dimension value attributes for the audience user row.
+      class V1betaAudienceRow
+        include Google::Apis::Core::Hashable
+      
+        # Each dimension value attribute for an audience user. One dimension value will
+        # be added for each dimension column requested.
+        # Corresponds to the JSON property `dimensionValues`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::V1betaAudienceDimensionValue>]
+        attr_accessor :dimension_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_values = args[:dimension_values] if args.key?(:dimension_values)
         end
       end
     end
