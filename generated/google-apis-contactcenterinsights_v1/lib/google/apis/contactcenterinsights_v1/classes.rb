@@ -830,8 +830,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The conversation source, which is a combination of transcript, audio, and
-        # metadata.
+        # The conversation source, which is a combination of transcript and audio.
         # Corresponds to the JSON property `dataSource`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSource]
         attr_accessor :data_source
@@ -977,8 +976,7 @@ module Google
         end
       end
       
-      # The conversation source, which is a combination of transcript, audio, and
-      # metadata.
+      # The conversation source, which is a combination of transcript and audio.
       class GoogleCloudContactcenterinsightsV1ConversationDataSource
         include Google::Apis::Core::Hashable
       
@@ -4035,8 +4033,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The conversation source, which is a combination of transcript, audio, and
-        # metadata.
+        # The conversation source, which is a combination of transcript and audio.
         # Corresponds to the JSON property `dataSource`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource]
         attr_accessor :data_source
@@ -4182,8 +4179,7 @@ module Google
         end
       end
       
-      # The conversation source, which is a combination of transcript, audio, and
-      # metadata.
+      # The conversation source, which is a combination of transcript and audio.
       class GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource
         include Google::Apis::Core::Hashable
       
