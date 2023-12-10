@@ -2873,6 +2873,27 @@ module Google
         end
       end
       
+      # A Google Group in Google Chat.
+      class Group
+        include Google::Apis::Core::Hashable
+      
+        # Resource name for a Google Group. Represents a [group](https://cloud.google.
+        # com/identity/docs/reference/rest/v1/groups) in Cloud Identity Groups API.
+        # Format: groups/`group`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Chat apps only. For a `SelectionInput` widget that uses a multiselect menu, a
       # data source from a Google Workspace application. The data source populates
       # selection items for the multiselect menu.
@@ -3235,11 +3256,18 @@ module Google
       class Membership
         include Google::Apis::Core::Hashable
       
-        # Output only. The creation time of the membership, such as when a member joined
-        # or was invited to join a space.
+        # Optional. Immutable. The creation time of the membership, such as when a
+        # member joined or was invited to join a space. [Developer Preview](https://
+        # developers.google.com/workspace/preview): This field is output only, except
+        # when used to import historical memberships in import mode spaces.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # A Google Group in Google Chat.
+        # Corresponds to the JSON property `groupMember`
+        # @return [Google::Apis::ChatV1::Group]
+        attr_accessor :group_member
       
         # A user in Google Chat. When returned as an output from a request, if your Chat
         # app [authenticates as a user](https://developers.google.com/chat/api/guides/
@@ -3274,6 +3302,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @group_member = args[:group_member] if args.key?(:group_member)
           @member = args[:member] if args.key?(:member)
           @name = args[:name] if args.key?(:name)
           @role = args[:role] if args.key?(:role)
