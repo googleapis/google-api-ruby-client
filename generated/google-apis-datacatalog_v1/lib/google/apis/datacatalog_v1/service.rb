@@ -2170,7 +2170,7 @@ module Google
         # Updates a taxonomy, including its display name, description, and activated
         # policy types.
         # @param [String] name
-        #   Output only. Resource name of this taxonomy in URL format. Note: Policy tag
+        #   Identifier. Resource name of this taxonomy in URL format. Note: Policy tag
         #   manager generates unique taxonomy IDs.
         # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Taxonomy] google_cloud_datacatalog_v1_taxonomy_object
         # @param [String] update_mask
@@ -2489,8 +2489,8 @@ module Google
         # Updates a policy tag, including its display name, description, and parent
         # policy tag.
         # @param [String] name
-        #   Output only. Resource name of this policy tag in the URL format. The policy
-        #   tag manager generates unique taxonomy IDs and policy tag IDs.
+        #   Identifier. Resource name of this policy tag in the URL format. The policy tag
+        #   manager generates unique taxonomy IDs and policy tag IDs.
         # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PolicyTag] google_cloud_datacatalog_v1_policy_tag_object
         # @param [String] update_mask
         #   Specifies the fields to update. You can update only display name, description,

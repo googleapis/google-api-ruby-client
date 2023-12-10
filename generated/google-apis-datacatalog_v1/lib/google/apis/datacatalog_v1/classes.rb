@@ -2023,8 +2023,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Resource name of this policy tag in the URL format. The policy
-        # tag manager generates unique taxonomy IDs and policy tag IDs.
+        # Identifier. Resource name of this policy tag in the URL format. The policy tag
+        # manager generates unique taxonomy IDs and policy tag IDs.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3161,7 +3161,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Resource name of this taxonomy in URL format. Note: Policy tag
+        # Identifier. Resource name of this taxonomy in URL format. Note: Policy tag
         # manager generates unique taxonomy IDs.
         # Corresponds to the JSON property `name`
         # @return [String]
