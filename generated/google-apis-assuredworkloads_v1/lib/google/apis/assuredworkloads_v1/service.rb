@@ -256,6 +256,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Enable resource violation monitoring for a workload.
+        # @param [String] name
+        #   Required. The `name` field is used to identify the workload. Format:
+        #   organizations/`org_id`/locations/`location_id`/workloads/`workload_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def enable_organization_location_workload_resource_monitoring(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:enableResourceMonitoring', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets Assured Workload associated with a CRM Node
         # @param [String] name
         #   Required. The resource name of the Workload to fetch. This is the workloads's

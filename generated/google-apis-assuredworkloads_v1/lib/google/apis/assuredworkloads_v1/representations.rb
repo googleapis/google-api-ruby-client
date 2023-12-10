@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1ListViolationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -249,6 +255,12 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
