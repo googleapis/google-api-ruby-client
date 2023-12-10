@@ -717,7 +717,9 @@ module Google
         attr_accessor :org_unit_id
       
         # A set of restrictions that apply to this shared drive or items inside this
-        # shared drive.
+        # shared drive. Note that restrictions can't be set when creating a shared drive.
+        # To add a restriction, first create a shared drive and then use `drives.update`
+        # to add restrictions.
         # Corresponds to the JSON property `restrictions`
         # @return [Google::Apis::DriveV3::Drive::Restrictions]
         attr_accessor :restrictions
@@ -973,7 +975,9 @@ module Google
         end
         
         # A set of restrictions that apply to this shared drive or items inside this
-        # shared drive.
+        # shared drive. Note that restrictions can't be set when creating a shared drive.
+        # To add a restriction, first create a shared drive and then use `drives.update`
+        # to add restrictions.
         class Restrictions
           include Google::Apis::Core::Hashable
         
