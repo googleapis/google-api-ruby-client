@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AlterTablePropertiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -351,6 +357,15 @@ module Google
       class AlterMetadataResourceLocationResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AlterTablePropertiesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :properties, as: 'properties'
+          property :table_name, as: 'tableName'
+          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -747,7 +762,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
-          property :backup_location, as: 'backupLocation'
           property :details, as: 'details'
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
