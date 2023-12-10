@@ -705,6 +705,27 @@ module Google
         end
       end
       
+      # Request message for PipelineService.BatchCancelPipelineJobs.
+      class GoogleCloudAiplatformV1beta1BatchCancelPipelineJobsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The names of the PipelineJobs to cancel. A maximum of 32
+        # PipelineJobs can be cancelled in a batch. Format: `projects/`project`/
+        # locations/`location`/pipelineJobs/`pipelineJob``
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
+        end
+      end
+      
       # Details of operations that perform batch create Features.
       class GoogleCloudAiplatformV1beta1BatchCreateFeaturesOperationMetadata
         include Google::Apis::Core::Hashable
@@ -1716,6 +1737,32 @@ module Google
         end
       end
       
+      # Content blob.
+      class GoogleCloudAiplatformV1beta1Blob
+        include Google::Apis::Core::Hashable
+      
+        # Required. Data.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Required. Mime type of the data.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
       # Config for blur baseline. When enabled, a linear path from the maximally
       # blurred image to the input image is created. Using a blurred baseline instead
       # of zero (black image) is motivated by the BlurIG approach explained here:
@@ -1850,6 +1897,56 @@ module Google
         end
       end
       
+      # Generated candidate.
+      class GoogleCloudAiplatformV1beta1Candidate
+        include Google::Apis::Core::Hashable
+      
+        # A collection of source attributions for a piece of content.
+        # Corresponds to the JSON property `citationMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CitationMetadata]
+        attr_accessor :citation_metadata
+      
+        # A single turn in a conversation with the model.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content]
+        attr_accessor :content
+      
+        # Output only. A string that describes the filtering behavior in more detail.
+        # Only filled when reason is set.
+        # Corresponds to the JSON property `finishMessage`
+        # @return [String]
+        attr_accessor :finish_message
+      
+        # Output only. The reason why the model stopped generating tokens.
+        # Corresponds to the JSON property `finishReason`
+        # @return [String]
+        attr_accessor :finish_reason
+      
+        # Output only. Index of the candidate.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # Output only. Safety ratings of the generated content.
+        # Corresponds to the JSON property `safetyRatings`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetyRating>]
+        attr_accessor :safety_ratings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @citation_metadata = args[:citation_metadata] if args.key?(:citation_metadata)
+          @content = args[:content] if args.key?(:content)
+          @finish_message = args[:finish_message] if args.key?(:finish_message)
+          @finish_reason = args[:finish_reason] if args.key?(:finish_reason)
+          @index = args[:index] if args.key?(:index)
+          @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
+        end
+      end
+      
       # This message will be placed in the metadata field of a google.longrunning.
       # Operation associated with a CheckTrialEarlyStoppingState request.
       class GoogleCloudAiplatformV1beta1CheckTrialEarlyStoppingStateMetatdata
@@ -1912,6 +2009,81 @@ module Google
         # Update properties of this object
         def update!(**args)
           @should_stop = args[:should_stop] if args.key?(:should_stop)
+        end
+      end
+      
+      # Source attributions for content.
+      class GoogleCloudAiplatformV1beta1Citation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. End index into the content.
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # Output only. License of the attribution.
+        # Corresponds to the JSON property `license`
+        # @return [String]
+        attr_accessor :license
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `publicationDate`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleTypeDate]
+        attr_accessor :publication_date
+      
+        # Output only. Start index into the content.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        # Output only. Title of the attribution.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Output only. Url reference of the attribution.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @license = args[:license] if args.key?(:license)
+          @publication_date = args[:publication_date] if args.key?(:publication_date)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # A collection of source attributions for a piece of content.
+      class GoogleCloudAiplatformV1beta1CitationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of citations.
+        # Corresponds to the JSON property `citations`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Citation>]
+        attr_accessor :citations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @citations = args[:citations] if args.key?(:citations)
         end
       end
       
@@ -2099,6 +2271,34 @@ module Google
         end
       end
       
+      # A single turn in a conversation with the model.
+      class GoogleCloudAiplatformV1beta1Content
+        include Google::Apis::Core::Hashable
+      
+        # Required. Ordered parts that make up a message. Parts may have different MIME
+        # types.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Part>]
+        attr_accessor :parts
+      
+        # Optional. The role in a conversation associated with this content. Set it only
+        # if a content represents a turn in a conversations, otherwise no need to set
+        # role. Possible values: user, model.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parts = args[:parts] if args.key?(:parts)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
       # Instance of a general context.
       class GoogleCloudAiplatformV1beta1Context
         include Google::Apis::Core::Hashable
@@ -2283,11 +2483,22 @@ module Google
       class GoogleCloudAiplatformV1beta1CountTokensRequest
         include Google::Apis::Core::Hashable
       
+        # Required. Input content.
+        # Corresponds to the JSON property `contents`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content>]
+        attr_accessor :contents
+      
         # Required. The instances that are the input to token counting call. Schema is
         # identical to the prediction schema of the underlying model.
         # Corresponds to the JSON property `instances`
         # @return [Array<Object>]
         attr_accessor :instances
+      
+        # Required. The name of the publisher model requested to serve the prediction.
+        # Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
       
         def initialize(**args)
            update!(**args)
@@ -2295,7 +2506,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
           @instances = args[:instances] if args.key?(:instances)
+          @model = args[:model] if args.key?(:model)
         end
       end
       
@@ -4251,6 +4464,11 @@ module Google
         # @return [String]
         attr_accessor :deployed_index_id
       
+        # Output only. The display name of the DeployedIndex.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Immutable. A resource name of the IndexEndpoint.
         # Corresponds to the JSON property `indexEndpoint`
         # @return [String]
@@ -4263,6 +4481,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deployed_index_id = args[:deployed_index_id] if args.key?(:deployed_index_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @index_endpoint = args[:index_endpoint] if args.key?(:index_endpoint)
         end
       end
@@ -4477,6 +4696,104 @@ module Google
         def update!(**args)
           @destination_field = args[:destination_field] if args.key?(:destination_field)
           @feature_id = args[:feature_id] if args.key?(:feature_id)
+        end
+      end
+      
+      # Request message for PredictionService.DirectPredict.
+      class GoogleCloudAiplatformV1beta1DirectPredictRequest
+        include Google::Apis::Core::Hashable
+      
+        # The prediction input.
+        # Corresponds to the JSON property `inputs`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Tensor>]
+        attr_accessor :inputs
+      
+        # A tensor value type.
+        # Corresponds to the JSON property `parameters`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Tensor]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inputs = args[:inputs] if args.key?(:inputs)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # Response message for PredictionService.DirectPredict.
+      class GoogleCloudAiplatformV1beta1DirectPredictResponse
+        include Google::Apis::Core::Hashable
+      
+        # The prediction output.
+        # Corresponds to the JSON property `outputs`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Tensor>]
+        attr_accessor :outputs
+      
+        # A tensor value type.
+        # Corresponds to the JSON property `parameters`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Tensor]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @outputs = args[:outputs] if args.key?(:outputs)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # Request message for PredictionService.DirectRawPredict.
+      class GoogleCloudAiplatformV1beta1DirectRawPredictRequest
+        include Google::Apis::Core::Hashable
+      
+        # The prediction input.
+        # Corresponds to the JSON property `input`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :input
+      
+        # Fully qualified name of the API method being invoked to perform predictions.
+        # Format: `/namespace.Service/Method/` Example: `/tensorflow.serving.
+        # PredictionService/Predict`
+        # Corresponds to the JSON property `methodName`
+        # @return [String]
+        attr_accessor :method_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input = args[:input] if args.key?(:input)
+          @method_name = args[:method_name] if args.key?(:method_name)
+        end
+      end
+      
+      # Response message for PredictionService.DirectRawPredict.
+      class GoogleCloudAiplatformV1beta1DirectRawPredictResponse
+        include Google::Apis::Core::Hashable
+      
+        # The prediction output.
+        # Corresponds to the JSON property `output`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output = args[:output] if args.key?(:output)
         end
       end
       
@@ -5999,7 +6316,9 @@ module Google
       class GoogleCloudAiplatformV1beta1ExportDataResponse
         include Google::Apis::Core::Hashable
       
-        # All of the files that are exported in this export operation.
+        # All of the files that are exported in this export operation. For custom code
+        # training export, only three (training, validation and test) GCS paths in
+        # wildcard format are populated (e.g., gs://.../training-*).
         # Corresponds to the JSON property `exportedFiles`
         # @return [Array<String>]
         attr_accessor :exported_files
@@ -6579,7 +6898,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. Name of the FeatureGroup. Format: `projects/`project`/locations/`
+        # Identifier. Name of the FeatureGroup. Format: `projects/`project`/locations/`
         # location`/featureGroups/`featureGroup``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -6762,7 +7081,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. Name of the FeatureOnlineStore. Format: `projects/`project`/
+        # Identifier. Name of the FeatureOnlineStore. Format: `projects/`project`/
         # locations/`location`/featureOnlineStores/`featureOnlineStore``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -7218,16 +7537,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. Name of the FeatureView. Format: `projects/`project`/locations/`
+        # Identifier. Name of the FeatureView. Format: `projects/`project`/locations/`
         # location`/featureOnlineStores/`feature_online_store`/featureViews/`
         # feature_view``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Configures when data is to be synced/updated for this FeatureView. At the end
-        # of the sync the latest featureValues for each entityId of this FeatureView are
-        # made ready for online serving.
+        # Configuration for Sync. Only one option is set.
         # Corresponds to the JSON property `syncConfig`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewSyncConfig]
         attr_accessor :sync_config
@@ -7373,8 +7690,8 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleRpcStatus]
         attr_accessor :final_status
       
-        # Output only. Name of the FeatureViewSync. Format: `projects/`project`/
-        # locations/`location`/featureOnlineStores/`feature_online_store`/featureViews/`
+        # Identifier. Name of the FeatureViewSync. Format: `projects/`project`/locations/
+        # `location`/featureOnlineStores/`feature_online_store`/featureViews/`
         # feature_view`/featureViewSyncs/`feature_view_sync``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -7401,7 +7718,7 @@ module Google
         end
       end
       
-      # 
+      # Configuration for Sync. Only one option is set.
       class GoogleCloudAiplatformV1beta1FeatureViewSyncConfig
         include Google::Apis::Core::Hashable
       
@@ -7934,6 +8251,31 @@ module Google
         end
       end
       
+      # URI based data.
+      class GoogleCloudAiplatformV1beta1FileData
+        include Google::Apis::Core::Hashable
+      
+        # Required. URI.
+        # Corresponds to the JSON property `fileUri`
+        # @return [String]
+        attr_accessor :file_uri
+      
+        # Required. Mime type of the data.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_uri = args[:file_uri] if args.key?(:file_uri)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
       # Assigns input data to training, validation, and test sets based on the given
       # filters, data pieces not matched by any filter are ignored. Currently only
       # supported for Datasets containing DataItems. If any of the filters in this
@@ -8182,6 +8524,100 @@ module Google
         end
       end
       
+      # A predicted [FunctionCall] returned from the model that contains a string
+      # representing the [FunctionDeclaration.name] and a structured JSON object
+      # containing the parameters and their values.
+      class GoogleCloudAiplatformV1beta1FunctionCall
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Required. The function parameters and values in JSON object format.
+        # See [FunctionDeclaration.parameters] for parameter details.
+        # Corresponds to the JSON property `args`
+        # @return [Hash<String,Object>]
+        attr_accessor :args
+      
+        # Required. The name of the function to call. Matches [FunctionDeclaration.name].
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Function declaration details.
+      class GoogleCloudAiplatformV1beta1FunctionDeclaration
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Description and purpose of the function. Model uses it to decide how
+        # and whether to call the function.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The name of the function to call. Must start with a letter or an
+        # underscore. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a
+        # maximum length of 64.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents a select subset of an OpenAPI 3.0 Schema object. Schema is used to
+        # define the format of input/output data. More fields may be added in the future
+        # as needed. https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.
+        # 0.2.md#schemaObject
+        # Corresponds to the JSON property `parameters`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # The result output from a [FunctionCall] that contains a string representing
+      # the [FunctionDeclaration.name] and a structured JSON object containing any
+      # output from the function is used as context to the model. This should contain
+      # the result of a [FunctionCall] made based on model prediction.
+      class GoogleCloudAiplatformV1beta1FunctionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the function to call. Matches [FunctionDeclaration.name]
+        # and [FunctionCall.name].
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The function response in JSON object format.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
       # The Google Cloud Storage location where the output is to be written to.
       class GoogleCloudAiplatformV1beta1GcsDestination
         include Google::Apis::Core::Hashable
@@ -8281,6 +8717,224 @@ module Google
           @expires_in = args[:expires_in] if args.key?(:expires_in)
           @scope = args[:scope] if args.key?(:scope)
           @token_type = args[:token_type] if args.key?(:token_type)
+        end
+      end
+      
+      # Request message for [PredictionService.GenerateContent].
+      class GoogleCloudAiplatformV1beta1GenerateContentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input content.
+        # Corresponds to the JSON property `contents`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content>]
+        attr_accessor :contents
+      
+        # Required. The name of the Endpoint requested to serve the prediction. Format: `
+        # projects/`project`/locations/`location`/endpoints/`endpoint``
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Generation config.
+        # Corresponds to the JSON property `generationConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerationConfig]
+        attr_accessor :generation_config
+      
+        # Optional. Per request settings for blocking unsafe content. Enforced on
+        # GenerateContentResponse.candidates.
+        # Corresponds to the JSON property `safetySettings`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetySetting>]
+        attr_accessor :safety_settings
+      
+        # Optional. Tools that the model may use to generate response.
+        # Corresponds to the JSON property `tools`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Tool>]
+        attr_accessor :tools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @generation_config = args[:generation_config] if args.key?(:generation_config)
+          @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
+          @tools = args[:tools] if args.key?(:tools)
+        end
+      end
+      
+      # Response message for [PredictionService.GenerateContent].
+      class GoogleCloudAiplatformV1beta1GenerateContentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Generated candidates.
+        # Corresponds to the JSON property `candidates`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Candidate>]
+        attr_accessor :candidates
+      
+        # Content filter results for a prompt sent in the request.
+        # Corresponds to the JSON property `promptFeedback`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback]
+        attr_accessor :prompt_feedback
+      
+        # Usage metadata about response(s).
+        # Corresponds to the JSON property `usageMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata]
+        attr_accessor :usage_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates = args[:candidates] if args.key?(:candidates)
+          @prompt_feedback = args[:prompt_feedback] if args.key?(:prompt_feedback)
+          @usage_metadata = args[:usage_metadata] if args.key?(:usage_metadata)
+        end
+      end
+      
+      # Content filter results for a prompt sent in the request.
+      class GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Blocked reason.
+        # Corresponds to the JSON property `blockReason`
+        # @return [String]
+        attr_accessor :block_reason
+      
+        # Output only. A readable block reason message.
+        # Corresponds to the JSON property `blockReasonMessage`
+        # @return [String]
+        attr_accessor :block_reason_message
+      
+        # Output only. Safety ratings.
+        # Corresponds to the JSON property `safetyRatings`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetyRating>]
+        attr_accessor :safety_ratings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @block_reason = args[:block_reason] if args.key?(:block_reason)
+          @block_reason_message = args[:block_reason_message] if args.key?(:block_reason_message)
+          @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
+        end
+      end
+      
+      # Usage metadata about response(s).
+      class GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Number of tokens in the response(s).
+        # Corresponds to the JSON property `candidatesTokenCount`
+        # @return [Fixnum]
+        attr_accessor :candidates_token_count
+      
+        # Number of tokens in the request.
+        # Corresponds to the JSON property `promptTokenCount`
+        # @return [Fixnum]
+        attr_accessor :prompt_token_count
+      
+        # 
+        # Corresponds to the JSON property `totalTokenCount`
+        # @return [Fixnum]
+        attr_accessor :total_token_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
+          @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
+          @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
+        end
+      end
+      
+      # Generation config.
+      class GoogleCloudAiplatformV1beta1GenerationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Number of candidates to generate.
+        # Corresponds to the JSON property `candidateCount`
+        # @return [Fixnum]
+        attr_accessor :candidate_count
+      
+        # Optional. Echo.
+        # Corresponds to the JSON property `echo`
+        # @return [Boolean]
+        attr_accessor :echo
+        alias_method :echo?, :echo
+      
+        # Optional. Frequency penalties.
+        # Corresponds to the JSON property `frequencyPenalty`
+        # @return [Float]
+        attr_accessor :frequency_penalty
+      
+        # Optional. Logit bias.
+        # Corresponds to the JSON property `logitBias`
+        # @return [Hash<String,Float>]
+        attr_accessor :logit_bias
+      
+        # Optional. Logit probabilities.
+        # Corresponds to the JSON property `logprobs`
+        # @return [Fixnum]
+        attr_accessor :logprobs
+      
+        # Optional. The maximum number of output tokens to generate per message.
+        # Corresponds to the JSON property `maxOutputTokens`
+        # @return [Fixnum]
+        attr_accessor :max_output_tokens
+      
+        # Optional. Positive penalties.
+        # Corresponds to the JSON property `presencePenalty`
+        # @return [Float]
+        attr_accessor :presence_penalty
+      
+        # Optional. Stop sequences.
+        # Corresponds to the JSON property `stopSequences`
+        # @return [Array<String>]
+        attr_accessor :stop_sequences
+      
+        # Optional. Controls the randomness of predictions.
+        # Corresponds to the JSON property `temperature`
+        # @return [Float]
+        attr_accessor :temperature
+      
+        # Optional. If specified, top-k sampling will be used.
+        # Corresponds to the JSON property `topK`
+        # @return [Float]
+        attr_accessor :top_k
+      
+        # Optional. If specified, nucleus sampling will be used.
+        # Corresponds to the JSON property `topP`
+        # @return [Float]
+        attr_accessor :top_p
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidate_count = args[:candidate_count] if args.key?(:candidate_count)
+          @echo = args[:echo] if args.key?(:echo)
+          @frequency_penalty = args[:frequency_penalty] if args.key?(:frequency_penalty)
+          @logit_bias = args[:logit_bias] if args.key?(:logit_bias)
+          @logprobs = args[:logprobs] if args.key?(:logprobs)
+          @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
+          @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
+          @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
+          @temperature = args[:temperature] if args.key?(:temperature)
+          @top_k = args[:top_k] if args.key?(:top_k)
+          @top_p = args[:top_p] if args.key?(:top_p)
         end
       end
       
@@ -11780,8 +12434,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :command
       
-        # Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before
-        # exposing.
+        # Immutable. Deployment timeout. Limit for deployment timeout is 2 hours.
         # Corresponds to the JSON property `deploymentTimeout`
         # @return [String]
         attr_accessor :deployment_timeout
@@ -11800,6 +12453,16 @@ module Google
         # Corresponds to the JSON property `env`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnvVar>]
         attr_accessor :env
+      
+        # Immutable. List of ports to expose from the container. Vertex AI sends gRPC
+        # prediction requests that it receives to the first port on this list. Vertex AI
+        # also sends liveness and health checks to this port. If you do not specify this
+        # field, gRPC requests to the container will be disabled. Vertex AI does not use
+        # ports other than the first one listed. This field corresponds to the `ports`
+        # field of the Kubernetes Containers v1 core API.
+        # Corresponds to the JSON property `grpcPorts`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Port>]
+        attr_accessor :grpc_ports
       
         # Probe describes a health check to be performed against a container to
         # determine whether it is alive or ready to receive traffic.
@@ -11883,7 +12546,7 @@ module Google
         attr_accessor :predict_route
       
         # Immutable. The amount of the VM memory to reserve as the shared memory for the
-        # model in megabytes. TODO (b/306244185): Revise documentation before exposing.
+        # model in megabytes.
         # Corresponds to the JSON property `sharedMemorySizeMb`
         # @return [Fixnum]
         attr_accessor :shared_memory_size_mb
@@ -11904,6 +12567,7 @@ module Google
           @command = args[:command] if args.key?(:command)
           @deployment_timeout = args[:deployment_timeout] if args.key?(:deployment_timeout)
           @env = args[:env] if args.key?(:env)
+          @grpc_ports = args[:grpc_ports] if args.key?(:grpc_ports)
           @health_probe = args[:health_probe] if args.key?(:health_probe)
           @health_route = args[:health_route] if args.key?(:health_route)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
@@ -14313,6 +14977,60 @@ module Google
         # Update properties of this object
         def update!(**args)
           @notebook_runtime_template = args[:notebook_runtime_template] if args.key?(:notebook_runtime_template)
+        end
+      end
+      
+      # Content part.
+      class GoogleCloudAiplatformV1beta1Part
+        include Google::Apis::Core::Hashable
+      
+        # URI based data.
+        # Corresponds to the JSON property `fileData`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FileData]
+        attr_accessor :file_data
+      
+        # A predicted [FunctionCall] returned from the model that contains a string
+        # representing the [FunctionDeclaration.name] and a structured JSON object
+        # containing the parameters and their values.
+        # Corresponds to the JSON property `functionCall`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionCall]
+        attr_accessor :function_call
+      
+        # The result output from a [FunctionCall] that contains a string representing
+        # the [FunctionDeclaration.name] and a structured JSON object containing any
+        # output from the function is used as context to the model. This should contain
+        # the result of a [FunctionCall] made based on model prediction.
+        # Corresponds to the JSON property `functionResponse`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionResponse]
+        attr_accessor :function_response
+      
+        # Content blob.
+        # Corresponds to the JSON property `inlineData`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Blob]
+        attr_accessor :inline_data
+      
+        # Optional. Text part (can be code).
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Metadata describes the input video content.
+        # Corresponds to the JSON property `videoMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1VideoMetadata]
+        attr_accessor :video_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_data = args[:file_data] if args.key?(:file_data)
+          @function_call = args[:function_call] if args.key?(:function_call)
+          @function_response = args[:function_response] if args.key?(:function_response)
+          @inline_data = args[:inline_data] if args.key?(:inline_data)
+          @text = args[:text] if args.key?(:text)
+          @video_metadata = args[:video_metadata] if args.key?(:video_metadata)
         end
       end
       
@@ -16891,6 +17609,64 @@ module Google
         end
       end
       
+      # Safety rating corresponding to the generated content.
+      class GoogleCloudAiplatformV1beta1SafetyRating
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates whether the content was filtered out because of this
+        # rating.
+        # Corresponds to the JSON property `blocked`
+        # @return [Boolean]
+        attr_accessor :blocked
+        alias_method :blocked?, :blocked
+      
+        # Output only. Harm category.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Output only. Harm probability levels in the content.
+        # Corresponds to the JSON property `probability`
+        # @return [String]
+        attr_accessor :probability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocked = args[:blocked] if args.key?(:blocked)
+          @category = args[:category] if args.key?(:category)
+          @probability = args[:probability] if args.key?(:probability)
+        end
+      end
+      
+      # Safety settings.
+      class GoogleCloudAiplatformV1beta1SafetySetting
+        include Google::Apis::Core::Hashable
+      
+        # Required. Harm category.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Required. The harm block threshold.
+        # Corresponds to the JSON property `threshold`
+        # @return [String]
+        attr_accessor :threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
       # Active learning data sampling config. For every active learning labeling
       # iteration, it will select a batch of data based on the sampling strategy.
       class GoogleCloudAiplatformV1beta1SampleConfig
@@ -17292,6 +18068,84 @@ module Google
           @disable_retries = args[:disable_retries] if args.key?(:disable_retries)
           @restart_job_on_worker_restart = args[:restart_job_on_worker_restart] if args.key?(:restart_job_on_worker_restart)
           @timeout = args[:timeout] if args.key?(:timeout)
+        end
+      end
+      
+      # Represents a select subset of an OpenAPI 3.0 Schema object. Schema is used to
+      # define the format of input/output data. More fields may be added in the future
+      # as needed. https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.
+      # 0.2.md#schemaObject
+      class GoogleCloudAiplatformV1beta1Schema
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The description of the data.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Possible values of the element of Type.STRING with enum format. For
+        # example we can define an Enum Direction as : `type:STRING, format:enum, enum:["
+        # EAST", NORTH", "SOUTH", "WEST"]`
+        # Corresponds to the JSON property `enum`
+        # @return [Array<String>]
+        attr_accessor :enum
+      
+        # Optional. Example of the object. Will only populated when the object is the
+        # root.
+        # Corresponds to the JSON property `example`
+        # @return [Object]
+        attr_accessor :example
+      
+        # Optional. The format of the data. Supported formats: for NUMBER type: float,
+        # double for INTEGER type: int32, int64
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # Represents a select subset of an OpenAPI 3.0 Schema object. Schema is used to
+        # define the format of input/output data. More fields may be added in the future
+        # as needed. https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.
+        # 0.2.md#schemaObject
+        # Corresponds to the JSON property `items`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema]
+        attr_accessor :items
+      
+        # Optional. Indicates if the value may be null.
+        # Corresponds to the JSON property `nullable`
+        # @return [Boolean]
+        attr_accessor :nullable
+        alias_method :nullable?, :nullable
+      
+        # Optional. Properties of Type.OBJECT.
+        # Corresponds to the JSON property `properties`
+        # @return [Hash<String,Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema>]
+        attr_accessor :properties
+      
+        # Optional. Required properties of Type.OBJECT.
+        # Corresponds to the JSON property `required`
+        # @return [Array<String>]
+        attr_accessor :required
+      
+        # Optional. The type of the data.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @enum = args[:enum] if args.key?(:enum)
+          @example = args[:example] if args.key?(:example)
+          @format = args[:format] if args.key?(:format)
+          @items = args[:items] if args.key?(:items)
+          @nullable = args[:nullable] if args.key?(:nullable)
+          @properties = args[:properties] if args.key?(:properties)
+          @required = args[:required] if args.key?(:required)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -25472,6 +26326,30 @@ module Google
         end
       end
       
+      # Tool details that the model may use to generate response.
+      class GoogleCloudAiplatformV1beta1Tool
+        include Google::Apis::Core::Hashable
+      
+        # Optional. One or more function declarations to be passed to the model along
+        # with the current user query. Model may decide to call a subset of these
+        # functions by populating FunctionCall in the response. User should provide a
+        # FunctionResponse for each function call in the next turn. Based on the
+        # function responses, Model will generate the final response back to the user.
+        # Maximum 64 function declarations can be provided.
+        # Corresponds to the JSON property `functionDeclarations`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionDeclaration>]
+        attr_accessor :function_declarations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
+        end
+      end
+      
       # CMLE training config. For every active learning labeling iteration, system
       # will train a machine learning model on CMLE. The trained model will be used by
       # data sampling algorithm to select DataItems.
@@ -26253,6 +27131,45 @@ module Google
         end
       end
       
+      # Metadata information for NotebookService.UpgradeNotebookRuntime.
+      class GoogleCloudAiplatformV1beta1UpgradeNotebookRuntimeOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Generic Metadata shared by all operations.
+        # Corresponds to the JSON property `genericMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
+        attr_accessor :generic_metadata
+      
+        # A human-readable message that shows the intermediate progress details of
+        # NotebookRuntime.
+        # Corresponds to the JSON property `progressMessage`
+        # @return [String]
+        attr_accessor :progress_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+          @progress_message = args[:progress_message] if args.key?(:progress_message)
+        end
+      end
+      
+      # Request message for NotebookService.UpgradeNotebookRuntime.
+      class GoogleCloudAiplatformV1beta1UpgradeNotebookRuntimeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Details of ModelService.UploadModel operation.
       class GoogleCloudAiplatformV1beta1UploadModelOperationMetadata
         include Google::Apis::Core::Hashable
@@ -26442,6 +27359,31 @@ module Google
           @double_value = args[:double_value] if args.key?(:double_value)
           @int_value = args[:int_value] if args.key?(:int_value)
           @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
+      # Metadata describes the input video content.
+      class GoogleCloudAiplatformV1beta1VideoMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The end offset of the video.
+        # Corresponds to the JSON property `endOffset`
+        # @return [String]
+        attr_accessor :end_offset
+      
+        # Optional. The start offset of the video.
+        # Corresponds to the JSON property `startOffset`
+        # @return [String]
+        attr_accessor :start_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_offset = args[:end_offset] if args.key?(:end_offset)
+          @start_offset = args[:start_offset] if args.key?(:start_offset)
         end
       end
       
@@ -27269,6 +28211,47 @@ module Google
           @blue = args[:blue] if args.key?(:blue)
           @green = args[:green] if args.key?(:green)
           @red = args[:red] if args.key?(:red)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+      class GoogleTypeDate
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
         end
       end
       
