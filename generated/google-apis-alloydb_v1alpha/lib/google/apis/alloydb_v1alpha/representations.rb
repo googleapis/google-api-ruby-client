@@ -452,6 +452,7 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :state, as: 'state'
@@ -528,6 +529,7 @@ module Google
           property :psc_config, as: 'pscConfig', class: Google::Apis::AlloydbV1alpha::PscConfig, decorator: Google::Apis::AlloydbV1alpha::PscConfig::Representation
       
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :secondary_config, as: 'secondaryConfig', class: Google::Apis::AlloydbV1alpha::SecondaryConfig, decorator: Google::Apis::AlloydbV1alpha::SecondaryConfig::Representation
       
@@ -692,6 +694,7 @@ module Google
           property :read_pool_config, as: 'readPoolConfig', class: Google::Apis::AlloydbV1alpha::ReadPoolConfig, decorator: Google::Apis::AlloydbV1alpha::ReadPoolConfig::Representation
       
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :uid, as: 'uid'
