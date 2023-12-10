@@ -429,6 +429,7 @@ module Google
       
           property :report_text, as: 'reportText'
           property :type, as: 'type'
+          property :vcs_information, as: 'vcsInformation'
         end
       end
       
