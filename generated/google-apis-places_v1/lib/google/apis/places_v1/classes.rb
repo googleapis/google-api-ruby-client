@@ -277,8 +277,8 @@ module Google
         attr_accessor :height_px
       
         # Identifier. A reference representing this place photo which may be used to
-        # look up this place photo again (a.k.a. the API "resource" name: places/`
-        # place_id`/photos/`photo`).
+        # look up this place photo again (also called the API "resource" name: `places/`
+        # place_id`/photos/`photo``).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -305,8 +305,8 @@ module Google
       class GoogleMapsPlacesV1PhotoMedia
         include Google::Apis::Core::Hashable
       
-        # The resource name of a photo media in the format: `places/place_id/photos/
-        # photo_reference/media`.
+        # The resource name of a photo media in the format: `places/`place_id`/photos/`
+        # photo_reference`/media`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1229,8 +1229,8 @@ module Google
         attr_accessor :author_attribution
       
         # A reference representing this place review which may be used to look up this
-        # place review again (also called the API "resource" name: places/place_id/
-        # reviews/review).
+        # place review again (also called the API "resource" name: `places/`place_id`/
+        # reviews/`review``).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1282,30 +1282,34 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Excluded primary Place type (e.g. "restaurant" or "gas_station") from https://
-        # developers.google.com/maps/documentation/places/web-service/place-types. If
-        # there are any conflicting primary types, i.e. a type appears in both
-        # included_primary_types and excluded_primary_types, an INVALID_ARGUMENT error
-        # is returned. If a Place type is specified with multiple type restrictions,
-        # only places that satisfy all of the restrictions are returned. For example, if
-        # we have `included_types = ["restaurant"], excluded_primary_types = ["
-        # restaurant"]`, the returned places provide "restaurant" related services but
-        # do not operate primarily as "restaurants".
+        # developers.google.com/maps/documentation/places/web-service/place-types. Up to
+        # 50 types from [Table A](https://developers.google.com/maps/documentation/
+        # places/web-service/place-types#table-a) may be specified. If there are any
+        # conflicting primary types, i.e. a type appears in both included_primary_types
+        # and excluded_primary_types, an INVALID_ARGUMENT error is returned. If a Place
+        # type is specified with multiple type restrictions, only places that satisfy
+        # all of the restrictions are returned. For example, if we have `included_types =
+        # ["restaurant"], excluded_primary_types = ["restaurant"]`, the returned places
+        # provide "restaurant" related services but do not operate primarily as "
+        # restaurants".
         # Corresponds to the JSON property `excludedPrimaryTypes`
         # @return [Array<String>]
         attr_accessor :excluded_primary_types
       
         # Excluded Place type (eg, "restaurant" or "gas_station") from https://
-        # developers.google.com/maps/documentation/places/web-service/place-types. If
-        # the client provides both included_types (e.g. restaurant) and excluded_types (
-        # e.g. cafe), then the response should include places that are restaurant but
-        # not cafe. The response includes places that match at least one of the
-        # included_types and none of the excluded_types. If there are any conflicting
-        # types, i.e. a type appears in both included_types and excluded_types, an
-        # INVALID_ARGUMENT error is returned. If a Place type is specified with multiple
-        # type restrictions, only places that satisfy all of the restrictions are
-        # returned. For example, if we have `included_types = ["restaurant"],
-        # excluded_primary_types = ["restaurant"]`, the returned places provide "
-        # restaurant" related services but do not operate primarily as "restaurants".
+        # developers.google.com/maps/documentation/places/web-service/place-types. Up to
+        # 50 types from [Table A](https://developers.google.com/maps/documentation/
+        # places/web-service/place-types#table-a) may be specified. If the client
+        # provides both included_types (e.g. restaurant) and excluded_types (e.g. cafe),
+        # then the response should include places that are restaurant but not cafe. The
+        # response includes places that match at least one of the included_types and
+        # none of the excluded_types. If there are any conflicting types, i.e. a type
+        # appears in both included_types and excluded_types, an INVALID_ARGUMENT error
+        # is returned. If a Place type is specified with multiple type restrictions,
+        # only places that satisfy all of the restrictions are returned. For example, if
+        # we have `included_types = ["restaurant"], excluded_primary_types = ["
+        # restaurant"]`, the returned places provide "restaurant" related services but
+        # do not operate primarily as "restaurants".
         # Corresponds to the JSON property `excludedTypes`
         # @return [Array<String>]
         attr_accessor :excluded_types
@@ -1313,11 +1317,13 @@ module Google
         # Included primary Place type (e.g. "restaurant" or "gas_station") from https://
         # developers.google.com/maps/documentation/places/web-service/place-types. A
         # place can only have a single primary type from the supported types table
-        # associated with it. If there are any conflicting primary types, i.e. a type
-        # appears in both included_primary_types and excluded_primary_types, an
-        # INVALID_ARGUMENT error is returned. If a Place type is specified with multiple
-        # type restrictions, only places that satisfy all of the restrictions are
-        # returned. For example, if we have `included_types = ["restaurant"],
+        # associated with it. Up to 50 types from [Table A](https://developers.google.
+        # com/maps/documentation/places/web-service/place-types#table-a) may be
+        # specified. If there are any conflicting primary types, i.e. a type appears in
+        # both included_primary_types and excluded_primary_types, an INVALID_ARGUMENT
+        # error is returned. If a Place type is specified with multiple type
+        # restrictions, only places that satisfy all of the restrictions are returned.
+        # For example, if we have `included_types = ["restaurant"],
         # excluded_primary_types = ["restaurant"]`, the returned places provide "
         # restaurant" related services but do not operate primarily as "restaurants".
         # Corresponds to the JSON property `includedPrimaryTypes`
@@ -1325,9 +1331,11 @@ module Google
         attr_accessor :included_primary_types
       
         # Included Place type (eg, "restaurant" or "gas_station") from https://
-        # developers.google.com/maps/documentation/places/web-service/place-types. If
-        # there are any conflicting types, i.e. a type appears in both included_types
-        # and excluded_types, an INVALID_ARGUMENT error is returned. If a Place type is
+        # developers.google.com/maps/documentation/places/web-service/place-types. Up to
+        # 50 types from [Table A](https://developers.google.com/maps/documentation/
+        # places/web-service/place-types#table-a) may be specified. If there are any
+        # conflicting types, i.e. a type appears in both included_types and
+        # excluded_types, an INVALID_ARGUMENT error is returned. If a Place type is
         # specified with multiple type restrictions, only places that satisfy all of the
         # restrictions are returned. For example, if we have `included_types = ["
         # restaurant"], excluded_primary_types = ["restaurant"]`, the returned places

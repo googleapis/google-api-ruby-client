@@ -52,7 +52,7 @@ module Google
         # Get place details with a place id (in a name) string.
         # @param [String] name
         #   Required. A place ID returned in a Place (with "places/" prefix), or
-        #   equivalently the name in the same Place. Format: places/*place_id*.
+        #   equivalently the name in the same Place. Format: `places/`place_id``.
         # @param [String] language_code
         #   Optional. Place details will be displayed with the preferred language if
         #   available. Current list of supported languages: https://developers.google.com/
@@ -155,11 +155,11 @@ module Google
         
         # Get a photo media with a photo reference string.
         # @param [String] name
-        #   Required. The resource name of a photo media in the format: `"places/place_id/
-        #   photos/photo_reference/media"`. The resource name of a photo as returned in a
-        #   Place object's `photos.name` field comes with the format `"places/place_id/
-        #   photos/photo_reference"`. You need to append `"/media"` at the end of the
-        #   photo resource to get the photo media resource name.
+        #   Required. The resource name of a photo media in the format: `places/`place_id`/
+        #   photos/`photo_reference`/media`. The resource name of a photo as returned in a
+        #   Place object's `photos.name` field comes with the format `places/`place_id`/
+        #   photos/`photo_reference``. You need to append `/media` at the end of the photo
+        #   resource to get the photo media resource name.
         # @param [Fixnum] max_height_px
         #   Optional. Specifies the maximum desired height, in pixels, of the image. If
         #   the image is smaller than the values specified, the original image will be
