@@ -869,7 +869,7 @@ module Google
       class FirewallInfo
         include Google::Apis::Core::Hashable
       
-        # Possible values: ALLOW, DENY
+        # Possible values: ALLOW, DENY, APPLY_SECURITY_PROFILE_GROUP
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -1324,27 +1324,20 @@ module Google
       class LoadBalancerBackendInfo
         include Google::Apis::Core::Hashable
       
-        # Display name of the backend. For example, it might be an instance name for the
-        # instance group backends, or an IP address and port for zonal network endpoint
-        # group backends.
-        # Corresponds to the JSON property `backendDisplayName`
-        # @return [String]
-        attr_accessor :backend_display_name
-      
         # URI of the backend service this backend belongs to (if applicable).
         # Corresponds to the JSON property `backendServiceUri`
         # @return [String]
         attr_accessor :backend_service_uri
       
-        # Output only. Health check configuration state for the backend. This is a
-        # result of the static firewall analysis (verifying that health check traffic
-        # from required IP ranges to the backend is allowed or not). The backend might
-        # still be unhealthy even if these firewalls are configured. Please refer to the
-        # documentation for more information: https://cloud.google.com/load-balancing/
-        # docs/firewall-rules
-        # Corresponds to the JSON property `healthCheckConfigState`
+        # Output only. Health check firewalls configuration state for the backend. This
+        # is a result of the static firewall analysis (verifying that health check
+        # traffic from required IP ranges to the backend is allowed or not). The backend
+        # might still be unhealthy even if these firewalls are configured. Please refer
+        # to the documentation for more information: https://cloud.google.com/load-
+        # balancing/docs/firewall-rules
+        # Corresponds to the JSON property `healthCheckFirewallsConfigState`
         # @return [String]
-        attr_accessor :health_check_config_state
+        attr_accessor :health_check_firewalls_config_state
       
         # URI of the health check attached to this backend (if applicable).
         # Corresponds to the JSON property `healthCheckUri`
@@ -1362,6 +1355,13 @@ module Google
         # @return [String]
         attr_accessor :instance_uri
       
+        # Display name of the backend. For example, it might be an instance name for the
+        # instance group backends, or an IP address and port for zonal network endpoint
+        # group backends.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # URI of the network endpoint group this backend belongs to (if applicable).
         # Corresponds to the JSON property `networkEndpointGroupUri`
         # @return [String]
@@ -1373,12 +1373,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @backend_display_name = args[:backend_display_name] if args.key?(:backend_display_name)
           @backend_service_uri = args[:backend_service_uri] if args.key?(:backend_service_uri)
-          @health_check_config_state = args[:health_check_config_state] if args.key?(:health_check_config_state)
+          @health_check_firewalls_config_state = args[:health_check_firewalls_config_state] if args.key?(:health_check_firewalls_config_state)
           @health_check_uri = args[:health_check_uri] if args.key?(:health_check_uri)
           @instance_group_uri = args[:instance_group_uri] if args.key?(:instance_group_uri)
           @instance_uri = args[:instance_uri] if args.key?(:instance_uri)
+          @name = args[:name] if args.key?(:name)
           @network_endpoint_group_uri = args[:network_endpoint_group_uri] if args.key?(:network_endpoint_group_uri)
         end
       end
