@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListProfilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Profile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -55,6 +61,16 @@ module Google
           hash :labels, as: 'labels'
           property :project_id, as: 'projectId'
           property :target, as: 'target'
+        end
+      end
+      
+      class ListProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :profiles, as: 'profiles', class: Google::Apis::CloudprofilerV2::Profile, decorator: Google::Apis::CloudprofilerV2::Profile::Representation
+      
+          property :skipped_profiles, as: 'skippedProfiles'
         end
       end
       
