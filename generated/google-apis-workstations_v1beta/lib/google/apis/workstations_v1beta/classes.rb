@@ -1525,6 +1525,13 @@ module Google
         # @return [String]
         attr_accessor :host
       
+        # Output only. The name of the Google Cloud KMS encryption key used to encrypt
+        # this workstation. The KMS key can only be configured in the WorkstationConfig.
+        # The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
         # Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources)
         # that are applied to the workstation and that are also propagated to the
         # underlying Compute Engine resources.
@@ -1578,6 +1585,7 @@ module Google
           @env = args[:env] if args.key?(:env)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
