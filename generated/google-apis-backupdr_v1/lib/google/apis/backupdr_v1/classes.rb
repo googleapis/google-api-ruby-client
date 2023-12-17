@@ -442,7 +442,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Required. The type of the ManagementServer resource.
+        # Optional. The type of the ManagementServer resource.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
