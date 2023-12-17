@@ -920,6 +920,36 @@ module Google
         end
       end
       
+      # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+      # Timestamp end (exclusive).The start must be less than or equal to the end.
+      # When the start equals the end, the interval is empty (matches no time). When
+      # both start and end are unspecified, the interval matches any time.
+      class Interval
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Exclusive end of the interval.If specified, a Timestamp matching
+        # this interval will have to be before the end.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. Inclusive start of the interval.If specified, a Timestamp matching
+        # this interval will have to be the same or after the start.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # The ListDashboards request.
       class ListDashboardsResponse
         include Google::Apis::Core::Hashable
@@ -1350,6 +1380,14 @@ module Google
         # @return [String]
         attr_accessor :direction
       
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive).The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::MonitoringV1::Interval]
+        attr_accessor :interval
+      
         # How many time series to allow to pass through the filter.
         # Corresponds to the JSON property `numTimeSeries`
         # @return [Fixnum]
@@ -1368,6 +1406,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @direction = args[:direction] if args.key?(:direction)
+          @interval = args[:interval] if args.key?(:interval)
           @num_time_series = args[:num_time_series] if args.key?(:num_time_series)
           @ranking_method = args[:ranking_method] if args.key?(:ranking_method)
         end
@@ -1793,6 +1832,48 @@ module Google
           @spark_chart_view = args[:spark_chart_view] if args.key?(:spark_chart_view)
           @thresholds = args[:thresholds] if args.key?(:thresholds)
           @time_series_query = args[:time_series_query] if args.key?(:time_series_query)
+        end
+      end
+      
+      # A widget that defines a new section header. Sections populate a table of
+      # contents and allow easier navigation of long-form content.
+      class SectionHeader
+        include Google::Apis::Core::Hashable
+      
+        # Whether to insert a divider below the section in the table of contents
+        # Corresponds to the JSON property `dividerBelow`
+        # @return [Boolean]
+        attr_accessor :divider_below
+        alias_method :divider_below?, :divider_below
+      
+        # The subtitle of the section
+        # Corresponds to the JSON property `subtitle`
+        # @return [String]
+        attr_accessor :subtitle
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @divider_below = args[:divider_below] if args.key?(:divider_below)
+          @subtitle = args[:subtitle] if args.key?(:subtitle)
+        end
+      end
+      
+      # A widget that groups the other widgets by using a dropdown menu. All widgets
+      # that are within the area spanned by the grouping widget are considered member
+      # widgets.
+      class SingleViewGroup
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2566,6 +2647,19 @@ module Google
         # @return [Google::Apis::MonitoringV1::Scorecard]
         attr_accessor :scorecard
       
+        # A widget that defines a new section header. Sections populate a table of
+        # contents and allow easier navigation of long-form content.
+        # Corresponds to the JSON property `sectionHeader`
+        # @return [Google::Apis::MonitoringV1::SectionHeader]
+        attr_accessor :section_header
+      
+        # A widget that groups the other widgets by using a dropdown menu. All widgets
+        # that are within the area spanned by the grouping widget are considered member
+        # widgets.
+        # Corresponds to the JSON property `singleViewGroup`
+        # @return [Google::Apis::MonitoringV1::SingleViewGroup]
+        attr_accessor :single_view_group
+      
         # A widget that displays textual content.
         # Corresponds to the JSON property `text`
         # @return [Google::Apis::MonitoringV1::Text]
@@ -2601,6 +2695,8 @@ module Google
           @logs_panel = args[:logs_panel] if args.key?(:logs_panel)
           @pie_chart = args[:pie_chart] if args.key?(:pie_chart)
           @scorecard = args[:scorecard] if args.key?(:scorecard)
+          @section_header = args[:section_header] if args.key?(:section_header)
+          @single_view_group = args[:single_view_group] if args.key?(:single_view_group)
           @text = args[:text] if args.key?(:text)
           @time_series_table = args[:time_series_table] if args.key?(:time_series_table)
           @title = args[:title] if args.key?(:title)
