@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSupportedServicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MethodSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +305,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SupportedService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -653,6 +665,15 @@ module Google
         end
       end
       
+      class ListSupportedServicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :supported_services, as: 'supportedServices', class: Google::Apis::AccesscontextmanagerV1::SupportedService, decorator: Google::Apis::AccesscontextmanagerV1::SupportedService::Representation
+      
+        end
+      end
+      
       class MethodSelector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -773,6 +794,19 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class SupportedService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :available_on_restricted_vip, as: 'availableOnRestrictedVip'
+          property :known_limitations, as: 'knownLimitations'
+          property :name, as: 'name'
+          property :support_stage, as: 'supportStage'
+          collection :supported_methods, as: 'supportedMethods', class: Google::Apis::AccesscontextmanagerV1::MethodSelector, decorator: Google::Apis::AccesscontextmanagerV1::MethodSelector::Representation
+      
+          property :title, as: 'title'
         end
       end
       

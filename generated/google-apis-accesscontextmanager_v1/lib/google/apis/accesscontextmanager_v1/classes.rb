@@ -376,21 +376,43 @@ module Google
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
         # . * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
-        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a user that has been recently deleted. For example, `alice@
-        # example.com?uid=123456789012345678901`. If the user is recovered, this value
-        # reverts to `user:`emailid`` and the recovered user retains the role in the
-        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
-        # (plus unique identifier) representing a service account that has been recently
-        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # users of that domain. For example, `google.com` or `example.com`. * `principal:
+        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
+        # subject_attribute_value``: A single identity in a workforce identity pool. * `
+        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
+        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
+        # attribute_name`/`attribute_value``: All workforce identities with a specific
+        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
+        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
+        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
+        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
+        # googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
+        # All identities in a workload identity pool with a certain attribute. * `
+        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding.
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
+        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
+        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
+        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -1301,6 +1323,32 @@ module Google
         end
       end
       
+      # A response to `ListSupportedServicesRequest`.
+      class ListSupportedServicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The pagination token to retrieve the next page of results. If the value is
+        # empty, no further results remain.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of services supported by ``vpcsvcctl_name_short`` instances.
+        # Corresponds to the JSON property `supportedServices`
+        # @return [Array<Google::Apis::AccesscontextmanagerV1::SupportedService>]
+        attr_accessor :supported_services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @supported_services = args[:supported_services] if args.key?(:supported_services)
+        end
+      end
+      
       # An allowed method or permission of a service specified in ApiOperation.
       class MethodSelector
         include Google::Apis::Core::Hashable
@@ -1863,6 +1911,63 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # `SupportedService` specifies ``vpcsvcctl_name_short`` supported service and
+      # its properties.
+      class SupportedService
+        include Google::Apis::Core::Hashable
+      
+        # True if the service is available on the restricted VIP. Services on the
+        # restricted VIP typically either support ``vpcsvcctl_name_short`` or are core
+        # infrastructure services required for the functioning of Google Cloud.
+        # Corresponds to the JSON property `availableOnRestrictedVip`
+        # @return [Boolean]
+        attr_accessor :available_on_restricted_vip
+        alias_method :available_on_restricted_vip?, :available_on_restricted_vip
+      
+        # True if the service is supported with some limitations. Check documentation
+        # for details.
+        # Corresponds to the JSON property `knownLimitations`
+        # @return [Boolean]
+        attr_accessor :known_limitations
+        alias_method :known_limitations?, :known_limitations
+      
+        # The service name or address of the supported service, such as `service.
+        # googleapis.com`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The support stage of the service.
+        # Corresponds to the JSON property `supportStage`
+        # @return [String]
+        attr_accessor :support_stage
+      
+        # The list of the supported methods. Field exist only in response on [
+        # GetSupportedService]
+        # Corresponds to the JSON property `supportedMethods`
+        # @return [Array<Google::Apis::AccesscontextmanagerV1::MethodSelector>]
+        attr_accessor :supported_methods
+      
+        # The name of the supported product, such as 'Cloud Product API'
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @available_on_restricted_vip = args[:available_on_restricted_vip] if args.key?(:available_on_restricted_vip)
+          @known_limitations = args[:known_limitations] if args.key?(:known_limitations)
+          @name = args[:name] if args.key?(:name)
+          @support_stage = args[:support_stage] if args.key?(:support_stage)
+          @supported_methods = args[:supported_methods] if args.key?(:supported_methods)
+          @title = args[:title] if args.key?(:title)
         end
       end
       

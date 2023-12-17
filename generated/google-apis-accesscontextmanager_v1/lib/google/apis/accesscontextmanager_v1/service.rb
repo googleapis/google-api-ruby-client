@@ -1417,6 +1417,72 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Returns a VPC-SC supported service based on the service name.
+        # @param [String] name
+        #   The name of the service to get information about. The names must be in the
+        #   same format as used in defining a service perimeter, for example, `storage.
+        #   googleapis.com`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::SupportedService] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::SupportedService]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_service(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/services/{name}', options)
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::SupportedService::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::SupportedService
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all VPC-SC supported services.
+        # @param [Fixnum] page_size
+        #   This flag specifies the maximum number of services to return per page. Default
+        #   is 100.
+        # @param [String] page_token
+        #   Token to start on a later page. Default is the first page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::ListSupportedServicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::ListSupportedServicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_services(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/services', options)
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::ListSupportedServicesResponse::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::ListSupportedServicesResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
