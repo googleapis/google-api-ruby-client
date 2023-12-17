@@ -276,6 +276,25 @@ module Google
         end
       end
       
+      # Configuration options for a custom domain.
+      class DomainConfig
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Domain used by Workstations for HTTP ingress.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -1474,6 +1493,13 @@ module Google
         # @return [String]
         attr_accessor :host
       
+        # Output only. The name of the Google Cloud KMS encryption key used to encrypt
+        # this workstation. The KMS key can only be configured in the WorkstationConfig.
+        # The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
         # Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources)
         # that are applied to the workstation and that are also propagated to the
         # underlying Compute Engine resources.
@@ -1527,6 +1553,7 @@ module Google
           @env = args[:env] if args.key?(:env)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
@@ -1583,6 +1610,11 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Configuration options for a custom domain.
+        # Corresponds to the JSON property `domainConfig`
+        # @return [Google::Apis::WorkstationsV1::DomainConfig]
+        attr_accessor :domain_config
       
         # Optional. Checksum computed by the server. May be sent on update and delete
         # requests to make sure that the client has an up-to-date value before
@@ -1651,6 +1683,7 @@ module Google
           @degraded = args[:degraded] if args.key?(:degraded)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @domain_config = args[:domain_config] if args.key?(:domain_config)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)

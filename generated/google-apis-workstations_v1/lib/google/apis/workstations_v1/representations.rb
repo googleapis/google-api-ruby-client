@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DomainConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -300,6 +306,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key, as: 'kmsKey'
           property :kms_key_service_account, as: 'kmsKeyServiceAccount'
+        end
+      end
+      
+      class DomainConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
         end
       end
       
@@ -590,6 +603,7 @@ module Google
           hash :env, as: 'env'
           property :etag, as: 'etag'
           property :host, as: 'host'
+          property :kms_key, as: 'kmsKey'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
@@ -611,6 +625,8 @@ module Google
           property :degraded, as: 'degraded'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
+          property :domain_config, as: 'domainConfig', class: Google::Apis::WorkstationsV1::DomainConfig, decorator: Google::Apis::WorkstationsV1::DomainConfig::Representation
+      
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
