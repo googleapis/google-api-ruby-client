@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpRouteHttpDirectResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpRouteQueryParameterMatch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -554,6 +560,7 @@ module Google
           collection :certificate_urls, as: 'certificateUrls'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :envoy_headers, as: 'envoyHeaders'
           property :gateway_security_policy, as: 'gatewaySecurityPolicy'
           property :ip_version, as: 'ipVersion'
           hash :labels, as: 'labels'
@@ -654,6 +661,7 @@ module Google
       
           property :fault_injection_policy, as: 'faultInjectionPolicy', class: Google::Apis::NetworkservicesV1::GrpcRouteFaultInjectionPolicy, decorator: Google::Apis::NetworkservicesV1::GrpcRouteFaultInjectionPolicy::Representation
       
+          property :idle_timeout, as: 'idleTimeout'
           property :retry_policy, as: 'retryPolicy', class: Google::Apis::NetworkservicesV1::GrpcRouteRetryPolicy, decorator: Google::Apis::NetworkservicesV1::GrpcRouteRetryPolicy::Representation
       
           property :stateful_session_affinity, as: 'statefulSessionAffinity', class: Google::Apis::NetworkservicesV1::GrpcRouteStatefulSessionAffinityPolicy, decorator: Google::Apis::NetworkservicesV1::GrpcRouteStatefulSessionAffinityPolicy::Representation
@@ -723,6 +731,10 @@ module Google
       class HttpRouteDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_header_modifier, as: 'requestHeaderModifier', class: Google::Apis::NetworkservicesV1::HttpRouteHeaderModifier, decorator: Google::Apis::NetworkservicesV1::HttpRouteHeaderModifier::Representation
+      
+          property :response_header_modifier, as: 'responseHeaderModifier', class: Google::Apis::NetworkservicesV1::HttpRouteHeaderModifier, decorator: Google::Apis::NetworkservicesV1::HttpRouteHeaderModifier::Representation
+      
           property :service_name, as: 'serviceName'
           property :weight, as: 'weight'
         end
@@ -786,6 +798,15 @@ module Google
         end
       end
       
+      class HttpRouteHttpDirectResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_body, :base64 => true, as: 'bytesBody'
+          property :status, as: 'status'
+          property :string_body, as: 'stringBody'
+        end
+      end
+      
       class HttpRouteQueryParameterMatch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -814,6 +835,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination, as: 'destination', class: Google::Apis::NetworkservicesV1::HttpRouteDestination, decorator: Google::Apis::NetworkservicesV1::HttpRouteDestination::Representation
       
+          property :mirror_percent, as: 'mirrorPercent'
         end
       end
       
@@ -833,8 +855,11 @@ module Google
       
           collection :destinations, as: 'destinations', class: Google::Apis::NetworkservicesV1::HttpRouteDestination, decorator: Google::Apis::NetworkservicesV1::HttpRouteDestination::Representation
       
+          property :direct_response, as: 'directResponse', class: Google::Apis::NetworkservicesV1::HttpRouteHttpDirectResponse, decorator: Google::Apis::NetworkservicesV1::HttpRouteHttpDirectResponse::Representation
+      
           property :fault_injection_policy, as: 'faultInjectionPolicy', class: Google::Apis::NetworkservicesV1::HttpRouteFaultInjectionPolicy, decorator: Google::Apis::NetworkservicesV1::HttpRouteFaultInjectionPolicy::Representation
       
+          property :idle_timeout, as: 'idleTimeout'
           property :redirect, as: 'redirect', class: Google::Apis::NetworkservicesV1::HttpRouteRedirect, decorator: Google::Apis::NetworkservicesV1::HttpRouteRedirect::Representation
       
           property :request_header_modifier, as: 'requestHeaderModifier', class: Google::Apis::NetworkservicesV1::HttpRouteHeaderModifier, decorator: Google::Apis::NetworkservicesV1::HttpRouteHeaderModifier::Representation
@@ -999,6 +1024,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :envoy_headers, as: 'envoyHeaders'
           property :interception_port, as: 'interceptionPort'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -1096,6 +1122,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :destinations, as: 'destinations', class: Google::Apis::NetworkservicesV1::TcpRouteRouteDestination, decorator: Google::Apis::NetworkservicesV1::TcpRouteRouteDestination::Representation
       
+          property :idle_timeout, as: 'idleTimeout'
           property :original_destination, as: 'originalDestination'
         end
       end
@@ -1161,6 +1188,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :destinations, as: 'destinations', class: Google::Apis::NetworkservicesV1::TlsRouteRouteDestination, decorator: Google::Apis::NetworkservicesV1::TlsRouteRouteDestination::Representation
       
+          property :idle_timeout, as: 'idleTimeout'
         end
       end
       
