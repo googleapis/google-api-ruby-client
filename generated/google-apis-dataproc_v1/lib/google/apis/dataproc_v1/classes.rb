@@ -1243,14 +1243,32 @@ module Google
       class EncryptionConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The Cloud KMS key name to use for PD disk encryption for all
-        # instances in the cluster.
+        # Optional. The Cloud KMS key resource name to use for persistent disk
+        # encryption for all instances in the cluster. See Use CMEK with cluster data (
+        # https://cloud.google.com//dataproc/docs/concepts/configuring-clusters/customer-
+        # managed-encryption#use_cmek_with_cluster_data) for more information.
         # Corresponds to the JSON property `gcePdKmsKeyName`
         # @return [String]
         attr_accessor :gce_pd_kms_key_name
       
-        # Optional. The Cloud KMS key name to use for encrypting customer core content
-        # in spanner and cluster PD disk for all instances in the cluster.
+        # Optional. The Cloud KMS key resource name to use for cluster persistent disk
+        # and job argument encryption. See Use CMEK with cluster data (https://cloud.
+        # google.com//dataproc/docs/concepts/configuring-clusters/customer-managed-
+        # encryption#use_cmek_with_cluster_data) for more information.When this key
+        # resource name is provided, the following job arguments of the following job
+        # types submitted to the cluster are encrypted using CMEK: FlinkJob args (https:/
+        # /cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob) HadoopJob args (
+        # https://cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob) SparkJob
+        # args (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob)
+        # SparkRJob args (https://cloud.google.com/dataproc/docs/reference/rest/v1/
+        # SparkRJob) PySparkJob args (https://cloud.google.com/dataproc/docs/reference/
+        # rest/v1/PySparkJob) SparkSqlJob (https://cloud.google.com/dataproc/docs/
+        # reference/rest/v1/SparkSqlJob) scriptVariables and queryList.queries HiveJob (
+        # https://cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob)
+        # scriptVariables and queryList.queries PigJob (https://cloud.google.com/
+        # dataproc/docs/reference/rest/v1/PigJob) scriptVariables and queryList.queries
+        # PrestoJob (https://cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob)
+        # scriptVariables and queryList.queries
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
@@ -1954,11 +1972,28 @@ module Google
         end
       end
       
-      # Encryption settings for the encrypting customer core content. NEXT ID: 2
+      # Encryption settings for encrypting workflow template job arguments.
       class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The Cloud KMS key name to use for encrypting customer core content.
+        # Optional. The Cloud KMS key name to use for encrypting workflow template job
+        # arguments.When this this key is provided, the following workflow template job
+        # arguments (https://cloud.google.com/dataproc/docs/concepts/workflows/use-
+        # workflows#adding_jobs_to_a_template), if present, are CMEK encrypted (https://
+        # cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-
+        # encryption#use_cmek_with_workflow_template_data): FlinkJob args (https://cloud.
+        # google.com/dataproc/docs/reference/rest/v1/FlinkJob) HadoopJob args (https://
+        # cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob) SparkJob args (
+        # https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob) SparkRJob
+        # args (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob)
+        # PySparkJob args (https://cloud.google.com/dataproc/docs/reference/rest/v1/
+        # PySparkJob) SparkSqlJob (https://cloud.google.com/dataproc/docs/reference/rest/
+        # v1/SparkSqlJob) scriptVariables and queryList.queries HiveJob (https://cloud.
+        # google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and
+        # queryList.queries PigJob (https://cloud.google.com/dataproc/docs/reference/
+        # rest/v1/PigJob) scriptVariables and queryList.queries PrestoJob (https://cloud.
+        # google.com/dataproc/docs/reference/rest/v1/PrestoJob) scriptVariables and
+        # queryList.queries
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
@@ -2960,7 +2995,7 @@ module Google
         # @return [String]
         attr_accessor :keystore_uri
       
-        # Optional. The uri of the KMS key used to encrypt various sensitive files.
+        # Optional. The URI of the KMS key used to encrypt sensitive files.
         # Corresponds to the JSON property `kmsKeyUri`
         # @return [String]
         attr_accessor :kms_key_uri
@@ -3173,6 +3208,13 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Output only. List of Batches that could not be included in the response.
+        # Attempting to get one of these resources may indicate why it was not included
+        # in the list response.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3181,6 +3223,7 @@ module Google
         def update!(**args)
           @batches = args[:batches] if args.key?(:batches)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3227,9 +3270,9 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Output only. List of jobs that could not be included in the response.
-        # Attempting to get one of these resources may indicate why it was not included
-        # in the list response.
+        # Output only. List of jobs with kms_key-encrypted parameters that could not be
+        # decrypted. A response to a jobs.get request may indicate the reason for the
+        # decryption failure for a specific job.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -6201,7 +6244,7 @@ module Google
         # @return [String]
         attr_accessor :dag_timeout
       
-        # Encryption settings for the encrypting customer core content. NEXT ID: 2
+        # Encryption settings for encrypting workflow template job arguments.
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::DataprocV1::GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig]
         attr_accessor :encryption_config

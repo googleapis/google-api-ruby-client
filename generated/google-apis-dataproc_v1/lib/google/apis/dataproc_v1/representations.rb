@@ -1635,6 +1635,7 @@ module Google
           collection :batches, as: 'batches', class: Google::Apis::DataprocV1::Batch, decorator: Google::Apis::DataprocV1::Batch::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
