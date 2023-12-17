@@ -453,6 +453,7 @@ module Google
           property :cancel_requested, as: 'cancelRequested'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
+          property :operation_type, as: 'operationType'
           hash :request_resource, as: 'requestResource'
           property :source_token, as: 'sourceToken'
           collection :stages, as: 'stages', class: Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2Stage, decorator: Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2Stage::Representation
@@ -499,6 +500,7 @@ module Google
           property :cancel_requested, as: 'cancelRequested'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
+          property :operation_type, as: 'operationType'
           hash :request_resource, as: 'requestResource'
           property :source_token, as: 'sourceToken'
           collection :stages, as: 'stages', class: Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2alphaStage, decorator: Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2alphaStage::Representation
@@ -545,6 +547,7 @@ module Google
           property :cancel_requested, as: 'cancelRequested'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
+          property :operation_type, as: 'operationType'
           hash :request_resource, as: 'requestResource'
           property :source_token, as: 'sourceToken'
           collection :stages, as: 'stages', class: Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2betaStage, decorator: Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2betaStage::Representation
