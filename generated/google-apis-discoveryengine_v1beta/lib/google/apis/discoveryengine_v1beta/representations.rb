@@ -280,6 +280,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaEstimateDataSizeMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaEstimateDataSizeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaFieldConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +401,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaTrainCustomModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaTrainCustomModelResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -718,6 +742,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -820,7 +850,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1277,6 +1337,21 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaEstimateDataSizeMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaEstimateDataSizeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_size_bytes, :numeric_string => true, as: 'dataSizeBytes'
+          property :document_count, :numeric_string => true, as: 'documentCount'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaFieldConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1465,6 +1540,25 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaTrainCustomModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaTrainCustomModelResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_config, as: 'errorConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaImportErrorConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaImportErrorConfig::Representation
+      
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus::Representation
+      
+          property :model_status, as: 'modelStatus'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaTuneEngineMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1569,6 +1663,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :conversation, as: 'conversation', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaConversation, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaConversation::Representation
       
+          property :filter, as: 'filter'
           property :query, as: 'query', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaTextInput, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaTextInput::Representation
       
           property :safe_search, as: 'safeSearch'
@@ -2015,9 +2110,18 @@ module Google
           property :ignore_non_summary_seeking_query, as: 'ignoreNonSummarySeekingQuery'
           property :include_citations, as: 'includeCitations'
           property :language_code, as: 'languageCode'
+          property :model_prompt_spec, as: 'modelPromptSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec::Representation
+      
           property :model_spec, as: 'modelSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec::Representation
       
           property :summary_result_count, as: 'summaryResultCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :preamble, as: 'preamble'
         end
       end
       
@@ -2186,6 +2290,42 @@ module Google
       
           collection :summary_skipped_reasons, as: 'summarySkippedReasons'
           property :summary_text, as: 'summaryText'
+          property :summary_with_metadata, as: 'summaryWithMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_index, :numeric_string => true, as: 'endIndex'
+          collection :sources, as: 'sources', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource::Representation
+      
+          property :start_index, :numeric_string => true, as: 'startIndex'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :citations, as: 'citations', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reference_index, :numeric_string => true, as: 'referenceIndex'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document, as: 'document'
+          property :title, as: 'title'
+          property :uri, as: 'uri'
         end
       end
       
@@ -2194,6 +2334,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :categories, as: 'categories'
           collection :scores, as: 'scores'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :citation_metadata, as: 'citationMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata::Representation
+      
+          collection :references, as: 'references', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference::Representation
+      
+          property :summary, as: 'summary'
         end
       end
       
