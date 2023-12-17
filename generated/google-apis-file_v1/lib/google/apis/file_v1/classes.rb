@@ -370,7 +370,7 @@ module Google
         # Optional. The MaintenancePolicies that have been attached to the instance. The
         # key must be of the type name of the oneof policy name defined in
         # MaintenancePolicy, and the referenced policy must define the same policy type.
-        # For details, please refer to go/cloud-saas-mw-ug. Should not be set if
+        # For details, please refer to go/mr-user-guide. Should not be set if
         # maintenance_settings.maintenance_policies is set.
         # Corresponds to the JSON property `maintenancePolicyNames`
         # @return [Hash<String,String>]
@@ -554,7 +554,7 @@ module Google
         # Optional. The MaintenancePolicies that have been attached to the instance. The
         # key must be of the type name of the oneof policy name defined in
         # MaintenancePolicy, and the embedded policy must define the same policy type.
-        # For details, please refer to go/cloud-saas-mw-ug. Should not be set if
+        # For details, please refer to go/mr-user-guide. Should not be set if
         # maintenance_policy_names is set. If only the name is needed, then only
         # populate MaintenancePolicy.name.
         # Corresponds to the JSON property `maintenancePolicies`
