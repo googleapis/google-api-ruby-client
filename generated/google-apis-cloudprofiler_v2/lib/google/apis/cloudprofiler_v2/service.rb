@@ -125,6 +125,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists profiles which have been collected so far and for which the caller has
+        # permission to view.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of profiles. Format: projects/
+        #   `user_project_id`
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return. Default page_size is 1000. Max limit is
+        #   10000.
+        # @param [String] page_token
+        #   The token to continue pagination and get profiles from a particular page. When
+        #   paginating, all other parameters provided to `ListProfiles` must match the
+        #   call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudprofilerV2::ListProfilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudprofilerV2::ListProfilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_profiles(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/profiles', options)
+          command.response_representation = Google::Apis::CloudprofilerV2::ListProfilesResponse::Representation
+          command.response_class = Google::Apis::CloudprofilerV2::ListProfilesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # UpdateProfile updates the profile bytes and labels on the profile resource
         # created in the online mode. Updating the bytes for profiles created in the
         # offline mode is currently not supported: the profile content must be provided
