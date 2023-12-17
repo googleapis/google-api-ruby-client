@@ -148,6 +148,84 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchGetSubscriptionOffersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchGetSubscriptionOffersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchGetSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchMigrateBasePlanPricesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchMigrateBasePlanPricesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateBasePlanStatesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateBasePlanStatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateSubscriptionOfferStatesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateSubscriptionOfferStatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateSubscriptionOffersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateSubscriptionOffersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateSubscriptionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Bundle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -406,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetSubscriptionOfferRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Grant
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -448,7 +532,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InappproductsBatchDeleteRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InappproductsBatchGetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InappproductsBatchUpdateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InappproductsBatchUpdateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InappproductsDeleteRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InappproductsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InappproductsUpdateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -988,6 +1108,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateBasePlanStateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateSubscriptionOfferRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateSubscriptionOfferStateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateSubscriptionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpgradeTargetingRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1082,12 +1226,21 @@ module Google
       class ActivateBasePlanRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_plan_id, as: 'basePlanId'
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
         end
       end
       
       class ActivateSubscriptionOfferRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_plan_id, as: 'basePlanId'
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :offer_id, as: 'offerId'
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
         end
       end
       
@@ -1259,6 +1412,110 @@ module Google
         end
       end
       
+      class BatchGetSubscriptionOffersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::GetSubscriptionOfferRequest, decorator: Google::Apis::AndroidpublisherV3::GetSubscriptionOfferRequest::Representation
+      
+        end
+      end
+      
+      class BatchGetSubscriptionOffersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :subscription_offers, as: 'subscriptionOffers', class: Google::Apis::AndroidpublisherV3::SubscriptionOffer, decorator: Google::Apis::AndroidpublisherV3::SubscriptionOffer::Representation
+      
+        end
+      end
+      
+      class BatchGetSubscriptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :subscriptions, as: 'subscriptions', class: Google::Apis::AndroidpublisherV3::Subscription, decorator: Google::Apis::AndroidpublisherV3::Subscription::Representation
+      
+        end
+      end
+      
+      class BatchMigrateBasePlanPricesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::MigrateBasePlanPricesRequest, decorator: Google::Apis::AndroidpublisherV3::MigrateBasePlanPricesRequest::Representation
+      
+        end
+      end
+      
+      class BatchMigrateBasePlanPricesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :responses, as: 'responses', class: Google::Apis::AndroidpublisherV3::MigrateBasePlanPricesResponse, decorator: Google::Apis::AndroidpublisherV3::MigrateBasePlanPricesResponse::Representation
+      
+        end
+      end
+      
+      class BatchUpdateBasePlanStatesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::UpdateBasePlanStateRequest, decorator: Google::Apis::AndroidpublisherV3::UpdateBasePlanStateRequest::Representation
+      
+        end
+      end
+      
+      class BatchUpdateBasePlanStatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :subscriptions, as: 'subscriptions', class: Google::Apis::AndroidpublisherV3::Subscription, decorator: Google::Apis::AndroidpublisherV3::Subscription::Representation
+      
+        end
+      end
+      
+      class BatchUpdateSubscriptionOfferStatesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::UpdateSubscriptionOfferStateRequest, decorator: Google::Apis::AndroidpublisherV3::UpdateSubscriptionOfferStateRequest::Representation
+      
+        end
+      end
+      
+      class BatchUpdateSubscriptionOfferStatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :subscription_offers, as: 'subscriptionOffers', class: Google::Apis::AndroidpublisherV3::SubscriptionOffer, decorator: Google::Apis::AndroidpublisherV3::SubscriptionOffer::Representation
+      
+        end
+      end
+      
+      class BatchUpdateSubscriptionOffersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::UpdateSubscriptionOfferRequest, decorator: Google::Apis::AndroidpublisherV3::UpdateSubscriptionOfferRequest::Representation
+      
+        end
+      end
+      
+      class BatchUpdateSubscriptionOffersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :subscription_offers, as: 'subscriptionOffers', class: Google::Apis::AndroidpublisherV3::SubscriptionOffer, decorator: Google::Apis::AndroidpublisherV3::SubscriptionOffer::Representation
+      
+        end
+      end
+      
+      class BatchUpdateSubscriptionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::UpdateSubscriptionRequest, decorator: Google::Apis::AndroidpublisherV3::UpdateSubscriptionRequest::Representation
+      
+        end
+      end
+      
+      class BatchUpdateSubscriptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :subscriptions, as: 'subscriptions', class: Google::Apis::AndroidpublisherV3::Subscription, decorator: Google::Apis::AndroidpublisherV3::Subscription::Representation
+      
+        end
+      end
+      
       class Bundle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1359,12 +1616,21 @@ module Google
       class DeactivateBasePlanRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_plan_id, as: 'basePlanId'
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
         end
       end
       
       class DeactivateSubscriptionOfferRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_plan_id, as: 'basePlanId'
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :offer_id, as: 'offerId'
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
         end
       end
       
@@ -1678,6 +1944,16 @@ module Google
         end
       end
       
+      class GetSubscriptionOfferRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_plan_id, as: 'basePlanId'
+          property :offer_id, as: 'offerId'
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
+        end
+      end
+      
       class Grant
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1754,6 +2030,47 @@ module Google
         end
       end
       
+      class InappproductsBatchDeleteRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::InappproductsDeleteRequest, decorator: Google::Apis::AndroidpublisherV3::InappproductsDeleteRequest::Representation
+      
+        end
+      end
+      
+      class InappproductsBatchGetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inappproduct, as: 'inappproduct', class: Google::Apis::AndroidpublisherV3::InAppProduct, decorator: Google::Apis::AndroidpublisherV3::InAppProduct::Representation
+      
+        end
+      end
+      
+      class InappproductsBatchUpdateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AndroidpublisherV3::InappproductsUpdateRequest, decorator: Google::Apis::AndroidpublisherV3::InappproductsUpdateRequest::Representation
+      
+        end
+      end
+      
+      class InappproductsBatchUpdateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inappproducts, as: 'inappproducts', class: Google::Apis::AndroidpublisherV3::InAppProduct, decorator: Google::Apis::AndroidpublisherV3::InAppProduct::Representation
+      
+        end
+      end
+      
+      class InappproductsDeleteRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :package_name, as: 'packageName'
+          property :sku, as: 'sku'
+        end
+      end
+      
       class InappproductsListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1764,6 +2081,19 @@ module Google
       
           property :token_pagination, as: 'tokenPagination', class: Google::Apis::AndroidpublisherV3::TokenPagination, decorator: Google::Apis::AndroidpublisherV3::TokenPagination::Representation
       
+        end
+      end
+      
+      class InappproductsUpdateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_missing, as: 'allowMissing'
+          property :auto_convert_missing_prices, as: 'autoConvertMissingPrices'
+          property :inappproduct, as: 'inappproduct', class: Google::Apis::AndroidpublisherV3::InAppProduct, decorator: Google::Apis::AndroidpublisherV3::InAppProduct::Representation
+      
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :package_name, as: 'packageName'
+          property :sku, as: 'sku'
         end
       end
       
@@ -1871,6 +2201,10 @@ module Google
       class MigrateBasePlanPricesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_plan_id, as: 'basePlanId'
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
           collection :regional_price_migrations, as: 'regionalPriceMigrations', class: Google::Apis::AndroidpublisherV3::RegionalPriceMigrationConfig, decorator: Google::Apis::AndroidpublisherV3::RegionalPriceMigrationConfig::Representation
       
           property :regions_version, as: 'regionsVersion', class: Google::Apis::AndroidpublisherV3::RegionsVersion, decorator: Google::Apis::AndroidpublisherV3::RegionsVersion::Representation
@@ -2638,6 +2972,52 @@ module Google
           property :kind, as: 'kind'
           collection :tracks, as: 'tracks', class: Google::Apis::AndroidpublisherV3::Track, decorator: Google::Apis::AndroidpublisherV3::Track::Representation
       
+        end
+      end
+      
+      class UpdateBasePlanStateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activate_base_plan_request, as: 'activateBasePlanRequest', class: Google::Apis::AndroidpublisherV3::ActivateBasePlanRequest, decorator: Google::Apis::AndroidpublisherV3::ActivateBasePlanRequest::Representation
+      
+          property :deactivate_base_plan_request, as: 'deactivateBasePlanRequest', class: Google::Apis::AndroidpublisherV3::DeactivateBasePlanRequest, decorator: Google::Apis::AndroidpublisherV3::DeactivateBasePlanRequest::Representation
+      
+        end
+      end
+      
+      class UpdateSubscriptionOfferRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_missing, as: 'allowMissing'
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :regions_version, as: 'regionsVersion', class: Google::Apis::AndroidpublisherV3::RegionsVersion, decorator: Google::Apis::AndroidpublisherV3::RegionsVersion::Representation
+      
+          property :subscription_offer, as: 'subscriptionOffer', class: Google::Apis::AndroidpublisherV3::SubscriptionOffer, decorator: Google::Apis::AndroidpublisherV3::SubscriptionOffer::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class UpdateSubscriptionOfferStateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activate_subscription_offer_request, as: 'activateSubscriptionOfferRequest', class: Google::Apis::AndroidpublisherV3::ActivateSubscriptionOfferRequest, decorator: Google::Apis::AndroidpublisherV3::ActivateSubscriptionOfferRequest::Representation
+      
+          property :deactivate_subscription_offer_request, as: 'deactivateSubscriptionOfferRequest', class: Google::Apis::AndroidpublisherV3::DeactivateSubscriptionOfferRequest, decorator: Google::Apis::AndroidpublisherV3::DeactivateSubscriptionOfferRequest::Representation
+      
+        end
+      end
+      
+      class UpdateSubscriptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_missing, as: 'allowMissing'
+          property :latency_tolerance, as: 'latencyTolerance'
+          property :regions_version, as: 'regionsVersion', class: Google::Apis::AndroidpublisherV3::RegionsVersion, decorator: Google::Apis::AndroidpublisherV3::RegionsVersion::Representation
+      
+          property :subscription, as: 'subscription', class: Google::Apis::AndroidpublisherV3::Subscription, decorator: Google::Apis::AndroidpublisherV3::Subscription::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       

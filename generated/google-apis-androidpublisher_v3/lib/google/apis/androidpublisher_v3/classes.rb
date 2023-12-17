@@ -91,12 +91,37 @@ module Google
       class ActivateBasePlanRequest
         include Google::Apis::Core::Hashable
       
+        # Required. The unique base plan ID of the base plan to activate.
+        # Corresponds to the JSON property `basePlanId`
+        # @return [String]
+        attr_accessor :base_plan_id
+      
+        # Optional. The latency tolerance for the propagation of this product update.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # Required. The parent app (package name) of the base plan to activate.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The parent subscription (ID) of the base plan to activate.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
         end
       end
       
@@ -104,12 +129,43 @@ module Google
       class ActivateSubscriptionOfferRequest
         include Google::Apis::Core::Hashable
       
+        # Required. The parent base plan (ID) of the offer to activate.
+        # Corresponds to the JSON property `basePlanId`
+        # @return [String]
+        attr_accessor :base_plan_id
+      
+        # Optional. The latency tolerance for the propagation of this product update.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # Required. The unique offer ID of the offer to activate.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # Required. The parent app (package name) of the offer to activate.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The parent subscription (ID) of the offer to activate.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
         end
       end
       
@@ -641,6 +697,261 @@ module Google
         end
       end
       
+      # Request message for BatchGetSubscriptionOffers endpoint.
+      class BatchGetSubscriptionOffersRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of update requests of up to 100 elements. All requests must
+        # update different subscriptions.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::GetSubscriptionOfferRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for BatchGetSubscriptionOffers endpoint.
+      class BatchGetSubscriptionOffersResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `subscriptionOffers`
+        # @return [Array<Google::Apis::AndroidpublisherV3::SubscriptionOffer>]
+        attr_accessor :subscription_offers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscription_offers = args[:subscription_offers] if args.key?(:subscription_offers)
+        end
+      end
+      
+      # Response message for BatchGetSubscriptions endpoint.
+      class BatchGetSubscriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of requested subscriptions, in the same order as the request.
+        # Corresponds to the JSON property `subscriptions`
+        # @return [Array<Google::Apis::AndroidpublisherV3::Subscription>]
+        attr_accessor :subscriptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
+        end
+      end
+      
+      # Request message for BatchMigrateBasePlanPrices.
+      class BatchMigrateBasePlanPricesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Up to 100 price migration requests. All requests must update
+        # different base plans.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::MigrateBasePlanPricesRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for BatchMigrateBasePlanPrices.
+      class BatchMigrateBasePlanPricesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Contains one response per requested price migration, in the same order as the
+        # request.
+        # Corresponds to the JSON property `responses`
+        # @return [Array<Google::Apis::AndroidpublisherV3::MigrateBasePlanPricesResponse>]
+        attr_accessor :responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @responses = args[:responses] if args.key?(:responses)
+        end
+      end
+      
+      # Request message for BatchUpdateBasePlanStates.
+      class BatchUpdateBasePlanStatesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The update request list of up to 100 elements. All requests must
+        # update different base plans.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::UpdateBasePlanStateRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for BatchUpdateBasePlanStates.
+      class BatchUpdateBasePlanStatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of updated subscriptions. This list will match the requests one to
+        # one, in the same order.
+        # Corresponds to the JSON property `subscriptions`
+        # @return [Array<Google::Apis::AndroidpublisherV3::Subscription>]
+        attr_accessor :subscriptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
+        end
+      end
+      
+      # Request message for BatchUpdateSubscriptionOfferStates.
+      class BatchUpdateSubscriptionOfferStatesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The update request list of up to 100 elements. All requests must
+        # update different offers.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::UpdateSubscriptionOfferStateRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for BatchUpdateSubscriptionOfferStates.
+      class BatchUpdateSubscriptionOfferStatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The updated subscription offers list.
+        # Corresponds to the JSON property `subscriptionOffers`
+        # @return [Array<Google::Apis::AndroidpublisherV3::SubscriptionOffer>]
+        attr_accessor :subscription_offers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscription_offers = args[:subscription_offers] if args.key?(:subscription_offers)
+        end
+      end
+      
+      # Request message for BatchUpdateSubscriptionOffers.
+      class BatchUpdateSubscriptionOffersRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of update requests of up to 100 elements. All requests must
+        # update different subscription offers.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::UpdateSubscriptionOfferRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for BatchUpdateSubscriptionOffers.
+      class BatchUpdateSubscriptionOffersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The updated subscription offers list.
+        # Corresponds to the JSON property `subscriptionOffers`
+        # @return [Array<Google::Apis::AndroidpublisherV3::SubscriptionOffer>]
+        attr_accessor :subscription_offers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscription_offers = args[:subscription_offers] if args.key?(:subscription_offers)
+        end
+      end
+      
+      # Request message for BatchUpdateSubscription.
+      class BatchUpdateSubscriptionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of update requests of up to 100 elements. All requests must
+        # update different subscriptions.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::UpdateSubscriptionRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for BatchUpdateSubscription.
+      class BatchUpdateSubscriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The updated subscriptions list.
+        # Corresponds to the JSON property `subscriptions`
+        # @return [Array<Google::Apis::AndroidpublisherV3::Subscription>]
+        attr_accessor :subscriptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
+        end
+      end
+      
       # Information about an app bundle. The resource for BundlesService.
       class Bundle
         include Google::Apis::Core::Hashable
@@ -919,12 +1230,37 @@ module Google
       class DeactivateBasePlanRequest
         include Google::Apis::Core::Hashable
       
+        # Required. The unique base plan ID of the base plan to deactivate.
+        # Corresponds to the JSON property `basePlanId`
+        # @return [String]
+        attr_accessor :base_plan_id
+      
+        # Optional. The latency tolerance for the propagation of this product update.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # Required. The parent app (package name) of the base plan to deactivate.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The parent subscription (ID) of the base plan to deactivate.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
         end
       end
       
@@ -932,12 +1268,43 @@ module Google
       class DeactivateSubscriptionOfferRequest
         include Google::Apis::Core::Hashable
       
+        # Required. The parent base plan (ID) of the offer to deactivate.
+        # Corresponds to the JSON property `basePlanId`
+        # @return [String]
+        attr_accessor :base_plan_id
+      
+        # Optional. The latency tolerance for the propagation of this product update.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # Required. The unique offer ID of the offer to deactivate.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # Required. The parent app (package name) of the offer to deactivate.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The parent subscription (ID) of the offer to deactivate.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
         end
       end
       
@@ -1986,6 +2353,43 @@ module Google
         end
       end
       
+      # Request message for GetSubscriptionOffer.
+      class GetSubscriptionOfferRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The parent base plan (ID) of the offer to get.
+        # Corresponds to the JSON property `basePlanId`
+        # @return [String]
+        attr_accessor :base_plan_id
+      
+        # Required. The unique offer ID of the offer to get.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # Required. The parent app (package name) of the offer to get.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The parent subscription (ID) of the offer to get.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
       # An access grant resource.
       class Grant
         include Google::Apis::Core::Hashable
@@ -2244,6 +2648,117 @@ module Google
         end
       end
       
+      # Request to delete multiple in-app products.
+      class InappproductsBatchDeleteRequest
+        include Google::Apis::Core::Hashable
+      
+        # Individual delete requests. At least one request is required. Can contain up
+        # to 100 requests. All requests must correspond to different in-app products.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::InappproductsDeleteRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for BatchGetSubscriptions endpoint.
+      class InappproductsBatchGetResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of requested in-app products, in the same order as the request.
+        # Corresponds to the JSON property `inappproduct`
+        # @return [Array<Google::Apis::AndroidpublisherV3::InAppProduct>]
+        attr_accessor :inappproduct
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inappproduct = args[:inappproduct] if args.key?(:inappproduct)
+        end
+      end
+      
+      # Request to update or insert one or more in-app products.
+      class InappproductsBatchUpdateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Individual update requests. At least one request is required. Can
+        # contain up to 100 requests. All requests must correspond to different in-app
+        # products.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::InappproductsUpdateRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response for a batch in-app product update.
+      class InappproductsBatchUpdateResponse
+        include Google::Apis::Core::Hashable
+      
+        # The updated or inserted in-app products.
+        # Corresponds to the JSON property `inappproducts`
+        # @return [Array<Google::Apis::AndroidpublisherV3::InAppProduct>]
+        attr_accessor :inappproducts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inappproducts = args[:inappproducts] if args.key?(:inappproducts)
+        end
+      end
+      
+      # Request to delete an in-app product.
+      class InappproductsDeleteRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The latency tolerance for the propagation of this product update.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # Package name of the app.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Unique identifier for the in-app product.
+        # Corresponds to the JSON property `sku`
+        # @return [String]
+        attr_accessor :sku
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @sku = args[:sku] if args.key?(:sku)
+        end
+      end
+      
       # Response listing all in-app products.
       class InappproductsListResponse
         include Google::Apis::Core::Hashable
@@ -2287,6 +2802,61 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @page_info = args[:page_info] if args.key?(:page_info)
           @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+        end
+      end
+      
+      # Request to update an in-app product.
+      class InappproductsUpdateRequest
+        include Google::Apis::Core::Hashable
+      
+        # If set to true, and the in-app product with the given package_name and sku
+        # doesn't exist, the in-app product will be created.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # If true the prices for all regions targeted by the parent app that don't have
+        # a price specified for this in-app product will be auto converted to the target
+        # currency based on the default price. Defaults to false.
+        # Corresponds to the JSON property `autoConvertMissingPrices`
+        # @return [Boolean]
+        attr_accessor :auto_convert_missing_prices
+        alias_method :auto_convert_missing_prices?, :auto_convert_missing_prices
+      
+        # An in-app product. The resource for InappproductsService.
+        # Corresponds to the JSON property `inappproduct`
+        # @return [Google::Apis::AndroidpublisherV3::InAppProduct]
+        attr_accessor :inappproduct
+      
+        # Optional. The latency tolerance for the propagation of this product update.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # Package name of the app.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Unique identifier for the in-app product.
+        # Corresponds to the JSON property `sku`
+        # @return [String]
+        attr_accessor :sku
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @auto_convert_missing_prices = args[:auto_convert_missing_prices] if args.key?(:auto_convert_missing_prices)
+          @inappproduct = args[:inappproduct] if args.key?(:inappproduct)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @sku = args[:sku] if args.key?(:sku)
         end
       end
       
@@ -2634,6 +3204,29 @@ module Google
       class MigrateBasePlanPricesRequest
         include Google::Apis::Core::Hashable
       
+        # Required. The unique base plan ID of the base plan to update prices on.
+        # Corresponds to the JSON property `basePlanId`
+        # @return [String]
+        attr_accessor :base_plan_id
+      
+        # Optional. The latency tolerance for the propagation of this product update.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # Required. Package name of the parent app. Must be equal to the package_name
+        # field on the Subscription resource.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The ID of the subscription to update. Must be equal to the
+        # product_id field on the Subscription resource.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
         # Required. The regional prices to update.
         # Corresponds to the JSON property `regionalPriceMigrations`
         # @return [Array<Google::Apis::AndroidpublisherV3::RegionalPriceMigrationConfig>]
@@ -2650,6 +3243,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
           @regional_price_migrations = args[:regional_price_migrations] if args.key?(:regional_price_migrations)
           @regions_version = args[:regions_version] if args.key?(:regions_version)
         end
@@ -5323,6 +5920,150 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @tracks = args[:tracks] if args.key?(:tracks)
+        end
+      end
+      
+      # Request message to update the state of a subscription base plan.
+      class UpdateBasePlanStateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Request message for ActivateBasePlan.
+        # Corresponds to the JSON property `activateBasePlanRequest`
+        # @return [Google::Apis::AndroidpublisherV3::ActivateBasePlanRequest]
+        attr_accessor :activate_base_plan_request
+      
+        # Request message for DeactivateBasePlan.
+        # Corresponds to the JSON property `deactivateBasePlanRequest`
+        # @return [Google::Apis::AndroidpublisherV3::DeactivateBasePlanRequest]
+        attr_accessor :deactivate_base_plan_request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activate_base_plan_request = args[:activate_base_plan_request] if args.key?(:activate_base_plan_request)
+          @deactivate_base_plan_request = args[:deactivate_base_plan_request] if args.key?(:deactivate_base_plan_request)
+        end
+      end
+      
+      # Request message for UpdateSubscriptionOffer.
+      class UpdateSubscriptionOfferRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, and the subscription offer with the given
+        # package_name, product_id, base_plan_id and offer_id doesn't exist, an offer
+        # will be created. If a new offer is created, update_mask is ignored.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # Optional. The latency tolerance for the propagation of this product update.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # The version of the available regions being used for the specified resource.
+        # Corresponds to the JSON property `regionsVersion`
+        # @return [Google::Apis::AndroidpublisherV3::RegionsVersion]
+        attr_accessor :regions_version
+      
+        # A single, temporary offer
+        # Corresponds to the JSON property `subscriptionOffer`
+        # @return [Google::Apis::AndroidpublisherV3::SubscriptionOffer]
+        attr_accessor :subscription_offer
+      
+        # Required. The list of fields to be updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @regions_version = args[:regions_version] if args.key?(:regions_version)
+          @subscription_offer = args[:subscription_offer] if args.key?(:subscription_offer)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Request message to update the state of a subscription offer.
+      class UpdateSubscriptionOfferStateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Request message for ActivateSubscriptionOffer.
+        # Corresponds to the JSON property `activateSubscriptionOfferRequest`
+        # @return [Google::Apis::AndroidpublisherV3::ActivateSubscriptionOfferRequest]
+        attr_accessor :activate_subscription_offer_request
+      
+        # Request message for DeactivateSubscriptionOffer.
+        # Corresponds to the JSON property `deactivateSubscriptionOfferRequest`
+        # @return [Google::Apis::AndroidpublisherV3::DeactivateSubscriptionOfferRequest]
+        attr_accessor :deactivate_subscription_offer_request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activate_subscription_offer_request = args[:activate_subscription_offer_request] if args.key?(:activate_subscription_offer_request)
+          @deactivate_subscription_offer_request = args[:deactivate_subscription_offer_request] if args.key?(:deactivate_subscription_offer_request)
+        end
+      end
+      
+      # Request message for UpdateSubscription.
+      class UpdateSubscriptionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, and the subscription with the given package_name and
+        # product_id doesn't exist, the subscription will be created. If a new
+        # subscription is created, update_mask is ignored.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # Optional. The latency tolerance for the propagation of this product update.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # The version of the available regions being used for the specified resource.
+        # Corresponds to the JSON property `regionsVersion`
+        # @return [Google::Apis::AndroidpublisherV3::RegionsVersion]
+        attr_accessor :regions_version
+      
+        # A single subscription for an app.
+        # Corresponds to the JSON property `subscription`
+        # @return [Google::Apis::AndroidpublisherV3::Subscription]
+        attr_accessor :subscription
+      
+        # Required. The list of fields to be updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @regions_version = args[:regions_version] if args.key?(:regions_version)
+          @subscription = args[:subscription] if args.key?(:subscription)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       

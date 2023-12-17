@@ -1877,14 +1877,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an in-app product (a managed product or a subscription). This method
-        # should no longer be used to delete subscriptions. See [this article](https://
-        # android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-
-        # june-2023.html) for more information.
+        # Deletes in-app products (managed products or subscriptions). Set the
+        # latencyTolerance field on nested requests to
+        # PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update
+        # throughput. This method should not be used to delete subscriptions. See [this
+        # article](https://android-developers.googleblog.com/2023/06/changes-to-google-
+        # play-developer-api-june-2023.html) for more information.
         # @param [String] package_name
         #   Package name of the app.
-        # @param [String] sku
-        #   Unique identifier for the in-app product.
+        # @param [Google::Apis::AndroidpublisherV3::InappproductsBatchDeleteRequest] inappproducts_batch_delete_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1902,10 +1903,123 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_inappproduct(package_name, sku, fields: nil, quota_user: nil, options: nil, &block)
+        def batch_inappproduct_delete(package_name, inappproducts_batch_delete_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/inappproducts:batchDelete', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::InappproductsBatchDeleteRequest::Representation
+          command.request_object = inappproducts_batch_delete_request_object
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reads multiple in-app products, which can be managed products or subscriptions.
+        # This method should not be used to retrieve subscriptions. See [this article](
+        # https://android-developers.googleblog.com/2023/06/changes-to-google-play-
+        # developer-api-june-2023.html) for more information.
+        # @param [String] package_name
+        #   Package name of the app.
+        # @param [Array<String>, String] sku
+        #   Unique identifier for the in-app products.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::InappproductsBatchGetResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::InappproductsBatchGetResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_inappproduct_get(package_name, sku: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/applications/{packageName}/inappproducts:batchGet', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::InappproductsBatchGetResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::InappproductsBatchGetResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['sku'] = sku unless sku.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates or inserts one or more in-app products (managed products or
+        # subscriptions). Set the latencyTolerance field on nested requests to
+        # PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update
+        # throughput. This method should no longer be used to update subscriptions. See [
+        # this article](https://android-developers.googleblog.com/2023/06/changes-to-
+        # google-play-developer-api-june-2023.html) for more information.
+        # @param [String] package_name
+        #   Package name of the app.
+        # @param [Google::Apis::AndroidpublisherV3::InappproductsBatchUpdateRequest] inappproducts_batch_update_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::InappproductsBatchUpdateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::InappproductsBatchUpdateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_inappproduct_update(package_name, inappproducts_batch_update_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/inappproducts:batchUpdate', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::InappproductsBatchUpdateRequest::Representation
+          command.request_object = inappproducts_batch_update_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::InappproductsBatchUpdateResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::InappproductsBatchUpdateResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an in-app product (a managed product or a subscription). This method
+        # should no longer be used to delete subscriptions. See [this article](https://
+        # android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-
+        # june-2023.html) for more information.
+        # @param [String] package_name
+        #   Package name of the app.
+        # @param [String] sku
+        #   Unique identifier for the in-app product.
+        # @param [String] latency_tolerance
+        #   Optional. The latency tolerance for the propagation of this product update.
+        #   Defaults to latency-sensitive.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_inappproduct(package_name, sku, latency_tolerance: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'androidpublisher/v3/applications/{packageName}/inappproducts/{sku}', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['sku'] = sku unless sku.nil?
+          command.query['latencyTolerance'] = latency_tolerance unless latency_tolerance.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2046,6 +2160,9 @@ module Google
         #   If true the prices for all regions targeted by the parent app that don't have
         #   a price specified for this in-app product will be auto converted to the target
         #   currency based on the default price. Defaults to false.
+        # @param [String] latency_tolerance
+        #   Optional. The latency tolerance for the propagation of this product update.
+        #   Defaults to latency-sensitive.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2063,7 +2180,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_inappproduct(package_name, sku, in_app_product_object = nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_inappproduct(package_name, sku, in_app_product_object = nil, auto_convert_missing_prices: nil, latency_tolerance: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'androidpublisher/v3/applications/{packageName}/inappproducts/{sku}', options)
           command.request_representation = Google::Apis::AndroidpublisherV3::InAppProduct::Representation
           command.request_object = in_app_product_object
@@ -2072,6 +2189,7 @@ module Google
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['sku'] = sku unless sku.nil?
           command.query['autoConvertMissingPrices'] = auto_convert_missing_prices unless auto_convert_missing_prices.nil?
+          command.query['latencyTolerance'] = latency_tolerance unless latency_tolerance.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2093,6 +2211,9 @@ module Google
         #   If true the prices for all regions targeted by the parent app that don't have
         #   a price specified for this in-app product will be auto converted to the target
         #   currency based on the default price. Defaults to false.
+        # @param [String] latency_tolerance
+        #   Optional. The latency tolerance for the propagation of this product update.
+        #   Defaults to latency-sensitive.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2110,7 +2231,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_inappproduct(package_name, sku, in_app_product_object = nil, allow_missing: nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_inappproduct(package_name, sku, in_app_product_object = nil, allow_missing: nil, auto_convert_missing_prices: nil, latency_tolerance: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'androidpublisher/v3/applications/{packageName}/inappproducts/{sku}', options)
           command.request_representation = Google::Apis::AndroidpublisherV3::InAppProduct::Representation
           command.request_object = in_app_product_object
@@ -2120,6 +2241,7 @@ module Google
           command.params['sku'] = sku unless sku.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['autoConvertMissingPrices'] = auto_convert_missing_prices unless auto_convert_missing_prices.nil?
+          command.query['latencyTolerance'] = latency_tolerance unless latency_tolerance.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2282,6 +2404,78 @@ module Google
           command.response_class = Google::Apis::AndroidpublisherV3::Subscription
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['productId'] = product_id unless product_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reads one or more subscriptions.
+        # @param [String] package_name
+        #   Required. The parent app (package name) for which the subscriptions should be
+        #   retrieved. Must be equal to the package_name field on all the requests.
+        # @param [Array<String>, String] product_ids
+        #   Required. A list of up to 100 subscription product IDs to retrieve. All the
+        #   IDs must be different.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::BatchGetSubscriptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::BatchGetSubscriptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_monetization_subscription_get(package_name, product_ids: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/applications/{packageName}/subscriptions:batchGet', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::BatchGetSubscriptionsResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::BatchGetSubscriptionsResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['productIds'] = product_ids unless product_ids.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a batch of subscriptions. Set the latencyTolerance field on nested
+        # requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve
+        # maximum update throughput.
+        # @param [String] package_name
+        #   Required. The parent app (package name) for which the subscriptions should be
+        #   updated. Must be equal to the package_name field on all the Subscription
+        #   resources.
+        # @param [Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionsRequest] batch_update_subscriptions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_update_subscriptions(package_name, batch_update_subscriptions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/subscriptions:batchUpdate', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionsRequest::Representation
+          command.request_object = batch_update_subscriptions_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionsResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionsResponse
+          command.params['packageName'] = package_name unless package_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2458,6 +2652,13 @@ module Google
         #   underscores (_) and dots (.). It must start with a lower-case letter or number,
         #   and be between 1 and 40 (inclusive) characters in length.
         # @param [Google::Apis::AndroidpublisherV3::Subscription] subscription_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the subscription with the given package_name and
+        #   product_id doesn't exist, the subscription will be created. If a new
+        #   subscription is created, update_mask is ignored.
+        # @param [String] latency_tolerance
+        #   Optional. The latency tolerance for the propagation of this product update.
+        #   Defaults to latency-sensitive.
         # @param [String] regions_version_version
         #   Required. A string representing the version of available regions being used
         #   for the specified resource. Regional prices for the resource have to be
@@ -2486,7 +2687,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_monetization_subscription(package_name, product_id, subscription_object = nil, regions_version_version: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_monetization_subscription(package_name, product_id, subscription_object = nil, allow_missing: nil, latency_tolerance: nil, regions_version_version: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'androidpublisher/v3/applications/{packageName}/subscriptions/{productId}', options)
           command.request_representation = Google::Apis::AndroidpublisherV3::Subscription::Representation
           command.request_object = subscription_object
@@ -2494,6 +2695,8 @@ module Google
           command.response_class = Google::Apis::AndroidpublisherV3::Subscription
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['productId'] = product_id unless product_id.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['latencyTolerance'] = latency_tolerance unless latency_tolerance.nil?
           command.query['regionsVersion.version'] = regions_version_version unless regions_version_version.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2536,6 +2739,89 @@ module Google
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['productId'] = product_id unless product_id.nil?
           command.params['basePlanId'] = base_plan_id unless base_plan_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Batch variant of the MigrateBasePlanPrices endpoint. Set the latencyTolerance
+        # field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT
+        # to achieve maximum update throughput.
+        # @param [String] package_name
+        #   Required. The parent app (package name) for which the subscriptions should be
+        #   created or updated. Must be equal to the package_name field on all the
+        #   Subscription resources.
+        # @param [String] product_id
+        #   Required. The product ID of the parent subscription, if all updated offers
+        #   belong to the same subscription. If this batch update spans multiple
+        #   subscriptions, set this field to "-". Must be set.
+        # @param [Google::Apis::AndroidpublisherV3::BatchMigrateBasePlanPricesRequest] batch_migrate_base_plan_prices_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::BatchMigrateBasePlanPricesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::BatchMigrateBasePlanPricesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_monetization_subscription_base_plan_migrate_prices(package_name, product_id, batch_migrate_base_plan_prices_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchMigratePrices', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::BatchMigrateBasePlanPricesRequest::Representation
+          command.request_object = batch_migrate_base_plan_prices_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::BatchMigrateBasePlanPricesResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::BatchMigrateBasePlanPricesResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Activates or deactivates base plans across one or multiple subscriptions. Set
+        # the latencyTolerance field on nested requests to
+        # PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update
+        # throughput.
+        # @param [String] package_name
+        #   Required. The parent app (package name) of the updated base plans.
+        # @param [String] product_id
+        #   Required. The product ID of the parent subscription, if all updated base plans
+        #   belong to the same subscription. If this batch update spans multiple
+        #   subscriptions, set this field to "-". Must be set.
+        # @param [Google::Apis::AndroidpublisherV3::BatchUpdateBasePlanStatesRequest] batch_update_base_plan_states_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::BatchUpdateBasePlanStatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::BatchUpdateBasePlanStatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_monetization_subscription_base_plan_update_states(package_name, product_id, batch_update_base_plan_states_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchUpdateStates', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::BatchUpdateBasePlanStatesRequest::Representation
+          command.request_object = batch_update_base_plan_states_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::BatchUpdateBasePlanStatesResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::BatchUpdateBasePlanStatesResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2700,6 +2986,142 @@ module Google
           command.params['productId'] = product_id unless product_id.nil?
           command.params['basePlanId'] = base_plan_id unless base_plan_id.nil?
           command.params['offerId'] = offer_id unless offer_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reads one or more subscription offers.
+        # @param [String] package_name
+        #   Required. The parent app (package name) for which the subscriptions should be
+        #   created or updated. Must be equal to the package_name field on all the
+        #   requests.
+        # @param [String] product_id
+        #   Required. The product ID of the parent subscription, if all updated offers
+        #   belong to the same subscription. If this request spans multiple subscriptions,
+        #   set this field to "-". Must be set.
+        # @param [String] base_plan_id
+        #   Required. The parent base plan (ID) for which the offers should be read. May
+        #   be specified as '-' to read offers from multiple base plans.
+        # @param [Google::Apis::AndroidpublisherV3::BatchGetSubscriptionOffersRequest] batch_get_subscription_offers_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::BatchGetSubscriptionOffersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::BatchGetSubscriptionOffersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_get_subscription_offers(package_name, product_id, base_plan_id, batch_get_subscription_offers_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchGet', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::BatchGetSubscriptionOffersRequest::Representation
+          command.request_object = batch_get_subscription_offers_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::BatchGetSubscriptionOffersResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::BatchGetSubscriptionOffersResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.params['basePlanId'] = base_plan_id unless base_plan_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a batch of subscription offers. Set the latencyTolerance field on
+        # nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to
+        # achieve maximum update throughput.
+        # @param [String] package_name
+        #   Required. The parent app (package name) of the updated subscription offers.
+        #   Must be equal to the package_name field on all the updated SubscriptionOffer
+        #   resources.
+        # @param [String] product_id
+        #   Required. The product ID of the parent subscription, if all updated offers
+        #   belong to the same subscription. If this request spans multiple subscriptions,
+        #   set this field to "-". Must be set.
+        # @param [String] base_plan_id
+        #   Required. The parent base plan (ID) for which the offers should be updated.
+        #   May be specified as '-' to update offers from multiple base plans.
+        # @param [Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionOffersRequest] batch_update_subscription_offers_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionOffersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionOffersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_update_subscription_offers(package_name, product_id, base_plan_id, batch_update_subscription_offers_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchUpdate', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionOffersRequest::Representation
+          command.request_object = batch_update_subscription_offers_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionOffersResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionOffersResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.params['basePlanId'] = base_plan_id unless base_plan_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a batch of subscription offer states. Set the latencyTolerance field
+        # on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to
+        # achieve maximum update throughput.
+        # @param [String] package_name
+        #   Required. The parent app (package name) of the updated subscription offers.
+        #   Must be equal to the package_name field on all the updated SubscriptionOffer
+        #   resources.
+        # @param [String] product_id
+        #   Required. The product ID of the parent subscription, if all updated offers
+        #   belong to the same subscription. If this request spans multiple subscriptions,
+        #   set this field to "-". Must be set.
+        # @param [String] base_plan_id
+        #   Required. The parent base plan (ID) for which the offers should be updated.
+        #   May be specified as '-' to update offers from multiple base plans.
+        # @param [Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionOfferStatesRequest] batch_update_subscription_offer_states_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionOfferStatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionOfferStatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_monetization_subscription_base_plan_offer_update_states(package_name, product_id, base_plan_id, batch_update_subscription_offer_states_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchUpdateStates', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionOfferStatesRequest::Representation
+          command.request_object = batch_update_subscription_offer_states_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionOfferStatesResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::BatchUpdateSubscriptionOfferStatesResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.params['basePlanId'] = base_plan_id unless base_plan_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2947,6 +3369,13 @@ module Google
         #   Required. Immutable. Unique ID of this subscription offer. Must be unique
         #   within the base plan.
         # @param [Google::Apis::AndroidpublisherV3::SubscriptionOffer] subscription_offer_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the subscription offer with the given
+        #   package_name, product_id, base_plan_id and offer_id doesn't exist, an offer
+        #   will be created. If a new offer is created, update_mask is ignored.
+        # @param [String] latency_tolerance
+        #   Optional. The latency tolerance for the propagation of this product update.
+        #   Defaults to latency-sensitive.
         # @param [String] regions_version_version
         #   Required. A string representing the version of available regions being used
         #   for the specified resource. Regional prices for the resource have to be
@@ -2975,7 +3404,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_monetization_subscription_base_plan_offer(package_name, product_id, base_plan_id, offer_id, subscription_offer_object = nil, regions_version_version: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_monetization_subscription_base_plan_offer(package_name, product_id, base_plan_id, offer_id, subscription_offer_object = nil, allow_missing: nil, latency_tolerance: nil, regions_version_version: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}', options)
           command.request_representation = Google::Apis::AndroidpublisherV3::SubscriptionOffer::Representation
           command.request_object = subscription_offer_object
@@ -2985,6 +3414,8 @@ module Google
           command.params['productId'] = product_id unless product_id.nil?
           command.params['basePlanId'] = base_plan_id unless base_plan_id.nil?
           command.params['offerId'] = offer_id unless offer_id.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['latencyTolerance'] = latency_tolerance unless latency_tolerance.nil?
           command.query['regionsVersion.version'] = regions_version_version unless regions_version_version.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
