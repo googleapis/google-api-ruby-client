@@ -460,9 +460,9 @@ module Google
         # Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/
         # advanced-queries). The only exported log entries are those that are in the
         # resource owning the sink and that match the filter.For example:logName="
-        # projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERRORCannot be empty or
-        # unset if mode == OVERWRITE. In order to match all logs, use the following line
-        # as the value of filter and do not use exclusions:logName:*
+        # projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERRORTo match all logs, don'
+        # t add exclusions and use the following line as the value of filter:logName:*
+        # Cannot be empty or unset when the value of mode is OVERWRITE.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -1834,11 +1834,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The id is a unique identifier for a particular error group; it is the last
-        # part of the error group resource name: /projects//errors/. Example:
-        # COShysOX0r_51QE The id is derived from key parts of the error-log content and
-        # is treated as Service Data. For information about how Service Data is handled,
-        # see Google Cloud Privacy Notice (https://cloud.google.com/terms/cloud-privacy-
-        # notice).
+        # part of the error group resource name: /project/[PROJECT_ID]/errors/[
+        # ERROR_GROUP_ID]. Example: COShysOX0r_51QE. The id is derived from key parts of
+        # the error-log content and is treated as Service Data. For information about
+        # how Service Data is handled, see Google Cloud Privacy Notice (https://cloud.
+        # google.com/terms/cloud-privacy-notice).
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2101,8 +2101,8 @@ module Google
       end
       
       # Describes a sink used to export log entries to one of the following
-      # destinations in any project: a Cloud Storage bucket, a BigQuery dataset, a Pub/
-      # Sub topic or a Cloud Logging log bucket. A logs filter controls which log
+      # destinations: a Cloud Logging log bucket, a Cloud Storage bucket, a BigQuery
+      # dataset, a Pub/Sub topic, a Cloud project.A logs filter controls which log
       # entries are exported. The sink must be created within a project, organization,
       # billing account, or folder.
       class LogSink
@@ -2177,10 +2177,10 @@ module Google
         alias_method :include_children?, :include_children
       
         # Required. The client-assigned sink identifier, unique within the project.For
-        # example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100
+        # example: "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100
         # characters and can include only the following characters: upper and lower-case
-        # alphanumeric characters, underscores, hyphens, and periods. First character
-        # has to be alphanumeric.
+        # alphanumeric characters, underscores, hyphens, periods.First character has to
+        # be alphanumeric.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2284,10 +2284,13 @@ module Google
         attr_accessor :description
       
         # Filter that restricts which log entries in a bucket are visible in this view.
-        # Filters are restricted to be a logical AND of ==/!= of any of the following:
-        # originating project/folder/organization/billing account. resource type log
-        # idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance"
-        # AND LOG_ID("stdout")
+        # Filters must be logical conjunctions that use the AND operator, and they can
+        # use any of the following qualifiers: SOURCE(), which specifies a project,
+        # folder, organization, or billing account of origin. resource.type, which
+        # specifies the resource type. LOG_ID(), which identifies the log.They can also
+        # use the negations of these qualifiers with the NOT operator.For example:SOURCE(
+        # "projects/myproject") AND resource.type = "gce_instance" AND NOT LOG_ID("
+        # stdout")
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -3167,12 +3170,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. The storage location that Cloud Logging will use to create new
-        # resources when a location is needed but not explicitly provided. The use cases
-        # includes: The location of _Default and _Required log bucket for newly created
-        # projects and folders.Example value: europe-west1.Note: this setting does not
-        # affect the location of resources where a location is explicitly provided when
-        # created, such as custom log buckets.
+        # Optional. The storage location for the _Default and _Required log buckets of
+        # newly created projects and folders, unless the storage location is explicitly
+        # provided.Example value: europe-west1.Note: this setting does not affect the
+        # location of resources where a location is explicitly provided when created,
+        # such as custom log buckets.
         # Corresponds to the JSON property `storageLocation`
         # @return [String]
         attr_accessor :storage_location
