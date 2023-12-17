@@ -136,6 +136,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DailyCycle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DenyMaintenancePeriod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Destination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Jms
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -442,6 +466,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MaintenancePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenanceSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenanceSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedZone
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -455,6 +503,18 @@ module Google
       end
       
       class NodeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeSloMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NotificationParameter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -490,6 +550,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PerSliSloEligibility
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -497,6 +563,12 @@ module Google
       end
       
       class Provider
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProvisionedResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -574,6 +646,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Schedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Secret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -587,6 +665,18 @@ module Google
       end
       
       class Settings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SloEligibility
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SloMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -640,7 +730,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeOfDay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdatePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserPassword
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WeeklyCycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -949,6 +1057,36 @@ module Google
         end
       end
       
+      class DailyCycle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :start_time, as: 'startTime', class: Google::Apis::ConnectorsV1::TimeOfDay, decorator: Google::Apis::ConnectorsV1::TimeOfDay::Representation
+      
+        end
+      end
+      
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
+        end
+      end
+      
+      class DenyMaintenancePeriod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate', class: Google::Apis::ConnectorsV1::Date, decorator: Google::Apis::ConnectorsV1::Date::Representation
+      
+          property :start_date, as: 'startDate', class: Google::Apis::ConnectorsV1::Date, decorator: Google::Apis::ConnectorsV1::Date::Representation
+      
+          property :time, as: 'time', class: Google::Apis::ConnectorsV1::TimeOfDay, decorator: Google::Apis::ConnectorsV1::TimeOfDay::Representation
+      
+        end
+      end
+      
       class Destination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1246,6 +1384,34 @@ module Google
         end
       end
       
+      class Instance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_defined_name, as: 'consumerDefinedName'
+          property :create_time, as: 'createTime'
+          property :instance_type, as: 'instanceType'
+          hash :labels, as: 'labels'
+          hash :maintenance_policy_names, as: 'maintenancePolicyNames'
+          hash :maintenance_schedules, as: 'maintenanceSchedules', class: Google::Apis::ConnectorsV1::MaintenanceSchedule, decorator: Google::Apis::ConnectorsV1::MaintenanceSchedule::Representation
+      
+          property :maintenance_settings, as: 'maintenanceSettings', class: Google::Apis::ConnectorsV1::MaintenanceSettings, decorator: Google::Apis::ConnectorsV1::MaintenanceSettings::Representation
+      
+          property :name, as: 'name'
+          hash :notification_parameters, as: 'notificationParameters', class: Google::Apis::ConnectorsV1::NotificationParameter, decorator: Google::Apis::ConnectorsV1::NotificationParameter::Representation
+      
+          hash :producer_metadata, as: 'producerMetadata'
+          collection :provisioned_resources, as: 'provisionedResources', class: Google::Apis::ConnectorsV1::ProvisionedResource, decorator: Google::Apis::ConnectorsV1::ProvisionedResource::Representation
+      
+          property :slm_instance_template, as: 'slmInstanceTemplate'
+          property :slo_metadata, as: 'sloMetadata', class: Google::Apis::ConnectorsV1::SloMetadata, decorator: Google::Apis::ConnectorsV1::SloMetadata::Representation
+      
+          hash :software_versions, as: 'softwareVersions'
+          property :state, as: 'state'
+          property :tenant_project_id, as: 'tenantProjectId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class Jms
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1475,6 +1641,51 @@ module Google
         end
       end
       
+      class MaintenancePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :update_policy, as: 'updatePolicy', class: Google::Apis::ConnectorsV1::UpdatePolicy, decorator: Google::Apis::ConnectorsV1::UpdatePolicy::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MaintenanceSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_reschedule, as: 'canReschedule'
+          property :end_time, as: 'endTime'
+          property :rollout_management_policy, as: 'rolloutManagementPolicy'
+          property :schedule_deadline_time, as: 'scheduleDeadlineTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class MaintenanceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude, as: 'exclude'
+          property :is_rollback, as: 'isRollback'
+          hash :maintenance_policies, as: 'maintenancePolicies', class: Google::Apis::ConnectorsV1::MaintenancePolicy, decorator: Google::Apis::ConnectorsV1::MaintenancePolicy::Representation
+      
+        end
+      end
+      
+      class MaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :daily_cycle, as: 'dailyCycle', class: Google::Apis::ConnectorsV1::DailyCycle, decorator: Google::Apis::ConnectorsV1::DailyCycle::Representation
+      
+          property :weekly_cycle, as: 'weeklyCycle', class: Google::Apis::ConnectorsV1::WeeklyCycle, decorator: Google::Apis::ConnectorsV1::WeeklyCycle::Representation
+      
+        end
+      end
+      
       class ManagedZone
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1502,6 +1713,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_node_count, as: 'maxNodeCount'
           property :min_node_count, as: 'minNodeCount'
+        end
+      end
+      
+      class NodeSloMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          property :node_id, as: 'nodeId'
+          property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::ConnectorsV1::PerSliSloEligibility, decorator: Google::Apis::ConnectorsV1::PerSliSloEligibility::Representation
+      
+        end
+      end
+      
+      class NotificationParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
         end
       end
       
@@ -1564,6 +1792,14 @@ module Google
         end
       end
       
+      class PerSliSloEligibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :eligibilities, as: 'eligibilities', class: Google::Apis::ConnectorsV1::SloEligibility, decorator: Google::Apis::ConnectorsV1::SloEligibility::Representation
+      
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1589,6 +1825,14 @@ module Google
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
           property :web_assets_location, as: 'webAssetsLocation'
+        end
+      end
+      
+      class ProvisionedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_type, as: 'resourceType'
+          property :resource_url, as: 'resourceUrl'
         end
       end
       
@@ -1711,6 +1955,16 @@ module Google
         end
       end
       
+      class Schedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :duration, as: 'duration'
+          property :start_time, as: 'startTime', class: Google::Apis::ConnectorsV1::TimeOfDay, decorator: Google::Apis::ConnectorsV1::TimeOfDay::Representation
+      
+        end
+      end
+      
       class Secret
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1734,6 +1988,25 @@ module Google
           property :payg, as: 'payg'
           property :tenant_project_id, as: 'tenantProjectId'
           property :vpcsc, as: 'vpcsc'
+        end
+      end
+      
+      class SloEligibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :eligible, as: 'eligible'
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class SloMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nodes, as: 'nodes', class: Google::Apis::ConnectorsV1::NodeSloMetadata, decorator: Google::Apis::ConnectorsV1::NodeSloMetadata::Representation
+      
+          property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::ConnectorsV1::PerSliSloEligibility, decorator: Google::Apis::ConnectorsV1::PerSliSloEligibility::Representation
+      
+          property :tier, as: 'tier'
         end
       end
       
@@ -1822,12 +2095,41 @@ module Google
         end
       end
       
+      class TimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
+        end
+      end
+      
+      class UpdatePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
+          collection :deny_maintenance_periods, as: 'denyMaintenancePeriods', class: Google::Apis::ConnectorsV1::DenyMaintenancePeriod, decorator: Google::Apis::ConnectorsV1::DenyMaintenancePeriod::Representation
+      
+          property :window, as: 'window', class: Google::Apis::ConnectorsV1::MaintenanceWindow, decorator: Google::Apis::ConnectorsV1::MaintenanceWindow::Representation
+      
+        end
+      end
+      
       class UserPassword
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :password, as: 'password', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
       
           property :username, as: 'username'
+        end
+      end
+      
+      class WeeklyCycle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :schedule, as: 'schedule', class: Google::Apis::ConnectorsV1::Schedule, decorator: Google::Apis::ConnectorsV1::Schedule::Representation
+      
         end
       end
     end
