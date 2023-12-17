@@ -1485,8 +1485,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the CloneJobs of a migrating VM. Only the 25 most recent CloneJobs are
-        # returned.
+        # Lists the CloneJobs of a migrating VM. Only 25 most recent CloneJobs are
+        # listed.
         # @param [String] parent
         #   Required. The parent, which owns this collection of source VMs.
         # @param [String] filter
@@ -1644,8 +1644,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the CutoverJobs of a migrating VM. Only the 25 most recent CutoverJobs
-        # are returned.
+        # Lists the CutoverJobs of a migrating VM. Only 25 most recent CutoverJobs are
+        # listed.
         # @param [String] parent
         #   Required. The parent, which owns this collection of migrating VMs.
         # @param [String] filter
