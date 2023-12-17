@@ -162,9 +162,9 @@ module Google
       
         # Output only. The billing account's parent resource identifier. Use the `
         # MoveBillingAccount` method to update the account's parent resource if it is a
-        # organization. Format: - organizations/`organization_id`, for example:
-        # organizations/12345678 - billingAccounts/`billing_account_id`, for example: `
-        # billingAccounts/012345-567890-ABCDEF`
+        # organization. Format: - `organizations/`organization_id``, for example, `
+        # organizations/12345678` - `billingAccounts/`billing_account_id``, for example,
+        # `billingAccounts/012345-567890-ABCDEF`
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
