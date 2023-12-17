@@ -6589,6 +6589,7 @@ module Google
           property :conversation_process_config, as: 'conversationProcessConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig::Representation
       
           property :disable_agent_query_logging, as: 'disableAgentQueryLogging'
+          property :enable_conversation_augmented_query, as: 'enableConversationAugmentedQuery'
           property :enable_event_based_suggestion, as: 'enableEventBasedSuggestion'
           property :query_config, as: 'queryConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig::Representation
       
@@ -7719,6 +7720,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :answers, as: 'answers', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SearchKnowledgeAnswer, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SearchKnowledgeAnswer::Representation
       
+          property :rewritten_query, as: 'rewrittenQuery'
         end
       end
       
