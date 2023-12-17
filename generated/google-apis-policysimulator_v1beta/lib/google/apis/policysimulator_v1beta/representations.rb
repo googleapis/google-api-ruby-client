@@ -340,6 +340,7 @@ module Google
       
           property :dry_run_spec, as: 'dryRunSpec', class: Google::Apis::PolicysimulatorV1beta::GoogleCloudOrgpolicyV2PolicySpec, decorator: Google::Apis::PolicysimulatorV1beta::GoogleCloudOrgpolicyV2PolicySpec::Representation
       
+          property :etag, as: 'etag'
           property :name, as: 'name'
           property :spec, as: 'spec', class: Google::Apis::PolicysimulatorV1beta::GoogleCloudOrgpolicyV2PolicySpec, decorator: Google::Apis::PolicysimulatorV1beta::GoogleCloudOrgpolicyV2PolicySpec::Representation
       
