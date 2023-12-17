@@ -224,8 +224,8 @@ module Google
         end
         
         # FetchCaCerts returns the current trust anchor for the CaPool. This will
-        # include CA certificate chains for all ACTIVE CertificateAuthority resources in
-        # the CaPool.
+        # include CA certificate chains for all Certificate Authorities in the ENABLED,
+        # DISABLED, or STAGED states.
         # @param [String] ca_pool
         #   Required. The resource name for the CaPool in the format `projects/*/locations/
         #   */caPools/*`.
