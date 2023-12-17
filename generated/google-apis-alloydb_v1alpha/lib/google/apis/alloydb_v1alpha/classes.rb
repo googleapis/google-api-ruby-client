@@ -22,6 +22,25 @@ module Google
   module Apis
     module AlloydbV1alpha
       
+      # AuthorizedNetwork contains metadata for an authorized network.
+      class AuthorizedNetwork
+        include Google::Apis::Core::Hashable
+      
+        # CIDR range for one authorzied network of the instance.
+        # Corresponds to the JSON property `cidrRange`
+        # @return [String]
+        attr_accessor :cidr_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cidr_range = args[:cidr_range] if args.key?(:cidr_range)
+        end
+      end
+      
       # Message describing the user-specified automated backup policy. All fields in
       # the automated backup policy are optional. Defaults for each field are provided
       # if they are not set.
@@ -620,6 +639,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :pem_certificate_chain
       
+        # Output only. The public IP addresses for the Instance. This is available ONLY
+        # when enable_public_ip is set. This is the connection endpoint for an end-user
+        # application.
+        # Corresponds to the JSON property `publicIpAddress`
+        # @return [String]
+        attr_accessor :public_ip_address
+      
         def initialize(**args)
            update!(**args)
         end
@@ -630,6 +656,7 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @name = args[:name] if args.key?(:name)
           @pem_certificate_chain = args[:pem_certificate_chain] if args.key?(:pem_certificate_chain)
+          @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
         end
       end
       
@@ -1183,11 +1210,22 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Metadata related to instance level network configuration.
+        # Corresponds to the JSON property `networkConfig`
+        # @return [Google::Apis::AlloydbV1alpha::InstanceNetworkConfig]
+        attr_accessor :network_config
+      
         # Output only. List of available read-only VMs in this instance, including the
         # standby for a PRIMARY instance.
         # Corresponds to the JSON property `nodes`
         # @return [Array<Google::Apis::AlloydbV1alpha::Node>]
         attr_accessor :nodes
+      
+        # PscInstanceConfig contains PSC related configuration at an instance level.
+        # NEXT ID: 7
+        # Corresponds to the JSON property `pscInstanceConfig`
+        # @return [Google::Apis::AlloydbV1alpha::PscInstanceConfig]
+        attr_accessor :psc_instance_config
       
         # QueryInsights Instance specific configuration.
         # Corresponds to the JSON property `queryInsightsConfig`
@@ -1269,7 +1307,9 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @machine_config = args[:machine_config] if args.key?(:machine_config)
           @name = args[:name] if args.key?(:name)
+          @network_config = args[:network_config] if args.key?(:network_config)
           @nodes = args[:nodes] if args.key?(:nodes)
+          @psc_instance_config = args[:psc_instance_config] if args.key?(:psc_instance_config)
           @query_insights_config = args[:query_insights_config] if args.key?(:query_insights_config)
           @read_pool_config = args[:read_pool_config] if args.key?(:read_pool_config)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
@@ -1280,6 +1320,32 @@ module Google
           @update_policy = args[:update_policy] if args.key?(:update_policy)
           @update_time = args[:update_time] if args.key?(:update_time)
           @writable_node = args[:writable_node] if args.key?(:writable_node)
+        end
+      end
+      
+      # Metadata related to instance level network configuration.
+      class InstanceNetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of external network authorized to access this instance.
+        # Corresponds to the JSON property `authorizedExternalNetworks`
+        # @return [Array<Google::Apis::AlloydbV1alpha::AuthorizedNetwork>]
+        attr_accessor :authorized_external_networks
+      
+        # Optional. Enabling public ip for the instance.
+        # Corresponds to the JSON property `enablePublicIp`
+        # @return [Boolean]
+        attr_accessor :enable_public_ip
+        alias_method :enable_public_ip?, :enable_public_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_external_networks = args[:authorized_external_networks] if args.key?(:authorized_external_networks)
+          @enable_public_ip = args[:enable_public_ip] if args.key?(:enable_public_ip)
         end
       end
       
@@ -1814,6 +1880,99 @@ module Google
         # Update properties of this object
         def update!(**args)
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
+        end
+      end
+      
+      # PscInstanceConfig contains PSC related configuration at an instance level.
+      # NEXT ID: 7
+      class PscInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of consumer networks that are allowed to create PSC endpoints
+        # to service-attachments to this instance.
+        # Corresponds to the JSON property `allowedConsumerNetworks`
+        # @return [Array<String>]
+        attr_accessor :allowed_consumer_networks
+      
+        # Optional. List of consumer projects that are allowed to create PSC endpoints
+        # to service-attachments to this instance.
+        # Corresponds to the JSON property `allowedConsumerProjects`
+        # @return [Array<String>]
+        attr_accessor :allowed_consumer_projects
+      
+        # Optional. List of service attachments that this instance has created endpoints
+        # to connect with. Currently, only a single outgoing service attachment is
+        # supported per instance.
+        # Corresponds to the JSON property `outgoingServiceAttachmentLinks`
+        # @return [Array<String>]
+        attr_accessor :outgoing_service_attachment_links
+      
+        # Optional. Whether PSC connectivity is enabled for this instance. This is
+        # populated by referencing the value from the parent cluster.
+        # Corresponds to the JSON property `pscEnabled`
+        # @return [Boolean]
+        attr_accessor :psc_enabled
+        alias_method :psc_enabled?, :psc_enabled
+      
+        # Optional. Configurations for setting up PSC interfaces attached to the
+        # instance which are used for outbound connectivity. Only primary instances can
+        # have PSC interface attached. All the VMs created for the primary instance will
+        # share the same configurations. Currently we only support 0 or 1 PSC interface.
+        # Corresponds to the JSON property `pscInterfaceConfigs`
+        # @return [Array<Google::Apis::AlloydbV1alpha::PscInterfaceConfig>]
+        attr_accessor :psc_interface_configs
+      
+        # Output only. The service attachment created when Private Service Connect (PSC)
+        # is enabled for the instance. The name of the resource will be in the format of
+        # projects//regions//serviceAttachments/
+        # Corresponds to the JSON property `serviceAttachmentLink`
+        # @return [String]
+        attr_accessor :service_attachment_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_consumer_networks = args[:allowed_consumer_networks] if args.key?(:allowed_consumer_networks)
+          @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
+          @outgoing_service_attachment_links = args[:outgoing_service_attachment_links] if args.key?(:outgoing_service_attachment_links)
+          @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
+          @psc_interface_configs = args[:psc_interface_configs] if args.key?(:psc_interface_configs)
+          @service_attachment_link = args[:service_attachment_link] if args.key?(:service_attachment_link)
+        end
+      end
+      
+      # Configuration for setting up a PSC interface. This information needs to be
+      # provided by the customer. PSC interfaces will be created and added to VMs via
+      # SLM (adding a network interface will require recreating the VM). For HA
+      # instances this will be done via LDTM.
+      class PscInterfaceConfig
+        include Google::Apis::Core::Hashable
+      
+        # A list of endpoints in the consumer VPC the interface might initiate outbound
+        # connections to. This list has to be provided when the PSC interface is created.
+        # Corresponds to the JSON property `consumerEndpointIps`
+        # @return [Array<String>]
+        attr_accessor :consumer_endpoint_ips
+      
+        # The NetworkAttachment resource created in the consumer VPC to which the PSC
+        # interface will be linked, in the form of: "projects/$`CONSUMER_PROJECT`/
+        # regions/$`REGION`/networkAttachments/$`NETWORK_ATTACHMENT_NAME`".
+        # NetworkAttachment has to be provided when the PSC interface is created.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_endpoint_ips = args[:consumer_endpoint_ips] if args.key?(:consumer_endpoint_ips)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
         end
       end
       
