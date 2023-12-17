@@ -633,7 +633,6 @@ module Google
           collection :package_name_prefixes, as: 'packageNamePrefixes'
           collection :tag_prefixes, as: 'tagPrefixes'
           property :tag_state, as: 'tagState'
-          property :version_age, as: 'versionAge'
           collection :version_name_prefixes, as: 'versionNamePrefixes'
         end
       end

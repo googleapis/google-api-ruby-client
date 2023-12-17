@@ -287,11 +287,6 @@ module Google
         # @return [String]
         attr_accessor :tag_state
       
-        # DEPRECATED: Use older_than.
-        # Corresponds to the JSON property `versionAge`
-        # @return [String]
-        attr_accessor :version_age
-      
         # Match versions by version name prefix. Applied on any prefix match.
         # Corresponds to the JSON property `versionNamePrefixes`
         # @return [Array<String>]
@@ -308,7 +303,6 @@ module Google
           @package_name_prefixes = args[:package_name_prefixes] if args.key?(:package_name_prefixes)
           @tag_prefixes = args[:tag_prefixes] if args.key?(:tag_prefixes)
           @tag_state = args[:tag_state] if args.key?(:tag_state)
-          @version_age = args[:version_age] if args.key?(:version_age)
           @version_name_prefixes = args[:version_name_prefixes] if args.key?(:version_name_prefixes)
         end
       end
