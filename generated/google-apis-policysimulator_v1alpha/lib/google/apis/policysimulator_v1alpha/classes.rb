@@ -143,6 +143,14 @@ module Google
         # @return [Google::Apis::PolicysimulatorV1alpha::GoogleCloudOrgpolicyV2PolicySpec]
         attr_accessor :dry_run_spec
       
+        # Optional. An opaque tag indicating the current state of the policy, used for
+        # concurrency control. This 'etag' is computed by the server based on the value
+        # of other fields, and may be sent on update and delete requests to ensure the
+        # client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Immutable. The resource name of the policy. Must be one of the following forms,
         # where `constraint_name` is the name of the constraint which this policy
         # configures: * `projects/`project_number`/policies/`constraint_name`` * `
@@ -169,6 +177,7 @@ module Google
         def update!(**args)
           @alternate = args[:alternate] if args.key?(:alternate)
           @dry_run_spec = args[:dry_run_spec] if args.key?(:dry_run_spec)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @spec = args[:spec] if args.key?(:spec)
         end
