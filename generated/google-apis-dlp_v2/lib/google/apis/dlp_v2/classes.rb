@@ -2030,6 +2030,14 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileJobConfig]
         attr_accessor :data_profile_job
       
+        # Configuration for discovery to scan resources for profile generation. Only one
+        # discovery configuration may exist per organization, folder, or project. The
+        # generated data profiles are retained according to the [data retention policy] (
+        # https://cloud.google.com/dlp/docs/data-profiles#retention).
+        # Corresponds to the JSON property `discoveryConfig`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig]
+        attr_accessor :discovery_config
+      
         # Configuration description of the scanning process. When used with
         # redactContent only info_types and min_likelihood are currently used.
         # Corresponds to the JSON property `inspectConfig`
@@ -2043,6 +2051,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_profile_job = args[:data_profile_job] if args.key?(:data_profile_job)
+          @discovery_config = args[:discovery_config] if args.key?(:discovery_config)
           @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
         end
       end
