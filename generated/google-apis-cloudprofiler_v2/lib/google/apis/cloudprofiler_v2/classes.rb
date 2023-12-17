@@ -94,6 +94,42 @@ module Google
         end
       end
       
+      # ListProfileResponse contains the list of collected profiles for deployments in
+      # projects which the user has permissions to view.
+      class ListProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to receive the next page of results. This field maybe empty if there are
+        # no more profiles to fetch.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of profiles fetched.
+        # Corresponds to the JSON property `profiles`
+        # @return [Array<Google::Apis::CloudprofilerV2::Profile>]
+        attr_accessor :profiles
+      
+        # Number of profiles that were skipped in the current page since they were not
+        # able to be fetched successfully. This should typically be zero. A non-zero
+        # value may indicate a transient failure, in which case if the number is too
+        # high for your use case, the call may be retried.
+        # Corresponds to the JSON property `skippedProfiles`
+        # @return [Fixnum]
+        attr_accessor :skipped_profiles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @profiles = args[:profiles] if args.key?(:profiles)
+          @skipped_profiles = args[:skipped_profiles] if args.key?(:skipped_profiles)
+        end
+      end
+      
       # Profile resource.
       class Profile
         include Google::Apis::Core::Hashable
