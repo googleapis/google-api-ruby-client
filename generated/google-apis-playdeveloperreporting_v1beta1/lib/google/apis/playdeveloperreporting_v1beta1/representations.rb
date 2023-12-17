@@ -420,6 +420,8 @@ module Google
       class GooglePlayDeveloperReportingV1beta1ErrorReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_version, as: 'appVersion', class: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1AppVersion, decorator: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1AppVersion::Representation
+      
           property :device_model, as: 'deviceModel', class: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1DeviceModelSummary, decorator: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1DeviceModelSummary::Representation
       
           property :event_time, as: 'eventTime'
