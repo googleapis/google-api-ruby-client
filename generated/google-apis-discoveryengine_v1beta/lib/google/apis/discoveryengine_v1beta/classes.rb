@@ -1420,6 +1420,53 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the EstimateDataSize operation. This is
+      # returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaEstimateDataSizeMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
+      # Response of the EstimateDataSize request. If the long running operation was
+      # successful, then this message is returned by the google.longrunning.Operations.
+      # response field if the operation was successful.
+      class GoogleCloudDiscoveryengineV1alphaEstimateDataSizeResponse
+        include Google::Apis::Core::Hashable
+      
+        # Data size in terms of bytes.
+        # Corresponds to the JSON property `dataSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :data_size_bytes
+      
+        # Total number of documents.
+        # Corresponds to the JSON property `documentCount`
+        # @return [Fixnum]
+        attr_accessor :document_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_size_bytes = args[:data_size_bytes] if args.key?(:data_size_bytes)
+          @document_count = args[:document_count] if args.key?(:document_count)
+        end
+      end
+      
       # Configurations for fields of a schema. For example, configuring a field is
       # indexable, or searchable.
       class GoogleCloudDiscoveryengineV1alphaFieldConfig
@@ -2143,6 +2190,68 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the TrainCustomModel operation. This is
+      # returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaTrainCustomModelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response of the TrainCustomModelRequest. This message is returned by the
+      # google.longrunning.Operations.response field.
+      class GoogleCloudDiscoveryengineV1alphaTrainCustomModelResponse
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of destination for Import related errors.
+        # Corresponds to the JSON property `errorConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaImportErrorConfig]
+        attr_accessor :error_config
+      
+        # A sample of errors encountered while processing the data.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # The trained model status. Possible values are: * **bad-data**: The training
+        # data quality is bad. * **no-improvement**: Tuning didn't improve performance.
+        # Won't deploy. * **in-progress**: Model training is in progress. * **ready**:
+        # The model is ready for serving.
+        # Corresponds to the JSON property `modelStatus`
+        # @return [String]
+        attr_accessor :model_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_config = args[:error_config] if args.key?(:error_config)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @model_status = args[:model_status] if args.key?(:model_status)
+        end
+      end
+      
       # Metadata associated with a tune operation.
       class GoogleCloudDiscoveryengineV1alphaTuneEngineMetadata
         include Google::Apis::Core::Hashable
@@ -2500,6 +2609,22 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaConversation]
         attr_accessor :conversation
       
+        # The filter syntax consists of an expression language for constructing a
+        # predicate from one or more fields of the documents being filtered. Filter
+        # expression is case-sensitive. This will be used to filter search results which
+        # may affect the summary response. If this field is unrecognizable, an `
+        # INVALID_ARGUMENT` is returned. Filtering in Vertex AI Search is done by
+        # mapping the LHS filter key to a key property defined in the Vertex AI Search
+        # backend -- this mapping is defined by the customer in their schema. For
+        # example a media customer might have a field 'name' in their schema. In this
+        # case the filter would look like this: filter --> name:'ANY("king kong")' For
+        # more information about filtering including syntax and filter operators, see [
+        # Filter](https://cloud.google.com/generative-ai-app-builder/docs/filter-search-
+        # metadata)
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
         # Defines text input.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaTextInput]
@@ -2546,6 +2671,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @conversation = args[:conversation] if args.key?(:conversation)
+          @filter = args[:filter] if args.key?(:filter)
           @query = args[:query] if args.key?(:query)
           @safe_search = args[:safe_search] if args.key?(:safe_search)
           @serving_config = args[:serving_config] if args.key?(:serving_config)
@@ -4309,6 +4435,11 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Specification of the prompt to use with the model.
+        # Corresponds to the JSON property `modelPromptSpec`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec]
+        attr_accessor :model_prompt_spec
+      
         # Specification of the model.
         # Corresponds to the JSON property `modelSpec`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec]
@@ -4332,8 +4463,29 @@ module Google
           @ignore_non_summary_seeking_query = args[:ignore_non_summary_seeking_query] if args.key?(:ignore_non_summary_seeking_query)
           @include_citations = args[:include_citations] if args.key?(:include_citations)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @model_prompt_spec = args[:model_prompt_spec] if args.key?(:model_prompt_spec)
           @model_spec = args[:model_spec] if args.key?(:model_spec)
           @summary_result_count = args[:summary_result_count] if args.key?(:summary_result_count)
+        end
+      end
+      
+      # Specification of the prompt to use with the model.
+      class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec
+        include Google::Apis::Core::Hashable
+      
+        # Text at the beginning of the prompt that instructs the assistant. Examples are
+        # available in the user guide.
+        # Corresponds to the JSON property `preamble`
+        # @return [String]
+        attr_accessor :preamble
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @preamble = args[:preamble] if args.key?(:preamble)
         end
       end
       
@@ -4341,7 +4493,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec
         include Google::Apis::Core::Hashable
       
-        # The string format of the model version. e.g. stable, latest, etc.
+        # The string format of the model version. e.g. stable, preview, etc.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -4933,6 +5085,11 @@ module Google
         # @return [String]
         attr_accessor :summary_text
       
+        # Summary with metadata information.
+        # Corresponds to the JSON property `summaryWithMetadata`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata]
+        attr_accessor :summary_with_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4942,6 +5099,110 @@ module Google
           @safety_attributes = args[:safety_attributes] if args.key?(:safety_attributes)
           @summary_skipped_reasons = args[:summary_skipped_reasons] if args.key?(:summary_skipped_reasons)
           @summary_text = args[:summary_text] if args.key?(:summary_text)
+          @summary_with_metadata = args[:summary_with_metadata] if args.key?(:summary_with_metadata)
+        end
+      end
+      
+      # Citation info for a segment.
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation
+        include Google::Apis::Core::Hashable
+      
+        # End of the attributed segment, exclusive.
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # Citation sources for the attributed segment.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource>]
+        attr_accessor :sources
+      
+        # Index indicates the start of the segment, measured in bytes/unicode.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @sources = args[:sources] if args.key?(:sources)
+          @start_index = args[:start_index] if args.key?(:start_index)
+        end
+      end
+      
+      # Citation metadata.
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Citations for segments.
+        # Corresponds to the JSON property `citations`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation>]
+        attr_accessor :citations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @citations = args[:citations] if args.key?(:citations)
+        end
+      end
+      
+      # Citation source.
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource
+        include Google::Apis::Core::Hashable
+      
+        # Document reference index from SummaryWithMetadata.references. It is 0-indexed
+        # and the value will be zero if the reference_index is not set explicitly.
+        # Corresponds to the JSON property `referenceIndex`
+        # @return [Fixnum]
+        attr_accessor :reference_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reference_index = args[:reference_index] if args.key?(:reference_index)
+        end
+      end
+      
+      # Document reference.
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference
+        include Google::Apis::Core::Hashable
+      
+        # Required. Document.name of the document. Full resource name of the referenced
+        # document, in the format `projects/*/locations/*/collections/*/dataStores/*/
+        # branches/*/documents/*`.
+        # Corresponds to the JSON property `document`
+        # @return [String]
+        attr_accessor :document
+      
+        # Title of the document.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # GCS or HTTP uri for the document.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document = args[:document] if args.key?(:document)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -4969,6 +5230,37 @@ module Google
         def update!(**args)
           @categories = args[:categories] if args.key?(:categories)
           @scores = args[:scores] if args.key?(:scores)
+        end
+      end
+      
+      # Summary with metadata information.
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Citation metadata.
+        # Corresponds to the JSON property `citationMetadata`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata]
+        attr_accessor :citation_metadata
+      
+        # Document References.
+        # Corresponds to the JSON property `references`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference>]
+        attr_accessor :references
+      
+        # Summary text with no citation information.
+        # Corresponds to the JSON property `summary`
+        # @return [String]
+        attr_accessor :summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @citation_metadata = args[:citation_metadata] if args.key?(:citation_metadata)
+          @references = args[:references] if args.key?(:references)
+          @summary = args[:summary] if args.key?(:summary)
         end
       end
       
