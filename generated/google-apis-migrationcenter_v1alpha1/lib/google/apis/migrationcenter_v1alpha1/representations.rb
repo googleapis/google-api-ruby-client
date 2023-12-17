@@ -1538,6 +1538,7 @@ module Google
       class GuestInstalledApplication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :path, as: 'path'
           property :time, as: 'time'
