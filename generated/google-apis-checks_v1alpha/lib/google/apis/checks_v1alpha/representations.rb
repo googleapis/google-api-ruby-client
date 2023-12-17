@@ -330,6 +330,7 @@ module Google
       class GoogleChecksReportV1alphaAnalyzeUploadRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_binary_file_type, as: 'appBinaryFileType'
           property :code_reference_id, as: 'codeReferenceId'
         end
       end
