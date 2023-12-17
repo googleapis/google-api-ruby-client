@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EffectiveEventThreatDetectionCustomModule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -844,7 +850,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListDescendantEventThreatDetectionCustomModulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDescendantSecurityHealthAnalyticsCustomModulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListEffectiveEventThreatDetectionCustomModulesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1541,6 +1559,18 @@ module Google
         end
       end
       
+      class EffectiveEventThreatDetectionCustomModule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :config, as: 'config'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :enablement_state, as: 'enablementState'
+          property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1558,6 +1588,7 @@ module Google
       class EventThreatDetectionCustomModule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ancestor_module, as: 'ancestorModule'
           hash :config, as: 'config'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
@@ -2772,12 +2803,30 @@ module Google
         end
       end
       
+      class ListDescendantEventThreatDetectionCustomModulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_threat_detection_custom_modules, as: 'eventThreatDetectionCustomModules', class: Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule, decorator: Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListDescendantSecurityHealthAnalyticsCustomModulesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :security_health_analytics_custom_modules, as: 'securityHealthAnalyticsCustomModules', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
       
+        end
+      end
+      
+      class ListEffectiveEventThreatDetectionCustomModulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :effective_event_threat_detection_custom_modules, as: 'effectiveEventThreatDetectionCustomModules', class: Google::Apis::SecuritycenterV1::EffectiveEventThreatDetectionCustomModule, decorator: Google::Apis::SecuritycenterV1::EffectiveEventThreatDetectionCustomModule::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
