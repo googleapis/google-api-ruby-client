@@ -2045,6 +2045,12 @@ module Google
         # @return [String]
         attr_accessor :cron_schedule
       
+        # Optional. Disables automatic creation of compilation results.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
         # Required. Git commit/tag/branch name at which the repository should be
         # compiled. Must exist in the remote repository. Examples: - a commit SHA: `
         # 12ade345` - a tag: `tag1` - a branch name: `branch1`
@@ -2089,6 +2095,7 @@ module Google
         def update!(**args)
           @code_compilation_config = args[:code_compilation_config] if args.key?(:code_compilation_config)
           @cron_schedule = args[:cron_schedule] if args.key?(:cron_schedule)
+          @disabled = args[:disabled] if args.key?(:disabled)
           @git_commitish = args[:git_commitish] if args.key?(:git_commitish)
           @name = args[:name] if args.key?(:name)
           @recent_scheduled_release_records = args[:recent_scheduled_release_records] if args.key?(:recent_scheduled_release_records)
