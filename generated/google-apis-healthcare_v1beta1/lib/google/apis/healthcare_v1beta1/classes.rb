@@ -3008,6 +3008,16 @@ module Google
         attr_accessor :disable_resource_versioning
         alias_method :disable_resource_versioning?, :disable_resource_versioning
       
+        # Optional. Whether to allow the [ImportResourcesHistory] and [ExecuteBundle]
+        # APIs to accept history bundles, and directly insert and overwrite historical
+        # resource versions into the FHIR store. Importing resource histories creates
+        # resource interactions that have occurred in the past that clients might not
+        # allow. If set to false, using history bundles fail with an error.
+        # Corresponds to the JSON property `enableHistoryModifications`
+        # @return [Boolean]
+        attr_accessor :enable_history_modifications
+        alias_method :enable_history_modifications?, :enable_history_modifications
+      
         # Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/
         # fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.
         # updateCreate). This determines if the client can use an Update operation to
@@ -3094,6 +3104,7 @@ module Google
           @default_search_handling_strict = args[:default_search_handling_strict] if args.key?(:default_search_handling_strict)
           @disable_referential_integrity = args[:disable_referential_integrity] if args.key?(:disable_referential_integrity)
           @disable_resource_versioning = args[:disable_resource_versioning] if args.key?(:disable_resource_versioning)
+          @enable_history_modifications = args[:enable_history_modifications] if args.key?(:enable_history_modifications)
           @enable_update_create = args[:enable_update_create] if args.key?(:enable_update_create)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
