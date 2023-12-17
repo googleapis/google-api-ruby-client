@@ -4298,6 +4298,12 @@ module Google
         # @return [String]
         attr_accessor :proto_reference_documentation_uri
       
+        # Optional link to REST reference documentation. Example: https://cloud.google.
+        # com/pubsub/lite/docs/reference/rest
+        # Corresponds to the JSON property `restReferenceDocumentationUri`
+        # @return [String]
+        attr_accessor :rest_reference_documentation_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4314,6 +4320,7 @@ module Google
           @new_issue_uri = args[:new_issue_uri] if args.key?(:new_issue_uri)
           @organization = args[:organization] if args.key?(:organization)
           @proto_reference_documentation_uri = args[:proto_reference_documentation_uri] if args.key?(:proto_reference_documentation_uri)
+          @rest_reference_documentation_uri = args[:rest_reference_documentation_uri] if args.key?(:rest_reference_documentation_uri)
         end
       end
       
