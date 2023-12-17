@@ -4838,6 +4838,7 @@ module Google
           property :agent_scope, as: 'agentScope'
           property :business, as: 'business'
           property :business_description, as: 'businessDescription'
+          property :disable_data_store_fallback, as: 'disableDataStoreFallback'
         end
       end
       
