@@ -10231,6 +10231,13 @@ module Google
         attr_accessor :disable_agent_query_logging
         alias_method :disable_agent_query_logging?, :disable_agent_query_logging
       
+        # Optional. Enable including conversation context during query answer generation.
+        # Supported features: KNOWLEDGE_SEARCH.
+        # Corresponds to the JSON property `enableConversationAugmentedQuery`
+        # @return [Boolean]
+        attr_accessor :enable_conversation_augmented_query
+        alias_method :enable_conversation_augmented_query?, :enable_conversation_augmented_query
+      
         # Automatically iterates all participants and tries to compile suggestions.
         # Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST,
         # KNOWLEDGE_ASSIST.
@@ -10265,6 +10272,7 @@ module Google
           @conversation_model_config = args[:conversation_model_config] if args.key?(:conversation_model_config)
           @conversation_process_config = args[:conversation_process_config] if args.key?(:conversation_process_config)
           @disable_agent_query_logging = args[:disable_agent_query_logging] if args.key?(:disable_agent_query_logging)
+          @enable_conversation_augmented_query = args[:enable_conversation_augmented_query] if args.key?(:enable_conversation_augmented_query)
           @enable_event_based_suggestion = args[:enable_event_based_suggestion] if args.key?(:enable_event_based_suggestion)
           @query_config = args[:query_config] if args.key?(:query_config)
           @suggestion_feature = args[:suggestion_feature] if args.key?(:suggestion_feature)
@@ -13636,6 +13644,11 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeAnswer>]
         attr_accessor :answers
       
+        # The rewritten query used to search knowledge.
+        # Corresponds to the JSON property `rewrittenQuery`
+        # @return [String]
+        attr_accessor :rewritten_query
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13643,6 +13656,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @answers = args[:answers] if args.key?(:answers)
+          @rewritten_query = args[:rewritten_query] if args.key?(:rewritten_query)
         end
       end
       
