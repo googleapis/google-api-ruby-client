@@ -1074,6 +1074,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :env, as: 'env', class: Google::Apis::CloudbuildV2::EnvVar, decorator: Google::Apis::CloudbuildV2::EnvVar::Representation
       
+          collection :volume_mounts, as: 'volumeMounts', class: Google::Apis::CloudbuildV2::VolumeMount, decorator: Google::Apis::CloudbuildV2::VolumeMount::Representation
+      
         end
       end
       

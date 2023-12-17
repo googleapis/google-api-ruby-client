@@ -2409,6 +2409,11 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV2::EnvVar>]
         attr_accessor :env
       
+        # Optional. Pod volumes to mount into the container's filesystem.
+        # Corresponds to the JSON property `volumeMounts`
+        # @return [Array<Google::Apis::CloudbuildV2::VolumeMount>]
+        attr_accessor :volume_mounts
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2416,6 +2421,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @env = args[:env] if args.key?(:env)
+          @volume_mounts = args[:volume_mounts] if args.key?(:volume_mounts)
         end
       end
       
