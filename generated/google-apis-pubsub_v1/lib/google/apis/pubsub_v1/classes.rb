@@ -93,8 +93,17 @@ module Google
         # @return [String]
         attr_accessor :table
       
+        # Optional. When true, use the BigQuery table's schema as the columns to write
+        # to in BigQuery. `use_table_schema` and `use_topic_schema` cannot be enabled at
+        # the same time.
+        # Corresponds to the JSON property `useTableSchema`
+        # @return [Boolean]
+        attr_accessor :use_table_schema
+        alias_method :use_table_schema?, :use_table_schema
+      
         # Optional. When true, use the topic's schema as the columns to write to in
-        # BigQuery, if it exists.
+        # BigQuery, if it exists. `use_topic_schema` and `use_table_schema` cannot be
+        # enabled at the same time.
         # Corresponds to the JSON property `useTopicSchema`
         # @return [Boolean]
         attr_accessor :use_topic_schema
@@ -119,6 +128,7 @@ module Google
           @drop_unknown_fields = args[:drop_unknown_fields] if args.key?(:drop_unknown_fields)
           @state = args[:state] if args.key?(:state)
           @table = args[:table] if args.key?(:table)
+          @use_table_schema = args[:use_table_schema] if args.key?(:use_table_schema)
           @use_topic_schema = args[:use_topic_schema] if args.key?(:use_topic_schema)
           @write_metadata = args[:write_metadata] if args.key?(:write_metadata)
         end

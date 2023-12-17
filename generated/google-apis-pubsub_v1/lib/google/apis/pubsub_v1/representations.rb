@@ -360,6 +360,7 @@ module Google
           property :drop_unknown_fields, as: 'dropUnknownFields'
           property :state, as: 'state'
           property :table, as: 'table'
+          property :use_table_schema, as: 'useTableSchema'
           property :use_topic_schema, as: 'useTopicSchema'
           property :write_metadata, as: 'writeMetadata'
         end
