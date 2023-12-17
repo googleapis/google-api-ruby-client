@@ -1858,6 +1858,11 @@ module Google
       class GuestInstalledApplication
         include Google::Apis::Core::Hashable
       
+        # License strings associated with the installed application.
+        # Corresponds to the JSON property `licenses`
+        # @return [Array<String>]
+        attr_accessor :licenses
+      
         # Installed application name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1889,6 +1894,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @path = args[:path] if args.key?(:path)
           @time = args[:time] if args.key?(:time)
