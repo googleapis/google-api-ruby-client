@@ -541,6 +541,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Determines if envoy will insert internal debug headers into upstream
+        # requests. Other Envoy headers may still be injected. By default, envoy will
+        # not insert any debug headers.
+        # Corresponds to the JSON property `envoyHeaders`
+        # @return [String]
+        attr_accessor :envoy_headers
+      
         # Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a
         # server should apply security policy to inbound (VM to Proxy) initiated
         # connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-
@@ -630,6 +637,7 @@ module Google
           @certificate_urls = args[:certificate_urls] if args.key?(:certificate_urls)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @envoy_headers = args[:envoy_headers] if args.key?(:envoy_headers)
           @gateway_security_policy = args[:gateway_security_policy] if args.key?(:gateway_security_policy)
           @ip_version = args[:ip_version] if args.key?(:ip_version)
           @labels = args[:labels] if args.key?(:labels)
@@ -996,6 +1004,14 @@ module Google
         # @return [Google::Apis::NetworkservicesV1beta1::GrpcRouteFaultInjectionPolicy]
         attr_accessor :fault_injection_policy
       
+        # Optional. Specifies the idle timeout for the selected route. The idle timeout
+        # is defined as the period in which there are no bytes sent or received on
+        # either the upstream or downstream connection. If not set, the default idle
+        # timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        # Corresponds to the JSON property `idleTimeout`
+        # @return [String]
+        attr_accessor :idle_timeout
+      
         # The specifications for retries.
         # Corresponds to the JSON property `retryPolicy`
         # @return [Google::Apis::NetworkservicesV1beta1::GrpcRouteRetryPolicy]
@@ -1027,6 +1043,7 @@ module Google
         def update!(**args)
           @destinations = args[:destinations] if args.key?(:destinations)
           @fault_injection_policy = args[:fault_injection_policy] if args.key?(:fault_injection_policy)
+          @idle_timeout = args[:idle_timeout] if args.key?(:idle_timeout)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
           @stateful_session_affinity = args[:stateful_session_affinity] if args.key?(:stateful_session_affinity)
           @timeout = args[:timeout] if args.key?(:timeout)
@@ -1287,6 +1304,16 @@ module Google
       class HttpRouteDestination
         include Google::Apis::Core::Hashable
       
+        # The specification for modifying HTTP header in HTTP request and HTTP response.
+        # Corresponds to the JSON property `requestHeaderModifier`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteHeaderModifier]
+        attr_accessor :request_header_modifier
+      
+        # The specification for modifying HTTP header in HTTP request and HTTP response.
+        # Corresponds to the JSON property `responseHeaderModifier`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteHeaderModifier]
+        attr_accessor :response_header_modifier
+      
         # The URL of a BackendService to route traffic to.
         # Corresponds to the JSON property `serviceName`
         # @return [String]
@@ -1311,6 +1338,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @request_header_modifier = args[:request_header_modifier] if args.key?(:request_header_modifier)
+          @response_header_modifier = args[:response_header_modifier] if args.key?(:response_header_modifier)
           @service_name = args[:service_name] if args.key?(:service_name)
           @weight = args[:weight] if args.key?(:weight)
         end
@@ -1528,6 +1557,39 @@ module Google
         end
       end
       
+      # Static HTTP response object to be returned.
+      class HttpRouteHttpDirectResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Response body as bytes. Maximum body size is 4096B.
+        # Corresponds to the JSON property `bytesBody`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :bytes_body
+      
+        # Required. Status to return as part of HTTP Response. Must be a positive
+        # integer.
+        # Corresponds to the JSON property `status`
+        # @return [Fixnum]
+        attr_accessor :status
+      
+        # Optional. Response body as a string. Maximum body length is 1024 characters.
+        # Corresponds to the JSON property `stringBody`
+        # @return [String]
+        attr_accessor :string_body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bytes_body = args[:bytes_body] if args.key?(:bytes_body)
+          @status = args[:status] if args.key?(:status)
+          @string_body = args[:string_body] if args.key?(:string_body)
+        end
+      end
+      
       # Specifications to match a query parameter in the request.
       class HttpRouteQueryParameterMatch
         include Google::Apis::Core::Hashable
@@ -1653,6 +1715,12 @@ module Google
         # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteDestination]
         attr_accessor :destination
       
+        # Optional. The percentage of requests to get mirrored to the desired
+        # destination.
+        # Corresponds to the JSON property `mirrorPercent`
+        # @return [Float]
+        attr_accessor :mirror_percent
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1660,6 +1728,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @destination = args[:destination] if args.key?(:destination)
+          @mirror_percent = args[:mirror_percent] if args.key?(:mirror_percent)
         end
       end
       
@@ -1720,6 +1789,11 @@ module Google
         # @return [Array<Google::Apis::NetworkservicesV1beta1::HttpRouteDestination>]
         attr_accessor :destinations
       
+        # Static HTTP response object to be returned.
+        # Corresponds to the JSON property `directResponse`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteHttpDirectResponse]
+        attr_accessor :direct_response
+      
         # The specification for fault injection introduced into traffic to test the
         # resiliency of clients to destination service failure. As part of fault
         # injection, when clients send requests to a destination, delays can be
@@ -1729,6 +1803,14 @@ module Google
         # Corresponds to the JSON property `faultInjectionPolicy`
         # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteFaultInjectionPolicy]
         attr_accessor :fault_injection_policy
+      
+        # Optional. Specifies the idle timeout for the selected route. The idle timeout
+        # is defined as the period in which there are no bytes sent or received on
+        # either the upstream or downstream connection. If not set, the default idle
+        # timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        # Corresponds to the JSON property `idleTimeout`
+        # @return [String]
+        attr_accessor :idle_timeout
       
         # The specification for redirecting traffic.
         # Corresponds to the JSON property `redirect`
@@ -1790,7 +1872,9 @@ module Google
         def update!(**args)
           @cors_policy = args[:cors_policy] if args.key?(:cors_policy)
           @destinations = args[:destinations] if args.key?(:destinations)
+          @direct_response = args[:direct_response] if args.key?(:direct_response)
           @fault_injection_policy = args[:fault_injection_policy] if args.key?(:fault_injection_policy)
+          @idle_timeout = args[:idle_timeout] if args.key?(:idle_timeout)
           @redirect = args[:redirect] if args.key?(:redirect)
           @request_header_modifier = args[:request_header_modifier] if args.key?(:request_header_modifier)
           @request_mirror_policy = args[:request_mirror_policy] if args.key?(:request_mirror_policy)
@@ -2527,6 +2611,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Determines if envoy will insert internal debug headers into upstream
+        # requests. Other Envoy headers may still be injected. By default, envoy will
+        # not insert any debug headers.
+        # Corresponds to the JSON property `envoyHeaders`
+        # @return [String]
+        attr_accessor :envoy_headers
+      
         # Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to
         # listen on the specified port of localhost (127.0.0.1) address. The SIDECAR
         # proxy will expect all traffic to be redirected to this port regardless of its
@@ -2565,6 +2656,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @envoy_headers = args[:envoy_headers] if args.key?(:envoy_headers)
           @interception_port = args[:interception_port] if args.key?(:interception_port)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -3210,6 +3302,14 @@ module Google
         # @return [Array<Google::Apis::NetworkservicesV1beta1::TcpRouteRouteDestination>]
         attr_accessor :destinations
       
+        # Optional. Specifies the idle timeout for the selected route. The idle timeout
+        # is defined as the period in which there are no bytes sent or received on
+        # either the upstream or downstream connection. If not set, the default idle
+        # timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+        # Corresponds to the JSON property `idleTimeout`
+        # @return [String]
+        attr_accessor :idle_timeout
+      
         # Optional. If true, Router will use the destination IP and port of the original
         # connection as the destination of the request. Default is false. Only one of
         # route destinations or original destination can be set.
@@ -3225,6 +3325,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @destinations = args[:destinations] if args.key?(:destinations)
+          @idle_timeout = args[:idle_timeout] if args.key?(:idle_timeout)
           @original_destination = args[:original_destination] if args.key?(:original_destination)
         end
       end
@@ -3449,6 +3550,14 @@ module Google
         # @return [Array<Google::Apis::NetworkservicesV1beta1::TlsRouteRouteDestination>]
         attr_accessor :destinations
       
+        # Optional. Specifies the idle timeout for the selected route. The idle timeout
+        # is defined as the period in which there are no bytes sent or received on
+        # either the upstream or downstream connection. If not set, the default idle
+        # timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        # Corresponds to the JSON property `idleTimeout`
+        # @return [String]
+        attr_accessor :idle_timeout
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3456,6 +3565,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @destinations = args[:destinations] if args.key?(:destinations)
+          @idle_timeout = args[:idle_timeout] if args.key?(:idle_timeout)
         end
       end
       
