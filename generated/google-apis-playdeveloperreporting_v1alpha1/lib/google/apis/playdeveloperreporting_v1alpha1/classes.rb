@@ -636,6 +636,11 @@ module Google
       class GooglePlayDeveloperReportingV1alpha1ErrorReport
         include Google::Apis::Core::Hashable
       
+        # Representations of an app version.
+        # Corresponds to the JSON property `appVersion`
+        # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1AppVersion]
+        attr_accessor :app_version
+      
         # Summary of a device
         # Corresponds to the JSON property `deviceModel`
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1DeviceModelSummary]
@@ -692,6 +697,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_version = args[:app_version] if args.key?(:app_version)
           @device_model = args[:device_model] if args.key?(:device_model)
           @event_time = args[:event_time] if args.key?(:event_time)
           @issue = args[:issue] if args.key?(:issue)
