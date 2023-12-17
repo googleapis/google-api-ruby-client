@@ -733,6 +733,32 @@ module Google
         end
       end
       
+      # Represents a GCS Bucket mounted as a volume.
+      class GoogleCloudRunV2GcsVolumeSource
+        include Google::Apis::Core::Hashable
+      
+        # GCS Bucket name
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # If true, mount the GCS bucket as read-only
+        # Corresponds to the JSON property `readOnly`
+        # @return [Boolean]
+        attr_accessor :read_only
+        alias_method :read_only?, :read_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @read_only = args[:read_only] if args.key?(:read_only)
+        end
+      end
+      
       # GRPCAction describes an action involving a GRPC port.
       class GoogleCloudRunV2GrpcAction
         include Google::Apis::Core::Hashable
@@ -1154,6 +1180,38 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @tasks = args[:tasks] if args.key?(:tasks)
+        end
+      end
+      
+      # Represents an NFS mount.
+      class GoogleCloudRunV2NfsVolumeSource
+        include Google::Apis::Core::Hashable
+      
+        # Path that is exported by the NFS server.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # If true, mount the NFS volume as read only
+        # Corresponds to the JSON property `readOnly`
+        # @return [Boolean]
+        attr_accessor :read_only
+        alias_method :read_only?, :read_only
+      
+        # Hostname or IP address of the NFS server
+        # Corresponds to the JSON property `server`
+        # @return [String]
+        attr_accessor :server
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+          @read_only = args[:read_only] if args.key?(:read_only)
+          @server = args[:server] if args.key?(:server)
         end
       end
       
@@ -2626,10 +2684,20 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2EmptyDirVolumeSource]
         attr_accessor :empty_dir
       
+        # Represents a GCS Bucket mounted as a volume.
+        # Corresponds to the JSON property `gcs`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2GcsVolumeSource]
+        attr_accessor :gcs
+      
         # Required. Volume's name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Represents an NFS mount.
+        # Corresponds to the JSON property `nfs`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2NfsVolumeSource]
+        attr_accessor :nfs
       
         # The secret's value will be presented as the content of a file whose name is
         # defined in the item path. If no items are defined, the name of the file is the
@@ -2646,7 +2714,9 @@ module Google
         def update!(**args)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
           @empty_dir = args[:empty_dir] if args.key?(:empty_dir)
+          @gcs = args[:gcs] if args.key?(:gcs)
           @name = args[:name] if args.key?(:name)
+          @nfs = args[:nfs] if args.key?(:nfs)
           @secret = args[:secret] if args.key?(:secret)
         end
       end

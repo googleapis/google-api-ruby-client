@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2GcsVolumeSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2GrpcAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +155,12 @@ module Google
       end
       
       class GoogleCloudRunV2ListTasksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2NfsVolumeSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -532,6 +544,14 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2GcsVolumeSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :read_only, as: 'readOnly'
+        end
+      end
+      
       class GoogleCloudRunV2GrpcAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -635,6 +655,15 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :tasks, as: 'tasks', class: Google::Apis::RunV2::GoogleCloudRunV2Task, decorator: Google::Apis::RunV2::GoogleCloudRunV2Task::Representation
       
+        end
+      end
+      
+      class GoogleCloudRunV2NfsVolumeSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :read_only, as: 'readOnly'
+          property :server, as: 'server'
         end
       end
       
@@ -953,7 +982,11 @@ module Google
       
           property :empty_dir, as: 'emptyDir', class: Google::Apis::RunV2::GoogleCloudRunV2EmptyDirVolumeSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2EmptyDirVolumeSource::Representation
       
+          property :gcs, as: 'gcs', class: Google::Apis::RunV2::GoogleCloudRunV2GcsVolumeSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2GcsVolumeSource::Representation
+      
           property :name, as: 'name'
+          property :nfs, as: 'nfs', class: Google::Apis::RunV2::GoogleCloudRunV2NfsVolumeSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2NfsVolumeSource::Representation
+      
           property :secret, as: 'secret', class: Google::Apis::RunV2::GoogleCloudRunV2SecretVolumeSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2SecretVolumeSource::Representation
       
         end
