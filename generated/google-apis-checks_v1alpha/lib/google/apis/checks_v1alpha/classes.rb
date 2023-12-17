@@ -106,6 +106,12 @@ module Google
       class GoogleChecksReportV1alphaAnalyzeUploadRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The type of the uploaded app binary. If not provided, the server
+        # assumes APK file for Android and IPA file for iOS.
+        # Corresponds to the JSON property `appBinaryFileType`
+        # @return [String]
+        attr_accessor :app_binary_file_type
+      
         # Optional. Git commit hash or changelist number associated with the upload.
         # Corresponds to the JSON property `codeReferenceId`
         # @return [String]
@@ -117,6 +123,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_binary_file_type = args[:app_binary_file_type] if args.key?(:app_binary_file_type)
           @code_reference_id = args[:code_reference_id] if args.key?(:code_reference_id)
         end
       end
