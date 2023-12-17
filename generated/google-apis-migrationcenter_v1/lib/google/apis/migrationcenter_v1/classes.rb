@@ -1678,6 +1678,11 @@ module Google
         # @return [String]
         attr_accessor :install_time
       
+        # License strings associated with the installed application.
+        # Corresponds to the JSON property `licenses`
+        # @return [Array<String>]
+        attr_accessor :licenses
+      
         # Source path.
         # Corresponds to the JSON property `path`
         # @return [String]
@@ -1701,6 +1706,7 @@ module Google
         def update!(**args)
           @application_name = args[:application_name] if args.key?(:application_name)
           @install_time = args[:install_time] if args.key?(:install_time)
+          @licenses = args[:licenses] if args.key?(:licenses)
           @path = args[:path] if args.key?(:path)
           @vendor = args[:vendor] if args.key?(:vendor)
           @version = args[:version] if args.key?(:version)

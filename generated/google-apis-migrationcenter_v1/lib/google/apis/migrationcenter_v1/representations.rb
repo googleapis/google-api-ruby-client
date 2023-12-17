@@ -1423,6 +1423,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :application_name, as: 'applicationName'
           property :install_time, as: 'installTime'
+          collection :licenses, as: 'licenses'
           property :path, as: 'path'
           property :vendor, as: 'vendor'
           property :version, as: 'version'
