@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Interval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDashboardsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +305,18 @@ module Google
       end
       
       class Scorecard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SectionHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SingleViewGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -633,6 +651,14 @@ module Google
         end
       end
       
+      class Interval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class ListDashboardsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -751,6 +777,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :direction, as: 'direction'
+          property :interval, as: 'interval', class: Google::Apis::MonitoringV1::Interval, decorator: Google::Apis::MonitoringV1::Interval::Representation
+      
           property :num_time_series, as: 'numTimeSeries'
           property :ranking_method, as: 'rankingMethod'
         end
@@ -861,6 +889,20 @@ module Google
       
           property :time_series_query, as: 'timeSeriesQuery', class: Google::Apis::MonitoringV1::TimeSeriesQuery, decorator: Google::Apis::MonitoringV1::TimeSeriesQuery::Representation
       
+        end
+      end
+      
+      class SectionHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :divider_below, as: 'dividerBelow'
+          property :subtitle, as: 'subtitle'
+        end
+      end
+      
+      class SingleViewGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1061,6 +1103,10 @@ module Google
           property :pie_chart, as: 'pieChart', class: Google::Apis::MonitoringV1::PieChart, decorator: Google::Apis::MonitoringV1::PieChart::Representation
       
           property :scorecard, as: 'scorecard', class: Google::Apis::MonitoringV1::Scorecard, decorator: Google::Apis::MonitoringV1::Scorecard::Representation
+      
+          property :section_header, as: 'sectionHeader', class: Google::Apis::MonitoringV1::SectionHeader, decorator: Google::Apis::MonitoringV1::SectionHeader::Representation
+      
+          property :single_view_group, as: 'singleViewGroup', class: Google::Apis::MonitoringV1::SingleViewGroup, decorator: Google::Apis::MonitoringV1::SingleViewGroup::Representation
       
           property :text, as: 'text', class: Google::Apis::MonitoringV1::Text, decorator: Google::Apis::MonitoringV1::Text::Representation
       
