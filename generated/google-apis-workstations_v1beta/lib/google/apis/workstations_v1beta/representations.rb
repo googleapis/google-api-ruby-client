@@ -618,6 +618,7 @@ module Google
           hash :env, as: 'env'
           property :etag, as: 'etag'
           property :host, as: 'host'
+          property :kms_key, as: 'kmsKey'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
