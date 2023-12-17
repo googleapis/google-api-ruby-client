@@ -411,6 +411,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the latest prices for SKUs available to your Cloud Billing account.
+        # @param [String] parent
+        #   Required. To list all Billing Account SKUs, use `-` as the SKU ID. Format: `
+        #   billingAccounts/`billing_account`/skus/-` Note: Specifying an actual SKU
+        #   resource id will return a collection of one Billing Account Price.
+        # @param [String] currency_code
+        #   Optional. ISO-4217 currency code for the price. If not specified, currency of
+        #   billing account will be used.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of billing account price to return. Results may
+        #   return fewer than this value. Default value is 50 and maximum value is 5000.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous ListBillingAccountPrices call to
+        #   retrieve the next page of results. If this field is empty, the first page is
+        #   returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1beta::GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1beta::GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_billing_account_sku_prices(parent, currency_code: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/prices', options)
+          command.response_representation = Google::Apis::CloudbillingV1beta::GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse::Representation
+          command.response_class = Google::Apis::CloudbillingV1beta::GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['currencyCode'] = currency_code unless currency_code.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a publicly listed SKU group.
         # @param [String] name
         #   Required. The name of the SKU group to retrieve. Format: skuGroups/`sku_group`
@@ -574,6 +619,50 @@ module Google
           command.response_class = Google::Apis::CloudbillingV1beta::GoogleCloudBillingPricesV1betaPrice
           command.params['name'] = name unless name.nil?
           command.query['currencyCode'] = currency_code unless currency_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the latest prices for all SKUs.
+        # @param [String] parent
+        #   Required. To list the prices for all SKUs, use `-` as the SKU ID. Format: `
+        #   skus/-` Specifying a specific SKU ID returns a collection with one Price
+        #   object for the SKU.
+        # @param [String] currency_code
+        #   Optional. ISO-4217 currency code for the price. If not specified, USD will be
+        #   used.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of prices to return. Results may return fewer than
+        #   this value. Default value is 50 and maximum value is 5000.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous ListPrices call to retrieve the
+        #   next page of results. If this field is empty, the first page is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1beta::GoogleCloudBillingPricesV1betaListPricesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1beta::GoogleCloudBillingPricesV1betaListPricesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_sku_prices(parent, currency_code: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/prices', options)
+          command.response_representation = Google::Apis::CloudbillingV1beta::GoogleCloudBillingPricesV1betaListPricesResponse::Representation
+          command.response_class = Google::Apis::CloudbillingV1beta::GoogleCloudBillingPricesV1betaListPricesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['currencyCode'] = currency_code unless currency_code.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

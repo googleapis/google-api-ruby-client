@@ -47,11 +47,11 @@ module Google
         end
       end
       
-      # Specifies usage for Cloud CDN egress.
+      # Specifies usage for Cloud CDN Data Transfer.
       class CloudCdnEgressWorkload
         include Google::Apis::Core::Hashable
       
-        # The destination for the cache egress charges.
+        # The destination for the cache data transfer.
         # Corresponds to the JSON property `cacheEgressDestination`
         # @return [String]
         attr_accessor :cache_egress_destination
@@ -109,8 +109,9 @@ module Google
         end
       end
       
-      # The interconnect egress only includes the Interconnect Egress. Please use the
-      # standard egress traffic interface to specify your standard egress usage.
+      # Includes the estimate for Interconnect Data Transfer only. To specify usage
+      # for data transfer between VMs and internet end-points, use the Standard Tier
+      # Internet Data Transfer interface.
       class CloudInterconnectEgressWorkload
         include Google::Apis::Core::Hashable
       
@@ -120,8 +121,8 @@ module Google
         attr_accessor :egress_rate
       
         # Locations in the [Interconnect connection location table](https://cloud.google.
-        # com/vpc/network-pricing#interconnect-pricing). This is the interconnect egress
-        # charges.
+        # com/vpc/network-pricing#interconnect-pricing). These are the Interconnect Data
+        # Transfer charges.
         # Corresponds to the JSON property `interconnectConnectionLocation`
         # @return [String]
         attr_accessor :interconnect_connection_location
@@ -174,10 +175,11 @@ module Google
         end
       end
       
-      # Specification of a network type. Network egress within Google Cloud applies
-      # when you move or copy data from one Cloud Storage bucket to another or when
-      # another Google Cloud service accesses data in your Cloud Storage bucket.This
-      # includes the network egress within Google Cloud and the general network usage.
+      # Specification of a network type. Network data transfer within Google Cloud
+      # applies when you move or copy data from one Cloud Storage bucket to another or
+      # when another Google Cloud service accesses data in your Cloud Storage bucket.
+      # This includes the network data transfer within Google Cloud and the general
+      # network usage.
       class CloudStorageEgressWorkload
         include Google::Apis::Core::Hashable
       
@@ -917,6 +919,32 @@ module Google
           @discount_percent = args[:discount_percent] if args.key?(:discount_percent)
           @discount_scope_type = args[:discount_scope_type] if args.key?(:discount_scope_type)
           @sku_group = args[:sku_group] if args.key?(:sku_group)
+        end
+      end
+      
+      # Response message for ListBillingAccountPrices.
+      class GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The returned billing account prices.
+        # Corresponds to the JSON property `billingAccountPrices`
+        # @return [Array<Google::Apis::CloudbillingV1beta::GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice>]
+        attr_accessor :billing_account_prices
+      
+        # Token that can be sent as `page_token` in the subsequent request to retrieve
+        # the next page. If this field is empty, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_account_prices = args[:billing_account_prices] if args.key?(:billing_account_prices)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1758,6 +1786,32 @@ module Google
         end
       end
       
+      # Response message for ListPrices.
+      class GoogleCloudBillingPricesV1betaListPricesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token that can be sent as `page_token` in the subsequent request to retrieve
+        # the next page. If this field is empty, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The returned publicly listed prices.
+        # Corresponds to the JSON property `prices`
+        # @return [Array<Google::Apis::CloudbillingV1beta::GoogleCloudBillingPricesV1betaPrice>]
+        attr_accessor :prices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @prices = args[:prices] if args.key?(:prices)
+        end
+      end
+      
       # Encapsulates the latest price for a SKU.
       class GoogleCloudBillingPricesV1betaPrice
         include Google::Apis::Core::Hashable
@@ -2204,12 +2258,12 @@ module Google
         end
       end
       
-      # Egress traffic between two regions.
+      # Data transfer between two regions.
       class InterRegionEgress
         include Google::Apis::Core::Hashable
       
-        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress
-        # data goes to.
+        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the data
+        # is transferred to.
         # Corresponds to the JSON property `destinationRegion`
         # @return [String]
         attr_accessor :destination_region
@@ -2219,8 +2273,8 @@ module Google
         # @return [Google::Apis::CloudbillingV1beta::Usage]
         attr_accessor :egress_rate
       
-        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress
-        # data comes from.
+        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the data
+        # is transferred from.
         # Corresponds to the JSON property `sourceRegion`
         # @return [String]
         attr_accessor :source_region
@@ -2237,9 +2291,9 @@ module Google
         end
       end
       
-      # Egress traffic within the same region. When source region and destination
-      # region are in the same zone, using the internal IP addresses, there isn't any
-      # egress charge.
+      # Data transfer within the same region. When the source region and destination
+      # region are in the same zone, using internal IP addresses, there isn't any
+      # charge for data transfer.
       class IntraRegionEgress
         include Google::Apis::Core::Hashable
       
@@ -2397,7 +2451,7 @@ module Google
         end
       end
       
-      # Specify Premium Tier Internet egress networking.
+      # Specify a Premium Tier Internet Data Transfer networking workload.
       class PremiumTierEgressWorkload
         include Google::Apis::Core::Hashable
       
@@ -2411,8 +2465,8 @@ module Google
         # @return [Google::Apis::CloudbillingV1beta::Usage]
         attr_accessor :egress_rate
       
-        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress
-        # data comes from.
+        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the data
+        # comes from.
         # Corresponds to the JSON property `sourceRegion`
         # @return [String]
         attr_accessor :source_region
@@ -2675,7 +2729,7 @@ module Google
         end
       end
       
-      # Specify Standard Tier Internet egress networking.
+      # Specify Standard Tier Internet Data Transfer.
       class StandardTierEgressWorkload
         include Google::Apis::Core::Hashable
       
@@ -2684,8 +2738,8 @@ module Google
         # @return [Google::Apis::CloudbillingV1beta::Usage]
         attr_accessor :egress_rate
       
-        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress
-        # data comes from.
+        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the data
+        # is transferred from.
         # Corresponds to the JSON property `sourceRegion`
         # @return [String]
         attr_accessor :source_region
@@ -2889,18 +2943,18 @@ module Google
         end
       end
       
-      # Specify VM to VM egress.
+      # Specify VM to VM data transfer.
       class VmToVmEgressWorkload
         include Google::Apis::Core::Hashable
       
-        # Egress traffic between two regions.
+        # Data transfer between two regions.
         # Corresponds to the JSON property `interRegionEgress`
         # @return [Google::Apis::CloudbillingV1beta::InterRegionEgress]
         attr_accessor :inter_region_egress
       
-        # Egress traffic within the same region. When source region and destination
-        # region are in the same zone, using the internal IP addresses, there isn't any
-        # egress charge.
+        # Data transfer within the same region. When the source region and destination
+        # region are in the same zone, using internal IP addresses, there isn't any
+        # charge for data transfer.
         # Corresponds to the JSON property `intraRegionEgress`
         # @return [Google::Apis::CloudbillingV1beta::IntraRegionEgress]
         attr_accessor :intra_region_egress
@@ -2923,7 +2977,7 @@ module Google
       class Workload
         include Google::Apis::Core::Hashable
       
-        # Specifies usage for Cloud CDN egress.
+        # Specifies usage for Cloud CDN Data Transfer.
         # Corresponds to the JSON property `cloudCdnEgressWorkload`
         # @return [Google::Apis::CloudbillingV1beta::CloudCdnEgressWorkload]
         attr_accessor :cloud_cdn_egress_workload
@@ -2933,8 +2987,9 @@ module Google
         # @return [Google::Apis::CloudbillingV1beta::CloudCdnWorkload]
         attr_accessor :cloud_cdn_workload
       
-        # The interconnect egress only includes the Interconnect Egress. Please use the
-        # standard egress traffic interface to specify your standard egress usage.
+        # Includes the estimate for Interconnect Data Transfer only. To specify usage
+        # for data transfer between VMs and internet end-points, use the Standard Tier
+        # Internet Data Transfer interface.
         # Corresponds to the JSON property `cloudInterconnectEgressWorkload`
         # @return [Google::Apis::CloudbillingV1beta::CloudInterconnectEgressWorkload]
         attr_accessor :cloud_interconnect_egress_workload
@@ -2944,10 +2999,11 @@ module Google
         # @return [Google::Apis::CloudbillingV1beta::CloudInterconnectWorkload]
         attr_accessor :cloud_interconnect_workload
       
-        # Specification of a network type. Network egress within Google Cloud applies
-        # when you move or copy data from one Cloud Storage bucket to another or when
-        # another Google Cloud service accesses data in your Cloud Storage bucket.This
-        # includes the network egress within Google Cloud and the general network usage.
+        # Specification of a network type. Network data transfer within Google Cloud
+        # applies when you move or copy data from one Cloud Storage bucket to another or
+        # when another Google Cloud service accesses data in your Cloud Storage bucket.
+        # This includes the network data transfer within Google Cloud and the general
+        # network usage.
         # Corresponds to the JSON property `cloudStorageEgressWorkload`
         # @return [Google::Apis::CloudbillingV1beta::CloudStorageEgressWorkload]
         attr_accessor :cloud_storage_egress_workload
@@ -2968,17 +3024,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Specify Premium Tier Internet egress networking.
+        # Specify a Premium Tier Internet Data Transfer networking workload.
         # Corresponds to the JSON property `premiumTierEgressWorkload`
         # @return [Google::Apis::CloudbillingV1beta::PremiumTierEgressWorkload]
         attr_accessor :premium_tier_egress_workload
       
-        # Specify Standard Tier Internet egress networking.
+        # Specify Standard Tier Internet Data Transfer.
         # Corresponds to the JSON property `standardTierEgressWorkload`
         # @return [Google::Apis::CloudbillingV1beta::StandardTierEgressWorkload]
         attr_accessor :standard_tier_egress_workload
       
-        # Specify VM to VM egress.
+        # Specify VM to VM data transfer.
         # Corresponds to the JSON property `vmToVmEgressWorkload`
         # @return [Google::Apis::CloudbillingV1beta::VmToVmEgressWorkload]
         attr_accessor :vm_to_vm_egress_workload

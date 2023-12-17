@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBillingBillingaccountpricesV1betaListPriceAsCeiling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -365,6 +371,12 @@ module Google
       end
       
       class GoogleCloudBillingPricesV1betaAggregationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBillingPricesV1betaListPricesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -897,6 +909,15 @@ module Google
         end
       end
       
+      class GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :billing_account_prices, as: 'billingAccountPrices', class: Google::Apis::CloudbillingV1beta::GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice, decorator: Google::Apis::CloudbillingV1beta::GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudBillingBillingaccountpricesV1betaListPriceAsCeiling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1173,6 +1194,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :interval, as: 'interval'
           property :level, as: 'level'
+        end
+      end
+      
+      class GoogleCloudBillingPricesV1betaListPricesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :prices, as: 'prices', class: Google::Apis::CloudbillingV1beta::GoogleCloudBillingPricesV1betaPrice, decorator: Google::Apis::CloudbillingV1beta::GoogleCloudBillingPricesV1betaPrice::Representation
+      
         end
       end
       
