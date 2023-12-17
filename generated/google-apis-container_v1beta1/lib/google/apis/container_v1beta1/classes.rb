@@ -609,6 +609,20 @@ module Google
         end
       end
       
+      # Autoscaled rollout policy uses cluster autoscaler during blue-green upgrades
+      # to scale both the green and blue pools.
+      class AutoscaledRolloutPolicy
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Deprecated.
       class AvailableVersion
         include Google::Apis::Core::Hashable
@@ -768,6 +782,12 @@ module Google
       class BlueGreenSettings
         include Google::Apis::Core::Hashable
       
+        # Autoscaled rollout policy uses cluster autoscaler during blue-green upgrades
+        # to scale both the green and blue pools.
+        # Corresponds to the JSON property `autoscaledRolloutPolicy`
+        # @return [Google::Apis::ContainerV1beta1::AutoscaledRolloutPolicy]
+        attr_accessor :autoscaled_rollout_policy
+      
         # Time needed after draining entire blue pool. After this period, blue pool will
         # be cleaned up.
         # Corresponds to the JSON property `nodePoolSoakDuration`
@@ -785,6 +805,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autoscaled_rollout_policy = args[:autoscaled_rollout_policy] if args.key?(:autoscaled_rollout_policy)
           @node_pool_soak_duration = args[:node_pool_soak_duration] if args.key?(:node_pool_soak_duration)
           @standard_rollout_policy = args[:standard_rollout_policy] if args.key?(:standard_rollout_policy)
         end
