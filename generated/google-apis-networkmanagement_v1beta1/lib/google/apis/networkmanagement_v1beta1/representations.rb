@@ -681,12 +681,12 @@ module Google
       class LoadBalancerBackendInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :backend_display_name, as: 'backendDisplayName'
           property :backend_service_uri, as: 'backendServiceUri'
-          property :health_check_config_state, as: 'healthCheckConfigState'
+          property :health_check_firewalls_config_state, as: 'healthCheckFirewallsConfigState'
           property :health_check_uri, as: 'healthCheckUri'
           property :instance_group_uri, as: 'instanceGroupUri'
           property :instance_uri, as: 'instanceUri'
+          property :name, as: 'name'
           property :network_endpoint_group_uri, as: 'networkEndpointGroupUri'
         end
       end
