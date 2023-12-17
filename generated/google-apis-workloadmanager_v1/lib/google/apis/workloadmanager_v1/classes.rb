@@ -892,6 +892,11 @@ module Google
         # @return [Google::Apis::WorkloadmanagerV1::SapDiscoveryMetadata]
         attr_accessor :metadata
       
+        # Optional. The GCP project number that this SapSystem belongs to.
+        # Corresponds to the JSON property `projectNumber`
+        # @return [String]
+        attr_accessor :project_number
+      
         # Output only. A combination of database SID, database instance URI and tenant
         # DB name to make a unique identifier per-system.
         # Corresponds to the JSON property `systemId`
@@ -912,6 +917,7 @@ module Google
           @application_layer = args[:application_layer] if args.key?(:application_layer)
           @database_layer = args[:database_layer] if args.key?(:database_layer)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @project_number = args[:project_number] if args.key?(:project_number)
           @system_id = args[:system_id] if args.key?(:system_id)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -931,6 +937,12 @@ module Google
         # @return [Google::Apis::WorkloadmanagerV1::SapDiscoveryComponentDatabaseProperties]
         attr_accessor :database_properties
       
+        # Optional. A list of host URIs that are part of the HA configuration if present.
+        # An empty list indicates the component is not configured for HA.
+        # Corresponds to the JSON property `haHosts`
+        # @return [Array<String>]
+        attr_accessor :ha_hosts
+      
         # Required. Pantheon Project in which the resources reside.
         # Corresponds to the JSON property `hostProject`
         # @return [String]
@@ -947,6 +959,11 @@ module Google
         # @return [String]
         attr_accessor :sid
       
+        # Optional. The detected topology of the component.
+        # Corresponds to the JSON property `topologyType`
+        # @return [String]
+        attr_accessor :topology_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -955,15 +972,24 @@ module Google
         def update!(**args)
           @application_properties = args[:application_properties] if args.key?(:application_properties)
           @database_properties = args[:database_properties] if args.key?(:database_properties)
+          @ha_hosts = args[:ha_hosts] if args.key?(:ha_hosts)
           @host_project = args[:host_project] if args.key?(:host_project)
           @resources = args[:resources] if args.key?(:resources)
           @sid = args[:sid] if args.key?(:sid)
+          @topology_type = args[:topology_type] if args.key?(:topology_type)
         end
       end
       
       # A set of properties describing an SAP Application layer.
       class SapDiscoveryComponentApplicationProperties
         include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates whether this is a Java or ABAP Netweaver instance. true
+        # means it is ABAP, false means it is Java.
+        # Corresponds to the JSON property `abap`
+        # @return [Boolean]
+        attr_accessor :abap
+        alias_method :abap?, :abap
       
         # Required. Type of the application. Netweaver, etc.
         # Corresponds to the JSON property `applicationType`
@@ -974,6 +1000,11 @@ module Google
         # Corresponds to the JSON property `ascsUri`
         # @return [String]
         attr_accessor :ascs_uri
+      
+        # Optional. Kernel version for Netweaver running in the system.
+        # Corresponds to the JSON property `kernelVersion`
+        # @return [String]
+        attr_accessor :kernel_version
       
         # Optional. Resource URI of the recognized shared NFS of the application. May be
         # empty if the application server has only a single node.
@@ -987,8 +1018,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @abap = args[:abap] if args.key?(:abap)
           @application_type = args[:application_type] if args.key?(:application_type)
           @ascs_uri = args[:ascs_uri] if args.key?(:ascs_uri)
+          @kernel_version = args[:kernel_version] if args.key?(:kernel_version)
           @nfs_uri = args[:nfs_uri] if args.key?(:nfs_uri)
         end
       end
@@ -1001,6 +1034,11 @@ module Google
         # Corresponds to the JSON property `databaseType`
         # @return [String]
         attr_accessor :database_type
+      
+        # Optional. The version of the database software running in the system.
+        # Corresponds to the JSON property `databaseVersion`
+        # @return [String]
+        attr_accessor :database_version
       
         # Required. URI of the recognized primary instance of the database.
         # Corresponds to the JSON property `primaryInstanceUri`
@@ -1020,6 +1058,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @database_type = args[:database_type] if args.key?(:database_type)
+          @database_version = args[:database_version] if args.key?(:database_version)
           @primary_instance_uri = args[:primary_instance_uri] if args.key?(:primary_instance_uri)
           @shared_nfs_uri = args[:shared_nfs_uri] if args.key?(:shared_nfs_uri)
         end
@@ -1067,6 +1106,11 @@ module Google
       class SapDiscoveryResource
         include Google::Apis::Core::Hashable
       
+        # A set of properties only present for an instance type resource
+        # Corresponds to the JSON property `instanceProperties`
+        # @return [Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstanceProperties]
+        attr_accessor :instance_properties
+      
         # Optional. A list of resource URIs related to this resource.
         # Corresponds to the JSON property `relatedResources`
         # @return [Array<String>]
@@ -1099,6 +1143,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
           @related_resources = args[:related_resources] if args.key?(:related_resources)
           @resource_kind = args[:resource_kind] if args.key?(:resource_kind)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
@@ -1107,15 +1152,19 @@ module Google
         end
       end
       
-      # A presentation of SAP workload insight. The schema of SAP workloads validation
-      # related data.
-      class SapValidation
+      # A set of properties only present for an instance type resource
+      class SapDiscoveryResourceInstanceProperties
         include Google::Apis::Core::Hashable
       
-        # Optional. A list of SAP validation metrics data.
-        # Corresponds to the JSON property `validationDetails`
-        # @return [Array<Google::Apis::WorkloadmanagerV1::SapValidationValidationDetail>]
-        attr_accessor :validation_details
+        # Optional. A list of instance URIs that are part of a cluster with this one.
+        # Corresponds to the JSON property `clusterInstances`
+        # @return [Array<String>]
+        attr_accessor :cluster_instances
+      
+        # Optional. A virtual hostname of the instance if it has one.
+        # Corresponds to the JSON property `virtualHostname`
+        # @return [String]
+        attr_accessor :virtual_hostname
       
         def initialize(**args)
            update!(**args)
@@ -1123,7 +1172,40 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_instances = args[:cluster_instances] if args.key?(:cluster_instances)
+          @virtual_hostname = args[:virtual_hostname] if args.key?(:virtual_hostname)
+        end
+      end
+      
+      # A presentation of SAP workload insight. The schema of SAP workloads validation
+      # related data.
+      class SapValidation
+        include Google::Apis::Core::Hashable
+      
+        # Required. The project_id of the cloud project that the Insight data comes from.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Optional. A list of SAP validation metrics data.
+        # Corresponds to the JSON property `validationDetails`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::SapValidationValidationDetail>]
+        attr_accessor :validation_details
+      
+        # Optional. The zone of the instance that the Insight data comes from.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
           @validation_details = args[:validation_details] if args.key?(:validation_details)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -1135,6 +1217,12 @@ module Google
         # Corresponds to the JSON property `details`
         # @return [Hash<String,String>]
         attr_accessor :details
+      
+        # Optional. Was there a SAP system detected for this validation type.
+        # Corresponds to the JSON property `isPresent`
+        # @return [Boolean]
+        attr_accessor :is_present
+        alias_method :is_present?, :is_present
       
         # Optional. The SAP system that the validation data is from.
         # Corresponds to the JSON property `sapValidationType`
@@ -1148,6 +1236,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @details = args[:details] if args.key?(:details)
+          @is_present = args[:is_present] if args.key?(:is_present)
           @sap_validation_type = args[:sap_validation_type] if args.key?(:sap_validation_type)
         end
       end

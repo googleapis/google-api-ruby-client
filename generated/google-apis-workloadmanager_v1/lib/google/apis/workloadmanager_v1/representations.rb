@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SapDiscoveryResourceInstanceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SapValidation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -494,6 +500,7 @@ module Google
       
           property :metadata, as: 'metadata', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryMetadata, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryMetadata::Representation
       
+          property :project_number, as: 'projectNumber'
           property :system_id, as: 'systemId'
           property :update_time, as: 'updateTime'
         end
@@ -506,18 +513,22 @@ module Google
       
           property :database_properties, as: 'databaseProperties', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponentDatabaseProperties, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponentDatabaseProperties::Representation
       
+          collection :ha_hosts, as: 'haHosts'
           property :host_project, as: 'hostProject'
           collection :resources, as: 'resources', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryResource, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryResource::Representation
       
           property :sid, as: 'sid'
+          property :topology_type, as: 'topologyType'
         end
       end
       
       class SapDiscoveryComponentApplicationProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :abap, as: 'abap'
           property :application_type, as: 'applicationType'
           property :ascs_uri, as: 'ascsUri'
+          property :kernel_version, as: 'kernelVersion'
           property :nfs_uri, as: 'nfsUri'
         end
       end
@@ -526,6 +537,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :database_type, as: 'databaseType'
+          property :database_version, as: 'databaseVersion'
           property :primary_instance_uri, as: 'primaryInstanceUri'
           property :shared_nfs_uri, as: 'sharedNfsUri'
         end
@@ -544,6 +556,8 @@ module Google
       class SapDiscoveryResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_properties, as: 'instanceProperties', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstanceProperties, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstanceProperties::Representation
+      
           collection :related_resources, as: 'relatedResources'
           property :resource_kind, as: 'resourceKind'
           property :resource_type, as: 'resourceType'
@@ -552,11 +566,21 @@ module Google
         end
       end
       
+      class SapDiscoveryResourceInstanceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cluster_instances, as: 'clusterInstances'
+          property :virtual_hostname, as: 'virtualHostname'
+        end
+      end
+      
       class SapValidation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
           collection :validation_details, as: 'validationDetails', class: Google::Apis::WorkloadmanagerV1::SapValidationValidationDetail, decorator: Google::Apis::WorkloadmanagerV1::SapValidationValidationDetail::Representation
       
+          property :zone, as: 'zone'
         end
       end
       
@@ -564,6 +588,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :details, as: 'details'
+          property :is_present, as: 'isPresent'
           property :sap_validation_type, as: 'sapValidationType'
         end
       end
