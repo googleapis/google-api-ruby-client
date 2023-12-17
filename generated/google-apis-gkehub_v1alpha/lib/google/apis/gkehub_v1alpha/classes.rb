@@ -4885,7 +4885,7 @@ module Google
         # @return [String]
         attr_accessor :pod_affinity
       
-        # Pod anti-affinity enablement.
+        # Pod anti-affinity enablement. Deprecated: use `pod_affinity` instead.
         # Corresponds to the JSON property `podAntiAffinity`
         # @return [Boolean]
         attr_accessor :pod_anti_affinity
