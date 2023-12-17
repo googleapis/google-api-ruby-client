@@ -1116,6 +1116,7 @@ module Google
           property :code_compilation_config, as: 'codeCompilationConfig', class: Google::Apis::DataformV1beta1::CodeCompilationConfig, decorator: Google::Apis::DataformV1beta1::CodeCompilationConfig::Representation
       
           property :cron_schedule, as: 'cronSchedule'
+          property :disabled, as: 'disabled'
           property :git_commitish, as: 'gitCommitish'
           property :name, as: 'name'
           collection :recent_scheduled_release_records, as: 'recentScheduledReleaseRecords', class: Google::Apis::DataformV1beta1::ScheduledReleaseRecord, decorator: Google::Apis::DataformV1beta1::ScheduledReleaseRecord::Representation
