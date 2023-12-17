@@ -1855,7 +1855,8 @@ module Google
       
         # Optional. Rows with null values will automatically fail a rule, unless
         # ignore_null is true. In that case, such null rows are trivially considered
-        # passing.This field is only valid for row-level type rules.
+        # passing.This field is only valid for the following type of rules:
+        # RangeExpectation RegexExpectation SetExpectation UniquenessExpectation
         # Corresponds to the JSON property `ignoreNull`
         # @return [Boolean]
         attr_accessor :ignore_null
