@@ -1480,6 +1480,68 @@ module Google
         end
       end
       
+      # An EffectiveEventThreatDetectionCustomModule is the representation of an Event
+      # Threat Detection custom module at a specified level of the resource hierarchy:
+      # organization, folder, or project. If a custom module is inherited from a
+      # parent organization or folder, the value of the `enablement_state` property in
+      # EffectiveEventThreatDetectionCustomModule is set to the value that is
+      # effective in the parent, instead of `INHERITED`. For example, if the module is
+      # enabled in a parent organization or folder, the effective `enablement_state`
+      # for the module in all child folders or projects is also `enabled`.
+      # EffectiveEventThreatDetectionCustomModule is read-only.
+      class EffectiveEventThreatDetectionCustomModule
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Config for the effective module.
+        # Corresponds to the JSON property `config`
+        # @return [Hash<String,Object>]
+        attr_accessor :config
+      
+        # Output only. The description for the module.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The human readable name to be displayed for the module.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The effective state of enablement for the module at the given
+        # level of the hierarchy.
+        # Corresponds to the JSON property `enablementState`
+        # @return [String]
+        attr_accessor :enablement_state
+      
+        # Output only. The resource name of the effective ETD custom module. Its format
+        # is: * "organizations/`organization`/eventThreatDetectionSettings/
+        # effectiveCustomModules/`module`". * "folders/`folder`/
+        # eventThreatDetectionSettings/effectiveCustomModules/`module`". * "projects/`
+        # project`/eventThreatDetectionSettings/effectiveCustomModules/`module`".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Type for the module. e.g. CONFIGURABLE_BAD_IP.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enablement_state = args[:enablement_state] if args.key?(:enablement_state)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1524,9 +1586,18 @@ module Google
       
       # Represents an instance of an Event Threat Detection custom module, including
       # its full module name, display name, enablement state, and last updated time.
-      # You can create a custom module at the organization level only.
+      # You can create a custom module at the organization, folder, or project level.
+      # Custom modules that you create at the organization or folder level are
+      # inherited by child folders and projects.
       class EventThreatDetectionCustomModule
         include Google::Apis::Core::Hashable
+      
+        # Output only. The closest ancestor module that this module inherits the
+        # enablement state from. The format is the same as the
+        # EventThreatDetectionCustomModule resource name.
+        # Corresponds to the JSON property `ancestorModule`
+        # @return [String]
+        attr_accessor :ancestor_module
       
         # Config for the module. For the resident module, its config value is defined at
         # this level. For the inherited module, its config value is inherited from the
@@ -1580,6 +1651,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ancestor_module = args[:ancestor_module] if args.key?(:ancestor_module)
           @config = args[:config] if args.key?(:config)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -6621,6 +6693,33 @@ module Google
         end
       end
       
+      # Response for listing current and descendant resident Event Threat Detection
+      # custom modules.
+      class ListDescendantEventThreatDetectionCustomModulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Custom modules belonging to the requested parent.
+        # Corresponds to the JSON property `eventThreatDetectionCustomModules`
+        # @return [Array<Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule>]
+        attr_accessor :event_threat_detection_custom_modules
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_threat_detection_custom_modules = args[:event_threat_detection_custom_modules] if args.key?(:event_threat_detection_custom_modules)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for listing descendant Security Health Analytics custom
       # modules.
       class ListDescendantSecurityHealthAnalyticsCustomModulesResponse
@@ -6644,6 +6743,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @security_health_analytics_custom_modules = args[:security_health_analytics_custom_modules] if args.key?(:security_health_analytics_custom_modules)
+        end
+      end
+      
+      # Response for listing EffectiveEventThreatDetectionCustomModules.
+      class ListEffectiveEventThreatDetectionCustomModulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Effective custom modules belonging to the requested parent.
+        # Corresponds to the JSON property `effectiveEventThreatDetectionCustomModules`
+        # @return [Array<Google::Apis::SecuritycenterV1::EffectiveEventThreatDetectionCustomModule>]
+        attr_accessor :effective_event_threat_detection_custom_modules
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_event_threat_detection_custom_modules = args[:effective_event_threat_detection_custom_modules] if args.key?(:effective_event_threat_detection_custom_modules)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
