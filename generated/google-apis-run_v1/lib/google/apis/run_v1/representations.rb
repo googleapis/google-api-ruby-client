@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CsiVolumeSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelExecutionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -130,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EmptyDirVolumeSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +215,24 @@ module Google
       end
       
       class GoogleCloudRunV1Condition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleLongrunningListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleLongrunningOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleLongrunningWaitOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -323,6 +353,12 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NfsVolumeSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -592,6 +628,15 @@ module Google
         end
       end
       
+      class CsiVolumeSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :driver, as: 'driver'
+          property :read_only, as: 'readOnly'
+          hash :volume_attributes, as: 'volumeAttributes'
+        end
+      end
+      
       class CancelExecutionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -751,6 +796,12 @@ module Google
         end
       end
       
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class EmptyDirVolumeSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -884,6 +935,34 @@ module Google
           property :severity, as: 'severity'
           property :status, as: 'status'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleLongrunningListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::RunV1::GoogleLongrunningOperation, decorator: Google::Apis::RunV1::GoogleLongrunningOperation::Representation
+      
+        end
+      end
+      
+      class GoogleLongrunningOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::RunV1::GoogleRpcStatus, decorator: Google::Apis::RunV1::GoogleRpcStatus::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
+      class GoogleLongrunningWaitOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :timeout, as: 'timeout'
         end
       end
       
@@ -1105,6 +1184,15 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class NfsVolumeSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :read_only, as: 'readOnly'
+          property :server, as: 'server'
         end
       end
       
@@ -1520,9 +1608,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config_map, as: 'configMap', class: Google::Apis::RunV1::ConfigMapVolumeSource, decorator: Google::Apis::RunV1::ConfigMapVolumeSource::Representation
       
+          property :csi, as: 'csi', class: Google::Apis::RunV1::CsiVolumeSource, decorator: Google::Apis::RunV1::CsiVolumeSource::Representation
+      
           property :empty_dir, as: 'emptyDir', class: Google::Apis::RunV1::EmptyDirVolumeSource, decorator: Google::Apis::RunV1::EmptyDirVolumeSource::Representation
       
           property :name, as: 'name'
+          property :nfs, as: 'nfs', class: Google::Apis::RunV1::NfsVolumeSource, decorator: Google::Apis::RunV1::NfsVolumeSource::Representation
+      
           property :secret, as: 'secret', class: Google::Apis::RunV1::SecretVolumeSource, decorator: Google::Apis::RunV1::SecretVolumeSource::Representation
       
         end

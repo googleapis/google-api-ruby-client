@@ -216,6 +216,43 @@ module Google
         end
       end
       
+      # Storage volume source using the Container Storage Interface.
+      class CsiVolumeSource
+        include Google::Apis::Core::Hashable
+      
+        # name of the CSI driver for the requested storage system. Cloud Run supports
+        # the following drivers: * gcsfuse.run.googleapis.com : Mount a Cloud Storage
+        # Bucket as a volume.
+        # Corresponds to the JSON property `driver`
+        # @return [String]
+        attr_accessor :driver
+      
+        # If true, mount the volume as read only. Defaults to false.
+        # Corresponds to the JSON property `readOnly`
+        # @return [Boolean]
+        attr_accessor :read_only
+        alias_method :read_only?, :read_only
+      
+        # stores driver specific attributes. For Google Cloud Storage volumes, the
+        # following attributes are supported: * bucketName: the name of the Cloud
+        # Storage bucket to mount. The Cloud Run Service identity must have access to
+        # this bucket.
+        # Corresponds to the JSON property `volumeAttributes`
+        # @return [Hash<String,String>]
+        attr_accessor :volume_attributes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @driver = args[:driver] if args.key?(:driver)
+          @read_only = args[:read_only] if args.key?(:read_only)
+          @volume_attributes = args[:volume_attributes] if args.key?(:volume_attributes)
+        end
+      end
+      
       # Request message for cancelling an execution.
       class CancelExecutionRequest
         include Google::Apis::Core::Hashable
@@ -830,6 +867,22 @@ module Google
         end
       end
       
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when
       # the sandbox is taken down, the data is destroyed with it (it does not persist
       # across sandbox runs).
@@ -1351,6 +1404,114 @@ module Google
           @severity = args[:severity] if args.key?(:severity)
           @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The response message for Operations.ListOperations.
+      class GoogleLongrunningListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::RunV1::GoogleLongrunningOperation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class GoogleLongrunningOperation
+        include Google::Apis::Core::Hashable
+      
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::RunV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # The request message for Operations.WaitOperation.
+      class GoogleLongrunningWaitOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        # The maximum duration to wait before timing out. If left blank, the wait will
+        # be at most the time permitted by the underlying HTTP/RPC protocol. If RPC
+        # context deadline is also specified, the shorter one will be used.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @timeout = args[:timeout] if args.key?(:timeout)
         end
       end
       
@@ -2116,6 +2277,40 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents a persistent volume that will be mounted using NFS. This volume
+      # will be shared between all instances of the Service and data will not be
+      # deleted when the instance is shut down.
+      class NfsVolumeSource
+        include Google::Apis::Core::Hashable
+      
+        # Path that is exported by the NFS server.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # If true, mount the NFS volume as read only. Defaults to false.
+        # Corresponds to the JSON property `readOnly`
+        # @return [Boolean]
+        attr_accessor :read_only
+        alias_method :read_only?, :read_only
+      
+        # Hostname or IP address of the NFS server.
+        # Corresponds to the JSON property `server`
+        # @return [String]
+        attr_accessor :server
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+          @read_only = args[:read_only] if args.key?(:read_only)
+          @server = args[:server] if args.key?(:server)
         end
       end
       
@@ -3813,6 +4008,11 @@ module Google
         # @return [Google::Apis::RunV1::ConfigMapVolumeSource]
         attr_accessor :config_map
       
+        # Storage volume source using the Container Storage Interface.
+        # Corresponds to the JSON property `csi`
+        # @return [Google::Apis::RunV1::CsiVolumeSource]
+        attr_accessor :csi
+      
         # In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when
         # the sandbox is taken down, the data is destroyed with it (it does not persist
         # across sandbox runs).
@@ -3824,6 +4024,13 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Represents a persistent volume that will be mounted using NFS. This volume
+        # will be shared between all instances of the Service and data will not be
+        # deleted when the instance is shut down.
+        # Corresponds to the JSON property `nfs`
+        # @return [Google::Apis::RunV1::NfsVolumeSource]
+        attr_accessor :nfs
       
         # A volume representing a secret stored in Google Secret Manager. The secret's
         # value will be presented as the content of a file whose name is defined in the
@@ -3841,8 +4048,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @config_map = args[:config_map] if args.key?(:config_map)
+          @csi = args[:csi] if args.key?(:csi)
           @empty_dir = args[:empty_dir] if args.key?(:empty_dir)
           @name = args[:name] if args.key?(:name)
+          @nfs = args[:nfs] if args.key?(:nfs)
           @secret = args[:secret] if args.key?(:secret)
         end
       end
