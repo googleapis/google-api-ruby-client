@@ -797,6 +797,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # The operation type.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
         # The original request that started the operation.
         # Corresponds to the JSON property `requestResource`
         # @return [Hash<String,Object>]
@@ -838,6 +843,7 @@ module Google
           @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
           @request_resource = args[:request_resource] if args.key?(:request_resource)
           @source_token = args[:source_token] if args.key?(:source_token)
           @stages = args[:stages] if args.key?(:stages)
@@ -974,6 +980,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # The operation type.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
         # The original request that started the operation.
         # Corresponds to the JSON property `requestResource`
         # @return [Hash<String,Object>]
@@ -1015,6 +1026,7 @@ module Google
           @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
           @request_resource = args[:request_resource] if args.key?(:request_resource)
           @source_token = args[:source_token] if args.key?(:source_token)
           @stages = args[:stages] if args.key?(:stages)
@@ -1151,6 +1163,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # The operation type.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
         # The original request that started the operation.
         # Corresponds to the JSON property `requestResource`
         # @return [Hash<String,Object>]
@@ -1192,6 +1209,7 @@ module Google
           @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
           @request_resource = args[:request_resource] if args.key?(:request_resource)
           @source_token = args[:source_token] if args.key?(:source_token)
           @stages = args[:stages] if args.key?(:stages)
