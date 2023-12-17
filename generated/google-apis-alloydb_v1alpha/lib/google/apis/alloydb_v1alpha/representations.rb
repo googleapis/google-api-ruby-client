@@ -22,6 +22,12 @@ module Google
   module Apis
     module AlloydbV1alpha
       
+      class AuthorizedNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutomatedBackupPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceNetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IntegerRestrictions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +257,18 @@ module Google
       end
       
       class PscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PscInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PscInterfaceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -412,6 +436,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthorizedNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cidr_range, as: 'cidrRange'
+        end
+      end
+      
       class AutomatedBackupPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -548,6 +579,7 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :name, as: 'name'
           collection :pem_certificate_chain, as: 'pemCertificateChain'
+          property :public_ip_address, as: 'publicIpAddress'
         end
       end
       
@@ -687,7 +719,11 @@ module Google
           property :machine_config, as: 'machineConfig', class: Google::Apis::AlloydbV1alpha::MachineConfig, decorator: Google::Apis::AlloydbV1alpha::MachineConfig::Representation
       
           property :name, as: 'name'
+          property :network_config, as: 'networkConfig', class: Google::Apis::AlloydbV1alpha::InstanceNetworkConfig, decorator: Google::Apis::AlloydbV1alpha::InstanceNetworkConfig::Representation
+      
           collection :nodes, as: 'nodes', class: Google::Apis::AlloydbV1alpha::Node, decorator: Google::Apis::AlloydbV1alpha::Node::Representation
+      
+          property :psc_instance_config, as: 'pscInstanceConfig', class: Google::Apis::AlloydbV1alpha::PscInstanceConfig, decorator: Google::Apis::AlloydbV1alpha::PscInstanceConfig::Representation
       
           property :query_insights_config, as: 'queryInsightsConfig', class: Google::Apis::AlloydbV1alpha::QueryInsightsInstanceConfig, decorator: Google::Apis::AlloydbV1alpha::QueryInsightsInstanceConfig::Representation
       
@@ -703,6 +739,15 @@ module Google
           property :update_time, as: 'updateTime'
           property :writable_node, as: 'writableNode', class: Google::Apis::AlloydbV1alpha::Node, decorator: Google::Apis::AlloydbV1alpha::Node::Representation
       
+        end
+      end
+      
+      class InstanceNetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :authorized_external_networks, as: 'authorizedExternalNetworks', class: Google::Apis::AlloydbV1alpha::AuthorizedNetwork, decorator: Google::Apis::AlloydbV1alpha::AuthorizedNetwork::Representation
+      
+          property :enable_public_ip, as: 'enablePublicIp'
         end
       end
       
@@ -851,6 +896,27 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :psc_enabled, as: 'pscEnabled'
+        end
+      end
+      
+      class PscInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_consumer_networks, as: 'allowedConsumerNetworks'
+          collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
+          collection :outgoing_service_attachment_links, as: 'outgoingServiceAttachmentLinks'
+          property :psc_enabled, as: 'pscEnabled'
+          collection :psc_interface_configs, as: 'pscInterfaceConfigs', class: Google::Apis::AlloydbV1alpha::PscInterfaceConfig, decorator: Google::Apis::AlloydbV1alpha::PscInterfaceConfig::Representation
+      
+          property :service_attachment_link, as: 'serviceAttachmentLink'
+        end
+      end
+      
+      class PscInterfaceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consumer_endpoint_ips, as: 'consumerEndpointIps'
+          property :network_attachment, as: 'networkAttachment'
         end
       end
       
