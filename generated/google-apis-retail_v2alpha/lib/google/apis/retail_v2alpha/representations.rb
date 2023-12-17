@@ -2569,6 +2569,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset_id, as: 'datasetId'
+          property :table_id_prefix, as: 'tableIdPrefix'
+          property :table_type, as: 'tableType'
         end
       end
       
