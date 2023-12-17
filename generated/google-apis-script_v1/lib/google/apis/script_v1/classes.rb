@@ -33,6 +33,13 @@ module Google
         # @return [Array<Google::Apis::ScriptV1::File>]
         attr_accessor :files
       
+        # Set to true if called from revert flume to allow deletion of system generated
+        # manifest file while validating content request. This value is false by default.
+        # Corresponds to the JSON property `revertFlumeInvoked`
+        # @return [Boolean]
+        attr_accessor :revert_flume_invoked
+        alias_method :revert_flume_invoked?, :revert_flume_invoked
+      
         # The script project's Drive ID.
         # Corresponds to the JSON property `scriptId`
         # @return [String]
@@ -45,6 +52,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @files = args[:files] if args.key?(:files)
+          @revert_flume_invoked = args[:revert_flume_invoked] if args.key?(:revert_flume_invoked)
           @script_id = args[:script_id] if args.key?(:script_id)
         end
       end
