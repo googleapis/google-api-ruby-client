@@ -31,11 +31,21 @@ module Google
         # @return [Array<String>]
         attr_accessor :connected_projects
       
+        # Output only. The creation time of the connector.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # The range of internal addresses that follows RFC 4632 notation. Example: `10.
         # 132.0.0/28`.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
+      
+        # Output only. The last restart time of the connector.
+        # Corresponds to the JSON property `lastRestartTime`
+        # @return [String]
+        attr_accessor :last_restart_time
       
         # Machine type of VM Instance underlying connector. Default is e2-micro
         # Corresponds to the JSON property `machineType`
@@ -99,7 +109,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connected_projects = args[:connected_projects] if args.key?(:connected_projects)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @last_restart_time = args[:last_restart_time] if args.key?(:last_restart_time)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @max_instances = args[:max_instances] if args.key?(:max_instances)
           @max_throughput = args[:max_throughput] if args.key?(:max_throughput)

@@ -92,7 +92,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :connected_projects, as: 'connectedProjects'
+          property :create_time, as: 'createTime'
           property :ip_cidr_range, as: 'ipCidrRange'
+          property :last_restart_time, as: 'lastRestartTime'
           property :machine_type, as: 'machineType'
           property :max_instances, as: 'maxInstances'
           property :max_throughput, as: 'maxThroughput'
