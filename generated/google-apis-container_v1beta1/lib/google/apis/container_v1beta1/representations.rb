@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscaledRolloutPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AvailableVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1293,6 +1299,12 @@ module Google
         end
       end
       
+      class AutoscaledRolloutPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AvailableVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1340,6 +1352,8 @@ module Google
       class BlueGreenSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaled_rollout_policy, as: 'autoscaledRolloutPolicy', class: Google::Apis::ContainerV1beta1::AutoscaledRolloutPolicy, decorator: Google::Apis::ContainerV1beta1::AutoscaledRolloutPolicy::Representation
+      
           property :node_pool_soak_duration, as: 'nodePoolSoakDuration'
           property :standard_rollout_policy, as: 'standardRolloutPolicy', class: Google::Apis::ContainerV1beta1::StandardRolloutPolicy, decorator: Google::Apis::ContainerV1beta1::StandardRolloutPolicy::Representation
       
