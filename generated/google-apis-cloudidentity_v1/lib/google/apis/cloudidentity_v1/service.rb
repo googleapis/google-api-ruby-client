@@ -1206,9 +1206,11 @@ module Google
         # resource_names) of a `Group` by its `EntityKey`.
         # @param [String] group_key_id
         #   The ID of the entity. For Google-managed entities, the `id` should be the
-        #   email address of an existing group or user. For external-identity-mapped
-        #   entities, the `id` must be a string conforming to the Identity Source's
-        #   requirements. Must be unique within a `namespace`.
+        #   email address of an existing group or user. Email addresses need to adhere to [
+        #   name guidelines for users and groups](https://support.google.com/a/answer/
+        #   9193374). For external-identity-mapped entities, the `id` must be a string
+        #   conforming to the Identity Source's requirements. Must be unique within a `
+        #   namespace`.
         # @param [String] group_key_namespace
         #   The namespace in which the entity exists. If not specified, the `EntityKey`
         #   represents a Google-managed entity such as a Google user or a Google Group. If
@@ -1299,12 +1301,12 @@ module Google
         #   support.google.com/cloudidentity/answer/10070793) * Can contain optional
         #   inclusion operators on `labels` such as `'cloudidentity.googleapis.com/groups.
         #   discussion_forum' in labels`). * Can contain an optional equality operator on `
-        #   domain_name`. e.g. `domain_name == 'abc.com'` * Can contain optional `
-        #   startsWith/contains/equality` operators on `group_key`, e.g. `group_key.
-        #   startsWith('dev')`, `group_key.contains('dev'), group_key == 'dev@abc.com'` *
-        #   Can contain optional `startsWith/contains/equality` operators on `display_name`
-        #   , such as `display_name.startsWith('dev')` , `display_name.contains('dev')`, `
-        #   display_name == 'dev'`
+        #   domain_name`. e.g. `domain_name == 'examplepetstore.com'` * Can contain
+        #   optional `startsWith/contains/equality` operators on `group_key`, e.g. `
+        #   group_key.startsWith('dev')`, `group_key.contains('dev'), group_key == 'dev@
+        #   examplepetstore.com'` * Can contain optional `startsWith/contains/equality`
+        #   operators on `display_name`, such as `display_name.startsWith('dev')` , `
+        #   display_name.contains('dev')`, `display_name == 'dev'`
         # @param [String] view
         #   The level of detail to be returned. If unspecified, defaults to `View.BASIC`.
         # @param [String] fields
@@ -1622,9 +1624,11 @@ module Google
         #   name. Must be of the form `groups/`group``.
         # @param [String] member_key_id
         #   The ID of the entity. For Google-managed entities, the `id` should be the
-        #   email address of an existing group or user. For external-identity-mapped
-        #   entities, the `id` must be a string conforming to the Identity Source's
-        #   requirements. Must be unique within a `namespace`.
+        #   email address of an existing group or user. Email addresses need to adhere to [
+        #   name guidelines for users and groups](https://support.google.com/a/answer/
+        #   9193374). For external-identity-mapped entities, the `id` must be a string
+        #   conforming to the Identity Source's requirements. Must be unique within a `
+        #   namespace`.
         # @param [String] member_key_namespace
         #   The namespace in which the entity exists. If not specified, the `EntityKey`
         #   represents a Google-managed entity such as a Google user or a Google Group. If
