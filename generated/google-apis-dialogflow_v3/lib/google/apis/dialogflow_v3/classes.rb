@@ -3195,6 +3195,13 @@ module Google
         # @return [String]
         attr_accessor :business_description
       
+        # Whether to disable fallback to Data Store search results (in case the LLM
+        # couldn't pick a proper answer). Per default the feature is enabled.
+        # Corresponds to the JSON property `disableDataStoreFallback`
+        # @return [Boolean]
+        attr_accessor :disable_data_store_fallback
+        alias_method :disable_data_store_fallback?, :disable_data_store_fallback
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3206,6 +3213,7 @@ module Google
           @agent_scope = args[:agent_scope] if args.key?(:agent_scope)
           @business = args[:business] if args.key?(:business)
           @business_description = args[:business_description] if args.key?(:business_description)
+          @disable_data_store_fallback = args[:disable_data_store_fallback] if args.key?(:disable_data_store_fallback)
         end
       end
       
