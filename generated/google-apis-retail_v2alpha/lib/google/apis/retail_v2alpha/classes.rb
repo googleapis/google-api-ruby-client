@@ -3993,6 +3993,18 @@ module Google
         # @return [String]
         attr_accessor :dataset_id
       
+        # Required. The prefix of exported BigQuery tables.
+        # Corresponds to the JSON property `tableIdPrefix`
+        # @return [String]
+        attr_accessor :table_id_prefix
+      
+        # Required. Describes the table type. The following values are supported: * `
+        # table`: A BigQuery native table. * `view`: A virtual table defined by a SQL
+        # query.
+        # Corresponds to the JSON property `tableType`
+        # @return [String]
+        attr_accessor :table_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4000,6 +4012,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @table_id_prefix = args[:table_id_prefix] if args.key?(:table_id_prefix)
+          @table_type = args[:table_type] if args.key?(:table_type)
         end
       end
       
