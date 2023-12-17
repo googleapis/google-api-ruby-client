@@ -2101,6 +2101,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_profile_job, as: 'dataProfileJob', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileJobConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileJobConfig::Representation
       
+          property :discovery_config, as: 'discoveryConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig::Representation
+      
           property :inspect_config, as: 'inspectConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig::Representation
       
         end
