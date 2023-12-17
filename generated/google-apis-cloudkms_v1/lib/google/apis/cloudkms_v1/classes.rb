@@ -358,21 +358,43 @@ module Google
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
         # . * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
-        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a user that has been recently deleted. For example, `alice@
-        # example.com?uid=123456789012345678901`. If the user is recovered, this value
-        # reverts to `user:`emailid`` and the recovered user retains the role in the
-        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
-        # (plus unique identifier) representing a service account that has been recently
-        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # users of that domain. For example, `google.com` or `example.com`. * `principal:
+        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
+        # subject_attribute_value``: A single identity in a workforce identity pool. * `
+        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
+        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
+        # attribute_name`/`attribute_value``: All workforce identities with a specific
+        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
+        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
+        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
+        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
+        # googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
+        # All identities in a workload identity pool with a certain attribute. * `
+        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding.
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
+        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
+        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
+        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -2114,7 +2136,7 @@ module Google
         end
       end
       
-      # The public key for a given CryptoKeyVersion. Obtained via GetPublicKey.
+      # The public keys for a given CryptoKeyVersion. Obtained via GetPublicKey.
       class PublicKey
         include Google::Apis::Core::Hashable
       
@@ -2129,24 +2151,25 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The public key, encoded in PEM format. For more information, see the [RFC 7468]
-        # (https://tools.ietf.org/html/rfc7468) sections for [General Considerations](
-        # https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of
-        # Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13).
+        # A public key encoded in PEM format, populated only when GetPublicKey returns
+        # one key. For more information, see the [RFC 7468](https://tools.ietf.org/html/
+        # rfc7468) sections for [General Considerations](https://tools.ietf.org/html/
+        # rfc7468#section-2) and [Textual Encoding of Subject Public Key Info] (https://
+        # tools.ietf.org/html/rfc7468#section-13).
         # Corresponds to the JSON property `pem`
         # @return [String]
         attr_accessor :pem
       
-        # Integrity verification field. A CRC32C checksum of the returned PublicKey.pem.
-        # An integrity check of PublicKey.pem can be performed by computing the CRC32C
-        # checksum of PublicKey.pem and comparing your results to this field. Discard
-        # the response in case of non-matching checksum values, and perform a limited
-        # number of retries. A persistent mismatch may indicate an issue in your
-        # computation of the CRC32C checksum. Note: This field is defined as int64 for
-        # reasons of compatibility across different languages. However, it is a non-
-        # negative integer, which will never exceed 2^32-1, and can be safely
-        # downconverted to uint32 in languages that support this type. NOTE: This field
-        # is in Beta.
+        # Integrity verification field: A CRC32C checksum of the returned PublicKey.pem.
+        # It is only populated when GetPublicKey returns one key. An integrity check of
+        # PublicKey.pem can be performed by computing the CRC32C checksum of PublicKey.
+        # pem and comparing your results to this field. Discard the response in case of
+        # non-matching checksum values, and perform a limited number of retries. A
+        # persistent mismatch may indicate an issue in your computation of the CRC32C
+        # checksum. Note: This field is defined as int64 for reasons of compatibility
+        # across different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type. NOTE: This field is in Beta.
         # Corresponds to the JSON property `pemCrc32c`
         # @return [Fixnum]
         attr_accessor :pem_crc32c
