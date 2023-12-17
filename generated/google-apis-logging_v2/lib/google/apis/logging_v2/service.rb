@@ -1035,10 +1035,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a view on a log bucket. This method replaces the following fields in
-        # the existing view with values from the new view: filter. If an UNAVAILABLE
-        # error is returned, this indicates that system is not in a state where it can
-        # update the view. If this occurs, please try again in a few minutes.
+        # Updates a view on a log bucket. This method replaces the value of the filter
+        # field from the existing view with the corresponding value from the new view.
+        # If an UNAVAILABLE error is returned, this indicates that system is not in a
+        # state where it can update the view. If this occurs, please try again in a few
+        # minutes.
         # @param [String] name
         #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
@@ -1307,8 +1308,8 @@ module Google
         #   component of the saved query's resource name.If the saved_query_id is not
         #   provided, the system will generate an alphanumeric ID.The saved_query_id is
         #   limited to 100 characters and can include only the following characters: upper
-        #   and lower-case alphanumeric characters, underscores, hyphens, and periods.
-        #   First character has to be alphanumeric.
+        #   and lower-case alphanumeric characters, underscores, hyphens, periods.First
+        #   character has to be alphanumeric.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1685,9 +1686,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter.The updated sink might
-        # also have a new writer_identity; see the unique_writer_identity field.
+        # Updates a sink. This method replaces the values of the destination and filter
+        # fields of the existing sink with the corresponding values from the new sink.
+        # The updated sink might also have a new writer_identity; see the
+        # unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
@@ -1753,9 +1755,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter.The updated sink might
-        # also have a new writer_identity; see the unique_writer_identity field.
+        # Updates a sink. This method replaces the values of the destination and filter
+        # fields of the existing sink with the corresponding values from the new sink.
+        # The updated sink might also have a new writer_identity; see the
+        # unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
@@ -2222,14 +2225,15 @@ module Google
         end
         
         # Updates the settings for the given resource. This method applies to all
-        # feature configurations for organization and folders.UpdateSettings will fail
-        # if 1) kms_key_name is invalid, 2) the associated service account does not have
-        # the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
-        # key, 3) access to the key is disabled, 4) storage_location is not supported by
-        # Logging, 5) storage_location violates the location OrgPolicy, or 6)
-        # default_sink_config is set but has an unspecified filter write mode.See
-        # Configure default settings for organizations and folders (https://cloud.google.
-        # com/logging/docs/default-settings) for more information.
+        # feature configurations for organization and folders.UpdateSettings fails when
+        # any of the following are true: The value of storage_location either isn't
+        # supported by Logging or violates the location OrgPolicy. The
+        # default_sink_config field is set, but it has an unspecified filter write mode.
+        # The value of kms_key_name is invalid. The associated service account doesn't
+        # have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for
+        # the key. Access to the key is disabled.See Configure default settings for
+        # organizations and folders (https://cloud.google.com/logging/docs/default-
+        # settings) for more information.
         # @param [String] name
         #   Required. The resource name for the settings to update. "organizations/[
         #   ORGANIZATION_ID]/settings" For example:"organizations/12345/settings"
@@ -3177,10 +3181,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a view on a log bucket. This method replaces the following fields in
-        # the existing view with values from the new view: filter. If an UNAVAILABLE
-        # error is returned, this indicates that system is not in a state where it can
-        # update the view. If this occurs, please try again in a few minutes.
+        # Updates a view on a log bucket. This method replaces the value of the filter
+        # field from the existing view with the corresponding value from the new view.
+        # If an UNAVAILABLE error is returned, this indicates that system is not in a
+        # state where it can update the view. If this occurs, please try again in a few
+        # minutes.
         # @param [String] name
         #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
@@ -3449,8 +3454,8 @@ module Google
         #   component of the saved query's resource name.If the saved_query_id is not
         #   provided, the system will generate an alphanumeric ID.The saved_query_id is
         #   limited to 100 characters and can include only the following characters: upper
-        #   and lower-case alphanumeric characters, underscores, hyphens, and periods.
-        #   First character has to be alphanumeric.
+        #   and lower-case alphanumeric characters, underscores, hyphens, periods.First
+        #   character has to be alphanumeric.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3827,9 +3832,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter.The updated sink might
-        # also have a new writer_identity; see the unique_writer_identity field.
+        # Updates a sink. This method replaces the values of the destination and filter
+        # fields of the existing sink with the corresponding values from the new sink.
+        # The updated sink might also have a new writer_identity; see the
+        # unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
@@ -3895,9 +3901,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter.The updated sink might
-        # also have a new writer_identity; see the unique_writer_identity field.
+        # Updates a sink. This method replaces the values of the destination and filter
+        # fields of the existing sink with the corresponding values from the new sink.
+        # The updated sink might also have a new writer_identity; see the
+        # unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
@@ -4677,10 +4684,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a view on a log bucket. This method replaces the following fields in
-        # the existing view with values from the new view: filter. If an UNAVAILABLE
-        # error is returned, this indicates that system is not in a state where it can
-        # update the view. If this occurs, please try again in a few minutes.
+        # Updates a view on a log bucket. This method replaces the value of the filter
+        # field from the existing view with the corresponding value from the new view.
+        # If an UNAVAILABLE error is returned, this indicates that system is not in a
+        # state where it can update the view. If this occurs, please try again in a few
+        # minutes.
         # @param [String] name
         #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
@@ -5045,11 +5053,11 @@ module Google
         # Updates the Log Router CMEK settings for the given resource.Note: CMEK for the
         # Log Router can currently only be configured for Google Cloud organizations.
         # Once configured, it applies to all projects and folders in the Google Cloud
-        # organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2)
-        # the associated service account does not have the required roles/cloudkms.
-        # cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key
-        # is disabled.See Enabling CMEK for Log Router (https://cloud.google.com/logging/
-        # docs/routing/managed-encryption) for more information.
+        # organization.UpdateCmekSettings fails when any of the following are true: The
+        # value of kms_key_name is invalid. The associated service account doesn't have
+        # the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
+        # key. Access to the key is disabled.See Enabling CMEK for Log Router (https://
+        # cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         # @param [String] name
         #   Required. The resource name for the CMEK settings to update. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -5095,14 +5103,15 @@ module Google
         end
         
         # Updates the settings for the given resource. This method applies to all
-        # feature configurations for organization and folders.UpdateSettings will fail
-        # if 1) kms_key_name is invalid, 2) the associated service account does not have
-        # the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
-        # key, 3) access to the key is disabled, 4) storage_location is not supported by
-        # Logging, 5) storage_location violates the location OrgPolicy, or 6)
-        # default_sink_config is set but has an unspecified filter write mode.See
-        # Configure default settings for organizations and folders (https://cloud.google.
-        # com/logging/docs/default-settings) for more information.
+        # feature configurations for organization and folders.UpdateSettings fails when
+        # any of the following are true: The value of storage_location either isn't
+        # supported by Logging or violates the location OrgPolicy. The
+        # default_sink_config field is set, but it has an unspecified filter write mode.
+        # The value of kms_key_name is invalid. The associated service account doesn't
+        # have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for
+        # the key. Access to the key is disabled.See Configure default settings for
+        # organizations and folders (https://cloud.google.com/logging/docs/default-
+        # settings) for more information.
         # @param [String] name
         #   Required. The resource name for the settings to update. "organizations/[
         #   ORGANIZATION_ID]/settings" For example:"organizations/12345/settings"
@@ -6050,10 +6059,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a view on a log bucket. This method replaces the following fields in
-        # the existing view with values from the new view: filter. If an UNAVAILABLE
-        # error is returned, this indicates that system is not in a state where it can
-        # update the view. If this occurs, please try again in a few minutes.
+        # Updates a view on a log bucket. This method replaces the value of the filter
+        # field from the existing view with the corresponding value from the new view.
+        # If an UNAVAILABLE error is returned, this indicates that system is not in a
+        # state where it can update the view. If this occurs, please try again in a few
+        # minutes.
         # @param [String] name
         #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
@@ -6322,8 +6332,8 @@ module Google
         #   component of the saved query's resource name.If the saved_query_id is not
         #   provided, the system will generate an alphanumeric ID.The saved_query_id is
         #   limited to 100 characters and can include only the following characters: upper
-        #   and lower-case alphanumeric characters, underscores, hyphens, and periods.
-        #   First character has to be alphanumeric.
+        #   and lower-case alphanumeric characters, underscores, hyphens, periods.First
+        #   character has to be alphanumeric.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6700,9 +6710,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter.The updated sink might
-        # also have a new writer_identity; see the unique_writer_identity field.
+        # Updates a sink. This method replaces the values of the destination and filter
+        # fields of the existing sink with the corresponding values from the new sink.
+        # The updated sink might also have a new writer_identity; see the
+        # unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
@@ -6768,9 +6779,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter.The updated sink might
-        # also have a new writer_identity; see the unique_writer_identity field.
+        # Updates a sink. This method replaces the values of the destination and filter
+        # fields of the existing sink with the corresponding values from the new sink.
+        # The updated sink might also have a new writer_identity; see the
+        # unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
@@ -7822,10 +7834,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a view on a log bucket. This method replaces the following fields in
-        # the existing view with values from the new view: filter. If an UNAVAILABLE
-        # error is returned, this indicates that system is not in a state where it can
-        # update the view. If this occurs, please try again in a few minutes.
+        # Updates a view on a log bucket. This method replaces the value of the filter
+        # field from the existing view with the corresponding value from the new view.
+        # If an UNAVAILABLE error is returned, this indicates that system is not in a
+        # state where it can update the view. If this occurs, please try again in a few
+        # minutes.
         # @param [String] name
         #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
@@ -8094,8 +8107,8 @@ module Google
         #   component of the saved query's resource name.If the saved_query_id is not
         #   provided, the system will generate an alphanumeric ID.The saved_query_id is
         #   limited to 100 characters and can include only the following characters: upper
-        #   and lower-case alphanumeric characters, underscores, hyphens, and periods.
-        #   First character has to be alphanumeric.
+        #   and lower-case alphanumeric characters, underscores, hyphens, periods.First
+        #   character has to be alphanumeric.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8646,9 +8659,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter.The updated sink might
-        # also have a new writer_identity; see the unique_writer_identity field.
+        # Updates a sink. This method replaces the values of the destination and filter
+        # fields of the existing sink with the corresponding values from the new sink.
+        # The updated sink might also have a new writer_identity; see the
+        # unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
@@ -8714,9 +8728,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter.The updated sink might
-        # also have a new writer_identity; see the unique_writer_identity field.
+        # Updates a sink. This method replaces the values of the destination and filter
+        # fields of the existing sink with the corresponding values from the new sink.
+        # The updated sink might also have a new writer_identity; see the
+        # unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
@@ -8951,9 +8966,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter.The updated sink might
-        # also have a new writer_identity; see the unique_writer_identity field.
+        # Updates a sink. This method replaces the values of the destination and filter
+        # fields of the existing sink with the corresponding values from the new sink.
+        # The updated sink might also have a new writer_identity; see the
+        # unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
@@ -9100,11 +9116,11 @@ module Google
         # Updates the Log Router CMEK settings for the given resource.Note: CMEK for the
         # Log Router can currently only be configured for Google Cloud organizations.
         # Once configured, it applies to all projects and folders in the Google Cloud
-        # organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2)
-        # the associated service account does not have the required roles/cloudkms.
-        # cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key
-        # is disabled.See Enabling CMEK for Log Router (https://cloud.google.com/logging/
-        # docs/routing/managed-encryption) for more information.
+        # organization.UpdateCmekSettings fails when any of the following are true: The
+        # value of kms_key_name is invalid. The associated service account doesn't have
+        # the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
+        # key. Access to the key is disabled.See Enabling CMEK for Log Router (https://
+        # cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         # @param [String] name
         #   Required. The resource name for the CMEK settings to update. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -9150,14 +9166,15 @@ module Google
         end
         
         # Updates the settings for the given resource. This method applies to all
-        # feature configurations for organization and folders.UpdateSettings will fail
-        # if 1) kms_key_name is invalid, 2) the associated service account does not have
-        # the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
-        # key, 3) access to the key is disabled, 4) storage_location is not supported by
-        # Logging, 5) storage_location violates the location OrgPolicy, or 6)
-        # default_sink_config is set but has an unspecified filter write mode.See
-        # Configure default settings for organizations and folders (https://cloud.google.
-        # com/logging/docs/default-settings) for more information.
+        # feature configurations for organization and folders.UpdateSettings fails when
+        # any of the following are true: The value of storage_location either isn't
+        # supported by Logging or violates the location OrgPolicy. The
+        # default_sink_config field is set, but it has an unspecified filter write mode.
+        # The value of kms_key_name is invalid. The associated service account doesn't
+        # have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for
+        # the key. Access to the key is disabled.See Configure default settings for
+        # organizations and folders (https://cloud.google.com/logging/docs/default-
+        # settings) for more information.
         # @param [String] name
         #   Required. The resource name for the settings to update. "organizations/[
         #   ORGANIZATION_ID]/settings" For example:"organizations/12345/settings"
