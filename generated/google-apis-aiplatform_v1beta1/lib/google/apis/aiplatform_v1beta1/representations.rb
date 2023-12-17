@@ -22,6 +22,174 @@ module Google
   module Apis
     module AiplatformV1beta1
       
+      class CloudAiLargeModelsVisionEmbedVideoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionFilteredText
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionImageRaiScores
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionMedia
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionMediaGenerateContentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionNamedBoundingBox
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionRaiInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionReasonVideoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionReasonVideoResponseTextResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionRelativeTemporalPartition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionSemanticFilterResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionVideo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServiceCandidate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServiceCitation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServiceCitationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServiceContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServiceFunctionCall
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServiceFunctionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServiceGenerateMultiModalResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServicePart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServicePartBlob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServicePartFileData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServicePartVideoMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServicePromptFeedback
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServiceSafetyRating
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServiceUsageMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleApiHttpBody
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4744,6 +4912,302 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IntelligenceCloudAutomlXpsMetricEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IntelligenceCloudAutomlXpsMetricEntryLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IntelligenceCloudAutomlXpsReportingMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionEmbedVideoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :video_embeddings, as: 'videoEmbeddings'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionFilteredText
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :confidence, as: 'confidence'
+          property :prompt, as: 'prompt'
+          property :score, as: 'score'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :generated_samples, as: 'generatedSamples', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionMedia, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionMedia::Representation
+      
+          property :rai_media_filtered_count, as: 'raiMediaFilteredCount'
+          collection :rai_media_filtered_reasons, as: 'raiMediaFilteredReasons'
+          property :rai_text_filtered_reason, as: 'raiTextFilteredReason', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionFilteredText, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionFilteredText::Representation
+      
+        end
+      end
+      
+      class CloudAiLargeModelsVisionImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding, as: 'encoding'
+          property :image, :base64 => true, as: 'image'
+          property :image_rai_scores, as: 'imageRaiScores', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionImageRaiScores, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionImageRaiScores::Representation
+      
+          property :rai_info, as: 'raiInfo', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionRaiInfo, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionRaiInfo::Representation
+      
+          property :semantic_filter_response, as: 'semanticFilterResponse', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionSemanticFilterResponse, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionSemanticFilterResponse::Representation
+      
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionImageRaiScores
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agile_watermark_detection_score, as: 'agileWatermarkDetectionScore'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionMedia
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image, as: 'image', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionImage, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionImage::Representation
+      
+          property :video, as: 'video', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionVideo, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionVideo::Representation
+      
+        end
+      end
+      
+      class CloudAiLargeModelsVisionMediaGenerateContentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :response, as: 'response', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceGenerateMultiModalResponse, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceGenerateMultiModalResponse::Representation
+      
+        end
+      end
+      
+      class CloudAiLargeModelsVisionNamedBoundingBox
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :classes, as: 'classes'
+          collection :entities, as: 'entities'
+          collection :scores, as: 'scores'
+          property :x1, as: 'x1'
+          property :x2, as: 'x2'
+          property :y1, as: 'y1'
+          property :y2, as: 'y2'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionRaiInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rai_categories, as: 'raiCategories'
+          collection :scores, as: 'scores'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionReasonVideoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :responses, as: 'responses', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionReasonVideoResponseTextResponse, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionReasonVideoResponseTextResponse::Representation
+      
+        end
+      end
+      
+      class CloudAiLargeModelsVisionReasonVideoResponseTextResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :relative_temporal_partition, as: 'relativeTemporalPartition', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionRelativeTemporalPartition, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionRelativeTemporalPartition::Representation
+      
+          property :text, as: 'text'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionRelativeTemporalPartition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_offset, as: 'endOffset'
+          property :start_offset, as: 'startOffset'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionSemanticFilterResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :named_bounding_boxes, as: 'namedBoundingBoxes', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionNamedBoundingBox, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionNamedBoundingBox::Representation
+      
+          property :passed_semantic_filter, as: 'passedSemanticFilter'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionVideo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+          property :video, :base64 => true, as: 'video'
+        end
+      end
+      
+      class CloudAiNlLlmProtoServiceCandidate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :citation_metadata, as: 'citationMetadata', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceCitationMetadata, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceCitationMetadata::Representation
+      
+          property :content, as: 'content', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceContent, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceContent::Representation
+      
+          property :finish_message, as: 'finishMessage'
+          property :finish_reason, as: 'finishReason'
+          property :index, as: 'index'
+          collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceSafetyRating, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceSafetyRating::Representation
+      
+        end
+      end
+      
+      class CloudAiNlLlmProtoServiceCitation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_index, as: 'endIndex'
+          property :license, as: 'license'
+          property :publication_date, as: 'publicationDate', class: Google::Apis::AiplatformV1beta1::GoogleTypeDate, decorator: Google::Apis::AiplatformV1beta1::GoogleTypeDate::Representation
+      
+          property :start_index, as: 'startIndex'
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class CloudAiNlLlmProtoServiceCitationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :citations, as: 'citations', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceCitation, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceCitation::Representation
+      
+        end
+      end
+      
+      class CloudAiNlLlmProtoServiceContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :parts, as: 'parts', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePart, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePart::Representation
+      
+          property :role, as: 'role'
+        end
+      end
+      
+      class CloudAiNlLlmProtoServiceFunctionCall
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :args, as: 'args'
+          property :name, as: 'name'
+        end
+      end
+      
+      class CloudAiNlLlmProtoServiceFunctionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
+      class CloudAiNlLlmProtoServiceGenerateMultiModalResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :candidates, as: 'candidates', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceCandidate, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceCandidate::Representation
+      
+          property :prompt_feedback, as: 'promptFeedback', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePromptFeedback, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePromptFeedback::Representation
+      
+          property :reporting_metrics, as: 'reportingMetrics', class: Google::Apis::AiplatformV1beta1::IntelligenceCloudAutomlXpsReportingMetrics, decorator: Google::Apis::AiplatformV1beta1::IntelligenceCloudAutomlXpsReportingMetrics::Representation
+      
+          property :usage_metadata, as: 'usageMetadata', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceUsageMetadata, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceUsageMetadata::Representation
+      
+        end
+      end
+      
+      class CloudAiNlLlmProtoServicePart
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_data, as: 'fileData', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartFileData, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartFileData::Representation
+      
+          property :function_call, as: 'functionCall', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceFunctionCall, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceFunctionCall::Representation
+      
+          property :function_response, as: 'functionResponse', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceFunctionResponse, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceFunctionResponse::Representation
+      
+          property :inline_data, as: 'inlineData', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartBlob, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartBlob::Representation
+      
+          property :text, as: 'text'
+          property :video_metadata, as: 'videoMetadata', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartVideoMetadata, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartVideoMetadata::Representation
+      
+        end
+      end
+      
+      class CloudAiNlLlmProtoServicePartBlob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          property :mime_type, as: 'mimeType'
+          property :original_file_data, as: 'originalFileData', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartFileData, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartFileData::Representation
+      
+        end
+      end
+      
+      class CloudAiNlLlmProtoServicePartFileData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_uri, as: 'fileUri'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class CloudAiNlLlmProtoServicePartVideoMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_offset, as: 'endOffset'
+          property :start_offset, as: 'startOffset'
+        end
+      end
+      
+      class CloudAiNlLlmProtoServicePromptFeedback
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_reason, as: 'blockReason'
+          property :block_reason_message, as: 'blockReasonMessage'
+          collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceSafetyRating, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceSafetyRating::Representation
+      
+        end
+      end
+      
+      class CloudAiNlLlmProtoServiceSafetyRating
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blocked, as: 'blocked'
+          property :category, as: 'category'
+          property :probability, as: 'probability'
+        end
+      end
+      
+      class CloudAiNlLlmProtoServiceUsageMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :candidates_token_count, as: 'candidatesTokenCount'
+          property :prompt_token_count, as: 'promptTokenCount'
+          property :total_token_count, as: 'totalTokenCount'
+        end
+      end
+      
       class GoogleApiHttpBody
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5747,6 +6211,7 @@ module Google
           property :enable_web_access, as: 'enableWebAccess'
           property :experiment, as: 'experiment'
           property :experiment_run, as: 'experimentRun'
+          collection :models, as: 'models'
           property :network, as: 'network'
           property :persistent_resource_id, as: 'persistentResourceId'
           property :protected_artifact_location_id, as: 'protectedArtifactLocationId'
@@ -7239,12 +7704,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :candidate_count, as: 'candidateCount'
-          property :echo, as: 'echo'
-          property :frequency_penalty, as: 'frequencyPenalty'
-          hash :logit_bias, as: 'logitBias'
-          property :logprobs, as: 'logprobs'
           property :max_output_tokens, as: 'maxOutputTokens'
-          property :presence_penalty, as: 'presencePenalty'
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
           property :top_k, as: 'topK'
@@ -9244,6 +9704,7 @@ module Google
           property :supported_actions, as: 'supportedActions', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToAction, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToAction::Representation
       
           property :version_id, as: 'versionId'
+          property :version_state, as: 'versionState'
         end
       end
       
@@ -9286,6 +9747,7 @@ module Google
           property :large_model_reference, as: 'largeModelReference', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1LargeModelReference, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1LargeModelReference::Representation
       
           property :model_display_name, as: 'modelDisplayName'
+          property :public_artifact_uri, as: 'publicArtifactUri'
           property :shared_resources, as: 'sharedResources'
           property :title, as: 'title'
         end
@@ -9329,8 +9791,10 @@ module Google
       class GoogleCloudAiplatformV1beta1PublisherModelResourceReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           property :resource_name, as: 'resourceName'
           property :uri, as: 'uri'
+          property :use_case, as: 'useCase'
         end
       end
       
@@ -12573,6 +13037,35 @@ module Google
           property :currency_code, as: 'currencyCode'
           property :nanos, as: 'nanos'
           property :units, :numeric_string => true, as: 'units'
+        end
+      end
+      
+      class IntelligenceCloudAutomlXpsMetricEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :argentum_metric_id, as: 'argentumMetricId'
+          property :double_value, as: 'doubleValue'
+          property :int64_value, :numeric_string => true, as: 'int64Value'
+          property :metric_name, as: 'metricName'
+          collection :system_labels, as: 'systemLabels', class: Google::Apis::AiplatformV1beta1::IntelligenceCloudAutomlXpsMetricEntryLabel, decorator: Google::Apis::AiplatformV1beta1::IntelligenceCloudAutomlXpsMetricEntryLabel::Representation
+      
+        end
+      end
+      
+      class IntelligenceCloudAutomlXpsMetricEntryLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_name, as: 'labelName'
+          property :label_value, as: 'labelValue'
+        end
+      end
+      
+      class IntelligenceCloudAutomlXpsReportingMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_training_duration, as: 'effectiveTrainingDuration'
+          collection :metric_entries, as: 'metricEntries', class: Google::Apis::AiplatformV1beta1::IntelligenceCloudAutomlXpsMetricEntry, decorator: Google::Apis::AiplatformV1beta1::IntelligenceCloudAutomlXpsMetricEntry::Representation
+      
         end
       end
     end

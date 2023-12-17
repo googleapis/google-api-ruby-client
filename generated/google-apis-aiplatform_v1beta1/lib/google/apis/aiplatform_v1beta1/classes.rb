@@ -22,6 +22,884 @@ module Google
   module Apis
     module AiplatformV1beta1
       
+      # Video embedding response.
+      class CloudAiLargeModelsVisionEmbedVideoResponse
+        include Google::Apis::Core::Hashable
+      
+        # The embedding vector for the video.
+        # Corresponds to the JSON property `videoEmbeddings`
+        # @return [Array<Object>]
+        attr_accessor :video_embeddings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @video_embeddings = args[:video_embeddings] if args.key?(:video_embeddings)
+        end
+      end
+      
+      # Details for filtered input text.
+      class CloudAiLargeModelsVisionFilteredText
+        include Google::Apis::Core::Hashable
+      
+        # Confidence level
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Filtered category
+        # Corresponds to the JSON property `confidence`
+        # @return [String]
+        attr_accessor :confidence
+      
+        # Input prompt
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
+      
+        # Score for category
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @prompt = args[:prompt] if args.key?(:prompt)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Generate video response.
+      class CloudAiLargeModelsVisionGenerateVideoResponse
+        include Google::Apis::Core::Hashable
+      
+        # The generates samples.
+        # Corresponds to the JSON property `generatedSamples`
+        # @return [Array<Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionMedia>]
+        attr_accessor :generated_samples
+      
+        # Returns if any videos were filtered due to RAI policies.
+        # Corresponds to the JSON property `raiMediaFilteredCount`
+        # @return [Fixnum]
+        attr_accessor :rai_media_filtered_count
+      
+        # Returns rai failure reasons if any.
+        # Corresponds to the JSON property `raiMediaFilteredReasons`
+        # @return [Array<String>]
+        attr_accessor :rai_media_filtered_reasons
+      
+        # Details for filtered input text.
+        # Corresponds to the JSON property `raiTextFilteredReason`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionFilteredText]
+        attr_accessor :rai_text_filtered_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generated_samples = args[:generated_samples] if args.key?(:generated_samples)
+          @rai_media_filtered_count = args[:rai_media_filtered_count] if args.key?(:rai_media_filtered_count)
+          @rai_media_filtered_reasons = args[:rai_media_filtered_reasons] if args.key?(:rai_media_filtered_reasons)
+          @rai_text_filtered_reason = args[:rai_text_filtered_reason] if args.key?(:rai_text_filtered_reason)
+        end
+      end
+      
+      # Image.
+      class CloudAiLargeModelsVisionImage
+        include Google::Apis::Core::Hashable
+      
+        # Image encoding, encoded as "image/png" or "image/jpg".
+        # Corresponds to the JSON property `encoding`
+        # @return [String]
+        attr_accessor :encoding
+      
+        # Raw bytes.
+        # Corresponds to the JSON property `image`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :image
+      
+        # RAI scores for generated image returned.
+        # Corresponds to the JSON property `imageRaiScores`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionImageRaiScores]
+        attr_accessor :image_rai_scores
+      
+        # RAI info for image
+        # Corresponds to the JSON property `raiInfo`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionRaiInfo]
+        attr_accessor :rai_info
+      
+        # Semantic filter info for image.
+        # Corresponds to the JSON property `semanticFilterResponse`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionSemanticFilterResponse]
+        attr_accessor :semantic_filter_response
+      
+        # Path to another storage (typically Google Cloud Storage).
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoding = args[:encoding] if args.key?(:encoding)
+          @image = args[:image] if args.key?(:image)
+          @image_rai_scores = args[:image_rai_scores] if args.key?(:image_rai_scores)
+          @rai_info = args[:rai_info] if args.key?(:rai_info)
+          @semantic_filter_response = args[:semantic_filter_response] if args.key?(:semantic_filter_response)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # RAI scores for generated image returned.
+      class CloudAiLargeModelsVisionImageRaiScores
+        include Google::Apis::Core::Hashable
+      
+        # Agile watermark score for image.
+        # Corresponds to the JSON property `agileWatermarkDetectionScore`
+        # @return [Float]
+        attr_accessor :agile_watermark_detection_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agile_watermark_detection_score = args[:agile_watermark_detection_score] if args.key?(:agile_watermark_detection_score)
+        end
+      end
+      
+      # Media.
+      class CloudAiLargeModelsVisionMedia
+        include Google::Apis::Core::Hashable
+      
+        # Image.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionImage]
+        attr_accessor :image
+      
+        # Video
+        # Corresponds to the JSON property `video`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionVideo]
+        attr_accessor :video
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image = args[:image] if args.key?(:image)
+          @video = args[:video] if args.key?(:video)
+        end
+      end
+      
+      # Generate media content response
+      class CloudAiLargeModelsVisionMediaGenerateContentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Response to the user's request.
+        # Corresponds to the JSON property `response`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceGenerateMultiModalResponse]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # 
+      class CloudAiLargeModelsVisionNamedBoundingBox
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `classes`
+        # @return [Array<String>]
+        attr_accessor :classes
+      
+        # 
+        # Corresponds to the JSON property `entities`
+        # @return [Array<String>]
+        attr_accessor :entities
+      
+        # 
+        # Corresponds to the JSON property `scores`
+        # @return [Array<Float>]
+        attr_accessor :scores
+      
+        # 
+        # Corresponds to the JSON property `x1`
+        # @return [Float]
+        attr_accessor :x1
+      
+        # 
+        # Corresponds to the JSON property `x2`
+        # @return [Float]
+        attr_accessor :x2
+      
+        # 
+        # Corresponds to the JSON property `y1`
+        # @return [Float]
+        attr_accessor :y1
+      
+        # 
+        # Corresponds to the JSON property `y2`
+        # @return [Float]
+        attr_accessor :y2
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @classes = args[:classes] if args.key?(:classes)
+          @entities = args[:entities] if args.key?(:entities)
+          @scores = args[:scores] if args.key?(:scores)
+          @x1 = args[:x1] if args.key?(:x1)
+          @x2 = args[:x2] if args.key?(:x2)
+          @y1 = args[:y1] if args.key?(:y1)
+          @y2 = args[:y2] if args.key?(:y2)
+        end
+      end
+      
+      # 
+      class CloudAiLargeModelsVisionRaiInfo
+        include Google::Apis::Core::Hashable
+      
+        # List of rai categories' information to return
+        # Corresponds to the JSON property `raiCategories`
+        # @return [Array<String>]
+        attr_accessor :rai_categories
+      
+        # List of rai scores mapping to the rai categories. Rounded to 1 decimal place.
+        # Corresponds to the JSON property `scores`
+        # @return [Array<Float>]
+        attr_accessor :scores
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rai_categories = args[:rai_categories] if args.key?(:rai_categories)
+          @scores = args[:scores] if args.key?(:scores)
+        end
+      end
+      
+      # Video reasoning response.
+      class CloudAiLargeModelsVisionReasonVideoResponse
+        include Google::Apis::Core::Hashable
+      
+        # Generated text responses. The generated responses for different segments
+        # within the same video.
+        # Corresponds to the JSON property `responses`
+        # @return [Array<Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionReasonVideoResponseTextResponse>]
+        attr_accessor :responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @responses = args[:responses] if args.key?(:responses)
+        end
+      end
+      
+      # Contains text that is the response of the video captioning.
+      class CloudAiLargeModelsVisionReasonVideoResponseTextResponse
+        include Google::Apis::Core::Hashable
+      
+        # For ease of use, assume that the start_offset is inclusive and the end_offset
+        # is exclusive. In mathematical terms, the partition would be written as [
+        # start_offset, end_offset).
+        # Corresponds to the JSON property `relativeTemporalPartition`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionRelativeTemporalPartition]
+        attr_accessor :relative_temporal_partition
+      
+        # Text information
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @relative_temporal_partition = args[:relative_temporal_partition] if args.key?(:relative_temporal_partition)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # For ease of use, assume that the start_offset is inclusive and the end_offset
+      # is exclusive. In mathematical terms, the partition would be written as [
+      # start_offset, end_offset).
+      class CloudAiLargeModelsVisionRelativeTemporalPartition
+        include Google::Apis::Core::Hashable
+      
+        # End time offset of the partition.
+        # Corresponds to the JSON property `endOffset`
+        # @return [String]
+        attr_accessor :end_offset
+      
+        # Start time offset of the partition.
+        # Corresponds to the JSON property `startOffset`
+        # @return [String]
+        attr_accessor :start_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_offset = args[:end_offset] if args.key?(:end_offset)
+          @start_offset = args[:start_offset] if args.key?(:start_offset)
+        end
+      end
+      
+      # 
+      class CloudAiLargeModelsVisionSemanticFilterResponse
+        include Google::Apis::Core::Hashable
+      
+        # Class labels of the bounding boxes that failed the semantic filtering.
+        # Bounding box coordinates.
+        # Corresponds to the JSON property `namedBoundingBoxes`
+        # @return [Array<Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionNamedBoundingBox>]
+        attr_accessor :named_bounding_boxes
+      
+        # This response is added when semantic filter config is turned on in EditConfig.
+        # It reports if this image is passed semantic filter response. If
+        # passed_semantic_filter is false, the bounding box information will be
+        # populated for user to check what caused the semantic filter to fail.
+        # Corresponds to the JSON property `passedSemanticFilter`
+        # @return [Boolean]
+        attr_accessor :passed_semantic_filter
+        alias_method :passed_semantic_filter?, :passed_semantic_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @named_bounding_boxes = args[:named_bounding_boxes] if args.key?(:named_bounding_boxes)
+          @passed_semantic_filter = args[:passed_semantic_filter] if args.key?(:passed_semantic_filter)
+        end
+      end
+      
+      # Video
+      class CloudAiLargeModelsVisionVideo
+        include Google::Apis::Core::Hashable
+      
+        # Path to another storage (typically Google Cloud Storage).
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # Raw bytes.
+        # Corresponds to the JSON property `video`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :video
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+          @video = args[:video] if args.key?(:video)
+        end
+      end
+      
+      # 
+      class CloudAiNlLlmProtoServiceCandidate
+        include Google::Apis::Core::Hashable
+      
+        # A collection of source attributions for a piece of content.
+        # Corresponds to the JSON property `citationMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceCitationMetadata]
+        attr_accessor :citation_metadata
+      
+        # The content of a single message from a participant.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceContent]
+        attr_accessor :content
+      
+        # A string that describes the filtering behavior in more detail. Only filled
+        # when reason is set.
+        # Corresponds to the JSON property `finishMessage`
+        # @return [String]
+        attr_accessor :finish_message
+      
+        # The reason why the model stopped generating tokens.
+        # Corresponds to the JSON property `finishReason`
+        # @return [String]
+        attr_accessor :finish_reason
+      
+        # Index of the candidate.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # Safety ratings of the generated content.
+        # Corresponds to the JSON property `safetyRatings`
+        # @return [Array<Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceSafetyRating>]
+        attr_accessor :safety_ratings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @citation_metadata = args[:citation_metadata] if args.key?(:citation_metadata)
+          @content = args[:content] if args.key?(:content)
+          @finish_message = args[:finish_message] if args.key?(:finish_message)
+          @finish_reason = args[:finish_reason] if args.key?(:finish_reason)
+          @index = args[:index] if args.key?(:index)
+          @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
+        end
+      end
+      
+      # Source attributions for content.
+      class CloudAiNlLlmProtoServiceCitation
+        include Google::Apis::Core::Hashable
+      
+        # End index into the content.
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # License of the attribution.
+        # Corresponds to the JSON property `license`
+        # @return [String]
+        attr_accessor :license
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `publicationDate`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleTypeDate]
+        attr_accessor :publication_date
+      
+        # Start index into the content.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        # Title of the attribution.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Url reference of the attribution.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @license = args[:license] if args.key?(:license)
+          @publication_date = args[:publication_date] if args.key?(:publication_date)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # A collection of source attributions for a piece of content.
+      class CloudAiNlLlmProtoServiceCitationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # List of citations.
+        # Corresponds to the JSON property `citations`
+        # @return [Array<Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceCitation>]
+        attr_accessor :citations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @citations = args[:citations] if args.key?(:citations)
+        end
+      end
+      
+      # The content of a single message from a participant.
+      class CloudAiNlLlmProtoServiceContent
+        include Google::Apis::Core::Hashable
+      
+        # The parts of the message.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePart>]
+        attr_accessor :parts
+      
+        # The role of the current conversation participant.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parts = args[:parts] if args.key?(:parts)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Function call details.
+      class CloudAiNlLlmProtoServiceFunctionCall
+        include Google::Apis::Core::Hashable
+      
+        # The function parameters and values in JSON format.
+        # Corresponds to the JSON property `args`
+        # @return [Hash<String,Object>]
+        attr_accessor :args
+      
+        # Required. The name of the function to call.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Function response details.
+      class CloudAiNlLlmProtoServiceFunctionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the function to call.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The function response in JSON object format.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # 
+      class CloudAiNlLlmProtoServiceGenerateMultiModalResponse
+        include Google::Apis::Core::Hashable
+      
+        # Possible candidate responses to the conversation up until this point.
+        # Corresponds to the JSON property `candidates`
+        # @return [Array<Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceCandidate>]
+        attr_accessor :candidates
+      
+        # Content filter results for a prompt sent in the request.
+        # Corresponds to the JSON property `promptFeedback`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePromptFeedback]
+        attr_accessor :prompt_feedback
+      
+        # Billable prediction metrics.
+        # Corresponds to the JSON property `reportingMetrics`
+        # @return [Google::Apis::AiplatformV1beta1::IntelligenceCloudAutomlXpsReportingMetrics]
+        attr_accessor :reporting_metrics
+      
+        # Usage metadata about response(s).
+        # Corresponds to the JSON property `usageMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceUsageMetadata]
+        attr_accessor :usage_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates = args[:candidates] if args.key?(:candidates)
+          @prompt_feedback = args[:prompt_feedback] if args.key?(:prompt_feedback)
+          @reporting_metrics = args[:reporting_metrics] if args.key?(:reporting_metrics)
+          @usage_metadata = args[:usage_metadata] if args.key?(:usage_metadata)
+        end
+      end
+      
+      # A single part of a message.
+      class CloudAiNlLlmProtoServicePart
+        include Google::Apis::Core::Hashable
+      
+        # Represents file data.
+        # Corresponds to the JSON property `fileData`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartFileData]
+        attr_accessor :file_data
+      
+        # Function call details.
+        # Corresponds to the JSON property `functionCall`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceFunctionCall]
+        attr_accessor :function_call
+      
+        # Function response details.
+        # Corresponds to the JSON property `functionResponse`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceFunctionResponse]
+        attr_accessor :function_response
+      
+        # Represents arbitrary blob data input.
+        # Corresponds to the JSON property `inlineData`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartBlob]
+        attr_accessor :inline_data
+      
+        # Text input.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Metadata describes the input video content.
+        # Corresponds to the JSON property `videoMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartVideoMetadata]
+        attr_accessor :video_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_data = args[:file_data] if args.key?(:file_data)
+          @function_call = args[:function_call] if args.key?(:function_call)
+          @function_response = args[:function_response] if args.key?(:function_response)
+          @inline_data = args[:inline_data] if args.key?(:inline_data)
+          @text = args[:text] if args.key?(:text)
+          @video_metadata = args[:video_metadata] if args.key?(:video_metadata)
+        end
+      end
+      
+      # Represents arbitrary blob data input.
+      class CloudAiNlLlmProtoServicePartBlob
+        include Google::Apis::Core::Hashable
+      
+        # Inline data.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # The mime type corresponding to this input.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Represents file data.
+        # Corresponds to the JSON property `originalFileData`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartFileData]
+        attr_accessor :original_file_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @original_file_data = args[:original_file_data] if args.key?(:original_file_data)
+        end
+      end
+      
+      # Represents file data.
+      class CloudAiNlLlmProtoServicePartFileData
+        include Google::Apis::Core::Hashable
+      
+        # Inline data.
+        # Corresponds to the JSON property `fileUri`
+        # @return [String]
+        attr_accessor :file_uri
+      
+        # The mime type corresponding to this input.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_uri = args[:file_uri] if args.key?(:file_uri)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # Metadata describes the input video content.
+      class CloudAiNlLlmProtoServicePartVideoMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The end offset of the video.
+        # Corresponds to the JSON property `endOffset`
+        # @return [String]
+        attr_accessor :end_offset
+      
+        # The start offset of the video.
+        # Corresponds to the JSON property `startOffset`
+        # @return [String]
+        attr_accessor :start_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_offset = args[:end_offset] if args.key?(:end_offset)
+          @start_offset = args[:start_offset] if args.key?(:start_offset)
+        end
+      end
+      
+      # Content filter results for a prompt sent in the request.
+      class CloudAiNlLlmProtoServicePromptFeedback
+        include Google::Apis::Core::Hashable
+      
+        # Blocked reason.
+        # Corresponds to the JSON property `blockReason`
+        # @return [String]
+        attr_accessor :block_reason
+      
+        # A readable block reason message.
+        # Corresponds to the JSON property `blockReasonMessage`
+        # @return [String]
+        attr_accessor :block_reason_message
+      
+        # Safety ratings.
+        # Corresponds to the JSON property `safetyRatings`
+        # @return [Array<Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServiceSafetyRating>]
+        attr_accessor :safety_ratings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @block_reason = args[:block_reason] if args.key?(:block_reason)
+          @block_reason_message = args[:block_reason_message] if args.key?(:block_reason_message)
+          @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
+        end
+      end
+      
+      # Safety rating corresponding to the generated content.
+      class CloudAiNlLlmProtoServiceSafetyRating
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether the content was filtered out because of this rating.
+        # Corresponds to the JSON property `blocked`
+        # @return [Boolean]
+        attr_accessor :blocked
+        alias_method :blocked?, :blocked
+      
+        # Harm category.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Harm probability levels in the content.
+        # Corresponds to the JSON property `probability`
+        # @return [String]
+        attr_accessor :probability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocked = args[:blocked] if args.key?(:blocked)
+          @category = args[:category] if args.key?(:category)
+          @probability = args[:probability] if args.key?(:probability)
+        end
+      end
+      
+      # Usage metadata about response(s).
+      class CloudAiNlLlmProtoServiceUsageMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Number of tokens in the response(s).
+        # Corresponds to the JSON property `candidatesTokenCount`
+        # @return [Fixnum]
+        attr_accessor :candidates_token_count
+      
+        # Number of tokens in the request.
+        # Corresponds to the JSON property `promptTokenCount`
+        # @return [Fixnum]
+        attr_accessor :prompt_token_count
+      
+        # 
+        # Corresponds to the JSON property `totalTokenCount`
+        # @return [Fixnum]
+        attr_accessor :total_token_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
+          @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
+          @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
+        end
+      end
+      
       # Message that represents an arbitrary HTTP body. It should only be used for
       # payload formats that can't be represented as JSON, such as raw binary or an
       # HTML page. This message can be used both in streaming and non-streaming API
@@ -1398,8 +2276,7 @@ module Google
         # Fields that will be excluded in the prediction instance that is sent to the
         # Model. Excluded will be attached to the batch prediction output if key_field
         # is not specified. When excluded_fields is populated, included_fields must be
-        # empty. The input must be JSONL with objects at each line, CSV, BigQuery or
-        # TfRecord.
+        # empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
         # Corresponds to the JSON property `excludedFields`
         # @return [Array<String>]
         attr_accessor :excluded_fields
@@ -1408,7 +2285,7 @@ module Google
         # Model. If instance_type is `array`, the order of field names in
         # included_fields also determines the order of the values in the array. When
         # included_fields is populated, excluded_fields must be empty. The input must be
-        # JSONL with objects at each line, CSV, BigQuery or TfRecord.
+        # JSONL with objects at each line, BigQuery or TfRecord.
         # Corresponds to the JSON property `includedFields`
         # @return [Array<String>]
         attr_accessor :included_fields
@@ -1737,17 +2614,17 @@ module Google
         end
       end
       
-      # Content blob.
+      # Raw media bytes. Text should not be sent as raw bytes, use the 'text' field.
       class GoogleCloudAiplatformV1beta1Blob
         include Google::Apis::Core::Hashable
       
-        # Required. Data.
+        # Required. Raw bytes for media formats.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :data
       
-        # Required. Mime type of the data.
+        # Required. The IANA standard MIME type of the source data.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -1897,7 +2774,7 @@ module Google
         end
       end
       
-      # Generated candidate.
+      # A response candidate generated from the model.
       class GoogleCloudAiplatformV1beta1Candidate
         include Google::Apis::Core::Hashable
       
@@ -1906,18 +2783,22 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CitationMetadata]
         attr_accessor :citation_metadata
       
-        # A single turn in a conversation with the model.
+        # The base structured datatype containing multi-part content of a message. A `
+        # Content` includes a `role` field designating the producer of the `Content` and
+        # a `parts` field containing multi-part data that contains the content of the
+        # message turn.
         # Corresponds to the JSON property `content`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content]
         attr_accessor :content
       
-        # Output only. A string that describes the filtering behavior in more detail.
-        # Only filled when reason is set.
+        # Output only. Describes the reason the mode stopped generating tokens in more
+        # detail. This is only filled when `finish_reason` is set.
         # Corresponds to the JSON property `finishMessage`
         # @return [String]
         attr_accessor :finish_message
       
-        # Output only. The reason why the model stopped generating tokens.
+        # Output only. The reason why the model stopped generating tokens. If empty, the
+        # model has not stopped generating the tokens.
         # Corresponds to the JSON property `finishReason`
         # @return [String]
         attr_accessor :finish_reason
@@ -1927,7 +2808,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :index
       
-        # Output only. Safety ratings of the generated content.
+        # Output only. List of ratings for the safety of a response candidate. There is
+        # at most one rating per category.
         # Corresponds to the JSON property `safetyRatings`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetyRating>]
         attr_accessor :safety_ratings
@@ -2271,19 +3153,22 @@ module Google
         end
       end
       
-      # A single turn in a conversation with the model.
+      # The base structured datatype containing multi-part content of a message. A `
+      # Content` includes a `role` field designating the producer of the `Content` and
+      # a `parts` field containing multi-part data that contains the content of the
+      # message turn.
       class GoogleCloudAiplatformV1beta1Content
         include Google::Apis::Core::Hashable
       
-        # Required. Ordered parts that make up a message. Parts may have different MIME
-        # types.
+        # Required. Ordered `Parts` that constitute a single message. Parts may have
+        # different IANA MIME types.
         # Corresponds to the JSON property `parts`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Part>]
         attr_accessor :parts
       
-        # Optional. The role in a conversation associated with this content. Set it only
-        # if a content represents a turn in a conversations, otherwise no need to set
-        # role. Possible values: user, model.
+        # Optional. The producer of the content. Must be either 'user' or 'model'.
+        # Useful to set for multi-turn conversations, otherwise can be left blank or
+        # unset.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -3331,6 +4216,19 @@ module Google
         # @return [String]
         attr_accessor :experiment_run
       
+        # Optional. The name of the Model resources for which to generate a mapping to
+        # artifact URIs. Applicable only to some of the Google-provided custom jobs.
+        # Format: `projects/`project`/locations/`location`/models/`model`` In order to
+        # retrieve a specific version of the model, also provide the version ID or
+        # version alias. Example: `projects/`project`/locations/`location`/models/`model`
+        # @2` or `projects/`project`/locations/`location`/models/`model`@golden` If no
+        # version ID or alias is specified, the "default" version will be returned. The "
+        # default" version alias is created for the first version of the model, and can
+        # be moved to other versions later on. There will be exactly one default version.
+        # Corresponds to the JSON property `models`
+        # @return [Array<String>]
+        attr_accessor :models
+      
         # Optional. The full name of the Compute Engine [network](/compute/docs/networks-
         # and-firewalls#networks) to which the Job should be peered. For example, `
         # projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/
@@ -3406,6 +4304,7 @@ module Google
           @enable_web_access = args[:enable_web_access] if args.key?(:enable_web_access)
           @experiment = args[:experiment] if args.key?(:experiment)
           @experiment_run = args[:experiment_run] if args.key?(:experiment_run)
+          @models = args[:models] if args.key?(:models)
           @network = args[:network] if args.key?(:network)
           @persistent_resource_id = args[:persistent_resource_id] if args.key?(:persistent_resource_id)
           @protected_artifact_location_id = args[:protected_artifact_location_id] if args.key?(:protected_artifact_location_id)
@@ -8260,7 +9159,7 @@ module Google
         # @return [String]
         attr_accessor :file_uri
       
-        # Required. Mime type of the data.
+        # Required. The IANA standard MIME type of the source data.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -8552,7 +9451,11 @@ module Google
         end
       end
       
-      # Function declaration details.
+      # Structured representation of a function declaration as defined by the [OpenAPI
+      # 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this
+      # declaration are the function name and parameters. This FunctionDeclaration is
+      # a representation of a block of code that can be used as a `Tool` by the model
+      # and executed by the client.
       class GoogleCloudAiplatformV1beta1FunctionDeclaration
         include Google::Apis::Core::Hashable
       
@@ -8569,10 +9472,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Represents a select subset of an OpenAPI 3.0 Schema object. Schema is used to
-        # define the format of input/output data. More fields may be added in the future
-        # as needed. https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.
-        # 0.2.md#schemaObject
+        # Schema is used to define the format of input/output data. Represents a select
+        # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
+        # schema). More fields may be added in the future as needed.
         # Corresponds to the JSON property `parameters`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :parameters
@@ -8724,7 +9626,9 @@ module Google
       class GoogleCloudAiplatformV1beta1GenerateContentRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Input content.
+        # Required. The content of the current conversation with the model. For single-
+        # turn queries, this is a single instance. For multi-turn queries, this is a
+        # repeated field that contains conversation history + latest request.
         # Corresponds to the JSON property `contents`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content>]
         attr_accessor :contents
@@ -8746,7 +9650,10 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetySetting>]
         attr_accessor :safety_settings
       
-        # Optional. Tools that the model may use to generate response.
+        # Optional. A list of `Tools` the model may use to generate the next response. A
+        # `Tool` is a piece of code that enables the system to interact with external
+        # systems to perform an action, or set of actions, outside of knowledge and
+        # scope of the model. The only supported tool is currently `Function`
         # Corresponds to the JSON property `tools`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Tool>]
         attr_accessor :tools
@@ -8867,36 +9774,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :candidate_count
       
-        # Optional. Echo.
-        # Corresponds to the JSON property `echo`
-        # @return [Boolean]
-        attr_accessor :echo
-        alias_method :echo?, :echo
-      
-        # Optional. Frequency penalties.
-        # Corresponds to the JSON property `frequencyPenalty`
-        # @return [Float]
-        attr_accessor :frequency_penalty
-      
-        # Optional. Logit bias.
-        # Corresponds to the JSON property `logitBias`
-        # @return [Hash<String,Float>]
-        attr_accessor :logit_bias
-      
-        # Optional. Logit probabilities.
-        # Corresponds to the JSON property `logprobs`
-        # @return [Fixnum]
-        attr_accessor :logprobs
-      
         # Optional. The maximum number of output tokens to generate per message.
         # Corresponds to the JSON property `maxOutputTokens`
         # @return [Fixnum]
         attr_accessor :max_output_tokens
-      
-        # Optional. Positive penalties.
-        # Corresponds to the JSON property `presencePenalty`
-        # @return [Float]
-        attr_accessor :presence_penalty
       
         # Optional. Stop sequences.
         # Corresponds to the JSON property `stopSequences`
@@ -8925,12 +9806,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @candidate_count = args[:candidate_count] if args.key?(:candidate_count)
-          @echo = args[:echo] if args.key?(:echo)
-          @frequency_penalty = args[:frequency_penalty] if args.key?(:frequency_penalty)
-          @logit_bias = args[:logit_bias] if args.key?(:logit_bias)
-          @logprobs = args[:logprobs] if args.key?(:logprobs)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
-          @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
           @top_k = args[:top_k] if args.key?(:top_k)
@@ -14980,7 +15856,11 @@ module Google
         end
       end
       
-      # Content part.
+      # A datatype containing media that is part of a multi-part `Content` message. A `
+      # Part` consists of data which has an associated datatype. A `Part` can only
+      # contain one of the accepted types in `Part.data`. A `Part` must have a fixed
+      # IANA MIME type identifying the type and subtype of the media if `inline_data`
+      # or `file_data` field is filled with raw bytes.
       class GoogleCloudAiplatformV1beta1Part
         include Google::Apis::Core::Hashable
       
@@ -15004,7 +15884,7 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionResponse]
         attr_accessor :function_response
       
-        # Content blob.
+        # Raw media bytes. Text should not be sent as raw bytes, use the 'text' field.
         # Corresponds to the JSON property `inlineData`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Blob]
         attr_accessor :inline_data
@@ -16192,6 +17072,11 @@ module Google
         # @return [String]
         attr_accessor :version_id
       
+        # Optional. Indicates the state of the model version.
+        # Corresponds to the JSON property `versionState`
+        # @return [String]
+        attr_accessor :version_state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -16207,6 +17092,7 @@ module Google
           @publisher_model_template = args[:publisher_model_template] if args.key?(:publisher_model_template)
           @supported_actions = args[:supported_actions] if args.key?(:supported_actions)
           @version_id = args[:version_id] if args.key?(:version_id)
+          @version_state = args[:version_state] if args.key?(:version_state)
         end
       end
       
@@ -16334,6 +17220,11 @@ module Google
         # @return [String]
         attr_accessor :model_display_name
       
+        # Optional. The signed URI for ephemeral Cloud Storage access to model artifact.
+        # Corresponds to the JSON property `publicArtifactUri`
+        # @return [String]
+        attr_accessor :public_artifact_uri
+      
         # The resource name of the shared DeploymentResourcePool to deploy on. Format: `
         # projects/`project`/locations/`location`/deploymentResourcePools/`
         # deployment_resource_pool``
@@ -16358,6 +17249,7 @@ module Google
           @dedicated_resources = args[:dedicated_resources] if args.key?(:dedicated_resources)
           @large_model_reference = args[:large_model_reference] if args.key?(:large_model_reference)
           @model_display_name = args[:model_display_name] if args.key?(:model_display_name)
+          @public_artifact_uri = args[:public_artifact_uri] if args.key?(:public_artifact_uri)
           @shared_resources = args[:shared_resources] if args.key?(:shared_resources)
           @title = args[:title] if args.key?(:title)
         end
@@ -16470,6 +17362,11 @@ module Google
       class GoogleCloudAiplatformV1beta1PublisherModelResourceReference
         include Google::Apis::Core::Hashable
       
+        # Description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # The resource name of the Google Cloud resource.
         # Corresponds to the JSON property `resourceName`
         # @return [String]
@@ -16480,14 +17377,21 @@ module Google
         # @return [String]
         attr_accessor :uri
       
+        # Use case (CUJ) of the resource.
+        # Corresponds to the JSON property `useCase`
+        # @return [String]
+        attr_accessor :use_case
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @uri = args[:uri] if args.key?(:uri)
+          @use_case = args[:use_case] if args.key?(:use_case)
         end
       end
       
@@ -18071,10 +18975,9 @@ module Google
         end
       end
       
-      # Represents a select subset of an OpenAPI 3.0 Schema object. Schema is used to
-      # define the format of input/output data. More fields may be added in the future
-      # as needed. https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.
-      # 0.2.md#schemaObject
+      # Schema is used to define the format of input/output data. Represents a select
+      # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
+      # schema). More fields may be added in the future as needed.
       class GoogleCloudAiplatformV1beta1Schema
         include Google::Apis::Core::Hashable
       
@@ -18102,10 +19005,9 @@ module Google
         # @return [String]
         attr_accessor :format
       
-        # Represents a select subset of an OpenAPI 3.0 Schema object. Schema is used to
-        # define the format of input/output data. More fields may be added in the future
-        # as needed. https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.
-        # 0.2.md#schemaObject
+        # Schema is used to define the format of input/output data. Represents a select
+        # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
+        # schema). More fields may be added in the future as needed.
         # Corresponds to the JSON property `items`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Schema]
         attr_accessor :items
@@ -26326,7 +27228,9 @@ module Google
         end
       end
       
-      # Tool details that the model may use to generate response.
+      # Tool details that the model may use to generate response. A `Tool` is a piece
+      # of code that enables the system to interact with external systems to perform
+      # an action, or set of actions, outside of knowledge and scope of the model.
       class GoogleCloudAiplatformV1beta1Tool
         include Google::Apis::Core::Hashable
       
@@ -28372,6 +29276,102 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @nanos = args[:nanos] if args.key?(:nanos)
           @units = args[:units] if args.key?(:units)
+        end
+      end
+      
+      # 
+      class IntelligenceCloudAutomlXpsMetricEntry
+        include Google::Apis::Core::Hashable
+      
+        # For billing metrics that are using legacy sku's, set the legacy billing metric
+        # id here. This will be sent to Chemist as the "cloudbilling.googleapis.com/
+        # argentum_metric_id" label. Otherwise leave empty.
+        # Corresponds to the JSON property `argentumMetricId`
+        # @return [String]
+        attr_accessor :argentum_metric_id
+      
+        # A double value.
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
+        # A signed 64-bit integer value.
+        # Corresponds to the JSON property `int64Value`
+        # @return [Fixnum]
+        attr_accessor :int64_value
+      
+        # The metric name defined in the service configuration.
+        # Corresponds to the JSON property `metricName`
+        # @return [String]
+        attr_accessor :metric_name
+      
+        # Billing system labels for this (metric, value) pair.
+        # Corresponds to the JSON property `systemLabels`
+        # @return [Array<Google::Apis::AiplatformV1beta1::IntelligenceCloudAutomlXpsMetricEntryLabel>]
+        attr_accessor :system_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @argentum_metric_id = args[:argentum_metric_id] if args.key?(:argentum_metric_id)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @int64_value = args[:int64_value] if args.key?(:int64_value)
+          @metric_name = args[:metric_name] if args.key?(:metric_name)
+          @system_labels = args[:system_labels] if args.key?(:system_labels)
+        end
+      end
+      
+      # 
+      class IntelligenceCloudAutomlXpsMetricEntryLabel
+        include Google::Apis::Core::Hashable
+      
+        # The name of the label.
+        # Corresponds to the JSON property `labelName`
+        # @return [String]
+        attr_accessor :label_name
+      
+        # The value of the label.
+        # Corresponds to the JSON property `labelValue`
+        # @return [String]
+        attr_accessor :label_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_name = args[:label_name] if args.key?(:label_name)
+          @label_value = args[:label_value] if args.key?(:label_value)
+        end
+      end
+      
+      # 
+      class IntelligenceCloudAutomlXpsReportingMetrics
+        include Google::Apis::Core::Hashable
+      
+        # The effective time training used. If set, this is used for quota management
+        # and billing. Deprecated. AutoML BE doesn't use this. Don't set.
+        # Corresponds to the JSON property `effectiveTrainingDuration`
+        # @return [String]
+        attr_accessor :effective_training_duration
+      
+        # One entry per metric name. The values must be aggregated per metric name.
+        # Corresponds to the JSON property `metricEntries`
+        # @return [Array<Google::Apis::AiplatformV1beta1::IntelligenceCloudAutomlXpsMetricEntry>]
+        attr_accessor :metric_entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_training_duration = args[:effective_training_duration] if args.key?(:effective_training_duration)
+          @metric_entries = args[:metric_entries] if args.key?(:metric_entries)
         end
       end
     end
