@@ -63,9 +63,10 @@ module Google
         # provisioned for subaccounts.
         # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
         # @param [String] parent
-        #   Optional. The parent to create a billing account from. Format: - organizations/
-        #   `organization_id` eg organizations/12345678 - billingAccounts/`
-        #   billing_account_id` eg `billingAccounts/012345-567890-ABCDEF`
+        #   Optional. The parent to create a billing account from. Format: - `
+        #   organizations/`organization_id``, for example, `organizations/12345678` - `
+        #   billingAccounts/`billing_account_id``, for example, `billingAccounts/012345-
+        #   567890-ABCDEF`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -180,9 +181,9 @@ module Google
         # @param [String] filter
         #   Options for how to filter the returned billing accounts. This only supports
         #   filtering for [subaccounts](https://cloud.google.com/billing/docs/concepts)
-        #   under a single provided parent billing account. (e.g. "master_billing_account=
-        #   billingAccounts/012345-678901-ABCDEF"). Boolean algebra and other fields are
-        #   not currently supported.
+        #   under a single provided parent billing account. (for example, `
+        #   master_billing_account=billingAccounts/012345-678901-ABCDEF`). Boolean algebra
+        #   and other fields are not currently supported.
         # @param [Fixnum] page_size
         #   Requested page size. The maximum page size is 100; this is also the default.
         # @param [String] page_token
@@ -190,9 +191,10 @@ module Google
         #   next_page_token` value returned from a previous `ListBillingAccounts` call. If
         #   unspecified, the first page of results is returned.
         # @param [String] parent
-        #   Optional. The parent resource to list billing accounts from. Format: -
-        #   organizations/`organization_id` eg organizations/12345678 - billingAccounts/`
-        #   billing_account_id` eg `billingAccounts/012345-567890-ABCDEF`
+        #   Optional. The parent resource to list billing accounts from. Format: - `
+        #   organizations/`organization_id``, for example, `organizations/12345678` - `
+        #   billingAccounts/`billing_account_id``, for example, `billingAccounts/012345-
+        #   567890-ABCDEF`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -430,9 +432,10 @@ module Google
         # This method will return an error if the parent account has not been
         # provisioned for subaccounts.
         # @param [String] parent
-        #   Optional. The parent to create a billing account from. Format: - organizations/
-        #   `organization_id` eg organizations/12345678 - billingAccounts/`
-        #   billing_account_id` eg `billingAccounts/012345-567890-ABCDEF`
+        #   Optional. The parent to create a billing account from. Format: - `
+        #   organizations/`organization_id``, for example, `organizations/12345678` - `
+        #   billingAccounts/`billing_account_id``, for example, `billingAccounts/012345-
+        #   567890-ABCDEF`
         # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -466,15 +469,16 @@ module Google
         # Lists the billing accounts that the current authenticated user has permission
         # to [view](https://cloud.google.com/billing/docs/how-to/billing-access).
         # @param [String] parent
-        #   Optional. The parent resource to list billing accounts from. Format: -
-        #   organizations/`organization_id` eg organizations/12345678 - billingAccounts/`
-        #   billing_account_id` eg `billingAccounts/012345-567890-ABCDEF`
+        #   Optional. The parent resource to list billing accounts from. Format: - `
+        #   organizations/`organization_id``, for example, `organizations/12345678` - `
+        #   billingAccounts/`billing_account_id``, for example, `billingAccounts/012345-
+        #   567890-ABCDEF`
         # @param [String] filter
         #   Options for how to filter the returned billing accounts. This only supports
         #   filtering for [subaccounts](https://cloud.google.com/billing/docs/concepts)
-        #   under a single provided parent billing account. (e.g. "master_billing_account=
-        #   billingAccounts/012345-678901-ABCDEF"). Boolean algebra and other fields are
-        #   not currently supported.
+        #   under a single provided parent billing account. (for example, `
+        #   master_billing_account=billingAccounts/012345-678901-ABCDEF`). Boolean algebra
+        #   and other fields are not currently supported.
         # @param [Fixnum] page_size
         #   Requested page size. The maximum page size is 100; this is also the default.
         # @param [String] page_token
@@ -523,9 +527,10 @@ module Google
         # This method will return an error if the parent account has not been
         # provisioned for subaccounts.
         # @param [String] parent
-        #   Optional. The parent to create a billing account from. Format: - organizations/
-        #   `organization_id` eg organizations/12345678 - billingAccounts/`
-        #   billing_account_id` eg `billingAccounts/012345-567890-ABCDEF`
+        #   Optional. The parent to create a billing account from. Format: - `
+        #   organizations/`organization_id``, for example, `organizations/12345678` - `
+        #   billingAccounts/`billing_account_id``, for example, `billingAccounts/012345-
+        #   567890-ABCDEF`
         # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -559,15 +564,16 @@ module Google
         # Lists the billing accounts that the current authenticated user has permission
         # to [view](https://cloud.google.com/billing/docs/how-to/billing-access).
         # @param [String] parent
-        #   Optional. The parent resource to list billing accounts from. Format: -
-        #   organizations/`organization_id` eg organizations/12345678 - billingAccounts/`
-        #   billing_account_id` eg `billingAccounts/012345-567890-ABCDEF`
+        #   Optional. The parent resource to list billing accounts from. Format: - `
+        #   organizations/`organization_id``, for example, `organizations/12345678` - `
+        #   billingAccounts/`billing_account_id``, for example, `billingAccounts/012345-
+        #   567890-ABCDEF`
         # @param [String] filter
         #   Options for how to filter the returned billing accounts. This only supports
         #   filtering for [subaccounts](https://cloud.google.com/billing/docs/concepts)
-        #   under a single provided parent billing account. (e.g. "master_billing_account=
-        #   billingAccounts/012345-678901-ABCDEF"). Boolean algebra and other fields are
-        #   not currently supported.
+        #   under a single provided parent billing account. (for example, `
+        #   master_billing_account=billingAccounts/012345-678901-ABCDEF`). Boolean algebra
+        #   and other fields are not currently supported.
         # @param [Fixnum] page_size
         #   Requested page size. The maximum page size is 100; this is also the default.
         # @param [String] page_token
