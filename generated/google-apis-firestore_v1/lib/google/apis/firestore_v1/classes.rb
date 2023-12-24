@@ -1257,6 +1257,32 @@ module Google
         end
       end
       
+      # A consistent snapshot of a database at a specific point in time.
+      class GoogleFirestoreAdminV1DatabaseSnapshot
+        include Google::Apis::Core::Hashable
+      
+        # Required. A name of the form `projects/`project_id`/databases/`database_id``
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Required. The timestamp at which the database snapshot is taken. The requested
+        # timestamp must be a whole minute within the PITR window.
+        # Corresponds to the JSON property `snapshotTime`
+        # @return [String]
+        attr_accessor :snapshot_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
+        end
+      end
+      
       # Metadata related to the delete database operation.
       class GoogleFirestoreAdminV1DeleteDatabaseMetadata
         include Google::Apis::Core::Hashable
@@ -2121,6 +2147,11 @@ module Google
         # @return [String]
         attr_accessor :database_id
       
+        # A consistent snapshot of a database at a specific point in time.
+        # Corresponds to the JSON property `databaseSnapshot`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DatabaseSnapshot]
+        attr_accessor :database_snapshot
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2129,6 +2160,7 @@ module Google
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
           @database_id = args[:database_id] if args.key?(:database_id)
+          @database_snapshot = args[:database_snapshot] if args.key?(:database_snapshot)
         end
       end
       

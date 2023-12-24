@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1DatabaseSnapshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1DeleteDatabaseMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -989,6 +995,14 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1DatabaseSnapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :snapshot_time, as: 'snapshotTime'
+        end
+      end
+      
       class GoogleFirestoreAdminV1DeleteDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1222,6 +1236,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
           property :database_id, as: 'databaseId'
+          property :database_snapshot, as: 'databaseSnapshot', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DatabaseSnapshot, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DatabaseSnapshot::Representation
+      
         end
       end
       
