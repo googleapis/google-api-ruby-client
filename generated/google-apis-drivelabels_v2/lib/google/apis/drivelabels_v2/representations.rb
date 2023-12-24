@@ -286,12 +286,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsDriveLabelsV2FieldLongTextOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleAppsDriveLabelsV2FieldProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -732,8 +726,6 @@ module Google
           property :id, as: 'id'
           property :integer_options, as: 'integerOptions', class: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2FieldIntegerOptions, decorator: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2FieldIntegerOptions::Representation
       
-          property :long_text_options, as: 'longTextOptions', class: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2FieldLongTextOptions, decorator: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2FieldLongTextOptions::Representation
-      
           property :selection_options, as: 'selectionOptions', class: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2FieldSelectionOptions, decorator: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2FieldSelectionOptions::Representation
       
           property :text_options, as: 'textOptions', class: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2FieldTextOptions, decorator: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2FieldTextOptions::Representation
@@ -1010,14 +1002,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_entries, as: 'maxEntries'
-        end
-      end
-      
-      class GoogleAppsDriveLabelsV2FieldLongTextOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_length, as: 'maxLength'
-          property :min_length, as: 'minLength'
         end
       end
       

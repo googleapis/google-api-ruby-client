@@ -795,11 +795,6 @@ module Google
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2FieldIntegerOptions]
         attr_accessor :integer_options
       
-        # Options the Long Text field type.
-        # Corresponds to the JSON property `longTextOptions`
-        # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2FieldLongTextOptions]
-        attr_accessor :long_text_options
-      
         # Options for the selection field type.
         # Corresponds to the JSON property `selectionOptions`
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2FieldSelectionOptions]
@@ -831,7 +826,6 @@ module Google
           @date_options = args[:date_options] if args.key?(:date_options)
           @id = args[:id] if args.key?(:id)
           @integer_options = args[:integer_options] if args.key?(:integer_options)
-          @long_text_options = args[:long_text_options] if args.key?(:long_text_options)
           @selection_options = args[:selection_options] if args.key?(:selection_options)
           @text_options = args[:text_options] if args.key?(:text_options)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
@@ -1686,31 +1680,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @max_entries = args[:max_entries] if args.key?(:max_entries)
-        end
-      end
-      
-      # Options the Long Text field type.
-      class GoogleAppsDriveLabelsV2FieldLongTextOptions
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The maximum valid length of values for the text field.
-        # Corresponds to the JSON property `maxLength`
-        # @return [Fixnum]
-        attr_accessor :max_length
-      
-        # Output only. The minimum valid length of values for the text field.
-        # Corresponds to the JSON property `minLength`
-        # @return [Fixnum]
-        attr_accessor :min_length
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @max_length = args[:max_length] if args.key?(:max_length)
-          @min_length = args[:min_length] if args.key?(:min_length)
         end
       end
       
