@@ -1,5 +1,9 @@
 # Release history for google-apis-prod_tt_sasportal_v1alpha1
 
+### v0.39.0 (2023-12-24)
+
+* Regenerated from discovery document revision 20231219
+
 ### v0.38.0 (2023-11-12)
 
 * Regenerated from discovery document revision 20231106
