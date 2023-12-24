@@ -8792,9 +8792,10 @@ module Google
         # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SessionEntityType>]
         attr_accessor :session_entity_types
       
-        # Optional. Sets Dialogflow session life time. By default, a Dialogflow session
-        # remains active and its data is stored for 30 minutes after the last request is
-        # sent for the session. This value should be no longer than 1 day.
+        # Optional. Configure lifetime of the Dialogflow session. By default, a
+        # Dialogflow session remains active and its data is stored for 30 minutes after
+        # the last request is sent for the session. This value should be no longer than
+        # 1 day.
         # Corresponds to the JSON property `sessionTtl`
         # @return [String]
         attr_accessor :session_ttl
