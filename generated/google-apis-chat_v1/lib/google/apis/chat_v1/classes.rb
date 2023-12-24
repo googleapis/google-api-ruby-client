@@ -413,33 +413,35 @@ module Google
       # A [card](https://developers.google.com/chat/api/reference/rest/v1/cards) in a
       # Google Chat message. Only Chat apps can create cards. If your Chat app [
       # authenticates as a user](https://developers.google.com/chat/api/guides/auth/
-      # users), the message can't contain cards.
+      # users), the message can't contain cards. [Card builder](https://addons.gsuite.
+      # google.com/uikit/builder)
       class CardWithId
         include Google::Apis::Core::Hashable
       
         # A card interface displayed in a Google Chat message or Google Workspace Add-on.
         # Cards support a defined layout, interactive UI elements like buttons, and
         # rich media like images. Use cards to present detailed information, gather
-        # information from users, and guide users to take a next step. To learn how to
-        # build cards, see the following documentation: * For Google Chat apps, see [
-        # Design dynamic, interactive, and consistent UIs with cards](https://developers.
-        # google.com/chat/ui). * For Google Workspace Add-ons, see [Card-based
-        # interfaces](https://developers.google.com/apps-script/add-ons/concepts/cards).
-        # **Example: Card message for a Google Chat app** ![Example contact card](https:/
-        # /developers.google.com/chat/images/card_api_reference.png) To create the
-        # sample card message in Google Chat, use the following JSON: ``` ` "cardsV2": [
-        # ` "cardId": "unique-card-id", "card": ` "header": ` "title": "Sasha", "
-        # subtitle": "Software Engineer", "imageUrl": "https://developers.google.com/
-        # chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText":
-        # "Avatar for Sasha", `, "sections": [ ` "header": "Contact Info", "collapsible":
-        # true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "
-        # startIcon": ` "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "
-        # decoratedText": ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `,
-        # `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (
-        # 555) 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "
-        # onClick": ` "openLink": ` "url": "https://example.com/share", ` ` `, ` "text":
-        # "Edit", "onClick": ` "action": ` "function": "goToView", "parameters": [ ` "
-        # key": "viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
+        # information from users, and guide users to take a next step. [Card builder](
+        # https://addons.gsuite.google.com/uikit/builder) To learn how to build cards,
+        # see the following documentation: * For Google Chat apps, see [Design dynamic,
+        # interactive, and consistent UIs with cards](https://developers.google.com/chat/
+        # ui). * For Google Workspace Add-ons, see [Card-based interfaces](https://
+        # developers.google.com/apps-script/add-ons/concepts/cards). **Example: Card
+        # message for a Google Chat app** ![Example contact card](https://developers.
+        # google.com/chat/images/card_api_reference.png) To create the sample card
+        # message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "cardId":
+        # "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "
+        # Software Engineer", "imageUrl": "https://developers.google.com/chat/images/
+        # quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "Avatar for
+        # Sasha", `, "sections": [ ` "header": "Contact Info", "collapsible": true, "
+        # uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "startIcon": `
+        # "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "decoratedText":
+        # ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `, `, ` "
+        # decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (555)
+        # 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": `
+        # "openLink": ` "url": "https://example.com/share", ` ` `, ` "text": "Edit", "
+        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
+        # viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
         # Corresponds to the JSON property `card`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :card
@@ -898,26 +900,27 @@ module Google
         # A card interface displayed in a Google Chat message or Google Workspace Add-on.
         # Cards support a defined layout, interactive UI elements like buttons, and
         # rich media like images. Use cards to present detailed information, gather
-        # information from users, and guide users to take a next step. To learn how to
-        # build cards, see the following documentation: * For Google Chat apps, see [
-        # Design dynamic, interactive, and consistent UIs with cards](https://developers.
-        # google.com/chat/ui). * For Google Workspace Add-ons, see [Card-based
-        # interfaces](https://developers.google.com/apps-script/add-ons/concepts/cards).
-        # **Example: Card message for a Google Chat app** ![Example contact card](https:/
-        # /developers.google.com/chat/images/card_api_reference.png) To create the
-        # sample card message in Google Chat, use the following JSON: ``` ` "cardsV2": [
-        # ` "cardId": "unique-card-id", "card": ` "header": ` "title": "Sasha", "
-        # subtitle": "Software Engineer", "imageUrl": "https://developers.google.com/
-        # chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText":
-        # "Avatar for Sasha", `, "sections": [ ` "header": "Contact Info", "collapsible":
-        # true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "
-        # startIcon": ` "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "
-        # decoratedText": ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `,
-        # `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (
-        # 555) 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "
-        # onClick": ` "openLink": ` "url": "https://example.com/share", ` ` `, ` "text":
-        # "Edit", "onClick": ` "action": ` "function": "goToView", "parameters": [ ` "
-        # key": "viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
+        # information from users, and guide users to take a next step. [Card builder](
+        # https://addons.gsuite.google.com/uikit/builder) To learn how to build cards,
+        # see the following documentation: * For Google Chat apps, see [Design dynamic,
+        # interactive, and consistent UIs with cards](https://developers.google.com/chat/
+        # ui). * For Google Workspace Add-ons, see [Card-based interfaces](https://
+        # developers.google.com/apps-script/add-ons/concepts/cards). **Example: Card
+        # message for a Google Chat app** ![Example contact card](https://developers.
+        # google.com/chat/images/card_api_reference.png) To create the sample card
+        # message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "cardId":
+        # "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "
+        # Software Engineer", "imageUrl": "https://developers.google.com/chat/images/
+        # quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "Avatar for
+        # Sasha", `, "sections": [ ` "header": "Contact Info", "collapsible": true, "
+        # uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "startIcon": `
+        # "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "decoratedText":
+        # ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `, `, ` "
+        # decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (555)
+        # 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": `
+        # "openLink": ` "url": "https://example.com/share", ` ` `, ` "text": "Edit", "
+        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
+        # viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
         # Corresponds to the JSON property `body`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :body
@@ -1378,26 +1381,27 @@ module Google
       # A card interface displayed in a Google Chat message or Google Workspace Add-on.
       # Cards support a defined layout, interactive UI elements like buttons, and
       # rich media like images. Use cards to present detailed information, gather
-      # information from users, and guide users to take a next step. To learn how to
-      # build cards, see the following documentation: * For Google Chat apps, see [
-      # Design dynamic, interactive, and consistent UIs with cards](https://developers.
-      # google.com/chat/ui). * For Google Workspace Add-ons, see [Card-based
-      # interfaces](https://developers.google.com/apps-script/add-ons/concepts/cards).
-      # **Example: Card message for a Google Chat app** ![Example contact card](https:/
-      # /developers.google.com/chat/images/card_api_reference.png) To create the
-      # sample card message in Google Chat, use the following JSON: ``` ` "cardsV2": [
-      # ` "cardId": "unique-card-id", "card": ` "header": ` "title": "Sasha", "
-      # subtitle": "Software Engineer", "imageUrl": "https://developers.google.com/
-      # chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText":
-      # "Avatar for Sasha", `, "sections": [ ` "header": "Contact Info", "collapsible":
-      # true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "
-      # startIcon": ` "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "
-      # decoratedText": ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `,
-      # `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (
-      # 555) 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "
-      # onClick": ` "openLink": ` "url": "https://example.com/share", ` ` `, ` "text":
-      # "Edit", "onClick": ` "action": ` "function": "goToView", "parameters": [ ` "
-      # key": "viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
+      # information from users, and guide users to take a next step. [Card builder](
+      # https://addons.gsuite.google.com/uikit/builder) To learn how to build cards,
+      # see the following documentation: * For Google Chat apps, see [Design dynamic,
+      # interactive, and consistent UIs with cards](https://developers.google.com/chat/
+      # ui). * For Google Workspace Add-ons, see [Card-based interfaces](https://
+      # developers.google.com/apps-script/add-ons/concepts/cards). **Example: Card
+      # message for a Google Chat app** ![Example contact card](https://developers.
+      # google.com/chat/images/card_api_reference.png) To create the sample card
+      # message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "cardId":
+      # "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "
+      # Software Engineer", "imageUrl": "https://developers.google.com/chat/images/
+      # quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "Avatar for
+      # Sasha", `, "sections": [ ` "header": "Contact Info", "collapsible": true, "
+      # uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "startIcon": `
+      # "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "decoratedText":
+      # ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `, `, ` "
+      # decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (555)
+      # 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": `
+      # "openLink": ` "url": "https://example.com/share", ` ` `, ` "text": "Edit", "
+      # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
+      # viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
       class GoogleAppsCardV1Card
         include Google::Apis::Core::Hashable
       
@@ -2120,26 +2124,27 @@ module Google
         # A card interface displayed in a Google Chat message or Google Workspace Add-on.
         # Cards support a defined layout, interactive UI elements like buttons, and
         # rich media like images. Use cards to present detailed information, gather
-        # information from users, and guide users to take a next step. To learn how to
-        # build cards, see the following documentation: * For Google Chat apps, see [
-        # Design dynamic, interactive, and consistent UIs with cards](https://developers.
-        # google.com/chat/ui). * For Google Workspace Add-ons, see [Card-based
-        # interfaces](https://developers.google.com/apps-script/add-ons/concepts/cards).
-        # **Example: Card message for a Google Chat app** ![Example contact card](https:/
-        # /developers.google.com/chat/images/card_api_reference.png) To create the
-        # sample card message in Google Chat, use the following JSON: ``` ` "cardsV2": [
-        # ` "cardId": "unique-card-id", "card": ` "header": ` "title": "Sasha", "
-        # subtitle": "Software Engineer", "imageUrl": "https://developers.google.com/
-        # chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText":
-        # "Avatar for Sasha", `, "sections": [ ` "header": "Contact Info", "collapsible":
-        # true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "
-        # startIcon": ` "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "
-        # decoratedText": ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `,
-        # `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (
-        # 555) 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "
-        # onClick": ` "openLink": ` "url": "https://example.com/share", ` ` `, ` "text":
-        # "Edit", "onClick": ` "action": ` "function": "goToView", "parameters": [ ` "
-        # key": "viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
+        # information from users, and guide users to take a next step. [Card builder](
+        # https://addons.gsuite.google.com/uikit/builder) To learn how to build cards,
+        # see the following documentation: * For Google Chat apps, see [Design dynamic,
+        # interactive, and consistent UIs with cards](https://developers.google.com/chat/
+        # ui). * For Google Workspace Add-ons, see [Card-based interfaces](https://
+        # developers.google.com/apps-script/add-ons/concepts/cards). **Example: Card
+        # message for a Google Chat app** ![Example contact card](https://developers.
+        # google.com/chat/images/card_api_reference.png) To create the sample card
+        # message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "cardId":
+        # "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "
+        # Software Engineer", "imageUrl": "https://developers.google.com/chat/images/
+        # quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "Avatar for
+        # Sasha", `, "sections": [ ` "header": "Contact Info", "collapsible": true, "
+        # uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "startIcon": `
+        # "knownIcon": "EMAIL", `, "text": "sasha@example.com", ` `, ` "decoratedText":
+        # ` "startIcon": ` "knownIcon": "PERSON", `, "text": "Online", `, `, ` "
+        # decoratedText": ` "startIcon": ` "knownIcon": "PHONE", `, "text": "+1 (555)
+        # 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": `
+        # "openLink": ` "url": "https://example.com/share", ` ` `, ` "text": "Edit", "
+        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
+        # viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `, ], `, ` ], ` ```
         # Corresponds to the JSON property `card`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :card
@@ -3353,7 +3358,7 @@ module Google
         # user](https://developers.google.com/chat/api/guides/auth/users), the messages
         # can't contain cards. To learn about cards and how to create them, see [Design
         # dynamic, interactive, and consistent UIs with cards](https://developers.google.
-        # com/chat/ui).
+        # com/chat/ui). [Card builder](https://addons.gsuite.google.com/uikit/builder)
         # Corresponds to the JSON property `cardsV2`
         # @return [Array<Google::Apis::ChatV1::CardWithId>]
         attr_accessor :cards_v2
@@ -3441,6 +3446,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # A user in Google Chat. When returned as an output from a request, if your Chat
+        # app [authenticates as a user](https://developers.google.com/chat/api/guides/
+        # auth/users), the output for a `User` resource only populates the user's `name`
+        # and `type`.
+        # Corresponds to the JSON property `privateMessageViewer`
+        # @return [Google::Apis::ChatV1::User]
+        attr_accessor :private_message_viewer
+      
         # Information about a quoted message.
         # Corresponds to the JSON property `quotedMessageMetadata`
         # @return [Google::Apis::ChatV1::QuotedMessageMetadata]
@@ -3518,6 +3531,7 @@ module Google
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @matched_url = args[:matched_url] if args.key?(:matched_url)
           @name = args[:name] if args.key?(:name)
+          @private_message_viewer = args[:private_message_viewer] if args.key?(:private_message_viewer)
           @quoted_message_metadata = args[:quoted_message_metadata] if args.key?(:quoted_message_metadata)
           @sender = args[:sender] if args.key?(:sender)
           @slash_command = args[:slash_command] if args.key?(:slash_command)
