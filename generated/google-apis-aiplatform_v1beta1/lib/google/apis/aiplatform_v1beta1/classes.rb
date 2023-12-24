@@ -1604,6 +1604,25 @@ module Google
         end
       end
       
+      # Response message for PipelineService.BatchCancelPipelineJobs.
+      class GoogleCloudAiplatformV1beta1BatchCancelPipelineJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # PipelineJobs cancelled.
+        # Corresponds to the JSON property `pipelineJobs`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PipelineJob>]
+        attr_accessor :pipeline_jobs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pipeline_jobs = args[:pipeline_jobs] if args.key?(:pipeline_jobs)
+        end
+      end
+      
       # Details of operations that perform batch create Features.
       class GoogleCloudAiplatformV1beta1BatchCreateFeaturesOperationMetadata
         include Google::Apis::Core::Hashable
@@ -1795,6 +1814,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @names = args[:names] if args.key?(:names)
+        end
+      end
+      
+      # Response message for PipelineService.BatchDeletePipelineJobs.
+      class GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # PipelineJobs deleted.
+        # Corresponds to the JSON property `pipelineJobs`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PipelineJob>]
+        attr_accessor :pipeline_jobs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pipeline_jobs = args[:pipeline_jobs] if args.key?(:pipeline_jobs)
         end
       end
       
@@ -3780,32 +3818,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
-      # Metadata information for NotebookService.CreateNotebookExecutionJob.
-      class GoogleCloudAiplatformV1beta1CreateNotebookExecutionJobOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Generic Metadata shared by all operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        # A human-readable message that shows the intermediate progress details of
-        # NotebookRuntime.
-        # Corresponds to the JSON property `progressMessage`
-        # @return [String]
-        attr_accessor :progress_message
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-          @progress_message = args[:progress_message] if args.key?(:progress_message)
         end
       end
       
@@ -7216,8 +7228,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # All of the files that are exported in this export operation. For custom code
-        # training export, only three (training, validation and test) GCS paths in
-        # wildcard format are populated (e.g., gs://.../training-*).
+        # training export, only three (training, validation and test) Cloud Storage
+        # paths in wildcard format are populated (for example, gs://.../training-*).
         # Corresponds to the JSON property `exportedFiles`
         # @return [Array<String>]
         attr_accessor :exported_files
@@ -7734,7 +7746,7 @@ module Google
         attr_accessor :value_type
       
         # Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/
-        # View columnn hosting data for this version. If no value is provided, will use
+        # View column hosting data for this version. If no value is provided, will use
         # feature_id.
         # Corresponds to the JSON property `versionColumnName`
         # @return [String]
@@ -10995,6 +11007,31 @@ module Google
         end
       end
       
+      # Request message for [InternalOsServiceStateInstance].
+      class GoogleCloudAiplatformV1beta1InternalOsServiceStateInstance
+        include Google::Apis::Core::Hashable
+      
+        # Required. internal service name.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        # Required. internal service state.
+        # Corresponds to the JSON property `serviceState`
+        # @return [String]
+        attr_accessor :service_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_name = args[:service_name] if args.key?(:service_name)
+          @service_state = args[:service_state] if args.key?(:service_state)
+        end
+      end
+      
       # Contains information about the Large Model.
       class GoogleCloudAiplatformV1beta1LargeModelReference
         include Google::Apis::Core::Hashable
@@ -13797,7 +13834,8 @@ module Google
       
         # The metadata of the ModelEvaluation. For the ModelEvaluation uploaded from
         # Managed Pipeline, metadata contains a structured value with keys of "
-        # pipeline_job_id", "evaluation_dataset_type", "evaluation_dataset_path".
+        # pipeline_job_id", "evaluation_dataset_type", "evaluation_dataset_path", "
+        # row_based_metrics_path".
         # Corresponds to the JSON property `metadata`
         # @return [Object]
         attr_accessor :metadata
@@ -15598,6 +15636,42 @@ module Google
         end
       end
       
+      # Notebook Reservation Affinity for consuming Zonal reservation.
+      class GoogleCloudAiplatformV1beta1NotebookReservationAffinity
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the type of reservation from which this instance can
+        # consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or
+        # RESERVATION_NONE. See Consuming reserved instances for examples.
+        # Corresponds to the JSON property `consumeReservationType`
+        # @return [String]
+        attr_accessor :consume_reservation_type
+      
+        # Optional. Corresponds to the label key of a reservation resource. To target a
+        # RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name as
+        # the key and specify the name of your reservation as its value.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Corresponds to the label values of a reservation resource. This must
+        # be the full path name of Reservation.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consume_reservation_type = args[:consume_reservation_type] if args.key?(:consume_reservation_type)
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # A runtime is a virtual machine allocated to a particular user for a particular
       # Notebook file on temporary basis with lifetime limited to 24 hours.
       class GoogleCloudAiplatformV1beta1NotebookRuntime
@@ -15633,6 +15707,12 @@ module Google
         # @return [String]
         attr_accessor :health_state
       
+        # Output only. Whether NotebookRuntime is upgradable.
+        # Corresponds to the JSON property `isUpgradable`
+        # @return [Boolean]
+        attr_accessor :is_upgradable
+        alias_method :is_upgradable?, :is_upgradable
+      
         # The labels with user-defined metadata to organize your NotebookRuntime. Label
         # keys and values can be no longer than 64 characters (Unicode codepoints), can
         # only contain lowercase letters, numeric characters, underscores and dashes.
@@ -15655,6 +15735,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The Compute Engine tags to add to runtime (see [Tagging instances](
+        # https://cloud.google.com/vpc/docs/add-remove-network-tags)).
+        # Corresponds to the JSON property `networkTags`
+        # @return [Array<String>]
+        attr_accessor :network_tags
+      
         # Points to a NotebookRuntimeTemplateRef.
         # Corresponds to the JSON property `notebookRuntimeTemplateRef`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookRuntimeTemplateRef]
@@ -15669,6 +15755,11 @@ module Google
         # Corresponds to the JSON property `proxyUri`
         # @return [String]
         attr_accessor :proxy_uri
+      
+        # Notebook Reservation Affinity for consuming Zonal reservation.
+        # Corresponds to the JSON property `reservationAffinity`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookReservationAffinity]
+        attr_accessor :reservation_affinity
       
         # Output only. The runtime (instance) state of the NotebookRuntime.
         # Corresponds to the JSON property `runtimeState`
@@ -15706,11 +15797,14 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @health_state = args[:health_state] if args.key?(:health_state)
+          @is_upgradable = args[:is_upgradable] if args.key?(:is_upgradable)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @network_tags = args[:network_tags] if args.key?(:network_tags)
           @notebook_runtime_template_ref = args[:notebook_runtime_template_ref] if args.key?(:notebook_runtime_template_ref)
           @notebook_runtime_type = args[:notebook_runtime_type] if args.key?(:notebook_runtime_type)
           @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)
+          @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @runtime_state = args[:runtime_state] if args.key?(:runtime_state)
           @runtime_user = args[:runtime_user] if args.key?(:runtime_user)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -15793,10 +15887,21 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NetworkSpec]
         attr_accessor :network_spec
       
+        # Optional. The Compute Engine tags to add to runtime (see [Tagging instances](
+        # https://cloud.google.com/vpc/docs/add-remove-network-tags)).
+        # Corresponds to the JSON property `networkTags`
+        # @return [Array<String>]
+        attr_accessor :network_tags
+      
         # Optional. Immutable. The type of the notebook runtime template.
         # Corresponds to the JSON property `notebookRuntimeType`
         # @return [String]
         attr_accessor :notebook_runtime_type
+      
+        # Notebook Reservation Affinity for consuming Zonal reservation.
+        # Corresponds to the JSON property `reservationAffinity`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookReservationAffinity]
+        attr_accessor :reservation_affinity
       
         # The service account that the runtime workload runs as. You can use any service
         # account within the same project, but you must have the service account user
@@ -15806,6 +15911,13 @@ module Google
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
+      
+        # A set of Shielded Instance options. See [Images using supported Shielded VM
+        # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
+        # vm).
+        # Corresponds to the JSON property `shieldedVmConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ShieldedVmConfig]
+        attr_accessor :shielded_vm_config
       
         # Output only. Timestamp when this NotebookRuntimeTemplate was most recently
         # updated.
@@ -15831,8 +15943,11 @@ module Google
           @machine_spec = args[:machine_spec] if args.key?(:machine_spec)
           @name = args[:name] if args.key?(:name)
           @network_spec = args[:network_spec] if args.key?(:network_spec)
+          @network_tags = args[:network_tags] if args.key?(:network_tags)
           @notebook_runtime_type = args[:notebook_runtime_type] if args.key?(:notebook_runtime_type)
+          @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @shielded_vm_config = args[:shielded_vm_config] if args.key?(:shielded_vm_config)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -18260,6 +18375,16 @@ module Google
         # @return [String]
         attr_accessor :event_type
       
+        # The details of the internal os service states.
+        # Corresponds to the JSON property `internalOsServiceStateInstance`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1InternalOsServiceStateInstance>]
+        attr_accessor :internal_os_service_state_instance
+      
+        # Optional. The details of the internal os service states.
+        # Corresponds to the JSON property `internalOsServiceStateInstances`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1InternalOsServiceStateInstance>]
+        attr_accessor :internal_os_service_state_instances
+      
         # Required. The VM identity token (a JWT) for authenticating the VM. https://
         # cloud.google.com/compute/docs/instances/verifying-instance-identity
         # Corresponds to the JSON property `vmToken`
@@ -18274,6 +18399,8 @@ module Google
         def update!(**args)
           @event_details = args[:event_details] if args.key?(:event_details)
           @event_type = args[:event_type] if args.key?(:event_type)
+          @internal_os_service_state_instance = args[:internal_os_service_state_instance] if args.key?(:internal_os_service_state_instance)
+          @internal_os_service_state_instances = args[:internal_os_service_state_instances] if args.key?(:internal_os_service_state_instances)
           @vm_token = args[:vm_token] if args.key?(:vm_token)
         end
       end
@@ -18950,6 +19077,12 @@ module Google
         attr_accessor :disable_retries
         alias_method :disable_retries?, :disable_retries
       
+        # Optional. This is the maximum time a user will wait in the QRM queue for
+        # resources. Default is 1 day
+        # Corresponds to the JSON property `maxWaitDuration`
+        # @return [String]
+        attr_accessor :max_wait_duration
+      
         # Restarts the entire CustomJob if a worker gets restarted. This feature can be
         # used by distributed training jobs that are not resilient to workers leaving
         # and joining a job.
@@ -18970,6 +19103,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disable_retries = args[:disable_retries] if args.key?(:disable_retries)
+          @max_wait_duration = args[:max_wait_duration] if args.key?(:max_wait_duration)
           @restart_job_on_worker_restart = args[:restart_job_on_worker_restart] if args.key?(:restart_job_on_worker_restart)
           @timeout = args[:timeout] if args.key?(:timeout)
         end
@@ -25245,6 +25379,32 @@ module Google
         end
       end
       
+      # A set of Shielded Instance options. See [Images using supported Shielded VM
+      # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
+      # vm).
+      class GoogleCloudAiplatformV1beta1ShieldedVmConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines whether the instance has [Secure Boot](https://cloud.google.com/
+        # compute/shielded-vm/docs/shielded-vm#secure-boot) enabled. Secure Boot helps
+        # ensure that the system only runs authentic software by verifying the digital
+        # signature of all boot components, and halting the boot process if signature
+        # verification fails.
+        # Corresponds to the JSON property `enableSecureBoot`
+        # @return [Boolean]
+        attr_accessor :enable_secure_boot
+        alias_method :enable_secure_boot?, :enable_secure_boot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
+        end
+      end
+      
       # Config for SmoothGrad approximation of gradients. When enabled, the gradients
       # are approximated by averaging the gradients from noisy samples in the vicinity
       # of the inputs. Adding noise can help improve the computed gradients. Refer to
@@ -28630,21 +28790,43 @@ module Google
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
         # . * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
-        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a user that has been recently deleted. For example, `alice@
-        # example.com?uid=123456789012345678901`. If the user is recovered, this value
-        # reverts to `user:`emailid`` and the recovered user retains the role in the
-        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
-        # (plus unique identifier) representing a service account that has been recently
-        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # users of that domain. For example, `google.com` or `example.com`. * `principal:
+        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
+        # subject_attribute_value``: A single identity in a workforce identity pool. * `
+        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
+        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
+        # attribute_name`/`attribute_value``: All workforce identities with a specific
+        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
+        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
+        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
+        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
+        # googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
+        # All identities in a workload identity pool with a certain attribute. * `
+        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding.
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
+        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
+        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
+        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
