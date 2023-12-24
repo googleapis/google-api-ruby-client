@@ -889,6 +889,26 @@ module Google
         end
       end
       
+      # Response for [ListLegacyOrganizations]. [spectrum.sas.portal.v1alpha1.
+      # Provisioning.ListLegacyOrganizations].
+      class SasPortalListLegacyOrganizationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. IDs of legacy SAS organizations.
+        # Corresponds to the JSON property `organizationIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :organization_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @organization_ids = args[:organization_ids] if args.key?(:organization_ids)
+        end
+      end
+      
       # Response for ListNodes.
       class SasPortalListNodesResponse
         include Google::Apis::Core::Hashable
