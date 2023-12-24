@@ -224,6 +224,59 @@ module Google
         end
       end
       
+      # A request for changing the status of a batch of ChromeOS devices.
+      class BatchChangeChromeOsDeviceStatusRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Action to take on the ChromeOS device in order to change its
+        # status.
+        # Corresponds to the JSON property `changeChromeOsDeviceStatusAction`
+        # @return [String]
+        attr_accessor :change_chrome_os_device_status_action
+      
+        # Optional. The reason behind a device deprovision, must be provided for all
+        # deprovisions, otherwise it must not be provided. It must be one of the non-
+        # deprecated deprovision reasons.
+        # Corresponds to the JSON property `deprovisionReason`
+        # @return [String]
+        attr_accessor :deprovision_reason
+      
+        # Required. List of the IDs of the ChromeOS devices to change.
+        # Corresponds to the JSON property `deviceIds`
+        # @return [Array<String>]
+        attr_accessor :device_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @change_chrome_os_device_status_action = args[:change_chrome_os_device_status_action] if args.key?(:change_chrome_os_device_status_action)
+          @deprovision_reason = args[:deprovision_reason] if args.key?(:deprovision_reason)
+          @device_ids = args[:device_ids] if args.key?(:device_ids)
+        end
+      end
+      
+      # The response of changing the status of a batch of ChromeOS devices.
+      class BatchChangeChromeOsDeviceStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        # The results for each of the ChromeOS devices provided in the request.
+        # Corresponds to the JSON property `changeChromeOsDeviceStatusResults`
+        # @return [Array<Google::Apis::AdminDirectoryV1::ChangeChromeOsDeviceStatusResult>]
+        attr_accessor :change_chrome_os_device_status_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @change_chrome_os_device_status_results = args[:change_chrome_os_device_status_results] if args.key?(:change_chrome_os_device_status_results)
+        end
+      end
+      
       # Request to add multiple new print servers in a batch.
       class BatchCreatePrintServersRequest
         include Google::Apis::Core::Hashable
@@ -732,6 +785,55 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The result of a single ChromeOS device for a Change state operation.
+      class ChangeChromeOsDeviceStatusResult
+        include Google::Apis::Core::Hashable
+      
+        # The unique ID of the ChromeOS device.
+        # Corresponds to the JSON property `deviceId`
+        # @return [String]
+        attr_accessor :device_id
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::AdminDirectoryV1::Status]
+        attr_accessor :error
+      
+        # Response for a successful ChromeOS device status change.
+        # Corresponds to the JSON property `response`
+        # @return [Google::Apis::AdminDirectoryV1::ChangeChromeOsDeviceStatusSucceeded]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_id = args[:device_id] if args.key?(:device_id)
+          @error = args[:error] if args.key?(:error)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Response for a successful ChromeOS device status change.
+      class ChangeChromeOsDeviceStatusSucceeded
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -4024,6 +4126,45 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @kind = args[:kind] if args.key?(:kind)
           @schemas = args[:schemas] if args.key?(:schemas)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
