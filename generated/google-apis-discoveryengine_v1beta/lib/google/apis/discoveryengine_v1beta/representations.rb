@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,6 +329,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaImportUserEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaOcrConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1221,6 +1233,15 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :ocr_config, as: 'ocrConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaOcrConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaOcrConfig::Representation
+      
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1413,6 +1434,15 @@ module Google
       
           property :joined_events_count, :numeric_string => true, as: 'joinedEventsCount'
           property :unjoined_events_count, :numeric_string => true, as: 'unjoinedEventsCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaOcrConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          collection :enhanced_document_elements, as: 'enhancedDocumentElements'
+          property :use_native_text, as: 'useNativeText'
         end
       end
       
