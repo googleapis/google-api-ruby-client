@@ -368,6 +368,7 @@ module Google
           property :ttl, as: 'ttl'
           property :update_time, as: 'updateTime', type: DateTime
       
+          property :zone, as: 'zone'
         end
       end
       
