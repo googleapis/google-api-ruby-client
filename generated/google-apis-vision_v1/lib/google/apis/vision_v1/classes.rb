@@ -2595,7 +2595,8 @@ module Google
         # @return [String]
         attr_accessor :spoof
       
-        # Likelihood that this image contains violent content.
+        # Likelihood that this image contains violent content. Violent content may
+        # include death, serious harm, or injury to individuals or groups of individuals.
         # Corresponds to the JSON property `violence`
         # @return [String]
         attr_accessor :violence
@@ -4315,7 +4316,8 @@ module Google
         # @return [String]
         attr_accessor :spoof
       
-        # Likelihood that this image contains violent content.
+        # Likelihood that this image contains violent content. Violent content may
+        # include death, serious harm, or injury to individuals or groups of individuals.
         # Corresponds to the JSON property `violence`
         # @return [String]
         attr_accessor :violence
@@ -6139,7 +6141,8 @@ module Google
         # @return [String]
         attr_accessor :spoof
       
-        # Likelihood that this image contains violent content.
+        # Likelihood that this image contains violent content. Violent content may
+        # include death, serious harm, or injury to individuals or groups of individuals.
         # Corresponds to the JSON property `violence`
         # @return [String]
         attr_accessor :violence
@@ -8067,7 +8070,8 @@ module Google
         # @return [String]
         attr_accessor :spoof
       
-        # Likelihood that this image contains violent content.
+        # Likelihood that this image contains violent content. Violent content may
+        # include death, serious harm, or injury to individuals or groups of individuals.
         # Corresponds to the JSON property `violence`
         # @return [String]
         attr_accessor :violence
@@ -9853,7 +9857,8 @@ module Google
         # @return [String]
         attr_accessor :spoof
       
-        # Likelihood that this image contains violent content.
+        # Likelihood that this image contains violent content. Violent content may
+        # include death, serious harm, or injury to individuals or groups of individuals.
         # Corresponds to the JSON property `violence`
         # @return [String]
         attr_accessor :violence
