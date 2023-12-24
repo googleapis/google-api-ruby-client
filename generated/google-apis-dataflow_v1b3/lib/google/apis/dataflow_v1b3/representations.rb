@@ -1422,6 +1422,7 @@ module Google
           property :service_kms_key_name, as: 'serviceKmsKeyName'
           collection :service_options, as: 'serviceOptions'
           property :shuffle_mode, as: 'shuffleMode'
+          property :streaming_mode, as: 'streamingMode'
           property :temp_storage_prefix, as: 'tempStoragePrefix'
           property :use_streaming_engine_resource_based_billing, as: 'useStreamingEngineResourceBasedBilling'
           hash :user_agent, as: 'userAgent'

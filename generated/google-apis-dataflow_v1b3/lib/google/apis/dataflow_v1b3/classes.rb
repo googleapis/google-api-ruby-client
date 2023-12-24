@@ -1326,6 +1326,14 @@ module Google
         # @return [String]
         attr_accessor :shuffle_mode
       
+        # Optional. Specifies the Streaming Engine message processing guarantees.
+        # Reduces cost and latency but might result in duplicate messages committed to
+        # storage. Designed to run simple mapping streaming ETL jobs at the lowest cost.
+        # For example, Change Data Capture (CDC) to BigQuery is a canonical use case.
+        # Corresponds to the JSON property `streamingMode`
+        # @return [String]
+        attr_accessor :streaming_mode
+      
         # The prefix of the resources the system should use for temporary storage. The
         # system will append the suffix "/temp-`JOBNAME` to this resource prefix, where `
         # JOBNAME` is the value of the job_name field. The resulting bucket and object
@@ -1337,8 +1345,8 @@ module Google
         # @return [String]
         attr_accessor :temp_storage_prefix
       
-        # Output only. Whether the job uses the new streaming engine billing model based
-        # on resource usage.
+        # Output only. Whether the job uses the Streaming Engine resource-based billing
+        # model.
         # Corresponds to the JSON property `useStreamingEngineResourceBasedBilling`
         # @return [Boolean]
         attr_accessor :use_streaming_engine_resource_based_billing
@@ -1395,6 +1403,7 @@ module Google
           @service_kms_key_name = args[:service_kms_key_name] if args.key?(:service_kms_key_name)
           @service_options = args[:service_options] if args.key?(:service_options)
           @shuffle_mode = args[:shuffle_mode] if args.key?(:shuffle_mode)
+          @streaming_mode = args[:streaming_mode] if args.key?(:streaming_mode)
           @temp_storage_prefix = args[:temp_storage_prefix] if args.key?(:temp_storage_prefix)
           @use_streaming_engine_resource_based_billing = args[:use_streaming_engine_resource_based_billing] if args.key?(:use_streaming_engine_resource_based_billing)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
