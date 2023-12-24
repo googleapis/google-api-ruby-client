@@ -259,6 +259,9 @@ module Google
         # @param [String] mobilesdk_app_id
         #   Unique id for a Firebase app of the format: `version`:`project_number`:`
         #   platform`:`hash(bundle_id)` Example: 1:581234567376:android:aa0a3c7b135e90289
+        # @param [String] project
+        #   The name of the project, which is the parent of testers Format: `projects/`
+        #   project_number``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -276,11 +279,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_app_tester_tester_udids(mobilesdk_app_id, fields: nil, quota_user: nil, options: nil, &block)
+        def get_app_tester_tester_udids(mobilesdk_app_id, project: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/apps/{mobilesdkAppId}/testers:getTesterUdids', options)
           command.response_representation = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse::Representation
           command.response_class = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse
           command.params['mobilesdkAppId'] = mobilesdk_app_id unless mobilesdk_app_id.nil?
+          command.query['project'] = project unless project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -493,6 +497,41 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get UDIDs of tester iOS devices in a project
+        # @param [String] project
+        #   The name of the project, which is the parent of testers Format: `projects/`
+        #   project_number``
+        # @param [String] mobilesdk_app_id
+        #   Unique id for a Firebase app of the format: `version`:`project_number`:`
+        #   platform`:`hash(bundle_id)` Example: 1:581234567376:android:aa0a3c7b135e90289
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_tester_udids(project, mobilesdk_app_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+project}/testers:udids', options)
+          command.response_representation = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse::Representation
+          command.response_class = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse
+          command.params['project'] = project unless project.nil?
+          command.query['mobilesdkAppId'] = mobilesdk_app_id unless mobilesdk_app_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
