@@ -612,8 +612,8 @@ module Google
         
         # Changes which parent organization a billing account belongs to.
         # @param [String] destination_parent
-        #   Required. The resource name of the Organization to reparent the billing
-        #   account under. Must be of the form `organizations/`organization_id``.
+        #   Required. The resource name of the Organization to move the billing account
+        #   under. Must be of the form `organizations/`organization_id``.
         # @param [String] name
         #   Required. The resource name of the billing account to move. Must be of the
         #   form `billingAccounts/`billing_account_id``. The specified billing account
