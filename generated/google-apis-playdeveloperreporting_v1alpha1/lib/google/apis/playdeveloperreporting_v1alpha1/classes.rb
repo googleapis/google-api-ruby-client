@@ -52,7 +52,7 @@ module Google
         # @return [String]
         attr_accessor :metric_set
       
-        # Name of the anomaly. Format: apps/`app`/anomalies/`anomaly`
+        # Identifier. Name of the anomaly. Format: apps/`app`/anomalies/`anomaly`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -159,7 +159,7 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1FreshnessInfo]
         attr_accessor :freshness_info
       
-        # The resource name. Format: apps/`app`/anrRateMetricSet
+        # Identifier. The resource name. Format: apps/`app`/anrRateMetricSet
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -186,7 +186,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name. Format: apps/`app`
+        # Identifier. The resource name. Format: apps/`app`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -301,7 +301,7 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1FreshnessInfo]
         attr_accessor :freshness_info
       
-        # The resource name. Format: apps/`app`/crashRateMetricSet
+        # Identifier. The resource name. Format: apps/`app`/crashRateMetricSet
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -767,7 +767,7 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1FreshnessInfo]
         attr_accessor :freshness_info
       
-        # The resource name. Format: apps/`app`/excessiveWakeupRateMetricSet
+        # Identifier. The resource name. Format: apps/`app`/excessiveWakeupRateMetricSet
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2185,7 +2185,7 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1FreshnessInfo]
         attr_accessor :freshness_info
       
-        # The resource name. Format: apps/`app`/slowRenderingRateMetricSet
+        # Identifier. The resource name. Format: apps/`app`/slowRenderingRateMetricSet
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2259,7 +2259,7 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1FreshnessInfo]
         attr_accessor :freshness_info
       
-        # The resource name. Format: apps/`app`/slowStartRateMetricSet
+        # Identifier. The resource name. Format: apps/`app`/slowStartRateMetricSet
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2333,7 +2333,8 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1FreshnessInfo]
         attr_accessor :freshness_info
       
-        # The resource name. Format: apps/`app`/stuckBackgroundWakelockRateMetricSet
+        # Identifier. The resource name. Format: apps/`app`/
+        # stuckBackgroundWakelockRateMetricSet
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
