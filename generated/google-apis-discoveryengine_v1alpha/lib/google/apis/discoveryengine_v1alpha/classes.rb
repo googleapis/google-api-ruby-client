@@ -1734,6 +1734,34 @@ module Google
         end
       end
       
+      # A singleton resource of DataStore. It's empty when DataStore is created, which
+      # defaults to digital parser. The first call to DataStoreService.
+      # UpdateDocumentProcessingConfig method will initialize the config.
+      class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The full resource name of the Document Processing Config. Format:
+        # `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The OCR options for parsing documents.
+        # Corresponds to the JSON property `ocrConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaOcrConfig]
+        attr_accessor :ocr_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @ocr_config = args[:ocr_config] if args.key?(:ocr_config)
+        end
+      end
+      
       # Double list.
       class GoogleCloudDiscoveryengineV1alphaDoubleList
         include Google::Apis::Core::Hashable
@@ -3121,6 +3149,42 @@ module Google
         def update!(**args)
           @media_progress_duration = args[:media_progress_duration] if args.key?(:media_progress_duration)
           @media_progress_percentage = args[:media_progress_percentage] if args.key?(:media_progress_percentage)
+        end
+      end
+      
+      # The OCR options for parsing documents.
+      class GoogleCloudDiscoveryengineV1alphaOcrConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. If OCR is enabled or not. OCR must be enabled for other OcrConfig
+        # options to apply.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Apply additional enhanced OCR processing to a list of document elements.
+        # Supported values: * `table`: advanced table parsing model.
+        # Corresponds to the JSON property `enhancedDocumentElements`
+        # @return [Array<String>]
+        attr_accessor :enhanced_document_elements
+      
+        # If true, will use native text instead of OCR text on pages containing native
+        # text.
+        # Corresponds to the JSON property `useNativeText`
+        # @return [Boolean]
+        attr_accessor :use_native_text
+        alias_method :use_native_text?, :use_native_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @enhanced_document_elements = args[:enhanced_document_elements] if args.key?(:enhanced_document_elements)
+          @use_native_text = args[:use_native_text] if args.key?(:use_native_text)
         end
       end
       
