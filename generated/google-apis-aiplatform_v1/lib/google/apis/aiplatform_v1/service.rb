@@ -3626,6 +3626,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generate content with multimodal inputs with streaming support.
+        # @param [String] model
+        #   Required. The name of the publisher model requested to serve the prediction.
+        #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest] google_cloud_aiplatform_v1_generate_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_endpoint_generate_content(model, google_cloud_aiplatform_v1_generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+model}:streamGenerateContent', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_generate_content_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse
+          command.params['model'] = model unless model.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Undeploys a Model from an Endpoint, removing a DeployedModel from it, and
         # freeing all resources it's using.
         # @param [String] endpoint
@@ -13251,6 +13285,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generate content with multimodal inputs with streaming support.
+        # @param [String] model
+        #   Required. The name of the publisher model requested to serve the prediction.
+        #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest] google_cloud_aiplatform_v1_generate_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_publisher_model_generate_content(model, google_cloud_aiplatform_v1_generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+model}:streamGenerateContent', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_generate_content_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse
+          command.params['model'] = model unless model.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Schedule.
         # @param [String] parent
         #   Required. The resource name of the Location to create the Schedule in. Format:
@@ -14956,6 +15024,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Reads multiple TensorboardTimeSeries' data. The data point number limit is
+        # 1000 for scalars, 100 for tensors and blob references. If the number of data
+        # points stored is less than the limit, all data is returned. Otherwise, the
+        # number limit of data points is randomly selected from this time series and
+        # returned.
+        # @param [String] tensorboard
+        #   Required. The resource name of the Tensorboard containing
+        #   TensorboardTimeSeries to read data from. Format: `projects/`project`/locations/
+        #   `location`/tensorboards/`tensorboard``. The TensorboardTimeSeries referenced
+        #   by time_series must be sub resources of this Tensorboard.
+        # @param [Array<String>, String] time_series
+        #   Required. The resource names of the TensorboardTimeSeries to read data from.
+        #   Format: `projects/`project`/locations/`location`/tensorboards/`tensorboard`/
+        #   experiments/`experiment`/runs/`run`/timeSeries/`time_series``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchReadTensorboardTimeSeriesDataResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchReadTensorboardTimeSeriesDataResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_tensorboard_read(tensorboard, time_series: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+tensorboard}:batchRead', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchReadTensorboardTimeSeriesDataResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchReadTensorboardTimeSeriesDataResponse
+          command.params['tensorboard'] = tensorboard unless tensorboard.nil?
+          command.query['timeSeries'] = time_series unless time_series.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Tensorboard.
         # @param [String] parent
         #   Required. The resource name of the Location to create the Tensorboard in.
@@ -15201,6 +15311,43 @@ module Google
           command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReadTensorboardUsageResponse::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReadTensorboardUsageResponse
           command.params['tensorboard'] = tensorboard unless tensorboard.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Batch create TensorboardTimeSeries that belong to a TensorboardExperiment.
+        # @param [String] parent
+        #   Required. The resource name of the TensorboardExperiment to create the
+        #   TensorboardTimeSeries in. Format: `projects/`project`/locations/`location`/
+        #   tensorboards/`tensorboard`/experiments/`experiment`` The TensorboardRuns
+        #   referenced by the parent fields in the CreateTensorboardTimeSeriesRequest
+        #   messages must be sub resources of this TensorboardExperiment.
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest] google_cloud_aiplatform_v1_batch_create_tensorboard_time_series_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_tensorboard_experiment_create(parent, google_cloud_aiplatform_v1_batch_create_tensorboard_time_series_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}:batchCreate', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_batch_create_tensorboard_time_series_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -16068,91 +16215,6 @@ module Google
           command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['timeout'] = timeout unless timeout.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Batch create TensorboardTimeSeries that belong to a TensorboardExperiment.
-        # @param [String] parent
-        #   Required. The resource name of the TensorboardExperiment to create the
-        #   TensorboardTimeSeries in. Format: `projects/`project`/locations/`location`/
-        #   tensorboards/`tensorboard`/experiments/`experiment`` The TensorboardRuns
-        #   referenced by the parent fields in the CreateTensorboardTimeSeriesRequest
-        #   messages must be sub resources of this TensorboardExperiment.
-        # @param [String] runs_id
-        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest] google_cloud_aiplatform_v1_batch_create_tensorboard_time_series_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_project_location_tensorboard_experiment_run_time_series_create(parent, runs_id, google_cloud_aiplatform_v1_batch_create_tensorboard_time_series_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+parent}/runs/{runsId}/timeSeries:batchCreate', options)
-          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest::Representation
-          command.request_object = google_cloud_aiplatform_v1_batch_create_tensorboard_time_series_request_object
-          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse::Representation
-          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.params['runsId'] = runs_id unless runs_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Reads multiple TensorboardTimeSeries' data. The data point number limit is
-        # 1000 for scalars, 100 for tensors and blob references. If the number of data
-        # points stored is less than the limit, all data is returned. Otherwise, the
-        # number limit of data points is randomly selected from this time series and
-        # returned.
-        # @param [String] tensorboard
-        #   Required. The resource name of the Tensorboard containing
-        #   TensorboardTimeSeries to read data from. Format: `projects/`project`/locations/
-        #   `location`/tensorboards/`tensorboard``. The TensorboardTimeSeries referenced
-        #   by time_series must be sub resources of this Tensorboard.
-        # @param [String] experiments_id
-        # @param [String] runs_id
-        # @param [Array<String>, String] time_series
-        #   Required. The resource names of the TensorboardTimeSeries to read data from.
-        #   Format: `projects/`project`/locations/`location`/tensorboards/`tensorboard`/
-        #   experiments/`experiment`/runs/`run`/timeSeries/`time_series``
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchReadTensorboardTimeSeriesDataResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchReadTensorboardTimeSeriesDataResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_project_location_tensorboard_experiment_run_time_series_read(tensorboard, experiments_id, runs_id, time_series: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+tensorboard}/experiments/{experimentsId}/runs/{runsId}/timeSeries:batchRead', options)
-          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchReadTensorboardTimeSeriesDataResponse::Representation
-          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchReadTensorboardTimeSeriesDataResponse
-          command.params['tensorboard'] = tensorboard unless tensorboard.nil?
-          command.params['experimentsId'] = experiments_id unless experiments_id.nil?
-          command.params['runsId'] = runs_id unless runs_id.nil?
-          command.query['timeSeries'] = time_series unless time_series.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
