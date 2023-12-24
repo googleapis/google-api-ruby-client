@@ -286,12 +286,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsDriveLabelsV2betaFieldLongTextOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleAppsDriveLabelsV2betaFieldProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -732,8 +726,6 @@ module Google
           property :id, as: 'id'
           property :integer_options, as: 'integerOptions', class: Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaFieldIntegerOptions, decorator: Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaFieldIntegerOptions::Representation
       
-          property :long_text_options, as: 'longTextOptions', class: Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaFieldLongTextOptions, decorator: Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaFieldLongTextOptions::Representation
-      
           property :selection_options, as: 'selectionOptions', class: Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaFieldSelectionOptions, decorator: Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaFieldSelectionOptions::Representation
       
           property :text_options, as: 'textOptions', class: Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaFieldTextOptions, decorator: Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaFieldTextOptions::Representation
@@ -1010,14 +1002,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_entries, as: 'maxEntries'
-        end
-      end
-      
-      class GoogleAppsDriveLabelsV2betaFieldLongTextOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_length, as: 'maxLength'
-          property :min_length, as: 'minLength'
         end
       end
       
