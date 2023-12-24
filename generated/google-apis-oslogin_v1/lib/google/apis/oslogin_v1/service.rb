@@ -94,6 +94,10 @@ module Google
         # @param [Google::Apis::OsloginV1::SshPublicKey] ssh_public_key_object
         # @param [String] project_id
         #   The project ID of the Google Cloud Platform project.
+        # @param [Array<String>, String] regions
+        #   Optional. The regions to which to assert that the key was written. If
+        #   unspecified, defaults to all regions. Regions are listed at https://cloud.
+        #   google.com/about/locations#region.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -111,7 +115,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_user_ssh_public_key(parent, ssh_public_key_object = nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def import_user_ssh_public_key(parent, ssh_public_key_object = nil, project_id: nil, regions: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}:importSshPublicKey', options)
           command.request_representation = Google::Apis::OsloginV1::SshPublicKey::Representation
           command.request_object = ssh_public_key_object
@@ -119,6 +123,7 @@ module Google
           command.response_class = Google::Apis::OsloginV1::ImportSshPublicKeyResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['projectId'] = project_id unless project_id.nil?
+          command.query['regions'] = regions unless regions.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
