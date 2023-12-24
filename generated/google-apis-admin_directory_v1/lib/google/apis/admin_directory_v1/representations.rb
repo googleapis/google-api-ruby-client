@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchChangeChromeOsDeviceStatusRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchChangeChromeOsDeviceStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchCreatePrintServersRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +143,18 @@ module Google
       end
       
       class CalendarResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChangeChromeOsDeviceStatusResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChangeChromeOsDeviceStatusSucceeded
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -544,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Token
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -758,6 +788,23 @@ module Google
         end
       end
       
+      class BatchChangeChromeOsDeviceStatusRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_chrome_os_device_status_action, as: 'changeChromeOsDeviceStatusAction'
+          property :deprovision_reason, as: 'deprovisionReason'
+          collection :device_ids, as: 'deviceIds'
+        end
+      end
+      
+      class BatchChangeChromeOsDeviceStatusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :change_chrome_os_device_status_results, as: 'changeChromeOsDeviceStatusResults', class: Google::Apis::AdminDirectoryV1::ChangeChromeOsDeviceStatusResult, decorator: Google::Apis::AdminDirectoryV1::ChangeChromeOsDeviceStatusResult::Representation
+      
+        end
+      end
+      
       class BatchCreatePrintServersRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -903,6 +950,23 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ChangeChromeOsDeviceStatusResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, as: 'deviceId'
+          property :error, as: 'error', class: Google::Apis::AdminDirectoryV1::Status, decorator: Google::Apis::AdminDirectoryV1::Status::Representation
+      
+          property :response, as: 'response', class: Google::Apis::AdminDirectoryV1::ChangeChromeOsDeviceStatusSucceeded, decorator: Google::Apis::AdminDirectoryV1::ChangeChromeOsDeviceStatusSucceeded::Representation
+      
+        end
+      end
+      
+      class ChangeChromeOsDeviceStatusSucceeded
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1723,6 +1787,15 @@ module Google
           property :kind, as: 'kind'
           collection :schemas, as: 'schemas', class: Google::Apis::AdminDirectoryV1::Schema, decorator: Google::Apis::AdminDirectoryV1::Schema::Representation
       
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
