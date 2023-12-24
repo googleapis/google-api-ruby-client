@@ -1458,6 +1458,8 @@ module Google
           property :matched_url, as: 'matchedUrl', class: Google::Apis::ChatV1::MatchedUrl, decorator: Google::Apis::ChatV1::MatchedUrl::Representation
       
           property :name, as: 'name'
+          property :private_message_viewer, as: 'privateMessageViewer', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
+      
           property :quoted_message_metadata, as: 'quotedMessageMetadata', class: Google::Apis::ChatV1::QuotedMessageMetadata, decorator: Google::Apis::ChatV1::QuotedMessageMetadata::Representation
       
           property :sender, as: 'sender', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
