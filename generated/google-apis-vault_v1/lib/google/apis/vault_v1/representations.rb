@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CalendarExportOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CalendarOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -461,6 +473,24 @@ module Google
         end
       end
       
+      class CalendarExportOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_format, as: 'exportFormat'
+        end
+      end
+      
+      class CalendarOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :location_query, as: 'locationQuery'
+          collection :minus_words, as: 'minusWords'
+          collection :people_query, as: 'peopleQuery'
+          collection :response_statuses, as: 'responseStatuses'
+          property :version_date, as: 'versionDate'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -580,6 +610,7 @@ module Google
           property :id, as: 'id'
           property :matter_id, as: 'matterId'
           property :name, as: 'name'
+          property :parent_export_id, as: 'parentExportId'
           property :query, as: 'query', class: Google::Apis::VaultV1::Query, decorator: Google::Apis::VaultV1::Query::Representation
       
           property :requester, as: 'requester', class: Google::Apis::VaultV1::UserInfo, decorator: Google::Apis::VaultV1::UserInfo::Representation
@@ -593,6 +624,8 @@ module Google
       class ExportOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :calendar_options, as: 'calendarOptions', class: Google::Apis::VaultV1::CalendarExportOptions, decorator: Google::Apis::VaultV1::CalendarExportOptions::Representation
+      
           property :drive_options, as: 'driveOptions', class: Google::Apis::VaultV1::DriveExportOptions, decorator: Google::Apis::VaultV1::DriveExportOptions::Representation
       
           property :groups_options, as: 'groupsOptions', class: Google::Apis::VaultV1::GroupsExportOptions, decorator: Google::Apis::VaultV1::GroupsExportOptions::Representation
@@ -802,6 +835,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :export_format, as: 'exportFormat'
+          property :export_linked_drive_files, as: 'exportLinkedDriveFiles'
           property :show_confidential_mode_content, as: 'showConfidentialModeContent'
           property :use_new_export, as: 'useNewExport'
         end
@@ -858,6 +892,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_info, as: 'accountInfo', class: Google::Apis::VaultV1::AccountInfo, decorator: Google::Apis::VaultV1::AccountInfo::Representation
+      
+          property :calendar_options, as: 'calendarOptions', class: Google::Apis::VaultV1::CalendarOptions, decorator: Google::Apis::VaultV1::CalendarOptions::Representation
       
           property :corpus, as: 'corpus'
           property :data_scope, as: 'dataScope'

@@ -210,6 +210,80 @@ module Google
         end
       end
       
+      # The options for Calendar exports.
+      class CalendarExportOptions
+        include Google::Apis::Core::Hashable
+      
+        # The file format for exported text messages.
+        # Corresponds to the JSON property `exportFormat`
+        # @return [String]
+        attr_accessor :export_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @export_format = args[:export_format] if args.key?(:export_format)
+        end
+      end
+      
+      # Additional options for Calendar search
+      class CalendarOptions
+        include Google::Apis::Core::Hashable
+      
+        # Matches only those events whose location contains all of the words in the
+        # given set. If the string contains quoted phrases, this method only matches
+        # those events whose location contain the exact phrase. Entries in the set are
+        # considered in "and". Word splitting example: ["New Zealand"] vs ["New","
+        # Zealand"] "New Zealand": matched by both "New and better Zealand": only
+        # matched by the later
+        # Corresponds to the JSON property `locationQuery`
+        # @return [Array<String>]
+        attr_accessor :location_query
+      
+        # Matches only those events that do not contain any of the words in the given
+        # set in title, description, location, or attendees. Entries in the set are
+        # considered in "or".
+        # Corresponds to the JSON property `minusWords`
+        # @return [Array<String>]
+        attr_accessor :minus_words
+      
+        # Matches only those events whose attendees contain all of the words in the
+        # given set. Entries in the set are considered in "and".
+        # Corresponds to the JSON property `peopleQuery`
+        # @return [Array<String>]
+        attr_accessor :people_query
+      
+        # Matches only events for which the custodian gave one of these responses. If
+        # the set is empty or contains ATTENDEE_RESPONSE_UNSPECIFIED there will be no
+        # filtering on responses.
+        # Corresponds to the JSON property `responseStatuses`
+        # @return [Array<String>]
+        attr_accessor :response_statuses
+      
+        # Search the current version of the Calendar event, but export the contents of
+        # the last version saved before 12:00 AM UTC on the specified date. Enter the
+        # date in UTC.
+        # Corresponds to the JSON property `versionDate`
+        # @return [String]
+        attr_accessor :version_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location_query = args[:location_query] if args.key?(:location_query)
+          @minus_words = args[:minus_words] if args.key?(:minus_words)
+          @people_query = args[:people_query] if args.key?(:people_query)
+          @response_statuses = args[:response_statuses] if args.key?(:response_statuses)
+          @version_date = args[:version_date] if args.key?(:version_date)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -575,6 +649,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Identifies the parent export that spawned this child export. This
+        # is only set on child exports.
+        # Corresponds to the JSON property `parentExportId`
+        # @return [String]
+        attr_accessor :parent_export_id
+      
         # The query definition used for search and export.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::VaultV1::Query]
@@ -607,6 +687,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @matter_id = args[:matter_id] if args.key?(:matter_id)
           @name = args[:name] if args.key?(:name)
+          @parent_export_id = args[:parent_export_id] if args.key?(:parent_export_id)
           @query = args[:query] if args.key?(:query)
           @requester = args[:requester] if args.key?(:requester)
           @stats = args[:stats] if args.key?(:stats)
@@ -617,6 +698,11 @@ module Google
       # Additional options for exports
       class ExportOptions
         include Google::Apis::Core::Hashable
+      
+        # The options for Calendar exports.
+        # Corresponds to the JSON property `calendarOptions`
+        # @return [Google::Apis::VaultV1::CalendarExportOptions]
+        attr_accessor :calendar_options
       
         # Options for Drive exports.
         # Corresponds to the JSON property `driveOptions`
@@ -654,6 +740,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @calendar_options = args[:calendar_options] if args.key?(:calendar_options)
           @drive_options = args[:drive_options] if args.key?(:drive_options)
           @groups_options = args[:groups_options] if args.key?(:groups_options)
           @hangouts_chat_options = args[:hangouts_chat_options] if args.key?(:hangouts_chat_options)
@@ -1292,6 +1379,12 @@ module Google
         # @return [String]
         attr_accessor :export_format
       
+        # Optional. To enable exporting linked Drive files, set to **true**.
+        # Corresponds to the JSON property `exportLinkedDriveFiles`
+        # @return [Boolean]
+        attr_accessor :export_linked_drive_files
+        alias_method :export_linked_drive_files?, :export_linked_drive_files
+      
         # To export confidential mode content, set to **true**.
         # Corresponds to the JSON property `showConfidentialModeContent`
         # @return [Boolean]
@@ -1311,6 +1404,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @export_format = args[:export_format] if args.key?(:export_format)
+          @export_linked_drive_files = args[:export_linked_drive_files] if args.key?(:export_linked_drive_files)
           @show_confidential_mode_content = args[:show_confidential_mode_content] if args.key?(:show_confidential_mode_content)
           @use_new_export = args[:use_new_export] if args.key?(:use_new_export)
         end
@@ -1511,6 +1605,11 @@ module Google
         # @return [Google::Apis::VaultV1::AccountInfo]
         attr_accessor :account_info
       
+        # Additional options for Calendar search
+        # Corresponds to the JSON property `calendarOptions`
+        # @return [Google::Apis::VaultV1::CalendarOptions]
+        attr_accessor :calendar_options
+      
         # The Google Workspace service to search.
         # Corresponds to the JSON property `corpus`
         # @return [String]
@@ -1612,6 +1711,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_info = args[:account_info] if args.key?(:account_info)
+          @calendar_options = args[:calendar_options] if args.key?(:calendar_options)
           @corpus = args[:corpus] if args.key?(:corpus)
           @data_scope = args[:data_scope] if args.key?(:data_scope)
           @drive_options = args[:drive_options] if args.key?(:drive_options)
