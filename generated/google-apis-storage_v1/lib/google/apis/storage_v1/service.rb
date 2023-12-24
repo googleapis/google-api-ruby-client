@@ -55,7 +55,7 @@ module Google
         
         # Disables an Anywhere Cache instance.
         # @param [String] bucket
-        #   Name of the partent bucket
+        #   Name of the parent bucket.
         # @param [String] anywhere_cache_id
         #   The ID of requested Anywhere Cache instance.
         # @param [String] fields
@@ -91,7 +91,7 @@ module Google
         
         # Returns the metadata of an Anywhere Cache instance.
         # @param [String] bucket
-        #   Name of the partent bucket
+        #   Name of the parent bucket.
         # @param [String] anywhere_cache_id
         #   The ID of requested Anywhere Cache instance.
         # @param [String] fields
@@ -127,7 +127,7 @@ module Google
         
         # Creates an Anywhere Cache instance.
         # @param [String] bucket
-        #   Name of the partent bucket
+        #   Name of the parent bucket.
         # @param [Google::Apis::StorageV1::AnywhereCache] anywhere_cache_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -163,7 +163,7 @@ module Google
         
         # Returns a list of Anywhere Cache instances of the bucket matching the criteria.
         # @param [String] bucket
-        #   Name of the partent bucket
+        #   Name of the parent bucket.
         # @param [Fixnum] page_size
         #   Maximum number of items return in a single page of responses. Maximum 1000.
         # @param [String] page_token
@@ -203,7 +203,7 @@ module Google
         
         # Pauses an Anywhere Cache instance.
         # @param [String] bucket
-        #   Name of the partent bucket
+        #   Name of the parent bucket.
         # @param [String] anywhere_cache_id
         #   The ID of requested Anywhere Cache instance.
         # @param [String] fields
@@ -239,7 +239,7 @@ module Google
         
         # Resumes a paused or disabled Anywhere Cache instance.
         # @param [String] bucket
-        #   Name of the partent bucket
+        #   Name of the parent bucket.
         # @param [String] anywhere_cache_id
         #   The ID of requested Anywhere Cache instance.
         # @param [String] fields
@@ -275,7 +275,7 @@ module Google
         
         # Updates the config(ttl and admissionPolicy) of an Anywhere Cache instance.
         # @param [String] bucket
-        #   Name of the partent bucket
+        #   Name of the parent bucket.
         # @param [String] anywhere_cache_id
         #   The ID of requested Anywhere Cache instance.
         # @param [Google::Apis::StorageV1::AnywhereCache] anywhere_cache_object

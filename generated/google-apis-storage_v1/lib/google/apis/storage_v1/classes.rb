@@ -84,6 +84,11 @@ module Google
         # @return [DateTime]
         attr_accessor :update_time
       
+        # The zone in which the cache instance is running. For example, us-central1-a.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
         def initialize(**args)
            update!(**args)
         end
@@ -101,6 +106,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @ttl = args[:ttl] if args.key?(:ttl)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
