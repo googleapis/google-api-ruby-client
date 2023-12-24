@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1BatchCancelPipelineJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1BatchCreateFeaturesOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +359,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -755,12 +767,6 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1CreateMetadataStoreOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1CreateNotebookExecutionJobOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1852,6 +1858,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1InternalOsServiceStateInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1LargeModelReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2639,6 +2651,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1NotebookReservationAffinity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4222,6 +4240,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ShieldedVmConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1SmoothGradConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5385,6 +5409,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1BatchCancelPipelineJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :pipeline_jobs, as: 'pipelineJobs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PipelineJob, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PipelineJob::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1BatchCreateFeaturesOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5455,6 +5487,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :names, as: 'names'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :pipeline_jobs, as: 'pipelineJobs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PipelineJob, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PipelineJob::Representation
+      
         end
       end
       
@@ -6075,15 +6115,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :generic_metadata, as: 'genericMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata::Representation
       
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1CreateNotebookExecutionJobOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenericOperationMetadata::Representation
-      
-          property :progress_message, as: 'progressMessage'
         end
       end
       
@@ -8002,6 +8033,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1InternalOsServiceStateInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_name, as: 'serviceName'
+          property :service_state, as: 'serviceState'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1LargeModelReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9336,6 +9375,15 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1NotebookReservationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consume_reservation_type, as: 'consumeReservationType'
+          property :key, as: 'key'
+          collection :values, as: 'values'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1NotebookRuntime
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9344,12 +9392,16 @@ module Google
           property :display_name, as: 'displayName'
           property :expiration_time, as: 'expirationTime'
           property :health_state, as: 'healthState'
+          property :is_upgradable, as: 'isUpgradable'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :network_tags, as: 'networkTags'
           property :notebook_runtime_template_ref, as: 'notebookRuntimeTemplateRef', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookRuntimeTemplateRef, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookRuntimeTemplateRef::Representation
       
           property :notebook_runtime_type, as: 'notebookRuntimeType'
           property :proxy_uri, as: 'proxyUri'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookReservationAffinity, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookReservationAffinity::Representation
+      
           property :runtime_state, as: 'runtimeState'
           property :runtime_user, as: 'runtimeUser'
           property :service_account, as: 'serviceAccount'
@@ -9378,8 +9430,13 @@ module Google
           property :name, as: 'name'
           property :network_spec, as: 'networkSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NetworkSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NetworkSpec::Representation
       
+          collection :network_tags, as: 'networkTags'
           property :notebook_runtime_type, as: 'notebookRuntimeType'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookReservationAffinity, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookReservationAffinity::Representation
+      
           property :service_account, as: 'serviceAccount'
+          property :shielded_vm_config, as: 'shieldedVmConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ShieldedVmConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ShieldedVmConfig::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
@@ -10084,6 +10141,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :event_details, as: 'eventDetails'
           property :event_type, as: 'eventType'
+          collection :internal_os_service_state_instance, as: 'internalOsServiceStateInstance', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1InternalOsServiceStateInstance, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1InternalOsServiceStateInstance::Representation
+      
+          collection :internal_os_service_state_instances, as: 'internalOsServiceStateInstances', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1InternalOsServiceStateInstance, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1InternalOsServiceStateInstance::Representation
+      
           property :vm_token, as: 'vmToken'
         end
       end
@@ -10273,6 +10334,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_retries, as: 'disableRetries'
+          property :max_wait_duration, as: 'maxWaitDuration'
           property :restart_job_on_worker_restart, as: 'restartJobOnWorkerRestart'
           property :timeout, as: 'timeout'
         end
@@ -11944,6 +12006,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_custom_service_account, as: 'enableCustomServiceAccount'
           property :service_account, as: 'serviceAccount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ShieldedVmConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_secure_boot, as: 'enableSecureBoot'
         end
       end
       
