@@ -7797,9 +7797,10 @@ module Google
         # @return [String]
         attr_accessor :agent
       
-        # Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX
-        # session remains active and its data is stored for 30 minutes after the last
-        # request is sent for the session. This value should be no longer than 1 day.
+        # Optional. Configure lifetime of the Dialogflow session. By default, a
+        # Dialogflow CX session remains active and its data is stored for 30 minutes
+        # after the last request is sent for the session. This value should be no longer
+        # than 1 day.
         # Corresponds to the JSON property `sessionTtl`
         # @return [String]
         attr_accessor :session_ttl
