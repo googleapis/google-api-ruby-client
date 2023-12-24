@@ -184,6 +184,7 @@ module Google
           property :display_name, as: 'displayName'
           property :email, as: 'email'
           property :google_support, as: 'googleSupport'
+          property :username, as: 'username'
         end
       end
       
