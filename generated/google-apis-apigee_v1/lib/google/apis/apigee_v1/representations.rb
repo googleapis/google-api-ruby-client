@@ -1426,6 +1426,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1SecuritySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ServiceIssuersMapping
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4203,6 +4209,14 @@ module Google
       
           collection :rows, as: 'rows'
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecuritySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ml_retraining_feedback_enabled, as: 'mlRetrainingFeedbackEnabled'
+          property :name, as: 'name'
         end
       end
       
