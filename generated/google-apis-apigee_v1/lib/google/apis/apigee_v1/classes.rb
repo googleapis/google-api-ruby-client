@@ -3767,7 +3767,8 @@ module Google
       
         # Optional. Url of the forward proxy to be applied to the runtime instances in
         # this environment. Must be in the format of `scheme`://`hostname`:`port`. Note
-        # that scheme must be one of "http" or "https", and port must be supplied.
+        # that scheme must be one of "http" or "https", and port must be supplied. To
+        # remove a forward proxy setting, update the field to an empty value.
         # Corresponds to the JSON property `forwardProxyUri`
         # @return [String]
         attr_accessor :forward_proxy_uri
@@ -9598,6 +9599,34 @@ module Google
         end
       end
       
+      # SecuritySettings reflects the current state of the SecuritySettings feature.
+      class GoogleCloudApigeeV1SecuritySettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true the user consents to the use of ML models for Abuse
+        # detection.
+        # Corresponds to the JSON property `mlRetrainingFeedbackEnabled`
+        # @return [Boolean]
+        attr_accessor :ml_retraining_feedback_enabled
+        alias_method :ml_retraining_feedback_enabled?, :ml_retraining_feedback_enabled
+      
+        # Identifier. Full resource name is always `organizations/`org`/securitySettings`
+        # .
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ml_retraining_feedback_enabled = args[:ml_retraining_feedback_enabled] if args.key?(:ml_retraining_feedback_enabled)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1ServiceIssuersMapping
         include Google::Apis::Core::Hashable
@@ -10638,21 +10667,43 @@ module Google
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
         # . * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
-        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a user that has been recently deleted. For example, `alice@
-        # example.com?uid=123456789012345678901`. If the user is recovered, this value
-        # reverts to `user:`emailid`` and the recovered user retains the role in the
-        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
-        # (plus unique identifier) representing a service account that has been recently
-        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # users of that domain. For example, `google.com` or `example.com`. * `principal:
+        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
+        # subject_attribute_value``: A single identity in a workforce identity pool. * `
+        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
+        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
+        # attribute_name`/`attribute_value``: All workforce identities with a specific
+        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
+        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
+        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
+        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
+        # googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
+        # All identities in a workload identity pool with a certain attribute. * `
+        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding.
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
+        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
+        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
+        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
