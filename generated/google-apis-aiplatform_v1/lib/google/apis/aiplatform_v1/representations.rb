@@ -532,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1Candidate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1CheckTrialEarlyStoppingStateMetatdata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -545,6 +551,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1CheckTrialEarlyStoppingStateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1Citation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1CitationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1516,6 +1534,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1FunctionCall
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FunctionDeclaration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FunctionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1GcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1523,6 +1559,36 @@ module Google
       end
       
       class GoogleCloudAiplatformV1GcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GenerateContentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GenerateContentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GenerateContentResponsePromptFeedback
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GenerateContentResponseUsageMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GenerationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2404,6 +2470,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1NotebookReservationAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1NotebookRuntime
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2824,6 +2896,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1SafetyRating
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SafetySetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1SampleConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2873,6 +2957,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1Scheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1Schema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3892,6 +3982,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1ShieldedVmConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1SmoothGradConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4175,6 +4271,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1TokensInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1Tool
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5356,6 +5458,21 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1Candidate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :citation_metadata, as: 'citationMetadata', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CitationMetadata, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CitationMetadata::Representation
+      
+          property :content, as: 'content', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content::Representation
+      
+          property :finish_message, as: 'finishMessage'
+          property :finish_reason, as: 'finishReason'
+          property :index, as: 'index'
+          collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyRating, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyRating::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1CheckTrialEarlyStoppingStateMetatdata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5376,6 +5493,27 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :should_stop, as: 'shouldStop'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1Citation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_index, as: 'endIndex'
+          property :license, as: 'license'
+          property :publication_date, as: 'publicationDate', class: Google::Apis::AiplatformV1::GoogleTypeDate, decorator: Google::Apis::AiplatformV1::GoogleTypeDate::Representation
+      
+          property :start_index, as: 'startIndex'
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1CitationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :citations, as: 'citations', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Citation, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Citation::Representation
+      
         end
       end
       
@@ -7024,6 +7162,32 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1FunctionCall
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :args, as: 'args'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FunctionDeclaration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :parameters, as: 'parameters', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FunctionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
       class GoogleCloudAiplatformV1GcsDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7035,6 +7199,64 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :uris, as: 'uris'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GenerateContentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :contents, as: 'contents', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content::Representation
+      
+          property :endpoint, as: 'endpoint'
+          property :generation_config, as: 'generationConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig::Representation
+      
+          collection :safety_settings, as: 'safetySettings', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetySetting, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetySetting::Representation
+      
+          collection :tools, as: 'tools', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Tool, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Tool::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GenerateContentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :candidates, as: 'candidates', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Candidate, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Candidate::Representation
+      
+          property :prompt_feedback, as: 'promptFeedback', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponsePromptFeedback, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponsePromptFeedback::Representation
+      
+          property :usage_metadata, as: 'usageMetadata', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponseUsageMetadata, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponseUsageMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GenerateContentResponsePromptFeedback
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_reason, as: 'blockReason'
+          property :block_reason_message, as: 'blockReasonMessage'
+          collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyRating, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyRating::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GenerateContentResponseUsageMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :candidates_token_count, as: 'candidatesTokenCount'
+          property :prompt_token_count, as: 'promptTokenCount'
+          property :total_token_count, as: 'totalTokenCount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GenerationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :candidate_count, as: 'candidateCount'
+          property :max_output_tokens, as: 'maxOutputTokens'
+          collection :stop_sequences, as: 'stopSequences'
+          property :temperature, as: 'temperature'
+          property :top_k, as: 'topK'
+          property :top_p, as: 'topP'
         end
       end
       
@@ -8572,6 +8794,15 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1NotebookReservationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consume_reservation_type, as: 'consumeReservationType'
+          property :key, as: 'key'
+          collection :values, as: 'values'
+        end
+      end
+      
       class GoogleCloudAiplatformV1NotebookRuntime
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8580,12 +8811,16 @@ module Google
           property :display_name, as: 'displayName'
           property :expiration_time, as: 'expirationTime'
           property :health_state, as: 'healthState'
+          property :is_upgradable, as: 'isUpgradable'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :network_tags, as: 'networkTags'
           property :notebook_runtime_template_ref, as: 'notebookRuntimeTemplateRef', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookRuntimeTemplateRef, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookRuntimeTemplateRef::Representation
       
           property :notebook_runtime_type, as: 'notebookRuntimeType'
           property :proxy_uri, as: 'proxyUri'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookReservationAffinity, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookReservationAffinity::Representation
+      
           property :runtime_state, as: 'runtimeState'
           property :runtime_user, as: 'runtimeUser'
           property :service_account, as: 'serviceAccount'
@@ -8614,8 +8849,13 @@ module Google
           property :name, as: 'name'
           property :network_spec, as: 'networkSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NetworkSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NetworkSpec::Representation
       
+          collection :network_tags, as: 'networkTags'
           property :notebook_runtime_type, as: 'notebookRuntimeType'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookReservationAffinity, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookReservationAffinity::Representation
+      
           property :service_account, as: 'serviceAccount'
+          property :shielded_vm_config, as: 'shieldedVmConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ShieldedVmConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ShieldedVmConfig::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
@@ -8631,6 +8871,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :file_data, as: 'fileData', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FileData, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FileData::Representation
+      
+          property :function_call, as: 'functionCall', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionCall, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionCall::Representation
+      
+          property :function_response, as: 'functionResponse', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionResponse, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionResponse::Representation
       
           property :inline_data, as: 'inlineData', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Blob, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Blob::Representation
       
@@ -9270,6 +9514,23 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1SafetyRating
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blocked, as: 'blocked'
+          property :category, as: 'category'
+          property :probability, as: 'probability'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SafetySetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :threshold, as: 'threshold'
+        end
+      end
+      
       class GoogleCloudAiplatformV1SampleConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9362,8 +9623,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_retries, as: 'disableRetries'
+          property :max_wait_duration, as: 'maxWaitDuration'
           property :restart_job_on_worker_restart, as: 'restartJobOnWorkerRestart'
           property :timeout, as: 'timeout'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1Schema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          collection :enum, as: 'enum'
+          property :example, as: 'example'
+          property :format, as: 'format'
+          property :items, as: 'items', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema::Representation
+      
+          property :nullable, as: 'nullable'
+          hash :properties, as: 'properties', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema::Representation
+      
+          collection :required, as: 'required'
+          property :type, as: 'type'
         end
       end
       
@@ -11031,6 +11310,13 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1ShieldedVmConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_secure_boot, as: 'enableSecureBoot'
+        end
+      end
+      
       class GoogleCloudAiplatformV1SmoothGradConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11522,6 +11808,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :token_ids, as: 'tokenIds'
           collection :tokens, as: 'tokens'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1Tool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :function_declarations, as: 'functionDeclarations', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionDeclaration, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionDeclaration::Representation
+      
         end
       end
       
