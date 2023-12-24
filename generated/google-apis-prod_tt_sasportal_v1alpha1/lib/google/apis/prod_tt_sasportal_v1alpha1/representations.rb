@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SasPortalListLegacyOrganizationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SasPortalListNodesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -540,6 +546,13 @@ module Google
           collection :devices, as: 'devices', class: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDevice, decorator: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDevice::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class SasPortalListLegacyOrganizationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :organization_ids, as: 'organizationIds'
         end
       end
       
