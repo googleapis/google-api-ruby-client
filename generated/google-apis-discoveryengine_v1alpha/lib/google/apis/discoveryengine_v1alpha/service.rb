@@ -473,6 +473,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a DocumentProcessingConfig.
+        # @param [String] name
+        #   Required. Full DocumentProcessingConfig resource name. Format: `projects/`
+        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
+        #   `data_store_id`/documentProcessingConfig`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_data_store_document_processing_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the SiteSearchEngine.
         # @param [String] name
         #   Required. Resource name of SiteSearchEngine, such as `projects/`project`/
@@ -626,6 +658,47 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
           command.params['dataStore'] = data_store unless data_store.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the DocumentProcessingConfig. DocumentProcessingConfig is a singleon
+        # resource of DataStore. It's empty when DataStore is created. The first call to
+        # this method will set up DocumentProcessingConfig.
+        # @param [String] name
+        #   Output only. The full resource name of the Document Processing Config. Format:
+        #   `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig] google_cloud_discoveryengine_v1alpha_document_processing_config_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided DocumentProcessingConfig to update. The
+        #   following are the only supported fields: * DocumentProcessingConfig.orc_config
+        #   If not set, all supported fields are updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_collection_data_store_document_processing_config(name, google_cloud_discoveryengine_v1alpha_document_processing_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_document_processing_config_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3308,6 +3381,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a DocumentProcessingConfig.
+        # @param [String] name
+        #   Required. Full DocumentProcessingConfig resource name. Format: `projects/`
+        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
+        #   `data_store_id`/documentProcessingConfig`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_data_store_document_processing_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the SiteSearchEngine.
         # @param [String] name
         #   Required. Resource name of SiteSearchEngine, such as `projects/`project`/
@@ -3424,6 +3529,47 @@ module Google
           command.request_object = google_cloud_discoveryengine_v1alpha_data_store_object
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataStore::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataStore
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the DocumentProcessingConfig. DocumentProcessingConfig is a singleon
+        # resource of DataStore. It's empty when DataStore is created. The first call to
+        # this method will set up DocumentProcessingConfig.
+        # @param [String] name
+        #   Output only. The full resource name of the Document Processing Config. Format:
+        #   `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig] google_cloud_discoveryengine_v1alpha_document_processing_config_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided DocumentProcessingConfig to update. The
+        #   following are the only supported fields: * DocumentProcessingConfig.orc_config
+        #   If not set, all supported fields are updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_data_store_document_processing_config(name, google_cloud_discoveryengine_v1alpha_document_processing_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_document_processing_config_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
