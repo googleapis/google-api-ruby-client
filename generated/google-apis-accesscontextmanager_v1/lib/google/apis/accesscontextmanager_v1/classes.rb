@@ -1333,7 +1333,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of services supported by ``vpcsvcctl_name_short`` instances.
+        # List of services supported by VPC Service Controls instances.
         # Corresponds to the JSON property `supportedServices`
         # @return [Array<Google::Apis::AccesscontextmanagerV1::SupportedService>]
         attr_accessor :supported_services
@@ -1914,13 +1914,12 @@ module Google
         end
       end
       
-      # `SupportedService` specifies ``vpcsvcctl_name_short`` supported service and
-      # its properties.
+      # `SupportedService` specifies VPC-SC supported service and its properties.
       class SupportedService
         include Google::Apis::Core::Hashable
       
         # True if the service is available on the restricted VIP. Services on the
-        # restricted VIP typically either support ``vpcsvcctl_name_short`` or are core
+        # restricted VIP typically either support VPC Service Controls or are core
         # infrastructure services required for the functioning of Google Cloud.
         # Corresponds to the JSON property `availableOnRestrictedVip`
         # @return [Boolean]
