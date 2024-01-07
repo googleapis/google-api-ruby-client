@@ -7904,6 +7904,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :end_timestamp, as: 'endTimestamp'
+          collection :existing_reservations, as: 'existingReservations'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :license_resource, as: 'licenseResource', class: Google::Apis::ComputeBeta::LicenseResourceCommitment, decorator: Google::Apis::ComputeBeta::LicenseResourceCommitment::Representation
@@ -8169,6 +8170,7 @@ module Google
           collection :resource_policies, as: 'resourcePolicies'
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeBeta::DiskResourceStatus, decorator: Google::Apis::ComputeBeta::DiskResourceStatus::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
@@ -9570,6 +9572,8 @@ module Google
           property :health_state, as: 'healthState'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
+          property :ipv6_address, as: 'ipv6Address'
+          property :ipv6_health_state, as: 'ipv6HealthState'
           property :port, as: 'port'
           property :weight, as: 'weight'
           property :weight_error, as: 'weightError'
@@ -9913,6 +9917,7 @@ module Google
       
           property :rollout_override, as: 'rolloutOverride', class: Google::Apis::ComputeBeta::RolloutPolicy, decorator: Google::Apis::ComputeBeta::RolloutPolicy::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :shielded_instance_initial_state, as: 'shieldedInstanceInitialState', class: Google::Apis::ComputeBeta::InitialStateConfig, decorator: Google::Apis::ComputeBeta::InitialStateConfig::Representation
@@ -11328,6 +11333,7 @@ module Google
           property :region, as: 'region'
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeBeta::InstantSnapshotResourceStatus, decorator: Google::Apis::ComputeBeta::InstantSnapshotResourceStatus::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -12174,6 +12180,7 @@ module Google
           property :machine_image_encryption_key, as: 'machineImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           collection :saved_disks, as: 'savedDisks', class: Google::Apis::ComputeBeta::SavedDisk, decorator: Google::Apis::ComputeBeta::SavedDisk::Representation
       
@@ -12368,6 +12375,7 @@ module Google
       
           property :properties_from_flexibility_policy, as: 'propertiesFromFlexibilityPolicy', class: Google::Apis::ComputeBeta::ManagedInstancePropertiesFromFlexibilityPolicy, decorator: Google::Apis::ComputeBeta::ManagedInstancePropertiesFromFlexibilityPolicy::Representation
       
+          property :target_status, as: 'targetStatus'
           property :version, as: 'version', class: Google::Apis::ComputeBeta::ManagedInstanceVersion, decorator: Google::Apis::ComputeBeta::ManagedInstanceVersion::Representation
       
         end
@@ -15797,14 +15805,17 @@ module Google
       
           property :bfd_status, as: 'bfdStatus', class: Google::Apis::ComputeBeta::BfdStatus, decorator: Google::Apis::ComputeBeta::BfdStatus::Representation
       
+          property :enable_ipv4, as: 'enableIpv4'
           property :enable_ipv6, as: 'enableIpv6'
           property :ip_address, as: 'ipAddress'
+          property :ipv4_nexthop_address, as: 'ipv4NexthopAddress'
           property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :md5_auth_enabled, as: 'md5AuthEnabled'
           property :name, as: 'name'
           property :num_learned_routes, as: 'numLearnedRoutes'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :peer_ipv4_nexthop_address, as: 'peerIpv4NexthopAddress'
           property :peer_ipv6_nexthop_address, as: 'peerIpv6NexthopAddress'
           property :router_appliance_instance, as: 'routerApplianceInstance'
           property :state, as: 'state'
@@ -16770,6 +16781,7 @@ module Google
           collection :licenses, as: 'licenses'
           property :location_hint, as: 'locationHint'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :snapshot_encryption_key, as: 'snapshotEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
