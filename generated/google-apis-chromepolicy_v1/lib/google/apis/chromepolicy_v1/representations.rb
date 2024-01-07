@@ -570,6 +570,7 @@ module Google
           property :policy_description, as: 'policyDescription'
           property :schema_name, as: 'schemaName'
           property :support_uri, as: 'supportUri'
+          collection :supported_platforms, as: 'supportedPlatforms'
           collection :valid_target_resources, as: 'validTargetResources'
         end
       end
