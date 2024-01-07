@@ -228,20 +228,20 @@ module Google
       class BatchChangeChromeOsDeviceStatusRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The Action to take on the ChromeOS device in order to change its
+        # Required. The action to take on the ChromeOS device in order to change its
         # status.
         # Corresponds to the JSON property `changeChromeOsDeviceStatusAction`
         # @return [String]
         attr_accessor :change_chrome_os_device_status_action
       
-        # Optional. The reason behind a device deprovision, must be provided for all
-        # deprovisions, otherwise it must not be provided. It must be one of the non-
-        # deprecated deprovision reasons.
+        # Optional. The reason behind a device deprovision. Must be provided if '
+        # changeChromeOsDeviceStatusAction' is set to '
+        # CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_DEPROVISION'. Otherwise, omit this field.
         # Corresponds to the JSON property `deprovisionReason`
         # @return [String]
         attr_accessor :deprovision_reason
       
-        # Required. List of the IDs of the ChromeOS devices to change.
+        # Required. List of the IDs of the ChromeOS devices to change. Maximum 50.
         # Corresponds to the JSON property `deviceIds`
         # @return [Array<String>]
         attr_accessor :device_ids
