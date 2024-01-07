@@ -639,6 +639,13 @@ module Google
         # @return [Google::Apis::BatchV1::ServiceAccount]
         attr_accessor :service_account
       
+        # Optional. Tags applied to the VM instances. The tags identify valid sources or
+        # targets for network firewalls. Each tag must be 1-63 characters long, and
+        # comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -651,6 +658,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @placement = args[:placement] if args.key?(:placement)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
