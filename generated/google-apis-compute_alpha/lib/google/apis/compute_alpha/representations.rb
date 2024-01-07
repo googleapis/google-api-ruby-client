@@ -2494,12 +2494,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InstancesAddNetworkInterfaceRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class InstancesAddResourcePoliciesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6040,6 +6034,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SnapshotSettingsAccessLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotSettingsAccessLocationAccessLocationPreference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SnapshotSettingsStorageLocationSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8735,6 +8741,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination, as: 'destination'
           property :path_id, as: 'pathId'
+          property :prefix, as: 'prefix'
         end
       end
       
@@ -10676,6 +10683,8 @@ module Google
           property :health_state, as: 'healthState'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
+          property :ipv6_address, as: 'ipv6Address'
+          property :ipv6_health_state, as: 'ipv6HealthState'
           property :port, as: 'port'
           property :weight, as: 'weight'
           property :weight_error, as: 'weightError'
@@ -12325,14 +12334,6 @@ module Google
         end
       end
       
-      class InstancesAddNetworkInterfaceRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :network_interface, as: 'network_interface', class: Google::Apis::ComputeAlpha::NetworkInterface, decorator: Google::Apis::ComputeAlpha::NetworkInterface::Representation
-      
-        end
-      end
-      
       class InstancesAddResourcePoliciesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12713,6 +12714,7 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :mtu, as: 'mtu'
+          property :multicast_enabled, as: 'multicastEnabled'
           property :name, as: 'name'
           property :operational_status, as: 'operationalStatus'
           property :pairing_key, as: 'pairingKey'
@@ -18869,8 +18871,25 @@ module Google
       class SnapshotSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_location, as: 'accessLocation', class: Google::Apis::ComputeAlpha::SnapshotSettingsAccessLocation, decorator: Google::Apis::ComputeAlpha::SnapshotSettingsAccessLocation::Representation
+      
           property :storage_location, as: 'storageLocation', class: Google::Apis::ComputeAlpha::SnapshotSettingsStorageLocationSettings, decorator: Google::Apis::ComputeAlpha::SnapshotSettingsStorageLocationSettings::Representation
       
+        end
+      end
+      
+      class SnapshotSettingsAccessLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :locations, as: 'locations', class: Google::Apis::ComputeAlpha::SnapshotSettingsAccessLocationAccessLocationPreference, decorator: Google::Apis::ComputeAlpha::SnapshotSettingsAccessLocationAccessLocationPreference::Representation
+      
+        end
+      end
+      
+      class SnapshotSettingsAccessLocationAccessLocationPreference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :region, as: 'region'
         end
       end
       
@@ -19300,6 +19319,9 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :performance_provisioning_type, as: 'performanceProvisioningType'
+          property :pool_provisioned_capacity_gb, :numeric_string => true, as: 'poolProvisionedCapacityGb'
+          property :pool_provisioned_iops, :numeric_string => true, as: 'poolProvisionedIops'
+          property :pool_provisioned_throughput, :numeric_string => true, as: 'poolProvisionedThroughput'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeAlpha::StoragePoolResourceStatus, decorator: Google::Apis::ComputeAlpha::StoragePoolResourceStatus::Representation
@@ -19439,9 +19461,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aggregate_disk_provisioned_iops, :numeric_string => true, as: 'aggregateDiskProvisionedIops'
           property :aggregate_disk_size_gb, :numeric_string => true, as: 'aggregateDiskSizeGb'
+          property :disk_count, :numeric_string => true, as: 'diskCount'
           property :last_resize_timestamp, as: 'lastResizeTimestamp'
           property :max_aggregate_disk_size_gb, :numeric_string => true, as: 'maxAggregateDiskSizeGb'
+          property :max_total_provisioned_disk_capacity_gb, :numeric_string => true, as: 'maxTotalProvisionedDiskCapacityGb'
           property :number_of_disks, :numeric_string => true, as: 'numberOfDisks'
+          property :pool_used_capacity_bytes, :numeric_string => true, as: 'poolUsedCapacityBytes'
+          property :pool_used_iops, :numeric_string => true, as: 'poolUsedIops'
+          property :pool_used_throughput, :numeric_string => true, as: 'poolUsedThroughput'
+          property :pool_user_written_bytes, :numeric_string => true, as: 'poolUserWrittenBytes'
+          property :total_provisioned_disk_capacity_gb, :numeric_string => true, as: 'totalProvisionedDiskCapacityGb'
+          property :total_provisioned_disk_iops, :numeric_string => true, as: 'totalProvisionedDiskIops'
+          property :total_provisioned_disk_throughput, :numeric_string => true, as: 'totalProvisionedDiskThroughput'
           property :used_bytes, :numeric_string => true, as: 'usedBytes'
           property :used_reduced_bytes, :numeric_string => true, as: 'usedReducedBytes'
           property :used_throughput, :numeric_string => true, as: 'usedThroughput'

@@ -5493,7 +5493,8 @@ module Google
       class BgpRouteNetworkLayerReachabilityInformation
         include Google::Apis::Core::Hashable
       
-        # Human readable CIDR notation for a prefix. E.g. 10.42.0.0/16.
+        # Human readable CIDR notation for a prefix. E.g. 10.42.0.0/16. Deprecated in
+        # favor of prefix.
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
@@ -5504,6 +5505,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :path_id
       
+        # Human readable CIDR notation for a prefix. E.g. 10.42.0.0/16.
+        # Corresponds to the JSON property `prefix`
+        # @return [String]
+        attr_accessor :prefix
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5512,6 +5518,7 @@ module Google
         def update!(**args)
           @destination = args[:destination] if args.key?(:destination)
           @path_id = args[:path_id] if args.key?(:path_id)
+          @prefix = args[:prefix] if args.key?(:prefix)
         end
       end
       
@@ -5559,21 +5566,43 @@ module Google
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
         # . * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
-        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a user that has been recently deleted. For example, `alice@
-        # example.com?uid=123456789012345678901`. If the user is recovered, this value
-        # reverts to `user:`emailid`` and the recovered user retains the role in the
-        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
-        # (plus unique identifier) representing a service account that has been recently
-        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # users of that domain. For example, `google.com` or `example.com`. * `principal:
+        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
+        # subject_attribute_value``: A single identity in a workforce identity pool. * `
+        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
+        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
+        # attribute_name`/`attribute_value``: All workforce identities with a specific
+        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
+        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
+        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
+        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
+        # googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
+        # All identities in a workload identity pool with a certain attribute. * `
+        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding.
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
+        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
+        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
+        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -6161,7 +6190,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # List of create-on-create reseravtions for this commitment.
+        # List of create-on-create reservations for this commitment.
         # Corresponds to the JSON property `reservations`
         # @return [Array<Google::Apis::ComputeAlpha::Reservation>]
         attr_accessor :reservations
@@ -12482,8 +12511,8 @@ module Google
         # The ID of a supported feature. To add multiple values, use commas to separate
         # values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE -
         # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE -
-        # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more
-        # information, see Enabling guest operating system features.
+        # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - IDPF For
+        # more information, see Enabling guest operating system features.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -13853,6 +13882,16 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # 
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
+        # Health state of the IPv6 address of the instance.
+        # Corresponds to the JSON property `ipv6HealthState`
+        # @return [String]
+        attr_accessor :ipv6_health_state
+      
         # The named port of the instance group, not necessarily the port that is health-
         # checked.
         # Corresponds to the JSON property `port`
@@ -13881,6 +13920,8 @@ module Google
           @health_state = args[:health_state] if args.key?(:health_state)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
+          @ipv6_health_state = args[:ipv6_health_state] if args.key?(:ipv6_health_state)
           @port = args[:port] if args.key?(:port)
           @weight = args[:weight] if args.key?(:weight)
           @weight_error = args[:weight_error] if args.key?(:weight_error)
@@ -17766,8 +17807,10 @@ module Google
       class InstanceGroupManagerResizeRequestStatus
         include Google::Apis::Core::Hashable
       
-        # Errors encountered during the queueing or provisioning phases of the
-        # ResizeRequest.
+        # [Output only] Fatal errors encountered during the queueing or provisioning
+        # phases of the ResizeRequest that caused the transition to the FAILED state. As
+        # a contrary to the last_attempt errors, this field is final and errors are
+        # never removed from here, as the RR is not going to retry.
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatus::Error]
         attr_accessor :error
@@ -17787,8 +17830,10 @@ module Google
           @queuing_policy = args[:queuing_policy] if args.key?(:queuing_policy)
         end
         
-        # Errors encountered during the queueing or provisioning phases of the
-        # ResizeRequest.
+        # [Output only] Fatal errors encountered during the queueing or provisioning
+        # phases of the ResizeRequest that caused the transition to the FAILED state. As
+        # a contrary to the last_attempt errors, this field is final and errors are
+        # never removed from here, as the RR is not going to retry.
         class Error
           include Google::Apis::Core::Hashable
         
@@ -18019,7 +18064,10 @@ module Google
       class InstanceGroupManagerStandbyPolicy
         include Google::Apis::Core::Hashable
       
-        # 
+        # Specifies the number of seconds that the MIG should wait to suspend or stop a
+        # VM after that VM was created. The initial delay gives the initialization
+        # script the time to prepare your VM for a quick scale out. The value of initial
+        # delay must be between 0 and 3600 seconds. The default value is 0.
         # Corresponds to the JSON property `initialDelaySec`
         # @return [Fixnum]
         attr_accessor :initial_delay_sec
@@ -20495,25 +20543,6 @@ module Google
       end
       
       # 
-      class InstancesAddNetworkInterfaceRequest
-        include Google::Apis::Core::Hashable
-      
-        # A network interface resource attached to an instance.
-        # Corresponds to the JSON property `network_interface`
-        # @return [Google::Apis::ComputeAlpha::NetworkInterface]
-        attr_accessor :network_interface
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @network_interface = args[:network_interface] if args.key?(:network_interface)
-        end
-      end
-      
-      # 
       class InstancesAddResourcePoliciesRequest
         include Google::Apis::Core::Hashable
       
@@ -22068,6 +22097,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :mtu
       
+        # Whether or not to permit multicast traffic for this attachment. Multicast
+        # packets will be dropped if this is not enabled.
+        # Corresponds to the JSON property `multicastEnabled`
+        # @return [Boolean]
+        attr_accessor :multicast_enabled
+        alias_method :multicast_enabled?, :multicast_enabled
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -22237,6 +22273,7 @@ module Google
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
           @mtu = args[:mtu] if args.key?(:mtu)
+          @multicast_enabled = args[:multicast_enabled] if args.key?(:multicast_enabled)
           @name = args[:name] if args.key?(:name)
           @operational_status = args[:operational_status] if args.key?(:operational_status)
           @pairing_key = args[:pairing_key] if args.key?(:pairing_key)
@@ -31570,7 +31607,8 @@ module Google
       # global operations, use the `globalOperations` resource. - For regional
       # operations, use the `regionOperations` resource. - For zonal operations, use
       # the `zoneOperations` resource. For more information, read Global, Regional,
-      # and Zonal Resources.
+      # and Zonal Resources. Note that completed Operation resources have a limited
+      # retention period.
       class Operation
         include Google::Apis::Core::Hashable
       
@@ -32740,15 +32778,17 @@ module Google
       
         # Protocols that apply as filter on mirrored traffic. If no protocols are
         # specified, all traffic that matches the specified CIDR ranges is mirrored. If
-        # neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        # neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored.
         # Corresponds to the JSON property `IPProtocols`
         # @return [Array<String>]
         attr_accessor :ip_protocols
       
-        # IP CIDR ranges that apply as filter on the source (ingress) or destination (
-        # egress) IP in the IP header. Only IPv4 is supported. If no ranges are
-        # specified, all traffic that matches the specified IPProtocols is mirrored. If
-        # neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        # One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (
+        # ingress) or destination (egress) IP in the IP header. If no ranges are
+        # specified, all IPv4 traffic that matches the specified IPProtocols is mirrored.
+        # If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is
+        # mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note:
+        # Support for IPv6 traffic is in preview.
         # Corresponds to the JSON property `cidrRanges`
         # @return [Array<String>]
         attr_accessor :cidr_ranges
@@ -42785,7 +42825,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # User-provided name of the Organization security plicy. The name should be
+        # User-provided name of the organization security policy. The name should be
         # unique in the organization in which the security policy is created. This
         # should only be used when SecurityPolicyType is FIREWALL. The name must be 1-63
         # characters long, and comply with https://www.ietf.org/rfc/rfc1035.txt.
@@ -43841,7 +43881,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # reCAPTCHA configuration options to be applied for the rule. If the rule does
-        # not evaluate reCAPTCHA tokens, this field will have no effect.
+        # not evaluate reCAPTCHA tokens, this field has no effect.
         # Corresponds to the JSON property `recaptchaOptions`
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions]
         attr_accessor :recaptcha_options
@@ -46226,6 +46266,12 @@ module Google
       class SnapshotSettings
         include Google::Apis::Core::Hashable
       
+        # (Regional snapshots use only)Policy of which location is allowed to access
+        # snapshot.
+        # Corresponds to the JSON property `accessLocation`
+        # @return [Google::Apis::ComputeAlpha::SnapshotSettingsAccessLocation]
+        attr_accessor :access_location
+      
         # Policy of which storage location is going to be resolved, and additional data
         # that particularizes how the policy is going to be carried out.
         # Corresponds to the JSON property `storageLocation`
@@ -46238,7 +46284,46 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_location = args[:access_location] if args.key?(:access_location)
           @storage_location = args[:storage_location] if args.key?(:storage_location)
+        end
+      end
+      
+      # 
+      class SnapshotSettingsAccessLocation
+        include Google::Apis::Core::Hashable
+      
+        # List of regions that can restore a regional snapshot from the current region
+        # Corresponds to the JSON property `locations`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::SnapshotSettingsAccessLocationAccessLocationPreference>]
+        attr_accessor :locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+        end
+      end
+      
+      # A structure for specifying an allowed target region.
+      class SnapshotSettingsAccessLocationAccessLocationPreference
+        include Google::Apis::Core::Hashable
+      
+        # Accessible region name
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region = args[:region] if args.key?(:region)
         end
       end
       
@@ -47854,13 +47939,29 @@ module Google
         # @return [String]
         attr_accessor :performance_provisioning_type
       
-        # Provsioned IOPS of the storage pool.
+        # Size, in GiB, of the storage pool.
+        # Corresponds to the JSON property `poolProvisionedCapacityGb`
+        # @return [Fixnum]
+        attr_accessor :pool_provisioned_capacity_gb
+      
+        # Provsioned IOPS of the storage pool. Only relevant if the storage pool type is
+        # hyperdisk-balanced.
+        # Corresponds to the JSON property `poolProvisionedIops`
+        # @return [Fixnum]
+        attr_accessor :pool_provisioned_iops
+      
+        # Provisioned throughput of the storage pool. Only relevant if the storage pool
+        # type is hyperdisk-balanced or hyperdisk-throughput.
+        # Corresponds to the JSON property `poolProvisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :pool_provisioned_throughput
+      
+        # DEPRECATED -- use "pool provisioned IOPS".
         # Corresponds to the JSON property `provisionedIops`
         # @return [Fixnum]
         attr_accessor :provisioned_iops
       
-        # Provisioned throughput of the storage pool. Only relevant if the storage pool
-        # type is hyperdisk-balanced or hyperdisk-throughput.
+        # DEPRECATED -- use "pool provisioned throughput".
         # Corresponds to the JSON property `provisionedThroughput`
         # @return [Fixnum]
         attr_accessor :provisioned_throughput
@@ -47880,7 +47981,7 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # Size, in GiB, of the storage pool.
+        # DEPRECATED -- use "pool provisioned capacity gb".
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
@@ -47924,6 +48025,9 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @performance_provisioning_type = args[:performance_provisioning_type] if args.key?(:performance_provisioning_type)
+          @pool_provisioned_capacity_gb = args[:pool_provisioned_capacity_gb] if args.key?(:pool_provisioned_capacity_gb)
+          @pool_provisioned_iops = args[:pool_provisioned_iops] if args.key?(:pool_provisioned_iops)
+          @pool_provisioned_throughput = args[:pool_provisioned_throughput] if args.key?(:pool_provisioned_throughput)
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
           @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
@@ -48413,45 +48517,93 @@ module Google
       class StoragePoolResourceStatus
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Sum of all the disks' provisioned IOPS.
+        # DEPRECATED -- use "total_provisioned_disk_iops".
         # Corresponds to the JSON property `aggregateDiskProvisionedIops`
         # @return [Fixnum]
         attr_accessor :aggregate_disk_provisioned_iops
       
-        # [Output Only] Sum of all the capacity provisioned in disks in this storage
-        # pool. A disk's provisioned capacity is the same as its total capacity.
+        # DEPRECATED -- use "total provisioned disk size gb".
         # Corresponds to the JSON property `aggregateDiskSizeGb`
         # @return [Fixnum]
         attr_accessor :aggregate_disk_size_gb
+      
+        # [Output Only] Number of disks used.
+        # Corresponds to the JSON property `diskCount`
+        # @return [Fixnum]
+        attr_accessor :disk_count
       
         # [Output Only] Timestamp of the last successful resize in RFC3339 text format.
         # Corresponds to the JSON property `lastResizeTimestamp`
         # @return [String]
         attr_accessor :last_resize_timestamp
       
-        # [Output Only] Maximum allowed aggregate disk size in gigabytes.
+        # DEPRECATED -- use "max provisioned disk size gb"
         # Corresponds to the JSON property `maxAggregateDiskSizeGb`
         # @return [Fixnum]
         attr_accessor :max_aggregate_disk_size_gb
       
-        # [Output Only] Number of disks used.
+        # [Output Only] Maximum allowed aggregate disk size in gigabytes.
+        # Corresponds to the JSON property `maxTotalProvisionedDiskCapacityGb`
+        # @return [Fixnum]
+        attr_accessor :max_total_provisioned_disk_capacity_gb
+      
+        # DEPRECATED -- use "disk count".
         # Corresponds to the JSON property `numberOfDisks`
         # @return [Fixnum]
         attr_accessor :number_of_disks
       
         # [Output Only] Space used by data stored in disks within the storage pool (in
-        # bytes).
+        # bytes). This will reflect the total number of bytes written to the disks in
+        # the pool, in contrast to the capacity of those disks.
+        # Corresponds to the JSON property `poolUsedCapacityBytes`
+        # @return [Fixnum]
+        attr_accessor :pool_used_capacity_bytes
+      
+        # Sum of all the disks' provisioned IOPS, minus some amount that is allowed per
+        # disk that is not counted towards pool's IOPS capacity.
+        # Corresponds to the JSON property `poolUsedIops`
+        # @return [Fixnum]
+        attr_accessor :pool_used_iops
+      
+        # [Output Only] Sum of all the disks' provisioned throughput in MB/s.
+        # Corresponds to the JSON property `poolUsedThroughput`
+        # @return [Fixnum]
+        attr_accessor :pool_used_throughput
+      
+        # [Output Only] Amount of data written into the pool, before it is compacted.
+        # Corresponds to the JSON property `poolUserWrittenBytes`
+        # @return [Fixnum]
+        attr_accessor :pool_user_written_bytes
+      
+        # [Output Only] Sum of all the capacity provisioned in disks in this storage
+        # pool. A disk's provisioned capacity is the same as its total capacity.
+        # Corresponds to the JSON property `totalProvisionedDiskCapacityGb`
+        # @return [Fixnum]
+        attr_accessor :total_provisioned_disk_capacity_gb
+      
+        # [Output Only] Sum of all the disks' provisioned IOPS.
+        # Corresponds to the JSON property `totalProvisionedDiskIops`
+        # @return [Fixnum]
+        attr_accessor :total_provisioned_disk_iops
+      
+        # [Output Only] Sum of all the disks' provisioned throughput in MB/s, minus some
+        # amount that is allowed per disk that is not counted towards pool's throughput
+        # capacity.
+        # Corresponds to the JSON property `totalProvisionedDiskThroughput`
+        # @return [Fixnum]
+        attr_accessor :total_provisioned_disk_throughput
+      
+        # DEPRECATED -- use "pool used capacity".
         # Corresponds to the JSON property `usedBytes`
         # @return [Fixnum]
         attr_accessor :used_bytes
       
-        # [Output Only] Space used by compressed and deduped data stored in disks within
-        # the storage pool (in bytes).
+        # DEPRECATED -- do not use, will be removed.
         # Corresponds to the JSON property `usedReducedBytes`
         # @return [Fixnum]
         attr_accessor :used_reduced_bytes
       
-        # [Output Only] Sum of all the disks' provisioned throughput in MB/s.
+        # DEPRECATED -- use "pool used throughput".
         # Corresponds to the JSON property `usedThroughput`
         # @return [Fixnum]
         attr_accessor :used_throughput
@@ -48464,9 +48616,18 @@ module Google
         def update!(**args)
           @aggregate_disk_provisioned_iops = args[:aggregate_disk_provisioned_iops] if args.key?(:aggregate_disk_provisioned_iops)
           @aggregate_disk_size_gb = args[:aggregate_disk_size_gb] if args.key?(:aggregate_disk_size_gb)
+          @disk_count = args[:disk_count] if args.key?(:disk_count)
           @last_resize_timestamp = args[:last_resize_timestamp] if args.key?(:last_resize_timestamp)
           @max_aggregate_disk_size_gb = args[:max_aggregate_disk_size_gb] if args.key?(:max_aggregate_disk_size_gb)
+          @max_total_provisioned_disk_capacity_gb = args[:max_total_provisioned_disk_capacity_gb] if args.key?(:max_total_provisioned_disk_capacity_gb)
           @number_of_disks = args[:number_of_disks] if args.key?(:number_of_disks)
+          @pool_used_capacity_bytes = args[:pool_used_capacity_bytes] if args.key?(:pool_used_capacity_bytes)
+          @pool_used_iops = args[:pool_used_iops] if args.key?(:pool_used_iops)
+          @pool_used_throughput = args[:pool_used_throughput] if args.key?(:pool_used_throughput)
+          @pool_user_written_bytes = args[:pool_user_written_bytes] if args.key?(:pool_user_written_bytes)
+          @total_provisioned_disk_capacity_gb = args[:total_provisioned_disk_capacity_gb] if args.key?(:total_provisioned_disk_capacity_gb)
+          @total_provisioned_disk_iops = args[:total_provisioned_disk_iops] if args.key?(:total_provisioned_disk_iops)
+          @total_provisioned_disk_throughput = args[:total_provisioned_disk_throughput] if args.key?(:total_provisioned_disk_throughput)
           @used_bytes = args[:used_bytes] if args.key?(:used_bytes)
           @used_reduced_bytes = args[:used_reduced_bytes] if args.key?(:used_reduced_bytes)
           @used_throughput = args[:used_throughput] if args.key?(:used_throughput)
@@ -49209,18 +49370,15 @@ module Google
         attr_accessor :private_ipv6_google_access
       
         # The purpose of the resource. This field can be either PRIVATE,
-        # REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
-        # INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created
-        # subnets or subnets that are automatically created in auto mode networks. A
-        # subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork
-        # that is reserved for regional Envoy-based load balancers. A subnet with
-        # purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using
-        # Private Service Connect. A subnet with purpose set to
-        # INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by
-        # regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is
-        # the preferred setting for all regional Envoy load balancers. If unspecified,
-        # the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't
-        # supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
+        # PRIVATE is the default purpose for user-created subnets or subnets that are
+        # automatically created in auto mode networks. Subnets with purpose set to
+        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks
+        # that are reserved for Envoy-based load balancers. A subnet with purpose set to
+        # PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
+        # Connect. If unspecified, the subnet purpose defaults to PRIVATE. The
+        # enableFlowLogs field isn't supported if the subnet purpose field is set to
+        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -49236,11 +49394,12 @@ module Google
         # @return [String]
         attr_accessor :reserved_internal_range
       
-        # The role of subnetwork. Currently, this field is only used when purpose =
-        # REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE
-        # subnetwork is one that is currently being used for Envoy-based load balancers
-        # in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE
-        # or is currently draining. This field can be updated with a patch request.
+        # The role of subnetwork. Currently, this field is only used when purpose is set
+        # to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY. The value can be set to
+        # ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for
+        # Envoy-based load balancers in a region. A BACKUP subnetwork is one that is
+        # ready to be promoted to ACTIVE or is currently draining. This field can be
+        # updated with a patch request.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -54716,27 +54875,25 @@ module Google
         attr_accessor :network
       
         # The purpose of the resource. This field can be either PRIVATE,
-        # REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
-        # INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created
-        # subnets or subnets that are automatically created in auto mode networks. A
-        # subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork
-        # that is reserved for regional Envoy-based load balancers. A subnet with
-        # purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using
-        # Private Service Connect. A subnet with purpose set to
-        # INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by
-        # regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is
-        # the preferred setting for all regional Envoy load balancers. If unspecified,
-        # the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't
-        # supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
+        # PRIVATE is the default purpose for user-created subnets or subnets that are
+        # automatically created in auto mode networks. Subnets with purpose set to
+        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks
+        # that are reserved for Envoy-based load balancers. A subnet with purpose set to
+        # PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
+        # Connect. If unspecified, the subnet purpose defaults to PRIVATE. The
+        # enableFlowLogs field isn't supported if the subnet purpose field is set to
+        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
       
-        # The role of subnetwork. Currently, this field is only used when purpose =
-        # REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE
-        # subnetwork is one that is currently being used for Envoy-based load balancers
-        # in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE
-        # or is currently draining. This field can be updated with a patch request.
+        # The role of subnetwork. Currently, this field is only used when purpose is set
+        # to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY. The value can be set to
+        # ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for
+        # Envoy-based load balancers in a region. A BACKUP subnetwork is one that is
+        # ready to be promoted to ACTIVE or is currently draining. This field can be
+        # updated with a patch request.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
