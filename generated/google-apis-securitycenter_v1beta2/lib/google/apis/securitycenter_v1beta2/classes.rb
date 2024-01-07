@@ -1922,6 +1922,21 @@ module Google
         # @return [Array<String>]
         attr_accessor :assignees
       
+        # The priority of the finding's corresponding case in the external system.
+        # Corresponds to the JSON property `casePriority`
+        # @return [String]
+        attr_accessor :case_priority
+      
+        # The SLA of the finding's corresponding case in the external system.
+        # Corresponds to the JSON property `caseSla`
+        # @return [String]
+        attr_accessor :case_sla
+      
+        # The link to the finding's corresponding case in the external system.
+        # Corresponds to the JSON property `caseUri`
+        # @return [String]
+        attr_accessor :case_uri
+      
         # The time when the case was last updated, as reported by the external system.
         # Corresponds to the JSON property `externalSystemUpdateTime`
         # @return [String]
@@ -1947,6 +1962,12 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # Information about the ticket, if any, that is being used to track the
+        # resolution of the issue that is identified by this finding.
+        # Corresponds to the JSON property `ticketInfo`
+        # @return [Google::Apis::SecuritycenterV1beta2::TicketInfo]
+        attr_accessor :ticket_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1954,10 +1975,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assignees = args[:assignees] if args.key?(:assignees)
+          @case_priority = args[:case_priority] if args.key?(:case_priority)
+          @case_sla = args[:case_sla] if args.key?(:case_sla)
+          @case_uri = args[:case_uri] if args.key?(:case_uri)
           @external_system_update_time = args[:external_system_update_time] if args.key?(:external_system_update_time)
           @external_uid = args[:external_uid] if args.key?(:external_uid)
           @name = args[:name] if args.key?(:name)
           @status = args[:status] if args.key?(:status)
+          @ticket_info = args[:ticket_info] if args.key?(:ticket_info)
         end
       end
       
@@ -3769,6 +3794,56 @@ module Google
           @details = args[:details] if args.key?(:details)
           @name = args[:name] if args.key?(:name)
           @tier = args[:tier] if args.key?(:tier)
+        end
+      end
+      
+      # Information about the ticket, if any, that is being used to track the
+      # resolution of the issue that is identified by this finding.
+      class TicketInfo
+        include Google::Apis::Core::Hashable
+      
+        # The assignee of the ticket in the ticket system.
+        # Corresponds to the JSON property `assignee`
+        # @return [String]
+        attr_accessor :assignee
+      
+        # The description of the ticket in the ticket system.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The identifier of the ticket in the ticket system.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The latest status of the ticket, as reported by the ticket system.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The time when the ticket was last updated, as reported by the ticket system.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # The link to the ticket in the ticket system.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assignee = args[:assignee] if args.key?(:assignee)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @status = args[:status] if args.key?(:status)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
