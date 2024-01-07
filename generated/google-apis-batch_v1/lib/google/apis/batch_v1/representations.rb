@@ -549,6 +549,7 @@ module Google
       
           property :service_account, as: 'serviceAccount', class: Google::Apis::BatchV1::ServiceAccount, decorator: Google::Apis::BatchV1::ServiceAccount::Representation
       
+          collection :tags, as: 'tags'
         end
       end
       
