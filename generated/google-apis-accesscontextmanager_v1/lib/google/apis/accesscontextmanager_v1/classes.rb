@@ -1353,15 +1353,15 @@ module Google
       class MethodSelector
         include Google::Apis::Core::Hashable
       
-        # Value for `method` should be a valid method name for the corresponding `
-        # service_name` in ApiOperation. If `*` used as value for `method`, then ALL
-        # methods and permissions are allowed.
+        # A valid method name for the corresponding `service_name` in ApiOperation. If `*
+        # ` is used as the value for the `method`, then ALL methods and permissions are
+        # allowed.
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
       
-        # Value for `permission` should be a valid Cloud IAM permission for the
-        # corresponding `service_name` in ApiOperation.
+        # A valid Cloud IAM permission for the corresponding `service_name` in
+        # ApiOperation.
         # Corresponds to the JSON property `permission`
         # @return [String]
         attr_accessor :permission
@@ -1914,7 +1914,7 @@ module Google
         end
       end
       
-      # `SupportedService` specifies VPC-SC supported service and its properties.
+      # `SupportedService` specifies the VPC Service Controls and its properties.
       class SupportedService
         include Google::Apis::Core::Hashable
       
@@ -1926,8 +1926,9 @@ module Google
         attr_accessor :available_on_restricted_vip
         alias_method :available_on_restricted_vip?, :available_on_restricted_vip
       
-        # True if the service is supported with some limitations. Check documentation
-        # for details.
+        # True if the service is supported with some limitations. Check [documentation](
+        # https://cloud.google.com/vpc-service-controls/docs/supported-products) for
+        # details.
         # Corresponds to the JSON property `knownLimitations`
         # @return [Boolean]
         attr_accessor :known_limitations
@@ -1944,13 +1945,13 @@ module Google
         # @return [String]
         attr_accessor :support_stage
       
-        # The list of the supported methods. Field exist only in response on [
-        # GetSupportedService]
+        # The list of the supported methods. This field exists only in response to
+        # GetSupportedService
         # Corresponds to the JSON property `supportedMethods`
         # @return [Array<Google::Apis::AccesscontextmanagerV1::MethodSelector>]
         attr_accessor :supported_methods
       
-        # The name of the supported product, such as 'Cloud Product API'
+        # The name of the supported product, such as 'Cloud Product API'.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
