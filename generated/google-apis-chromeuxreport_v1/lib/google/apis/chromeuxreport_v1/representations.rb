@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FractionTimeseries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HistoryKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -152,6 +158,13 @@ module Google
         end
       end
       
+      class FractionTimeseries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fractions, as: 'fractions'
+        end
+      end
+      
       class HistoryKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -197,6 +210,8 @@ module Google
       class MetricTimeseries
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :fraction_timeseries, as: 'fractionTimeseries', class: Google::Apis::ChromeuxreportV1::FractionTimeseries, decorator: Google::Apis::ChromeuxreportV1::FractionTimeseries::Representation
+      
           collection :histogram_timeseries, as: 'histogramTimeseries', class: Google::Apis::ChromeuxreportV1::TimeseriesBin, decorator: Google::Apis::ChromeuxreportV1::TimeseriesBin::Representation
       
           property :percentiles_timeseries, as: 'percentilesTimeseries', class: Google::Apis::ChromeuxreportV1::TimeseriesPercentiles, decorator: Google::Apis::ChromeuxreportV1::TimeseriesPercentiles::Representation
