@@ -1414,6 +1414,9 @@ module Google
         # @param [String] name
         #   Required. Resource name of the form: `projects/`project`/locations/`location`/
         #   customConnectors/`connector``
+        # @param [Boolean] force
+        #   Optional. If set to true, any customConnectorVersion which is a child resource
+        #   will also be deleted. https://aip.dev/135#cascading-delete
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1431,11 +1434,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_global_custom_connector(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_global_custom_connector(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ConnectorsV1::Operation::Representation
           command.response_class = Google::Apis::ConnectorsV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

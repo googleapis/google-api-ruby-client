@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeadLetterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DenyMaintenancePeriod
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1005,6 +1011,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_ratelimit_window_seconds, :numeric_string => true, as: 'connectionRatelimitWindowSeconds'
+          property :deployment_model, as: 'deploymentModel'
           property :hpa_config, as: 'hpaConfig', class: Google::Apis::ConnectorsV1::HpaConfig, decorator: Google::Apis::ConnectorsV1::HpaConfig::Representation
       
           property :internalclient_ratelimit_threshold, :numeric_string => true, as: 'internalclientRatelimitThreshold'
@@ -1072,6 +1079,14 @@ module Google
           property :day, as: 'day'
           property :month, as: 'month'
           property :year, as: 'year'
+        end
+      end
+      
+      class DeadLetterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
+          property :topic, as: 'topic'
         end
       end
       
@@ -1237,6 +1252,8 @@ module Google
           collection :additional_variables, as: 'additionalVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
       
           property :auth_config, as: 'authConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
+      
+          property :dead_letter_config, as: 'deadLetterConfig', class: Google::Apis::ConnectorsV1::DeadLetterConfig, decorator: Google::Apis::ConnectorsV1::DeadLetterConfig::Representation
       
           property :enrichment_enabled, as: 'enrichmentEnabled'
           property :events_listener_ingress_endpoint, as: 'eventsListenerIngressEndpoint'
