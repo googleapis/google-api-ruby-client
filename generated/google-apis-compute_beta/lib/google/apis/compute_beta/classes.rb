@@ -5144,21 +5144,43 @@ module Google
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
         # . * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
-        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a user that has been recently deleted. For example, `alice@
-        # example.com?uid=123456789012345678901`. If the user is recovered, this value
-        # reverts to `user:`emailid`` and the recovered user retains the role in the
-        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
-        # (plus unique identifier) representing a service account that has been recently
-        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # users of that domain. For example, `google.com` or `example.com`. * `principal:
+        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
+        # subject_attribute_value``: A single identity in a workforce identity pool. * `
+        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
+        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
+        # attribute_name`/`attribute_value``: All workforce identities with a specific
+        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
+        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
+        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
+        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
+        # googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
+        # All identities in a workload identity pool with a certain attribute. * `
+        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding.
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
+        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
+        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
+        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -5587,6 +5609,15 @@ module Google
         # @return [String]
         attr_accessor :end_timestamp
       
+        # Specifies the already existing reservations to attach to the Commitment. This
+        # field is optional, and it can be a full or partial URL. For example, the
+        # following are valid URLs to an reservation: - https://www.googleapis.com/
+        # compute/v1/projects/project/zones/zone /reservations/reservation - projects/
+        # project/zones/zone/reservations/reservation
+        # Corresponds to the JSON property `existingReservations`
+        # @return [Array<String>]
+        attr_accessor :existing_reservations
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -5630,7 +5661,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # List of create-on-create reseravtions for this commitment.
+        # List of create-on-create reservations for this commitment.
         # Corresponds to the JSON property `reservations`
         # @return [Array<Google::Apis::ComputeBeta::Reservation>]
         attr_accessor :reservations
@@ -5687,6 +5718,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @end_timestamp = args[:end_timestamp] if args.key?(:end_timestamp)
+          @existing_reservations = args[:existing_reservations] if args.key?(:existing_reservations)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @license_resource = args[:license_resource] if args.key?(:license_resource)
@@ -6740,6 +6772,12 @@ module Google
         # @return [Google::Apis::ComputeBeta::DiskResourceStatus]
         attr_accessor :resource_status
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -6952,6 +6990,7 @@ module Google
           @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
@@ -11673,8 +11712,8 @@ module Google
         # The ID of a supported feature. To add multiple values, use commas to separate
         # values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE -
         # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE -
-        # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more
-        # information, see Enabling guest operating system features.
+        # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - IDPF For
+        # more information, see Enabling guest operating system features.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -12779,6 +12818,16 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # 
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
+        # Health state of the IPv6 address of the instance.
+        # Corresponds to the JSON property `ipv6HealthState`
+        # @return [String]
+        attr_accessor :ipv6_health_state
+      
         # The named port of the instance group, not necessarily the port that is health-
         # checked.
         # Corresponds to the JSON property `port`
@@ -12807,6 +12856,8 @@ module Google
           @health_state = args[:health_state] if args.key?(:health_state)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
+          @ipv6_health_state = args[:ipv6_health_state] if args.key?(:ipv6_health_state)
           @port = args[:port] if args.key?(:port)
           @weight = args[:weight] if args.key?(:weight)
           @weight_error = args[:weight_error] if args.key?(:weight_error)
@@ -14328,6 +14379,12 @@ module Google
         # @return [Google::Apis::ComputeBeta::RolloutPolicy]
         attr_accessor :rollout_override
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -14469,6 +14526,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @raw_disk = args[:raw_disk] if args.key?(:raw_disk)
           @rollout_override = args[:rollout_override] if args.key?(:rollout_override)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @shielded_instance_initial_state = args[:shielded_instance_initial_state] if args.key?(:shielded_instance_initial_state)
@@ -16488,8 +16546,10 @@ module Google
       class InstanceGroupManagerResizeRequestStatus
         include Google::Apis::Core::Hashable
       
-        # Errors encountered during the queueing or provisioning phases of the
-        # ResizeRequest.
+        # [Output only] Fatal errors encountered during the queueing or provisioning
+        # phases of the ResizeRequest that caused the transition to the FAILED state. As
+        # a contrary to the last_attempt errors, this field is final and errors are
+        # never removed from here, as the RR is not going to retry.
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatus::Error]
         attr_accessor :error
@@ -16503,8 +16563,10 @@ module Google
           @error = args[:error] if args.key?(:error)
         end
         
-        # Errors encountered during the queueing or provisioning phases of the
-        # ResizeRequest.
+        # [Output only] Fatal errors encountered during the queueing or provisioning
+        # phases of the ResizeRequest that caused the transition to the FAILED state. As
+        # a contrary to the last_attempt errors, this field is final and errors are
+        # never removed from here, as the RR is not going to retry.
         class Error
           include Google::Apis::Core::Hashable
         
@@ -16735,7 +16797,10 @@ module Google
       class InstanceGroupManagerStandbyPolicy
         include Google::Apis::Core::Hashable
       
-        # 
+        # Specifies the number of seconds that the MIG should wait to suspend or stop a
+        # VM after that VM was created. The initial delay gives the initialization
+        # script the time to prepare your VM for a quick scale out. The value of initial
+        # delay must be between 0 and 3600 seconds. The default value is 0.
         # Corresponds to the JSON property `initialDelaySec`
         # @return [Fixnum]
         attr_accessor :initial_delay_sec
@@ -19705,6 +19770,12 @@ module Google
         # @return [Google::Apis::ComputeBeta::InstantSnapshotResourceStatus]
         attr_accessor :resource_status
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -19770,6 +19841,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -23229,6 +23301,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -23298,6 +23376,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @machine_image_encryption_key = args[:machine_image_encryption_key] if args.key?(:machine_image_encryption_key)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @saved_disks = args[:saved_disks] if args.key?(:saved_disks)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -23987,6 +24066,13 @@ module Google
         # @return [Google::Apis::ComputeBeta::ManagedInstancePropertiesFromFlexibilityPolicy]
         attr_accessor :properties_from_flexibility_policy
       
+        # [Output Only] The eventual status of the instance. The instance group manager
+        # will not be identified as stable till each managed instance reaches its
+        # targetStatus.
+        # Corresponds to the JSON property `targetStatus`
+        # @return [String]
+        attr_accessor :target_status
+      
         # [Output Only] Intended version of this instance.
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::ComputeBeta::ManagedInstanceVersion]
@@ -24010,6 +24096,7 @@ module Google
           @preserved_state_from_config = args[:preserved_state_from_config] if args.key?(:preserved_state_from_config)
           @preserved_state_from_policy = args[:preserved_state_from_policy] if args.key?(:preserved_state_from_policy)
           @properties_from_flexibility_policy = args[:properties_from_flexibility_policy] if args.key?(:properties_from_flexibility_policy)
+          @target_status = args[:target_status] if args.key?(:target_status)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -29138,7 +29225,8 @@ module Google
       # global operations, use the `globalOperations` resource. - For regional
       # operations, use the `regionOperations` resource. - For zonal operations, use
       # the `zoneOperations` resource. For more information, read Global, Regional,
-      # and Zonal Resources.
+      # and Zonal Resources. Note that completed Operation resources have a limited
+      # retention period.
       class Operation
         include Google::Apis::Core::Hashable
       
@@ -30275,15 +30363,17 @@ module Google
       
         # Protocols that apply as filter on mirrored traffic. If no protocols are
         # specified, all traffic that matches the specified CIDR ranges is mirrored. If
-        # neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        # neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored.
         # Corresponds to the JSON property `IPProtocols`
         # @return [Array<String>]
         attr_accessor :ip_protocols
       
-        # IP CIDR ranges that apply as filter on the source (ingress) or destination (
-        # egress) IP in the IP header. Only IPv4 is supported. If no ranges are
-        # specified, all traffic that matches the specified IPProtocols is mirrored. If
-        # neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        # One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (
+        # ingress) or destination (egress) IP in the IP header. If no ranges are
+        # specified, all IPv4 traffic that matches the specified IPProtocols is mirrored.
+        # If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is
+        # mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note:
+        # Support for IPv6 traffic is in preview.
         # Corresponds to the JSON property `cidrRanges`
         # @return [Array<String>]
         attr_accessor :cidr_ranges
@@ -37307,6 +37397,13 @@ module Google
         # @return [Google::Apis::ComputeBeta::BfdStatus]
         attr_accessor :bfd_status
       
+        # Enable IPv4 traffic over BGP Peer. It is enabled by default if the
+        # peerIpAddress is version 4.
+        # Corresponds to the JSON property `enableIpv4`
+        # @return [Boolean]
+        attr_accessor :enable_ipv4
+        alias_method :enable_ipv4?, :enable_ipv4
+      
         # Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         # Corresponds to the JSON property `enableIpv6`
         # @return [Boolean]
@@ -37317,6 +37414,11 @@ module Google
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # IPv4 address of the local BGP interface.
+        # Corresponds to the JSON property `ipv4NexthopAddress`
+        # @return [String]
+        attr_accessor :ipv4_nexthop_address
       
         # IPv6 address of the local BGP interface.
         # Corresponds to the JSON property `ipv6NexthopAddress`
@@ -37348,6 +37450,11 @@ module Google
         # Corresponds to the JSON property `peerIpAddress`
         # @return [String]
         attr_accessor :peer_ip_address
+      
+        # IPv4 address of the remote BGP interface.
+        # Corresponds to the JSON property `peerIpv4NexthopAddress`
+        # @return [String]
+        attr_accessor :peer_ipv4_nexthop_address
       
         # IPv6 address of the remote BGP interface.
         # Corresponds to the JSON property `peerIpv6NexthopAddress`
@@ -37396,14 +37503,17 @@ module Google
         def update!(**args)
           @advertised_routes = args[:advertised_routes] if args.key?(:advertised_routes)
           @bfd_status = args[:bfd_status] if args.key?(:bfd_status)
+          @enable_ipv4 = args[:enable_ipv4] if args.key?(:enable_ipv4)
           @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv4_nexthop_address = args[:ipv4_nexthop_address] if args.key?(:ipv4_nexthop_address)
           @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
           @md5_auth_enabled = args[:md5_auth_enabled] if args.key?(:md5_auth_enabled)
           @name = args[:name] if args.key?(:name)
           @num_learned_routes = args[:num_learned_routes] if args.key?(:num_learned_routes)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @peer_ipv4_nexthop_address = args[:peer_ipv4_nexthop_address] if args.key?(:peer_ipv4_nexthop_address)
           @peer_ipv6_nexthop_address = args[:peer_ipv6_nexthop_address] if args.key?(:peer_ipv6_nexthop_address)
           @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
           @state = args[:state] if args.key?(:state)
@@ -38481,7 +38591,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # User-provided name of the Organization security plicy. The name should be
+        # User-provided name of the organization security policy. The name should be
         # unique in the organization in which the security policy is created. This
         # should only be used when SecurityPolicyType is FIREWALL. The name must be 1-63
         # characters long, and comply with https://www.ietf.org/rfc/rfc1035.txt.
@@ -39451,7 +39561,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # reCAPTCHA configuration options to be applied for the rule. If the rule does
-        # not evaluate reCAPTCHA tokens, this field will have no effect.
+        # not evaluate reCAPTCHA tokens, this field has no effect.
         # Corresponds to the JSON property `recaptchaOptions`
         # @return [Google::Apis::ComputeBeta::SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions]
         attr_accessor :recaptcha_options
@@ -41215,6 +41325,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -41357,6 +41473,7 @@ module Google
           @licenses = args[:licenses] if args.key?(:licenses)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @snapshot_encryption_key = args[:snapshot_encryption_key] if args.key?(:snapshot_encryption_key)
@@ -43097,18 +43214,15 @@ module Google
         attr_accessor :private_ipv6_google_access
       
         # The purpose of the resource. This field can be either PRIVATE,
-        # REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
-        # INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created
-        # subnets or subnets that are automatically created in auto mode networks. A
-        # subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork
-        # that is reserved for regional Envoy-based load balancers. A subnet with
-        # purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using
-        # Private Service Connect. A subnet with purpose set to
-        # INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by
-        # regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is
-        # the preferred setting for all regional Envoy load balancers. If unspecified,
-        # the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't
-        # supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
+        # PRIVATE is the default purpose for user-created subnets or subnets that are
+        # automatically created in auto mode networks. Subnets with purpose set to
+        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks
+        # that are reserved for Envoy-based load balancers. A subnet with purpose set to
+        # PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
+        # Connect. If unspecified, the subnet purpose defaults to PRIVATE. The
+        # enableFlowLogs field isn't supported if the subnet purpose field is set to
+        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -43124,11 +43238,12 @@ module Google
         # @return [String]
         attr_accessor :reserved_internal_range
       
-        # The role of subnetwork. Currently, this field is only used when purpose =
-        # REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE
-        # subnetwork is one that is currently being used for Envoy-based load balancers
-        # in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE
-        # or is currently draining. This field can be updated with a patch request.
+        # The role of subnetwork. Currently, this field is only used when purpose is set
+        # to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY. The value can be set to
+        # ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for
+        # Envoy-based load balancers in a region. A BACKUP subnetwork is one that is
+        # ready to be promoted to ACTIVE or is currently draining. This field can be
+        # updated with a patch request.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -48337,27 +48452,25 @@ module Google
         attr_accessor :network
       
         # The purpose of the resource. This field can be either PRIVATE,
-        # REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
-        # INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created
-        # subnets or subnets that are automatically created in auto mode networks. A
-        # subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork
-        # that is reserved for regional Envoy-based load balancers. A subnet with
-        # purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using
-        # Private Service Connect. A subnet with purpose set to
-        # INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by
-        # regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is
-        # the preferred setting for all regional Envoy load balancers. If unspecified,
-        # the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't
-        # supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
+        # PRIVATE is the default purpose for user-created subnets or subnets that are
+        # automatically created in auto mode networks. Subnets with purpose set to
+        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks
+        # that are reserved for Envoy-based load balancers. A subnet with purpose set to
+        # PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
+        # Connect. If unspecified, the subnet purpose defaults to PRIVATE. The
+        # enableFlowLogs field isn't supported if the subnet purpose field is set to
+        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
       
-        # The role of subnetwork. Currently, this field is only used when purpose =
-        # REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE
-        # subnetwork is one that is currently being used for Envoy-based load balancers
-        # in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE
-        # or is currently draining. This field can be updated with a patch request.
+        # The role of subnetwork. Currently, this field is only used when purpose is set
+        # to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY. The value can be set to
+        # ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for
+        # Envoy-based load balancers in a region. A BACKUP subnetwork is one that is
+        # ready to be promoted to ACTIVE or is currently draining. This field can be
+        # updated with a patch request.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
