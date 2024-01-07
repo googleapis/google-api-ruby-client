@@ -7362,6 +7362,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :end_timestamp, as: 'endTimestamp'
+          collection :existing_reservations, as: 'existingReservations'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :license_resource, as: 'licenseResource', class: Google::Apis::ComputeV1::LicenseResourceCommitment, decorator: Google::Apis::ComputeV1::LicenseResourceCommitment::Representation
@@ -7602,6 +7603,7 @@ module Google
           collection :resource_policies, as: 'resourcePolicies'
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeV1::DiskResourceStatus, decorator: Google::Apis::ComputeV1::DiskResourceStatus::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
@@ -9127,6 +9129,7 @@ module Google
           property :name, as: 'name'
           property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeV1::Image::RawDisk, decorator: Google::Apis::ComputeV1::Image::RawDisk::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :shielded_instance_initial_state, as: 'shieldedInstanceInitialState', class: Google::Apis::ComputeV1::InitialStateConfig, decorator: Google::Apis::ComputeV1::InitialStateConfig::Representation
@@ -11006,6 +11009,7 @@ module Google
           property :machine_image_encryption_key, as: 'machineImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           collection :saved_disks, as: 'savedDisks', class: Google::Apis::ComputeV1::SavedDisk, decorator: Google::Apis::ComputeV1::SavedDisk::Representation
       
@@ -15309,6 +15313,7 @@ module Google
           collection :licenses, as: 'licenses'
           property :location_hint, as: 'locationHint'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :snapshot_encryption_key, as: 'snapshotEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
@@ -15772,6 +15777,7 @@ module Google
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :purpose, as: 'purpose'
           property :region, as: 'region'
+          property :reserved_internal_range, as: 'reservedInternalRange'
           property :role, as: 'role'
           collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ComputeV1::SubnetworkSecondaryRange, decorator: Google::Apis::ComputeV1::SubnetworkSecondaryRange::Representation
       
@@ -15863,6 +15869,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_cidr_range, as: 'ipCidrRange'
           property :range_name, as: 'rangeName'
+          property :reserved_internal_range, as: 'reservedInternalRange'
         end
       end
       
