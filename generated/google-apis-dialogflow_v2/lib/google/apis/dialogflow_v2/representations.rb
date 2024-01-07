@@ -3597,6 +3597,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3AdvancedSettings, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3AdvancedSettings::Representation
       
+          property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :entry_fulfillment, as: 'entryFulfillment', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3Fulfillment, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3Fulfillment::Representation
       
@@ -4573,6 +4574,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1AdvancedSettings, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1AdvancedSettings::Representation
       
+          property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :entry_fulfillment, as: 'entryFulfillment', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1Fulfillment, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1Fulfillment::Representation
       

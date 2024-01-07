@@ -338,7 +338,8 @@ module Google
         # Represents the query input. It can contain one of: 1. A conversational query
         # in the form of text. 2. An intent query that specifies which intent to trigger.
         # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-        # 5. DTMF digits to invoke an intent and fill in parameter value.
+        # 5. DTMF digits to invoke an intent and fill in parameter value. 6. The
+        # results of a tool executed by the client.
         # Corresponds to the JSON property `input`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3QueryInput]
         attr_accessor :input
@@ -1933,6 +1934,11 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3AdvancedSettings]
         attr_accessor :advanced_settings
       
+        # The description of the page. The maximum length is 500 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Required. The human-readable name of the page, unique within the flow.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -2014,6 +2020,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
+          @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entry_fulfillment = args[:entry_fulfillment] if args.key?(:entry_fulfillment)
           @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
@@ -2136,7 +2143,8 @@ module Google
       # Represents the query input. It can contain one of: 1. A conversational query
       # in the form of text. 2. An intent query that specifies which intent to trigger.
       # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-      # 5. DTMF digits to invoke an intent and fill in parameter value.
+      # 5. DTMF digits to invoke an intent and fill in parameter value. 6. The
+      # results of a tool executed by the client.
       class GoogleCloudDialogflowCxV3QueryInput
         include Google::Apis::Core::Hashable
       
@@ -3907,7 +3915,8 @@ module Google
         # Represents the query input. It can contain one of: 1. A conversational query
         # in the form of text. 2. An intent query that specifies which intent to trigger.
         # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-        # 5. DTMF digits to invoke an intent and fill in parameter value.
+        # 5. DTMF digits to invoke an intent and fill in parameter value. 6. The
+        # results of a tool executed by the client.
         # Corresponds to the JSON property `input`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1QueryInput]
         attr_accessor :input
@@ -5502,6 +5511,11 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1AdvancedSettings]
         attr_accessor :advanced_settings
       
+        # The description of the page. The maximum length is 500 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Required. The human-readable name of the page, unique within the flow.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -5583,6 +5597,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
+          @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entry_fulfillment = args[:entry_fulfillment] if args.key?(:entry_fulfillment)
           @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
@@ -5705,7 +5720,8 @@ module Google
       # Represents the query input. It can contain one of: 1. A conversational query
       # in the form of text. 2. An intent query that specifies which intent to trigger.
       # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-      # 5. DTMF digits to invoke an intent and fill in parameter value.
+      # 5. DTMF digits to invoke an intent and fill in parameter value. 6. The
+      # results of a tool executed by the client.
       class GoogleCloudDialogflowCxV3beta1QueryInput
         include Google::Apis::Core::Hashable
       
