@@ -108,7 +108,7 @@ module Google
       class TraceSpan
         include Google::Apis::Core::Hashable
       
-        # End time of the span in nanoseconds from the UNIX epoch.
+        # End time of the span in seconds and nanoseconds from the UNIX epoch.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -156,7 +156,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :span_id
       
-        # Start time of the span in nanoseconds from the UNIX epoch.
+        # Start time of the span in seconds and nanoseconds from the UNIX epoch.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
