@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RecentDeviceActivity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RequestDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -141,6 +147,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :device_recognition_verdict, as: 'deviceRecognitionVerdict'
+          property :recent_device_activity, as: 'recentDeviceActivity', class: Google::Apis::PlayintegrityV1::RecentDeviceActivity, decorator: Google::Apis::PlayintegrityV1::RecentDeviceActivity::Representation
+      
         end
       end
       
@@ -150,6 +158,13 @@ module Google
           property :app_access_risk_verdict, as: 'appAccessRiskVerdict', class: Google::Apis::PlayintegrityV1::AppAccessRiskVerdict, decorator: Google::Apis::PlayintegrityV1::AppAccessRiskVerdict::Representation
       
           property :play_protect_verdict, as: 'playProtectVerdict'
+        end
+      end
+      
+      class RecentDeviceActivity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_activity_level, as: 'deviceActivityLevel'
         end
       end
       

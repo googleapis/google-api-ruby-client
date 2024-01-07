@@ -188,6 +188,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :device_recognition_verdict
       
+        # Recent device activity can help developers identify devices that have
+        # exhibited hyperactive attestation activity, which could be a sign of an attack
+        # or token farming.
+        # Corresponds to the JSON property `recentDeviceActivity`
+        # @return [Google::Apis::PlayintegrityV1::RecentDeviceActivity]
+        attr_accessor :recent_device_activity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -195,6 +202,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device_recognition_verdict = args[:device_recognition_verdict] if args.key?(:device_recognition_verdict)
+          @recent_device_activity = args[:recent_device_activity] if args.key?(:recent_device_activity)
         end
       end
       
@@ -222,6 +230,27 @@ module Google
         def update!(**args)
           @app_access_risk_verdict = args[:app_access_risk_verdict] if args.key?(:app_access_risk_verdict)
           @play_protect_verdict = args[:play_protect_verdict] if args.key?(:play_protect_verdict)
+        end
+      end
+      
+      # Recent device activity can help developers identify devices that have
+      # exhibited hyperactive attestation activity, which could be a sign of an attack
+      # or token farming.
+      class RecentDeviceActivity
+        include Google::Apis::Core::Hashable
+      
+        # Required. Indicates the activity level of the device.
+        # Corresponds to the JSON property `deviceActivityLevel`
+        # @return [String]
+        attr_accessor :device_activity_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_activity_level = args[:device_activity_level] if args.key?(:device_activity_level)
         end
       end
       
