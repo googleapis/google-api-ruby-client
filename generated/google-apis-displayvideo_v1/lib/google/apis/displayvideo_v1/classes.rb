@@ -9256,13 +9256,16 @@ module Google
         attr_accessor :proximity_radius_unit
       
         # Required. The targeting_option_id of a TargetingOption of type `
-        # TARGETING_TYPE_POI`. Accepted POI targeting option IDs can be retrieved using
-        # SearchTargetingOptions. If targeting a specific latitude/longitude coordinate
-        # removed from an address or POI name, you can generate the necessary targeting
-        # option ID by rounding the desired coordinate values to the 6th decimal place,
-        # removing the decimals, and concatenating the string values separated by a
-        # semicolon. For example, you can target the latitude/longitude pair of 40.
-        # 7414691, -74.003387 using the targeting option ID "40741469;-74003387".
+        # TARGETING_TYPE_POI`. Accepted POI targeting option IDs can be retrieved using `
+        # targetingTypes.targetingOptions.search`. If targeting a specific latitude/
+        # longitude coordinate removed from an address or POI name, you can generate the
+        # necessary targeting option ID by rounding the desired coordinate values to the
+        # 6th decimal place, removing the decimals, and concatenating the string values
+        # separated by a semicolon. For example, you can target the latitude/longitude
+        # pair of 40.7414691, -74.003387 using the targeting option ID "40741469;-
+        # 74003387". **Upon** **creation, this field value will be updated to append a
+        # semicolon and** **alphanumerical hash value if only latitude/longitude
+        # coordinates are** **provided.**
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -10664,6 +10667,11 @@ module Google
         # @return [String]
         attr_accessor :email
       
+        # Output only. The timestamp when the user last logged in DV360 UI.
+        # Corresponds to the JSON property `lastLoginTime`
+        # @return [String]
+        attr_accessor :last_login_time
+      
         # Output only. The resource name of the user.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -10683,6 +10691,7 @@ module Google
           @assigned_user_roles = args[:assigned_user_roles] if args.key?(:assigned_user_roles)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
+          @last_login_time = args[:last_login_time] if args.key?(:last_login_time)
           @name = args[:name] if args.key?(:name)
           @user_id = args[:user_id] if args.key?(:user_id)
         end
