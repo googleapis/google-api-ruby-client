@@ -436,12 +436,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class V1Beta1ConsumerProperty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class V1Beta1ConsumerQuotaLimit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1364,19 +1358,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :overrides, as: 'overrides', class: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1QuotaOverride, decorator: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1QuotaOverride::Representation
       
-        end
-      end
-      
-      class V1Beta1ConsumerProperty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :name, as: 'name'
-          property :propagation, as: 'propagation', class: Google::Apis::ServiceconsumermanagementV1beta1::Operation, decorator: Google::Apis::ServiceconsumermanagementV1beta1::Operation::Representation
-      
-          property :property_key, as: 'propertyKey'
-          property :type, as: 'type'
-          property :value, as: 'value'
         end
       end
       
