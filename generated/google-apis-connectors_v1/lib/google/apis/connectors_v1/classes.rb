@@ -1078,6 +1078,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :connection_ratelimit_window_seconds
       
+        # Optional. Indicates whether connector is deployed on GKE/CloudRun
+        # Corresponds to the JSON property `deploymentModel`
+        # @return [String]
+        attr_accessor :deployment_model
+      
         # Autoscaling config for connector deployment system metrics.
         # Corresponds to the JSON property `hpaConfig`
         # @return [Google::Apis::ConnectorsV1::HpaConfig]
@@ -1116,6 +1121,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connection_ratelimit_window_seconds = args[:connection_ratelimit_window_seconds] if args.key?(:connection_ratelimit_window_seconds)
+          @deployment_model = args[:deployment_model] if args.key?(:deployment_model)
           @hpa_config = args[:hpa_config] if args.key?(:hpa_config)
           @internalclient_ratelimit_threshold = args[:internalclient_ratelimit_threshold] if args.key?(:internalclient_ratelimit_threshold)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
@@ -1356,6 +1362,31 @@ module Google
           @day = args[:day] if args.key?(:day)
           @month = args[:month] if args.key?(:month)
           @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # Dead Letter configuration details provided by the user.
+      class DeadLetterConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Project which has the topic given.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Optional. Topic to push events which couldn't be processed.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @topic = args[:topic] if args.key?(:topic)
         end
       end
       
@@ -1945,6 +1976,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::AuthConfig]
         attr_accessor :auth_config
       
+        # Dead Letter configuration details provided by the user.
+        # Corresponds to the JSON property `deadLetterConfig`
+        # @return [Google::Apis::ConnectorsV1::DeadLetterConfig]
+        attr_accessor :dead_letter_config
+      
         # Enrichment Enabled.
         # Corresponds to the JSON property `enrichmentEnabled`
         # @return [Boolean]
@@ -1981,6 +2017,7 @@ module Google
         def update!(**args)
           @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
+          @dead_letter_config = args[:dead_letter_config] if args.key?(:dead_letter_config)
           @enrichment_enabled = args[:enrichment_enabled] if args.key?(:enrichment_enabled)
           @events_listener_ingress_endpoint = args[:events_listener_ingress_endpoint] if args.key?(:events_listener_ingress_endpoint)
           @listener_auth_config = args[:listener_auth_config] if args.key?(:listener_auth_config)
