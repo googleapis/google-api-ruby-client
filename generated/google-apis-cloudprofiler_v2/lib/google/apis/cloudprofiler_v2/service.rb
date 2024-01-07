@@ -132,7 +132,7 @@ module Google
         #   `user_project_id`
         # @param [Fixnum] page_size
         #   The maximum number of items to return. Default page_size is 1000. Max limit is
-        #   10000.
+        #   1000.
         # @param [String] page_token
         #   The token to continue pagination and get profiles from a particular page. When
         #   paginating, all other parameters provided to `ListProfiles` must match the
