@@ -2350,8 +2350,19 @@ module Google
         attr_accessor :require_ssl
         alias_method :require_ssl?, :require_ssl
       
-        # SQL Server uses the `require_ssl` flag. You can set the value for this flag to
-        # 'true' or 'false'.
+        # Specify how SSL/TLS is enforced in database connections. MySQL and PostgreSQL
+        # use the `ssl_mode` flag. If you must use the `require_ssl` flag for backward
+        # compatibility, then only the following value pairs are valid: * `ssl_mode=
+        # ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=
+        # ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=
+        # TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` The value of `
+        # ssl_mode` gets priority over the value of `require_ssl`. For example, for the
+        # pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=
+        # ENCRYPTED_ONLY` means only accept SSL connections, while the `require_ssl=
+        # false` means accept both non-SSL and SSL connections. MySQL and PostgreSQL
+        # databases respect `ssl_mode` in this case and accept only SSL connections. SQL
+        # Server uses the `require_ssl` flag. You can set the value for this flag to `
+        # true` or `false`.
         # Corresponds to the JSON property `sslMode`
         # @return [String]
         attr_accessor :ssl_mode
