@@ -161,8 +161,7 @@ module Google
         # @param [String] q
         #   Query
         # @param [String] related_site
-        #   Specifies that all search results should be pages that are related to the
-        #   specified URL.
+        #   Deprecated.
         # @param [String] rights
         #   Filters based on licensing. Supported values include: `cc_publicdomain`, `
         #   cc_attribute`, `cc_sharealike`, `cc_noncommercial`, `cc_nonderived` and
@@ -362,8 +361,7 @@ module Google
         # @param [String] q
         #   Query
         # @param [String] related_site
-        #   Specifies that all search results should be pages that are related to the
-        #   specified URL.
+        #   Deprecated.
         # @param [String] rights
         #   Filters based on licensing. Supported values include: `cc_publicdomain`, `
         #   cc_attribute`, `cc_sharealike`, `cc_noncommercial`, `cc_nonderived` and
