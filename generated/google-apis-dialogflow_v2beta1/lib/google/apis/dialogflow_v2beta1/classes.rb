@@ -338,7 +338,8 @@ module Google
         # Represents the query input. It can contain one of: 1. A conversational query
         # in the form of text. 2. An intent query that specifies which intent to trigger.
         # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-        # 5. DTMF digits to invoke an intent and fill in parameter value.
+        # 5. DTMF digits to invoke an intent and fill in parameter value. 6. The
+        # results of a tool executed by the client.
         # Corresponds to the JSON property `input`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3QueryInput]
         attr_accessor :input
@@ -1933,6 +1934,11 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3AdvancedSettings]
         attr_accessor :advanced_settings
       
+        # The description of the page. The maximum length is 500 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Required. The human-readable name of the page, unique within the flow.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -2014,6 +2020,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
+          @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entry_fulfillment = args[:entry_fulfillment] if args.key?(:entry_fulfillment)
           @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
@@ -2136,7 +2143,8 @@ module Google
       # Represents the query input. It can contain one of: 1. A conversational query
       # in the form of text. 2. An intent query that specifies which intent to trigger.
       # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-      # 5. DTMF digits to invoke an intent and fill in parameter value.
+      # 5. DTMF digits to invoke an intent and fill in parameter value. 6. The
+      # results of a tool executed by the client.
       class GoogleCloudDialogflowCxV3QueryInput
         include Google::Apis::Core::Hashable
       
@@ -3907,7 +3915,8 @@ module Google
         # Represents the query input. It can contain one of: 1. A conversational query
         # in the form of text. 2. An intent query that specifies which intent to trigger.
         # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-        # 5. DTMF digits to invoke an intent and fill in parameter value.
+        # 5. DTMF digits to invoke an intent and fill in parameter value. 6. The
+        # results of a tool executed by the client.
         # Corresponds to the JSON property `input`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1QueryInput]
         attr_accessor :input
@@ -5502,6 +5511,11 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings]
         attr_accessor :advanced_settings
       
+        # The description of the page. The maximum length is 500 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Required. The human-readable name of the page, unique within the flow.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -5583,6 +5597,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
+          @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entry_fulfillment = args[:entry_fulfillment] if args.key?(:entry_fulfillment)
           @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
@@ -5705,7 +5720,8 @@ module Google
       # Represents the query input. It can contain one of: 1. A conversational query
       # in the form of text. 2. An intent query that specifies which intent to trigger.
       # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-      # 5. DTMF digits to invoke an intent and fill in parameter value.
+      # 5. DTMF digits to invoke an intent and fill in parameter value. 6. The
+      # results of a tool executed by the client.
       class GoogleCloudDialogflowCxV3beta1QueryInput
         include Google::Apis::Core::Hashable
       
@@ -10941,13 +10957,13 @@ module Google
       # which the API starts speech detection and may inform the client that an
       # utterance has been detected. Note that no-speech event is not expected in this
       # phase. The client provides this configuration in terms of the durations of
-      # those two phases. The durations are measured in terms of the audio length
-      # fromt the the start of the input audio. The flow goes like below: ``` --> Time
-      # without speech detection | utterance only | utterance or no-speech event | | +-
-      # ------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-
-      # + barge-in +-|-+ normal period +----------- +-------------+ | +------------+ |
-      # +---------------+ ``` No-speech event is a response with END_OF_UTTERANCE
-      # without any transcript following up.
+      # those two phases. The durations are measured in terms of the audio length from
+      # the start of the input audio. The flow goes like below: ``` --> Time without
+      # speech detection | utterance only | utterance or no-speech event | | +---------
+      # ----+ | +------------+ | +---------------+ ----------+ no barge-in +-|-+ barge-
+      # in +-|-+ normal period +----------- +-------------+ | +------------+ | +-------
+      # --------+ ``` No-speech event is a response with END_OF_UTTERANCE without any
+      # transcript following up.
       class GoogleCloudDialogflowV2beta1BargeInConfig
         include Google::Apis::Core::Hashable
       
@@ -13554,13 +13570,13 @@ module Google
         # which the API starts speech detection and may inform the client that an
         # utterance has been detected. Note that no-speech event is not expected in this
         # phase. The client provides this configuration in terms of the durations of
-        # those two phases. The durations are measured in terms of the audio length
-        # fromt the the start of the input audio. The flow goes like below: ``` --> Time
-        # without speech detection | utterance only | utterance or no-speech event | | +-
-        # ------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-
-        # + barge-in +-|-+ normal period +----------- +-------------+ | +------------+ |
-        # +---------------+ ``` No-speech event is a response with END_OF_UTTERANCE
-        # without any transcript following up.
+        # those two phases. The durations are measured in terms of the audio length from
+        # the start of the input audio. The flow goes like below: ``` --> Time without
+        # speech detection | utterance only | utterance or no-speech event | | +---------
+        # ----+ | +------------+ | +---------------+ ----------+ no barge-in +-|-+ barge-
+        # in +-|-+ normal period +----------- +-------------+ | +------------+ | +-------
+        # --------+ ``` No-speech event is a response with END_OF_UTTERANCE without any
+        # transcript following up.
         # Corresponds to the JSON property `bargeInConfig`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BargeInConfig]
         attr_accessor :barge_in_config
