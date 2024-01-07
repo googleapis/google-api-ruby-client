@@ -141,6 +141,27 @@ module Google
         end
       end
       
+      # For enum metrics, provides fraction timeseries which add up to approximately 1.
+      # 0 per entry (k-th element into the repeated fractions field for any k <= len)
+      # across fraction_timeseries.
+      class FractionTimeseries
+        include Google::Apis::Core::Hashable
+      
+        # Values between 0.0 and 1.0 (inclusive) and NaN.
+        # Corresponds to the JSON property `fractions`
+        # @return [Array<Float>]
+        attr_accessor :fractions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fractions = args[:fractions] if args.key?(:fractions)
+        end
+      end
+      
       # Key defines all the dimensions that identify this record as unique.
       class HistoryKey
         include Google::Apis::Core::Hashable
@@ -307,6 +328,11 @@ module Google
       class MetricTimeseries
         include Google::Apis::Core::Hashable
       
+        # Mapping from labels to timeseries of fractions attributed to this label.
+        # Corresponds to the JSON property `fractionTimeseries`
+        # @return [Hash<String,Google::Apis::ChromeuxreportV1::FractionTimeseries>]
+        attr_accessor :fraction_timeseries
+      
         # The histogram of user experiences for a metric. The histogram will have at
         # least one bin and the densities of all bins will add up to ~1, for each
         # timeseries entry.
@@ -327,6 +353,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @fraction_timeseries = args[:fraction_timeseries] if args.key?(:fraction_timeseries)
           @histogram_timeseries = args[:histogram_timeseries] if args.key?(:histogram_timeseries)
           @percentiles_timeseries = args[:percentiles_timeseries] if args.key?(:percentiles_timeseries)
         end
