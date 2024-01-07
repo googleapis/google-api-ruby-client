@@ -802,6 +802,12 @@ module Google
         # @return [String]
         attr_accessor :support_uri
       
+        # Output only. List indicates that the policy will only apply to devices/users
+        # on these platforms.
+        # Corresponds to the JSON property `supportedPlatforms`
+        # @return [Array<String>]
+        attr_accessor :supported_platforms
+      
         # Output only. Information about applicable target resources for the policy.
         # Corresponds to the JSON property `validTargetResources`
         # @return [Array<String>]
@@ -824,6 +830,7 @@ module Google
           @policy_description = args[:policy_description] if args.key?(:policy_description)
           @schema_name = args[:schema_name] if args.key?(:schema_name)
           @support_uri = args[:support_uri] if args.key?(:support_uri)
+          @supported_platforms = args[:supported_platforms] if args.key?(:supported_platforms)
           @valid_target_resources = args[:valid_target_resources] if args.key?(:valid_target_resources)
         end
       end
