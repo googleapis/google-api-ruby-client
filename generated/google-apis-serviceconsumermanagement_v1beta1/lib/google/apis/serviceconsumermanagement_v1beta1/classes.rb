@@ -3500,62 +3500,6 @@ module Google
         end
       end
       
-      # A property assigned to a consumer of a service.
-      class V1Beta1ConsumerProperty
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The description of the property.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Output only. The resource name of this property. An example name would be: `
-        # services/serviceconsumermanagement.googleapis.com/projects/123/properties/
-        # SERVICE_LEVEL` The resource name is intended to be opaque and should not be
-        # parsed for its component strings, since its representation could change in the
-        # future.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # This resource represents a long-running operation that is the result of a
-        # network API call.
-        # Corresponds to the JSON property `propagation`
-        # @return [Google::Apis::ServiceconsumermanagementV1beta1::Operation]
-        attr_accessor :propagation
-      
-        # Output only. The name of the property as it appears in the service
-        # configuration. An example property name would be: `SERVICE_LEVEL`
-        # Corresponds to the JSON property `propertyKey`
-        # @return [String]
-        attr_accessor :property_key
-      
-        # Output only. The type of this property.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # Value of this property for the consumer. This field may be empty if the
-        # consumer has not been assigned a value.
-        # Corresponds to the JSON property `value`
-        # @return [Object]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @name = args[:name] if args.key?(:name)
-          @propagation = args[:propagation] if args.key?(:propagation)
-          @property_key = args[:property_key] if args.key?(:property_key)
-          @type = args[:type] if args.key?(:type)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
       # Consumer quota settings for a quota limit.
       class V1Beta1ConsumerQuotaLimit
         include Google::Apis::Core::Hashable
