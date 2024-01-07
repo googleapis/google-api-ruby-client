@@ -890,6 +890,11 @@ module Google
         # @return [String]
         attr_accessor :obfuscated_user_id
       
+        # Conversation metadata related to quality management.
+        # Corresponds to the JSON property `qualityMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationQualityMetadata]
+        attr_accessor :quality_metadata
+      
         # Output only. The annotations that were generated during the customer and agent
         # interaction.
         # Corresponds to the JSON property `runtimeAnnotations`
@@ -942,6 +947,7 @@ module Google
           @medium = args[:medium] if args.key?(:medium)
           @name = args[:name] if args.key?(:name)
           @obfuscated_user_id = args[:obfuscated_user_id] if args.key?(:obfuscated_user_id)
+          @quality_metadata = args[:quality_metadata] if args.key?(:quality_metadata)
           @runtime_annotations = args[:runtime_annotations] if args.key?(:runtime_annotations)
           @start_time = args[:start_time] if args.key?(:start_time)
           @transcript = args[:transcript] if args.key?(:transcript)
@@ -1069,6 +1075,81 @@ module Google
           @obfuscated_external_user_id = args[:obfuscated_external_user_id] if args.key?(:obfuscated_external_user_id)
           @role = args[:role] if args.key?(:role)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Conversation metadata related to quality management.
+      class GoogleCloudContactcenterinsightsV1ConversationQualityMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Information about agents involved in the call.
+        # Corresponds to the JSON property `agentInfo`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo>]
+        attr_accessor :agent_info
+      
+        # An arbitrary integer value indicating the customer's satisfaction rating.
+        # Corresponds to the JSON property `customerSatisfactionRating`
+        # @return [Fixnum]
+        attr_accessor :customer_satisfaction_rating
+      
+        # An arbitrary string value specifying the menu path the customer took.
+        # Corresponds to the JSON property `menuPath`
+        # @return [String]
+        attr_accessor :menu_path
+      
+        # The amount of time the customer waited to connect with an agent.
+        # Corresponds to the JSON property `waitDuration`
+        # @return [String]
+        attr_accessor :wait_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_info = args[:agent_info] if args.key?(:agent_info)
+          @customer_satisfaction_rating = args[:customer_satisfaction_rating] if args.key?(:customer_satisfaction_rating)
+          @menu_path = args[:menu_path] if args.key?(:menu_path)
+          @wait_duration = args[:wait_duration] if args.key?(:wait_duration)
+        end
+      end
+      
+      # Information about an agent involved in the conversation.
+      class GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo
+        include Google::Apis::Core::Hashable
+      
+        # A user-specified string representing the agent.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
+        # The agent's name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A user-provided string indicating the outcome of the agent's segment of the
+        # call.
+        # Corresponds to the JSON property `dispositionCode`
+        # @return [String]
+        attr_accessor :disposition_code
+      
+        # A user-specified string representing the agent's team.
+        # Corresponds to the JSON property `team`
+        # @return [String]
+        attr_accessor :team
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @disposition_code = args[:disposition_code] if args.key?(:disposition_code)
+          @team = args[:team] if args.key?(:team)
         end
       end
       
@@ -4093,6 +4174,11 @@ module Google
         # @return [String]
         attr_accessor :obfuscated_user_id
       
+        # Conversation metadata related to quality management.
+        # Corresponds to the JSON property `qualityMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata]
+        attr_accessor :quality_metadata
+      
         # Output only. The annotations that were generated during the customer and agent
         # interaction.
         # Corresponds to the JSON property `runtimeAnnotations`
@@ -4145,6 +4231,7 @@ module Google
           @medium = args[:medium] if args.key?(:medium)
           @name = args[:name] if args.key?(:name)
           @obfuscated_user_id = args[:obfuscated_user_id] if args.key?(:obfuscated_user_id)
+          @quality_metadata = args[:quality_metadata] if args.key?(:quality_metadata)
           @runtime_annotations = args[:runtime_annotations] if args.key?(:runtime_annotations)
           @start_time = args[:start_time] if args.key?(:start_time)
           @transcript = args[:transcript] if args.key?(:transcript)
@@ -4272,6 +4359,81 @@ module Google
           @obfuscated_external_user_id = args[:obfuscated_external_user_id] if args.key?(:obfuscated_external_user_id)
           @role = args[:role] if args.key?(:role)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Conversation metadata related to quality management.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Information about agents involved in the call.
+        # Corresponds to the JSON property `agentInfo`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo>]
+        attr_accessor :agent_info
+      
+        # An arbitrary integer value indicating the customer's satisfaction rating.
+        # Corresponds to the JSON property `customerSatisfactionRating`
+        # @return [Fixnum]
+        attr_accessor :customer_satisfaction_rating
+      
+        # An arbitrary string value specifying the menu path the customer took.
+        # Corresponds to the JSON property `menuPath`
+        # @return [String]
+        attr_accessor :menu_path
+      
+        # The amount of time the customer waited to connect with an agent.
+        # Corresponds to the JSON property `waitDuration`
+        # @return [String]
+        attr_accessor :wait_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_info = args[:agent_info] if args.key?(:agent_info)
+          @customer_satisfaction_rating = args[:customer_satisfaction_rating] if args.key?(:customer_satisfaction_rating)
+          @menu_path = args[:menu_path] if args.key?(:menu_path)
+          @wait_duration = args[:wait_duration] if args.key?(:wait_duration)
+        end
+      end
+      
+      # Information about an agent involved in the conversation.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo
+        include Google::Apis::Core::Hashable
+      
+        # A user-specified string representing the agent.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
+        # The agent's name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A user-provided string indicating the outcome of the agent's segment of the
+        # call.
+        # Corresponds to the JSON property `dispositionCode`
+        # @return [String]
+        attr_accessor :disposition_code
+      
+        # A user-specified string representing the agent's team.
+        # Corresponds to the JSON property `team`
+        # @return [String]
+        attr_accessor :team
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @disposition_code = args[:disposition_code] if args.key?(:disposition_code)
+          @team = args[:team] if args.key?(:team)
         end
       end
       
