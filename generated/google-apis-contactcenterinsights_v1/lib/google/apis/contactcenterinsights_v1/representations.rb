@@ -166,6 +166,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1ConversationQualityMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -701,6 +713,18 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1307,6 +1331,8 @@ module Google
           property :medium, as: 'medium'
           property :name, as: 'name'
           property :obfuscated_user_id, as: 'obfuscatedUserId'
+          property :quality_metadata, as: 'qualityMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationQualityMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationQualityMetadata::Representation
+      
           collection :runtime_annotations, as: 'runtimeAnnotations', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RuntimeAnnotation, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RuntimeAnnotation::Representation
       
           property :start_time, as: 'startTime'
@@ -1353,6 +1379,27 @@ module Google
           property :obfuscated_external_user_id, as: 'obfuscatedExternalUserId'
           property :role, as: 'role'
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConversationQualityMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_info, as: 'agentInfo', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo::Representation
+      
+          property :customer_satisfaction_rating, as: 'customerSatisfactionRating'
+          property :menu_path, as: 'menuPath'
+          property :wait_duration, as: 'waitDuration'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_id, as: 'agentId'
+          property :display_name, as: 'displayName'
+          property :disposition_code, as: 'dispositionCode'
+          property :team, as: 'team'
         end
       end
       
@@ -2249,6 +2296,8 @@ module Google
           property :medium, as: 'medium'
           property :name, as: 'name'
           property :obfuscated_user_id, as: 'obfuscatedUserId'
+          property :quality_metadata, as: 'qualityMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata::Representation
+      
           collection :runtime_annotations, as: 'runtimeAnnotations', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation::Representation
       
           property :start_time, as: 'startTime'
@@ -2295,6 +2344,27 @@ module Google
           property :obfuscated_external_user_id, as: 'obfuscatedExternalUserId'
           property :role, as: 'role'
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_info, as: 'agentInfo', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo::Representation
+      
+          property :customer_satisfaction_rating, as: 'customerSatisfactionRating'
+          property :menu_path, as: 'menuPath'
+          property :wait_duration, as: 'waitDuration'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_id, as: 'agentId'
+          property :display_name, as: 'displayName'
+          property :disposition_code, as: 'dispositionCode'
+          property :team, as: 'team'
         end
       end
       
