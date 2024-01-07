@@ -646,6 +646,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TicketInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Vulnerability
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1146,10 +1152,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assignees, as: 'assignees'
+          property :case_priority, as: 'casePriority'
+          property :case_sla, as: 'caseSla'
+          property :case_uri, as: 'caseUri'
           property :external_system_update_time, as: 'externalSystemUpdateTime'
           property :external_uid, as: 'externalUid'
           property :name, as: 'name'
           property :status, as: 'status'
+          property :ticket_info, as: 'ticketInfo', class: Google::Apis::SecuritycenterV1beta1::TicketInfo, decorator: Google::Apis::SecuritycenterV1beta1::TicketInfo::Representation
+      
         end
       end
       
@@ -1792,6 +1803,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TicketInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assignee, as: 'assignee'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :status, as: 'status'
+          property :update_time, as: 'updateTime'
+          property :uri, as: 'uri'
         end
       end
       
