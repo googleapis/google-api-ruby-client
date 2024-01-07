@@ -4601,6 +4601,7 @@ module Google
       
           property :display_name, as: 'displayName'
           property :email, as: 'email'
+          property :last_login_time, as: 'lastLoginTime'
           property :name, as: 'name'
           property :user_id, :numeric_string => true, as: 'userId'
         end

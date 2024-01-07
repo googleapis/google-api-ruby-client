@@ -1223,7 +1223,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new creative. Returns the newly created creative if successful.
+        # Creates a new creative. Returns the newly created creative if successful. A ["
+        # Standard" user role](//support.google.com/displayvideo/answer/2723011) or
+        # greater for the parent advertiser or partner is required to make this request.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the creative belongs to.
         # @param [Google::Apis::DisplayvideoV1::Creative] creative_object
@@ -1258,7 +1260,9 @@ module Google
         
         # Deletes a creative. Returns error code `NOT_FOUND` if the creative does not
         # exist. The creative should be archived first, i.e. set entity_status to `
-        # ENTITY_STATUS_ARCHIVED`, before it can be deleted.
+        # ENTITY_STATUS_ARCHIVED`, before it can be deleted. A ["Standard" user role](//
+        # support.google.com/displayvideo/answer/2723011) or greater for the parent
+        # advertiser or partner is required to make this request.
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser this creative belongs to.
         # @param [Fixnum] creative_id
@@ -1408,7 +1412,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing creative. Returns the updated creative if successful.
+        # Updates an existing creative. Returns the updated creative if successful. A ["
+        # Standard" user role](//support.google.com/displayvideo/answer/2723011) or
+        # greater for the parent advertiser or partner is required to make this request.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the creative belongs to.
         # @param [Fixnum] creative_id
@@ -1975,7 +1981,8 @@ module Google
         # BulkEditLineItemAssignedTargetingOptionsRequest.create_requests. Requests to
         # this endpoint cannot be made concurrently with the following requests updating
         # the same line item: * lineItems.patch * assignedTargetingOptions.create *
-        # assignedTargetingOptions.delete
+        # assignedTargetingOptions.delete YouTube & Partners line items cannot be
+        # created or updated using the API.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the line item belongs to.
         # @param [Fixnum] line_item_id
@@ -2078,6 +2085,7 @@ module Google
         end
         
         # Creates a new line item. Returns the newly created line item if successful.
+        # YouTube & Partners line items cannot be created or updated using the API.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the line item belongs to.
         # @param [Google::Apis::DisplayvideoV1::LineItem] line_item_object
@@ -2112,7 +2120,8 @@ module Google
         
         # Deletes a line item. Returns error code `NOT_FOUND` if the line item does not
         # exist. The line item should be archived first, i.e. set entity_status to `
-        # ENTITY_STATUS_ARCHIVED`, to be able to delete it.
+        # ENTITY_STATUS_ARCHIVED`, to be able to delete it. YouTube & Partners line
+        # items cannot be created or updated using the API.
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser this line item belongs to.
         # @param [Fixnum] line_item_id
@@ -2149,7 +2158,8 @@ module Google
         # insertion order and an `ENTITY_STATUS_DRAFT` entity_status. Returns the newly
         # created line item if successful. There are default values based on the three
         # fields: * The insertion order's insertion_order_type * The insertion order's
-        # automation_type * The given line_item_type
+        # automation_type * The given line_item_type YouTube & Partners line items
+        # cannot be created or updated using the API.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this line item belongs to.
         # @param [Google::Apis::DisplayvideoV1::GenerateDefaultLineItemRequest] generate_default_line_item_request_object
@@ -2289,7 +2299,8 @@ module Google
         # Requests to this endpoint cannot be made concurrently with the following
         # requests updating the same line item: * BulkEditAssignedTargetingOptions *
         # BulkUpdateLineItems * assignedTargetingOptions.create *
-        # assignedTargetingOptions.delete
+        # assignedTargetingOptions.delete YouTube & Partners line items cannot be
+        # created or updated using the API.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the line item belongs to.
         # @param [Fixnum] line_item_id
@@ -2332,7 +2343,8 @@ module Google
         # option if successful. Requests to this endpoint cannot be made concurrently
         # with the following requests updating the same line item: * lineItems.
         # bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch *
-        # DeleteLineItemAssignedTargetingOption
+        # DeleteLineItemAssignedTargetingOption YouTube & Partners line items cannot be
+        # created or updated using the API.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the line item belongs to.
         # @param [Fixnum] line_item_id
@@ -2399,7 +2411,8 @@ module Google
         # Deletes an assigned targeting option from a line item. Requests to this
         # endpoint cannot be made concurrently with the following requests updating the
         # same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.
-        # bulkUpdate * lineItems.patch * CreateLineItemAssignedTargetingOption
+        # bulkUpdate * lineItems.patch * CreateLineItemAssignedTargetingOption YouTube &
+        # Partners line items cannot be created or updated using the API.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the line item belongs to.
         # @param [Fixnum] line_item_id
