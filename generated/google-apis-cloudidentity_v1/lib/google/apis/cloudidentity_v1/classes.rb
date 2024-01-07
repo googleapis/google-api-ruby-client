@@ -237,7 +237,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Memberships will be the union of all queries. Only one entry with USER
-        # resource is currently supported. Customers can create up to 100 dynamic groups.
+        # resource is currently supported. Customers can create up to 500 dynamic groups.
         # Corresponds to the JSON property `queries`
         # @return [Array<Google::Apis::CloudidentityV1::DynamicGroupQuery>]
         attr_accessor :queries
