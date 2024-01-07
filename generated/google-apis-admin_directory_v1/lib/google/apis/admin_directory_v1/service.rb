@@ -176,7 +176,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # DEPRECATED: Use BatchChangeChromeOsDeviceStatus instead. Takes an action that
+        # Use [BatchChangeChromeOsDeviceStatus](/admin-sdk/directory/reference/rest/v1/
+        # customer.devices.chromeos/batchChangeStatus) instead. Takes an action that
         # affects a Chrome OS Device. This includes deprovisioning, disabling, and re-
         # enabling devices. *Warning:* * Deprovisioning a device will stop device policy
         # syncing and remove device-level printers. After a device is deprovisioned, it
@@ -455,9 +456,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes the status of a batch of ChromeOS devices.
+        # Changes the status of a batch of ChromeOS devices. For more information about
+        # changing a ChromeOS device state [Repair, repurpose, or retire ChromeOS
+        # devices](https://support.google.com/chrome/a/answer/3523633).
         # @param [String] customer_id
-        #   Required. Immutable ID of the G Suite account.
+        #   Required. Immutable ID of the Google Workspace account.
         # @param [Google::Apis::AdminDirectoryV1::BatchChangeChromeOsDeviceStatusRequest] batch_change_chrome_os_device_status_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
