@@ -961,10 +961,11 @@ module Google
         # where the API call changes the state of the resource. Custom org policy
         # backend uses these attributes to enforce custom org policies. When a proto is
         # wrapped, it is generally the One Platform API proto. When a JSON string is
-        # wrapped, use `google.protobuf.StringValue` for the inner value. It is
-        # sufficient to pass just the max set of attributes that are allowed for use in
-        # custom constraints; other attributes can be omitted. See go/custom-constraints-
-        # org-policy-integration-guide for additional details.
+        # wrapped, use `google.protobuf.StringValue` for the inner value. For create
+        # operations, GCP service is expected to pass resource from customer request as
+        # is. For update/patch operations, GCP service is expected to compute the next
+        # state with the patch provided by the user. See go/custom-constraints-org-
+        # policy-integration-guide for additional details.
         # Corresponds to the JSON property `expectedNextState`
         # @return [Hash<String,Object>]
         attr_accessor :expected_next_state
