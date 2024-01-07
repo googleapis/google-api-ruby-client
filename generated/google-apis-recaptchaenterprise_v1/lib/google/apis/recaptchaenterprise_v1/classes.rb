@@ -62,7 +62,7 @@ module Google
         attr_accessor :latest_verification_result
       
         # Username of the account that is being verified. Deprecated. Customers should
-        # now provide the hashed account ID field in Event.
+        # now provide the `account_id` field in `event.user_info`.
         # Corresponds to the JSON property `username`
         # @return [String]
         attr_accessor :username
