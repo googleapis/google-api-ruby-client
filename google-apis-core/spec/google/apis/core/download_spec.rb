@@ -135,4 +135,14 @@ RSpec.describe Google::Apis::Core::DownloadCommand do
       end
     end
   end
+
+  context 'with pathname destination' do
+    let(:dest) { Pathname.new(File.join(Dir.mktmpdir, 'test-path.txt')) }
+    let(:received) do
+      command.execute(client)
+      File.read(dest)
+    end
+
+    include_examples 'should download'
+  end
 end

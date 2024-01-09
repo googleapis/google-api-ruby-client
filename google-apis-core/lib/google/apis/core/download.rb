@@ -35,7 +35,10 @@ module Google
           @state = :start
           @download_url = nil
           @offset = 0
-          if download_dest.respond_to?(:write)
+          if @download_dest.is_a?(Pathname)
+            @download_io = File.open(download_dest, 'wb')
+            @close_io_on_finish = true
+          elsif download_dest.respond_to?(:write)
             @download_io = download_dest
             @close_io_on_finish = false
           elsif download_dest.is_a?(String)
