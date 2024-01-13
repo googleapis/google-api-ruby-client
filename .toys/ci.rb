@@ -105,7 +105,7 @@ def find_changed_files base_sha
       exec(["git", "fetch", "--depth=1", "origin", base_sha])
       base_sha = capture(["git", "show", "--no-patch", "--format=%H", base_sha]).strip
     else
-      base_sha = result.captured_out
+      base_sha = result.captured_out.strip
     end
     capture(["git", "diff", "--name-only", base_sha]).split("\n").map(&:strip)
   end

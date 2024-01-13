@@ -13,6 +13,8 @@
 # limitations under the License.
 
 require "pathname"
+require "uri"
+
 base_dir = Pathname.new context_directory
 cur_dir = Pathname.new Dir.getwd
 unless base_dir == cur_dir
