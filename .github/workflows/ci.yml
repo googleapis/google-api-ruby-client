@@ -15,7 +15,7 @@ jobs:
         include:
           - os: ubuntu-latest
             ruby: "2.7"
-            task: "--include-spec --include-yardoc --include-build"
+            task: "--include-spec"
           - os: ubuntu-latest
             ruby: "3.0"
             task: "--include-spec"
@@ -24,12 +24,12 @@ jobs:
             task: "--include-spec"
           - os: ubuntu-latest
             ruby: "3.2"
-            task: "--include-spec"
+            task: "--include-spec --include-yardoc --include-build"
           - os: macos-latest
-            ruby: "2.7"
+            ruby: "3.2"
             task: "--include-spec"
           - os: windows-latest
-            ruby: "2.7"
+            ruby: "3.2"
             task: "--include-spec"
       fail-fast: false
     runs-on: ${{ matrix.os }}
@@ -41,6 +41,8 @@ jobs:
       with:
         ruby-version: "${{ matrix.ruby }}"
     - name: Install tools
-      run: "gem install --no-document toys"
+      run: |
+        gem install --no-document toys
     - name: Test ${{ matrix.task }}
-      run: toys ci -v --only ${{ matrix.task }} --github-event-name=${{ github.event_name }} --github-event-payload=${{ github.event_path }}
+      run: |
+        toys ci -v --only ${{ matrix.task }} --github-event-name=${{ github.event_name }} --github-event-payload=${{ github.event_path }}

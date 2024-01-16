@@ -16,12 +16,13 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Install Ruby 3.0
+      - name: Install Ruby 3.2
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.0"
+          ruby-version: "3.2"
       - name: Install tools
-        run: "gem install --no-document toys"
+        run: |
+          gem install --no-document toys
       - name: execute
         run: |
           toys generate-updates -v --fork ${{ github.event.inputs.args }}
