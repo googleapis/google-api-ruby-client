@@ -19,16 +19,17 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Install Ruby 3.0
+      - name: Install Ruby 3.2
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.0"
+          ruby-version: "3.2"
       - name: Install NodeJS 16.x
         uses: actions/setup-node@v2
         with:
           node-version: "16.x"
       - name: Install tools
-        run: "gem install --no-document toys"
+        run: |
+          gem install --no-document toys
       - name: execute
         run: |
           toys release manifest -v \

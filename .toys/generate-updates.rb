@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+require "uri"
+
 desc "Run standard Google client generation."
 
 flag :git_remote, "--remote=NAME" do

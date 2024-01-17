@@ -18,7 +18,8 @@ jobs:
         with:
           ruby-version: "3.0"
       - name: Install tools
-        run: "gem install --no-document toys"
+        run: |
+          gem install --no-document toys
       - name: Execute
         run: |
           toys generate-updates -v --fork --all --clean

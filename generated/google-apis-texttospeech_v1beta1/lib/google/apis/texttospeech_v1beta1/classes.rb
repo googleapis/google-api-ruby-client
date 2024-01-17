@@ -122,6 +122,11 @@ module Google
       class GoogleCloudTexttospeechV1beta1SynthesizeLongAudioMetadata
         include Google::Apis::Core::Hashable
       
+        # Deprecated. Do not use.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
         # The progress of the most recent processing update in percentage, ie. 70.0%.
         # Corresponds to the JSON property `progressPercentage`
         # @return [Float]
@@ -138,6 +143,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @progress_percentage = args[:progress_percentage] if args.key?(:progress_percentage)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
@@ -322,6 +328,11 @@ module Google
       class SynthesizeLongAudioMetadata
         include Google::Apis::Core::Hashable
       
+        # Deprecated. Do not use.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
         # The progress of the most recent processing update in percentage, ie. 70.0%.
         # Corresponds to the JSON property `progressPercentage`
         # @return [Float]
@@ -338,6 +349,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @progress_percentage = args[:progress_percentage] if args.key?(:progress_percentage)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
