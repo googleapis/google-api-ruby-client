@@ -93,11 +93,49 @@ module Google
       # Base service for all APIs. Not to be used directly.
       #
       class BaseService
+        ##
+        # A substitution string for the universe domain in an endpoint template
+        # @return [String]
+        #
+        ENDPOINT_SUBSTITUTION = "$UNIVERSE_DOMAIN$".freeze
+
         include Logging
+
+        # Universe domain
+        # @return [String]
+        attr_reader :universe_domain
+
+        # Set the universe domain.
+        # If the root URL was set with a universe domain substitution, it is
+        # updated to reflect the new universe domain.
+        #
+        # @param new_ud [String,nil] The new universe domain, or nil to use the Google Default Universe
+        def universe_domain= new_ud
+          new_ud ||= ENV["GOOGLE_CLOUD_UNIVERSE_DOMAIN"] || "googleapis.com"
+          if @root_url_template
+            @root_url = @root_url_template.gsub ENDPOINT_SUBSTITUTION, new_ud
+          end
+          @universe_domain = new_ud
+        end
 
         # Root URL (host/port) for the API
         # @return [Addressable::URI]
-        attr_accessor :root_url
+        attr_reader :root_url
+
+        # Set the root URL.
+        # If the given url includes a universe domain substitution, it is
+        # resolved in the current universe domain
+        #
+        # @param url_or_template [String] The URL, which can include a universe domain substitution
+        def root_url= url_or_template
+          if url_or_template.include? ENDPOINT_SUBSTITUTION
+            @root_url_template = url_or_template
+            @root_url = url_or_template.gsub ENDPOINT_SUBSTITUTION, universe_domain
+          else
+            @root_url_template = nil
+            @root_url = url_or_template
+          end
+        end
 
         # Additional path prefix for all API methods
         # @return [Addressable::URI]
@@ -136,7 +174,9 @@ module Google
         # @param [String,Addressable::URI] base_path
         #   Additional path prefix for all API methods
         # @api private
-        def initialize(root_url, base_path, client_name: nil, client_version: nil)
+        def initialize(root_url, base_path, client_name: nil, client_version: nil, universe_domain: nil)
+          @root_url_template = nil
+          self.universe_domain = universe_domain
           self.root_url = root_url
           self.base_path = base_path
           self.client_name = client_name || 'google-api-ruby-client'

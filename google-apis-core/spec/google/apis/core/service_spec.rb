@@ -22,6 +22,7 @@ RSpec.describe Google::Apis::Core::BaseService do
 
   let(:client_version) { "1.2.3" }
   let(:service) { Google::Apis::Core::BaseService.new('https://www.googleapis.com/', '', client_version: client_version) }
+  let(:service_ud) { Google::Apis::Core::BaseService.new('https://www.$UNIVERSE_DOMAIN$/', '', client_version: client_version) }
   let(:service_with_base_path) { Google::Apis::Core::BaseService.new('https://www.googleapis.com/', 'my_service/v1/', client_version: client_version) }
   let(:x_goog_api_client_value) { "gl-ruby/#{RUBY_VERSION} gdcl/#{client_version}" }
 
@@ -476,5 +477,58 @@ EOF
         expect(count).to eq 6
       end
     end
+  end
+
+  it "should default to the global universe domain" do
+    expect(service_ud.universe_domain).to eql "googleapis.com"
+  end
+
+  it "should default to a universe domain from the environment" do
+    ENV["GOOGLE_CLOUD_UNIVERSE_DOMAIN"] = "mydomain1.com"
+    expect(service_ud.universe_domain).to eql "mydomain1.com"
+  ensure
+    ENV["GOOGLE_CLOUD_UNIVERSE_DOMAIN"] = nil
+  end
+
+  it "should support setting universe domain" do
+    service_ud.universe_domain = "mydomain2.com"
+    expect(service_ud.universe_domain).to eql "mydomain2.com"
+  end
+
+  it "should support setting universe domain to nil" do
+    service_ud.universe_domain = "mydomain2.com"
+    service_ud.universe_domain = nil
+    expect(service_ud.universe_domain).to eql "googleapis.com"
+  end
+
+  it "should update root url when universe domain is set" do
+    service_ud.universe_domain = "mydomain3.com"
+    expect(service_ud.root_url).to eql "https://www.mydomain3.com/"
+  end
+
+  it "should initialize root url using the universe domain" do
+    ENV["GOOGLE_CLOUD_UNIVERSE_DOMAIN"] = "mydomain4.com"
+    expect(service_ud.root_url).to eql "https://www.mydomain4.com/"
+  ensure
+    ENV["GOOGLE_CLOUD_UNIVERSE_DOMAIN"] = nil
+  end
+
+  it "should initialize root url with a static value" do
+    expect(service.root_url).to eql "https://www.googleapis.com/"
+  end
+
+  it "should initialize root url with a dynamic value" do
+    expect(service_ud.root_url).to eql "https://www.googleapis.com/"
+  end
+
+  it "should suppport setting root url to a static value" do
+    service_ud.root_url = "https://endpoint1.mydomain5.com/"
+    expect(service_ud.root_url).to eql "https://endpoint1.mydomain5.com/"
+  end
+
+  it "should suppport setting root url to a dynamic value" do
+    service.universe_domain = "mydomain6.com"
+    service.root_url = "https://endpoint2.$UNIVERSE_DOMAIN$/"
+    expect(service.root_url).to eql "https://endpoint2.mydomain6.com/"
   end
 end
