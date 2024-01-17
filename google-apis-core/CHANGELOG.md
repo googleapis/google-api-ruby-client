@@ -1,5 +1,11 @@
 # Release History
 
+### 0.11.3 (2024-01-17)
+
+#### Bug Fixes
+
+* download with destination as pathname ([#17120](https://github.com/googleapis/google-api-ruby-client/issues/17120)) 
+
 ### 0.11.2 (2023-10-27)
 
 #### Bug Fixes
