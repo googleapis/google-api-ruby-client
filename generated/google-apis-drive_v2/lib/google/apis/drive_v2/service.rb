@@ -32,6 +32,8 @@ module Google
       #
       # @see https://developers.google.com/drive/
       class DriveService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://www.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,7 +45,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', 'drive/v2/',
+          super(DEFAULT_ENDPOINT_TEMPLATE, 'drive/v2/',
                 client_name: 'google-apis-drive_v2',
                 client_version: Google::Apis::DriveV2::GEM_VERSION)
           @batch_path = 'batch/drive/v2'
