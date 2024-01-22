@@ -364,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2DataSourceType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2DatastoreKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2152,6 +2158,13 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2DataSourceType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source, as: 'dataSource'
+        end
+      end
+      
       class GooglePrivacyDlpV2DatastoreKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3805,6 +3818,8 @@ module Google
       
           property :create_time, as: 'createTime'
           property :data_risk_level, as: 'dataRiskLevel', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel::Representation
+      
+          property :data_source_type, as: 'dataSourceType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataSourceType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataSourceType::Representation
       
           property :dataset_id, as: 'datasetId'
           property :dataset_location, as: 'datasetLocation'
