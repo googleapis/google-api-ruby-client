@@ -67,6 +67,12 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class HierarchicalNamespace
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class IamConfiguration
           class Representation < Google::Apis::Core::JsonRepresentation; end
           
@@ -209,6 +215,24 @@ module Google
       end
       
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Folder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class PendingRenameInfo
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Folders
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -401,6 +425,8 @@ module Google
           property :encryption, as: 'encryption', class: Google::Apis::StorageV1::Bucket::Encryption, decorator: Google::Apis::StorageV1::Bucket::Encryption::Representation
       
           property :etag, as: 'etag'
+          property :hierarchical_namespace, as: 'hierarchicalNamespace', class: Google::Apis::StorageV1::Bucket::HierarchicalNamespace, decorator: Google::Apis::StorageV1::Bucket::HierarchicalNamespace::Representation
+      
           property :iam_configuration, as: 'iamConfiguration', class: Google::Apis::StorageV1::Bucket::IamConfiguration, decorator: Google::Apis::StorageV1::Bucket::IamConfiguration::Representation
       
           property :id, as: 'id'
@@ -477,6 +503,13 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :default_kms_key_name, as: 'defaultKmsKeyName'
+          end
+        end
+        
+        class HierarchicalNamespace
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :enabled, as: 'enabled'
           end
         end
         
@@ -723,6 +756,42 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class Folder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          hash :metadata, as: 'metadata'
+          property :metageneration, :numeric_string => true, as: 'metageneration'
+          property :name, as: 'name'
+          property :pending_rename_info, as: 'pendingRenameInfo', class: Google::Apis::StorageV1::Folder::PendingRenameInfo, decorator: Google::Apis::StorageV1::Folder::PendingRenameInfo::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :time_created, as: 'timeCreated', type: DateTime
+      
+          property :updated, as: 'updated', type: DateTime
+      
+        end
+        
+        class PendingRenameInfo
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :operation_id, as: 'operationId'
+          end
+        end
+      end
+      
+      class Folders
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::StorageV1::Folder, decorator: Google::Apis::StorageV1::Folder::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

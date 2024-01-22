@@ -32,6 +32,8 @@ module Google
       #
       # @see https://developers.google.com/storage/docs/json_api/
       class StorageService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://storage.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -47,7 +49,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://storage.googleapis.com/', 'storage/v1/',
+          super(DEFAULT_ENDPOINT_TEMPLATE, 'storage/v1/',
                 client_name: 'google-apis-storage_v1',
                 client_version: Google::Apis::StorageV1::GEM_VERSION)
           @batch_path = 'batch/storage/v1'
@@ -165,7 +167,7 @@ module Google
         # @param [String] bucket
         #   Name of the parent bucket.
         # @param [Fixnum] page_size
-        #   Maximum number of items return in a single page of responses. Maximum 1000.
+        #   Maximum number of items to return in a single page of responses. Maximum 1000.
         # @param [String] page_token
         #   A previously-returned page token representing part of the larger set of
         #   results to view.
@@ -1296,6 +1298,241 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Permanently deletes a folder. Only applicable to buckets with hierarchical
+        # namespace enabled.
+        # @param [String] bucket
+        #   Name of the bucket in which the folder resides.
+        # @param [String] folder
+        #   Name of a folder.
+        # @param [Fixnum] if_metageneration_match
+        #   If set, only deletes the folder if its metageneration matches this value.
+        # @param [Fixnum] if_metageneration_not_match
+        #   If set, only deletes the folder if its metageneration does not match this
+        #   value.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_folder(bucket, folder, if_metageneration_match: nil, if_metageneration_not_match: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'b/{bucket}/folders/{folder}', options)
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['folder'] = folder unless folder.nil?
+          command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
+          command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns metadata for the specified folder. Only applicable to buckets with
+        # hierarchical namespace enabled.
+        # @param [String] bucket
+        #   Name of the bucket in which the folder resides.
+        # @param [String] folder
+        #   Name of a folder.
+        # @param [Fixnum] if_metageneration_match
+        #   Makes the return of the folder metadata conditional on whether the folder's
+        #   current metageneration matches the given value.
+        # @param [Fixnum] if_metageneration_not_match
+        #   Makes the return of the folder metadata conditional on whether the folder's
+        #   current metageneration does not match the given value.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::Folder] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::Folder]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder(bucket, folder, if_metageneration_match: nil, if_metageneration_not_match: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'b/{bucket}/folders/{folder}', options)
+          command.response_representation = Google::Apis::StorageV1::Folder::Representation
+          command.response_class = Google::Apis::StorageV1::Folder
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['folder'] = folder unless folder.nil?
+          command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
+          command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new folder. Only applicable to buckets with hierarchical namespace
+        # enabled.
+        # @param [String] bucket
+        #   Name of the bucket in which the folder resides.
+        # @param [Google::Apis::StorageV1::Folder] folder_object
+        # @param [Boolean] recursive
+        #   If true, any parent folder which doesn’t exist will be created automatically.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::Folder] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::Folder]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_folder(bucket, folder_object = nil, recursive: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/folders', options)
+          command.request_representation = Google::Apis::StorageV1::Folder::Representation
+          command.request_object = folder_object
+          command.response_representation = Google::Apis::StorageV1::Folder::Representation
+          command.response_class = Google::Apis::StorageV1::Folder
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.query['recursive'] = recursive unless recursive.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of folders matching the criteria. Only applicable to buckets
+        # with hierarchical namespace enabled.
+        # @param [String] bucket
+        #   Name of the bucket in which to look for folders.
+        # @param [String] delimiter
+        #   Returns results in a directory-like mode. The only supported value is '/'. If
+        #   set, items will only contain folders that either exactly match the prefix, or
+        #   are one level below the prefix.
+        # @param [String] end_offset
+        #   Filter results to folders whose names are lexicographically before endOffset.
+        #   If startOffset is also set, the folders listed will have names between
+        #   startOffset (inclusive) and endOffset (exclusive).
+        # @param [Fixnum] page_size
+        #   Maximum number of items to return in a single page of responses.
+        # @param [String] page_token
+        #   A previously-returned page token representing part of the larger set of
+        #   results to view.
+        # @param [String] prefix
+        #   Filter results to folders whose paths begin with this prefix. If set, the
+        #   value must either be an empty string or end with a '/'.
+        # @param [String] start_offset
+        #   Filter results to folders whose names are lexicographically equal to or after
+        #   startOffset. If endOffset is also set, the folders listed will have names
+        #   between startOffset (inclusive) and endOffset (exclusive).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::Folders] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::Folders]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folders(bucket, delimiter: nil, end_offset: nil, page_size: nil, page_token: nil, prefix: nil, start_offset: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'b/{bucket}/folders', options)
+          command.response_representation = Google::Apis::StorageV1::Folders::Representation
+          command.response_class = Google::Apis::StorageV1::Folders
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.query['delimiter'] = delimiter unless delimiter.nil?
+          command.query['endOffset'] = end_offset unless end_offset.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['prefix'] = prefix unless prefix.nil?
+          command.query['startOffset'] = start_offset unless start_offset.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Renames a source folder to a destination folder. Only applicable to buckets
+        # with hierarchical namespace enabled.
+        # @param [String] bucket
+        #   Name of the bucket in which the folders are in.
+        # @param [String] source_folder
+        #   Name of the source folder.
+        # @param [String] destination_folder
+        #   Name of the destination folder.
+        # @param [Fixnum] if_source_metageneration_match
+        #   Makes the operation conditional on whether the source object's current
+        #   metageneration matches the given value.
+        # @param [Fixnum] if_source_metageneration_not_match
+        #   Makes the operation conditional on whether the source object's current
+        #   metageneration does not match the given value.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rename_folder(bucket, source_folder, destination_folder, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/folders/{sourceFolder}/renameTo/folders/{destinationFolder}', options)
+          command.response_representation = Google::Apis::StorageV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::StorageV1::GoogleLongrunningOperation
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['sourceFolder'] = source_folder unless source_folder.nil?
+          command.params['destinationFolder'] = destination_folder unless destination_folder.nil?
+          command.query['ifSourceMetagenerationMatch'] = if_source_metageneration_match unless if_source_metageneration_match.nil?
+          command.query['ifSourceMetagenerationNotMatch'] = if_source_metageneration_not_match unless if_source_metageneration_not_match.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Permanently deletes a managed folder.
         # @param [String] bucket
         #   Name of the bucket containing the managed folder.
@@ -1466,7 +1703,7 @@ module Google
         # @param [String] bucket
         #   Name of the bucket containing the managed folder.
         # @param [Fixnum] page_size
-        #   Maximum number of items return in a single page of responses.
+        #   Maximum number of items to return in a single page of responses.
         # @param [String] page_token
         #   A previously-returned page token representing part of the larger set of
         #   results to view.

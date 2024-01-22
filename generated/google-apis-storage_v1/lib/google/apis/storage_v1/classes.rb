@@ -204,6 +204,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # The bucket's hierarchical namespace configuration.
+        # Corresponds to the JSON property `hierarchicalNamespace`
+        # @return [Google::Apis::StorageV1::Bucket::HierarchicalNamespace]
+        attr_accessor :hierarchical_namespace
+      
         # The bucket's IAM configuration.
         # Corresponds to the JSON property `iamConfiguration`
         # @return [Google::Apis::StorageV1::Bucket::IamConfiguration]
@@ -357,6 +362,7 @@ module Google
           @default_object_acl = args[:default_object_acl] if args.key?(:default_object_acl)
           @encryption = args[:encryption] if args.key?(:encryption)
           @etag = args[:etag] if args.key?(:etag)
+          @hierarchical_namespace = args[:hierarchical_namespace] if args.key?(:hierarchical_namespace)
           @iam_configuration = args[:iam_configuration] if args.key?(:iam_configuration)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
@@ -522,6 +528,26 @@ module Google
           # Update properties of this object
           def update!(**args)
             @default_kms_key_name = args[:default_kms_key_name] if args.key?(:default_kms_key_name)
+          end
+        end
+        
+        # The bucket's hierarchical namespace configuration.
+        class HierarchicalNamespace
+          include Google::Apis::Core::Hashable
+        
+          # When set to true, hierarchical namespace is enabled for this bucket.
+          # Corresponds to the JSON property `enabled`
+          # @return [Boolean]
+          attr_accessor :enabled
+          alias_method :enabled?, :enabled
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @enabled = args[:enabled] if args.key?(:enabled)
           end
         end
         
@@ -1430,6 +1456,133 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A folder. Only available in buckets with hierarchical namespace enabled.
+      class Folder
+        include Google::Apis::Core::Hashable
+      
+        # The name of the bucket containing this folder.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # The ID of the folder, including the bucket name, folder name.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The kind of item this is. For folders, this is always storage#folder.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # User-provided metadata, in key/value pairs.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # The version of the metadata for this folder. Used for preconditions and for
+        # detecting changes in metadata.
+        # Corresponds to the JSON property `metageneration`
+        # @return [Fixnum]
+        attr_accessor :metageneration
+      
+        # The name of the folder. Required if not specified by URL parameter.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Only present if the folder is part of an ongoing rename folder operation.
+        # Contains information which can be used to query the operation status.
+        # Corresponds to the JSON property `pendingRenameInfo`
+        # @return [Google::Apis::StorageV1::Folder::PendingRenameInfo]
+        attr_accessor :pending_rename_info
+      
+        # The link to this folder.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # The creation time of the folder in RFC 3339 format.
+        # Corresponds to the JSON property `timeCreated`
+        # @return [DateTime]
+        attr_accessor :time_created
+      
+        # The modification time of the folder metadata in RFC 3339 format.
+        # Corresponds to the JSON property `updated`
+        # @return [DateTime]
+        attr_accessor :updated
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @metageneration = args[:metageneration] if args.key?(:metageneration)
+          @name = args[:name] if args.key?(:name)
+          @pending_rename_info = args[:pending_rename_info] if args.key?(:pending_rename_info)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @time_created = args[:time_created] if args.key?(:time_created)
+          @updated = args[:updated] if args.key?(:updated)
+        end
+        
+        # Only present if the folder is part of an ongoing rename folder operation.
+        # Contains information which can be used to query the operation status.
+        class PendingRenameInfo
+          include Google::Apis::Core::Hashable
+        
+          # The ID of the rename folder operation.
+          # Corresponds to the JSON property `operationId`
+          # @return [String]
+          attr_accessor :operation_id
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @operation_id = args[:operation_id] if args.key?(:operation_id)
+          end
+        end
+      end
+      
+      # A list of folders.
+      class Folders
+        include Google::Apis::Core::Hashable
+      
+        # The list of items.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::StorageV1::Folder>]
+        attr_accessor :items
+      
+        # The kind of item this is. For lists of folders, this is always storage#folders.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The continuation token, used to page through large result sets. Provide this
+        # value in a subsequent request to return the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
