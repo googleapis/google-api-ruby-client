@@ -118,54 +118,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AlgorithmRules
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AlgorithmRulesComparisonValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AlgorithmRulesRule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AlgorithmRulesRuleCondition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AlgorithmRulesRuleset
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AlgorithmRulesSignal
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AlgorithmRulesSignalComparison
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AlgorithmRulesSignalValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -749,12 +701,6 @@ module Google
       end
       
       class DateRange
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DayAndTime
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1774,18 +1720,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SdfDownloadTask
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SdfDownloadTaskMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SearchTargetingOptionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2208,87 +2142,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :age_range, as: 'ageRange'
-        end
-      end
-      
-      class AlgorithmRules
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :impression_signal_ruleset, as: 'impressionSignalRuleset', class: Google::Apis::DisplayvideoV3::AlgorithmRulesRuleset, decorator: Google::Apis::DisplayvideoV3::AlgorithmRulesRuleset::Representation
-      
-        end
-      end
-      
-      class AlgorithmRulesComparisonValue
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bool_value, as: 'boolValue'
-          property :creative_dimension_value, as: 'creativeDimensionValue', class: Google::Apis::DisplayvideoV3::Dimensions, decorator: Google::Apis::DisplayvideoV3::Dimensions::Representation
-      
-          property :day_and_time_value, as: 'dayAndTimeValue', class: Google::Apis::DisplayvideoV3::DayAndTime, decorator: Google::Apis::DisplayvideoV3::DayAndTime::Representation
-      
-          property :device_type_value, as: 'deviceTypeValue'
-          property :double_value, as: 'doubleValue'
-          property :environment_value, as: 'environmentValue'
-          property :exchange_value, as: 'exchangeValue'
-          property :int64_value, :numeric_string => true, as: 'int64Value'
-          property :on_screen_position_value, as: 'onScreenPositionValue'
-          property :string_value, as: 'stringValue'
-        end
-      end
-      
-      class AlgorithmRulesRule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :conditions, as: 'conditions', class: Google::Apis::DisplayvideoV3::AlgorithmRulesRuleCondition, decorator: Google::Apis::DisplayvideoV3::AlgorithmRulesRuleCondition::Representation
-      
-          property :default_return_value, as: 'defaultReturnValue', class: Google::Apis::DisplayvideoV3::AlgorithmRulesSignalValue, decorator: Google::Apis::DisplayvideoV3::AlgorithmRulesSignalValue::Representation
-      
-        end
-      end
-      
-      class AlgorithmRulesRuleCondition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :return_value, as: 'returnValue', class: Google::Apis::DisplayvideoV3::AlgorithmRulesSignalValue, decorator: Google::Apis::DisplayvideoV3::AlgorithmRulesSignalValue::Representation
-      
-          collection :signal_comparisons, as: 'signalComparisons', class: Google::Apis::DisplayvideoV3::AlgorithmRulesSignalComparison, decorator: Google::Apis::DisplayvideoV3::AlgorithmRulesSignalComparison::Representation
-      
-        end
-      end
-      
-      class AlgorithmRulesRuleset
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :aggregation_type, as: 'aggregationType'
-          property :max_value, as: 'maxValue'
-          collection :rules, as: 'rules', class: Google::Apis::DisplayvideoV3::AlgorithmRulesRule, decorator: Google::Apis::DisplayvideoV3::AlgorithmRulesRule::Representation
-      
-        end
-      end
-      
-      class AlgorithmRulesSignal
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :impression_signal, as: 'impressionSignal'
-        end
-      end
-      
-      class AlgorithmRulesSignalComparison
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :comparison_operator, as: 'comparisonOperator'
-          property :comparison_value, as: 'comparisonValue', class: Google::Apis::DisplayvideoV3::AlgorithmRulesComparisonValue, decorator: Google::Apis::DisplayvideoV3::AlgorithmRulesComparisonValue::Representation
-      
-          property :signal, as: 'signal', class: Google::Apis::DisplayvideoV3::AlgorithmRulesSignal, decorator: Google::Apis::DisplayvideoV3::AlgorithmRulesSignal::Representation
-      
-        end
-      end
-      
-      class AlgorithmRulesSignalValue
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :number, as: 'number'
         end
       end
       
@@ -3374,15 +3227,6 @@ module Google
       
           property :start_date, as: 'startDate', class: Google::Apis::DisplayvideoV3::Date, decorator: Google::Apis::DisplayvideoV3::Date::Representation
       
-        end
-      end
-      
-      class DayAndTime
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :day_of_week, as: 'dayOfWeek'
-          property :hour_of_day, as: 'hourOfDay'
-          property :time_zone_resolution, as: 'timeZoneResolution'
         end
       end
       
@@ -5027,22 +4871,6 @@ module Google
         end
       end
       
-      class SdfDownloadTask
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :resource_name, as: 'resourceName'
-        end
-      end
-      
-      class SdfDownloadTaskMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :version, as: 'version'
-        end
-      end
-      
       class SearchTargetingOptionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5438,6 +5266,7 @@ module Google
       class YoutubeAndPartnersInventorySourceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_google_tv, as: 'includeGoogleTv'
           property :include_youtube, as: 'includeYoutube'
           property :include_youtube_video_partners, as: 'includeYoutubeVideoPartners'
         end
