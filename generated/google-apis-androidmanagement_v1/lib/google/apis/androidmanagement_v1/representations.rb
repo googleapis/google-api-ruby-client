@@ -1212,6 +1212,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :airplane_mode_state, as: 'airplaneModeState'
           property :cellular_two_g_state, as: 'cellularTwoGState'
+          property :minimum_wifi_security_level, as: 'minimumWifiSecurityLevel'
           property :ultra_wideband_state, as: 'ultraWidebandState'
           property :wifi_state, as: 'wifiState'
         end

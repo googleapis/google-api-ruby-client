@@ -1779,6 +1779,12 @@ module Google
         # @return [String]
         attr_accessor :cellular_two_g_state
       
+        # The minimum required security level of Wi-Fi networks that the device can
+        # connect to.
+        # Corresponds to the JSON property `minimumWifiSecurityLevel`
+        # @return [String]
+        attr_accessor :minimum_wifi_security_level
+      
         # Controls the state of the ultra wideband setting and whether the user can
         # toggle it on or off.
         # Corresponds to the JSON property `ultraWidebandState`
@@ -1798,6 +1804,7 @@ module Google
         def update!(**args)
           @airplane_mode_state = args[:airplane_mode_state] if args.key?(:airplane_mode_state)
           @cellular_two_g_state = args[:cellular_two_g_state] if args.key?(:cellular_two_g_state)
+          @minimum_wifi_security_level = args[:minimum_wifi_security_level] if args.key?(:minimum_wifi_security_level)
           @ultra_wideband_state = args[:ultra_wideband_state] if args.key?(:ultra_wideband_state)
           @wifi_state = args[:wifi_state] if args.key?(:wifi_state)
         end
