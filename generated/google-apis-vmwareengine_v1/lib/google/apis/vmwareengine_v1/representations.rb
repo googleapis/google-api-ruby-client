@@ -925,6 +925,8 @@ module Google
           collection :capabilities, as: 'capabilities'
           property :disk_size_gb, as: 'diskSizeGb'
           property :display_name, as: 'displayName'
+          collection :families, as: 'families'
+          property :kind, as: 'kind'
           property :memory_gb, as: 'memoryGb'
           property :name, as: 'name'
           property :node_type_id, as: 'nodeTypeId'
