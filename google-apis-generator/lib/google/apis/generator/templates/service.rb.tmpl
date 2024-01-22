@@ -34,6 +34,8 @@ module Google
       # @see <%= api.documentation_link %>
 <% end -%>
       class <%= api.service_name %> < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "<%= api.root_url.to_s.sub '.googleapis.com', '.$UNIVERSE_DOMAIN$' %>"
+
 <% for param in api.parameters.values.reject {|p| p.name == 'fields'} -%>
         # @return [<%= param.generated_type %>]
         #  <%= block_comment(param.description, 8, 2) %>
@@ -41,7 +43,7 @@ module Google
 
 <% end -%>
         def initialize
-          super('<%= api.root_url %>', '<%= api.service_path %>',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '<%= api.service_path %>',
                 client_name: '<%= api.gem_name %>',
                 client_version: <%= api.qualified_name %>::GEM_VERSION)
           @batch_path = '<%= api.batch_path %>'
