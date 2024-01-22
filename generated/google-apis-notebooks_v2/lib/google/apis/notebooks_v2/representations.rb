@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResizeDiskRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RollbackInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -564,6 +570,16 @@ module Google
       class ResetInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ResizeDiskRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boot_disk, as: 'bootDisk', class: Google::Apis::NotebooksV2::BootDisk, decorator: Google::Apis::NotebooksV2::BootDisk::Representation
+      
+          property :data_disk, as: 'dataDisk', class: Google::Apis::NotebooksV2::DataDisk, decorator: Google::Apis::NotebooksV2::DataDisk::Representation
+      
         end
       end
       

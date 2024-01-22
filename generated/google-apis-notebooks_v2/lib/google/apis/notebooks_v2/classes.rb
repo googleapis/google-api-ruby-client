@@ -1247,6 +1247,31 @@ module Google
         end
       end
       
+      # Request for resizing the notebook instance disks
+      class ResizeDiskRequest
+        include Google::Apis::Core::Hashable
+      
+        # The definition of a boot disk.
+        # Corresponds to the JSON property `bootDisk`
+        # @return [Google::Apis::NotebooksV2::BootDisk]
+        attr_accessor :boot_disk
+      
+        # An instance-attached disk resource.
+        # Corresponds to the JSON property `dataDisk`
+        # @return [Google::Apis::NotebooksV2::DataDisk]
+        attr_accessor :data_disk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boot_disk = args[:boot_disk] if args.key?(:boot_disk)
+          @data_disk = args[:data_disk] if args.key?(:data_disk)
+        end
+      end
+      
       # Request for rollbacking a notebook instance
       class RollbackInstanceRequest
         include Google::Apis::Core::Hashable
