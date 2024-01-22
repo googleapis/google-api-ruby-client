@@ -5243,6 +5243,7 @@ module Google
       class YoutubeAndPartnersInventorySourceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_google_tv, as: 'includeGoogleTv'
           property :include_youtube_search, as: 'includeYoutubeSearch'
           property :include_youtube_video_partners, as: 'includeYoutubeVideoPartners'
           property :include_youtube_videos, as: 'includeYoutubeVideos'
