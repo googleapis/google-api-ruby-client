@@ -33,6 +33,8 @@ module Google
       #
       # @see https://cloud.google.com/billing/docs/apis
       class CloudbillingService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://cloudbilling.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -44,7 +46,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://cloudbilling.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-cloudbilling_v1',
                 client_version: Google::Apis::CloudbillingV1::GEM_VERSION)
           @batch_path = 'batch'
@@ -64,7 +66,6 @@ module Google
         # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
         # @param [String] parent
         #   Optional. The parent to create a billing account from. Format: - `
-        #   organizations/`organization_id``, for example, `organizations/12345678` - `
         #   billingAccounts/`billing_account_id``, for example, `billingAccounts/012345-
         #   567890-ABCDEF`
         # @param [String] fields
@@ -433,7 +434,6 @@ module Google
         # provisioned for subaccounts.
         # @param [String] parent
         #   Optional. The parent to create a billing account from. Format: - `
-        #   organizations/`organization_id``, for example, `organizations/12345678` - `
         #   billingAccounts/`billing_account_id``, for example, `billingAccounts/012345-
         #   567890-ABCDEF`
         # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
@@ -528,7 +528,6 @@ module Google
         # provisioned for subaccounts.
         # @param [String] parent
         #   Optional. The parent to create a billing account from. Format: - `
-        #   organizations/`organization_id``, for example, `organizations/12345678` - `
         #   billingAccounts/`billing_account_id``, for example, `billingAccounts/012345-
         #   567890-ABCDEF`
         # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
