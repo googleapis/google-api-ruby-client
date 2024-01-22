@@ -121,6 +121,45 @@ module Google
         end
       end
       
+      # Configuration for Cloud Data Lineage integration.
+      class CloudDataLineageIntegration
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether or not Cloud Data Lineage integration is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # The configuration setting for Airflow database data retention mechanism.
+      class DataRetentionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration setting for Task Logs.
+        # Corresponds to the JSON property `taskLogsRetentionConfig`
+        # @return [Google::Apis::ComposerV1::TaskLogsRetentionConfig]
+        attr_accessor :task_logs_retention_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @task_logs_retention_config = args[:task_logs_retention_config] if args.key?(:task_logs_retention_config)
+        end
+      end
+      
       # The configuration of Cloud SQL instance that is used by the Apache Airflow
       # software.
       class DatabaseConfig
@@ -364,6 +403,11 @@ module Google
         # @return [String]
         attr_accessor :dag_gcs_prefix
       
+        # The configuration setting for Airflow database data retention mechanism.
+        # Corresponds to the JSON property `dataRetentionConfig`
+        # @return [Google::Apis::ComposerV1::DataRetentionConfig]
+        attr_accessor :data_retention_config
+      
         # The configuration of Cloud SQL instance that is used by the Apache Airflow
         # software.
         # Corresponds to the JSON property `databaseConfig`
@@ -470,6 +514,7 @@ module Google
           @airflow_byoid_uri = args[:airflow_byoid_uri] if args.key?(:airflow_byoid_uri)
           @airflow_uri = args[:airflow_uri] if args.key?(:airflow_uri)
           @dag_gcs_prefix = args[:dag_gcs_prefix] if args.key?(:dag_gcs_prefix)
+          @data_retention_config = args[:data_retention_config] if args.key?(:data_retention_config)
           @database_config = args[:database_config] if args.key?(:database_config)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @environment_size = args[:environment_size] if args.key?(:environment_size)
@@ -1606,6 +1651,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :airflow_config_overrides
       
+        # Configuration for Cloud Data Lineage integration.
+        # Corresponds to the JSON property `cloudDataLineageIntegration`
+        # @return [Google::Apis::ComposerV1::CloudDataLineageIntegration]
+        attr_accessor :cloud_data_lineage_integration
+      
         # Optional. Additional environment variables to provide to the Apache Airflow
         # scheduler, worker, and webserver processes. Environment variable names must
         # match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow
@@ -1672,6 +1722,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @airflow_config_overrides = args[:airflow_config_overrides] if args.key?(:airflow_config_overrides)
+          @cloud_data_lineage_integration = args[:cloud_data_lineage_integration] if args.key?(:cloud_data_lineage_integration)
           @env_variables = args[:env_variables] if args.key?(:env_variables)
           @image_version = args[:image_version] if args.key?(:image_version)
           @pypi_packages = args[:pypi_packages] if args.key?(:pypi_packages)
@@ -1801,6 +1852,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bucket = args[:bucket] if args.key?(:bucket)
+        end
+      end
+      
+      # The configuration setting for Task Logs.
+      class TaskLogsRetentionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The mode of storage for Airflow workers task logs. For details, see
+        # go/composer-store-task-logs-in-cloud-logging-only-design-doc
+        # Corresponds to the JSON property `storageMode`
+        # @return [String]
+        attr_accessor :storage_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @storage_mode = args[:storage_mode] if args.key?(:storage_mode)
         end
       end
       
