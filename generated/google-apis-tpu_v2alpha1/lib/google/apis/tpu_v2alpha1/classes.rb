@@ -792,6 +792,12 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Optional. Specifies networking queue count for TPU VM instance's network
+        # interface.
+        # Corresponds to the JSON property `queueCount`
+        # @return [Fixnum]
+        attr_accessor :queue_count
+      
         # The name of the subnetwork for the TPU node. It must be a preexisting Google
         # Compute Engine subnetwork. If none is provided, "default" will be used.
         # Corresponds to the JSON property `subnetwork`
@@ -807,6 +813,7 @@ module Google
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @enable_external_ips = args[:enable_external_ips] if args.key?(:enable_external_ips)
           @network = args[:network] if args.key?(:network)
+          @queue_count = args[:queue_count] if args.key?(:queue_count)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
