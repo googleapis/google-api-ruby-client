@@ -24,7 +24,7 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency "retriable", ">= 2.0", "< 4.a"
   gem.add_runtime_dependency "addressable", "~> 2.5", ">= 2.5.1"
   gem.add_runtime_dependency "mini_mime", "~> 1.0"
-  gem.add_runtime_dependency "googleauth", ">= 0.16.2", "< 2.a"
+  gem.add_runtime_dependency "googleauth", "~> 1.9"
   gem.add_runtime_dependency "httpclient", ">= 2.8.1", "< 3.a"
   gem.add_runtime_dependency "rexml"
 end
