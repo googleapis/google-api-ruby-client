@@ -322,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataplaneV2FeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DefaultClusterConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1063,6 +1069,8 @@ module Google
       
           property :clusterupgrade, as: 'clusterupgrade', class: Google::Apis::GkehubV1::ClusterUpgradeFleetSpec, decorator: Google::Apis::GkehubV1::ClusterUpgradeFleetSpec::Representation
       
+          property :dataplanev2, as: 'dataplanev2', class: Google::Apis::GkehubV1::DataplaneV2FeatureSpec, decorator: Google::Apis::GkehubV1::DataplaneV2FeatureSpec::Representation
+      
           property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1::FleetObservabilityFeatureSpec, decorator: Google::Apis::GkehubV1::FleetObservabilityFeatureSpec::Representation
       
           property :multiclusteringress, as: 'multiclusteringress', class: Google::Apis::GkehubV1::MultiClusterIngressFeatureSpec, decorator: Google::Apis::GkehubV1::MultiClusterIngressFeatureSpec::Representation
@@ -1140,6 +1148,8 @@ module Google
       
           collection :errors, as: 'errors', class: Google::Apis::GkehubV1::ConfigManagementConfigSyncError, decorator: Google::Apis::GkehubV1::ConfigManagementConfigSyncError::Representation
       
+          property :reposync_crd, as: 'reposyncCrd'
+          property :rootsync_crd, as: 'rootsyncCrd'
           property :sync_state, as: 'syncState', class: Google::Apis::GkehubV1::ConfigManagementSyncState, decorator: Google::Apis::GkehubV1::ConfigManagementSyncState::Representation
       
           property :version, as: 'version', class: Google::Apis::GkehubV1::ConfigManagementConfigSyncVersion, decorator: Google::Apis::GkehubV1::ConfigManagementConfigSyncVersion::Representation
@@ -1377,6 +1387,13 @@ module Google
           property :manifest, as: 'manifest'
           property :type, as: 'type', class: Google::Apis::GkehubV1::TypeMeta, decorator: Google::Apis::GkehubV1::TypeMeta::Representation
       
+        end
+      end
+      
+      class DataplaneV2FeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_encryption, as: 'enableEncryption'
         end
       end
       
