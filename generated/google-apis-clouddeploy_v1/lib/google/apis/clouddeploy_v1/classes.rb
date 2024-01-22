@@ -807,21 +807,43 @@ module Google
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
         # . * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
-        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a user that has been recently deleted. For example, `alice@
-        # example.com?uid=123456789012345678901`. If the user is recovered, this value
-        # reverts to `user:`emailid`` and the recovered user retains the role in the
-        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
-        # (plus unique identifier) representing a service account that has been recently
-        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # users of that domain. For example, `google.com` or `example.com`. * `principal:
+        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
+        # subject_attribute_value``: A single identity in a workforce identity pool. * `
+        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
+        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
+        # attribute_name`/`attribute_value``: All workforce identities with a specific
+        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
+        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
+        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
+        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
+        # googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
+        # All identities in a workload identity pool with a certain attribute. * `
+        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding.
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
+        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
+        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
+        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -1045,19 +1067,19 @@ module Google
         alias_method :automatic_traffic_control?, :automatic_traffic_control
       
         # Optional. A list of tags that are added to the canary revision while the
-        # canary deployment is in progress.
+        # canary phase is in progress.
         # Corresponds to the JSON property `canaryRevisionTags`
         # @return [Array<String>]
         attr_accessor :canary_revision_tags
       
         # Optional. A list of tags that are added to the prior revision while the canary
-        # deployment is in progress.
+        # phase is in progress.
         # Corresponds to the JSON property `priorRevisionTags`
         # @return [Array<String>]
         attr_accessor :prior_revision_tags
       
-        # Optional. A list of tags that are added to the final stable revision after the
-        # canary deployment is completed.
+        # Optional. A list of tags that are added to the final stable revision when the
+        # stable phase is applied.
         # Corresponds to the JSON property `stableRevisionTags`
         # @return [Array<String>]
         attr_accessor :stable_revision_tags
@@ -1249,11 +1271,11 @@ module Google
         end
       end
       
-      # CustomMetadata contains information from a user defined operation.
+      # CustomMetadata contains information from a user-defined operation.
       class CustomMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only. Key-value pairs provided by the user defined operation.
+        # Output only. Key-value pairs provided by the user-defined operation.
         # Corresponds to the JSON property `values`
         # @return [Hash<String,String>]
         attr_accessor :values
@@ -1345,8 +1367,7 @@ module Google
       
       # A `CustomTargetType` resource in the Cloud Deploy API. A `CustomTargetType`
       # defines a type of custom target that can be referenced in a `Target` in order
-      # to facilitate deploying to a runtime that does not have a 1P integration with
-      # Cloud Deploy.
+      # to facilitate deploying to other systems besides the supported runtimes.
       class CustomTargetType
         include Google::Apis::Core::Hashable
       
@@ -1610,6 +1631,11 @@ module Google
         # @return [String]
         attr_accessor :message
       
+        # Unique identifier of the `DeliveryPipeline`.
+        # Corresponds to the JSON property `pipelineUid`
+        # @return [String]
+        attr_accessor :pipeline_uid
+      
         # Type of this notification, e.g. for a Pub/Sub failure.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -1623,6 +1649,7 @@ module Google
         def update!(**args)
           @delivery_pipeline = args[:delivery_pipeline] if args.key?(:delivery_pipeline)
           @message = args[:message] if args.key?(:message)
+          @pipeline_uid = args[:pipeline_uid] if args.key?(:pipeline_uid)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -1723,7 +1750,7 @@ module Google
         # @return [Google::Apis::ClouddeployV1::CloudRunMetadata]
         attr_accessor :cloud_run
       
-        # CustomMetadata contains information from a user defined operation.
+        # CustomMetadata contains information from a user-defined operation.
         # Corresponds to the JSON property `custom`
         # @return [Google::Apis::ClouddeployV1::CustomMetadata]
         attr_accessor :custom
@@ -1970,6 +1997,13 @@ module Google
         # @return [String]
         attr_accessor :service
       
+        # Optional. The amount of time to migrate traffic back from the canary Service
+        # to the original Service during the stable phase deployment. If specified, must
+        # be between 15s and 3600s. If unspecified, there is no cutback time.
+        # Corresponds to the JSON property `stableCutbackDuration`
+        # @return [String]
+        attr_accessor :stable_cutback_duration
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1980,6 +2014,7 @@ module Google
           @http_route = args[:http_route] if args.key?(:http_route)
           @route_update_wait_time = args[:route_update_wait_time] if args.key?(:route_update_wait_time)
           @service = args[:service] if args.key?(:service)
+          @stable_cutback_duration = args[:stable_cutback_duration] if args.key?(:stable_cutback_duration)
         end
       end
       
@@ -2259,10 +2294,20 @@ module Google
         # @return [String]
         attr_accessor :pipeline_uid
       
+        # The name of the `Release`.
+        # Corresponds to the JSON property `release`
+        # @return [String]
+        attr_accessor :release
+      
         # Unique identifier of the `Release`.
         # Corresponds to the JSON property `releaseUid`
         # @return [String]
         attr_accessor :release_uid
+      
+        # The name of the `Rollout`.
+        # Corresponds to the JSON property `rollout`
+        # @return [String]
+        attr_accessor :rollout
       
         # Unique identifier of the `Rollout`.
         # Corresponds to the JSON property `rolloutUid`
@@ -2288,7 +2333,9 @@ module Google
           @job_run = args[:job_run] if args.key?(:job_run)
           @message = args[:message] if args.key?(:message)
           @pipeline_uid = args[:pipeline_uid] if args.key?(:pipeline_uid)
+          @release = args[:release] if args.key?(:release)
           @release_uid = args[:release_uid] if args.key?(:release_uid)
+          @rollout = args[:rollout] if args.key?(:rollout)
           @rollout_uid = args[:rollout_uid] if args.key?(:rollout_uid)
           @target_id = args[:target_id] if args.key?(:target_id)
           @type = args[:type] if args.key?(:type)
@@ -2688,7 +2735,7 @@ module Google
         # @return [Google::Apis::ClouddeployV1::CloudRunMetadata]
         attr_accessor :cloud_run
       
-        # CustomMetadata contains information from a user defined operation.
+        # CustomMetadata contains information from a user-defined operation.
         # Corresponds to the JSON property `custom`
         # @return [Google::Apis::ClouddeployV1::CustomMetadata]
         attr_accessor :custom
@@ -3610,10 +3657,20 @@ module Google
         # @return [String]
         attr_accessor :message
       
+        # Unique identifier of the `DeliveryPipeline`.
+        # Corresponds to the JSON property `pipelineUid`
+        # @return [String]
+        attr_accessor :pipeline_uid
+      
         # The name of the `Release`.
         # Corresponds to the JSON property `release`
         # @return [String]
         attr_accessor :release
+      
+        # Unique identifier of the `Release`.
+        # Corresponds to the JSON property `releaseUid`
+        # @return [String]
+        attr_accessor :release_uid
       
         # Type of this notification, e.g. for a Pub/Sub failure.
         # Corresponds to the JSON property `type`
@@ -3627,7 +3684,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @message = args[:message] if args.key?(:message)
+          @pipeline_uid = args[:pipeline_uid] if args.key?(:pipeline_uid)
           @release = args[:release] if args.key?(:release)
+          @release_uid = args[:release_uid] if args.key?(:release_uid)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -3667,7 +3726,14 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # The name of the release.
+        # Unique identifier of the `DeliveryPipeline`.
+        # Corresponds to the JSON property `pipelineUid`
+        # @return [String]
+        attr_accessor :pipeline_uid
+      
+        # The name of the release. release_uid is not in this log message because we
+        # write some of these log messages at release creation time, before we've
+        # generated the uid.
         # Corresponds to the JSON property `release`
         # @return [String]
         attr_accessor :release
@@ -3677,6 +3743,11 @@ module Google
         # @return [String]
         attr_accessor :release_render_state
       
+        # Type of this notification, e.g. for a release render state change event.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3684,8 +3755,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @message = args[:message] if args.key?(:message)
+          @pipeline_uid = args[:pipeline_uid] if args.key?(:pipeline_uid)
           @release = args[:release] if args.key?(:release)
           @release_render_state = args[:release_render_state] if args.key?(:release_render_state)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -3699,7 +3772,7 @@ module Google
         # @return [Google::Apis::ClouddeployV1::CloudRunRenderMetadata]
         attr_accessor :cloud_run
       
-        # CustomMetadata contains information from a user defined operation.
+        # CustomMetadata contains information from a user-defined operation.
         # Corresponds to the JSON property `custom`
         # @return [Google::Apis::ClouddeployV1::CustomMetadata]
         attr_accessor :custom
@@ -4357,6 +4430,11 @@ module Google
         # @return [String]
         attr_accessor :pipeline_uid
       
+        # The name of the `Release`.
+        # Corresponds to the JSON property `release`
+        # @return [String]
+        attr_accessor :release
+      
         # Unique identifier of the `Release`.
         # Corresponds to the JSON property `releaseUid`
         # @return [String]
@@ -4366,6 +4444,11 @@ module Google
         # Corresponds to the JSON property `rollout`
         # @return [String]
         attr_accessor :rollout
+      
+        # Unique identifier of the `Rollout`.
+        # Corresponds to the JSON property `rolloutUid`
+        # @return [String]
+        attr_accessor :rollout_uid
       
         # ID of the `Target` that the rollout is deployed to.
         # Corresponds to the JSON property `targetId`
@@ -4385,8 +4468,10 @@ module Google
         def update!(**args)
           @message = args[:message] if args.key?(:message)
           @pipeline_uid = args[:pipeline_uid] if args.key?(:pipeline_uid)
+          @release = args[:release] if args.key?(:release)
           @release_uid = args[:release_uid] if args.key?(:release_uid)
           @rollout = args[:rollout] if args.key?(:rollout)
+          @rollout_uid = args[:rollout_uid] if args.key?(:rollout_uid)
           @target_id = args[:target_id] if args.key?(:target_id)
           @type = args[:type] if args.key?(:type)
         end
@@ -4407,12 +4492,19 @@ module Google
         # @return [String]
         attr_accessor :pipeline_uid
       
+        # The name of the `Release`.
+        # Corresponds to the JSON property `release`
+        # @return [String]
+        attr_accessor :release
+      
         # Unique identifier of the release.
         # Corresponds to the JSON property `releaseUid`
         # @return [String]
         attr_accessor :release_uid
       
-        # The name of the rollout.
+        # The name of the rollout. rollout_uid is not in this log message because we
+        # write some of these log messages at rollout creation time, before we've
+        # generated the uid.
         # Corresponds to the JSON property `rollout`
         # @return [String]
         attr_accessor :rollout
@@ -4440,6 +4532,7 @@ module Google
         def update!(**args)
           @message = args[:message] if args.key?(:message)
           @pipeline_uid = args[:pipeline_uid] if args.key?(:pipeline_uid)
+          @release = args[:release] if args.key?(:release)
           @release_uid = args[:release_uid] if args.key?(:release_uid)
           @rollout = args[:rollout] if args.key?(:rollout)
           @rollout_update_type = args[:rollout_update_type] if args.key?(:rollout_update_type)
@@ -5066,10 +5159,7 @@ module Google
         end
       end
       
-      # Contains criteria for selecting Targets. Attributes provided must match the
-      # target resource in order for policy restrictions to apply. E.g. if id "prod"
-      # and labels "foo: bar" are given the target resource must match both that id
-      # and have that label in order to be selected.
+      # Contains criteria for selecting Targets.
       class TargetAttribute
         include Google::Apis::Core::Hashable
       
