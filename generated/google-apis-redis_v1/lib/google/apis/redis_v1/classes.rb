@@ -598,7 +598,7 @@ module Google
         # version will be used. Currently, the supported values are: * `REDIS_3_2` for
         # Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `
         # REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x
-        # compatibility
+        # compatibility * `REDIS_7_0` for Redis 7.0 compatibility
         # Corresponds to the JSON property `redisVersion`
         # @return [String]
         attr_accessor :redis_version
