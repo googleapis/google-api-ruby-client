@@ -456,7 +456,8 @@ module Google
       class GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Domain to fetch for Cloud Identity account customer.
+        # Required. Domain to fetch for Cloud Identity account customers, including
+        # domained and domainless.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
