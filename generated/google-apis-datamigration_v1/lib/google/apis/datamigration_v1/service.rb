@@ -32,6 +32,8 @@ module Google
       #
       # @see https://cloud.google.com/database-migration/
       class DatabaseMigrationServiceService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://datamigration.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,7 +45,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://datamigration.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-datamigration_v1',
                 client_version: Google::Apis::DatamigrationV1::GEM_VERSION)
           @batch_path = 'batch'
@@ -1435,8 +1437,8 @@ module Google
         end
         
         # Demotes the destination database to become a read replica of the source. This
-        # is applicable for the following migrations: 1. MySQL to Cloud SQL (for MySQL)
-        # 2. PostgreSQL to Cloud SQL (for PostgreSQL) 3. PostgreSQL to AlloyDB.
+        # is applicable for the following migrations: 1. MySQL to Cloud SQL for MySQL 2.
+        # PostgreSQL to Cloud SQL for PostgreSQL 3. PostgreSQL to AlloyDB for PostgreSQL.
         # @param [String] name
         #   Name of the migration job resource to demote its destination.
         # @param [Google::Apis::DatamigrationV1::DemoteDestinationRequest] demote_destination_request_object
