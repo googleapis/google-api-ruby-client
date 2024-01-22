@@ -38,6 +38,8 @@ module Google
       #
       # @see https://cloud.google.com/data-fusion/docs
       class DataFusionService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://datafusion.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -49,7 +51,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://datafusion.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-datafusion_v1',
                 client_version: Google::Apis::DatafusionV1::GEM_VERSION)
           @batch_path = 'batch'
@@ -137,7 +139,9 @@ module Google
         #   locations/`location`.
         # @param [Google::Apis::DatafusionV1::Instance] instance_object
         # @param [String] instance_id
-        #   Required. The name of the instance to create.
+        #   Required. The name of the instance to create. Instance name can only contain
+        #   lowercase alphanumeric characters and hyphens. It must start with a letter and
+        #   must not end with a hyphen. It can have a maximum of 30 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
