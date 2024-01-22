@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudDataLineageIntegration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataRetentionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TaskLogsRetentionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TriggererResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -340,6 +358,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cidr_block, as: 'cidrBlock'
           property :display_name, as: 'displayName'
+        end
+      end
+      
+      class CloudDataLineageIntegration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class DataRetentionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :task_logs_retention_config, as: 'taskLogsRetentionConfig', class: Google::Apis::ComposerV1::TaskLogsRetentionConfig, decorator: Google::Apis::ComposerV1::TaskLogsRetentionConfig::Representation
+      
         end
       end
       
@@ -408,6 +441,8 @@ module Google
           property :airflow_byoid_uri, as: 'airflowByoidUri'
           property :airflow_uri, as: 'airflowUri'
           property :dag_gcs_prefix, as: 'dagGcsPrefix'
+          property :data_retention_config, as: 'dataRetentionConfig', class: Google::Apis::ComposerV1::DataRetentionConfig, decorator: Google::Apis::ComposerV1::DataRetentionConfig::Representation
+      
           property :database_config, as: 'databaseConfig', class: Google::Apis::ComposerV1::DatabaseConfig, decorator: Google::Apis::ComposerV1::DatabaseConfig::Representation
       
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::ComposerV1::EncryptionConfig, decorator: Google::Apis::ComposerV1::EncryptionConfig::Representation
@@ -709,6 +744,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :airflow_config_overrides, as: 'airflowConfigOverrides'
+          property :cloud_data_lineage_integration, as: 'cloudDataLineageIntegration', class: Google::Apis::ComposerV1::CloudDataLineageIntegration, decorator: Google::Apis::ComposerV1::CloudDataLineageIntegration::Representation
+      
           hash :env_variables, as: 'envVariables'
           property :image_version, as: 'imageVersion'
           hash :pypi_packages, as: 'pypiPackages'
@@ -748,6 +785,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket, as: 'bucket'
+        end
+      end
+      
+      class TaskLogsRetentionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :storage_mode, as: 'storageMode'
         end
       end
       
