@@ -465,7 +465,7 @@ module Google
       class AdvertiserBillingConfig
         include Google::Apis::Core::Hashable
       
-        # The ID of a billing profile assigned to the advertiser.
+        # Optional. The ID of a billing profile assigned to the advertiser.
         # Corresponds to the JSON property `billingProfileId`
         # @return [Fixnum]
         attr_accessor :billing_profile_id
@@ -690,259 +690,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @age_range = args[:age_range] if args.key?(:age_range)
-        end
-      end
-      
-      # Rule-based algorithm.
-      class AlgorithmRules
-        include Google::Apis::Core::Hashable
-      
-        # A ruleset consisting of a list of rules and how to aggregate the resulting
-        # values.
-        # Corresponds to the JSON property `impressionSignalRuleset`
-        # @return [Google::Apis::DisplayvideoV3::AlgorithmRulesRuleset]
-        attr_accessor :impression_signal_ruleset
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @impression_signal_ruleset = args[:impression_signal_ruleset] if args.key?(:impression_signal_ruleset)
-        end
-      end
-      
-      # A value to compare the signal to.
-      class AlgorithmRulesComparisonValue
-        include Google::Apis::Core::Hashable
-      
-        # Boolean value.
-        # Corresponds to the JSON property `boolValue`
-        # @return [Boolean]
-        attr_accessor :bool_value
-        alias_method :bool_value?, :bool_value
-      
-        # Dimensions.
-        # Corresponds to the JSON property `creativeDimensionValue`
-        # @return [Google::Apis::DisplayvideoV3::Dimensions]
-        attr_accessor :creative_dimension_value
-      
-        # Representation of time defined by day of the week and hour of the day.
-        # Corresponds to the JSON property `dayAndTimeValue`
-        # @return [Google::Apis::DisplayvideoV3::DayAndTime]
-        attr_accessor :day_and_time_value
-      
-        # Device type value.
-        # Corresponds to the JSON property `deviceTypeValue`
-        # @return [String]
-        attr_accessor :device_type_value
-      
-        # Double value.
-        # Corresponds to the JSON property `doubleValue`
-        # @return [Float]
-        attr_accessor :double_value
-      
-        # Environment value.
-        # Corresponds to the JSON property `environmentValue`
-        # @return [String]
-        attr_accessor :environment_value
-      
-        # Exchange value.
-        # Corresponds to the JSON property `exchangeValue`
-        # @return [String]
-        attr_accessor :exchange_value
-      
-        # Integer value.
-        # Corresponds to the JSON property `int64Value`
-        # @return [Fixnum]
-        attr_accessor :int64_value
-      
-        # Ad position value.
-        # Corresponds to the JSON property `onScreenPositionValue`
-        # @return [String]
-        attr_accessor :on_screen_position_value
-      
-        # String value.
-        # Corresponds to the JSON property `stringValue`
-        # @return [String]
-        attr_accessor :string_value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bool_value = args[:bool_value] if args.key?(:bool_value)
-          @creative_dimension_value = args[:creative_dimension_value] if args.key?(:creative_dimension_value)
-          @day_and_time_value = args[:day_and_time_value] if args.key?(:day_and_time_value)
-          @device_type_value = args[:device_type_value] if args.key?(:device_type_value)
-          @double_value = args[:double_value] if args.key?(:double_value)
-          @environment_value = args[:environment_value] if args.key?(:environment_value)
-          @exchange_value = args[:exchange_value] if args.key?(:exchange_value)
-          @int64_value = args[:int64_value] if args.key?(:int64_value)
-          @on_screen_position_value = args[:on_screen_position_value] if args.key?(:on_screen_position_value)
-          @string_value = args[:string_value] if args.key?(:string_value)
-        end
-      end
-      
-      # Set of conditions. The return value of the rule is either: * The return value
-      # for single met condition or * The defined default return value if no
-      # conditions are met.
-      class AlgorithmRulesRule
-        include Google::Apis::Core::Hashable
-      
-        # List of conditions in this rule. The criteria among conditions should be
-        # mutually exclusive.
-        # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::DisplayvideoV3::AlgorithmRulesRuleCondition>]
-        attr_accessor :conditions
-      
-        # Adjusted value of the signal used for rule evaluation.
-        # Corresponds to the JSON property `defaultReturnValue`
-        # @return [Google::Apis::DisplayvideoV3::AlgorithmRulesSignalValue]
-        attr_accessor :default_return_value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @conditions = args[:conditions] if args.key?(:conditions)
-          @default_return_value = args[:default_return_value] if args.key?(:default_return_value)
-        end
-      end
-      
-      # Set of signal comparisons. Equivalent of an `if` statement.
-      class AlgorithmRulesRuleCondition
-        include Google::Apis::Core::Hashable
-      
-        # Adjusted value of the signal used for rule evaluation.
-        # Corresponds to the JSON property `returnValue`
-        # @return [Google::Apis::DisplayvideoV3::AlgorithmRulesSignalValue]
-        attr_accessor :return_value
-      
-        # List of comparisons that build `if` statement condition. The comparisons are
-        # combined into a single condition with `AND` logical operators.
-        # Corresponds to the JSON property `signalComparisons`
-        # @return [Array<Google::Apis::DisplayvideoV3::AlgorithmRulesSignalComparison>]
-        attr_accessor :signal_comparisons
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @return_value = args[:return_value] if args.key?(:return_value)
-          @signal_comparisons = args[:signal_comparisons] if args.key?(:signal_comparisons)
-        end
-      end
-      
-      # A ruleset consisting of a list of rules and how to aggregate the resulting
-      # values.
-      class AlgorithmRulesRuleset
-        include Google::Apis::Core::Hashable
-      
-        # How to aggregate values of evaluated rules.
-        # Corresponds to the JSON property `aggregationType`
-        # @return [String]
-        attr_accessor :aggregation_type
-      
-        # Maximum value the ruleset can evaluate to.
-        # Corresponds to the JSON property `maxValue`
-        # @return [Float]
-        attr_accessor :max_value
-      
-        # List of rules to generate the impression value.
-        # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::DisplayvideoV3::AlgorithmRulesRule>]
-        attr_accessor :rules
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @aggregation_type = args[:aggregation_type] if args.key?(:aggregation_type)
-          @max_value = args[:max_value] if args.key?(:max_value)
-          @rules = args[:rules] if args.key?(:rules)
-        end
-      end
-      
-      # Signal used to evaluate rules.
-      class AlgorithmRulesSignal
-        include Google::Apis::Core::Hashable
-      
-        # Signal based on impressions.
-        # Corresponds to the JSON property `impressionSignal`
-        # @return [String]
-        attr_accessor :impression_signal
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @impression_signal = args[:impression_signal] if args.key?(:impression_signal)
-        end
-      end
-      
-      # A single comparison. The comparison compares the `signal` to the `
-      # comparisonValue`. The comparison of `siteId==123` is represented with the
-      # following field values: * `signal` has an `impressionSignal` of `SITE_ID`. * `
-      # comparisonOperator` is set to `EQUAL`. * `comparisonValue` is set to 123.
-      class AlgorithmRulesSignalComparison
-        include Google::Apis::Core::Hashable
-      
-        # Operator used to compare the two values. In the resulting experession, the `
-        # signal` will be the first value and the `comparisonValue will be the second.
-        # Corresponds to the JSON property `comparisonOperator`
-        # @return [String]
-        attr_accessor :comparison_operator
-      
-        # A value to compare the signal to.
-        # Corresponds to the JSON property `comparisonValue`
-        # @return [Google::Apis::DisplayvideoV3::AlgorithmRulesComparisonValue]
-        attr_accessor :comparison_value
-      
-        # Signal used to evaluate rules.
-        # Corresponds to the JSON property `signal`
-        # @return [Google::Apis::DisplayvideoV3::AlgorithmRulesSignal]
-        attr_accessor :signal
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @comparison_operator = args[:comparison_operator] if args.key?(:comparison_operator)
-          @comparison_value = args[:comparison_value] if args.key?(:comparison_value)
-          @signal = args[:signal] if args.key?(:signal)
-        end
-      end
-      
-      # Adjusted value of the signal used for rule evaluation.
-      class AlgorithmRulesSignalValue
-        include Google::Apis::Core::Hashable
-      
-        # Value to use as result.
-        # Corresponds to the JSON property `number`
-        # @return [Float]
-        attr_accessor :number
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @number = args[:number] if args.key?(:number)
         end
       end
       
@@ -5053,37 +4800,6 @@ module Google
         end
       end
       
-      # Representation of time defined by day of the week and hour of the day.
-      class DayAndTime
-        include Google::Apis::Core::Hashable
-      
-        # Required. Day of the week.
-        # Corresponds to the JSON property `dayOfWeek`
-        # @return [String]
-        attr_accessor :day_of_week
-      
-        # Required. Hour of the day.
-        # Corresponds to the JSON property `hourOfDay`
-        # @return [Fixnum]
-        attr_accessor :hour_of_day
-      
-        # Required. The mechanism used to determine the relevant timezone.
-        # Corresponds to the JSON property `timeZoneResolution`
-        # @return [String]
-        attr_accessor :time_zone_resolution
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @day_of_week = args[:day_of_week] if args.key?(:day_of_week)
-          @hour_of_day = args[:hour_of_day] if args.key?(:hour_of_day)
-          @time_zone_resolution = args[:time_zone_resolution] if args.key?(:time_zone_resolution)
-        end
-      end
-      
       # Representation of a segment of time defined on a specific day of the week and
       # with a start and end time. The time represented by `start_hour` must be before
       # the time represented by `end_hour`.
@@ -6302,10 +6018,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_impressions
       
-        # The maximum number of times a user may click-through or fully view an ad
-        # during this period until it is no longer served to them. Must be greater than
-        # 0. Only applicable to YouTube and Partners resources. Required when unlimited
-        # is `false` and max_impressions is not set.
+        # Optional. The maximum number of times a user may click-through or fully view
+        # an ad during this period until it is no longer served to them. Must be greater
+        # than 0. Only applicable to YouTube and Partners resources. Required when
+        # unlimited is `false` and max_impressions is not set.
         # Corresponds to the JSON property `maxViews`
         # @return [Fixnum]
         attr_accessor :max_views
@@ -11021,61 +10737,6 @@ module Google
         end
       end
       
-      # Type for the response returned by [SdfDownloadTaskService.
-      # CreateSdfDownloadTask].
-      class SdfDownloadTask
-        include Google::Apis::Core::Hashable
-      
-        # A resource name to be used in media.download to Download the prepared files.
-        # Resource names have the format `download/sdfdownloadtasks/media/`media_id``. `
-        # media_id` will be made available by the long running operation service once
-        # the task status is done.
-        # Corresponds to the JSON property `resourceName`
-        # @return [String]
-        attr_accessor :resource_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @resource_name = args[:resource_name] if args.key?(:resource_name)
-        end
-      end
-      
-      # Type for the metadata returned by [SdfDownloadTaskService.
-      # CreateSdfDownloadTask].
-      class SdfDownloadTaskMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The time when the operation was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The time when execution was completed.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # The SDF version used to execute this download task.
-        # Corresponds to the JSON property `version`
-        # @return [String]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @version = args[:version] if args.key?(:version)
-        end
-      end
-      
       # Request message for SearchTargetingOptions.
       class SearchTargetingOptionsRequest
         include Google::Apis::Core::Hashable
@@ -12495,8 +12156,14 @@ module Google
       class YoutubeAndPartnersInventorySourceConfig
         include Google::Apis::Core::Hashable
       
-        # Whether to target inventory on YouTube. This includes both search, channels
-        # and videos.
+        # Optional. Whether to target inventory in video apps available with Google TV.
+        # Corresponds to the JSON property `includeGoogleTv`
+        # @return [Boolean]
+        attr_accessor :include_google_tv
+        alias_method :include_google_tv?, :include_google_tv
+      
+        # Optional. Whether to target inventory on YouTube. This includes both search,
+        # channels and videos.
         # Corresponds to the JSON property `includeYoutube`
         # @return [Boolean]
         attr_accessor :include_youtube
@@ -12515,6 +12182,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include_google_tv = args[:include_google_tv] if args.key?(:include_google_tv)
           @include_youtube = args[:include_youtube] if args.key?(:include_youtube)
           @include_youtube_video_partners = args[:include_youtube_video_partners] if args.key?(:include_youtube_video_partners)
         end
@@ -12542,18 +12210,19 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::YoutubeAndPartnersInventorySourceConfig]
         attr_accessor :inventory_source_settings
       
-        # The ID of the form to generate leads.
+        # Optional. The ID of the form to generate leads.
         # Corresponds to the JSON property `leadFormId`
         # @return [Fixnum]
         attr_accessor :lead_form_id
       
-        # The ID of the merchant which is linked to the line item for product feed.
+        # Optional. The ID of the merchant which is linked to the line item for product
+        # feed.
         # Corresponds to the JSON property `linkedMerchantId`
         # @return [Fixnum]
         attr_accessor :linked_merchant_id
       
-        # The IDs of the videos appear below the primary video ad when the ad is playing
-        # in the YouTube app on mobile devices.
+        # Optional. The IDs of the videos appear below the primary video ad when the ad
+        # is playing in the YouTube app on mobile devices.
         # Corresponds to the JSON property `relatedVideoIds`
         # @return [Array<String>]
         attr_accessor :related_video_ids
