@@ -37,7 +37,6 @@ remaining_args :requested do
   desc "Requested apis in api:version format"
 end
 
-include :bundler, gemfile_path: "#{context_directory}/google-apis-generator/Gemfile"
 include :exec, e: true
 include :git_cache
 include :terminal
@@ -55,6 +54,7 @@ def run
 
   @errors = []
   @timestamp = Time.now.utc.strftime("%Y%m%d-%H%M%S")
+  bundle_generator
   apis_versions = list_apis_versions
   apis_versions.each_with_index do |(api, version), index|
     pr_single_gem api, version, index + 1, apis_versions.size
@@ -144,6 +144,7 @@ end
 def regen_single_gem api, version
   Dir.chdir "#{context_directory}/google-apis-generator" do
     cmd = [
+      "bundle", "exec",
       "bin/generate-api", "gen",
       "#{context_directory}/generated",
       "--api=#{api}.#{version}",
@@ -159,11 +160,18 @@ end
 def clean_old_gems
   Dir.chdir "#{context_directory}/google-apis-generator" do
     cmd = [
+      "bundle", "exec",
       "bin/generate-api", "gen",
       "#{context_directory}/generated",
       "--clean"
     ]
     result = exec cmd, e: false
     yoshi_pr_generator.abort_capture! unless result.success?
+  end
+end
+
+def bundle_generator
+  Dir.chdir "#{context_directory}/google-apis-generator" do
+    exec ["bundle", "install"]
   end
 end
