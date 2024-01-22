@@ -32,6 +32,8 @@ module Google
       #
       # @see https://cloud.google.com/discovery-engine/docs
       class DiscoveryEngineService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://discoveryengine.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,7 +45,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://discoveryengine.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-discoveryengine_v1alpha',
                 client_version: Google::Apis::DiscoveryengineV1alpha::GEM_VERSION)
           @batch_path = 'batch'
@@ -308,10 +310,11 @@ module Google
         #   Required. The typeahead input used to fetch suggestions. Maximum length is 128
         #   characters.
         # @param [String] query_model
-        #   Selects data model of query suggestions for serving. Currently supported
-        #   values: * `document` - Using suggestions generated from user-imported
-        #   documents. * `search-history` - Using suggestions generated from the past
-        #   history of SearchService.Search API calls. Do not use it when there is no
+        #   Specifies the autocomplete data model. This overrides any model specified in
+        #   the Configuration > Autocomplete section of the Cloud console. Currently
+        #   supported values: * `document` - Using suggestions generated from user-
+        #   imported documents. * `search-history` - Using suggestions generated from the
+        #   past history of SearchService.Search API calls. Do not use it when there is no
         #   traffic for Search API. * `user-event` - Using suggestions generated from user-
         #   imported search events. * `document-completable` - Using suggestions taken
         #   directly from user-imported document fields marked as completable. Default
@@ -543,7 +546,7 @@ module Google
         # @param [String] parent
         #   Required. The parent branch resource name, such as `projects/`project`/
         #   locations/`location`/collections/`collection_id``. If the caller does not have
-        #   permission to list DataStoress under this location, regardless of whether or
+        #   permission to list DataStores under this location, regardless of whether or
         #   not this data store exists, a PERMISSION_DENIED error is returned.
         # @param [String] filter
         #   Filter by solution type. For example: filter = 'solution_type:
@@ -1247,7 +1250,7 @@ module Google
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConversation] google_cloud_discoveryengine_v1alpha_conversation_object
         # @param [String] update_mask
         #   Indicates which fields in the provided Conversation to update. The following
-        #   are NOT supported: * conversation.name If not set or empty, all supported
+        #   are NOT supported: * Conversation.name If not set or empty, all supported
         #   fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1688,7 +1691,7 @@ module Google
         #   used as the ID of the default serving config. For example, for Engine `
         #   projects/*/locations/global/collections/*/engines/my-engine`, you can use `
         #   projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-
-        #   engine` for your Recommend requests.
+        #   engine` for your RecommendationService.Recommend requests.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRecommendRequest] google_cloud_discoveryengine_v1alpha_recommend_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2304,6 +2307,74 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Imports all SuggestionDenyListEntry for a DataStore.
+        # @param [String] parent
+        #   Required. The parent data store resource name for which to import denylist
+        #   entries. Follows pattern projects/*/locations/*/collections/*/dataStores/*.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesRequest] google_cloud_discoveryengine_v1alpha_import_suggestion_deny_list_entries_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_project_location_collection_data_store_suggestion_deny_list_entry(parent, google_cloud_discoveryengine_v1alpha_import_suggestion_deny_list_entries_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/suggestionDenyListEntries:import', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_import_suggestion_deny_list_entries_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Permanently deletes all SuggestionDenyListEntry for a DataStore.
+        # @param [String] parent
+        #   Required. The parent data store resource name for which to import denylist
+        #   entries. Follows pattern projects/*/locations/*/collections/*/dataStores/*.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesRequest] google_cloud_discoveryengine_v1alpha_purge_suggestion_deny_list_entries_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def purge_project_location_collection_data_store_suggestion_deny_list_entry(parent, google_cloud_discoveryengine_v1alpha_purge_suggestion_deny_list_entries_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/suggestionDenyListEntries:purge', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_purge_suggestion_deny_list_entries_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Writes a single user event from the browser. This uses a GET request to due to
         # browser restriction of POST-ing to a third-party domain. This method is used
         # only by the Discovery Engine API JavaScript pixel and Google Tag Manager.
@@ -2649,7 +2720,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Pauses the training of an existing engine. Only applicable if solution_type is
+        # Pauses the training of an existing engine. Only applicable if SolutionType is
         # SOLUTION_TYPE_RECOMMENDATION.
         # @param [String] name
         #   Required. The name of the engine to pause. Format: `projects/`project_number`/
@@ -2684,8 +2755,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Resumes the training of an existing engine. Only applicable if solution_type
-        # is SOLUTION_TYPE_RECOMMENDATION.
+        # Resumes the training of an existing engine. Only applicable if SolutionType is
+        # SOLUTION_TYPE_RECOMMENDATION.
         # @param [String] name
         #   Required. The name of the engine to resume. Format: `projects/`project_number`/
         #   locations/`location_id`/collections/`collection_id`/engines/`engine_id``
@@ -2719,7 +2790,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Tunes an existing engine. Only applicable if solution_type is
+        # Tunes an existing engine. Only applicable if SolutionType is
         # SOLUTION_TYPE_RECOMMENDATION.
         # @param [String] name
         #   Required. The resource name of the engine to tune. Format: `projects/`
@@ -2951,7 +3022,7 @@ module Google
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConversation] google_cloud_discoveryengine_v1alpha_conversation_object
         # @param [String] update_mask
         #   Indicates which fields in the provided Conversation to update. The following
-        #   are NOT supported: * conversation.name If not set or empty, all supported
+        #   are NOT supported: * Conversation.name If not set or empty, all supported
         #   fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3063,7 +3134,7 @@ module Google
         #   used as the ID of the default serving config. For example, for Engine `
         #   projects/*/locations/global/collections/*/engines/my-engine`, you can use `
         #   projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-
-        #   engine` for your Recommend requests.
+        #   engine` for your RecommendationService.Recommend requests.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRecommendRequest] google_cloud_discoveryengine_v1alpha_recommend_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3216,10 +3287,11 @@ module Google
         #   Required. The typeahead input used to fetch suggestions. Maximum length is 128
         #   characters.
         # @param [String] query_model
-        #   Selects data model of query suggestions for serving. Currently supported
-        #   values: * `document` - Using suggestions generated from user-imported
-        #   documents. * `search-history` - Using suggestions generated from the past
-        #   history of SearchService.Search API calls. Do not use it when there is no
+        #   Specifies the autocomplete data model. This overrides any model specified in
+        #   the Configuration > Autocomplete section of the Cloud console. Currently
+        #   supported values: * `document` - Using suggestions generated from user-
+        #   imported documents. * `search-history` - Using suggestions generated from the
+        #   past history of SearchService.Search API calls. Do not use it when there is no
         #   traffic for Search API. * `user-event` - Using suggestions generated from user-
         #   imported search events. * `document-completable` - Using suggestions taken
         #   directly from user-imported document fields marked as completable. Default
@@ -3451,7 +3523,7 @@ module Google
         # @param [String] parent
         #   Required. The parent branch resource name, such as `projects/`project`/
         #   locations/`location`/collections/`collection_id``. If the caller does not have
-        #   permission to list DataStoress under this location, regardless of whether or
+        #   permission to list DataStores under this location, regardless of whether or
         #   not this data store exists, a PERMISSION_DENIED error is returned.
         # @param [String] filter
         #   Filter by solution type. For example: filter = 'solution_type:
@@ -4120,7 +4192,7 @@ module Google
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConversation] google_cloud_discoveryengine_v1alpha_conversation_object
         # @param [String] update_mask
         #   Indicates which fields in the provided Conversation to update. The following
-        #   are NOT supported: * conversation.name If not set or empty, all supported
+        #   are NOT supported: * Conversation.name If not set or empty, all supported
         #   fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4490,7 +4562,7 @@ module Google
         #   used as the ID of the default serving config. For example, for Engine `
         #   projects/*/locations/global/collections/*/engines/my-engine`, you can use `
         #   projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-
-        #   engine` for your Recommend requests.
+        #   engine` for your RecommendationService.Recommend requests.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRecommendRequest] google_cloud_discoveryengine_v1alpha_recommend_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4878,6 +4950,74 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Imports all SuggestionDenyListEntry for a DataStore.
+        # @param [String] parent
+        #   Required. The parent data store resource name for which to import denylist
+        #   entries. Follows pattern projects/*/locations/*/collections/*/dataStores/*.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesRequest] google_cloud_discoveryengine_v1alpha_import_suggestion_deny_list_entries_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_project_location_data_store_suggestion_deny_list_entry(parent, google_cloud_discoveryengine_v1alpha_import_suggestion_deny_list_entries_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/suggestionDenyListEntries:import', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_import_suggestion_deny_list_entries_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Permanently deletes all SuggestionDenyListEntry for a DataStore.
+        # @param [String] parent
+        #   Required. The parent data store resource name for which to import denylist
+        #   entries. Follows pattern projects/*/locations/*/collections/*/dataStores/*.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesRequest] google_cloud_discoveryengine_v1alpha_purge_suggestion_deny_list_entries_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def purge_project_location_data_store_suggestion_deny_list_entry(parent, google_cloud_discoveryengine_v1alpha_purge_suggestion_deny_list_entries_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/suggestionDenyListEntries:purge', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_purge_suggestion_deny_list_entries_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
