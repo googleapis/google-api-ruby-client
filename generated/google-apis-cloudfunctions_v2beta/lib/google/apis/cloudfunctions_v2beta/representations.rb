@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutomaticUpdatePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OnDeployUpdatePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -315,6 +327,12 @@ module Google
         end
       end
       
+      class AutomaticUpdatePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -328,12 +346,17 @@ module Google
       class BuildConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :automatic_update_policy, as: 'automaticUpdatePolicy', class: Google::Apis::CloudfunctionsV2beta::AutomaticUpdatePolicy, decorator: Google::Apis::CloudfunctionsV2beta::AutomaticUpdatePolicy::Representation
+      
           property :build, as: 'build'
           property :docker_registry, as: 'dockerRegistry'
           property :docker_repository, as: 'dockerRepository'
           property :entry_point, as: 'entryPoint'
           hash :environment_variables, as: 'environmentVariables'
+          property :on_deploy_update_policy, as: 'onDeployUpdatePolicy', class: Google::Apis::CloudfunctionsV2beta::OnDeployUpdatePolicy, decorator: Google::Apis::CloudfunctionsV2beta::OnDeployUpdatePolicy::Representation
+      
           property :runtime, as: 'runtime'
+          property :service_account, as: 'serviceAccount'
           property :source, as: 'source', class: Google::Apis::CloudfunctionsV2beta::Source, decorator: Google::Apis::CloudfunctionsV2beta::Source::Representation
       
           property :source_provenance, as: 'sourceProvenance', class: Google::Apis::CloudfunctionsV2beta::SourceProvenance, decorator: Google::Apis::CloudfunctionsV2beta::SourceProvenance::Representation
@@ -426,6 +449,7 @@ module Google
       class GenerateUploadUrlRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment, as: 'environment'
           property :kms_key_name, as: 'kmsKeyName'
         end
       end
@@ -624,6 +648,13 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class OnDeployUpdatePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :runtime_version, as: 'runtimeVersion'
         end
       end
       
