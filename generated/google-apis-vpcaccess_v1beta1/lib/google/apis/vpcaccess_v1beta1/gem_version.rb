@@ -16,10 +16,10 @@ module Google
   module Apis
     module VpcaccessV1beta1
       # Version of the google-apis-vpcaccess_v1beta1 gem
-      GEM_VERSION = "0.8.0"
+      GEM_VERSION = "0.9.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.12.0"
+      GENERATOR_VERSION = "0.13.0"
 
       # Revision of the discovery document this client was generated from
       REVISION = "20231207"
