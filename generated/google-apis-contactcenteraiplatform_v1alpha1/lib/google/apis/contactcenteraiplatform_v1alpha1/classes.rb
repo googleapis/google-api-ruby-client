@@ -60,7 +60,7 @@ module Google
         end
       end
       
-      # Message describing ContactCenter object Next ID: 16
+      # Message describing ContactCenter object Next ID: 18
       class ContactCenter
         include Google::Apis::Core::Hashable
       
@@ -112,6 +112,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. A list of UJET components that should be privately accessed. This
+        # field is set by reading settings from the data plane. For more information
+        # about the format of the component please refer to go/ccaip-vpc-sc-org-policy.
+        # This field is must be fully populated only for Create/Update resource
+        # operations. The main use case for this field is OrgPolicy checks via CPE.
+        # Corresponds to the JSON property `privateComponents`
+        # @return [Array<String>]
+        attr_accessor :private_components
+      
         # Message storing SAML params to enable Google as IDP.
         # Corresponds to the JSON property `samlParams`
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::SamlParams]
@@ -152,6 +161,7 @@ module Google
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @private_components = args[:private_components] if args.key?(:private_components)
           @saml_params = args[:saml_params] if args.key?(:saml_params)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -486,7 +496,7 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
-        # Message describing ContactCenter object Next ID: 16
+        # Message describing ContactCenter object Next ID: 18
         # Corresponds to the JSON property `contactCenter`
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::ContactCenter]
         attr_accessor :contact_center

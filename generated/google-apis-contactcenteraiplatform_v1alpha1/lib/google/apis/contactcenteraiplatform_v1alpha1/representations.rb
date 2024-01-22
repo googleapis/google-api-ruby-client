@@ -152,6 +152,7 @@ module Google
           property :kms_key, as: 'kmsKey'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :private_components, as: 'privateComponents'
           property :saml_params, as: 'samlParams', class: Google::Apis::ContactcenteraiplatformV1alpha1::SamlParams, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::SamlParams::Representation
       
           property :state, as: 'state'
