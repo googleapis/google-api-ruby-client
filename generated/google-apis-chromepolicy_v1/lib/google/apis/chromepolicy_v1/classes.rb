@@ -349,6 +349,11 @@ module Google
         # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NumericRangeConstraint]
         attr_accessor :numeric_range_constraint
       
+        # Constraints on the uploaded file of a file policy.
+        # Corresponds to the JSON property `uploadedFileConstraints`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1UploadedFileConstraints]
+        attr_accessor :uploaded_file_constraints
+      
         def initialize(**args)
            update!(**args)
         end
@@ -356,6 +361,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @numeric_range_constraint = args[:numeric_range_constraint] if args.key?(:numeric_range_constraint)
+          @uploaded_file_constraints = args[:uploaded_file_constraints] if args.key?(:uploaded_file_constraints)
         end
       end
       
@@ -1388,6 +1394,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @download_uri = args[:download_uri] if args.key?(:download_uri)
+        end
+      end
+      
+      # Constraints on the uploaded file of a file policy.
+      class GoogleChromePolicyVersionsV1UploadedFileConstraints
+        include Google::Apis::Core::Hashable
+      
+        # The size limit of uploaded files for a setting, in bytes.
+        # Corresponds to the JSON property `sizeLimitBytes`
+        # @return [Fixnum]
+        attr_accessor :size_limit_bytes
+      
+        # File types that can be uploaded for a setting.
+        # Corresponds to the JSON property `supportedContentTypes`
+        # @return [Array<String>]
+        attr_accessor :supported_content_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @size_limit_bytes = args[:size_limit_bytes] if args.key?(:size_limit_bytes)
+          @supported_content_types = args[:supported_content_types] if args.key?(:supported_content_types)
         end
       end
       

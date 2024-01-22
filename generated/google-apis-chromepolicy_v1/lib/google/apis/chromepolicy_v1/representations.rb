@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromePolicyVersionsV1UploadedFileConstraints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleProtobufEmpty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -430,6 +436,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :numeric_range_constraint, as: 'numericRangeConstraint', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NumericRangeConstraint, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NumericRangeConstraint::Representation
+      
+          property :uploaded_file_constraints, as: 'uploadedFileConstraints', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1UploadedFileConstraints, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1UploadedFileConstraints::Representation
       
         end
       end
@@ -741,6 +749,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :download_uri, as: 'downloadUri'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1UploadedFileConstraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :size_limit_bytes, :numeric_string => true, as: 'sizeLimitBytes'
+          collection :supported_content_types, as: 'supportedContentTypes'
         end
       end
       
