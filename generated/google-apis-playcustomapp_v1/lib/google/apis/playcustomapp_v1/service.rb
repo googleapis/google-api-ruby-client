@@ -32,6 +32,8 @@ module Google
       #
       # @see https://developers.google.com/android/work/play/custom-app-api/
       class PlaycustomappService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://playcustomapp.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,7 +45,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://playcustomapp.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-playcustomapp_v1',
                 client_version: Google::Apis::PlaycustomappV1::GEM_VERSION)
           @batch_path = 'batch'
