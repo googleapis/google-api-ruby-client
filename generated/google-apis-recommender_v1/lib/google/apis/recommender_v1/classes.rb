@@ -688,6 +688,11 @@ module Google
         # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1RecommendationStateInfo]
         attr_accessor :state_info
       
+        # Fully qualified resource names that this recommendation is targeting.
+        # Corresponds to the JSON property `targetResources`
+        # @return [Array<String>]
+        attr_accessor :target_resources
+      
         # Corresponds to a mutually exclusive group ID within a recommender. A non-empty
         # ID indicates that the recommendation belongs to a mutually exclusive group.
         # This means that only one recommendation within the group is suggested to be
@@ -713,6 +718,7 @@ module Google
           @priority = args[:priority] if args.key?(:priority)
           @recommender_subtype = args[:recommender_subtype] if args.key?(:recommender_subtype)
           @state_info = args[:state_info] if args.key?(:state_info)
+          @target_resources = args[:target_resources] if args.key?(:target_resources)
           @xor_group_id = args[:xor_group_id] if args.key?(:xor_group_id)
         end
       end
