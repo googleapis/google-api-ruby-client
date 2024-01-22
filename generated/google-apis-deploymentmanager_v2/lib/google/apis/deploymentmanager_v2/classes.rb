@@ -321,7 +321,8 @@ module Google
         # global, regional or zonal. - For global operations, use the `globalOperations`
         # resource. - For regional operations, use the `regionOperations` resource. -
         # For zonal operations, use the `zoneOperations` resource. For more information,
-        # read Global, Regional, and Zonal Resources.
+        # read Global, Regional, and Zonal Resources. Note that completed Operation
+        # resources have a limited retention period.
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::DeploymentmanagerV2::Operation]
         attr_accessor :operation
@@ -805,7 +806,8 @@ module Google
       # global, regional or zonal. - For global operations, use the `globalOperations`
       # resource. - For regional operations, use the `regionOperations` resource. -
       # For zonal operations, use the `zoneOperations` resource. For more information,
-      # read Global, Regional, and Zonal Resources.
+      # read Global, Regional, and Zonal Resources. Note that completed Operation
+      # resources have a limited retention period.
       class Operation
         include Google::Apis::Core::Hashable
       
@@ -1809,7 +1811,8 @@ module Google
         # global, regional or zonal. - For global operations, use the `globalOperations`
         # resource. - For regional operations, use the `regionOperations` resource. -
         # For zonal operations, use the `zoneOperations` resource. For more information,
-        # read Global, Regional, and Zonal Resources.
+        # read Global, Regional, and Zonal Resources. Note that completed Operation
+        # resources have a limited retention period.
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::DeploymentmanagerV2::Operation]
         attr_accessor :operation
