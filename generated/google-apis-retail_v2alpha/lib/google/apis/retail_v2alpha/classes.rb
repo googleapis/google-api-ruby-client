@@ -1637,6 +1637,18 @@ module Google
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttributeFacetConfigMergedFacetValue>]
         attr_accessor :merged_facet_values
       
+        # Options to rerank based on facet values engaged by the user for the current
+        # key. That key needs to be a custom textual key and facetable. To use this
+        # control, you also need to pass all the facet keys engaged by the user in the
+        # request using the field [SearchRequest.FacetSpec]. In particular, if you don't
+        # pass the facet keys engaged that you want to rerank on, this control won't be
+        # effective. Moreover, to obtain better results, the facet values that you want
+        # to rerank on should be close to English (ideally made of words, underscores,
+        # and spaces).
+        # Corresponds to the JSON property `rerankConfig`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttributeFacetConfigRerankConfig]
+        attr_accessor :rerank_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1646,6 +1658,7 @@ module Google
           @facet_intervals = args[:facet_intervals] if args.key?(:facet_intervals)
           @ignored_facet_values = args[:ignored_facet_values] if args.key?(:ignored_facet_values)
           @merged_facet_values = args[:merged_facet_values] if args.key?(:merged_facet_values)
+          @rerank_config = args[:rerank_config] if args.key?(:rerank_config)
         end
       end
       
@@ -1715,6 +1728,41 @@ module Google
         def update!(**args)
           @merged_value = args[:merged_value] if args.key?(:merged_value)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Options to rerank based on facet values engaged by the user for the current
+      # key. That key needs to be a custom textual key and facetable. To use this
+      # control, you also need to pass all the facet keys engaged by the user in the
+      # request using the field [SearchRequest.FacetSpec]. In particular, if you don't
+      # pass the facet keys engaged that you want to rerank on, this control won't be
+      # effective. Moreover, to obtain better results, the facet values that you want
+      # to rerank on should be close to English (ideally made of words, underscores,
+      # and spaces).
+      class GoogleCloudRetailV2alphaCatalogAttributeFacetConfigRerankConfig
+        include Google::Apis::Core::Hashable
+      
+        # If empty, rerank on all facet values for the current key. Otherwise, will
+        # rerank on the facet values from this list only.
+        # Corresponds to the JSON property `facetValues`
+        # @return [Array<String>]
+        attr_accessor :facet_values
+      
+        # If set to true, then we also rerank the dynamic facets based on the facet
+        # values engaged by the user for the current attribute key during serving.
+        # Corresponds to the JSON property `rerankFacet`
+        # @return [Boolean]
+        attr_accessor :rerank_facet
+        alias_method :rerank_facet?, :rerank_facet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @facet_values = args[:facet_values] if args.key?(:facet_values)
+          @rerank_facet = args[:rerank_facet] if args.key?(:rerank_facet)
         end
       end
       
@@ -7637,6 +7685,40 @@ module Google
         # Update properties of this object
         def update!(**args)
           @model = args[:model] if args.key?(:model)
+        end
+      end
+      
+      # Response of the ExportAnalyticsMetricsRequest. If the long running operation
+      # was successful, then this message is returned by the google.longrunning.
+      # Operations.response field if the operation was successful.
+      class GoogleCloudRetailV2betaExportAnalyticsMetricsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # Configuration of destination for Export related errors.
+        # Corresponds to the JSON property `errorsConfig`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaExportErrorsConfig]
+        attr_accessor :errors_config
+      
+        # Output result that stores the information about where the exported data is
+        # stored.
+        # Corresponds to the JSON property `outputResult`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaOutputResult]
+        attr_accessor :output_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @errors_config = args[:errors_config] if args.key?(:errors_config)
+          @output_result = args[:output_result] if args.key?(:output_result)
         end
       end
       
