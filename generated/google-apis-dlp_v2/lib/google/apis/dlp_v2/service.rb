@@ -34,6 +34,8 @@ module Google
       #
       # @see https://cloud.google.com/dlp/docs/
       class DLPService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://dlp.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -45,7 +47,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://dlp.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-dlp_v2',
                 client_version: Google::Apis::DlpV2::GEM_VERSION)
           @batch_path = 'batch'
@@ -3570,7 +3572,7 @@ module Google
         # Finish a running hybrid DlpJob. Triggers the finalization steps and running of
         # any enabled actions that have not yet run.
         # @param [String] name
-        #   Required. The name of the DlpJob resource to be cancelled.
+        #   Required. The name of the DlpJob resource to be finished.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2FinishDlpJobRequest] google_privacy_dlp_v2_finish_dlp_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

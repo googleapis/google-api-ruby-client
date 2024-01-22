@@ -2198,6 +2198,26 @@ module Google
         end
       end
       
+      # Message used to identify the type of resource being profiled.
+      class GooglePrivacyDlpV2DataSourceType
+        include Google::Apis::Core::Hashable
+      
+        # Output only. An identifying string to the type of resource being profiled.
+        # Current values: google/bigquery/table, google/project
+        # Corresponds to the JSON property `dataSource`
+        # @return [String]
+        attr_accessor :data_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source = args[:data_source] if args.key?(:data_source)
+        end
+      end
+      
       # Record key for a finding in Cloud Datastore.
       class GooglePrivacyDlpV2DatastoreKey
         include Google::Apis::Core::Hashable
@@ -7605,6 +7625,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel]
         attr_accessor :data_risk_level
       
+        # Message used to identify the type of resource being profiled.
+        # Corresponds to the JSON property `dataSourceType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataSourceType]
+        attr_accessor :data_source_type
+      
         # The BigQuery dataset ID.
         # Corresponds to the JSON property `datasetId`
         # @return [String]
@@ -7729,6 +7754,7 @@ module Google
           @config_snapshot = args[:config_snapshot] if args.key?(:config_snapshot)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_risk_level = args[:data_risk_level] if args.key?(:data_risk_level)
+          @data_source_type = args[:data_source_type] if args.key?(:data_source_type)
           @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
           @dataset_location = args[:dataset_location] if args.key?(:dataset_location)
           @dataset_project_id = args[:dataset_project_id] if args.key?(:dataset_project_id)
