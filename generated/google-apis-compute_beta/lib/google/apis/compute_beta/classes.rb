@@ -9872,14 +9872,12 @@ module Google
         attr_accessor :all_ports
         alias_method :all_ports?, :all_ports
       
-        # This field is used along with the backend_service field for internal load
-        # balancing or with the target field for internal TargetInstance. If set to true,
-        # clients can access the internal passthrough Network Load Balancers, the
-        # regional internal Application Load Balancer, and the regional internal proxy
-        # Network Load Balancer from all regions. If false, only allows access from the
-        # local region the load balancer is located at. Note that for INTERNAL_MANAGED
-        # forwarding rules, this field cannot be changed after the forwarding rule is
-        # created.
+        # If set to true, clients can access the internal passthrough Network Load
+        # Balancers, the regional internal Application Load Balancer, and the regional
+        # internal proxy Network Load Balancer from all regions. If false, only allows
+        # access from the local region the load balancer is located at. Note that for
+        # INTERNAL_MANAGED forwarding rules, this field cannot be changed after the
+        # forwarding rule is created.
         # Corresponds to the JSON property `allowGlobalAccess`
         # @return [Boolean]
         attr_accessor :allow_global_access
@@ -11712,8 +11710,9 @@ module Google
         # The ID of a supported feature. To add multiple values, use commas to separate
         # values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE -
         # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE -
-        # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - IDPF For
-        # more information, see Enabling guest operating system features.
+        # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE -
+        # TDX_CAPABLE - IDPF For more information, see Enabling guest operating system
+        # features.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -25571,10 +25570,12 @@ module Google
         # @return [String]
         attr_accessor :fqdn
       
-        # The name for a specific VM instance that the IP address belongs to. This is
-        # required for network endpoints of type GCE_VM_IP_PORT. The instance must be in
-        # the same zone of network endpoint group. The name must be 1-63 characters long,
-        # and comply with RFC1035.
+        # The name or a URL of a specific VM instance that the IP address belongs to.
+        # This is required for network endpoints of type GCE_VM_IP_PORT. The instance
+        # must be in the same zone of network endpoint group (for zonal NEGs) or in the
+        # zone within the region of the NEG (for regional NEGs). The name must be 1-63
+        # characters long, and comply with RFC1035 or be a valid URL pointing to an
+        # existing instance.
         # Corresponds to the JSON property `instance`
         # @return [String]
         attr_accessor :instance
