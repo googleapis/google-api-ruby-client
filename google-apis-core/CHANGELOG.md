@@ -1,5 +1,11 @@
 # Release History
 
+### 0.12.0 (2024-01-22)
+
+#### Features
+
+* Support for universe_domain ([#17131](https://github.com/googleapis/google-api-ruby-client/issues/17131)) 
+
 ### 0.11.3 (2024-01-17)
 
 #### Bug Fixes
