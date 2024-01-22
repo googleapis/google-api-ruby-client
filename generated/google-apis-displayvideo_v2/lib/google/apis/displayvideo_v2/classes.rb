@@ -270,7 +270,7 @@ module Google
       class AdvertiserBillingConfig
         include Google::Apis::Core::Hashable
       
-        # The ID of a billing profile assigned to the advertiser.
+        # Optional. The ID of a billing profile assigned to the advertiser.
         # Corresponds to the JSON property `billingProfileId`
         # @return [Fixnum]
         attr_accessor :billing_profile_id
@@ -5724,10 +5724,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_impressions
       
-        # The maximum number of times a user may click-through or fully view an ad
-        # during this period until it is no longer served to them. Must be greater than
-        # 0. Only applicable to YouTube and Partners resources. Required when unlimited
-        # is `false` and max_impressions is not set.
+        # Optional. The maximum number of times a user may click-through or fully view
+        # an ad during this period until it is no longer served to them. Must be greater
+        # than 0. Only applicable to YouTube and Partners resources. Required when
+        # unlimited is `false` and max_impressions is not set.
         # Corresponds to the JSON property `maxViews`
         # @return [Fixnum]
         attr_accessor :max_views
@@ -12081,6 +12081,12 @@ module Google
       class YoutubeAndPartnersInventorySourceConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether to target inventory in video apps available with Google TV.
+        # Corresponds to the JSON property `includeGoogleTv`
+        # @return [Boolean]
+        attr_accessor :include_google_tv
+        alias_method :include_google_tv?, :include_google_tv
+      
         # Whether to target inventory on the YouTube search results page.
         # Corresponds to the JSON property `includeYoutubeSearch`
         # @return [Boolean]
@@ -12107,6 +12113,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include_google_tv = args[:include_google_tv] if args.key?(:include_google_tv)
           @include_youtube_search = args[:include_youtube_search] if args.key?(:include_youtube_search)
           @include_youtube_video_partners = args[:include_youtube_video_partners] if args.key?(:include_youtube_video_partners)
           @include_youtube_videos = args[:include_youtube_videos] if args.key?(:include_youtube_videos)
@@ -12140,18 +12147,19 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::YoutubeAndPartnersInventorySourceConfig]
         attr_accessor :inventory_source_settings
       
-        # The ID of the form to generate leads.
+        # Optional. The ID of the form to generate leads.
         # Corresponds to the JSON property `leadFormId`
         # @return [Fixnum]
         attr_accessor :lead_form_id
       
-        # The ID of the merchant which is linked to the line item for product feed.
+        # Optional. The ID of the merchant which is linked to the line item for product
+        # feed.
         # Corresponds to the JSON property `linkedMerchantId`
         # @return [Fixnum]
         attr_accessor :linked_merchant_id
       
-        # The IDs of the videos appear below the primary video ad when the ad is playing
-        # in the YouTube app on mobile devices.
+        # Optional. The IDs of the videos appear below the primary video ad when the ad
+        # is playing in the YouTube app on mobile devices.
         # Corresponds to the JSON property `relatedVideoIds`
         # @return [Array<String>]
         attr_accessor :related_video_ids
