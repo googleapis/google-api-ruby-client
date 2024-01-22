@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Base2Exponent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryIoDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +65,12 @@ module Google
       end
       
       class BigTableIoDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BucketOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -149,6 +161,12 @@ module Google
       end
       
       class DataSamplingReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataflowHistogramValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Linear
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListJobMessagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -472,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MountedDataDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -485,6 +515,12 @@ module Google
       end
       
       class NameAndKind
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OutlierStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -527,6 +563,18 @@ module Google
       end
       
       class PartialGroupByKeyInstruction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PerStepNamespaceMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PerWorkerMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1120,6 +1168,14 @@ module Google
         end
       end
       
+      class Base2Exponent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :number_of_buckets, as: 'numberOfBuckets'
+          property :scale, as: 'scale'
+        end
+      end
+      
       class BigQueryIoDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1136,6 +1192,16 @@ module Google
           property :instance_id, as: 'instanceId'
           property :project_id, as: 'projectId'
           property :table_id, as: 'tableId'
+        end
+      end
+      
+      class BucketOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exponential, as: 'exponential', class: Google::Apis::DataflowV1b3::Base2Exponent, decorator: Google::Apis::DataflowV1b3::Base2Exponent::Representation
+      
+          property :linear, as: 'linear', class: Google::Apis::DataflowV1b3::Linear, decorator: Google::Apis::DataflowV1b3::Linear::Representation
+      
         end
       end
       
@@ -1318,6 +1384,18 @@ module Google
           property :pcollections_sampled_count, :numeric_string => true, as: 'pcollectionsSampledCount'
           property :persistence_errors_count, :numeric_string => true, as: 'persistenceErrorsCount'
           property :translation_errors_count, :numeric_string => true, as: 'translationErrorsCount'
+        end
+      end
+      
+      class DataflowHistogramValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bucket_counts, as: 'bucketCounts'
+          property :bucket_options, as: 'bucketOptions', class: Google::Apis::DataflowV1b3::BucketOptions, decorator: Google::Apis::DataflowV1b3::BucketOptions::Representation
+      
+          property :count, :numeric_string => true, as: 'count'
+          property :outlier_stats, as: 'outlierStats', class: Google::Apis::DataflowV1b3::OutlierStats, decorator: Google::Apis::DataflowV1b3::OutlierStats::Representation
+      
         end
       end
       
@@ -1505,6 +1583,7 @@ module Google
           property :sdk_container_image, as: 'sdkContainerImage'
           property :service_account_email, as: 'serviceAccountEmail'
           property :staging_location, as: 'stagingLocation'
+          property :streaming_mode, as: 'streamingMode'
           property :subnetwork, as: 'subnetwork'
           property :temp_location, as: 'tempLocation'
           property :worker_region, as: 'workerRegion'
@@ -1838,6 +1917,15 @@ module Google
         end
       end
       
+      class Linear
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :number_of_buckets, as: 'numberOfBuckets'
+          property :start, as: 'start'
+          property :width, as: 'width'
+        end
+      end
+      
       class ListJobMessagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1925,6 +2013,17 @@ module Google
         end
       end
       
+      class MetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric, as: 'metric'
+          hash :metric_labels, as: 'metricLabels'
+          property :value_histogram, as: 'valueHistogram', class: Google::Apis::DataflowV1b3::DataflowHistogramValue, decorator: Google::Apis::DataflowV1b3::DataflowHistogramValue::Representation
+      
+          property :value_int64, :numeric_string => true, as: 'valueInt64'
+        end
+      end
+      
       class MountedDataDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1944,6 +2043,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :name, as: 'name'
+        end
+      end
+      
+      class OutlierStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :overflow_count, :numeric_string => true, as: 'overflowCount'
+          property :overflow_mean, as: 'overflowMean'
+          property :underflow_count, :numeric_string => true, as: 'underflowCount'
+          property :underflow_mean, as: 'underflowMean'
         end
       end
       
@@ -2037,6 +2146,24 @@ module Google
           collection :side_inputs, as: 'sideInputs', class: Google::Apis::DataflowV1b3::SideInputInfo, decorator: Google::Apis::DataflowV1b3::SideInputInfo::Representation
       
           hash :value_combining_fn, as: 'valueCombiningFn'
+        end
+      end
+      
+      class PerStepNamespaceMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metric_values, as: 'metricValues', class: Google::Apis::DataflowV1b3::MetricValue, decorator: Google::Apis::DataflowV1b3::MetricValue::Representation
+      
+          property :metrics_namespace, as: 'metricsNamespace'
+          property :original_step, as: 'originalStep'
+        end
+      end
+      
+      class PerWorkerMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :per_step_namespace_metrics, as: 'perStepNamespaceMetrics', class: Google::Apis::DataflowV1b3::PerStepNamespaceMetrics, decorator: Google::Apis::DataflowV1b3::PerStepNamespaceMetrics::Representation
+      
         end
       end
       
@@ -2184,6 +2311,7 @@ module Google
           property :network, as: 'network'
           property :num_workers, as: 'numWorkers'
           property :service_account_email, as: 'serviceAccountEmail'
+          property :streaming_mode, as: 'streamingMode'
           property :subnetwork, as: 'subnetwork'
           property :temp_location, as: 'tempLocation'
           property :worker_region, as: 'workerRegion'
@@ -2661,8 +2789,11 @@ module Google
           property :active_bundle_count, as: 'activeBundleCount'
           property :active_thread_count, as: 'activeThreadCount'
           property :maximum_bundle_count, as: 'maximumBundleCount'
+          property :maximum_bytes, :numeric_string => true, as: 'maximumBytes'
           property :maximum_bytes_count, as: 'maximumBytesCount'
           property :maximum_thread_count, as: 'maximumThreadCount'
+          property :outstanding_bundle_count, as: 'outstandingBundleCount'
+          property :outstanding_bytes, :numeric_string => true, as: 'outstandingBytes'
           property :outstanding_bytes_count, as: 'outstandingBytesCount'
         end
       end
@@ -2926,6 +3057,8 @@ module Google
           property :data_sampling_report, as: 'dataSamplingReport', class: Google::Apis::DataflowV1b3::DataSamplingReport, decorator: Google::Apis::DataflowV1b3::DataSamplingReport::Representation
       
           hash :labels, as: 'labels'
+          property :per_worker_metrics, as: 'perWorkerMetrics', class: Google::Apis::DataflowV1b3::PerWorkerMetrics, decorator: Google::Apis::DataflowV1b3::PerWorkerMetrics::Representation
+      
           property :streaming_scaling_report, as: 'streamingScalingReport', class: Google::Apis::DataflowV1b3::StreamingScalingReport, decorator: Google::Apis::DataflowV1b3::StreamingScalingReport::Representation
       
           property :time, as: 'time'

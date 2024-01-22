@@ -210,6 +210,35 @@ module Google
         end
       end
       
+      # Exponential buckets where the growth factor between buckets is `2**(2**-scale)`
+      # . e.g. for `scale=1` growth factor is `2**(2**(-1))=sqrt(2)`. `n` buckets will
+      # have the following boundaries. - 0th: [0, gf) - i in [1, n-1]: [gf^(i), gf^(i+
+      # 1))
+      class Base2Exponent
+        include Google::Apis::Core::Hashable
+      
+        # Must be greater than 0.
+        # Corresponds to the JSON property `numberOfBuckets`
+        # @return [Fixnum]
+        attr_accessor :number_of_buckets
+      
+        # Must be between -3 and 3. This forces the growth factor of the bucket
+        # boundaries to be between `2^(1/8)` and `256`.
+        # Corresponds to the JSON property `scale`
+        # @return [Fixnum]
+        attr_accessor :scale
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @number_of_buckets = args[:number_of_buckets] if args.key?(:number_of_buckets)
+          @scale = args[:scale] if args.key?(:scale)
+        end
+      end
+      
       # Metadata for a BigQuery connector used by the job.
       class BigQueryIoDetails
         include Google::Apis::Core::Hashable
@@ -275,6 +304,35 @@ module Google
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @project_id = args[:project_id] if args.key?(:project_id)
           @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
+      # `BucketOptions` describes the bucket boundaries used in the histogram.
+      class BucketOptions
+        include Google::Apis::Core::Hashable
+      
+        # Exponential buckets where the growth factor between buckets is `2**(2**-scale)`
+        # . e.g. for `scale=1` growth factor is `2**(2**(-1))=sqrt(2)`. `n` buckets will
+        # have the following boundaries. - 0th: [0, gf) - i in [1, n-1]: [gf^(i), gf^(i+
+        # 1))
+        # Corresponds to the JSON property `exponential`
+        # @return [Google::Apis::DataflowV1b3::Base2Exponent]
+        attr_accessor :exponential
+      
+        # Linear buckets with the following boundaries for indices in 0 to n-1. - i in [
+        # 0, n-1]: [start + (i)*width, start + (i+1)*width)
+        # Corresponds to the JSON property `linear`
+        # @return [Google::Apis::DataflowV1b3::Linear]
+        attr_accessor :linear
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exponential = args[:exponential] if args.key?(:exponential)
+          @linear = args[:linear] if args.key?(:linear)
         end
       end
       
@@ -935,6 +993,49 @@ module Google
           @pcollections_sampled_count = args[:pcollections_sampled_count] if args.key?(:pcollections_sampled_count)
           @persistence_errors_count = args[:persistence_errors_count] if args.key?(:persistence_errors_count)
           @translation_errors_count = args[:translation_errors_count] if args.key?(:translation_errors_count)
+        end
+      end
+      
+      # Summary statistics for a population of values. HistogramValue contains a
+      # sequence of buckets and gives a count of values that fall into each bucket.
+      # Bucket boundares are defined by a formula and bucket widths are either fixed
+      # or exponentially increasing.
+      class DataflowHistogramValue
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of values in each bucket of the histogram, as described
+        # in `bucket_options`. `bucket_counts` should contain N values, where N is the
+        # number of buckets specified in `bucket_options`. If `bucket_counts` has fewer
+        # than N values, the remaining values are assumed to be 0.
+        # Corresponds to the JSON property `bucketCounts`
+        # @return [Array<Fixnum>]
+        attr_accessor :bucket_counts
+      
+        # `BucketOptions` describes the bucket boundaries used in the histogram.
+        # Corresponds to the JSON property `bucketOptions`
+        # @return [Google::Apis::DataflowV1b3::BucketOptions]
+        attr_accessor :bucket_options
+      
+        # Number of values recorded in this histogram.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Statistics for the underflow and overflow bucket.
+        # Corresponds to the JSON property `outlierStats`
+        # @return [Google::Apis::DataflowV1b3::OutlierStats]
+        attr_accessor :outlier_stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_counts = args[:bucket_counts] if args.key?(:bucket_counts)
+          @bucket_options = args[:bucket_options] if args.key?(:bucket_options)
+          @count = args[:count] if args.key?(:count)
+          @outlier_stats = args[:outlier_stats] if args.key?(:outlier_stats)
         end
       end
       
@@ -1687,6 +1788,14 @@ module Google
         # @return [String]
         attr_accessor :staging_location
       
+        # Optional. Specifies the Streaming Engine message processing guarantees.
+        # Reduces cost and latency but might result in duplicate messages committed to
+        # storage. Designed to run simple mapping streaming ETL jobs at the lowest cost.
+        # For example, Change Data Capture (CDC) to BigQuery is a canonical use case.
+        # Corresponds to the JSON property `streamingMode`
+        # @return [String]
+        attr_accessor :streaming_mode
+      
         # Subnetwork to which VMs will be assigned, if desired. You can specify a
         # subnetwork using either a complete URL or an abbreviated path. Expected to be
         # of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/
@@ -1753,6 +1862,7 @@ module Google
           @sdk_container_image = args[:sdk_container_image] if args.key?(:sdk_container_image)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @staging_location = args[:staging_location] if args.key?(:staging_location)
+          @streaming_mode = args[:streaming_mode] if args.key?(:streaming_mode)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @temp_location = args[:temp_location] if args.key?(:temp_location)
           @worker_region = args[:worker_region] if args.key?(:worker_region)
@@ -2946,6 +3056,38 @@ module Google
         end
       end
       
+      # Linear buckets with the following boundaries for indices in 0 to n-1. - i in [
+      # 0, n-1]: [start + (i)*width, start + (i+1)*width)
+      class Linear
+        include Google::Apis::Core::Hashable
+      
+        # Must be greater than 0.
+        # Corresponds to the JSON property `numberOfBuckets`
+        # @return [Fixnum]
+        attr_accessor :number_of_buckets
+      
+        # Lower bound of the first bucket.
+        # Corresponds to the JSON property `start`
+        # @return [Float]
+        attr_accessor :start
+      
+        # Distance between bucket boundaries. Must be greater than 0.
+        # Corresponds to the JSON property `width`
+        # @return [Float]
+        attr_accessor :width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @number_of_buckets = args[:number_of_buckets] if args.key?(:number_of_buckets)
+          @start = args[:start] if args.key?(:start)
+          @width = args[:width] if args.key?(:width)
+        end
+      end
+      
       # Response to a request to list job messages.
       class ListJobMessagesResponse
         include Google::Apis::Core::Hashable
@@ -3276,6 +3418,46 @@ module Google
         end
       end
       
+      # The value of a metric along with its name and labels.
+      class MetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Base name for this metric.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # Optional. Set of metric labels for this metric.
+        # Corresponds to the JSON property `metricLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :metric_labels
+      
+        # Summary statistics for a population of values. HistogramValue contains a
+        # sequence of buckets and gives a count of values that fall into each bucket.
+        # Bucket boundares are defined by a formula and bucket widths are either fixed
+        # or exponentially increasing.
+        # Corresponds to the JSON property `valueHistogram`
+        # @return [Google::Apis::DataflowV1b3::DataflowHistogramValue]
+        attr_accessor :value_histogram
+      
+        # Integer value of this metric.
+        # Corresponds to the JSON property `valueInt64`
+        # @return [Fixnum]
+        attr_accessor :value_int64
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric = args[:metric] if args.key?(:metric)
+          @metric_labels = args[:metric_labels] if args.key?(:metric_labels)
+          @value_histogram = args[:value_histogram] if args.key?(:value_histogram)
+          @value_int64 = args[:value_int64] if args.key?(:value_int64)
+        end
+      end
+      
       # Describes mounted data disk.
       class MountedDataDisk
         include Google::Apis::Core::Hashable
@@ -3339,6 +3521,43 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Statistics for the underflow and overflow bucket.
+      class OutlierStats
+        include Google::Apis::Core::Hashable
+      
+        # Number of values that are larger than the upper bound of the largest bucket.
+        # Corresponds to the JSON property `overflowCount`
+        # @return [Fixnum]
+        attr_accessor :overflow_count
+      
+        # Mean of values in the overflow bucket.
+        # Corresponds to the JSON property `overflowMean`
+        # @return [Float]
+        attr_accessor :overflow_mean
+      
+        # Number of values that are smaller than the lower bound of the smallest bucket.
+        # Corresponds to the JSON property `underflowCount`
+        # @return [Fixnum]
+        attr_accessor :underflow_count
+      
+        # Mean of values in the undeflow bucket.
+        # Corresponds to the JSON property `underflowMean`
+        # @return [Float]
+        attr_accessor :underflow_mean
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @overflow_count = args[:overflow_count] if args.key?(:overflow_count)
+          @overflow_mean = args[:overflow_mean] if args.key?(:overflow_mean)
+          @underflow_count = args[:underflow_count] if args.key?(:underflow_count)
+          @underflow_mean = args[:underflow_mean] if args.key?(:underflow_mean)
         end
       end
       
@@ -3686,6 +3905,59 @@ module Google
           @original_combine_values_step_name = args[:original_combine_values_step_name] if args.key?(:original_combine_values_step_name)
           @side_inputs = args[:side_inputs] if args.key?(:side_inputs)
           @value_combining_fn = args[:value_combining_fn] if args.key?(:value_combining_fn)
+        end
+      end
+      
+      # Metrics for a particular unfused step and namespace. A metric is uniquely
+      # identified by the `metrics_namespace`, `original_step`, `metric name` and `
+      # metric_labels`.
+      class PerStepNamespaceMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Metrics that are recorded for this namespace and unfused step.
+        # Corresponds to the JSON property `metricValues`
+        # @return [Array<Google::Apis::DataflowV1b3::MetricValue>]
+        attr_accessor :metric_values
+      
+        # The namespace of these metrics on the worker.
+        # Corresponds to the JSON property `metricsNamespace`
+        # @return [String]
+        attr_accessor :metrics_namespace
+      
+        # The original system name of the unfused step that these metrics are reported
+        # from.
+        # Corresponds to the JSON property `originalStep`
+        # @return [String]
+        attr_accessor :original_step
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_values = args[:metric_values] if args.key?(:metric_values)
+          @metrics_namespace = args[:metrics_namespace] if args.key?(:metrics_namespace)
+          @original_step = args[:original_step] if args.key?(:original_step)
+        end
+      end
+      
+      # Per worker metrics.
+      class PerWorkerMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Metrics for a particular unfused step and namespace.
+        # Corresponds to the JSON property `perStepNamespaceMetrics`
+        # @return [Array<Google::Apis::DataflowV1b3::PerStepNamespaceMetrics>]
+        attr_accessor :per_step_namespace_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @per_step_namespace_metrics = args[:per_step_namespace_metrics] if args.key?(:per_step_namespace_metrics)
         end
       end
       
@@ -4207,6 +4479,14 @@ module Google
         # @return [String]
         attr_accessor :service_account_email
       
+        # Optional. Specifies the Streaming Engine message processing guarantees.
+        # Reduces cost and latency but might result in duplicate messages committed to
+        # storage. Designed to run simple mapping streaming ETL jobs at the lowest cost.
+        # For example, Change Data Capture (CDC) to BigQuery is a canonical use case.
+        # Corresponds to the JSON property `streamingMode`
+        # @return [String]
+        attr_accessor :streaming_mode
+      
         # Optional. Subnetwork to which VMs will be assigned, if desired. You can
         # specify a subnetwork using either a complete URL or an abbreviated path.
         # Expected to be of the form "https://www.googleapis.com/compute/v1/projects/
@@ -4266,6 +4546,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @num_workers = args[:num_workers] if args.key?(:num_workers)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @streaming_mode = args[:streaming_mode] if args.key?(:streaming_mode)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @temp_location = args[:temp_location] if args.key?(:temp_location)
           @worker_region = args[:worker_region] if args.key?(:worker_region)
@@ -5856,7 +6137,7 @@ module Google
       class StreamingScalingReport
         include Google::Apis::Core::Hashable
       
-        # Current acive bundle count.
+        # 
         # Corresponds to the JSON property `activeBundleCount`
         # @return [Fixnum]
         attr_accessor :active_bundle_count
@@ -5866,12 +6147,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :active_thread_count
       
-        # Maximum bundle count limit.
+        # Maximum bundle count.
         # Corresponds to the JSON property `maximumBundleCount`
         # @return [Fixnum]
         attr_accessor :maximum_bundle_count
       
-        # Maximum bytes count limit.
+        # Maximum bytes.
+        # Corresponds to the JSON property `maximumBytes`
+        # @return [Fixnum]
+        attr_accessor :maximum_bytes
+      
+        # 
         # Corresponds to the JSON property `maximumBytesCount`
         # @return [Fixnum]
         attr_accessor :maximum_bytes_count
@@ -5881,7 +6167,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :maximum_thread_count
       
-        # Current outstanding bytes count.
+        # Current outstanding bundle count.
+        # Corresponds to the JSON property `outstandingBundleCount`
+        # @return [Fixnum]
+        attr_accessor :outstanding_bundle_count
+      
+        # Current outstanding bytes.
+        # Corresponds to the JSON property `outstandingBytes`
+        # @return [Fixnum]
+        attr_accessor :outstanding_bytes
+      
+        # 
         # Corresponds to the JSON property `outstandingBytesCount`
         # @return [Fixnum]
         attr_accessor :outstanding_bytes_count
@@ -5895,8 +6191,11 @@ module Google
           @active_bundle_count = args[:active_bundle_count] if args.key?(:active_bundle_count)
           @active_thread_count = args[:active_thread_count] if args.key?(:active_thread_count)
           @maximum_bundle_count = args[:maximum_bundle_count] if args.key?(:maximum_bundle_count)
+          @maximum_bytes = args[:maximum_bytes] if args.key?(:maximum_bytes)
           @maximum_bytes_count = args[:maximum_bytes_count] if args.key?(:maximum_bytes_count)
           @maximum_thread_count = args[:maximum_thread_count] if args.key?(:maximum_thread_count)
+          @outstanding_bundle_count = args[:outstanding_bundle_count] if args.key?(:outstanding_bundle_count)
+          @outstanding_bytes = args[:outstanding_bytes] if args.key?(:outstanding_bytes)
           @outstanding_bytes_count = args[:outstanding_bytes_count] if args.key?(:outstanding_bytes_count)
         end
       end
@@ -6893,6 +7192,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Per worker metrics.
+        # Corresponds to the JSON property `perWorkerMetrics`
+        # @return [Google::Apis::DataflowV1b3::PerWorkerMetrics]
+        attr_accessor :per_worker_metrics
+      
         # Contains per-user worker telemetry used in streaming autoscaling.
         # Corresponds to the JSON property `streamingScalingReport`
         # @return [Google::Apis::DataflowV1b3::StreamingScalingReport]
@@ -6954,6 +7258,7 @@ module Google
         def update!(**args)
           @data_sampling_report = args[:data_sampling_report] if args.key?(:data_sampling_report)
           @labels = args[:labels] if args.key?(:labels)
+          @per_worker_metrics = args[:per_worker_metrics] if args.key?(:per_worker_metrics)
           @streaming_scaling_report = args[:streaming_scaling_report] if args.key?(:streaming_scaling_report)
           @time = args[:time] if args.key?(:time)
           @worker_health_report = args[:worker_health_report] if args.key?(:worker_health_report)
