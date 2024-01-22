@@ -1,5 +1,9 @@
 # Release history for google-apis-safebrowsing_v4
 
+### v0.18.0 (2024-01-22)
+
+* Regenerated using generator version 0.13.0
+
 ### v0.17.0 (2023-02-15)
 
 * Regenerated from discovery document revision 20230212
