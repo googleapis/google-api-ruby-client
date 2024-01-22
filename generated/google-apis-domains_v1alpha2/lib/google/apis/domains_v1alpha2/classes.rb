@@ -152,21 +152,43 @@ module Google
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
         # . * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
-        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a user that has been recently deleted. For example, `alice@
-        # example.com?uid=123456789012345678901`. If the user is recovered, this value
-        # reverts to `user:`emailid`` and the recovered user retains the role in the
-        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
-        # (plus unique identifier) representing a service account that has been recently
-        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # users of that domain. For example, `google.com` or `example.com`. * `principal:
+        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
+        # subject_attribute_value``: A single identity in a workforce identity pool. * `
+        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
+        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
+        # attribute_name`/`attribute_value``: All workforce identities with a specific
+        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
+        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
+        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
+        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
+        # googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
+        # All identities in a workload identity pool with a certain attribute. * `
+        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding.
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
+        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
+        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
+        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -432,7 +454,7 @@ module Google
         attr_accessor :glue_records
       
         # Deprecated: For more information, see [Cloud Domains feature deprecation](
-        # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
+        # https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
         # Configuration for using the free DNS zone provided by Google Domains as a `
         # Registration`'s `dns_provider`. You cannot configure the DNS zone itself using
         # the API. To configure the DNS zone, go to [Google Domains](https://domains.
@@ -524,7 +546,7 @@ module Google
       end
       
       # Deprecated: For more information, see [Cloud Domains feature deprecation](
-      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
+      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
       # Request for the `ExportRegistration` method.
       class ExportRegistrationRequest
         include Google::Apis::Core::Hashable
@@ -632,7 +654,7 @@ module Google
       end
       
       # Deprecated: For more information, see [Cloud Domains feature deprecation](
-      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
+      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
       # Configuration for using the free DNS zone provided by Google Domains as a `
       # Registration`'s `dns_provider`. You cannot configure the DNS zone itself using
       # the API. To configure the DNS zone, go to [Google Domains](https://domains.
@@ -674,7 +696,7 @@ module Google
       end
       
       # Deprecated: For more information, see [Cloud Domains feature deprecation](
-      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
+      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
       # Request for the `ImportDomain` method.
       class ImportDomainRequest
         include Google::Apis::Core::Hashable
@@ -830,25 +852,26 @@ module Google
       
         # Optional. The desired renewal method for this `Registration`. The actual `
         # renewal_method` is automatically updated to reflect this choice. If unset or
-        # equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to
-        # `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource
-        # creation and can only be updated when the `Registration` resource has state `
-        # ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `
-        # AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED`
-        # in case of e.g. problems with the Billing Account or reported domain abuse.
-        # In such cases check the `issues` field on the `Registration`. After the
-        # problem is resolved the `renewal_method` will be automatically updated to `
-        # preferred_renewal_method` in a few hours.
+        # equal to `RENEWAL_METHOD_UNSPECIFIED`, the actual `renewalMethod` is treated
+        # as if it were set to `AUTOMATIC_RENEWAL`. You cannot use `RENEWAL_DISABLED`
+        # during resource creation, and you can update the renewal status only when the `
+        # Registration` resource has state `ACTIVE` or `SUSPENDED`. When `
+        # preferred_renewal_method` is set to `AUTOMATIC_RENEWAL`, the actual `
+        # renewal_method` can be set to `RENEWAL_DISABLED` in case of problems with the
+        # billing account or reported domain abuse. In such cases, check the `issues`
+        # field on the `Registration`. After the problem is resolved, the `
+        # renewal_method` is automatically updated to `preferred_renewal_method` in a
+        # few hours.
         # Corresponds to the JSON property `preferredRenewalMethod`
         # @return [String]
         attr_accessor :preferred_renewal_method
       
         # Output only. The actual renewal method for this `Registration`. When `
-        # preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `
-        # renewal_method` can be equal to `RENEWAL_DISABLED` in case of e.g. problems
-        # with the Billing Account or reported domain abuse. In such cases check the `
-        # issues` field on the `Registration`. After the problem is resolved the `
-        # renewal_method` will be automatically updated to `preferred_renewal_method` in
+        # preferred_renewal_method` is set to `AUTOMATIC_RENEWAL`, the actual `
+        # renewal_method` can be equal to `RENEWAL_DISABLED`—for example, when there are
+        # problems with the billing account or reported domain abuse. In such cases,
+        # check the `issues` field on the `Registration`. After the problem is resolved,
+        # the `renewal_method` is automatically updated to `preferred_renewal_method` in
         # a few hours.
         # Corresponds to the JSON property `renewalMethod`
         # @return [String]
@@ -1459,7 +1482,7 @@ module Google
       
         # Output only. Deprecated: For more information, see [Cloud Domains feature
         # deprecation](https://cloud.google.com/domains/docs/deprecations/feature-
-        # deprecations) The reason the domain transfer failed. Only set for domains in
+        # deprecations). The reason the domain transfer failed. Only set for domains in
         # TRANSFER_FAILED state.
         # Corresponds to the JSON property `transferFailureReason`
         # @return [String]
@@ -1502,7 +1525,7 @@ module Google
       end
       
       # Deprecated: For more information, see [Cloud Domains feature deprecation](
-      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
+      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
       # Response for the `RetrieveImportableDomains` method.
       class RetrieveImportableDomainsResponse
         include Google::Apis::Core::Hashable
@@ -1549,13 +1572,13 @@ module Google
       end
       
       # Deprecated: For more information, see [Cloud Domains feature deprecation](
-      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
+      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
       # Response for the `RetrieveTransferParameters` method.
       class RetrieveTransferParametersResponse
         include Google::Apis::Core::Hashable
       
         # Deprecated: For more information, see [Cloud Domains feature deprecation](
-        # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
+        # https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
         # Parameters required to transfer a domain from another registrar.
         # Corresponds to the JSON property `transferParameters`
         # @return [Google::Apis::DomainsV1alpha2::TransferParameters]
@@ -1723,7 +1746,7 @@ module Google
       end
       
       # Deprecated: For more information, see [Cloud Domains feature deprecation](
-      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
+      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
       # Request for the `TransferDomain` method.
       class TransferDomainRequest
         include Google::Apis::Core::Hashable
@@ -1789,7 +1812,7 @@ module Google
       end
       
       # Deprecated: For more information, see [Cloud Domains feature deprecation](
-      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
+      # https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
       # Parameters required to transfer a domain from another registrar.
       class TransferParameters
         include Google::Apis::Core::Hashable
