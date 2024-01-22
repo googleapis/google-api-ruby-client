@@ -33,6 +33,8 @@ module Google
       #
       # @see https://cloud.google.com/solutions/vmware-as-a-service
       class VMwareEngineService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://vmwareengine.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -44,7 +46,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://vmwareengine.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-vmwareengine_v1',
                 client_version: Google::Apis::VmwareengineV1::GEM_VERSION)
           @batch_path = 'batch'
@@ -74,6 +76,43 @@ module Google
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VmwareengineV1::Location::Representation
           command.response_class = Google::Apis::VmwareengineV1::Location
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets all the principals having bind permission on the intranet VPC associated
+        # with the consumer project granted by the Grant API. DnsBindPermission is a
+        # global resource and location can only be global.
+        # @param [String] name
+        #   Required. The name of the resource which stores the users/service accounts
+        #   having the permission to bind to the corresponding intranet VPC of the
+        #   consumer project. DnsBindPermission is a global resource. Resource names are
+        #   schemeless URIs that follow the conventions in https://cloud.google.com/apis/
+        #   design/resource_names. For example: `projects/my-project/locations/global/
+        #   dnsBindPermission`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmwareengineV1::DnsBindPermission] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmwareengineV1::DnsBindPermission]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dns_bind_permission(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::VmwareengineV1::DnsBindPermission::Representation
+          command.response_class = Google::Apis::VmwareengineV1::DnsBindPermission
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -123,45 +162,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets all the principals having bind permission on the intranet VPC associated
-        # with the consumer project granted by the Grant API.
-        # @param [String] name
-        #   Required. The name of the resource which stores the users/service accounts
-        #   having the permission to bind to the corresponding intranet VPC of the
-        #   consumer project. DnsBindPermission is a global resource. Resource names are
-        #   schemeless URIs that follow the conventions in https://cloud.google.com/apis/
-        #   design/resource_names. For example: `projects/my-project/locations/global/
-        #   dnsBindPermission`
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::VmwareengineV1::DnsBindPermission] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::VmwareengineV1::DnsBindPermission]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_global_dns_bind_permission(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::VmwareengineV1::DnsBindPermission::Representation
-          command.response_class = Google::Apis::VmwareengineV1::DnsBindPermission
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Grants the bind permission to the customer provided principal(user / service
         # account) to bind their DNS zone with the intranet VPC associated with the
-        # project.
+        # project. DnsBindPermission is a global resource and location can only be
+        # global.
         # @param [String] name
         #   Required. The name of the resource which stores the users/service accounts
         #   having the permission to bind to the corresponding intranet VPC of the
@@ -201,6 +205,7 @@ module Google
         
         # Revokes the bind permission from the customer provided principal(user /
         # service account) on the intranet VPC associated with the consumer project.
+        # DnsBindPermission is a global resource and location can only be global.
         # @param [String] name
         #   Required. The name of the resource which stores the users/service accounts
         #   having the permission to bind to the corresponding intranet VPC of the
@@ -239,7 +244,8 @@ module Google
         end
         
         # Creates a new network peering between the peer network and VMware Engine
-        # network provided in a `NetworkPeering` resource.
+        # network provided in a `NetworkPeering` resource. NetworkPeering is a global
+        # resource and location can only be global.
         # @param [String] parent
         #   Required. The resource name of the location to create the new network peering
         #   in. This value is always `global`, because `NetworkPeering` is a global
@@ -284,7 +290,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_global_network_peering(parent, network_peering_object = nil, network_peering_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_network_peering(parent, network_peering_object = nil, network_peering_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/networkPeerings', options)
           command.request_representation = Google::Apis::VmwareengineV1::NetworkPeering::Representation
           command.request_object = network_peering_object
@@ -300,7 +306,8 @@ module Google
         
         # Deletes a `NetworkPeering` resource. When a network peering is deleted for a
         # VMware Engine network, the peer network becomes inaccessible to that VMware
-        # Engine network.
+        # Engine network. NetworkPeering is a global resource and location can only be
+        # global.
         # @param [String] name
         #   Required. The resource name of the network peering to be deleted. Resource
         #   names are schemeless URIs that follow the conventions in https://cloud.google.
@@ -335,7 +342,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_global_network_peering(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_network_peering(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VmwareengineV1::Operation::Representation
           command.response_class = Google::Apis::VmwareengineV1::Operation
@@ -348,7 +355,8 @@ module Google
         
         # Retrieves a `NetworkPeering` resource by its resource name. The resource
         # contains details of the network peering, such as peered networks, import and
-        # export custom route configurations, and peering state.
+        # export custom route configurations, and peering state. NetworkPeering is a
+        # global resource and location can only be global.
         # @param [String] name
         #   Required. The resource name of the network peering to retrieve. Resource names
         #   are schemeless URIs that follow the conventions in https://cloud.google.com/
@@ -371,7 +379,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_global_network_peering(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_network_peering(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VmwareengineV1::NetworkPeering::Representation
           command.response_class = Google::Apis::VmwareengineV1::NetworkPeering
@@ -381,7 +389,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists `NetworkPeering` resources in a given project.
+        # Lists `NetworkPeering` resources in a given project. NetworkPeering is a
+        # global resource and location can only be global.
         # @param [String] parent
         #   Required. The resource name of the location (global) to query for network
         #   peerings. Resource names are schemeless URIs that follow the conventions in
@@ -430,7 +439,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_global_network_peerings(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_network_peerings(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/networkPeerings', options)
           command.response_representation = Google::Apis::VmwareengineV1::ListNetworkPeeringsResponse::Representation
           command.response_class = Google::Apis::VmwareengineV1::ListNetworkPeeringsResponse
@@ -445,11 +454,13 @@ module Google
         end
         
         # Modifies a `NetworkPeering` resource. Only the `description` field can be
-        # updated. Only fields specified in `updateMask` are applied.
+        # updated. Only fields specified in `updateMask` are applied. NetworkPeering is
+        # a global resource and location can only be global.
         # @param [String] name
-        #   Output only. The resource name of the network peering. Resource names are
-        #   scheme-less URIs that follow the conventions in https://cloud.google.com/apis/
-        #   design/resource_names. For example: `projects/my-project/locations/global/
+        #   Output only. The resource name of the network peering. NetworkPeering is a
+        #   global resource and location can only be global. Resource names are scheme-
+        #   less URIs that follow the conventions in https://cloud.google.com/apis/design/
+        #   resource_names. For example: `projects/my-project/locations/global/
         #   networkPeerings/my-peering`
         # @param [Google::Apis::VmwareengineV1::NetworkPeering] network_peering_object
         # @param [String] request_id
@@ -487,7 +498,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_global_network_peering(name, network_peering_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_network_peering(name, network_peering_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::VmwareengineV1::NetworkPeering::Representation
           command.request_object = network_peering_object
@@ -502,6 +513,7 @@ module Google
         end
         
         # Lists the network peering routes exchanged over a peering connection.
+        # NetworkPeering is a global resource and location can only be global.
         # @param [String] parent
         #   Required. The resource name of the network peering to retrieve peering routes
         #   from. Resource names are schemeless URIs that follow the conventions in https:/
@@ -539,7 +551,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_global_network_peering_peering_routes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_network_peering_peering_routes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/peeringRoutes', options)
           command.response_representation = Google::Apis::VmwareengineV1::ListPeeringRoutesResponse::Representation
           command.response_class = Google::Apis::VmwareengineV1::ListPeeringRoutesResponse
