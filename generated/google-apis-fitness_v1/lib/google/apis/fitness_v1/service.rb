@@ -32,6 +32,8 @@ module Google
       #
       # @see https://developers.google.com/fit/rest/v1/get-started
       class FitnessService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://fitness.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,7 +45,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://fitness.googleapis.com/', 'fitness/v1/users/',
+          super(DEFAULT_ENDPOINT_TEMPLATE, 'fitness/v1/users/',
                 client_name: 'google-apis-fitness_v1',
                 client_version: Google::Apis::FitnessV1::GEM_VERSION)
           @batch_path = 'batch'
