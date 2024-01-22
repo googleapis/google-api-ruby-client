@@ -33,6 +33,8 @@ module Google
       #
       # @see https://developers.google.com/discovery/
       class DiscoveryService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://www.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -48,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'discovery/v1/',
+          super(DEFAULT_ENDPOINT_TEMPLATE, 'discovery/v1/',
                 client_name: 'google-apis-discovery_v1',
                 client_version: Google::Apis::DiscoveryV1::GEM_VERSION)
           @batch_path = 'batch/discovery/v1'
