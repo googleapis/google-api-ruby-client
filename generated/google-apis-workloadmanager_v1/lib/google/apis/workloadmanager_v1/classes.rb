@@ -22,6 +22,32 @@ module Google
   module Apis
     module WorkloadmanagerV1
       
+      # Message describing big query destination
+      class BigQueryDestination
+        include Google::Apis::Core::Hashable
+      
+        # Optional. determine if results will be saved in a new table
+        # Corresponds to the JSON property `createNewResultsTable`
+        # @return [Boolean]
+        attr_accessor :create_new_results_table
+        alias_method :create_new_results_table?, :create_new_results_table
+      
+        # Optional. destination dataset to save evaluation results
+        # Corresponds to the JSON property `destinationDataset`
+        # @return [String]
+        attr_accessor :destination_dataset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_new_results_table = args[:create_new_results_table] if args.key?(:create_new_results_table)
+          @destination_dataset = args[:destination_dataset] if args.key?(:destination_dataset)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -54,6 +80,11 @@ module Google
       # LINT.IfChange Message describing Evaluation object
       class Evaluation
         include Google::Apis::Core::Hashable
+      
+        # Message describing big query destination
+        # Corresponds to the JSON property `bigQueryDestination`
+        # @return [Google::Apis::WorkloadmanagerV1::BigQueryDestination]
+        attr_accessor :big_query_destination
       
         # Output only. [Output only] Create time stamp
         # Corresponds to the JSON property `createTime`
@@ -119,6 +150,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @big_query_destination = args[:big_query_destination] if args.key?(:big_query_destination)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_rules_bucket = args[:custom_rules_bucket] if args.key?(:custom_rules_bucket)
           @description = args[:description] if args.key?(:description)
