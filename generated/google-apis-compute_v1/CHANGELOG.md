@@ -1,5 +1,10 @@
 # Release history for google-apis-compute_v1
 
+### v0.87.0 (2024-01-22)
+
+* Regenerated from discovery document revision 20240109
+* Regenerated using generator version 0.13.0
+
 ### v0.86.0 (2024-01-07)
 
 * Regenerated from discovery document revision 20231231
