@@ -1,5 +1,11 @@
 # Release History
 
+### 0.13.1 (2024-01-22)
+
+#### Bug Fixes
+
+* Eliminate erb warning ([#17141](https://github.com/googleapis/google-api-ruby-client/issues/17141)) 
+
 ### 0.13.0 (2024-01-22)
 
 #### Features
