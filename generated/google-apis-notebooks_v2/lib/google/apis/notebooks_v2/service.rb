@@ -32,6 +32,8 @@ module Google
       #
       # @see https://cloud.google.com/notebooks/docs/
       class AIPlatformNotebooksService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://notebooks.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,7 +45,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://notebooks.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-notebooks_v2',
                 client_version: Google::Apis::NotebooksV2::GEM_VERSION)
           @batch_path = 'batch'
@@ -518,6 +520,40 @@ module Google
           command.response_representation = Google::Apis::NotebooksV2::Operation::Representation
           command.response_class = Google::Apis::NotebooksV2::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resize a notebook instance disk to a higher capacity.
+        # @param [String] notebook_instance
+        #   Required. Format: `projects/`project_id`/locations/`location`/instances/`
+        #   instance_id``
+        # @param [Google::Apis::NotebooksV2::ResizeDiskRequest] resize_disk_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resize_instance_disk(notebook_instance, resize_disk_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+notebookInstance}:resizeDisk', options)
+          command.request_representation = Google::Apis::NotebooksV2::ResizeDiskRequest::Representation
+          command.request_object = resize_disk_request_object
+          command.response_representation = Google::Apis::NotebooksV2::Operation::Representation
+          command.response_class = Google::Apis::NotebooksV2::Operation
+          command.params['notebookInstance'] = notebook_instance unless notebook_instance.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
