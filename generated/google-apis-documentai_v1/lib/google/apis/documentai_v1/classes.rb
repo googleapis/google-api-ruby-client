@@ -1575,6 +1575,15 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1BatchDocumentsInputConfig]
         attr_accessor :input_documents
       
+        # Optional. The labels with user-defined metadata for the request. Label keys
+        # and values can be no longer than 63 characters (Unicode codepoints), can only
+        # contain lowercase letters, numeric characters, underscores and dashes.
+        # International characters are allowed. Label values are optional. Label keys
+        # must start with a letter.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Options for Process API
         # Corresponds to the JSON property `processOptions`
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessOptions]
@@ -1594,6 +1603,7 @@ module Google
         def update!(**args)
           @document_output_config = args[:document_output_config] if args.key?(:document_output_config)
           @input_documents = args[:input_documents] if args.key?(:input_documents)
+          @labels = args[:labels] if args.key?(:labels)
           @process_options = args[:process_options] if args.key?(:process_options)
           @skip_human_review = args[:skip_human_review] if args.key?(:skip_human_review)
         end
@@ -4736,6 +4746,15 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Document]
         attr_accessor :inline_document
       
+        # Optional. The labels with user-defined metadata for the request. Label keys
+        # and values can be no longer than 63 characters (Unicode codepoints), can only
+        # contain lowercase letters, numeric characters, underscores and dashes.
+        # International characters are allowed. Label values are optional. Label keys
+        # must start with a letter.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Options for Process API
         # Corresponds to the JSON property `processOptions`
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessOptions]
@@ -4761,6 +4780,7 @@ module Google
           @field_mask = args[:field_mask] if args.key?(:field_mask)
           @gcs_document = args[:gcs_document] if args.key?(:gcs_document)
           @inline_document = args[:inline_document] if args.key?(:inline_document)
+          @labels = args[:labels] if args.key?(:labels)
           @process_options = args[:process_options] if args.key?(:process_options)
           @raw_document = args[:raw_document] if args.key?(:raw_document)
           @skip_human_review = args[:skip_human_review] if args.key?(:skip_human_review)
@@ -4994,6 +5014,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationReference]
         attr_accessor :latest_evaluation
       
+        # Output only. The model type of this processor version.
+        # Corresponds to the JSON property `modelType`
+        # @return [String]
+        attr_accessor :model_type
+      
         # The resource name of the processor version. Format: `projects/`project`/
         # locations/`location`/processors/`processor`/processorVersions/`
         # processor_version``
@@ -5020,6 +5045,7 @@ module Google
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
           @latest_evaluation = args[:latest_evaluation] if args.key?(:latest_evaluation)
+          @model_type = args[:model_type] if args.key?(:model_type)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
         end

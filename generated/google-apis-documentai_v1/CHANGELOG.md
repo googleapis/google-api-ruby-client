@@ -1,5 +1,10 @@
 # Release history for google-apis-documentai_v1
 
+### v0.79.0 (2024-01-22)
+
+* Regenerated from discovery document revision 20240118
+* Regenerated using generator version 0.13.0
+
 ### v0.78.0 (2023-11-19)
 
 * Regenerated from discovery document revision 20231113
