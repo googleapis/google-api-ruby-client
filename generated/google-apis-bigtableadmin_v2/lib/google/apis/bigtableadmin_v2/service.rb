@@ -32,6 +32,8 @@ module Google
       #
       # @see https://cloud.google.com/bigtable/
       class BigtableAdminService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://bigtableadmin.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,80 +45,10 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://bigtableadmin.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-bigtableadmin_v2',
                 client_version: Google::Apis::BigtableadminV2::GEM_VERSION)
           @batch_path = 'batch'
-        end
-        
-        # Starts asynchronous cancellation on a long-running operation. The server makes
-        # a best effort to cancel the operation, but success is not guaranteed. If the
-        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-        # Clients can use Operations.GetOperation or other methods to check whether the
-        # cancellation succeeded or whether the operation completed despite cancellation.
-        # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
-        # @param [String] name
-        #   The name of the operation resource to be cancelled.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigtableadminV2::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BigtableadminV2::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+name}:cancel', options)
-          command.response_representation = Google::Apis::BigtableadminV2::Empty::Representation
-          command.response_class = Google::Apis::BigtableadminV2::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a long-running operation. This method indicates that the client is no
-        # longer interested in the operation result. It does not cancel the operation.
-        # If the server doesn't support this method, it returns `google.rpc.Code.
-        # UNIMPLEMENTED`.
-        # @param [String] name
-        #   The name of the operation resource to be deleted.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigtableadminV2::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BigtableadminV2::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v2/{+name}', options)
-          command.response_representation = Google::Apis::BigtableadminV2::Empty::Representation
-          command.response_class = Google::Apis::BigtableadminV2::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
         end
         
         # Gets the latest state of a long-running operation. Clients can use this method
@@ -1449,7 +1381,9 @@ module Google
         
         # Permanently drop/delete a row range from a specified table. The request can
         # specify whether to delete all rows in a table, or only those that match a
-        # particular prefix.
+        # particular prefix. Note that row key prefixes used here are treated as service
+        # data. For more information about how service data is handled, see the [Google
+        # Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
         # @param [String] name
         #   Required. The unique name of the table on which to drop a range of rows.
         #   Values are of the form `projects/`project`/instances/`instance`/tables/`table``
@@ -1858,36 +1792,6 @@ module Google
           command.request_object = undelete_table_request_object
           command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
           command.response_class = Google::Apis::BigtableadminV2::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets information about a location.
-        # @param [String] name
-        #   Resource name for the location.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigtableadminV2::Location] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BigtableadminV2::Location]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+name}', options)
-          command.response_representation = Google::Apis::BigtableadminV2::Location::Representation
-          command.response_class = Google::Apis::BigtableadminV2::Location
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
