@@ -33,6 +33,8 @@ module Google
       #
       # @see https://cloud.google.com/dialogflow/
       class DialogflowService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://dialogflow.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -44,7 +46,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://dialogflow.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-dialogflow_v3',
                 client_version: Google::Apis::DialogflowV3::GEM_VERSION)
           @batch_path = 'batch'
@@ -1578,6 +1580,51 @@ module Google
           command.request_object = google_cloud_dialogflow_cx_v3_match_intent_request_object
           command.response_representation = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3MatchIntentResponse::Representation
           command.response_class = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3MatchIntentResponse
+          command.params['session'] = session unless session.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Processes a natural language query and returns structured, actionable data as
+        # a result through server-side streaming. Server-side streaming allows
+        # Dialogflow to send [partial responses](https://cloud.google.com/dialogflow/cx/
+        # docs/concept/fulfillment#partial-response) earlier in a single request.
+        # @param [String] session
+        #   Required. The name of the session this query is sent to. Format: `projects//
+        #   locations//agents//sessions/` or `projects//locations//agents//environments//
+        #   sessions/`. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. It's up to the API caller to choose an appropriate `Session ID`.
+        #   It can be a random number or some type of session identifiers (preferably
+        #   hashed). The length of the `Session ID` must not exceed 36 characters. For
+        #   more information, see the [sessions guide](https://cloud.google.com/dialogflow/
+        #   cx/docs/concept/session). Note: Always use agent versions for production
+        #   traffic. See [Versions and environments](https://cloud.google.com/dialogflow/
+        #   cx/docs/concept/version).
+        # @param [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DetectIntentRequest] google_cloud_dialogflow_cx_v3_detect_intent_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DetectIntentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DetectIntentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def server_project_location_agent_environment_session_streaming_detect_intent(session, google_cloud_dialogflow_cx_v3_detect_intent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+session}:serverStreamingDetectIntent', options)
+          command.request_representation = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DetectIntentRequest::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3_detect_intent_request_object
+          command.response_representation = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DetectIntentResponse::Representation
+          command.response_class = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DetectIntentResponse
           command.params['session'] = session unless session.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3498,6 +3545,51 @@ module Google
           command.request_object = google_cloud_dialogflow_cx_v3_match_intent_request_object
           command.response_representation = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3MatchIntentResponse::Representation
           command.response_class = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3MatchIntentResponse
+          command.params['session'] = session unless session.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Processes a natural language query and returns structured, actionable data as
+        # a result through server-side streaming. Server-side streaming allows
+        # Dialogflow to send [partial responses](https://cloud.google.com/dialogflow/cx/
+        # docs/concept/fulfillment#partial-response) earlier in a single request.
+        # @param [String] session
+        #   Required. The name of the session this query is sent to. Format: `projects//
+        #   locations//agents//sessions/` or `projects//locations//agents//environments//
+        #   sessions/`. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. It's up to the API caller to choose an appropriate `Session ID`.
+        #   It can be a random number or some type of session identifiers (preferably
+        #   hashed). The length of the `Session ID` must not exceed 36 characters. For
+        #   more information, see the [sessions guide](https://cloud.google.com/dialogflow/
+        #   cx/docs/concept/session). Note: Always use agent versions for production
+        #   traffic. See [Versions and environments](https://cloud.google.com/dialogflow/
+        #   cx/docs/concept/version).
+        # @param [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DetectIntentRequest] google_cloud_dialogflow_cx_v3_detect_intent_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DetectIntentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DetectIntentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def server_project_location_agent_session_streaming_detect_intent(session, google_cloud_dialogflow_cx_v3_detect_intent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+session}:serverStreamingDetectIntent', options)
+          command.request_representation = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DetectIntentRequest::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3_detect_intent_request_object
+          command.response_representation = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DetectIntentResponse::Representation
+          command.response_class = Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DetectIntentResponse
           command.params['session'] = session unless session.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
