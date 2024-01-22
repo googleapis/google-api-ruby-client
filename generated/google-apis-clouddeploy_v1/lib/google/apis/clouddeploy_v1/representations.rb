@@ -1326,6 +1326,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delivery_pipeline, as: 'deliveryPipeline'
           property :message, as: 'message'
+          property :pipeline_uid, as: 'pipelineUid'
           property :type, as: 'type'
         end
       end
@@ -1429,6 +1430,7 @@ module Google
           property :http_route, as: 'httpRoute'
           property :route_update_wait_time, as: 'routeUpdateWaitTime'
           property :service, as: 'service'
+          property :stable_cutback_duration, as: 'stableCutbackDuration'
         end
       end
       
@@ -1509,7 +1511,9 @@ module Google
           property :job_run, as: 'jobRun'
           property :message, as: 'message'
           property :pipeline_uid, as: 'pipelineUid'
+          property :release, as: 'release'
           property :release_uid, as: 'releaseUid'
+          property :rollout, as: 'rollout'
           property :rollout_uid, as: 'rolloutUid'
           property :target_id, as: 'targetId'
           property :type, as: 'type'
@@ -1873,7 +1877,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message'
+          property :pipeline_uid, as: 'pipelineUid'
           property :release, as: 'release'
+          property :release_uid, as: 'releaseUid'
           property :type, as: 'type'
         end
       end
@@ -1889,8 +1895,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message'
+          property :pipeline_uid, as: 'pipelineUid'
           property :release, as: 'release'
           property :release_render_state, as: 'releaseRenderState'
+          property :type, as: 'type'
         end
       end
       
@@ -2076,8 +2084,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message'
           property :pipeline_uid, as: 'pipelineUid'
+          property :release, as: 'release'
           property :release_uid, as: 'releaseUid'
           property :rollout, as: 'rollout'
+          property :rollout_uid, as: 'rolloutUid'
           property :target_id, as: 'targetId'
           property :type, as: 'type'
         end
@@ -2088,6 +2098,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message'
           property :pipeline_uid, as: 'pipelineUid'
+          property :release, as: 'release'
           property :release_uid, as: 'releaseUid'
           property :rollout, as: 'rollout'
           property :rollout_update_type, as: 'rolloutUpdateType'

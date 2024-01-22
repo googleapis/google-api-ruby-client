@@ -32,6 +32,8 @@ module Google
       #
       # @see https://cloud.google.com/deploy/
       class CloudDeployService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://clouddeploy.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,7 +45,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://clouddeploy.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-clouddeploy_v1',
                 client_version: Google::Apis::ClouddeployV1::GEM_VERSION)
           @batch_path = 'batch'
@@ -155,19 +157,19 @@ module Google
         # Creates a new CustomTargetType in a given project and location.
         # @param [String] parent
         #   Required. The parent collection in which the `CustomTargetType` should be
-        #   created in. Format should be `projects/`project_id`/locations/`location_name``.
+        #   created. Format should be `projects/`project_id`/locations/`location_name``.
         # @param [Google::Apis::ClouddeployV1::CustomTargetType] custom_target_type_object
         # @param [String] custom_target_type_id
         #   Required. ID of the `CustomTargetType`.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that for at least 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server can check if original operation
+        #   with the same request ID was received, and if so, will ignore the second
+        #   request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
@@ -219,13 +221,13 @@ module Google
         #   an up-to-date value before proceeding.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes after the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that for at least 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server can check if original operation
+        #   with the same request ID was received, and if so, will ignore the second
+        #   request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
@@ -353,21 +355,21 @@ module Google
         #   will result in the creation of a new `CustomTargetType`.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that for at least 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server can check if original operation
+        #   with the same request ID was received, and if so, will ignore the second
+        #   request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Required. Field mask is used to specify the fields to be overwritten in the `
         #   CustomTargetType` resource by the update. The fields specified in the
         #   update_mask are relative to the resource, not the full request. A field will
-        #   be overwritten if it is in the mask. If the user does not provide a mask then
-        #   all fields will be overwritten.
+        #   be overwritten if it's in the mask. If the user doesn't provide a mask then
+        #   all fields are overwritten.
         # @param [Boolean] validate_only
         #   Optional. If set to true, the request is validated and the user is provided
         #   with an expected result, but no actual change is made.
@@ -413,13 +415,13 @@ module Google
         #   Required. ID of the `DeliveryPipeline`.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that for at least 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server can check if original operation
+        #   with the same request ID was received, and if so, will ignore the second
+        #   request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
@@ -475,13 +477,13 @@ module Google
         #   resources.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes after the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that for at least 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server can check if original operation
+        #   with the same request ID was received, and if so, will ignore the second
+        #   request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
@@ -653,21 +655,21 @@ module Google
         #   will result in the creation of a new `DeliveryPipeline`.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that for at least 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server can check if original operation
+        #   with the same request ID was received, and if so, will ignore the second
+        #   request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Required. Field mask is used to specify the fields to be overwritten in the `
         #   DeliveryPipeline` resource by the update. The fields specified in the
         #   update_mask are relative to the resource, not the full request. A field will
-        #   be overwritten if it is in the mask. If the user does not provide a mask then
-        #   all fields will be overwritten.
+        #   be overwritten if it's in the mask. If the user doesn't provide a mask then
+        #   all fields are overwritten.
         # @param [Boolean] validate_only
         #   Optional. If set to true, the request is validated and the user is provided
         #   with an expected result, but no actual change is made.
@@ -943,13 +945,13 @@ module Google
         #   Required. ID of the `Automation`.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that for at least 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server can check if original operation
+        #   with the same request ID was received, and if so, will ignore the second
+        #   request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
@@ -1001,13 +1003,13 @@ module Google
         #   delete requests to ensure the client has an up-to-date value before proceeding.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes after the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that for at least 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server can check if original operation
+        #   with the same request ID was received, and if so, will ignore the second
+        #   request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
@@ -1134,21 +1136,21 @@ module Google
         #   result in the creation of a new `Automation`.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that for at least 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server can check if original operation
+        #   with the same request ID was received, and if so, will ignore the second
+        #   request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Required. Field mask is used to specify the fields to be overwritten in the `
         #   Automation` resource by the update. The fields specified in the update_mask
         #   are relative to the resource, not the full request. A field will be
-        #   overwritten if it is in the mask. If the user does not provide a mask then all
-        #   fields will be overwritten.
+        #   overwritten if it's in the mask. If the user doesn't provide a mask then all
+        #   fields are overwritten.
         # @param [Boolean] validate_only
         #   Optional. If set to true, the request is validated and the user is provided
         #   with an expected result, but no actual change is made.
@@ -1229,13 +1231,13 @@ module Google
         #   Required. ID of the `Release`.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that for at least 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server can check if original operation
+        #   with the same request ID was received, and if so, will ignore the second
+        #   request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
@@ -1468,13 +1470,13 @@ module Google
         # @param [Google::Apis::ClouddeployV1::Rollout] rollout_object
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that for at least 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server can check if original operation
+        #   with the same request ID was received, and if so, will ignore the second
+        #   request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] rollout_id
@@ -1935,13 +1937,13 @@ module Google
         # @param [Google::Apis::ClouddeployV1::Target] target_object
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that for at least 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server can check if original operation
+        #   with the same request ID was received, and if so, will ignore the second
+        #   request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] target_id
@@ -1994,13 +1996,13 @@ module Google
         #   an up-to-date value before proceeding.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes after the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that for at least 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server can check if original operation
+        #   with the same request ID was received, and if so, will ignore the second
+        #   request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
@@ -2172,20 +2174,20 @@ module Google
         #   in the creation of a new `Target`.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes since the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
+        #   that if you must retry your request, the server knows to ignore the request if
+        #   it has already been completed. The server guarantees that for at least 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server can check if original operation
+        #   with the same request ID was received, and if so, will ignore the second
+        #   request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Required. Field mask is used to specify the fields to be overwritten in the
         #   Target resource by the update. The fields specified in the update_mask are
         #   relative to the resource, not the full request. A field will be overwritten if
-        #   it is in the mask. If the user does not provide a mask then all fields will be
+        #   it's in the mask. If the user doesn't provide a mask then all fields are
         #   overwritten.
         # @param [Boolean] validate_only
         #   Optional. If set to true, the request is validated and the user is provided
