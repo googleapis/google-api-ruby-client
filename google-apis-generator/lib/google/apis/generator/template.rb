@@ -106,7 +106,7 @@ module Google
         #  Name of the template file
         def initialize(template_name)
           file = File.join(TEMPLATE_DIR, template_name)
-          @erb = ERB.new(File.read(file), nil, '-')
+          @erb = ERB.new(File.read(file), trim_mode: "-")
         end
 
         # Render the template
