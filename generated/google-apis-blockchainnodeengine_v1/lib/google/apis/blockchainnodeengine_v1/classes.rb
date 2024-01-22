@@ -57,15 +57,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. When true, the node is only accessible via Private Service Connect;
-        # no public endpoints are exposed. Otherwise, the node is only accessible via
-        # public endpoints. See https://cloud.google.com/vpc/docs/private-service-
-        # connect.
-        # Corresponds to the JSON property `privateServiceConnectEnabled`
-        # @return [Boolean]
-        attr_accessor :private_service_connect_enabled
-        alias_method :private_service_connect_enabled?, :private_service_connect_enabled
-      
         # Output only. A status representing the state of the node.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -88,7 +79,6 @@ module Google
           @ethereum_details = args[:ethereum_details] if args.key?(:ethereum_details)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
-          @private_service_connect_enabled = args[:private_service_connect_enabled] if args.key?(:private_service_connect_enabled)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -182,17 +172,6 @@ module Google
         attr_accessor :api_enable_debug
         alias_method :api_enable_debug?, :api_enable_debug
       
-        # Deprecated: Use the same field in the ValidatorConfig message as replacement.
-        # An Ethereum address which the beacon client will send fee rewards to if no
-        # recipient is configured in the validator client. See https://lighthouse-book.
-        # sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/
-        # docs/execution-node/fee-recipient for examples of how this is used. Note that
-        # while this is often described as "suggested", as we run the execution node we
-        # can trust the execution node, and therefore this is considered enforced.
-        # Corresponds to the JSON property `beaconFeeRecipient`
-        # @return [String]
-        attr_accessor :beacon_fee_recipient
-      
         # Immutable. The consensus client.
         # Corresponds to the JSON property `consensusClient`
         # @return [String]
@@ -234,7 +213,6 @@ module Google
           @additional_endpoints = args[:additional_endpoints] if args.key?(:additional_endpoints)
           @api_enable_admin = args[:api_enable_admin] if args.key?(:api_enable_admin)
           @api_enable_debug = args[:api_enable_debug] if args.key?(:api_enable_debug)
-          @beacon_fee_recipient = args[:beacon_fee_recipient] if args.key?(:beacon_fee_recipient)
           @consensus_client = args[:consensus_client] if args.key?(:consensus_client)
           @execution_client = args[:execution_client] if args.key?(:execution_client)
           @geth_details = args[:geth_details] if args.key?(:geth_details)

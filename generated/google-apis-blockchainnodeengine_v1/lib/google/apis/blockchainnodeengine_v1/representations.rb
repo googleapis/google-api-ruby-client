@@ -129,7 +129,6 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
-          property :private_service_connect_enabled, as: 'privateServiceConnectEnabled'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -165,7 +164,6 @@ module Google
       
           property :api_enable_admin, as: 'apiEnableAdmin'
           property :api_enable_debug, as: 'apiEnableDebug'
-          property :beacon_fee_recipient, as: 'beaconFeeRecipient'
           property :consensus_client, as: 'consensusClient'
           property :execution_client, as: 'executionClient'
           property :geth_details, as: 'gethDetails', class: Google::Apis::BlockchainnodeengineV1::GethDetails, decorator: Google::Apis::BlockchainnodeengineV1::GethDetails::Representation
