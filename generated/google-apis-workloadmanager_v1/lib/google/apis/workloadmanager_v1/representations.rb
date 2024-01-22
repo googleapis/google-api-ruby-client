@@ -22,6 +22,12 @@ module Google
   module Apis
     module WorkloadmanagerV1
       
+      class BigQueryDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -256,6 +262,14 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigQueryDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_new_results_table, as: 'createNewResultsTable'
+          property :destination_dataset, as: 'destinationDataset'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -271,6 +285,8 @@ module Google
       class Evaluation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :big_query_destination, as: 'bigQueryDestination', class: Google::Apis::WorkloadmanagerV1::BigQueryDestination, decorator: Google::Apis::WorkloadmanagerV1::BigQueryDestination::Representation
+      
           property :create_time, as: 'createTime'
           property :custom_rules_bucket, as: 'customRulesBucket'
           property :description, as: 'description'
