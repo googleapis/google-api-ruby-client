@@ -36,6 +36,8 @@ module Google
       #
       # @see https://developers.google.com/safe-browsing/
       class SafebrowsingService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://safebrowsing.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -47,7 +49,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://safebrowsing.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-safebrowsing_v4',
                 client_version: Google::Apis::SafebrowsingV4::GEM_VERSION)
           @batch_path = 'batch'
