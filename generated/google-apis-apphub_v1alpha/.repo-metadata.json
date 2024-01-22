@@ -1,0 +1,7 @@
+{
+    "api_id": "apphub:v1alpha",
+    "name_pretty": "App Hub API",
+    "distribution_name": "google-apis-apphub_v1alpha",
+    "language": "ruby",
+    "library_type": "REST"
+}
