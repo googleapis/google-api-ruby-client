@@ -16,13 +16,13 @@ module Google
   module Apis
     module CloudchannelV1
       # Version of the google-apis-cloudchannel_v1 gem
-      GEM_VERSION = "0.47.0"
+      GEM_VERSION = "0.48.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.12.0"
+      GENERATOR_VERSION = "0.13.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20231220"
+      REVISION = "20240109"
     end
   end
 end
