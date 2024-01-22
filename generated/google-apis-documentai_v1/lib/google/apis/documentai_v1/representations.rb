@@ -2516,6 +2516,7 @@ module Google
       
           property :input_documents, as: 'inputDocuments', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1BatchDocumentsInputConfig, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1BatchDocumentsInputConfig::Representation
       
+          hash :labels, as: 'labels'
           property :process_options, as: 'processOptions', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessOptions, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessOptions::Representation
       
           property :skip_human_review, as: 'skipHumanReview'
@@ -3420,6 +3421,7 @@ module Google
       
           property :inline_document, as: 'inlineDocument', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Document, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Document::Representation
       
+          hash :labels, as: 'labels'
           property :process_options, as: 'processOptions', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessOptions, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessOptions::Representation
       
           property :raw_document, as: 'rawDocument', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocument, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocument::Representation
@@ -3489,6 +3491,7 @@ module Google
           property :kms_key_version_name, as: 'kmsKeyVersionName'
           property :latest_evaluation, as: 'latestEvaluation', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationReference, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationReference::Representation
       
+          property :model_type, as: 'modelType'
           property :name, as: 'name'
           property :state, as: 'state'
         end
