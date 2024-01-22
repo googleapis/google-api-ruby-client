@@ -514,12 +514,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cancellation_requested, as: 'cancellationRequested'
+          property :destination, as: 'destination'
           property :end_time, as: 'endTime'
           property :progress, as: 'progress'
           property :request, as: 'request', class: Google::Apis::LoggingV2::CopyLogEntriesRequest, decorator: Google::Apis::LoggingV2::CopyLogEntriesRequest::Representation
       
+          property :source, as: 'source'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
+          property :verb, as: 'verb'
           property :writer_identity, as: 'writerIdentity'
         end
       end
