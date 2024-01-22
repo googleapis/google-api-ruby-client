@@ -996,8 +996,10 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :mysql_export_options, as: 'mysqlExportOptions', class: Google::Apis::SqladminV1::ExportContext::SqlExportOptions::MysqlExportOptions, decorator: Google::Apis::SqladminV1::ExportContext::SqlExportOptions::MysqlExportOptions::Representation
         
+            property :parallel, as: 'parallel'
             property :schema_only, as: 'schemaOnly'
             collection :tables, as: 'tables'
+            property :threads, as: 'threads'
           end
           
           class MysqlExportOptions

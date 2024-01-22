@@ -1484,6 +1484,12 @@ module Google
           # @return [Google::Apis::SqladminV1::ExportContext::SqlExportOptions::MysqlExportOptions]
           attr_accessor :mysql_export_options
         
+          # Optional. Whether or not the export should be parallel.
+          # Corresponds to the JSON property `parallel`
+          # @return [Boolean]
+          attr_accessor :parallel
+          alias_method :parallel?, :parallel
+        
           # Export only schemas.
           # Corresponds to the JSON property `schemaOnly`
           # @return [Boolean]
@@ -1497,6 +1503,11 @@ module Google
           # @return [Array<String>]
           attr_accessor :tables
         
+          # Optional. The number of threads to use for parallel export.
+          # Corresponds to the JSON property `threads`
+          # @return [Fixnum]
+          attr_accessor :threads
+        
           def initialize(**args)
              update!(**args)
           end
@@ -1504,8 +1515,10 @@ module Google
           # Update properties of this object
           def update!(**args)
             @mysql_export_options = args[:mysql_export_options] if args.key?(:mysql_export_options)
+            @parallel = args[:parallel] if args.key?(:parallel)
             @schema_only = args[:schema_only] if args.key?(:schema_only)
             @tables = args[:tables] if args.key?(:tables)
+            @threads = args[:threads] if args.key?(:threads)
           end
           
           # Options for exporting from MySQL.
