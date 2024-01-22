@@ -265,21 +265,43 @@ module Google
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
         # . * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
-        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a user that has been recently deleted. For example, `alice@
-        # example.com?uid=123456789012345678901`. If the user is recovered, this value
-        # reverts to `user:`emailid`` and the recovered user retains the role in the
-        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
-        # (plus unique identifier) representing a service account that has been recently
-        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # users of that domain. For example, `google.com` or `example.com`. * `principal:
+        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
+        # subject_attribute_value``: A single identity in a workforce identity pool. * `
+        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
+        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
+        # attribute_name`/`attribute_value``: All workforce identities with a specific
+        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
+        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
+        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
+        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
+        # googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
+        # All identities in a workload identity pool with a certain attribute. * `
+        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding.
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
+        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
+        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
+        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -680,6 +702,11 @@ module Google
         # @return [Google::Apis::GkehubV1::ClusterUpgradeFleetSpec]
         attr_accessor :clusterupgrade
       
+        # **Dataplane V2**: Spec
+        # Corresponds to the JSON property `dataplanev2`
+        # @return [Google::Apis::GkehubV1::DataplaneV2FeatureSpec]
+        attr_accessor :dataplanev2
+      
         # **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
         # Corresponds to the JSON property `fleetobservability`
         # @return [Google::Apis::GkehubV1::FleetObservabilityFeatureSpec]
@@ -699,6 +726,7 @@ module Google
         def update!(**args)
           @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
           @clusterupgrade = args[:clusterupgrade] if args.key?(:clusterupgrade)
+          @dataplanev2 = args[:dataplanev2] if args.key?(:dataplanev2)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @multiclusteringress = args[:multiclusteringress] if args.key?(:multiclusteringress)
         end
@@ -941,6 +969,16 @@ module Google
         # @return [Array<Google::Apis::GkehubV1::ConfigManagementConfigSyncError>]
         attr_accessor :errors
       
+        # The state of the Reposync CRD
+        # Corresponds to the JSON property `reposyncCrd`
+        # @return [String]
+        attr_accessor :reposync_crd
+      
+        # The state of the RootSync CRD
+        # Corresponds to the JSON property `rootsyncCrd`
+        # @return [String]
+        attr_accessor :rootsync_crd
+      
         # State indicating an ACM's progress syncing configurations to a cluster
         # Corresponds to the JSON property `syncState`
         # @return [Google::Apis::GkehubV1::ConfigManagementSyncState]
@@ -959,6 +997,8 @@ module Google
         def update!(**args)
           @deployment_state = args[:deployment_state] if args.key?(:deployment_state)
           @errors = args[:errors] if args.key?(:errors)
+          @reposync_crd = args[:reposync_crd] if args.key?(:reposync_crd)
+          @rootsync_crd = args[:rootsync_crd] if args.key?(:rootsync_crd)
           @sync_state = args[:sync_state] if args.key?(:sync_state)
           @version = args[:version] if args.key?(:version)
         end
@@ -1779,6 +1819,26 @@ module Google
         def update!(**args)
           @manifest = args[:manifest] if args.key?(:manifest)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # **Dataplane V2**: Spec
+      class DataplaneV2FeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        # Enable dataplane-v2 based encryption for multiple clusters.
+        # Corresponds to the JSON property `enableEncryption`
+        # @return [Boolean]
+        attr_accessor :enable_encryption
+        alias_method :enable_encryption?, :enable_encryption
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_encryption = args[:enable_encryption] if args.key?(:enable_encryption)
         end
       end
       
