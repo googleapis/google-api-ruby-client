@@ -32,6 +32,8 @@ module Google
       #
       # @see https://cloud.google.com/recommender/docs/
       class RecommenderService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://recommender.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,10 +45,53 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://recommender.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-recommender_v1beta1',
                 client_version: Google::Apis::RecommenderV1beta1::GEM_VERSION)
           @batch_path = 'batch'
+        end
+        
+        # Lists locations with recommendations or insights.
+        # @param [String] name
+        #   The resource that owns the locations collection, if applicable.
+        # @param [String] filter
+        #   A filter to narrow down results to a preferred subset. The filtering language
+        #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
+        #   in [AIP-160](https://google.aip.dev/160).
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return. If not set, the service selects a
+        #   default.
+        # @param [String] page_token
+        #   A page token received from the `next_page_token` field in the response. Send
+        #   that page token to receive the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_billing_account_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/locations', options)
+          command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse::Representation
+          command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
         end
         
         # Gets the requested InsightTypeConfig. There is only one instance of the config
@@ -580,6 +625,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists locations with recommendations or insights.
+        # @param [String] name
+        #   The resource that owns the locations collection, if applicable.
+        # @param [String] filter
+        #   A filter to narrow down results to a preferred subset. The filtering language
+        #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
+        #   in [AIP-160](https://google.aip.dev/160).
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return. If not set, the service selects a
+        #   default.
+        # @param [String] page_token
+        #   A page token received from the `next_page_token` field in the response. Send
+        #   that page token to receive the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/locations', options)
+          command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse::Representation
+          command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the requested insight. Requires the recommender.*.get IAM permission for
         # the specified insight type.
         # @param [String] name
@@ -984,6 +1072,49 @@ module Google
           command = make_simple_command(:get, 'v1beta1/insightTypes', options)
           command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1ListInsightTypesResponse::Representation
           command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1ListInsightTypesResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists locations with recommendations or insights.
+        # @param [String] name
+        #   The resource that owns the locations collection, if applicable.
+        # @param [String] filter
+        #   A filter to narrow down results to a preferred subset. The filtering language
+        #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
+        #   in [AIP-160](https://google.aip.dev/160).
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return. If not set, the service selects a
+        #   default.
+        # @param [String] page_token
+        #   A page token received from the `next_page_token` field in the response. Send
+        #   that page token to receive the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/locations', options)
+          command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse::Representation
+          command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1517,6 +1648,49 @@ module Google
           command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Recommendation::Representation
           command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Recommendation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists locations with recommendations or insights.
+        # @param [String] name
+        #   The resource that owns the locations collection, if applicable.
+        # @param [String] filter
+        #   A filter to narrow down results to a preferred subset. The filtering language
+        #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
+        #   in [AIP-160](https://google.aip.dev/160).
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return. If not set, the service selects a
+        #   default.
+        # @param [String] page_token
+        #   A page token received from the `next_page_token` field in the response. Send
+        #   that page token to receive the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/locations', options)
+          command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse::Representation
+          command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudLocationListLocationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
