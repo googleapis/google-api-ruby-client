@@ -153,6 +153,7 @@ module Google
       class GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_update_time, as: 'lastUpdateTime'
           property :progress_percentage, as: 'progressPercentage'
           property :start_time, as: 'startTime'
         end
@@ -207,6 +208,7 @@ module Google
       class SynthesizeLongAudioMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_update_time, as: 'lastUpdateTime'
           property :progress_percentage, as: 'progressPercentage'
           property :start_time, as: 'startTime'
         end
