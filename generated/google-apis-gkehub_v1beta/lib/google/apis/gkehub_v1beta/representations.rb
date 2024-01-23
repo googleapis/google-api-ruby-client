@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataplaneV2FeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DefaultClusterConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1136,6 +1142,8 @@ module Google
       
           property :clusterupgrade, as: 'clusterupgrade', class: Google::Apis::GkehubV1beta::ClusterUpgradeFleetSpec, decorator: Google::Apis::GkehubV1beta::ClusterUpgradeFleetSpec::Representation
       
+          property :dataplanev2, as: 'dataplanev2', class: Google::Apis::GkehubV1beta::DataplaneV2FeatureSpec, decorator: Google::Apis::GkehubV1beta::DataplaneV2FeatureSpec::Representation
+      
           property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1beta::FleetObservabilityFeatureSpec, decorator: Google::Apis::GkehubV1beta::FleetObservabilityFeatureSpec::Representation
       
           property :multiclusteringress, as: 'multiclusteringress', class: Google::Apis::GkehubV1beta::MultiClusterIngressFeatureSpec, decorator: Google::Apis::GkehubV1beta::MultiClusterIngressFeatureSpec::Representation
@@ -1236,6 +1244,8 @@ module Google
       
           collection :errors, as: 'errors', class: Google::Apis::GkehubV1beta::ConfigManagementConfigSyncError, decorator: Google::Apis::GkehubV1beta::ConfigManagementConfigSyncError::Representation
       
+          property :reposync_crd, as: 'reposyncCrd'
+          property :rootsync_crd, as: 'rootsyncCrd'
           property :sync_state, as: 'syncState', class: Google::Apis::GkehubV1beta::ConfigManagementSyncState, decorator: Google::Apis::GkehubV1beta::ConfigManagementSyncState::Representation
       
           property :version, as: 'version', class: Google::Apis::GkehubV1beta::ConfigManagementConfigSyncVersion, decorator: Google::Apis::GkehubV1beta::ConfigManagementConfigSyncVersion::Representation
@@ -1477,6 +1487,13 @@ module Google
           property :manifest, as: 'manifest'
           property :type, as: 'type', class: Google::Apis::GkehubV1beta::TypeMeta, decorator: Google::Apis::GkehubV1beta::TypeMeta::Representation
       
+        end
+      end
+      
+      class DataplaneV2FeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_encryption, as: 'enableEncryption'
         end
       end
       
