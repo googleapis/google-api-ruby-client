@@ -352,6 +352,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainCustomMetadataData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -725,6 +737,7 @@ module Google
       
           property :psc_instance_config, as: 'pscInstanceConfig', class: Google::Apis::AlloydbV1alpha::PscInstanceConfig, decorator: Google::Apis::AlloydbV1alpha::PscInstanceConfig::Representation
       
+          property :public_ip_address, as: 'publicIpAddress'
           property :query_insights_config, as: 'queryInsightsConfig', class: Google::Apis::AlloydbV1alpha::QueryInsightsInstanceConfig, decorator: Google::Apis::AlloydbV1alpha::QueryInsightsInstanceConfig::Representation
       
           property :read_pool_config, as: 'readPoolConfig', class: Google::Apis::AlloydbV1alpha::ReadPoolConfig, decorator: Google::Apis::AlloydbV1alpha::ReadPoolConfig::Representation
@@ -1037,6 +1050,29 @@ module Google
         end
       end
       
+      class StorageDatabasecenterPartnerapiV1mainCustomMetadataData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :database_metadata, as: 'databaseMetadata', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseMetadata, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseMetadata::Representation
+      
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainDatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupConfiguration, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupConfiguration::Representation
+      
+          property :backup_run, as: 'backupRun', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupRun, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupRun::Representation
+      
+          property :product, as: 'product', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterProtoCommonProduct, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterProtoCommonProduct::Representation
+      
+          property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
+      
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1092,7 +1128,8 @@ module Google
       
           property :creation_time, as: 'creationTime'
           property :current_state, as: 'currentState'
-          hash :custom_metadata, as: 'customMetadata'
+          property :custom_metadata, as: 'customMetadata', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainCustomMetadataData, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainCustomMetadataData::Representation
+      
           property :expected_state, as: 'expectedState'
           property :id, as: 'id', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
