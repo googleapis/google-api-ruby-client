@@ -32,6 +32,8 @@ module Google
       #
       # @see https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest
       class NetworkconnectivityService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://networkconnectivity.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,7 +45,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://networkconnectivity.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-networkconnectivity_v1',
                 client_version: Google::Apis::NetworkconnectivityV1::GEM_VERSION)
           @batch_path = 'batch'
@@ -809,7 +811,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists route tables in a given project.
+        # Lists route tables in a given hub.
         # @param [String] parent
         #   Required. The parent resource's name.
         # @param [String] filter
@@ -881,7 +883,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists routes in a given project.
+        # Lists routes in a given route table.
         # @param [String] parent
         #   Required. The parent resource's name.
         # @param [String] filter
