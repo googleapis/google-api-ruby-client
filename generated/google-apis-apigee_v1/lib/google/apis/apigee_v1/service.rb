@@ -35,6 +35,8 @@ module Google
       #
       # @see https://cloud.google.com/apigee-api-management/
       class ApigeeService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://apigee.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -46,7 +48,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://apigee.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-apigee_v1',
                 client_version: Google::Apis::ApigeeV1::GEM_VERSION)
           @batch_path = 'batch'
@@ -121,9 +123,14 @@ module Google
         end
         
         # Delete an Apigee organization. For organizations with BillingType EVALUATION,
-        # an immediate deletion is performed. For paid organizations, a soft-deletion is
-        # performed. The organization can be restored within the soft-deletion period
-        # which can be controlled using the retention field in the request.
+        # an immediate deletion is performed. For paid organizations (Subscription or
+        # Pay-as-you-go), a soft-deletion is performed. The organization can be restored
+        # within the soft-deletion period, which is specified using the `retention`
+        # field in the request or by filing a support ticket with Apigee. During the
+        # data retention period specified in the request, the Apigee organization cannot
+        # be recreated in the same Google Cloud project. **IMPORTANT: The default data
+        # retention setting for this operation is 7 days. To permanently delete the
+        # organization in 24 hours, set the retention parameter to `MINIMUM`.**
         # @param [String] name
         #   Required. Name of the organization. Use the following structure in your
         #   request: `organizations/`org``
@@ -133,7 +140,8 @@ module Google
         #   Organization data will be retained after the initial delete operation
         #   completes. During this period, the Organization may be restored to its last
         #   known state. After this period, the Organization will no longer be able to be
-        #   restored.
+        #   restored. **Note: During the data retention period specified using this field,
+        #   the Apigee organization cannot be recreated in the same GCP project.**
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1784,6 +1792,44 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update key value entry scoped to an organization, environment, or API proxy
+        # for an existing key.
+        # @param [String] name
+        #   Required. Scope as indicated by the URI in which to create the key value map
+        #   entry. Use **one** of the following structures in your request: * `
+        #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `
+        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
+        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] google_cloud_apigee_v1_key_value_entry_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_api_keyvaluemap_entry(name, google_cloud_apigee_v1_key_value_entry_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.request_object = google_cloud_apigee_v1_key_value_entry_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3711,8 +3757,8 @@ module Google
         # start out with status=approved, even if status=revoked is passed when the key
         # is created. To revoke a key, use the UpdateDeveloperAppKey API.
         # @param [String] parent
-        #   Parent of the developer app key. Use the following structure in your request: `
-        #   organizations/`org`/developers/`developer_email`/apps`
+        #   Parent of the developer app key. Use the following structure in your request: '
+        #   organizations/`org`/developers/`developerEmail`/apps/`appName`'
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperAppKey] google_cloud_apigee_v1_developer_app_key_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3983,8 +4029,8 @@ module Google
         # start out with status=approved, even if status=revoked is passed when the key
         # is created. To revoke a key, use the UpdateDeveloperAppKey API.
         # @param [String] parent
-        #   Parent of the developer app key. Use the following structure in your request: `
-        #   organizations/`org`/developers/`developer_email`/apps`
+        #   Parent of the developer app key. Use the following structure in your request: '
+        #   organizations/`org`/developers/`developerEmail`/apps/`appName`'
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperAppKey] google_cloud_apigee_v1_developer_app_key_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4509,8 +4555,8 @@ module Google
         #   the following format: `organizations/`org``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroup] google_cloud_apigee_v1_environment_group_object
         # @param [String] name
-        #   ID of the environment group. Overrides any ID in the environment_group
-        #   resource.
+        #   Optional. ID of the environment group. Overrides any ID in the
+        #   environment_group resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4683,7 +4729,7 @@ module Google
         #   organizations/`org`/envgroups/`envgroup`.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroup] google_cloud_apigee_v1_environment_group_object
         # @param [String] update_mask
-        #   List of fields to be updated.
+        #   Optional. List of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7160,6 +7206,44 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update key value entry scoped to an organization, environment, or API proxy
+        # for an existing key.
+        # @param [String] name
+        #   Required. Scope as indicated by the URI in which to create the key value map
+        #   entry. Use **one** of the following structures in your request: * `
+        #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `
+        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
+        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] google_cloud_apigee_v1_key_value_entry_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_environment_keyvaluemap_entry(name, google_cloud_apigee_v1_key_value_entry_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.request_object = google_cloud_apigee_v1_key_value_entry_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -10270,6 +10354,44 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update key value entry scoped to an organization, environment, or API proxy
+        # for an existing key.
+        # @param [String] name
+        #   Required. Scope as indicated by the URI in which to create the key value map
+        #   entry. Use **one** of the following structures in your request: * `
+        #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `
+        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
+        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] google_cloud_apigee_v1_key_value_entry_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_keyvaluemap_entry(name, google_cloud_apigee_v1_key_value_entry_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.request_object = google_cloud_apigee_v1_key_value_entry_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

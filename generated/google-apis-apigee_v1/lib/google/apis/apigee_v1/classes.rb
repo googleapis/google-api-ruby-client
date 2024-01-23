@@ -3765,10 +3765,14 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. Url of the forward proxy to be applied to the runtime instances in
+        # Optional. URI of the forward proxy to be applied to the runtime instances in
         # this environment. Must be in the format of `scheme`://`hostname`:`port`. Note
-        # that scheme must be one of "http" or "https", and port must be supplied. To
-        # remove a forward proxy setting, update the field to an empty value.
+        # that the scheme must be one of "http" or "https", and the port must be
+        # supplied. To remove a forward proxy setting, update the field to an empty
+        # value. Note: At this time, PUT operations to add forwardProxyUri to an
+        # existing environment fail if the environment has nodeConfig set up. To
+        # successfully add the forwardProxyUri setting in this case, include the
+        # NodeConfig details with the request.
         # Corresponds to the JSON property `forwardProxyUri`
         # @return [String]
         attr_accessor :forward_proxy_uri
@@ -8765,7 +8769,7 @@ module Google
         # conditions elements are ANDed. For example if a SecurityAction has the
         # following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then
         # this is interpreted as: enforce the action if the incoming request has ((
-        # api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2"))
+        # api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2")).
         # Corresponds to the JSON property `conditionConfig`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityActionConditionConfig]
         attr_accessor :condition_config
@@ -8859,13 +8863,14 @@ module Google
       # conditions elements are ANDed. For example if a SecurityAction has the
       # following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then
       # this is interpreted as: enforce the action if the incoming request has ((
-      # api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2"))
+      # api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2")).
       class GoogleCloudApigeeV1SecurityActionConditionConfig
         include Google::Apis::Core::Hashable
       
         # Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor,
         # Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced
-        # Anomaly Detection and Advanced API Scraper.
+        # Anomaly Detection, Advanced API Scraper, Search Engine Crawlers, Public Cloud,
+        # Public Cloud AWS, Public Cloud Azure, and Public Cloud GCP.
         # Corresponds to the JSON property `botReasons`
         # @return [Array<String>]
         attr_accessor :bot_reasons
