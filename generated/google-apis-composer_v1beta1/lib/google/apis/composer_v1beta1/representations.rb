@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataRetentionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -304,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TaskLogsRetentionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TriggererResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -391,6 +403,14 @@ module Google
         end
       end
       
+      class DataRetentionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :task_logs_retention_config, as: 'taskLogsRetentionConfig', class: Google::Apis::ComposerV1beta1::TaskLogsRetentionConfig, decorator: Google::Apis::ComposerV1beta1::TaskLogsRetentionConfig::Representation
+      
+        end
+      end
+      
       class DatabaseConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -456,6 +476,8 @@ module Google
           property :airflow_byoid_uri, as: 'airflowByoidUri'
           property :airflow_uri, as: 'airflowUri'
           property :dag_gcs_prefix, as: 'dagGcsPrefix'
+          property :data_retention_config, as: 'dataRetentionConfig', class: Google::Apis::ComposerV1beta1::DataRetentionConfig, decorator: Google::Apis::ComposerV1beta1::DataRetentionConfig::Representation
+      
           property :database_config, as: 'databaseConfig', class: Google::Apis::ComposerV1beta1::DatabaseConfig, decorator: Google::Apis::ComposerV1beta1::DatabaseConfig::Representation
       
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::ComposerV1beta1::EncryptionConfig, decorator: Google::Apis::ComposerV1beta1::EncryptionConfig::Representation
@@ -809,6 +831,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket, as: 'bucket'
+        end
+      end
+      
+      class TaskLogsRetentionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :storage_mode, as: 'storageMode'
         end
       end
       
