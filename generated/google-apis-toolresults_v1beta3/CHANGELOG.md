@@ -1,5 +1,10 @@
 # Release history for google-apis-toolresults_v1beta3
 
+### v0.23.0 (2024-01-23)
+
+* Regenerated from discovery document revision 20240110
+* Regenerated using generator version 0.13.0
+
 ### v0.22.0 (2023-08-06)
 
 * Regenerated from discovery document revision 20230803
