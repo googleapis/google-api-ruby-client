@@ -4131,6 +4131,11 @@ module Google
       class Issuer
         include Google::Apis::Core::Hashable
       
+        # Allows the issuer to provide their callback settings.
+        # Corresponds to the JSON property `callbackOptions`
+        # @return [Google::Apis::WalletobjectsV1::CallbackOptions]
+        attr_accessor :callback_options
+      
         # Issuer contact information.
         # Corresponds to the JSON property `contactInfo`
         # @return [Google::Apis::WalletobjectsV1::IssuerContactInfo]
@@ -4164,6 +4169,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @callback_options = args[:callback_options] if args.key?(:callback_options)
           @contact_info = args[:contact_info] if args.key?(:contact_info)
           @homepage_url = args[:homepage_url] if args.key?(:homepage_url)
           @issuer_id = args[:issuer_id] if args.key?(:issuer_id)
@@ -4434,7 +4440,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies from a predefined set of options or from a reference to the field
-        # what will be displayed in the first row.
+        # what will be displayed in the first row. To set this override, set the
+        # FirstRowOption.fieldOption to the FieldSelector of your choice.
         # Corresponds to the JSON property `firstRowOption`
         # @return [Google::Apis::WalletobjectsV1::FirstRowOption]
         attr_accessor :first_row_option
