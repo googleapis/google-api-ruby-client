@@ -1140,6 +1140,7 @@ module Google
           property :license_type, as: 'licenseType'
           property :machine_preferences, as: 'machinePreferences', class: Google::Apis::MigrationcenterV1::MachinePreferences, decorator: Google::Apis::MigrationcenterV1::MachinePreferences::Representation
       
+          property :persistent_disk_type, as: 'persistentDiskType'
         end
       end
       
