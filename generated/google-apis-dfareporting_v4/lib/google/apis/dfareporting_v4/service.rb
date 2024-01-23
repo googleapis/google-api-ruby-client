@@ -33,6 +33,8 @@ module Google
       #
       # @see https://developers.google.com/doubleclick-advertisers/
       class DfareportingService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://dfareporting.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -44,7 +46,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://dfareporting.googleapis.com/', 'dfareporting/v4/',
+          super(DEFAULT_ENDPOINT_TEMPLATE, 'dfareporting/v4/',
                 client_name: 'google-apis-dfareporting_v4',
                 client_version: Google::Apis::DfareportingV4::GEM_VERSION)
           @batch_path = 'batch'
