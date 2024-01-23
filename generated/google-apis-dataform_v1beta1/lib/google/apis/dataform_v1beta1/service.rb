@@ -33,6 +33,8 @@ module Google
       #
       # @see https://cloud.google.com/dataform/docs
       class DataformService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://dataform.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -44,7 +46,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://dataform.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-dataform_v1beta1',
                 client_version: Google::Apis::DataformV1beta1::GEM_VERSION)
           @batch_path = 'batch'
@@ -2075,6 +2077,9 @@ module Google
         # @param [String] path
         #   Required. The file's full path including filename, relative to the workspace
         #   root.
+        # @param [String] revision
+        #   Optional. The Git revision of the file to return. If left empty, the current
+        #   contents of `path` will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2092,12 +2097,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def read_project_location_repository_workspace_file(workspace, path: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def read_project_location_repository_workspace_file(workspace, path: nil, revision: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+workspace}:readFile', options)
           command.response_representation = Google::Apis::DataformV1beta1::ReadFileResponse::Representation
           command.response_class = Google::Apis::DataformV1beta1::ReadFileResponse
           command.params['workspace'] = workspace unless workspace.nil?
           command.query['path'] = path unless path.nil?
+          command.query['revision'] = revision unless revision.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
