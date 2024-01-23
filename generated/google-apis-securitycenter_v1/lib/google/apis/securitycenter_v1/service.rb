@@ -33,6 +33,8 @@ module Google
       #
       # @see https://cloud.google.com/security-command-center
       class SecurityCommandCenterService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://securitycenter.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -44,7 +46,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://securitycenter.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-securitycenter_v1',
                 client_version: Google::Apis::SecuritycenterV1::GEM_VERSION)
           @batch_path = 'batch'
@@ -4240,6 +4242,13 @@ module Google
         # @param [String] filter
         #   The filter expression that filters the valued resources in the response.
         #   Supported fields: * `resource_value` supports = * `resource_type` supports =
+        # @param [String] order_by
+        #   Optional. The fields by which to order the valued resources response.
+        #   Supported fields: * `exposed_score` * `resource_value` * `resource_type` * `
+        #   resource` * `display_name` Values should be a comma separated list of fields.
+        #   For example: `exposed_score,resource_value`. The default sorting order is
+        #   descending. To specify ascending or descending order for a field, append a "
+        #   ASC" or a " DESC" suffix, respectively; for example: `exposed_score DESC`.
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -4264,12 +4273,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_simulation_attack_exposure_result_valued_resources(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_simulation_attack_exposure_result_valued_resources(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/valuedResources', options)
           command.response_representation = Google::Apis::SecuritycenterV1::ListValuedResourcesResponse::Representation
           command.response_class = Google::Apis::SecuritycenterV1::ListValuedResourcesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -4365,6 +4375,13 @@ module Google
         # @param [String] filter
         #   The filter expression that filters the valued resources in the response.
         #   Supported fields: * `resource_value` supports = * `resource_type` supports =
+        # @param [String] order_by
+        #   Optional. The fields by which to order the valued resources response.
+        #   Supported fields: * `exposed_score` * `resource_value` * `resource_type` * `
+        #   resource` * `display_name` Values should be a comma separated list of fields.
+        #   For example: `exposed_score,resource_value`. The default sorting order is
+        #   descending. To specify ascending or descending order for a field, append a "
+        #   ASC" or a " DESC" suffix, respectively; for example: `exposed_score DESC`.
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -4389,12 +4406,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_simulation_valued_resources(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_simulation_valued_resources(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/valuedResources', options)
           command.response_representation = Google::Apis::SecuritycenterV1::ListValuedResourcesResponse::Representation
           command.response_class = Google::Apis::SecuritycenterV1::ListValuedResourcesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
