@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudLoggingOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ComputeResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -576,6 +582,13 @@ module Google
         end
       end
       
+      class CloudLoggingOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_generic_task_monitored_resource, as: 'useGenericTaskMonitoredResource'
+        end
+      end
+      
       class ComputeResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -790,6 +803,8 @@ module Google
       class LogsPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_logging_option, as: 'cloudLoggingOption', class: Google::Apis::BatchV1::CloudLoggingOption, decorator: Google::Apis::BatchV1::CloudLoggingOption::Representation
+      
           property :destination, as: 'destination'
           property :logs_path, as: 'logsPath'
         end
@@ -965,6 +980,7 @@ module Google
           property :parallelism, :numeric_string => true, as: 'parallelism'
           property :permissive_ssh, as: 'permissiveSsh'
           property :require_hosts_file, as: 'requireHostsFile'
+          property :run_as_non_root, as: 'runAsNonRoot'
           property :scheduling_policy, as: 'schedulingPolicy'
           property :task_count, :numeric_string => true, as: 'taskCount'
           property :task_count_per_node, :numeric_string => true, as: 'taskCountPerNode'
