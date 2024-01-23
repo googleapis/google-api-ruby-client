@@ -374,6 +374,7 @@ module Google
           property :can_ip_forward, as: 'canIpForward'
           property :enable_external_ips, as: 'enableExternalIps'
           property :network, as: 'network'
+          property :queue_count, as: 'queueCount'
           property :subnetwork, as: 'subnetwork'
         end
       end
