@@ -1615,6 +1615,81 @@ module Google
         end
       end
       
+      # A definition for a calculated metric.
+      class GoogleAnalyticsAdminV1alphaCalculatedMetric
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The ID to use for the calculated metric. In the UI, this is
+        # referred to as the "API name." The calculated_metric_id is used when
+        # referencing this calculated metric from external APIs. For example, "
+        # calcMetric:`calculated_metric_id`".
+        # Corresponds to the JSON property `calculatedMetricId`
+        # @return [String]
+        attr_accessor :calculated_metric_id
+      
+        # Optional. Description for this calculated metric. Max length of 4096
+        # characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Display name for this calculated metric as shown in the Google
+        # Analytics UI. Max length 82 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The calculated metric's definition. Maximum number of unique
+        # referenced custom metrics is 5. Formulas supports the following operations: + (
+        # addition), - (subtraction), - (negative), * (multiplication), / (division), ()
+        # (parenthesis). Any valid real numbers are acceptable that fit in a Long (64bit
+        # integer) or a Double (64 bit floating point number). Example formula: "(
+        # customEvent:parameter_name + cartPurchaseQuantity ) / 2.0"
+        # Corresponds to the JSON property `formula`
+        # @return [String]
+        attr_accessor :formula
+      
+        # Output only. If true, this calculated metric has a invalid metric reference.
+        # Anything using a calculated metric with invalid_metric_reference set to true
+        # may fail, produce warnings, or produce unexpected results.
+        # Corresponds to the JSON property `invalidMetricReference`
+        # @return [Boolean]
+        attr_accessor :invalid_metric_reference
+        alias_method :invalid_metric_reference?, :invalid_metric_reference
+      
+        # Required. The type for the calculated metric's value.
+        # Corresponds to the JSON property `metricUnit`
+        # @return [String]
+        attr_accessor :metric_unit
+      
+        # Output only. Resource name for this CalculatedMetric. Format: 'properties/`
+        # property_id`/calculatedMetrics/`calculated_metric_id`'
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Types of restricted data that this metric contains.
+        # Corresponds to the JSON property `restrictedMetricType`
+        # @return [Array<String>]
+        attr_accessor :restricted_metric_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @calculated_metric_id = args[:calculated_metric_id] if args.key?(:calculated_metric_id)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @formula = args[:formula] if args.key?(:formula)
+          @invalid_metric_reference = args[:invalid_metric_reference] if args.key?(:invalid_metric_reference)
+          @metric_unit = args[:metric_unit] if args.key?(:metric_unit)
+          @name = args[:name] if args.key?(:name)
+          @restricted_metric_type = args[:restricted_metric_type] if args.key?(:restricted_metric_type)
+        end
+      end
+      
       # Request message for CancelDisplayVideo360AdvertiserLinkProposal RPC.
       class GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest
         include Google::Apis::Core::Hashable
@@ -1697,6 +1772,11 @@ module Google
         # Corresponds to the JSON property `bigqueryLink`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink]
         attr_accessor :bigquery_link
+      
+        # A definition for a calculated metric.
+        # Corresponds to the JSON property `calculatedMetric`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCalculatedMetric]
+        attr_accessor :calculated_metric
       
         # A resource message representing a Channel Group.
         # Corresponds to the JSON property `channelGroup`
@@ -1813,6 +1893,7 @@ module Google
           @attribution_settings = args[:attribution_settings] if args.key?(:attribution_settings)
           @audience = args[:audience] if args.key?(:audience)
           @bigquery_link = args[:bigquery_link] if args.key?(:bigquery_link)
+          @calculated_metric = args[:calculated_metric] if args.key?(:calculated_metric)
           @channel_group = args[:channel_group] if args.key?(:channel_group)
           @conversion_event = args[:conversion_event] if args.key?(:conversion_event)
           @custom_dimension = args[:custom_dimension] if args.key?(:custom_dimension)
@@ -2175,7 +2256,7 @@ module Google
       
         # When a conversion event for this event_name has no set currency, this currency
         # will be applied as the default. Must be in ISO 4217 currency code format. See
-        # https://en.wikipedia.org/wiki/ISO_4217 for more.
+        # https://en.wikipedia.org/wiki/ISO_4217 for more information.
         # Corresponds to the JSON property `currencyCode`
         # @return [String]
         attr_accessor :currency_code
@@ -3878,6 +3959,32 @@ module Google
         end
       end
       
+      # Response message for ListCalculatedMetrics RPC.
+      class GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of CalculatedMetrics.
+        # Corresponds to the JSON property `calculatedMetrics`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCalculatedMetric>]
+        attr_accessor :calculated_metrics
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @calculated_metrics = args[:calculated_metrics] if args.key?(:calculated_metrics)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ListChannelGroups RPC.
       class GoogleAnalyticsAdminV1alphaListChannelGroupsResponse
         include Google::Apis::Core::Hashable
@@ -5095,7 +5202,8 @@ module Google
         attr_accessor :page_token
       
         # Optional. Resource name for a child property. If set, only return changes made
-        # to this property or its child resources.
+        # to this property or its child resources. Format: properties/`propertyId`
+        # Example: "properties/100"
         # Corresponds to the JSON property `property`
         # @return [String]
         attr_accessor :property

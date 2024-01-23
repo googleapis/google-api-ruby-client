@@ -346,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaCalculatedMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -689,6 +695,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1465,6 +1477,20 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaCalculatedMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :calculated_metric_id, as: 'calculatedMetricId'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :formula, as: 'formula'
+          property :invalid_metric_reference, as: 'invalidMetricReference'
+          property :metric_unit, as: 'metricUnit'
+          property :name, as: 'name'
+          collection :restricted_metric_type, as: 'restrictedMetricType'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1495,6 +1521,8 @@ module Google
           property :audience, as: 'audience', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudience, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudience::Representation
       
           property :bigquery_link, as: 'bigqueryLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink::Representation
+      
+          property :calculated_metric, as: 'calculatedMetric', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCalculatedMetric, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCalculatedMetric::Representation
       
           property :channel_group, as: 'channelGroup', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroup, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroup::Representation
       
@@ -2086,6 +2114,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bigquery_links, as: 'bigqueryLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :calculated_metrics, as: 'calculatedMetrics', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCalculatedMetric, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCalculatedMetric::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
