@@ -32,6 +32,8 @@ module Google
       #
       # @see https://cloud.google.com/bigquery/
       class BigqueryService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://bigquery.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -47,7 +49,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://bigquery.googleapis.com/', 'bigquery/v2/',
+          super(DEFAULT_ENDPOINT_TEMPLATE, 'bigquery/v2/',
                 client_name: 'google-apis-bigquery_v2',
                 client_version: Google::Apis::BigqueryV2::GEM_VERSION)
           @batch_path = 'batch/bigquery/v2'
