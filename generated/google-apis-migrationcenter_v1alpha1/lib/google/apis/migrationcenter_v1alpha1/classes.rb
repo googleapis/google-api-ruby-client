@@ -3863,12 +3863,12 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryAssetAggregateStats]
         attr_accessor :asset_aggregate_stats
       
-        # Description for the Group.
+        # Description for this group finding.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Display Name for the Group.
+        # Display Name for this group finding.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
