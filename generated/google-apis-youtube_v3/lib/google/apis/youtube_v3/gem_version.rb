@@ -16,10 +16,10 @@ module Google
   module Apis
     module YoutubeV3
       # Version of the google-apis-youtube_v3 gem
-      GEM_VERSION = "0.34.0"
+      GEM_VERSION = "0.35.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.12.0"
+      GENERATOR_VERSION = "0.13.0"
 
       # Revision of the discovery document this client was generated from
       REVISION = "20231011"

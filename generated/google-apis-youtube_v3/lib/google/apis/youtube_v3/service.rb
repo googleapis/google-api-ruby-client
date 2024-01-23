@@ -33,6 +33,8 @@ module Google
       #
       # @see https://developers.google.com/youtube/
       class YouTubeService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://youtube.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -44,7 +46,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://youtube.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-youtube_v3',
                 client_version: Google::Apis::YoutubeV3::GEM_VERSION)
           @batch_path = 'batch'
