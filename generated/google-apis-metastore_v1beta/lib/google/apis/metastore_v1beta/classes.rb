@@ -1774,9 +1774,10 @@ module Google
       class RestoreServiceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The relative resource name of the metastore service backup to
+        # Optional. The relative resource name of the metastore service backup to
         # restore from, in the following form:projects/`project_id`/locations/`
-        # location_id`/services/`service_id`/backups/`backup_id`.
+        # location_id`/services/`service_id`/backups/`backup_id`. Mutually exclusive
+        # with backup_location, and exactly one of the two must be set.
         # Corresponds to the JSON property `backup`
         # @return [String]
         attr_accessor :backup
