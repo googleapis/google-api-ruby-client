@@ -1132,6 +1132,13 @@ module Google
         # @return [String]
         attr_accessor :total_billed_time
       
+        # Whether request used legacy asr models (was not automatically migrated to use
+        # conformer models).
+        # Corresponds to the JSON property `usingLegacyModels`
+        # @return [Boolean]
+        attr_accessor :using_legacy_models
+        alias_method :using_legacy_models?, :using_legacy_models
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1142,6 +1149,7 @@ module Google
           @results = args[:results] if args.key?(:results)
           @speech_adaptation_info = args[:speech_adaptation_info] if args.key?(:speech_adaptation_info)
           @total_billed_time = args[:total_billed_time] if args.key?(:total_billed_time)
+          @using_legacy_models = args[:using_legacy_models] if args.key?(:using_legacy_models)
         end
       end
       

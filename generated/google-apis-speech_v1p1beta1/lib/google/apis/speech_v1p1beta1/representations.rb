@@ -457,6 +457,7 @@ module Google
           property :speech_adaptation_info, as: 'speechAdaptationInfo', class: Google::Apis::SpeechV1p1beta1::SpeechAdaptationInfo, decorator: Google::Apis::SpeechV1p1beta1::SpeechAdaptationInfo::Representation
       
           property :total_billed_time, as: 'totalBilledTime'
+          property :using_legacy_models, as: 'usingLegacyModels'
         end
       end
       
