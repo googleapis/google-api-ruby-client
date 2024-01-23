@@ -3291,8 +3291,12 @@ module Google
         # @return [String]
         attr_accessor :branch
       
-        # Configure builds to run whether a repository owner or collaborator need to
-        # comment `/gcbrun`.
+        # If CommentControl is enabled, depending on the setting, builds may not fire
+        # until a repository writer comments `/gcbrun` on a pull request or `/gcbrun` is
+        # in the pull request description. Only PR comments that contain `/gcbrun` will
+        # trigger builds. If CommentControl is set to disabled, comments with `/gcbrun`
+        # from a user with repository write permission or above will still trigger
+        # builds to run.
         # Corresponds to the JSON property `commentControl`
         # @return [String]
         attr_accessor :comment_control
