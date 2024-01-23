@@ -398,7 +398,8 @@ module Google
         # @return [String]
         attr_accessor :token
       
-        # The type of delivery mechanism used for this channel.
+        # The type of delivery mechanism used for this channel. Valid values are "
+        # web_hook" or "webhook".
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
