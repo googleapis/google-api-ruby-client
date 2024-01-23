@@ -956,7 +956,7 @@ module Google
       
         # When a conversion event for this event_name has no set currency, this currency
         # will be applied as the default. Must be in ISO 4217 currency code format. See
-        # https://en.wikipedia.org/wiki/ISO_4217 for more.
+        # https://en.wikipedia.org/wiki/ISO_4217 for more information.
         # Corresponds to the JSON property `currencyCode`
         # @return [String]
         attr_accessor :currency_code
@@ -2174,7 +2174,8 @@ module Google
         attr_accessor :page_token
       
         # Optional. Resource name for a child property. If set, only return changes made
-        # to this property or its child resources.
+        # to this property or its child resources. Format: properties/`propertyId`
+        # Example: "properties/100"
         # Corresponds to the JSON property `property`
         # @return [String]
         attr_accessor :property
