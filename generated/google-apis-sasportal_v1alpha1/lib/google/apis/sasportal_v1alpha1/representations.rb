@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SasPortalOrganization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SasPortalPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -552,7 +558,8 @@ module Google
       class SasPortalListLegacyOrganizationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :organization_ids, as: 'organizationIds'
+          collection :organizations, as: 'organizations', class: Google::Apis::SasportalV1alpha1::SasPortalOrganization, decorator: Google::Apis::SasportalV1alpha1::SasPortalOrganization::Representation
+      
         end
       end
       
@@ -637,6 +644,14 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class SasPortalOrganization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :id, :numeric_string => true, as: 'id'
         end
       end
       
