@@ -1592,6 +1592,13 @@ module Google
         # @return [String]
         attr_accessor :model_variant
       
+        # If `true`, the request will opt out for STT conformer model migration. This
+        # field will be deprecated once force migration takes place in June 2024.
+        # Corresponds to the JSON property `optOutConformerModelMigration`
+        # @return [Boolean]
+        attr_accessor :opt_out_conformer_model_migration
+        alias_method :opt_out_conformer_model_migration?, :opt_out_conformer_model_migration
+      
         # Optional. A list of strings containing words and phrases that the speech
         # recognizer should recognize with higher likelihood. See [the Cloud Speech
         # documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-
@@ -1629,6 +1636,7 @@ module Google
           @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
           @model = args[:model] if args.key?(:model)
           @model_variant = args[:model_variant] if args.key?(:model_variant)
+          @opt_out_conformer_model_migration = args[:opt_out_conformer_model_migration] if args.key?(:opt_out_conformer_model_migration)
           @phrase_hints = args[:phrase_hints] if args.key?(:phrase_hints)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @single_utterance = args[:single_utterance] if args.key?(:single_utterance)
@@ -2940,8 +2948,7 @@ module Google
       class GoogleCloudDialogflowCxV3TextInput
         include Google::Apis::Core::Hashable
       
-        # Required. The UTF-8 encoded natural language text to be processed. Text length
-        # must not exceed 256 characters.
+        # Required. The UTF-8 encoded natural language text to be processed.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -7255,6 +7262,13 @@ module Google
         # @return [String]
         attr_accessor :model_variant
       
+        # If `true`, the request will opt out for STT conformer model migration. This
+        # field will be deprecated once force migration takes place in June 2024.
+        # Corresponds to the JSON property `optOutConformerModelMigration`
+        # @return [Boolean]
+        attr_accessor :opt_out_conformer_model_migration
+        alias_method :opt_out_conformer_model_migration?, :opt_out_conformer_model_migration
+      
         # Optional. A list of strings containing words and phrases that the speech
         # recognizer should recognize with higher likelihood. See [the Cloud Speech
         # documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-
@@ -7292,6 +7306,7 @@ module Google
           @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
           @model = args[:model] if args.key?(:model)
           @model_variant = args[:model_variant] if args.key?(:model_variant)
+          @opt_out_conformer_model_migration = args[:opt_out_conformer_model_migration] if args.key?(:opt_out_conformer_model_migration)
           @phrase_hints = args[:phrase_hints] if args.key?(:phrase_hints)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @single_utterance = args[:single_utterance] if args.key?(:single_utterance)
@@ -10447,8 +10462,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1TextInput
         include Google::Apis::Core::Hashable
       
-        # Required. The UTF-8 encoded natural language text to be processed. Text length
-        # must not exceed 256 characters.
+        # Required. The UTF-8 encoded natural language text to be processed.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
