@@ -32,6 +32,8 @@ module Google
       #
       # @see https://developers.google.com/analytics/
       class AnalyticsService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://analytics.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -47,7 +49,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://analytics.googleapis.com/', 'analytics/v3/',
+          super(DEFAULT_ENDPOINT_TEMPLATE, 'analytics/v3/',
                 client_name: 'google-apis-analytics_v3',
                 client_version: Google::Apis::AnalyticsV3::GEM_VERSION)
           @batch_path = 'batch/analytics/v3'
