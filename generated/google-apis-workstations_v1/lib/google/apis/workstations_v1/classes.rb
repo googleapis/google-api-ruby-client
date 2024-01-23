@@ -132,21 +132,43 @@ module Google
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
         # . * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
-        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a user that has been recently deleted. For example, `alice@
-        # example.com?uid=123456789012345678901`. If the user is recovered, this value
-        # reverts to `user:`emailid`` and the recovered user retains the role in the
-        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
-        # (plus unique identifier) representing a service account that has been recently
-        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # users of that domain. For example, `google.com` or `example.com`. * `principal:
+        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
+        # subject_attribute_value``: A single identity in a workforce identity pool. * `
+        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
+        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
+        # attribute_name`/`attribute_value``: All workforce identities with a specific
+        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
+        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
+        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
+        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
+        # googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
+        # All identities in a workload identity pool with a certain attribute. * `
+        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding.
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
+        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
+        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
+        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -1738,10 +1760,30 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
+        # Optional. Disables support for plain TCP connections in the workstation. By
+        # default the service supports TCP connections via a websocket relay. Setting
+        # this option to true disables that relay, which prevents the usage of services
+        # that require plain tcp connections, such as ssh. When enabled, all
+        # communication must occur over https or wss.
+        # Corresponds to the JSON property `disableTcpConnections`
+        # @return [Boolean]
+        attr_accessor :disable_tcp_connections
+        alias_method :disable_tcp_connections?, :disable_tcp_connections
+      
         # Optional. Human-readable name for this workstation configuration.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Optional. Whether to enable Linux `auditd` logging on the workstation. When
+        # enabled, a service account must also be specified that has `logging.buckets.
+        # write` permission on the project. Operating system audit logging is distinct
+        # from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-
+        # logging).
+        # Corresponds to the JSON property `enableAuditAgent`
+        # @return [Boolean]
+        attr_accessor :enable_audit_agent
+        alias_method :enable_audit_agent?, :enable_audit_agent
       
         # A customer-managed encryption key (CMEK) for the Compute Engine resources of
         # the associated workstation configuration. Specify the name of your Cloud KMS
@@ -1855,7 +1897,9 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @degraded = args[:degraded] if args.key?(:degraded)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @disable_tcp_connections = args[:disable_tcp_connections] if args.key?(:disable_tcp_connections)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_audit_agent = args[:enable_audit_agent] if args.key?(:enable_audit_agent)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)

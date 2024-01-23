@@ -651,7 +651,9 @@ module Google
           property :create_time, as: 'createTime'
           property :degraded, as: 'degraded'
           property :delete_time, as: 'deleteTime'
+          property :disable_tcp_connections, as: 'disableTcpConnections'
           property :display_name, as: 'displayName'
+          property :enable_audit_agent, as: 'enableAuditAgent'
           property :encryption_key, as: 'encryptionKey', class: Google::Apis::WorkstationsV1::CustomerEncryptionKey, decorator: Google::Apis::WorkstationsV1::CustomerEncryptionKey::Representation
       
           property :etag, as: 'etag'
