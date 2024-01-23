@@ -276,8 +276,257 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # BatchCreateTargetSites operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1BatchCreateTargetSiteMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for SiteSearchEngineService.BatchCreateTargetSites method.
+      class GoogleCloudDiscoveryengineV1BatchCreateTargetSitesResponse
+        include Google::Apis::Core::Hashable
+      
+        # TargetSites created.
+        # Corresponds to the JSON property `targetSites`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1TargetSite>]
+        attr_accessor :target_sites
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_sites = args[:target_sites] if args.key?(:target_sites)
+        end
+      end
+      
+      # Metadata related to the progress of the DataStoreService.CreateDataStore
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field.
+      class GoogleCloudDiscoveryengineV1CreateDataStoreMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the EngineService.CreateEngine operation.
+      # This will be returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1CreateEngineMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Metadata for Create Schema LRO.
       class GoogleCloudDiscoveryengineV1CreateSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # CreateTargetSite operation. This will be returned by the google.longrunning.
+      # Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1CreateTargetSiteMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # DataStore captures global settings and configs at the DataStore level.
+      class GoogleCloudDiscoveryengineV1DataStore
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The content config of the data store. If this field is unset, the
+        # server behavior defaults to ContentConfig.NO_CONTENT.
+        # Corresponds to the JSON property `contentConfig`
+        # @return [String]
+        attr_accessor :content_config
+      
+        # Output only. Timestamp the DataStore was created at.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The id of the default Schema asscociated to this data store.
+        # Corresponds to the JSON property `defaultSchemaId`
+        # @return [String]
+        attr_accessor :default_schema_id
+      
+        # Required. The data store display name. This field must be a UTF-8 encoded
+        # string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT
+        # error is returned.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Immutable. The industry vertical that the data store registers.
+        # Corresponds to the JSON property `industryVertical`
+        # @return [String]
+        attr_accessor :industry_vertical
+      
+        # Immutable. The full resource name of the data store. Format: `projects/`
+        # project`/locations/`location`/collections/`collection_id`/dataStores/`
+        # data_store_id``. This field must be a UTF-8 encoded string with a length limit
+        # of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The solutions that the data store enrolls. Available solutions for each
+        # industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `
+        # SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is
+        # automatically enrolled. Other solutions cannot be enrolled.
+        # Corresponds to the JSON property `solutionTypes`
+        # @return [Array<String>]
+        attr_accessor :solution_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_config = args[:content_config] if args.key?(:content_config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @name = args[:name] if args.key?(:name)
+          @solution_types = args[:solution_types] if args.key?(:solution_types)
+        end
+      end
+      
+      # Metadata related to the progress of the DataStoreService.DeleteDataStore
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field.
+      class GoogleCloudDiscoveryengineV1DeleteDataStoreMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the EngineService.DeleteEngine operation.
+      # This will be returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1DeleteEngineMetadata
         include Google::Apis::Core::Hashable
       
         # Operation create time.
@@ -325,6 +574,358 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # DeleteTargetSite operation. This will be returned by the google.longrunning.
+      # Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1DeleteTargetSiteMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # DisableAdvancedSiteSearch operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for SiteSearchEngineService.DisableAdvancedSiteSearch method.
+      class GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # EnableAdvancedSiteSearch operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for SiteSearchEngineService.EnableAdvancedSiteSearch method.
+      class GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata that describes the training and serving parameters of an Engine.
+      class GoogleCloudDiscoveryengineV1Engine
+        include Google::Apis::Core::Hashable
+      
+        # Configurations for a Chat Engine.
+        # Corresponds to the JSON property `chatEngineConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineChatEngineConfig]
+        attr_accessor :chat_engine_config
+      
+        # Additional information of a Chat Engine. Fields in this message are output
+        # only.
+        # Corresponds to the JSON property `chatEngineMetadata`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineChatEngineMetadata]
+        attr_accessor :chat_engine_metadata
+      
+        # Common configurations for an Engine.
+        # Corresponds to the JSON property `commonConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineCommonConfig]
+        attr_accessor :common_config
+      
+        # Output only. Timestamp the Recommendation Engine was created at.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
+        # SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at
+        # most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple
+        # DataStores in the same Collection can be associated here. Note that when used
+        # in CreateEngineRequest, one DataStore id must be provided as the system will
+        # use it for necessary initializations.
+        # Corresponds to the JSON property `dataStoreIds`
+        # @return [Array<String>]
+        attr_accessor :data_store_ids
+      
+        # Required. The display name of the engine. Should be human readable. UTF-8
+        # encoded string with limit of 1024 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The industry vertical that the engine registers. The restriction of the Engine
+        # industry vertical is based on DataStore: If unspecified, default to `GENERIC`.
+        # Vertical on Engine has to match vertical of the DataStore liniked to the
+        # engine.
+        # Corresponds to the JSON property `industryVertical`
+        # @return [String]
+        attr_accessor :industry_vertical
+      
+        # Immutable. The fully qualified resource name of the engine. This field must be
+        # a UTF-8 encoded string with a length limit of 1024 characters. Format: `
+        # projects/`project_number`/locations/`location`/collections/`collection`/
+        # engines/`engine`` engine should be 1-63 characters, and valid characters are /
+        # a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configurations for a Search Engine.
+        # Corresponds to the JSON property `searchEngineConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineSearchEngineConfig]
+        attr_accessor :search_engine_config
+      
+        # Required. The solutions of the engine.
+        # Corresponds to the JSON property `solutionType`
+        # @return [String]
+        attr_accessor :solution_type
+      
+        # Output only. Timestamp the Recommendation Engine was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
+          @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
+          @common_config = args[:common_config] if args.key?(:common_config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @name = args[:name] if args.key?(:name)
+          @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
+          @solution_type = args[:solution_type] if args.key?(:solution_type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Configurations for a Chat Engine.
+      class GoogleCloudDiscoveryengineV1EngineChatEngineConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configurations for generating a Dialogflow agent. Note that these
+        # configurations are one-time consumed by and passed to Dialogflow service. It
+        # means they cannot be retrieved using EngineService.GetEngine or EngineService.
+        # ListEngines API after engine creation.
+        # Corresponds to the JSON property `agentCreationConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineChatEngineConfigAgentCreationConfig]
+        attr_accessor :agent_creation_config
+      
+        # The resource name of an exist Dialogflow agent to link to this Chat Engine.
+        # Customers can either provide `agent_creation_config` to create agent or
+        # provide an agent name that links the agent with the Chat engine. Format: `
+        # projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are
+        # one-time consumed by and passed to Dialogflow service. It means they cannot be
+        # retrieved using EngineService.GetEngine or EngineService.ListEngines API after
+        # engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual
+        # agent association after Engine is created.
+        # Corresponds to the JSON property `dialogflowAgentToLink`
+        # @return [String]
+        attr_accessor :dialogflow_agent_to_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_creation_config = args[:agent_creation_config] if args.key?(:agent_creation_config)
+          @dialogflow_agent_to_link = args[:dialogflow_agent_to_link] if args.key?(:dialogflow_agent_to_link)
+        end
+      end
+      
+      # Configurations for generating a Dialogflow agent. Note that these
+      # configurations are one-time consumed by and passed to Dialogflow service. It
+      # means they cannot be retrieved using EngineService.GetEngine or EngineService.
+      # ListEngines API after engine creation.
+      class GoogleCloudDiscoveryengineV1EngineChatEngineConfigAgentCreationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Name of the company, organization or other entity that the agent represents.
+        # Used for knowledge connector LLM prompt and for knowledge search.
+        # Corresponds to the JSON property `business`
+        # @return [String]
+        attr_accessor :business
+      
+        # Required. The default language of the agent as a language tag. See [Language
+        # Support](https://cloud.google.com/dialogflow/docs/reference/language) for a
+        # list of the currently supported language codes.
+        # Corresponds to the JSON property `defaultLanguageCode`
+        # @return [String]
+        attr_accessor :default_language_code
+      
+        # Agent location for Agent creation, supported values: global/us/eu. If not
+        # provided, us Engine will create Agent using us-central-1 by default; eu Engine
+        # will create Agent using eu-west-1 by default.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Required. The time zone of the agent from the [time zone database](https://www.
+        # iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business = args[:business] if args.key?(:business)
+          @default_language_code = args[:default_language_code] if args.key?(:default_language_code)
+          @location = args[:location] if args.key?(:location)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # Additional information of a Chat Engine. Fields in this message are output
+      # only.
+      class GoogleCloudDiscoveryengineV1EngineChatEngineMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of a Dialogflow agent, that this Chat Engine refers to.
+        # Format: `projects//locations//agents/`.
+        # Corresponds to the JSON property `dialogflowAgent`
+        # @return [String]
+        attr_accessor :dialogflow_agent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dialogflow_agent = args[:dialogflow_agent] if args.key?(:dialogflow_agent)
+        end
+      end
+      
+      # Common configurations for an Engine.
+      class GoogleCloudDiscoveryengineV1EngineCommonConfig
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The name of the company, business or entity that is associated with
+        # the engine. Setting this may help improve LLM related features.
+        # Corresponds to the JSON property `companyName`
+        # @return [String]
+        attr_accessor :company_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @company_name = args[:company_name] if args.key?(:company_name)
+        end
+      end
+      
+      # Configurations for a Search Engine.
+      class GoogleCloudDiscoveryengineV1EngineSearchEngineConfig
+        include Google::Apis::Core::Hashable
+      
+        # The add-on that this search engine enables.
+        # Corresponds to the JSON property `searchAddOns`
+        # @return [Array<String>]
+        attr_accessor :search_add_ons
+      
+        # The search feature tier of this engine. Different tiers might have different
+        # pricing. To learn more, please check the pricing documentation. Defaults to
+        # SearchTier.SEARCH_TIER_STANDARD if not specified.
+        # Corresponds to the JSON property `searchTier`
+        # @return [String]
+        attr_accessor :search_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @search_add_ons = args[:search_add_ons] if args.key?(:search_add_ons)
+          @search_tier = args[:search_tier] if args.key?(:search_tier)
         end
       end
       
@@ -412,6 +1013,64 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_prefix = args[:gcs_prefix] if args.key?(:gcs_prefix)
+        end
+      end
+      
+      # Metadata related to the progress of the ImportSuggestionDenyListEntries
+      # operation. This is returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for CompletionService.ImportSuggestionDenyListEntries method.
+      class GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # Count of deny list entries that failed to be imported.
+        # Corresponds to the JSON property `failedEntriesCount`
+        # @return [Fixnum]
+        attr_accessor :failed_entries_count
+      
+        # Count of deny list entries successfully imported.
+        # Corresponds to the JSON property `importedEntriesCount`
+        # @return [Fixnum]
+        attr_accessor :imported_entries_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @failed_entries_count = args[:failed_entries_count] if args.key?(:failed_entries_count)
+          @imported_entries_count = args[:imported_entries_count] if args.key?(:imported_entries_count)
         end
       end
       
@@ -562,6 +1221,58 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the PurgeSuggestionDenyListEntries
+      # operation. This is returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for CompletionService.PurgeSuggestionDenyListEntries method.
+      class GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # Number of suggestion deny list entries purged.
+        # Corresponds to the JSON property `purgeCount`
+        # @return [Fixnum]
+        attr_accessor :purge_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @purge_count = args[:purge_count] if args.key?(:purge_count)
+        end
+      end
+      
       # Defines the structure and layout of a type of document data.
       class GoogleCloudDiscoveryengineV1Schema
         include Google::Apis::Core::Hashable
@@ -596,6 +1307,148 @@ module Google
         end
       end
       
+      # Verification information for target sites in advanced site search.
+      class GoogleCloudDiscoveryengineV1SiteVerificationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Site verification state indicating the ownership and validity.
+        # Corresponds to the JSON property `siteVerificationState`
+        # @return [String]
+        attr_accessor :site_verification_state
+      
+        # Latest site verification time.
+        # Corresponds to the JSON property `verifyTime`
+        # @return [String]
+        attr_accessor :verify_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @site_verification_state = args[:site_verification_state] if args.key?(:site_verification_state)
+          @verify_time = args[:verify_time] if args.key?(:verify_time)
+        end
+      end
+      
+      # A target site for the SiteSearchEngine.
+      class GoogleCloudDiscoveryengineV1TargetSite
+        include Google::Apis::Core::Hashable
+      
+        # Input only. If set to false, a uri_pattern is generated to include all pages
+        # whose address contains the provided_uri_pattern. If set to true, an
+        # uri_pattern is generated to try to be an exact match of the
+        # provided_uri_pattern or just the specific page if the provided_uri_pattern is
+        # a specific one. provided_uri_pattern is always normalized to generate the URI
+        # pattern to be used by the search engine.
+        # Corresponds to the JSON property `exactMatch`
+        # @return [Boolean]
+        attr_accessor :exact_match
+        alias_method :exact_match?, :exact_match
+      
+        # Site search indexing failure reasons.
+        # Corresponds to the JSON property `failureReason`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1TargetSiteFailureReason]
+        attr_accessor :failure_reason
+      
+        # Output only. This is system-generated based on the provided_uri_pattern.
+        # Corresponds to the JSON property `generatedUriPattern`
+        # @return [String]
+        attr_accessor :generated_uri_pattern
+      
+        # Output only. Indexing status.
+        # Corresponds to the JSON property `indexingStatus`
+        # @return [String]
+        attr_accessor :indexing_status
+      
+        # Output only. The fully qualified resource name of the target site. `projects/`
+        # project`/locations/`location`/collections/`collection`/dataStores/`data_store`/
+        # siteSearchEngine/targetSites/`target_site`` The `target_site_id` is system-
+        # generated.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Input only. The user provided URI pattern from which the `
+        # generated_uri_pattern` is generated.
+        # Corresponds to the JSON property `providedUriPattern`
+        # @return [String]
+        attr_accessor :provided_uri_pattern
+      
+        # Verification information for target sites in advanced site search.
+        # Corresponds to the JSON property `siteVerificationInfo`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1SiteVerificationInfo]
+        attr_accessor :site_verification_info
+      
+        # The type of the target site, e.g., whether the site is to be included or
+        # excluded.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. The target site's last updated time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exact_match = args[:exact_match] if args.key?(:exact_match)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
+          @generated_uri_pattern = args[:generated_uri_pattern] if args.key?(:generated_uri_pattern)
+          @indexing_status = args[:indexing_status] if args.key?(:indexing_status)
+          @name = args[:name] if args.key?(:name)
+          @provided_uri_pattern = args[:provided_uri_pattern] if args.key?(:provided_uri_pattern)
+          @site_verification_info = args[:site_verification_info] if args.key?(:site_verification_info)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Site search indexing failure reasons.
+      class GoogleCloudDiscoveryengineV1TargetSiteFailureReason
+        include Google::Apis::Core::Hashable
+      
+        # Failed due to insufficient quota.
+        # Corresponds to the JSON property `quotaFailure`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure]
+        attr_accessor :quota_failure
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quota_failure = args[:quota_failure] if args.key?(:quota_failure)
+        end
+      end
+      
+      # 
+      class GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure
+        include Google::Apis::Core::Hashable
+      
+        # This number is an estimation on how much total quota this project needs to
+        # successfully complete indexing.
+        # Corresponds to the JSON property `totalRequiredQuota`
+        # @return [Fixnum]
+        attr_accessor :total_required_quota
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_required_quota = args[:total_required_quota] if args.key?(:total_required_quota)
+        end
+      end
+      
       # Metadata for UpdateSchema LRO.
       class GoogleCloudDiscoveryengineV1UpdateSchemaMetadata
         include Google::Apis::Core::Hashable
@@ -623,7 +1476,35 @@ module Google
       end
       
       # Metadata related to the progress of the SiteSearchEngineService.
-      # BatchCreateTargetSite operation. This will be returned by the google.
+      # UpdateTargetSite operation. This will be returned by the google.longrunning.
+      # Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1UpdateTargetSiteMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # BatchCreateTargetSites operation. This will be returned by the google.
       # longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSiteMetadata
         include Google::Apis::Core::Hashable
@@ -1091,7 +1972,7 @@ module Google
         # most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple
         # DataStores in the same Collection can be associated here. Note that when used
         # in CreateEngineRequest, one DataStore id must be provided as the system will
-        # use it for necessary intializations.
+        # use it for necessary initializations.
         # Corresponds to the JSON property `dataStoreIds`
         # @return [Array<String>]
         attr_accessor :data_store_ids
@@ -1190,7 +2071,7 @@ module Google
         # projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are
         # one-time consumed by and passed to Dialogflow service. It means they cannot be
         # retrieved using EngineService.GetEngine or EngineService.ListEngines API after
-        # engine creation. Please use chat_engine_metadata.dialogflow_agent for actual
+        # engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual
         # agent association after Engine is created.
         # Corresponds to the JSON property `dialogflowAgentToLink`
         # @return [String]
@@ -1227,6 +2108,13 @@ module Google
         # @return [String]
         attr_accessor :default_language_code
       
+        # Agent location for Agent creation, supported values: global/us/eu. If not
+        # provided, us Engine will create Agent using us-central-1 by default; eu Engine
+        # will create Agent using eu-west-1 by default.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # Required. The time zone of the agent from the [time zone database](https://www.
         # iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         # Corresponds to the JSON property `timeZone`
@@ -1241,6 +2129,7 @@ module Google
         def update!(**args)
           @business = args[:business] if args.key?(:business)
           @default_language_code = args[:default_language_code] if args.key?(:default_language_code)
+          @location = args[:location] if args.key?(:location)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
@@ -1270,8 +2159,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEngineCommonConfig
         include Google::Apis::Core::Hashable
       
-        # The name of the company, business or entity that is associated with the engine.
-        # Setting this may help improve LLM related features.
+        # Immutable. The name of the company, business or entity that is associated with
+        # the engine. Setting this may help improve LLM related features.
         # Corresponds to the JSON property `companyName`
         # @return [String]
         attr_accessor :company_name
@@ -1290,7 +2179,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig
         include Google::Apis::Core::Hashable
       
-        # The optimization objective e.g. `cvr`. This field together with
+        # The optimization objective. e.g., `cvr`. This field together with
         # optimization_objective describe engine metadata to use to control engine
         # training and serving. Currently supported values: `ctr`, `cvr`. If not
         # specified, we choose default based on engine type. Default depends on type of
@@ -1314,7 +2203,7 @@ module Google
         # @return [String]
         attr_accessor :training_state
       
-        # Required. The type of engine e.g. `recommended-for-you`. This field together
+        # Required. The type of engine. e.g., `recommended-for-you`. This field together
         # with optimization_objective describe engine metadata to use to control engine
         # training and serving. Currently supported values: `recommended-for-you`, `
         # others-you-may-like`, `more-like-this`, `most-popular-items`.
@@ -1699,6 +2588,64 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the ImportSuggestionDenyListEntries
+      # operation. This is returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for CompletionService.ImportSuggestionDenyListEntries method.
+      class GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # Count of deny list entries that failed to be imported.
+        # Corresponds to the JSON property `failedEntriesCount`
+        # @return [Fixnum]
+        attr_accessor :failed_entries_count
+      
+        # Count of deny list entries successfully imported.
+        # Corresponds to the JSON property `importedEntriesCount`
+        # @return [Fixnum]
+        attr_accessor :imported_entries_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @failed_entries_count = args[:failed_entries_count] if args.key?(:failed_entries_count)
+          @imported_entries_count = args[:imported_entries_count] if args.key?(:imported_entries_count)
+        end
+      end
+      
       # Metadata related to the progress of the Import operation. This is returned by
       # the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1alphaImportUserEventsMetadata
@@ -1783,7 +2730,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. If OCR is enabled or not. OCR must be enabled for other OcrConfig
-        # options to apply.
+        # options to apply. We will only perform OCR on the first 80 pages of the PDF
+        # files.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -1879,6 +2827,58 @@ module Google
         def update!(**args)
           @purge_count = args[:purge_count] if args.key?(:purge_count)
           @purge_sample = args[:purge_sample] if args.key?(:purge_sample)
+        end
+      end
+      
+      # Metadata related to the progress of the PurgeSuggestionDenyListEntries
+      # operation. This is returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for CompletionService.PurgeSuggestionDenyListEntries method.
+      class GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # Number of suggestion deny list entries purged.
+        # Corresponds to the JSON property `purgeCount`
+        # @return [Fixnum]
+        attr_accessor :purge_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @purge_count = args[:purge_count] if args.key?(:purge_count)
         end
       end
       
@@ -2053,7 +3053,7 @@ module Google
         end
       end
       
-      # Details about why crawling failed for a particular CorpusType, e.g. DESKTOP
+      # Details about why crawling failed for a particular CorpusType, e.g., DESKTOP
       # and MOBILE crawling may fail for different reasons.
       class GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason
         include Google::Apis::Core::Hashable
@@ -2193,7 +3193,7 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo]
         attr_accessor :site_verification_info
       
-        # The type of the target site, e.g. whether the site is to be included or
+        # The type of the target site, e.g., whether the site is to be included or
         # excluded.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2245,12 +3245,19 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure
         include Google::Apis::Core::Hashable
       
+        # This number is an estimation on how much total quota this project needs to
+        # successfully complete indexing.
+        # Corresponds to the JSON property `totalRequiredQuota`
+        # @return [Fixnum]
+        attr_accessor :total_required_quota
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @total_required_quota = args[:total_required_quota] if args.key?(:total_required_quota)
         end
       end
       
@@ -2401,6 +3408,86 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # BatchCreateTargetSites operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1betaBatchCreateTargetSiteMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for SiteSearchEngineService.BatchCreateTargetSites method.
+      class GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The request message specifying the resources to create. A maximum of
+        # 20 TargetSites can be created in a batch.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCreateTargetSiteRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for SiteSearchEngineService.BatchCreateTargetSites method.
+      class GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesResponse
+        include Google::Apis::Core::Hashable
+      
+        # TargetSites created.
+        # Corresponds to the JSON property `targetSites`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaTargetSite>]
+        attr_accessor :target_sites
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_sites = args[:target_sites] if args.key?(:target_sites)
+        end
+      end
+      
+      # Request message for SiteSearchEngineService.BatchVerifyTargetSites method.
+      class GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2781,6 +3868,61 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the DataStoreService.CreateDataStore
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field.
+      class GoogleCloudDiscoveryengineV1betaCreateDataStoreMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the EngineService.CreateEngine operation.
+      # This will be returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1betaCreateEngineMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Metadata for Create Schema LRO.
       class GoogleCloudDiscoveryengineV1betaCreateSchemaMetadata
         include Google::Apis::Core::Hashable
@@ -2804,6 +3946,61 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # CreateTargetSite operation. This will be returned by the google.longrunning.
+      # Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1betaCreateTargetSiteMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for SiteSearchEngineService.CreateTargetSite method.
+      class GoogleCloudDiscoveryengineV1betaCreateTargetSiteRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Parent resource name of TargetSite, such as `projects/`project`/
+        # locations/`location`/collections/`collection`/dataStores/`data_store`/
+        # siteSearchEngine`.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # A target site for the SiteSearchEngine.
+        # Corresponds to the JSON property `targetSite`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaTargetSite]
+        attr_accessor :target_site
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @target_site = args[:target_site] if args.key?(:target_site)
         end
       end
       
@@ -2840,6 +4037,125 @@ module Google
         end
       end
       
+      # DataStore captures global settings and configs at the DataStore level.
+      class GoogleCloudDiscoveryengineV1betaDataStore
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The content config of the data store. If this field is unset, the
+        # server behavior defaults to ContentConfig.NO_CONTENT.
+        # Corresponds to the JSON property `contentConfig`
+        # @return [String]
+        attr_accessor :content_config
+      
+        # Output only. Timestamp the DataStore was created at.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The id of the default Schema asscociated to this data store.
+        # Corresponds to the JSON property `defaultSchemaId`
+        # @return [String]
+        attr_accessor :default_schema_id
+      
+        # Required. The data store display name. This field must be a UTF-8 encoded
+        # string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT
+        # error is returned.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Immutable. The industry vertical that the data store registers.
+        # Corresponds to the JSON property `industryVertical`
+        # @return [String]
+        attr_accessor :industry_vertical
+      
+        # Immutable. The full resource name of the data store. Format: `projects/`
+        # project`/locations/`location`/collections/`collection_id`/dataStores/`
+        # data_store_id``. This field must be a UTF-8 encoded string with a length limit
+        # of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The solutions that the data store enrolls. Available solutions for each
+        # industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `
+        # SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is
+        # automatically enrolled. Other solutions cannot be enrolled.
+        # Corresponds to the JSON property `solutionTypes`
+        # @return [Array<String>]
+        attr_accessor :solution_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_config = args[:content_config] if args.key?(:content_config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @name = args[:name] if args.key?(:name)
+          @solution_types = args[:solution_types] if args.key?(:solution_types)
+        end
+      end
+      
+      # Metadata related to the progress of the DataStoreService.DeleteDataStore
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field.
+      class GoogleCloudDiscoveryengineV1betaDeleteDataStoreMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the EngineService.DeleteEngine operation.
+      # This will be returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1betaDeleteEngineMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Metadata for DeleteSchema LRO.
       class GoogleCloudDiscoveryengineV1betaDeleteSchemaMetadata
         include Google::Apis::Core::Hashable
@@ -2863,6 +4179,88 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # DeleteTargetSite operation. This will be returned by the google.longrunning.
+      # Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1betaDeleteTargetSiteMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # DisableAdvancedSiteSearch operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for SiteSearchEngineService.DisableAdvancedSiteSearch method.
+      class GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for SiteSearchEngineService.DisableAdvancedSiteSearch method.
+      class GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2964,7 +4362,8 @@ module Google
         attr_accessor :raw_bytes
       
         # The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/
-        # to/file`) are supported. The maximum file size is 100 MB.
+        # to/file`) are supported. The maximum file size is 2.5 MB for text-based
+        # formats, 100 MB for other formats.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -3046,6 +4445,336 @@ module Google
         # Update properties of this object
         def update!(**args)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # EnableAdvancedSiteSearch operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for SiteSearchEngineService.EnableAdvancedSiteSearch method.
+      class GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for SiteSearchEngineService.EnableAdvancedSiteSearch method.
+      class GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata that describes the training and serving parameters of an Engine.
+      class GoogleCloudDiscoveryengineV1betaEngine
+        include Google::Apis::Core::Hashable
+      
+        # Configurations for a Chat Engine.
+        # Corresponds to the JSON property `chatEngineConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig]
+        attr_accessor :chat_engine_config
+      
+        # Additional information of a Chat Engine. Fields in this message are output
+        # only.
+        # Corresponds to the JSON property `chatEngineMetadata`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata]
+        attr_accessor :chat_engine_metadata
+      
+        # Common configurations for an Engine.
+        # Corresponds to the JSON property `commonConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineCommonConfig]
+        attr_accessor :common_config
+      
+        # Output only. Timestamp the Recommendation Engine was created at.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
+        # SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at
+        # most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple
+        # DataStores in the same Collection can be associated here. Note that when used
+        # in CreateEngineRequest, one DataStore id must be provided as the system will
+        # use it for necessary initializations.
+        # Corresponds to the JSON property `dataStoreIds`
+        # @return [Array<String>]
+        attr_accessor :data_store_ids
+      
+        # Required. The display name of the engine. Should be human readable. UTF-8
+        # encoded string with limit of 1024 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The industry vertical that the engine registers. The restriction of the Engine
+        # industry vertical is based on DataStore: If unspecified, default to `GENERIC`.
+        # Vertical on Engine has to match vertical of the DataStore liniked to the
+        # engine.
+        # Corresponds to the JSON property `industryVertical`
+        # @return [String]
+        attr_accessor :industry_vertical
+      
+        # Immutable. The fully qualified resource name of the engine. This field must be
+        # a UTF-8 encoded string with a length limit of 1024 characters. Format: `
+        # projects/`project_number`/locations/`location`/collections/`collection`/
+        # engines/`engine`` engine should be 1-63 characters, and valid characters are /
+        # a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configurations for a Search Engine.
+        # Corresponds to the JSON property `searchEngineConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig]
+        attr_accessor :search_engine_config
+      
+        # Required. The solutions of the engine.
+        # Corresponds to the JSON property `solutionType`
+        # @return [String]
+        attr_accessor :solution_type
+      
+        # Output only. Timestamp the Recommendation Engine was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
+          @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
+          @common_config = args[:common_config] if args.key?(:common_config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @name = args[:name] if args.key?(:name)
+          @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
+          @solution_type = args[:solution_type] if args.key?(:solution_type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Configurations for a Chat Engine.
+      class GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configurations for generating a Dialogflow agent. Note that these
+        # configurations are one-time consumed by and passed to Dialogflow service. It
+        # means they cannot be retrieved using EngineService.GetEngine or EngineService.
+        # ListEngines API after engine creation.
+        # Corresponds to the JSON property `agentCreationConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig]
+        attr_accessor :agent_creation_config
+      
+        # The resource name of an exist Dialogflow agent to link to this Chat Engine.
+        # Customers can either provide `agent_creation_config` to create agent or
+        # provide an agent name that links the agent with the Chat engine. Format: `
+        # projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are
+        # one-time consumed by and passed to Dialogflow service. It means they cannot be
+        # retrieved using EngineService.GetEngine or EngineService.ListEngines API after
+        # engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual
+        # agent association after Engine is created.
+        # Corresponds to the JSON property `dialogflowAgentToLink`
+        # @return [String]
+        attr_accessor :dialogflow_agent_to_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_creation_config = args[:agent_creation_config] if args.key?(:agent_creation_config)
+          @dialogflow_agent_to_link = args[:dialogflow_agent_to_link] if args.key?(:dialogflow_agent_to_link)
+        end
+      end
+      
+      # Configurations for generating a Dialogflow agent. Note that these
+      # configurations are one-time consumed by and passed to Dialogflow service. It
+      # means they cannot be retrieved using EngineService.GetEngine or EngineService.
+      # ListEngines API after engine creation.
+      class GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Name of the company, organization or other entity that the agent represents.
+        # Used for knowledge connector LLM prompt and for knowledge search.
+        # Corresponds to the JSON property `business`
+        # @return [String]
+        attr_accessor :business
+      
+        # Required. The default language of the agent as a language tag. See [Language
+        # Support](https://cloud.google.com/dialogflow/docs/reference/language) for a
+        # list of the currently supported language codes.
+        # Corresponds to the JSON property `defaultLanguageCode`
+        # @return [String]
+        attr_accessor :default_language_code
+      
+        # Agent location for Agent creation, supported values: global/us/eu. If not
+        # provided, us Engine will create Agent using us-central-1 by default; eu Engine
+        # will create Agent using eu-west-1 by default.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Required. The time zone of the agent from the [time zone database](https://www.
+        # iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business = args[:business] if args.key?(:business)
+          @default_language_code = args[:default_language_code] if args.key?(:default_language_code)
+          @location = args[:location] if args.key?(:location)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # Additional information of a Chat Engine. Fields in this message are output
+      # only.
+      class GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of a Dialogflow agent, that this Chat Engine refers to.
+        # Format: `projects//locations//agents/`.
+        # Corresponds to the JSON property `dialogflowAgent`
+        # @return [String]
+        attr_accessor :dialogflow_agent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dialogflow_agent = args[:dialogflow_agent] if args.key?(:dialogflow_agent)
+        end
+      end
+      
+      # Common configurations for an Engine.
+      class GoogleCloudDiscoveryengineV1betaEngineCommonConfig
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The name of the company, business or entity that is associated with
+        # the engine. Setting this may help improve LLM related features.
+        # Corresponds to the JSON property `companyName`
+        # @return [String]
+        attr_accessor :company_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @company_name = args[:company_name] if args.key?(:company_name)
+        end
+      end
+      
+      # Configurations for a Search Engine.
+      class GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig
+        include Google::Apis::Core::Hashable
+      
+        # The add-on that this search engine enables.
+        # Corresponds to the JSON property `searchAddOns`
+        # @return [Array<String>]
+        attr_accessor :search_add_ons
+      
+        # The search feature tier of this engine. Different tiers might have different
+        # pricing. To learn more, please check the pricing documentation. Defaults to
+        # SearchTier.SEARCH_TIER_STANDARD if not specified.
+        # Corresponds to the JSON property `searchTier`
+        # @return [String]
+        attr_accessor :search_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @search_add_ons = args[:search_add_ons] if args.key?(:search_add_ons)
+          @search_tier = args[:search_tier] if args.key?(:search_tier)
+        end
+      end
+      
+      # Response message for SiteSearchEngineService.FetchDomainVerificationStatus
+      # method.
+      class GoogleCloudDiscoveryengineV1betaFetchDomainVerificationStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of TargetSites containing the site verification status.
+        # Corresponds to the JSON property `targetSites`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaTargetSite>]
+        attr_accessor :target_sites
+      
+        # The total number of items matching the request. This will always be populated
+        # in the response.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @target_sites = args[:target_sites] if args.key?(:target_sites)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       
@@ -3273,6 +5002,108 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the ImportSuggestionDenyListEntries
+      # operation. This is returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for CompletionService.ImportSuggestionDenyListEntries method.
+      class GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage location for input content.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaGcsSource]
+        attr_accessor :gcs_source
+      
+        # The inline source for SuggestionDenyListEntry.
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequestInlineSource]
+        attr_accessor :inline_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
+        end
+      end
+      
+      # The inline source for SuggestionDenyListEntry.
+      class GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequestInlineSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of all denylist entries to import. Max of 1000 items.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntry>]
+        attr_accessor :entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
+      # Response message for CompletionService.ImportSuggestionDenyListEntries method.
+      class GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # Count of deny list entries that failed to be imported.
+        # Corresponds to the JSON property `failedEntriesCount`
+        # @return [Fixnum]
+        attr_accessor :failed_entries_count
+      
+        # Count of deny list entries successfully imported.
+        # Corresponds to the JSON property `importedEntriesCount`
+        # @return [Fixnum]
+        attr_accessor :imported_entries_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @failed_entries_count = args[:failed_entries_count] if args.key?(:failed_entries_count)
+          @imported_entries_count = args[:imported_entries_count] if args.key?(:imported_entries_count)
+        end
+      end
+      
       # Metadata related to the progress of the Import operation. This is returned by
       # the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1betaImportUserEventsMetadata
@@ -3470,6 +5301,32 @@ module Google
         end
       end
       
+      # Response message for DataStoreService.ListDataStores method.
+      class GoogleCloudDiscoveryengineV1betaListDataStoresResponse
+        include Google::Apis::Core::Hashable
+      
+        # All the customer's DataStores.
+        # Corresponds to the JSON property `dataStores`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDataStore>]
+        attr_accessor :data_stores
+      
+        # A token that can be sent as ListDataStoresRequest.page_token to retrieve the
+        # next page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_stores = args[:data_stores] if args.key?(:data_stores)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for DocumentService.ListDocuments method.
       class GoogleCloudDiscoveryengineV1betaListDocumentsResponse
         include Google::Apis::Core::Hashable
@@ -3492,6 +5349,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @documents = args[:documents] if args.key?(:documents)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for EngineService.ListEngines method.
+      class GoogleCloudDiscoveryengineV1betaListEnginesResponse
+        include Google::Apis::Core::Hashable
+      
+        # All the customer's Engines.
+        # Corresponds to the JSON property `engines`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngine>]
+        attr_accessor :engines
+      
+        # Not supported.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @engines = args[:engines] if args.key?(:engines)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -3519,6 +5401,39 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @schemas = args[:schemas] if args.key?(:schemas)
+        end
+      end
+      
+      # Response message for SiteSearchEngineService.ListTargetSites method.
+      class GoogleCloudDiscoveryengineV1betaListTargetSitesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of TargetSites.
+        # Corresponds to the JSON property `targetSites`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaTargetSite>]
+        attr_accessor :target_sites
+      
+        # The total number of items matching the request. This will always be populated
+        # in the response.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @target_sites = args[:target_sites] if args.key?(:target_sites)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       
@@ -3742,6 +5657,71 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the PurgeSuggestionDenyListEntries
+      # operation. This is returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for CompletionService.PurgeSuggestionDenyListEntries method.
+      class GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for CompletionService.PurgeSuggestionDenyListEntries method.
+      class GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # Number of suggestion deny list entries purged.
+        # Corresponds to the JSON property `purgeCount`
+        # @return [Fixnum]
+        attr_accessor :purge_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @purge_count = args[:purge_count] if args.key?(:purge_count)
+        end
+      end
+      
       # Request message for Recommend method.
       class GoogleCloudDiscoveryengineV1betaRecommendRequest
         include Google::Apis::Core::Hashable
@@ -3910,6 +5890,27 @@ module Google
           @document = args[:document] if args.key?(:document)
           @id = args[:id] if args.key?(:id)
           @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # Request message for SiteSearchEngineService.RecrawlUris method.
+      class GoogleCloudDiscoveryengineV1betaRecrawlUrisRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of URIs to crawl. At most 10K URIs are supported, otherwise an
+        # INVALID_ARGUMENT error is thrown. Each URI should match at least one
+        # TargetSite in `site_search_engine`.
+        # Corresponds to the JSON property `uris`
+        # @return [Array<String>]
+        attr_accessor :uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uris = args[:uris] if args.key?(:uris)
         end
       end
       
@@ -4369,7 +6370,7 @@ module Google
         # which provides a precise and contextually relevant answer to the search query.
         # If the number of matching answers is less than the `
         # max_extractive_answer_count`, return all of the answers. Otherwise, return the
-        # `max_extractive_answer_count`. At most one answer is returned for each
+        # `max_extractive_answer_count`. At most five answers are returned for each
         # SearchResult.
         # Corresponds to the JSON property `maxExtractiveAnswerCount`
         # @return [Fixnum]
@@ -4557,7 +6558,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec
         include Google::Apis::Core::Hashable
       
-        # The string format of the model version. e.g. stable, preview, etc.
+        # The model version used to generate the summary. Supported values are: * `
+        # stable`: string. Default value when no value is specified. Uses a generally
+        # available, fine-tuned version of the text-bison@001 model. * `preview`: string.
+        # (Public preview) Uses a fine-tuned version of the text-bison@002 model. This
+        # model works only for summaries in English.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -5253,7 +7258,7 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # GCS or HTTP uri for the document.
+        # Cloud Storage or HTTP uri for the document.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -5325,6 +7330,197 @@ module Google
           @citation_metadata = args[:citation_metadata] if args.key?(:citation_metadata)
           @references = args[:references] if args.key?(:references)
           @summary = args[:summary] if args.key?(:summary)
+        end
+      end
+      
+      # SiteSearchEngine captures DataStore level site search persisting
+      # configurations. It is a singleton value per data store.
+      class GoogleCloudDiscoveryengineV1betaSiteSearchEngine
+        include Google::Apis::Core::Hashable
+      
+        # The fully qualified resource name of the site search engine. Format: `projects/
+        # */locations/*/dataStores/*/siteSearchEngine`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Verification information for target sites in advanced site search.
+      class GoogleCloudDiscoveryengineV1betaSiteVerificationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Site verification state indicating the ownership and validity.
+        # Corresponds to the JSON property `siteVerificationState`
+        # @return [String]
+        attr_accessor :site_verification_state
+      
+        # Latest site verification time.
+        # Corresponds to the JSON property `verifyTime`
+        # @return [String]
+        attr_accessor :verify_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @site_verification_state = args[:site_verification_state] if args.key?(:site_verification_state)
+          @verify_time = args[:verify_time] if args.key?(:verify_time)
+        end
+      end
+      
+      # Suggestion deny list entry identifying the phrase to block from suggestions
+      # and the applied operation for the phrase.
+      class GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntry
+        include Google::Apis::Core::Hashable
+      
+        # Required. Phrase to block from suggestions served. Can be maximum 125
+        # characters.
+        # Corresponds to the JSON property `blockPhrase`
+        # @return [String]
+        attr_accessor :block_phrase
+      
+        # Required. The match operator to apply for this phrase. Whether to block the
+        # exact phrase, or block any suggestions containing this phrase.
+        # Corresponds to the JSON property `matchOperator`
+        # @return [String]
+        attr_accessor :match_operator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @block_phrase = args[:block_phrase] if args.key?(:block_phrase)
+          @match_operator = args[:match_operator] if args.key?(:match_operator)
+        end
+      end
+      
+      # A target site for the SiteSearchEngine.
+      class GoogleCloudDiscoveryengineV1betaTargetSite
+        include Google::Apis::Core::Hashable
+      
+        # Input only. If set to false, a uri_pattern is generated to include all pages
+        # whose address contains the provided_uri_pattern. If set to true, an
+        # uri_pattern is generated to try to be an exact match of the
+        # provided_uri_pattern or just the specific page if the provided_uri_pattern is
+        # a specific one. provided_uri_pattern is always normalized to generate the URI
+        # pattern to be used by the search engine.
+        # Corresponds to the JSON property `exactMatch`
+        # @return [Boolean]
+        attr_accessor :exact_match
+        alias_method :exact_match?, :exact_match
+      
+        # Site search indexing failure reasons.
+        # Corresponds to the JSON property `failureReason`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaTargetSiteFailureReason]
+        attr_accessor :failure_reason
+      
+        # Output only. This is system-generated based on the provided_uri_pattern.
+        # Corresponds to the JSON property `generatedUriPattern`
+        # @return [String]
+        attr_accessor :generated_uri_pattern
+      
+        # Output only. Indexing status.
+        # Corresponds to the JSON property `indexingStatus`
+        # @return [String]
+        attr_accessor :indexing_status
+      
+        # Output only. The fully qualified resource name of the target site. `projects/`
+        # project`/locations/`location`/collections/`collection`/dataStores/`data_store`/
+        # siteSearchEngine/targetSites/`target_site`` The `target_site_id` is system-
+        # generated.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Input only. The user provided URI pattern from which the `
+        # generated_uri_pattern` is generated.
+        # Corresponds to the JSON property `providedUriPattern`
+        # @return [String]
+        attr_accessor :provided_uri_pattern
+      
+        # Verification information for target sites in advanced site search.
+        # Corresponds to the JSON property `siteVerificationInfo`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSiteVerificationInfo]
+        attr_accessor :site_verification_info
+      
+        # The type of the target site, e.g., whether the site is to be included or
+        # excluded.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. The target site's last updated time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exact_match = args[:exact_match] if args.key?(:exact_match)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
+          @generated_uri_pattern = args[:generated_uri_pattern] if args.key?(:generated_uri_pattern)
+          @indexing_status = args[:indexing_status] if args.key?(:indexing_status)
+          @name = args[:name] if args.key?(:name)
+          @provided_uri_pattern = args[:provided_uri_pattern] if args.key?(:provided_uri_pattern)
+          @site_verification_info = args[:site_verification_info] if args.key?(:site_verification_info)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Site search indexing failure reasons.
+      class GoogleCloudDiscoveryengineV1betaTargetSiteFailureReason
+        include Google::Apis::Core::Hashable
+      
+        # Failed due to insufficient quota.
+        # Corresponds to the JSON property `quotaFailure`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure]
+        attr_accessor :quota_failure
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quota_failure = args[:quota_failure] if args.key?(:quota_failure)
+        end
+      end
+      
+      # 
+      class GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure
+        include Google::Apis::Core::Hashable
+      
+        # This number is an estimation on how much total quota this project needs to
+        # successfully complete indexing.
+        # Corresponds to the JSON property `totalRequiredQuota`
+        # @return [Fixnum]
+        attr_accessor :total_required_quota
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_required_quota = args[:total_required_quota] if args.key?(:total_required_quota)
         end
       end
       
@@ -5414,6 +7610,34 @@ module Google
       
       # Metadata for UpdateSchema LRO.
       class GoogleCloudDiscoveryengineV1betaUpdateSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.
+      # UpdateTargetSite operation. This will be returned by the google.longrunning.
+      # Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1betaUpdateTargetSiteMetadata
         include Google::Apis::Core::Hashable
       
         # Operation create time.
@@ -5532,11 +7756,10 @@ module Google
         # is for `search` events, the associated SearchRequest may contain a filter
         # expression in SearchRequest.filter conforming to https://google.aip.dev/160#
         # filtering. Similarly, for `view-item-list` events that are generated from a
-        # RecommendationService.RecommendRequest, this field may be populated directly
-        # from RecommendationService.RecommendRequest.filter conforming to https://
-        # google.aip.dev/160#filtering. The value must be a UTF-8 encoded string with a
-        # length limit of 1,000 characters. Otherwise, an `INVALID_ARGUMENT` error is
-        # returned.
+        # RecommendRequest, this field may be populated directly from RecommendRequest.
+        # filter conforming to https://google.aip.dev/160#filtering. The value must be a
+        # UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an `
+        # INVALID_ARGUMENT` error is returned.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
