@@ -330,7 +330,7 @@ module Google
       
         # The resource name of the attack path simulation result that contains the
         # details regarding this attack exposure score. Example: organizations/123/
-        # attackExposureResults/456
+        # simulations/456/attackExposureResults/789
         # Corresponds to the JSON property `attackExposureResult`
         # @return [String]
         attr_accessor :attack_exposure_result
@@ -827,7 +827,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -5043,6 +5046,41 @@ module Google
         end
       end
       
+      # The policy field that violates the deployed posture and its expected and and
+      # detected values.
+      class PolicyDriftDetails
+        include Google::Apis::Core::Hashable
+      
+        # The detected value that violates the deployed posture, for example, `false` or
+        # `allowed_values=`"projects/22831892”``.
+        # Corresponds to the JSON property `detectedValue`
+        # @return [String]
+        attr_accessor :detected_value
+      
+        # The value of this field that was configured in a posture, for example, `true`
+        # or `allowed_values=`"projects/29831892”``.
+        # Corresponds to the JSON property `expectedValue`
+        # @return [String]
+        attr_accessor :expected_value
+      
+        # The name of the updated field, for example constraint.implementation.
+        # policy_rules[0].enforce
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_value = args[:detected_value] if args.key?(:detected_value)
+          @expected_value = args[:expected_value] if args.key?(:expected_value)
+          @field = args[:field] if args.key?(:field)
+        end
+      end
+      
       # A position in the uploaded text version of a module.
       class Position
         include Google::Apis::Core::Hashable
@@ -5493,26 +5531,41 @@ module Google
       class SecurityPosture
         include Google::Apis::Core::Hashable
       
-        # The name of the policy that has been updated, for example, `projects/`
-        # project_id`/policies/`constraint_name``.
+        # The name of the updated policy, for example, `projects/`project_id`/policies/`
+        # constraint_name``.
         # Corresponds to the JSON property `changedPolicy`
         # @return [String]
         attr_accessor :changed_policy
       
-        # Name of the posture, for example, `organizations/`org_id`/locations/`location`/
-        # postures/`posture_name``.
+        # Name of the posture, for example, `CIS-Posture`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The name of the posture deployment, for example, `projects/`project_id`/
+        # The ID of the updated policy, for example, `compute-policy-1`.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        # The details about a change in an updated policy that violates the deployed
+        # posture.
+        # Corresponds to the JSON property `policyDriftDetails`
+        # @return [Array<Google::Apis::SecuritycenterV1::PolicyDriftDetails>]
+        attr_accessor :policy_drift_details
+      
+        # The name of the updated policyset, for example, `cis-policyset`.
+        # Corresponds to the JSON property `policySet`
+        # @return [String]
+        attr_accessor :policy_set
+      
+        # The name of the posture deployment, for example, `organizations/`org_id`/
         # posturedeployments/`posture_deployment_id``.
         # Corresponds to the JSON property `postureDeployment`
         # @return [String]
         attr_accessor :posture_deployment
       
         # The project, folder, or organization on which the posture is deployed, for
-        # example, `projects/`project_id``.
+        # example, `projects/`project_number``.
         # Corresponds to the JSON property `postureDeploymentResource`
         # @return [String]
         attr_accessor :posture_deployment_resource
@@ -5530,6 +5583,9 @@ module Google
         def update!(**args)
           @changed_policy = args[:changed_policy] if args.key?(:changed_policy)
           @name = args[:name] if args.key?(:name)
+          @policy = args[:policy] if args.key?(:policy)
+          @policy_drift_details = args[:policy_drift_details] if args.key?(:policy_drift_details)
+          @policy_set = args[:policy_set] if args.key?(:policy_set)
           @posture_deployment = args[:posture_deployment] if args.key?(:posture_deployment)
           @posture_deployment_resource = args[:posture_deployment_resource] if args.key?(:posture_deployment_resource)
           @revision_id = args[:revision_id] if args.key?(:revision_id)

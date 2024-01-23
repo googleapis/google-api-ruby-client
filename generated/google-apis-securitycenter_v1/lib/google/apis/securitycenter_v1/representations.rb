@@ -694,6 +694,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolicyDriftDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Position
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2122,6 +2128,15 @@ module Google
         end
       end
       
+      class PolicyDriftDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detected_value, as: 'detectedValue'
+          property :expected_value, as: 'expectedValue'
+          property :field, as: 'field'
+        end
+      end
+      
       class Position
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2245,6 +2260,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :changed_policy, as: 'changedPolicy'
           property :name, as: 'name'
+          property :policy, as: 'policy'
+          collection :policy_drift_details, as: 'policyDriftDetails', class: Google::Apis::SecuritycenterV1::PolicyDriftDetails, decorator: Google::Apis::SecuritycenterV1::PolicyDriftDetails::Representation
+      
+          property :policy_set, as: 'policySet'
           property :posture_deployment, as: 'postureDeployment'
           property :posture_deployment_resource, as: 'postureDeploymentResource'
           property :revision_id, as: 'revisionId'
