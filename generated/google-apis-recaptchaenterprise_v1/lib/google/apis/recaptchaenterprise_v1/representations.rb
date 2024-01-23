@@ -238,6 +238,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -717,6 +729,19 @@ module Google
           property :account_id, as: 'accountId'
           property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
