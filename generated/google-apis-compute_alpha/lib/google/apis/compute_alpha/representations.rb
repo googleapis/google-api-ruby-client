@@ -2626,12 +2626,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InstantSnapshotExportParams
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class InstantSnapshotList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2651,12 +2645,6 @@ module Google
       end
       
       class InstantSnapshotResourceStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InstantSnapshotsExportRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4823,12 +4811,6 @@ module Google
       end
       
       class RegionInstanceGroupsSetNamedPortsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RegionInstantSnapshotsExportRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -12551,18 +12533,6 @@ module Google
         end
       end
       
-      class InstantSnapshotExportParams
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :base_instant_snapshot, as: 'baseInstantSnapshot'
-          property :bucket_name, as: 'bucketName'
-          property :encryption_key, as: 'encryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
-      
-          property :object_name, as: 'objectName'
-          property :output_type, as: 'outputType'
-        end
-      end
-      
       class InstantSnapshotList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12599,14 +12569,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :storage_size_bytes, :numeric_string => true, as: 'storageSizeBytes'
-        end
-      end
-      
-      class InstantSnapshotsExportRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :export_params, as: 'exportParams', class: Google::Apis::ComputeAlpha::InstantSnapshotExportParams, decorator: Google::Apis::ComputeAlpha::InstantSnapshotExportParams::Representation
-      
         end
       end
       
@@ -16604,14 +16566,6 @@ module Google
         end
       end
       
-      class RegionInstantSnapshotsExportRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :export_params, as: 'exportParams', class: Google::Apis::ComputeAlpha::InstantSnapshotExportParams, decorator: Google::Apis::ComputeAlpha::InstantSnapshotExportParams::Representation
-      
-        end
-      end
-      
       class RegionList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -19488,11 +19442,12 @@ module Google
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
-          property :max_provisioned_iops, :numeric_string => true, as: 'maxProvisionedIops'
-          property :max_provisioned_throughput, :numeric_string => true, as: 'maxProvisionedThroughput'
-          property :max_size_gb, :numeric_string => true, as: 'maxSizeGb'
-          property :min_provisioned_iops, :numeric_string => true, as: 'minProvisionedIops'
-          property :min_provisioned_throughput, :numeric_string => true, as: 'minProvisionedThroughput'
+          property :max_pool_provisioned_capacity_gb, :numeric_string => true, as: 'maxPoolProvisionedCapacityGb'
+          property :max_pool_provisioned_iops, :numeric_string => true, as: 'maxPoolProvisionedIops'
+          property :max_pool_provisioned_throughput, :numeric_string => true, as: 'maxPoolProvisionedThroughput'
+          property :min_pool_provisioned_capacity_gb, :numeric_string => true, as: 'minPoolProvisionedCapacityGb'
+          property :min_pool_provisioned_iops, :numeric_string => true, as: 'minPoolProvisionedIops'
+          property :min_pool_provisioned_throughput, :numeric_string => true, as: 'minPoolProvisionedThroughput'
           property :min_size_gb, :numeric_string => true, as: 'minSizeGb'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
