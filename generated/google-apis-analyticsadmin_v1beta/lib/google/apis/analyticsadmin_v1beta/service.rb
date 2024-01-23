@@ -37,6 +37,8 @@ module Google
       #
       # @see http://code.google.com/apis/analytics/docs/mgmt/home.html
       class GoogleAnalyticsAdminService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://analyticsadmin.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -48,7 +50,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://analyticsadmin.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-analyticsadmin_v1beta',
                 client_version: Google::Apis::AnalyticsadminV1beta::GEM_VERSION)
           @batch_path = 'batch'
@@ -360,6 +362,7 @@ module Google
         # set of filters.
         # @param [String] account
         #   Required. The account resource for which to return change history resources.
+        #   Format: accounts/`account` Example: "accounts/100"
         # @param [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest] google_analytics_admin_v1beta_search_change_history_events_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
