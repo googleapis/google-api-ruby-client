@@ -32,6 +32,8 @@ module Google
       #
       # @see https://developers.google.com/spectrum-access-system/
       class SASPortalTestingService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://prod-tt-sasportal.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,37 +45,10 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://prod-tt-sasportal.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-prod_tt_sasportal_v1alpha1',
                 client_version: Google::Apis::ProdTtSasportalV1alpha1::GEM_VERSION)
           @batch_path = 'batch'
-        end
-        
-        # Checks whether a SAS deployment for the authentication context exists.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ProdTtSasportalV1alpha1::SasPortalCheckHasProvisionedDeploymentResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalCheckHasProvisionedDeploymentResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def check_customer_has_provisioned_deployment(fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha1/customers:checkHasProvisionedDeployment', options)
-          command.response_representation = Google::Apis::ProdTtSasportalV1alpha1::SasPortalCheckHasProvisionedDeploymentResponse::Representation
-          command.response_class = Google::Apis::ProdTtSasportalV1alpha1::SasPortalCheckHasProvisionedDeploymentResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
         end
         
         # Returns a requested customer.
@@ -140,7 +115,35 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Checks whether account is legacy.
+        # Returns a list of SAS deployments associated with current GCP project.
+        # Includes whether SAS analytics has been enabled or not.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ProdTtSasportalV1alpha1::SasPortalListGcpProjectDeploymentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalListGcpProjectDeploymentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_gcp_project_deployments(fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/customers:listGcpProjectDeployments', options)
+          command.response_representation = Google::Apis::ProdTtSasportalV1alpha1::SasPortalListGcpProjectDeploymentsResponse::Representation
+          command.response_class = Google::Apis::ProdTtSasportalV1alpha1::SasPortalListGcpProjectDeploymentsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of legacy organizations.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
