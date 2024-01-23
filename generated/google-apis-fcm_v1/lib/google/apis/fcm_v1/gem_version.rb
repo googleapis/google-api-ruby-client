@@ -16,13 +16,13 @@ module Google
   module Apis
     module FcmV1
       # Version of the google-apis-fcm_v1 gem
-      GEM_VERSION = "0.23.0"
+      GEM_VERSION = "0.24.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.12.0"
+      GENERATOR_VERSION = "0.13.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20230609"
+      REVISION = "20230623"
     end
   end
 end
