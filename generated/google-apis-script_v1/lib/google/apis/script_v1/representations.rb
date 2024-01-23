@@ -243,7 +243,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :files, as: 'files', class: Google::Apis::ScriptV1::File, decorator: Google::Apis::ScriptV1::File::Representation
       
-          property :revert_flume_invoked, as: 'revertFlumeInvoked'
           property :script_id, as: 'scriptId'
         end
       end
