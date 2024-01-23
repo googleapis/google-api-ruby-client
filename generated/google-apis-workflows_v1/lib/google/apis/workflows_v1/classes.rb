@@ -461,9 +461,8 @@ module Google
         attr_accessor :update_time
       
         # Optional. User-defined environment variables associated with this workflow
-        # revision. This map has a maximum length of 20. Each string can take up to
-        # 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “
-        # WORKFLOWS".
+        # revision. This map has a maximum length of 20. Each string can take up to 4KiB.
+        # Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
         # Corresponds to the JSON property `userEnvVars`
         # @return [Hash<String,String>]
         attr_accessor :user_env_vars
