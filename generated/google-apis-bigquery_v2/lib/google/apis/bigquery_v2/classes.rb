@@ -1052,21 +1052,43 @@ module Google
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
         # . * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
-        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a user that has been recently deleted. For example, `alice@
-        # example.com?uid=123456789012345678901`. If the user is recovered, this value
-        # reverts to `user:`emailid`` and the recovered user retains the role in the
-        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
-        # (plus unique identifier) representing a service account that has been recently
-        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # users of that domain. For example, `google.com` or `example.com`. * `principal:
+        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
+        # subject_attribute_value``: A single identity in a workforce identity pool. * `
+        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
+        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
+        # attribute_name`/`attribute_value``: All workforce identities with a specific
+        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
+        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
+        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
+        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
+        # googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
+        # All identities in a workload identity pool with a certain attribute. * `
+        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding.
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
+        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
+        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
+        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -6124,6 +6146,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::QueryParameterType]
         attr_accessor :array_type
       
+        # [Optional] The element type of the range, if this is a range.
+        # Corresponds to the JSON property `rangeElementType`
+        # @return [Google::Apis::BigqueryV2::QueryParameterType]
+        attr_accessor :range_element_type
+      
         # [Optional] The types of the fields of this struct, in order, if this is a
         # struct.
         # Corresponds to the JSON property `structTypes`
@@ -6142,6 +6169,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @array_type = args[:array_type] if args.key?(:array_type)
+          @range_element_type = args[:range_element_type] if args.key?(:range_element_type)
           @struct_types = args[:struct_types] if args.key?(:struct_types)
           @type = args[:type] if args.key?(:type)
         end
@@ -6187,6 +6215,11 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::QueryParameterValue>]
         attr_accessor :array_values
       
+        # [Optional] The range value, if this is a range type.
+        # Corresponds to the JSON property `rangeValue`
+        # @return [Google::Apis::BigqueryV2::QueryParameterValue::RangeValue]
+        attr_accessor :range_value
+      
         # [Optional] The struct field values, in order of the struct type's declaration.
         # Corresponds to the JSON property `structValues`
         # @return [Hash<String,Google::Apis::BigqueryV2::QueryParameterValue>]
@@ -6204,8 +6237,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @array_values = args[:array_values] if args.key?(:array_values)
+          @range_value = args[:range_value] if args.key?(:range_value)
           @struct_values = args[:struct_values] if args.key?(:struct_values)
           @value = args[:value] if args.key?(:value)
+        end
+        
+        # [Optional] The range value, if this is a range type.
+        class RangeValue
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `end`
+          # @return [Google::Apis::BigqueryV2::QueryParameterValue]
+          attr_accessor :end
+        
+          # 
+          # Corresponds to the JSON property `start`
+          # @return [Google::Apis::BigqueryV2::QueryParameterValue]
+          attr_accessor :start
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @end = args[:end] if args.key?(:end)
+            @start = args[:start] if args.key?(:start)
+          end
         end
       end
       
@@ -6632,6 +6691,33 @@ module Google
         end
       end
       
+      # Represents the value of a range.
+      class RangeValue
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The end value of the range. A missing value represents an unbounded
+        # end.
+        # Corresponds to the JSON property `end`
+        # @return [Google::Apis::BigqueryV2::QueryParameterValue]
+        attr_accessor :end
+      
+        # Optional. The start value of the range. A missing value represents an
+        # unbounded start.
+        # Corresponds to the JSON property `start`
+        # @return [Google::Apis::BigqueryV2::QueryParameterValue]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end = args[:end] if args.key?(:end)
+          @start = args[:start] if args.key?(:start)
+        end
+      end
+      
       # Evaluation metrics used by weighted-ALS models specified by feedback_type=
       # implicit.
       class RankingMetrics
@@ -6933,11 +7019,15 @@ module Google
         # @return [Google::Apis::BigqueryV2::SparkOptions]
         attr_accessor :spark_options
       
-        # Optional. Can be set for procedures only. If true (default), the definition
-        # body will be validated in the creation and the updates of the procedure. For
-        # procedures with an argument of ANY TYPE, the definition body validtion is not
-        # supported at creation/update time, and thus this field must be set to false
-        # explicitly.
+        # Optional. Use this option to catch many common errors. Error checking is not
+        # exhaustive, and successfully creating a procedure doesn't guarantee that the
+        # procedure will successfully execute at runtime. If `strictMode` is set to `
+        # TRUE`, the procedure body is further checked for errors such as non-existent
+        # tables or columns. The `CREATE PROCEDURE` statement fails if the body fails
+        # any of these checks. If `strictMode` is set to `FALSE`, the procedure body is
+        # checked only for syntax. For procedures that invoke themselves recursively,
+        # specify `strictMode=FALSE` to avoid non-existent procedure errors during
+        # validation. Default value is `TRUE`.
         # Corresponds to the JSON property `strictMode`
         # @return [Boolean]
         attr_accessor :strict_mode

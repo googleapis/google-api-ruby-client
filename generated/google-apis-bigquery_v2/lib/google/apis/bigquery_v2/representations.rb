@@ -738,6 +738,12 @@ module Google
       
       class QueryParameterValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class RangeValue
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -768,6 +774,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RangeValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2621,6 +2633,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :array_type, as: 'arrayType', class: Google::Apis::BigqueryV2::QueryParameterType, decorator: Google::Apis::BigqueryV2::QueryParameterType::Representation
       
+          property :range_element_type, as: 'rangeElementType', class: Google::Apis::BigqueryV2::QueryParameterType, decorator: Google::Apis::BigqueryV2::QueryParameterType::Representation
+      
           collection :struct_types, as: 'structTypes', class: Google::Apis::BigqueryV2::QueryParameterType::StructType, decorator: Google::Apis::BigqueryV2::QueryParameterType::StructType::Representation
       
           property :type, as: 'type'
@@ -2642,9 +2656,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :array_values, as: 'arrayValues', class: Google::Apis::BigqueryV2::QueryParameterValue, decorator: Google::Apis::BigqueryV2::QueryParameterValue::Representation
       
+          property :range_value, as: 'rangeValue', class: Google::Apis::BigqueryV2::QueryParameterValue::RangeValue, decorator: Google::Apis::BigqueryV2::QueryParameterValue::RangeValue::Representation
+      
           hash :struct_values, as: 'structValues', class: Google::Apis::BigqueryV2::QueryParameterValue, decorator: Google::Apis::BigqueryV2::QueryParameterValue::Representation
       
           property :value, as: 'value'
+        end
+        
+        class RangeValue
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :end, as: 'end', class: Google::Apis::BigqueryV2::QueryParameterValue, decorator: Google::Apis::BigqueryV2::QueryParameterValue::Representation
+        
+            property :start, as: 'start', class: Google::Apis::BigqueryV2::QueryParameterValue, decorator: Google::Apis::BigqueryV2::QueryParameterValue::Representation
+        
+          end
         end
       end
       
@@ -2730,6 +2756,16 @@ module Google
             property :interval, :numeric_string => true, as: 'interval'
             property :start, :numeric_string => true, as: 'start'
           end
+        end
+      end
+      
+      class RangeValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, as: 'end', class: Google::Apis::BigqueryV2::QueryParameterValue, decorator: Google::Apis::BigqueryV2::QueryParameterValue::Representation
+      
+          property :start, as: 'start', class: Google::Apis::BigqueryV2::QueryParameterValue, decorator: Google::Apis::BigqueryV2::QueryParameterValue::Representation
+      
         end
       end
       
