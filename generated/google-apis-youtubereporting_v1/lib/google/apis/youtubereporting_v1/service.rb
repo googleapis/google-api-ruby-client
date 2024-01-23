@@ -33,6 +33,8 @@ module Google
       #
       # @see https://developers.google.com/youtube/reporting/v1/reports/
       class YouTubeReportingService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://youtubereporting.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -44,7 +46,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://youtubereporting.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-youtubereporting_v1',
                 client_version: Google::Apis::YoutubereportingV1::GEM_VERSION)
           @batch_path = 'batch'
