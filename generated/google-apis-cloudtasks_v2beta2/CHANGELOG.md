@@ -1,5 +1,10 @@
 # Release history for google-apis-cloudtasks_v2beta2
 
+### v0.41.0 (2024-01-23)
+
+* Regenerated from discovery document revision 20240102
+* Regenerated using generator version 0.13.0
+
 ### v0.40.0 (2023-10-29)
 
 * Regenerated from discovery document revision 20231018
