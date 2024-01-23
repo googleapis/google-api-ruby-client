@@ -1,0 +1,7 @@
+{
+    "api_id": "displayvideo:v4",
+    "name_pretty": "Display & Video 360 API",
+    "distribution_name": "google-apis-displayvideo_v4",
+    "language": "ruby",
+    "library_type": "REST"
+}
