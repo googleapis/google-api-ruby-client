@@ -118,6 +118,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CompleteImportSpaceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompleteImportSpaceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomEmoji
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -788,6 +800,20 @@ module Google
         end
       end
       
+      class CompleteImportSpaceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CompleteImportSpaceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :space, as: 'space', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
+      
+        end
+      end
+      
       class CustomEmoji
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1419,6 +1445,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
           property :group_member, as: 'groupMember', class: Google::Apis::ChatV1::Group, decorator: Google::Apis::ChatV1::Group::Representation
       
           property :member, as: 'member', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
@@ -1562,8 +1589,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin_installed, as: 'adminInstalled'
+          property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :external_user_allowed, as: 'externalUserAllowed'
+          property :import_mode, as: 'importMode'
           property :name, as: 'name'
           property :single_user_bot_dm, as: 'singleUserBotDm'
           property :space_details, as: 'spaceDetails', class: Google::Apis::ChatV1::SpaceDetails, decorator: Google::Apis::ChatV1::SpaceDetails::Representation

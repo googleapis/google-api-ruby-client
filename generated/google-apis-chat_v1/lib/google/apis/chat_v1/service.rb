@@ -33,6 +33,8 @@ module Google
       #
       # @see https://developers.google.com/hangouts/chat
       class HangoutsChatService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://chat.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -44,7 +46,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://chat.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-chat_v1',
                 client_version: Google::Apis::ChatV1::GEM_VERSION)
           @batch_path = 'batch'
@@ -133,6 +135,43 @@ module Google
           command.response_representation = Google::Apis::ChatV1::UploadAttachmentResponse::Representation
           command.response_class = Google::Apis::ChatV1::UploadAttachmentResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Completes the [import process](https://developers.google.com/chat/api/guides/
+        # import-data) for the specified space and makes it visible to users. Requires
+        # app authentication and domain-wide delegation. For more information, see [
+        # Authorize Google Chat apps to import data](https://developers.google.com/chat/
+        # api/guides/authorize-import).
+        # @param [String] name
+        #   Required. Resource name of the import mode space. Format: `spaces/`space``
+        # @param [Google::Apis::ChatV1::CompleteImportSpaceRequest] complete_import_space_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::CompleteImportSpaceResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::CompleteImportSpaceResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def complete_import_space(name, complete_import_space_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:completeImport', options)
+          command.request_representation = Google::Apis::ChatV1::CompleteImportSpaceRequest::Representation
+          command.request_object = complete_import_space_request_object
+          command.response_representation = Google::Apis::ChatV1::CompleteImportSpaceResponse::Representation
+          command.response_class = Google::Apis::ChatV1::CompleteImportSpaceResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -383,7 +422,11 @@ module Google
         #   space_history_state` (Supports [turning history on or off for the space](https:
         #   //support.google.com/chat/answer/7664687) if [the organization allows users to
         #   change their history setting](https://support.google.com/a/answer/7664184).
-        #   Warning: mutually exclusive with all other field paths.)
+        #   Warning: mutually exclusive with all other field paths.) - Developer Preview: `
+        #   access_settings.audience` (Supports changing the [access setting](https://
+        #   support.google.com/chat/answer/11971020) of a space. If no audience is
+        #   specified in the access setting, the space's access setting is updated to
+        #   restricted. Warning: mutually exclusive with all other field paths.)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -695,18 +738,15 @@ module Google
         #   `spaces/`space``
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] message_id
-        #   Optional. A custom name for a Chat message assigned at creation. Must start
-        #   with `client-` and contain only lowercase letters, numbers, and hyphens up to
-        #   63 characters in length. Specify this field to get, update, or delete the
-        #   message with the specified value. Assigning a custom name lets a a Chat app
-        #   recall the message without saving the message `name` from the [response body](/
-        #   chat/api/reference/rest/v1/spaces.messages/get#response-body) returned when
-        #   creating the message. Assigning a custom name doesn't replace the generated `
-        #   name` field, the message's resource name. Instead, it sets the custom name as
-        #   the `clientAssignedMessageId` field, which you can reference while processing
-        #   later operations, like updating or deleting the message. For example usage,
-        #   see [Name a created message](https://developers.google.com/chat/api/guides/v1/
-        #   messages/create#name_a_created_message).
+        #   Optional. A custom ID for a message. Lets Chat apps get, update, or delete a
+        #   message without needing to store the system-assigned ID in the message's
+        #   resource name (represented in the message `name` field). The value for this
+        #   field must meet the following requirements: * Begins with `client-`. For
+        #   example, `client-custom-name` is a valid custom ID, but `custom-name` is not. *
+        #   Contains up to 63 characters and only lowercase letters, numbers, and hyphens.
+        #   * Is unique within a space. A Chat app can't use the same custom ID for
+        #   different messages. For details, see [Name a message](https://developers.
+        #   google.com/chat/api/guides/v1/messages/create#name_a_created_message).
         # @param [String] message_reply_option
         #   Optional. Specifies whether a message starts a thread or replies to one. Only
         #   supported in named spaces.
@@ -760,9 +800,11 @@ module Google
         # guides/auth/users). When using app authentication, requests can only delete
         # messages created by the calling Chat app.
         # @param [String] name
-        #   Required. Resource name of the message that you want to delete, in the form `
-        #   spaces/*/messages/*` Example: `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.
-        #   BBBBBBBBBBB`
+        #   Required. Resource name of the message. Format: `spaces/`space`/messages/`
+        #   message`` If you've set a custom ID for your message, you can use the value
+        #   from the `clientAssignedMessageId` field for ``message``. For details, see [
+        #   Name a message] (https://developers.google.com/chat/api/guides/v1/messages/
+        #   create#name_a_created_message).
         # @param [Boolean] force
         #   When `true`, deleting a message also deletes its threaded replies. When `false`
         #   , if a message has threaded replies, deletion fails. Only applies when [
@@ -805,12 +847,11 @@ module Google
         # guides/auth/users). Note: Might return a message from a blocked member or
         # space.
         # @param [String] name
-        #   Required. Resource name of the message to retrieve. Format: `spaces/`space`/
-        #   messages/`message`` If the message begins with `client-`, then it has a custom
-        #   name assigned by a Chat app that created it with the Chat REST API. That Chat
-        #   app (but not others) can pass the custom name to get, update, or delete the
-        #   message. To learn more, see [create and name a message] (https://developers.
-        #   google.com/chat/api/guides/v1/messages/create#name_a_created_message).
+        #   Required. Resource name of the message. Format: `spaces/`space`/messages/`
+        #   message`` If you've set a custom ID for your message, you can use the value
+        #   from the `clientAssignedMessageId` field for ``message``. For details, see [
+        #   Name a message] (https://developers.google.com/chat/api/guides/v1/messages/
+        #   create#name_a_created_message).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -925,8 +966,15 @@ module Google
         # authentication, requests can only update messages created by the calling Chat
         # app.
         # @param [String] name
-        #   Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAAAAAAAA/
-        #   messages/BBBBBBBBBBB.BBBBBBBBBBB`
+        #   Resource name of the message. Format: `spaces/`space`/messages/`message``
+        #   Where ``space`` is the ID of the space where the message is posted and ``
+        #   message`` is a system-assigned ID for the message. For example, `spaces/
+        #   AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you
+        #   create a message, you can use this ID to specify the message in a request by
+        #   replacing ``message`` with the value from the `clientAssignedMessageId` field.
+        #   For example, `spaces/AAAAAAAAAAA/messages/client-custom-name`. For details,
+        #   see [Name a message](https://developers.google.com/chat/api/guides/v1/messages/
+        #   create#name_a_created_message).
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [Boolean] allow_missing
         #   Optional. If `true` and the message isn't found, a new message is created and `
@@ -934,9 +982,11 @@ module Google
         #   https://developers.google.com/chat/api/guides/v1/messages/create#
         #   name_a_created_message) or the request fails.
         # @param [String] update_mask
-        #   Required. The field paths to update. Separate multiple values with commas.
-        #   Currently supported field paths: - `text` - `attachment` - `cards` (Requires [
-        #   app authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (
+        #   Required. The field paths to update. Separate multiple values with commas or
+        #   use `*` to update all field paths. Currently supported field paths: - `text` -
+        #   `attachment` - `cards` (Requires [app authentication](/chat/api/guides/auth/
+        #   service-accounts).) - `cards_v2` (Requires [app authentication](/chat/api/
+        #   guides/auth/service-accounts).) - Developer Preview: `accessory_widgets` (
         #   Requires [app authentication](/chat/api/guides/auth/service-accounts).)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -980,8 +1030,15 @@ module Google
         # authentication, requests can only update messages created by the calling Chat
         # app.
         # @param [String] name
-        #   Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAAAAAAAA/
-        #   messages/BBBBBBBBBBB.BBBBBBBBBBB`
+        #   Resource name of the message. Format: `spaces/`space`/messages/`message``
+        #   Where ``space`` is the ID of the space where the message is posted and ``
+        #   message`` is a system-assigned ID for the message. For example, `spaces/
+        #   AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you
+        #   create a message, you can use this ID to specify the message in a request by
+        #   replacing ``message`` with the value from the `clientAssignedMessageId` field.
+        #   For example, `spaces/AAAAAAAAAAA/messages/client-custom-name`. For details,
+        #   see [Name a message](https://developers.google.com/chat/api/guides/v1/messages/
+        #   create#name_a_created_message).
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [Boolean] allow_missing
         #   Optional. If `true` and the message isn't found, a new message is created and `
@@ -989,9 +1046,11 @@ module Google
         #   https://developers.google.com/chat/api/guides/v1/messages/create#
         #   name_a_created_message) or the request fails.
         # @param [String] update_mask
-        #   Required. The field paths to update. Separate multiple values with commas.
-        #   Currently supported field paths: - `text` - `attachment` - `cards` (Requires [
-        #   app authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (
+        #   Required. The field paths to update. Separate multiple values with commas or
+        #   use `*` to update all field paths. Currently supported field paths: - `text` -
+        #   `attachment` - `cards` (Requires [app authentication](/chat/api/guides/auth/
+        #   service-accounts).) - `cards_v2` (Requires [app authentication](/chat/api/
+        #   guides/auth/service-accounts).) - Developer Preview: `accessory_widgets` (
         #   Requires [app authentication](/chat/api/guides/auth/service-accounts).)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
