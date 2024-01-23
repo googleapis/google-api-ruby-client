@@ -22,7 +22,7 @@ module Google
     module BatchV1
       # Batch API
       #
-      # An API to manage the running of batch jobs on Google Cloud Platform.
+      # An API to manage the running of batch resources on Google Cloud Platform.
       #
       # @example
       #    require 'google/apis/batch_v1'
@@ -32,6 +32,8 @@ module Google
       #
       # @see https://cloud.google.com/batch/
       class BatchService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://batch.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,7 +45,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://batch.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-batch_v1',
                 client_version: Google::Apis::BatchV1::GEM_VERSION)
           @batch_path = 'batch'
