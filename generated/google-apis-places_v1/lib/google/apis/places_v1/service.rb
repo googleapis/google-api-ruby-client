@@ -32,6 +32,8 @@ module Google
       #
       # @see https://mapsplatform.google.com/maps-products/#places-section
       class MapsPlacesService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://places.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,16 +45,16 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://places.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-places_v1',
                 client_version: Google::Apis::PlacesV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         
-        # Get place details with a place id (in a name) string.
+        # Get the details of a place based on its resource name, which is a string in
+        # the `places/`place_id`` format.
         # @param [String] name
-        #   Required. A place ID returned in a Place (with "places/" prefix), or
-        #   equivalently the name in the same Place. Format: `places/`place_id``.
+        #   Required. The resource name of a place, in the `places/`place_id`` format.
         # @param [String] language_code
         #   Optional. Place details will be displayed with the preferred language if
         #   available. Current list of supported languages: https://developers.google.com/
