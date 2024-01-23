@@ -2105,9 +2105,8 @@ module Google
       class GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. For audio conversations, this field indicates which of the channels,
-        # 1 or 2, contains the agent. Note that this must be set for audio conversations
-        # to be properly displayed and analyzed.
+        # Optional. Indicates which of the channels, 1 or 2, contains the agent. Note
+        # that this must be set for conversations to be properly displayed and analyzed.
         # Corresponds to the JSON property `agentChannel`
         # @return [Fixnum]
         attr_accessor :agent_channel
@@ -2118,9 +2117,8 @@ module Google
         # @return [String]
         attr_accessor :agent_id
       
-        # Optional. For audio conversations, this field indicates which of the channels,
-        # 1 or 2, contains the customer. Note that this must be set for audio
-        # conversations to be properly displayed and analyzed.
+        # Optional. Indicates which of the channels, 1 or 2, contains the agent. Note
+        # that this must be set for conversations to be properly displayed and analyzed.
         # Corresponds to the JSON property `customerChannel`
         # @return [Fixnum]
         attr_accessor :customer_channel
@@ -5369,9 +5367,8 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. For audio conversations, this field indicates which of the channels,
-        # 1 or 2, contains the agent. Note that this must be set for audio conversations
-        # to be properly displayed and analyzed.
+        # Optional. Indicates which of the channels, 1 or 2, contains the agent. Note
+        # that this must be set for conversations to be properly displayed and analyzed.
         # Corresponds to the JSON property `agentChannel`
         # @return [Fixnum]
         attr_accessor :agent_channel
@@ -5382,9 +5379,8 @@ module Google
         # @return [String]
         attr_accessor :agent_id
       
-        # Optional. For audio conversations, this field indicates which of the channels,
-        # 1 or 2, contains the customer. Note that this must be set for audio
-        # conversations to be properly displayed and analyzed.
+        # Optional. Indicates which of the channels, 1 or 2, contains the agent. Note
+        # that this must be set for conversations to be properly displayed and analyzed.
         # Corresponds to the JSON property `customerChannel`
         # @return [Fixnum]
         attr_accessor :customer_channel
