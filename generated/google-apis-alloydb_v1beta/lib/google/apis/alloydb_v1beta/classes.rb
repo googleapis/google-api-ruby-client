@@ -1188,6 +1188,13 @@ module Google
         # @return [Array<Google::Apis::AlloydbV1beta::Node>]
         attr_accessor :nodes
       
+        # Output only. The public IP addresses for the Instance. This is available ONLY
+        # when enable_public_ip is set. This is the connection endpoint for an end-user
+        # application.
+        # Corresponds to the JSON property `publicIpAddress`
+        # @return [String]
+        attr_accessor :public_ip_address
+      
         # QueryInsights Instance specific configuration.
         # Corresponds to the JSON property `queryInsightsConfig`
         # @return [Google::Apis::AlloydbV1beta::QueryInsightsInstanceConfig]
@@ -1264,6 +1271,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @nodes = args[:nodes] if args.key?(:nodes)
+          @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
           @query_insights_config = args[:query_insights_config] if args.key?(:query_insights_config)
           @read_pool_config = args[:read_pool_config] if args.key?(:read_pool_config)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
@@ -2250,6 +2258,72 @@ module Google
         end
       end
       
+      # Any custom metadata associated with the resource. i.e. A spanner instance can
+      # have multiple databases with its own unique metadata. Information for these
+      # individual databases can be captured in custom metadata data
+      class StorageDatabasecenterPartnerapiV1mainCustomMetadataData
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `databaseMetadata`
+        # @return [Array<Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseMetadata>]
+        attr_accessor :database_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_metadata = args[:database_metadata] if args.key?(:database_metadata)
+        end
+      end
+      
+      # Metadata for individual databases created in an instance. i.e. spanner
+      # instance can have multiple databases with unique configuration settings.
+      class StorageDatabasecenterPartnerapiV1mainDatabaseMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for automatic backups
+        # Corresponds to the JSON property `backupConfiguration`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupConfiguration]
+        attr_accessor :backup_configuration
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun]
+        attr_accessor :backup_run
+      
+        # Product specification for Condor resources.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterProtoCommonProduct]
+        attr_accessor :product
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
+        attr_accessor :resource_id
+      
+        # Required. Database name. Resource name to follow CAIS resource_name format as
+        # noted here go/condor-common-datamodel
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @product = args[:product] if args.key?(:product)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
       # DatabaseResourceFeed is the top level proto to be used to ingest different
       # database resource level events into Condor platform.
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed
@@ -2469,9 +2543,11 @@ module Google
         # @return [String]
         attr_accessor :current_state
       
-        # Any custom metadata associated with the resource (a JSON field)
+        # Any custom metadata associated with the resource. i.e. A spanner instance can
+        # have multiple databases with its own unique metadata. Information for these
+        # individual databases can be captured in custom metadata data
         # Corresponds to the JSON property `customMetadata`
-        # @return [Hash<String,Object>]
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainCustomMetadataData]
         attr_accessor :custom_metadata
       
         # The state that the instance is expected to be in. For example, an instance
