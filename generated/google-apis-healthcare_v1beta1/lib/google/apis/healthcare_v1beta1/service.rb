@@ -32,6 +32,8 @@ module Google
       #
       # @see https://cloud.google.com/healthcare
       class CloudHealthcareService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://healthcare.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,7 +45,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://healthcare.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-healthcare_v1beta1',
                 client_version: Google::Apis::HealthcareV1beta1::GEM_VERSION)
           @batch_path = 'batch'
@@ -3995,7 +3997,12 @@ module Google
         
         # Returns uncompressed, unencoded bytes representing the referenced bulkdata tag
         # from an instance. See [Retrieve Transaction] (http://dicom.nema.org/medical/
-        # dicom/current/output/html/part18.html#sect_10.4)`: .external`.
+        # dicom/current/output/html/part18.html#sect_10.4)`: .external`. For details on
+        # the implementation of RetrieveBulkdata, see [Bulkdata resources](https://cloud.
+        # google.com/healthcare/docs/dicom#bulkdata-resources) in the Cloud Healthcare
+        # API conformance statement. For samples that show how to call RetrieveBulkdata,
+        # see [Retrieve bulkdata](https://cloud.google.com/healthcare/docs/how-tos/
+        # dicomweb#retrieve-bulkdata).
         # @param [String] parent
         #   Required. The name of the DICOM store that is being accessed. For example, `
         #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
