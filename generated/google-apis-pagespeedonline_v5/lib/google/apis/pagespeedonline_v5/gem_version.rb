@@ -16,13 +16,13 @@ module Google
   module Apis
     module PagespeedonlineV5
       # Version of the google-apis-pagespeedonline_v5 gem
-      GEM_VERSION = "0.16.0"
+      GEM_VERSION = "0.17.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.12.0"
+      GENERATOR_VERSION = "0.13.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20230316"
+      REVISION = "20231026"
     end
   end
 end
