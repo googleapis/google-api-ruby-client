@@ -217,6 +217,25 @@ module Google
         end
       end
       
+      # The configuration setting for Airflow database data retention mechanism.
+      class DataRetentionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration setting for Task Logs.
+        # Corresponds to the JSON property `taskLogsRetentionConfig`
+        # @return [Google::Apis::ComposerV1beta1::TaskLogsRetentionConfig]
+        attr_accessor :task_logs_retention_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @task_logs_retention_config = args[:task_logs_retention_config] if args.key?(:task_logs_retention_config)
+        end
+      end
+      
       # The configuration of Cloud SQL instance that is used by the Apache Airflow
       # software.
       class DatabaseConfig
@@ -460,6 +479,11 @@ module Google
         # @return [String]
         attr_accessor :dag_gcs_prefix
       
+        # The configuration setting for Airflow database data retention mechanism.
+        # Corresponds to the JSON property `dataRetentionConfig`
+        # @return [Google::Apis::ComposerV1beta1::DataRetentionConfig]
+        attr_accessor :data_retention_config
+      
         # The configuration of Cloud SQL instance that is used by the Apache Airflow
         # software.
         # Corresponds to the JSON property `databaseConfig`
@@ -566,6 +590,7 @@ module Google
           @airflow_byoid_uri = args[:airflow_byoid_uri] if args.key?(:airflow_byoid_uri)
           @airflow_uri = args[:airflow_uri] if args.key?(:airflow_uri)
           @dag_gcs_prefix = args[:dag_gcs_prefix] if args.key?(:dag_gcs_prefix)
+          @data_retention_config = args[:data_retention_config] if args.key?(:data_retention_config)
           @database_config = args[:database_config] if args.key?(:database_config)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @environment_size = args[:environment_size] if args.key?(:environment_size)
@@ -1979,6 +2004,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bucket = args[:bucket] if args.key?(:bucket)
+        end
+      end
+      
+      # The configuration setting for Task Logs.
+      class TaskLogsRetentionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The mode of storage for Airflow workers task logs. For details, see
+        # go/composer-store-task-logs-in-cloud-logging-only-design-doc
+        # Corresponds to the JSON property `storageMode`
+        # @return [String]
+        attr_accessor :storage_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @storage_mode = args[:storage_mode] if args.key?(:storage_mode)
         end
       end
       
