@@ -1761,15 +1761,15 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1MethodSelector
         include Google::Apis::Core::Hashable
       
-        # Value for `method` should be a valid method name for the corresponding `
-        # service_name` in ApiOperation. If `*` used as value for `method`, then ALL
-        # methods and permissions are allowed.
+        # A valid method name for the corresponding `service_name` in ApiOperation. If `*
+        # ` is used as the value for the `method`, then ALL methods and permissions are
+        # allowed.
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
       
-        # Value for `permission` should be a valid Cloud IAM permission for the
-        # corresponding `service_name` in ApiOperation.
+        # A valid Cloud IAM permission for the corresponding `service_name` in
+        # ApiOperation.
         # Corresponds to the JSON property `permission`
         # @return [String]
         attr_accessor :permission
