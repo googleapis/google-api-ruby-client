@@ -75,27 +75,6 @@ module Google
         end
       end
       
-      # Response for [CheckHasProvisionedDeployment]. [spectrum.sas.portal.v1alpha1.
-      # Provisioning.CheckHasProvisionedDeployment].
-      class SasPortalCheckHasProvisionedDeploymentResponse
-        include Google::Apis::Core::Hashable
-      
-        # Whether a SAS deployment for the authentication context exists.
-        # Corresponds to the JSON property `hasProvisionedDeployment`
-        # @return [Boolean]
-        attr_accessor :has_provisioned_deployment
-        alias_method :has_provisioned_deployment?, :has_provisioned_deployment
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @has_provisioned_deployment = args[:has_provisioned_deployment] if args.key?(:has_provisioned_deployment)
-        end
-      end
-      
       # Request for CreateSignedDevice.
       class SasPortalCreateSignedDeviceRequest
         include Google::Apis::Core::Hashable
@@ -242,7 +221,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The FCC identifier of the device.
+        # The FCC identifier of the device. Refer to https://www.fcc.gov/oet/ea/fccid
+        # for FccID format.
         # Corresponds to the JSON property `fccId`
         # @return [String]
         attr_accessor :fcc_id
@@ -632,6 +612,33 @@ module Google
         end
       end
       
+      # Deployment associated with the GCP project. Includes whether SAS analytics has
+      # been enabled or not.
+      class SasPortalGcpProjectDeployment
+        include Google::Apis::Core::Hashable
+      
+        # The Deployment.
+        # Corresponds to the JSON property `deployment`
+        # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeployment]
+        attr_accessor :deployment
+      
+        # Whether SAS analytics has been enabled.
+        # Corresponds to the JSON property `hasEnabledAnalytics`
+        # @return [Boolean]
+        attr_accessor :has_enabled_analytics
+        alias_method :has_enabled_analytics?, :has_enabled_analytics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @has_enabled_analytics = args[:has_enabled_analytics] if args.key?(:has_enabled_analytics)
+        end
+      end
+      
       # Request for GenerateSecret.
       class SasPortalGenerateSecretRequest
         include Google::Apis::Core::Hashable
@@ -889,15 +896,14 @@ module Google
         end
       end
       
-      # Response for [ListLegacyOrganizations]. [spectrum.sas.portal.v1alpha1.
-      # Provisioning.ListLegacyOrganizations].
-      class SasPortalListLegacyOrganizationsResponse
+      # Response for [ListGcpProjectDeployments].
+      class SasPortalListGcpProjectDeploymentsResponse
         include Google::Apis::Core::Hashable
       
-        # Optional. IDs of legacy SAS organizations.
-        # Corresponds to the JSON property `organizationIds`
-        # @return [Array<Fixnum>]
-        attr_accessor :organization_ids
+        # Optional. Deployments associated with the GCP project
+        # Corresponds to the JSON property `deployments`
+        # @return [Array<Google::Apis::ProdTtSasportalV1alpha1::SasPortalGcpProjectDeployment>]
+        attr_accessor :deployments
       
         def initialize(**args)
            update!(**args)
@@ -905,7 +911,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @organization_ids = args[:organization_ids] if args.key?(:organization_ids)
+          @deployments = args[:deployments] if args.key?(:deployments)
+        end
+      end
+      
+      # Response for [ListLegacyOrganizations]. [spectrum.sas.portal.v1alpha1.
+      # Provisioning.ListLegacyOrganizations].
+      class SasPortalListLegacyOrganizationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Legacy SAS organizations.
+        # Corresponds to the JSON property `organizations`
+        # @return [Array<Google::Apis::ProdTtSasportalV1alpha1::SasPortalOrganization>]
+        attr_accessor :organizations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @organizations = args[:organizations] if args.key?(:organizations)
         end
       end
       
@@ -1191,6 +1217,31 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Organization details.
+      class SasPortalOrganization
+        include Google::Apis::Core::Hashable
+      
+        # Name of organization
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Id of organization
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
