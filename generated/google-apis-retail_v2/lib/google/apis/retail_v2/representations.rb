@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2ColorInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1138,6 +1144,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaExportAnalyticsMetricsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaExportErrorsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1555,6 +1567,8 @@ module Google
       
           collection :merged_facet_values, as: 'mergedFacetValues', class: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue::Representation
       
+          property :rerank_config, as: 'rerankConfig', class: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig::Representation
+      
         end
       end
       
@@ -1572,6 +1586,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :merged_value, as: 'mergedValue'
           collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :facet_values, as: 'facetValues'
+          property :rerank_facet, as: 'rerankFacet'
         end
       end
       
@@ -3131,6 +3153,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model, as: 'model'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaExportAnalyticsMetricsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::RetailV2::GoogleRpcStatus, decorator: Google::Apis::RetailV2::GoogleRpcStatus::Representation
+      
+          property :errors_config, as: 'errorsConfig', class: Google::Apis::RetailV2::GoogleCloudRetailV2betaExportErrorsConfig, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2betaExportErrorsConfig::Representation
+      
+          property :output_result, as: 'outputResult', class: Google::Apis::RetailV2::GoogleCloudRetailV2betaOutputResult, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2betaOutputResult::Representation
+      
         end
       end
       
