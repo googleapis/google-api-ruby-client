@@ -501,8 +501,8 @@ module Google
         attr_accessor :menu_for_children
         alias_method :menu_for_children?, :menu_for_children
       
-        # An ID representing this place which may be used to look up this place again (a.
-        # k.a. the API "resource" name: places/place_id).
+        # This Place's resource name, in `places/`place_id`` format. Can be used to look
+        # up the Place.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
