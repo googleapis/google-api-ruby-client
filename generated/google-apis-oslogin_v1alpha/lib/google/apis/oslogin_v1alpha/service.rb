@@ -32,6 +32,8 @@ module Google
       #
       # @see https://cloud.google.com/compute/docs/oslogin/
       class CloudOSLoginService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://oslogin.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,7 +45,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://oslogin.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-oslogin_v1alpha',
                 client_version: Google::Apis::OsloginV1alpha::GEM_VERSION)
           @batch_path = 'batch'
