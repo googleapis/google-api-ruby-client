@@ -33,6 +33,8 @@ module Google
       #
       # @see https://cloud.google.com/support/docs/apis
       class CloudSupportService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://cloudsupport.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -44,7 +46,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://cloudsupport.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-cloudsupport_v2beta',
                 client_version: Google::Apis::CloudsupportV2beta::GEM_VERSION)
           @batch_path = 'batch'
@@ -311,6 +313,8 @@ module Google
         # @param [String] page_token
         #   A token identifying the page of results to return. If unspecified, the first
         #   page is retrieved.
+        # @param [String] product_line
+        #   The product line to request cases for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -328,7 +332,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_cases(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_cases(parent, filter: nil, page_size: nil, page_token: nil, product_line: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta/{+parent}/cases', options)
           command.response_representation = Google::Apis::CloudsupportV2beta::ListCasesResponse::Representation
           command.response_class = Google::Apis::CloudsupportV2beta::ListCasesResponse
@@ -336,6 +340,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['productLine'] = product_line unless product_line.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

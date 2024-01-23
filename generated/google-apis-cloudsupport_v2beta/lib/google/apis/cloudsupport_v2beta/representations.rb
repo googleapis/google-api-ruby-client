@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Product
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchCaseClassificationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -241,6 +247,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :id, as: 'id'
+          property :product, as: 'product', class: Google::Apis::CloudsupportV2beta::Product, decorator: Google::Apis::CloudsupportV2beta::Product::Representation
+      
         end
       end
       
@@ -452,6 +460,14 @@ module Google
           property :bucket_name, as: 'bucketName'
           property :generation, :numeric_string => true, as: 'generation'
           property :object_name, as: 'objectName'
+        end
+      end
+      
+      class Product
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_line, as: 'productLine'
+          property :product_subline, as: 'productSubline'
         end
       end
       
