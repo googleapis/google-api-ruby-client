@@ -242,7 +242,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The FCC identifier of the device.
+        # The FCC identifier of the device. Refer to https://www.fcc.gov/oet/ea/fccid
+        # for FccID format.
         # Corresponds to the JSON property `fccId`
         # @return [String]
         attr_accessor :fcc_id
@@ -894,10 +895,10 @@ module Google
       class SasPortalListLegacyOrganizationsResponse
         include Google::Apis::Core::Hashable
       
-        # Optional. IDs of legacy SAS organizations.
-        # Corresponds to the JSON property `organizationIds`
-        # @return [Array<Fixnum>]
-        attr_accessor :organization_ids
+        # Optional. Legacy SAS organizations.
+        # Corresponds to the JSON property `organizations`
+        # @return [Array<Google::Apis::SasportalV1alpha1::SasPortalOrganization>]
+        attr_accessor :organizations
       
         def initialize(**args)
            update!(**args)
@@ -905,7 +906,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @organization_ids = args[:organization_ids] if args.key?(:organization_ids)
+          @organizations = args[:organizations] if args.key?(:organizations)
         end
       end
       
@@ -1191,6 +1192,31 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Organization details.
+      class SasPortalOrganization
+        include Google::Apis::Core::Hashable
+      
+        # Name of organization
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Id of organization
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
