@@ -1260,6 +1260,8 @@ module Google
           property :listener_auth_config, as: 'listenerAuthConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
       
           property :private_connectivity_enabled, as: 'privateConnectivityEnabled'
+          property :proxy_destination_config, as: 'proxyDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
+      
           property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
       
         end
@@ -1280,6 +1282,8 @@ module Google
           property :event_listener_type, as: 'eventListenerType'
           property :is_eventing_supported, as: 'isEventingSupported'
           collection :listener_auth_config_templates, as: 'listenerAuthConfigTemplates', class: Google::Apis::ConnectorsV1::AuthConfigTemplate, decorator: Google::Apis::ConnectorsV1::AuthConfigTemplate::Representation
+      
+          property :proxy_destination_config, as: 'proxyDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfigTemplate, decorator: Google::Apis::ConnectorsV1::DestinationConfigTemplate::Representation
       
           property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfigTemplate, decorator: Google::Apis::ConnectorsV1::DestinationConfigTemplate::Representation
       
@@ -1867,6 +1871,7 @@ module Google
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::ConnectorsV1::NetworkConfig, decorator: Google::Apis::ConnectorsV1::NetworkConfig::Representation
       
+          property :provisioned, as: 'provisioned'
         end
       end
       

@@ -1263,7 +1263,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Service account used by runtime plane to access auth config secrets.
+        # Optional. Service account used by runtime plane to access auth config secrets.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -2005,6 +2005,11 @@ module Google
         alias_method :private_connectivity_enabled?, :private_connectivity_enabled
       
         # Define the Connectors target endpoint.
+        # Corresponds to the JSON property `proxyDestinationConfig`
+        # @return [Google::Apis::ConnectorsV1::DestinationConfig]
+        attr_accessor :proxy_destination_config
+      
+        # Define the Connectors target endpoint.
         # Corresponds to the JSON property `registrationDestinationConfig`
         # @return [Google::Apis::ConnectorsV1::DestinationConfig]
         attr_accessor :registration_destination_config
@@ -2022,6 +2027,7 @@ module Google
           @events_listener_ingress_endpoint = args[:events_listener_ingress_endpoint] if args.key?(:events_listener_ingress_endpoint)
           @listener_auth_config = args[:listener_auth_config] if args.key?(:listener_auth_config)
           @private_connectivity_enabled = args[:private_connectivity_enabled] if args.key?(:private_connectivity_enabled)
+          @proxy_destination_config = args[:proxy_destination_config] if args.key?(:proxy_destination_config)
           @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
         end
       end
@@ -2082,6 +2088,12 @@ module Google
       
         # DestinationConfigTemplate defines required destinations supported by the
         # Connector.
+        # Corresponds to the JSON property `proxyDestinationConfig`
+        # @return [Google::Apis::ConnectorsV1::DestinationConfigTemplate]
+        attr_accessor :proxy_destination_config
+      
+        # DestinationConfigTemplate defines required destinations supported by the
+        # Connector.
         # Corresponds to the JSON property `registrationDestinationConfig`
         # @return [Google::Apis::ConnectorsV1::DestinationConfigTemplate]
         attr_accessor :registration_destination_config
@@ -2101,6 +2113,7 @@ module Google
           @event_listener_type = args[:event_listener_type] if args.key?(:event_listener_type)
           @is_eventing_supported = args[:is_eventing_supported] if args.key?(:is_eventing_supported)
           @listener_auth_config_templates = args[:listener_auth_config_templates] if args.key?(:listener_auth_config_templates)
+          @proxy_destination_config = args[:proxy_destination_config] if args.key?(:proxy_destination_config)
           @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
         end
       end
@@ -4268,6 +4281,12 @@ module Google
         # @return [Google::Apis::ConnectorsV1::NetworkConfig]
         attr_accessor :network_config
       
+        # Output only. Specifies whether the region is provisioned.
+        # Corresponds to the JSON property `provisioned`
+        # @return [Boolean]
+        attr_accessor :provisioned
+        alias_method :provisioned?, :provisioned
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4277,6 +4296,7 @@ module Google
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
+          @provisioned = args[:provisioned] if args.key?(:provisioned)
         end
       end
       
