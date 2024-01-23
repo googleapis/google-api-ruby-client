@@ -93,6 +93,20 @@ module Google
         end
       end
       
+      # Security patches are applied automatically to the runtime without requiring
+      # the function to be redeployed.
+      class AutomaticUpdatePolicy
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -132,21 +146,43 @@ module Google
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
         # . * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
-        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a user that has been recently deleted. For example, `alice@
-        # example.com?uid=123456789012345678901`. If the user is recovered, this value
-        # reverts to `user:`emailid`` and the recovered user retains the role in the
-        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
-        # (plus unique identifier) representing a service account that has been recently
-        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # users of that domain. For example, `google.com` or `example.com`. * `principal:
+        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
+        # subject_attribute_value``: A single identity in a workforce identity pool. * `
+        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
+        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
+        # attribute_name`/`attribute_value``: All workforce identities with a specific
+        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
+        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
+        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
+        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
+        # googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
+        # All identities in a workload identity pool with a certain attribute. * `
+        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding.
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
+        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
+        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
+        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -174,6 +210,12 @@ module Google
       class BuildConfig
         include Google::Apis::Core::Hashable
       
+        # Security patches are applied automatically to the runtime without requiring
+        # the function to be redeployed.
+        # Corresponds to the JSON property `automaticUpdatePolicy`
+        # @return [Google::Apis::CloudfunctionsV2beta::AutomaticUpdatePolicy]
+        attr_accessor :automatic_update_policy
+      
         # Output only. The Cloud Build name of the latest successful deployment of the
         # function.
         # Corresponds to the JSON property `build`
@@ -190,10 +232,10 @@ module Google
         # @return [String]
         attr_accessor :docker_registry
       
-        # User managed repository created in Artifact Registry optionally with a
-        # customer managed encryption key. This is the repository to which the function
-        # docker image will be pushed after it is built by Cloud Build. If unspecified,
-        # GCF will create and use a repository named 'gcf-artifacts' for every deployed
+        # Repository in Artifact Registry to which the function docker image will be
+        # pushed after it is built by Cloud Build. If specified by user, it is created
+        # and managed by user with a customer managed encryption key. Otherwise, GCF
+        # will create and use a repository named 'gcf-artifacts' for every deployed
         # region. It must match the pattern `projects/`project`/locations/`location`/
         # repositories/`repository``. Cross-project repositories are not supported.
         # Cross-location repositories are not supported. Repository format must be '
@@ -216,6 +258,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :environment_variables
       
+        # Security patches are only applied when a function is redeployed.
+        # Corresponds to the JSON property `onDeployUpdatePolicy`
+        # @return [Google::Apis::CloudfunctionsV2beta::OnDeployUpdatePolicy]
+        attr_accessor :on_deploy_update_policy
+      
         # The runtime in which to run the function. Required when deploying a new
         # function, optional when updating an existing function. For a complete list of
         # possible choices, see the [`gcloud` command reference](https://cloud.google.
@@ -223,6 +270,11 @@ module Google
         # Corresponds to the JSON property `runtime`
         # @return [String]
         attr_accessor :runtime
+      
+        # [Preview] Service account to be used for building the container
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
       
         # The location of the function source code.
         # Corresponds to the JSON property `source`
@@ -259,12 +311,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @automatic_update_policy = args[:automatic_update_policy] if args.key?(:automatic_update_policy)
           @build = args[:build] if args.key?(:build)
           @docker_registry = args[:docker_registry] if args.key?(:docker_registry)
           @docker_repository = args[:docker_repository] if args.key?(:docker_repository)
           @entry_point = args[:entry_point] if args.key?(:entry_point)
           @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
+          @on_deploy_update_policy = args[:on_deploy_update_policy] if args.key?(:on_deploy_update_policy)
           @runtime = args[:runtime] if args.key?(:runtime)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @source = args[:source] if args.key?(:source)
           @source_provenance = args[:source_provenance] if args.key?(:source_provenance)
           @source_token = args[:source_token] if args.key?(:source_token)
@@ -622,6 +677,13 @@ module Google
       class GenerateUploadUrlRequest
         include Google::Apis::Core::Hashable
       
+        # The function environment the generated upload url will be used for. The upload
+        # url for 2nd Gen functions can also be used for 1st gen functions, but not vice
+        # versa. If not specified, 2nd generation-style upload URLs are generated.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
         # [Preview] Resource name of a KMS crypto key (managed by the user) used to
         # encrypt/decrypt function source code objects in intermediate Cloud Storage
         # buckets. When you generate an upload url and upload your source code, it gets
@@ -643,6 +705,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @environment = args[:environment] if args.key?(:environment)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
         end
       end
@@ -1369,6 +1432,26 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Security patches are only applied when a function is redeployed.
+      class OnDeployUpdatePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. contains the runtime version which was used during latest
+        # function deployment.
+        # Corresponds to the JSON property `runtimeVersion`
+        # @return [String]
+        attr_accessor :runtime_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
         end
       end
       
