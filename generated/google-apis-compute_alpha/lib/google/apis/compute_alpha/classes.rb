@@ -10600,14 +10600,12 @@ module Google
         attr_accessor :all_ports
         alias_method :all_ports?, :all_ports
       
-        # This field is used along with the backend_service field for internal load
-        # balancing or with the target field for internal TargetInstance. If set to true,
-        # clients can access the internal passthrough Network Load Balancers, the
-        # regional internal Application Load Balancer, and the regional internal proxy
-        # Network Load Balancer from all regions. If false, only allows access from the
-        # local region the load balancer is located at. Note that for INTERNAL_MANAGED
-        # forwarding rules, this field cannot be changed after the forwarding rule is
-        # created.
+        # If set to true, clients can access the internal passthrough Network Load
+        # Balancers, the regional internal Application Load Balancer, and the regional
+        # internal proxy Network Load Balancer from all regions. If false, only allows
+        # access from the local region the load balancer is located at. Note that for
+        # INTERNAL_MANAGED forwarding rules, this field cannot be changed after the
+        # forwarding rule is created.
         # Corresponds to the JSON property `allowGlobalAccess`
         # @return [Boolean]
         attr_accessor :allow_global_access
@@ -12511,8 +12509,9 @@ module Google
         # The ID of a supported feature. To add multiple values, use commas to separate
         # values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE -
         # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE -
-        # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - IDPF For
-        # more information, see Enabling guest operating system features.
+        # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE -
+        # TDX_CAPABLE - IDPF For more information, see Enabling guest operating system
+        # features.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -21314,55 +21313,6 @@ module Google
         end
       end
       
-      # 
-      class InstantSnapshotExportParams
-        include Google::Apis::Core::Hashable
-      
-        # An optional base instant snapshot that this resource is compared against. If
-        # not specified, all blocks of this resource are exported. The base instant
-        # snapshot and this resource must be created from the same disk. The base
-        # instant snapshot must be created earlier in time than this resource.
-        # Corresponds to the JSON property `baseInstantSnapshot`
-        # @return [String]
-        attr_accessor :base_instant_snapshot
-      
-        # The name of an existing bucket in Cloud Storage where the changed blocks will
-        # be stored. The Google Service Account must have read and write access to this
-        # bucket. The bucket has to be in the same region as this resource.
-        # Corresponds to the JSON property `bucketName`
-        # @return [String]
-        attr_accessor :bucket_name
-      
-        # Encryption key used to encrypt the instant snapshot.
-        # Corresponds to the JSON property `encryptionKey`
-        # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
-        attr_accessor :encryption_key
-      
-        # Name of the output Bigstore object storing the changed blocks. Object name
-        # must be less than 1024 bytes in length.
-        # Corresponds to the JSON property `objectName`
-        # @return [String]
-        attr_accessor :object_name
-      
-        # The format of the output file.
-        # Corresponds to the JSON property `outputType`
-        # @return [String]
-        attr_accessor :output_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @base_instant_snapshot = args[:base_instant_snapshot] if args.key?(:base_instant_snapshot)
-          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
-          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
-          @object_name = args[:object_name] if args.key?(:object_name)
-          @output_type = args[:output_type] if args.key?(:output_type)
-        end
-      end
-      
       # Contains a list of InstantSnapshot resources.
       class InstantSnapshotList
         include Google::Apis::Core::Hashable
@@ -21496,25 +21446,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @storage_size_bytes = args[:storage_size_bytes] if args.key?(:storage_size_bytes)
-        end
-      end
-      
-      # 
-      class InstantSnapshotsExportRequest
-        include Google::Apis::Core::Hashable
-      
-        # Parameters to export the changed blocks.
-        # Corresponds to the JSON property `exportParams`
-        # @return [Google::Apis::ComputeAlpha::InstantSnapshotExportParams]
-        attr_accessor :export_params
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @export_params = args[:export_params] if args.key?(:export_params)
         end
       end
       
@@ -27563,10 +27494,12 @@ module Google
         # @return [String]
         attr_accessor :fqdn
       
-        # The name for a specific VM instance that the IP address belongs to. This is
-        # required for network endpoints of type GCE_VM_IP_PORT. The instance must be in
-        # the same zone of network endpoint group. The name must be 1-63 characters long,
-        # and comply with RFC1035.
+        # The name or a URL of a specific VM instance that the IP address belongs to.
+        # This is required for network endpoints of type GCE_VM_IP_PORT. The instance
+        # must be in the same zone of network endpoint group (for zonal NEGs) or in the
+        # zone within the region of the NEG (for regional NEGs). The name must be 1-63
+        # characters long, and comply with RFC1035 or be a valid URL pointing to an
+        # existing instance.
         # Corresponds to the JSON property `instance`
         # @return [String]
         attr_accessor :instance
@@ -37202,25 +37135,6 @@ module Google
         def update!(**args)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @named_ports = args[:named_ports] if args.key?(:named_ports)
-        end
-      end
-      
-      # 
-      class RegionInstantSnapshotsExportRequest
-        include Google::Apis::Core::Hashable
-      
-        # Parameters to export the changed blocks.
-        # Corresponds to the JSON property `exportParams`
-        # @return [Google::Apis::ComputeAlpha::InstantSnapshotExportParams]
-        attr_accessor :export_params
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @export_params = args[:export_params] if args.key?(:export_params)
         end
       end
       
@@ -48665,32 +48579,38 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] Maximum provisioned IOPS.
-        # Corresponds to the JSON property `maxProvisionedIops`
+        # [Output Only] Maximum storage pool size in GB.
+        # Corresponds to the JSON property `maxPoolProvisionedCapacityGb`
         # @return [Fixnum]
-        attr_accessor :max_provisioned_iops
+        attr_accessor :max_pool_provisioned_capacity_gb
+      
+        # [Output Only] Maximum provisioned IOPS.
+        # Corresponds to the JSON property `maxPoolProvisionedIops`
+        # @return [Fixnum]
+        attr_accessor :max_pool_provisioned_iops
       
         # [Output Only] Maximum provisioned throughput.
-        # Corresponds to the JSON property `maxProvisionedThroughput`
+        # Corresponds to the JSON property `maxPoolProvisionedThroughput`
         # @return [Fixnum]
-        attr_accessor :max_provisioned_throughput
-      
-        # [Output Only] Maximum storage pool size in GB.
-        # Corresponds to the JSON property `maxSizeGb`
-        # @return [Fixnum]
-        attr_accessor :max_size_gb
-      
-        # [Output Only] Minimum provisioned IOPS.
-        # Corresponds to the JSON property `minProvisionedIops`
-        # @return [Fixnum]
-        attr_accessor :min_provisioned_iops
-      
-        # [Output Only] Minimum provisioned throughput.
-        # Corresponds to the JSON property `minProvisionedThroughput`
-        # @return [Fixnum]
-        attr_accessor :min_provisioned_throughput
+        attr_accessor :max_pool_provisioned_throughput
       
         # [Output Only] Minimum storage pool size in GB.
+        # Corresponds to the JSON property `minPoolProvisionedCapacityGb`
+        # @return [Fixnum]
+        attr_accessor :min_pool_provisioned_capacity_gb
+      
+        # [Output Only] Minimum provisioned IOPS.
+        # Corresponds to the JSON property `minPoolProvisionedIops`
+        # @return [Fixnum]
+        attr_accessor :min_pool_provisioned_iops
+      
+        # [Output Only] Minimum provisioned throughput.
+        # Corresponds to the JSON property `minPoolProvisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :min_pool_provisioned_throughput
+      
+        # [Deprecated] This field is deprecated. Use minPoolProvisionedCapacityGb
+        # instead.
         # Corresponds to the JSON property `minSizeGb`
         # @return [Fixnum]
         attr_accessor :min_size_gb
@@ -48733,11 +48653,12 @@ module Google
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
-          @max_provisioned_iops = args[:max_provisioned_iops] if args.key?(:max_provisioned_iops)
-          @max_provisioned_throughput = args[:max_provisioned_throughput] if args.key?(:max_provisioned_throughput)
-          @max_size_gb = args[:max_size_gb] if args.key?(:max_size_gb)
-          @min_provisioned_iops = args[:min_provisioned_iops] if args.key?(:min_provisioned_iops)
-          @min_provisioned_throughput = args[:min_provisioned_throughput] if args.key?(:min_provisioned_throughput)
+          @max_pool_provisioned_capacity_gb = args[:max_pool_provisioned_capacity_gb] if args.key?(:max_pool_provisioned_capacity_gb)
+          @max_pool_provisioned_iops = args[:max_pool_provisioned_iops] if args.key?(:max_pool_provisioned_iops)
+          @max_pool_provisioned_throughput = args[:max_pool_provisioned_throughput] if args.key?(:max_pool_provisioned_throughput)
+          @min_pool_provisioned_capacity_gb = args[:min_pool_provisioned_capacity_gb] if args.key?(:min_pool_provisioned_capacity_gb)
+          @min_pool_provisioned_iops = args[:min_pool_provisioned_iops] if args.key?(:min_pool_provisioned_iops)
+          @min_pool_provisioned_throughput = args[:min_pool_provisioned_throughput] if args.key?(:min_pool_provisioned_throughput)
           @min_size_gb = args[:min_size_gb] if args.key?(:min_size_gb)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
