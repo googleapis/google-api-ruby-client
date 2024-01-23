@@ -34,6 +34,8 @@ module Google
       #
       # @see https://developers.google.com/android-publisher
       class AndroidPublisherService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://androidpublisher.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -45,7 +47,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://androidpublisher.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-androidpublisher_v3',
                 client_version: Google::Apis::AndroidpublisherV3::GEM_VERSION)
           @batch_path = 'batch'
@@ -157,6 +159,188 @@ module Google
           command.params['packageName'] = package_name unless package_name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Incrementally update targeting for a recovery action. Note that only the
+        # criteria selected during the creation of recovery action can be expanded.
+        # @param [String] package_name
+        #   Required. Package name of the app for which recovery action is to be updated.
+        # @param [Fixnum] app_recovery_id
+        #   Required. ID corresponding to the app recovery action.
+        # @param [Google::Apis::AndroidpublisherV3::AddTargetingRequest] add_targeting_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::AddTargetingResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::AddTargetingResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_apprecovery_targeting(package_name, app_recovery_id, add_targeting_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:addTargeting', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::AddTargetingRequest::Representation
+          command.request_object = add_targeting_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::AddTargetingResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::AddTargetingResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['appRecoveryId'] = app_recovery_id unless app_recovery_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all app recovery action resources associated with a particular package
+        # name and app version.
+        # @param [String] package_name
+        #   Required. Package name of the app for which list of recovery actions is
+        #   requested.
+        # @param [Fixnum] version_code
+        #   Required. Version code targeted by the list of recovery actions.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::ListAppRecoveriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::ListAppRecoveriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def app_apprecovery_recoveries(package_name, version_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/appRecoveries', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::ListAppRecoveriesResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::ListAppRecoveriesResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['versionCode'] = version_code unless version_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Cancel an already executing app recovery action. Note that this action changes
+        # status of the recovery action to CANCELED.
+        # @param [String] package_name
+        #   Required. Package name of the app for which recovery action cancellation is
+        #   requested.
+        # @param [Fixnum] app_recovery_id
+        #   Required. ID corresponding to the app recovery action.
+        # @param [Google::Apis::AndroidpublisherV3::CancelAppRecoveryRequest] cancel_app_recovery_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::CancelAppRecoveryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::CancelAppRecoveryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_apprecovery_app_recovery(package_name, app_recovery_id, cancel_app_recovery_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:cancel', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::CancelAppRecoveryRequest::Representation
+          command.request_object = cancel_app_recovery_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::CancelAppRecoveryResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::CancelAppRecoveryResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['appRecoveryId'] = app_recovery_id unless app_recovery_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create an app recovery action with recovery status as DRAFT. Note that this
+        # action does not execute the recovery action.
+        # @param [String] package_name
+        #   Required. Package name of the app on which recovery action is performed.
+        # @param [Google::Apis::AndroidpublisherV3::CreateDraftAppRecoveryRequest] create_draft_app_recovery_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::AppRecoveryAction] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::AppRecoveryAction]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_apprecovery_draft_app_recovery(package_name, create_draft_app_recovery_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/appRecoveries', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::CreateDraftAppRecoveryRequest::Representation
+          command.request_object = create_draft_app_recovery_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::AppRecoveryAction::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::AppRecoveryAction
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deploy an already created app recovery action with recovery status DRAFT. Note
+        # that this action activates the recovery action for all targeted users and
+        # changes its status to ACTIVE.
+        # @param [String] package_name
+        #   Required. Package name of the app for which recovery action is deployed.
+        # @param [Fixnum] app_recovery_id
+        #   Required. ID corresponding to the app recovery action to deploy.
+        # @param [Google::Apis::AndroidpublisherV3::DeployAppRecoveryRequest] deploy_app_recovery_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::DeployAppRecoveryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::DeployAppRecoveryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def deploy_apprecovery_app_recovery(package_name, app_recovery_id, deploy_app_recovery_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:deploy', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::DeployAppRecoveryRequest::Representation
+          command.request_object = deploy_app_recovery_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::DeployAppRecoveryResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::DeployAppRecoveryResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['appRecoveryId'] = app_recovery_id unless app_recovery_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3825,6 +4009,44 @@ module Google
           command = make_simple_command(:get, 'androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}', options)
           command.response_representation = Google::Apis::AndroidpublisherV3::SubscriptionPurchaseV2::Representation
           command.response_class = Google::Apis::AndroidpublisherV3::SubscriptionPurchaseV2
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['token'] = token unless token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Revoke a subscription purchase for the user.
+        # @param [String] package_name
+        #   Required. The package of the application for which this subscription was
+        #   purchased (for example, 'com.some.thing').
+        # @param [String] token
+        #   Required. The token provided to the user's device when the subscription was
+        #   purchased.
+        # @param [Google::Apis::AndroidpublisherV3::RevokeSubscriptionPurchaseRequest] revoke_subscription_purchase_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::RevokeSubscriptionPurchaseResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::RevokeSubscriptionPurchaseResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def revoke_subscriptionsv2_subscription_purchase(package_name, token, revoke_subscription_purchase_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:revoke', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::RevokeSubscriptionPurchaseRequest::Representation
+          command.request_object = revoke_subscription_purchase_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::RevokeSubscriptionPurchaseResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::RevokeSubscriptionPurchaseResponse
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['token'] = token unless token.nil?
           command.query['fields'] = fields unless fields.nil?

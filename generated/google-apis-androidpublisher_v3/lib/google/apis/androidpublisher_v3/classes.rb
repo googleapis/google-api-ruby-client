@@ -169,6 +169,79 @@ module Google
         end
       end
       
+      # Request message for AddTargeting.
+      class AddTargetingRequest
+        include Google::Apis::Core::Hashable
+      
+        # Update type for targeting. Note it is always a subset Targeting.
+        # Corresponds to the JSON property `targetingUpdate`
+        # @return [Google::Apis::AndroidpublisherV3::TargetingUpdate]
+        attr_accessor :targeting_update
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @targeting_update = args[:targeting_update] if args.key?(:targeting_update)
+        end
+      end
+      
+      # Response message for AddTargeting.
+      class AddTargetingResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Object representation to describe all set of users.
+      class AllUsers
+        include Google::Apis::Core::Hashable
+      
+        # Required. Set to true if all set of users are needed.
+        # Corresponds to the JSON property `isAllUsersRequested`
+        # @return [Boolean]
+        attr_accessor :is_all_users_requested
+        alias_method :is_all_users_requested?, :is_all_users_requested
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_all_users_requested = args[:is_all_users_requested] if args.key?(:is_all_users_requested)
+        end
+      end
+      
+      # Android api level targeting data for app recovery action targeting.
+      class AndroidSdks
+        include Google::Apis::Core::Hashable
+      
+        # Android api levels of devices targeted by recovery action. See https://
+        # developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels for
+        # different api levels in android.
+        # Corresponds to the JSON property `sdkLevels`
+        # @return [Array<Fixnum>]
+        attr_accessor :sdk_levels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sdk_levels = args[:sdk_levels] if args.key?(:sdk_levels)
+        end
+      end
+      
       # Information about an APK. The resource for ApksService.
       class Apk
         include Google::Apis::Core::Hashable
@@ -474,6 +547,119 @@ module Google
         def update!(**args)
           @expiry_time_seconds = args[:expiry_time_seconds] if args.key?(:expiry_time_seconds)
           @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Information about an app recovery action.
+      class AppRecoveryAction
+        include Google::Apis::Core::Hashable
+      
+        # ID corresponding to the app recovery action.
+        # Corresponds to the JSON property `appRecoveryId`
+        # @return [Fixnum]
+        attr_accessor :app_recovery_id
+      
+        # Timestamp of when the app recovery action is canceled by the developer. Only
+        # set if the recovery action has been canceled.
+        # Corresponds to the JSON property `cancelTime`
+        # @return [String]
+        attr_accessor :cancel_time
+      
+        # Timestamp of when the app recovery action is created by the developer. It is
+        # always set after creation of the recovery action.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Timestamp of when the app recovery action is deployed to the users. Only set
+        # if the recovery action has been deployed.
+        # Corresponds to the JSON property `deployTime`
+        # @return [String]
+        attr_accessor :deploy_time
+      
+        # Timestamp of when the developer last updated recovery action. In case the
+        # action is cancelled, it corresponds to cancellation time. It is always set
+        # after creation of the recovery action.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
+        # Data related to Remote In-App Update action such as recovered user count,
+        # affected user count etc.
+        # Corresponds to the JSON property `remoteInAppUpdateData`
+        # @return [Google::Apis::AndroidpublisherV3::RemoteInAppUpdateData]
+        attr_accessor :remote_in_app_update_data
+      
+        # The status of the recovery action.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Targeting details for a recovery action such as regions, android sdk levels,
+        # app versions etc.
+        # Corresponds to the JSON property `targeting`
+        # @return [Google::Apis::AndroidpublisherV3::Targeting]
+        attr_accessor :targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_recovery_id = args[:app_recovery_id] if args.key?(:app_recovery_id)
+          @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @deploy_time = args[:deploy_time] if args.key?(:deploy_time)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @remote_in_app_update_data = args[:remote_in_app_update_data] if args.key?(:remote_in_app_update_data)
+          @status = args[:status] if args.key?(:status)
+          @targeting = args[:targeting] if args.key?(:targeting)
+        end
+      end
+      
+      # Data format for a list of app versions. Only one app version is supported for
+      # now.
+      class AppVersionList
+        include Google::Apis::Core::Hashable
+      
+        # List of app version codes.
+        # Corresponds to the JSON property `versionCodes`
+        # @return [Array<Fixnum>]
+        attr_accessor :version_codes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version_codes = args[:version_codes] if args.key?(:version_codes)
+        end
+      end
+      
+      # Data format for a continuous range of app versions.
+      class AppVersionRange
+        include Google::Apis::Core::Hashable
+      
+        # Highest app version in the range, inclusive.
+        # Corresponds to the JSON property `versionCodeEnd`
+        # @return [Fixnum]
+        attr_accessor :version_code_end
+      
+        # Lowest app version in the range, inclusive.
+        # Corresponds to the JSON property `versionCodeStart`
+        # @return [Fixnum]
+        attr_accessor :version_code_start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version_code_end = args[:version_code_end] if args.key?(:version_code_end)
+          @version_code_start = args[:version_code_start] if args.key?(:version_code_start)
         end
       end
       
@@ -1011,6 +1197,32 @@ module Google
         end
       end
       
+      # Request message for CancelAppRecovery.
+      class CancelAppRecoveryRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for CancelAppRecovery.
+      class CancelAppRecoveryResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Result of the cancel survey when the subscription was canceled by the user.
       class CancelSurveyResult
         include Google::Apis::Core::Hashable
@@ -1226,6 +1438,32 @@ module Google
         end
       end
       
+      # Request message for CreateDraftAppRecovery.
+      class CreateDraftAppRecoveryRequest
+        include Google::Apis::Core::Hashable
+      
+        # Object representation for Remote in-app update action type.
+        # Corresponds to the JSON property `remoteInAppUpdate`
+        # @return [Google::Apis::AndroidpublisherV3::RemoteInAppUpdate]
+        attr_accessor :remote_in_app_update
+      
+        # Targeting details for a recovery action such as regions, android sdk levels,
+        # app versions etc.
+        # Corresponds to the JSON property `targeting`
+        # @return [Google::Apis::AndroidpublisherV3::Targeting]
+        attr_accessor :targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @remote_in_app_update = args[:remote_in_app_update] if args.key?(:remote_in_app_update)
+          @targeting = args[:targeting] if args.key?(:targeting)
+        end
+      end
+      
       # Request message for DeactivateBasePlan.
       class DeactivateBasePlanRequest
         include Google::Apis::Core::Hashable
@@ -1362,6 +1600,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deobfuscation_file = args[:deobfuscation_file] if args.key?(:deobfuscation_file)
+        end
+      end
+      
+      # Request message for DeployAppRecovery.
+      class DeployAppRecoveryRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for DeployAppRecovery.
+      class DeployAppRecoveryResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2194,6 +2458,14 @@ module Google
         # @return [Array<Google::Apis::AndroidpublisherV3::GeneratedAssetPackSlice>]
         attr_accessor :generated_asset_pack_slices
       
+        # Generated recovery apks for recovery actions signed with a key corresponding
+        # to certificate_sha256_hash. This includes all generated recovery APKs, also
+        # those in draft or cancelled state. This field is not set if no recovery
+        # actions were created for this signing key.
+        # Corresponds to the JSON property `generatedRecoveryModules`
+        # @return [Array<Google::Apis::AndroidpublisherV3::GeneratedRecoveryApk>]
+        attr_accessor :generated_recovery_modules
+      
         # List of generated split APKs, signed with a key corresponding to
         # certificate_sha256_hash.
         # Corresponds to the JSON property `generatedSplitApks`
@@ -2224,6 +2496,7 @@ module Google
         def update!(**args)
           @certificate_sha256_hash = args[:certificate_sha256_hash] if args.key?(:certificate_sha256_hash)
           @generated_asset_pack_slices = args[:generated_asset_pack_slices] if args.key?(:generated_asset_pack_slices)
+          @generated_recovery_modules = args[:generated_recovery_modules] if args.key?(:generated_recovery_modules)
           @generated_split_apks = args[:generated_split_apks] if args.key?(:generated_split_apks)
           @generated_standalone_apks = args[:generated_standalone_apks] if args.key?(:generated_standalone_apks)
           @generated_universal_apk = args[:generated_universal_apk] if args.key?(:generated_universal_apk)
@@ -2266,6 +2539,44 @@ module Google
           @module_name = args[:module_name] if args.key?(:module_name)
           @slice_id = args[:slice_id] if args.key?(:slice_id)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Download metadata for an app recovery module.
+      class GeneratedRecoveryApk
+        include Google::Apis::Core::Hashable
+      
+        # Download ID, which uniquely identifies the APK to download. Should be supplied
+        # to `generatedapks.download` method.
+        # Corresponds to the JSON property `downloadId`
+        # @return [String]
+        attr_accessor :download_id
+      
+        # Name of the module which recovery apk belongs to.
+        # Corresponds to the JSON property `moduleName`
+        # @return [String]
+        attr_accessor :module_name
+      
+        # ID of the recovery action.
+        # Corresponds to the JSON property `recoveryId`
+        # @return [Fixnum]
+        attr_accessor :recovery_id
+      
+        # The status of the recovery action corresponding to the recovery apk.
+        # Corresponds to the JSON property `recoveryStatus`
+        # @return [String]
+        attr_accessor :recovery_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @download_id = args[:download_id] if args.key?(:download_id)
+          @module_name = args[:module_name] if args.key?(:module_name)
+          @recovery_id = args[:recovery_id] if args.key?(:recovery_id)
+          @recovery_status = args[:recovery_status] if args.key?(:recovery_status)
         end
       end
       
@@ -2960,6 +3271,26 @@ module Google
         def update!(**args)
           @alternatives = args[:alternatives] if args.key?(:alternatives)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Response message for ListAppRecoveries. -- api-linter: core::0158::response-
+      # next-page-token-field=disabled
+      class ListAppRecoveriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of recovery actions associated with the requested package name.
+        # Corresponds to the JSON property `recoveryActions`
+        # @return [Array<Google::Apis::AndroidpublisherV3::AppRecoveryAction>]
+        attr_accessor :recovery_actions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recovery_actions = args[:recovery_actions] if args.key?(:recovery_actions)
         end
       end
       
@@ -4165,6 +4496,28 @@ module Google
         end
       end
       
+      # Region targeting data for app recovery action targeting.
+      class Regions
+        include Google::Apis::Core::Hashable
+      
+        # Regions targeted by the recovery action. Region codes are ISO 3166 Alpha-2
+        # country codes. For example, US stands for United States of America. See https:/
+        # /www.iso.org/iso-3166-country-codes.html for the complete list of country
+        # codes.
+        # Corresponds to the JSON property `regionCode`
+        # @return [Array<String>]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
       # The version of the available regions being used for the specified resource.
       class RegionsVersion
         include Google::Apis::Core::Hashable
@@ -4188,6 +4541,78 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Object representation for Remote in-app update action type.
+      class RemoteInAppUpdate
+        include Google::Apis::Core::Hashable
+      
+        # Required. Set to true if Remote In-App Update action type is needed.
+        # Corresponds to the JSON property `isRemoteInAppUpdateRequested`
+        # @return [Boolean]
+        attr_accessor :is_remote_in_app_update_requested
+        alias_method :is_remote_in_app_update_requested?, :is_remote_in_app_update_requested
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_remote_in_app_update_requested = args[:is_remote_in_app_update_requested] if args.key?(:is_remote_in_app_update_requested)
+        end
+      end
+      
+      # Data related to Remote In-App Update action such as recovered user count,
+      # affected user count etc.
+      class RemoteInAppUpdateData
+        include Google::Apis::Core::Hashable
+      
+        # Data related to the recovery action at bundle level.
+        # Corresponds to the JSON property `remoteAppUpdateDataPerBundle`
+        # @return [Array<Google::Apis::AndroidpublisherV3::RemoteInAppUpdateDataPerBundle>]
+        attr_accessor :remote_app_update_data_per_bundle
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @remote_app_update_data_per_bundle = args[:remote_app_update_data_per_bundle] if args.key?(:remote_app_update_data_per_bundle)
+        end
+      end
+      
+      # Data related to the recovery action at bundle level.
+      class RemoteInAppUpdateDataPerBundle
+        include Google::Apis::Core::Hashable
+      
+        # Total number of devices which have been rescued.
+        # Corresponds to the JSON property `recoveredDeviceCount`
+        # @return [Fixnum]
+        attr_accessor :recovered_device_count
+      
+        # Total number of devices affected by this recovery action associated with
+        # bundle of the app.
+        # Corresponds to the JSON property `totalDeviceCount`
+        # @return [Fixnum]
+        attr_accessor :total_device_count
+      
+        # Version Code corresponding to the target bundle.
+        # Corresponds to the JSON property `versionCode`
+        # @return [Fixnum]
+        attr_accessor :version_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recovered_device_count = args[:recovered_device_count] if args.key?(:recovered_device_count)
+          @total_device_count = args[:total_device_count] if args.key?(:total_device_count)
+          @version_code = args[:version_code] if args.key?(:version_code)
         end
       end
       
@@ -4339,6 +4764,72 @@ module Google
         # Update properties of this object
         def update!(**args)
           @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # Revocation context of the purchases.subscriptionsv2.revoke API.
+      class RevocationContext
+        include Google::Apis::Core::Hashable
+      
+        # Used to determine if the refund type in the RevocationContext is a prorated
+        # refund.
+        # Corresponds to the JSON property `proratedRefund`
+        # @return [Google::Apis::AndroidpublisherV3::RevocationContextProratedRefund]
+        attr_accessor :prorated_refund
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prorated_refund = args[:prorated_refund] if args.key?(:prorated_refund)
+        end
+      end
+      
+      # Used to determine if the refund type in the RevocationContext is a prorated
+      # refund.
+      class RevocationContextProratedRefund
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request for the purchases.subscriptionsv2.revoke API.
+      class RevokeSubscriptionPurchaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Revocation context of the purchases.subscriptionsv2.revoke API.
+        # Corresponds to the JSON property `revocationContext`
+        # @return [Google::Apis::AndroidpublisherV3::RevocationContext]
+        attr_accessor :revocation_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @revocation_context = args[:revocation_context] if args.key?(:revocation_context)
+        end
+      end
+      
+      # Response for the purchases.subscriptionsv2.revoke API.
+      class RevokeSubscriptionPurchaseResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -5519,6 +6010,51 @@ module Google
         end
       end
       
+      # Targeting details for a recovery action such as regions, android sdk levels,
+      # app versions etc.
+      class Targeting
+        include Google::Apis::Core::Hashable
+      
+        # Object representation to describe all set of users.
+        # Corresponds to the JSON property `allUsers`
+        # @return [Google::Apis::AndroidpublisherV3::AllUsers]
+        attr_accessor :all_users
+      
+        # Android api level targeting data for app recovery action targeting.
+        # Corresponds to the JSON property `androidSdks`
+        # @return [Google::Apis::AndroidpublisherV3::AndroidSdks]
+        attr_accessor :android_sdks
+      
+        # Region targeting data for app recovery action targeting.
+        # Corresponds to the JSON property `regions`
+        # @return [Google::Apis::AndroidpublisherV3::Regions]
+        attr_accessor :regions
+      
+        # Data format for a list of app versions. Only one app version is supported for
+        # now.
+        # Corresponds to the JSON property `versionList`
+        # @return [Google::Apis::AndroidpublisherV3::AppVersionList]
+        attr_accessor :version_list
+      
+        # Data format for a continuous range of app versions.
+        # Corresponds to the JSON property `versionRange`
+        # @return [Google::Apis::AndroidpublisherV3::AppVersionRange]
+        attr_accessor :version_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_users = args[:all_users] if args.key?(:all_users)
+          @android_sdks = args[:android_sdks] if args.key?(:android_sdks)
+          @regions = args[:regions] if args.key?(:regions)
+          @version_list = args[:version_list] if args.key?(:version_list)
+          @version_range = args[:version_range] if args.key?(:version_range)
+        end
+      end
+      
       # Targeting information about the generated apks.
       class TargetingInfo
         include Google::Apis::Core::Hashable
@@ -5568,6 +6104,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @specific_subscription_in_app = args[:specific_subscription_in_app] if args.key?(:specific_subscription_in_app)
+        end
+      end
+      
+      # Update type for targeting. Note it is always a subset Targeting.
+      class TargetingUpdate
+        include Google::Apis::Core::Hashable
+      
+        # Object representation to describe all set of users.
+        # Corresponds to the JSON property `allUsers`
+        # @return [Google::Apis::AndroidpublisherV3::AllUsers]
+        attr_accessor :all_users
+      
+        # Android api level targeting data for app recovery action targeting.
+        # Corresponds to the JSON property `androidSdks`
+        # @return [Google::Apis::AndroidpublisherV3::AndroidSdks]
+        attr_accessor :android_sdks
+      
+        # Region targeting data for app recovery action targeting.
+        # Corresponds to the JSON property `regions`
+        # @return [Google::Apis::AndroidpublisherV3::Regions]
+        attr_accessor :regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_users = args[:all_users] if args.key?(:all_users)
+          @android_sdks = args[:android_sdks] if args.key?(:android_sdks)
+          @regions = args[:regions] if args.key?(:regions)
         end
       end
       

@@ -52,6 +52,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddTargetingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddTargetingResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AllUsers
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AndroidSdks
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Apk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +131,24 @@ module Google
       end
       
       class AppEdit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppRecoveryAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppVersionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppVersionRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -238,6 +280,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelAppRecoveryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelAppRecoveryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelSurveyResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateDraftAppRecoveryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeactivateBasePlanRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +371,18 @@ module Google
       end
       
       class DeobfuscationFilesUploadResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeployAppRecoveryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeployAppRecoveryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -466,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeneratedRecoveryApk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GeneratedSplitApk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -587,6 +665,12 @@ module Google
       end
       
       class LanguageTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAppRecoveriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -814,7 +898,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Regions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionsVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoteInAppUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoteInAppUpdateData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoteInAppUpdateDataPerBundle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -851,6 +959,30 @@ module Google
       end
       
       class ReviewsReplyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RevocationContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RevocationContextProratedRefund
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RevokeSubscriptionPurchaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RevokeSubscriptionPurchaseResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1024,6 +1156,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Targeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetingInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1031,6 +1169,12 @@ module Google
       end
       
       class TargetingRuleScope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetingUpdate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1244,6 +1388,34 @@ module Google
         end
       end
       
+      class AddTargetingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :targeting_update, as: 'targetingUpdate', class: Google::Apis::AndroidpublisherV3::TargetingUpdate, decorator: Google::Apis::AndroidpublisherV3::TargetingUpdate::Representation
+      
+        end
+      end
+      
+      class AddTargetingResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AllUsers
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_all_users_requested, as: 'isAllUsersRequested'
+        end
+      end
+      
+      class AndroidSdks
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sdk_levels, as: 'sdkLevels'
+        end
+      end
+      
       class Apk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1346,6 +1518,37 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expiry_time_seconds, as: 'expiryTimeSeconds'
           property :id, as: 'id'
+        end
+      end
+      
+      class AppRecoveryAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_recovery_id, :numeric_string => true, as: 'appRecoveryId'
+          property :cancel_time, as: 'cancelTime'
+          property :create_time, as: 'createTime'
+          property :deploy_time, as: 'deployTime'
+          property :last_update_time, as: 'lastUpdateTime'
+          property :remote_in_app_update_data, as: 'remoteInAppUpdateData', class: Google::Apis::AndroidpublisherV3::RemoteInAppUpdateData, decorator: Google::Apis::AndroidpublisherV3::RemoteInAppUpdateData::Representation
+      
+          property :status, as: 'status'
+          property :targeting, as: 'targeting', class: Google::Apis::AndroidpublisherV3::Targeting, decorator: Google::Apis::AndroidpublisherV3::Targeting::Representation
+      
+        end
+      end
+      
+      class AppVersionList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :version_codes, as: 'versionCodes'
+        end
+      end
+      
+      class AppVersionRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version_code_end, :numeric_string => true, as: 'versionCodeEnd'
+          property :version_code_start, :numeric_string => true, as: 'versionCodeStart'
         end
       end
       
@@ -1534,6 +1737,18 @@ module Google
         end
       end
       
+      class CancelAppRecoveryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CancelAppRecoveryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CancelSurveyResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1613,6 +1828,16 @@ module Google
         end
       end
       
+      class CreateDraftAppRecoveryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :remote_in_app_update, as: 'remoteInAppUpdate', class: Google::Apis::AndroidpublisherV3::RemoteInAppUpdate, decorator: Google::Apis::AndroidpublisherV3::RemoteInAppUpdate::Representation
+      
+          property :targeting, as: 'targeting', class: Google::Apis::AndroidpublisherV3::Targeting, decorator: Google::Apis::AndroidpublisherV3::Targeting::Representation
+      
+        end
+      end
+      
       class DeactivateBasePlanRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1653,6 +1878,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deobfuscation_file, as: 'deobfuscationFile', class: Google::Apis::AndroidpublisherV3::DeobfuscationFile, decorator: Google::Apis::AndroidpublisherV3::DeobfuscationFile::Representation
       
+        end
+      end
+      
+      class DeployAppRecoveryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeployAppRecoveryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1898,6 +2135,8 @@ module Google
           property :certificate_sha256_hash, as: 'certificateSha256Hash'
           collection :generated_asset_pack_slices, as: 'generatedAssetPackSlices', class: Google::Apis::AndroidpublisherV3::GeneratedAssetPackSlice, decorator: Google::Apis::AndroidpublisherV3::GeneratedAssetPackSlice::Representation
       
+          collection :generated_recovery_modules, as: 'generatedRecoveryModules', class: Google::Apis::AndroidpublisherV3::GeneratedRecoveryApk, decorator: Google::Apis::AndroidpublisherV3::GeneratedRecoveryApk::Representation
+      
           collection :generated_split_apks, as: 'generatedSplitApks', class: Google::Apis::AndroidpublisherV3::GeneratedSplitApk, decorator: Google::Apis::AndroidpublisherV3::GeneratedSplitApk::Representation
       
           collection :generated_standalone_apks, as: 'generatedStandaloneApks', class: Google::Apis::AndroidpublisherV3::GeneratedStandaloneApk, decorator: Google::Apis::AndroidpublisherV3::GeneratedStandaloneApk::Representation
@@ -1916,6 +2155,16 @@ module Google
           property :module_name, as: 'moduleName'
           property :slice_id, as: 'sliceId'
           property :version, :numeric_string => true, as: 'version'
+        end
+      end
+      
+      class GeneratedRecoveryApk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :download_id, as: 'downloadId'
+          property :module_name, as: 'moduleName'
+          property :recovery_id, :numeric_string => true, as: 'recoveryId'
+          property :recovery_status, as: 'recoveryStatus'
         end
       end
       
@@ -2121,6 +2370,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :alternatives, as: 'alternatives'
           collection :value, as: 'value'
+        end
+      end
+      
+      class ListAppRecoveriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :recovery_actions, as: 'recoveryActions', class: Google::Apis::AndroidpublisherV3::AppRecoveryAction, decorator: Google::Apis::AndroidpublisherV3::AppRecoveryAction::Representation
+      
         end
       end
       
@@ -2476,10 +2733,41 @@ module Google
         end
       end
       
+      class Regions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :region_code, as: 'regionCode'
+        end
+      end
+      
       class RegionsVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :version, as: 'version'
+        end
+      end
+      
+      class RemoteInAppUpdate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_remote_in_app_update_requested, as: 'isRemoteInAppUpdateRequested'
+        end
+      end
+      
+      class RemoteInAppUpdateData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :remote_app_update_data_per_bundle, as: 'remoteAppUpdateDataPerBundle', class: Google::Apis::AndroidpublisherV3::RemoteInAppUpdateDataPerBundle, decorator: Google::Apis::AndroidpublisherV3::RemoteInAppUpdateDataPerBundle::Representation
+      
+        end
+      end
+      
+      class RemoteInAppUpdateDataPerBundle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :recovered_device_count, :numeric_string => true, as: 'recoveredDeviceCount'
+          property :total_device_count, :numeric_string => true, as: 'totalDeviceCount'
+          property :version_code, :numeric_string => true, as: 'versionCode'
         end
       end
       
@@ -2532,6 +2820,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :result, as: 'result', class: Google::Apis::AndroidpublisherV3::ReviewReplyResult, decorator: Google::Apis::AndroidpublisherV3::ReviewReplyResult::Representation
       
+        end
+      end
+      
+      class RevocationContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prorated_refund, as: 'proratedRefund', class: Google::Apis::AndroidpublisherV3::RevocationContextProratedRefund, decorator: Google::Apis::AndroidpublisherV3::RevocationContextProratedRefund::Representation
+      
+        end
+      end
+      
+      class RevocationContextProratedRefund
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RevokeSubscriptionPurchaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :revocation_context, as: 'revocationContext', class: Google::Apis::AndroidpublisherV3::RevocationContext, decorator: Google::Apis::AndroidpublisherV3::RevocationContext::Representation
+      
+        end
+      end
+      
+      class RevokeSubscriptionPurchaseResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2852,6 +3168,22 @@ module Google
         end
       end
       
+      class Targeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_users, as: 'allUsers', class: Google::Apis::AndroidpublisherV3::AllUsers, decorator: Google::Apis::AndroidpublisherV3::AllUsers::Representation
+      
+          property :android_sdks, as: 'androidSdks', class: Google::Apis::AndroidpublisherV3::AndroidSdks, decorator: Google::Apis::AndroidpublisherV3::AndroidSdks::Representation
+      
+          property :regions, as: 'regions', class: Google::Apis::AndroidpublisherV3::Regions, decorator: Google::Apis::AndroidpublisherV3::Regions::Representation
+      
+          property :version_list, as: 'versionList', class: Google::Apis::AndroidpublisherV3::AppVersionList, decorator: Google::Apis::AndroidpublisherV3::AppVersionList::Representation
+      
+          property :version_range, as: 'versionRange', class: Google::Apis::AndroidpublisherV3::AppVersionRange, decorator: Google::Apis::AndroidpublisherV3::AppVersionRange::Representation
+      
+        end
+      end
+      
       class TargetingInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2867,6 +3199,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :specific_subscription_in_app, as: 'specificSubscriptionInApp'
+        end
+      end
+      
+      class TargetingUpdate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_users, as: 'allUsers', class: Google::Apis::AndroidpublisherV3::AllUsers, decorator: Google::Apis::AndroidpublisherV3::AllUsers::Representation
+      
+          property :android_sdks, as: 'androidSdks', class: Google::Apis::AndroidpublisherV3::AndroidSdks, decorator: Google::Apis::AndroidpublisherV3::AndroidSdks::Representation
+      
+          property :regions, as: 'regions', class: Google::Apis::AndroidpublisherV3::Regions, decorator: Google::Apis::AndroidpublisherV3::Regions::Representation
+      
         end
       end
       
