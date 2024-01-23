@@ -16,13 +16,13 @@ module Google
   module Apis
     module DialogflowV2beta1
       # Version of the google-apis-dialogflow_v2beta1 gem
-      GEM_VERSION = "0.76.0"
+      GEM_VERSION = "0.77.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.12.0"
+      GENERATOR_VERSION = "0.13.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240102"
+      REVISION = "20240113"
     end
   end
 end
