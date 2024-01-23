@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OracleScnPosition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OracleSourceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -992,6 +998,13 @@ module Google
         end
       end
       
+      class OracleScnPosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scn, :numeric_string => true, as: 'scn'
+        end
+      end
+      
       class OracleSourceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1185,6 +1198,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mysql_log_position, as: 'mysqlLogPosition', class: Google::Apis::DatastreamV1::MysqlLogPosition, decorator: Google::Apis::DatastreamV1::MysqlLogPosition::Representation
+      
+          property :oracle_scn_position, as: 'oracleScnPosition', class: Google::Apis::DatastreamV1::OracleScnPosition, decorator: Google::Apis::DatastreamV1::OracleScnPosition::Representation
       
         end
       end

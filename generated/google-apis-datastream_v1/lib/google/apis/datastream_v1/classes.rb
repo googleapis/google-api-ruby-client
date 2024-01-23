@@ -1652,6 +1652,25 @@ module Google
         end
       end
       
+      # Oracle SCN position
+      class OracleScnPosition
+        include Google::Apis::Core::Hashable
+      
+        # Required. SCN number from where Logs will be read
+        # Corresponds to the JSON property `scn`
+        # @return [Fixnum]
+        attr_accessor :scn
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scn = args[:scn] if args.key?(:scn)
+        end
+      end
+      
       # Oracle data source configuration
       class OracleSourceConfig
         include Google::Apis::Core::Hashable
@@ -2280,6 +2299,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::MysqlLogPosition]
         attr_accessor :mysql_log_position
       
+        # Oracle SCN position
+        # Corresponds to the JSON property `oracleScnPosition`
+        # @return [Google::Apis::DatastreamV1::OracleScnPosition]
+        attr_accessor :oracle_scn_position
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2287,6 +2311,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @mysql_log_position = args[:mysql_log_position] if args.key?(:mysql_log_position)
+          @oracle_scn_position = args[:oracle_scn_position] if args.key?(:oracle_scn_position)
         end
       end
       
