@@ -32,6 +32,8 @@ module Google
       #
       # @see https://developers.google.com/google-apps/groups-settings/get_started
       class GroupssettingsService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://www.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -47,7 +49,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'groups/v1/groups/',
+          super(DEFAULT_ENDPOINT_TEMPLATE, 'groups/v1/groups/',
                 client_name: 'google-apis-groupssettings_v1',
                 client_version: Google::Apis::GroupssettingsV1::GEM_VERSION)
           @batch_path = 'batch/groupssettings/v1'
