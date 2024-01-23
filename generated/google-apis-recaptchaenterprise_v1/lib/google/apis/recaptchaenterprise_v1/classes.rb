@@ -1262,6 +1262,39 @@ module Google
         end
       end
       
+      # The reorder firewall policies request message.
+      class GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list containing all policy names, in the new order. Each name is
+        # in the format `projects/`project`/firewallpolicies/`firewallpolicy``.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
+        end
+      end
+      
+      # The reorder firewall policies response message.
+      class GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Secret key is used only in legacy reCAPTCHA. It must be used in a 3rd party
       # integration with legacy reCAPTCHA.
       class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse
