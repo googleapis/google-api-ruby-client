@@ -32,6 +32,8 @@ module Google
       #
       # @see https://cloud.google.com/pubsub/docs
       class PubsubService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://pubsub.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,7 +45,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://pubsub.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-pubsub_v1beta2',
                 client_version: Google::Apis::PubsubV1beta2::GEM_VERSION)
           @batch_path = 'batch'
