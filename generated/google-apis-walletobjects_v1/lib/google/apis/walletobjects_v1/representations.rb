@@ -2007,6 +2007,8 @@ module Google
       class Issuer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :callback_options, as: 'callbackOptions', class: Google::Apis::WalletobjectsV1::CallbackOptions, decorator: Google::Apis::WalletobjectsV1::CallbackOptions::Representation
+      
           property :contact_info, as: 'contactInfo', class: Google::Apis::WalletobjectsV1::IssuerContactInfo, decorator: Google::Apis::WalletobjectsV1::IssuerContactInfo::Representation
       
           property :homepage_url, as: 'homepageUrl'
