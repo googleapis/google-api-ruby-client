@@ -2892,6 +2892,18 @@ module Google
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue>]
         attr_accessor :merged_facet_values
       
+        # Options to rerank based on facet values engaged by the user for the current
+        # key. That key needs to be a custom textual key and facetable. To use this
+        # control, you also need to pass all the facet keys engaged by the user in the
+        # request using the field [SearchRequest.FacetSpec]. In particular, if you don't
+        # pass the facet keys engaged that you want to rerank on, this control won't be
+        # effective. Moreover, to obtain better results, the facet values that you want
+        # to rerank on should be close to English (ideally made of words, underscores,
+        # and spaces).
+        # Corresponds to the JSON property `rerankConfig`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig]
+        attr_accessor :rerank_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2901,6 +2913,7 @@ module Google
           @facet_intervals = args[:facet_intervals] if args.key?(:facet_intervals)
           @ignored_facet_values = args[:ignored_facet_values] if args.key?(:ignored_facet_values)
           @merged_facet_values = args[:merged_facet_values] if args.key?(:merged_facet_values)
+          @rerank_config = args[:rerank_config] if args.key?(:rerank_config)
         end
       end
       
@@ -2970,6 +2983,41 @@ module Google
         def update!(**args)
           @merged_value = args[:merged_value] if args.key?(:merged_value)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Options to rerank based on facet values engaged by the user for the current
+      # key. That key needs to be a custom textual key and facetable. To use this
+      # control, you also need to pass all the facet keys engaged by the user in the
+      # request using the field [SearchRequest.FacetSpec]. In particular, if you don't
+      # pass the facet keys engaged that you want to rerank on, this control won't be
+      # effective. Moreover, to obtain better results, the facet values that you want
+      # to rerank on should be close to English (ideally made of words, underscores,
+      # and spaces).
+      class GoogleCloudRetailV2betaCatalogAttributeFacetConfigRerankConfig
+        include Google::Apis::Core::Hashable
+      
+        # If empty, rerank on all facet values for the current key. Otherwise, will
+        # rerank on the facet values from this list only.
+        # Corresponds to the JSON property `facetValues`
+        # @return [Array<String>]
+        attr_accessor :facet_values
+      
+        # If set to true, then we also rerank the dynamic facets based on the facet
+        # values engaged by the user for the current attribute key during serving.
+        # Corresponds to the JSON property `rerankFacet`
+        # @return [Boolean]
+        attr_accessor :rerank_facet
+        alias_method :rerank_facet?, :rerank_facet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @facet_values = args[:facet_values] if args.key?(:facet_values)
+          @rerank_facet = args[:rerank_facet] if args.key?(:rerank_facet)
         end
       end
       
@@ -3574,6 +3622,73 @@ module Google
         def update!(**args)
           @experiment_serving_config = args[:experiment_serving_config] if args.key?(:experiment_serving_config)
           @original_serving_config = args[:original_serving_config] if args.key?(:original_serving_config)
+        end
+      end
+      
+      # Request message for the `ExportAnalyticsMetrics` method.
+      class GoogleCloudRetailV2betaExportAnalyticsMetricsRequest
+        include Google::Apis::Core::Hashable
+      
+        # A filtering expression to specify restrictions on returned metrics. The
+        # expression is a sequence of terms. Each term applies a restriction to the
+        # returned metrics. Use this expression to restrict results to a specific time
+        # range. Currently we expect only one types of fields: * `timestamp`: This can
+        # be specified twice, once with a less than operator and once with a greater
+        # than operator. The `timestamp` restriction should result in one, contiguous,
+        # valid, `timestamp` range. Some examples of valid filters expressions: *
+        # Example 1: `timestamp > "2012-04-23T18:25:43.511Z" timestamp < "2012-04-23T18:
+        # 30:43.511Z"` * Example 2: `timestamp > "2012-04-23T18:25:43.511Z"`
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The output configuration setting.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaOutputConfig]
+        attr_accessor :output_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @output_config = args[:output_config] if args.key?(:output_config)
+        end
+      end
+      
+      # Response of the ExportAnalyticsMetricsRequest. If the long running operation
+      # was successful, then this message is returned by the google.longrunning.
+      # Operations.response field if the operation was successful.
+      class GoogleCloudRetailV2betaExportAnalyticsMetricsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # Configuration of destination for Export related errors.
+        # Corresponds to the JSON property `errorsConfig`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaExportErrorsConfig]
+        attr_accessor :errors_config
+      
+        # Output result that stores the information about where the exported data is
+        # stored.
+        # Corresponds to the JSON property `outputResult`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaOutputResult]
+        attr_accessor :output_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @errors_config = args[:errors_config] if args.key?(:errors_config)
+          @output_result = args[:output_result] if args.key?(:output_result)
         end
       end
       
@@ -4786,6 +4901,87 @@ module Google
         # Update properties of this object
         def update!(**args)
           @serving_config_ids = args[:serving_config_ids] if args.key?(:serving_config_ids)
+        end
+      end
+      
+      # The output configuration setting.
+      class GoogleCloudRetailV2betaOutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The BigQuery output destination configuration.
+        # Corresponds to the JSON property `bigqueryDestination`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaOutputConfigBigQueryDestination]
+        attr_accessor :bigquery_destination
+      
+        # The Google Cloud Storage output destination configuration.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaOutputConfigGcsDestination]
+        attr_accessor :gcs_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+        end
+      end
+      
+      # The BigQuery output destination configuration.
+      class GoogleCloudRetailV2betaOutputConfigBigQueryDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of a BigQuery Dataset.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # Required. The prefix of exported BigQuery tables.
+        # Corresponds to the JSON property `tableIdPrefix`
+        # @return [String]
+        attr_accessor :table_id_prefix
+      
+        # Required. Describes the table type. The following values are supported: * `
+        # table`: A BigQuery native table. * `view`: A virtual table defined by a SQL
+        # query.
+        # Corresponds to the JSON property `tableType`
+        # @return [String]
+        attr_accessor :table_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @table_id_prefix = args[:table_id_prefix] if args.key?(:table_id_prefix)
+          @table_type = args[:table_type] if args.key?(:table_type)
+        end
+      end
+      
+      # The Google Cloud Storage output destination configuration.
+      class GoogleCloudRetailV2betaOutputConfigGcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The output uri prefix for saving output data to json files. Some
+        # mapping examples are as follows: output_uri_prefix sample output(assuming the
+        # object is foo.json) ======================== ==================================
+        # =========== gs://bucket/ gs://bucket/foo.json gs://bucket/folder/ gs://bucket/
+        # folder/foo.json gs://bucket/folder/item_ gs://bucket/folder/item_foo.json
+        # Corresponds to the JSON property `outputUriPrefix`
+        # @return [String]
+        attr_accessor :output_uri_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_uri_prefix = args[:output_uri_prefix] if args.key?(:output_uri_prefix)
         end
       end
       
