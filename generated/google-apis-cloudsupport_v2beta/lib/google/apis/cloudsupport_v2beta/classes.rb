@@ -331,6 +331,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # The full product a case may be associated with, including Product Line and
+        # Product Subline.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::CloudsupportV2beta::Product]
+        attr_accessor :product
+      
         def initialize(**args)
            update!(**args)
         end
@@ -339,6 +345,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @id = args[:id] if args.key?(:id)
+          @product = args[:product] if args.key?(:product)
         end
       end
       
@@ -1082,6 +1089,32 @@ module Google
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
           @generation = args[:generation] if args.key?(:generation)
           @object_name = args[:object_name] if args.key?(:object_name)
+        end
+      end
+      
+      # The full product a case may be associated with, including Product Line and
+      # Product Subline.
+      class Product
+        include Google::Apis::Core::Hashable
+      
+        # The Product Line of the Product.
+        # Corresponds to the JSON property `productLine`
+        # @return [String]
+        attr_accessor :product_line
+      
+        # The Product Subline of the Product, such as "Maps Billing".
+        # Corresponds to the JSON property `productSubline`
+        # @return [String]
+        attr_accessor :product_subline
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_line = args[:product_line] if args.key?(:product_line)
+          @product_subline = args[:product_subline] if args.key?(:product_subline)
         end
       end
       
