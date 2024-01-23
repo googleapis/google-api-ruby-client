@@ -34,6 +34,8 @@ module Google
       #
       # @see https://cloud.google.com/service-usage/
       class ServiceUsageService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://serviceusage.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -45,7 +47,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://serviceusage.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-serviceusage_v1beta1',
                 client_version: Google::Apis::ServiceusageV1beta1::GEM_VERSION)
           @batch_path = 'batch'
