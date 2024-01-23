@@ -647,6 +647,12 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceCandidate>]
         attr_accessor :candidates
       
+        # Debug information containing message metadata. Clients should not consume this
+        # field, and this is only populated for Flow Runner path.
+        # Corresponds to the JSON property `debugMetadata`
+        # @return [Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceMessageMetadata]
+        attr_accessor :debug_metadata
+      
         # Content filter results for a prompt sent in the request.
         # Corresponds to the JSON property `promptFeedback`
         # @return [Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePromptFeedback]
@@ -669,9 +675,43 @@ module Google
         # Update properties of this object
         def update!(**args)
           @candidates = args[:candidates] if args.key?(:candidates)
+          @debug_metadata = args[:debug_metadata] if args.key?(:debug_metadata)
           @prompt_feedback = args[:prompt_feedback] if args.key?(:prompt_feedback)
           @reporting_metrics = args[:reporting_metrics] if args.key?(:reporting_metrics)
           @usage_metadata = args[:usage_metadata] if args.key?(:usage_metadata)
+        end
+      end
+      
+      # 
+      class CloudAiNlLlmProtoServiceMessageMetadata
+        include Google::Apis::Core::Hashable
+      
+        # LINT.IfChange This metadata contains additional information required for
+        # debugging.
+        # Corresponds to the JSON property `inputFilterInfo`
+        # @return [Google::Apis::AiplatformV1::LearningServingLlmMessageMetadata]
+        attr_accessor :input_filter_info
+      
+        # Holds the final routing decision, by storing the model_config_id. And
+        # individual scores each model got.
+        # Corresponds to the JSON property `modelRoutingDecision`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecision]
+        attr_accessor :model_routing_decision
+      
+        # Filter metadata of the output messages.
+        # Corresponds to the JSON property `outputFilterInfo`
+        # @return [Array<Google::Apis::AiplatformV1::LearningServingLlmMessageMetadata>]
+        attr_accessor :output_filter_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_filter_info = args[:input_filter_info] if args.key?(:input_filter_info)
+          @model_routing_decision = args[:model_routing_decision] if args.key?(:model_routing_decision)
+          @output_filter_info = args[:output_filter_info] if args.key?(:output_filter_info)
         end
       end
       
@@ -834,6 +874,122 @@ module Google
           @block_reason = args[:block_reason] if args.key?(:block_reason)
           @block_reason_message = args[:block_reason_message] if args.key?(:block_reason_message)
           @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
+        end
+      end
+      
+      # The RAI results for a given text.
+      class CloudAiNlLlmProtoServiceRaiResult
+        include Google::Apis::Core::Hashable
+      
+        # The recitation result for one input
+        # Corresponds to the JSON property `aidaRecitationResult`
+        # @return [Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoRecitationResult]
+        attr_accessor :aida_recitation_result
+      
+        # Use `triggered_blocklist`.
+        # Corresponds to the JSON property `blocked`
+        # @return [Boolean]
+        attr_accessor :blocked
+        alias_method :blocked?, :blocked
+      
+        # The error codes indicate which RAI filters block the response.
+        # Corresponds to the JSON property `errorCodes`
+        # @return [Array<Fixnum>]
+        attr_accessor :error_codes
+      
+        # Whether the text should be filtered and not shown to the end user. This is
+        # determined based on a combination of `triggered_recitation`, `
+        # triggered_blocklist`, `language_filter_result`, and `triggered_safety_filter`.
+        # Corresponds to the JSON property `filtered`
+        # @return [Boolean]
+        attr_accessor :filtered
+        alias_method :filtered?, :filtered
+      
+        # Language filter result from SAFT LangId.
+        # Corresponds to the JSON property `languageFilterResult`
+        # @return [Google::Apis::AiplatformV1::LearningServingLlmLanguageFilterResult]
+        attr_accessor :language_filter_result
+      
+        # The RAI signals for the text.
+        # Corresponds to the JSON property `raiSignals`
+        # @return [Array<Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiSignal>]
+        attr_accessor :rai_signals
+      
+        # Whether the text triggered the blocklist.
+        # Corresponds to the JSON property `triggeredBlocklist`
+        # @return [Boolean]
+        attr_accessor :triggered_blocklist
+        alias_method :triggered_blocklist?, :triggered_blocklist
+      
+        # Whether the text should be blocked by the recitation result from Aida
+        # recitation checker. It is determined from aida_recitation_result.
+        # Corresponds to the JSON property `triggeredRecitation`
+        # @return [Boolean]
+        attr_accessor :triggered_recitation
+        alias_method :triggered_recitation?, :triggered_recitation
+      
+        # Whether the text triggered the safety filter. Currently, this is due to CSAI
+        # triggering or one of four categories (derogatory, sexual, toxic, violent)
+        # having a score over the filter threshold.
+        # Corresponds to the JSON property `triggeredSafetyFilter`
+        # @return [Boolean]
+        attr_accessor :triggered_safety_filter
+        alias_method :triggered_safety_filter?, :triggered_safety_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aida_recitation_result = args[:aida_recitation_result] if args.key?(:aida_recitation_result)
+          @blocked = args[:blocked] if args.key?(:blocked)
+          @error_codes = args[:error_codes] if args.key?(:error_codes)
+          @filtered = args[:filtered] if args.key?(:filtered)
+          @language_filter_result = args[:language_filter_result] if args.key?(:language_filter_result)
+          @rai_signals = args[:rai_signals] if args.key?(:rai_signals)
+          @triggered_blocklist = args[:triggered_blocklist] if args.key?(:triggered_blocklist)
+          @triggered_recitation = args[:triggered_recitation] if args.key?(:triggered_recitation)
+          @triggered_safety_filter = args[:triggered_safety_filter] if args.key?(:triggered_safety_filter)
+        end
+      end
+      
+      # An RAI signal for a single category.
+      class CloudAiNlLlmProtoServiceRaiSignal
+        include Google::Apis::Core::Hashable
+      
+        # The confidence level for the RAI category.
+        # Corresponds to the JSON property `confidence`
+        # @return [String]
+        attr_accessor :confidence
+      
+        # Whether the category is flagged as being present. Currently, this is set to
+        # true if score >= 0.5.
+        # Corresponds to the JSON property `flagged`
+        # @return [Boolean]
+        attr_accessor :flagged
+        alias_method :flagged?, :flagged
+      
+        # The RAI category.
+        # Corresponds to the JSON property `raiCategory`
+        # @return [String]
+        attr_accessor :rai_category
+      
+        # The score for the category, in the range [0.0, 1.0].
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @flagged = args[:flagged] if args.key?(:flagged)
+          @rai_category = args[:rai_category] if args.key?(:rai_category)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -9141,12 +9297,6 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
         attr_accessor :contents
       
-        # Required. The name of the Endpoint requested to serve the prediction. Format: `
-        # projects/`project`/locations/`location`/endpoints/`endpoint``
-        # Corresponds to the JSON property `endpoint`
-        # @return [String]
-        attr_accessor :endpoint
-      
         # Generation config.
         # Corresponds to the JSON property `generationConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig]
@@ -9173,7 +9323,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @contents = args[:contents] if args.key?(:contents)
-          @endpoint = args[:endpoint] if args.key?(:endpoint)
           @generation_config = args[:generation_config] if args.key?(:generation_config)
           @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
           @tools = args[:tools] if args.key?(:tools)
@@ -16334,6 +16483,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences]
         attr_accessor :open_fine_tuning_pipeline
       
+        # Open fine tuning pipelines.
+        # Corresponds to the JSON property `openFineTuningPipelines`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines]
+        attr_accessor :open_fine_tuning_pipelines
+      
         # The regional resource name or the URI. Key is region, e.g., us-central1,
         # europe-west2, global, etc..
         # Corresponds to the JSON property `openGenerationAiStudio`
@@ -16351,6 +16505,11 @@ module Google
         # Corresponds to the JSON property `openNotebook`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences]
         attr_accessor :open_notebook
+      
+        # Open notebooks.
+        # Corresponds to the JSON property `openNotebooks`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks]
+        attr_accessor :open_notebooks
       
         # The regional resource name or the URI. Key is region, e.g., us-central1,
         # europe-west2, global, etc..
@@ -16379,9 +16538,11 @@ module Google
           @deploy = args[:deploy] if args.key?(:deploy)
           @open_evaluation_pipeline = args[:open_evaluation_pipeline] if args.key?(:open_evaluation_pipeline)
           @open_fine_tuning_pipeline = args[:open_fine_tuning_pipeline] if args.key?(:open_fine_tuning_pipeline)
+          @open_fine_tuning_pipelines = args[:open_fine_tuning_pipelines] if args.key?(:open_fine_tuning_pipelines)
           @open_generation_ai_studio = args[:open_generation_ai_studio] if args.key?(:open_generation_ai_studio)
           @open_genie = args[:open_genie] if args.key?(:open_genie)
           @open_notebook = args[:open_notebook] if args.key?(:open_notebook)
+          @open_notebooks = args[:open_notebooks] if args.key?(:open_notebooks)
           @open_prompt_tuning_pipeline = args[:open_prompt_tuning_pipeline] if args.key?(:open_prompt_tuning_pipeline)
           @request_access = args[:request_access] if args.key?(:request_access)
           @view_rest_api = args[:view_rest_api] if args.key?(:view_rest_api)
@@ -16465,6 +16626,44 @@ module Google
         end
       end
       
+      # Open fine tuning pipelines.
+      class GoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines
+        include Google::Apis::Core::Hashable
+      
+        # Required. Regional resource references to fine tuning pipelines.
+        # Corresponds to the JSON property `fineTuningPipelines`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences>]
+        attr_accessor :fine_tuning_pipelines
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fine_tuning_pipelines = args[:fine_tuning_pipelines] if args.key?(:fine_tuning_pipelines)
+        end
+      end
+      
+      # Open notebooks.
+      class GoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks
+        include Google::Apis::Core::Hashable
+      
+        # Required. Regional resource references to notebooks.
+        # Corresponds to the JSON property `notebooks`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences>]
+        attr_accessor :notebooks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @notebooks = args[:notebooks] if args.key?(:notebooks)
+        end
+      end
+      
       # The regional resource name or the URI. Key is region, e.g., us-central1,
       # europe-west2, global, etc..
       class GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences
@@ -16475,7 +16674,22 @@ module Google
         # @return [Hash<String,Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelResourceReference>]
         attr_accessor :references
       
-        # Required. The title of the regional resource reference.
+        # Optional. Description of the resource.
+        # Corresponds to the JSON property `resourceDescription`
+        # @return [String]
+        attr_accessor :resource_description
+      
+        # Optional. Title of the resource.
+        # Corresponds to the JSON property `resourceTitle`
+        # @return [String]
+        attr_accessor :resource_title
+      
+        # Optional. Use case (CUJ) of the resource.
+        # Corresponds to the JSON property `resourceUseCase`
+        # @return [String]
+        attr_accessor :resource_use_case
+      
+        # Required.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -16487,6 +16701,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @references = args[:references] if args.key?(:references)
+          @resource_description = args[:resource_description] if args.key?(:resource_description)
+          @resource_title = args[:resource_title] if args.key?(:resource_title)
+          @resource_use_case = args[:resource_use_case] if args.key?(:resource_use_case)
           @title = args[:title] if args.key?(:title)
         end
       end
@@ -19633,7 +19850,7 @@ module Google
         attr_accessor :enterprise_datastore
       
         # The grounding text passed inline with the Predict API. It can support up to 1
-        # million token context.
+        # million bytes.
         # Corresponds to the JSON property `inlineContext`
         # @return [String]
         attr_accessor :inline_context
@@ -28162,6 +28379,2272 @@ module Google
         def update!(**args)
           @effective_training_duration = args[:effective_training_duration] if args.key?(:effective_training_duration)
           @metric_entries = args[:metric_entries] if args.key?(:metric_entries)
+        end
+      end
+      
+      # The proto defines the attribution information for a document using whatever
+      # fields are most applicable for that document's datasource. For example, a
+      # Wikipedia article's attribution is in the form of its article title, a website
+      # is in the form of a URL, and a Github repo is in the form of a repo name. Next
+      # id:28
+      class LanguageLabsAidaTrustRecitationProtoDocAttribution
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `amarnaId`
+        # @return [String]
+        attr_accessor :amarna_id
+      
+        # 
+        # Corresponds to the JSON property `arxivId`
+        # @return [String]
+        attr_accessor :arxiv_id
+      
+        # 
+        # Corresponds to the JSON property `author`
+        # @return [String]
+        attr_accessor :author
+      
+        # 
+        # Corresponds to the JSON property `bibkey`
+        # @return [String]
+        attr_accessor :bibkey
+      
+        # 
+        # Corresponds to the JSON property `bookTitle`
+        # @return [String]
+        attr_accessor :book_title
+      
+        # The Oceanographers full-view books dataset uses a 'volume id' as the unique ID
+        # of a book. There is a deterministic function from a volume id to a URL under
+        # the books.google.com domain. Marked as 'optional' since a volume ID of zero is
+        # potentially possible and we want to distinguish that from the volume ID not
+        # being set.
+        # Corresponds to the JSON property `bookVolumeId`
+        # @return [Fixnum]
+        attr_accessor :book_volume_id
+      
+        # 
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # 
+        # Corresponds to the JSON property `conversationId`
+        # @return [String]
+        attr_accessor :conversation_id
+      
+        # The dataset this document comes from.
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        # 
+        # Corresponds to the JSON property `filepath`
+        # @return [String]
+        attr_accessor :filepath
+      
+        # 
+        # Corresponds to the JSON property `geminiId`
+        # @return [String]
+        attr_accessor :gemini_id
+      
+        # 
+        # Corresponds to the JSON property `gnewsArticleTitle`
+        # @return [String]
+        attr_accessor :gnews_article_title
+      
+        # 
+        # Corresponds to the JSON property `goodallExampleId`
+        # @return [String]
+        attr_accessor :goodall_example_id
+      
+        # Whether the document is opted out.
+        # Corresponds to the JSON property `isOptOut`
+        # @return [Boolean]
+        attr_accessor :is_opt_out
+        alias_method :is_opt_out?, :is_opt_out
+      
+        # 
+        # Corresponds to the JSON property `isPrompt`
+        # @return [Boolean]
+        attr_accessor :is_prompt
+        alias_method :is_prompt?, :is_prompt
+      
+        # 
+        # Corresponds to the JSON property `lamdaExampleId`
+        # @return [String]
+        attr_accessor :lamda_example_id
+      
+        # 
+        # Corresponds to the JSON property `license`
+        # @return [String]
+        attr_accessor :license
+      
+        # 
+        # Corresponds to the JSON property `meenaConversationId`
+        # @return [String]
+        attr_accessor :meena_conversation_id
+      
+        # Natural (not programming) language of the document. Language code as defined
+        # by http://www.unicode.org/reports/tr35/#Identifiers and https://tools.ietf.org/
+        # html/bcp47. Currently applicable to full-view books. Use docinfo-util.h to set
+        # & read language fields. See go/iii.
+        # Corresponds to the JSON property `naturalLanguageCode`
+        # @return [String]
+        attr_accessor :natural_language_code
+      
+        # True if this doc has no attribution information available. We use an explicit
+        # field for this instead of just implicitly leaving all the DocAttribution
+        # fields blank to distinguish a case where a bug/oversight has left the
+        # attribution information empty vs when we really have no attribution
+        # information available.
+        # Corresponds to the JSON property `noAttribution`
+        # @return [Boolean]
+        attr_accessor :no_attribution
+        alias_method :no_attribution?, :no_attribution
+      
+        # 
+        # Corresponds to the JSON property `podcastUtteranceId`
+        # @return [String]
+        attr_accessor :podcast_utterance_id
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `publicationDate`
+        # @return [Google::Apis::AiplatformV1::GoogleTypeDate]
+        attr_accessor :publication_date
+      
+        # This field is for opt-out experiment only, MUST never be used during actual
+        # production/serving.
+        # Corresponds to the JSON property `qualityScoreExperimentOnly`
+        # @return [Float]
+        attr_accessor :quality_score_experiment_only
+      
+        # Github repository
+        # Corresponds to the JSON property `repo`
+        # @return [String]
+        attr_accessor :repo
+      
+        # URL of a webdoc
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        # 
+        # Corresponds to the JSON property `volumeId`
+        # @return [String]
+        attr_accessor :volume_id
+      
+        # Wikipedia article title. The Wikipedia TFDS dataset includes article titles
+        # but not URLs. While a URL is to the best of our knowledge a deterministic
+        # function of the title, we store the original title to reflect the information
+        # in the original dataset.
+        # Corresponds to the JSON property `wikipediaArticleTitle`
+        # @return [String]
+        attr_accessor :wikipedia_article_title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amarna_id = args[:amarna_id] if args.key?(:amarna_id)
+          @arxiv_id = args[:arxiv_id] if args.key?(:arxiv_id)
+          @author = args[:author] if args.key?(:author)
+          @bibkey = args[:bibkey] if args.key?(:bibkey)
+          @book_title = args[:book_title] if args.key?(:book_title)
+          @book_volume_id = args[:book_volume_id] if args.key?(:book_volume_id)
+          @category = args[:category] if args.key?(:category)
+          @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
+          @dataset = args[:dataset] if args.key?(:dataset)
+          @filepath = args[:filepath] if args.key?(:filepath)
+          @gemini_id = args[:gemini_id] if args.key?(:gemini_id)
+          @gnews_article_title = args[:gnews_article_title] if args.key?(:gnews_article_title)
+          @goodall_example_id = args[:goodall_example_id] if args.key?(:goodall_example_id)
+          @is_opt_out = args[:is_opt_out] if args.key?(:is_opt_out)
+          @is_prompt = args[:is_prompt] if args.key?(:is_prompt)
+          @lamda_example_id = args[:lamda_example_id] if args.key?(:lamda_example_id)
+          @license = args[:license] if args.key?(:license)
+          @meena_conversation_id = args[:meena_conversation_id] if args.key?(:meena_conversation_id)
+          @natural_language_code = args[:natural_language_code] if args.key?(:natural_language_code)
+          @no_attribution = args[:no_attribution] if args.key?(:no_attribution)
+          @podcast_utterance_id = args[:podcast_utterance_id] if args.key?(:podcast_utterance_id)
+          @publication_date = args[:publication_date] if args.key?(:publication_date)
+          @quality_score_experiment_only = args[:quality_score_experiment_only] if args.key?(:quality_score_experiment_only)
+          @repo = args[:repo] if args.key?(:repo)
+          @url = args[:url] if args.key?(:url)
+          @volume_id = args[:volume_id] if args.key?(:volume_id)
+          @wikipedia_article_title = args[:wikipedia_article_title] if args.key?(:wikipedia_article_title)
+        end
+      end
+      
+      # The recitation result for one input
+      class LanguageLabsAidaTrustRecitationProtoRecitationResult
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `dynamicSegmentResults`
+        # @return [Array<Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoSegmentResult>]
+        attr_accessor :dynamic_segment_results
+      
+        # The recitation action for one given input. When its segments contain different
+        # actions, the overall action will be returned in the precedence of BLOCK > CITE
+        # > NO_ACTION.
+        # Corresponds to the JSON property `recitationAction`
+        # @return [String]
+        attr_accessor :recitation_action
+      
+        # 
+        # Corresponds to the JSON property `trainingSegmentResults`
+        # @return [Array<Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoSegmentResult>]
+        attr_accessor :training_segment_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_segment_results = args[:dynamic_segment_results] if args.key?(:dynamic_segment_results)
+          @recitation_action = args[:recitation_action] if args.key?(:recitation_action)
+          @training_segment_results = args[:training_segment_results] if args.key?(:training_segment_results)
+        end
+      end
+      
+      # The recitation result for each segment in a given input.
+      class LanguageLabsAidaTrustRecitationProtoSegmentResult
+        include Google::Apis::Core::Hashable
+      
+        # The dataset the segment came from.
+        # Corresponds to the JSON property `attributionDataset`
+        # @return [String]
+        attr_accessor :attribution_dataset
+      
+        # human-friendly string that contains information from doc_attribution which
+        # could be shown by clients
+        # Corresponds to the JSON property `displayAttributionMessage`
+        # @return [String]
+        attr_accessor :display_attribution_message
+      
+        # The proto defines the attribution information for a document using whatever
+        # fields are most applicable for that document's datasource. For example, a
+        # Wikipedia article's attribution is in the form of its article title, a website
+        # is in the form of a URL, and a Github repo is in the form of a repo name. Next
+        # id:28
+        # Corresponds to the JSON property `docAttribution`
+        # @return [Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoDocAttribution]
+        attr_accessor :doc_attribution
+      
+        # number of documents that contained this segment
+        # Corresponds to the JSON property `docOccurrences`
+        # @return [Fixnum]
+        attr_accessor :doc_occurrences
+      
+        # 
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # The raw text in the given input that is corresponding to the segment. It will
+        # be available only when 'return_segment_raw_text' is enabled in the request
+        # options.
+        # Corresponds to the JSON property `rawText`
+        # @return [String]
+        attr_accessor :raw_text
+      
+        # 
+        # Corresponds to the JSON property `segmentRecitationAction`
+        # @return [String]
+        attr_accessor :segment_recitation_action
+      
+        # The segment boundary start (inclusive) and end index (exclusive) in the given
+        # text. In the streaming RPC, the indexes always start from the beginning of the
+        # first text in the entire stream. The indexes are measured in UTF-16 code units.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution_dataset = args[:attribution_dataset] if args.key?(:attribution_dataset)
+          @display_attribution_message = args[:display_attribution_message] if args.key?(:display_attribution_message)
+          @doc_attribution = args[:doc_attribution] if args.key?(:doc_attribution)
+          @doc_occurrences = args[:doc_occurrences] if args.key?(:doc_occurrences)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @raw_text = args[:raw_text] if args.key?(:raw_text)
+          @segment_recitation_action = args[:segment_recitation_action] if args.key?(:segment_recitation_action)
+          @start_index = args[:start_index] if args.key?(:start_index)
+        end
+      end
+      
+      # The recitation result for one stream input
+      class LanguageLabsAidaTrustRecitationProtoStreamRecitationResult
+        include Google::Apis::Core::Hashable
+      
+        # The recitation result against the given dynamic data source.
+        # Corresponds to the JSON property `dynamicSegmentResults`
+        # @return [Array<Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoSegmentResult>]
+        attr_accessor :dynamic_segment_results
+      
+        # Last index of input text fully checked for recitation in the entire streaming
+        # context. Would return `-1` if no Input was checked for recitation.
+        # Corresponds to the JSON property `fullyCheckedTextIndex`
+        # @return [Fixnum]
+        attr_accessor :fully_checked_text_index
+      
+        # The recitation action for one given input. When its segments contain different
+        # actions, the overall action will be returned in the precedence of BLOCK > CITE
+        # > NO_ACTION.
+        # Corresponds to the JSON property `recitationAction`
+        # @return [String]
+        attr_accessor :recitation_action
+      
+        # The recitation result against model training data.
+        # Corresponds to the JSON property `trainingSegmentResults`
+        # @return [Array<Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoSegmentResult>]
+        attr_accessor :training_segment_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_segment_results = args[:dynamic_segment_results] if args.key?(:dynamic_segment_results)
+          @fully_checked_text_index = args[:fully_checked_text_index] if args.key?(:fully_checked_text_index)
+          @recitation_action = args[:recitation_action] if args.key?(:recitation_action)
+          @training_segment_results = args[:training_segment_results] if args.key?(:training_segment_results)
+        end
+      end
+      
+      # The proto defines the attribution information for a document using whatever
+      # fields are most applicable for that document's datasource. For example, a
+      # Wikipedia article's attribution is in the form of its article title, a website
+      # is in the form of a URL, and a Github repo is in the form of a repo name. Next
+      # id: 28
+      class LearningGenaiRecitationDocAttribution
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `amarnaId`
+        # @return [String]
+        attr_accessor :amarna_id
+      
+        # 
+        # Corresponds to the JSON property `arxivId`
+        # @return [String]
+        attr_accessor :arxiv_id
+      
+        # 
+        # Corresponds to the JSON property `author`
+        # @return [String]
+        attr_accessor :author
+      
+        # 
+        # Corresponds to the JSON property `bibkey`
+        # @return [String]
+        attr_accessor :bibkey
+      
+        # 
+        # Corresponds to the JSON property `bookTitle`
+        # @return [String]
+        attr_accessor :book_title
+      
+        # The Oceanographers full-view books dataset uses a 'volume id' as the unique ID
+        # of a book. There is a deterministic function from a volume id to a URL under
+        # the books.google.com domain. Marked as 'optional' since a volume ID of zero is
+        # potentially possible and we want to distinguish that from the volume ID not
+        # being set.
+        # Corresponds to the JSON property `bookVolumeId`
+        # @return [Fixnum]
+        attr_accessor :book_volume_id
+      
+        # 
+        # Corresponds to the JSON property `conversationId`
+        # @return [String]
+        attr_accessor :conversation_id
+      
+        # The dataset this document comes from.
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        # 
+        # Corresponds to the JSON property `filepath`
+        # @return [String]
+        attr_accessor :filepath
+      
+        # 
+        # Corresponds to the JSON property `geminiId`
+        # @return [String]
+        attr_accessor :gemini_id
+      
+        # 
+        # Corresponds to the JSON property `gnewsArticleTitle`
+        # @return [String]
+        attr_accessor :gnews_article_title
+      
+        # 
+        # Corresponds to the JSON property `goodallExampleId`
+        # @return [String]
+        attr_accessor :goodall_example_id
+      
+        # Whether the document is opted out.
+        # Corresponds to the JSON property `isOptOut`
+        # @return [Boolean]
+        attr_accessor :is_opt_out
+        alias_method :is_opt_out?, :is_opt_out
+      
+        # When true, this attribution came from the user's prompt.
+        # Corresponds to the JSON property `isPrompt`
+        # @return [Boolean]
+        attr_accessor :is_prompt
+        alias_method :is_prompt?, :is_prompt
+      
+        # 
+        # Corresponds to the JSON property `lamdaExampleId`
+        # @return [String]
+        attr_accessor :lamda_example_id
+      
+        # 
+        # Corresponds to the JSON property `license`
+        # @return [String]
+        attr_accessor :license
+      
+        # 
+        # Corresponds to the JSON property `meenaConversationId`
+        # @return [String]
+        attr_accessor :meena_conversation_id
+      
+        # Natural (not programming) language of the document. Language code as defined
+        # by http://www.unicode.org/reports/tr35/#Identifiers and https://tools.ietf.org/
+        # html/bcp47. Currently applicable to full-view books. Use docinfo-util.h to set
+        # & read language fields. See go/iii.
+        # Corresponds to the JSON property `naturalLanguageCode`
+        # @return [String]
+        attr_accessor :natural_language_code
+      
+        # True if this doc has no attribution information available. We use an explicit
+        # field for this instead of just implicitly leaving all the DocAttribution
+        # fields blank to distinguish a case where a bug/oversight has left the
+        # attribution information empty vs when we really have no attribution
+        # information available.
+        # Corresponds to the JSON property `noAttribution`
+        # @return [Boolean]
+        attr_accessor :no_attribution
+        alias_method :no_attribution?, :no_attribution
+      
+        # 
+        # Corresponds to the JSON property `podcastUtteranceId`
+        # @return [String]
+        attr_accessor :podcast_utterance_id
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `publicationDate`
+        # @return [Google::Apis::AiplatformV1::GoogleTypeDate]
+        attr_accessor :publication_date
+      
+        # This field is for opt-out experiment only, MUST never be used during actual
+        # production/serving.
+        # Corresponds to the JSON property `qualityScoreExperimentOnly`
+        # @return [Float]
+        attr_accessor :quality_score_experiment_only
+      
+        # Github repository
+        # Corresponds to the JSON property `repo`
+        # @return [String]
+        attr_accessor :repo
+      
+        # URL of a webdoc
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        # 
+        # Corresponds to the JSON property `volumeId`
+        # @return [String]
+        attr_accessor :volume_id
+      
+        # Wikipedia article title. The Wikipedia TFDS dataset includes article titles
+        # but not URLs. While a URL is to the best of our knowledge a deterministic
+        # function of the title, we store the original title to reflect the information
+        # in the original dataset.
+        # Corresponds to the JSON property `wikipediaArticleTitle`
+        # @return [String]
+        attr_accessor :wikipedia_article_title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amarna_id = args[:amarna_id] if args.key?(:amarna_id)
+          @arxiv_id = args[:arxiv_id] if args.key?(:arxiv_id)
+          @author = args[:author] if args.key?(:author)
+          @bibkey = args[:bibkey] if args.key?(:bibkey)
+          @book_title = args[:book_title] if args.key?(:book_title)
+          @book_volume_id = args[:book_volume_id] if args.key?(:book_volume_id)
+          @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
+          @dataset = args[:dataset] if args.key?(:dataset)
+          @filepath = args[:filepath] if args.key?(:filepath)
+          @gemini_id = args[:gemini_id] if args.key?(:gemini_id)
+          @gnews_article_title = args[:gnews_article_title] if args.key?(:gnews_article_title)
+          @goodall_example_id = args[:goodall_example_id] if args.key?(:goodall_example_id)
+          @is_opt_out = args[:is_opt_out] if args.key?(:is_opt_out)
+          @is_prompt = args[:is_prompt] if args.key?(:is_prompt)
+          @lamda_example_id = args[:lamda_example_id] if args.key?(:lamda_example_id)
+          @license = args[:license] if args.key?(:license)
+          @meena_conversation_id = args[:meena_conversation_id] if args.key?(:meena_conversation_id)
+          @natural_language_code = args[:natural_language_code] if args.key?(:natural_language_code)
+          @no_attribution = args[:no_attribution] if args.key?(:no_attribution)
+          @podcast_utterance_id = args[:podcast_utterance_id] if args.key?(:podcast_utterance_id)
+          @publication_date = args[:publication_date] if args.key?(:publication_date)
+          @quality_score_experiment_only = args[:quality_score_experiment_only] if args.key?(:quality_score_experiment_only)
+          @repo = args[:repo] if args.key?(:repo)
+          @url = args[:url] if args.key?(:url)
+          @volume_id = args[:volume_id] if args.key?(:volume_id)
+          @wikipedia_article_title = args[:wikipedia_article_title] if args.key?(:wikipedia_article_title)
+        end
+      end
+      
+      # The recitation result for one input
+      class LearningGenaiRecitationRecitationResult
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `dynamicSegmentResults`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRecitationSegmentResult>]
+        attr_accessor :dynamic_segment_results
+      
+        # The recitation action for one given input. When its segments contain different
+        # actions, the overall action will be returned in the precedence of BLOCK > CITE
+        # > NO_ACTION.
+        # Corresponds to the JSON property `recitationAction`
+        # @return [String]
+        attr_accessor :recitation_action
+      
+        # 
+        # Corresponds to the JSON property `trainingSegmentResults`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRecitationSegmentResult>]
+        attr_accessor :training_segment_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_segment_results = args[:dynamic_segment_results] if args.key?(:dynamic_segment_results)
+          @recitation_action = args[:recitation_action] if args.key?(:recitation_action)
+          @training_segment_results = args[:training_segment_results] if args.key?(:training_segment_results)
+        end
+      end
+      
+      # The recitation result for each segment in a given input.
+      class LearningGenaiRecitationSegmentResult
+        include Google::Apis::Core::Hashable
+      
+        # The dataset the segment came from.
+        # Corresponds to the JSON property `attributionDataset`
+        # @return [String]
+        attr_accessor :attribution_dataset
+      
+        # human-friendly string that contains information from doc_attribution which
+        # could be shown by clients
+        # Corresponds to the JSON property `displayAttributionMessage`
+        # @return [String]
+        attr_accessor :display_attribution_message
+      
+        # The proto defines the attribution information for a document using whatever
+        # fields are most applicable for that document's datasource. For example, a
+        # Wikipedia article's attribution is in the form of its article title, a website
+        # is in the form of a URL, and a Github repo is in the form of a repo name. Next
+        # id: 28
+        # Corresponds to the JSON property `docAttribution`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRecitationDocAttribution]
+        attr_accessor :doc_attribution
+      
+        # number of documents that contained this segment
+        # Corresponds to the JSON property `docOccurrences`
+        # @return [Fixnum]
+        attr_accessor :doc_occurrences
+      
+        # 
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # The raw text in the given input that is corresponding to the segment. It will
+        # be available only when 'return_segment_raw_text' is enabled in the request
+        # options.
+        # Corresponds to the JSON property `rawText`
+        # @return [String]
+        attr_accessor :raw_text
+      
+        # 
+        # Corresponds to the JSON property `segmentRecitationAction`
+        # @return [String]
+        attr_accessor :segment_recitation_action
+      
+        # The segment boundary start (inclusive) and end index (exclusive) in the given
+        # text. In the streaming RPC, the indexes always start from the beginning of the
+        # first text in the entire stream. The indexes are measured in UTF-16 code units.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution_dataset = args[:attribution_dataset] if args.key?(:attribution_dataset)
+          @display_attribution_message = args[:display_attribution_message] if args.key?(:display_attribution_message)
+          @doc_attribution = args[:doc_attribution] if args.key?(:doc_attribution)
+          @doc_occurrences = args[:doc_occurrences] if args.key?(:doc_occurrences)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @raw_text = args[:raw_text] if args.key?(:raw_text)
+          @segment_recitation_action = args[:segment_recitation_action] if args.key?(:segment_recitation_action)
+          @start_index = args[:start_index] if args.key?(:start_index)
+        end
+      end
+      
+      # The type used for final weights calculation.
+      class LearningGenaiRootCalculationType
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `scoreType`
+        # @return [String]
+        attr_accessor :score_type
+      
+        # 
+        # Corresponds to the JSON property `weights`
+        # @return [Float]
+        attr_accessor :weights
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score_type = args[:score_type] if args.key?(:score_type)
+          @weights = args[:weights] if args.key?(:weights)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootClassifierOutput
+        include Google::Apis::Core::Hashable
+      
+        # If set, this is the output of the first matching rule.
+        # Corresponds to the JSON property `ruleOutput`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootRuleOutput]
+        attr_accessor :rule_output
+      
+        # outputs of all matching rule.
+        # Corresponds to the JSON property `ruleOutputs`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootRuleOutput>]
+        attr_accessor :rule_outputs
+      
+        # DataProviderOutput and MetricOutput can be saved between calls to the
+        # Classifier framework. For instance, you can run the query classifier, get
+        # outputs from those metrics, then use them in a result classifier as well.
+        # Example rule based on this idea: and_rules ` rule ` metric_name: '
+        # query_safesearch_v2' ... ` rule ` metric_name: 'response_safesearch_v2' ... ` `
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootClassifierState]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rule_output = args[:rule_output] if args.key?(:rule_output)
+          @rule_outputs = args[:rule_outputs] if args.key?(:rule_outputs)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootClassifierOutputSummary
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootMetricOutput>]
+        attr_accessor :metrics
+      
+        # Output of the first matching rule.
+        # Corresponds to the JSON property `ruleOutput`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootRuleOutput]
+        attr_accessor :rule_output
+      
+        # outputs of all matching rule.
+        # Corresponds to the JSON property `ruleOutputs`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootRuleOutput>]
+        attr_accessor :rule_outputs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @rule_output = args[:rule_output] if args.key?(:rule_output)
+          @rule_outputs = args[:rule_outputs] if args.key?(:rule_outputs)
+        end
+      end
+      
+      # DataProviderOutput and MetricOutput can be saved between calls to the
+      # Classifier framework. For instance, you can run the query classifier, get
+      # outputs from those metrics, then use them in a result classifier as well.
+      # Example rule based on this idea: and_rules ` rule ` metric_name: '
+      # query_safesearch_v2' ... ` rule ` metric_name: 'response_safesearch_v2' ... ` `
+      class LearningGenaiRootClassifierState
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `dataProviderOutput`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootDataProviderOutput>]
+        attr_accessor :data_provider_output
+      
+        # 
+        # Corresponds to the JSON property `metricOutput`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootMetricOutput>]
+        attr_accessor :metric_output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_provider_output = args[:data_provider_output] if args.key?(:data_provider_output)
+          @metric_output = args[:metric_output] if args.key?(:metric_output)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootDataProviderOutput
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Wire-format for a Status object
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::AiplatformV1::UtilStatusProto]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootFilterMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Filter confidence.
+        # Corresponds to the JSON property `confidence`
+        # @return [String]
+        attr_accessor :confidence
+      
+        # Debug info for the message.
+        # Corresponds to the JSON property `debugInfo`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootFilterMetadataFilterDebugInfo]
+        attr_accessor :debug_info
+      
+        # A fallback message chosen by the applied filter.
+        # Corresponds to the JSON property `fallback`
+        # @return [String]
+        attr_accessor :fallback
+      
+        # Additional info for the filter.
+        # Corresponds to the JSON property `info`
+        # @return [String]
+        attr_accessor :info
+      
+        # Name of the filter that triggered.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Filter reason.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The input query or generated response that is getting filtered.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @debug_info = args[:debug_info] if args.key?(:debug_info)
+          @fallback = args[:fallback] if args.key?(:fallback)
+          @info = args[:info] if args.key?(:info)
+          @name = args[:name] if args.key?(:name)
+          @reason = args[:reason] if args.key?(:reason)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootFilterMetadataFilterDebugInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `classifierOutput`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootClassifierOutput]
+        attr_accessor :classifier_output
+      
+        # 
+        # Corresponds to the JSON property `defaultMetadata`
+        # @return [String]
+        attr_accessor :default_metadata
+      
+        # 
+        # Corresponds to the JSON property `languageFilterResult`
+        # @return [Google::Apis::AiplatformV1::LearningServingLlmLanguageFilterResult]
+        attr_accessor :language_filter_result
+      
+        # This is per harm.
+        # Corresponds to the JSON property `raiOutput`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootRaiOutput]
+        attr_accessor :rai_output
+      
+        # The RAI results for a given text.
+        # Corresponds to the JSON property `raiResult`
+        # @return [Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiResult]
+        attr_accessor :rai_result
+      
+        # An RAI signal for a single category.
+        # Corresponds to the JSON property `raiSignal`
+        # @return [Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiSignal]
+        attr_accessor :rai_signal
+      
+        # The recitation result for one stream input
+        # Corresponds to the JSON property `streamRecitationResult`
+        # @return [Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoStreamRecitationResult]
+        attr_accessor :stream_recitation_result
+      
+        # 
+        # Corresponds to the JSON property `takedownResult`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootTakedownResult]
+        attr_accessor :takedown_result
+      
+        # A model can generate multiple signals and this captures all the generated
+        # signals for a single message.
+        # Corresponds to the JSON property `toxicityResult`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootToxicityResult]
+        attr_accessor :toxicity_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @classifier_output = args[:classifier_output] if args.key?(:classifier_output)
+          @default_metadata = args[:default_metadata] if args.key?(:default_metadata)
+          @language_filter_result = args[:language_filter_result] if args.key?(:language_filter_result)
+          @rai_output = args[:rai_output] if args.key?(:rai_output)
+          @rai_result = args[:rai_result] if args.key?(:rai_result)
+          @rai_signal = args[:rai_signal] if args.key?(:rai_signal)
+          @stream_recitation_result = args[:stream_recitation_result] if args.key?(:stream_recitation_result)
+          @takedown_result = args[:takedown_result] if args.key?(:takedown_result)
+          @toxicity_result = args[:toxicity_result] if args.key?(:toxicity_result)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootHarm
+        include Google::Apis::Core::Hashable
+      
+        # Please do not use, this is still under development.
+        # Corresponds to the JSON property `contextualDangerous`
+        # @return [Boolean]
+        attr_accessor :contextual_dangerous
+        alias_method :contextual_dangerous?, :contextual_dangerous
+      
+        # 
+        # Corresponds to the JSON property `csam`
+        # @return [Boolean]
+        attr_accessor :csam
+        alias_method :csam?, :csam
+      
+        # 
+        # Corresponds to the JSON property `fringe`
+        # @return [Boolean]
+        attr_accessor :fringe
+        alias_method :fringe?, :fringe
+      
+        # Harm type for images
+        # Corresponds to the JSON property `grailImageHarmType`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootHarmGrailImageHarmType]
+        attr_accessor :grail_image_harm_type
+      
+        # Harm type for text
+        # Corresponds to the JSON property `grailTextHarmType`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootHarmGrailTextHarmType]
+        attr_accessor :grail_text_harm_type
+      
+        # 
+        # Corresponds to the JSON property `imageCsam`
+        # @return [Boolean]
+        attr_accessor :image_csam
+        alias_method :image_csam?, :image_csam
+      
+        # 
+        # Corresponds to the JSON property `imagePedo`
+        # @return [Boolean]
+        attr_accessor :image_pedo
+        alias_method :image_pedo?, :image_pedo
+      
+        # Image signals
+        # Corresponds to the JSON property `imagePorn`
+        # @return [Boolean]
+        attr_accessor :image_porn
+        alias_method :image_porn?, :image_porn
+      
+        # 
+        # Corresponds to the JSON property `imageViolence`
+        # @return [Boolean]
+        attr_accessor :image_violence
+        alias_method :image_violence?, :image_violence
+      
+        # 
+        # Corresponds to the JSON property `pqc`
+        # @return [Boolean]
+        attr_accessor :pqc
+        alias_method :pqc?, :pqc
+      
+        # 
+        # Corresponds to the JSON property `safetycat`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootHarmSafetyCatCategories]
+        attr_accessor :safetycat
+      
+        # 
+        # Corresponds to the JSON property `spii`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootHarmSpiiFilter]
+        attr_accessor :spii
+      
+        # 
+        # Corresponds to the JSON property `threshold`
+        # @return [Float]
+        attr_accessor :threshold
+      
+        # 
+        # Corresponds to the JSON property `videoFrameCsam`
+        # @return [Boolean]
+        attr_accessor :video_frame_csam
+        alias_method :video_frame_csam?, :video_frame_csam
+      
+        # 
+        # Corresponds to the JSON property `videoFramePedo`
+        # @return [Boolean]
+        attr_accessor :video_frame_pedo
+        alias_method :video_frame_pedo?, :video_frame_pedo
+      
+        # Video frame signals
+        # Corresponds to the JSON property `videoFramePorn`
+        # @return [Boolean]
+        attr_accessor :video_frame_porn
+        alias_method :video_frame_porn?, :video_frame_porn
+      
+        # 
+        # Corresponds to the JSON property `videoFrameViolence`
+        # @return [Boolean]
+        attr_accessor :video_frame_violence
+        alias_method :video_frame_violence?, :video_frame_violence
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contextual_dangerous = args[:contextual_dangerous] if args.key?(:contextual_dangerous)
+          @csam = args[:csam] if args.key?(:csam)
+          @fringe = args[:fringe] if args.key?(:fringe)
+          @grail_image_harm_type = args[:grail_image_harm_type] if args.key?(:grail_image_harm_type)
+          @grail_text_harm_type = args[:grail_text_harm_type] if args.key?(:grail_text_harm_type)
+          @image_csam = args[:image_csam] if args.key?(:image_csam)
+          @image_pedo = args[:image_pedo] if args.key?(:image_pedo)
+          @image_porn = args[:image_porn] if args.key?(:image_porn)
+          @image_violence = args[:image_violence] if args.key?(:image_violence)
+          @pqc = args[:pqc] if args.key?(:pqc)
+          @safetycat = args[:safetycat] if args.key?(:safetycat)
+          @spii = args[:spii] if args.key?(:spii)
+          @threshold = args[:threshold] if args.key?(:threshold)
+          @video_frame_csam = args[:video_frame_csam] if args.key?(:video_frame_csam)
+          @video_frame_pedo = args[:video_frame_pedo] if args.key?(:video_frame_pedo)
+          @video_frame_porn = args[:video_frame_porn] if args.key?(:video_frame_porn)
+          @video_frame_violence = args[:video_frame_violence] if args.key?(:video_frame_violence)
+        end
+      end
+      
+      # Harm type for images
+      class LearningGenaiRootHarmGrailImageHarmType
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `imageHarmType`
+        # @return [Array<String>]
+        attr_accessor :image_harm_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_harm_type = args[:image_harm_type] if args.key?(:image_harm_type)
+        end
+      end
+      
+      # Harm type for text
+      class LearningGenaiRootHarmGrailTextHarmType
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `harmType`
+        # @return [Array<String>]
+        attr_accessor :harm_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @harm_type = args[:harm_type] if args.key?(:harm_type)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootHarmSafetyCatCategories
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `categories`
+        # @return [Array<String>]
+        attr_accessor :categories
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @categories = args[:categories] if args.key?(:categories)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootHarmSpiiFilter
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `usBankRoutingMicr`
+        # @return [Boolean]
+        attr_accessor :us_bank_routing_micr
+        alias_method :us_bank_routing_micr?, :us_bank_routing_micr
+      
+        # 
+        # Corresponds to the JSON property `usEmployerIdentificationNumber`
+        # @return [Boolean]
+        attr_accessor :us_employer_identification_number
+        alias_method :us_employer_identification_number?, :us_employer_identification_number
+      
+        # 
+        # Corresponds to the JSON property `usSocialSecurityNumber`
+        # @return [Boolean]
+        attr_accessor :us_social_security_number
+        alias_method :us_social_security_number?, :us_social_security_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @us_bank_routing_micr = args[:us_bank_routing_micr] if args.key?(:us_bank_routing_micr)
+          @us_employer_identification_number = args[:us_employer_identification_number] if args.key?(:us_employer_identification_number)
+          @us_social_security_number = args[:us_social_security_number] if args.key?(:us_social_security_number)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootInternalMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `scoredTokens`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootScoredToken>]
+        attr_accessor :scored_tokens
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scored_tokens = args[:scored_tokens] if args.key?(:scored_tokens)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootMetricOutput
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `debug`
+        # @return [String]
+        attr_accessor :debug
+      
+        # Name of the metric.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `numericValue`
+        # @return [Float]
+        attr_accessor :numeric_value
+      
+        # Wire-format for a Status object
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::AiplatformV1::UtilStatusProto]
+        attr_accessor :status
+      
+        # 
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @debug = args[:debug] if args.key?(:debug)
+          @name = args[:name] if args.key?(:name)
+          @numeric_value = args[:numeric_value] if args.key?(:numeric_value)
+          @status = args[:status] if args.key?(:status)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
+      # This is per harm.
+      class LearningGenaiRootRaiOutput
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `allowed`
+        # @return [Boolean]
+        attr_accessor :allowed
+        alias_method :allowed?, :allowed
+      
+        # 
+        # Corresponds to the JSON property `harm`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootHarm]
+        attr_accessor :harm
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed = args[:allowed] if args.key?(:allowed)
+          @harm = args[:harm] if args.key?(:harm)
+          @name = args[:name] if args.key?(:name)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootRegexTakedownResult
+        include Google::Apis::Core::Hashable
+      
+        # False when query or response should be taken down due to match with a blocked
+        # regex, true otherwise.
+        # Corresponds to the JSON property `allowed`
+        # @return [Boolean]
+        attr_accessor :allowed
+        alias_method :allowed?, :allowed
+      
+        # Regex used to decide that query or response should be taken down. Empty when
+        # query or response is kept.
+        # Corresponds to the JSON property `takedownRegex`
+        # @return [String]
+        attr_accessor :takedown_regex
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed = args[:allowed] if args.key?(:allowed)
+          @takedown_regex = args[:takedown_regex] if args.key?(:takedown_regex)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootRequestResponseTakedownResult
+        include Google::Apis::Core::Hashable
+      
+        # False when response has to be taken down per above config.
+        # Corresponds to the JSON property `allowed`
+        # @return [Boolean]
+        attr_accessor :allowed
+        alias_method :allowed?, :allowed
+      
+        # Regex used to match the request.
+        # Corresponds to the JSON property `requestTakedownRegex`
+        # @return [String]
+        attr_accessor :request_takedown_regex
+      
+        # Regex used to decide that response should be taken down. Empty when response
+        # is kept.
+        # Corresponds to the JSON property `responseTakedownRegex`
+        # @return [String]
+        attr_accessor :response_takedown_regex
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed = args[:allowed] if args.key?(:allowed)
+          @request_takedown_regex = args[:request_takedown_regex] if args.key?(:request_takedown_regex)
+          @response_takedown_regex = args[:response_takedown_regex] if args.key?(:response_takedown_regex)
+        end
+      end
+      
+      # Holds the final routing decision, by storing the model_config_id. And
+      # individual scores each model got.
+      class LearningGenaiRootRoutingDecision
+        include Google::Apis::Core::Hashable
+      
+        # Debug metadata about the routing decision.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecisionMetadata]
+        attr_accessor :metadata
+      
+        # The selected model to route traffic to.
+        # Corresponds to the JSON property `modelConfigId`
+        # @return [String]
+        attr_accessor :model_config_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @model_config_id = args[:model_config_id] if args.key?(:model_config_id)
+        end
+      end
+      
+      # Debug metadata about the routing decision.
+      class LearningGenaiRootRoutingDecisionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # If we are routing using scored based configuration, then the metadata about
+        # that is available in this proto.
+        # Corresponds to the JSON property `scoreBasedRoutingMetadata`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecisionMetadataScoreBased]
+        attr_accessor :score_based_routing_metadata
+      
+        # 
+        # Corresponds to the JSON property `tokenLengthBasedRoutingMetadata`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecisionMetadataTokenLengthBased]
+        attr_accessor :token_length_based_routing_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score_based_routing_metadata = args[:score_based_routing_metadata] if args.key?(:score_based_routing_metadata)
+          @token_length_based_routing_metadata = args[:token_length_based_routing_metadata] if args.key?(:token_length_based_routing_metadata)
+        end
+      end
+      
+      # If we are routing using scored based configuration, then the metadata about
+      # that is available in this proto.
+      class LearningGenaiRootRoutingDecisionMetadataScoreBased
+        include Google::Apis::Core::Hashable
+      
+        # The rule that was matched.
+        # Corresponds to the JSON property `matchedRule`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootScoreBasedRoutingConfigRule]
+        attr_accessor :matched_rule
+      
+        # The score that was generated by the router i.e. the model.
+        # Corresponds to the JSON property `score`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootScore]
+        attr_accessor :score
+      
+        # No rules were matched & therefore used the default fallback.
+        # Corresponds to the JSON property `usedDefaultFallback`
+        # @return [Boolean]
+        attr_accessor :used_default_fallback
+        alias_method :used_default_fallback?, :used_default_fallback
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @matched_rule = args[:matched_rule] if args.key?(:matched_rule)
+          @score = args[:score] if args.key?(:score)
+          @used_default_fallback = args[:used_default_fallback] if args.key?(:used_default_fallback)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootRoutingDecisionMetadataTokenLengthBased
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `modelInputTokenMetadata`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelInputTokenMetadata>]
+        attr_accessor :model_input_token_metadata
+      
+        # 
+        # Corresponds to the JSON property `modelMaxTokenMetadata`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelMaxTokenMetadata>]
+        attr_accessor :model_max_token_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model_input_token_metadata = args[:model_input_token_metadata] if args.key?(:model_input_token_metadata)
+          @model_max_token_metadata = args[:model_max_token_metadata] if args.key?(:model_max_token_metadata)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelInputTokenMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The length computed by backends using the formatter & tokenizer specific to
+        # the model
+        # Corresponds to the JSON property `computedInputTokenLength`
+        # @return [Fixnum]
+        attr_accessor :computed_input_token_length
+      
+        # 
+        # Corresponds to the JSON property `modelId`
+        # @return [String]
+        attr_accessor :model_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @computed_input_token_length = args[:computed_input_token_length] if args.key?(:computed_input_token_length)
+          @model_id = args[:model_id] if args.key?(:model_id)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelMaxTokenMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `maxNumInputTokens`
+        # @return [Fixnum]
+        attr_accessor :max_num_input_tokens
+      
+        # 
+        # Corresponds to the JSON property `maxNumOutputTokens`
+        # @return [Fixnum]
+        attr_accessor :max_num_output_tokens
+      
+        # 
+        # Corresponds to the JSON property `modelId`
+        # @return [String]
+        attr_accessor :model_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_num_input_tokens = args[:max_num_input_tokens] if args.key?(:max_num_input_tokens)
+          @max_num_output_tokens = args[:max_num_output_tokens] if args.key?(:max_num_output_tokens)
+          @model_id = args[:model_id] if args.key?(:model_id)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootRuleOutput
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `decision`
+        # @return [String]
+        attr_accessor :decision
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @decision = args[:decision] if args.key?(:decision)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootScore
+        include Google::Apis::Core::Hashable
+      
+        # The type used for final weights calculation.
+        # Corresponds to the JSON property `calculationType`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootCalculationType]
+        attr_accessor :calculation_type
+      
+        # The internal_metadata is intended to be used by internal processors and will
+        # be cleared before returns.
+        # Corresponds to the JSON property `internalMetadata`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootInternalMetadata]
+        attr_accessor :internal_metadata
+      
+        # The type of score that bundled with a threshold, and will not be attending the
+        # final score calculation. How each score type uses the threshold can be
+        # implementation details.
+        # Corresponds to the JSON property `thresholdType`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootThresholdType]
+        attr_accessor :threshold_type
+      
+        # Results of RandomSamplingParams::top_k_logprob_per_decoding_step.
+        # Corresponds to the JSON property `tokensAndLogprobPerDecodingStep`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootTokensAndLogProbPerDecodingStep]
+        attr_accessor :tokens_and_logprob_per_decoding_step
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @calculation_type = args[:calculation_type] if args.key?(:calculation_type)
+          @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
+          @threshold_type = args[:threshold_type] if args.key?(:threshold_type)
+          @tokens_and_logprob_per_decoding_step = args[:tokens_and_logprob_per_decoding_step] if args.key?(:tokens_and_logprob_per_decoding_step)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootScoreBasedRoutingConfigRule
+        include Google::Apis::Core::Hashable
+      
+        # NOTE: Hardest examples have smaller values in their routing scores.
+        # Corresponds to the JSON property `equalOrGreaterThan`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootScore]
+        attr_accessor :equal_or_greater_than
+      
+        # 
+        # Corresponds to the JSON property `lessThan`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootScore]
+        attr_accessor :less_than
+      
+        # This model_config_id points to ModelConfig::id which allows us to find the
+        # ModelConfig to route to. This is part of the banks specified in the
+        # ModelBankConfig.
+        # Corresponds to the JSON property `modelConfigId`
+        # @return [String]
+        attr_accessor :model_config_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @equal_or_greater_than = args[:equal_or_greater_than] if args.key?(:equal_or_greater_than)
+          @less_than = args[:less_than] if args.key?(:less_than)
+          @model_config_id = args[:model_config_id] if args.key?(:model_config_id)
+        end
+      end
+      
+      # Proto containing the results from the Universal Sentence Encoder / Other
+      # models
+      class LearningGenaiRootScoredSimilarityTakedownPhrase
+        include Google::Apis::Core::Hashable
+      
+        # Each SimilarityTakedownPhrase treats a logical group of blocked and allowed
+        # phrases together along with a corresponding punt If the closest matching
+        # response is of the allowed type, we allow the response If the closest matching
+        # response is of the blocked type, we block the response. eg: Blocked phrase - "
+        # All lives matter"
+        # Corresponds to the JSON property `phrase`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootSimilarityTakedownPhrase]
+        attr_accessor :phrase
+      
+        # 
+        # Corresponds to the JSON property `similarityScore`
+        # @return [Float]
+        attr_accessor :similarity_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phrase = args[:phrase] if args.key?(:phrase)
+          @similarity_score = args[:similarity_score] if args.key?(:similarity_score)
+        end
+      end
+      
+      # A token with its own score.
+      class LearningGenaiRootScoredToken
+        include Google::Apis::Core::Hashable
+      
+        # Each end_token_score is a logprob for how well the completion would end at a
+        # particular token. See http://google3/labs/language/aida/config/proto/
+        # model_config.proto;l=376;rcl=573039459
+        # Corresponds to the JSON property `endTokenScore`
+        # @return [Float]
+        attr_accessor :end_token_score
+      
+        # Each score is the logprob for the token in model response.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # 
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_token_score = args[:end_token_score] if args.key?(:end_token_score)
+          @score = args[:score] if args.key?(:score)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
+      # Each SimilarityTakedownPhrase treats a logical group of blocked and allowed
+      # phrases together along with a corresponding punt If the closest matching
+      # response is of the allowed type, we allow the response If the closest matching
+      # response is of the blocked type, we block the response. eg: Blocked phrase - "
+      # All lives matter"
+      class LearningGenaiRootSimilarityTakedownPhrase
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `blockedPhrase`
+        # @return [String]
+        attr_accessor :blocked_phrase
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocked_phrase = args[:blocked_phrase] if args.key?(:blocked_phrase)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootSimilarityTakedownResult
+        include Google::Apis::Core::Hashable
+      
+        # False when query or response should be taken down by any of the takedown rules,
+        # true otherwise.
+        # Corresponds to the JSON property `allowed`
+        # @return [Boolean]
+        attr_accessor :allowed
+        alias_method :allowed?, :allowed
+      
+        # List of similar phrases with score. Set only if allowed=false.
+        # Corresponds to the JSON property `scoredPhrases`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootScoredSimilarityTakedownPhrase>]
+        attr_accessor :scored_phrases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed = args[:allowed] if args.key?(:allowed)
+          @scored_phrases = args[:scored_phrases] if args.key?(:scored_phrases)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootTakedownResult
+        include Google::Apis::Core::Hashable
+      
+        # False when query or response should be taken down by any of the takedown rules,
+        # true otherwise.
+        # Corresponds to the JSON property `allowed`
+        # @return [Boolean]
+        attr_accessor :allowed
+        alias_method :allowed?, :allowed
+      
+        # 
+        # Corresponds to the JSON property `regexTakedownResult`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootRegexTakedownResult]
+        attr_accessor :regex_takedown_result
+      
+        # 
+        # Corresponds to the JSON property `requestResponseTakedownResult`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootRequestResponseTakedownResult]
+        attr_accessor :request_response_takedown_result
+      
+        # 
+        # Corresponds to the JSON property `similarityTakedownResult`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootSimilarityTakedownResult]
+        attr_accessor :similarity_takedown_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed = args[:allowed] if args.key?(:allowed)
+          @regex_takedown_result = args[:regex_takedown_result] if args.key?(:regex_takedown_result)
+          @request_response_takedown_result = args[:request_response_takedown_result] if args.key?(:request_response_takedown_result)
+          @similarity_takedown_result = args[:similarity_takedown_result] if args.key?(:similarity_takedown_result)
+        end
+      end
+      
+      # The type of score that bundled with a threshold, and will not be attending the
+      # final score calculation. How each score type uses the threshold can be
+      # implementation details.
+      class LearningGenaiRootThresholdType
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `scoreType`
+        # @return [String]
+        attr_accessor :score_type
+      
+        # 
+        # Corresponds to the JSON property `threshold`
+        # @return [Float]
+        attr_accessor :threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score_type = args[:score_type] if args.key?(:score_type)
+          @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
+      # Results of RandomSamplingParams::top_k_logprob_per_decoding_step.
+      class LearningGenaiRootTokensAndLogProbPerDecodingStep
+        include Google::Apis::Core::Hashable
+      
+        # Length = total number of decoding steps. The chosen candidates may or may not
+        # be in top_candidates.
+        # Corresponds to the JSON property `chosenCandidates`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootTokensAndLogProbPerDecodingStepCandidate>]
+        attr_accessor :chosen_candidates
+      
+        # Length = total number of decoding steps.
+        # Corresponds to the JSON property `topCandidates`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootTokensAndLogProbPerDecodingStepTopCandidates>]
+        attr_accessor :top_candidates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chosen_candidates = args[:chosen_candidates] if args.key?(:chosen_candidates)
+          @top_candidates = args[:top_candidates] if args.key?(:top_candidates)
+        end
+      end
+      
+      # A candidate at a decoding step.
+      class LearningGenaiRootTokensAndLogProbPerDecodingStepCandidate
+        include Google::Apis::Core::Hashable
+      
+        # The candidate's log probability.
+        # Corresponds to the JSON property `logProbability`
+        # @return [Float]
+        attr_accessor :log_probability
+      
+        # The candidate’s token value.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_probability = args[:log_probability] if args.key?(:log_probability)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
+      # Candidates with top log probabilities at each decoding step.
+      class LearningGenaiRootTokensAndLogProbPerDecodingStepTopCandidates
+        include Google::Apis::Core::Hashable
+      
+        # Sorted by log probability in descending order.
+        # Corresponds to the JSON property `candidates`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootTokensAndLogProbPerDecodingStepCandidate>]
+        attr_accessor :candidates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates = args[:candidates] if args.key?(:candidates)
+        end
+      end
+      
+      # A model can generate multiple signals and this captures all the generated
+      # signals for a single message.
+      class LearningGenaiRootToxicityResult
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `signals`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootToxicitySignal>]
+        attr_accessor :signals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signals = args[:signals] if args.key?(:signals)
+        end
+      end
+      
+      # Proto to capture a signal generated by the toxicity model.
+      class LearningGenaiRootToxicitySignal
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `allowed`
+        # @return [Boolean]
+        attr_accessor :allowed
+        alias_method :allowed?, :allowed
+      
+        # 
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # 
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed = args[:allowed] if args.key?(:allowed)
+          @label = args[:label] if args.key?(:label)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # 
+      class LearningServingLlmLanguageFilterResult
+        include Google::Apis::Core::Hashable
+      
+        # False when query or response should be filtered out due to unsupported
+        # language.
+        # Corresponds to the JSON property `allowed`
+        # @return [Boolean]
+        attr_accessor :allowed
+        alias_method :allowed?, :allowed
+      
+        # Language of the query or response.
+        # Corresponds to the JSON property `detectedLanguage`
+        # @return [String]
+        attr_accessor :detected_language
+      
+        # Probability of the language predicted as returned by LangID.
+        # Corresponds to the JSON property `detectedLanguageProbability`
+        # @return [Float]
+        attr_accessor :detected_language_probability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed = args[:allowed] if args.key?(:allowed)
+          @detected_language = args[:detected_language] if args.key?(:detected_language)
+          @detected_language_probability = args[:detected_language_probability] if args.key?(:detected_language_probability)
+        end
+      end
+      
+      # LINT.IfChange This metadata contains additional information required for
+      # debugging.
+      class LearningServingLlmMessageMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Summary of classifier output. We attach this to all messages regardless of
+        # whether classification rules triggered or not.
+        # Corresponds to the JSON property `classifierSummary`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootClassifierOutputSummary]
+        attr_accessor :classifier_summary
+      
+        # 
+        # Corresponds to the JSON property `currentStreamTextLength`
+        # @return [Fixnum]
+        attr_accessor :current_stream_text_length
+      
+        # Whether the corresponding message has been deleted.
+        # Corresponds to the JSON property `deleted`
+        # @return [Boolean]
+        attr_accessor :deleted
+        alias_method :deleted?, :deleted
+      
+        # Metadata for filters that triggered.
+        # Corresponds to the JSON property `filterMeta`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootFilterMetadata>]
+        attr_accessor :filter_meta
+      
+        # This score is finally used for ranking the message. This will be same as the
+        # score present in `Message.score` field.
+        # Corresponds to the JSON property `finalMessageScore`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootScore]
+        attr_accessor :final_message_score
+      
+        # NOT YET IMPLEMENTED.
+        # Corresponds to the JSON property `finishReason`
+        # @return [String]
+        attr_accessor :finish_reason
+      
+        # Applies to Response message only. Indicates whether the message is a fallback
+        # and the response would have otherwise been empty.
+        # Corresponds to the JSON property `isFallback`
+        # @return [Boolean]
+        attr_accessor :is_fallback
+        alias_method :is_fallback?, :is_fallback
+      
+        # Result from nlp_saft DetectLanguage method. Currently the predicted language
+        # code and language probability is used.
+        # Corresponds to the JSON property `langidResult`
+        # @return [Google::Apis::AiplatformV1::NlpSaftLangIdResult]
+        attr_accessor :langid_result
+      
+        # Detected language.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # The LM prefix used to generate this response.
+        # Corresponds to the JSON property `lmPrefix`
+        # @return [String]
+        attr_accessor :lm_prefix
+      
+        # The original text generated by LLM. This is the raw output for debugging
+        # purposes.
+        # Corresponds to the JSON property `originalText`
+        # @return [String]
+        attr_accessor :original_text
+      
+        # NOT YET IMPLEMENTED. Applies to streaming only. Number of tokens decoded /
+        # emitted by the model as part of this stream. This may be different from
+        # token_count, which contains number of tokens returned in this response after
+        # any response rewriting / truncation.
+        # Corresponds to the JSON property `perStreamDecodedTokenCount`
+        # @return [Fixnum]
+        attr_accessor :per_stream_decoded_token_count
+      
+        # Results of running RAI on the query or this response candidate. One output per
+        # rai_config. It will be populated regardless of whether the threshold is
+        # exceeded or not.
+        # Corresponds to the JSON property `raiOutputs`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootRaiOutput>]
+        attr_accessor :rai_outputs
+      
+        # The recitation result for one input
+        # Corresponds to the JSON property `recitationResult`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRecitationRecitationResult]
+        attr_accessor :recitation_result
+      
+        # NOT YET IMPLEMENTED. Number of tokens returned as part of this candidate.
+        # Corresponds to the JSON property `returnTokenCount`
+        # @return [Fixnum]
+        attr_accessor :return_token_count
+      
+        # All the different scores for a message are logged here.
+        # Corresponds to the JSON property `scores`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootScore>]
+        attr_accessor :scores
+      
+        # Whether the response is terminated during streaming return. Only used for
+        # streaming requests.
+        # Corresponds to the JSON property `streamTerminated`
+        # @return [Boolean]
+        attr_accessor :stream_terminated
+        alias_method :stream_terminated?, :stream_terminated
+      
+        # NOT YET IMPLEMENTED. Aggregated number of total tokens decoded so far. For
+        # streaming, this is sum of all the tokens decoded so far i.e. aggregated count.
+        # Corresponds to the JSON property `totalDecodedTokenCount`
+        # @return [Fixnum]
+        attr_accessor :total_decoded_token_count
+      
+        # Translated user-prompt used for RAI post processing. This is for internal
+        # processing only. We will translate in pre-processor and pass the translated
+        # text to the post processor using this field. It will be empty if non of the
+        # signals requested need translation.
+        # Corresponds to the JSON property `translatedUserPrompts`
+        # @return [Array<String>]
+        attr_accessor :translated_user_prompts
+      
+        # The RAI results for a given text.
+        # Corresponds to the JSON property `vertexRaiResult`
+        # @return [Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiResult]
+        attr_accessor :vertex_rai_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @classifier_summary = args[:classifier_summary] if args.key?(:classifier_summary)
+          @current_stream_text_length = args[:current_stream_text_length] if args.key?(:current_stream_text_length)
+          @deleted = args[:deleted] if args.key?(:deleted)
+          @filter_meta = args[:filter_meta] if args.key?(:filter_meta)
+          @final_message_score = args[:final_message_score] if args.key?(:final_message_score)
+          @finish_reason = args[:finish_reason] if args.key?(:finish_reason)
+          @is_fallback = args[:is_fallback] if args.key?(:is_fallback)
+          @langid_result = args[:langid_result] if args.key?(:langid_result)
+          @language = args[:language] if args.key?(:language)
+          @lm_prefix = args[:lm_prefix] if args.key?(:lm_prefix)
+          @original_text = args[:original_text] if args.key?(:original_text)
+          @per_stream_decoded_token_count = args[:per_stream_decoded_token_count] if args.key?(:per_stream_decoded_token_count)
+          @rai_outputs = args[:rai_outputs] if args.key?(:rai_outputs)
+          @recitation_result = args[:recitation_result] if args.key?(:recitation_result)
+          @return_token_count = args[:return_token_count] if args.key?(:return_token_count)
+          @scores = args[:scores] if args.key?(:scores)
+          @stream_terminated = args[:stream_terminated] if args.key?(:stream_terminated)
+          @total_decoded_token_count = args[:total_decoded_token_count] if args.key?(:total_decoded_token_count)
+          @translated_user_prompts = args[:translated_user_prompts] if args.key?(:translated_user_prompts)
+          @vertex_rai_result = args[:vertex_rai_result] if args.key?(:vertex_rai_result)
+        end
+      end
+      
+      # 
+      class NlpSaftLangIdLocalesResult
+        include Google::Apis::Core::Hashable
+      
+        # List of locales in which the text would be considered acceptable. Sorted in
+        # descending order according to each locale's respective likelihood. For example,
+        # if a Portuguese text is acceptable in both Brazil and Portugal, but is more
+        # strongly associated with Brazil, then the predictions would be ["pt-BR", "pt-
+        # PT"], in that order. May be empty, indicating that the model did not predict
+        # any acceptable locales.
+        # Corresponds to the JSON property `predictions`
+        # @return [Array<Google::Apis::AiplatformV1::NlpSaftLangIdLocalesResultLocale>]
+        attr_accessor :predictions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @predictions = args[:predictions] if args.key?(:predictions)
+        end
+      end
+      
+      # 
+      class NlpSaftLangIdLocalesResultLocale
+        include Google::Apis::Core::Hashable
+      
+        # A BCP 47 language code that includes region information. For example, "pt-BR"
+        # or "pt-PT". This field will always be populated.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
+      # 
+      class NlpSaftLangIdResult
+        include Google::Apis::Core::Hashable
+      
+        # The version of the model used to create these annotations.
+        # Corresponds to the JSON property `modelVersion`
+        # @return [String]
+        attr_accessor :model_version
+      
+        # This field stores the n-best list of possible BCP 47 language code strings for
+        # a given input sorted in descending order according to each code's respective
+        # probability.
+        # Corresponds to the JSON property `predictions`
+        # @return [Array<Google::Apis::AiplatformV1::NlpSaftLanguageSpan>]
+        attr_accessor :predictions
+      
+        # This field stores language predictions of subspans of the input, when
+        # available. Each LanguageSpanSequence is a sequence of LanguageSpans. A
+        # particular sequence of LanguageSpans has an associated probability, and need
+        # not necessarily cover the entire input. If no language could be predicted for
+        # any span, then this field may be empty.
+        # Corresponds to the JSON property `spanPredictions`
+        # @return [Array<Google::Apis::AiplatformV1::NlpSaftLanguageSpanSequence>]
+        attr_accessor :span_predictions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model_version = args[:model_version] if args.key?(:model_version)
+          @predictions = args[:predictions] if args.key?(:predictions)
+          @span_predictions = args[:span_predictions] if args.key?(:span_predictions)
+        end
+      end
+      
+      # 
+      class NlpSaftLanguageSpan
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `end`
+        # @return [Fixnum]
+        attr_accessor :end
+      
+        # A BCP 47 language code for this span.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Optional field containing any information that was predicted about the
+        # specific locale(s) of the span.
+        # Corresponds to the JSON property `locales`
+        # @return [Google::Apis::AiplatformV1::NlpSaftLangIdLocalesResult]
+        attr_accessor :locales
+      
+        # A probability associated with this prediction.
+        # Corresponds to the JSON property `probability`
+        # @return [Float]
+        attr_accessor :probability
+      
+        # Start and end byte offsets, inclusive, within the given input string. A value
+        # of -1 implies that this field is not set. Both fields must either be set with
+        # a nonnegative value or both are unset. If both are unset then this
+        # LanguageSpan applies to the entire input.
+        # Corresponds to the JSON property `start`
+        # @return [Fixnum]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end = args[:end] if args.key?(:end)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @locales = args[:locales] if args.key?(:locales)
+          @probability = args[:probability] if args.key?(:probability)
+          @start = args[:start] if args.key?(:start)
+        end
+      end
+      
+      # 
+      class NlpSaftLanguageSpanSequence
+        include Google::Apis::Core::Hashable
+      
+        # A sequence of LanguageSpan objects, each assigning a language to a subspan of
+        # the input.
+        # Corresponds to the JSON property `languageSpans`
+        # @return [Array<Google::Apis::AiplatformV1::NlpSaftLanguageSpan>]
+        attr_accessor :language_spans
+      
+        # The probability of this sequence of LanguageSpans.
+        # Corresponds to the JSON property `probability`
+        # @return [Float]
+        attr_accessor :probability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_spans = args[:language_spans] if args.key?(:language_spans)
+          @probability = args[:probability] if args.key?(:probability)
+        end
+      end
+      
+      # This is proto2's version of MessageSet.
+      class Proto2BridgeMessageSet
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Wire-format for a Status object
+      class UtilStatusProto
+        include Google::Apis::Core::Hashable
+      
+        # The canonical error code (see codes.proto) that most closely corresponds to
+        # this status. This may be missing, and in the common case of the generic space,
+        # it definitely will be.
+        # Corresponds to the JSON property `canonicalCode`
+        # @return [Fixnum]
+        attr_accessor :canonical_code
+      
+        # Numeric code drawn from the space specified below. Often, this is the
+        # canonical error space, and code is drawn from google3/util/task/codes.proto
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # Detail message
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # This is proto2's version of MessageSet.
+        # Corresponds to the JSON property `messageSet`
+        # @return [Google::Apis::AiplatformV1::Proto2BridgeMessageSet]
+        attr_accessor :message_set
+      
+        # The following are usually only present when code != 0 Space to which this
+        # status belongs
+        # Corresponds to the JSON property `space`
+        # @return [String]
+        attr_accessor :space
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canonical_code = args[:canonical_code] if args.key?(:canonical_code)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+          @message_set = args[:message_set] if args.key?(:message_set)
+          @space = args[:space] if args.key?(:space)
         end
       end
     end
