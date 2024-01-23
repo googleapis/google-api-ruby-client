@@ -33,6 +33,8 @@ module Google
       #
       # @see https://cloud.google.com/firestore
       class FirestoreService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://firestore.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -44,7 +46,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://firestore.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-firestore_v1',
                 client_version: Google::Apis::FirestoreV1::GEM_VERSION)
           @batch_path = 'batch'
@@ -544,7 +546,7 @@ module Google
         # Lists the field configuration and metadata for this database. Currently,
         # FirestoreAdmin.ListFields only supports listing fields that have been
         # explicitly overridden. To issue this query, call FirestoreAdmin.ListFields
-        # with the filter set to `indexConfig.usesAncestorConfig:false or `ttlConfig:*`.
+        # with the filter set to `indexConfig.usesAncestorConfig:false` or `ttlConfig:*`.
         # @param [String] parent
         #   Required. A parent name of the form `projects/`project_id`/databases/`
         #   database_id`/collectionGroups/`collection_id``
