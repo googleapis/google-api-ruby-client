@@ -32,6 +32,8 @@ module Google
       #
       # @see https://developers.google.com/google-apps/calendar/firstapp
       class CalendarService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://www.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -47,7 +49,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'calendar/v3/',
+          super(DEFAULT_ENDPOINT_TEMPLATE, 'calendar/v3/',
                 client_name: 'google-apis-calendar_v3',
                 client_version: Google::Apis::CalendarV3::GEM_VERSION)
           @batch_path = 'batch/calendar/v3'
@@ -1275,16 +1277,10 @@ module Google
         #   method. If you want to access the primary calendar of the currently logged in
         #   user, use the "primary" keyword.
         # @param [Boolean] always_include_email
-        #   Deprecated and ignored. A value will always be returned in the email field for
-        #   the organizer, creator and attendees, even if no real email address is
-        #   available (i.e. a generated, non-working value will be provided).
+        #   Deprecated and ignored.
         # @param [Array<String>, String] event_types
-        #   Event types to return. Optional. Possible values are:
-        #   - "default"
-        #   - "focusTime"
-        #   - "outOfOffice"
-        #   - "workingLocation"This parameter can be repeated multiple times to return
-        #   events of different types. The default is ["default", "focusTime", "
+        #   Event types to return. Optional. This parameter can be repeated multiple times
+        #   to return events of different types. The default is ["default", "focusTime", "
         #   outOfOffice"].
         # @param [String] i_cal_uid
         #   Specifies an event ID in the iCalendar format to be provided in the response.
@@ -1316,6 +1312,8 @@ module Google
         #   - location
         #   - attendee's displayName
         #   - attendee's email
+        #   - organizer's displayName
+        #   - organizer's email
         #   - workingLocationProperties.officeLocation.buildingId
         #   - workingLocationProperties.officeLocation.deskId
         #   - workingLocationProperties.officeLocation.label
@@ -1682,16 +1680,10 @@ module Google
         #   user, use the "primary" keyword.
         # @param [Google::Apis::CalendarV3::Channel] channel_object
         # @param [Boolean] always_include_email
-        #   Deprecated and ignored. A value will always be returned in the email field for
-        #   the organizer, creator and attendees, even if no real email address is
-        #   available (i.e. a generated, non-working value will be provided).
+        #   Deprecated and ignored.
         # @param [Array<String>, String] event_types
-        #   Event types to return. Optional. Possible values are:
-        #   - "default"
-        #   - "focusTime"
-        #   - "outOfOffice"
-        #   - "workingLocation"This parameter can be repeated multiple times to return
-        #   events of different types. The default is ["default", "focusTime", "
+        #   Event types to return. Optional. This parameter can be repeated multiple times
+        #   to return events of different types. The default is ["default", "focusTime", "
         #   outOfOffice"].
         # @param [String] i_cal_uid
         #   Specifies an event ID in the iCalendar format to be provided in the response.
@@ -1723,6 +1715,8 @@ module Google
         #   - location
         #   - attendee's displayName
         #   - attendee's email
+        #   - organizer's displayName
+        #   - organizer's email
         #   - workingLocationProperties.officeLocation.buildingId
         #   - workingLocationProperties.officeLocation.deskId
         #   - workingLocationProperties.officeLocation.label
