@@ -770,6 +770,12 @@ module Google
         # @return [Google::Apis::MigrationcenterV1::MachinePreferences]
         attr_accessor :machine_preferences
       
+        # Persistent disk type to use. If unspecified (default), all types are
+        # considered, based on available usage data.
+        # Corresponds to the JSON property `persistentDiskType`
+        # @return [String]
+        attr_accessor :persistent_disk_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -778,6 +784,7 @@ module Google
         def update!(**args)
           @license_type = args[:license_type] if args.key?(:license_type)
           @machine_preferences = args[:machine_preferences] if args.key?(:machine_preferences)
+          @persistent_disk_type = args[:persistent_disk_type] if args.key?(:persistent_disk_type)
         end
       end
       
