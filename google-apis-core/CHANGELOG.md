@@ -1,5 +1,11 @@
 # Release History
 
+### 0.13.0 (2024-01-26)
+
+#### Features
+
+* Verify credential universe domain against configured universe domain ([#17569](https://github.com/googleapis/google-api-ruby-client/issues/17569)) 
+
 ### 0.12.0 (2024-01-22)
 
 #### Features
