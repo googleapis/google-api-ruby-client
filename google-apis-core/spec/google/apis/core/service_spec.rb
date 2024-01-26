@@ -133,6 +133,13 @@ RSpec.describe Google::Apis::Core::BaseService do
       expect(a_request(:get, 'https://www.googleapis.com/zoo/animals').with(headers: expected_headers)).to have_been_made
     end
 
+    it "should verify universe domain" do
+      service.authorization = OpenStruct.new universe_domain: "mydomain.com"
+      expect do
+        command
+      end.to raise_error(Google::Apis::UniverseDomainError)
+    end
+
     include_examples 'with options'
   end
 
@@ -530,5 +537,24 @@ EOF
     service.universe_domain = "mydomain6.com"
     service.root_url = "https://endpoint2.$UNIVERSE_DOMAIN$/"
     expect(service.root_url).to eql "https://endpoint2.mydomain6.com/"
+  end
+
+  describe "#verify_universe_domain!" do
+    it "should skip universe domain verification if credentials do not have them" do
+      service_ud.authorization = "I have no universe domain"
+      service_ud.verify_universe_domain!
+    end
+
+    it "should verify default universe domain" do
+      service_ud.authorization = OpenStruct.new universe_domain: "googleapis.com"
+      service_ud.verify_universe_domain!
+    end
+
+    it "should raise on universe domain mismatch" do
+      service_ud.authorization = OpenStruct.new universe_domain: "mydomain.com"
+      expect do
+        service_ud.verify_universe_domain!
+      end.to raise_error(Google::Apis::UniverseDomainError)
+    end
   end
 end

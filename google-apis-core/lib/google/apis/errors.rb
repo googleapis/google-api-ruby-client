@@ -89,5 +89,9 @@ module Google
     # Error class for problems in batch requests.
     class BatchError < Error
     end
+
+    # Error class for universe domain issues
+    class UniverseDomainError < Error
+    end
   end
 end

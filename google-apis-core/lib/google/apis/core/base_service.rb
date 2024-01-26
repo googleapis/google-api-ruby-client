@@ -336,6 +336,20 @@ module Google
           return PagedResults.new(self, max: max, items: items, cache: cache, response_page_token: response_page_token, &block)
         end
 
+        # Verify that the universe domain setting matches the universe domain
+        # in the credentials, if present.
+        #
+        # @raise [Google::Apis::UniverseDomainError] if there is a mismatch
+        def verify_universe_domain!
+          auth = authorization
+          auth_universe_domain = auth.universe_domain if auth.respond_to? :universe_domain
+          if auth_universe_domain && auth_universe_domain != universe_domain
+            raise UniverseDomainError,
+                  "Universe domain is #{universe_domain} but credentials are in #{auth_universe_domain}"
+          end
+          true
+        end
+
         protected
 
         # Create a new upload command.
@@ -348,6 +362,7 @@ module Google
         #  Request-specific options
         # @return [Google::Apis::Core::UploadCommand]
         def make_upload_command(method, path, options)
+          verify_universe_domain!
           template = Addressable::Template.new(root_url + upload_path + path)
           if batch?
             command = MultipartUploadCommand.new(method, template, client_version: client_version)
@@ -372,6 +387,7 @@ module Google
         #  Request-specific options
         # @return [Google::Apis::Core::StorageUploadCommand]
         def make_storage_upload_command(method, path, options)
+          verify_universe_domain!
           template = Addressable::Template.new(root_url + upload_path + path)
           command = StorageUploadCommand.new(method, template, client_version: client_version)
           command.options = request_options.merge(options)
@@ -389,6 +405,7 @@ module Google
         #  Request-specific options
         # @return [Google::Apis::Core::DownloadCommand]
         def make_download_command(method, path, options)
+          verify_universe_domain!
           template = Addressable::Template.new(root_url + base_path + path)
           command = DownloadCommand.new(method, template, client_version: client_version)
           command.options = request_options.merge(options)
@@ -408,6 +425,7 @@ module Google
         #  Request-specific options
         # @return [Google::Apis::Core::StorageDownloadCommand]
         def make_storage_download_command(method, path, options)
+          verify_universe_domain!
           template = Addressable::Template.new(root_url + base_path + path)
           command = StorageDownloadCommand.new(method, template, client_version: client_version)
           command.options = request_options.merge(options)
@@ -426,6 +444,7 @@ module Google
         #  Request-specific options
         # @return [Google::Apis::Core::DownloadCommand]
         def make_simple_command(method, path, options)
+          verify_universe_domain!
           full_path =
             if path.start_with? "/"
               path[1..-1]
