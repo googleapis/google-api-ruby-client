@@ -840,6 +840,11 @@ module Google
         # @return [String]
         attr_accessor :severity
       
+        # List of user-defined tags
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
         # the docuement url for the rule
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -860,6 +865,7 @@ module Google
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @secondary_category = args[:secondary_category] if args.key?(:secondary_category)
           @severity = args[:severity] if args.key?(:severity)
+          @tags = args[:tags] if args.key?(:tags)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -1282,6 +1288,11 @@ module Google
         # @return [String]
         attr_accessor :resource
       
+        # resource type
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1289,6 +1300,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource = args[:resource] if args.key?(:resource)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
