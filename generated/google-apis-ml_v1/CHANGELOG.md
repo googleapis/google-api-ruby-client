@@ -1,5 +1,10 @@
 # Release history for google-apis-ml_v1
 
+### v0.35.0 (2024-01-28)
+
+* Regenerated from discovery document revision 20240122
+* Regenerated using generator version 0.13.1
+
 ### v0.34.0 (2024-01-22)
 
 * Regenerated from discovery document revision 20240102
