@@ -5214,6 +5214,96 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a Floodlight activity.
+        # @param [Fixnum] floodlight_group_id
+        #   Required. The ID of the parent Floodlight group to which the requested
+        #   Floodlight activity belongs.
+        # @param [Fixnum] floodlight_activity_id
+        #   Required. The ID of the Floodlight activity to fetch.
+        # @param [Fixnum] partner_id
+        #   Required. The ID of the partner through which the Floodlight activity is being
+        #   accessed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV2::FloodlightActivity] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV2::FloodlightActivity]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_floodlight_group_floodlight_activity(floodlight_group_id, floodlight_activity_id, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/floodlightGroups/{+floodlightGroupId}/floodlightActivities/{+floodlightActivityId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV2::FloodlightActivity::Representation
+          command.response_class = Google::Apis::DisplayvideoV2::FloodlightActivity
+          command.params['floodlightGroupId'] = floodlight_group_id unless floodlight_group_id.nil?
+          command.params['floodlightActivityId'] = floodlight_activity_id unless floodlight_activity_id.nil?
+          command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Floodlight activities in a Floodlight group.
+        # @param [Fixnum] floodlight_group_id
+        #   Required. The ID of the parent Floodlight group to which the requested
+        #   Floodlight activities belong.
+        # @param [String] order_by
+        #   Optional. Field by which to sort the list. Acceptable values are: * `
+        #   displayName` (default) * `floodlightActivityId` The default sorting order is
+        #   ascending. To specify descending order for a field, a suffix "desc" should be
+        #   added to the field name. Example: `displayName desc`.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Must be between `1` and `100`. If unspecified
+        #   will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid
+        #   value is specified.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        #   Typically, this is the value of next_page_token returned from the previous
+        #   call to `ListFloodlightActivities` method. If not specified, the first page of
+        #   results will be returned.
+        # @param [Fixnum] partner_id
+        #   Required. The ID of the partner through which the Floodlight activities are
+        #   being accessed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV2::ListFloodlightActivitiesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV2::ListFloodlightActivitiesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_floodlight_group_floodlight_activities(floodlight_group_id, order_by: nil, page_size: nil, page_token: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/floodlightGroups/{+floodlightGroupId}/floodlightActivities', options)
+          command.response_representation = Google::Apis::DisplayvideoV2::ListFloodlightActivitiesResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV2::ListFloodlightActivitiesResponse
+          command.params['floodlightGroupId'] = floodlight_group_id unless floodlight_group_id.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a Google audience.
         # @param [Fixnum] google_audience_id
         #   Required. The ID of the Google audience to fetch.

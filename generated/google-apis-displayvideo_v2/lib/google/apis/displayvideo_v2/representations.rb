@@ -904,6 +904,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FloodlightActivity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FloodlightGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1235,6 +1241,12 @@ module Google
       end
       
       class ListFirstAndThirdPartyAudiencesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListFloodlightActivitiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1643,6 +1655,12 @@ module Google
       end
       
       class RegionalLocationListAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemarketingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2751,6 +2769,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cm_account_id, :numeric_string => true, as: 'cmAccountId'
+          collection :cm_advertiser_ids, as: 'cmAdvertiserIds'
           property :cm_floodlight_config_id, :numeric_string => true, as: 'cmFloodlightConfigId'
           property :cm_floodlight_linking_authorized, as: 'cmFloodlightLinkingAuthorized'
           collection :cm_syncable_site_ids, as: 'cmSyncableSiteIds'
@@ -3477,6 +3496,21 @@ module Google
         end
       end
       
+      class FloodlightActivity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :advertiser_ids, as: 'advertiserIds'
+          property :display_name, as: 'displayName'
+          property :floodlight_activity_id, :numeric_string => true, as: 'floodlightActivityId'
+          property :floodlight_group_id, :numeric_string => true, as: 'floodlightGroupId'
+          property :name, as: 'name'
+          collection :remarketing_configs, as: 'remarketingConfigs', class: Google::Apis::DisplayvideoV2::RemarketingConfig, decorator: Google::Apis::DisplayvideoV2::RemarketingConfig::Representation
+      
+          property :serving_status, as: 'servingStatus'
+          property :ssl_required, as: 'sslRequired'
+        end
+      end
+      
       class FloodlightGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4085,6 +4119,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :first_and_third_party_audiences, as: 'firstAndThirdPartyAudiences', class: Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudience, decorator: Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudience::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListFloodlightActivitiesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :floodlight_activities, as: 'floodlightActivities', class: Google::Apis::DisplayvideoV2::FloodlightActivity, decorator: Google::Apis::DisplayvideoV2::FloodlightActivity::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -4720,6 +4763,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :negative, as: 'negative'
           property :regional_location_list_id, :numeric_string => true, as: 'regionalLocationListId'
+        end
+      end
+      
+      class RemarketingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :remarketing_enabled, as: 'remarketingEnabled'
         end
       end
       

@@ -2907,6 +2907,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :cm_account_id
       
+        # Output only. The set of CM360 Advertiser IDs sharing the CM360 Floodlight
+        # configuration.
+        # Corresponds to the JSON property `cmAdvertiserIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :cm_advertiser_ids
+      
         # Required. Immutable. ID of the CM360 Floodlight configuration linked with the
         # DV360 advertiser.
         # Corresponds to the JSON property `cmFloodlightConfigId`
@@ -2948,6 +2954,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cm_account_id = args[:cm_account_id] if args.key?(:cm_account_id)
+          @cm_advertiser_ids = args[:cm_advertiser_ids] if args.key?(:cm_advertiser_ids)
           @cm_floodlight_config_id = args[:cm_floodlight_config_id] if args.key?(:cm_floodlight_config_id)
           @cm_floodlight_linking_authorized = args[:cm_floodlight_linking_authorized] if args.key?(:cm_floodlight_linking_authorized)
           @cm_syncable_site_ids = args[:cm_syncable_site_ids] if args.key?(:cm_syncable_site_ids)
@@ -5644,6 +5651,73 @@ module Google
         end
       end
       
+      # A single Floodlight activity.
+      class FloodlightActivity
+        include Google::Apis::Core::Hashable
+      
+        # Output only. IDs of the advertisers that have access to the parent Floodlight
+        # group. Only advertisers under the provided partner ID will be listed in this
+        # field.
+        # Corresponds to the JSON property `advertiserIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :advertiser_ids
+      
+        # Required. The display name of the Floodlight activity.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The unique ID of the Floodlight activity. Assigned by the system.
+        # Corresponds to the JSON property `floodlightActivityId`
+        # @return [Fixnum]
+        attr_accessor :floodlight_activity_id
+      
+        # Required. Immutable. The ID of the parent Floodlight group.
+        # Corresponds to the JSON property `floodlightGroupId`
+        # @return [Fixnum]
+        attr_accessor :floodlight_group_id
+      
+        # Output only. The resource name of the Floodlight activity.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. A list of configuration objects designating whether remarketing
+        # for this Floodlight Activity is enabled and available for a specifc advertiser.
+        # If enabled, this Floodlight Activity generates a remarketing user list that
+        # is able to be used in targeting under the advertiser.
+        # Corresponds to the JSON property `remarketingConfigs`
+        # @return [Array<Google::Apis::DisplayvideoV2::RemarketingConfig>]
+        attr_accessor :remarketing_configs
+      
+        # Optional. Whether the Floodlight activity is served.
+        # Corresponds to the JSON property `servingStatus`
+        # @return [String]
+        attr_accessor :serving_status
+      
+        # Output only. Whether tags are required to be compliant.
+        # Corresponds to the JSON property `sslRequired`
+        # @return [Boolean]
+        attr_accessor :ssl_required
+        alias_method :ssl_required?, :ssl_required
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertiser_ids = args[:advertiser_ids] if args.key?(:advertiser_ids)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @floodlight_activity_id = args[:floodlight_activity_id] if args.key?(:floodlight_activity_id)
+          @floodlight_group_id = args[:floodlight_group_id] if args.key?(:floodlight_group_id)
+          @name = args[:name] if args.key?(:name)
+          @remarketing_configs = args[:remarketing_configs] if args.key?(:remarketing_configs)
+          @serving_status = args[:serving_status] if args.key?(:serving_status)
+          @ssl_required = args[:ssl_required] if args.key?(:ssl_required)
+        end
+      end
+      
       # A single Floodlight group.
       class FloodlightGroup
         include Google::Apis::Core::Hashable
@@ -7966,6 +8040,33 @@ module Google
       end
       
       # 
+      class ListFloodlightActivitiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Floodlight activities. This list will be absent if empty.
+        # Corresponds to the JSON property `floodlightActivities`
+        # @return [Array<Google::Apis::DisplayvideoV2::FloodlightActivity>]
+        attr_accessor :floodlight_activities
+      
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListFloodlightActivities` method
+        # to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @floodlight_activities = args[:floodlight_activities] if args.key?(:floodlight_activities)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
       class ListGoogleAudiencesResponse
         include Google::Apis::Core::Hashable
       
@@ -10239,6 +10340,34 @@ module Google
         def update!(**args)
           @negative = args[:negative] if args.key?(:negative)
           @regional_location_list_id = args[:regional_location_list_id] if args.key?(:regional_location_list_id)
+        end
+      end
+      
+      # Settings that control the whether remarketing is enabled for the given
+      # identified advertiser.
+      class RemarketingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The ID of the advertiser.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [Fixnum]
+        attr_accessor :advertiser_id
+      
+        # Output only. Whether the Floodlight activity remarketing user list is
+        # available to the identified advertiser.
+        # Corresponds to the JSON property `remarketingEnabled`
+        # @return [Boolean]
+        attr_accessor :remarketing_enabled
+        alias_method :remarketing_enabled?, :remarketing_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @remarketing_enabled = args[:remarketing_enabled] if args.key?(:remarketing_enabled)
         end
       end
       
