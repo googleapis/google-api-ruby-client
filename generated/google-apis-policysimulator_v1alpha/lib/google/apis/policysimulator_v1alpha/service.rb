@@ -427,6 +427,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # GenerateOrgPolicyViolationsPreview generates an OrgPolicyViolationsPreview for
+        # the proposed changes in the provided OrgPolicyViolationsPreview.
+        # OrgPolicyOverlay. The changes to OrgPolicy are specified by this `
+        # OrgPolicyOverlay`. The resources to scan are inferred from these specified
+        # changes.
+        # @param [String] parent
+        #   Required. The organization under which this OrgPolicyViolationsPreview will be
+        #   created. Example: `organizations/my-example-org/locations/global`
+        # @param [Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreview] google_cloud_policysimulator_v1alpha_org_policy_violations_preview_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_organization_location_org_policy_violations_preview(parent, google_cloud_policysimulator_v1alpha_org_policy_violations_preview_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/orgPolicyViolationsPreviews:generate', options)
+          command.request_representation = Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreview::Representation
+          command.request_object = google_cloud_policysimulator_v1alpha_org_policy_violations_preview_object
+          command.response_representation = Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::PolicysimulatorV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # GetOrgPolicyViolationsPreview gets the specified OrgPolicyViolationsPreview.
         # Each OrgPolicyViolationsPreview is available for at least 7 days.
         # @param [String] name
@@ -465,13 +503,13 @@ module Google
         #   organization`/locations/`location`` Example: `organizations/my-example-org/
         #   locations/global`
         # @param [Fixnum] page_size
-        #   The maximum number of items to return. The service may return fewer than this
-        #   value. If unspecified, at most 5 items will be returned. The maximum value is
-        #   10; values above 10 will be coerced to 10.
+        #   Optional. The maximum number of items to return. The service may return fewer
+        #   than this value. If unspecified, at most 5 items will be returned. The maximum
+        #   value is 10; values above 10 will be coerced to 10.
         # @param [String] page_token
-        #   A page token, received from a previous call. Provide this to retrieve the
-        #   subsequent page. When paginating, all other parameters must match the call
-        #   that provided the page token.
+        #   Optional. A page token, received from a previous call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters must match
+        #   the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -539,13 +577,13 @@ module Google
         #   Format: organizations/`organization`/locations/`location`/
         #   orgPolicyViolationsPreviews/`orgPolicyViolationsPreview`
         # @param [Fixnum] page_size
-        #   The maximum number of items to return. The service may return fewer than this
-        #   value. If unspecified, at most 50 items will be returned. The maximum value is
-        #   1000; values above 1000 will be coerced to 1000.
+        #   Optional. The maximum number of items to return. The service may return fewer
+        #   than this value. If unspecified, at most 50 items will be returned. The
+        #   maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous call. Provide this to retrieve the
-        #   subsequent page. When paginating, all other parameters must match the call
-        #   that provided the page token.
+        #   Optional. A page token, received from a previous call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters must match
+        #   the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
