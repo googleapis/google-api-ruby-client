@@ -23,7 +23,7 @@ module Google
     #
     # Allows users to manage BigQuery connections to external data sources.
     #
-    # @see https://cloud.google.com/bigquery/
+    # @see https://cloud.google.com/bigquery/docs/connections-api-intro
     module BigqueryconnectionV1beta1
       # Version of the BigQuery Connection API this client connects to.
       # This is NOT the gem version.
