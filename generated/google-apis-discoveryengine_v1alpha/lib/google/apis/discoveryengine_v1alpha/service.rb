@@ -194,7 +194,7 @@ module Google
         
         # Estimates the data size to be used by a customer.
         # @param [String] location
-        #   Required. Full resource name of the Location, such as `projects/`project`/
+        #   Required. Full resource name of the location, such as `projects/`project`/
         #   locations/`location``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequest] google_cloud_discoveryengine_v1alpha_estimate_data_size_request_object
         # @param [String] fields
@@ -675,7 +675,7 @@ module Google
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig] google_cloud_discoveryengine_v1alpha_document_processing_config_object
         # @param [String] update_mask
         #   Indicates which fields in the provided DocumentProcessingConfig to update. The
-        #   following are the only supported fields: * DocumentProcessingConfig.orc_config
+        #   following are the only supported fields: * DocumentProcessingConfig.ocr_config
         #   If not set, all supported fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3617,7 +3617,7 @@ module Google
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig] google_cloud_discoveryengine_v1alpha_document_processing_config_object
         # @param [String] update_mask
         #   Indicates which fields in the provided DocumentProcessingConfig to update. The
-        #   following are the only supported fields: * DocumentProcessingConfig.orc_config
+        #   following are the only supported fields: * DocumentProcessingConfig.ocr_config
         #   If not set, all supported fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
