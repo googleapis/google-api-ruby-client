@@ -2383,6 +2383,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # For display only. Metadata associated with Storage Bucket.
+        # Corresponds to the JSON property `storageBucket`
+        # @return [Google::Apis::NetworkmanagementV1::StorageBucketInfo]
+        attr_accessor :storage_bucket
+      
         # For display only. Metadata associated with a VPC connector.
         # Corresponds to the JSON property `vpcConnector`
         # @return [Google::Apis::NetworkmanagementV1::VpcConnectorInfo]
@@ -2428,9 +2433,29 @@ module Google
           @proxy_connection = args[:proxy_connection] if args.key?(:proxy_connection)
           @route = args[:route] if args.key?(:route)
           @state = args[:state] if args.key?(:state)
+          @storage_bucket = args[:storage_bucket] if args.key?(:storage_bucket)
           @vpc_connector = args[:vpc_connector] if args.key?(:vpc_connector)
           @vpn_gateway = args[:vpn_gateway] if args.key?(:vpn_gateway)
           @vpn_tunnel = args[:vpn_tunnel] if args.key?(:vpn_tunnel)
+        end
+      end
+      
+      # For display only. Metadata associated with Storage Bucket.
+      class StorageBucketInfo
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage Bucket name.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
         end
       end
       

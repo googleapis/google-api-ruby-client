@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageBucketInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -919,12 +925,21 @@ module Google
           property :route, as: 'route', class: Google::Apis::NetworkmanagementV1::RouteInfo, decorator: Google::Apis::NetworkmanagementV1::RouteInfo::Representation
       
           property :state, as: 'state'
+          property :storage_bucket, as: 'storageBucket', class: Google::Apis::NetworkmanagementV1::StorageBucketInfo, decorator: Google::Apis::NetworkmanagementV1::StorageBucketInfo::Representation
+      
           property :vpc_connector, as: 'vpcConnector', class: Google::Apis::NetworkmanagementV1::VpcConnectorInfo, decorator: Google::Apis::NetworkmanagementV1::VpcConnectorInfo::Representation
       
           property :vpn_gateway, as: 'vpnGateway', class: Google::Apis::NetworkmanagementV1::VpnGatewayInfo, decorator: Google::Apis::NetworkmanagementV1::VpnGatewayInfo::Representation
       
           property :vpn_tunnel, as: 'vpnTunnel', class: Google::Apis::NetworkmanagementV1::VpnTunnelInfo, decorator: Google::Apis::NetworkmanagementV1::VpnTunnelInfo::Representation
       
+        end
+      end
+      
+      class StorageBucketInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
         end
       end
       
