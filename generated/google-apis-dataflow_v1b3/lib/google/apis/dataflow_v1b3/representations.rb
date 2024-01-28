@@ -2116,6 +2116,7 @@ module Google
       
           property :group_name, as: 'groupName'
           property :help_text, as: 'helpText'
+          property :hidden_ui, as: 'hiddenUi'
           property :is_optional, as: 'isOptional'
           property :label, as: 'label'
           property :name, as: 'name'
@@ -2887,6 +2888,9 @@ module Google
           property :name, as: 'name'
           collection :parameters, as: 'parameters', class: Google::Apis::DataflowV1b3::ParameterMetadata, decorator: Google::Apis::DataflowV1b3::ParameterMetadata::Representation
       
+          property :streaming, as: 'streaming'
+          property :supports_at_least_once, as: 'supportsAtLeastOnce'
+          property :supports_exactly_once, as: 'supportsExactlyOnce'
         end
       end
       
