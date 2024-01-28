@@ -143,6 +143,19 @@ module Google
         # @return [String]
         attr_accessor :call_log_level
       
+        # Output only. Marks the creation of the execution.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. If set to true, the execution will not be backlogged when the
+        # concurrency quota is exhausted. The backlog execution starts when the
+        # concurrency quota becomes available.
+        # Corresponds to the JSON property `disableConcurrencyQuotaOverflowBuffering`
+        # @return [Boolean]
+        attr_accessor :disable_concurrency_quota_overflow_buffering
+        alias_method :disable_concurrency_quota_overflow_buffering?, :disable_concurrency_quota_overflow_buffering
+      
         # Output only. Measures the duration of the execution.
         # Corresponds to the JSON property `duration`
         # @return [String]
@@ -213,6 +226,8 @@ module Google
         def update!(**args)
           @argument = args[:argument] if args.key?(:argument)
           @call_log_level = args[:call_log_level] if args.key?(:call_log_level)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @disable_concurrency_quota_overflow_buffering = args[:disable_concurrency_quota_overflow_buffering] if args.key?(:disable_concurrency_quota_overflow_buffering)
           @duration = args[:duration] if args.key?(:duration)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)

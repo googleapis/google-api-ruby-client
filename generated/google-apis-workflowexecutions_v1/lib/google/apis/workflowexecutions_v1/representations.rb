@@ -180,6 +180,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :argument, as: 'argument'
           property :call_log_level, as: 'callLogLevel'
+          property :create_time, as: 'createTime'
+          property :disable_concurrency_quota_overflow_buffering, as: 'disableConcurrencyQuotaOverflowBuffering'
           property :duration, as: 'duration'
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::WorkflowexecutionsV1::Error, decorator: Google::Apis::WorkflowexecutionsV1::Error::Representation
