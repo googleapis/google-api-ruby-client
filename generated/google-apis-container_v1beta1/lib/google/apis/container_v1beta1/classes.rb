@@ -236,6 +236,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NetworkPolicyConfig]
         attr_accessor :network_policy_config
       
+        # Configuration for the Stateful HA add-on.
+        # Corresponds to the JSON property `statefulHaConfig`
+        # @return [Google::Apis::ContainerV1beta1::StatefulHaConfig]
+        attr_accessor :stateful_ha_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -255,6 +260,7 @@ module Google
           @kalm_config = args[:kalm_config] if args.key?(:kalm_config)
           @kubernetes_dashboard = args[:kubernetes_dashboard] if args.key?(:kubernetes_dashboard)
           @network_policy_config = args[:network_policy_config] if args.key?(:network_policy_config)
+          @stateful_ha_config = args[:stateful_ha_config] if args.key?(:stateful_ha_config)
         end
       end
       
@@ -7101,6 +7107,26 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @rotate_credentials = args[:rotate_credentials] if args.key?(:rotate_credentials)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Configuration for the Stateful HA add-on.
+      class StatefulHaConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Stateful HA add-on is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
