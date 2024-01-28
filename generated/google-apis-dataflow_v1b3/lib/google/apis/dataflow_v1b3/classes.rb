@@ -3763,6 +3763,12 @@ module Google
         # @return [String]
         attr_accessor :help_text
       
+        # Optional. Whether the parameter should be hidden in the UI.
+        # Corresponds to the JSON property `hiddenUi`
+        # @return [Boolean]
+        attr_accessor :hidden_ui
+        alias_method :hidden_ui?, :hidden_ui
+      
         # Optional. Whether the parameter is optional. Defaults to false.
         # Corresponds to the JSON property `isOptional`
         # @return [Boolean]
@@ -3815,6 +3821,7 @@ module Google
           @enum_options = args[:enum_options] if args.key?(:enum_options)
           @group_name = args[:group_name] if args.key?(:group_name)
           @help_text = args[:help_text] if args.key?(:help_text)
+          @hidden_ui = args[:hidden_ui] if args.key?(:hidden_ui)
           @is_optional = args[:is_optional] if args.key?(:is_optional)
           @label = args[:label] if args.key?(:label)
           @name = args[:name] if args.key?(:name)
@@ -6549,6 +6556,24 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::ParameterMetadata>]
         attr_accessor :parameters
       
+        # Optional. Indicates if the template is streaming or not.
+        # Corresponds to the JSON property `streaming`
+        # @return [Boolean]
+        attr_accessor :streaming
+        alias_method :streaming?, :streaming
+      
+        # Optional. Indicates if the streaming template supports at least once mode.
+        # Corresponds to the JSON property `supportsAtLeastOnce`
+        # @return [Boolean]
+        attr_accessor :supports_at_least_once
+        alias_method :supports_at_least_once?, :supports_at_least_once
+      
+        # Optional. Indicates if the streaming template supports exactly once mode.
+        # Corresponds to the JSON property `supportsExactlyOnce`
+        # @return [Boolean]
+        attr_accessor :supports_exactly_once
+        alias_method :supports_exactly_once?, :supports_exactly_once
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6558,6 +6583,9 @@ module Google
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @streaming = args[:streaming] if args.key?(:streaming)
+          @supports_at_least_once = args[:supports_at_least_once] if args.key?(:supports_at_least_once)
+          @supports_exactly_once = args[:supports_exactly_once] if args.key?(:supports_exactly_once)
         end
       end
       
