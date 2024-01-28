@@ -1122,6 +1122,7 @@ module Google
           property :cleanup_policy_dry_run, as: 'cleanupPolicyDryRun'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :disallow_unspecified_mode, as: 'disallowUnspecifiedMode'
           property :docker_config, as: 'dockerConfig', class: Google::Apis::ArtifactregistryV1::DockerRepositoryConfig, decorator: Google::Apis::ArtifactregistryV1::DockerRepositoryConfig::Representation
       
           property :format, as: 'format'
