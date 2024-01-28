@@ -548,8 +548,8 @@ module Google
         end
       end
       
-      # Preview: A chart dimension for an SQL query. This is applied over the x-axis.
-      # This is a preview feature and may be subject to change before final release.
+      # A chart dimension. Dimensions are a structured label, class, or category for a
+      # set of measurements in your data.
       class Dimension
         include Google::Apis::Core::Hashable
       
@@ -1025,8 +1025,8 @@ module Google
         end
       end
       
-      # Preview: A chart measure for an SQL query. This is applied over the y-axis.
-      # This is a preview feature and may be subject to change before final release.
+      # A chart measure. Measures represent a measured property in your chart data
+      # such as rainfall in inches, number of units sold, revenue gained, etc.
       class Measure
         include Google::Apis::Core::Hashable
       
@@ -1448,6 +1448,18 @@ module Google
       class PieChartDataSet
         include Google::Apis::Core::Hashable
       
+        # A dimension is a structured label, class, or category for a set of
+        # measurements in your data.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::MonitoringV1::Dimension>]
+        attr_accessor :dimensions
+      
+        # A measure is a measured value of a property in your data. For example,
+        # rainfall in inches, number of units sold, revenue gained, etc.
+        # Corresponds to the JSON property `measures`
+        # @return [Array<Google::Apis::MonitoringV1::Measure>]
+        attr_accessor :measures
+      
         # Optional. The lower bound on data point frequency for this data set,
         # implemented by specifying the minimum alignment period to use in a time series
         # query. For example, if the data is published once every 10 minutes, the
@@ -1477,6 +1489,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @measures = args[:measures] if args.key?(:measures)
           @min_alignment_period = args[:min_alignment_period] if args.key?(:min_alignment_period)
           @slice_name_template = args[:slice_name_template] if args.key?(:slice_name_template)
           @time_series_query = args[:time_series_query] if args.key?(:time_series_query)
