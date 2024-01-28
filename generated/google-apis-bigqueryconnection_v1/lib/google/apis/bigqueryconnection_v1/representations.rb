@@ -88,6 +88,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConnectorConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConnectorConfigurationAuthentication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConnectorConfigurationEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConnectorConfigurationSecret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConnectorConfigurationUsernamePassword
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -274,6 +304,8 @@ module Google
       
           property :cloud_sql, as: 'cloudSql', class: Google::Apis::BigqueryconnectionV1::CloudSqlProperties, decorator: Google::Apis::BigqueryconnectionV1::CloudSqlProperties::Representation
       
+          property :configuration, as: 'configuration', class: Google::Apis::BigqueryconnectionV1::ConnectorConfiguration, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfiguration::Representation
+      
           property :creation_time, :numeric_string => true, as: 'creationTime'
           property :description, as: 'description'
           property :friendly_name, as: 'friendlyName'
@@ -285,6 +317,49 @@ module Google
       
           property :spark, as: 'spark', class: Google::Apis::BigqueryconnectionV1::SparkProperties, decorator: Google::Apis::BigqueryconnectionV1::SparkProperties::Representation
       
+        end
+      end
+      
+      class ConnectorConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication, as: 'authentication', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationAuthentication, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationAuthentication::Representation
+      
+          property :connector_id, as: 'connectorId'
+          property :endpoint, as: 'endpoint', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationEndpoint, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationEndpoint::Representation
+      
+        end
+      end
+      
+      class ConnectorConfigurationAuthentication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :username_password, as: 'usernamePassword', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationUsernamePassword, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationUsernamePassword::Representation
+      
+        end
+      end
+      
+      class ConnectorConfigurationEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host_port, as: 'hostPort'
+        end
+      end
+      
+      class ConnectorConfigurationSecret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :plaintext, as: 'plaintext'
+          property :secret_type, as: 'secretType'
+        end
+      end
+      
+      class ConnectorConfigurationUsernamePassword
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :password, as: 'password', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationSecret, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationSecret::Representation
+      
+          property :username, as: 'username'
         end
       end
       

@@ -30,7 +30,7 @@ module Google
       #    Bigqueryconnection = Google::Apis::BigqueryconnectionV1 # Alias the module
       #    service = Bigqueryconnection::BigQueryConnectionServiceService.new
       #
-      # @see https://cloud.google.com/bigquery/
+      # @see https://cloud.google.com/bigquery/docs/connections-api-intro
       class BigQueryConnectionServiceService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://bigqueryconnection.$UNIVERSE_DOMAIN$/"
 
