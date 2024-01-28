@@ -217,6 +217,254 @@ module Google
         end
       end
       
+      # The `apps` resource provides a list of apps that a user has installed, with
+      # information about each app's supported MIME types, file extensions, and other
+      # details. Some resource methods (such as `apps.get`) require an `appId`. Use
+      # the `apps.list` method to retrieve the ID for an installed application.
+      class App
+        include Google::Apis::Core::Hashable
+      
+        # Whether the app is authorized to access data on the user's Drive.
+        # Corresponds to the JSON property `authorized`
+        # @return [Boolean]
+        attr_accessor :authorized
+        alias_method :authorized?, :authorized
+      
+        # The template URL to create a file with this app in a given folder. The
+        # template contains the `folderId` to be replaced by the folder ID house the new
+        # file.
+        # Corresponds to the JSON property `createInFolderTemplate`
+        # @return [String]
+        attr_accessor :create_in_folder_template
+      
+        # The URL to create a file with this app.
+        # Corresponds to the JSON property `createUrl`
+        # @return [String]
+        attr_accessor :create_url
+      
+        # Whether the app has Drive-wide scope. An app with Drive-wide scope can access
+        # all files in the user's Drive.
+        # Corresponds to the JSON property `hasDriveWideScope`
+        # @return [Boolean]
+        attr_accessor :has_drive_wide_scope
+        alias_method :has_drive_wide_scope?, :has_drive_wide_scope
+      
+        # The various icons for the app.
+        # Corresponds to the JSON property `icons`
+        # @return [Array<Google::Apis::DriveV3::AppIcons>]
+        attr_accessor :icons
+      
+        # The ID of the app.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Whether the app is installed.
+        # Corresponds to the JSON property `installed`
+        # @return [Boolean]
+        attr_accessor :installed
+        alias_method :installed?, :installed
+      
+        # Output only. Identifies what kind of resource this is. Value: the fixed string
+        # "drive#app".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A long description of the app.
+        # Corresponds to the JSON property `longDescription`
+        # @return [String]
+        attr_accessor :long_description
+      
+        # The name of the app.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The type of object this app creates such as a Chart. If empty, the app name
+        # should be used instead.
+        # Corresponds to the JSON property `objectType`
+        # @return [String]
+        attr_accessor :object_type
+      
+        # The template URL for opening files with this app. The template contains `ids`
+        # or `exportIds` to be replaced by the actual file IDs. For more information,
+        # see Open Files for the full documentation.
+        # Corresponds to the JSON property `openUrlTemplate`
+        # @return [String]
+        attr_accessor :open_url_template
+      
+        # The list of primary file extensions.
+        # Corresponds to the JSON property `primaryFileExtensions`
+        # @return [Array<String>]
+        attr_accessor :primary_file_extensions
+      
+        # The list of primary MIME types.
+        # Corresponds to the JSON property `primaryMimeTypes`
+        # @return [Array<String>]
+        attr_accessor :primary_mime_types
+      
+        # The ID of the product listing for this app.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # A link to the product listing for this app.
+        # Corresponds to the JSON property `productUrl`
+        # @return [String]
+        attr_accessor :product_url
+      
+        # The list of secondary file extensions.
+        # Corresponds to the JSON property `secondaryFileExtensions`
+        # @return [Array<String>]
+        attr_accessor :secondary_file_extensions
+      
+        # The list of secondary MIME types.
+        # Corresponds to the JSON property `secondaryMimeTypes`
+        # @return [Array<String>]
+        attr_accessor :secondary_mime_types
+      
+        # A short description of the app.
+        # Corresponds to the JSON property `shortDescription`
+        # @return [String]
+        attr_accessor :short_description
+      
+        # Whether this app supports creating objects.
+        # Corresponds to the JSON property `supportsCreate`
+        # @return [Boolean]
+        attr_accessor :supports_create
+        alias_method :supports_create?, :supports_create
+      
+        # Whether this app supports importing from Google Docs.
+        # Corresponds to the JSON property `supportsImport`
+        # @return [Boolean]
+        attr_accessor :supports_import
+        alias_method :supports_import?, :supports_import
+      
+        # Whether this app supports opening more than one file.
+        # Corresponds to the JSON property `supportsMultiOpen`
+        # @return [Boolean]
+        attr_accessor :supports_multi_open
+        alias_method :supports_multi_open?, :supports_multi_open
+      
+        # Whether this app supports creating files when offline.
+        # Corresponds to the JSON property `supportsOfflineCreate`
+        # @return [Boolean]
+        attr_accessor :supports_offline_create
+        alias_method :supports_offline_create?, :supports_offline_create
+      
+        # Whether the app is selected as the default handler for the types it supports.
+        # Corresponds to the JSON property `useByDefault`
+        # @return [Boolean]
+        attr_accessor :use_by_default
+        alias_method :use_by_default?, :use_by_default
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized = args[:authorized] if args.key?(:authorized)
+          @create_in_folder_template = args[:create_in_folder_template] if args.key?(:create_in_folder_template)
+          @create_url = args[:create_url] if args.key?(:create_url)
+          @has_drive_wide_scope = args[:has_drive_wide_scope] if args.key?(:has_drive_wide_scope)
+          @icons = args[:icons] if args.key?(:icons)
+          @id = args[:id] if args.key?(:id)
+          @installed = args[:installed] if args.key?(:installed)
+          @kind = args[:kind] if args.key?(:kind)
+          @long_description = args[:long_description] if args.key?(:long_description)
+          @name = args[:name] if args.key?(:name)
+          @object_type = args[:object_type] if args.key?(:object_type)
+          @open_url_template = args[:open_url_template] if args.key?(:open_url_template)
+          @primary_file_extensions = args[:primary_file_extensions] if args.key?(:primary_file_extensions)
+          @primary_mime_types = args[:primary_mime_types] if args.key?(:primary_mime_types)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @product_url = args[:product_url] if args.key?(:product_url)
+          @secondary_file_extensions = args[:secondary_file_extensions] if args.key?(:secondary_file_extensions)
+          @secondary_mime_types = args[:secondary_mime_types] if args.key?(:secondary_mime_types)
+          @short_description = args[:short_description] if args.key?(:short_description)
+          @supports_create = args[:supports_create] if args.key?(:supports_create)
+          @supports_import = args[:supports_import] if args.key?(:supports_import)
+          @supports_multi_open = args[:supports_multi_open] if args.key?(:supports_multi_open)
+          @supports_offline_create = args[:supports_offline_create] if args.key?(:supports_offline_create)
+          @use_by_default = args[:use_by_default] if args.key?(:use_by_default)
+        end
+      end
+      
+      # 
+      class AppIcons
+        include Google::Apis::Core::Hashable
+      
+        # Category of the icon. Allowed values are: * `application` - The icon for the
+        # application. * `document` - The icon for a file associated with the app. * `
+        # documentShared` - The icon for a shared file associated with the app.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # URL for the icon.
+        # Corresponds to the JSON property `iconUrl`
+        # @return [String]
+        attr_accessor :icon_url
+      
+        # Size of the icon. Represented as the maximum of the width and height.
+        # Corresponds to the JSON property `size`
+        # @return [Fixnum]
+        attr_accessor :size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @icon_url = args[:icon_url] if args.key?(:icon_url)
+          @size = args[:size] if args.key?(:size)
+        end
+      end
+      
+      # A list of third-party applications which the user has installed or given
+      # access to Google Drive.
+      class AppList
+        include Google::Apis::Core::Hashable
+      
+        # The list of app IDs that the user has specified to use by default. The list is
+        # in reverse-priority order (lowest to highest).
+        # Corresponds to the JSON property `defaultAppIds`
+        # @return [Array<String>]
+        attr_accessor :default_app_ids
+      
+        # The list of apps.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::DriveV3::App>]
+        attr_accessor :items
+      
+        # Output only. Identifies what kind of resource this is. Value: the fixed string
+        # "drive#appList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A link back to this list.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_app_ids = args[:default_app_ids] if args.key?(:default_app_ids)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
       # A change to a file or shared drive.
       class Change
         include Google::Apis::Core::Hashable

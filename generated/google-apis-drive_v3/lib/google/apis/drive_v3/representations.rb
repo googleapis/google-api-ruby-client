@@ -46,6 +46,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class App
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppIcons
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Change
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -378,6 +396,57 @@ module Google
             property :color_rgb, as: 'colorRgb'
             property :id, as: 'id'
           end
+        end
+      end
+      
+      class App
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorized, as: 'authorized'
+          property :create_in_folder_template, as: 'createInFolderTemplate'
+          property :create_url, as: 'createUrl'
+          property :has_drive_wide_scope, as: 'hasDriveWideScope'
+          collection :icons, as: 'icons', class: Google::Apis::DriveV3::AppIcons, decorator: Google::Apis::DriveV3::AppIcons::Representation
+      
+          property :id, as: 'id'
+          property :installed, as: 'installed'
+          property :kind, as: 'kind'
+          property :long_description, as: 'longDescription'
+          property :name, as: 'name'
+          property :object_type, as: 'objectType'
+          property :open_url_template, as: 'openUrlTemplate'
+          collection :primary_file_extensions, as: 'primaryFileExtensions'
+          collection :primary_mime_types, as: 'primaryMimeTypes'
+          property :product_id, as: 'productId'
+          property :product_url, as: 'productUrl'
+          collection :secondary_file_extensions, as: 'secondaryFileExtensions'
+          collection :secondary_mime_types, as: 'secondaryMimeTypes'
+          property :short_description, as: 'shortDescription'
+          property :supports_create, as: 'supportsCreate'
+          property :supports_import, as: 'supportsImport'
+          property :supports_multi_open, as: 'supportsMultiOpen'
+          property :supports_offline_create, as: 'supportsOfflineCreate'
+          property :use_by_default, as: 'useByDefault'
+        end
+      end
+      
+      class AppIcons
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :icon_url, as: 'iconUrl'
+          property :size, as: 'size'
+        end
+      end
+      
+      class AppList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :default_app_ids, as: 'defaultAppIds'
+          collection :items, as: 'items', class: Google::Apis::DriveV3::App, decorator: Google::Apis::DriveV3::App::Representation
+      
+          property :kind, as: 'kind'
+          property :self_link, as: 'selfLink'
         end
       end
       

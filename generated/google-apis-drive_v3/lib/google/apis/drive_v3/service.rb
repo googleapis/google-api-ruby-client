@@ -78,6 +78,79 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a specific app.
+        # @param [String] app_id
+        #   The ID of the app.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::App] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::App]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_app(app_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'apps/{appId}', options)
+          command.response_representation = Google::Apis::DriveV3::App::Representation
+          command.response_class = Google::Apis::DriveV3::App
+          command.params['appId'] = app_id unless app_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists a user's installed apps.
+        # @param [String] app_filter_extensions
+        #   A comma-separated list of file extensions to limit returned results. All
+        #   results within the given app query scope which can open any of the given file
+        #   extensions are included in the response. If `appFilterMimeTypes` are provided
+        #   as well, the result is a union of the two resulting app lists.
+        # @param [String] app_filter_mime_types
+        #   A comma-separated list of file extensions to limit returned results. All
+        #   results within the given app query scope which can open any of the given MIME
+        #   types will be included in the response. If `appFilterExtensions` are provided
+        #   as well, the result is a union of the two resulting app lists.
+        # @param [String] language_code
+        #   A language or locale code, as defined by BCP 47, with some extensions from
+        #   Unicode's LDML format (http://www.unicode.org/reports/tr35/).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::AppList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::AppList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_apps(app_filter_extensions: nil, app_filter_mime_types: nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'apps', options)
+          command.response_representation = Google::Apis::DriveV3::AppList::Representation
+          command.response_class = Google::Apis::DriveV3::AppList
+          command.query['appFilterExtensions'] = app_filter_extensions unless app_filter_extensions.nil?
+          command.query['appFilterMimeTypes'] = app_filter_mime_types unless app_filter_mime_types.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the starting pageToken for listing future changes.
         # @param [String] drive_id
         #   The ID of the shared drive for which the starting pageToken for listing future
