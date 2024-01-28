@@ -2053,6 +2053,16 @@ module Google
         #   Required. The relative resource name of the parent project and service for
         #   which to list each associated ResourcePolicy, in the format: ``` projects/`
         #   project_number`/services/`service_name` ```
+        # @param [String] filter
+        #   Optional. Filters the results by the specified rule. For the exact syntax of
+        #   this field, please consult the [AIP-160](https://google.aip.dev/160) standard.
+        #   Currently, since the only fields in the ResourcePolicy resource are the scalar
+        #   fields `enforcement_mode` and `target_resource`, this method does not support
+        #   the traversal operator (`.`) or the has operator (`:`). Here are some examples
+        #   of valid filters: * `enforcement_mode = ENFORCED` * `target_resource = "//
+        #   oauth2.googleapis.com/projects/12345/oauthClients/"` * `enforcement_mode =
+        #   ENFORCED AND target_resource = "//oauth2.googleapis.com/projects/12345/
+        #   oauthClients/"`
         # @param [Fixnum] page_size
         #   The maximum number of ResourcePolicys to return in the response. Only
         #   explicitly configured policies are returned. The server may return fewer than
@@ -2081,11 +2091,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_service_resource_policies(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_service_resource_policies(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta/{+parent}/resourcePolicies', options)
           command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse::Representation
           command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
