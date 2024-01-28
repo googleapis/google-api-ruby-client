@@ -707,6 +707,8 @@ module Google
         #   also contain all of those nested properties.
         # @param [String] category_id
         #   Return the channels within the specified guide category ID.
+        # @param [String] for_handle
+        #   Return the channel associated with a YouTube handle.
         # @param [String] for_username
         #   Return the channel associated with a YouTube username.
         # @param [String] hl
@@ -757,11 +759,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_channels(part, category_id: nil, for_username: nil, hl: nil, id: nil, managed_by_me: nil, max_results: nil, mine: nil, my_subscribers: nil, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_channels(part, category_id: nil, for_handle: nil, for_username: nil, hl: nil, id: nil, managed_by_me: nil, max_results: nil, mine: nil, my_subscribers: nil, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'youtube/v3/channels', options)
           command.response_representation = Google::Apis::YoutubeV3::ListChannelsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListChannelsResponse
           command.query['categoryId'] = category_id unless category_id.nil?
+          command.query['forHandle'] = for_handle unless for_handle.nil?
           command.query['forUsername'] = for_username unless for_username.nil?
           command.query['hl'] = hl unless hl.nil?
           command.query['id'] = id unless id.nil?
