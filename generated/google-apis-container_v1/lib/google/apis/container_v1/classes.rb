@@ -220,6 +220,11 @@ module Google
         # @return [Google::Apis::ContainerV1::NetworkPolicyConfig]
         attr_accessor :network_policy_config
       
+        # Configuration for the Stateful HA add-on.
+        # Corresponds to the JSON property `statefulHaConfig`
+        # @return [Google::Apis::ContainerV1::StatefulHaConfig]
+        attr_accessor :stateful_ha_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -237,6 +242,7 @@ module Google
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
           @kubernetes_dashboard = args[:kubernetes_dashboard] if args.key?(:kubernetes_dashboard)
           @network_policy_config = args[:network_policy_config] if args.key?(:network_policy_config)
+          @stateful_ha_config = args[:stateful_ha_config] if args.key?(:stateful_ha_config)
         end
       end
       
@@ -1538,6 +1544,11 @@ module Google
         # @return [String]
         attr_accessor :desired_image_type
       
+        # Specify the details of in-transit encryption.
+        # Corresponds to the JSON property `desiredInTransitEncryptionConfig`
+        # @return [String]
+        attr_accessor :desired_in_transit_encryption_config
+      
         # IntraNodeVisibilityConfig contains the desired config of the intra-node
         # visibility on this cluster.
         # Corresponds to the JSON property `desiredIntraNodeVisibilityConfig`
@@ -1781,6 +1792,7 @@ module Google
           @desired_gcfs_config = args[:desired_gcfs_config] if args.key?(:desired_gcfs_config)
           @desired_identity_service_config = args[:desired_identity_service_config] if args.key?(:desired_identity_service_config)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
+          @desired_in_transit_encryption_config = args[:desired_in_transit_encryption_config] if args.key?(:desired_in_transit_encryption_config)
           @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
           @desired_k8s_beta_apis = args[:desired_k8s_beta_apis] if args.key?(:desired_k8s_beta_apis)
           @desired_l4ilb_subsetting_config = args[:desired_l4ilb_subsetting_config] if args.key?(:desired_l4ilb_subsetting_config)
@@ -3628,6 +3640,11 @@ module Google
         # @return [Google::Apis::ContainerV1::GatewayApiConfig]
         attr_accessor :gateway_api_config
       
+        # Specify the details of in-transit encryption.
+        # Corresponds to the JSON property `inTransitEncryptionConfig`
+        # @return [String]
+        attr_accessor :in_transit_encryption_config
+      
         # Output only. The relative name of the Google Compute Engine network(https://
         # cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the
         # cluster is connected. Example: projects/my-project/global/networks/my-network
@@ -3672,6 +3689,7 @@ module Google
           @enable_l4ilb_subsetting = args[:enable_l4ilb_subsetting] if args.key?(:enable_l4ilb_subsetting)
           @enable_multi_networking = args[:enable_multi_networking] if args.key?(:enable_multi_networking)
           @gateway_api_config = args[:gateway_api_config] if args.key?(:gateway_api_config)
+          @in_transit_encryption_config = args[:in_transit_encryption_config] if args.key?(:in_transit_encryption_config)
           @network = args[:network] if args.key?(:network)
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
@@ -6460,6 +6478,26 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @rotate_credentials = args[:rotate_credentials] if args.key?(:rotate_credentials)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Configuration for the Stateful HA add-on.
+      class StatefulHaConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Stateful HA add-on is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
