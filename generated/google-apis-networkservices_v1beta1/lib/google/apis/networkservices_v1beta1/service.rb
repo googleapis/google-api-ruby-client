@@ -1255,9 +1255,9 @@ module Google
         
         # Updates the parameters of the specified `LbRouteExtension` resource.
         # @param [String] name
-        #   Required. Name of the `LbRouteExtension` resource in the following format: `
-        #   projects/`project`/locations/`location`/lbRouteExtensions/`lb_route_extension``
-        #   .
+        #   Required. Identifier. Name of the `LbRouteExtension` resource in the following
+        #   format: `projects/`project`/locations/`location`/lbRouteExtensions/`
+        #   lb_route_extension``.
         # @param [Google::Apis::NetworkservicesV1beta1::LbRouteExtension] lb_route_extension_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -1479,9 +1479,9 @@ module Google
         
         # Updates the parameters of the specified `LbTrafficExtension` resource.
         # @param [String] name
-        #   Required. Name of the `LbTrafficExtension` resource in the following format: `
-        #   projects/`project`/locations/`location`/lbTrafficExtensions/`
-        #   lb_traffic_extension``.
+        #   Required. Identifier. Name of the `LbTrafficExtension` resource in the
+        #   following format: `projects/`project`/locations/`location`/lbTrafficExtensions/
+        #   `lb_traffic_extension``.
         # @param [Google::Apis::NetworkservicesV1beta1::LbTrafficExtension] lb_traffic_extension_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
