@@ -174,7 +174,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -2102,9 +2105,9 @@ module Google
         # @return [String]
         attr_accessor :load_balancing_scheme
       
-        # Required. Name of the `LbRouteExtension` resource in the following format: `
-        # projects/`project`/locations/`location`/lbRouteExtensions/`lb_route_extension``
-        # .
+        # Required. Identifier. Name of the `LbRouteExtension` resource in the following
+        # format: `projects/`project`/locations/`location`/lbRouteExtensions/`
+        # lb_route_extension``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2180,9 +2183,9 @@ module Google
         # @return [String]
         attr_accessor :load_balancing_scheme
       
-        # Required. Name of the `LbTrafficExtension` resource in the following format: `
-        # projects/`project`/locations/`location`/lbTrafficExtensions/`
-        # lb_traffic_extension``.
+        # Required. Identifier. Name of the `LbTrafficExtension` resource in the
+        # following format: `projects/`project`/locations/`location`/lbTrafficExtensions/
+        # `lb_traffic_extension``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2701,8 +2704,8 @@ module Google
         # from P1 will be selected. If a client with label connects, the config from P2
         # will be selected. If a client with label connects, the config from P3 will be
         # selected. If there is more than one best match, (for example, if a config P4
-        # with selector exists and if a client with label connects), an error will be
-        # thrown.
+        # with selector exists and if a client with label connects), pick up the one
+        # with older creation time.
         # Corresponds to the JSON property `metadataLabelMatchCriteria`
         # @return [String]
         attr_accessor :metadata_label_match_criteria
