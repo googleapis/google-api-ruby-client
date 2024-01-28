@@ -797,6 +797,10 @@ module Google
       class PieChartDataSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimensions, as: 'dimensions', class: Google::Apis::MonitoringV1::Dimension, decorator: Google::Apis::MonitoringV1::Dimension::Representation
+      
+          collection :measures, as: 'measures', class: Google::Apis::MonitoringV1::Measure, decorator: Google::Apis::MonitoringV1::Measure::Representation
+      
           property :min_alignment_period, as: 'minAlignmentPeriod'
           property :slice_name_template, as: 'sliceNameTemplate'
           property :time_series_query, as: 'timeSeriesQuery', class: Google::Apis::MonitoringV1::TimeSeriesQuery, decorator: Google::Apis::MonitoringV1::TimeSeriesQuery::Representation
