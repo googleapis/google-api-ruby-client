@@ -2443,6 +2443,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cm_account_id, :numeric_string => true, as: 'cmAccountId'
+          collection :cm_advertiser_ids, as: 'cmAdvertiserIds'
           property :cm_floodlight_config_id, :numeric_string => true, as: 'cmFloodlightConfigId'
           property :cm_floodlight_linking_authorized, as: 'cmFloodlightLinkingAuthorized'
           collection :cm_syncable_site_ids, as: 'cmSyncableSiteIds'
