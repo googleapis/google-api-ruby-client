@@ -188,7 +188,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -726,17 +729,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Resource name of a KMS crypto key (managed by the user) used to encrypt/
-        # decrypt function source code objects in staging Cloud Storage buckets. When
-        # you generate an upload url and upload your source code, it gets copied to a
-        # staging Cloud Storage bucket in an internal regional project. The source code
-        # is then copied to a versioned directory in the sources bucket in the consumer
-        # project during the function deployment. It must match the pattern `projects/`
-        # project`/locations/`location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``.
-        # The Google Cloud Functions service account (service-`project_number`@gcf-admin-
-        # robot.iam.gserviceaccount.com) must be granted the role 'Cloud KMS CryptoKey
-        # Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/
-        # KeyRing/Project/Organization (least access preferred). GCF will delegate
-        # access to the Google Storage service account in the internal project.
+        # decrypt function source code objects in intermediate Cloud Storage buckets.
+        # When you generate an upload url and upload your source code, it gets copied to
+        # an intermediate Cloud Storage bucket. The source code is then copied to a
+        # versioned directory in the sources bucket in the consumer project during the
+        # function deployment. It must match the pattern `projects/`project`/locations/`
+        # location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``. The Google Cloud
+        # Functions service account (service-`project_number`@gcf-admin-robot.iam.
+        # gserviceaccount.com) must be granted the role 'Cloud KMS CryptoKey Encrypter/
+        # Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/
+        # Project/Organization (least access preferred). GCF will delegate access to the
+        # Google Storage service account in the internal project.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
