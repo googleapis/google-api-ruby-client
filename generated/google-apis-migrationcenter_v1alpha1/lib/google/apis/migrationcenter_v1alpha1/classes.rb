@@ -851,6 +851,19 @@ module Google
         end
       end
       
+      # Compute engine sole tenant migration target.
+      class ComputeEngineSoleTenantMigrationTarget
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Compute Engine storage option descriptor.
       class ComputeStorageDescriptor
         include Google::Apis::Core::Hashable
@@ -2779,6 +2792,11 @@ module Google
       class MigrationInsight
         include Google::Apis::Core::Hashable
       
+        # Compute engine sole tenant migration target.
+        # Corresponds to the JSON property `computeEngineSoleTenantTarget`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ComputeEngineSoleTenantMigrationTarget]
+        attr_accessor :compute_engine_sole_tenant_target
+      
         # Compute engine migration target.
         # Corresponds to the JSON property `computeEngineTarget`
         # @return [Google::Apis::MigrationcenterV1alpha1::ComputeEngineMigrationTarget]
@@ -2805,6 +2823,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @compute_engine_sole_tenant_target = args[:compute_engine_sole_tenant_target] if args.key?(:compute_engine_sole_tenant_target)
           @compute_engine_target = args[:compute_engine_target] if args.key?(:compute_engine_target)
           @fit = args[:fit] if args.key?(:fit)
           @gke_target = args[:gke_target] if args.key?(:gke_target)

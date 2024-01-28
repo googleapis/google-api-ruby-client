@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComputeEngineSoleTenantMigrationTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ComputeStorageDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1231,6 +1237,12 @@ module Google
         end
       end
       
+      class ComputeEngineSoleTenantMigrationTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ComputeStorageDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1829,6 +1841,8 @@ module Google
       class MigrationInsight
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :compute_engine_sole_tenant_target, as: 'computeEngineSoleTenantTarget', class: Google::Apis::MigrationcenterV1alpha1::ComputeEngineSoleTenantMigrationTarget, decorator: Google::Apis::MigrationcenterV1alpha1::ComputeEngineSoleTenantMigrationTarget::Representation
+      
           property :compute_engine_target, as: 'computeEngineTarget', class: Google::Apis::MigrationcenterV1alpha1::ComputeEngineMigrationTarget, decorator: Google::Apis::MigrationcenterV1alpha1::ComputeEngineMigrationTarget::Representation
       
           property :fit, as: 'fit', class: Google::Apis::MigrationcenterV1alpha1::FitDescriptor, decorator: Google::Apis::MigrationcenterV1alpha1::FitDescriptor::Representation
