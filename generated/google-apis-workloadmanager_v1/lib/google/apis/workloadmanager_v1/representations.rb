@@ -493,6 +493,7 @@ module Google
           property :revision_id, as: 'revisionId'
           property :secondary_category, as: 'secondaryCategory'
           property :severity, as: 'severity'
+          collection :tags, as: 'tags'
           property :uri, as: 'uri'
         end
       end
@@ -613,6 +614,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource, as: 'resource'
+          property :type, as: 'type'
         end
       end
       
