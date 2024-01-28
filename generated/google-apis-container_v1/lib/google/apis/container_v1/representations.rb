@@ -904,6 +904,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StatefulHaConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1076,6 +1082,8 @@ module Google
           property :kubernetes_dashboard, as: 'kubernetesDashboard', class: Google::Apis::ContainerV1::KubernetesDashboard, decorator: Google::Apis::ContainerV1::KubernetesDashboard::Representation
       
           property :network_policy_config, as: 'networkPolicyConfig', class: Google::Apis::ContainerV1::NetworkPolicyConfig, decorator: Google::Apis::ContainerV1::NetworkPolicyConfig::Representation
+      
+          property :stateful_ha_config, as: 'statefulHaConfig', class: Google::Apis::ContainerV1::StatefulHaConfig, decorator: Google::Apis::ContainerV1::StatefulHaConfig::Representation
       
         end
       end
@@ -1404,6 +1412,7 @@ module Google
           property :desired_identity_service_config, as: 'desiredIdentityServiceConfig', class: Google::Apis::ContainerV1::IdentityServiceConfig, decorator: Google::Apis::ContainerV1::IdentityServiceConfig::Representation
       
           property :desired_image_type, as: 'desiredImageType'
+          property :desired_in_transit_encryption_config, as: 'desiredInTransitEncryptionConfig'
           property :desired_intra_node_visibility_config, as: 'desiredIntraNodeVisibilityConfig', class: Google::Apis::ContainerV1::IntraNodeVisibilityConfig, decorator: Google::Apis::ContainerV1::IntraNodeVisibilityConfig::Representation
       
           property :desired_k8s_beta_apis, as: 'desiredK8sBetaApis', class: Google::Apis::ContainerV1::K8sBetaApiConfig, decorator: Google::Apis::ContainerV1::K8sBetaApiConfig::Representation
@@ -1990,6 +1999,7 @@ module Google
           property :enable_multi_networking, as: 'enableMultiNetworking'
           property :gateway_api_config, as: 'gatewayApiConfig', class: Google::Apis::ContainerV1::GatewayApiConfig, decorator: Google::Apis::ContainerV1::GatewayApiConfig::Representation
       
+          property :in_transit_encryption_config, as: 'inTransitEncryptionConfig'
           property :network, as: 'network'
           property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ContainerV1::ClusterNetworkPerformanceConfig, decorator: Google::Apis::ContainerV1::ClusterNetworkPerformanceConfig::Representation
       
@@ -2679,6 +2689,13 @@ module Google
           property :project_id, as: 'projectId'
           property :rotate_credentials, as: 'rotateCredentials'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class StatefulHaConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
