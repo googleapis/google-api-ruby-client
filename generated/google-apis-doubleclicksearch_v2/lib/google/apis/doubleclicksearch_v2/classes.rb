@@ -94,7 +94,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :ad_id
       
-        # Ad user data consent for this conversion.
+        # Represents consent for core platform services (CPS) preferences in settings.
+        # No default value. Acceptable values are: GRANTED: The desired consent status
+        # is to grant. Read the CPS preferences from GTE settings. DENIED: The desired
+        # consent status is to deny; CPS list is empty.
         # Corresponds to the JSON property `adUserDataConsent`
         # @return [String]
         attr_accessor :ad_user_data_consent
