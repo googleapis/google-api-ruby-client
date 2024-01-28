@@ -280,7 +280,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -487,6 +490,11 @@ module Google
         # @return [Google::Apis::BigqueryconnectionV1::CloudSqlProperties]
         attr_accessor :cloud_sql
       
+        # Represents concrete parameter values for Connector Configuration.
+        # Corresponds to the JSON property `configuration`
+        # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfiguration]
+        attr_accessor :configuration
+      
         # Output only. The creation timestamp of the connection.
         # Corresponds to the JSON property `creationTime`
         # @return [Fixnum]
@@ -548,6 +556,7 @@ module Google
           @cloud_resource = args[:cloud_resource] if args.key?(:cloud_resource)
           @cloud_spanner = args[:cloud_spanner] if args.key?(:cloud_spanner)
           @cloud_sql = args[:cloud_sql] if args.key?(:cloud_sql)
+          @configuration = args[:configuration] if args.key?(:configuration)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @description = args[:description] if args.key?(:description)
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
@@ -557,6 +566,129 @@ module Google
           @name = args[:name] if args.key?(:name)
           @salesforce_data_cloud = args[:salesforce_data_cloud] if args.key?(:salesforce_data_cloud)
           @spark = args[:spark] if args.key?(:spark)
+        end
+      end
+      
+      # Represents concrete parameter values for Connector Configuration.
+      class ConnectorConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Client authentication.
+        # Corresponds to the JSON property `authentication`
+        # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationAuthentication]
+        attr_accessor :authentication
+      
+        # Required. Immutable. The ID of the Connector these parameters are configured
+        # for.
+        # Corresponds to the JSON property `connectorId`
+        # @return [String]
+        attr_accessor :connector_id
+      
+        # Remote endpoint specification.
+        # Corresponds to the JSON property `endpoint`
+        # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationEndpoint]
+        attr_accessor :endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication = args[:authentication] if args.key?(:authentication)
+          @connector_id = args[:connector_id] if args.key?(:connector_id)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+        end
+      end
+      
+      # Client authentication.
+      class ConnectorConfigurationAuthentication
+        include Google::Apis::Core::Hashable
+      
+        # Username and Password authentication.
+        # Corresponds to the JSON property `usernamePassword`
+        # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationUsernamePassword]
+        attr_accessor :username_password
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @username_password = args[:username_password] if args.key?(:username_password)
+        end
+      end
+      
+      # Remote endpoint specification.
+      class ConnectorConfigurationEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # Host and port in a format of `hostname:port` as defined in https://www.ietf.
+        # org/rfc/rfc3986.html#section-3.2.2 and https://www.ietf.org/rfc/rfc3986.html#
+        # section-3.2.3.
+        # Corresponds to the JSON property `hostPort`
+        # @return [String]
+        attr_accessor :host_port
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_port = args[:host_port] if args.key?(:host_port)
+        end
+      end
+      
+      # Secret value parameter.
+      class ConnectorConfigurationSecret
+        include Google::Apis::Core::Hashable
+      
+        # Input only. Secret as plaintext.
+        # Corresponds to the JSON property `plaintext`
+        # @return [String]
+        attr_accessor :plaintext
+      
+        # Output only. Indicates type of secret. Can be used to check type of stored
+        # secret value even if it's `INPUT_ONLY`.
+        # Corresponds to the JSON property `secretType`
+        # @return [String]
+        attr_accessor :secret_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @plaintext = args[:plaintext] if args.key?(:plaintext)
+          @secret_type = args[:secret_type] if args.key?(:secret_type)
+        end
+      end
+      
+      # Username and Password authentication.
+      class ConnectorConfigurationUsernamePassword
+        include Google::Apis::Core::Hashable
+      
+        # Secret value parameter.
+        # Corresponds to the JSON property `password`
+        # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationSecret]
+        attr_accessor :password
+      
+        # Required. Username.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @password = args[:password] if args.key?(:password)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
