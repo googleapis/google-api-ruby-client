@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudAiNlLlmProtoServiceFact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAiNlLlmProtoServiceFunctionCall
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +179,12 @@ module Google
       end
       
       class CloudAiNlLlmProtoServicePartVideoMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2554,7 +2566,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2663,6 +2687,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1ProbeExecAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PscAutomatedEndpoints
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4054,6 +4084,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1StreamRawPredictRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1StreamingPredictRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4768,6 +4804,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LearningGenaiRootGroundingMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LearningGenaiRootGroundingMetadataCitation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LearningGenaiRootHarm
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4799,6 +4847,12 @@ module Google
       end
       
       class LearningGenaiRootInternalMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LearningGenaiRootLanguageFilterResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4943,12 +4997,6 @@ module Google
       end
       
       class LearningGenaiRootToxicitySignal
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LearningServingLlmLanguageFilterResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5143,6 +5191,8 @@ module Google
       
           property :finish_message, as: 'finishMessage'
           property :finish_reason, as: 'finishReason'
+          property :grounding_metadata, as: 'groundingMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadata::Representation
+      
           property :index, as: 'index'
           collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceSafetyRating, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceSafetyRating::Representation
       
@@ -5179,6 +5229,16 @@ module Google
         end
       end
       
+      class CloudAiNlLlmProtoServiceFact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query, as: 'query'
+          property :summary, as: 'summary'
+          property :title, as: 'title'
+          property :url, as: 'url'
+        end
+      end
+      
       class CloudAiNlLlmProtoServiceFunctionCall
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5201,6 +5261,8 @@ module Google
           collection :candidates, as: 'candidates', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceCandidate, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceCandidate::Representation
       
           property :debug_metadata, as: 'debugMetadata', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceMessageMetadata, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceMessageMetadata::Representation
+      
+          collection :facts, as: 'facts', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceFact, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceFact::Representation
       
           property :prompt_feedback, as: 'promptFeedback', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePromptFeedback, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePromptFeedback::Representation
       
@@ -5262,7 +5324,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_offset, as: 'endOffset'
+          property :model_level_meta_data, as: 'modelLevelMetaData', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata::Representation
+      
           property :start_offset, as: 'startOffset'
+        end
+      end
+      
+      class CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fps, as: 'fps'
+          property :num_frames, as: 'numFrames'
         end
       end
       
@@ -5284,7 +5356,7 @@ module Google
           property :blocked, as: 'blocked'
           collection :error_codes, as: 'errorCodes'
           property :filtered, as: 'filtered'
-          property :language_filter_result, as: 'languageFilterResult', class: Google::Apis::AiplatformV1::LearningServingLlmLanguageFilterResult, decorator: Google::Apis::AiplatformV1::LearningServingLlmLanguageFilterResult::Representation
+          property :language_filter_result, as: 'languageFilterResult', class: Google::Apis::AiplatformV1::LearningGenaiRootLanguageFilterResult, decorator: Google::Apis::AiplatformV1::LearningGenaiRootLanguageFilterResult::Representation
       
           collection :rai_signals, as: 'raiSignals', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiSignal, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceRaiSignal::Representation
       
@@ -6171,6 +6243,7 @@ module Google
           property :pipeline_job, as: 'pipelineJob', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJob, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJob::Representation
       
           property :pipeline_job_id, as: 'pipelineJobId'
+          property :preflight_validations, as: 'preflightValidations'
         end
       end
       
@@ -7876,6 +7949,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :match_grpc_address, as: 'matchGrpcAddress'
+          collection :psc_automated_endpoints, as: 'pscAutomatedEndpoints', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscAutomatedEndpoints, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscAutomatedEndpoints::Representation
+      
           property :service_attachment, as: 'serviceAttachment'
         end
       end
@@ -9338,6 +9413,8 @@ module Google
       class GoogleCloudAiplatformV1PipelineJobRuntimeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_runtime, as: 'defaultRuntime', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime::Representation
+      
           property :failure_policy, as: 'failurePolicy'
           property :gcs_output_directory, as: 'gcsOutputDirectory'
           hash :input_artifacts, as: 'inputArtifacts', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact::Representation
@@ -9348,10 +9425,25 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :persistent_resource_runtime_detail, as: 'persistentResourceRuntimeDetail', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :artifact_id, as: 'artifactId'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :persistent_resource_name, as: 'persistentResourceName'
         end
       end
       
@@ -9526,6 +9618,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :command, as: 'command'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PscAutomatedEndpoints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :match_address, as: 'matchAddress'
+          property :network, as: 'network'
+          property :project_id, as: 'projectId'
         end
       end
       
@@ -11782,6 +11883,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1StreamRawPredictRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_body, as: 'httpBody', class: Google::Apis::AiplatformV1::GoogleApiHttpBody, decorator: Google::Apis::AiplatformV1::GoogleApiHttpBody::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1StreamingPredictRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12797,6 +12906,7 @@ module Google
           property :arxiv_id, as: 'arxivId'
           property :author, as: 'author'
           property :bibkey, as: 'bibkey'
+          property :biorxiv_id, as: 'biorxivId'
           property :book_title, as: 'bookTitle'
           property :book_volume_id, :numeric_string => true, as: 'bookVolumeId'
           property :category, as: 'category'
@@ -12821,6 +12931,7 @@ module Google
           property :url, as: 'url'
           property :volume_id, as: 'volumeId'
           property :wikipedia_article_title, as: 'wikipediaArticleTitle'
+          property :youtube_video_id, as: 'youtubeVideoId'
         end
       end
       
@@ -12869,6 +12980,7 @@ module Google
           property :arxiv_id, as: 'arxivId'
           property :author, as: 'author'
           property :bibkey, as: 'bibkey'
+          property :biorxiv_id, as: 'biorxivId'
           property :book_title, as: 'bookTitle'
           property :book_volume_id, :numeric_string => true, as: 'bookVolumeId'
           property :conversation_id, as: 'conversationId'
@@ -12892,6 +13004,7 @@ module Google
           property :url, as: 'url'
           property :volume_id, as: 'volumeId'
           property :wikipedia_article_title, as: 'wikipediaArticleTitle'
+          property :youtube_video_id, as: 'youtubeVideoId'
         end
       end
       
@@ -12992,7 +13105,7 @@ module Google
           property :classifier_output, as: 'classifierOutput', class: Google::Apis::AiplatformV1::LearningGenaiRootClassifierOutput, decorator: Google::Apis::AiplatformV1::LearningGenaiRootClassifierOutput::Representation
       
           property :default_metadata, as: 'defaultMetadata'
-          property :language_filter_result, as: 'languageFilterResult', class: Google::Apis::AiplatformV1::LearningServingLlmLanguageFilterResult, decorator: Google::Apis::AiplatformV1::LearningServingLlmLanguageFilterResult::Representation
+          property :language_filter_result, as: 'languageFilterResult', class: Google::Apis::AiplatformV1::LearningGenaiRootLanguageFilterResult, decorator: Google::Apis::AiplatformV1::LearningGenaiRootLanguageFilterResult::Representation
       
           property :rai_output, as: 'raiOutput', class: Google::Apis::AiplatformV1::LearningGenaiRootRaiOutput, decorator: Google::Apis::AiplatformV1::LearningGenaiRootRaiOutput::Representation
       
@@ -13006,6 +13119,26 @@ module Google
       
           property :toxicity_result, as: 'toxicityResult', class: Google::Apis::AiplatformV1::LearningGenaiRootToxicityResult, decorator: Google::Apis::AiplatformV1::LearningGenaiRootToxicityResult::Representation
       
+        end
+      end
+      
+      class LearningGenaiRootGroundingMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :citations, as: 'citations', class: Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadataCitation, decorator: Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadataCitation::Representation
+      
+          property :grounding_cancelled, as: 'groundingCancelled'
+          collection :search_queries, as: 'searchQueries'
+        end
+      end
+      
+      class LearningGenaiRootGroundingMetadataCitation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_index, as: 'endIndex'
+          property :fact_index, as: 'factIndex'
+          property :score, as: 'score'
+          property :start_index, as: 'startIndex'
         end
       end
       
@@ -13071,6 +13204,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :scored_tokens, as: 'scoredTokens', class: Google::Apis::AiplatformV1::LearningGenaiRootScoredToken, decorator: Google::Apis::AiplatformV1::LearningGenaiRootScoredToken::Representation
       
+        end
+      end
+      
+      class LearningGenaiRootLanguageFilterResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowed, as: 'allowed'
+          property :detected_language, as: 'detectedLanguage'
+          property :detected_language_probability, as: 'detectedLanguageProbability'
         end
       end
       
@@ -13303,15 +13445,6 @@ module Google
         end
       end
       
-      class LearningServingLlmLanguageFilterResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :allowed, as: 'allowed'
-          property :detected_language, as: 'detectedLanguage'
-          property :detected_language_probability, as: 'detectedLanguageProbability'
-        end
-      end
-      
       class LearningServingLlmMessageMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13324,6 +13457,8 @@ module Google
           property :final_message_score, as: 'finalMessageScore', class: Google::Apis::AiplatformV1::LearningGenaiRootScore, decorator: Google::Apis::AiplatformV1::LearningGenaiRootScore::Representation
       
           property :finish_reason, as: 'finishReason'
+          property :grounding_metadata, as: 'groundingMetadata', class: Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadata, decorator: Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadata::Representation
+      
           property :is_fallback, as: 'isFallback'
           property :langid_result, as: 'langidResult', class: Google::Apis::AiplatformV1::NlpSaftLangIdResult, decorator: Google::Apis::AiplatformV1::NlpSaftLangIdResult::Representation
       

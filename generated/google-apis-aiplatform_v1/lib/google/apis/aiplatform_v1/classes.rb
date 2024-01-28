@@ -463,6 +463,12 @@ module Google
         # @return [String]
         attr_accessor :finish_reason
       
+        # Grounding metadata. Combine with the facts list from response to generate
+        # grounding citations for this choice.
+        # Corresponds to the JSON property `groundingMetadata`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadata]
+        attr_accessor :grounding_metadata
+      
         # Index of the candidate.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
@@ -483,6 +489,7 @@ module Google
           @content = args[:content] if args.key?(:content)
           @finish_message = args[:finish_message] if args.key?(:finish_message)
           @finish_reason = args[:finish_reason] if args.key?(:finish_reason)
+          @grounding_metadata = args[:grounding_metadata] if args.key?(:grounding_metadata)
           @index = args[:index] if args.key?(:index)
           @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
         end
@@ -588,6 +595,45 @@ module Google
         end
       end
       
+      # A condense version of WorldFact (assistant/boq/lamda/factuality/proto/
+      # factuality.proto) to propagate the essential information about the fact used
+      # in factuality to the upstream caller.
+      class CloudAiNlLlmProtoServiceFact
+        include Google::Apis::Core::Hashable
+      
+        # Query that is used to retrieve this fact.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # If present, the summary/snippet of the fact.
+        # Corresponds to the JSON property `summary`
+        # @return [String]
+        attr_accessor :summary
+      
+        # If present, it refers to the title of this fact.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # If present, this URL links to the webpage of the fact.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query = args[:query] if args.key?(:query)
+          @summary = args[:summary] if args.key?(:summary)
+          @title = args[:title] if args.key?(:title)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # Function call details.
       class CloudAiNlLlmProtoServiceFunctionCall
         include Google::Apis::Core::Hashable
@@ -653,6 +699,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceMessageMetadata]
         attr_accessor :debug_metadata
       
+        # External facts retrieved for factuality/grounding.
+        # Corresponds to the JSON property `facts`
+        # @return [Array<Google::Apis::AiplatformV1::CloudAiNlLlmProtoServiceFact>]
+        attr_accessor :facts
+      
         # Content filter results for a prompt sent in the request.
         # Corresponds to the JSON property `promptFeedback`
         # @return [Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePromptFeedback]
@@ -676,6 +727,7 @@ module Google
         def update!(**args)
           @candidates = args[:candidates] if args.key?(:candidates)
           @debug_metadata = args[:debug_metadata] if args.key?(:debug_metadata)
+          @facts = args[:facts] if args.key?(:facts)
           @prompt_feedback = args[:prompt_feedback] if args.key?(:prompt_feedback)
           @reporting_metrics = args[:reporting_metrics] if args.key?(:reporting_metrics)
           @usage_metadata = args[:usage_metadata] if args.key?(:usage_metadata)
@@ -830,6 +882,11 @@ module Google
         # @return [String]
         attr_accessor :end_offset
       
+        # Internal only fields
+        # Corresponds to the JSON property `modelLevelMetaData`
+        # @return [Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata]
+        attr_accessor :model_level_meta_data
+      
         # The start offset of the video.
         # Corresponds to the JSON property `startOffset`
         # @return [String]
@@ -842,7 +899,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_offset = args[:end_offset] if args.key?(:end_offset)
+          @model_level_meta_data = args[:model_level_meta_data] if args.key?(:model_level_meta_data)
           @start_offset = args[:start_offset] if args.key?(:start_offset)
+        end
+      end
+      
+      # Internal only fields
+      class CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Frame rate to decode from this video.
+        # Corresponds to the JSON property `fps`
+        # @return [Float]
+        attr_accessor :fps
+      
+        # Number of frames to decode from this video.
+        # Corresponds to the JSON property `numFrames`
+        # @return [Fixnum]
+        attr_accessor :num_frames
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fps = args[:fps] if args.key?(:fps)
+          @num_frames = args[:num_frames] if args.key?(:num_frames)
         end
       end
       
@@ -907,7 +990,7 @@ module Google
       
         # Language filter result from SAFT LangId.
         # Corresponds to the JSON property `languageFilterResult`
-        # @return [Google::Apis::AiplatformV1::LearningServingLlmLanguageFilterResult]
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootLanguageFilterResult]
         attr_accessor :language_filter_result
       
         # The RAI signals for the text.
@@ -3878,6 +3961,13 @@ module Google
         # @return [String]
         attr_accessor :pipeline_job_id
       
+        # Optional. Whether to do component level validations before job creation.
+        # Currently we only support Google First Party Component/Pipelines.
+        # Corresponds to the JSON property `preflightValidations`
+        # @return [Boolean]
+        attr_accessor :preflight_validations
+        alias_method :preflight_validations?, :preflight_validations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3887,6 +3977,7 @@ module Google
           @parent = args[:parent] if args.key?(:parent)
           @pipeline_job = args[:pipeline_job] if args.key?(:pipeline_job)
           @pipeline_job_id = args[:pipeline_job_id] if args.key?(:pipeline_job_id)
+          @preflight_validations = args[:preflight_validations] if args.key?(:preflight_validations)
         end
       end
       
@@ -6522,8 +6613,15 @@ module Google
         # Models that predict multiple outputs, such as multiclass Models that predict
         # multiple classes, each element explains one specific item. Attribution.
         # output_index can be used to identify which output this attribution is
-        # explaining. If users set ExplanationParameters.top_k, the attributions are
-        # sorted by instance_output_value in descending order. If ExplanationParameters.
+        # explaining. By default, we provide Shapley values for the predicted class.
+        # However, you can configure the explanation request to generate Shapley values
+        # for any other classes too. For example, if a model predicts a probability of `
+        # 0.4` for approving a loan application, the model's decision is to reject the
+        # application since `p(reject) = 0.6 > p(approve) = 0.4`, and the default
+        # Shapley values would be computed for rejection decision and not approval, even
+        # though the latter might be the positive class. If users set
+        # ExplanationParameters.top_k, the attributions are sorted by
+        # instance_output_value in descending order. If ExplanationParameters.
         # output_indices is specified, the attributions are stored by Attribution.
         # output_index in the same order as they appear in the output_indices.
         # Corresponds to the JSON property `attributions`
@@ -10390,6 +10488,12 @@ module Google
         # @return [String]
         attr_accessor :match_grpc_address
       
+        # Output only. PscAutomatedEndpoints is populated if private service connect is
+        # enabled if PscAutomatedConfig is set.
+        # Corresponds to the JSON property `pscAutomatedEndpoints`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscAutomatedEndpoints>]
+        attr_accessor :psc_automated_endpoints
+      
         # Output only. The name of the service attachment resource. Populated if private
         # service connect is enabled.
         # Corresponds to the JSON property `serviceAttachment`
@@ -10403,6 +10507,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @match_grpc_address = args[:match_grpc_address] if args.key?(:match_grpc_address)
+          @psc_automated_endpoints = args[:psc_automated_endpoints] if args.key?(:psc_automated_endpoints)
           @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
         end
       end
@@ -15655,6 +15760,11 @@ module Google
       class GoogleCloudAiplatformV1PipelineJobRuntimeConfig
         include Google::Apis::Core::Hashable
       
+        # The default runtime for the PipelineJob.
+        # Corresponds to the JSON property `defaultRuntime`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime]
+        attr_accessor :default_runtime
+      
         # Represents the failure policy of a pipeline. Currently, the default of a
         # pipeline is that the pipeline will continue to run until no more tasks can be
         # executed, also known as PIPELINE_FAILURE_POLICY_FAIL_SLOW. However, if a
@@ -15705,11 +15815,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_runtime = args[:default_runtime] if args.key?(:default_runtime)
           @failure_policy = args[:failure_policy] if args.key?(:failure_policy)
           @gcs_output_directory = args[:gcs_output_directory] if args.key?(:gcs_output_directory)
           @input_artifacts = args[:input_artifacts] if args.key?(:input_artifacts)
           @parameter_values = args[:parameter_values] if args.key?(:parameter_values)
           @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # The default runtime for the PipelineJob.
+      class GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime
+        include Google::Apis::Core::Hashable
+      
+        # Persistent resource based runtime detail. For more information, refer to https:
+        # //cloud.google.com/vertex-ai/docs/training/persistent-resource-overview
+        # Corresponds to the JSON property `persistentResourceRuntimeDetail`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail]
+        attr_accessor :persistent_resource_runtime_detail
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @persistent_resource_runtime_detail = args[:persistent_resource_runtime_detail] if args.key?(:persistent_resource_runtime_detail)
         end
       end
       
@@ -15732,6 +15863,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @artifact_id = args[:artifact_id] if args.key?(:artifact_id)
+        end
+      end
+      
+      # Persistent resource based runtime detail. For more information, refer to https:
+      # //cloud.google.com/vertex-ai/docs/training/persistent-resource-overview
+      class GoogleCloudAiplatformV1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail
+        include Google::Apis::Core::Hashable
+      
+        # Persistent resource name. Format: `projects/`project`/locations/`location`/
+        # persistentResources/`persistent_resource``
+        # Corresponds to the JSON property `persistentResourceName`
+        # @return [String]
+        attr_accessor :persistent_resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @persistent_resource_name = args[:persistent_resource_name] if args.key?(:persistent_resource_name)
         end
       end
       
@@ -16381,6 +16533,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @command = args[:command] if args.key?(:command)
+        end
+      end
+      
+      # PscAutomatedEndpoints defines the output of the forwarding rule automatically
+      # created by each PscAutomationConfig.
+      class GoogleCloudAiplatformV1PscAutomatedEndpoints
+        include Google::Apis::Core::Hashable
+      
+        # Ip Address created by the automated forwarding rule.
+        # Corresponds to the JSON property `matchAddress`
+        # @return [String]
+        attr_accessor :match_address
+      
+        # Corresponding network in pscAutomationConfigs.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Corresponding project_id in pscAutomationConfigs
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @match_address = args[:match_address] if args.key?(:match_address)
+          @network = args[:network] if args.key?(:network)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       
@@ -24643,6 +24827,40 @@ module Google
         end
       end
       
+      # Request message for PredictionService.StreamRawPredict.
+      class GoogleCloudAiplatformV1StreamRawPredictRequest
+        include Google::Apis::Core::Hashable
+      
+        # Message that represents an arbitrary HTTP body. It should only be used for
+        # payload formats that can't be represented as JSON, such as raw binary or an
+        # HTML page. This message can be used both in streaming and non-streaming API
+        # methods in the request as well as the response. It can be used as a top-level
+        # request field, which is convenient if one wants to extract parameters from
+        # either the URL or HTTP template into the request fields and also want access
+        # to the raw HTTP body. Example: message GetResourceRequest ` // A unique
+        # request id. string request_id = 1; // The raw HTTP body is bound to this field.
+        # google.api.HttpBody http_body = 2; ` service ResourceService ` rpc
+        # GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+        # UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); ` Example
+        # with streaming methods: service CaldavService ` rpc GetCalendar(stream google.
+        # api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream
+        # google.api.HttpBody) returns (stream google.api.HttpBody); ` Use of this type
+        # only changes how the request and response bodies are handled, all other
+        # features will continue to work unchanged.
+        # Corresponds to the JSON property `httpBody`
+        # @return [Google::Apis::AiplatformV1::GoogleApiHttpBody]
+        attr_accessor :http_body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_body = args[:http_body] if args.key?(:http_body)
+        end
+      end
+      
       # Request message for PredictionService.StreamingPredict. The first message must
       # contain endpoint field and optionally input. The subsequent messages must
       # contain input.
@@ -27725,7 +27943,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -28386,7 +28607,7 @@ module Google
       # fields are most applicable for that document's datasource. For example, a
       # Wikipedia article's attribution is in the form of its article title, a website
       # is in the form of a URL, and a Github repo is in the form of a repo name. Next
-      # id:28
+      # id: 30
       class LanguageLabsAidaTrustRecitationProtoDocAttribution
         include Google::Apis::Core::Hashable
       
@@ -28409,6 +28630,12 @@ module Google
         # Corresponds to the JSON property `bibkey`
         # @return [String]
         attr_accessor :bibkey
+      
+        # ID of the paper in bioarxiv like ddoi.org/`biorxiv_id` eg: https://doi.org/10.
+        # 1101/343517
+        # Corresponds to the JSON property `biorxivId`
+        # @return [String]
+        attr_accessor :biorxiv_id
       
         # 
         # Corresponds to the JSON property `bookTitle`
@@ -28550,6 +28777,11 @@ module Google
         # @return [String]
         attr_accessor :wikipedia_article_title
       
+        # The unique video id from Youtube. Example: AkoGsW52Ir0
+        # Corresponds to the JSON property `youtubeVideoId`
+        # @return [String]
+        attr_accessor :youtube_video_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -28560,6 +28792,7 @@ module Google
           @arxiv_id = args[:arxiv_id] if args.key?(:arxiv_id)
           @author = args[:author] if args.key?(:author)
           @bibkey = args[:bibkey] if args.key?(:bibkey)
+          @biorxiv_id = args[:biorxiv_id] if args.key?(:biorxiv_id)
           @book_title = args[:book_title] if args.key?(:book_title)
           @book_volume_id = args[:book_volume_id] if args.key?(:book_volume_id)
           @category = args[:category] if args.key?(:category)
@@ -28583,6 +28816,7 @@ module Google
           @url = args[:url] if args.key?(:url)
           @volume_id = args[:volume_id] if args.key?(:volume_id)
           @wikipedia_article_title = args[:wikipedia_article_title] if args.key?(:wikipedia_article_title)
+          @youtube_video_id = args[:youtube_video_id] if args.key?(:youtube_video_id)
         end
       end
       
@@ -28638,7 +28872,7 @@ module Google
         # fields are most applicable for that document's datasource. For example, a
         # Wikipedia article's attribution is in the form of its article title, a website
         # is in the form of a URL, and a Github repo is in the form of a repo name. Next
-        # id:28
+        # id: 30
         # Corresponds to the JSON property `docAttribution`
         # @return [Google::Apis::AiplatformV1::LanguageLabsAidaTrustRecitationProtoDocAttribution]
         attr_accessor :doc_attribution
@@ -28733,7 +28967,7 @@ module Google
       # fields are most applicable for that document's datasource. For example, a
       # Wikipedia article's attribution is in the form of its article title, a website
       # is in the form of a URL, and a Github repo is in the form of a repo name. Next
-      # id: 28
+      # id: 30
       class LearningGenaiRecitationDocAttribution
         include Google::Apis::Core::Hashable
       
@@ -28756,6 +28990,12 @@ module Google
         # Corresponds to the JSON property `bibkey`
         # @return [String]
         attr_accessor :bibkey
+      
+        # ID of the paper in bioarxiv like ddoi.org/`biorxiv_id` eg: https://doi.org/10.
+        # 1101/343517
+        # Corresponds to the JSON property `biorxivId`
+        # @return [String]
+        attr_accessor :biorxiv_id
       
         # 
         # Corresponds to the JSON property `bookTitle`
@@ -28892,6 +29132,11 @@ module Google
         # @return [String]
         attr_accessor :wikipedia_article_title
       
+        # 
+        # Corresponds to the JSON property `youtubeVideoId`
+        # @return [String]
+        attr_accessor :youtube_video_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -28902,6 +29147,7 @@ module Google
           @arxiv_id = args[:arxiv_id] if args.key?(:arxiv_id)
           @author = args[:author] if args.key?(:author)
           @bibkey = args[:bibkey] if args.key?(:bibkey)
+          @biorxiv_id = args[:biorxiv_id] if args.key?(:biorxiv_id)
           @book_title = args[:book_title] if args.key?(:book_title)
           @book_volume_id = args[:book_volume_id] if args.key?(:book_volume_id)
           @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
@@ -28924,6 +29170,7 @@ module Google
           @url = args[:url] if args.key?(:url)
           @volume_id = args[:volume_id] if args.key?(:volume_id)
           @wikipedia_article_title = args[:wikipedia_article_title] if args.key?(:wikipedia_article_title)
+          @youtube_video_id = args[:youtube_video_id] if args.key?(:youtube_video_id)
         end
       end
       
@@ -28979,7 +29226,7 @@ module Google
         # fields are most applicable for that document's datasource. For example, a
         # Wikipedia article's attribution is in the form of its article title, a website
         # is in the form of a URL, and a Github repo is in the form of a repo name. Next
-        # id: 28
+        # id: 30
         # Corresponds to the JSON property `docAttribution`
         # @return [Google::Apis::AiplatformV1::LearningGenaiRecitationDocAttribution]
         attr_accessor :doc_attribution
@@ -29246,7 +29493,7 @@ module Google
       
         # 
         # Corresponds to the JSON property `languageFilterResult`
-        # @return [Google::Apis::AiplatformV1::LearningServingLlmLanguageFilterResult]
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootLanguageFilterResult]
         attr_accessor :language_filter_result
       
         # This is per harm.
@@ -29295,6 +29542,79 @@ module Google
           @stream_recitation_result = args[:stream_recitation_result] if args.key?(:stream_recitation_result)
           @takedown_result = args[:takedown_result] if args.key?(:takedown_result)
           @toxicity_result = args[:toxicity_result] if args.key?(:toxicity_result)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootGroundingMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `citations`
+        # @return [Array<Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadataCitation>]
+        attr_accessor :citations
+      
+        # True if grounding is cancelled, for example, no facts being retrieved.
+        # Corresponds to the JSON property `groundingCancelled`
+        # @return [Boolean]
+        attr_accessor :grounding_cancelled
+        alias_method :grounding_cancelled?, :grounding_cancelled
+      
+        # 
+        # Corresponds to the JSON property `searchQueries`
+        # @return [Array<String>]
+        attr_accessor :search_queries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @citations = args[:citations] if args.key?(:citations)
+          @grounding_cancelled = args[:grounding_cancelled] if args.key?(:grounding_cancelled)
+          @search_queries = args[:search_queries] if args.key?(:search_queries)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootGroundingMetadataCitation
+        include Google::Apis::Core::Hashable
+      
+        # Index in the prediction output where the citation ends (exclusive). Must be >
+        # start_index and < len(output).
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # Index of the fact supporting this claim. Should be within the range of the `
+        # world_facts` in the GenerateResponse.
+        # Corresponds to the JSON property `factIndex`
+        # @return [Fixnum]
+        attr_accessor :fact_index
+      
+        # Confidence score of this entailment. Value is [0,1] with 1 is the most
+        # confidence.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # Index in the prediction output where the citation starts (inclusive). Must be >
+        # = 0 and < end_index.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @fact_index = args[:fact_index] if args.key?(:fact_index)
+          @score = args[:score] if args.key?(:score)
+          @start_index = args[:start_index] if args.key?(:start_index)
         end
       end
       
@@ -29532,6 +29852,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @scored_tokens = args[:scored_tokens] if args.key?(:scored_tokens)
+        end
+      end
+      
+      # 
+      class LearningGenaiRootLanguageFilterResult
+        include Google::Apis::Core::Hashable
+      
+        # False when query or response should be filtered out due to unsupported
+        # language.
+        # Corresponds to the JSON property `allowed`
+        # @return [Boolean]
+        attr_accessor :allowed
+        alias_method :allowed?, :allowed
+      
+        # Language of the query or response.
+        # Corresponds to the JSON property `detectedLanguage`
+        # @return [String]
+        attr_accessor :detected_language
+      
+        # Probability of the language predicted as returned by LangID.
+        # Corresponds to the JSON property `detectedLanguageProbability`
+        # @return [Float]
+        attr_accessor :detected_language_probability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed = args[:allowed] if args.key?(:allowed)
+          @detected_language = args[:detected_language] if args.key?(:detected_language)
+          @detected_language_probability = args[:detected_language_probability] if args.key?(:detected_language_probability)
         end
       end
       
@@ -30249,39 +30602,6 @@ module Google
         end
       end
       
-      # 
-      class LearningServingLlmLanguageFilterResult
-        include Google::Apis::Core::Hashable
-      
-        # False when query or response should be filtered out due to unsupported
-        # language.
-        # Corresponds to the JSON property `allowed`
-        # @return [Boolean]
-        attr_accessor :allowed
-        alias_method :allowed?, :allowed
-      
-        # Language of the query or response.
-        # Corresponds to the JSON property `detectedLanguage`
-        # @return [String]
-        attr_accessor :detected_language
-      
-        # Probability of the language predicted as returned by LangID.
-        # Corresponds to the JSON property `detectedLanguageProbability`
-        # @return [Float]
-        attr_accessor :detected_language_probability
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @allowed = args[:allowed] if args.key?(:allowed)
-          @detected_language = args[:detected_language] if args.key?(:detected_language)
-          @detected_language_probability = args[:detected_language_probability] if args.key?(:detected_language_probability)
-        end
-      end
-      
       # LINT.IfChange This metadata contains additional information required for
       # debugging.
       class LearningServingLlmMessageMetadata
@@ -30319,6 +30639,11 @@ module Google
         # Corresponds to the JSON property `finishReason`
         # @return [String]
         attr_accessor :finish_reason
+      
+        # 
+        # Corresponds to the JSON property `groundingMetadata`
+        # @return [Google::Apis::AiplatformV1::LearningGenaiRootGroundingMetadata]
+        attr_accessor :grounding_metadata
       
         # Applies to Response message only. Indicates whether the message is a fallback
         # and the response would have otherwise been empty.
@@ -30417,6 +30742,7 @@ module Google
           @filter_meta = args[:filter_meta] if args.key?(:filter_meta)
           @final_message_score = args[:final_message_score] if args.key?(:final_message_score)
           @finish_reason = args[:finish_reason] if args.key?(:finish_reason)
+          @grounding_metadata = args[:grounding_metadata] if args.key?(:grounding_metadata)
           @is_fallback = args[:is_fallback] if args.key?(:is_fallback)
           @langid_result = args[:langid_result] if args.key?(:langid_result)
           @language = args[:language] if args.key?(:language)

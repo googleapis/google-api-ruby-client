@@ -3662,6 +3662,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # 
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1StreamRawPredictRequest] google_cloud_aiplatform_v1_stream_raw_predict_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_endpoint_raw_predict(endpoint, google_cloud_aiplatform_v1_stream_raw_predict_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+endpoint}:streamRawPredict', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1StreamRawPredictRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_stream_raw_predict_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleApiHttpBody
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Undeploys a Model from an Endpoint, removing a DeployedModel from it, and
         # freeing all resources it's using.
         # @param [String] endpoint
@@ -4609,7 +4643,7 @@ module Google
         # Creates a new FeatureOnlineStore in a given project and location.
         # @param [String] parent
         #   Required. The resource name of the Location to create FeatureOnlineStores.
-        #   Format: `projects/`project`/locations/`location`'`
+        #   Format: `projects/`project`/locations/`location``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureOnlineStore] google_cloud_aiplatform_v1_feature_online_store_object
         # @param [String] feature_online_store_id
         #   Required. The ID to use for this FeatureOnlineStore, which will become the
@@ -13497,6 +13531,9 @@ module Google
         #   the PipelineJob name. If not provided, an ID will be automatically generated.
         #   This value should be less than 128 characters, and valid characters are `/a-z-/
         #   `.
+        # @param [Boolean] preflight_validations
+        #   Optional. Whether to do component level validations before job creation.
+        #   Currently we only support Google First Party Component/Pipelines.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13514,7 +13551,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_pipeline_job(parent, google_cloud_aiplatform_v1_pipeline_job_object = nil, pipeline_job_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_pipeline_job(parent, google_cloud_aiplatform_v1_pipeline_job_object = nil, pipeline_job_id: nil, preflight_validations: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/pipelineJobs', options)
           command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJob::Representation
           command.request_object = google_cloud_aiplatform_v1_pipeline_job_object
@@ -13522,6 +13559,7 @@ module Google
           command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PipelineJob
           command.params['parent'] = parent unless parent.nil?
           command.query['pipelineJobId'] = pipeline_job_id unless pipeline_job_id.nil?
+          command.query['preflightValidations'] = preflight_validations unless preflight_validations.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -14048,6 +14086,40 @@ module Google
           command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentResponse
           command.params['model'] = model unless model.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # 
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1StreamRawPredictRequest] google_cloud_aiplatform_v1_stream_raw_predict_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_publisher_model_raw_predict(endpoint, google_cloud_aiplatform_v1_stream_raw_predict_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+endpoint}:streamRawPredict', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1StreamRawPredictRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_stream_raw_predict_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleApiHttpBody
+          command.params['endpoint'] = endpoint unless endpoint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
