@@ -625,17 +625,13 @@ module Google
         # @return [String]
         attr_accessor :reserved_ip_range
       
-        # Optional. Output only. Reserved for future use. Zone Isolation compliance
-        # state of the instance. Field name and documentation is obfuscated according to
-        # go/per-resource-zi-bit-semantics.
+        # Optional. Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
         attr_accessor :satisfies_pzi
         alias_method :satisfies_pzi?, :satisfies_pzi
       
-        # Optional. Output only. Reserved for future use. Zone Separation compliance
-        # state of the instance. Field name and documentation is obfuscated according to
-        # go/zs-resource-status.
+        # Optional. Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
