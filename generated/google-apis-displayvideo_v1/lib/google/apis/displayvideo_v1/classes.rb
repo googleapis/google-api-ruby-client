@@ -2604,6 +2604,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :cm_account_id
       
+        # Output only. The set of CM360 Advertiser IDs sharing the CM360 Floodlight
+        # configuration.
+        # Corresponds to the JSON property `cmAdvertiserIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :cm_advertiser_ids
+      
         # Required. Immutable. ID of the CM360 Floodlight configuration linked with the
         # DV360 advertiser.
         # Corresponds to the JSON property `cmFloodlightConfigId`
@@ -2645,6 +2651,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cm_account_id = args[:cm_account_id] if args.key?(:cm_account_id)
+          @cm_advertiser_ids = args[:cm_advertiser_ids] if args.key?(:cm_advertiser_ids)
           @cm_floodlight_config_id = args[:cm_floodlight_config_id] if args.key?(:cm_floodlight_config_id)
           @cm_floodlight_linking_authorized = args[:cm_floodlight_linking_authorized] if args.key?(:cm_floodlight_linking_authorized)
           @cm_syncable_site_ids = args[:cm_syncable_site_ids] if args.key?(:cm_syncable_site_ids)
