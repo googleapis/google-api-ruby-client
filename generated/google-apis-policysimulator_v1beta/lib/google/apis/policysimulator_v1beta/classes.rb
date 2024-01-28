@@ -570,20 +570,21 @@ module Google
       class GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlay
         include Google::Apis::Core::Hashable
       
-        # The OrgPolicy CustomConstraint changes to preview violations for. Any existing
-        # CustomConstraints with the same name will be overridden in the simulation.
-        # That is, violations will be determined as if all custom constraints in the
-        # overlay were instantiated. Only a single custom_constraint is supported in the
-        # overlay at a time. For evaluating multiple constraints, multiple `
-        # GenerateOrgPolicyViolationsPreview` requests are made, where each request
-        # evaluates a single constraint.
+        # Optional. The OrgPolicy CustomConstraint changes to preview violations for.
+        # Any existing CustomConstraints with the same name will be overridden in the
+        # simulation. That is, violations will be determined as if all custom
+        # constraints in the overlay were instantiated. Only a single custom_constraint
+        # is supported in the overlay at a time. For evaluating multiple constraints,
+        # multiple `GenerateOrgPolicyViolationsPreview` requests are made, where each
+        # request evaluates a single constraint.
         # Corresponds to the JSON property `customConstraints`
         # @return [Array<Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayCustomConstraintOverlay>]
         attr_accessor :custom_constraints
       
-        # The OrgPolicy changes to preview violations for. Any existing OrgPolicies with
-        # the same name will be overridden in the simulation. That is, violations will
-        # be determined as if all policies in the overlay were created or updated.
+        # Optional. The OrgPolicy changes to preview violations for. Any existing
+        # OrgPolicies with the same name will be overridden in the simulation. That is,
+        # violations will be determined as if all policies in the overlay were created
+        # or updated.
         # Corresponds to the JSON property `policies`
         # @return [Array<Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayPolicyOverlay>]
         attr_accessor :policies
@@ -611,7 +612,8 @@ module Google
         # @return [Google::Apis::PolicysimulatorV1beta::GoogleCloudOrgpolicyV2CustomConstraint]
         attr_accessor :custom_constraint
       
-        # Resource the constraint is attached to. Example: "organization/987654"
+        # Optional. Resource the constraint is attached to. Example: "organization/
+        # 987654"
         # Corresponds to the JSON property `customConstraintParent`
         # @return [String]
         attr_accessor :custom_constraint_parent
@@ -637,7 +639,8 @@ module Google
         # @return [Google::Apis::PolicysimulatorV1beta::GoogleCloudOrgpolicyV2Policy]
         attr_accessor :policy
       
-        # The parent of the policy we are attaching to. Example: "projects/123456"
+        # Optional. The parent of the policy we are attaching to. Example: "projects/
+        # 123456"
         # Corresponds to the JSON property `policyParent`
         # @return [String]
         attr_accessor :policy_parent
@@ -733,29 +736,29 @@ module Google
       class GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreviewResourceCounts
         include Google::Apis::Core::Hashable
       
-        # Number of scanned resources with zero violations.
+        # Output only. Number of scanned resources with zero violations.
         # Corresponds to the JSON property `compliant`
         # @return [Fixnum]
         attr_accessor :compliant
       
-        # Number of resources that returned an error when scanned.
+        # Output only. Number of resources that returned an error when scanned.
         # Corresponds to the JSON property `errors`
         # @return [Fixnum]
         attr_accessor :errors
       
-        # Number of scanned resources with at least one violation.
+        # Output only. Number of scanned resources with at least one violation.
         # Corresponds to the JSON property `noncompliant`
         # @return [Fixnum]
         attr_accessor :noncompliant
       
-        # Number of resources checked for compliance. Must equal: unenforced +
-        # noncompliant + compliant + error
+        # Output only. Number of resources checked for compliance. Must equal:
+        # unenforced + noncompliant + compliant + error
         # Corresponds to the JSON property `scanned`
         # @return [Fixnum]
         attr_accessor :scanned
       
-        # Number of resources where the constraint was not enforced, i.e. the Policy set
-        # `enforced: false` for that resource.
+        # Output only. Number of resources where the constraint was not enforced, i.e.
+        # the Policy set `enforced: false` for that resource.
         # Corresponds to the JSON property `unenforced`
         # @return [Fixnum]
         attr_accessor :unenforced
@@ -1250,20 +1253,21 @@ module Google
       class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay
         include Google::Apis::Core::Hashable
       
-        # The OrgPolicy CustomConstraint changes to preview violations for. Any existing
-        # CustomConstraints with the same name will be overridden in the simulation.
-        # That is, violations will be determined as if all custom constraints in the
-        # overlay were instantiated. Only a single custom_constraint is supported in the
-        # overlay at a time. For evaluating multiple constraints, multiple `
-        # GenerateOrgPolicyViolationsPreview` requests are made, where each request
-        # evaluates a single constraint.
+        # Optional. The OrgPolicy CustomConstraint changes to preview violations for.
+        # Any existing CustomConstraints with the same name will be overridden in the
+        # simulation. That is, violations will be determined as if all custom
+        # constraints in the overlay were instantiated. Only a single custom_constraint
+        # is supported in the overlay at a time. For evaluating multiple constraints,
+        # multiple `GenerateOrgPolicyViolationsPreview` requests are made, where each
+        # request evaluates a single constraint.
         # Corresponds to the JSON property `customConstraints`
         # @return [Array<Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>]
         attr_accessor :custom_constraints
       
-        # The OrgPolicy changes to preview violations for. Any existing OrgPolicies with
-        # the same name will be overridden in the simulation. That is, violations will
-        # be determined as if all policies in the overlay were created or updated.
+        # Optional. The OrgPolicy changes to preview violations for. Any existing
+        # OrgPolicies with the same name will be overridden in the simulation. That is,
+        # violations will be determined as if all policies in the overlay were created
+        # or updated.
         # Corresponds to the JSON property `policies`
         # @return [Array<Google::Apis::PolicysimulatorV1beta::GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay>]
         attr_accessor :policies
@@ -1291,7 +1295,8 @@ module Google
         # @return [Google::Apis::PolicysimulatorV1beta::GoogleCloudOrgpolicyV2CustomConstraint]
         attr_accessor :custom_constraint
       
-        # Resource the constraint is attached to. Example: "organization/987654"
+        # Optional. Resource the constraint is attached to. Example: "organization/
+        # 987654"
         # Corresponds to the JSON property `customConstraintParent`
         # @return [String]
         attr_accessor :custom_constraint_parent
@@ -1317,7 +1322,8 @@ module Google
         # @return [Google::Apis::PolicysimulatorV1beta::GoogleCloudOrgpolicyV2Policy]
         attr_accessor :policy
       
-        # The parent of the policy we are attaching to. Example: "projects/123456"
+        # Optional. The parent of the policy we are attaching to. Example: "projects/
+        # 123456"
         # Corresponds to the JSON property `policyParent`
         # @return [String]
         attr_accessor :policy_parent
@@ -1462,29 +1468,29 @@ module Google
       class GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts
         include Google::Apis::Core::Hashable
       
-        # Number of scanned resources with zero violations.
+        # Output only. Number of scanned resources with zero violations.
         # Corresponds to the JSON property `compliant`
         # @return [Fixnum]
         attr_accessor :compliant
       
-        # Number of resources that returned an error when scanned.
+        # Output only. Number of resources that returned an error when scanned.
         # Corresponds to the JSON property `errors`
         # @return [Fixnum]
         attr_accessor :errors
       
-        # Number of scanned resources with at least one violation.
+        # Output only. Number of scanned resources with at least one violation.
         # Corresponds to the JSON property `noncompliant`
         # @return [Fixnum]
         attr_accessor :noncompliant
       
-        # Number of resources checked for compliance. Must equal: unenforced +
-        # noncompliant + compliant + error
+        # Output only. Number of resources checked for compliance. Must equal:
+        # unenforced + noncompliant + compliant + error
         # Corresponds to the JSON property `scanned`
         # @return [Fixnum]
         attr_accessor :scanned
       
-        # Number of resources where the constraint was not enforced, i.e. the Policy set
-        # `enforced: false` for that resource.
+        # Output only. Number of resources where the constraint was not enforced, i.e.
+        # the Policy set `enforced: false` for that resource.
         # Corresponds to the JSON property `unenforced`
         # @return [Fixnum]
         attr_accessor :unenforced
@@ -1929,7 +1935,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
