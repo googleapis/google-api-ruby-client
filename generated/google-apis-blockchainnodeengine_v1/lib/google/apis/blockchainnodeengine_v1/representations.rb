@@ -129,6 +129,7 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :private_service_connect_enabled, as: 'privateServiceConnectEnabled'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
