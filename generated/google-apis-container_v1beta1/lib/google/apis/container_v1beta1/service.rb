@@ -373,8 +373,6 @@ module Google
         end
         
         # Gets the public component of the cluster signing keys in JSON Web Key format.
-        # This API is not yet intended for general use, and is not available for all
-        # clusters.
         # @param [String] parent
         #   The cluster (project, location, cluster name) to get keys for. Specified in
         #   the format `projects/*/locations/*/clusters/*`.
@@ -1251,8 +1249,7 @@ module Google
         
         # Gets the OIDC discovery document for the cluster. See the [OpenID Connect
         # Discovery 1.0 specification](https://openid.net/specs/openid-connect-discovery-
-        # 1_0.html) for details. This API is not yet intended for general use, and is
-        # not available for all clusters.
+        # 1_0.html) for details.
         # @param [String] parent
         #   The cluster (project, location, cluster name) to get the discovery document
         #   for. Specified in the format `projects/*/locations/*/clusters/*`.
