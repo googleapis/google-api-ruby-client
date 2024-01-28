@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DpcMigrationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -400,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMigrationTokensResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -491,6 +503,12 @@ module Google
       end
       
       class MemoryInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MigrationToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1159,6 +1177,8 @@ module Google
       
           collection :displays, as: 'displays', class: Google::Apis::AndroidmanagementV1::DisplayProp, decorator: Google::Apis::AndroidmanagementV1::DisplayProp::Representation
       
+          property :dpc_migration_info, as: 'dpcMigrationInfo', class: Google::Apis::AndroidmanagementV1::DpcMigrationInfo, decorator: Google::Apis::AndroidmanagementV1::DpcMigrationInfo::Representation
+      
           property :enrollment_time, as: 'enrollmentTime'
           property :enrollment_token_data, as: 'enrollmentTokenData'
           property :enrollment_token_name, as: 'enrollmentTokenName'
@@ -1251,6 +1271,14 @@ module Google
           collection :ip_addresses, as: 'ipAddresses'
           property :package_name, as: 'packageName'
           property :total_ip_addresses_returned, :numeric_string => true, as: 'totalIpAddressesReturned'
+        end
+      end
+      
+      class DpcMigrationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_data, as: 'additionalData'
+          property :previous_dpc, as: 'previousDpc'
         end
       end
       
@@ -1495,6 +1523,15 @@ module Google
         end
       end
       
+      class ListMigrationTokensResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :migration_tokens, as: 'migrationTokens', class: Google::Apis::AndroidmanagementV1::MigrationToken, decorator: Google::Apis::AndroidmanagementV1::MigrationToken::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1624,6 +1661,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :total_internal_storage, :numeric_string => true, as: 'totalInternalStorage'
           property :total_ram, :numeric_string => true, as: 'totalRam'
+        end
+      end
+      
+      class MigrationToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_data, as: 'additionalData'
+          property :create_time, as: 'createTime'
+          property :device, as: 'device'
+          property :device_id, as: 'deviceId'
+          property :expire_time, as: 'expireTime'
+          property :management_mode, as: 'managementMode'
+          property :name, as: 'name'
+          property :policy, as: 'policy'
+          property :ttl, as: 'ttl'
+          property :user_id, as: 'userId'
+          property :value, as: 'value'
         end
       end
       

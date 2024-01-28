@@ -753,6 +753,114 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a migration token, to migrate an existing device from being managed by
+        # the EMM's Device Policy Controller (DPC) to being managed by the Android
+        # Management API.
+        # @param [String] parent
+        #   Required. The enterprise in which this migration token will be created. Format:
+        #   enterprises/`enterprise`
+        # @param [Google::Apis::AndroidmanagementV1::MigrationToken] migration_token_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidmanagementV1::MigrationToken] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidmanagementV1::MigrationToken]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_enterprise_migration_token(parent, migration_token_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/migrationTokens', options)
+          command.request_representation = Google::Apis::AndroidmanagementV1::MigrationToken::Representation
+          command.request_object = migration_token_object
+          command.response_representation = Google::Apis::AndroidmanagementV1::MigrationToken::Representation
+          command.response_class = Google::Apis::AndroidmanagementV1::MigrationToken
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a migration token.
+        # @param [String] name
+        #   Required. The name of the migration token to retrieve. Format: enterprises/`
+        #   enterprise`/migrationTokens/`migration_token`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidmanagementV1::MigrationToken] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidmanagementV1::MigrationToken]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_enterprise_migration_token(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AndroidmanagementV1::MigrationToken::Representation
+          command.response_class = Google::Apis::AndroidmanagementV1::MigrationToken
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists migration tokens.
+        # @param [String] parent
+        #   Required. The enterprise which the migration tokens belong to. Format:
+        #   enterprises/`enterprise`
+        # @param [Fixnum] page_size
+        #   The maximum number of migration tokens to return. Fewer migration tokens may
+        #   be returned. If unspecified, at most 100 migration tokens will be returned.
+        #   The maximum value is 100; values above 100 will be coerced to 100.
+        # @param [String] page_token
+        #   A page token, received from a previous ListMigrationTokens call. Provide this
+        #   to retrieve the subsequent page.When paginating, all other parameters provided
+        #   to ListMigrationTokens must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidmanagementV1::ListMigrationTokensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidmanagementV1::ListMigrationTokensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_enterprise_migration_tokens(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/migrationTokens', options)
+          command.response_representation = Google::Apis::AndroidmanagementV1::ListMigrationTokensResponse::Representation
+          command.response_class = Google::Apis::AndroidmanagementV1::ListMigrationTokensResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a policy. This operation is only permitted if no devices are currently
         # referencing the policy.
         # @param [String] name

@@ -1527,6 +1527,12 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::DisplayProp>]
         attr_accessor :displays
       
+        # Information related to whether this device was migrated from being managed by
+        # another Device Policy Controller (DPC).
+        # Corresponds to the JSON property `dpcMigrationInfo`
+        # @return [Google::Apis::AndroidmanagementV1::DpcMigrationInfo]
+        attr_accessor :dpc_migration_info
+      
         # The time of device enrollment.
         # Corresponds to the JSON property `enrollmentTime`
         # @return [String]
@@ -1695,6 +1701,7 @@ module Google
           @device_settings = args[:device_settings] if args.key?(:device_settings)
           @disabled_reason = args[:disabled_reason] if args.key?(:disabled_reason)
           @displays = args[:displays] if args.key?(:displays)
+          @dpc_migration_info = args[:dpc_migration_info] if args.key?(:dpc_migration_info)
           @enrollment_time = args[:enrollment_time] if args.key?(:enrollment_time)
           @enrollment_token_data = args[:enrollment_token_data] if args.key?(:enrollment_token_data)
           @enrollment_token_name = args[:enrollment_token_name] if args.key?(:enrollment_token_name)
@@ -1964,6 +1971,34 @@ module Google
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @package_name = args[:package_name] if args.key?(:package_name)
           @total_ip_addresses_returned = args[:total_ip_addresses_returned] if args.key?(:total_ip_addresses_returned)
+        end
+      end
+      
+      # Information related to whether this device was migrated from being managed by
+      # another Device Policy Controller (DPC).
+      class DpcMigrationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. If this device was migrated from another DPC, the additionalData
+        # field of the migration token is populated here.
+        # Corresponds to the JSON property `additionalData`
+        # @return [String]
+        attr_accessor :additional_data
+      
+        # Output only. If this device was migrated from another DPC, this is its package
+        # name. Not populated otherwise.
+        # Corresponds to the JSON property `previousDpc`
+        # @return [String]
+        attr_accessor :previous_dpc
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_data = args[:additional_data] if args.key?(:additional_data)
+          @previous_dpc = args[:previous_dpc] if args.key?(:previous_dpc)
         end
       end
       
@@ -2915,6 +2950,32 @@ module Google
         end
       end
       
+      # Response to a request to list migration tokens for a given enterprise.
+      class ListMigrationTokensResponse
+        include Google::Apis::Core::Hashable
+      
+        # The migration tokens from the specified enterprise.
+        # Corresponds to the JSON property `migrationTokens`
+        # @return [Array<Google::Apis::AndroidmanagementV1::MigrationToken>]
+        attr_accessor :migration_tokens
+      
+        # A token, which can be sent as page_token to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @migration_tokens = args[:migration_tokens] if args.key?(:migration_tokens)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -3313,6 +3374,105 @@ module Google
         def update!(**args)
           @total_internal_storage = args[:total_internal_storage] if args.key?(:total_internal_storage)
           @total_ram = args[:total_ram] if args.key?(:total_ram)
+        end
+      end
+      
+      # A token to initiate the migration of a device from being managed by a third-
+      # party DPC to being managed by Android Management API. A migration token is
+      # valid only for a single device.
+      class MigrationToken
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Optional EMM-specified additional data. Once the device is migrated
+        # this will be populated in the migrationAdditionalData field of the Device
+        # resource. This must be at most 1024 characters.
+        # Corresponds to the JSON property `additionalData`
+        # @return [String]
+        attr_accessor :additional_data
+      
+        # Output only. Time when this migration token was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Once this migration token is used to migrate a device, the name
+        # of the resulting Device resource will be populated here, in the form
+        # enterprises/`enterprise`/devices/`device`.
+        # Corresponds to the JSON property `device`
+        # @return [String]
+        attr_accessor :device
+      
+        # Required. Immutable. The id of the device, as in the Play EMM API. This
+        # corresponds to the deviceId parameter in Play EMM API's Devices.get (https://
+        # developers.google.com/android/work/play/emm-api/v1/devices/get#parameters)
+        # call.
+        # Corresponds to the JSON property `deviceId`
+        # @return [String]
+        attr_accessor :device_id
+      
+        # Immutable. The time when this migration token expires. This can be at most
+        # seven days from the time of creation. The migration token is deleted seven
+        # days after it expires.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Required. Immutable. The management mode of the device or profile being
+        # migrated.
+        # Corresponds to the JSON property `managementMode`
+        # @return [String]
+        attr_accessor :management_mode
+      
+        # Output only. The name of the migration token, which is generated by the server
+        # during creation, in the form enterprises/`enterprise`/migrationTokens/`
+        # migration_token`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. The name of the policy initially applied to the enrolled
+        # device, in the form enterprises/`enterprise`/policies/`policy`.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        # Input only. The time that this migration token is valid for. This is input-
+        # only, and for returning a migration token the server will populate the
+        # expireTime field. This can be at most seven days. The default is seven days.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        # Required. Immutable. The user id of the Managed Google Play account on the
+        # device, as in the Play EMM API. This corresponds to the userId parameter in
+        # Play EMM API's Devices.get (https://developers.google.com/android/work/play/
+        # emm-api/v1/devices/get#parameters) call.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        # Output only. The value of the migration token.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_data = args[:additional_data] if args.key?(:additional_data)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @device = args[:device] if args.key?(:device)
+          @device_id = args[:device_id] if args.key?(:device_id)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @management_mode = args[:management_mode] if args.key?(:management_mode)
+          @name = args[:name] if args.key?(:name)
+          @policy = args[:policy] if args.key?(:policy)
+          @ttl = args[:ttl] if args.key?(:ttl)
+          @user_id = args[:user_id] if args.key?(:user_id)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
