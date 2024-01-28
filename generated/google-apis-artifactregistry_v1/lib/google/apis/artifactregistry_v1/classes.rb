@@ -221,7 +221,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -2000,6 +2003,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # 
+        # Corresponds to the JSON property `disallowUnspecifiedMode`
+        # @return [Boolean]
+        attr_accessor :disallow_unspecified_mode
+        alias_method :disallow_unspecified_mode?, :disallow_unspecified_mode
+      
         # DockerRepositoryConfig is docker related repository details. Provides
         # additional configuration details for repositories of the docker format type.
         # Corresponds to the JSON property `dockerConfig`
@@ -2082,6 +2091,7 @@ module Google
           @cleanup_policy_dry_run = args[:cleanup_policy_dry_run] if args.key?(:cleanup_policy_dry_run)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @disallow_unspecified_mode = args[:disallow_unspecified_mode] if args.key?(:disallow_unspecified_mode)
           @docker_config = args[:docker_config] if args.key?(:docker_config)
           @format = args[:format] if args.key?(:format)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
