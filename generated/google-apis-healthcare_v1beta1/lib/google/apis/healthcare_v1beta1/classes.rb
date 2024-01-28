@@ -645,10 +645,10 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Resource name of the Attribute definition, of the form `projects/`project_id`/
-        # locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
-        # attributeDefinitions/`attribute_definition_id``. Cannot be changed after
-        # creation.
+        # Identifier. Resource name of the Attribute definition, of the form `projects/`
+        # project_id`/locations/`location_id`/datasets/`dataset_id`/consentStores/`
+        # consent_store_id`/attributeDefinitions/`attribute_definition_id``. Cannot be
+        # changed after creation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1264,9 +1264,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Resource name of the Consent artifact, of the form `projects/`project_id`/
-        # locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
-        # consentArtifacts/`consent_artifact_id``. Cannot be changed after creation.
+        # Identifier. Resource name of the Consent artifact, of the form `projects/`
+        # project_id`/locations/`location_id`/datasets/`dataset_id`/consentStores/`
+        # consent_store_id`/consentArtifacts/`consent_artifact_id``. Cannot be changed
+        # after creation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1758,10 +1759,10 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::DeidentifyConfig]
         attr_accessor :config
       
-        # The name of the dataset resource to create and write the redacted data to. *
-        # The destination dataset must not exist. * The destination dataset must be in
-        # the same location as the source dataset. De-identifying data across multiple
-        # locations is not supported.
+        # Required. The name of the dataset resource to create and write the redacted
+        # data to. * The destination dataset must not exist. * The destination dataset
+        # must be in the same location as the source dataset. De-identifying data across
+        # multiple locations is not supported.
         # Corresponds to the JSON property `destinationDataset`
         # @return [String]
         attr_accessor :destination_dataset
@@ -1799,13 +1800,13 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::DeidentifyConfig]
         attr_accessor :config
       
-        # The name of the DICOM store to create and write the redacted data to. For
-        # example, `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        # dicomStores/`dicom_store_id``. * The destination dataset must exist. * The
-        # source dataset and destination dataset must both reside in the same location.
-        # De-identifying data across multiple locations is not supported. * The
-        # destination DICOM store must not exist. * The caller must have the necessary
-        # permissions to create the destination DICOM store.
+        # Required. The name of the DICOM store to create and write the redacted data to.
+        # For example, `projects/`project_id`/locations/`location_id`/datasets/`
+        # dataset_id`/dicomStores/`dicom_store_id``. * The destination dataset must
+        # exist. * The source dataset and destination dataset must both reside in the
+        # same location. De-identifying data across multiple locations is not supported.
+        # * The destination DICOM store must not exist. * The caller must have the
+        # necessary permissions to create the destination DICOM store.
         # Corresponds to the JSON property `destinationStore`
         # @return [String]
         attr_accessor :destination_store
@@ -1849,12 +1850,12 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::DeidentifyConfig]
         attr_accessor :config
       
-        # The name of the FHIR store to create and write the redacted data to. For
-        # example, `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        # fhirStores/`fhir_store_id``. * The destination dataset must exist. * The
-        # source dataset and destination dataset must both reside in the same location.
-        # De-identifying data across multiple locations is not supported. * The
-        # destination FHIR store must exist. * The caller must have the healthcare.
+        # Required. The name of the FHIR store to create and write the redacted data to.
+        # For example, `projects/`project_id`/locations/`location_id`/datasets/`
+        # dataset_id`/fhirStores/`fhir_store_id``. * The destination dataset must exist.
+        # * The source dataset and destination dataset must both reside in the same
+        # location. De-identifying data across multiple locations is not supported. *
+        # The destination FHIR store must exist. * The caller must have the healthcare.
         # fhirResources.update permission to write to the destination FHIR store.
         # Corresponds to the JSON property `destinationStore`
         # @return [String]
@@ -2045,8 +2046,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Resource name of the DICOM store, of the form `projects/`project_id`/locations/
-        # `location_id`/datasets/`dataset_id`/dicomStores/`dicom_store_id``.
+        # Identifier. Resource name of the DICOM store, of the form `projects/`
+        # project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
+        # dicom_store_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3066,8 +3068,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. Resource name of the FHIR store, of the form `projects/`
-        # project_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id``.
+        # Output only. Identifier. Resource name of the FHIR store, of the form `
+        # projects/`project_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3107,10 +3109,10 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::ValidationConfig]
         attr_accessor :validation_config
       
-        # Immutable. The FHIR specification version that this FHIR store supports
-        # natively. This field is immutable after store creation. Requests are rejected
-        # if they contain FHIR resources of a different version. Version is required for
-        # every FHIR store.
+        # Required. Immutable. The FHIR specification version that this FHIR store
+        # supports natively. This field is immutable after store creation. Requests are
+        # rejected if they contain FHIR resources of a different version. Version is
+        # required for every FHIR store.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -6432,11 +6434,11 @@ module Google
       class SearchResourcesRequest
         include Google::Apis::Core::Hashable
       
-        # The FHIR resource type to search, such as Patient or Observation. For a
-        # complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/implement/
-        # standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/implement/
-        # standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/implement/
-        # standards/fhir/R4/resourcelist.html)).
+        # Required. The FHIR resource type to search, such as Patient or Observation.
+        # For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/
+        # implement/standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/
+        # implement/standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/
+        # implement/standards/fhir/R4/resourcelist.html)).
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type

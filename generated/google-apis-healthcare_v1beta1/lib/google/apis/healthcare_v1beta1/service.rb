@@ -173,8 +173,8 @@ module Google
         # logged to Cloud Logging. For more information, see [Viewing error logs in
         # Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging).
         # @param [String] source_dataset
-        #   Source dataset resource name. For example, `projects/`project_id`/locations/`
-        #   location_id`/datasets/`dataset_id``.
+        #   Required. Source dataset resource name. For example, `projects/`project_id`/
+        #   locations/`location_id`/datasets/`dataset_id``.
         # @param [Google::Apis::HealthcareV1beta1::DeidentifyDatasetRequest] deidentify_dataset_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1709,10 +1709,10 @@ module Google
         
         # Updates the specified Attribute definition.
         # @param [String] name
-        #   Resource name of the Attribute definition, of the form `projects/`project_id`/
-        #   locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
-        #   attributeDefinitions/`attribute_definition_id``. Cannot be changed after
-        #   creation.
+        #   Identifier. Resource name of the Attribute definition, of the form `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/consentStores/`
+        #   consent_store_id`/attributeDefinitions/`attribute_definition_id``. Cannot be
+        #   changed after creation.
         # @param [Google::Apis::HealthcareV1beta1::AttributeDefinition] attribute_definition_object
         # @param [String] update_mask
         #   Required. The update mask that applies to the resource. For the `FieldMask`
@@ -2574,11 +2574,11 @@ module Google
         
         # Creates a new DICOM store within the parent dataset.
         # @param [String] parent
-        #   The name of the dataset this DICOM store belongs to.
+        #   Required. The name of the dataset this DICOM store belongs to.
         # @param [Google::Apis::HealthcareV1beta1::DicomStore] dicom_store_object
         # @param [String] dicom_store_id
-        #   The ID of the DICOM store that is being created. Any string value up to 256
-        #   characters in length.
+        #   Required. The ID of the DICOM store that is being created. Any string value up
+        #   to 256 characters in length.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2618,8 +2618,8 @@ module Google
         # are logged to Cloud Logging. For more information, see [Viewing error logs in
         # Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging).
         # @param [String] source_store
-        #   Source DICOM store resource name. For example, `projects/`project_id`/
-        #   locations/`location_id`/datasets/`dataset_id`/dicomStores/`dicom_store_id``.
+        #   Required. Source DICOM store resource name. For example, `projects/`project_id`
+        #   /locations/`location_id`/datasets/`dataset_id`/dicomStores/`dicom_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::DeidentifyDicomStoreRequest] deidentify_dicom_store_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2653,7 +2653,7 @@ module Google
         # Deletes the specified DICOM store and removes all images that are contained
         # within it.
         # @param [String] name
-        #   The resource name of the DICOM store to delete.
+        #   Required. The resource name of the DICOM store to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2686,8 +2686,8 @@ module Google
         # errors in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/
         # logging). The metadata field type is OperationMetadata.
         # @param [String] name
-        #   The DICOM store resource name from which to export the data. For example, `
-        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   Required. The DICOM store resource name from which to export the data. For
+        #   example, `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::ExportDicomDataRequest] export_dicom_data_request_object
         # @param [String] fields
@@ -2721,7 +2721,7 @@ module Google
         
         # Gets the specified DICOM store.
         # @param [String] name
-        #   The resource name of the DICOM store to get.
+        #   Required. The resource name of the DICOM store to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2751,7 +2751,7 @@ module Google
         
         # Gets metrics associated with the DICOM store.
         # @param [String] name
-        #   The resource name of the DICOM store to get metrics for.
+        #   Required. The resource name of the DICOM store to get metrics for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2829,9 +2829,9 @@ module Google
         # logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/
         # logging). The metadata field type is OperationMetadata.
         # @param [String] name
-        #   The name of the DICOM store resource into which the data is imported. For
-        #   example, `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``.
+        #   Required. The name of the DICOM store resource into which the data is imported.
+        #   For example, `projects/`project_id`/locations/`location_id`/datasets/`
+        #   dataset_id`/dicomStores/`dicom_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::ImportDicomDataRequest] import_dicom_data_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2864,7 +2864,7 @@ module Google
         
         # Lists the DICOM stores in the given dataset.
         # @param [String] parent
-        #   Name of the dataset.
+        #   Required. Name of the dataset.
         # @param [String] filter
         #   Restricts stores returned to those matching a filter. The following syntax is
         #   available: * A string field value can be written as text inside quotation
@@ -2925,8 +2925,9 @@ module Google
         
         # Updates the specified DICOM store.
         # @param [String] name
-        #   Resource name of the DICOM store, of the form `projects/`project_id`/locations/
-        #   `location_id`/datasets/`dataset_id`/dicomStores/`dicom_store_id``.
+        #   Identifier. Resource name of the DICOM store, of the form `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
+        #   dicom_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::DicomStore] dicom_store_object
         # @param [String] update_mask
         #   The update mask applies to the resource. For the `FieldMask` definition, see
@@ -2971,13 +2972,13 @@ module Google
         # see [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/
         # dicomweb#search-dicom).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the SearchForInstancesRequest DICOMweb request. For example, `
-        #   instances`, `series/`series_uid`/instances`, or `studies/`study_uid`/instances`
-        #   .
+        #   Required. The path of the SearchForInstancesRequest DICOMweb request. For
+        #   example, `instances`, `series/`series_uid`/instances`, or `studies/`study_uid`/
+        #   instances`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3014,12 +3015,12 @@ module Google
         # SearchForSeries, see [Search for DICOM data](https://cloud.google.com/
         # healthcare/docs/how-tos/dicomweb#search-dicom).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the SearchForSeries DICOMweb request. For example, `series` or `
-        #   studies/`study_uid`/series`.
+        #   Required. The path of the SearchForSeries DICOMweb request. For example, `
+        #   series` or `studies/`study_uid`/series`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3056,11 +3057,12 @@ module Google
         # to call SearchForStudies, see [Search for DICOM data](https://cloud.google.com/
         # healthcare/docs/how-tos/dicomweb#search-dicom).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the SearchForStudies DICOMweb request. For example, `studies`.
+        #   Required. The path of the SearchForStudies DICOMweb request. For example, `
+        #   studies`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3177,12 +3179,12 @@ module Google
         # Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#
         # store-dicom).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the StoreInstances DICOMweb request. For example, `studies/[`
-        #   study_uid`]`. Note that the `study_uid` is optional.
+        #   Required. The path of the StoreInstances DICOMweb request. For example, `
+        #   studies/[`study_uid`]`. Note that the `study_uid` is optional.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3255,9 +3257,9 @@ module Google
         
         # GetStudyMetrics returns metrics for a study.
         # @param [String] study
-        #   The study resource path. For example, `projects/`project_id`/locations/`
-        #   location_id`/datasets/`dataset_id`/dicomStores/`dicom_store_id`/dicomWeb/
-        #   studies/`study_uid``.
+        #   Required. The study resource path. For example, `projects/`project_id`/
+        #   locations/`location_id`/datasets/`dataset_id`/dicomStores/`dicom_store_id`/
+        #   dicomWeb/studies/`study_uid``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3329,9 +3331,9 @@ module Google
         
         # GetSeriesMetrics returns metrics for a series.
         # @param [String] series
-        #   The series resource path. For example, `projects/`project_id`/locations/`
-        #   location_id`/datasets/`dataset_id`/dicomStores/`dicom_store_id`/dicomWeb/
-        #   studies/`study_uid`/series/`series_uid``.
+        #   Required. The series resource path. For example, `projects/`project_id`/
+        #   locations/`location_id`/datasets/`dataset_id`/dicomStores/`dicom_store_id`/
+        #   dicomWeb/studies/`study_uid`/series/`series_uid``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3401,7 +3403,8 @@ module Google
         # dicom).
         # @param [String] parent
         # @param [String] dicom_web_path
-        #   The path of the DeleteStudy request. For example, `studies/`study_uid``.
+        #   Required. The path of the DeleteStudy request. For example, `studies/`
+        #   study_uid``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3439,12 +3442,12 @@ module Google
         # to call RetrieveStudyMetadata, see [Retrieve metadata](https://cloud.google.
         # com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveStudyMetadata DICOMweb request. For example, `studies/`
-        #   study_uid`/metadata`.
+        #   Required. The path of the RetrieveStudyMetadata DICOMweb request. For example,
+        #   `studies/`study_uid`/metadata`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3482,12 +3485,12 @@ module Google
         # DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-
         # dicom).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveStudy DICOMweb request. For example, `studies/`
-        #   study_uid``.
+        #   Required. The path of the RetrieveStudy DICOMweb request. For example, `
+        #   studies/`study_uid``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3525,13 +3528,13 @@ module Google
         # see [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/
         # dicomweb#search-dicom).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the SearchForInstancesRequest DICOMweb request. For example, `
-        #   instances`, `series/`series_uid`/instances`, or `studies/`study_uid`/instances`
-        #   .
+        #   Required. The path of the SearchForInstancesRequest DICOMweb request. For
+        #   example, `instances`, `series/`series_uid`/instances`, or `studies/`study_uid`/
+        #   instances`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3568,12 +3571,12 @@ module Google
         # SearchForSeries, see [Search for DICOM data](https://cloud.google.com/
         # healthcare/docs/how-tos/dicomweb#search-dicom).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the SearchForSeries DICOMweb request. For example, `series` or `
-        #   studies/`study_uid`/series`.
+        #   Required. The path of the SearchForSeries DICOMweb request. For example, `
+        #   series` or `studies/`study_uid`/series`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3611,12 +3614,12 @@ module Google
         # Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#
         # store-dicom).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the StoreInstances DICOMweb request. For example, `studies/[`
-        #   study_uid`]`. Note that the `study_uid` is optional.
+        #   Required. The path of the StoreInstances DICOMweb request. For example, `
+        #   studies/[`study_uid`]`. Note that the `study_uid` is optional.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3656,12 +3659,12 @@ module Google
         # Delete a study, series, or instance](https://cloud.google.com/healthcare/docs/
         # how-tos/dicomweb#delete-dicom).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the DeleteSeries request. For example, `studies/`study_uid`/series/
-        #   `series_uid``.
+        #   Required. The path of the DeleteSeries request. For example, `studies/`
+        #   study_uid`/series/`series_uid``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3700,12 +3703,12 @@ module Google
         # RetrieveSeriesMetadata, see [Retrieve metadata](https://cloud.google.com/
         # healthcare/docs/how-tos/dicomweb#retrieve-metadata).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveSeriesMetadata DICOMweb request. For example, `studies/
-        #   `study_uid`/series/`series_uid`/metadata`.
+        #   Required. The path of the RetrieveSeriesMetadata DICOMweb request. For example,
+        #   `studies/`study_uid`/series/`series_uid`/metadata`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3743,12 +3746,12 @@ module Google
         # DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-
         # dicom).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveSeries DICOMweb request. For example, `studies/`
-        #   study_uid`/series/`series_uid``.
+        #   Required. The path of the RetrieveSeries DICOMweb request. For example, `
+        #   studies/`study_uid`/series/`series_uid``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3786,13 +3789,13 @@ module Google
         # see [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/
         # dicomweb#search-dicom).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the SearchForInstancesRequest DICOMweb request. For example, `
-        #   instances`, `series/`series_uid`/instances`, or `studies/`study_uid`/instances`
-        #   .
+        #   Required. The path of the SearchForInstancesRequest DICOMweb request. For
+        #   example, `instances`, `series/`series_uid`/instances`, or `studies/`study_uid`/
+        #   instances`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3829,12 +3832,12 @@ module Google
         # a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/
         # dicomweb#delete-dicom).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the DeleteInstance request. For example, `studies/`study_uid`/
-        #   series/`series_uid`/instances/`instance_uid``.
+        #   Required. The path of the DeleteInstance request. For example, `studies/`
+        #   study_uid`/series/`series_uid`/instances/`instance_uid``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3873,12 +3876,12 @@ module Google
         # call RetrieveInstance, see [Retrieve an instance](https://cloud.google.com/
         # healthcare/docs/how-tos/dicomweb#retrieve-instance).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveInstance DICOMweb request. For example, `studies/`
-        #   study_uid`/series/`series_uid`/instances/`instance_uid``.
+        #   Required. The path of the RetrieveInstance DICOMweb request. For example, `
+        #   studies/`study_uid`/series/`series_uid`/instances/`instance_uid``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3917,12 +3920,13 @@ module Google
         # RetrieveInstanceMetadata, see [Retrieve metadata](https://cloud.google.com/
         # healthcare/docs/how-tos/dicomweb#retrieve-metadata).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveInstanceMetadata DICOMweb request. For example, `
-        #   studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/metadata`.
+        #   Required. The path of the RetrieveInstanceMetadata DICOMweb request. For
+        #   example, `studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/
+        #   metadata`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3961,12 +3965,13 @@ module Google
         # RetrieveRenderedInstance, see [Retrieve consumer image formats](https://cloud.
         # google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveRenderedInstance DICOMweb request. For example, `
-        #   studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/rendered`.
+        #   Required. The path of the RetrieveRenderedInstance DICOMweb request. For
+        #   example, `studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/
+        #   rendered`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4048,12 +4053,13 @@ module Google
         # Retrieve DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#
         # retrieve-dicom).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveFrames DICOMweb request. For example, `studies/`
-        #   study_uid`/series/`series_uid`/instances/`instance_uid`/frames/`frame_list``.
+        #   Required. The path of the RetrieveFrames DICOMweb request. For example, `
+        #   studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/frames/`
+        #   frame_list``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4092,13 +4098,13 @@ module Google
         # RetrieveRenderedFrames, see [Retrieve consumer image formats](https://cloud.
         # google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed. For example, `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
-        #   dicom_store_id``.
+        #   Required. The name of the DICOM store that is being accessed. For example, `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveRenderedFrames DICOMweb request. For example, `studies/
-        #   `study_uid`/series/`series_uid`/instances/`instance_uid`/frames/`frame_list`/
-        #   rendered`.
+        #   Required. The path of the RetrieveRenderedFrames DICOMweb request. For example,
+        #   `studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/frames/`
+        #   frame_list`/rendered`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4143,8 +4149,9 @@ module Google
         # consent check for data access, `consent_config.access_enforced` must be set to
         # true for the FhirStore.
         # @param [String] name
-        #   The name of the FHIR store to enforce, in the format `projects/`project_id`/
-        #   locations/`location_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id``.
+        #   Required. The name of the FHIR store to enforce, in the format `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/`
+        #   fhir_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::ApplyAdminConsentsRequest] apply_admin_consents_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4229,8 +4236,9 @@ module Google
         # returns an Operation that can be used to track the progress of the reindexing
         # by calling GetOperation.
         # @param [String] name
-        #   The name of the FHIR store to configure, in the format `projects/`project_id`/
-        #   locations/`location_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id``.
+        #   Required. The name of the FHIR store to configure, in the format `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/`
+        #   fhir_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::ConfigureSearchRequest] configure_search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4263,11 +4271,11 @@ module Google
         
         # Creates a new FHIR store within the parent dataset.
         # @param [String] parent
-        #   The name of the dataset this FHIR store belongs to.
+        #   Required. The name of the dataset this FHIR store belongs to.
         # @param [Google::Apis::HealthcareV1beta1::FhirStore] fhir_store_object
         # @param [String] fhir_store_id
-        #   The ID of the FHIR store that is being created. The string must match the
-        #   following regex: `[\p`L`\p`N`_\-\.]`1,256``.
+        #   Required. The ID of the FHIR store that is being created. The string must
+        #   match the following regex: `[\p`L`\p`N`_\-\.]`1,256``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4305,8 +4313,8 @@ module Google
         # logged to Cloud Logging. For more information, see [Viewing error logs in
         # Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging).
         # @param [String] source_store
-        #   Source FHIR store resource name. For example, `projects/`project_id`/locations/
-        #   `location_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id``.
+        #   Required. Source FHIR store resource name. For example, `projects/`project_id`/
+        #   locations/`location_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::DeidentifyFhirStoreRequest] deidentify_fhir_store_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4339,7 +4347,7 @@ module Google
         
         # Deletes the specified FHIR store and removes all resources within it.
         # @param [String] name
-        #   The resource name of the FHIR store to delete.
+        #   Required. The resource name of the FHIR store to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4376,9 +4384,9 @@ module Google
         # returned in the response field. The metadata field type for this operation is
         # OperationMetadata.
         # @param [String] name
-        #   The name of the FHIR store to export resource from, in the format of `projects/
-        #   `project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/`
-        #   fhir_store_id``.
+        #   Required. The name of the FHIR store to export resource from, in the format of
+        #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   fhirStores/`fhir_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::ExportResourcesRequest] export_resources_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4411,7 +4419,7 @@ module Google
         
         # Gets the configuration of the specified FHIR store.
         # @param [String] name
-        #   The resource name of the FHIR store to get.
+        #   Required. The resource name of the FHIR store to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4441,7 +4449,7 @@ module Google
         
         # Gets metrics associated with the FHIR store.
         # @param [String] name
-        #   The resource name of the FHIR store to get metrics for.
+        #   Required. The resource name of the FHIR store to get metrics for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4568,9 +4576,9 @@ module Google
         # ImportResourcesResponse is returned in the response field. The metadata field
         # type for this operation is OperationMetadata.
         # @param [String] name
-        #   The name of the FHIR store to import FHIR resources to, in the format of `
-        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/
-        #   `fhir_store_id``.
+        #   Required. The name of the FHIR store to import FHIR resources to, in the
+        #   format of `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   fhirStores/`fhir_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::ImportResourcesRequest] import_resources_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4603,7 +4611,7 @@ module Google
         
         # Lists the FHIR stores in the given dataset.
         # @param [String] parent
-        #   Name of the dataset.
+        #   Required. Name of the dataset.
         # @param [String] filter
         #   Restricts stores returned to those matching a filter. The following syntax is
         #   available: * A string field value can be written as text inside quotation
@@ -4664,13 +4672,13 @@ module Google
         
         # Updates the configuration of the specified FHIR store.
         # @param [String] name
-        #   Output only. Resource name of the FHIR store, of the form `projects/`
-        #   project_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id``.
+        #   Output only. Identifier. Resource name of the FHIR store, of the form `
+        #   projects/`project_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::FhirStore] fhir_store_object
         # @param [String] update_mask
-        #   The update mask applies to the resource. For the `FieldMask` definition, see
-        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   fieldmask
+        #   Required. The update mask applies to the resource. For the `FieldMask`
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#fieldmask
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4830,10 +4838,10 @@ module Google
         # for the error. If the request cannot be mapped to a valid API method on a FHIR
         # store, a generic GCP error might be returned instead.
         # @param [String] parent
-        #   The name for the FHIR store containing the concept map(s) to use for the
-        #   translation.
+        #   Required. The name for the FHIR store containing the concept map(s) to use for
+        #   the translation.
         # @param [String] code
-        #   The code to translate.
+        #   Required. The code to translate.
         # @param [String] concept_map_version
         #   The version of the concept map to use. If unset, the most current version is
         #   used.
@@ -4841,7 +4849,7 @@ module Google
         #   The source value set of the concept map to be used. If unset, target is used
         #   to search for concept maps.
         # @param [String] system
-        #   The system for the code to be translated.
+        #   Required. The system for the code to be translated.
         # @param [String] target
         #   The target value set of the concept map to be used. If unset, source is used
         #   to search for concept maps.
@@ -4893,14 +4901,14 @@ module Google
         # the error. If the request cannot be mapped to a valid API method on a FHIR
         # store, a generic GCP error might be returned instead.
         # @param [String] name
-        #   The URL for the concept map to use for the translation.
+        #   Required. The URL for the concept map to use for the translation.
         # @param [String] code
-        #   The code to translate.
+        #   Required. The code to translate.
         # @param [String] concept_map_version
         #   The version of the concept map to use. If unset, the most current version is
         #   used.
         # @param [String] system
-        #   The system for the code to be translated.
+        #   Required. The system for the code to be translated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4990,7 +4998,7 @@ module Google
         # the request cannot be mapped to a valid API method on a FHIR store, a generic
         # GCP error might be returned instead.
         # @param [String] parent
-        #   Name of the FHIR store to retrieve resources from.
+        #   Required. Name of the FHIR store to retrieve resources from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5089,7 +5097,7 @@ module Google
         # cloud.google.com/healthcare/docs/how-tos/fhir-resources#
         # getting_all_patient_compartment_resources).
         # @param [String] name
-        #   Name of the `Patient` resource for which the information is required.
+        #   Required. Name of the `Patient` resource for which the information is required.
         # @param [Fixnum] _count
         #   Maximum number of resources in a page. If not specified, 100 is used. May not
         #   be larger than 1000.
@@ -5223,7 +5231,7 @@ module Google
         # healthcare/docs/how-tos/fhir-resources#
         # deleting_historical_versions_of_a_fhir_resource).
         # @param [String] name
-        #   The name of the resource to purge.
+        #   Required. The name of the resource to purge.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5266,18 +5274,20 @@ module Google
         # reason for the error. If the request cannot be mapped to a valid API method on
         # a FHIR store, a generic GCP error might be returned instead.
         # @param [String] parent
-        #   The name of the FHIR store that holds the profiles being used for validation.
+        #   Required. The name of the FHIR store that holds the profiles being used for
+        #   validation.
         # @param [String] type
-        #   The FHIR resource type of the resource being validated. For a complete list,
-        #   see the FHIR Resource Index ([DSTU2](http://hl7.org/implement/standards/fhir/
-        #   DSTU2/resourcelist.html), [STU3](http://hl7.org/implement/standards/fhir/STU3/
-        #   resourcelist.html), or [R4](http://hl7.org/implement/standards/fhir/R4/
-        #   resourcelist.html)). Must match the resource type in the provided content.
+        #   Required. The FHIR resource type of the resource being validated. For a
+        #   complete list, see the FHIR Resource Index ([DSTU2](http://hl7.org/implement/
+        #   standards/fhir/DSTU2/resourcelist.html), [STU3](http://hl7.org/implement/
+        #   standards/fhir/STU3/resourcelist.html), or [R4](http://hl7.org/implement/
+        #   standards/fhir/R4/resourcelist.html)). Must match the resource type in the
+        #   provided content.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] profile
-        #   The canonical URL of a profile that this resource should be validated against.
-        #   For example, to validate a Patient resource against the US Core Patient
-        #   profile this parameter would be `http://hl7.org/fhir/us/core/
+        #   Required. The canonical URL of a profile that this resource should be
+        #   validated against. For example, to validate a Patient resource against the US
+        #   Core Patient profile this parameter would be `http://hl7.org/fhir/us/core/
         #   StructureDefinition/us-core-patient`. A StructureDefinition with this
         #   canonical URL must exist in the FHIR store.
         # @param [String] fields
@@ -5323,7 +5333,7 @@ module Google
         # conformance) in the DSTU2 case. On success, the response body contains a JSON-
         # encoded representation of a `CapabilityStatement` resource.
         # @param [String] name
-        #   Name of the FHIR store to retrieve the capabilities for.
+        #   Required. Name of the FHIR store to retrieve the capabilities for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5373,13 +5383,13 @@ module Google
         # resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#
         # conditionally_deleting_a_fhir_resource).
         # @param [String] parent
-        #   The name of the FHIR store this resource belongs to.
+        #   Required. The name of the FHIR store this resource belongs to.
         # @param [String] type
-        #   The FHIR resource type to delete, such as Patient or Observation. For a
-        #   complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/implement/
-        #   standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/implement/
-        #   standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/implement/
-        #   standards/fhir/R4/resourcelist.html)).
+        #   Required. The FHIR resource type to delete, such as Patient or Observation.
+        #   For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/
+        #   implement/standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/
+        #   implement/standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/
+        #   implement/standards/fhir/R4/resourcelist.html)).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5431,13 +5441,13 @@ module Google
         # a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-
         # resources#conditionally_patching_a_fhir_resource).
         # @param [String] parent
-        #   The name of the FHIR store this resource belongs to.
+        #   Required. The name of the FHIR store this resource belongs to.
         # @param [String] type
-        #   The FHIR resource type to update, such as Patient or Observation. For a
-        #   complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/implement/
-        #   standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/implement/
-        #   standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/implement/
-        #   standards/fhir/R4/resourcelist.html)).
+        #   Required. The FHIR resource type to update, such as Patient or Observation.
+        #   For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/
+        #   implement/standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/
+        #   implement/standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/
+        #   implement/standards/fhir/R4/resourcelist.html)).
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5499,14 +5509,14 @@ module Google
         # google.com/healthcare/docs/how-tos/fhir-resources#
         # conditionally_updating_a_fhir_resource).
         # @param [String] parent
-        #   The name of the FHIR store this resource belongs to.
+        #   Required. The name of the FHIR store this resource belongs to.
         # @param [String] type
-        #   The FHIR resource type to update, such as Patient or Observation. For a
-        #   complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/implement/
-        #   standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/implement/
-        #   standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/implement/
-        #   standards/fhir/R4/resourcelist.html)). Must match the resource type in the
-        #   provided content.
+        #   Required. The FHIR resource type to update, such as Patient or Observation.
+        #   For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/
+        #   implement/standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/
+        #   implement/standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/
+        #   implement/standards/fhir/R4/resourcelist.html)). Must match the resource type
+        #   in the provided content.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5559,14 +5569,14 @@ module Google
         # how to call `create`, see [Creating a FHIR resource](https://cloud.google.com/
         # healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource).
         # @param [String] parent
-        #   The name of the FHIR store this resource belongs to.
+        #   Required. The name of the FHIR store this resource belongs to.
         # @param [String] type
-        #   The FHIR resource type to create, such as Patient or Observation. For a
-        #   complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/implement/
-        #   standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/implement/
-        #   standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/implement/
-        #   standards/fhir/R4/resourcelist.html)). Must match the resource type in the
-        #   provided content.
+        #   Required. The FHIR resource type to create, such as Patient or Observation.
+        #   For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/
+        #   implement/standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/
+        #   implement/standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/
+        #   implement/standards/fhir/R4/resourcelist.html)). Must match the resource type
+        #   in the provided content.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5609,7 +5619,7 @@ module Google
         # a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-
         # resources#deleting_a_fhir_resource).
         # @param [String] name
-        #   The name of the resource to delete.
+        #   Required. The name of the resource to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5671,7 +5681,7 @@ module Google
         # using FHIR bundles](https://cloud.google.com/healthcare/docs/how-tos/fhir-
         # bundles).
         # @param [String] parent
-        #   Name of the FHIR store in which this bundle will be executed.
+        #   Required. Name of the FHIR store in which this bundle will be executed.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5717,7 +5727,7 @@ module Google
         # resource versions](https://cloud.google.com/healthcare/docs/how-tos/fhir-
         # resources#listing_fhir_resource_versions).
         # @param [String] name
-        #   The name of the resource to retrieve.
+        #   Required. The name of the resource to retrieve.
         # @param [String] _at
         #   Only include resource versions that were current at some point during the time
         #   period specified in the date time value. The date parameter format is yyyy-mm-
@@ -5785,7 +5795,7 @@ module Google
         # resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#
         # patching_a_fhir_resource).
         # @param [String] name
-        #   The name of the resource to update.
+        #   Required. The name of the resource to update.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5833,7 +5843,7 @@ module Google
         # Getting a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-
         # resources#getting_a_fhir_resource).
         # @param [String] name
-        #   The name of the resource to retrieve.
+        #   Required. The name of the resource to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5924,7 +5934,7 @@ module Google
         # fhir-search) and [Advanced FHIR search features](https://cloud.google.com/
         # healthcare/docs/how-tos/fhir-advanced-search).
         # @param [String] parent
-        #   Name of the FHIR store to retrieve resources from.
+        #   Required. Name of the FHIR store to retrieve resources from.
         # @param [Google::Apis::HealthcareV1beta1::SearchResourcesRequest] search_resources_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6018,13 +6028,13 @@ module Google
         # fhir-search) and [Advanced FHIR search features](https://cloud.google.com/
         # healthcare/docs/how-tos/fhir-advanced-search).
         # @param [String] parent
-        #   Name of the FHIR store to retrieve resources from.
+        #   Required. Name of the FHIR store to retrieve resources from.
         # @param [String] resource_type
-        #   The FHIR resource type to search, such as Patient or Observation. For a
-        #   complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/implement/
-        #   standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/implement/
-        #   standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/implement/
-        #   standards/fhir/R4/resourcelist.html)).
+        #   Required. The FHIR resource type to search, such as Patient or Observation.
+        #   For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/
+        #   implement/standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/
+        #   implement/standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/
+        #   implement/standards/fhir/R4/resourcelist.html)).
         # @param [Google::Apis::HealthcareV1beta1::SearchResourcesRequest] search_resources_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6078,7 +6088,7 @@ module Google
         # resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#
         # updating_a_fhir_resource).
         # @param [String] name
-        #   The name of the resource to update.
+        #   Required. The name of the resource to update.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6122,7 +6132,7 @@ module Google
         # (https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#
         # retrieving_a_fhir_resource_version).
         # @param [String] name
-        #   The name of the resource version to retrieve.
+        #   Required. The name of the resource version to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
