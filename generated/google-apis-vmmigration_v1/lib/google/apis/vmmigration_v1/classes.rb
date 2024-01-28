@@ -613,7 +613,7 @@ module Google
         end
       end
       
-      # AwsVmDetails describes a VM in AWS.
+      # AzureVmDetails describes a VM in Azure.
       class AzureVmDetails
         include Google::Apis::Core::Hashable
       
