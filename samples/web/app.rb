@@ -81,8 +81,7 @@ end
 # Retrieve the 10 most recently modified files in Google Drive
 get('/drive') do
   drive = Google::Apis::DriveV3::DriveService.new
-  creds = credentials_for(Google::Apis::DriveV3::AUTH_DRIVE)
-  drive.authorization = creds
+  drive.authorization = credentials_for(Google::Apis::DriveV3::AUTH_DRIVE)
   @result = drive.list_files(page_size: 10,
                              fields: 'files(name,modified_time,web_view_link),next_page_token')
   erb :drive
