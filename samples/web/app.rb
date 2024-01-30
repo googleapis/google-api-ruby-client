@@ -40,6 +40,8 @@ helpers do
   # redirects the user to authorize access.
   def credentials_for(scope)
     authorizer = Google::Auth::WebUserAuthorizer.new(settings.client_id, scope, settings.token_store, '/oauth2callback')
+    session[:code_verifier] ||= authorizer.generate_code_verifier
+    authorizer.code_verifier = session[:code_verifier]
     user_id = session[:user_id]
     redirect LOGIN_URL if user_id.nil?
     credentials = authorizer.get_credentials(user_id, request)
@@ -79,7 +81,8 @@ end
 # Retrieve the 10 most recently modified files in Google Drive
 get('/drive') do
   drive = Google::Apis::DriveV3::DriveService.new
-  drive.authorization = credentials_for(Google::Apis::DriveV3::AUTH_DRIVE)
+  creds = credentials_for(Google::Apis::DriveV3::AUTH_DRIVE)
+  drive.authorization = creds
   @result = drive.list_files(page_size: 10,
                              fields: 'files(name,modified_time,web_view_link),next_page_token')
   erb :drive
