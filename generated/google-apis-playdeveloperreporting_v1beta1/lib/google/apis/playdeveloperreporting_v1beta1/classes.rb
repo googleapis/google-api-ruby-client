@@ -595,8 +595,7 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # Identifier. The resource name of the issue. Format: apps/`app`/errorIssues/`
-        # issue`
+        # Identifier. The resource name of the issue. Format: apps/`app`/`issue`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -660,7 +659,7 @@ module Google
         # @return [String]
         attr_accessor :issue
       
-        # The resource name of the report. Format: apps/`app`/errorReports/`report`
+        # The resource name of the report. Format: apps/`app`/`report`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
