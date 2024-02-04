@@ -768,7 +768,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1045,6 +1048,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :rule_priority
       
+        # Cloud Armor SecurityPolicy that is using the Address Group.
+        # Corresponds to the JSON property `securityPolicy`
+        # @return [String]
+        attr_accessor :security_policy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1053,6 +1061,7 @@ module Google
         def update!(**args)
           @firewall_policy = args[:firewall_policy] if args.key?(:firewall_policy)
           @rule_priority = args[:rule_priority] if args.key?(:rule_priority)
+          @security_policy = args[:security_policy] if args.key?(:security_policy)
         end
       end
       
