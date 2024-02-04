@@ -527,6 +527,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :firewall_policy, as: 'firewallPolicy'
           property :rule_priority, as: 'rulePriority'
+          property :security_policy, as: 'securityPolicy'
         end
       end
       
