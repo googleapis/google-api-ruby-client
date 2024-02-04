@@ -490,6 +490,16 @@ module Google
         # @return [String]
         attr_accessor :bucket_name
       
+        # Transfer managed folders is in public preview. This option is only applicable
+        # to the Cloud Storage source bucket. If set to true: - The source managed
+        # folder will be transferred to the destination bucket - The destination managed
+        # folder will always be overwritten, other OVERWRITE options will not be
+        # supported
+        # Corresponds to the JSON property `managedFolderTransferEnabled`
+        # @return [Boolean]
+        attr_accessor :managed_folder_transfer_enabled
+        alias_method :managed_folder_transfer_enabled?, :managed_folder_transfer_enabled
+      
         # Root path to transfer objects. Must be an empty string or full path name that
         # ends with a '/'. This field is treated as an object prefix. As such, it should
         # generally not begin with a '/'. The root path value must meet [Object Name
@@ -505,6 +515,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @managed_folder_transfer_enabled = args[:managed_folder_transfer_enabled] if args.key?(:managed_folder_transfer_enabled)
           @path = args[:path] if args.key?(:path)
         end
       end
