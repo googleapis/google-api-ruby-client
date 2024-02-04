@@ -1951,6 +1951,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :custom_audiences
       
+        # Optional. Disables public resolution of the default URI of this service.
+        # Corresponds to the JSON property `defaultUriDisabled`
+        # @return [Boolean]
+        attr_accessor :default_uri_disabled
+        alias_method :default_uri_disabled?, :default_uri_disabled
+      
         # Output only. The deletion time.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
@@ -2137,6 +2143,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @creator = args[:creator] if args.key?(:creator)
           @custom_audiences = args[:custom_audiences] if args.key?(:custom_audiences)
+          @default_uri_disabled = args[:default_uri_disabled] if args.key?(:default_uri_disabled)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
