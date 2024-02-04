@@ -991,6 +991,61 @@ module Google
         end
       end
       
+      # Alerts from Device Management Rules configured by Admin.
+      class DeviceManagementRule
+        include Google::Apis::Core::Hashable
+      
+        # Required. The device ID.
+        # Corresponds to the JSON property `deviceId`
+        # @return [String]
+        attr_accessor :device_id
+      
+        # The model of the device.
+        # Corresponds to the JSON property `deviceModel`
+        # @return [String]
+        attr_accessor :device_model
+      
+        # The type of the device.
+        # Corresponds to the JSON property `deviceType`
+        # @return [String]
+        attr_accessor :device_type
+      
+        # The email of the user this alert was created for.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Required for iOS, empty for others.
+        # Corresponds to the JSON property `iosVendorId`
+        # @return [String]
+        attr_accessor :ios_vendor_id
+      
+        # The device resource ID.
+        # Corresponds to the JSON property `resourceId`
+        # @return [String]
+        attr_accessor :resource_id
+      
+        # The serial number of the device.
+        # Corresponds to the JSON property `serialNumber`
+        # @return [String]
+        attr_accessor :serial_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_id = args[:device_id] if args.key?(:device_id)
+          @device_model = args[:device_model] if args.key?(:device_model)
+          @device_type = args[:device_type] if args.key?(:device_type)
+          @email = args[:email] if args.key?(:email)
+          @ios_vendor_id = args[:ios_vendor_id] if args.key?(:ios_vendor_id)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
+        end
+      end
+      
       # Alerts that get triggered on violations of Data Loss Prevention (DLP) rules.
       class DlpRuleViolation
         include Google::Apis::Core::Hashable
