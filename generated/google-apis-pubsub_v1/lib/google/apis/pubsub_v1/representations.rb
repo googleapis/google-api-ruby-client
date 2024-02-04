@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AwsKinesis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +95,12 @@ module Google
       end
       
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestionDataSourceSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -354,6 +366,17 @@ module Google
         end
       end
       
+      class AwsKinesis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_role_arn, as: 'awsRoleArn'
+          property :consumer_arn, as: 'consumerArn'
+          property :gcp_service_account, as: 'gcpServiceAccount'
+          property :state, as: 'state'
+          property :stream_arn, as: 'streamArn'
+        end
+      end
+      
       class BigQueryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -442,6 +465,14 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class IngestionDataSourceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_kinesis, as: 'awsKinesis', class: Google::Apis::PubsubV1::AwsKinesis, decorator: Google::Apis::PubsubV1::AwsKinesis::Representation
+      
         end
       end
       
@@ -748,6 +779,8 @@ module Google
       class Topic
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ingestion_data_source_settings, as: 'ingestionDataSourceSettings', class: Google::Apis::PubsubV1::IngestionDataSourceSettings, decorator: Google::Apis::PubsubV1::IngestionDataSourceSettings::Representation
+      
           property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
           property :message_retention_duration, as: 'messageRetentionDuration'
@@ -757,6 +790,7 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :schema_settings, as: 'schemaSettings', class: Google::Apis::PubsubV1::SchemaSettings, decorator: Google::Apis::PubsubV1::SchemaSettings::Representation
       
+          property :state, as: 'state'
         end
       end
       
