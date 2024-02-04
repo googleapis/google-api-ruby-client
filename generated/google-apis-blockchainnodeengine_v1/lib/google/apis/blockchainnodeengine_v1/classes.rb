@@ -598,6 +598,13 @@ module Google
       class ValidatorConfig
         include Google::Apis::Core::Hashable
       
+        # Immutable. When true, deploys a GCP-managed validator client alongside the
+        # beacon client.
+        # Corresponds to the JSON property `managedValidatorClient`
+        # @return [Boolean]
+        attr_accessor :managed_validator_client
+        alias_method :managed_validator_client?, :managed_validator_client
+      
         # URLs for MEV-relay services to use for block building. When set, a GCP-managed
         # MEV-boost service is configured on the beacon client.
         # Corresponds to the JSON property `mevRelayUrls`
@@ -610,6 +617,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @managed_validator_client = args[:managed_validator_client] if args.key?(:managed_validator_client)
           @mev_relay_urls = args[:mev_relay_urls] if args.key?(:mev_relay_urls)
         end
       end
