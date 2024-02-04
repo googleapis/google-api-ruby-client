@@ -645,9 +645,9 @@ module Google
         # @return [String]
         attr_accessor :data
       
-        # Optional. ID of this message, assigned by the server when the message is
-        # published. Guaranteed to be unique within the topic. This value may be read by
-        # a subscriber that receives a `PubsubMessage` via a `Pull` call or a push
+        # ID of this message, assigned by the server when the message is published.
+        # Guaranteed to be unique within the topic. This value may be read by a
+        # subscriber that receives a `PubsubMessage` via a `Pull` call or a push
         # delivery. It must not be populated by the publisher in a `Publish` call.
         # Corresponds to the JSON property `messageId`
         # @return [String]
@@ -664,9 +664,9 @@ module Google
         # @return [String]
         attr_accessor :ordering_key
       
-        # Optional. The time at which the message was published, populated by the server
-        # when it receives the `Publish` call. It must not be populated by the publisher
-        # in a `Publish` call.
+        # The time at which the message was published, populated by the server when it
+        # receives the `Publish` call. It must not be populated by the publisher in a `
+        # Publish` call.
         # Corresponds to the JSON property `publishTime`
         # @return [String]
         attr_accessor :publish_time
