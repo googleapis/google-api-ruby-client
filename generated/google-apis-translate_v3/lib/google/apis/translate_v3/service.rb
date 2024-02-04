@@ -785,7 +785,7 @@ module Google
         # @param [String] name
         #   Required. The resource name of the file to delete, in form of `projects/`
         #   project-number-or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset`/
-        #   files/`file``
+        #   adaptiveMtFiles/`file``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -816,7 +816,8 @@ module Google
         # Gets and AdaptiveMtFile
         # @param [String] name
         #   Required. The resource name of the file, in form of `projects/`project-number-
-        #   or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset`/files/`file``
+        #   or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset`/adaptiveMtFiles/`
+        #   file``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
