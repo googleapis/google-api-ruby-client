@@ -1206,6 +1206,7 @@ module Google
       class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_type, as: 'assetType'
           property :attached_resource, as: 'attachedResource'
           collection :folders, as: 'folders'
           property :organization, as: 'organization'
@@ -1218,6 +1219,9 @@ module Google
       class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_type, as: 'assetType'
+          collection :effective_tags, as: 'effectiveTags', class: Google::Apis::CloudassetV1::EffectiveTagDetails, decorator: Google::Apis::CloudassetV1::EffectiveTagDetails::Representation
+      
           collection :folders, as: 'folders'
           property :full_resource_name, as: 'fullResourceName'
           property :organization, as: 'organization'
@@ -1289,10 +1293,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consolidated_policy, as: 'consolidatedPolicy', class: Google::Apis::CloudassetV1::AnalyzerOrgPolicy, decorator: Google::Apis::CloudassetV1::AnalyzerOrgPolicy::Representation
       
+          collection :effective_tags, as: 'effectiveTags', class: Google::Apis::CloudassetV1::EffectiveTagDetails, decorator: Google::Apis::CloudassetV1::EffectiveTagDetails::Representation
+      
+          collection :folders, as: 'folders'
           property :full_resource_name, as: 'fullResourceName'
+          property :organization, as: 'organization'
           property :parent, as: 'parent'
           collection :policy_bundle, as: 'policyBundle', class: Google::Apis::CloudassetV1::AnalyzerOrgPolicy, decorator: Google::Apis::CloudassetV1::AnalyzerOrgPolicy::Representation
       
+          property :project, as: 'project'
         end
       end
       
@@ -1346,6 +1355,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_all, as: 'allowAll'
           property :condition, as: 'condition', class: Google::Apis::CloudassetV1::Expr, decorator: Google::Apis::CloudassetV1::Expr::Representation
+      
+          property :condition_evaluation, as: 'conditionEvaluation', class: Google::Apis::CloudassetV1::ConditionEvaluation, decorator: Google::Apis::CloudassetV1::ConditionEvaluation::Representation
       
           property :deny_all, as: 'denyAll'
           property :enforce, as: 'enforce'
@@ -1887,8 +1898,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consolidated_policy, as: 'consolidatedPolicy', class: Google::Apis::CloudassetV1::AnalyzerOrgPolicy, decorator: Google::Apis::CloudassetV1::AnalyzerOrgPolicy::Representation
       
+          collection :folders, as: 'folders'
+          property :organization, as: 'organization'
           collection :policy_bundle, as: 'policyBundle', class: Google::Apis::CloudassetV1::AnalyzerOrgPolicy, decorator: Google::Apis::CloudassetV1::AnalyzerOrgPolicy::Representation
       
+          property :project, as: 'project'
         end
       end
       
