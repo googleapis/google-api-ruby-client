@@ -581,6 +581,68 @@ module Google
         end
       end
       
+      # Response for FindDiscoveredServices.
+      class FindDiscoveredServicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of discovered services.
+        # Corresponds to the JSON property `discoveredServices`
+        # @return [Array<Google::Apis::ApphubV1alpha::DiscoveredService>]
+        attr_accessor :discovered_services
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovered_services = args[:discovered_services] if args.key?(:discovered_services)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for FindDiscoveredWorkloads.
+      class FindDiscoveredWorkloadsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of discovered workloads.
+        # Corresponds to the JSON property `discoveredWorkloads`
+        # @return [Array<Google::Apis::ApphubV1alpha::DiscoveredWorkload>]
+        attr_accessor :discovered_workloads
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovered_workloads = args[:discovered_workloads] if args.key?(:discovered_workloads)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response for FindUnregisteredServices.
       class FindUnregisteredServicesResponse
         include Google::Apis::Core::Hashable
