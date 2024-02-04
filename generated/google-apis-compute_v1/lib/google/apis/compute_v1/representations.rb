@@ -8257,10 +8257,12 @@ module Google
           property :priority, as: 'priority'
           property :rule_name, as: 'ruleName'
           property :rule_tuple_count, as: 'ruleTupleCount'
+          property :security_profile_group, as: 'securityProfileGroup'
           collection :target_resources, as: 'targetResources'
           collection :target_secure_tags, as: 'targetSecureTags', class: Google::Apis::ComputeV1::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeV1::FirewallPolicyRuleSecureTag::Representation
       
           collection :target_service_accounts, as: 'targetServiceAccounts'
+          property :tls_inspect, as: 'tlsInspect'
         end
       end
       
