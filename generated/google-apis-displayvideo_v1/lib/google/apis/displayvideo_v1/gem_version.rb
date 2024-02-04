@@ -16,13 +16,13 @@ module Google
   module Apis
     module DisplayvideoV1
       # Version of the google-apis-displayvideo_v1 gem
-      GEM_VERSION = "0.64.0"
+      GEM_VERSION = "0.65.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.13.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240125"
+      REVISION = "20240201"
     end
   end
 end
