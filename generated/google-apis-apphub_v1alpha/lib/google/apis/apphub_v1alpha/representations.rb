@@ -118,6 +118,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FindDiscoveredServicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FindDiscoveredWorkloadsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FindUnregisteredServicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -425,6 +437,26 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class FindDiscoveredServicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :discovered_services, as: 'discoveredServices', class: Google::Apis::ApphubV1alpha::DiscoveredService, decorator: Google::Apis::ApphubV1alpha::DiscoveredService::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class FindDiscoveredWorkloadsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :discovered_workloads, as: 'discoveredWorkloads', class: Google::Apis::ApphubV1alpha::DiscoveredWorkload, decorator: Google::Apis::ApphubV1alpha::DiscoveredWorkload::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
