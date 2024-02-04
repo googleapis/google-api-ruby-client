@@ -1832,6 +1832,19 @@ module Google
         end
       end
       
+      # The digital parsing configurations for documents.
+      class GoogleCloudDiscoveryengineV1alphaDigitalParsingConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Metadata related to the progress of the SiteSearchEngineService.
       # DisableAdvancedSiteSearch operation. This will be returned by the google.
       # longrunning.Operation.metadata field.
@@ -1879,8 +1892,13 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. The full resource name of the Document Processing Config. Format:
-        # `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+        # Related configurations applied to a specific type of document parser.
+        # Corresponds to the JSON property `defaultParsingConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig]
+        attr_accessor :default_parsing_config
+      
+        # The full resource name of the Document Processing Config. Format: `projects/*/
+        # locations/*/collections/*/dataStores/*/documentProcessingConfig`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1890,14 +1908,56 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaOcrConfig]
         attr_accessor :ocr_config
       
+        # Map from file type to override the default parsing configuration based on the
+        # file type. Supported keys: * `pdf`: Override parsing config for PDF files,
+        # either digital parsing, ocr parsing or layout parsing is supported. * `html`:
+        # Override parsing config for HTML files, only digital parsing and or layout
+        # parsing are supported.
+        # Corresponds to the JSON property `parsingConfigOverrides`
+        # @return [Hash<String,Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig>]
+        attr_accessor :parsing_config_overrides
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @default_parsing_config = args[:default_parsing_config] if args.key?(:default_parsing_config)
           @name = args[:name] if args.key?(:name)
           @ocr_config = args[:ocr_config] if args.key?(:ocr_config)
+          @parsing_config_overrides = args[:parsing_config_overrides] if args.key?(:parsing_config_overrides)
+        end
+      end
+      
+      # Related configurations applied to a specific type of document parser.
+      class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig
+        include Google::Apis::Core::Hashable
+      
+        # The digital parsing configurations for documents.
+        # Corresponds to the JSON property `digitalParsingConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDigitalParsingConfig]
+        attr_accessor :digital_parsing_config
+      
+        # The layout parsing configurations for documents.
+        # Corresponds to the JSON property `layoutParsingConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaLayoutParsingConfig]
+        attr_accessor :layout_parsing_config
+      
+        # The OCR parsing configurations for documents.
+        # Corresponds to the JSON property `ocrParsingConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaOcrParsingConfig]
+        attr_accessor :ocr_parsing_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digital_parsing_config = args[:digital_parsing_config] if args.key?(:digital_parsing_config)
+          @layout_parsing_config = args[:layout_parsing_config] if args.key?(:layout_parsing_config)
+          @ocr_parsing_config = args[:ocr_parsing_config] if args.key?(:ocr_parsing_config)
         end
       end
       
@@ -2725,6 +2785,19 @@ module Google
         end
       end
       
+      # The layout parsing configurations for documents.
+      class GoogleCloudDiscoveryengineV1alphaLayoutParsingConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The OCR options for parsing documents.
       class GoogleCloudDiscoveryengineV1alphaOcrConfig
         include Google::Apis::Core::Hashable
@@ -2757,6 +2830,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @enhanced_document_elements = args[:enhanced_document_elements] if args.key?(:enhanced_document_elements)
+          @use_native_text = args[:use_native_text] if args.key?(:use_native_text)
+        end
+      end
+      
+      # The OCR parsing configurations for documents.
+      class GoogleCloudDiscoveryengineV1alphaOcrParsingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Apply additional enhanced OCR processing to a list of document elements.
+        # Supported values: * `table`: advanced table parsing model.
+        # Corresponds to the JSON property `enhancedDocumentElements`
+        # @return [Array<String>]
+        attr_accessor :enhanced_document_elements
+      
+        # If true, will use native text instead of OCR text on pages containing native
+        # text.
+        # Corresponds to the JSON property `useNativeText`
+        # @return [Boolean]
+        attr_accessor :use_native_text
+        alias_method :use_native_text?, :use_native_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @enhanced_document_elements = args[:enhanced_document_elements] if args.key?(:enhanced_document_elements)
           @use_native_text = args[:use_native_text] if args.key?(:use_native_text)
         end
