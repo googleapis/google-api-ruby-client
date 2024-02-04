@@ -745,10 +745,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing snapshot. Snapshots are used in [Seek](https://cloud.
-        # google.com/pubsub/docs/replay-overview) operations, which allow you to manage
-        # message acknowledgments in bulk. That is, you can set the acknowledgment state
-        # of messages in an existing subscription to the state captured by a snapshot.
+        # Updates an existing snapshot by updating the fields specified in the update
+        # mask. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-
+        # overview) operations, which allow you to manage message acknowledgments in
+        # bulk. That is, you can set the acknowledgment state of messages in an existing
+        # subscription to the state captured by a snapshot.
         # @param [String] name
         #   Optional. The name of the snapshot.
         # @param [Google::Apis::PubsubV1::UpdateSnapshotRequest] update_snapshot_request_object
@@ -1201,8 +1202,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing subscription. Note that certain properties of a
-        # subscription, such as its topic, are not modifiable.
+        # Updates an existing subscription by updating the fields specified in the
+        # update mask. Note that certain properties of a subscription, such as its topic,
+        # are not modifiable.
         # @param [String] name
         #   Required. The name of the subscription. It must have the format `"projects/`
         #   project`/subscriptions/`subscription`"`. ``subscription`` must start with a
@@ -1577,8 +1579,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing topic. Note that certain properties of a topic are not
-        # modifiable.
+        # Updates an existing topic by updating the fields specified in the update mask.
+        # Note that certain properties of a topic are not modifiable.
         # @param [String] name
         #   Required. The name of the topic. It must have the format `"projects/`project`/
         #   topics/`topic`"`. ``topic`` must start with a letter, and contain only letters
