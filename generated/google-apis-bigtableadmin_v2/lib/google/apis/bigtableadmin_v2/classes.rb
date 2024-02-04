@@ -261,7 +261,7 @@ module Google
       
         # Output only. Name of the backup from which this backup was copied. If a backup
         # is not created by copying a backup, this field will be empty. Values are of
-        # the form: projects//instances//backups/.
+        # the form: projects//instances//clusters//backups/
         # Corresponds to the JSON property `sourceBackup`
         # @return [String]
         attr_accessor :source_backup
@@ -320,7 +320,7 @@ module Google
       
         # Output only. Name of the backup from which this backup was copied. If a backup
         # is not created by copying a backup, this field will be empty. Values are of
-        # the form: projects//instances//backups/.
+        # the form: projects//instances//clusters//backups/
         # Corresponds to the JSON property `sourceBackup`
         # @return [String]
         attr_accessor :source_backup
@@ -431,7 +431,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
