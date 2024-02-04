@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UnenrollDataSourcesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -432,6 +438,13 @@ module Google
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
           property :user_id, :numeric_string => true, as: 'userId'
+        end
+      end
+      
+      class UnenrollDataSourcesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_source_ids, as: 'dataSourceIds'
         end
       end
       
