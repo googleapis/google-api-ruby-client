@@ -67,6 +67,56 @@ module Google
         end
       end
       
+      # Ingestion settings for Amazon Kinesis Data Streams.
+      class AwsKinesis
+        include Google::Apis::Core::Hashable
+      
+        # Required. AWS role ARN to be used for Federated Identity authentication with
+        # Kinesis. Check the Pub/Sub docs for how to set up this role and the required
+        # permissions that need to be attached to it.
+        # Corresponds to the JSON property `awsRoleArn`
+        # @return [String]
+        attr_accessor :aws_role_arn
+      
+        # Required. The Kinesis consumer ARN to used for ingestion in Enhanced Fan-Out
+        # mode. The consumer must be already created and ready to be used.
+        # Corresponds to the JSON property `consumerArn`
+        # @return [String]
+        attr_accessor :consumer_arn
+      
+        # Required. The GCP service account to be used for Federated Identity
+        # authentication with Kinesis (via a `AssumeRoleWithWebIdentity` call for the
+        # provided role). The `aws_role_arn` must be set up with `accounts.google.com:
+        # sub` equals to this service account number.
+        # Corresponds to the JSON property `gcpServiceAccount`
+        # @return [String]
+        attr_accessor :gcp_service_account
+      
+        # Output only. An output-only field that indicates the state of the Kinesis
+        # ingestion source.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. The Kinesis stream ARN to ingest data from.
+        # Corresponds to the JSON property `streamArn`
+        # @return [String]
+        attr_accessor :stream_arn
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aws_role_arn = args[:aws_role_arn] if args.key?(:aws_role_arn)
+          @consumer_arn = args[:consumer_arn] if args.key?(:consumer_arn)
+          @gcp_service_account = args[:gcp_service_account] if args.key?(:gcp_service_account)
+          @state = args[:state] if args.key?(:state)
+          @stream_arn = args[:stream_arn] if args.key?(:stream_arn)
+        end
+      end
+      
       # Configuration for a BigQuery subscription.
       class BigQueryConfig
         include Google::Apis::Core::Hashable
@@ -215,7 +265,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -504,6 +557,25 @@ module Google
         end
       end
       
+      # Settings for an ingestion data source on a topic.
+      class IngestionDataSourceSettings
+        include Google::Apis::Core::Hashable
+      
+        # Ingestion settings for Amazon Kinesis Data Streams.
+        # Corresponds to the JSON property `awsKinesis`
+        # @return [Google::Apis::PubsubV1::AwsKinesis]
+        attr_accessor :aws_kinesis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aws_kinesis = args[:aws_kinesis] if args.key?(:aws_kinesis)
+        end
+      end
+      
       # Response for the `ListSchemaRevisions` method.
       class ListSchemaRevisionsResponse
         include Google::Apis::Core::Hashable
@@ -734,8 +806,8 @@ module Google
         # zero might immediately make the message available for delivery to another
         # subscriber client. This typically results in an increase in the rate of
         # message redeliveries (that is, duplicates). The minimum deadline you can
-        # specify is 0 seconds. The maximum deadline you can specify is 600 seconds (10
-        # minutes).
+        # specify is 0 seconds. The maximum deadline you can specify in a single request
+        # is 600 seconds (10 minutes).
         # Corresponds to the JSON property `ackDeadlineSeconds`
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
@@ -984,9 +1056,9 @@ module Google
         # @return [String]
         attr_accessor :data
       
-        # Optional. ID of this message, assigned by the server when the message is
-        # published. Guaranteed to be unique within the topic. This value may be read by
-        # a subscriber that receives a `PubsubMessage` via a `Pull` call or a push
+        # ID of this message, assigned by the server when the message is published.
+        # Guaranteed to be unique within the topic. This value may be read by a
+        # subscriber that receives a `PubsubMessage` via a `Pull` call or a push
         # delivery. It must not be populated by the publisher in a `Publish` call.
         # Corresponds to the JSON property `messageId`
         # @return [String]
@@ -1003,9 +1075,9 @@ module Google
         # @return [String]
         attr_accessor :ordering_key
       
-        # Optional. The time at which the message was published, populated by the server
-        # when it receives the `Publish` call. It must not be populated by the publisher
-        # in a `Publish` call.
+        # The time at which the message was published, populated by the server when it
+        # receives the `Publish` call. It must not be populated by the publisher in a `
+        # Publish` call.
         # Corresponds to the JSON property `publishTime`
         # @return [String]
         attr_accessor :publish_time
@@ -1735,6 +1807,11 @@ module Google
       class Topic
         include Google::Apis::Core::Hashable
       
+        # Settings for an ingestion data source on a topic.
+        # Corresponds to the JSON property `ingestionDataSourceSettings`
+        # @return [Google::Apis::PubsubV1::IngestionDataSourceSettings]
+        attr_accessor :ingestion_data_source_settings
+      
         # Optional. The resource name of the Cloud KMS CryptoKey to be used to protect
         # access to messages published on this topic. The expected format is `projects/*/
         # locations/*/keyRings/*/cryptoKeys/*`.
@@ -1786,12 +1863,18 @@ module Google
         # @return [Google::Apis::PubsubV1::SchemaSettings]
         attr_accessor :schema_settings
       
+        # Output only. An output-only field indicating the state of the topic.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @ingestion_data_source_settings = args[:ingestion_data_source_settings] if args.key?(:ingestion_data_source_settings)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
           @message_retention_duration = args[:message_retention_duration] if args.key?(:message_retention_duration)
@@ -1799,6 +1882,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @schema_settings = args[:schema_settings] if args.key?(:schema_settings)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
