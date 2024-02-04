@@ -100,7 +100,8 @@ module Google
         attr_accessor :entry_count
       
         # Required. The resource name of the file, in form of `projects/`project-number-
-        # or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset`/files/`file``
+        # or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset`/adaptiveMtFiles/`
+        # file``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -134,8 +135,8 @@ module Google
         attr_accessor :create_time
       
         # Required. The resource name of the file, in form of `projects/`project-number-
-        # or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset`/files/`file`/
-        # sentences/`sentence``
+        # or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset`/adaptiveMtFiles/`
+        # file`/adaptiveMtSentences/`sentence``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
