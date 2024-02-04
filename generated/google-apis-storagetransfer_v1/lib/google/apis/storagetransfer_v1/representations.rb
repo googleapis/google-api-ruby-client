@@ -378,6 +378,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket_name, as: 'bucketName'
+          property :managed_folder_transfer_enabled, as: 'managedFolderTransferEnabled'
           property :path, as: 'path'
         end
       end
