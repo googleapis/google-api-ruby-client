@@ -81,7 +81,15 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse
         include Google::Apis::Core::Hashable
       
-        # A Subscription resource managed by 3P Partners.
+        # A subscription serves as a central billing entity between an external partner
+        # and Google. The underlying Google services rely on the subscription state to
+        # grant or revoke the user's service entitlement. It's important to note that
+        # the subscription state may not always perfectly align with the user's service
+        # entitlement. For example, some Google services may continue providing access
+        # to the user until the current billing cycle ends, even if the subscription has
+        # been immediately canceled. However, other services may not do the same. To
+        # fully understand the specific details, please consult the relevant contract or
+        # product policy.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
         attr_accessor :subscription
@@ -174,7 +182,15 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse
         include Google::Apis::Core::Hashable
       
-        # A Subscription resource managed by 3P Partners.
+        # A subscription serves as a central billing entity between an external partner
+        # and Google. The underlying Google services rely on the subscription state to
+        # grant or revoke the user's service entitlement. It's important to note that
+        # the subscription state may not always perfectly align with the user's service
+        # entitlement. For example, some Google services may continue providing access
+        # to the user until the current billing cycle ends, even if the subscription has
+        # been immediately canceled. However, other services may not do the same. To
+        # fully understand the specific details, please consult the relevant contract or
+        # product policy.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
         attr_accessor :subscription
@@ -779,7 +795,15 @@ module Google
         end
       end
       
-      # A Subscription resource managed by 3P Partners.
+      # A subscription serves as a central billing entity between an external partner
+      # and Google. The underlying Google services rely on the subscription state to
+      # grant or revoke the user's service entitlement. It's important to note that
+      # the subscription state may not always perfectly align with the user's service
+      # entitlement. For example, some Google services may continue providing access
+      # to the user until the current billing cycle ends, even if the subscription has
+      # been immediately canceled. However, other services may not do the same. To
+      # fully understand the specific details, please consult the relevant contract or
+      # product policy.
       class GoogleCloudPaymentsResellerSubscriptionV1Subscription
         include Google::Apis::Core::Hashable
       
@@ -1169,7 +1193,15 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse
         include Google::Apis::Core::Hashable
       
-        # A Subscription resource managed by 3P Partners.
+        # A subscription serves as a central billing entity between an external partner
+        # and Google. The underlying Google services rely on the subscription state to
+        # grant or revoke the user's service entitlement. It's important to note that
+        # the subscription state may not always perfectly align with the user's service
+        # entitlement. For example, some Google services may continue providing access
+        # to the user until the current billing cycle ends, even if the subscription has
+        # been immediately canceled. However, other services may not do the same. To
+        # fully understand the specific details, please consult the relevant contract or
+        # product policy.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
         attr_accessor :subscription
@@ -1198,6 +1230,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :partner_eligibility_ids
       
+        # Optional. Specifies the plan type offered to the end user by the partner.
+        # Corresponds to the JSON property `partnerPlanType`
+        # @return [String]
+        attr_accessor :partner_plan_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1206,6 +1243,7 @@ module Google
         def update!(**args)
           @access_end_time = args[:access_end_time] if args.key?(:access_end_time)
           @partner_eligibility_ids = args[:partner_eligibility_ids] if args.key?(:partner_eligibility_ids)
+          @partner_plan_type = args[:partner_plan_type] if args.key?(:partner_plan_type)
         end
       end
       
