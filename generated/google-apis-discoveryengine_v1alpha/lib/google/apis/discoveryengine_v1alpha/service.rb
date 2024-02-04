@@ -670,8 +670,8 @@ module Google
         # resource of DataStore. It's empty when DataStore is created. The first call to
         # this method will set up DocumentProcessingConfig.
         # @param [String] name
-        #   Output only. The full resource name of the Document Processing Config. Format:
-        #   `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+        #   The full resource name of the Document Processing Config. Format: `projects/*/
+        #   locations/*/collections/*/dataStores/*/documentProcessingConfig`.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig] google_cloud_discoveryengine_v1alpha_document_processing_config_object
         # @param [String] update_mask
         #   Indicates which fields in the provided DocumentProcessingConfig to update. The
@@ -3612,8 +3612,8 @@ module Google
         # resource of DataStore. It's empty when DataStore is created. The first call to
         # this method will set up DocumentProcessingConfig.
         # @param [String] name
-        #   Output only. The full resource name of the Document Processing Config. Format:
-        #   `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+        #   The full resource name of the Document Processing Config. Format: `projects/*/
+        #   locations/*/collections/*/dataStores/*/documentProcessingConfig`.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig] google_cloud_discoveryengine_v1alpha_document_processing_config_object
         # @param [String] update_mask
         #   Indicates which fields in the provided DocumentProcessingConfig to update. The
