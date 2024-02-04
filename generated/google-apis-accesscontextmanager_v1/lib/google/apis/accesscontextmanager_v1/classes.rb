@@ -418,7 +418,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -678,9 +681,8 @@ module Google
       class EgressFrom
         include Google::Apis::Core::Hashable
       
-        # A list of identities that are allowed access through this [EgressPolicy].
-        # Should be in the format of email address. The email address should represent
-        # individual user or service account only.
+        # A list of identities that are allowed access through this [EgressPolicy], in
+        # the format of `user:`email_id`` or `serviceAccount:`email_id``.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
@@ -1028,9 +1030,8 @@ module Google
       class IngressFrom
         include Google::Apis::Core::Hashable
       
-        # A list of identities that are allowed access through this ingress policy.
-        # Should be in the format of email address. The email address should represent
-        # individual user or service account only.
+        # A list of identities that are allowed access through this ingress policy, in
+        # the format of `user:`email_id`` or `serviceAccount:`email_id``.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
