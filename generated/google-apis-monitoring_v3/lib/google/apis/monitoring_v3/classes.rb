@@ -3033,7 +3033,8 @@ module Google
         attr_accessor :duration
       
         # A condition control that determines how metric-threshold conditions are
-        # evaluated when data stops arriving.
+        # evaluated when data stops arriving. To use this control, the value of the
+        # duration field must be greater than or equal to 60 seconds.
         # Corresponds to the JSON property `evaluationMissingData`
         # @return [String]
         attr_accessor :evaluation_missing_data
