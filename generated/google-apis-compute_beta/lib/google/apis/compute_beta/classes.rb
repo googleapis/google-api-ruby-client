@@ -5186,7 +5186,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -16546,12 +16549,24 @@ module Google
         include Google::Apis::Core::Hashable
       
         # [Output only] Fatal errors encountered during the queueing or provisioning
-        # phases of the ResizeRequest that caused the transition to the FAILED state. As
-        # a contrary to the last_attempt errors, this field is final and errors are
-        # never removed from here, as the RR is not going to retry.
+        # phases of the ResizeRequest that caused the transition to the FAILED state.
+        # Contrary to the last_attempt errors, this field is final and errors are never
+        # removed from here, as the ResizeRequest is not going to retry.
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatus::Error]
         attr_accessor :error
+      
+        # [Output only] Information about the last attempt to fulfill the request. The
+        # value is temporary since the ResizeRequest can retry, as long as it's still
+        # active and the last attempt value can either be cleared or replaced with a
+        # different error. Since ResizeRequest retries infrequently, the value may be
+        # stale and no longer show an active problem. The value is cleared when
+        # ResizeRequest transitions to the final state (becomes inactive). If the final
+        # state is FAILED the error describing it will be storred in the "error" field
+        # only.
+        # Corresponds to the JSON property `lastAttempt`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatusLastAttempt]
+        attr_accessor :last_attempt
       
         def initialize(**args)
            update!(**args)
@@ -16560,12 +16575,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @error = args[:error] if args.key?(:error)
+          @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
         end
         
         # [Output only] Fatal errors encountered during the queueing or provisioning
-        # phases of the ResizeRequest that caused the transition to the FAILED state. As
-        # a contrary to the last_attempt errors, this field is final and errors are
-        # never removed from here, as the RR is not going to retry.
+        # phases of the ResizeRequest that caused the transition to the FAILED state.
+        # Contrary to the last_attempt errors, this field is final and errors are never
+        # removed from here, as the ResizeRequest is not going to retry.
         class Error
           include Google::Apis::Core::Hashable
         
@@ -16598,6 +16614,133 @@ module Google
             # details when the error code is QUOTA_EXCEEDED.
             # Corresponds to the JSON property `errorDetails`
             # @return [Array<Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatus::Error::Error::ErrorDetail>]
+            attr_accessor :error_details
+          
+            # [Output Only] Indicates the field in the request that caused the error. This
+            # property is optional.
+            # Corresponds to the JSON property `location`
+            # @return [String]
+            attr_accessor :location
+          
+            # [Output Only] An optional, human-readable error message.
+            # Corresponds to the JSON property `message`
+            # @return [String]
+            attr_accessor :message
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @code = args[:code] if args.key?(:code)
+              @error_details = args[:error_details] if args.key?(:error_details)
+              @location = args[:location] if args.key?(:location)
+              @message = args[:message] if args.key?(:message)
+            end
+            
+            # 
+            class ErrorDetail
+              include Google::Apis::Core::Hashable
+            
+              # Describes the cause of the error with structured details. Example of an error
+              # when contacting the "pubsub.googleapis.com" API when it is not enabled: ` "
+              # reason": "API_DISABLED" "domain": "googleapis.com" "metadata": ` "resource": "
+              # projects/123", "service": "pubsub.googleapis.com" ` ` This response indicates
+              # that the pubsub.googleapis.com API is not enabled. Example of an error that is
+              # returned when attempting to create a Spanner instance in a region that is out
+              # of stock: ` "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata"
+              # : ` "availableRegions": "us-central1,us-east2" ` `
+              # Corresponds to the JSON property `errorInfo`
+              # @return [Google::Apis::ComputeBeta::ErrorInfo]
+              attr_accessor :error_info
+            
+              # Provides links to documentation or for performing an out of band action. For
+              # example, if a quota check failed with an error indicating the calling project
+              # hasn't enabled the accessed service, this can contain a URL pointing directly
+              # to the right place in the developer console to flip the bit.
+              # Corresponds to the JSON property `help`
+              # @return [Google::Apis::ComputeBeta::Help]
+              attr_accessor :help
+            
+              # Provides a localized error message that is safe to return to the user which
+              # can be attached to an RPC error.
+              # Corresponds to the JSON property `localizedMessage`
+              # @return [Google::Apis::ComputeBeta::LocalizedMessage]
+              attr_accessor :localized_message
+            
+              # Additional details for quota exceeded error for resource quota.
+              # Corresponds to the JSON property `quotaInfo`
+              # @return [Google::Apis::ComputeBeta::QuotaExceededInfo]
+              attr_accessor :quota_info
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @error_info = args[:error_info] if args.key?(:error_info)
+                @help = args[:help] if args.key?(:help)
+                @localized_message = args[:localized_message] if args.key?(:localized_message)
+                @quota_info = args[:quota_info] if args.key?(:quota_info)
+              end
+            end
+          end
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerResizeRequestStatusLastAttempt
+        include Google::Apis::Core::Hashable
+      
+        # Errors that prevented the ResizeRequest to be fulfilled.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatusLastAttempt::Error]
+        attr_accessor :error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+        end
+        
+        # Errors that prevented the ResizeRequest to be fulfilled.
+        class Error
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] The array of errors encountered while processing this operation.
+          # Corresponds to the JSON property `errors`
+          # @return [Array<Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error>]
+          attr_accessor :errors
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @errors = args[:errors] if args.key?(:errors)
+          end
+          
+          # 
+          class Error
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] The error type identifier for this error.
+            # Corresponds to the JSON property `code`
+            # @return [String]
+            attr_accessor :code
+          
+            # [Output Only] An optional list of messages that contain the error details.
+            # There is a set of defined message types to use for providing details.The
+            # syntax depends on the error code. For example, QuotaExceededInfo will have
+            # details when the error code is QUOTA_EXCEEDED.
+            # Corresponds to the JSON property `errorDetails`
+            # @return [Array<Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error::ErrorDetail>]
             attr_accessor :error_details
           
             # [Output Only] Indicates the field in the request that caused the error. This
@@ -25570,11 +25713,12 @@ module Google
         # @return [String]
         attr_accessor :fqdn
       
-        # The name or a URL of a specific VM instance that the IP address belongs to.
-        # This is required for network endpoints of type GCE_VM_IP_PORT. The instance
-        # must be in the same zone of network endpoint group (for zonal NEGs) or in the
-        # zone within the region of the NEG (for regional NEGs). The name must be 1-63
-        # characters long, and comply with RFC1035 or be a valid URL pointing to an
+        # The name or a URL of VM instance of this network endpoint. This field is
+        # required for network endpoints of type GCE_VM_IP and GCE_VM_IP_PORT. The
+        # instance must be in the same zone of network endpoint group (for zonal NEGs)
+        # or in the zone within the region of the NEG (for regional NEGs). If the
+        # ipAddress is specified, it must belongs to the VM instance. The name must be 1-
+        # 63 characters long, and comply with RFC1035 or be a valid URL pointing to an
         # existing instance.
         # Corresponds to the JSON property `instance`
         # @return [String]
@@ -25584,7 +25728,11 @@ module Google
         # in Compute Engine (either the primary IP or as part of an aliased IP range).
         # If the IP address is not specified, then the primary IP address for the VM
         # instance in the network that the network endpoint group belongs to will be
-        # used.
+        # used. This field is redundant and need not be set for network endpoints of
+        # type GCE_VM_IP. If set, it must be set to the primary internal IP address of
+        # the attached VM instance that matches the subnetwork of the NEG. The primary
+        # internal IP address from any NIC of a multi-NIC VM instance can be added to a
+        # NEG as long as it matches the NEG subnetwork.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -25595,7 +25743,8 @@ module Google
         attr_accessor :ipv6_address
       
         # Optional port number of network endpoint. If not specified, the defaultPort
-        # for the network endpoint group will be used.
+        # for the network endpoint group will be used. This field can not be set for
+        # network endpoints of type GCE_VM_IP.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -34243,8 +34392,8 @@ module Google
         # @return [Google::Apis::ComputeBeta::Duration]
         attr_accessor :delete_after_duration
       
-        # Absolute time in future when the reservation will be auto-deleted by GCE.
-        # Timestamp is represented in RFC3339 text format.
+        # Absolute time in future when the reservation will be auto-deleted by Compute
+        # Engine. Timestamp is represented in RFC3339 text format.
         # Corresponds to the JSON property `deleteAtTime`
         # @return [String]
         attr_accessor :delete_at_time

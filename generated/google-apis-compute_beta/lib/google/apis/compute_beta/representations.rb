@@ -1900,6 +1900,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerResizeRequestStatusLastAttempt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerResizeRequestsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -10418,6 +10442,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error, as: 'error', class: Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatus::Error, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatus::Error::Representation
       
+          property :last_attempt, as: 'lastAttempt', class: Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatusLastAttempt, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatusLastAttempt::Representation
+      
         end
         
         class Error
@@ -10432,6 +10458,47 @@ module Google
             class Representation < Google::Apis::Core::JsonRepresentation
               property :code, as: 'code'
               collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatus::Error::Error::ErrorDetail, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatus::Error::Error::ErrorDetail::Representation
+          
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeBeta::ErrorInfo, decorator: Google::Apis::ComputeBeta::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeBeta::Help, decorator: Google::Apis::ComputeBeta::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeBeta::LocalizedMessage, decorator: Google::Apis::ComputeBeta::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeBeta::QuotaExceededInfo, decorator: Google::Apis::ComputeBeta::QuotaExceededInfo::Representation
+            
+              end
+            end
+          end
+        end
+      end
+      
+      class InstanceGroupManagerResizeRequestStatusLastAttempt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatusLastAttempt::Error, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Representation
+      
+        end
+        
+        class Error
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error::Representation
+        
+          end
+          
+          class Error
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error::ErrorDetail, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error::ErrorDetail::Representation
           
               property :location, as: 'location'
               property :message, as: 'message'
