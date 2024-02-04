@@ -723,8 +723,9 @@ module Google
         end
       end
       
-      # CVE stands for Common Vulnerabilities and Exposures. More information: https://
-      # cve.mitre.org
+      # CVE stands for Common Vulnerabilities and Exposures. Information from the [CVE
+      # record](https://www.cve.org/ResourcesSupport/Glossary) that describes this
+      # vulnerability.
       class Cve
         include Google::Apis::Core::Hashable
       
@@ -2266,6 +2267,13 @@ module Google
         # @return [String]
         attr_accessor :scope
       
+        # Resource value mapping for Sensitive Data Protection findings. If any of these
+        # mappings have a resource value that is not unspecified, the resource_value
+        # field will be ignored when reading this configuration.
+        # Corresponds to the JSON property `sensitiveDataProtectionMapping`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping]
+        attr_accessor :sensitive_data_protection_mapping
+      
         # Required. Tag values combined with AND to check against. Values in the form "
         # tagValues/123" E.g. [ "tagValues/123", "tagValues/456", "tagValues/789" ]
         # https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
@@ -2291,6 +2299,7 @@ module Google
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @resource_value = args[:resource_value] if args.key?(:resource_value)
           @scope = args[:scope] if args.key?(:scope)
+          @sensitive_data_protection_mapping = args[:sensitive_data_protection_mapping] if args.key?(:sensitive_data_protection_mapping)
           @tag_values = args[:tag_values] if args.key?(:tag_values)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -2392,6 +2401,34 @@ module Google
           @last_editor = args[:last_editor] if args.key?(:last_editor)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Resource value mapping for Sensitive Data Protection findings. If any of these
+      # mappings have a resource value that is not unspecified, the resource_value
+      # field will be ignored when reading this configuration.
+      class GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping
+        include Google::Apis::Core::Hashable
+      
+        # Resource value mapping for high-sensitivity Sensitive Data Protection findings
+        # Corresponds to the JSON property `highSensitivityMapping`
+        # @return [String]
+        attr_accessor :high_sensitivity_mapping
+      
+        # Resource value mapping for medium-sensitivity Sensitive Data Protection
+        # findings
+        # Corresponds to the JSON property `mediumSensitivityMapping`
+        # @return [String]
+        attr_accessor :medium_sensitivity_mapping
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @high_sensitivity_mapping = args[:high_sensitivity_mapping] if args.key?(:high_sensitivity_mapping)
+          @medium_sensitivity_mapping = args[:medium_sensitivity_mapping] if args.key?(:medium_sensitivity_mapping)
         end
       end
       
@@ -3955,8 +3992,9 @@ module Google
       class Vulnerability
         include Google::Apis::Core::Hashable
       
-        # CVE stands for Common Vulnerabilities and Exposures. More information: https://
-        # cve.mitre.org
+        # CVE stands for Common Vulnerabilities and Exposures. Information from the [CVE
+        # record](https://www.cve.org/ResourcesSupport/Glossary) that describes this
+        # vulnerability.
         # Corresponds to the JSON property `cve`
         # @return [Google::Apis::SecuritycenterV1beta2::Cve]
         attr_accessor :cve
