@@ -177,6 +177,68 @@ module Google
         end
       end
       
+      # Information about a single workload.
+      class ComposerWorkload
+        include Google::Apis::Core::Hashable
+      
+        # Name of a workload.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Workload status.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComposerV1beta1::ComposerWorkloadStatus]
+        attr_accessor :status
+      
+        # Type of a workload.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @status = args[:status] if args.key?(:status)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Workload status.
+      class ComposerWorkloadStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Detailed message of the status.
+        # Corresponds to the JSON property `detailedStatusMessage`
+        # @return [String]
+        attr_accessor :detailed_status_message
+      
+        # Output only. Workload state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Text to provide more descriptive status.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detailed_status_message = args[:detailed_status_message] if args.key?(:detailed_status_message)
+          @state = args[:state] if args.key?(:state)
+          @status_message = args[:status_message] if args.key?(:status_message)
+        end
+      end
+      
       # Configuration for resources used by Airflow DAG processors.
       class DagProcessorResource
         include Google::Apis::Core::Hashable
@@ -969,6 +1031,81 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # The user workloads ConfigMaps for a given environment.
+      class ListUserWorkloadsConfigMapsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The page token used to query for the next page if one exists.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of ConfigMaps returned by a ListUserWorkloadsConfigMapsRequest.
+        # Corresponds to the JSON property `userWorkloadsConfigMaps`
+        # @return [Array<Google::Apis::ComposerV1beta1::UserWorkloadsConfigMap>]
+        attr_accessor :user_workloads_config_maps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_workloads_config_maps = args[:user_workloads_config_maps] if args.key?(:user_workloads_config_maps)
+        end
+      end
+      
+      # The user workloads Secrets for a given environment.
+      class ListUserWorkloadsSecretsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The page token used to query for the next page if one exists.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Secrets returned by a ListUserWorkloadsSecretsRequest.
+        # Corresponds to the JSON property `userWorkloadsSecrets`
+        # @return [Array<Google::Apis::ComposerV1beta1::UserWorkloadsSecret>]
+        attr_accessor :user_workloads_secrets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_workloads_secrets = args[:user_workloads_secrets] if args.key?(:user_workloads_secrets)
+        end
+      end
+      
+      # Response to ListWorkloadsRequest.
+      class ListWorkloadsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The page token used to query for the next page if one exists.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of environment workloads.
+        # Corresponds to the JSON property `workloads`
+        # @return [Array<Google::Apis::ComposerV1beta1::ComposerWorkload>]
+        attr_accessor :workloads
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workloads = args[:workloads] if args.key?(:workloads)
         end
       end
       
@@ -2055,6 +2192,67 @@ module Google
           @count = args[:count] if args.key?(:count)
           @cpu = args[:cpu] if args.key?(:cpu)
           @memory_gb = args[:memory_gb] if args.key?(:memory_gb)
+        end
+      end
+      
+      # User workloads ConfigMap used by Airflow tasks that run with Kubernetes
+      # executor or KubernetesPodOperator.
+      class UserWorkloadsConfigMap
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The "data" field of Kubernetes ConfigMap, organized in key-value
+        # pairs. For details see: https://kubernetes.io/docs/concepts/configuration/
+        # configmap/
+        # Corresponds to the JSON property `data`
+        # @return [Hash<String,String>]
+        attr_accessor :data
+      
+        # Identifier. The resource name of the ConfigMap, in the form: "projects/`
+        # projectId`/locations/`locationId`/environments/`environmentId`/
+        # userWorkloadsConfigMaps/`userWorkloadsConfigMapId`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # User workloads Secret used by Airflow tasks that run with Kubernetes executor
+      # or KubernetesPodOperator.
+      class UserWorkloadsSecret
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The "data" field of Kubernetes Secret, organized in key-value pairs,
+        # which can contain sensitive values such as a password, a token, or a key. The
+        # values for all keys have to be base64-encoded strings. For details see: https:/
+        # /kubernetes.io/docs/concepts/configuration/secret/
+        # Corresponds to the JSON property `data`
+        # @return [Hash<String,String>]
+        attr_accessor :data
+      
+        # Identifier. The resource name of the Secret, in the form: "projects/`projectId`
+        # /locations/`locationId`/environments/`environmentId`/userWorkloadsSecrets/`
+        # userWorkloadsSecretId`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
