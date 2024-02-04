@@ -1478,11 +1478,6 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # User-provided metadata, in key/value pairs.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,String>]
-        attr_accessor :metadata
-      
         # The version of the metadata for this folder. Used for preconditions and for
         # detecting changes in metadata.
         # Corresponds to the JSON property `metageneration`
@@ -1524,7 +1519,6 @@ module Google
           @bucket = args[:bucket] if args.key?(:bucket)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
           @metageneration = args[:metageneration] if args.key?(:metageneration)
           @name = args[:name] if args.key?(:name)
           @pending_rename_info = args[:pending_rename_info] if args.key?(:pending_rename_info)

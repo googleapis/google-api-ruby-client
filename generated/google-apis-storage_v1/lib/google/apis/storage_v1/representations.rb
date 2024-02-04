@@ -765,7 +765,6 @@ module Google
           property :bucket, as: 'bucket'
           property :id, as: 'id'
           property :kind, as: 'kind'
-          hash :metadata, as: 'metadata'
           property :metageneration, :numeric_string => true, as: 'metageneration'
           property :name, as: 'name'
           property :pending_rename_info, as: 'pendingRenameInfo', class: Google::Apis::StorageV1::Folder::PendingRenameInfo, decorator: Google::Apis::StorageV1::Folder::PendingRenameInfo::Representation
