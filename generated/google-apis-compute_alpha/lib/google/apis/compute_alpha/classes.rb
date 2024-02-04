@@ -5608,7 +5608,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -17807,12 +17810,24 @@ module Google
         include Google::Apis::Core::Hashable
       
         # [Output only] Fatal errors encountered during the queueing or provisioning
-        # phases of the ResizeRequest that caused the transition to the FAILED state. As
-        # a contrary to the last_attempt errors, this field is final and errors are
-        # never removed from here, as the RR is not going to retry.
+        # phases of the ResizeRequest that caused the transition to the FAILED state.
+        # Contrary to the last_attempt errors, this field is final and errors are never
+        # removed from here, as the ResizeRequest is not going to retry.
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatus::Error]
         attr_accessor :error
+      
+        # [Output only] Information about the last attempt to fulfill the request. The
+        # value is temporary since the ResizeRequest can retry, as long as it's still
+        # active and the last attempt value can either be cleared or replaced with a
+        # different error. Since ResizeRequest retries infrequently, the value may be
+        # stale and no longer show an active problem. The value is cleared when
+        # ResizeRequest transitions to the final state (becomes inactive). If the final
+        # state is FAILED the error describing it will be storred in the "error" field
+        # only.
+        # Corresponds to the JSON property `lastAttempt`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatusLastAttempt]
+        attr_accessor :last_attempt
       
         # Queuing parameters for the requested deferred capacity.
         # Corresponds to the JSON property `queuingPolicy`
@@ -17826,13 +17841,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @error = args[:error] if args.key?(:error)
+          @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
           @queuing_policy = args[:queuing_policy] if args.key?(:queuing_policy)
         end
         
         # [Output only] Fatal errors encountered during the queueing or provisioning
-        # phases of the ResizeRequest that caused the transition to the FAILED state. As
-        # a contrary to the last_attempt errors, this field is final and errors are
-        # never removed from here, as the RR is not going to retry.
+        # phases of the ResizeRequest that caused the transition to the FAILED state.
+        # Contrary to the last_attempt errors, this field is final and errors are never
+        # removed from here, as the ResizeRequest is not going to retry.
         class Error
           include Google::Apis::Core::Hashable
         
@@ -17865,6 +17881,133 @@ module Google
             # details when the error code is QUOTA_EXCEEDED.
             # Corresponds to the JSON property `errorDetails`
             # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatus::Error::Error::ErrorDetail>]
+            attr_accessor :error_details
+          
+            # [Output Only] Indicates the field in the request that caused the error. This
+            # property is optional.
+            # Corresponds to the JSON property `location`
+            # @return [String]
+            attr_accessor :location
+          
+            # [Output Only] An optional, human-readable error message.
+            # Corresponds to the JSON property `message`
+            # @return [String]
+            attr_accessor :message
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @code = args[:code] if args.key?(:code)
+              @error_details = args[:error_details] if args.key?(:error_details)
+              @location = args[:location] if args.key?(:location)
+              @message = args[:message] if args.key?(:message)
+            end
+            
+            # 
+            class ErrorDetail
+              include Google::Apis::Core::Hashable
+            
+              # Describes the cause of the error with structured details. Example of an error
+              # when contacting the "pubsub.googleapis.com" API when it is not enabled: ` "
+              # reason": "API_DISABLED" "domain": "googleapis.com" "metadata": ` "resource": "
+              # projects/123", "service": "pubsub.googleapis.com" ` ` This response indicates
+              # that the pubsub.googleapis.com API is not enabled. Example of an error that is
+              # returned when attempting to create a Spanner instance in a region that is out
+              # of stock: ` "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata"
+              # : ` "availableRegions": "us-central1,us-east2" ` `
+              # Corresponds to the JSON property `errorInfo`
+              # @return [Google::Apis::ComputeAlpha::ErrorInfo]
+              attr_accessor :error_info
+            
+              # Provides links to documentation or for performing an out of band action. For
+              # example, if a quota check failed with an error indicating the calling project
+              # hasn't enabled the accessed service, this can contain a URL pointing directly
+              # to the right place in the developer console to flip the bit.
+              # Corresponds to the JSON property `help`
+              # @return [Google::Apis::ComputeAlpha::Help]
+              attr_accessor :help
+            
+              # Provides a localized error message that is safe to return to the user which
+              # can be attached to an RPC error.
+              # Corresponds to the JSON property `localizedMessage`
+              # @return [Google::Apis::ComputeAlpha::LocalizedMessage]
+              attr_accessor :localized_message
+            
+              # Additional details for quota exceeded error for resource quota.
+              # Corresponds to the JSON property `quotaInfo`
+              # @return [Google::Apis::ComputeAlpha::QuotaExceededInfo]
+              attr_accessor :quota_info
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @error_info = args[:error_info] if args.key?(:error_info)
+                @help = args[:help] if args.key?(:help)
+                @localized_message = args[:localized_message] if args.key?(:localized_message)
+                @quota_info = args[:quota_info] if args.key?(:quota_info)
+              end
+            end
+          end
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerResizeRequestStatusLastAttempt
+        include Google::Apis::Core::Hashable
+      
+        # Errors that prevented the ResizeRequest to be fulfilled.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatusLastAttempt::Error]
+        attr_accessor :error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+        end
+        
+        # Errors that prevented the ResizeRequest to be fulfilled.
+        class Error
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] The array of errors encountered while processing this operation.
+          # Corresponds to the JSON property `errors`
+          # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error>]
+          attr_accessor :errors
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @errors = args[:errors] if args.key?(:errors)
+          end
+          
+          # 
+          class Error
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] The error type identifier for this error.
+            # Corresponds to the JSON property `code`
+            # @return [String]
+            attr_accessor :code
+          
+            # [Output Only] An optional list of messages that contain the error details.
+            # There is a set of defined message types to use for providing details.The
+            # syntax depends on the error code. For example, QuotaExceededInfo will have
+            # details when the error code is QUOTA_EXCEEDED.
+            # Corresponds to the JSON property `errorDetails`
+            # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error::ErrorDetail>]
             attr_accessor :error_details
           
             # [Output Only] Indicates the field in the request that caused the error. This
@@ -26415,6 +26558,51 @@ module Google
         end
       end
       
+      # 
+      class NamedSet
+        include Google::Apis::Core::Hashable
+      
+        # CEL expressions that are comparable to constructs of this set's type (see
+        # Policy Language).
+        # Corresponds to the JSON property `elements`
+        # @return [Array<Google::Apis::ComputeAlpha::Expr>]
+        attr_accessor :elements
+      
+        # A fingerprint for the Named Set being applied to this Router, which is
+        # essentially a hash of the Named Set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update the Named Set. You must always provide an up-to-
+        # date fingerprint hash in order to update or change labels. To see the latest
+        # fingerprint, make a getNamedSet() request to retrieve a Named Set.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # This set's name, which must be a resource ID segment and unique within all
+        # named sets owned by the Router. Name should conform to RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # This named set's type
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @elements = args[:elements] if args.key?(:elements)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Contains NAT IP information of a NAT config (i.e. usage status, mode).
       class NatIpInfo
         include Google::Apis::Core::Hashable
@@ -27482,8 +27670,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Only valid for network endpoint groups created with client_port_mapping
-        # supported. Represents the port number to which original packet is sent.
+        # Represents the port number to which PSC consumer sends packets. Only valid for
+        # network endpoint groups created with CLIENT_PORT_PER_ENDPOINT mapping mode.
         # Corresponds to the JSON property `clientPort`
         # @return [Fixnum]
         attr_accessor :client_port
@@ -27494,11 +27682,12 @@ module Google
         # @return [String]
         attr_accessor :fqdn
       
-        # The name or a URL of a specific VM instance that the IP address belongs to.
-        # This is required for network endpoints of type GCE_VM_IP_PORT. The instance
-        # must be in the same zone of network endpoint group (for zonal NEGs) or in the
-        # zone within the region of the NEG (for regional NEGs). The name must be 1-63
-        # characters long, and comply with RFC1035 or be a valid URL pointing to an
+        # The name or a URL of VM instance of this network endpoint. This field is
+        # required for network endpoints of type GCE_VM_IP and GCE_VM_IP_PORT. The
+        # instance must be in the same zone of network endpoint group (for zonal NEGs)
+        # or in the zone within the region of the NEG (for regional NEGs). If the
+        # ipAddress is specified, it must belongs to the VM instance. The name must be 1-
+        # 63 characters long, and comply with RFC1035 or be a valid URL pointing to an
         # existing instance.
         # Corresponds to the JSON property `instance`
         # @return [String]
@@ -27508,7 +27697,11 @@ module Google
         # in Compute Engine (either the primary IP or as part of an aliased IP range).
         # If the IP address is not specified, then the primary IP address for the VM
         # instance in the network that the network endpoint group belongs to will be
-        # used.
+        # used. This field is redundant and need not be set for network endpoints of
+        # type GCE_VM_IP. If set, it must be set to the primary internal IP address of
+        # the attached VM instance that matches the subnetwork of the NEG. The primary
+        # internal IP address from any NIC of a multi-NIC VM instance can be added to a
+        # NEG as long as it matches the NEG subnetwork.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -27519,7 +27712,8 @@ module Google
         attr_accessor :ipv6_address
       
         # Optional port number of network endpoint. If not specified, the defaultPort
-        # for the network endpoint group will be used.
+        # for the network endpoint group will be used. This field can not be set for
+        # network endpoints of type GCE_VM_IP.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -37559,8 +37753,8 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Duration]
         attr_accessor :delete_after_duration
       
-        # Absolute time in future when the reservation will be auto-deleted by GCE.
-        # Timestamp is represented in RFC3339 text format.
+        # Absolute time in future when the reservation will be auto-deleted by Compute
+        # Engine. Timestamp is represented in RFC3339 text format.
         # Corresponds to the JSON property `deleteAtTime`
         # @return [String]
         attr_accessor :delete_at_time
@@ -41435,6 +41629,31 @@ module Google
       end
       
       # 
+      class RoutersGetNamedSetResponse
+        include Google::Apis::Core::Hashable
+      
+        # end_interface: MixerGetResponseWithEtagBuilder
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # 
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::ComputeAlpha::NamedSet]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # 
       class RoutersGetRoutePolicyResponse
         include Google::Apis::Core::Hashable
       
@@ -41539,6 +41758,137 @@ module Google
           # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RoutersListBgpRoutes::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class RoutersListNamedSets
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] Type of resource. Always compute#routersListNamedSets for lists
+        # of named sets.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] A list of named sets.
+        # Corresponds to the JSON property `result`
+        # @return [Array<Google::Apis::ComputeAlpha::NamedSet>]
+        attr_accessor :result
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::RoutersListNamedSets::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @result = args[:result] if args.key?(:result)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::RoutersListNamedSets::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
@@ -47858,8 +48208,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :pool_provisioned_capacity_gb
       
-        # Provsioned IOPS of the storage pool. Only relevant if the storage pool type is
-        # hyperdisk-balanced.
+        # Provisioned IOPS of the storage pool. Only relevant if the storage pool type
+        # is hyperdisk-balanced.
         # Corresponds to the JSON property `poolProvisionedIops`
         # @return [Fixnum]
         attr_accessor :pool_provisioned_iops
@@ -51052,6 +51402,25 @@ module Google
         # @return [String]
         attr_accessor :ssl_policy
       
+        # Specifies whether TLS 1.3 0-RTT Data ("Early Data") should be accepted for
+        # this service. Early Data allows a TLS resumption handshake to include the
+        # initial application payload (a HTTP request) alongside the handshake, reducing
+        # the effective round trips to "zero". This applies to TLS 1.3 connections over
+        # TCP (HTTP/2) as well as over UDP (QUIC/h3). This can improve application
+        # performance, especially on networks where interruptions may be common, such as
+        # on mobile. Requests with Early Data will have the "Early-Data" HTTP header set
+        # on the request, with a value of "1", to allow the backend to determine whether
+        # Early Data was included. Note: TLS Early Data may allow requests to be
+        # replayed, as the data is sent to the backend before the handshake has fully
+        # completed. Applications that allow idempotent HTTP methods to make non-
+        # idempotent changes, such as a GET request updating a database, should not
+        # accept Early Data on those requests, and reject requests with the "Early-Data:
+        # 1" HTTP header by returning a HTTP 425 (Too Early) status code, in order to
+        # remain RFC compliant. The default value is DISABLED.
+        # Corresponds to the JSON property `tlsEarlyData`
+        # @return [String]
+        attr_accessor :tls_early_data
+      
         # A fully-qualified or valid partial URL to the UrlMap resource that defines the
         # mapping from URL to the BackendService. For example, the following are all
         # valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/
@@ -51087,6 +51456,7 @@ module Google
           @server_tls_policy = args[:server_tls_policy] if args.key?(:server_tls_policy)
           @ssl_certificates = args[:ssl_certificates] if args.key?(:ssl_certificates)
           @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
+          @tls_early_data = args[:tls_early_data] if args.key?(:tls_early_data)
           @url_map = args[:url_map] if args.key?(:url_map)
         end
       end
