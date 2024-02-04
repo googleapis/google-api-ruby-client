@@ -2062,6 +2062,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerResizeRequestStatusLastAttempt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerResizeRequestsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3299,6 +3323,12 @@ module Google
       end
       
       class NamedPort
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NamedSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5374,6 +5404,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RoutersGetNamedSetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RoutersGetRoutePolicyResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5381,6 +5417,24 @@ module Google
       end
       
       class RoutersListBgpRoutes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoutersListNamedSets
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -11559,6 +11613,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error, as: 'error', class: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatus::Error, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatus::Error::Representation
       
+          property :last_attempt, as: 'lastAttempt', class: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatusLastAttempt, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatusLastAttempt::Representation
+      
           property :queuing_policy, as: 'queuingPolicy', class: Google::Apis::ComputeAlpha::QueuingPolicy, decorator: Google::Apis::ComputeAlpha::QueuingPolicy::Representation
       
         end
@@ -11575,6 +11631,47 @@ module Google
             class Representation < Google::Apis::Core::JsonRepresentation
               property :code, as: 'code'
               collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatus::Error::Error::ErrorDetail, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatus::Error::Error::ErrorDetail::Representation
+          
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeAlpha::ErrorInfo, decorator: Google::Apis::ComputeAlpha::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeAlpha::Help, decorator: Google::Apis::ComputeAlpha::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeAlpha::LocalizedMessage, decorator: Google::Apis::ComputeAlpha::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeAlpha::QuotaExceededInfo, decorator: Google::Apis::ComputeAlpha::QuotaExceededInfo::Representation
+            
+              end
+            end
+          end
+        end
+      end
+      
+      class InstanceGroupManagerResizeRequestStatusLastAttempt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatusLastAttempt::Error, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Representation
+      
+        end
+        
+        class Error
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error::Representation
+        
+          end
+          
+          class Error
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error::ErrorDetail, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatusLastAttempt::Error::Error::ErrorDetail::Representation
           
               property :location, as: 'location'
               property :message, as: 'message'
@@ -13797,6 +13894,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :port, as: 'port'
+        end
+      end
+      
+      class NamedSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :elements, as: 'elements', class: Google::Apis::ComputeAlpha::Expr, decorator: Google::Apis::ComputeAlpha::Expr::Representation
+      
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
@@ -17631,6 +17739,15 @@ module Google
         end
       end
       
+      class RoutersGetNamedSetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :resource, as: 'resource', class: Google::Apis::ComputeAlpha::NamedSet, decorator: Google::Apis::ComputeAlpha::NamedSet::Representation
+      
+        end
+      end
+      
       class RoutersGetRoutePolicyResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -17660,6 +17777,40 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeAlpha::RoutersListBgpRoutes::Warning::Datum, decorator: Google::Apis::ComputeAlpha::RoutersListBgpRoutes::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class RoutersListNamedSets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :result, as: 'result', class: Google::Apis::ComputeAlpha::NamedSet, decorator: Google::Apis::ComputeAlpha::NamedSet::Representation
+      
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::RoutersListNamedSets::Warning, decorator: Google::Apis::ComputeAlpha::RoutersListNamedSets::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::RoutersListNamedSets::Warning::Datum, decorator: Google::Apis::ComputeAlpha::RoutersListNamedSets::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -20013,6 +20164,7 @@ module Google
           property :server_tls_policy, as: 'serverTlsPolicy'
           collection :ssl_certificates, as: 'sslCertificates'
           property :ssl_policy, as: 'sslPolicy'
+          property :tls_early_data, as: 'tlsEarlyData'
           property :url_map, as: 'urlMap'
         end
       end
