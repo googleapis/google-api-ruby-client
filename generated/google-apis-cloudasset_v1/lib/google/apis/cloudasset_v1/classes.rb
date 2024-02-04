@@ -1473,6 +1473,14 @@ module Google
       class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy
         include Google::Apis::Core::Hashable
       
+        # The asset type of the AnalyzeOrgPolicyGovernedAssetsResponse.GovernedIamPolicy.
+        # attached_resource. Example: `cloudresourcemanager.googleapis.com/Project` See [
+        # Cloud Asset Inventory Supported Asset Types](https://cloud.google.com/asset-
+        # inventory/docs/supported-asset-types) for all supported asset types.
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
         # The full resource name of the resource on which this IAM policy is set.
         # Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/
         # instances/instance1`. See [Cloud Asset Inventory Resource Name Format](https://
@@ -1540,6 +1548,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
           @attached_resource = args[:attached_resource] if args.key?(:attached_resource)
           @folders = args[:folders] if args.key?(:folders)
           @organization = args[:organization] if args.key?(:organization)
@@ -1552,6 +1561,19 @@ module Google
       # AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
       class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource
         include Google::Apis::Core::Hashable
+      
+        # The asset type of the AnalyzeOrgPolicyGovernedAssetsResponse.GovernedResource.
+        # full_resource_name Example: `cloudresourcemanager.googleapis.com/Project` See [
+        # Cloud Asset Inventory Supported Asset Types](https://cloud.google.com/asset-
+        # inventory/docs/supported-asset-types) for all supported asset types.
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
+        # The effective tags on this resource.
+        # Corresponds to the JSON property `effectiveTags`
+        # @return [Array<Google::Apis::CloudassetV1::EffectiveTagDetails>]
+        attr_accessor :effective_tags
       
         # The folder(s) that this resource belongs to, in the format of folders/`
         # FOLDER_NUMBER`. This field is available when the resource belongs (directly or
@@ -1593,6 +1615,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
+          @effective_tags = args[:effective_tags] if args.key?(:effective_tags)
           @folders = args[:folders] if args.key?(:folders)
           @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
           @organization = args[:organization] if args.key?(:organization)
@@ -1846,11 +1870,30 @@ module Google
         # @return [Google::Apis::CloudassetV1::AnalyzerOrgPolicy]
         attr_accessor :consolidated_policy
       
+        # The effective tags on this resource.
+        # Corresponds to the JSON property `effectiveTags`
+        # @return [Array<Google::Apis::CloudassetV1::EffectiveTagDetails>]
+        attr_accessor :effective_tags
+      
+        # The folder(s) that this resource belongs to, in the format of folders/`
+        # FOLDER_NUMBER`. This field is available when the resource belongs (directly or
+        # cascadingly) to one or more folders.
+        # Corresponds to the JSON property `folders`
+        # @return [Array<String>]
+        attr_accessor :folders
+      
         # The [full resource name] (https://cloud.google.com/asset-inventory/docs/
         # resource-name-format) of an organization/folder/project resource.
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
         attr_accessor :full_resource_name
+      
+        # The organization that this resource belongs to, in the format of organizations/
+        # `ORGANIZATION_NUMBER`. This field is available when the resource belongs (
+        # directly or cascadingly) to an organization.
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
       
         # The [full resource name] (https://cloud.google.com/asset-inventory/docs/
         # resource-name-format) of the parent of
@@ -1868,6 +1911,13 @@ module Google
         # @return [Array<Google::Apis::CloudassetV1::AnalyzerOrgPolicy>]
         attr_accessor :policy_bundle
       
+        # The project that this resource belongs to, in the format of projects/`
+        # PROJECT_NUMBER`. This field is available when the resource belongs to a
+        # project.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1875,9 +1925,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consolidated_policy = args[:consolidated_policy] if args.key?(:consolidated_policy)
+          @effective_tags = args[:effective_tags] if args.key?(:effective_tags)
+          @folders = args[:folders] if args.key?(:folders)
           @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @organization = args[:organization] if args.key?(:organization)
           @parent = args[:parent] if args.key?(:parent)
           @policy_bundle = args[:policy_bundle] if args.key?(:policy_bundle)
+          @project = args[:project] if args.key?(:project)
         end
       end
       
@@ -2073,6 +2127,11 @@ module Google
         # @return [Google::Apis::CloudassetV1::Expr]
         attr_accessor :condition
       
+        # The Condition evaluation.
+        # Corresponds to the JSON property `conditionEvaluation`
+        # @return [Google::Apis::CloudassetV1::ConditionEvaluation]
+        attr_accessor :condition_evaluation
+      
         # Setting this to true means that all values are denied. This field can be set
         # only in Policies for list constraints.
         # Corresponds to the JSON property `denyAll`
@@ -2100,6 +2159,7 @@ module Google
         def update!(**args)
           @allow_all = args[:allow_all] if args.key?(:allow_all)
           @condition = args[:condition] if args.key?(:condition)
+          @condition_evaluation = args[:condition_evaluation] if args.key?(:condition_evaluation)
           @deny_all = args[:deny_all] if args.key?(:deny_all)
           @enforce = args[:enforce] if args.key?(:enforce)
           @values = args[:values] if args.key?(:values)
@@ -3085,9 +3145,8 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1EgressFrom
         include Google::Apis::Core::Hashable
       
-        # A list of identities that are allowed access through this [EgressPolicy].
-        # Should be in the format of email address. The email address should represent
-        # individual user or service account only.
+        # A list of identities that are allowed access through this [EgressPolicy], in
+        # the format of `user:`email_id`` or `serviceAccount:`email_id``.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
@@ -3253,9 +3312,8 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1IngressFrom
         include Google::Apis::Core::Hashable
       
-        # A list of identities that are allowed access through this ingress policy.
-        # Should be in the format of email address. The email address should represent
-        # individual user or service account only.
+        # A list of identities that are allowed access through this ingress policy, in
+        # the format of `user:`email_id`` or `serviceAccount:`email_id``.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
@@ -4458,6 +4516,20 @@ module Google
         # @return [Google::Apis::CloudassetV1::AnalyzerOrgPolicy]
         attr_accessor :consolidated_policy
       
+        # The folder(s) that this consolidated policy belongs to, in the format of
+        # folders/`FOLDER_NUMBER`. This field is available when the consolidated policy
+        # belongs (directly or cascadingly) to one or more folders.
+        # Corresponds to the JSON property `folders`
+        # @return [Array<String>]
+        attr_accessor :folders
+      
+        # The organization that this consolidated policy belongs to, in the format of
+        # organizations/`ORGANIZATION_NUMBER`. This field is available when the
+        # consolidated policy belongs (directly or cascadingly) to an organization.
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
+      
         # The ordered list of all organization policies from the
         # AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.
         # attached_resource. to the scope specified in the request. If the constraint is
@@ -4466,6 +4538,13 @@ module Google
         # @return [Array<Google::Apis::CloudassetV1::AnalyzerOrgPolicy>]
         attr_accessor :policy_bundle
       
+        # The project that this consolidated policy belongs to, in the format of
+        # projects/`PROJECT_NUMBER`. This field is available when the consolidated
+        # policy belongs to a project.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4473,7 +4552,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consolidated_policy = args[:consolidated_policy] if args.key?(:consolidated_policy)
+          @folders = args[:folders] if args.key?(:folders)
+          @organization = args[:organization] if args.key?(:organization)
           @policy_bundle = args[:policy_bundle] if args.key?(:policy_bundle)
+          @project = args[:project] if args.key?(:project)
         end
       end
       
