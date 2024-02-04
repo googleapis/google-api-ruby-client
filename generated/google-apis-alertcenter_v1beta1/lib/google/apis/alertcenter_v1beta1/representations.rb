@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeviceManagementRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DlpRuleViolation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -696,6 +702,19 @@ module Google
           property :device_id, as: 'deviceId'
           property :device_model, as: 'deviceModel'
           property :device_type, as: 'deviceType'
+          property :ios_vendor_id, as: 'iosVendorId'
+          property :resource_id, as: 'resourceId'
+          property :serial_number, as: 'serialNumber'
+        end
+      end
+      
+      class DeviceManagementRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, as: 'deviceId'
+          property :device_model, as: 'deviceModel'
+          property :device_type, as: 'deviceType'
+          property :email, as: 'email'
           property :ios_vendor_id, as: 'iosVendorId'
           property :resource_id, as: 'resourceId'
           property :serial_number, as: 'serialNumber'
