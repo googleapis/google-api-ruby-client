@@ -1074,6 +1074,27 @@ module Google
         end
       end
       
+      # A request to unenroll a set of data sources so they are no longer visible in
+      # the BigQuery UI's `Transfer` tab.
+      class UnenrollDataSourcesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Data sources that are unenrolled. It is required to provide at least one data
+        # source id.
+        # Corresponds to the JSON property `dataSourceIds`
+        # @return [Array<String>]
+        attr_accessor :data_source_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source_ids = args[:data_source_ids] if args.key?(:data_source_ids)
+        end
+      end
+      
       # Information about a user.
       class UserInfo
         include Google::Apis::Core::Hashable

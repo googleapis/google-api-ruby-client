@@ -312,6 +312,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Unenroll data sources in a user project. This allows users to remove transfer
+        # configurations for these data sources. They will no longer appear in the
+        # ListDataSources RPC and will also no longer appear in the [BigQuery UI](https:/
+        # /console.cloud.google.com/bigquery).
+        # @param [String] name
+        #   The name of the project resource in the form: `projects/`project_id``
+        # @param [Google::Apis::BigquerydatatransferV1::UnenrollDataSourcesRequest] unenroll_data_sources_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigquerydatatransferV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigquerydatatransferV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def unenroll_location_data_sources(name, unenroll_data_sources_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:unenrollDataSources', options)
+          command.request_representation = Google::Apis::BigquerydatatransferV1::UnenrollDataSourcesRequest::Representation
+          command.request_object = unenroll_data_sources_request_object
+          command.response_representation = Google::Apis::BigquerydatatransferV1::Empty::Representation
+          command.response_class = Google::Apis::BigquerydatatransferV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns true if valid credentials exist for the given data source and
         # requesting user.
         # @param [String] name
