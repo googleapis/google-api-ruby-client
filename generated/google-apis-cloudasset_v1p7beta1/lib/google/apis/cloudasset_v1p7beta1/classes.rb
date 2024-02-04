@@ -1451,9 +1451,8 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1EgressFrom
         include Google::Apis::Core::Hashable
       
-        # A list of identities that are allowed access through this [EgressPolicy].
-        # Should be in the format of email address. The email address should represent
-        # individual user or service account only.
+        # A list of identities that are allowed access through this [EgressPolicy], in
+        # the format of `user:`email_id`` or `serviceAccount:`email_id``.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
@@ -1619,9 +1618,8 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1IngressFrom
         include Google::Apis::Core::Hashable
       
-        # A list of identities that are allowed access through this ingress policy.
-        # Should be in the format of email address. The email address should represent
-        # individual user or service account only.
+        # A list of identities that are allowed access through this ingress policy, in
+        # the format of `user:`email_id`` or `serviceAccount:`email_id``.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
