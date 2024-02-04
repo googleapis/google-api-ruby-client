@@ -1,0 +1,7 @@
+{
+    "api_id": "dataportability:v1beta",
+    "name_pretty": "Data Portability API",
+    "distribution_name": "google-apis-dataportability_v1beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
