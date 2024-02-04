@@ -27,7 +27,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The resource name of the SecretVersion in the format `projects/*/secrets/*/
-        # versions/*`.
+        # versions/*` or `projects/*/locations/*/secrets/*/versions/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -262,7 +262,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -908,8 +911,8 @@ module Google
         # characters. An alias string must start with a letter and cannot be the string '
         # latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
         # Version-Alias pairs will be viewable via GetSecret and modifiable via
-        # UpdateSecret. At launch Access by Allias will only be supported on
-        # GetSecretVersion and AccessSecretVersion.
+        # UpdateSecret. Access by alias is only be supported on GetSecretVersion and
+        # AccessSecretVersion.
         # Corresponds to the JSON property `versionAliases`
         # @return [Hash<String,Fixnum>]
         attr_accessor :version_aliases
