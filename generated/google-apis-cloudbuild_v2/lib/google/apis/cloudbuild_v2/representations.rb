@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Provenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Repository
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,6 +329,12 @@ module Google
       end
       
       class SecretVolumeSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Security
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -431,6 +443,12 @@ module Google
       end
       
       class WhenExpression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Worker
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -858,6 +876,7 @@ module Google
           property :create_time, as: 'createTime'
           property :etag, as: 'etag'
           property :finally_start_time, as: 'finallyStartTime'
+          hash :gcb_params, as: 'gcbParams'
           property :name, as: 'name'
           collection :params, as: 'params', class: Google::Apis::CloudbuildV2::Param, decorator: Google::Apis::CloudbuildV2::Param::Representation
       
@@ -866,7 +885,11 @@ module Google
           property :pipeline_run_status, as: 'pipelineRunStatus'
           property :pipeline_spec, as: 'pipelineSpec', class: Google::Apis::CloudbuildV2::PipelineSpec, decorator: Google::Apis::CloudbuildV2::PipelineSpec::Representation
       
+          property :provenance, as: 'provenance', class: Google::Apis::CloudbuildV2::Provenance, decorator: Google::Apis::CloudbuildV2::Provenance::Representation
+      
           property :resolved_pipeline_spec, as: 'resolvedPipelineSpec', class: Google::Apis::CloudbuildV2::PipelineSpec, decorator: Google::Apis::CloudbuildV2::PipelineSpec::Representation
+      
+          property :security, as: 'security', class: Google::Apis::CloudbuildV2::Security, decorator: Google::Apis::CloudbuildV2::Security::Representation
       
           property :service_account, as: 'serviceAccount'
           collection :skipped_tasks, as: 'skippedTasks', class: Google::Apis::CloudbuildV2::SkippedTask, decorator: Google::Apis::CloudbuildV2::SkippedTask::Representation
@@ -876,6 +899,8 @@ module Google
       
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+          property :worker, as: 'worker', class: Google::Apis::CloudbuildV2::Worker, decorator: Google::Apis::CloudbuildV2::Worker::Representation
+      
           property :worker_pool, as: 'workerPool'
           property :workflow, as: 'workflow'
           collection :workspaces, as: 'workspaces', class: Google::Apis::CloudbuildV2::WorkspaceBinding, decorator: Google::Apis::CloudbuildV2::WorkspaceBinding::Representation
@@ -955,6 +980,15 @@ module Google
         end
       end
       
+      class Provenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :region, as: 'region'
+          property :storage, as: 'storage'
+        end
+      end
+      
       class Repository
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -986,6 +1020,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :secret_name, as: 'secretName'
           property :secret_version, as: 'secretVersion'
+        end
+      end
+      
+      class Security
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :privilege_mode, as: 'privilegeMode'
+          property :service_account, as: 'serviceAccount'
         end
       end
       
@@ -1186,6 +1228,13 @@ module Google
           property :expression_operator, as: 'expressionOperator'
           property :input, as: 'input'
           collection :values, as: 'values'
+        end
+      end
+      
+      class Worker
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :machine_type, as: 'machineType'
         end
       end
       

@@ -212,7 +212,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1530,6 +1533,11 @@ module Google
         # @return [String]
         attr_accessor :finally_start_time
       
+        # Output only. GCB default params.
+        # Corresponds to the JSON property `gcbParams`
+        # @return [Hash<String,String>]
+        attr_accessor :gcb_params
+      
         # Output only. The `PipelineRun` name with format `projects/`project`/locations/`
         # location`/pipelineRuns/`pipeline_run``
         # Corresponds to the JSON property `name`
@@ -1556,10 +1564,20 @@ module Google
         # @return [Google::Apis::CloudbuildV2::PipelineSpec]
         attr_accessor :pipeline_spec
       
+        # Provenance configuration.
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::CloudbuildV2::Provenance]
+        attr_accessor :provenance
+      
         # PipelineSpec defines the desired state of Pipeline.
         # Corresponds to the JSON property `resolvedPipelineSpec`
         # @return [Google::Apis::CloudbuildV2::PipelineSpec]
         attr_accessor :resolved_pipeline_spec
+      
+        # Security configuration.
+        # Corresponds to the JSON property `security`
+        # @return [Google::Apis::CloudbuildV2::Security]
+        attr_accessor :security
       
         # Service account used in the Pipeline.
         # Corresponds to the JSON property `serviceAccount`
@@ -1594,6 +1612,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Configuration for the worker.
+        # Corresponds to the JSON property `worker`
+        # @return [Google::Apis::CloudbuildV2::Worker]
+        attr_accessor :worker
+      
         # Output only. The WorkerPool used to run this PipelineRun.
         # Corresponds to the JSON property `workerPool`
         # @return [String]
@@ -1622,18 +1645,22 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @etag = args[:etag] if args.key?(:etag)
           @finally_start_time = args[:finally_start_time] if args.key?(:finally_start_time)
+          @gcb_params = args[:gcb_params] if args.key?(:gcb_params)
           @name = args[:name] if args.key?(:name)
           @params = args[:params] if args.key?(:params)
           @pipeline_ref = args[:pipeline_ref] if args.key?(:pipeline_ref)
           @pipeline_run_status = args[:pipeline_run_status] if args.key?(:pipeline_run_status)
           @pipeline_spec = args[:pipeline_spec] if args.key?(:pipeline_spec)
+          @provenance = args[:provenance] if args.key?(:provenance)
           @resolved_pipeline_spec = args[:resolved_pipeline_spec] if args.key?(:resolved_pipeline_spec)
+          @security = args[:security] if args.key?(:security)
           @service_account = args[:service_account] if args.key?(:service_account)
           @skipped_tasks = args[:skipped_tasks] if args.key?(:skipped_tasks)
           @start_time = args[:start_time] if args.key?(:start_time)
           @timeouts = args[:timeouts] if args.key?(:timeouts)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @worker = args[:worker] if args.key?(:worker)
           @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
           @workflow = args[:workflow] if args.key?(:workflow)
           @workspaces = args[:workspaces] if args.key?(:workspaces)
@@ -1935,6 +1962,37 @@ module Google
         end
       end
       
+      # Provenance configuration.
+      class Provenance
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Provenance push mode.
+        # Corresponds to the JSON property `enabled`
+        # @return [String]
+        attr_accessor :enabled
+      
+        # Optional. Provenance region.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Optional. Where provenance is stored.
+        # Corresponds to the JSON property `storage`
+        # @return [String]
+        attr_accessor :storage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @region = args[:region] if args.key?(:region)
+          @storage = args[:storage] if args.key?(:storage)
+        end
+      end
+      
       # A repository associated to a parent connection.
       class Repository
         include Google::Apis::Core::Hashable
@@ -2075,6 +2133,31 @@ module Google
         def update!(**args)
           @secret_name = args[:secret_name] if args.key?(:secret_name)
           @secret_version = args[:secret_version] if args.key?(:secret_version)
+        end
+      end
+      
+      # Security configuration.
+      class Security
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Privilege mode.
+        # Corresponds to the JSON property `privilegeMode`
+        # @return [String]
+        attr_accessor :privilege_mode
+      
+        # IAM service account whose credentials will be used at runtime.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @privilege_mode = args[:privilege_mode] if args.key?(:privilege_mode)
+          @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
       
@@ -2814,6 +2897,25 @@ module Google
           @expression_operator = args[:expression_operator] if args.key?(:expression_operator)
           @input = args[:input] if args.key?(:input)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Configuration for the worker.
+      class Worker
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Machine type of a worker, default is "e2-standard-2".
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
         end
       end
       
