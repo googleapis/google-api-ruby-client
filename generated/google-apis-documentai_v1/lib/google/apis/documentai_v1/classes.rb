@@ -1576,8 +1576,8 @@ module Google
         attr_accessor :input_documents
       
         # Optional. The labels with user-defined metadata for the request. Label keys
-        # and values can be no longer than 63 characters (Unicode codepoints), can only
-        # contain lowercase letters, numeric characters, underscores and dashes.
+        # and values can be no longer than 63 characters (Unicode codepoints) and can
+        # only contain lowercase letters, numeric characters, underscores, and dashes.
         # International characters are allowed. Label values are optional. Label keys
         # must start with a letter.
         # Corresponds to the JSON property `labels`
@@ -4747,8 +4747,8 @@ module Google
         attr_accessor :inline_document
       
         # Optional. The labels with user-defined metadata for the request. Label keys
-        # and values can be no longer than 63 characters (Unicode codepoints), can only
-        # contain lowercase letters, numeric characters, underscores and dashes.
+        # and values can be no longer than 63 characters (Unicode codepoints) and can
+        # only contain lowercase letters, numeric characters, underscores, and dashes.
         # International characters are allowed. Label values are optional. Label keys
         # must start with a letter.
         # Corresponds to the JSON property `labels`
