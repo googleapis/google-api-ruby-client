@@ -860,10 +860,10 @@ module Google
         # @return [String]
         attr_accessor :psc_service_attachment_link
       
-        # The geographical region of the Cloud SQL instance. It can be one of the [
-        # regions](https://cloud.google.com/sql/docs/mysql/locations#location-r) where
-        # Cloud SQL operates: For example, `asia-east1`, `europe-west1`, and `us-
-        # central1`. The default value is `us-central1`.
+        # The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) *
+        # `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`.
+        # Defaults to `us-central` or `us-central1` depending on the instance type. The
+        # region cannot be changed after instance creation.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -2995,7 +2995,8 @@ module Google
         # @return [String]
         attr_accessor :complexity
       
-        # This field is deprecated and will be removed in a future version of the API.
+        # Disallow credentials that have been previously compromised by a public data
+        # breach.
         # Corresponds to the JSON property `disallowCompromisedCredentials`
         # @return [Boolean]
         attr_accessor :disallow_compromised_credentials
