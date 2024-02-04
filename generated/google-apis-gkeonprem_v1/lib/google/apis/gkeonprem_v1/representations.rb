@@ -2167,6 +2167,8 @@ module Google
       
           property :auto_repair_config, as: 'autoRepairConfig', class: Google::Apis::GkeonpremV1::VmwareAutoRepairConfig, decorator: Google::Apis::GkeonpremV1::VmwareAutoRepairConfig::Representation
       
+          property :binary_authorization, as: 'binaryAuthorization', class: Google::Apis::GkeonpremV1::BinaryAuthorization, decorator: Google::Apis::GkeonpremV1::BinaryAuthorization::Representation
+      
           property :control_plane_node, as: 'controlPlaneNode', class: Google::Apis::GkeonpremV1::VmwareControlPlaneNodeConfig, decorator: Google::Apis::GkeonpremV1::VmwareControlPlaneNodeConfig::Representation
       
           property :create_time, as: 'createTime'
@@ -2246,6 +2248,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advanced_networking, as: 'advancedNetworking'
           property :dataplane_v2_enabled, as: 'dataplaneV2Enabled'
+          property :forward_mode, as: 'forwardMode'
           property :windows_dataplane_v2_enabled, as: 'windowsDataplaneV2Enabled'
         end
       end
