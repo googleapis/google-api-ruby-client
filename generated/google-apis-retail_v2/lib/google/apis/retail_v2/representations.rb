@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1565,6 +1571,8 @@ module Google
       
           collection :ignored_facet_values, as: 'ignoredFacetValues', class: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues::Representation
       
+          property :merged_facet, as: 'mergedFacet', class: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet::Representation
+      
           collection :merged_facet_values, as: 'mergedFacetValues', class: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue::Representation
       
           property :rerank_config, as: 'rerankConfig', class: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig::Representation
@@ -1578,6 +1586,15 @@ module Google
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
           collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :merged_facet_key, as: 'mergedFacetKey'
+          collection :merged_facet_values, as: 'mergedFacetValues', class: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue::Representation
+      
         end
       end
       
