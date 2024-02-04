@@ -303,9 +303,12 @@ module Google
         attr_accessor :ias_client_id
       
         # Whether or not to use DV360's Online Behavioral Advertising (OBA) compliance.
-        # Warning: Changing OBA settings may cause the audit status of your creatives to
-        # be reset by some ad exchanges, making them ineligible to serve until they are
-        # re-approved.
+        # Starting on February 9, 2024, this field will be affected by an update to the
+        # Display & Video 360 API Terms of Service. See our [announcement](//ads-
+        # developers.googleblog.com/2024/01/update-to-display-video-360-api-terms.html)
+        # for more detail. Warning: Changing OBA settings may cause the audit status of
+        # your creatives to be reset by some ad exchanges, making them ineligible to
+        # serve until they are re-approved.
         # Corresponds to the JSON property `obaComplianceDisabled`
         # @return [Boolean]
         attr_accessor :oba_compliance_disabled
