@@ -200,7 +200,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -475,6 +478,12 @@ module Google
         attr_accessor :disable_public_ip_addresses
         alias_method :disable_public_ip_addresses?, :disable_public_ip_addresses
       
+        # Optional. Whether to disable SSH access to the VM.
+        # Corresponds to the JSON property `disableSsh`
+        # @return [Boolean]
+        attr_accessor :disable_ssh
+        alias_method :disable_ssh?, :disable_ssh
+      
         # Optional. Whether to enable nested virtualization on Cloud Workstations VMs
         # created under this workstation configuration. Nested virtualization lets you
         # run virtual machine (VM) instances inside your workstation. Before enabling
@@ -573,6 +582,7 @@ module Google
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
           @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @disable_public_ip_addresses = args[:disable_public_ip_addresses] if args.key?(:disable_public_ip_addresses)
+          @disable_ssh = args[:disable_ssh] if args.key?(:disable_ssh)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool_size = args[:pool_size] if args.key?(:pool_size)
