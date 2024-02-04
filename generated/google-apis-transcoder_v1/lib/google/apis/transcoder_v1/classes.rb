@@ -869,6 +869,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :height_pixels
       
+        # Convert the input video to a Hybrid Log Gamma (HLG) video.
+        # Corresponds to the JSON property `hlg`
+        # @return [Google::Apis::TranscoderV1::H264ColorFormatHlg]
+        attr_accessor :hlg
+      
         # Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `
         # yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `
         # yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `
@@ -900,6 +905,11 @@ module Google
         # Corresponds to the JSON property `rateControlMode`
         # @return [String]
         attr_accessor :rate_control_mode
+      
+        # Convert the input video to a Standard Dynamic Range (SDR) video.
+        # Corresponds to the JSON property `sdr`
+        # @return [Google::Apis::TranscoderV1::H264ColorFormatSdr]
+        attr_accessor :sdr
       
         # Enforces the specified codec tune. The available options are [FFmpeg-
         # compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain
@@ -951,14 +961,42 @@ module Google
           @gop_duration = args[:gop_duration] if args.key?(:gop_duration)
           @gop_frame_count = args[:gop_frame_count] if args.key?(:gop_frame_count)
           @height_pixels = args[:height_pixels] if args.key?(:height_pixels)
+          @hlg = args[:hlg] if args.key?(:hlg)
           @pixel_format = args[:pixel_format] if args.key?(:pixel_format)
           @preset = args[:preset] if args.key?(:preset)
           @profile = args[:profile] if args.key?(:profile)
           @rate_control_mode = args[:rate_control_mode] if args.key?(:rate_control_mode)
+          @sdr = args[:sdr] if args.key?(:sdr)
           @tune = args[:tune] if args.key?(:tune)
           @vbv_fullness_bits = args[:vbv_fullness_bits] if args.key?(:vbv_fullness_bits)
           @vbv_size_bits = args[:vbv_size_bits] if args.key?(:vbv_size_bits)
           @width_pixels = args[:width_pixels] if args.key?(:width_pixels)
+        end
+      end
+      
+      # Convert the input video to a Hybrid Log Gamma (HLG) video.
+      class H264ColorFormatHlg
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Convert the input video to a Standard Dynamic Range (SDR) video.
+      class H264ColorFormatSdr
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1036,6 +1074,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :gop_frame_count
       
+        # Convert the input video to a High Dynamic Range 10 (HDR10) video.
+        # Corresponds to the JSON property `hdr10`
+        # @return [Google::Apis::TranscoderV1::H265ColorFormatHdr10]
+        attr_accessor :hdr10
+      
         # The height of the video in pixels. Must be an even integer. When not specified,
         # the height is adjusted to match the specified width and input aspect ratio.
         # If both are omitted, the input height is used. For portrait videos that
@@ -1046,6 +1089,11 @@ module Google
         # Corresponds to the JSON property `heightPixels`
         # @return [Fixnum]
         attr_accessor :height_pixels
+      
+        # Convert the input video to a Hybrid Log Gamma (HLG) video.
+        # Corresponds to the JSON property `hlg`
+        # @return [Google::Apis::TranscoderV1::H265ColorFormatHlg]
+        attr_accessor :hlg
       
         # Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `
         # yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `
@@ -1081,6 +1129,11 @@ module Google
         # Corresponds to the JSON property `rateControlMode`
         # @return [String]
         attr_accessor :rate_control_mode
+      
+        # Convert the input video to a Standard Dynamic Range (SDR) video.
+        # Corresponds to the JSON property `sdr`
+        # @return [Google::Apis::TranscoderV1::H265ColorFormatSdr]
+        attr_accessor :sdr
       
         # Enforces the specified codec tune. The available options are [FFmpeg-
         # compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain
@@ -1130,15 +1183,57 @@ module Google
           @frame_rate = args[:frame_rate] if args.key?(:frame_rate)
           @gop_duration = args[:gop_duration] if args.key?(:gop_duration)
           @gop_frame_count = args[:gop_frame_count] if args.key?(:gop_frame_count)
+          @hdr10 = args[:hdr10] if args.key?(:hdr10)
           @height_pixels = args[:height_pixels] if args.key?(:height_pixels)
+          @hlg = args[:hlg] if args.key?(:hlg)
           @pixel_format = args[:pixel_format] if args.key?(:pixel_format)
           @preset = args[:preset] if args.key?(:preset)
           @profile = args[:profile] if args.key?(:profile)
           @rate_control_mode = args[:rate_control_mode] if args.key?(:rate_control_mode)
+          @sdr = args[:sdr] if args.key?(:sdr)
           @tune = args[:tune] if args.key?(:tune)
           @vbv_fullness_bits = args[:vbv_fullness_bits] if args.key?(:vbv_fullness_bits)
           @vbv_size_bits = args[:vbv_size_bits] if args.key?(:vbv_size_bits)
           @width_pixels = args[:width_pixels] if args.key?(:width_pixels)
+        end
+      end
+      
+      # Convert the input video to a High Dynamic Range 10 (HDR10) video.
+      class H265ColorFormatHdr10
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Convert the input video to a Hybrid Log Gamma (HLG) video.
+      class H265ColorFormatHlg
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Convert the input video to a Standard Dynamic Range (SDR) video.
+      class H265ColorFormatSdr
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2203,6 +2298,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :height_pixels
       
+        # Convert the input video to a Hybrid Log Gamma (HLG) video.
+        # Corresponds to the JSON property `hlg`
+        # @return [Google::Apis::TranscoderV1::Vp9ColorFormatHlg]
+        attr_accessor :hlg
+      
         # Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `
         # yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `
         # yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `
@@ -2227,6 +2327,11 @@ module Google
         # @return [String]
         attr_accessor :rate_control_mode
       
+        # Convert the input video to a Standard Dynamic Range (SDR) video.
+        # Corresponds to the JSON property `sdr`
+        # @return [Google::Apis::TranscoderV1::Vp9ColorFormatSdr]
+        attr_accessor :sdr
+      
         # The width of the video in pixels. Must be an even integer. When not specified,
         # the width is adjusted to match the specified height and input aspect ratio. If
         # both are omitted, the input width is used. For portrait videos that contain
@@ -2250,10 +2355,38 @@ module Google
           @gop_duration = args[:gop_duration] if args.key?(:gop_duration)
           @gop_frame_count = args[:gop_frame_count] if args.key?(:gop_frame_count)
           @height_pixels = args[:height_pixels] if args.key?(:height_pixels)
+          @hlg = args[:hlg] if args.key?(:hlg)
           @pixel_format = args[:pixel_format] if args.key?(:pixel_format)
           @profile = args[:profile] if args.key?(:profile)
           @rate_control_mode = args[:rate_control_mode] if args.key?(:rate_control_mode)
+          @sdr = args[:sdr] if args.key?(:sdr)
           @width_pixels = args[:width_pixels] if args.key?(:width_pixels)
+        end
+      end
+      
+      # Convert the input video to a Hybrid Log Gamma (HLG) video.
+      class Vp9ColorFormatHlg
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Convert the input video to a Standard Dynamic Range (SDR) video.
+      class Vp9ColorFormatSdr
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

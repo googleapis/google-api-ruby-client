@@ -172,7 +172,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class H264ColorFormatHlg
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class H264ColorFormatSdr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class H265CodecSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class H265ColorFormatHdr10
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class H265ColorFormatHlg
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class H265ColorFormatSdr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,6 +359,18 @@ module Google
       end
       
       class Vp9CodecSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Vp9ColorFormatHlg
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Vp9ColorFormatSdr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -589,14 +631,30 @@ module Google
           property :gop_duration, as: 'gopDuration'
           property :gop_frame_count, as: 'gopFrameCount'
           property :height_pixels, as: 'heightPixels'
+          property :hlg, as: 'hlg', class: Google::Apis::TranscoderV1::H264ColorFormatHlg, decorator: Google::Apis::TranscoderV1::H264ColorFormatHlg::Representation
+      
           property :pixel_format, as: 'pixelFormat'
           property :preset, as: 'preset'
           property :profile, as: 'profile'
           property :rate_control_mode, as: 'rateControlMode'
+          property :sdr, as: 'sdr', class: Google::Apis::TranscoderV1::H264ColorFormatSdr, decorator: Google::Apis::TranscoderV1::H264ColorFormatSdr::Representation
+      
           property :tune, as: 'tune'
           property :vbv_fullness_bits, as: 'vbvFullnessBits'
           property :vbv_size_bits, as: 'vbvSizeBits'
           property :width_pixels, as: 'widthPixels'
+        end
+      end
+      
+      class H264ColorFormatHlg
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class H264ColorFormatSdr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -613,15 +671,39 @@ module Google
           property :frame_rate, as: 'frameRate'
           property :gop_duration, as: 'gopDuration'
           property :gop_frame_count, as: 'gopFrameCount'
+          property :hdr10, as: 'hdr10', class: Google::Apis::TranscoderV1::H265ColorFormatHdr10, decorator: Google::Apis::TranscoderV1::H265ColorFormatHdr10::Representation
+      
           property :height_pixels, as: 'heightPixels'
+          property :hlg, as: 'hlg', class: Google::Apis::TranscoderV1::H265ColorFormatHlg, decorator: Google::Apis::TranscoderV1::H265ColorFormatHlg::Representation
+      
           property :pixel_format, as: 'pixelFormat'
           property :preset, as: 'preset'
           property :profile, as: 'profile'
           property :rate_control_mode, as: 'rateControlMode'
+          property :sdr, as: 'sdr', class: Google::Apis::TranscoderV1::H265ColorFormatSdr, decorator: Google::Apis::TranscoderV1::H265ColorFormatSdr::Representation
+      
           property :tune, as: 'tune'
           property :vbv_fullness_bits, as: 'vbvFullnessBits'
           property :vbv_size_bits, as: 'vbvSizeBits'
           property :width_pixels, as: 'widthPixels'
+        end
+      end
+      
+      class H265ColorFormatHdr10
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class H265ColorFormatHlg
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class H265ColorFormatSdr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -915,10 +997,26 @@ module Google
           property :gop_duration, as: 'gopDuration'
           property :gop_frame_count, as: 'gopFrameCount'
           property :height_pixels, as: 'heightPixels'
+          property :hlg, as: 'hlg', class: Google::Apis::TranscoderV1::Vp9ColorFormatHlg, decorator: Google::Apis::TranscoderV1::Vp9ColorFormatHlg::Representation
+      
           property :pixel_format, as: 'pixelFormat'
           property :profile, as: 'profile'
           property :rate_control_mode, as: 'rateControlMode'
+          property :sdr, as: 'sdr', class: Google::Apis::TranscoderV1::Vp9ColorFormatSdr, decorator: Google::Apis::TranscoderV1::Vp9ColorFormatSdr::Representation
+      
           property :width_pixels, as: 'widthPixels'
+        end
+      end
+      
+      class Vp9ColorFormatHlg
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Vp9ColorFormatSdr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
