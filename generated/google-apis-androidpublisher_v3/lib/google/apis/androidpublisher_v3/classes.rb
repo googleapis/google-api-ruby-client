@@ -4833,6 +4833,43 @@ module Google
         end
       end
       
+      # Request to update Safety Labels of an app.
+      class SafetyLabelsUpdateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Contents of the CSV file containing Data Safety responses. For the
+        # format of this file, see the Help Center documentation at https://support.
+        # google.com/googleplay/android-developer/answer/10787469?hl=en#zippy=%
+        # 2Cunderstand-the-csv-format To download an up to date template, follow the
+        # steps at https://support.google.com/googleplay/android-developer/answer/
+        # 10787469?hl=en#zippy=%2Cexport-to-a-csv-file
+        # Corresponds to the JSON property `safetyLabels`
+        # @return [String]
+        attr_accessor :safety_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @safety_labels = args[:safety_labels] if args.key?(:safety_labels)
+        end
+      end
+      
+      # Response for SafetyLabelsUpdate rpc.
+      class SafetyLabelsUpdateResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a screen density.
       class ScreenDensity
         include Google::Apis::Core::Hashable

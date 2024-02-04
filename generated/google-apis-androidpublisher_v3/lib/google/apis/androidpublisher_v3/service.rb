@@ -53,6 +53,39 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Writes the Safety Labels declaration of an app.
+        # @param [String] package_name
+        #   Required. Package name of the app.
+        # @param [Google::Apis::AndroidpublisherV3::SafetyLabelsUpdateRequest] safety_labels_update_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::SafetyLabelsUpdateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::SafetyLabelsUpdateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def data_application_safety(package_name, safety_labels_update_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/dataSafety', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::SafetyLabelsUpdateRequest::Representation
+          command.request_object = safety_labels_update_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::SafetyLabelsUpdateResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::SafetyLabelsUpdateResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new device tier config for an app.
         # @param [String] package_name
         #   Package name of the app.
