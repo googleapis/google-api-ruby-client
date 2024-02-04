@@ -1478,6 +1478,12 @@ module Google
         attr_accessor :reserved
         alias_method :reserved?, :reserved
       
+        # Optional. Defines whether the node is Spot VM.
+        # Corresponds to the JSON property `spot`
+        # @return [Boolean]
+        attr_accessor :spot
+        alias_method :spot?, :spot
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1486,6 +1492,7 @@ module Google
         def update!(**args)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @reserved = args[:reserved] if args.key?(:reserved)
+          @spot = args[:spot] if args.key?(:spot)
         end
       end
       

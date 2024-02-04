@@ -817,6 +817,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :preemptible, as: 'preemptible'
           property :reserved, as: 'reserved'
+          property :spot, as: 'spot'
         end
       end
       
