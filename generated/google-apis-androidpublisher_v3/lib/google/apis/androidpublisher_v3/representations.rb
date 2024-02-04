@@ -988,6 +988,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SafetyLabelsUpdateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SafetyLabelsUpdateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ScreenDensity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2846,6 +2858,19 @@ module Google
       end
       
       class RevokeSubscriptionPurchaseResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SafetyLabelsUpdateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :safety_labels, as: 'safetyLabels'
+        end
+      end
+      
+      class SafetyLabelsUpdateResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
