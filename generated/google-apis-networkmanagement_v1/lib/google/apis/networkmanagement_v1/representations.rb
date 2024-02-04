@@ -686,6 +686,7 @@ module Google
       class LoadBalancerBackendInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_bucket_uri, as: 'backendBucketUri'
           property :backend_service_uri, as: 'backendServiceUri'
           property :health_check_firewalls_config_state, as: 'healthCheckFirewallsConfigState'
           property :health_check_uri, as: 'healthCheckUri'
@@ -693,6 +694,8 @@ module Google
           property :instance_uri, as: 'instanceUri'
           property :name, as: 'name'
           property :network_endpoint_group_uri, as: 'networkEndpointGroupUri'
+          property :psc_google_api_target, as: 'pscGoogleApiTarget'
+          property :psc_service_attachment_uri, as: 'pscServiceAttachmentUri'
         end
       end
       

@@ -265,7 +265,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1346,6 +1349,11 @@ module Google
       class LoadBalancerBackendInfo
         include Google::Apis::Core::Hashable
       
+        # URI of the backend bucket this backend targets (if applicable).
+        # Corresponds to the JSON property `backendBucketUri`
+        # @return [String]
+        attr_accessor :backend_bucket_uri
+      
         # URI of the backend service this backend belongs to (if applicable).
         # Corresponds to the JSON property `backendServiceUri`
         # @return [String]
@@ -1389,12 +1397,23 @@ module Google
         # @return [String]
         attr_accessor :network_endpoint_group_uri
       
+        # PSC Google API target this PSC NEG backend targets (if applicable).
+        # Corresponds to the JSON property `pscGoogleApiTarget`
+        # @return [String]
+        attr_accessor :psc_google_api_target
+      
+        # URI of the PSC service attachment this PSC NEG backend targets (if applicable).
+        # Corresponds to the JSON property `pscServiceAttachmentUri`
+        # @return [String]
+        attr_accessor :psc_service_attachment_uri
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @backend_bucket_uri = args[:backend_bucket_uri] if args.key?(:backend_bucket_uri)
           @backend_service_uri = args[:backend_service_uri] if args.key?(:backend_service_uri)
           @health_check_firewalls_config_state = args[:health_check_firewalls_config_state] if args.key?(:health_check_firewalls_config_state)
           @health_check_uri = args[:health_check_uri] if args.key?(:health_check_uri)
@@ -1402,6 +1421,8 @@ module Google
           @instance_uri = args[:instance_uri] if args.key?(:instance_uri)
           @name = args[:name] if args.key?(:name)
           @network_endpoint_group_uri = args[:network_endpoint_group_uri] if args.key?(:network_endpoint_group_uri)
+          @psc_google_api_target = args[:psc_google_api_target] if args.key?(:psc_google_api_target)
+          @psc_service_attachment_uri = args[:psc_service_attachment_uri] if args.key?(:psc_service_attachment_uri)
         end
       end
       
