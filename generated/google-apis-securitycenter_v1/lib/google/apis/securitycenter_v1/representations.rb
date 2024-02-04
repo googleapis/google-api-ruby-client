@@ -388,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1585,6 +1591,8 @@ module Google
           property :resource_type, as: 'resourceType'
           property :resource_value, as: 'resourceValue'
           property :scope, as: 'scope'
+          property :sensitive_data_protection_mapping, as: 'sensitiveDataProtectionMapping', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping::Representation
+      
           collection :tag_values, as: 'tagValues'
           property :update_time, as: 'updateTime'
         end
@@ -1609,6 +1617,14 @@ module Google
           property :last_editor, as: 'lastEditor'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :high_sensitivity_mapping, as: 'highSensitivityMapping'
+          property :medium_sensitivity_mapping, as: 'mediumSensitivityMapping'
         end
       end
       
