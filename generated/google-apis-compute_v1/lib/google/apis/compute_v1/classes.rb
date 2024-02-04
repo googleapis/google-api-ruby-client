@@ -5045,7 +5045,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -9177,6 +9180,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :rule_tuple_count
       
+        # A fully-qualified URL of a SecurityProfile resource instance. Example: https://
+        # networksecurity.googleapis.com/v1/projects/`project`/locations/`location`/
+        # securityProfileGroups/my-security-profile-group Must be specified if action = '
+        # apply_security_profile_group' and cannot be specified for other actions.
+        # Corresponds to the JSON property `securityProfileGroup`
+        # @return [String]
+        attr_accessor :security_profile_group
+      
         # A list of network resource URLs to which this rule applies. This field allows
         # you to control which network's VMs get this rule. If this field is left blank,
         # all VMs within the organization will receive the rule.
@@ -9202,6 +9213,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_service_accounts
       
+        # Boolean flag indicating if the traffic should be TLS decrypted. Can be set
+        # only if action = 'apply_security_profile_group' and cannot be set for other
+        # actions.
+        # Corresponds to the JSON property `tlsInspect`
+        # @return [Boolean]
+        attr_accessor :tls_inspect
+        alias_method :tls_inspect?, :tls_inspect
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9218,9 +9237,11 @@ module Google
           @priority = args[:priority] if args.key?(:priority)
           @rule_name = args[:rule_name] if args.key?(:rule_name)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
+          @security_profile_group = args[:security_profile_group] if args.key?(:security_profile_group)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
           @target_secure_tags = args[:target_secure_tags] if args.key?(:target_secure_tags)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
+          @tls_inspect = args[:tls_inspect] if args.key?(:tls_inspect)
         end
       end
       
@@ -22804,11 +22825,12 @@ module Google
         # @return [String]
         attr_accessor :fqdn
       
-        # The name or a URL of a specific VM instance that the IP address belongs to.
-        # This is required for network endpoints of type GCE_VM_IP_PORT. The instance
-        # must be in the same zone of network endpoint group (for zonal NEGs) or in the
-        # zone within the region of the NEG (for regional NEGs). The name must be 1-63
-        # characters long, and comply with RFC1035 or be a valid URL pointing to an
+        # The name or a URL of VM instance of this network endpoint. This field is
+        # required for network endpoints of type GCE_VM_IP and GCE_VM_IP_PORT. The
+        # instance must be in the same zone of network endpoint group (for zonal NEGs)
+        # or in the zone within the region of the NEG (for regional NEGs). If the
+        # ipAddress is specified, it must belongs to the VM instance. The name must be 1-
+        # 63 characters long, and comply with RFC1035 or be a valid URL pointing to an
         # existing instance.
         # Corresponds to the JSON property `instance`
         # @return [String]
@@ -22818,13 +22840,18 @@ module Google
         # in Compute Engine (either the primary IP or as part of an aliased IP range).
         # If the IP address is not specified, then the primary IP address for the VM
         # instance in the network that the network endpoint group belongs to will be
-        # used.
+        # used. This field is redundant and need not be set for network endpoints of
+        # type GCE_VM_IP. If set, it must be set to the primary internal IP address of
+        # the attached VM instance that matches the subnetwork of the NEG. The primary
+        # internal IP address from any NIC of a multi-NIC VM instance can be added to a
+        # NEG as long as it matches the NEG subnetwork.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
       
         # Optional port number of network endpoint. If not specified, the defaultPort
-        # for the network endpoint group will be used.
+        # for the network endpoint group will be used. This field can not be set for
+        # network endpoints of type GCE_VM_IP.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port

@@ -117,6 +117,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -348,6 +350,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -786,6 +790,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1874,6 +1880,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2702,6 +2710,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2986,6 +2996,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5384,6 +5396,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6972,6 +6986,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7709,6 +7725,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9411,6 +9429,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10729,6 +10749,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11277,6 +11299,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11833,6 +11857,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14371,6 +14397,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16237,6 +16265,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16468,6 +16498,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16986,6 +17018,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17286,6 +17320,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19323,6 +19359,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20096,6 +20134,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20555,6 +20595,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20785,6 +20827,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22266,6 +22310,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23757,6 +23803,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -31891,6 +31939,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -32463,6 +32513,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -32978,6 +33030,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -33910,6 +33964,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -34546,6 +34602,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -35531,6 +35589,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -35852,6 +35912,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -36314,6 +36376,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -37307,6 +37371,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -37730,6 +37796,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -38358,6 +38426,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -38851,6 +38921,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -39919,6 +39991,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -40339,6 +40413,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -40726,6 +40802,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -41239,6 +41317,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -41705,6 +41785,8 @@ module Google
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
         # @param [Fixnum] service_project_number
+        #   The Shared VPC service project id or service project number for which
+        #   aggregated list request is invoked for subnetworks list-usable api.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
