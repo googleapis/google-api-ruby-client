@@ -46,6 +46,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComposerWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComposerWorkloadStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DagProcessorResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataRetentionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +173,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListWorkloadsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -368,6 +392,35 @@ module Google
         end
       end
       
+      class ComposerWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :status, as: 'status', class: Google::Apis::ComposerV1::ComposerWorkloadStatus, decorator: Google::Apis::ComposerV1::ComposerWorkloadStatus::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class ComposerWorkloadStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detailed_status_message, as: 'detailedStatusMessage'
+          property :state, as: 'state'
+          property :status_message, as: 'statusMessage'
+        end
+      end
+      
+      class DagProcessorResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :cpu, as: 'cpu'
+          property :memory_gb, as: 'memoryGb'
+          property :storage_gb, as: 'storageGb'
+        end
+      end
+      
       class DataRetentionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -567,6 +620,15 @@ module Google
         end
       end
       
+      class ListWorkloadsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :workloads, as: 'workloads', class: Google::Apis::ComposerV1::ComposerWorkload, decorator: Google::Apis::ComposerV1::ComposerWorkload::Representation
+      
+        end
+      end
+      
       class LoadSnapshotRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -612,6 +674,8 @@ module Google
       class NodeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :composer_internal_ipv4_cidr_block, as: 'composerInternalIpv4CidrBlock'
+          property :composer_network_attachment, as: 'composerNetworkAttachment'
           property :disk_size_gb, as: 'diskSizeGb'
           property :enable_ip_masq_agent, as: 'enableIpMasqAgent'
           property :ip_allocation_policy, as: 'ipAllocationPolicy', class: Google::Apis::ComposerV1::IpAllocationPolicy, decorator: Google::Apis::ComposerV1::IpAllocationPolicy::Representation
@@ -687,6 +751,7 @@ module Google
           property :cloud_composer_network_ipv4_cidr_block, as: 'cloudComposerNetworkIpv4CidrBlock'
           property :cloud_composer_network_ipv4_reserved_range, as: 'cloudComposerNetworkIpv4ReservedRange'
           property :cloud_sql_ipv4_cidr_block, as: 'cloudSqlIpv4CidrBlock'
+          property :enable_private_builds_only, as: 'enablePrivateBuildsOnly'
           property :enable_private_environment, as: 'enablePrivateEnvironment'
           property :enable_privately_used_public_ips, as: 'enablePrivatelyUsedPublicIps'
           property :networking_config, as: 'networkingConfig', class: Google::Apis::ComposerV1::NetworkingConfig, decorator: Google::Apis::ComposerV1::NetworkingConfig::Representation
@@ -751,6 +816,7 @@ module Google
           hash :pypi_packages, as: 'pypiPackages'
           property :python_version, as: 'pythonVersion'
           property :scheduler_count, as: 'schedulerCount'
+          property :web_server_plugins_mode, as: 'webServerPluginsMode'
         end
       end
       
@@ -842,6 +908,8 @@ module Google
       class WorkloadsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dag_processor, as: 'dagProcessor', class: Google::Apis::ComposerV1::DagProcessorResource, decorator: Google::Apis::ComposerV1::DagProcessorResource::Representation
+      
           property :scheduler, as: 'scheduler', class: Google::Apis::ComposerV1::SchedulerResource, decorator: Google::Apis::ComposerV1::SchedulerResource::Representation
       
           property :triggerer, as: 'triggerer', class: Google::Apis::ComposerV1::TriggererResource, decorator: Google::Apis::ComposerV1::TriggererResource::Representation
