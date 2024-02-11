@@ -14443,6 +14443,12 @@ module Google
       class InstanceGroupManager
         include Google::Apis::Core::Hashable
       
+        # Specifies configuration that overrides the instance template configuration for
+        # the group.
+        # Corresponds to the JSON property `allInstancesConfig`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerAllInstancesConfig]
+        attr_accessor :all_instances_config
+      
         # The autohealing policy for this managed instance group. You can specify only
         # one value.
         # Corresponds to the JSON property `autoHealingPolicies`
@@ -14603,6 +14609,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_instances_config = args[:all_instances_config] if args.key?(:all_instances_config)
           @auto_healing_policies = args[:auto_healing_policies] if args.key?(:auto_healing_policies)
           @base_instance_name = args[:base_instance_name] if args.key?(:base_instance_name)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -14870,6 +14877,25 @@ module Google
       end
       
       # 
+      class InstanceGroupManagerAllInstancesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents the change that you want to make to the instance properties.
+        # Corresponds to the JSON property `properties`
+        # @return [Google::Apis::ComputeV1::InstancePropertiesPatch]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # 
       class InstanceGroupManagerAutoHealingPolicy
         include Google::Apis::Core::Hashable
       
@@ -15045,6 +15071,11 @@ module Google
       class InstanceGroupManagerStatus
         include Google::Apis::Core::Hashable
       
+        # [Output only] Status of all-instances configuration on the group.
+        # Corresponds to the JSON property `allInstancesConfig`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerStatusAllInstancesConfig]
+        attr_accessor :all_instances_config
+      
         # [Output Only] The URL of the Autoscaler that targets this instance group
         # manager.
         # Corresponds to the JSON property `autoscaler`
@@ -15079,10 +15110,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_instances_config = args[:all_instances_config] if args.key?(:all_instances_config)
           @autoscaler = args[:autoscaler] if args.key?(:autoscaler)
           @is_stable = args[:is_stable] if args.key?(:is_stable)
           @stateful = args[:stateful] if args.key?(:stateful)
           @version_target = args[:version_target] if args.key?(:version_target)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerStatusAllInstancesConfig
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Current all-instances configuration revision. This value is in
+        # RFC3339 text format.
+        # Corresponds to the JSON property `currentRevision`
+        # @return [String]
+        attr_accessor :current_revision
+      
+        # [Output Only] A bit indicating whether this configuration has been applied to
+        # all managed instances in the group.
+        # Corresponds to the JSON property `effective`
+        # @return [Boolean]
+        attr_accessor :effective
+        alias_method :effective?, :effective
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_revision = args[:current_revision] if args.key?(:current_revision)
+          @effective = args[:effective] if args.key?(:effective)
         end
       end
       
@@ -16635,6 +16695,32 @@ module Google
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Represents the change that you want to make to the instance properties.
+      class InstancePropertiesPatch
+        include Google::Apis::Core::Hashable
+      
+        # The label key-value pairs that you want to patch onto the instance.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The metadata key-value pairs that you want to patch onto the instance. For
+        # more information, see Project and instance metadata.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -22912,7 +22998,8 @@ module Google
         attr_accessor :creation_timestamp
       
         # The default port used if the port number is not specified in the network
-        # endpoint.
+        # endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or
+        # PRIVATE_SERVICE_CONNECT, this field must not be specified.
         # Corresponds to the JSON property `defaultPort`
         # @return [Fixnum]
         attr_accessor :default_port
@@ -22945,8 +23032,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The URL of the network to which all network endpoints in the NEG belong. Uses "
-        # default" project network if unspecified.
+        # The URL of the network to which all network endpoints in the NEG belong. Uses
+        # default project network if unspecified.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -22965,8 +23052,8 @@ module Google
         attr_accessor :psc_data
       
         # The target service url used to set up private service connection to a Google
-        # API or a PSC Producer Service Attachment. An example value is: "asia-
-        # northeast3-cloudkms.googleapis.com"
+        # API or a PSC Producer Service Attachment. An example value is: asia-northeast3-
+        # cloudkms.googleapis.com
         # Corresponds to the JSON property `pscTargetService`
         # @return [String]
         attr_accessor :psc_target_service
@@ -23160,24 +23247,25 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional serving service. The service name is case-sensitive and must be 1-63
-        # characters long. Example value: "default", "my-service".
+        # characters long. Example value: default, my-service.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
-        # A template to parse service and version fields from a request URL. URL mask
-        # allows for routing to multiple App Engine services without having to create
-        # multiple Network Endpoint Groups and backend services. For example, the
-        # request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.
-        # com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-
-        # appname.appspot.com/<version>". The URL mask will parse them to ` service = "
-        # foo1", version = "v1" ` and ` service = "foo1", version = "v2" ` respectively.
+        # An URL mask is one of the main components of the Cloud Function. A template to
+        # parse service and version fields from a request URL. URL mask allows for
+        # routing to multiple App Engine services without having to create multiple
+        # Network Endpoint Groups and backend services. For example, the request URLs
+        # foo1-dot-appname.appspot.com/v1 and foo1-dot-appname.appspot.com/v2 can be
+        # backed by the same Serverless NEG with URL mask <service>-dot-appname.appspot.
+        # com/<version>. The URL mask will parse them to ` service = "foo1", version = "
+        # v1" ` and ` service = "foo1", version = "v2" ` respectively.
         # Corresponds to the JSON property `urlMask`
         # @return [String]
         attr_accessor :url_mask
       
         # Optional serving version. The version name is case-sensitive and must be 1-100
-        # characters long. Example value: "v1", "v2".
+        # characters long. Example value: v1, v2.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -23201,17 +23289,18 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A user-defined name of the Cloud Function. The function name is case-sensitive
-        # and must be 1-63 characters long. Example value: "func1".
+        # and must be 1-63 characters long. Example value: func1.
         # Corresponds to the JSON property `function`
         # @return [String]
         attr_accessor :function
       
-        # A template to parse function field from a request URL. URL mask allows for
-        # routing to multiple Cloud Functions without having to create multiple Network
-        # Endpoint Groups and backend services. For example, request URLs " mydomain.com/
-        # function1" and "mydomain.com/function2" can be backed by the same Serverless
-        # NEG with URL mask "/<function>". The URL mask will parse them to ` function = "
-        # function1" ` and ` function = "function2" ` respectively.
+        # An URL mask is one of the main components of the Cloud Function. A template to
+        # parse function field from a request URL. URL mask allows for routing to
+        # multiple Cloud Functions without having to create multiple Network Endpoint
+        # Groups and backend services. For example, request URLs mydomain.com/function1
+        # and mydomain.com/function2 can be backed by the same Serverless NEG with URL
+        # mask /<function>. The URL mask will parse them to ` function = "function1" `
+        # and ` function = "function2" ` respectively.
         # Corresponds to the JSON property `urlMask`
         # @return [String]
         attr_accessor :url_mask
@@ -23247,13 +23336,14 @@ module Google
         # @return [String]
         attr_accessor :tag
       
-        # A template to parse <service> and <tag> fields from a request URL. URL mask
-        # allows for routing to multiple Run services without having to create multiple
-        # network endpoint groups and backend services. For example, request URLs "foo1.
-        # domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same
-        # Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<
-        # service>". The URL mask will parse them to ` service="bar1", tag="foo1" ` and `
-        # service="bar2", tag="foo2" ` respectively.
+        # An URL mask is one of the main components of the Cloud Function. A template to
+        # parse <service> and <tag> fields from a request URL. URL mask allows for
+        # routing to multiple Run services without having to create multiple network
+        # endpoint groups and backend services. For example, request URLs foo1.domain.
+        # com/bar1 and foo1.domain.com/bar2 can be backed by the same Serverless Network
+        # Endpoint Group (NEG) with URL mask <tag>.domain.com/<service>. The URL mask
+        # will parse them to ` service="bar1", tag="foo1" ` and ` service="bar2", tag="
+        # foo2" ` respectively.
         # Corresponds to the JSON property `urlMask`
         # @return [String]
         attr_accessor :url_mask
