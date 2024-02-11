@@ -415,7 +415,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1106,6 +1109,19 @@ module Google
           @alias_context = args[:alias_context] if args.key?(:alias_context)
           @repo_id = args[:repo_id] if args.key?(:repo_id)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
+        end
+      end
+      
+      # Empty placeholder to denote that this is a Google Cloud Storage export request.
+      class CloudStorageLocation
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -3457,6 +3473,47 @@ module Google
         def update!(**args)
           @keyid = args[:keyid] if args.key?(:keyid)
           @sig = args[:sig] if args.key?(:sig)
+        end
+      end
+      
+      # The request to generate and export SBOM. Target must be specified for the
+      # request.
+      class ExportSbomRequest
+        include Google::Apis::Core::Hashable
+      
+        # Empty placeholder to denote that this is a Google Cloud Storage export request.
+        # Corresponds to the JSON property `cloudStorageLocation`
+        # @return [Google::Apis::ContaineranalysisV1::CloudStorageLocation]
+        attr_accessor :cloud_storage_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_storage_location = args[:cloud_storage_location] if args.key?(:cloud_storage_location)
+        end
+      end
+      
+      # The response from a call to ExportSBOM.
+      class ExportSbomResponse
+        include Google::Apis::Core::Hashable
+      
+        # The name of the discovery occurrence in the form "projects/`project_id`/
+        # occurrences/`OCCURRENCE_ID` It can be used to track the progress of the SBOM
+        # export.
+        # Corresponds to the JSON property `discoveryOccurrence`
+        # @return [String]
+        attr_accessor :discovery_occurrence
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovery_occurrence = args[:discovery_occurrence] if args.key?(:discovery_occurrence)
         end
       end
       
