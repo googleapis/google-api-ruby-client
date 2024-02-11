@@ -293,6 +293,11 @@ module Google
         # @return [String]
         attr_accessor :build_name
       
+        # Optional. A service account the user provides for use with Cloud Build.
+        # Corresponds to the JSON property `buildServiceAccount`
+        # @return [String]
+        attr_accessor :build_service_account
+      
         # Name of the Cloud Build Custom Worker Pool that should be used to build the
         # function. The format of this field is `projects/`project`/locations/`region`/
         # workerPools/`workerPool`` where ``project`` and ``region`` are the project id
@@ -516,6 +521,7 @@ module Google
           @build_environment_variables = args[:build_environment_variables] if args.key?(:build_environment_variables)
           @build_id = args[:build_id] if args.key?(:build_id)
           @build_name = args[:build_name] if args.key?(:build_name)
+          @build_service_account = args[:build_service_account] if args.key?(:build_service_account)
           @build_worker_pool = args[:build_worker_pool] if args.key?(:build_worker_pool)
           @description = args[:description] if args.key?(:description)
           @docker_registry = args[:docker_registry] if args.key?(:docker_registry)

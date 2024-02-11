@@ -344,6 +344,7 @@ module Google
           hash :build_environment_variables, as: 'buildEnvironmentVariables'
           property :build_id, as: 'buildId'
           property :build_name, as: 'buildName'
+          property :build_service_account, as: 'buildServiceAccount'
           property :build_worker_pool, as: 'buildWorkerPool'
           property :description, as: 'description'
           property :docker_registry, as: 'dockerRegistry'
