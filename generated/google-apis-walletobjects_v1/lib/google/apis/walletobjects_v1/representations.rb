@@ -760,18 +760,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SetPassUpdateNoticeRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SetPassUpdateNoticeResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SignUpInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2734,18 +2722,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :animation_type, as: 'animationType'
-        end
-      end
-      
-      class SetPassUpdateNoticeRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class SetPassUpdateNoticeResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
