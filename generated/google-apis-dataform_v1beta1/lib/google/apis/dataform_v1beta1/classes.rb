@@ -2173,6 +2173,11 @@ module Google
       class Repository
         include Google::Apis::Core::Hashable
       
+        # Output only. The timestamp of when the repository was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Optional. The repository's user-friendly name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -2233,6 +2238,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @git_remote_settings = args[:git_remote_settings] if args.key?(:git_remote_settings)
           @labels = args[:labels] if args.key?(:labels)

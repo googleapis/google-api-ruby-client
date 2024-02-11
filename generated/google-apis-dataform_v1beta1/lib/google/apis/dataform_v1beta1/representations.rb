@@ -1143,6 +1143,7 @@ module Google
       class Repository
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :git_remote_settings, as: 'gitRemoteSettings', class: Google::Apis::DataformV1beta1::GitRemoteSettings, decorator: Google::Apis::DataformV1beta1::GitRemoteSettings::Representation
       
