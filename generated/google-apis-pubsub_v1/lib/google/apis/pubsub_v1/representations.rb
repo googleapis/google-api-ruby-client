@@ -381,6 +381,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :drop_unknown_fields, as: 'dropUnknownFields'
+          property :service_account_email, as: 'serviceAccountEmail'
           property :state, as: 'state'
           property :table, as: 'table'
           property :use_table_schema, as: 'useTableSchema'
@@ -409,6 +410,7 @@ module Google
           property :filename_suffix, as: 'filenameSuffix'
           property :max_bytes, :numeric_string => true, as: 'maxBytes'
           property :max_duration, as: 'maxDuration'
+          property :service_account_email, as: 'serviceAccountEmail'
           property :state, as: 'state'
           property :text_config, as: 'textConfig', class: Google::Apis::PubsubV1::TextConfig, decorator: Google::Apis::PubsubV1::TextConfig::Representation
       
