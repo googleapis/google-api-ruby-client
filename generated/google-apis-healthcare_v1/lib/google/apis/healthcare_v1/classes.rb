@@ -401,7 +401,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -546,9 +549,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Resource name of the Consent, of the form `projects/`project_id`/locations/`
-        # location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/consents/`
-        # consent_id``. Cannot be changed after creation.
+        # Identifier. Resource name of the Consent, of the form `projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
+        # consents/`consent_id``. Cannot be changed after creation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -742,9 +745,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Resource name of the consent store, of the form `projects/`project_id`/
-        # locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id``
-        # . Cannot be changed after creation.
+        # Identifier. Resource name of the consent store, of the form `projects/`
+        # project_id`/locations/`location_id`/datasets/`dataset_id`/consentStores/`
+        # consent_store_id``. Cannot be changed after creation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -824,8 +827,8 @@ module Google
       class Dataset
         include Google::Apis::Core::Hashable
       
-        # Resource name of the dataset, of the form `projects/`project_id`/locations/`
-        # location_id`/datasets/`dataset_id``.
+        # Identifier. Resource name of the dataset, of the form `projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2764,8 +2767,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Resource name of the HL7v2 store, of the form `projects/`project_id`/locations/
-        # `location_id`/datasets/`dataset_id`/hl7V2Stores/`hl7v2_store_id``.
+        # Identifier. Resource name of the HL7v2 store, of the form `projects/`
+        # project_id`/locations/`location_id`/datasets/`dataset_id`/hl7V2Stores/`
+        # hl7v2_store_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3642,7 +3646,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Raw message bytes.
+        # Required. Raw message bytes.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -3664,9 +3668,9 @@ module Google
         # @return [String]
         attr_accessor :message_type
       
-        # Resource name of the Message, of the form `projects/`project_id`/locations/`
-        # location_id`/datasets/`dataset_id`/hl7V2Stores/`hl7_v2_store_id`/messages/`
-        # message_id``. Assigned by the server.
+        # Output only. Resource name of the Message, of the form `projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id`/hl7V2Stores/`hl7_v2_store_id`/
+        # messages/`message_id``. Assigned by the server.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
