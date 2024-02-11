@@ -560,6 +560,31 @@ module Google
         end
       end
       
+      # A BigQuery output result.
+      class GoogleCloudRetailV2BigQueryOutputResult
+        include Google::Apis::Core::Hashable
+      
+        # The ID of a BigQuery Dataset.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # The ID of a BigQuery Table.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
       # BigQuery source import data from.
       class GoogleCloudRetailV2BigQuerySource
         include Google::Apis::Core::Hashable
@@ -1551,6 +1576,94 @@ module Google
         end
       end
       
+      # Request message for the `ExportAnalyticsMetrics` method.
+      class GoogleCloudRetailV2ExportAnalyticsMetricsRequest
+        include Google::Apis::Core::Hashable
+      
+        # A filtering expression to specify restrictions on returned metrics. The
+        # expression is a sequence of terms. Each term applies a restriction to the
+        # returned metrics. Use this expression to restrict results to a specific time
+        # range. Currently we expect only one types of fields: * `timestamp`: This can
+        # be specified twice, once with a less than operator and once with a greater
+        # than operator. The `timestamp` restriction should result in one, contiguous,
+        # valid, `timestamp` range. Some examples of valid filters expressions: *
+        # Example 1: `timestamp > "2012-04-23T18:25:43.511Z" timestamp < "2012-04-23T18:
+        # 30:43.511Z"` * Example 2: `timestamp > "2012-04-23T18:25:43.511Z"`
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The output configuration setting.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2OutputConfig]
+        attr_accessor :output_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @output_config = args[:output_config] if args.key?(:output_config)
+        end
+      end
+      
+      # Response of the ExportAnalyticsMetricsRequest. If the long running operation
+      # was successful, then this message is returned by the google.longrunning.
+      # Operations.response field if the operation was successful.
+      class GoogleCloudRetailV2ExportAnalyticsMetricsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::RetailV2::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # Configuration of destination for Export related errors.
+        # Corresponds to the JSON property `errorsConfig`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2ExportErrorsConfig]
+        attr_accessor :errors_config
+      
+        # Output result that stores the information about where the exported data is
+        # stored.
+        # Corresponds to the JSON property `outputResult`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2OutputResult]
+        attr_accessor :output_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @errors_config = args[:errors_config] if args.key?(:errors_config)
+          @output_result = args[:output_result] if args.key?(:output_result)
+        end
+      end
+      
+      # Configuration of destination for Export related errors.
+      class GoogleCloudRetailV2ExportErrorsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage path for import errors. This must be an empty, existing
+        # Cloud Storage bucket. Export errors will be written to a file in this bucket,
+        # one per line, as a JSON-encoded `google.rpc.Status` message.
+        # Corresponds to the JSON property `gcsPrefix`
+        # @return [String]
+        attr_accessor :gcs_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_prefix = args[:gcs_prefix] if args.key?(:gcs_prefix)
+        end
+      end
+      
       # Fulfillment information, such as the store IDs for in-store pickup or region
       # IDs for different shipping methods.
       class GoogleCloudRetailV2FulfillmentInfo
@@ -1584,6 +1697,25 @@ module Google
         def update!(**args)
           @place_ids = args[:place_ids] if args.key?(:place_ids)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A Gcs output result.
+      class GoogleCloudRetailV2GcsOutputResult
+        include Google::Apis::Core::Hashable
+      
+        # The uri of Gcs output
+        # Corresponds to the JSON property `outputUri`
+        # @return [String]
+        attr_accessor :output_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_uri = args[:output_uri] if args.key?(:output_uri)
         end
       end
       
@@ -2389,6 +2521,113 @@ module Google
         # Update properties of this object
         def update!(**args)
           @serving_config_ids = args[:serving_config_ids] if args.key?(:serving_config_ids)
+        end
+      end
+      
+      # The output configuration setting.
+      class GoogleCloudRetailV2OutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The BigQuery output destination configuration.
+        # Corresponds to the JSON property `bigqueryDestination`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2OutputConfigBigQueryDestination]
+        attr_accessor :bigquery_destination
+      
+        # The Google Cloud Storage output destination configuration.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2OutputConfigGcsDestination]
+        attr_accessor :gcs_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+        end
+      end
+      
+      # The BigQuery output destination configuration.
+      class GoogleCloudRetailV2OutputConfigBigQueryDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of a BigQuery Dataset.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # Required. The prefix of exported BigQuery tables.
+        # Corresponds to the JSON property `tableIdPrefix`
+        # @return [String]
+        attr_accessor :table_id_prefix
+      
+        # Required. Describes the table type. The following values are supported: * `
+        # table`: A BigQuery native table. * `view`: A virtual table defined by a SQL
+        # query.
+        # Corresponds to the JSON property `tableType`
+        # @return [String]
+        attr_accessor :table_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @table_id_prefix = args[:table_id_prefix] if args.key?(:table_id_prefix)
+          @table_type = args[:table_type] if args.key?(:table_type)
+        end
+      end
+      
+      # The Google Cloud Storage output destination configuration.
+      class GoogleCloudRetailV2OutputConfigGcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The output uri prefix for saving output data to json files. Some
+        # mapping examples are as follows: output_uri_prefix sample output(assuming the
+        # object is foo.json) ======================== ==================================
+        # =========== gs://bucket/ gs://bucket/foo.json gs://bucket/folder/ gs://bucket/
+        # folder/foo.json gs://bucket/folder/item_ gs://bucket/folder/item_foo.json
+        # Corresponds to the JSON property `outputUriPrefix`
+        # @return [String]
+        attr_accessor :output_uri_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_uri_prefix = args[:output_uri_prefix] if args.key?(:output_uri_prefix)
+        end
+      end
+      
+      # Output result that stores the information about where the exported data is
+      # stored.
+      class GoogleCloudRetailV2OutputResult
+        include Google::Apis::Core::Hashable
+      
+        # The BigQuery location where the result is stored.
+        # Corresponds to the JSON property `bigqueryResult`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2BigQueryOutputResult>]
+        attr_accessor :bigquery_result
+      
+        # The Google Cloud Storage location where the result is stored.
+        # Corresponds to the JSON property `gcsResult`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2GcsOutputResult>]
+        attr_accessor :gcs_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_result = args[:bigquery_result] if args.key?(:bigquery_result)
+          @gcs_result = args[:gcs_result] if args.key?(:gcs_result)
         end
       end
       
