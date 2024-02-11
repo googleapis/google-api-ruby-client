@@ -382,12 +382,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class QueryPlan
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class QueryTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -401,12 +395,6 @@ module Google
       end
       
       class ReadWrite
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResultSetStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1082,13 +1070,6 @@ module Google
         end
       end
       
-      class QueryPlan
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :plan_info, as: 'planInfo'
-        end
-      end
-      
       class QueryTarget
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1112,15 +1093,6 @@ module Google
         end
       end
       
-      class ResultSetStats
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :query_plan, as: 'queryPlan', class: Google::Apis::FirestoreV1beta1::QueryPlan, decorator: Google::Apis::FirestoreV1beta1::QueryPlan::Representation
-      
-          hash :query_stats, as: 'queryStats'
-        end
-      end
-      
       class RollbackRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1131,7 +1103,6 @@ module Google
       class RunAggregationQueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :mode, as: 'mode'
           property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1beta1::TransactionOptions, decorator: Google::Apis::FirestoreV1beta1::TransactionOptions::Representation
       
           property :read_time, as: 'readTime'
@@ -1147,8 +1118,6 @@ module Google
           property :read_time, as: 'readTime'
           property :result, as: 'result', class: Google::Apis::FirestoreV1beta1::AggregationResult, decorator: Google::Apis::FirestoreV1beta1::AggregationResult::Representation
       
-          property :stats, as: 'stats', class: Google::Apis::FirestoreV1beta1::ResultSetStats, decorator: Google::Apis::FirestoreV1beta1::ResultSetStats::Representation
-      
           property :transaction, :base64 => true, as: 'transaction'
         end
       end
@@ -1156,7 +1125,6 @@ module Google
       class RunQueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :mode, as: 'mode'
           property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1beta1::TransactionOptions, decorator: Google::Apis::FirestoreV1beta1::TransactionOptions::Representation
       
           property :read_time, as: 'readTime'
@@ -1174,8 +1142,6 @@ module Google
           property :done, as: 'done'
           property :read_time, as: 'readTime'
           property :skipped_results, as: 'skippedResults'
-          property :stats, as: 'stats', class: Google::Apis::FirestoreV1beta1::ResultSetStats, decorator: Google::Apis::FirestoreV1beta1::ResultSetStats::Representation
-      
           property :transaction, :base64 => true, as: 'transaction'
         end
       end
