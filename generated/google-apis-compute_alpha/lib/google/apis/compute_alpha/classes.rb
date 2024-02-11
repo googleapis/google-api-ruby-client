@@ -27763,8 +27763,7 @@ module Google
         # @return [Google::Apis::ComputeAlpha::NetworkEndpointGroupAppEngine]
         attr_accessor :app_engine
       
-        # Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is
-        # regional.
+        # Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
         # Corresponds to the JSON property `clientPortMappingMode`
         # @return [String]
         attr_accessor :client_port_mapping_mode
@@ -27790,7 +27789,8 @@ module Google
         attr_accessor :creation_timestamp
       
         # The default port used if the port number is not specified in the network
-        # endpoint.
+        # endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or
+        # PRIVATE_SERVICE_CONNECT, this field must not be specified.
         # Corresponds to the JSON property `defaultPort`
         # @return [Fixnum]
         attr_accessor :default_port
@@ -27828,8 +27828,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The URL of the network to which all network endpoints in the NEG belong. Uses "
-        # default" project network if unspecified.
+        # The URL of the network to which all network endpoints in the NEG belong. Uses
+        # default project network if unspecified.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -27848,8 +27848,8 @@ module Google
         attr_accessor :psc_data
       
         # The target service url used to set up private service connection to a Google
-        # API or a PSC Producer Service Attachment. An example value is: "asia-
-        # northeast3-cloudkms.googleapis.com"
+        # API or a PSC Producer Service Attachment. An example value is: asia-northeast3-
+        # cloudkms.googleapis.com
         # Corresponds to the JSON property `pscTargetService`
         # @return [String]
         attr_accessor :psc_target_service
@@ -28066,24 +28066,25 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional serving service. The service name is case-sensitive and must be 1-63
-        # characters long. Example value: "default", "my-service".
+        # characters long. Example value: default, my-service.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
-        # A template to parse service and version fields from a request URL. URL mask
-        # allows for routing to multiple App Engine services without having to create
-        # multiple Network Endpoint Groups and backend services. For example, the
-        # request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.
-        # com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-
-        # appname.appspot.com/<version>". The URL mask will parse them to ` service = "
-        # foo1", version = "v1" ` and ` service = "foo1", version = "v2" ` respectively.
+        # An URL mask is one of the main components of the Cloud Function. A template to
+        # parse service and version fields from a request URL. URL mask allows for
+        # routing to multiple App Engine services without having to create multiple
+        # Network Endpoint Groups and backend services. For example, the request URLs
+        # foo1-dot-appname.appspot.com/v1 and foo1-dot-appname.appspot.com/v2 can be
+        # backed by the same Serverless NEG with URL mask <service>-dot-appname.appspot.
+        # com/<version>. The URL mask will parse them to ` service = "foo1", version = "
+        # v1" ` and ` service = "foo1", version = "v2" ` respectively.
         # Corresponds to the JSON property `urlMask`
         # @return [String]
         attr_accessor :url_mask
       
         # Optional serving version. The version name is case-sensitive and must be 1-100
-        # characters long. Example value: "v1", "v2".
+        # characters long. Example value: v1, v2.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -28107,17 +28108,18 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A user-defined name of the Cloud Function. The function name is case-sensitive
-        # and must be 1-63 characters long. Example value: "func1".
+        # and must be 1-63 characters long. Example value: func1.
         # Corresponds to the JSON property `function`
         # @return [String]
         attr_accessor :function
       
-        # A template to parse function field from a request URL. URL mask allows for
-        # routing to multiple Cloud Functions without having to create multiple Network
-        # Endpoint Groups and backend services. For example, request URLs " mydomain.com/
-        # function1" and "mydomain.com/function2" can be backed by the same Serverless
-        # NEG with URL mask "/<function>". The URL mask will parse them to ` function = "
-        # function1" ` and ` function = "function2" ` respectively.
+        # An URL mask is one of the main components of the Cloud Function. A template to
+        # parse function field from a request URL. URL mask allows for routing to
+        # multiple Cloud Functions without having to create multiple Network Endpoint
+        # Groups and backend services. For example, request URLs mydomain.com/function1
+        # and mydomain.com/function2 can be backed by the same Serverless NEG with URL
+        # mask /<function>. The URL mask will parse them to ` function = "function1" `
+        # and ` function = "function2" ` respectively.
         # Corresponds to the JSON property `urlMask`
         # @return [String]
         attr_accessor :url_mask
@@ -28153,13 +28155,14 @@ module Google
         # @return [String]
         attr_accessor :tag
       
-        # A template to parse <service> and <tag> fields from a request URL. URL mask
-        # allows for routing to multiple Run services without having to create multiple
-        # network endpoint groups and backend services. For example, request URLs "foo1.
-        # domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same
-        # Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<
-        # service>". The URL mask will parse them to ` service="bar1", tag="foo1" ` and `
-        # service="bar2", tag="foo2" ` respectively.
+        # An URL mask is one of the main components of the Cloud Function. A template to
+        # parse <service> and <tag> fields from a request URL. URL mask allows for
+        # routing to multiple Run services without having to create multiple network
+        # endpoint groups and backend services. For example, request URLs foo1.domain.
+        # com/bar1 and foo1.domain.com/bar2 can be backed by the same Serverless Network
+        # Endpoint Group (NEG) with URL mask <tag>.domain.com/<service>. The URL mask
+        # will parse them to ` service="bar1", tag="foo1" ` and ` service="bar2", tag="
+        # foo2" ` respectively.
         # Corresponds to the JSON property `urlMask`
         # @return [String]
         attr_accessor :url_mask
@@ -28181,13 +28184,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The default port used if the port number is not specified in the network
-        # endpoint. [Deprecated] This field is deprecated.
+        # endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or
+        # PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This
+        # field is deprecated.
         # Corresponds to the JSON property `defaultPort`
         # @return [Fixnum]
         attr_accessor :default_port
       
-        # The URL of the network to which all network endpoints in the NEG belong. Uses "
-        # default" project network if unspecified. [Deprecated] This field is deprecated.
+        # The URL of the network to which all network endpoints in the NEG belong. Uses
+        # default project network if unspecified. [Deprecated] This field is deprecated.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -28389,12 +28394,13 @@ module Google
         # @return [String]
         attr_accessor :resource
       
-        # A template to parse platform-specific fields from a request URL. URL mask
-        # allows for routing to multiple resources on the same serverless platform
-        # without having to create multiple Network Endpoint Groups and backend
-        # resources. The fields parsed by this template are platform-specific and are as
-        # follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version
-        # 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
+        # An URL mask is one of the main components of the Cloud Function. A template to
+        # parse platform-specific fields from a request URL. URL mask allows for routing
+        # to multiple resources on the same serverless platform without having to create
+        # multiple Network Endpoint Groups and backend resources. The fields parsed by
+        # this template are platform-specific and are as follows: 1. API Gateway: The
+        # gateway ID 2. App Engine: The service and version 3. Cloud Functions: The
+        # function name 4. Cloud Run: The service and tag
         # Corresponds to the JSON property `urlMask`
         # @return [String]
         attr_accessor :url_mask
@@ -28762,6 +28768,12 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
+        # Indicate whether igmp query is enabled on the network interface or not. If
+        # enabled, also indicates the version of IGMP supported.
+        # Corresponds to the JSON property `igmpQuery`
+        # @return [String]
+        attr_accessor :igmp_query
+      
         # The prefix length of the primary internal IPv6 range.
         # Corresponds to the JSON property `internalIpv6PrefixLength`
         # @return [Fixnum]
@@ -28891,6 +28903,7 @@ module Google
           @access_configs = args[:access_configs] if args.key?(:access_configs)
           @alias_ip_ranges = args[:alias_ip_ranges] if args.key?(:alias_ip_ranges)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @igmp_query = args[:igmp_query] if args.key?(:igmp_query)
           @internal_ipv6_prefix_length = args[:internal_ipv6_prefix_length] if args.key?(:internal_ipv6_prefix_length)
           @ipv6_access_configs = args[:ipv6_access_configs] if args.key?(:ipv6_access_configs)
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
@@ -46101,6 +46114,11 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # [Output only] ResourceStatus of the Snapshot resource
+        # Corresponds to the JSON property `resourceStatus`
+        # @return [Google::Apis::ComputeAlpha::SnapshotResourceStatus]
+        attr_accessor :resource_status
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -46256,6 +46274,7 @@ module Google
           @max_retention_days = args[:max_retention_days] if args.key?(:max_retention_days)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
+          @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -46523,6 +46542,26 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class SnapshotResourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] Scheduled deletion time of the snapshot. The snapshot will be
+        # deleted by the at any point within one hour after the deletion time.
+        # Corresponds to the JSON property `scheduledDeletionTime`
+        # @return [String]
+        attr_accessor :scheduled_deletion_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scheduled_deletion_time = args[:scheduled_deletion_time] if args.key?(:scheduled_deletion_time)
         end
       end
       
