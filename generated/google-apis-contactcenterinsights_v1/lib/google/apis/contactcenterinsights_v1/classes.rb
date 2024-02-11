@@ -1875,6 +1875,94 @@ module Google
         end
       end
       
+      # Metadata used for export issue model.
+      class GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Request to export an issue model.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportIssueModelRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # Request to export an issue model.
+      class GoogleCloudContactcenterinsightsV1ExportIssueModelRequest
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage Object URI to save the issue model to.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination]
+        attr_accessor :gcs_destination
+      
+        # Required. The issue model to export
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Google Cloud Storage Object URI to save the issue model to.
+      class GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. Format: `gs:///`
+        # Corresponds to the JSON property `objectUri`
+        # @return [String]
+        attr_accessor :object_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_uri = args[:object_uri] if args.key?(:object_uri)
+        end
+      end
+      
+      # Response from export issue model
+      class GoogleCloudContactcenterinsightsV1ExportIssueModelResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Agent Assist frequently-asked-question answer data.
       class GoogleCloudContactcenterinsightsV1FaqAnswerData
         include Google::Apis::Core::Hashable
@@ -1957,6 +2045,103 @@ module Google
       
       # The data for a hold annotation.
       class GoogleCloudContactcenterinsightsV1HoldData
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata used for import issue model.
+      class GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Request to import an issue model.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ImportIssueModelRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # Request to import an issue model.
+      class GoogleCloudContactcenterinsightsV1ImportIssueModelRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, will create a new issue model from the imported file
+        # with randomly generated IDs for the issue model and corresponding issues.
+        # Otherwise, replaces an existing model with the same ID as the file.
+        # Corresponds to the JSON property `createNewModel`
+        # @return [Boolean]
+        attr_accessor :create_new_model
+        alias_method :create_new_model?, :create_new_model
+      
+        # Google Cloud Storage Object URI to get the issue model file from.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource]
+        attr_accessor :gcs_source
+      
+        # Required. The parent resource of the issue model.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_new_model = args[:create_new_model] if args.key?(:create_new_model)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # Google Cloud Storage Object URI to get the issue model file from.
+      class GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Format: `gs:///`
+        # Corresponds to the JSON property `objectUri`
+        # @return [String]
+        attr_accessor :object_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_uri = args[:object_uri] if args.key?(:object_uri)
+        end
+      end
+      
+      # Response from import issue model
+      class GoogleCloudContactcenterinsightsV1ImportIssueModelResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -2149,6 +2334,21 @@ module Google
         # @return [String]
         attr_accessor :bucket_uri
       
+        # Optional. Custom keys to extract as conversation labels from metadata files in
+        # `metadata_bucket_uri`. Keys not included in this field will be ignored. Note
+        # that there is a limit of 20 labels per conversation.
+        # Corresponds to the JSON property `customMetadataKeys`
+        # @return [Array<String>]
+        attr_accessor :custom_metadata_keys
+      
+        # Optional. The Cloud Storage path to the source object metadata. Note that: [1]
+        # metadata files are expected to be in JSON format [2] metadata and source
+        # objects must be in separate buckets [3] a source object's metadata object must
+        # share the same name to be properly ingested
+        # Corresponds to the JSON property `metadataBucketUri`
+        # @return [String]
+        attr_accessor :metadata_bucket_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2157,6 +2357,8 @@ module Google
         def update!(**args)
           @bucket_object_type = args[:bucket_object_type] if args.key?(:bucket_object_type)
           @bucket_uri = args[:bucket_uri] if args.key?(:bucket_uri)
+          @custom_metadata_keys = args[:custom_metadata_keys] if args.key?(:custom_metadata_keys)
+          @metadata_bucket_uri = args[:metadata_bucket_uri] if args.key?(:metadata_bucket_uri)
         end
       end
       
@@ -5137,6 +5339,94 @@ module Google
         end
       end
       
+      # Metadata used for export issue model.
+      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Request to export an issue model.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # Request to export an issue model.
+      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage Object URI to save the issue model to.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination]
+        attr_accessor :gcs_destination
+      
+        # Required. The issue model to export
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Google Cloud Storage Object URI to save the issue model to.
+      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. Format: `gs:///`
+        # Corresponds to the JSON property `objectUri`
+        # @return [String]
+        attr_accessor :object_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_uri = args[:object_uri] if args.key?(:object_uri)
+        end
+      end
+      
+      # Response from export issue model
+      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Agent Assist frequently-asked-question answer data.
       class GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData
         include Google::Apis::Core::Hashable
@@ -5219,6 +5509,103 @@ module Google
       
       # The data for a hold annotation.
       class GoogleCloudContactcenterinsightsV1alpha1HoldData
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata used for import issue model.
+      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Request to import an issue model.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # Request to import an issue model.
+      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, will create a new issue model from the imported file
+        # with randomly generated IDs for the issue model and corresponding issues.
+        # Otherwise, replaces an existing model with the same ID as the file.
+        # Corresponds to the JSON property `createNewModel`
+        # @return [Boolean]
+        attr_accessor :create_new_model
+        alias_method :create_new_model?, :create_new_model
+      
+        # Google Cloud Storage Object URI to get the issue model file from.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource]
+        attr_accessor :gcs_source
+      
+        # Required. The parent resource of the issue model.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_new_model = args[:create_new_model] if args.key?(:create_new_model)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # Google Cloud Storage Object URI to get the issue model file from.
+      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Format: `gs:///`
+        # Corresponds to the JSON property `objectUri`
+        # @return [String]
+        attr_accessor :object_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_uri = args[:object_uri] if args.key?(:object_uri)
+        end
+      end
+      
+      # Response from import issue model
+      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -5411,6 +5798,21 @@ module Google
         # @return [String]
         attr_accessor :bucket_uri
       
+        # Optional. Custom keys to extract as conversation labels from metadata files in
+        # `metadata_bucket_uri`. Keys not included in this field will be ignored. Note
+        # that there is a limit of 20 labels per conversation.
+        # Corresponds to the JSON property `customMetadataKeys`
+        # @return [Array<String>]
+        attr_accessor :custom_metadata_keys
+      
+        # Optional. The Cloud Storage path to the source object metadata. Note that: [1]
+        # metadata files are expected to be in JSON format [2] metadata and source
+        # objects must be in separate buckets [3] a source object's metadata object must
+        # share the same name to be properly ingested
+        # Corresponds to the JSON property `metadataBucketUri`
+        # @return [String]
+        attr_accessor :metadata_bucket_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5419,6 +5821,8 @@ module Google
         def update!(**args)
           @bucket_object_type = args[:bucket_object_type] if args.key?(:bucket_object_type)
           @bucket_uri = args[:bucket_uri] if args.key?(:bucket_uri)
+          @custom_metadata_keys = args[:custom_metadata_keys] if args.key?(:custom_metadata_keys)
+          @metadata_bucket_uri = args[:metadata_bucket_uri] if args.key?(:metadata_bucket_uri)
         end
       end
       
