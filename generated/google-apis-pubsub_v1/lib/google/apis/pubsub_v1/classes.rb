@@ -131,6 +131,15 @@ module Google
         attr_accessor :drop_unknown_fields
         alias_method :drop_unknown_fields?, :drop_unknown_fields
       
+        # Optional. The service account to use to write to BigQuery. The subscription
+        # creator or updater that specifies this field must have `iam.serviceAccounts.
+        # actAs` permission on the service account. If not specified, the Pub/Sub [
+        # service agent](https://cloud.google.com/iam/docs/service-agents), service-`
+        # project_number`@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
         # Output only. An output-only field that indicates whether or not the
         # subscription can receive messages.
         # Corresponds to the JSON property `state`
@@ -176,6 +185,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @drop_unknown_fields = args[:drop_unknown_fields] if args.key?(:drop_unknown_fields)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @state = args[:state] if args.key?(:state)
           @table = args[:table] if args.key?(:table)
           @use_table_schema = args[:use_table_schema] if args.key?(:use_table_schema)
@@ -330,6 +340,15 @@ module Google
         # @return [String]
         attr_accessor :max_duration
       
+        # Optional. The service account to use to write to Cloud Storage. The
+        # subscription creator or updater that specifies this field must have `iam.
+        # serviceAccounts.actAs` permission on the service account. If not specified,
+        # the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+        # service-`project_number`@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
         # Output only. An output-only field that indicates whether or not the
         # subscription can receive messages.
         # Corresponds to the JSON property `state`
@@ -354,6 +373,7 @@ module Google
           @filename_suffix = args[:filename_suffix] if args.key?(:filename_suffix)
           @max_bytes = args[:max_bytes] if args.key?(:max_bytes)
           @max_duration = args[:max_duration] if args.key?(:max_duration)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @state = args[:state] if args.key?(:state)
           @text_config = args[:text_config] if args.key?(:text_config)
         end
