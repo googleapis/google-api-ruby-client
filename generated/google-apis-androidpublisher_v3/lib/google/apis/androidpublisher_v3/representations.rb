@@ -1591,6 +1591,7 @@ module Google
       class AutoRenewingBasePlanType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_hold_duration, as: 'accountHoldDuration'
           property :billing_period_duration, as: 'billingPeriodDuration'
           property :grace_period_duration, as: 'gracePeriodDuration'
           property :legacy_compatible, as: 'legacyCompatible'
