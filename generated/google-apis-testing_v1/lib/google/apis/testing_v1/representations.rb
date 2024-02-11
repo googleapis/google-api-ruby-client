@@ -322,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MatrixErrorDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1056,6 +1062,14 @@ module Google
         end
       end
       
+      class MatrixErrorDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :reason, as: 'reason'
+        end
+      end
+      
       class Metadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1292,6 +1306,8 @@ module Google
           property :client_info, as: 'clientInfo', class: Google::Apis::TestingV1::ClientInfo, decorator: Google::Apis::TestingV1::ClientInfo::Representation
       
           property :environment_matrix, as: 'environmentMatrix', class: Google::Apis::TestingV1::EnvironmentMatrix, decorator: Google::Apis::TestingV1::EnvironmentMatrix::Representation
+      
+          collection :extended_invalid_matrix_details, as: 'extendedInvalidMatrixDetails', class: Google::Apis::TestingV1::MatrixErrorDetail, decorator: Google::Apis::TestingV1::MatrixErrorDetail::Representation
       
           property :fail_fast, as: 'failFast'
           property :flaky_test_attempts, as: 'flakyTestAttempts'

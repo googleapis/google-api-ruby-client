@@ -54,6 +54,10 @@ module Google
         
         # Gets the details of an Android application APK.
         # @param [Google::Apis::TestingV1::FileReference] file_reference_object
+        # @param [String] bundle_location_gcs_path
+        #   A path to a file in Google Cloud Storage. Example: gs://build-app-
+        #   1414623860166/app%40debug-unaligned.apk These paths are expected to be url
+        #   encoded (percent encoding)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -71,12 +75,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_application_detail_service_apk_details(file_reference_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_application_detail_service_apk_details(file_reference_object = nil, bundle_location_gcs_path: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/applicationDetailService/getApkDetails', options)
           command.request_representation = Google::Apis::TestingV1::FileReference::Representation
           command.request_object = file_reference_object
           command.response_representation = Google::Apis::TestingV1::GetApkDetailsResponse::Representation
           command.response_class = Google::Apis::TestingV1::GetApkDetailsResponse
+          command.query['bundleLocation.gcsPath'] = bundle_location_gcs_path unless bundle_location_gcs_path.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
