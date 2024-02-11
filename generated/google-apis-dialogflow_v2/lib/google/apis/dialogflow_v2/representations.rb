@@ -178,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3ExportEntityTypesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ExportEntityTypesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3ExportFlowResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,6 +287,24 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3ImportDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ImportEntityTypesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ImportEntityTypesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -772,6 +802,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExportEntityTypesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ExportFlowResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -869,6 +911,24 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1ImportDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3307,6 +3367,21 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3ExportEntityTypesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ExportEntityTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_types_content, as: 'entityTypesContent', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3InlineDestination, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3InlineDestination::Representation
+      
+          property :entity_types_uri, as: 'entityTypesUri'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3ExportFlowResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3458,6 +3533,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :warnings, as: 'warnings', class: Google::Apis::DialogflowV2::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2::GoogleRpcStatus::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ImportEntityTypesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ImportEntityTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conflicting_resources, as: 'conflictingResources', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources::Representation
+      
+          collection :entity_types, as: 'entityTypes'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entity_display_names, as: 'entityDisplayNames'
+          collection :entity_type_display_names, as: 'entityTypeDisplayNames'
         end
       end
       
@@ -4285,6 +4383,21 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExportEntityTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_types_content, as: 'entityTypesContent', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1InlineDestination, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1InlineDestination::Representation
+      
+          property :entity_types_uri, as: 'entityTypesUri'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ExportFlowResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4436,6 +4549,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :warnings, as: 'warnings', class: Google::Apis::DialogflowV2::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2::GoogleRpcStatus::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conflicting_resources, as: 'conflictingResources', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources::Representation
+      
+          collection :entity_types, as: 'entityTypes'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entity_display_names, as: 'entityDisplayNames'
+          collection :entity_type_display_names, as: 'entityTypeDisplayNames'
         end
       end
       
@@ -5064,6 +5200,7 @@ module Google
           property :start_time, as: 'startTime'
           property :submit_time, as: 'submitTime'
           property :summary_text, as: 'summaryText'
+          hash :text_sections, as: 'textSections'
         end
       end
       
