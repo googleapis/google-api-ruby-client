@@ -700,6 +700,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1MetadataJobEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobEventImportResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2241,6 +2253,29 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :zones, as: 'zones', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Zone, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Zone::Representation
       
+        end
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :import_result, as: 'importResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobEventImportResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobEventImportResult::Representation
+      
+          property :message, as: 'message'
+          property :resource, as: 'resource'
+        end
+      end
+      
+      class GoogleCloudDataplexV1MetadataJobEventImportResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_entries, :numeric_string => true, as: 'createdEntries'
+          property :deleted_entries, :numeric_string => true, as: 'deletedEntries'
+          property :mutated_entry_groups, :numeric_string => true, as: 'mutatedEntryGroups'
+          property :recreated_entries, :numeric_string => true, as: 'recreatedEntries'
+          property :state, as: 'state'
+          property :unchanged_entries, :numeric_string => true, as: 'unchangedEntries'
+          property :updated_entries, :numeric_string => true, as: 'updatedEntries'
         end
       end
       
