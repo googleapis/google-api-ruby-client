@@ -966,6 +966,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :endpoint_info, as: 'endpointInfo', class: Google::Apis::NetworkmanagementV1beta1::EndpointInfo, decorator: Google::Apis::NetworkmanagementV1beta1::EndpointInfo::Representation
       
+          property :forward_trace_id, as: 'forwardTraceId'
           collection :steps, as: 'steps', class: Google::Apis::NetworkmanagementV1beta1::Step, decorator: Google::Apis::NetworkmanagementV1beta1::Step::Representation
       
         end

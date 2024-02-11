@@ -2542,6 +2542,13 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::EndpointInfo]
         attr_accessor :endpoint_info
       
+        # ID of trace. For forward traces, this ID is unique for each trace. For return
+        # traces, it matches ID of associated forward trace. A single forward trace can
+        # be associated with none, one or more than one return trace.
+        # Corresponds to the JSON property `forwardTraceId`
+        # @return [Fixnum]
+        attr_accessor :forward_trace_id
+      
         # A trace of a test contains multiple steps from the initial state to the final
         # state (delivered, dropped, forwarded, or aborted). The steps are ordered by
         # the processing sequence within the simulated network state machine. It is
@@ -2558,6 +2565,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @endpoint_info = args[:endpoint_info] if args.key?(:endpoint_info)
+          @forward_trace_id = args[:forward_trace_id] if args.key?(:forward_trace_id)
           @steps = args[:steps] if args.key?(:steps)
         end
       end
