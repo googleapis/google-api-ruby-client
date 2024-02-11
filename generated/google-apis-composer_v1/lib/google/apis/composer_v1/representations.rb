@@ -178,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListUserWorkloadsConfigMapsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUserWorkloadsSecretsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListWorkloadsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,6 +335,18 @@ module Google
       end
       
       class TriggererResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserWorkloadsConfigMap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserWorkloadsSecret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -620,6 +644,24 @@ module Google
         end
       end
       
+      class ListUserWorkloadsConfigMapsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :user_workloads_config_maps, as: 'userWorkloadsConfigMaps', class: Google::Apis::ComposerV1::UserWorkloadsConfigMap, decorator: Google::Apis::ComposerV1::UserWorkloadsConfigMap::Representation
+      
+        end
+      end
+      
+      class ListUserWorkloadsSecretsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :user_workloads_secrets, as: 'userWorkloadsSecrets', class: Google::Apis::ComposerV1::UserWorkloadsSecret, decorator: Google::Apis::ComposerV1::UserWorkloadsSecret::Representation
+      
+        end
+      end
+      
       class ListWorkloadsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -867,6 +909,22 @@ module Google
           property :count, as: 'count'
           property :cpu, as: 'cpu'
           property :memory_gb, as: 'memoryGb'
+        end
+      end
+      
+      class UserWorkloadsConfigMap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :data, as: 'data'
+          property :name, as: 'name'
+        end
+      end
+      
+      class UserWorkloadsSecret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :data, as: 'data'
+          property :name, as: 'name'
         end
       end
       

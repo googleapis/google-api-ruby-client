@@ -527,6 +527,359 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a user workloads ConfigMap. This method is supported for Cloud
+        # Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # @param [String] parent
+        #   Required. The environment name to create a ConfigMap for, in the form: "
+        #   projects/`projectId`/locations/`locationId`/environments/`environmentId`"
+        # @param [Google::Apis::ComposerV1::UserWorkloadsConfigMap] user_workloads_config_map_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1::UserWorkloadsConfigMap] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1::UserWorkloadsConfigMap]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_environment_user_workloads_config_map(parent, user_workloads_config_map_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/userWorkloadsConfigMaps', options)
+          command.request_representation = Google::Apis::ComposerV1::UserWorkloadsConfigMap::Representation
+          command.request_object = user_workloads_config_map_object
+          command.response_representation = Google::Apis::ComposerV1::UserWorkloadsConfigMap::Representation
+          command.response_class = Google::Apis::ComposerV1::UserWorkloadsConfigMap
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a user workloads ConfigMap. This method is supported for Cloud
+        # Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # @param [String] name
+        #   Required. The ConfigMap to delete, in the form: "projects/`projectId`/
+        #   locations/`locationId`/environments/`environmentId`/userWorkloadsConfigMaps/`
+        #   userWorkloadsConfigMapId`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_environment_user_workloads_config_map(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ComposerV1::Empty::Representation
+          command.response_class = Google::Apis::ComposerV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an existing user workloads ConfigMap. This method is supported for Cloud
+        # Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # @param [String] name
+        #   Required. The resource name of the ConfigMap to get, in the form: "projects/`
+        #   projectId`/locations/`locationId`/environments/`environmentId`/
+        #   userWorkloadsConfigMaps/`userWorkloadsConfigMapId`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1::UserWorkloadsConfigMap] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1::UserWorkloadsConfigMap]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_environment_user_workloads_config_map(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ComposerV1::UserWorkloadsConfigMap::Representation
+          command.response_class = Google::Apis::ComposerV1::UserWorkloadsConfigMap
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists user workloads ConfigMaps. This method is supported for Cloud Composer
+        # environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # @param [String] parent
+        #   Required. List ConfigMaps in the given environment, in the form: "projects/`
+        #   projectId`/locations/`locationId`/environments/`environmentId`"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of ConfigMaps to return.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous List request, if
+        #   any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1::ListUserWorkloadsConfigMapsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1::ListUserWorkloadsConfigMapsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_environment_user_workloads_config_maps(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/userWorkloadsConfigMaps', options)
+          command.response_representation = Google::Apis::ComposerV1::ListUserWorkloadsConfigMapsResponse::Representation
+          command.response_class = Google::Apis::ComposerV1::ListUserWorkloadsConfigMapsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a user workloads ConfigMap. This method is supported for Cloud
+        # Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # @param [String] name
+        #   Identifier. The resource name of the ConfigMap, in the form: "projects/`
+        #   projectId`/locations/`locationId`/environments/`environmentId`/
+        #   userWorkloadsConfigMaps/`userWorkloadsConfigMapId`"
+        # @param [Google::Apis::ComposerV1::UserWorkloadsConfigMap] user_workloads_config_map_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1::UserWorkloadsConfigMap] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1::UserWorkloadsConfigMap]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_environment_user_workloads_config_map(name, user_workloads_config_map_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ComposerV1::UserWorkloadsConfigMap::Representation
+          command.request_object = user_workloads_config_map_object
+          command.response_representation = Google::Apis::ComposerV1::UserWorkloadsConfigMap::Representation
+          command.response_class = Google::Apis::ComposerV1::UserWorkloadsConfigMap
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a user workloads Secret. This method is supported for Cloud Composer
+        # environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # @param [String] parent
+        #   Required. The environment name to create a Secret for, in the form: "projects/`
+        #   projectId`/locations/`locationId`/environments/`environmentId`"
+        # @param [Google::Apis::ComposerV1::UserWorkloadsSecret] user_workloads_secret_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1::UserWorkloadsSecret] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1::UserWorkloadsSecret]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_environment_user_workloads_secret(parent, user_workloads_secret_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/userWorkloadsSecrets', options)
+          command.request_representation = Google::Apis::ComposerV1::UserWorkloadsSecret::Representation
+          command.request_object = user_workloads_secret_object
+          command.response_representation = Google::Apis::ComposerV1::UserWorkloadsSecret::Representation
+          command.response_class = Google::Apis::ComposerV1::UserWorkloadsSecret
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a user workloads Secret. This method is supported for Cloud Composer
+        # environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # @param [String] name
+        #   Required. The Secret to delete, in the form: "projects/`projectId`/locations/`
+        #   locationId`/environments/`environmentId`/userWorkloadsSecrets/`
+        #   userWorkloadsSecretId`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_environment_user_workloads_secret(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ComposerV1::Empty::Representation
+          command.response_class = Google::Apis::ComposerV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an existing user workloads Secret. Values of the "data" field in the
+        # response are cleared. This method is supported for Cloud Composer environments
+        # in versions composer-3.*.*-airflow-*.*.* and newer.
+        # @param [String] name
+        #   Required. The resource name of the Secret to get, in the form: "projects/`
+        #   projectId`/locations/`locationId`/environments/`environmentId`/
+        #   userWorkloadsSecrets/`userWorkloadsSecretId`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1::UserWorkloadsSecret] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1::UserWorkloadsSecret]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_environment_user_workloads_secret(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ComposerV1::UserWorkloadsSecret::Representation
+          command.response_class = Google::Apis::ComposerV1::UserWorkloadsSecret
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists user workloads Secrets. This method is supported for Cloud Composer
+        # environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # @param [String] parent
+        #   Required. List Secrets in the given environment, in the form: "projects/`
+        #   projectId`/locations/`locationId`/environments/`environmentId`"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of Secrets to return.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous List request, if
+        #   any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1::ListUserWorkloadsSecretsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1::ListUserWorkloadsSecretsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_environment_user_workloads_secrets(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/userWorkloadsSecrets', options)
+          command.response_representation = Google::Apis::ComposerV1::ListUserWorkloadsSecretsResponse::Representation
+          command.response_class = Google::Apis::ComposerV1::ListUserWorkloadsSecretsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a user workloads Secret. This method is supported for Cloud Composer
+        # environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # @param [String] name
+        #   Identifier. The resource name of the Secret, in the form: "projects/`projectId`
+        #   /locations/`locationId`/environments/`environmentId`/userWorkloadsSecrets/`
+        #   userWorkloadsSecretId`"
+        # @param [Google::Apis::ComposerV1::UserWorkloadsSecret] user_workloads_secret_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1::UserWorkloadsSecret] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1::UserWorkloadsSecret]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_environment_user_workloads_secret(name, user_workloads_secret_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ComposerV1::UserWorkloadsSecret::Representation
+          command.request_object = user_workloads_secret_object
+          command.response_representation = Google::Apis::ComposerV1::UserWorkloadsSecret::Representation
+          command.response_class = Google::Apis::ComposerV1::UserWorkloadsSecret
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists workloads in a Cloud Composer environment. Workload is a unit that runs
         # a single Composer component. This method is supported for Cloud Composer
         # environments in versions composer-3.*.*-airflow-*.*.* and newer.
