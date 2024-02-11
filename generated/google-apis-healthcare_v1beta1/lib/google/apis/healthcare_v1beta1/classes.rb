@@ -277,9 +277,9 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::ImageAnnotation]
         attr_accessor :image_annotation
       
-        # Resource name of the Annotation, of the form `projects/`project_id`/locations/`
-        # location_id`/datasets/`dataset_id`/annotationStores/`annotation_store_id`/
-        # annotations/`annotation_id``.
+        # Identifier. Resource name of the Annotation, of the form `projects/`project_id`
+        # /locations/`location_id`/datasets/`dataset_id`/annotationStores/`
+        # annotation_store_id`/annotations/`annotation_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -377,8 +377,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Resource name of the Annotation store, of the form `projects/`project_id`/
-        # locations/`location_id`/datasets/`dataset_id`/annotationStores/`
+        # Identifier. Resource name of the Annotation store, of the form `projects/`
+        # project_id`/locations/`location_id`/datasets/`dataset_id`/annotationStores/`
         # annotation_store_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -839,7 +839,10 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1178,9 +1181,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Resource name of the Consent, of the form `projects/`project_id`/locations/`
-        # location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/consents/`
-        # consent_id``. Cannot be changed after creation.
+        # Identifier. Resource name of the Consent, of the form `projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
+        # consents/`consent_id``. Cannot be changed after creation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1234,6 +1237,41 @@ module Google
           @state = args[:state] if args.key?(:state)
           @ttl = args[:ttl] if args.key?(:ttl)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # The accessor scope that describes who can access, for what purpose, in which
+      # environment.
+      class ConsentAccessorScope
+        include Google::Apis::Core::Hashable
+      
+        # An individual, group, or access role that identifies the accessor or a
+        # characteristic of the accessor. This can be a resource ID (such as ``
+        # resourceType`/`id``) or an external URI. This value must be present.
+        # Corresponds to the JSON property `actor`
+        # @return [String]
+        attr_accessor :actor
+      
+        # An abstract identifier that describes the environment or conditions under
+        # which the accessor is acting. Can be “*” if it applies to all environments.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # The intent of data use. Can be “*” if it applies to all purposes.
+        # Corresponds to the JSON property `purpose`
+        # @return [String]
+        attr_accessor :purpose
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actor = args[:actor] if args.key?(:actor)
+          @environment = args[:environment] if args.key?(:environment)
+          @purpose = args[:purpose] if args.key?(:purpose)
         end
       end
       
@@ -1568,8 +1606,8 @@ module Google
       class Dataset
         include Google::Apis::Core::Hashable
       
-        # Resource name of the dataset, of the form `projects/`project_id`/locations/`
-        # location_id`/datasets/`dataset_id``.
+        # Identifier. Resource name of the dataset, of the form `projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2357,9 +2395,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :golden_info_type_mapping
       
-        # The Annotation store to use as ground truth, in the format of `projects/`
-        # project_id`/locations/`location_id`/datasets/`dataset_id`/annotationStores/`
-        # annotation_store_id``.
+        # Required. The Annotation store to use as ground truth, in the format of `
+        # projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        # annotationStores/`annotation_store_id``.
         # Corresponds to the JSON property `goldenStore`
         # @return [String]
         attr_accessor :golden_store
@@ -2483,6 +2521,138 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # The enforcing consent's metadata.
+      class ExplainDataAccessConsentInfo
+        include Google::Apis::Core::Hashable
+      
+        # The compartment base resources that matched a cascading policy. Each resource
+        # has the following format: `projects/`project_id`/locations/`location_id`/
+        # datasets/`dataset_id`/fhirStores/`fhir_store_id`/fhir/`resource_type`/`
+        # resource_id``
+        # Corresponds to the JSON property `cascadeOrigins`
+        # @return [Array<String>]
+        attr_accessor :cascade_origins
+      
+        # The resource name of this consent resource. Format: `projects/`projectId`/
+        # datasets/`datasetId`/fhirStores/`fhirStoreId`/fhir/`resourceType`/`id``.
+        # Corresponds to the JSON property `consentResource`
+        # @return [String]
+        attr_accessor :consent_resource
+      
+        # Last enforcement timestamp of this consent resource.
+        # Corresponds to the JSON property `enforcementTime`
+        # @return [String]
+        attr_accessor :enforcement_time
+      
+        # A list of all the matching accessor scopes of this consent policy that
+        # enforced ExplainDataAccessConsentScope.accessor_scope.
+        # Corresponds to the JSON property `matchingAccessorScopes`
+        # @return [Array<Google::Apis::HealthcareV1beta1::ConsentAccessorScope>]
+        attr_accessor :matching_accessor_scopes
+      
+        # The patient owning the consent (only applicable for patient consents), in the
+        # format: `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        # fhirStores/`fhir_store_id`/fhir/Patient/`patient_id``
+        # Corresponds to the JSON property `patientConsentOwner`
+        # @return [String]
+        attr_accessor :patient_consent_owner
+      
+        # The policy type of consent resource (e.g. PATIENT, ADMIN).
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The consent's variant combinations. A single consent may have multiple
+        # variants.
+        # Corresponds to the JSON property `variants`
+        # @return [Array<String>]
+        attr_accessor :variants
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cascade_origins = args[:cascade_origins] if args.key?(:cascade_origins)
+          @consent_resource = args[:consent_resource] if args.key?(:consent_resource)
+          @enforcement_time = args[:enforcement_time] if args.key?(:enforcement_time)
+          @matching_accessor_scopes = args[:matching_accessor_scopes] if args.key?(:matching_accessor_scopes)
+          @patient_consent_owner = args[:patient_consent_owner] if args.key?(:patient_consent_owner)
+          @type = args[:type] if args.key?(:type)
+          @variants = args[:variants] if args.key?(:variants)
+        end
+      end
+      
+      # A single consent scope that provides info on who has access to the requested
+      # resource scope for a particular purpose and environment, enforced by which
+      # consent.
+      class ExplainDataAccessConsentScope
+        include Google::Apis::Core::Hashable
+      
+        # The accessor scope that describes who can access, for what purpose, in which
+        # environment.
+        # Corresponds to the JSON property `accessorScope`
+        # @return [Google::Apis::HealthcareV1beta1::ConsentAccessorScope]
+        attr_accessor :accessor_scope
+      
+        # Whether the current consent scope is permitted or denied access on the
+        # requested resource.
+        # Corresponds to the JSON property `decision`
+        # @return [String]
+        attr_accessor :decision
+      
+        # Metadata of the consent resources that enforce the consent scope's access.
+        # Corresponds to the JSON property `enforcingConsents`
+        # @return [Array<Google::Apis::HealthcareV1beta1::ExplainDataAccessConsentInfo>]
+        attr_accessor :enforcing_consents
+      
+        # Other consent scopes that created exceptions within this scope.
+        # Corresponds to the JSON property `exceptions`
+        # @return [Array<Google::Apis::HealthcareV1beta1::ExplainDataAccessConsentScope>]
+        attr_accessor :exceptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accessor_scope = args[:accessor_scope] if args.key?(:accessor_scope)
+          @decision = args[:decision] if args.key?(:decision)
+          @enforcing_consents = args[:enforcing_consents] if args.key?(:enforcing_consents)
+          @exceptions = args[:exceptions] if args.key?(:exceptions)
+        end
+      end
+      
+      # List of consent scopes that are applicable to the explained access on a given
+      # resource.
+      class ExplainDataAccessResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of applicable consent scopes. Sorted in order of actor such that scopes
+        # belonging to the same actor will be adjacent to each other in the list.
+        # Corresponds to the JSON property `consentScopes`
+        # @return [Array<Google::Apis::HealthcareV1beta1::ExplainDataAccessConsentScope>]
+        attr_accessor :consent_scopes
+      
+        # Warnings associated with this response. It inform user with exceeded scope
+        # limit errors.
+        # Corresponds to the JSON property `warning`
+        # @return [String]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_scopes = args[:consent_scopes] if args.key?(:consent_scopes)
+          @warning = args[:warning] if args.key?(:warning)
         end
       end
       
@@ -3032,11 +3202,9 @@ module Google
         attr_accessor :disable_resource_versioning
         alias_method :disable_resource_versioning?, :disable_resource_versioning
       
-        # Optional. Whether to allow the [ImportResourcesHistory] and [ExecuteBundle]
-        # APIs to accept history bundles, and directly insert and overwrite historical
-        # resource versions into the FHIR store. Importing resource histories creates
-        # resource interactions that have occurred in the past that clients might not
-        # allow. If set to false, using history bundles fail with an error.
+        # Optional. Whether to allow ExecuteBundle to accept history bundles, and
+        # directly insert and overwrite historical resource versions into the FHIR store.
+        # If set to false, using history bundles fails with an error.
         # Corresponds to the JSON property `enableHistoryModifications`
         # @return [Boolean]
         attr_accessor :enable_history_modifications
@@ -4155,8 +4323,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Resource name of the HL7v2 store, of the form `projects/`project_id`/locations/
-        # `location_id`/datasets/`dataset_id`/hl7V2Stores/`hl7v2_store_id``.
+        # Identifier. Resource name of the HL7v2 store, of the form `projects/`
+        # project_id`/locations/`location_id`/datasets/`dataset_id`/hl7V2Stores/`
+        # hl7v2_store_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5247,7 +5416,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Raw message bytes.
+        # Required. Raw message bytes.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -5269,9 +5438,9 @@ module Google
         # @return [String]
         attr_accessor :message_type
       
-        # Resource name of the Message, of the form `projects/`project_id`/locations/`
-        # location_id`/datasets/`dataset_id`/hl7V2Stores/`hl7_v2_store_id`/messages/`
-        # message_id``. Assigned by the server.
+        # Output only. Resource name of the Message, of the form `projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id`/hl7V2Stores/`hl7_v2_store_id`/
+        # messages/`message_id``. Assigned by the server.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
