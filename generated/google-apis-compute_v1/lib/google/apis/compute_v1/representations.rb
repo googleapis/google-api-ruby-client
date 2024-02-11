@@ -1696,6 +1696,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerAllInstancesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerAutoHealingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1727,6 +1733,12 @@ module Google
       end
       
       class InstanceGroupManagerStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerStatusAllInstancesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1997,6 +2009,12 @@ module Google
       end
       
       class InstanceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancePropertiesPatch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9427,6 +9445,8 @@ module Google
       class InstanceGroupManager
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_instances_config, as: 'allInstancesConfig', class: Google::Apis::ComputeV1::InstanceGroupManagerAllInstancesConfig, decorator: Google::Apis::ComputeV1::InstanceGroupManagerAllInstancesConfig::Representation
+      
           collection :auto_healing_policies, as: 'autoHealingPolicies', class: Google::Apis::ComputeV1::InstanceGroupManagerAutoHealingPolicy, decorator: Google::Apis::ComputeV1::InstanceGroupManagerAutoHealingPolicy::Representation
       
           property :base_instance_name, as: 'baseInstanceName'
@@ -9515,6 +9535,14 @@ module Google
         end
       end
       
+      class InstanceGroupManagerAllInstancesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :properties, as: 'properties', class: Google::Apis::ComputeV1::InstancePropertiesPatch, decorator: Google::Apis::ComputeV1::InstancePropertiesPatch::Representation
+      
+        end
+      end
+      
       class InstanceGroupManagerAutoHealingPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9565,12 +9593,22 @@ module Google
       class InstanceGroupManagerStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_instances_config, as: 'allInstancesConfig', class: Google::Apis::ComputeV1::InstanceGroupManagerStatusAllInstancesConfig, decorator: Google::Apis::ComputeV1::InstanceGroupManagerStatusAllInstancesConfig::Representation
+      
           property :autoscaler, as: 'autoscaler'
           property :is_stable, as: 'isStable'
           property :stateful, as: 'stateful', class: Google::Apis::ComputeV1::InstanceGroupManagerStatusStateful, decorator: Google::Apis::ComputeV1::InstanceGroupManagerStatusStateful::Representation
       
           property :version_target, as: 'versionTarget', class: Google::Apis::ComputeV1::InstanceGroupManagerStatusVersionTarget, decorator: Google::Apis::ComputeV1::InstanceGroupManagerStatusVersionTarget::Representation
       
+        end
+      end
+      
+      class InstanceGroupManagerStatusAllInstancesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_revision, as: 'currentRevision'
+          property :effective, as: 'effective'
         end
       end
       
@@ -10011,6 +10049,14 @@ module Google
       
           property :tags, as: 'tags', class: Google::Apis::ComputeV1::Tags, decorator: Google::Apis::ComputeV1::Tags::Representation
       
+        end
+      end
+      
+      class InstancePropertiesPatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          hash :metadata, as: 'metadata'
         end
       end
       
