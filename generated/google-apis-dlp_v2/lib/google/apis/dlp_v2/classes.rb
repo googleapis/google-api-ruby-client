@@ -446,7 +446,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :rows_limit_percent
       
-        # 
+        # How to sample the data.
         # Corresponds to the JSON property `sampleMethod`
         # @return [String]
         attr_accessor :sample_method
@@ -982,7 +982,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :files_limit_percent
       
-        # 
+        # How to sample the data.
         # Corresponds to the JSON property `sampleMethod`
         # @return [String]
         attr_accessor :sample_method
@@ -1190,8 +1190,7 @@ module Google
         # @return [String]
         attr_accessor :profile_last_generated
       
-        # Success or error status from the most recent profile generation attempt. May
-        # be empty if the profile is still being generated.
+        # Success or errors for the profile generation.
         # Corresponds to the JSON property `profileStatus`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus]
         attr_accessor :profile_status
@@ -1382,7 +1381,7 @@ module Google
         end
       end
       
-      # 
+      # Type of content to inspect.
       class GooglePrivacyDlpV2ContentItem
         include Google::Apis::Core::Hashable
       
@@ -2490,8 +2489,7 @@ module Google
         # @return [String]
         attr_accessor :inspect_template_name
       
-        # The item to de-identify. Will be treated as text. This value must be of type
-        # Table if your deidentify_config is a RecordTransformations object.
+        # Type of content to inspect.
         # Corresponds to the JSON property `item`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
@@ -2520,7 +2518,7 @@ module Google
       class GooglePrivacyDlpV2DeidentifyContentResponse
         include Google::Apis::Core::Hashable
       
-        # The de-identified item.
+        # Type of content to inspect.
         # Corresponds to the JSON property `item`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
@@ -3852,7 +3850,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HybridFindingDetails]
         attr_accessor :finding_details
       
-        # The item to inspect.
+        # Type of content to inspect.
         # Corresponds to the JSON property `item`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
@@ -4152,7 +4150,7 @@ module Google
       class GooglePrivacyDlpV2ImageTransformations
         include Google::Apis::Core::Hashable
       
-        # 
+        # List of transforms to make.
         # Corresponds to the JSON property `transforms`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2ImageTransformation>]
         attr_accessor :transforms
@@ -4559,7 +4557,7 @@ module Google
         # @return [String]
         attr_accessor :inspect_template_name
       
-        # The item to inspect.
+        # Type of content to inspect.
         # Corresponds to the JSON property `item`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
@@ -6165,7 +6163,7 @@ module Google
         end
       end
       
-      # 
+      # Success or errors for the profile generation.
       class GooglePrivacyDlpV2ProfileStatus
         include Google::Apis::Core::Hashable
       
@@ -6646,7 +6644,7 @@ module Google
         end
       end
       
-      # 
+      # The field in a record to transform.
       class GooglePrivacyDlpV2RecordTransformation
         include Google::Apis::Core::Hashable
       
@@ -6843,7 +6841,7 @@ module Google
         # @return [String]
         attr_accessor :inspect_template_name
       
-        # The item to re-identify. Will be treated as text.
+        # Type of content to inspect.
         # Corresponds to the JSON property `item`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
@@ -6887,7 +6885,7 @@ module Google
       class GooglePrivacyDlpV2ReidentifyContentResponse
         include Google::Apis::Core::Hashable
       
-        # The re-identified item.
+        # Type of content to inspect.
         # Corresponds to the JSON property `item`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
@@ -7308,7 +7306,7 @@ module Google
       class GooglePrivacyDlpV2StorageMetadataLabel
         include Google::Apis::Core::Hashable
       
-        # 
+        # Label name.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -7692,8 +7690,7 @@ module Google
         # @return [String]
         attr_accessor :profile_last_generated
       
-        # Success or error status from the most recent profile generation attempt. May
-        # be empty if the profile is still being generated.
+        # Success or errors for the profile generation.
         # Corresponds to the JSON property `profileStatus`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus]
         attr_accessor :profile_status
@@ -8071,9 +8068,7 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
-        # Status of the transformation, if transformation was not successful, this will
-        # specify what caused it to fail, otherwise it will show that the transformation
-        # was successful.
+        # The outcome of a transformation.
         # Corresponds to the JSON property `statusDetails`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationResultStatus]
         attr_accessor :status_details
@@ -8187,7 +8182,7 @@ module Google
         # @return [String]
         attr_accessor :finding_id
       
-        # For record transformations, provide a field and container information.
+        # The field in a record to transform.
         # Corresponds to the JSON property `recordTransformation`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RecordTransformation]
         attr_accessor :record_transformation
@@ -8229,7 +8224,7 @@ module Google
         end
       end
       
-      # 
+      # The outcome of a transformation.
       class GooglePrivacyDlpV2TransformationResultStatus
         include Google::Apis::Core::Hashable
       

@@ -19,15 +19,14 @@ require 'google/apis/dlp_v2/gem_version.rb'
 
 module Google
   module Apis
-    # Cloud Data Loss Prevention (DLP)
+    # Sensitive Data Protection (DLP)
     #
-    # Provides methods for detection, risk analysis, and de-identification of
-    # privacy-sensitive fragments in text, images, and Google Cloud Platform storage
-    # repositories.
+    # Discover and protect your sensitive data. A fully managed service designed to
+    # help you discover, classify, and protect your valuable data assets with ease.
     #
     # @see https://cloud.google.com/dlp/docs/
     module DlpV2
-      # Version of the Cloud Data Loss Prevention (DLP) this client connects to.
+      # Version of the Sensitive Data Protection (DLP) this client connects to.
       # This is NOT the gem version.
       VERSION = 'V2'
 

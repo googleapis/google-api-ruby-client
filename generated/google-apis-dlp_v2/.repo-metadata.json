@@ -1,6 +1,6 @@
 {
     "api_id": "dlp:v2",
-    "name_pretty": "Cloud Data Loss Prevention (DLP)",
+    "name_pretty": "Sensitive Data Protection (DLP)",
     "distribution_name": "google-apis-dlp_v2",
     "language": "ruby",
     "library_type": "REST"
