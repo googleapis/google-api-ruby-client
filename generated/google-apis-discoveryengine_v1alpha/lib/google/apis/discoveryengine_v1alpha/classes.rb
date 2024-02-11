@@ -2225,6 +2225,26 @@ module Google
         end
       end
       
+      # Defines custom fine tuning spec.
+      class GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec
+        include Google::Apis::Core::Hashable
+      
+        # Whether or not to enable and include custom fine tuned search adaptor model.
+        # Corresponds to the JSON property `enableSearchAdaptor`
+        # @return [Boolean]
+        attr_accessor :enable_search_adaptor
+        alias_method :enable_search_adaptor?, :enable_search_adaptor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_search_adaptor = args[:enable_search_adaptor] if args.key?(:enable_search_adaptor)
+        end
+      end
+      
       # DataStore captures global settings and configs at the DataStore level.
       class GoogleCloudDiscoveryengineV1alphaDataStore
         include Google::Apis::Core::Hashable
@@ -2721,6 +2741,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Defines embedding config, used for bring your own embeddings feature.
+      class GoogleCloudDiscoveryengineV1alphaEmbeddingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Full field path in the schema mapped as embedding field.
+        # Corresponds to the JSON property `fieldPath`
+        # @return [String]
+        attr_accessor :field_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_path = args[:field_path] if args.key?(:field_path)
         end
       end
       
@@ -3518,6 +3557,41 @@ module Google
         end
       end
       
+      # Defines guided search spec.
+      class GoogleCloudDiscoveryengineV1alphaGuidedSearchSpec
+        include Google::Apis::Core::Hashable
+      
+        # Whether or not to enable and include refinement attributes in gudied search
+        # result.
+        # Corresponds to the JSON property `enableRefinementAttributes`
+        # @return [Boolean]
+        attr_accessor :enable_refinement_attributes
+        alias_method :enable_refinement_attributes?, :enable_refinement_attributes
+      
+        # Whether or not to enable and include related questions in search response.
+        # Corresponds to the JSON property `enableRelatedQuestions`
+        # @return [Boolean]
+        attr_accessor :enable_related_questions
+        alias_method :enable_related_questions?, :enable_related_questions
+      
+        # Max number of related questions to be returned. The valid range is [1, 5]. If
+        # enable_related_questions is true, the default value is 3.
+        # Corresponds to the JSON property `maxRelatedQuestions`
+        # @return [Fixnum]
+        attr_accessor :max_related_questions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_refinement_attributes = args[:enable_refinement_attributes] if args.key?(:enable_refinement_attributes)
+          @enable_related_questions = args[:enable_related_questions] if args.key?(:enable_related_questions)
+          @max_related_questions = args[:max_related_questions] if args.key?(:max_related_questions)
+        end
+      end
+      
       # Metadata related to the progress of the ImportDocuments operation. This is
       # returned by the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata
@@ -4114,6 +4188,31 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @schemas = args[:schemas] if args.key?(:schemas)
+        end
+      end
+      
+      # Response for ListServingConfigs method.
+      class GoogleCloudDiscoveryengineV1alphaListServingConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Pagination token, if not returned indicates the last page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # All the ServingConfigs for a given dataStore.
+        # Corresponds to the JSON property `servingConfigs`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaServingConfig>]
+        attr_accessor :serving_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @serving_configs = args[:serving_configs] if args.key?(:serving_configs)
         end
       end
       
@@ -6426,6 +6525,267 @@ module Google
           @citation_metadata = args[:citation_metadata] if args.key?(:citation_metadata)
           @references = args[:references] if args.key?(:references)
           @summary = args[:summary] if args.key?(:summary)
+        end
+      end
+      
+      # Configures metadata that is used to generate serving time results (e.g. search
+      # results or recommendation predictions). The ServingConfig is passed in the
+      # search and predict request and generates results.
+      class GoogleCloudDiscoveryengineV1alphaServingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Boost controls to use in serving path. All triggered boost controls will be
+        # applied. Boost controls must be in the same data store as the serving config.
+        # Maximum of 20 boost controls.
+        # Corresponds to the JSON property `boostControlIds`
+        # @return [Array<String>]
+        attr_accessor :boost_control_ids
+      
+        # Output only. ServingConfig created timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Defines custom fine tuning spec.
+        # Corresponds to the JSON property `customFineTuningSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec]
+        attr_accessor :custom_fine_tuning_spec
+      
+        # Required. The human readable serving config display name. Used in Discovery UI.
+        # This field must be a UTF-8 encoded string with a length limit of 128
+        # characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Condition do not associate specifications. If multiple do not associate
+        # conditions match, all matching do not associate controls in the list will
+        # execute. Order does not matter. Maximum number of specifications is 100. Can
+        # only be set if SolutionType is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `dissociateControlIds`
+        # @return [Array<String>]
+        attr_accessor :dissociate_control_ids
+      
+        # How much diversity to use in recommendation model results e.g. `medium-
+        # diversity` or `high-diversity`. Currently supported values: * `no-diversity` *
+        # `low-diversity` * `medium-diversity` * `high-diversity` * `auto-diversity` If
+        # not specified, we choose default based on recommendation model type. Default
+        # value: `no-diversity`. Can only be set if SolutionType is
+        # SOLUTION_TYPE_RECOMMENDATION.
+        # Corresponds to the JSON property `diversityLevel`
+        # @return [String]
+        attr_accessor :diversity_level
+      
+        # Defines embedding config, used for bring your own embeddings feature.
+        # Corresponds to the JSON property `embeddingConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEmbeddingConfig]
+        attr_accessor :embedding_config
+      
+        # Filter controls to use in serving path. All triggered filter controls will be
+        # applied. Filter controls must be in the same data store as the serving config.
+        # Maximum of 20 filter controls.
+        # Corresponds to the JSON property `filterControlIds`
+        # @return [Array<String>]
+        attr_accessor :filter_control_ids
+      
+        # Specifies the configurations needed for Generic Discovery.Currently we support:
+        # * `content_search_spec`: configuration for generic content search.
+        # Corresponds to the JSON property `genericConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaServingConfigGenericConfig]
+        attr_accessor :generic_config
+      
+        # Defines guided search spec.
+        # Corresponds to the JSON property `guidedSearchSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGuidedSearchSpec]
+        attr_accessor :guided_search_spec
+      
+        # Condition ignore specifications. If multiple ignore conditions match, all
+        # matching ignore controls in the list will execute. Order does not matter.
+        # Maximum number of specifications is 100.
+        # Corresponds to the JSON property `ignoreControlIds`
+        # @return [Array<String>]
+        attr_accessor :ignore_control_ids
+      
+        # Specifies the configurations needed for Media Discovery. Currently we support:
+        # * `demote_content_watched`: Threshold for watched content demotion. Customers
+        # can specify if using watched content demotion or use viewed detail page. Using
+        # the content watched demotion, customers need to specify the watched minutes or
+        # percentage exceeds the threshold, the content will be demoted in the
+        # recommendation result. * `promote_fresh_content`: cutoff days for fresh
+        # content promotion. Customers can specify if using content freshness promotion.
+        # If the content was published within the cutoff days, the content will be
+        # promoted in the recommendation result. Can only be set if SolutionType is
+        # SOLUTION_TYPE_RECOMMENDATION.
+        # Corresponds to the JSON property `mediaConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaServingConfigMediaConfig]
+        attr_accessor :media_config
+      
+        # The id of the model to use at serving time. Currently only
+        # RecommendationModels are supported. Can be changed but only to a compatible
+        # model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when
+        # SolutionType is SOLUTION_TYPE_RECOMMENDATION.
+        # Corresponds to the JSON property `modelId`
+        # @return [String]
+        attr_accessor :model_id
+      
+        # Immutable. Fully qualified name `projects/`project`/locations/`location`/
+        # collections/`collection_id`/dataStores/`data_store_id`/servingConfigs/`
+        # serving_config_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Condition oneway synonyms specifications. If multiple oneway synonyms
+        # conditions match, all matching oneway synonyms controls in the list will
+        # execute. Maximum number of specifications is 100. Can only be set if
+        # SolutionType is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `onewaySynonymsControlIds`
+        # @return [Array<String>]
+        attr_accessor :oneway_synonyms_control_ids
+      
+        # 
+        # Corresponds to the JSON property `rankingExpression`
+        # @return [String]
+        attr_accessor :ranking_expression
+      
+        # IDs of the redirect controls. Only the first triggered redirect action is
+        # applied, even if multiple apply. Maximum number of specifications is 100. Can
+        # only be set if SolutionType is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `redirectControlIds`
+        # @return [Array<String>]
+        attr_accessor :redirect_control_ids
+      
+        # Condition replacement specifications. Applied according to the order in the
+        # list. A previously replaced term can not be re-replaced. Maximum number of
+        # specifications is 100. Can only be set if SolutionType is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `replacementControlIds`
+        # @return [Array<String>]
+        attr_accessor :replacement_control_ids
+      
+        # Required. Immutable. Specifies the solution type that a serving config can be
+        # associated with.
+        # Corresponds to the JSON property `solutionType`
+        # @return [String]
+        attr_accessor :solution_type
+      
+        # Condition synonyms specifications. If multiple synonyms conditions match, all
+        # matching synonyms controls in the list will execute. Maximum number of
+        # specifications is 100. Can only be set if SolutionType is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `synonymsControlIds`
+        # @return [Array<String>]
+        attr_accessor :synonyms_control_ids
+      
+        # Output only. ServingConfig updated timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost_control_ids = args[:boost_control_ids] if args.key?(:boost_control_ids)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_fine_tuning_spec = args[:custom_fine_tuning_spec] if args.key?(:custom_fine_tuning_spec)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @dissociate_control_ids = args[:dissociate_control_ids] if args.key?(:dissociate_control_ids)
+          @diversity_level = args[:diversity_level] if args.key?(:diversity_level)
+          @embedding_config = args[:embedding_config] if args.key?(:embedding_config)
+          @filter_control_ids = args[:filter_control_ids] if args.key?(:filter_control_ids)
+          @generic_config = args[:generic_config] if args.key?(:generic_config)
+          @guided_search_spec = args[:guided_search_spec] if args.key?(:guided_search_spec)
+          @ignore_control_ids = args[:ignore_control_ids] if args.key?(:ignore_control_ids)
+          @media_config = args[:media_config] if args.key?(:media_config)
+          @model_id = args[:model_id] if args.key?(:model_id)
+          @name = args[:name] if args.key?(:name)
+          @oneway_synonyms_control_ids = args[:oneway_synonyms_control_ids] if args.key?(:oneway_synonyms_control_ids)
+          @ranking_expression = args[:ranking_expression] if args.key?(:ranking_expression)
+          @redirect_control_ids = args[:redirect_control_ids] if args.key?(:redirect_control_ids)
+          @replacement_control_ids = args[:replacement_control_ids] if args.key?(:replacement_control_ids)
+          @solution_type = args[:solution_type] if args.key?(:solution_type)
+          @synonyms_control_ids = args[:synonyms_control_ids] if args.key?(:synonyms_control_ids)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Specifies the configurations needed for Generic Discovery.Currently we support:
+      # * `content_search_spec`: configuration for generic content search.
+      class GoogleCloudDiscoveryengineV1alphaServingConfigGenericConfig
+        include Google::Apis::Core::Hashable
+      
+        # A specification for configuring the behavior of content search.
+        # Corresponds to the JSON property `contentSearchSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec]
+        attr_accessor :content_search_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_search_spec = args[:content_search_spec] if args.key?(:content_search_spec)
+        end
+      end
+      
+      # Specifies the configurations needed for Media Discovery. Currently we support:
+      # * `demote_content_watched`: Threshold for watched content demotion. Customers
+      # can specify if using watched content demotion or use viewed detail page. Using
+      # the content watched demotion, customers need to specify the watched minutes or
+      # percentage exceeds the threshold, the content will be demoted in the
+      # recommendation result. * `promote_fresh_content`: cutoff days for fresh
+      # content promotion. Customers can specify if using content freshness promotion.
+      # If the content was published within the cutoff days, the content will be
+      # promoted in the recommendation result. Can only be set if SolutionType is
+      # SOLUTION_TYPE_RECOMMENDATION.
+      class GoogleCloudDiscoveryengineV1alphaServingConfigMediaConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the content freshness used for recommendation result. Contents will
+        # be demoted if contents were published for more than content freshness cutoff
+        # days.
+        # Corresponds to the JSON property `contentFreshnessCutoffDays`
+        # @return [Fixnum]
+        attr_accessor :content_freshness_cutoff_days
+      
+        # Specifies the content watched minutes threshold for demotion.
+        # Corresponds to the JSON property `contentWatchedMinutesThreshold`
+        # @return [Float]
+        attr_accessor :content_watched_minutes_threshold
+      
+        # Specifies the content watched percentage threshold for demotion. Threshold
+        # value must be between [0, 1.0] inclusive.
+        # Corresponds to the JSON property `contentWatchedPercentageThreshold`
+        # @return [Float]
+        attr_accessor :content_watched_percentage_threshold
+      
+        # Specifies the content watched minutes threshold for demotion.
+        # Corresponds to the JSON property `contentWatchedSecondsThreshold`
+        # @return [Float]
+        attr_accessor :content_watched_seconds_threshold
+      
+        # Specifies the event type used for demoting recommendation result. Currently
+        # supported values: * `view-item`: Item viewed. * `media-play`: Start/resume
+        # watching a video, playing a song, etc. * `media-complete`: Finished or stopped
+        # midway through a video, song, etc. If unset, watch history demotion will not
+        # be applied. Content freshness demotion will still be applied.
+        # Corresponds to the JSON property `demotionEventType`
+        # @return [String]
+        attr_accessor :demotion_event_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_freshness_cutoff_days = args[:content_freshness_cutoff_days] if args.key?(:content_freshness_cutoff_days)
+          @content_watched_minutes_threshold = args[:content_watched_minutes_threshold] if args.key?(:content_watched_minutes_threshold)
+          @content_watched_percentage_threshold = args[:content_watched_percentage_threshold] if args.key?(:content_watched_percentage_threshold)
+          @content_watched_seconds_threshold = args[:content_watched_seconds_threshold] if args.key?(:content_watched_seconds_threshold)
+          @demotion_event_type = args[:demotion_event_type] if args.key?(:demotion_event_type)
         end
       end
       
