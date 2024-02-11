@@ -218,7 +218,7 @@ module Google
       class AppLinkDataAppLinkInfoAppTarget
         include Google::Apis::Core::Hashable
       
-        # 
+        # URI for AppTarget. The description on the URI must be set.
         # Corresponds to the JSON property `targetUri`
         # @return [Google::Apis::WalletobjectsV1::Uri]
         attr_accessor :target_uri
@@ -6865,34 +6865,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @animation_type = args[:animation_type] if args.key?(:animation_type)
-        end
-      end
-      
-      # Request to send a private pass update notice information to Google, so that
-      # devices can then fetch the notice prompting the user to update a pass.
-      class SetPassUpdateNoticeRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # A response to a request to notify Google of an awaiting update to a private
-      # pass.
-      class SetPassUpdateNoticeResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
