@@ -638,8 +638,7 @@ module Google
         end
       end
       
-      # Android application details based on application manifest and apk archive
-      # contents.
+      # Android application details based on application manifest and archive contents.
       class ApkDetail
         include Google::Apis::Core::Hashable
       
@@ -1235,12 +1234,11 @@ module Google
         end
       end
       
-      # Response containing the details of the specified Android application APK.
+      # Response containing the details of the specified Android application.
       class GetApkDetailsResponse
         include Google::Apis::Core::Hashable
       
-        # Android application details based on application manifest and apk archive
-        # contents.
+        # Android application details based on application manifest and archive contents.
         # Corresponds to the JSON property `apkDetail`
         # @return [Google::Apis::TestingV1::ApkDetail]
         attr_accessor :apk_detail
@@ -1862,6 +1860,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @test_targets_for_shard = args[:test_targets_for_shard] if args.key?(:test_targets_for_shard)
+        end
+      end
+      
+      # Describes a single error or issue with a matrix.
+      class MatrixErrorDetail
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A human-readable message about how the error in the TestMatrix.
+        # Expands on the `reason` field with additional details and possible options to
+        # fix the issue.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Output only. The reason for the error. This is a constant value in
+        # UPPER_SNAKE_CASE that identifies the cause of the error.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @reason = args[:reason] if args.key?(:reason)
         end
       end
       
@@ -2637,6 +2663,13 @@ module Google
         # @return [Google::Apis::TestingV1::EnvironmentMatrix]
         attr_accessor :environment_matrix
       
+        # Output only. Details about why a matrix was deemed invalid. If multiple checks
+        # can be safely performed, they will be reported but no assumptions should be
+        # made about the length of this list.
+        # Corresponds to the JSON property `extendedInvalidMatrixDetails`
+        # @return [Array<Google::Apis::TestingV1::MatrixErrorDetail>]
+        attr_accessor :extended_invalid_matrix_details
+      
         # If true, only a single attempt at most will be made to run each execution/
         # shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more
         # attempts are made if a potential infrastructure issue is detected. This
@@ -2711,6 +2744,7 @@ module Google
         def update!(**args)
           @client_info = args[:client_info] if args.key?(:client_info)
           @environment_matrix = args[:environment_matrix] if args.key?(:environment_matrix)
+          @extended_invalid_matrix_details = args[:extended_invalid_matrix_details] if args.key?(:extended_invalid_matrix_details)
           @fail_fast = args[:fail_fast] if args.key?(:fail_fast)
           @flaky_test_attempts = args[:flaky_test_attempts] if args.key?(:flaky_test_attempts)
           @invalid_matrix_details = args[:invalid_matrix_details] if args.key?(:invalid_matrix_details)
