@@ -1024,6 +1024,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PlacementConversionDomainOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PlacementGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1031,6 +1037,12 @@ module Google
       end
       
       class PlacementGroupsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlacementSingleConversionDomain
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2223,6 +2235,7 @@ module Google
       class Conversion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_user_data_consent, as: 'adUserDataConsent'
           property :child_directed_treatment, as: 'childDirectedTreatment'
           collection :custom_variables, as: 'customVariables', class: Google::Apis::DfareportingV4::CustomFloodlightVariable, decorator: Google::Apis::DfareportingV4::CustomFloodlightVariable::Representation
       
@@ -3733,6 +3746,8 @@ module Google
           property :comment, as: 'comment'
           property :compatibility, as: 'compatibility'
           property :content_category_id, :numeric_string => true, as: 'contentCategoryId'
+          property :conversion_domain_override, as: 'conversionDomainOverride', class: Google::Apis::DfareportingV4::PlacementConversionDomainOverride, decorator: Google::Apis::DfareportingV4::PlacementConversionDomainOverride::Representation
+      
           property :create_info, as: 'createInfo', class: Google::Apis::DfareportingV4::LastModifiedInfo, decorator: Google::Apis::DfareportingV4::LastModifiedInfo::Representation
       
           property :directory_site_id, :numeric_string => true, as: 'directorySiteId'
@@ -3792,6 +3807,14 @@ module Google
         end
       end
       
+      class PlacementConversionDomainOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversion_domains, as: 'conversionDomains', class: Google::Apis::DfareportingV4::PlacementSingleConversionDomain, decorator: Google::Apis::DfareportingV4::PlacementSingleConversionDomain::Representation
+      
+        end
+      end
+      
       class PlacementGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3840,6 +3863,14 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :placement_groups, as: 'placementGroups', class: Google::Apis::DfareportingV4::PlacementGroup, decorator: Google::Apis::DfareportingV4::PlacementGroup::Representation
       
+        end
+      end
+      
+      class PlacementSingleConversionDomain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversion_domain_id, :numeric_string => true, as: 'conversionDomainId'
+          property :conversion_domain_value, as: 'conversionDomainValue'
         end
       end
       
