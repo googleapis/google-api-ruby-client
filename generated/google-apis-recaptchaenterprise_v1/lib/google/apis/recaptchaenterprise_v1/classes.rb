@@ -496,6 +496,15 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction]
         attr_accessor :block
       
+        # An include reCAPTCHA script action involves injecting reCAPTCHA JavaScript
+        # code into the HTML returned by the site backend. This reCAPTCHA script is
+        # tasked with collecting user signals on the requested web page, issuing tokens
+        # as a cookie within the site domain, and enabling their utilization in
+        # subsequent page requests.
+        # Corresponds to the JSON property `includeRecaptchaScript`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction]
+        attr_accessor :include_recaptcha_script
+      
         # A redirect action returns a 307 (temporary redirect) response, pointing the
         # user to a ReCaptcha interstitial page to attach a token.
         # Corresponds to the JSON property `redirect`
@@ -522,6 +531,7 @@ module Google
         def update!(**args)
           @allow = args[:allow] if args.key?(:allow)
           @block = args[:block] if args.key?(:block)
+          @include_recaptcha_script = args[:include_recaptcha_script] if args.key?(:include_recaptcha_script)
           @redirect = args[:redirect] if args.key?(:redirect)
           @set_header = args[:set_header] if args.key?(:set_header)
           @substitute = args[:substitute] if args.key?(:substitute)
@@ -544,6 +554,23 @@ module Google
       # A block action serves an HTTP error code a prevents the request from hitting
       # the backend.
       class GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # An include reCAPTCHA script action involves injecting reCAPTCHA JavaScript
+      # code into the HTML returned by the site backend. This reCAPTCHA script is
+      # tasked with collecting user signals on the requested web page, issuing tokens
+      # as a cookie within the site domain, and enabling their utilization in
+      # subsequent page requests.
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
