@@ -2356,18 +2356,19 @@ module Google
         # googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/
         # container-dependencies`: Revision . * `run.googleapis.com/cpu-throttling`:
         # Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.
-        # com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`
-        # : Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.
-        # googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.
-        # com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.
-        # googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`:
-        # Service (ALPHA) * `run.googleapis.com/network-interfaces`: Revision, Execution.
-        # * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.
-        # googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-
-        # session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `
-        # run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-
-        # access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-
-        # egress`: Revision, Execution.
+        # com/default-url-disabled`: Service. * `run.googleapis.com/description`:
+        # Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.
+        # googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/
+        # execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-
+        # tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/
+        # launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service (ALPHA) *
+        # `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.
+        # googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.
+        # com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`:
+        # Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.
+        # com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`:
+        # Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision,
+        # Execution.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
