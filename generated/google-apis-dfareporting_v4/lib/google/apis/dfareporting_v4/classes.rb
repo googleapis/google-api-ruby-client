@@ -2758,6 +2758,11 @@ module Google
       class Conversion
         include Google::Apis::Core::Hashable
       
+        # This represents consent for ad user data.
+        # Corresponds to the JSON property `adUserDataConsent`
+        # @return [String]
+        attr_accessor :ad_user_data_consent
+      
         # Whether this particular request may come from a user under the age of 13,
         # under COPPA compliance.
         # Corresponds to the JSON property `childDirectedTreatment`
@@ -2904,6 +2909,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ad_user_data_consent = args[:ad_user_data_consent] if args.key?(:ad_user_data_consent)
           @child_directed_treatment = args[:child_directed_treatment] if args.key?(:child_directed_treatment)
           @custom_variables = args[:custom_variables] if args.key?(:custom_variables)
           @dclid = args[:dclid] if args.key?(:dclid)
@@ -8962,6 +8968,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :content_category_id
       
+        # Optional. Conversion domain overrides for a placement.
+        # Corresponds to the JSON property `conversionDomainOverride`
+        # @return [Google::Apis::DfareportingV4::PlacementConversionDomainOverride]
+        attr_accessor :conversion_domain_override
+      
         # Modification timestamp.
         # Corresponds to the JSON property `createInfo`
         # @return [Google::Apis::DfareportingV4::LastModifiedInfo]
@@ -9175,6 +9186,7 @@ module Google
           @comment = args[:comment] if args.key?(:comment)
           @compatibility = args[:compatibility] if args.key?(:compatibility)
           @content_category_id = args[:content_category_id] if args.key?(:content_category_id)
+          @conversion_domain_override = args[:conversion_domain_override] if args.key?(:conversion_domain_override)
           @create_info = args[:create_info] if args.key?(:create_info)
           @directory_site_id = args[:directory_site_id] if args.key?(:directory_site_id)
           @directory_site_id_dimension_value = args[:directory_site_id_dimension_value] if args.key?(:directory_site_id_dimension_value)
@@ -9248,6 +9260,25 @@ module Google
           @placement_id = args[:placement_id] if args.key?(:placement_id)
           @placement_id_dimension_value = args[:placement_id_dimension_value] if args.key?(:placement_id_dimension_value)
           @ssl_required = args[:ssl_required] if args.key?(:ssl_required)
+        end
+      end
+      
+      # 
+      class PlacementConversionDomainOverride
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `conversionDomains`
+        # @return [Array<Google::Apis::DfareportingV4::PlacementSingleConversionDomain>]
+        attr_accessor :conversion_domains
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversion_domains = args[:conversion_domains] if args.key?(:conversion_domains)
         end
       end
       
@@ -9468,6 +9499,31 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @placement_groups = args[:placement_groups] if args.key?(:placement_groups)
+        end
+      end
+      
+      # 
+      class PlacementSingleConversionDomain
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `conversionDomainId`
+        # @return [Fixnum]
+        attr_accessor :conversion_domain_id
+      
+        # 
+        # Corresponds to the JSON property `conversionDomainValue`
+        # @return [String]
+        attr_accessor :conversion_domain_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversion_domain_id = args[:conversion_domain_id] if args.key?(:conversion_domain_id)
+          @conversion_domain_value = args[:conversion_domain_value] if args.key?(:conversion_domain_value)
         end
       end
       
@@ -12201,8 +12257,8 @@ module Google
         # @return [String]
         attr_accessor :additional_key_values
       
-        # Whether static landing page URLs should be included in the tags. This setting
-        # applies only to placements.
+        # Whether static landing page URLs should be included in the tags. New
+        # placements will default to the value set on their site.
         # Corresponds to the JSON property `includeClickThroughUrls`
         # @return [Boolean]
         attr_accessor :include_click_through_urls
