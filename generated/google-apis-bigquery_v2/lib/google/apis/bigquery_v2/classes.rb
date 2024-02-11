@@ -1851,6 +1851,12 @@ module Google
         attr_accessor :max_time_travel_hours
       
         # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -1907,6 +1913,7 @@ module Google
           @linked_dataset_source = args[:linked_dataset_source] if args.key?(:linked_dataset_source)
           @location = args[:location] if args.key?(:location)
           @max_time_travel_hours = args[:max_time_travel_hours] if args.key?(:max_time_travel_hours)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @storage_billing_model = args[:storage_billing_model] if args.key?(:storage_billing_model)
@@ -4247,6 +4254,20 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::ConnectionProperty>]
         attr_accessor :connection_properties
       
+        # Optional. [Experimental] Configures the load job to only copy files to the
+        # destination BigLake managed table with an external storage_uri, without
+        # reading file content and writing them to new files. Copying files only is
+        # supported when: * source_uris are in the same external storage system as the
+        # destination table but they do not overlap with storage_uri of the destination
+        # table. * source_format is the same file format as the destination table. *
+        # destination_table is an existing BigLake managed table. Its schema does not
+        # have default value expression. It schema does not have type parameters other
+        # than precision and scale. * No options other than the above are specified.
+        # Corresponds to the JSON property `copyFilesOnly`
+        # @return [Boolean]
+        attr_accessor :copy_files_only
+        alias_method :copy_files_only?, :copy_files_only
+      
         # Optional. Specifies whether the job is allowed to create new tables. The
         # following values are supported: * CREATE_IF_NEEDED: If the table does not
         # exist, BigQuery creates the table. * CREATE_NEVER: The table must already
@@ -4535,6 +4556,7 @@ module Google
           @autodetect = args[:autodetect] if args.key?(:autodetect)
           @clustering = args[:clustering] if args.key?(:clustering)
           @connection_properties = args[:connection_properties] if args.key?(:connection_properties)
+          @copy_files_only = args[:copy_files_only] if args.key?(:copy_files_only)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
           @create_session = args[:create_session] if args.key?(:create_session)
           @decimal_target_types = args[:decimal_target_types] if args.key?(:decimal_target_types)
