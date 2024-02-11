@@ -34,12 +34,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SasPortalCheckHasProvisionedDeploymentResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SasPortalCreateSignedDeviceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -118,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SasPortalGcpProjectDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SasPortalGenerateSecretRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +155,12 @@ module Google
       end
       
       class SasPortalListDevicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SasPortalListGcpProjectDeploymentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -333,13 +339,6 @@ module Google
         end
       end
       
-      class SasPortalCheckHasProvisionedDeploymentResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :has_provisioned_deployment, as: 'hasProvisionedDeployment'
-        end
-      end
-      
       class SasPortalCreateSignedDeviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -488,6 +487,15 @@ module Google
         end
       end
       
+      class SasPortalGcpProjectDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment, as: 'deployment', class: Google::Apis::SasportalV1alpha1::SasPortalDeployment, decorator: Google::Apis::SasportalV1alpha1::SasPortalDeployment::Representation
+      
+          property :has_enabled_analytics, as: 'hasEnabledAnalytics'
+        end
+      end
+      
       class SasPortalGenerateSecretRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -552,6 +560,14 @@ module Google
           collection :devices, as: 'devices', class: Google::Apis::SasportalV1alpha1::SasPortalDevice, decorator: Google::Apis::SasportalV1alpha1::SasPortalDevice::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class SasPortalListGcpProjectDeploymentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deployments, as: 'deployments', class: Google::Apis::SasportalV1alpha1::SasPortalGcpProjectDeployment, decorator: Google::Apis::SasportalV1alpha1::SasPortalGcpProjectDeployment::Representation
+      
         end
       end
       
