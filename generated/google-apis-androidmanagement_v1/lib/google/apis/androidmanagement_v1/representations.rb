@@ -322,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstallConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IssueCommandResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -947,6 +953,9 @@ module Google
           property :disabled, as: 'disabled'
           property :extension_config, as: 'extensionConfig', class: Google::Apis::AndroidmanagementV1::ExtensionConfig, decorator: Google::Apis::AndroidmanagementV1::ExtensionConfig::Representation
       
+          collection :install_constraint, as: 'installConstraint', class: Google::Apis::AndroidmanagementV1::InstallConstraint, decorator: Google::Apis::AndroidmanagementV1::InstallConstraint::Representation
+      
+          property :install_priority, as: 'installPriority'
           property :install_type, as: 'installType'
           property :lock_task_allowed, as: 'lockTaskAllowed'
           hash :managed_configuration, as: 'managedConfiguration'
@@ -1402,6 +1411,15 @@ module Google
           collection :fan_speeds, as: 'fanSpeeds'
           collection :gpu_temperatures, as: 'gpuTemperatures'
           collection :skin_temperatures, as: 'skinTemperatures'
+        end
+      end
+      
+      class InstallConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :charging_constraint, as: 'chargingConstraint'
+          property :device_idle_constraint, as: 'deviceIdleConstraint'
+          property :network_type_constraint, as: 'networkTypeConstraint'
         end
       end
       

@@ -55,8 +55,7 @@ module Google
         end
       end
       
-      # Security policies set to secure values by default. To maintain the security
-      # posture of a device, we don't recommend overriding any of the default values.
+      # Advanced security settings. In most cases, setting these is not needed.
       class AdvancedSecurityOverrides
         include Google::Apis::Core::Hashable
       
@@ -592,6 +591,21 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::ExtensionConfig]
         attr_accessor :extension_config
       
+        # Optional. The constraints for installing the app. You can specify a maximum of
+        # one InstallConstraint. Multiple constraints are rejected.
+        # Corresponds to the JSON property `installConstraint`
+        # @return [Array<Google::Apis::AndroidmanagementV1::InstallConstraint>]
+        attr_accessor :install_constraint
+      
+        # Optional. Amongst apps with installTypeset to:FORCE_INSTALLEDPREINSTALLED this
+        # controls the relative priority of installation. A value of 0 (default) means
+        # this app has no priority over other apps. For values between 1 and 10,000, a
+        # lower value means a higher priority. Values outside of the range 0 to 10,000
+        # inclusive are rejected.
+        # Corresponds to the JSON property `installPriority`
+        # @return [Fixnum]
+        attr_accessor :install_priority
+      
         # The type of installation to perform.
         # Corresponds to the JSON property `installType`
         # @return [String]
@@ -663,6 +677,8 @@ module Google
           @delegated_scopes = args[:delegated_scopes] if args.key?(:delegated_scopes)
           @disabled = args[:disabled] if args.key?(:disabled)
           @extension_config = args[:extension_config] if args.key?(:extension_config)
+          @install_constraint = args[:install_constraint] if args.key?(:install_constraint)
+          @install_priority = args[:install_priority] if args.key?(:install_priority)
           @install_type = args[:install_type] if args.key?(:install_type)
           @lock_task_allowed = args[:lock_task_allowed] if args.key?(:lock_task_allowed)
           @managed_configuration = args[:managed_configuration] if args.key?(:managed_configuration)
@@ -1586,7 +1602,8 @@ module Google
       
         # Events related to memory and storage measurements in chronological order. This
         # information is only available if memoryInfoEnabled is true in the device's
-        # policy.
+        # policy.Events are retained for a certain period of time and old events are
+        # deleted.
         # Corresponds to the JSON property `memoryEvents`
         # @return [Array<Google::Apis::AndroidmanagementV1::MemoryEvent>]
         attr_accessor :memory_events
@@ -2551,6 +2568,40 @@ module Google
         end
       end
       
+      # Amongst apps with InstallTypeset to:FORCE_INSTALLEDPREINSTALLED this defines a
+      # set of restrictions for the app installation. At least one of the fields must
+      # be set. When multiple fields are set, then all the constraints need to be
+      # satisfied for the app to be installed.
+      class InstallConstraint
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Charging constraint.
+        # Corresponds to the JSON property `chargingConstraint`
+        # @return [String]
+        attr_accessor :charging_constraint
+      
+        # Optional. Device idle constraint.
+        # Corresponds to the JSON property `deviceIdleConstraint`
+        # @return [String]
+        attr_accessor :device_idle_constraint
+      
+        # Optional. Network type constraint.
+        # Corresponds to the JSON property `networkTypeConstraint`
+        # @return [String]
+        attr_accessor :network_type_constraint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @charging_constraint = args[:charging_constraint] if args.key?(:charging_constraint)
+          @device_idle_constraint = args[:device_idle_constraint] if args.key?(:device_idle_constraint)
+          @network_type_constraint = args[:network_type_constraint] if args.key?(:network_type_constraint)
+        end
+      end
+      
       # Response on issuing a command. This is currently empty as a placeholder.
       class IssueCommandResponse
         include Google::Apis::Core::Hashable
@@ -3320,7 +3371,8 @@ module Google
         end
       end
       
-      # An event related to memory and storage measurements.
+      # An event related to memory and storage measurements.To distinguish between new
+      # and old events, we recommend using the createTime field.
       class MemoryEvent
         include Google::Apis::Core::Hashable
       
@@ -4121,8 +4173,7 @@ module Google
         attr_accessor :adjust_volume_disabled
         alias_method :adjust_volume_disabled?, :adjust_volume_disabled
       
-        # Security policies set to secure values by default. To maintain the security
-        # posture of a device, we don't recommend overriding any of the default values.
+        # Advanced security settings. In most cases, setting these is not needed.
         # Corresponds to the JSON property `advancedSecurityOverrides`
         # @return [Google::Apis::AndroidmanagementV1::AdvancedSecurityOverrides]
         attr_accessor :advanced_security_overrides
@@ -4132,9 +4183,7 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::AlwaysOnVpnPackage]
         attr_accessor :always_on_vpn_package
       
-        # The app tracks for Android Device Policy the device can access. The device
-        # receives the latest version among all accessible tracks. If no tracks are
-        # specified, then the device only uses the production track.
+        # This setting is not supported. Any value is ignored.
         # Corresponds to the JSON property `androidDevicePolicyTracks`
         # @return [Array<String>]
         attr_accessor :android_device_policy_tracks
