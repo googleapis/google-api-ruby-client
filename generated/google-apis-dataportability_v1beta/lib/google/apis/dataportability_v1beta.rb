@@ -35,6 +35,30 @@ module Google
       # Move a copy of messages between you and the businesses you have conversations with.
       AUTH_DATAPORTABILITY_BUSINESSMESSAGING_CONVERSATIONS = 'https://www.googleapis.com/auth/dataportability.businessmessaging.conversations'
 
+      # Move a copy of your pinned trips on Maps.
+      AUTH_DATAPORTABILITY_MAPS_COMMUTE_ROUTES = 'https://www.googleapis.com/auth/dataportability.maps.commute_routes'
+
+      # Move a copy of your commute settings on Maps.
+      AUTH_DATAPORTABILITY_MAPS_COMMUTE_SETTINGS = 'https://www.googleapis.com/auth/dataportability.maps.commute_settings'
+
+      # Move a copy of your electric vehicle profile on Maps.
+      AUTH_DATAPORTABILITY_MAPS_EV_PROFILE = 'https://www.googleapis.com/auth/dataportability.maps.ev_profile'
+
+      # Move a copy of your updates to places on Maps.
+      AUTH_DATAPORTABILITY_MAPS_OFFERING_CONTRIBUTIONS = 'https://www.googleapis.com/auth/dataportability.maps.offering_contributions'
+
+      # Move a copy of the photos and videos you posted on Maps.
+      AUTH_DATAPORTABILITY_MAPS_PHOTOS_VIDEOS = 'https://www.googleapis.com/auth/dataportability.maps.photos_videos'
+
+      # Move a copy of your reviews and posts on Maps.
+      AUTH_DATAPORTABILITY_MAPS_REVIEWS = 'https://www.googleapis.com/auth/dataportability.maps.reviews'
+
+      # Move a copy of your Starred places list on Maps.
+      AUTH_DATAPORTABILITY_MAPS_STARRED_PLACES = 'https://www.googleapis.com/auth/dataportability.maps.starred_places'
+
+      # Move a copy of your Maps activity.
+      AUTH_DATAPORTABILITY_MYACTIVITY_MAPS = 'https://www.googleapis.com/auth/dataportability.myactivity.maps'
+
       # Move a copy of your search activity.
       AUTH_DATAPORTABILITY_MYACTIVITY_SEARCH = 'https://www.googleapis.com/auth/dataportability.myactivity.search'
 
@@ -50,40 +74,40 @@ module Google
       # Move a copy of reviews you wrote about products or online stores.
       AUTH_DATAPORTABILITY_SHOPPING_REVIEWS = 'https://www.googleapis.com/auth/dataportability.shopping.reviews'
 
-      # Move a copy of information about your channel.
+      # Move a copy of information about your YouTube channel.
       AUTH_DATAPORTABILITY_YOUTUBE_CHANNEL = 'https://www.googleapis.com/auth/dataportability.youtube.channel'
 
-      # Move a copy of your comments.
+      # Move a copy of your YouTube comments.
       AUTH_DATAPORTABILITY_YOUTUBE_COMMENTS = 'https://www.googleapis.com/auth/dataportability.youtube.comments'
 
-      # Move a copy of your messages in live chat.
+      # Move a copy of your YouTube messages in live chat.
       AUTH_DATAPORTABILITY_YOUTUBE_LIVE_CHAT = 'https://www.googleapis.com/auth/dataportability.youtube.live_chat'
 
-      # Move a copy of your uploaded YouTube Music tracks and your YouTube Music library.
+      # Move a copy of your uploaded YouTube music tracks and your YouTube music library.
       AUTH_DATAPORTABILITY_YOUTUBE_MUSIC = 'https://www.googleapis.com/auth/dataportability.youtube.music'
 
-      # Move a copy of your private playlists.
+      # Move a copy of your YouTube private playlists.
       AUTH_DATAPORTABILITY_YOUTUBE_PRIVATE_PLAYLISTS = 'https://www.googleapis.com/auth/dataportability.youtube.private_playlists'
 
-      # Move a copy of your private videos and information about them.
+      # Move a copy of your private YouTube videos and information about them.
       AUTH_DATAPORTABILITY_YOUTUBE_PRIVATE_VIDEOS = 'https://www.googleapis.com/auth/dataportability.youtube.private_videos'
 
-      # Move a copy of your public playlists.
+      # Move a copy of your public YouTube playlists.
       AUTH_DATAPORTABILITY_YOUTUBE_PUBLIC_PLAYLISTS = 'https://www.googleapis.com/auth/dataportability.youtube.public_playlists'
 
-      # Move a copy of your public videos and information about them.
+      # Move a copy of your public YouTube videos and information about them.
       AUTH_DATAPORTABILITY_YOUTUBE_PUBLIC_VIDEOS = 'https://www.googleapis.com/auth/dataportability.youtube.public_videos'
 
-      # Move a copy of YouTube Shopping Wishlists, and wishlist items.
+      # Move a copy of your YouTube shopping wishlists, and wishlist items.
       AUTH_DATAPORTABILITY_YOUTUBE_SHOPPING = 'https://www.googleapis.com/auth/dataportability.youtube.shopping'
 
-      # Move a copy of your channel subscriptions, even if they're private.
+      # Move a copy of your YouTube channel subscriptions, even if they're private.
       AUTH_DATAPORTABILITY_YOUTUBE_SUBSCRIPTIONS = 'https://www.googleapis.com/auth/dataportability.youtube.subscriptions'
 
-      # Move a copy of your unlisted playlists.
+      # Move a copy of your unlisted YouTube playlists.
       AUTH_DATAPORTABILITY_YOUTUBE_UNLISTED_PLAYLISTS = 'https://www.googleapis.com/auth/dataportability.youtube.unlisted_playlists'
 
-      # Move a copy of your unlisted videos and information about them.
+      # Move a copy of your unlisted YouTube videos and information about them.
       AUTH_DATAPORTABILITY_YOUTUBE_UNLISTED_VIDEOS = 'https://www.googleapis.com/auth/dataportability.youtube.unlisted_videos'
     end
   end
