@@ -94,6 +94,76 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Aborts generation upgrade process for a function with the given name from the
+        # specified project. Deletes all 2nd Gen copy related configuration and
+        # resources which were created during the upgrade process.
+        # @param [String] name
+        #   Required. The name of the function for which upgrade should be aborted.
+        # @param [Google::Apis::CloudfunctionsV2beta::AbortFunctionUpgradeRequest] abort_function_upgrade_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV2beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV2beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def abort_function_upgrade(name, abort_function_upgrade_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+name}:abortFunctionUpgrade', options)
+          command.request_representation = Google::Apis::CloudfunctionsV2beta::AbortFunctionUpgradeRequest::Representation
+          command.request_object = abort_function_upgrade_request_object
+          command.response_representation = Google::Apis::CloudfunctionsV2beta::Operation::Representation
+          command.response_class = Google::Apis::CloudfunctionsV2beta::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Finalizes the upgrade after which function upgrade can not be rolled back.
+        # This is the last step of the multi step process to upgrade 1st Gen functions
+        # to 2nd Gen. Deletes all original 1st Gen related configuration and resources.
+        # @param [String] name
+        #   Required. The name of the function for which upgrade should be finalized.
+        # @param [Google::Apis::CloudfunctionsV2beta::CommitFunctionUpgradeRequest] commit_function_upgrade_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV2beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV2beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def commit_function_upgrade(name, commit_function_upgrade_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+name}:commitFunctionUpgrade', options)
+          command.request_representation = Google::Apis::CloudfunctionsV2beta::CommitFunctionUpgradeRequest::Representation
+          command.request_object = commit_function_upgrade_request_object
+          command.response_representation = Google::Apis::CloudfunctionsV2beta::Operation::Representation
+          command.response_class = Google::Apis::CloudfunctionsV2beta::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new function. If a function with the given name already exists in
         # the specified project, the long running operation will return `ALREADY_EXISTS`
         # error.
@@ -418,6 +488,79 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Changes the traffic target of a function from the original 1st Gen function to
+        # the 2nd Gen copy. This is the second step of the multi step process to upgrade
+        # 1st Gen functions to 2nd Gen. After this operation, all new traffic will be
+        # served by 2nd Gen copy.
+        # @param [String] name
+        #   Required. The name of the function for which traffic target should be changed
+        #   to 2nd Gen from 1st Gen.
+        # @param [Google::Apis::CloudfunctionsV2beta::RedirectFunctionUpgradeTrafficRequest] redirect_function_upgrade_traffic_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV2beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV2beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def redirect_function_upgrade_traffic(name, redirect_function_upgrade_traffic_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+name}:redirectFunctionUpgradeTraffic', options)
+          command.request_representation = Google::Apis::CloudfunctionsV2beta::RedirectFunctionUpgradeTrafficRequest::Representation
+          command.request_object = redirect_function_upgrade_traffic_request_object
+          command.response_representation = Google::Apis::CloudfunctionsV2beta::Operation::Representation
+          command.response_class = Google::Apis::CloudfunctionsV2beta::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reverts the traffic target of a function from the 2nd Gen copy to the original
+        # 1st Gen function. After this operation, all new traffic would be served by the
+        # 1st Gen.
+        # @param [String] name
+        #   Required. The name of the function for which traffic target should be changed
+        #   back to 1st Gen from 2nd Gen.
+        # @param [Google::Apis::CloudfunctionsV2beta::RollbackFunctionUpgradeTrafficRequest] rollback_function_upgrade_traffic_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV2beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV2beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rollback_function_upgrade_traffic(name, rollback_function_upgrade_traffic_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+name}:rollbackFunctionUpgradeTraffic', options)
+          command.request_representation = Google::Apis::CloudfunctionsV2beta::RollbackFunctionUpgradeTrafficRequest::Representation
+          command.request_object = rollback_function_upgrade_traffic_request_object
+          command.response_representation = Google::Apis::CloudfunctionsV2beta::Operation::Representation
+          command.response_class = Google::Apis::CloudfunctionsV2beta::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
@@ -450,6 +593,43 @@ module Google
           command.response_representation = Google::Apis::CloudfunctionsV2beta::Policy::Representation
           command.response_class = Google::Apis::CloudfunctionsV2beta::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a 2nd Gen copy of the function configuration based on the 1st Gen
+        # function with the given name. This is the first step of the multi step process
+        # to upgrade 1st Gen functions to 2nd Gen. Only 2nd Gen configuration is setup
+        # as part of this request and traffic continues to be served by 1st Gen.
+        # @param [String] name
+        #   Required. The name of the function which should have configuration copied for
+        #   upgrade.
+        # @param [Google::Apis::CloudfunctionsV2beta::SetupFunctionUpgradeConfigRequest] setup_function_upgrade_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV2beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV2beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def setup_function_upgrade_config(name, setup_function_upgrade_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+name}:setupFunctionUpgradeConfig', options)
+          command.request_representation = Google::Apis::CloudfunctionsV2beta::SetupFunctionUpgradeConfigRequest::Representation
+          command.request_object = setup_function_upgrade_config_request_object
+          command.response_representation = Google::Apis::CloudfunctionsV2beta::Operation::Representation
+          command.response_class = Google::Apis::CloudfunctionsV2beta::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

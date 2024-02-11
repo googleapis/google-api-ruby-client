@@ -22,6 +22,12 @@ module Google
   module Apis
     module CloudfunctionsV2beta
       
+      class AbortFunctionUpgradeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +53,12 @@ module Google
       end
       
       class BuildConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommitFunctionUpgradeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -232,7 +244,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RedirectFunctionUpgradeTrafficRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepoSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackFunctionUpgradeTrafficRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetupFunctionUpgradeConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Source
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -308,6 +338,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AbortFunctionUpgradeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class AuditConfig
@@ -366,6 +408,12 @@ module Google
         end
       end
       
+      class CommitFunctionUpgradeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -415,6 +463,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :build_config, as: 'buildConfig', class: Google::Apis::CloudfunctionsV2beta::BuildConfig, decorator: Google::Apis::CloudfunctionsV2beta::BuildConfig::Representation
       
+          property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :environment, as: 'environment'
           property :event_trigger, as: 'eventTrigger', class: Google::Apis::CloudfunctionsV2beta::EventTrigger, decorator: Google::Apis::CloudfunctionsV2beta::EventTrigger::Representation
@@ -429,6 +478,8 @@ module Google
           collection :state_messages, as: 'stateMessages', class: Google::Apis::CloudfunctionsV2beta::GoogleCloudFunctionsV2betaStateMessage, decorator: Google::Apis::CloudfunctionsV2beta::GoogleCloudFunctionsV2betaStateMessage::Representation
       
           property :update_time, as: 'updateTime'
+          property :upgrade_info, as: 'upgradeInfo', class: Google::Apis::CloudfunctionsV2beta::UpgradeInfo, decorator: Google::Apis::CloudfunctionsV2beta::UpgradeInfo::Representation
+      
           property :url, as: 'url'
         end
       end
@@ -696,6 +747,12 @@ module Google
         end
       end
       
+      class RedirectFunctionUpgradeTrafficRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class RepoSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -705,6 +762,12 @@ module Google
           property :project_id, as: 'projectId'
           property :repo_name, as: 'repoName'
           property :tag_name, as: 'tagName'
+        end
+      end
+      
+      class RollbackFunctionUpgradeTrafficRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -787,6 +850,12 @@ module Google
         end
       end
       
+      class SetupFunctionUpgradeConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Source
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -838,6 +907,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class UpgradeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_config, as: 'buildConfig', class: Google::Apis::CloudfunctionsV2beta::BuildConfig, decorator: Google::Apis::CloudfunctionsV2beta::BuildConfig::Representation
+      
+          property :event_trigger, as: 'eventTrigger', class: Google::Apis::CloudfunctionsV2beta::EventTrigger, decorator: Google::Apis::CloudfunctionsV2beta::EventTrigger::Representation
+      
+          property :service_config, as: 'serviceConfig', class: Google::Apis::CloudfunctionsV2beta::ServiceConfig, decorator: Google::Apis::CloudfunctionsV2beta::ServiceConfig::Representation
+      
+          property :upgrade_state, as: 'upgradeState'
         end
       end
     end
