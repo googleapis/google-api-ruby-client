@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -498,6 +504,8 @@ module Google
       
           property :block, as: 'block', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction::Representation
       
+          property :include_recaptcha_script, as: 'includeRecaptchaScript', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction::Representation
+      
           property :redirect, as: 'redirect', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction::Representation
       
           property :set_header, as: 'setHeader', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction::Representation
@@ -514,6 +522,12 @@ module Google
       end
       
       class GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
