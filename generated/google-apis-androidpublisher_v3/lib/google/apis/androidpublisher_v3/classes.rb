@@ -731,6 +731,13 @@ module Google
       class AutoRenewingBasePlanType
         include Google::Apis::Core::Hashable
       
+        # Optional. Account hold period of the subscription, specified in ISO 8601
+        # format. Acceptable values must be in DAYS and in the range P0D (zero days) to
+        # P30D (30 days). If not specified, the default value is P30D (30 days).
+        # Corresponds to the JSON property `accountHoldDuration`
+        # @return [String]
+        attr_accessor :account_hold_duration
+      
         # Required. Subscription period, specified in ISO 8601 format. For a list of
         # acceptable billing periods, refer to the help center.
         # Corresponds to the JSON property `billingPeriodDuration`
@@ -782,6 +789,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_hold_duration = args[:account_hold_duration] if args.key?(:account_hold_duration)
           @billing_period_duration = args[:billing_period_duration] if args.key?(:billing_period_duration)
           @grace_period_duration = args[:grace_period_duration] if args.key?(:grace_period_duration)
           @legacy_compatible = args[:legacy_compatible] if args.key?(:legacy_compatible)
