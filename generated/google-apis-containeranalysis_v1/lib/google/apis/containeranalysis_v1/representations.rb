@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudStorageLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Command
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +473,18 @@ module Google
       end
       
       class EnvelopeSignature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportSbomRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportSbomResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1245,6 +1263,12 @@ module Google
         end
       end
       
+      class CloudStorageLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Command
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1850,6 +1874,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :keyid, as: 'keyid'
           property :sig, :base64 => true, as: 'sig'
+        end
+      end
+      
+      class ExportSbomRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_storage_location, as: 'cloudStorageLocation', class: Google::Apis::ContaineranalysisV1::CloudStorageLocation, decorator: Google::Apis::ContaineranalysisV1::CloudStorageLocation::Representation
+      
+        end
+      end
+      
+      class ExportSbomResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :discovery_occurrence, as: 'discoveryOccurrence'
         end
       end
       
