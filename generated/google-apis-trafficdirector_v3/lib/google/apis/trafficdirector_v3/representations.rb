@@ -310,6 +310,7 @@ module Google
       class ClientConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_scope, as: 'clientScope'
           collection :generic_xds_configs, as: 'genericXdsConfigs', class: Google::Apis::TrafficdirectorV3::GenericXdsConfig, decorator: Google::Apis::TrafficdirectorV3::GenericXdsConfig::Representation
       
           property :node, as: 'node', class: Google::Apis::TrafficdirectorV3::Node, decorator: Google::Apis::TrafficdirectorV3::Node::Representation

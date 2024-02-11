@@ -88,6 +88,13 @@ module Google
       class ClientConfig
         include Google::Apis::Core::Hashable
       
+        # For xDS clients, the scope in which the data is used. For example, gRPC
+        # indicates the data plane target or that the data is associated with gRPC
+        # server(s).
+        # Corresponds to the JSON property `clientScope`
+        # @return [String]
+        attr_accessor :client_scope
+      
         # Represents generic xDS config and the exact config structure depends on the
         # type URL (like Cluster if it is CDS)
         # Corresponds to the JSON property `genericXdsConfigs`
@@ -113,6 +120,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @client_scope = args[:client_scope] if args.key?(:client_scope)
           @generic_xds_configs = args[:generic_xds_configs] if args.key?(:generic_xds_configs)
           @node = args[:node] if args.key?(:node)
           @xds_config = args[:xds_config] if args.key?(:xds_config)
