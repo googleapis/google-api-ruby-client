@@ -580,7 +580,7 @@ module Google
       
         # Defines time to stop scheduling transfer runs. A transfer run cannot be
         # scheduled at or after the end time. The end time can be changed at any moment.
-        # The time when a data transfer can be trigerred manually is not limited by this
+        # The time when a data transfer can be triggered manually is not limited by this
         # option.
         # Corresponds to the JSON property `endTime`
         # @return [String]
@@ -589,7 +589,7 @@ module Google
         # Specifies time to start scheduling transfer runs. The first run will be
         # scheduled at or after the start time according to a recurrence pattern defined
         # in the schedule string. The start time can be changed at any moment. The time
-        # when a data transfer can be trigerred manually is not limited by this option.
+        # when a data transfer can be triggered manually is not limited by this option.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -806,8 +806,8 @@ module Google
         # @return [String]
         attr_accessor :destination_dataset_id
       
-        # Is this config disabled. When set to true, no runs are scheduled for a given
-        # transfer.
+        # Is this config disabled. When set to true, no runs will be scheduled for this
+        # transfer config.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
@@ -844,7 +844,7 @@ module Google
       
         # Pub/Sub topic where notifications will be sent after transfer runs associated
         # with this transfer config finish. The format for specifying a pubsub topic is:
-        # `projects/`project`/topics/`topic``
+        # `projects/`project_id`/topics/`topic_id``
         # Corresponds to the JSON property `notificationPubsubTopic`
         # @return [String]
         attr_accessor :notification_pubsub_topic
@@ -997,7 +997,7 @@ module Google
       
         # Output only. Pub/Sub topic where a notification will be sent after this
         # transfer run finishes. The format for specifying a pubsub topic is: `projects/`
-        # project`/topics/`topic``
+        # project_id`/topics/`topic_id``
         # Corresponds to the JSON property `notificationPubsubTopic`
         # @return [String]
         attr_accessor :notification_pubsub_topic
