@@ -854,6 +854,46 @@ module Google
         end
       end
       
+      # Metadata returned for the EntityTypes.ExportEntityTypes long running operation.
+      class GoogleCloudDialogflowCxV3ExportEntityTypesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for EntityTypes.ExportEntityTypes.
+      class GoogleCloudDialogflowCxV3ExportEntityTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Inline destination for a Dialogflow operation that writes or exports objects (
+        # e.g. intents) outside of Dialogflow.
+        # Corresponds to the JSON property `entityTypesContent`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3InlineDestination]
+        attr_accessor :entity_types_content
+      
+        # The URI to a file containing the exported entity types. This field is
+        # populated only if `entity_types_uri` is specified in ExportEntityTypesRequest.
+        # Corresponds to the JSON property `entityTypesUri`
+        # @return [String]
+        attr_accessor :entity_types_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_types_content = args[:entity_types_content] if args.key?(:entity_types_content)
+          @entity_types_uri = args[:entity_types_uri] if args.key?(:entity_types_uri)
+        end
+      end
+      
       # The response message for Flows.ExportFlow.
       class GoogleCloudDialogflowCxV3ExportFlowResponse
         include Google::Apis::Core::Hashable
@@ -1391,6 +1431,74 @@ module Google
         # Update properties of this object
         def update!(**args)
           @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Metadata returned for the EntityTypes.ImportEntityTypes long running operation.
+      class GoogleCloudDialogflowCxV3ImportEntityTypesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for EntityTypes.ImportEntityTypes.
+      class GoogleCloudDialogflowCxV3ImportEntityTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Conflicting resources detected during the import process. Only filled when
+        # REPORT_CONFLICT is set in the request and there are conflicts in the display
+        # names.
+        # Corresponds to the JSON property `conflictingResources`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources]
+        attr_accessor :conflicting_resources
+      
+        # The unique identifier of the imported entity types. Format: `projects//
+        # locations//agents//entity_types/`.
+        # Corresponds to the JSON property `entityTypes`
+        # @return [Array<String>]
+        attr_accessor :entity_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conflicting_resources = args[:conflicting_resources] if args.key?(:conflicting_resources)
+          @entity_types = args[:entity_types] if args.key?(:entity_types)
+        end
+      end
+      
+      # Conflicting resources detected during the import process. Only filled when
+      # REPORT_CONFLICT is set in the request and there are conflicts in the display
+      # names.
+      class GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources
+        include Google::Apis::Core::Hashable
+      
+        # Display names of conflicting entities.
+        # Corresponds to the JSON property `entityDisplayNames`
+        # @return [Array<String>]
+        attr_accessor :entity_display_names
+      
+        # Display names of conflicting entity types.
+        # Corresponds to the JSON property `entityTypeDisplayNames`
+        # @return [Array<String>]
+        attr_accessor :entity_type_display_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_display_names = args[:entity_display_names] if args.key?(:entity_display_names)
+          @entity_type_display_names = args[:entity_type_display_names] if args.key?(:entity_type_display_names)
         end
       end
       
@@ -4440,6 +4548,46 @@ module Google
         end
       end
       
+      # Metadata returned for the EntityTypes.ExportEntityTypes long running operation.
+      class GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for EntityTypes.ExportEntityTypes.
+      class GoogleCloudDialogflowCxV3beta1ExportEntityTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Inline destination for a Dialogflow operation that writes or exports objects (
+        # e.g. intents) outside of Dialogflow.
+        # Corresponds to the JSON property `entityTypesContent`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1InlineDestination]
+        attr_accessor :entity_types_content
+      
+        # The URI to a file containing the exported entity types. This field is
+        # populated only if `entity_types_uri` is specified in ExportEntityTypesRequest.
+        # Corresponds to the JSON property `entityTypesUri`
+        # @return [String]
+        attr_accessor :entity_types_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_types_content = args[:entity_types_content] if args.key?(:entity_types_content)
+          @entity_types_uri = args[:entity_types_uri] if args.key?(:entity_types_uri)
+        end
+      end
+      
       # The response message for Flows.ExportFlow.
       class GoogleCloudDialogflowCxV3beta1ExportFlowResponse
         include Google::Apis::Core::Hashable
@@ -4977,6 +5125,74 @@ module Google
         # Update properties of this object
         def update!(**args)
           @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Metadata returned for the EntityTypes.ImportEntityTypes long running operation.
+      class GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for EntityTypes.ImportEntityTypes.
+      class GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Conflicting resources detected during the import process. Only filled when
+        # REPORT_CONFLICT is set in the request and there are conflicts in the display
+        # names.
+        # Corresponds to the JSON property `conflictingResources`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources]
+        attr_accessor :conflicting_resources
+      
+        # The unique identifier of the imported entity types. Format: `projects//
+        # locations//agents//entity_types/`.
+        # Corresponds to the JSON property `entityTypes`
+        # @return [Array<String>]
+        attr_accessor :entity_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conflicting_resources = args[:conflicting_resources] if args.key?(:conflicting_resources)
+          @entity_types = args[:entity_types] if args.key?(:entity_types)
+        end
+      end
+      
+      # Conflicting resources detected during the import process. Only filled when
+      # REPORT_CONFLICT is set in the request and there are conflicts in the display
+      # names.
+      class GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources
+        include Google::Apis::Core::Hashable
+      
+        # Display names of conflicting entities.
+        # Corresponds to the JSON property `entityDisplayNames`
+        # @return [Array<String>]
+        attr_accessor :entity_display_names
+      
+        # Display names of conflicting entity types.
+        # Corresponds to the JSON property `entityTypeDisplayNames`
+        # @return [Array<String>]
+        attr_accessor :entity_type_display_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_display_names = args[:entity_display_names] if args.key?(:entity_display_names)
+          @entity_type_display_names = args[:entity_type_display_names] if args.key?(:entity_type_display_names)
         end
       end
       
@@ -7397,6 +7613,11 @@ module Google
         # @return [String]
         attr_accessor :summary_text
       
+        # Optional. Actual text sections of submitted summary.
+        # Corresponds to the JSON property `textSections`
+        # @return [Hash<String,String>]
+        attr_accessor :text_sections
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7406,6 +7627,7 @@ module Google
           @start_time = args[:start_time] if args.key?(:start_time)
           @submit_time = args[:submit_time] if args.key?(:submit_time)
           @summary_text = args[:summary_text] if args.key?(:summary_text)
+          @text_sections = args[:text_sections] if args.key?(:text_sections)
         end
       end
       
