@@ -22,6 +22,19 @@ module Google
   module Apis
     module CloudfunctionsV2beta
       
+      # Request for the `AbortFunctionUpgrade` method.
+      class AbortFunctionUpgradeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -330,6 +343,19 @@ module Google
         end
       end
       
+      # Request for the `CommitFunctionUpgrade` method.
+      class CommitFunctionUpgradeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
@@ -556,6 +582,12 @@ module Google
         # @return [Google::Apis::CloudfunctionsV2beta::BuildConfig]
         attr_accessor :build_config
       
+        # Output only. The create timestamp of a Cloud Function. This is only applicable
+        # to 2nd Gen functions.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # User-provided description of a function.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -616,6 +648,12 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Information related to: * A function's eligibility for 1st Gen to 2nd Gen
+        # migration * Current state of migration for function undergoing migration.
+        # Corresponds to the JSON property `upgradeInfo`
+        # @return [Google::Apis::CloudfunctionsV2beta::UpgradeInfo]
+        attr_accessor :upgrade_info
+      
         # Output only. The deployed url for the function.
         # Corresponds to the JSON property `url`
         # @return [String]
@@ -628,6 +666,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @build_config = args[:build_config] if args.key?(:build_config)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @environment = args[:environment] if args.key?(:environment)
           @event_trigger = args[:event_trigger] if args.key?(:event_trigger)
@@ -639,6 +678,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @state_messages = args[:state_messages] if args.key?(:state_messages)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @upgrade_info = args[:upgrade_info] if args.key?(:upgrade_info)
           @url = args[:url] if args.key?(:url)
         end
       end
@@ -1681,6 +1721,19 @@ module Google
         end
       end
       
+      # Request for the `RedirectFunctionUpgradeTraffic` method.
+      class RedirectFunctionUpgradeTrafficRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Location of the source in a Google Cloud Source Repository.
       class RepoSource
         include Google::Apis::Core::Hashable
@@ -1735,6 +1788,19 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @repo_name = args[:repo_name] if args.key?(:repo_name)
           @tag_name = args[:tag_name] if args.key?(:tag_name)
+        end
+      end
+      
+      # Request for the `RollbackFunctionUpgradeTraffic` method.
+      class RollbackFunctionUpgradeTrafficRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2134,6 +2200,19 @@ module Google
         end
       end
       
+      # Request for the `SetupFunctionUpgradeConfig` method.
+      class SetupFunctionUpgradeConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The location of the function source code.
       class Source
         include Google::Apis::Core::Hashable
@@ -2309,6 +2388,46 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Information related to: * A function's eligibility for 1st Gen to 2nd Gen
+      # migration * Current state of migration for function undergoing migration.
+      class UpgradeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Describes the Build step of the function that builds a container from the
+        # given source.
+        # Corresponds to the JSON property `buildConfig`
+        # @return [Google::Apis::CloudfunctionsV2beta::BuildConfig]
+        attr_accessor :build_config
+      
+        # Describes EventTrigger, used to request events to be sent from another service.
+        # Corresponds to the JSON property `eventTrigger`
+        # @return [Google::Apis::CloudfunctionsV2beta::EventTrigger]
+        attr_accessor :event_trigger
+      
+        # Describes the Service being deployed. Currently Supported : Cloud Run (fully
+        # managed).
+        # Corresponds to the JSON property `serviceConfig`
+        # @return [Google::Apis::CloudfunctionsV2beta::ServiceConfig]
+        attr_accessor :service_config
+      
+        # UpgradeState of the function
+        # Corresponds to the JSON property `upgradeState`
+        # @return [String]
+        attr_accessor :upgrade_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_config = args[:build_config] if args.key?(:build_config)
+          @event_trigger = args[:event_trigger] if args.key?(:event_trigger)
+          @service_config = args[:service_config] if args.key?(:service_config)
+          @upgrade_state = args[:upgrade_state] if args.key?(:upgrade_state)
         end
       end
     end
