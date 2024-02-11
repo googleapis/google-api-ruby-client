@@ -856,6 +856,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaEmbeddingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1031,6 +1037,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaListSchemasResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaListServingConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1325,6 +1337,24 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaServingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaServingConfigGenericConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaServingConfigMediaConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2700,6 +2730,13 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaEmbeddingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_path, as: 'fieldPath'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2983,6 +3020,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :schemas, as: 'schemas', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSchema, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSchema::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaListServingConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :serving_configs, as: 'servingConfigs', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig::Representation
       
         end
       end
@@ -3478,6 +3524,53 @@ module Google
           collection :references, as: 'references', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference::Representation
       
           property :summary, as: 'summary'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaServingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :boost_control_ids, as: 'boostControlIds'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          collection :dissociate_control_ids, as: 'dissociateControlIds'
+          property :diversity_level, as: 'diversityLevel'
+          property :embedding_config, as: 'embeddingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEmbeddingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEmbeddingConfig::Representation
+      
+          collection :filter_control_ids, as: 'filterControlIds'
+          property :generic_config, as: 'genericConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfigGenericConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfigGenericConfig::Representation
+      
+          collection :ignore_control_ids, as: 'ignoreControlIds'
+          property :media_config, as: 'mediaConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfigMediaConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfigMediaConfig::Representation
+      
+          property :model_id, as: 'modelId'
+          property :name, as: 'name'
+          collection :oneway_synonyms_control_ids, as: 'onewaySynonymsControlIds'
+          property :ranking_expression, as: 'rankingExpression'
+          collection :redirect_control_ids, as: 'redirectControlIds'
+          collection :replacement_control_ids, as: 'replacementControlIds'
+          property :solution_type, as: 'solutionType'
+          collection :synonyms_control_ids, as: 'synonymsControlIds'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaServingConfigGenericConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_search_spec, as: 'contentSearchSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaServingConfigMediaConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_freshness_cutoff_days, as: 'contentFreshnessCutoffDays'
+          property :content_watched_minutes_threshold, as: 'contentWatchedMinutesThreshold'
+          property :content_watched_percentage_threshold, as: 'contentWatchedPercentageThreshold'
+          property :content_watched_seconds_threshold, as: 'contentWatchedSecondsThreshold'
+          property :demotion_event_type, as: 'demotionEventType'
         end
       end
       
