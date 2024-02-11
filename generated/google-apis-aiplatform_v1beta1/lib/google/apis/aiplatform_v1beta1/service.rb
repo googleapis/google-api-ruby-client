@@ -3436,8 +3436,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Perform an unary online prediction request for Vertex first-party products and
-        # frameworks.
+        # Perform an unary online prediction request to a gRPC model server for Vertex
+        # first-party products and frameworks.
         # @param [String] endpoint
         #   Required. The name of the Endpoint requested to serve the prediction. Format: `
         #   projects/`project`/locations/`location`/endpoints/`endpoint``
@@ -3471,7 +3471,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Perform an online prediction request through gRPC.
+        # Perform an unary online prediction request to a gRPC model server for custom
+        # containers.
         # @param [String] endpoint
         #   Required. The name of the Endpoint requested to serve the prediction. Format: `
         #   projects/`project`/locations/`location`/endpoints/`endpoint``
@@ -3537,6 +3538,40 @@ module Google
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExplainResponse::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExplainResponse
           command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generate content with multimodal inputs.
+        # @param [String] model
+        #   Required. The name of the publisher model requested to serve the prediction.
+        #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest] google_cloud_aiplatform_v1beta1_generate_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_endpoint_content(model, google_cloud_aiplatform_v1beta1_generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+model}:generateContent', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_generate_content_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse
+          command.params['model'] = model unless model.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5817,7 +5852,7 @@ module Google
         #   be overwritten if it is in the mask. If the user does not provide a mask then
         #   only the non-empty fields present in the request will be overwritten. Set the
         #   update_mask to `*` to override all fields. Updatable fields: * `
-        #   big_query_source` * `labels` * `sync_config`
+        #   big_query_source` * `bigtable` * `labels` * `sync_config`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15849,6 +15884,40 @@ module Google
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CountTokensResponse::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CountTokensResponse
           command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generate content with multimodal inputs.
+        # @param [String] model
+        #   Required. The name of the publisher model requested to serve the prediction.
+        #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest] google_cloud_aiplatform_v1beta1_generate_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_publisher_model_content(model, google_cloud_aiplatform_v1beta1_generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+model}:generateContent', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_generate_content_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse
+          command.params['model'] = model unless model.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

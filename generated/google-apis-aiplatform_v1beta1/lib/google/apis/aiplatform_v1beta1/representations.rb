@@ -184,12 +184,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CloudAiNlLlmProtoServicePromptFeedback
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2902,6 +2896,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployGke
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1PublisherModelCallToActionOpenFineTuningPipelines
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5606,17 +5606,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_offset, as: 'endOffset'
-          property :model_level_meta_data, as: 'modelLevelMetaData', class: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata, decorator: Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata::Representation
-      
           property :start_offset, as: 'startOffset'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :fps, as: 'fps'
-          property :num_frames, as: 'numFrames'
         end
       end
       
@@ -9204,6 +9194,7 @@ module Google
           property :bigquery_table_path, as: 'bigqueryTablePath'
           property :log_source, as: 'logSource'
           property :log_type, as: 'logType'
+          property :request_response_logging_schema_version, as: 'requestResponseLoggingSchemaVersion'
         end
       end
       
@@ -10237,6 +10228,8 @@ module Google
       
           property :deploy, as: 'deploy', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeploy, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeploy::Representation
       
+          property :deploy_gke, as: 'deployGke', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployGke, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployGke::Representation
+      
           property :open_evaluation_pipeline, as: 'openEvaluationPipeline', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences::Representation
       
           property :open_fine_tuning_pipeline, as: 'openFineTuningPipeline', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences::Representation
@@ -10276,6 +10269,13 @@ module Google
           property :public_artifact_uri, as: 'publicArtifactUri'
           property :shared_resources, as: 'sharedResources'
           property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployGke
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gke_yaml_configs, as: 'gkeYamlConfigs'
         end
       end
       
@@ -10814,7 +10814,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_retries, as: 'disableRetries'
-          property :max_wait_duration, as: 'maxWaitDuration'
           property :restart_job_on_worker_restart, as: 'restartJobOnWorkerRestart'
           property :timeout, as: 'timeout'
         end
@@ -13316,6 +13315,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :datapoints, as: 'datapoints', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1IndexDatapoint, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1IndexDatapoint::Representation
       
+          property :update_mask, as: 'updateMask'
         end
       end
       
