@@ -2189,6 +2189,102 @@ module Google
         end
       end
       
+      # Metadata returned for the EntityTypes.ExportEntityTypes long running operation.
+      class GoogleCloudDialogflowCxV3ExportEntityTypesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request message for EntityTypes.ExportEntityTypes.
+      class GoogleCloudDialogflowCxV3ExportEntityTypesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The data format of the exported entity types. If not specified, `
+        # BLOB` is assumed.
+        # Corresponds to the JSON property `dataFormat`
+        # @return [String]
+        attr_accessor :data_format
+      
+        # Required. The name of the entity types to export. Format: `projects//locations/
+        # /agents//entityTypes/`.
+        # Corresponds to the JSON property `entityTypes`
+        # @return [Array<String>]
+        attr_accessor :entity_types
+      
+        # Optional. The option to return the serialized entity types inline.
+        # Corresponds to the JSON property `entityTypesContentInline`
+        # @return [Boolean]
+        attr_accessor :entity_types_content_inline
+        alias_method :entity_types_content_inline?, :entity_types_content_inline
+      
+        # Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/)
+        # URI to export the entity types to. The format of this URI must be `gs:///`.
+        # Dialogflow performs a write operation for the Cloud Storage object on the
+        # caller's behalf, so your request authentication must have write permissions
+        # for the object. For more information, see [Dialogflow access control](https://
+        # cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
+        # Corresponds to the JSON property `entityTypesUri`
+        # @return [String]
+        attr_accessor :entity_types_uri
+      
+        # Optional. The language to retrieve the entity type for. The following fields
+        # are language dependent: * `EntityType.entities.value` * `EntityType.entities.
+        # synonyms` * `EntityType.excluded_phrases.value` If not specified, all language
+        # dependent fields will be retrieved. [Many languages](https://cloud.google.com/
+        # dialogflow/docs/reference/language) are supported. Note: languages must be
+        # enabled in the agent before they can be used.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_format = args[:data_format] if args.key?(:data_format)
+          @entity_types = args[:entity_types] if args.key?(:entity_types)
+          @entity_types_content_inline = args[:entity_types_content_inline] if args.key?(:entity_types_content_inline)
+          @entity_types_uri = args[:entity_types_uri] if args.key?(:entity_types_uri)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
+      # The response message for EntityTypes.ExportEntityTypes.
+      class GoogleCloudDialogflowCxV3ExportEntityTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Inline destination for a Dialogflow operation that writes or exports objects (
+        # e.g. intents) outside of Dialogflow.
+        # Corresponds to the JSON property `entityTypesContent`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3InlineDestination]
+        attr_accessor :entity_types_content
+      
+        # The URI to a file containing the exported entity types. This field is
+        # populated only if `entity_types_uri` is specified in ExportEntityTypesRequest.
+        # Corresponds to the JSON property `entityTypesUri`
+        # @return [String]
+        attr_accessor :entity_types_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_types_content = args[:entity_types_content] if args.key?(:entity_types_content)
+          @entity_types_uri = args[:entity_types_uri] if args.key?(:entity_types_uri)
+        end
+      end
+      
       # The request message for Flows.ExportFlow.
       class GoogleCloudDialogflowCxV3ExportFlowRequest
         include Google::Apis::Core::Hashable
@@ -3343,6 +3439,121 @@ module Google
         # Update properties of this object
         def update!(**args)
           @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Metadata returned for the EntityTypes.ImportEntityTypes long running operation.
+      class GoogleCloudDialogflowCxV3ImportEntityTypesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request message for EntityTypes.ImportEntityTypes.
+      class GoogleCloudDialogflowCxV3ImportEntityTypesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Inline source for a Dialogflow operation that reads or imports objects (e.g.
+        # intents) into Dialogflow.
+        # Corresponds to the JSON property `entityTypesContent`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3InlineSource]
+        attr_accessor :entity_types_content
+      
+        # The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
+        # import entity types from. The format of this URI must be `gs:///`. Dialogflow
+        # performs a read operation for the Cloud Storage object on the caller's behalf,
+        # so your request authentication must have read permissions for the object. For
+        # more information, see [Dialogflow access control](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/access-control#storage).
+        # Corresponds to the JSON property `entityTypesUri`
+        # @return [String]
+        attr_accessor :entity_types_uri
+      
+        # Required. Merge option for importing entity types.
+        # Corresponds to the JSON property `mergeOption`
+        # @return [String]
+        attr_accessor :merge_option
+      
+        # Optional. The target entity type to import into. Format: `projects//locations//
+        # agents//entity_types/`. If set, there should be only one entity type included
+        # in entity_types, of which the type should match the type of the target entity
+        # type. All entities in the imported entity type will be added to the target
+        # entity type.
+        # Corresponds to the JSON property `targetEntityType`
+        # @return [String]
+        attr_accessor :target_entity_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_types_content = args[:entity_types_content] if args.key?(:entity_types_content)
+          @entity_types_uri = args[:entity_types_uri] if args.key?(:entity_types_uri)
+          @merge_option = args[:merge_option] if args.key?(:merge_option)
+          @target_entity_type = args[:target_entity_type] if args.key?(:target_entity_type)
+        end
+      end
+      
+      # The response message for EntityTypes.ImportEntityTypes.
+      class GoogleCloudDialogflowCxV3ImportEntityTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Conflicting resources detected during the import process. Only filled when
+        # REPORT_CONFLICT is set in the request and there are conflicts in the display
+        # names.
+        # Corresponds to the JSON property `conflictingResources`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources]
+        attr_accessor :conflicting_resources
+      
+        # The unique identifier of the imported entity types. Format: `projects//
+        # locations//agents//entity_types/`.
+        # Corresponds to the JSON property `entityTypes`
+        # @return [Array<String>]
+        attr_accessor :entity_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conflicting_resources = args[:conflicting_resources] if args.key?(:conflicting_resources)
+          @entity_types = args[:entity_types] if args.key?(:entity_types)
+        end
+      end
+      
+      # Conflicting resources detected during the import process. Only filled when
+      # REPORT_CONFLICT is set in the request and there are conflicts in the display
+      # names.
+      class GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources
+        include Google::Apis::Core::Hashable
+      
+        # Display names of conflicting entities.
+        # Corresponds to the JSON property `entityDisplayNames`
+        # @return [Array<String>]
+        attr_accessor :entity_display_names
+      
+        # Display names of conflicting entity types.
+        # Corresponds to the JSON property `entityTypeDisplayNames`
+        # @return [Array<String>]
+        attr_accessor :entity_type_display_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_display_names = args[:entity_display_names] if args.key?(:entity_display_names)
+          @entity_type_display_names = args[:entity_type_display_names] if args.key?(:entity_type_display_names)
         end
       end
       
@@ -8917,6 +9128,46 @@ module Google
         end
       end
       
+      # Metadata returned for the EntityTypes.ExportEntityTypes long running operation.
+      class GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for EntityTypes.ExportEntityTypes.
+      class GoogleCloudDialogflowCxV3beta1ExportEntityTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Inline destination for a Dialogflow operation that writes or exports objects (
+        # e.g. intents) outside of Dialogflow.
+        # Corresponds to the JSON property `entityTypesContent`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1InlineDestination]
+        attr_accessor :entity_types_content
+      
+        # The URI to a file containing the exported entity types. This field is
+        # populated only if `entity_types_uri` is specified in ExportEntityTypesRequest.
+        # Corresponds to the JSON property `entityTypesUri`
+        # @return [String]
+        attr_accessor :entity_types_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_types_content = args[:entity_types_content] if args.key?(:entity_types_content)
+          @entity_types_uri = args[:entity_types_uri] if args.key?(:entity_types_uri)
+        end
+      end
+      
       # The response message for Flows.ExportFlow.
       class GoogleCloudDialogflowCxV3beta1ExportFlowResponse
         include Google::Apis::Core::Hashable
@@ -9454,6 +9705,74 @@ module Google
         # Update properties of this object
         def update!(**args)
           @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Metadata returned for the EntityTypes.ImportEntityTypes long running operation.
+      class GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for EntityTypes.ImportEntityTypes.
+      class GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Conflicting resources detected during the import process. Only filled when
+        # REPORT_CONFLICT is set in the request and there are conflicts in the display
+        # names.
+        # Corresponds to the JSON property `conflictingResources`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources]
+        attr_accessor :conflicting_resources
+      
+        # The unique identifier of the imported entity types. Format: `projects//
+        # locations//agents//entity_types/`.
+        # Corresponds to the JSON property `entityTypes`
+        # @return [Array<String>]
+        attr_accessor :entity_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conflicting_resources = args[:conflicting_resources] if args.key?(:conflicting_resources)
+          @entity_types = args[:entity_types] if args.key?(:entity_types)
+        end
+      end
+      
+      # Conflicting resources detected during the import process. Only filled when
+      # REPORT_CONFLICT is set in the request and there are conflicts in the display
+      # names.
+      class GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources
+        include Google::Apis::Core::Hashable
+      
+        # Display names of conflicting entities.
+        # Corresponds to the JSON property `entityDisplayNames`
+        # @return [Array<String>]
+        attr_accessor :entity_display_names
+      
+        # Display names of conflicting entity types.
+        # Corresponds to the JSON property `entityTypeDisplayNames`
+        # @return [Array<String>]
+        attr_accessor :entity_type_display_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_display_names = args[:entity_display_names] if args.key?(:entity_display_names)
+          @entity_type_display_names = args[:entity_type_display_names] if args.key?(:entity_type_display_names)
         end
       end
       
