@@ -2003,7 +2003,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # 
+        # Optional. If this is true, aunspecified repo type will be treated as error. Is
+        # used for new repo types that don't have any specific fields. Right now is used
+        # by AOSS team when creating repos for customers.
         # Corresponds to the JSON property `disallowUnspecifiedMode`
         # @return [Boolean]
         attr_accessor :disallow_unspecified_mode
