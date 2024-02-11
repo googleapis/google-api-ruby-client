@@ -128,12 +128,12 @@ module Google
         # interface which returns either an `Operation.response` which contains a
         # Dataset or `Operation.error`. The metadata field type is OperationMetadata.
         # @param [String] parent
-        #   The name of the project where the server creates the dataset. For example, `
-        #   projects/`project_id`/locations/`location_id``.
+        #   Required. The name of the project where the server creates the dataset. For
+        #   example, `projects/`project_id`/locations/`location_id``.
         # @param [Google::Apis::HealthcareV1beta1::Dataset] dataset_object
         # @param [String] dataset_id
-        #   The ID of the dataset that is being created. The string must match the
-        #   following regex: `[\p`L`\p`N`_\-\.]`1,256``.
+        #   Required. The ID of the dataset that is being created. The string must match
+        #   the following regex: `[\p`L`\p`N`_\-\.]`1,256``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -209,8 +209,8 @@ module Google
         # Deleting a dataset does not affect the sources from which the dataset was
         # imported (if any).
         # @param [String] name
-        #   The name of the dataset to delete. For example, `projects/`project_id`/
-        #   locations/`location_id`/datasets/`dataset_id``.
+        #   Required. The name of the dataset to delete. For example, `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -240,8 +240,8 @@ module Google
         
         # Gets any metadata associated with a dataset.
         # @param [String] name
-        #   The name of the dataset to read. For example, `projects/`project_id`/locations/
-        #   `location_id`/datasets/`dataset_id``.
+        #   Required. The name of the dataset to read. For example, `projects/`project_id`/
+        #   locations/`location_id`/datasets/`dataset_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -316,8 +316,8 @@ module Google
         
         # Lists the health datasets in the current project.
         # @param [String] parent
-        #   The name of the project whose datasets should be listed. For example, `
-        #   projects/`project_id`/locations/`location_id``.
+        #   Required. The name of the project whose datasets should be listed. For example,
+        #   `projects/`project_id`/locations/`location_id``.
         # @param [Fixnum] page_size
         #   The maximum number of items to return. If not specified, 100 is used. May not
         #   be larger than 1000.
@@ -354,13 +354,13 @@ module Google
         
         # Updates dataset metadata.
         # @param [String] name
-        #   Resource name of the dataset, of the form `projects/`project_id`/locations/`
-        #   location_id`/datasets/`dataset_id``.
+        #   Identifier. Resource name of the dataset, of the form `projects/`project_id`/
+        #   locations/`location_id`/datasets/`dataset_id``.
         # @param [Google::Apis::HealthcareV1beta1::Dataset] dataset_object
         # @param [String] update_mask
-        #   The update mask applies to the resource. For the `FieldMask` definition, see
-        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   fieldmask
+        #   Required. The update mask applies to the resource. For the `FieldMask`
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#fieldmask
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -469,11 +469,11 @@ module Google
         
         # Creates a new Annotation store within the parent dataset.
         # @param [String] parent
-        #   The name of the dataset this Annotation store belongs to.
+        #   Required. The name of the dataset this Annotation store belongs to.
         # @param [Google::Apis::HealthcareV1beta1::AnnotationStore] annotation_store_object
         # @param [String] annotation_store_id
-        #   The ID of the Annotation store that is being created. The string must match
-        #   the following regex: `[\p`L`\p`N`_\-\.]`1,256``.
+        #   Required. The ID of the Annotation store that is being created. The string
+        #   must match the following regex: `[\p`L`\p`N`_\-\.]`1,256``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -507,7 +507,7 @@ module Google
         # Deletes the specified Annotation store and removes all annotations that are
         # contained within it.
         # @param [String] name
-        #   The resource name of the Annotation store to delete.
+        #   Required. The resource name of the Annotation store to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -542,8 +542,8 @@ module Google
         # error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/
         # logging)).
         # @param [String] name
-        #   The Annotation store to compare against `golden_store`, in the format of `
-        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   Required. The Annotation store to compare against `golden_store`, in the
+        #   format of `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   annotationStores/`annotation_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::EvaluateAnnotationStoreRequest] evaluate_annotation_store_request_object
         # @param [String] fields
@@ -581,8 +581,8 @@ module Google
         # OperationMetadata. Errors are logged to Cloud Logging (see [Viewing error logs
         # in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
         # @param [String] name
-        #   The name of the Annotation store to export annotations to, in the format of `
-        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   Required. The name of the Annotation store to export annotations to, in the
+        #   format of `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   annotationStores/`annotation_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::ExportAnnotationsRequest] export_annotations_request_object
         # @param [String] fields
@@ -616,7 +616,7 @@ module Google
         
         # Gets the specified Annotation store or returns NOT_FOUND if it does not exist.
         # @param [String] name
-        #   The resource name of the Annotation store to get.
+        #   Required. The resource name of the Annotation store to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -696,9 +696,9 @@ module Google
         # logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://
         # cloud.google.com/healthcare/docs/how-tos/logging)).
         # @param [String] name
-        #   The name of the Annotation store to which the server imports annotations, in
-        #   the format `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`
-        #   /annotationStores/`annotation_store_id``.
+        #   Required. The name of the Annotation store to which the server imports
+        #   annotations, in the format `projects/`project_id`/locations/`location_id`/
+        #   datasets/`dataset_id`/annotationStores/`annotation_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::ImportAnnotationsRequest] import_annotations_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -731,7 +731,7 @@ module Google
         
         # Lists the Annotation stores in the given dataset for a source store.
         # @param [String] parent
-        #   Name of the dataset.
+        #   Required. Name of the dataset.
         # @param [String] filter
         #   Restricts stores returned to those matching a filter. The following syntax is
         #   available: * A string field value can be written as text inside quotation
@@ -792,14 +792,14 @@ module Google
         
         # Updates the specified Annotation store.
         # @param [String] name
-        #   Resource name of the Annotation store, of the form `projects/`project_id`/
-        #   locations/`location_id`/datasets/`dataset_id`/annotationStores/`
+        #   Identifier. Resource name of the Annotation store, of the form `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/annotationStores/`
         #   annotation_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::AnnotationStore] annotation_store_object
         # @param [String] update_mask
-        #   The update mask applies to the resource. For the `FieldMask` definition, see
-        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   fieldmask
+        #   Required. The update mask applies to the resource. For the `FieldMask`
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#fieldmask
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -910,9 +910,9 @@ module Google
         # the same source more than once since a unique ID is assigned to each record by
         # this service.
         # @param [String] parent
-        #   The name of the Annotation store this annotation belongs to. For example, `
-        #   projects/my-project/locations/us-central1/datasets/mydataset/annotationStores/
-        #   myannotationstore`.
+        #   Required. The name of the Annotation store this annotation belongs to. For
+        #   example, `projects/my-project/locations/us-central1/datasets/mydataset/
+        #   annotationStores/myannotationstore`.
         # @param [Google::Apis::HealthcareV1beta1::Annotation] annotation_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -945,7 +945,7 @@ module Google
         
         # Deletes an Annotation or returns NOT_FOUND if it does not exist.
         # @param [String] name
-        #   The resource name of the Annotation to delete.
+        #   Required. The resource name of the Annotation to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -975,7 +975,7 @@ module Google
         
         # Gets an Annotation.
         # @param [String] name
-        #   The resource name of the Annotation to retrieve.
+        #   Required. The resource name of the Annotation to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1005,7 +1005,7 @@ module Google
         
         # Lists the Annotations in the given Annotation store for a source resource.
         # @param [String] parent
-        #   Name of the Annotation store to retrieve Annotations from.
+        #   Required. Name of the Annotation store to retrieve Annotations from.
         # @param [String] filter
         #   Restricts Annotations returned to those matching a filter. Functions available
         #   for filtering are: - `matches("annotation_source.cloud_healthcare_source.name",
@@ -1054,14 +1054,14 @@ module Google
         
         # Updates the Annotation.
         # @param [String] name
-        #   Resource name of the Annotation, of the form `projects/`project_id`/locations/`
-        #   location_id`/datasets/`dataset_id`/annotationStores/`annotation_store_id`/
-        #   annotations/`annotation_id``.
+        #   Identifier. Resource name of the Annotation, of the form `projects/`project_id`
+        #   /locations/`location_id`/datasets/`dataset_id`/annotationStores/`
+        #   annotation_store_id`/annotations/`annotation_id``.
         # @param [Google::Apis::HealthcareV1beta1::Annotation] annotation_object
         # @param [String] update_mask
-        #   The update mask applies to the resource. For the `FieldMask` definition, see
-        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   fieldmask
+        #   Required. The update mask applies to the resource. For the `FieldMask`
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#fieldmask
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2223,9 +2223,9 @@ module Google
         # revision with the changes. A FAILED_PRECONDITION error occurs if the latest
         # revision of the specified Consent is in the `REJECTED` or `REVOKED` state.
         # @param [String] name
-        #   Resource name of the Consent, of the form `projects/`project_id`/locations/`
-        #   location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/consents/`
-        #   consent_id``. Cannot be changed after creation.
+        #   Identifier. Resource name of the Consent, of the form `projects/`project_id`/
+        #   locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
+        #   consents/`consent_id``. Cannot be changed after creation.
         # @param [Google::Apis::HealthcareV1beta1::Consent] consent_object
         # @param [String] update_mask
         #   Required. The update mask to apply to the resource. For the `FieldMask`
@@ -4375,6 +4375,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Explains all the permitted/denied actor, purpose and environment for a given
+        # resource.
+        # @param [String] name
+        #   Required. The name of the FHIR store to enforce, in the format `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/`
+        #   fhir_store_id``.
+        # @param [String] resource_id
+        #   Required. The ID (``resourceType`/`id``) of the resource to explain data
+        #   access on.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::ExplainDataAccessResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::ExplainDataAccessResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def explain_project_location_dataset_fhir_store_data_access(name, resource_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}:explainDataAccess', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::ExplainDataAccessResponse::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::ExplainDataAccessResponse
+          command.params['name'] = name unless name.nil?
+          command.query['resourceId'] = resource_id unless resource_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Export resources from the FHIR store to the specified destination. This method
         # returns an Operation that can be used to track the status of the export by
         # calling GetOperation. Immediate fatal errors appear in the error field, errors
@@ -6162,11 +6199,11 @@ module Google
         
         # Creates a new HL7v2 store within the parent dataset.
         # @param [String] parent
-        #   The name of the dataset this HL7v2 store belongs to.
+        #   Required. The name of the dataset this HL7v2 store belongs to.
         # @param [Google::Apis::HealthcareV1beta1::Hl7V2Store] hl7_v2_store_object
         # @param [String] hl7_v2_store_id
-        #   The ID of the HL7v2 store that is being created. The string must match the
-        #   following regex: `[\p`L`\p`N`_\-\.]`1,256``.
+        #   Required. The ID of the HL7v2 store that is being created. The string must
+        #   match the following regex: `[\p`L`\p`N`_\-\.]`1,256``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6199,7 +6236,7 @@ module Google
         
         # Deletes the specified HL7v2 store and removes all messages that it contains.
         # @param [String] name
-        #   The resource name of the HL7v2 store to delete.
+        #   Required. The resource name of the HL7v2 store to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6235,8 +6272,9 @@ module Google
         # response of type ExportMessagesResponse is returned in the response field. The
         # metadata field type for this operation is OperationMetadata.
         # @param [String] name
-        #   The name of the source HL7v2 store, in the format `projects/`project_id`/
-        #   locations/`location_id`/datasets/`dataset_id`/hl7v2Stores/`hl7v2_store_id``
+        #   Required. The name of the source HL7v2 store, in the format `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/hl7v2Stores/`
+        #   hl7v2_store_id``
         # @param [Google::Apis::HealthcareV1beta1::ExportMessagesRequest] export_messages_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6269,7 +6307,7 @@ module Google
         
         # Gets the specified HL7v2 store.
         # @param [String] name
-        #   The resource name of the HL7v2 store to get.
+        #   Required. The resource name of the HL7v2 store to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6299,8 +6337,8 @@ module Google
         
         # Gets metrics associated with the HL7v2 store.
         # @param [String] name
-        #   The resource name of the HL7v2 store to get metrics for, in the format `
-        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   Required. The resource name of the HL7v2 store to get metrics for, in the
+        #   format `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   hl7V2Stores/`hl7v2_store_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6399,8 +6437,9 @@ module Google
         # the response field. The metadata field type for this operation is
         # OperationMetadata.
         # @param [String] name
-        #   The name of the target HL7v2 store, in the format `projects/`project_id`/
-        #   locations/`location_id`/datasets/`dataset_id`/hl7v2Stores/`hl7v2_store_id``
+        #   Required. The name of the target HL7v2 store, in the format `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/hl7v2Stores/`
+        #   hl7v2_store_id``
         # @param [Google::Apis::HealthcareV1beta1::ImportMessagesRequest] import_messages_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6433,7 +6472,7 @@ module Google
         
         # Lists the HL7v2 stores in the given dataset.
         # @param [String] parent
-        #   Name of the dataset.
+        #   Required. Name of the dataset.
         # @param [String] filter
         #   Restricts stores returned to those matching a filter. The following syntax is
         #   available: * A string field value can be written as text inside quotation
@@ -6494,13 +6533,14 @@ module Google
         
         # Updates the HL7v2 store.
         # @param [String] name
-        #   Resource name of the HL7v2 store, of the form `projects/`project_id`/locations/
-        #   `location_id`/datasets/`dataset_id`/hl7V2Stores/`hl7v2_store_id``.
+        #   Identifier. Resource name of the HL7v2 store, of the form `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/hl7V2Stores/`
+        #   hl7v2_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::Hl7V2Store] hl7_v2_store_object
         # @param [String] update_mask
-        #   The update mask applies to the resource. For the `FieldMask` definition, see
-        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   fieldmask
+        #   Required. The update mask applies to the resource. For the `FieldMask`
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#fieldmask
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6609,9 +6649,9 @@ module Google
         
         # Gets multiple messages in the given HL7v2 store.
         # @param [String] parent
-        #   Name of the HL7v2 store to retrieve messages from, in the format: `projects/`
-        #   project_id`/locations/`location_id`/datasets/`dataset_id`/hl7v2Stores/`
-        #   hl7v2_store_id``.
+        #   Required. Name of the HL7v2 store to retrieve messages from, in the format: `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   hl7v2Stores/`hl7v2_store_id``.
         # @param [Array<String>, String] ids
         #   The resource id of the HL7v2 messages to retrieve in the format: ``message_id``
         #   , where the full resource name is ``parent`/messages/`message_id`` A maximum
@@ -6654,7 +6694,7 @@ module Google
         # adapter is configured to listen to a Pub/Sub topic, the adapter transmits the
         # message when a notification is received.
         # @param [String] parent
-        #   The name of the HL7v2 store this message belongs to.
+        #   Required. The name of the HL7v2 store this message belongs to.
         # @param [Google::Apis::HealthcareV1beta1::CreateMessageRequest] create_message_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6687,7 +6727,7 @@ module Google
         
         # Deletes an HL7v2 message.
         # @param [String] name
-        #   The resource name of the HL7v2 message to delete.
+        #   Required. The resource name of the HL7v2 message to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6717,7 +6757,7 @@ module Google
         
         # Gets an HL7v2 message.
         # @param [String] name
-        #   The resource name of the HL7v2 message to retrieve.
+        #   Required. The resource name of the HL7v2 message to retrieve.
         # @param [String] view
         #   Specifies which parts of the Message resource to return in the response. When
         #   unspecified, equivalent to FULL.
@@ -6759,7 +6799,7 @@ module Google
         # message. This behavior is suitable for replying to HL7v2 interface systems
         # that expect these acknowledgments.
         # @param [String] parent
-        #   The name of the HL7v2 store this message belongs to.
+        #   Required. The name of the HL7v2 store this message belongs to.
         # @param [Google::Apis::HealthcareV1beta1::IngestMessageRequest] ingest_message_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6795,7 +6835,7 @@ module Google
         # delay between the time a message is created and when it can be found through a
         # filter.
         # @param [String] parent
-        #   Name of the HL7v2 store to retrieve messages from.
+        #   Required. Name of the HL7v2 store to retrieve messages from.
         # @param [String] filter
         #   Restricts messages returned to those matching a filter. The following syntax
         #   is available: * A string field value can be written as text inside quotation
@@ -6886,14 +6926,14 @@ module Google
         # are merged with the existing set of labels. Existing labels with the same keys
         # are updated.
         # @param [String] name
-        #   Resource name of the Message, of the form `projects/`project_id`/locations/`
-        #   location_id`/datasets/`dataset_id`/hl7V2Stores/`hl7_v2_store_id`/messages/`
-        #   message_id``. Assigned by the server.
+        #   Output only. Resource name of the Message, of the form `projects/`project_id`/
+        #   locations/`location_id`/datasets/`dataset_id`/hl7V2Stores/`hl7_v2_store_id`/
+        #   messages/`message_id``. Assigned by the server.
         # @param [Google::Apis::HealthcareV1beta1::Message] message_object
         # @param [String] update_mask
-        #   The update mask applies to the resource. For the `FieldMask` definition, see
-        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   fieldmask
+        #   Required. The update mask applies to the resource. For the `FieldMask`
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#fieldmask
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

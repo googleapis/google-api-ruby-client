@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConsentAccessorScope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConsentArtifact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -443,6 +449,24 @@ module Google
       end
       
       class EvaluateUserConsentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExplainDataAccessConsentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExplainDataAccessConsentScope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExplainDataAccessResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1646,6 +1670,15 @@ module Google
         end
       end
       
+      class ConsentAccessorScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actor, as: 'actor'
+          property :environment, as: 'environment'
+          property :purpose, as: 'purpose'
+        end
+      end
+      
       class ConsentArtifact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1993,6 +2026,42 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :results, as: 'results', class: Google::Apis::HealthcareV1beta1::Result, decorator: Google::Apis::HealthcareV1beta1::Result::Representation
       
+        end
+      end
+      
+      class ExplainDataAccessConsentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cascade_origins, as: 'cascadeOrigins'
+          property :consent_resource, as: 'consentResource'
+          property :enforcement_time, as: 'enforcementTime'
+          collection :matching_accessor_scopes, as: 'matchingAccessorScopes', class: Google::Apis::HealthcareV1beta1::ConsentAccessorScope, decorator: Google::Apis::HealthcareV1beta1::ConsentAccessorScope::Representation
+      
+          property :patient_consent_owner, as: 'patientConsentOwner'
+          property :type, as: 'type'
+          collection :variants, as: 'variants'
+        end
+      end
+      
+      class ExplainDataAccessConsentScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accessor_scope, as: 'accessorScope', class: Google::Apis::HealthcareV1beta1::ConsentAccessorScope, decorator: Google::Apis::HealthcareV1beta1::ConsentAccessorScope::Representation
+      
+          property :decision, as: 'decision'
+          collection :enforcing_consents, as: 'enforcingConsents', class: Google::Apis::HealthcareV1beta1::ExplainDataAccessConsentInfo, decorator: Google::Apis::HealthcareV1beta1::ExplainDataAccessConsentInfo::Representation
+      
+          collection :exceptions, as: 'exceptions', class: Google::Apis::HealthcareV1beta1::ExplainDataAccessConsentScope, decorator: Google::Apis::HealthcareV1beta1::ExplainDataAccessConsentScope::Representation
+      
+        end
+      end
+      
+      class ExplainDataAccessResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consent_scopes, as: 'consentScopes', class: Google::Apis::HealthcareV1beta1::ExplainDataAccessConsentScope, decorator: Google::Apis::HealthcareV1beta1::ExplainDataAccessConsentScope::Representation
+      
+          property :warning, as: 'warning'
         end
       end
       
