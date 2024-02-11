@@ -2876,27 +2876,6 @@ module Google
         end
       end
       
-      # Plan for the query.
-      class QueryPlan
-        include Google::Apis::Core::Hashable
-      
-        # Planning phase information for the query. It will include: ` "indexes_used": [
-        # `"query_scope": "Collection", "properties": "(foo ASC, __name__ ASC)"`, `"
-        # query_scope": "Collection", "properties": "(bar ASC, __name__ ASC)"` ] `
-        # Corresponds to the JSON property `planInfo`
-        # @return [Hash<String,Object>]
-        attr_accessor :plan_info
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @plan_info = args[:plan_info] if args.key?(:plan_info)
-        end
-      end
-      
       # A target specified by a query.
       class QueryTarget
         include Google::Apis::Core::Hashable
@@ -2970,35 +2949,6 @@ module Google
         end
       end
       
-      # Planning and execution statistics for the query.
-      class ResultSetStats
-        include Google::Apis::Core::Hashable
-      
-        # Plan for the query.
-        # Corresponds to the JSON property `queryPlan`
-        # @return [Google::Apis::FirestoreV1::QueryPlan]
-        attr_accessor :query_plan
-      
-        # Aggregated statistics from the execution of the query. This will only be
-        # present when the request specifies `PROFILE` mode. For example, a query will
-        # return the statistics including: ` "results_returned": "20", "
-        # documents_scanned": "20", "indexes_entries_scanned": "10050", "
-        # total_execution_time": "100.7 msecs" `
-        # Corresponds to the JSON property `queryStats`
-        # @return [Hash<String,Object>]
-        attr_accessor :query_stats
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @query_plan = args[:query_plan] if args.key?(:query_plan)
-          @query_stats = args[:query_stats] if args.key?(:query_stats)
-        end
-      end
-      
       # The request for Firestore.Rollback.
       class RollbackRequest
         include Google::Apis::Core::Hashable
@@ -3022,13 +2972,6 @@ module Google
       # The request for Firestore.RunAggregationQuery.
       class RunAggregationQueryRequest
         include Google::Apis::Core::Hashable
-      
-        # Optional. The mode in which the query request is processed. This field is
-        # optional, and when not provided, it defaults to `NORMAL` mode where no
-        # additional statistics will be returned with the query results.
-        # Corresponds to the JSON property `mode`
-        # @return [String]
-        attr_accessor :mode
       
         # Options for creating a new transaction.
         # Corresponds to the JSON property `newTransaction`
@@ -3060,7 +3003,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @mode = args[:mode] if args.key?(:mode)
           @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
           @read_time = args[:read_time] if args.key?(:read_time)
           @structured_aggregation_query = args[:structured_aggregation_query] if args.key?(:structured_aggregation_query)
@@ -3088,11 +3030,6 @@ module Google
         # @return [Google::Apis::FirestoreV1::AggregationResult]
         attr_accessor :result
       
-        # Planning and execution statistics for the query.
-        # Corresponds to the JSON property `stats`
-        # @return [Google::Apis::FirestoreV1::ResultSetStats]
-        attr_accessor :stats
-      
         # The transaction that was started as part of this request. Only present on the
         # first response when the request requested to start a new transaction.
         # Corresponds to the JSON property `transaction`
@@ -3108,7 +3045,6 @@ module Google
         def update!(**args)
           @read_time = args[:read_time] if args.key?(:read_time)
           @result = args[:result] if args.key?(:result)
-          @stats = args[:stats] if args.key?(:stats)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
@@ -3116,13 +3052,6 @@ module Google
       # The request for Firestore.RunQuery.
       class RunQueryRequest
         include Google::Apis::Core::Hashable
-      
-        # Optional. The mode in which the query request is processed. This field is
-        # optional, and when not provided, it defaults to `NORMAL` mode where no
-        # additional statistics will be returned with the query results.
-        # Corresponds to the JSON property `mode`
-        # @return [String]
-        attr_accessor :mode
       
         # Options for creating a new transaction.
         # Corresponds to the JSON property `newTransaction`
@@ -3155,7 +3084,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @mode = args[:mode] if args.key?(:mode)
           @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
           @read_time = args[:read_time] if args.key?(:read_time)
           @structured_query = args[:structured_query] if args.key?(:structured_query)
@@ -3194,11 +3122,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :skipped_results
       
-        # Planning and execution statistics for the query.
-        # Corresponds to the JSON property `stats`
-        # @return [Google::Apis::FirestoreV1::ResultSetStats]
-        attr_accessor :stats
-      
         # The transaction that was started as part of this request. Can only be set in
         # the first response, and only if RunQueryRequest.new_transaction was set in the
         # request. If set, no other fields will be set in this response.
@@ -3217,7 +3140,6 @@ module Google
           @done = args[:done] if args.key?(:done)
           @read_time = args[:read_time] if args.key?(:read_time)
           @skipped_results = args[:skipped_results] if args.key?(:skipped_results)
-          @stats = args[:stats] if args.key?(:stats)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
