@@ -1315,7 +1315,9 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. The initiator of the QueuedResources's current state.
+        # Output only. The initiator of the QueuedResources's current state. Used to
+        # indicate whether the SUSPENDING/SUSPENDED state was initiated by the user or
+        # the service.
         # Corresponds to the JSON property `stateInitiator`
         # @return [String]
         attr_accessor :state_initiator
