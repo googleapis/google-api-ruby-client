@@ -6064,6 +6064,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SnapshotResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SnapshotSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -14446,6 +14452,7 @@ module Google
           collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeAlpha::AliasIpRange, decorator: Google::Apis::ComputeAlpha::AliasIpRange::Representation
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :igmp_query, as: 'igmpQuery'
           property :internal_ipv6_prefix_length, as: 'internalIpv6PrefixLength'
           collection :ipv6_access_configs, as: 'ipv6AccessConfigs', class: Google::Apis::ComputeAlpha::AccessConfig, decorator: Google::Apis::ComputeAlpha::AccessConfig::Representation
       
@@ -18881,6 +18888,8 @@ module Google
           property :max_retention_days, as: 'maxRetentionDays'
           property :name, as: 'name'
           property :region, as: 'region'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeAlpha::SnapshotResourceStatus, decorator: Google::Apis::ComputeAlpha::SnapshotResourceStatus::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
@@ -18970,6 +18979,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SnapshotResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scheduled_deletion_time, as: 'scheduledDeletionTime'
         end
       end
       
