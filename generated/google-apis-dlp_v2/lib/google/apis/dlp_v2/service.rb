@@ -20,11 +20,10 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DlpV2
-      # Cloud Data Loss Prevention (DLP)
+      # Sensitive Data Protection (DLP)
       #
-      # Provides methods for detection, risk analysis, and de-identification of
-      #  privacy-sensitive fragments in text, images, and Google Cloud Platform storage
-      #  repositories.
+      # Discover and protect your sensitive data. A fully managed service designed to
+      #  help you discover, classify, and protect your valuable data assets with ease.
       #
       # @example
       #    require 'google/apis/dlp_v2'
