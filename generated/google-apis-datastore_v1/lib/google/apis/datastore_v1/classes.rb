@@ -2082,27 +2082,6 @@ module Google
         end
       end
       
-      # Plan for the query.
-      class QueryPlan
-        include Google::Apis::Core::Hashable
-      
-        # Planning phase information for the query. It will include: ` "indexes_used": [
-        # `"query_scope": "Collection", "properties": "(foo ASC, __name__ ASC)"`, `"
-        # query_scope": "Collection", "properties": "(bar ASC, __name__ ASC)"` ] `
-        # Corresponds to the JSON property `planInfo`
-        # @return [Hash<String,Object>]
-        attr_accessor :plan_info
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @plan_info = args[:plan_info] if args.key?(:plan_info)
-        end
-      end
-      
       # A batch of results produced by a query.
       class QueryResultBatch
         include Google::Apis::Core::Hashable
@@ -2304,35 +2283,6 @@ module Google
         end
       end
       
-      # Planning and execution statistics for the query.
-      class ResultSetStats
-        include Google::Apis::Core::Hashable
-      
-        # Plan for the query.
-        # Corresponds to the JSON property `queryPlan`
-        # @return [Google::Apis::DatastoreV1::QueryPlan]
-        attr_accessor :query_plan
-      
-        # Aggregated statistics from the execution of the query. This will only be
-        # present when the request specifies `PROFILE` mode. For example, a query will
-        # return the statistics including: ` "results_returned": "20", "
-        # documents_scanned": "20", "indexes_entries_scanned": "10050", "
-        # total_execution_time": "100.7 msecs" `
-        # Corresponds to the JSON property `queryStats`
-        # @return [Hash<String,Object>]
-        attr_accessor :query_stats
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @query_plan = args[:query_plan] if args.key?(:query_plan)
-          @query_stats = args[:query_stats] if args.key?(:query_stats)
-        end
-      end
-      
       # The request for Datastore.Rollback.
       class RollbackRequest
         include Google::Apis::Core::Hashable
@@ -2394,13 +2344,6 @@ module Google
         # @return [Google::Apis::DatastoreV1::GqlQuery]
         attr_accessor :gql_query
       
-        # Optional. The mode in which the query request is processed. This field is
-        # optional, and when not provided, it defaults to `NORMAL` mode where no
-        # additional statistics will be returned with the query results.
-        # Corresponds to the JSON property `mode`
-        # @return [String]
-        attr_accessor :mode
-      
         # A partition ID identifies a grouping of entities. The grouping is always by
         # project and namespace, however the namespace ID may be empty. A partition ID
         # contains several dimensions: project ID and namespace ID. Partition dimensions:
@@ -2429,7 +2372,6 @@ module Google
           @aggregation_query = args[:aggregation_query] if args.key?(:aggregation_query)
           @database_id = args[:database_id] if args.key?(:database_id)
           @gql_query = args[:gql_query] if args.key?(:gql_query)
-          @mode = args[:mode] if args.key?(:mode)
           @partition_id = args[:partition_id] if args.key?(:partition_id)
           @read_options = args[:read_options] if args.key?(:read_options)
         end
@@ -2449,11 +2391,6 @@ module Google
         # @return [Google::Apis::DatastoreV1::AggregationQuery]
         attr_accessor :query
       
-        # Planning and execution statistics for the query.
-        # Corresponds to the JSON property `stats`
-        # @return [Google::Apis::DatastoreV1::ResultSetStats]
-        attr_accessor :stats
-      
         # The identifier of the transaction that was started as part of this
         # RunAggregationQuery request. Set only when ReadOptions.new_transaction was set
         # in RunAggregationQueryRequest.read_options.
@@ -2470,7 +2407,6 @@ module Google
         def update!(**args)
           @batch = args[:batch] if args.key?(:batch)
           @query = args[:query] if args.key?(:query)
-          @stats = args[:stats] if args.key?(:stats)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
@@ -2489,13 +2425,6 @@ module Google
         # Corresponds to the JSON property `gqlQuery`
         # @return [Google::Apis::DatastoreV1::GqlQuery]
         attr_accessor :gql_query
-      
-        # Optional. The mode in which the query request is processed. This field is
-        # optional, and when not provided, it defaults to `NORMAL` mode where no
-        # additional statistics will be returned with the query results.
-        # Corresponds to the JSON property `mode`
-        # @return [String]
-        attr_accessor :mode
       
         # A partition ID identifies a grouping of entities. The grouping is always by
         # project and namespace, however the namespace ID may be empty. A partition ID
@@ -2529,7 +2458,6 @@ module Google
         def update!(**args)
           @database_id = args[:database_id] if args.key?(:database_id)
           @gql_query = args[:gql_query] if args.key?(:gql_query)
-          @mode = args[:mode] if args.key?(:mode)
           @partition_id = args[:partition_id] if args.key?(:partition_id)
           @query = args[:query] if args.key?(:query)
           @read_options = args[:read_options] if args.key?(:read_options)
@@ -2550,11 +2478,6 @@ module Google
         # @return [Google::Apis::DatastoreV1::Query]
         attr_accessor :query
       
-        # Planning and execution statistics for the query.
-        # Corresponds to the JSON property `stats`
-        # @return [Google::Apis::DatastoreV1::ResultSetStats]
-        attr_accessor :stats
-      
         # The identifier of the transaction that was started as part of this RunQuery
         # request. Set only when ReadOptions.new_transaction was set in RunQueryRequest.
         # read_options.
@@ -2571,7 +2494,6 @@ module Google
         def update!(**args)
           @batch = args[:batch] if args.key?(:batch)
           @query = args[:query] if args.key?(:query)
-          @stats = args[:stats] if args.key?(:stats)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
       end

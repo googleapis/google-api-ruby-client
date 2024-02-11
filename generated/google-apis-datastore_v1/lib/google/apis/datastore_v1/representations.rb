@@ -376,12 +376,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class QueryPlan
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class QueryResultBatch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,12 +407,6 @@ module Google
       end
       
       class ReserveIdsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResultSetStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1073,13 +1061,6 @@ module Google
         end
       end
       
-      class QueryPlan
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :plan_info, as: 'planInfo'
-        end
-      end
-      
       class QueryResultBatch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1135,15 +1116,6 @@ module Google
         end
       end
       
-      class ResultSetStats
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :query_plan, as: 'queryPlan', class: Google::Apis::DatastoreV1::QueryPlan, decorator: Google::Apis::DatastoreV1::QueryPlan::Representation
-      
-          hash :query_stats, as: 'queryStats'
-        end
-      end
-      
       class RollbackRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1166,7 +1138,6 @@ module Google
           property :database_id, as: 'databaseId'
           property :gql_query, as: 'gqlQuery', class: Google::Apis::DatastoreV1::GqlQuery, decorator: Google::Apis::DatastoreV1::GqlQuery::Representation
       
-          property :mode, as: 'mode'
           property :partition_id, as: 'partitionId', class: Google::Apis::DatastoreV1::PartitionId, decorator: Google::Apis::DatastoreV1::PartitionId::Representation
       
           property :read_options, as: 'readOptions', class: Google::Apis::DatastoreV1::ReadOptions, decorator: Google::Apis::DatastoreV1::ReadOptions::Representation
@@ -1181,8 +1152,6 @@ module Google
       
           property :query, as: 'query', class: Google::Apis::DatastoreV1::AggregationQuery, decorator: Google::Apis::DatastoreV1::AggregationQuery::Representation
       
-          property :stats, as: 'stats', class: Google::Apis::DatastoreV1::ResultSetStats, decorator: Google::Apis::DatastoreV1::ResultSetStats::Representation
-      
           property :transaction, :base64 => true, as: 'transaction'
         end
       end
@@ -1193,7 +1162,6 @@ module Google
           property :database_id, as: 'databaseId'
           property :gql_query, as: 'gqlQuery', class: Google::Apis::DatastoreV1::GqlQuery, decorator: Google::Apis::DatastoreV1::GqlQuery::Representation
       
-          property :mode, as: 'mode'
           property :partition_id, as: 'partitionId', class: Google::Apis::DatastoreV1::PartitionId, decorator: Google::Apis::DatastoreV1::PartitionId::Representation
       
           property :query, as: 'query', class: Google::Apis::DatastoreV1::Query, decorator: Google::Apis::DatastoreV1::Query::Representation
@@ -1209,8 +1177,6 @@ module Google
           property :batch, as: 'batch', class: Google::Apis::DatastoreV1::QueryResultBatch, decorator: Google::Apis::DatastoreV1::QueryResultBatch::Representation
       
           property :query, as: 'query', class: Google::Apis::DatastoreV1::Query, decorator: Google::Apis::DatastoreV1::Query::Representation
-      
-          property :stats, as: 'stats', class: Google::Apis::DatastoreV1::ResultSetStats, decorator: Google::Apis::DatastoreV1::ResultSetStats::Representation
       
           property :transaction, :base64 => true, as: 'transaction'
         end
