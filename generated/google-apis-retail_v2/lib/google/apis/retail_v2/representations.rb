@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2BigQueryOutputResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2BigQuerySource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,7 +268,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2ExportAnalyticsMetricsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2ExportAnalyticsMetricsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2ExportErrorsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2FulfillmentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2GcsOutputResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -395,6 +425,30 @@ module Google
       end
       
       class GoogleCloudRetailV2ModelServingConfigList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2OutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2OutputConfigBigQueryDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2OutputConfigGcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2OutputResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1525,6 +1579,14 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2BigQueryOutputResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+          property :table_id, as: 'tableId'
+        end
+      end
+      
       class GoogleCloudRetailV2BigQuerySource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1760,11 +1822,46 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2ExportAnalyticsMetricsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :output_config, as: 'outputConfig', class: Google::Apis::RetailV2::GoogleCloudRetailV2OutputConfig, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2OutputConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2ExportAnalyticsMetricsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::RetailV2::GoogleRpcStatus, decorator: Google::Apis::RetailV2::GoogleRpcStatus::Representation
+      
+          property :errors_config, as: 'errorsConfig', class: Google::Apis::RetailV2::GoogleCloudRetailV2ExportErrorsConfig, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2ExportErrorsConfig::Representation
+      
+          property :output_result, as: 'outputResult', class: Google::Apis::RetailV2::GoogleCloudRetailV2OutputResult, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2OutputResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2ExportErrorsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_prefix, as: 'gcsPrefix'
+        end
+      end
+      
       class GoogleCloudRetailV2FulfillmentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :place_ids, as: 'placeIds'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudRetailV2GcsOutputResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_uri, as: 'outputUri'
         end
       end
       
@@ -1985,6 +2082,42 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :serving_config_ids, as: 'servingConfigIds'
+        end
+      end
+      
+      class GoogleCloudRetailV2OutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::RetailV2::GoogleCloudRetailV2OutputConfigBigQueryDestination, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2OutputConfigBigQueryDestination::Representation
+      
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::RetailV2::GoogleCloudRetailV2OutputConfigGcsDestination, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2OutputConfigGcsDestination::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2OutputConfigBigQueryDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+          property :table_id_prefix, as: 'tableIdPrefix'
+          property :table_type, as: 'tableType'
+        end
+      end
+      
+      class GoogleCloudRetailV2OutputConfigGcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_uri_prefix, as: 'outputUriPrefix'
+        end
+      end
+      
+      class GoogleCloudRetailV2OutputResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bigquery_result, as: 'bigqueryResult', class: Google::Apis::RetailV2::GoogleCloudRetailV2BigQueryOutputResult, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2BigQueryOutputResult::Representation
+      
+          collection :gcs_result, as: 'gcsResult', class: Google::Apis::RetailV2::GoogleCloudRetailV2GcsOutputResult, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2GcsOutputResult::Representation
+      
         end
       end
       
