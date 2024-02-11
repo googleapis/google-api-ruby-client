@@ -882,11 +882,6 @@ module Google
         # @return [String]
         attr_accessor :end_offset
       
-        # Internal only fields
-        # Corresponds to the JSON property `modelLevelMetaData`
-        # @return [Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata]
-        attr_accessor :model_level_meta_data
-      
         # The start offset of the video.
         # Corresponds to the JSON property `startOffset`
         # @return [String]
@@ -899,33 +894,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_offset = args[:end_offset] if args.key?(:end_offset)
-          @model_level_meta_data = args[:model_level_meta_data] if args.key?(:model_level_meta_data)
           @start_offset = args[:start_offset] if args.key?(:start_offset)
-        end
-      end
-      
-      # Internal only fields
-      class CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Frame rate to decode from this video.
-        # Corresponds to the JSON property `fps`
-        # @return [Float]
-        attr_accessor :fps
-      
-        # Number of frames to decode from this video.
-        # Corresponds to the JSON property `numFrames`
-        # @return [Fixnum]
-        attr_accessor :num_frames
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @fps = args[:fps] if args.key?(:fps)
-          @num_frames = args[:num_frames] if args.key?(:num_frames)
         end
       end
       
@@ -12685,7 +12654,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Immutable. The path to the directory containing the Model artifact and any of
-        # its supporting files. Not present for AutoML Models or Large Models.
+        # its supporting files. Not required for AutoML Models.
         # Corresponds to the JSON property `artifactUri`
         # @return [String]
         attr_accessor :artifact_uri
@@ -13231,6 +13200,12 @@ module Google
         # @return [String]
         attr_accessor :log_type
       
+        # Output only. The schema version of the request/response logging BigQuery table.
+        # Default to v1 if unset.
+        # Corresponds to the JSON property `requestResponseLoggingSchemaVersion`
+        # @return [String]
+        attr_accessor :request_response_logging_schema_version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13240,6 +13215,7 @@ module Google
           @bigquery_table_path = args[:bigquery_table_path] if args.key?(:bigquery_table_path)
           @log_source = args[:log_source] if args.key?(:log_source)
           @log_type = args[:log_type] if args.key?(:log_type)
+          @request_response_logging_schema_version = args[:request_response_logging_schema_version] if args.key?(:request_response_logging_schema_version)
         end
       end
       
@@ -13349,7 +13325,7 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelDeploymentMonitoringScheduleConfig]
         attr_accessor :model_deployment_monitoring_schedule_config
       
-        # Alert config for model monitoring.
+        # The alert config for model monitoring.
         # Corresponds to the JSON property `modelMonitoringAlertConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelMonitoringAlertConfig]
         attr_accessor :model_monitoring_alert_config
@@ -13927,7 +13903,7 @@ module Google
         end
       end
       
-      # 
+      # The alert config for model monitoring.
       class GoogleCloudAiplatformV1ModelMonitoringAlertConfig
         include Google::Apis::Core::Hashable
       
@@ -14847,6 +14823,146 @@ module Google
         end
       end
       
+      # A query to find a number of similar entities.
+      class GoogleCloudAiplatformV1NearestNeighborQuery
+        include Google::Apis::Core::Hashable
+      
+        # The embedding vector.
+        # Corresponds to the JSON property `embedding`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborQueryEmbedding]
+        attr_accessor :embedding
+      
+        # Optional. The entity id whose similar entities should be searched for. If
+        # embedding is set, search will use embedding instead of entity_id.
+        # Corresponds to the JSON property `entityId`
+        # @return [String]
+        attr_accessor :entity_id
+      
+        # Optional. The number of similar entities to be retrieved from feature view for
+        # each query.
+        # Corresponds to the JSON property `neighborCount`
+        # @return [Fixnum]
+        attr_accessor :neighbor_count
+      
+        # Parameters that can be overrided in each query to tune query latency and
+        # recall.
+        # Corresponds to the JSON property `parameters`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborQueryParameters]
+        attr_accessor :parameters
+      
+        # Optional. Crowding is a constraint on a neighbor list produced by nearest
+        # neighbor search requiring that no more than
+        # sper_crowding_attribute_neighbor_count of the k neighbors returned have the
+        # same value of crowding_attribute. It's used for improving result diversity.
+        # Corresponds to the JSON property `perCrowdingAttributeNeighborCount`
+        # @return [Fixnum]
+        attr_accessor :per_crowding_attribute_neighbor_count
+      
+        # Optional. The list of string filters.
+        # Corresponds to the JSON property `stringFilters`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborQueryStringFilter>]
+        attr_accessor :string_filters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @embedding = args[:embedding] if args.key?(:embedding)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+          @neighbor_count = args[:neighbor_count] if args.key?(:neighbor_count)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @per_crowding_attribute_neighbor_count = args[:per_crowding_attribute_neighbor_count] if args.key?(:per_crowding_attribute_neighbor_count)
+          @string_filters = args[:string_filters] if args.key?(:string_filters)
+        end
+      end
+      
+      # The embedding vector.
+      class GoogleCloudAiplatformV1NearestNeighborQueryEmbedding
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Individual value in the embedding.
+        # Corresponds to the JSON property `value`
+        # @return [Array<Float>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Parameters that can be overrided in each query to tune query latency and
+      # recall.
+      class GoogleCloudAiplatformV1NearestNeighborQueryParameters
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of neighbors to find via approximate search before exact
+        # reordering is performed; if set, this value must be > neighbor_count.
+        # Corresponds to the JSON property `approximateNeighborCandidates`
+        # @return [Fixnum]
+        attr_accessor :approximate_neighbor_candidates
+      
+        # Optional. The fraction of the number of leaves to search, set at query time
+        # allows user to tune search performance. This value increase result in both
+        # search accuracy and latency increase. The value should be between 0.0 and 1.0.
+        # Corresponds to the JSON property `leafNodesSearchFraction`
+        # @return [Float]
+        attr_accessor :leaf_nodes_search_fraction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approximate_neighbor_candidates = args[:approximate_neighbor_candidates] if args.key?(:approximate_neighbor_candidates)
+          @leaf_nodes_search_fraction = args[:leaf_nodes_search_fraction] if args.key?(:leaf_nodes_search_fraction)
+        end
+      end
+      
+      # String filter is used to search a subset of the entities by using boolean
+      # rules on string columns. For example: if a query specifies string filter with '
+      # name = color, allow_tokens = `red, blue`, deny_tokens = `purple`',' then that
+      # query will match entities that are red or blue, but if those points are also
+      # purple, then they will be excluded even if they are red/blue. Only string
+      # filter is supported for now, numeric filter will be supported in the near
+      # future.
+      class GoogleCloudAiplatformV1NearestNeighborQueryStringFilter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The allowed tokens.
+        # Corresponds to the JSON property `allowTokens`
+        # @return [Array<String>]
+        attr_accessor :allow_tokens
+      
+        # Optional. The denied tokens.
+        # Corresponds to the JSON property `denyTokens`
+        # @return [Array<String>]
+        attr_accessor :deny_tokens
+      
+        # Required. Column names in BigQuery that used as filters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_tokens = args[:allow_tokens] if args.key?(:allow_tokens)
+          @deny_tokens = args[:deny_tokens] if args.key?(:deny_tokens)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Runtime operation metadata with regard to Matching Engine Index.
       class GoogleCloudAiplatformV1NearestNeighborSearchOperationMetadata
         include Google::Apis::Core::Hashable
@@ -14956,6 +15072,56 @@ module Google
           @error_type = args[:error_type] if args.key?(:error_type)
           @raw_record = args[:raw_record] if args.key?(:raw_record)
           @source_gcs_uri = args[:source_gcs_uri] if args.key?(:source_gcs_uri)
+        end
+      end
+      
+      # Nearest neighbors for one query.
+      class GoogleCloudAiplatformV1NearestNeighbors
+        include Google::Apis::Core::Hashable
+      
+        # All its neighbors.
+        # Corresponds to the JSON property `neighbors`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborsNeighbor>]
+        attr_accessor :neighbors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @neighbors = args[:neighbors] if args.key?(:neighbors)
+        end
+      end
+      
+      # A neighbor of the query vector.
+      class GoogleCloudAiplatformV1NearestNeighborsNeighbor
+        include Google::Apis::Core::Hashable
+      
+        # The distance between the neighbor and the query vector.
+        # Corresponds to the JSON property `distance`
+        # @return [Float]
+        attr_accessor :distance
+      
+        # The id of the similar entity.
+        # Corresponds to the JSON property `entityId`
+        # @return [String]
+        attr_accessor :entity_id
+      
+        # Response message for FeatureOnlineStoreService.FetchFeatureValues
+        # Corresponds to the JSON property `entityKeyValues`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FetchFeatureValuesResponse]
+        attr_accessor :entity_key_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distance = args[:distance] if args.key?(:distance)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+          @entity_key_values = args[:entity_key_values] if args.key?(:entity_key_values)
         end
       end
       
@@ -16655,6 +16821,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeploy]
         attr_accessor :deploy
       
+        # Configurations for PublisherModel GKE deployment
+        # Corresponds to the JSON property `deployGke`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke]
+        attr_accessor :deploy_gke
+      
         # The regional resource name or the URI. Key is region, e.g., us-central1,
         # europe-west2, global, etc..
         # Corresponds to the JSON property `openEvaluationPipeline`
@@ -16720,6 +16891,7 @@ module Google
         def update!(**args)
           @create_application = args[:create_application] if args.key?(:create_application)
           @deploy = args[:deploy] if args.key?(:deploy)
+          @deploy_gke = args[:deploy_gke] if args.key?(:deploy_gke)
           @open_evaluation_pipeline = args[:open_evaluation_pipeline] if args.key?(:open_evaluation_pipeline)
           @open_fine_tuning_pipeline = args[:open_fine_tuning_pipeline] if args.key?(:open_fine_tuning_pipeline)
           @open_fine_tuning_pipelines = args[:open_fine_tuning_pipelines] if args.key?(:open_fine_tuning_pipelines)
@@ -16807,6 +16979,25 @@ module Google
           @public_artifact_uri = args[:public_artifact_uri] if args.key?(:public_artifact_uri)
           @shared_resources = args[:shared_resources] if args.key?(:shared_resources)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Configurations for PublisherModel GKE deployment
+      class GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke
+        include Google::Apis::Core::Hashable
+      
+        # Optional. GKE deployment configuration in yaml format.
+        # Corresponds to the JSON property `gkeYamlConfigs`
+        # @return [Array<String>]
+        attr_accessor :gke_yaml_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gke_yaml_configs = args[:gke_yaml_configs] if args.key?(:gke_yaml_configs)
         end
       end
       
@@ -18230,12 +18421,6 @@ module Google
         attr_accessor :disable_retries
         alias_method :disable_retries?, :disable_retries
       
-        # Optional. This is the maximum time a user will wait in the QRM queue for
-        # resources. Default is 1 day
-        # Corresponds to the JSON property `maxWaitDuration`
-        # @return [String]
-        attr_accessor :max_wait_duration
-      
         # Restarts the entire CustomJob if a worker gets restarted. This feature can be
         # used by distributed training jobs that are not resilient to workers leaving
         # and joining a job.
@@ -18256,7 +18441,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disable_retries = args[:disable_retries] if args.key?(:disable_retries)
-          @max_wait_duration = args[:max_wait_duration] if args.key?(:max_wait_duration)
           @restart_job_on_worker_restart = args[:restart_job_on_worker_restart] if args.key?(:restart_job_on_worker_restart)
           @timeout = args[:timeout] if args.key?(:timeout)
         end
@@ -24597,6 +24781,54 @@ module Google
         end
       end
       
+      # The request message for FeatureOnlineStoreService.SearchNearestEntities.
+      class GoogleCloudAiplatformV1SearchNearestEntitiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # A query to find a number of similar entities.
+        # Corresponds to the JSON property `query`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborQuery]
+        attr_accessor :query
+      
+        # Optional. If set to true, the full entities (including all vector values and
+        # metadata) of the nearest neighbors are returned; otherwise only entity id of
+        # the nearest neighbors will be returned. Note that returning full entities will
+        # significantly increase the latency and cost of the query.
+        # Corresponds to the JSON property `returnFullEntity`
+        # @return [Boolean]
+        attr_accessor :return_full_entity
+        alias_method :return_full_entity?, :return_full_entity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query = args[:query] if args.key?(:query)
+          @return_full_entity = args[:return_full_entity] if args.key?(:return_full_entity)
+        end
+      end
+      
+      # Response message for FeatureOnlineStoreService.SearchNearestEntities
+      class GoogleCloudAiplatformV1SearchNearestEntitiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Nearest neighbors for one query.
+        # Corresponds to the JSON property `nearestNeighbors`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighbors]
+        attr_accessor :nearest_neighbors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nearest_neighbors = args[:nearest_neighbors] if args.key?(:nearest_neighbors)
+        end
+      end
+      
       # A set of Shielded Instance options. See [Images using supported Shielded VM
       # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
       # vm).
@@ -27446,6 +27678,14 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IndexDatapoint>]
         attr_accessor :datapoints
       
+        # Optional. Update mask is used to specify the fields to be overwritten in the
+        # datapoints by the update. The fields specified in the update_mask are relative
+        # to each IndexDatapoint inside datapoints, not the full request. Updatable
+        # fields: * Use `all_restricts` to update both restricts and numeric_restricts.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
         def initialize(**args)
            update!(**args)
         end
@@ -27453,6 +27693,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datapoints = args[:datapoints] if args.key?(:datapoints)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -29685,7 +29926,9 @@ module Google
         # @return [Google::Apis::AiplatformV1::LearningGenaiRootHarmSafetyCatCategories]
         attr_accessor :safetycat
       
-        # 
+        # Spii Filter uses buckets http://google3/google/privacy/dlp/v2/storage.proto;l=
+        # 77;rcl=584719820 to classify the input. LMRoot converts the bucket into double
+        # score. For example the score for "POSSIBLE" is 3 / 5 = 0.6 .
         # Corresponds to the JSON property `spii`
         # @return [Google::Apis::AiplatformV1::LearningGenaiRootHarmSpiiFilter]
         attr_accessor :spii

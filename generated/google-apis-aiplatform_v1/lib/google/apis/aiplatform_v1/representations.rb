@@ -184,12 +184,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CloudAiNlLlmProtoServicePromptFeedback
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2452,6 +2446,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1NearestNeighborQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1NearestNeighborQueryEmbedding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1NearestNeighborQueryParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1NearestNeighborQueryStringFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1NearestNeighborSearchOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2465,6 +2483,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1NearestNeighborSearchOperationMetadataRecordError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1NearestNeighbors
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1NearestNeighborsNeighbor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2711,6 +2741,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1PublisherModelCallToActionDeploy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4042,6 +4078,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1SearchNearestEntitiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SearchNearestEntitiesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1ShieldedVmConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5324,17 +5372,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_offset, as: 'endOffset'
-          property :model_level_meta_data, as: 'modelLevelMetaData', class: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata, decorator: Google::Apis::AiplatformV1::CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata::Representation
-      
           property :start_offset, as: 'startOffset'
-        end
-      end
-      
-      class CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :fps, as: 'fps'
-          property :num_frames, as: 'numFrames'
         end
       end
       
@@ -8727,6 +8765,7 @@ module Google
           property :bigquery_table_path, as: 'bigqueryTablePath'
           property :log_source, as: 'logSource'
           property :log_type, as: 'logType'
+          property :request_response_logging_schema_version, as: 'requestResponseLoggingSchemaVersion'
         end
       end
       
@@ -9185,6 +9224,45 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1NearestNeighborQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :embedding, as: 'embedding', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborQueryEmbedding, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborQueryEmbedding::Representation
+      
+          property :entity_id, as: 'entityId'
+          property :neighbor_count, as: 'neighborCount'
+          property :parameters, as: 'parameters', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborQueryParameters, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborQueryParameters::Representation
+      
+          property :per_crowding_attribute_neighbor_count, as: 'perCrowdingAttributeNeighborCount'
+          collection :string_filters, as: 'stringFilters', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborQueryStringFilter, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborQueryStringFilter::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1NearestNeighborQueryEmbedding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1NearestNeighborQueryParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approximate_neighbor_candidates, as: 'approximateNeighborCandidates'
+          property :leaf_nodes_search_fraction, as: 'leafNodesSearchFraction'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1NearestNeighborQueryStringFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allow_tokens, as: 'allowTokens'
+          collection :deny_tokens, as: 'denyTokens'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudAiplatformV1NearestNeighborSearchOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9213,6 +9291,24 @@ module Google
           property :error_type, as: 'errorType'
           property :raw_record, as: 'rawRecord'
           property :source_gcs_uri, as: 'sourceGcsUri'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1NearestNeighbors
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :neighbors, as: 'neighbors', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborsNeighbor, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborsNeighbor::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1NearestNeighborsNeighbor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distance, as: 'distance'
+          property :entity_id, as: 'entityId'
+          property :entity_key_values, as: 'entityKeyValues', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FetchFeatureValuesResponse, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FetchFeatureValuesResponse::Representation
+      
         end
       end
       
@@ -9654,6 +9750,8 @@ module Google
       
           property :deploy, as: 'deploy', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeploy, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeploy::Representation
       
+          property :deploy_gke, as: 'deployGke', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke::Representation
+      
           property :open_evaluation_pipeline, as: 'openEvaluationPipeline', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::Representation
       
           property :open_fine_tuning_pipeline, as: 'openFineTuningPipeline', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences::Representation
@@ -9693,6 +9791,13 @@ module Google
           property :public_artifact_uri, as: 'publicArtifactUri'
           property :shared_resources, as: 'sharedResources'
           property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gke_yaml_configs, as: 'gkeYamlConfigs'
         end
       end
       
@@ -10136,7 +10241,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_retries, as: 'disableRetries'
-          property :max_wait_duration, as: 'maxWaitDuration'
           property :restart_job_on_worker_restart, as: 'restartJobOnWorkerRestart'
           property :timeout, as: 'timeout'
         end
@@ -11823,6 +11927,23 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1SearchNearestEntitiesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query, as: 'query', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborQuery, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighborQuery::Representation
+      
+          property :return_full_entity, as: 'returnFullEntity'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SearchNearestEntitiesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :nearest_neighbors, as: 'nearestNeighbors', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighbors, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NearestNeighbors::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1ShieldedVmConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12618,6 +12739,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :datapoints, as: 'datapoints', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IndexDatapoint, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IndexDatapoint::Representation
       
+          property :update_mask, as: 'updateMask'
         end
       end
       
