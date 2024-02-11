@@ -882,11 +882,6 @@ module Google
         # @return [String]
         attr_accessor :end_offset
       
-        # Internal only fields
-        # Corresponds to the JSON property `modelLevelMetaData`
-        # @return [Google::Apis::AiplatformV1beta1::CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata]
-        attr_accessor :model_level_meta_data
-      
         # The start offset of the video.
         # Corresponds to the JSON property `startOffset`
         # @return [String]
@@ -899,33 +894,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_offset = args[:end_offset] if args.key?(:end_offset)
-          @model_level_meta_data = args[:model_level_meta_data] if args.key?(:model_level_meta_data)
           @start_offset = args[:start_offset] if args.key?(:start_offset)
-        end
-      end
-      
-      # Internal only fields
-      class CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Frame rate to decode from this video.
-        # Corresponds to the JSON property `fps`
-        # @return [Float]
-        attr_accessor :fps
-      
-        # Number of frames to decode from this video.
-        # Corresponds to the JSON property `numFrames`
-        # @return [Fixnum]
-        attr_accessor :num_frames
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @fps = args[:fps] if args.key?(:fps)
-          @num_frames = args[:num_frames] if args.key?(:num_frames)
         end
       end
       
@@ -8708,7 +8677,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Configuration for vector search.
+        # Deprecated. Use IndexConfig instead.
         # Corresponds to the JSON property `vectorSearchConfig`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig]
         attr_accessor :vector_search_config
@@ -8895,7 +8864,7 @@ module Google
         end
       end
       
-      # Configuration for vector search.
+      # Deprecated. Use IndexConfig instead.
       class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig
         include Google::Apis::Core::Hashable
       
@@ -13274,7 +13243,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Immutable. The path to the directory containing the Model artifact and any of
-        # its supporting files. Not present for AutoML Models or Large Models.
+        # its supporting files. Not required for AutoML Models.
         # Corresponds to the JSON property `artifactUri`
         # @return [String]
         attr_accessor :artifact_uri
@@ -13755,6 +13724,12 @@ module Google
         # @return [String]
         attr_accessor :log_type
       
+        # Output only. The schema version of the request/response logging BigQuery table.
+        # Default to v1 if unset.
+        # Corresponds to the JSON property `requestResponseLoggingSchemaVersion`
+        # @return [String]
+        attr_accessor :request_response_logging_schema_version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13764,6 +13739,7 @@ module Google
           @bigquery_table_path = args[:bigquery_table_path] if args.key?(:bigquery_table_path)
           @log_source = args[:log_source] if args.key?(:log_source)
           @log_type = args[:log_type] if args.key?(:log_type)
+          @request_response_logging_schema_version = args[:request_response_logging_schema_version] if args.key?(:request_response_logging_schema_version)
         end
       end
       
@@ -13873,7 +13849,7 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfig]
         attr_accessor :model_deployment_monitoring_schedule_config
       
-        # Alert config for model monitoring.
+        # The alert config for model monitoring.
         # Corresponds to the JSON property `modelMonitoringAlertConfig`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig]
         attr_accessor :model_monitoring_alert_config
@@ -14459,7 +14435,7 @@ module Google
         end
       end
       
-      # 
+      # The alert config for model monitoring.
       class GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig
         include Google::Apis::Core::Hashable
       
@@ -14518,7 +14494,7 @@ module Google
       class GoogleCloudAiplatformV1beta1ModelMonitoringConfig
         include Google::Apis::Core::Hashable
       
-        # Model monitoring alert config.
+        # The alert config for model monitoring.
         # Corresponds to the JSON property `alertConfig`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig]
         attr_accessor :alert_config
@@ -15525,11 +15501,12 @@ module Google
       end
       
       # String filter is used to search a subset of the entities by using boolean
-      # rules. For example: if a query specifies string filter with 'name = color,
-      # allow_tokens = `red, blue`, deny_tokens = `purple`',' then that query will
-      # match entities that are red or blue, but if those points are also purple, then
-      # they will be excluded even if they are red/blue. Only string filter is
-      # supported for now, numeric filter will be supported in the near future.
+      # rules on string columns. For example: if a query specifies string filter with '
+      # name = color, allow_tokens = `red, blue`, deny_tokens = `purple`',' then that
+      # query will match entities that are red or blue, but if those points are also
+      # purple, then they will be excluded even if they are red/blue. Only string
+      # filter is supported for now, numeric filter will be supported in the near
+      # future.
       class GoogleCloudAiplatformV1beta1NearestNeighborQueryStringFilter
         include Google::Apis::Core::Hashable
       
@@ -17549,6 +17526,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeploy]
         attr_accessor :deploy
       
+        # Configurations for PublisherModel GKE deployment
+        # Corresponds to the JSON property `deployGke`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployGke]
+        attr_accessor :deploy_gke
+      
         # The regional resource name or the URI. Key is region, e.g., us-central1,
         # europe-west2, global, etc..
         # Corresponds to the JSON property `openEvaluationPipeline`
@@ -17614,6 +17596,7 @@ module Google
         def update!(**args)
           @create_application = args[:create_application] if args.key?(:create_application)
           @deploy = args[:deploy] if args.key?(:deploy)
+          @deploy_gke = args[:deploy_gke] if args.key?(:deploy_gke)
           @open_evaluation_pipeline = args[:open_evaluation_pipeline] if args.key?(:open_evaluation_pipeline)
           @open_fine_tuning_pipeline = args[:open_fine_tuning_pipeline] if args.key?(:open_fine_tuning_pipeline)
           @open_fine_tuning_pipelines = args[:open_fine_tuning_pipelines] if args.key?(:open_fine_tuning_pipelines)
@@ -17701,6 +17684,25 @@ module Google
           @public_artifact_uri = args[:public_artifact_uri] if args.key?(:public_artifact_uri)
           @shared_resources = args[:shared_resources] if args.key?(:shared_resources)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Configurations for PublisherModel GKE deployment
+      class GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployGke
+        include Google::Apis::Core::Hashable
+      
+        # Optional. GKE deployment configuration in yaml format.
+        # Corresponds to the JSON property `gkeYamlConfigs`
+        # @return [Array<String>]
+        attr_accessor :gke_yaml_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gke_yaml_configs = args[:gke_yaml_configs] if args.key?(:gke_yaml_configs)
         end
       end
       
@@ -19447,12 +19449,6 @@ module Google
         attr_accessor :disable_retries
         alias_method :disable_retries?, :disable_retries
       
-        # Optional. This is the maximum time a user will wait in the QRM queue for
-        # resources. Default is 1 day
-        # Corresponds to the JSON property `maxWaitDuration`
-        # @return [String]
-        attr_accessor :max_wait_duration
-      
         # Restarts the entire CustomJob if a worker gets restarted. This feature can be
         # used by distributed training jobs that are not resilient to workers leaving
         # and joining a job.
@@ -19473,7 +19469,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disable_retries = args[:disable_retries] if args.key?(:disable_retries)
-          @max_wait_duration = args[:max_wait_duration] if args.key?(:max_wait_duration)
           @restart_job_on_worker_restart = args[:restart_job_on_worker_restart] if args.key?(:restart_job_on_worker_restart)
           @timeout = args[:timeout] if args.key?(:timeout)
         end
@@ -28711,6 +28706,14 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1IndexDatapoint>]
         attr_accessor :datapoints
       
+        # Optional. Update mask is used to specify the fields to be overwritten in the
+        # datapoints by the update. The fields specified in the update_mask are relative
+        # to each IndexDatapoint inside datapoints, not the full request. Updatable
+        # fields: * Use `all_restricts` to update both restricts and numeric_restricts.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
         def initialize(**args)
            update!(**args)
         end
@@ -28718,6 +28721,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datapoints = args[:datapoints] if args.key?(:datapoints)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -31018,7 +31022,9 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::LearningGenaiRootHarmSafetyCatCategories]
         attr_accessor :safetycat
       
-        # 
+        # Spii Filter uses buckets http://google3/google/privacy/dlp/v2/storage.proto;l=
+        # 77;rcl=584719820 to classify the input. LMRoot converts the bucket into double
+        # score. For example the score for "POSSIBLE" is 3 / 5 = 0.6 .
         # Corresponds to the JSON property `spii`
         # @return [Google::Apis::AiplatformV1beta1::LearningGenaiRootHarmSpiiFilter]
         attr_accessor :spii
