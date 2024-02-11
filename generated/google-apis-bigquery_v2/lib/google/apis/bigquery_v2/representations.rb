@@ -1684,6 +1684,7 @@ module Google
       
           property :location, as: 'location'
           property :max_time_travel_hours, :numeric_string => true, as: 'maxTimeTravelHours'
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :storage_billing_model, as: 'storageBillingModel'
@@ -2298,6 +2299,7 @@ module Google
       
           collection :connection_properties, as: 'connectionProperties', class: Google::Apis::BigqueryV2::ConnectionProperty, decorator: Google::Apis::BigqueryV2::ConnectionProperty::Representation
       
+          property :copy_files_only, as: 'copyFilesOnly'
           property :create_disposition, as: 'createDisposition'
           property :create_session, as: 'createSession'
           collection :decimal_target_types, as: 'decimalTargetTypes'
