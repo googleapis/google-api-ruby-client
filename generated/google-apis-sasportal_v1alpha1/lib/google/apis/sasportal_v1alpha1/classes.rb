@@ -75,27 +75,6 @@ module Google
         end
       end
       
-      # Response for [CheckHasProvisionedDeployment]. [spectrum.sas.portal.v1alpha1.
-      # Provisioning.CheckHasProvisionedDeployment].
-      class SasPortalCheckHasProvisionedDeploymentResponse
-        include Google::Apis::Core::Hashable
-      
-        # Whether a SAS deployment for the authentication context exists.
-        # Corresponds to the JSON property `hasProvisionedDeployment`
-        # @return [Boolean]
-        attr_accessor :has_provisioned_deployment
-        alias_method :has_provisioned_deployment?, :has_provisioned_deployment
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @has_provisioned_deployment = args[:has_provisioned_deployment] if args.key?(:has_provisioned_deployment)
-        end
-      end
-      
       # Request for CreateSignedDevice.
       class SasPortalCreateSignedDeviceRequest
         include Google::Apis::Core::Hashable
@@ -633,6 +612,33 @@ module Google
         end
       end
       
+      # Deployment associated with the GCP project. Includes whether SAS analytics has
+      # been enabled or not.
+      class SasPortalGcpProjectDeployment
+        include Google::Apis::Core::Hashable
+      
+        # The Deployment.
+        # Corresponds to the JSON property `deployment`
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalDeployment]
+        attr_accessor :deployment
+      
+        # Whether SAS analytics has been enabled.
+        # Corresponds to the JSON property `hasEnabledAnalytics`
+        # @return [Boolean]
+        attr_accessor :has_enabled_analytics
+        alias_method :has_enabled_analytics?, :has_enabled_analytics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @has_enabled_analytics = args[:has_enabled_analytics] if args.key?(:has_enabled_analytics)
+        end
+      end
+      
       # Request for GenerateSecret.
       class SasPortalGenerateSecretRequest
         include Google::Apis::Core::Hashable
@@ -887,6 +893,25 @@ module Google
         def update!(**args)
           @devices = args[:devices] if args.key?(:devices)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for [ListGcpProjectDeployments].
+      class SasPortalListGcpProjectDeploymentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Deployments associated with the GCP project
+        # Corresponds to the JSON property `deployments`
+        # @return [Array<Google::Apis::SasportalV1alpha1::SasPortalGcpProjectDeployment>]
+        attr_accessor :deployments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployments = args[:deployments] if args.key?(:deployments)
         end
       end
       

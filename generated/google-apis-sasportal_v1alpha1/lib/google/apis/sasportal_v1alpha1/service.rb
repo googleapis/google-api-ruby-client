@@ -51,33 +51,6 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Checks whether a SAS deployment for the authentication context exists.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalCheckHasProvisionedDeploymentResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SasportalV1alpha1::SasPortalCheckHasProvisionedDeploymentResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def check_customer_has_provisioned_deployment(fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha1/customers:checkHasProvisionedDeployment', options)
-          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalCheckHasProvisionedDeploymentResponse::Representation
-          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalCheckHasProvisionedDeploymentResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Returns a requested customer.
         # @param [String] name
         #   Required. The name of the customer.
@@ -142,7 +115,35 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Checks whether account is legacy.
+        # Returns a list of SAS deployments associated with current GCP project.
+        # Includes whether SAS analytics has been enabled or not.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalListGcpProjectDeploymentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalListGcpProjectDeploymentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_gcp_project_deployments(fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/customers:listGcpProjectDeployments', options)
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalListGcpProjectDeploymentsResponse::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalListGcpProjectDeploymentsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of legacy organizations.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
