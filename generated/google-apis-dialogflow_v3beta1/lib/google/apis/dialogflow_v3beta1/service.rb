@@ -685,6 +685,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Exports the selected entity types.
+        # @param [String] parent
+        #   Required. The name of the parent agent to export entity types. Format: `
+        #   projects//locations//agents/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExportEntityTypesRequest] google_cloud_dialogflow_cx_v3beta1_export_entity_types_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_project_location_agent_entity_type(parent, google_cloud_dialogflow_cx_v3beta1_export_entity_types_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+parent}/entityTypes:export', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExportEntityTypesRequest::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_export_entity_types_request_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves the specified entity type.
         # @param [String] name
         #   Required. The name of the entity type. Format: `projects//locations//agents//
@@ -719,6 +753,40 @@ module Google
           command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EntityType
           command.params['name'] = name unless name.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Imports the specified entitytypes into the agent.
+        # @param [String] parent
+        #   Required. The agent to import the entity types into. Format: `projects//
+        #   locations//agents/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ImportEntityTypesRequest] google_cloud_dialogflow_cx_v3beta1_import_entity_types_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_project_location_agent_entity_type(parent, google_cloud_dialogflow_cx_v3beta1_import_entity_types_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+parent}/entityTypes:import', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ImportEntityTypesRequest::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_import_entity_types_request_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
