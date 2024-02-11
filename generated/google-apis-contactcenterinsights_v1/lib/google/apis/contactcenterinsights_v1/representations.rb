@@ -316,6 +316,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ExportIssueModelRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ExportIssueModelResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1FaqAnswerData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +353,30 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1HoldData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ImportIssueModelRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ImportIssueModelResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -862,6 +910,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -875,6 +947,30 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1HoldData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1620,6 +1716,38 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportIssueModelRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportIssueModelRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ExportIssueModelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_uri, as: 'objectUri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ExportIssueModelResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1FaqAnswerData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1641,6 +1769,39 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1HoldData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ImportIssueModelRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ImportIssueModelRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ImportIssueModelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_new_model, as: 'createNewModel'
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource::Representation
+      
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_uri, as: 'objectUri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ImportIssueModelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1701,6 +1862,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket_object_type, as: 'bucketObjectType'
           property :bucket_uri, as: 'bucketUri'
+          collection :custom_metadata_keys, as: 'customMetadataKeys'
+          property :metadata_bucket_uri, as: 'metadataBucketUri'
         end
       end
       
@@ -2578,6 +2741,38 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_uri, as: 'objectUri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2599,6 +2794,39 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1HoldData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_new_model, as: 'createNewModel'
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource::Representation
+      
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_uri, as: 'objectUri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -2659,6 +2887,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket_object_type, as: 'bucketObjectType'
           property :bucket_uri, as: 'bucketUri'
+          collection :custom_metadata_keys, as: 'customMetadataKeys'
+          property :metadata_bucket_uri, as: 'metadataBucketUri'
         end
       end
       
