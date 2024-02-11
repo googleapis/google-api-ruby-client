@@ -4495,6 +4495,94 @@ module Google
         end
       end
       
+      # These messages contain information about the execution of a metadata job. The
+      # monitored resource is 'MetadataJob'.
+      class GoogleCloudDataplexV1MetadataJobEvent
+        include Google::Apis::Core::Hashable
+      
+        # Import job result for metadata job.
+        # Corresponds to the JSON property `importResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1MetadataJobEventImportResult]
+        attr_accessor :import_result
+      
+        # Message describing failure or success event.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The resource name associated with the event. Supported resources included, but
+        # not limited to EntryGroup, MetadataJob, and Entry.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @import_result = args[:import_result] if args.key?(:import_result)
+          @message = args[:message] if args.key?(:message)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # Import job result for metadata job.
+      class GoogleCloudDataplexV1MetadataJobEventImportResult
+        include Google::Apis::Core::Hashable
+      
+        # Total number of entries created.
+        # Corresponds to the JSON property `createdEntries`
+        # @return [Fixnum]
+        attr_accessor :created_entries
+      
+        # Total number of entries deleted.
+        # Corresponds to the JSON property `deletedEntries`
+        # @return [Fixnum]
+        attr_accessor :deleted_entries
+      
+        # The number of entry groups modified/specified by the import job.
+        # Corresponds to the JSON property `mutatedEntryGroups`
+        # @return [Fixnum]
+        attr_accessor :mutated_entry_groups
+      
+        # Total number of entries recreated.
+        # Corresponds to the JSON property `recreatedEntries`
+        # @return [Fixnum]
+        attr_accessor :recreated_entries
+      
+        # Output only. Terminal state of the import job.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Total number of entries left unchanged.
+        # Corresponds to the JSON property `unchangedEntries`
+        # @return [Fixnum]
+        attr_accessor :unchanged_entries
+      
+        # Total number of entries updated.
+        # Corresponds to the JSON property `updatedEntries`
+        # @return [Fixnum]
+        attr_accessor :updated_entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_entries = args[:created_entries] if args.key?(:created_entries)
+          @deleted_entries = args[:deleted_entries] if args.key?(:deleted_entries)
+          @mutated_entry_groups = args[:mutated_entry_groups] if args.key?(:mutated_entry_groups)
+          @recreated_entries = args[:recreated_entries] if args.key?(:recreated_entries)
+          @state = args[:state] if args.key?(:state)
+          @unchanged_entries = args[:unchanged_entries] if args.key?(:unchanged_entries)
+          @updated_entries = args[:updated_entries] if args.key?(:updated_entries)
+        end
+      end
+      
       # Represents the metadata of a long-running operation.
       class GoogleCloudDataplexV1OperationMetadata
         include Google::Apis::Core::Hashable
