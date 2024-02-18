@@ -1932,6 +1932,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists permitted Scopes.
+        # @param [String] parent
+        #   Required. The parent (project and location) where the Scope will be listed.
+        #   Specified in the format `projects/*/locations/*`.
+        # @param [Fixnum] page_size
+        #   Optional. When requesting a 'page' of resources, `page_size` specifies number
+        #   of resources to return. If unspecified or set to 0, all resources will be
+        #   returned.
+        # @param [String] page_token
+        #   Optional. Token returned by previous call to `ListPermittedScopes` which
+        #   specifies the position in the list from where to continue listing the
+        #   resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::ListPermittedScopesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::ListPermittedScopesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_scope_permitted(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/scopes:listPermitted', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::ListPermittedScopesResponse::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::ListPermittedScopesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates a scopes.
         # @param [String] name
         #   The resource name for the scope `projects/`project`/locations/`location`/

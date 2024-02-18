@@ -622,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPermittedScopesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListScopeNamespacesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1396,6 +1402,7 @@ module Google
       
           property :reposync_crd, as: 'reposyncCrd'
           property :rootsync_crd, as: 'rootsyncCrd'
+          property :state, as: 'state'
           property :sync_state, as: 'syncState', class: Google::Apis::GkehubV1alpha::ConfigManagementSyncState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementSyncState::Representation
       
           property :version, as: 'version', class: Google::Apis::GkehubV1alpha::ConfigManagementConfigSyncVersion, decorator: Google::Apis::GkehubV1alpha::ConfigManagementConfigSyncVersion::Representation
@@ -1511,6 +1518,7 @@ module Google
       
           property :hierarchy_controller, as: 'hierarchyController', class: Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerConfig, decorator: Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerConfig::Representation
       
+          property :management, as: 'management'
           property :policy_controller, as: 'policyController', class: Google::Apis::GkehubV1alpha::ConfigManagementPolicyController, decorator: Google::Apis::GkehubV1alpha::ConfigManagementPolicyController::Representation
       
           property :version, as: 'version'
@@ -2036,6 +2044,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::GkehubV1alpha::Operation, decorator: Google::Apis::GkehubV1alpha::Operation::Representation
+      
+        end
+      end
+      
+      class ListPermittedScopesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :scopes, as: 'scopes', class: Google::Apis::GkehubV1alpha::Scope, decorator: Google::Apis::GkehubV1alpha::Scope::Representation
       
         end
       end

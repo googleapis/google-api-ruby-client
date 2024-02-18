@@ -1269,6 +1269,11 @@ module Google
         # @return [String]
         attr_accessor :rootsync_crd
       
+        # The state of CS This field summarizes the other fields in this message.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # State indicating an ACM's progress syncing configurations to a cluster
         # Corresponds to the JSON property `syncState`
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementSyncState]
@@ -1289,6 +1294,7 @@ module Google
           @errors = args[:errors] if args.key?(:errors)
           @reposync_crd = args[:reposync_crd] if args.key?(:reposync_crd)
           @rootsync_crd = args[:rootsync_crd] if args.key?(:rootsync_crd)
+          @state = args[:state] if args.key?(:state)
           @sync_state = args[:sync_state] if args.key?(:sync_state)
           @version = args[:version] if args.key?(:version)
         end
@@ -1671,6 +1677,11 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerConfig]
         attr_accessor :hierarchy_controller
       
+        # Enables automatic Feature management.
+        # Corresponds to the JSON property `management`
+        # @return [String]
+        attr_accessor :management
+      
         # Configuration for Policy Controller
         # Corresponds to the JSON property `policyController`
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementPolicyController]
@@ -1691,6 +1702,7 @@ module Google
           @cluster = args[:cluster] if args.key?(:cluster)
           @config_sync = args[:config_sync] if args.key?(:config_sync)
           @hierarchy_controller = args[:hierarchy_controller] if args.key?(:hierarchy_controller)
+          @management = args[:management] if args.key?(:management)
           @policy_controller = args[:policy_controller] if args.key?(:policy_controller)
           @version = args[:version] if args.key?(:version)
         end
@@ -3482,6 +3494,33 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # List of permitted Scopes.
+      class ListPermittedScopesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of resources from the `ListPermittedScopes`
+        # method. The value of an empty string means that there are no more resources to
+        # return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of permitted Scopes
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<Google::Apis::GkehubV1alpha::Scope>]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @scopes = args[:scopes] if args.key?(:scopes)
         end
       end
       
