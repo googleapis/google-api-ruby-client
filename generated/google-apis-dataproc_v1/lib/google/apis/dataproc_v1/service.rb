@@ -2047,13 +2047,13 @@ module Google
         #   sensitive and have the following syntax:field = value AND field = value ...
         #   where field is one of status.state, clusterName, or labels.[KEY], and [KEY] is
         #   a label key. value can be * to match all values. status.state can be one of
-        #   the following: ACTIVE, INACTIVE, CREATING, RUNNING, ERROR, DELETING, or
-        #   UPDATING. ACTIVE contains the CREATING, UPDATING, and RUNNING states. INACTIVE
-        #   contains the DELETING and ERROR states. clusterName is the name of the cluster
-        #   provided at creation time. Only the logical AND operator is supported; space-
-        #   separated items are treated as having an implicit AND operator.Example filter:
-        #   status.state = ACTIVE AND clusterName = mycluster AND labels.env = staging AND
-        #   labels.starred = *
+        #   the following: ACTIVE, INACTIVE, CREATING, RUNNING, ERROR, DELETING, UPDATING,
+        #   STOPPING, or STOPPED. ACTIVE contains the CREATING, UPDATING, and RUNNING
+        #   states. INACTIVE contains the DELETING, ERROR, STOPPING, and STOPPED states.
+        #   clusterName is the name of the cluster provided at creation time. Only the
+        #   logical AND operator is supported; space-separated items are treated as having
+        #   an implicit AND operator.Example filter:status.state = ACTIVE AND clusterName =
+        #   mycluster AND labels.env = staging AND labels.starred = *
         # @param [Fixnum] page_size
         #   Optional. The standard List page size.
         # @param [String] page_token
@@ -2377,10 +2377,10 @@ module Google
         # @param [String] request_id
         #   Optional. A unique ID used to identify the request. If the server receives two
         #   CreateNodeGroupRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
-        #   google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests)
-        #   with the same ID, the second request is ignored and the first google.
-        #   longrunning.Operation created and stored in the backend is returned.
-        #   Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/
+        #   google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequest) with
+        #   the same ID, the second request is ignored and the first google.longrunning.
+        #   Operation created and stored in the backend is returned.Recommendation: Set
+        #   this value to a UUID (https://en.wikipedia.org/wiki/
         #   Universally_unique_identifier).The ID must contain only letters (a-z, A-Z),
         #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         #   characters.
@@ -2441,6 +2441,40 @@ module Google
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1::NodeGroup::Representation
           command.response_class = Google::Apis::DataprocV1::NodeGroup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Repair nodes in a node group.
+        # @param [String] name
+        #   Required. The name of the node group to resize. Format: projects/`project`/
+        #   regions/`region`/clusters/`cluster`/nodeGroups/`nodeGroup`
+        # @param [Google::Apis::DataprocV1::RepairNodeGroupRequest] repair_node_group_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def repair_node_group(name, repair_node_group_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:repair', options)
+          command.request_representation = Google::Apis::DataprocV1::RepairNodeGroupRequest::Representation
+          command.request_object = repair_node_group_request_object
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
