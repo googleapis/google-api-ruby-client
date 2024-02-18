@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChannelToStoreLinkDetailsBillingDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChannelTopicDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -587,6 +593,24 @@ module Google
       end
       
       class LiveChatNewSponsorDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiveChatPollDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiveChatPollDetailsPollMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiveChatPollDetailsPollMetadataPollOption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1706,9 +1730,18 @@ module Google
       class ChannelToStoreLinkDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_details, as: 'billingDetails', class: Google::Apis::YoutubeV3::ChannelToStoreLinkDetailsBillingDetails, decorator: Google::Apis::YoutubeV3::ChannelToStoreLinkDetailsBillingDetails::Representation
+      
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :store_name, as: 'storeName'
           property :store_url, as: 'storeUrl'
+        end
+      end
+      
+      class ChannelToStoreLinkDetailsBillingDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_status, as: 'billingStatus'
         end
       end
       
@@ -2349,6 +2382,8 @@ module Google
       
           property :new_sponsor_details, as: 'newSponsorDetails', class: Google::Apis::YoutubeV3::LiveChatNewSponsorDetails, decorator: Google::Apis::YoutubeV3::LiveChatNewSponsorDetails::Representation
       
+          property :poll_details, as: 'pollDetails', class: Google::Apis::YoutubeV3::LiveChatPollDetails, decorator: Google::Apis::YoutubeV3::LiveChatPollDetails::Representation
+      
           property :published_at, as: 'publishedAt', type: DateTime
       
           property :super_chat_details, as: 'superChatDetails', class: Google::Apis::YoutubeV3::LiveChatSuperChatDetails, decorator: Google::Apis::YoutubeV3::LiveChatSuperChatDetails::Representation
@@ -2406,6 +2441,32 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_upgrade, as: 'isUpgrade'
           property :member_level_name, as: 'memberLevelName'
+        end
+      end
+      
+      class LiveChatPollDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata, as: 'metadata', class: Google::Apis::YoutubeV3::LiveChatPollDetailsPollMetadata, decorator: Google::Apis::YoutubeV3::LiveChatPollDetailsPollMetadata::Representation
+      
+          property :status, as: 'status'
+        end
+      end
+      
+      class LiveChatPollDetailsPollMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :options, as: 'options', class: Google::Apis::YoutubeV3::LiveChatPollDetailsPollMetadataPollOption, decorator: Google::Apis::YoutubeV3::LiveChatPollDetailsPollMetadataPollOption::Representation
+      
+          property :question_text, as: 'questionText'
+        end
+      end
+      
+      class LiveChatPollDetailsPollMetadataPollOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :option_text, as: 'optionText'
+          property :tally, :numeric_string => true, as: 'tally'
         end
       end
       
