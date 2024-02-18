@@ -497,13 +497,22 @@ module Google
         # @return [Fixnum]
         attr_accessor :ias_client_id
       
-        # Whether or not to use DV360's Online Behavioral Advertising (OBA) compliance.
-        # Starting on February 9, 2024, this field will be affected by an update to the
-        # Display & Video 360 API Terms of Service. See our [announcement](//ads-
-        # developers.googleblog.com/2024/01/update-to-display-video-360-api-terms.html)
-        # for more detail. Warning: Changing OBA settings may cause the audit status of
-        # your creatives to be reset by some ad exchanges, making them ineligible to
-        # serve until they are re-approved.
+        # Whether or not to disable Google's About this Ad feature that adds badging (to
+        # identify the content as an ad) and transparency information (on interaction
+        # with About this Ad) to your ads for Online Behavioral Advertising (OBA) and
+        # regulatory requirements. About this Ad gives users greater control over the
+        # ads they see and helps you explain why they're seeing your ad. [Learn more](//
+        # support.google.com/displayvideo/answer/14315795). If you choose to set this
+        # field to `true`, note that ads served through Display & Video 360 must comply
+        # to the following: * Be Online Behavioral Advertising (OBA) compliant, as per
+        # your contract with Google Marketing Platform. * In the European Economic Area (
+        # EEA), include transparency information and a mechanism for users to report
+        # illegal content in ads. If using an alternative ad badging, transparency, and
+        # reporting solution, you must ensure it includes the required transparency
+        # information and illegal content flagging mechanism and that you notify Google
+        # of any illegal content reports using the appropriate [form](//support.google.
+        # com/legal/troubleshooter/1114905?sjid=6787484030557261960-EU#ts=2981967%
+        # 2C2982031%2C12980091).
         # Corresponds to the JSON property `obaComplianceDisabled`
         # @return [Boolean]
         attr_accessor :oba_compliance_disabled
