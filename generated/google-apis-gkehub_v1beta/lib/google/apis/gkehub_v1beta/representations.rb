@@ -1246,6 +1246,7 @@ module Google
       
           property :reposync_crd, as: 'reposyncCrd'
           property :rootsync_crd, as: 'rootsyncCrd'
+          property :state, as: 'state'
           property :sync_state, as: 'syncState', class: Google::Apis::GkehubV1beta::ConfigManagementSyncState, decorator: Google::Apis::GkehubV1beta::ConfigManagementSyncState::Representation
       
           property :version, as: 'version', class: Google::Apis::GkehubV1beta::ConfigManagementConfigSyncVersion, decorator: Google::Apis::GkehubV1beta::ConfigManagementConfigSyncVersion::Representation
@@ -1361,6 +1362,7 @@ module Google
       
           property :hierarchy_controller, as: 'hierarchyController', class: Google::Apis::GkehubV1beta::ConfigManagementHierarchyControllerConfig, decorator: Google::Apis::GkehubV1beta::ConfigManagementHierarchyControllerConfig::Representation
       
+          property :management, as: 'management'
           property :policy_controller, as: 'policyController', class: Google::Apis::GkehubV1beta::ConfigManagementPolicyController, decorator: Google::Apis::GkehubV1beta::ConfigManagementPolicyController::Representation
       
           property :version, as: 'version'
