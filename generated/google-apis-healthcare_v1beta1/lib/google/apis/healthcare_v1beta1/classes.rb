@@ -6336,7 +6336,7 @@ module Google
         end
       end
       
-      # Final response of rollback FIHR resources request.
+      # Final response of rollback FHIR resources request.
       class RollbackFhirResourcesResponse
         include Google::Apis::Core::Hashable
       
