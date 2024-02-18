@@ -628,6 +628,7 @@ module Google
           property :enable_two_pass, as: 'enableTwoPass'
           property :entropy_coder, as: 'entropyCoder'
           property :frame_rate, as: 'frameRate'
+          property :frame_rate_conversion_strategy, as: 'frameRateConversionStrategy'
           property :gop_duration, as: 'gopDuration'
           property :gop_frame_count, as: 'gopFrameCount'
           property :height_pixels, as: 'heightPixels'
@@ -669,6 +670,7 @@ module Google
           property :crf_level, as: 'crfLevel'
           property :enable_two_pass, as: 'enableTwoPass'
           property :frame_rate, as: 'frameRate'
+          property :frame_rate_conversion_strategy, as: 'frameRateConversionStrategy'
           property :gop_duration, as: 'gopDuration'
           property :gop_frame_count, as: 'gopFrameCount'
           property :hdr10, as: 'hdr10', class: Google::Apis::TranscoderV1::H265ColorFormatHdr10, decorator: Google::Apis::TranscoderV1::H265ColorFormatHdr10::Representation
@@ -994,6 +996,7 @@ module Google
           property :bitrate_bps, as: 'bitrateBps'
           property :crf_level, as: 'crfLevel'
           property :frame_rate, as: 'frameRate'
+          property :frame_rate_conversion_strategy, as: 'frameRateConversionStrategy'
           property :gop_duration, as: 'gopDuration'
           property :gop_frame_count, as: 'gopFrameCount'
           property :height_pixels, as: 'heightPixels'
