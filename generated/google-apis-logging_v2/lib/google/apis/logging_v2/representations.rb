@@ -1142,6 +1142,7 @@ module Google
       class Settings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :analytics_mode, as: 'analyticsMode'
           property :default_sink_config, as: 'defaultSinkConfig', class: Google::Apis::LoggingV2::DefaultSinkConfig, decorator: Google::Apis::LoggingV2::DefaultSinkConfig::Representation
       
           property :disable_default_sink, as: 'disableDefaultSink'
