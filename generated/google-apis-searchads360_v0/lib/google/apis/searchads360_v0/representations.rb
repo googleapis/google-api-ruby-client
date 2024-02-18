@@ -466,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0ResourcesConversionCustomVariableFloodlightConversionCustomVariableInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBiddingCategory
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -706,6 +712,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0ResourcesConversionCustomVariable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0ResourcesConversionTrackingSetting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -850,6 +862,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0ServicesConversionCustomDimensionHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ServicesConversionCustomMetricHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0ServicesCustomColumnHeader
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -863,6 +887,18 @@ module Google
       end
       
       class GoogleAdsSearchads360V0ServicesListCustomColumnsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ServicesRawEventConversionDimensionHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ServicesRawEventConversionMetricHeader
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1129,6 +1165,8 @@ module Google
           property :content_budget_lost_impression_share, as: 'contentBudgetLostImpressionShare'
           property :content_impression_share, as: 'contentImpressionShare'
           property :content_rank_lost_impression_share, as: 'contentRankLostImpressionShare'
+          collection :conversion_custom_metrics, as: 'conversionCustomMetrics', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue::Representation
+      
           property :conversions, as: 'conversions'
           property :conversions_by_conversion_date, as: 'conversionsByConversionDate'
           property :conversions_from_interactions_rate, as: 'conversionsFromInteractionsRate'
@@ -1162,6 +1200,8 @@ module Google
           property :lead_revenue_micros, :numeric_string => true, as: 'leadRevenueMicros'
           property :lead_units_sold, as: 'leadUnitsSold'
           property :mobile_friendly_clicks_percentage, as: 'mobileFriendlyClicksPercentage'
+          collection :raw_event_conversion_metrics, as: 'rawEventConversionMetrics', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue::Representation
+      
           property :search_absolute_top_impression_share, as: 'searchAbsoluteTopImpressionShare'
           property :search_budget_lost_absolute_top_impression_share, as: 'searchBudgetLostAbsoluteTopImpressionShare'
           property :search_budget_lost_impression_share, as: 'searchBudgetLostImpressionShare'
@@ -1264,6 +1304,8 @@ module Google
           property :conversion_action, as: 'conversionAction'
           property :conversion_action_category, as: 'conversionActionCategory'
           property :conversion_action_name, as: 'conversionActionName'
+          collection :conversion_custom_dimensions, as: 'conversionCustomDimensions', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue::Representation
+      
           property :date, as: 'date'
           property :day_of_week, as: 'dayOfWeek'
           property :device, as: 'device'
@@ -1314,6 +1356,8 @@ module Google
           property :product_type_l4, as: 'productTypeL4'
           property :product_type_l5, as: 'productTypeL5'
           property :quarter, as: 'quarter'
+          collection :raw_event_conversion_dimensions, as: 'rawEventConversionDimensions', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue::Representation
+      
           property :week, as: 'week'
           property :year, as: 'year'
         end
@@ -1680,6 +1724,14 @@ module Google
           property :always_use_default_value, as: 'alwaysUseDefaultValue'
           property :default_currency_code, as: 'defaultCurrencyCode'
           property :default_value, as: 'defaultValue'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesConversionCustomVariableFloodlightConversionCustomVariableInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :floodlight_variable_data_type, as: 'floodlightVariableDataType'
+          property :floodlight_variable_type, as: 'floodlightVariableType'
         end
       end
       
@@ -2283,6 +2335,23 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0ResourcesConversionCustomVariable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cardinality, as: 'cardinality'
+          collection :custom_column_ids, as: 'customColumnIds'
+          property :family, as: 'family'
+          property :floodlight_conversion_custom_variable_info, as: 'floodlightConversionCustomVariableInfo', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionCustomVariableFloodlightConversionCustomVariableInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionCustomVariableFloodlightConversionCustomVariableInfo::Representation
+      
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
+          property :owner_customer, as: 'ownerCustomer'
+          property :resource_name, as: 'resourceName'
+          property :status, as: 'status'
+          property :tag, as: 'tag'
+        end
+      end
+      
       class GoogleAdsSearchads360V0ResourcesConversionTrackingSetting
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2571,6 +2640,22 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0ServicesConversionCustomDimensionHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ServicesConversionCustomMetricHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleAdsSearchads360V0ServicesCustomColumnHeader
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2592,6 +2677,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :custom_columns, as: 'customColumns', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCustomColumn, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCustomColumn::Representation
       
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ServicesRawEventConversionDimensionHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ServicesRawEventConversionMetricHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
         end
       end
       
@@ -2659,6 +2760,8 @@ module Google
           property :conversion, as: 'conversion', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversion, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversion::Representation
       
           property :conversion_action, as: 'conversionAction', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionAction, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionAction::Representation
+      
+          property :conversion_custom_variable, as: 'conversionCustomVariable', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionCustomVariable, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionCustomVariable::Representation
       
           collection :custom_columns, as: 'customColumns', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue::Representation
       
@@ -2739,10 +2842,18 @@ module Google
       class GoogleAdsSearchads360V0ServicesSearchSearchAds360Response
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversion_custom_dimension_headers, as: 'conversionCustomDimensionHeaders', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesConversionCustomDimensionHeader, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesConversionCustomDimensionHeader::Representation
+      
+          collection :conversion_custom_metric_headers, as: 'conversionCustomMetricHeaders', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesConversionCustomMetricHeader, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesConversionCustomMetricHeader::Representation
+      
           collection :custom_column_headers, as: 'customColumnHeaders', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesCustomColumnHeader, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesCustomColumnHeader::Representation
       
           property :field_mask, as: 'fieldMask'
           property :next_page_token, as: 'nextPageToken'
+          collection :raw_event_conversion_dimension_headers, as: 'rawEventConversionDimensionHeaders', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesRawEventConversionDimensionHeader, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesRawEventConversionDimensionHeader::Representation
+      
+          collection :raw_event_conversion_metric_headers, as: 'rawEventConversionMetricHeaders', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesRawEventConversionMetricHeader, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesRawEventConversionMetricHeader::Representation
+      
           collection :results, as: 'results', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesSearchAds360Row, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesSearchAds360Row::Representation
       
           property :summary_row, as: 'summaryRow', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesSearchAds360Row, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesSearchAds360Row::Representation
