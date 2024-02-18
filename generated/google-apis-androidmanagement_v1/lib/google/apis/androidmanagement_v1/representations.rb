@@ -948,6 +948,7 @@ module Google
           property :always_on_vpn_lockdown_exemption, as: 'alwaysOnVpnLockdownExemption'
           property :auto_update_mode, as: 'autoUpdateMode'
           property :connected_work_and_personal_app, as: 'connectedWorkAndPersonalApp'
+          property :credential_provider_policy, as: 'credentialProviderPolicy'
           property :default_permission_policy, as: 'defaultPermissionPolicy'
           collection :delegated_scopes, as: 'delegatedScopes'
           property :disabled, as: 'disabled'
@@ -1884,6 +1885,7 @@ module Google
           collection :compliance_rules, as: 'complianceRules', class: Google::Apis::AndroidmanagementV1::ComplianceRule, decorator: Google::Apis::AndroidmanagementV1::ComplianceRule::Representation
       
           property :create_windows_disabled, as: 'createWindowsDisabled'
+          property :credential_provider_policy_default, as: 'credentialProviderPolicyDefault'
           property :credentials_config_disabled, as: 'credentialsConfigDisabled'
           property :cross_profile_policies, as: 'crossProfilePolicies', class: Google::Apis::AndroidmanagementV1::CrossProfilePolicies, decorator: Google::Apis::AndroidmanagementV1::CrossProfilePolicies::Representation
       
@@ -1943,6 +1945,7 @@ module Google
           collection :policy_enforcement_rules, as: 'policyEnforcementRules', class: Google::Apis::AndroidmanagementV1::PolicyEnforcementRule, decorator: Google::Apis::AndroidmanagementV1::PolicyEnforcementRule::Representation
       
           property :preferential_network_service, as: 'preferentialNetworkService'
+          property :printing_policy, as: 'printingPolicy'
           property :private_key_selection_enabled, as: 'privateKeySelectionEnabled'
           property :recommended_global_proxy, as: 'recommendedGlobalProxy', class: Google::Apis::AndroidmanagementV1::ProxyInfo, decorator: Google::Apis::AndroidmanagementV1::ProxyInfo::Representation
       
