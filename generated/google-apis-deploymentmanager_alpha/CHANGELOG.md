@@ -1,5 +1,10 @@
 # Release history for google-apis-deploymentmanager_alpha
 
+### v0.29.0 (2024-02-18)
+
+* Regenerated from discovery document revision 20240214
+* Regenerated using generator version 0.13.1
+
 ### v0.28.0 (2024-01-23)
 
 * Regenerated from discovery document revision 20240104
