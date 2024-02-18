@@ -1127,6 +1127,7 @@ module Google
           property :device_capacity, as: 'deviceCapacity'
           property :direct_access_version_info, as: 'directAccessVersionInfo', class: Google::Apis::TestingV1::DirectAccessVersionInfo, decorator: Google::Apis::TestingV1::DirectAccessVersionInfo::Representation
       
+          property :interactive_device_availability_estimate, as: 'interactiveDeviceAvailabilityEstimate'
           property :version_id, as: 'versionId'
         end
       end
