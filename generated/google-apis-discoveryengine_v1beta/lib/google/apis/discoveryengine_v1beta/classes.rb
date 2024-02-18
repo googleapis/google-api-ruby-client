@@ -1429,7 +1429,7 @@ module Google
         end
       end
       
-      # 
+      # Failed due to insufficient quota.
       class GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure
         include Google::Apis::Core::Hashable
       
@@ -3342,7 +3342,7 @@ module Google
         end
       end
       
-      # 
+      # Failed due to insufficient quota.
       class GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure
         include Google::Apis::Core::Hashable
       
@@ -7583,7 +7583,20 @@ module Google
         # @return [Array<String>]
         attr_accessor :oneway_synonyms_control_ids
       
-        # 
+        # The ranking expression controls the customized ranking on retrieval documents.
+        # To leverage this, document embedding is required. The ranking expression
+        # setting in ServingConfig applies to all search requests served by the serving
+        # config. However, if SearchRequest.ranking_expression is specified, it
+        # overrides the ServingConfig ranking expression. The ranking expression is a
+        # single function or multiple functions that are joined by "+". *
+        # ranking_expression = function, ` " + ", function `; Supported functions: *
+        # double * relevance_score * double * dotProduct(embedding_field_path) Function
+        # variables: relevance_score: pre-defined keywords, used for measure relevance
+        # between query and document. embedding_field_path: the document embedding field
+        # used with query embedding vector. dotProduct: embedding function between
+        # embedding_field_path and query embedding vector. Example ranking expression:
+        # If document has an embedding field doc_embedding, the ranking expression could
+        # be 0.5 * relevance_score + 0.3 * dotProduct(doc_embedding).
         # Corresponds to the JSON property `rankingExpression`
         # @return [String]
         attr_accessor :ranking_expression
@@ -7898,7 +7911,7 @@ module Google
         end
       end
       
-      # 
+      # Failed due to insufficient quota.
       class GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure
         include Google::Apis::Core::Hashable
       
